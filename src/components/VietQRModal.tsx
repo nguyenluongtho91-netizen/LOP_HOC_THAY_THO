@@ -9,7 +9,7 @@
 
 import { useState, useEffect } from 'react'
 import { X, Copy, CheckCircle2, RefreshCw, QrCode, Building2 } from 'lucide-react'
-import { fmtVNDShort } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
 
 // ─── Config từ ENV ────────────────────────────────────────────────────────────
 // ✅ Đọc cả VITE_ prefix (frontend) và không prefix (Vercel server),
@@ -92,7 +92,7 @@ export default function VietQRModal({
   const [qrLoaded, setQrLoaded] = useState(false)
   const [qrError, setQrError]   = useState(false)
 
-  const transferContent = buildTransferContent(studentCode, month)
+  const transferContent = formatVietQRAddInfo(studentName, className || month)
   const qrUrl           = buildVietQRUrl(amount, transferContent)
   
   let monthLabel = month

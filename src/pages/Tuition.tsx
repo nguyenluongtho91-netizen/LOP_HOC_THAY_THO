@@ -1,9 +1,11 @@
 import { useEffect, useState, useMemo } from 'react'
 import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
-import { fmtVNDShort } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
 import Modal from '@/components/Modal'
 import VietQRModal from '@/components/VietQRModal'
+import { sendZaloPersonalMessage, sendZaloOAMessage, isZaloOAConfigured } from '@/services/zaloService'
+import { Sparkles } from 'lucide-react'
 import toast from 'react-hot-toast'
 import type { PaymentMethod } from '@/types'
 
@@ -38,6 +40,9 @@ export default function Tuition() {
 
   const [confirmModal, setConfirmModal] = useState<{studentName:string;amount:number;studentId:string;phone:string;email:string}|null>(null)
   const [sendingConfirm, setSendingConfirm] = useState(false)
+  const [autoSendModal, setAutoSendModal] = useState(false)
+  const [autoSending, setAutoSending] = useState(false)
+  const [autoProgress, setAutoProgress] = useState<{ current: number; total: number; currentStudent: string; logs: string[] }>({ current: 0, total: 0, currentStudent: '', logs: [] })
 
   // ── Load foundational data on mount ──
   useEffect(() => {
@@ -295,18 +300,100 @@ export default function Tuition() {
     const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
     const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
 
-    const addInfo     = 'HP ' + row.student.student_code + ' KH'
-    const qrUrl       = bankId && bankAccount
+    const cls = classes.find(c => c.id === selClass)
+    const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
+    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName)
+    const qrUrl = bankId && bankAccount
       ? 'https://img.vietqr.io/image/' + bankId + '-' + bankAccount + '-compact2.png'
         + '?amount=' + amountVal
         + '&addInfo=' + encodeURIComponent(addInfo)
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
-    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\nThầy Thọ xin thông báo học phí khóa "${row.notification.course_name}":\n- Số tiền: ${amountVal.toLocaleString('vi-VN')} VNĐ\n- STK: ${bankAccount} (Vietcombank)\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Link mã QR quét tự động (đã điền sẵn đúng số tiền & nội dung):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
+    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${row.notification.course_name}":\n- Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${row.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amountVal.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^0/, '84')
     setZaloModal({ row, msg, qrUrl, phone: cleanPhone })
     setCopiedZalo(null)
+  }
+
+
+  // ── 1-CLICK AUTO SEND TO ALL PARENTS ──
+  const runAutoBulkSend = async () => {
+    const unpaidList = tuitionData.filter(r => r.status === 'unpaid')
+    if (unpaidList.length === 0) {
+      toast.error('Không có học sinh nào chưa đóng học phí.')
+      return
+    }
+    const cls = classes.find(c => c.id === selClass)
+    const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
+    const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
+    const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
+    const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
+
+    setAutoSending(true)
+    const logs: string[] = []
+    setAutoProgress({ current: 0, total: unpaidList.length, currentStudent: 'Đang bắt đầu...', logs })
+
+    let successCount = 0
+    let failCount = 0
+
+    for (let i = 0; i < unpaidList.length; i++) {
+      const row = unpaidList[i]
+      const student = students.find((s: any) => s.id === row.student.id)
+      const rawPhone = (student as any)?.zalo || (student as any)?.parent_phone || ''
+      const digits = rawPhone.replace(/\D/g, '')
+      const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
+      const amt = Number(row.notification?.amount || courseAmount)
+
+      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName)
+      const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+      const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${row.notification?.course_name || courseName}":\n- Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${row.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amt.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
+
+      logs.push(`⏳ [${i + 1}/${unpaidList.length}] Đang gửi cho ${row.student.full_name} (${cleanPhone || 'Không có SĐT'})...`)
+      setAutoProgress({
+        current: i + 1,
+        total: unpaidList.length,
+        currentStudent: row.student.full_name,
+        logs: [...logs]
+      })
+
+      if (!cleanPhone || cleanPhone.length < 9) {
+        failCount++
+        logs.push(`⚠️ [${i + 1}/${unpaidList.length}] ${row.student.full_name}: Thiếu số điện thoại phụ huynh.`)
+      } else {
+        try {
+          let res = await sendZaloPersonalMessage(cleanPhone, msg)
+          if (!res.success && isZaloOAConfigured()) {
+            res = await sendZaloOAMessage(cleanPhone, msg)
+          }
+
+          if (res.success) {
+            successCount++
+            logs.push(`✅ [${i + 1}/${unpaidList.length}] ${row.student.full_name}: Đã gửi thành công!`)
+          } else {
+            failCount++
+            logs.push(`⚠️ [${i + 1}/${unpaidList.length}] ${row.student.full_name}: ${res.message || 'Cần dùng Trợ lý web hoặc Robot'}`)
+          }
+        } catch (err: any) {
+          failCount++
+          logs.push(`❌ [${i + 1}/${unpaidList.length}] ${row.student.full_name}: ${err.message}`)
+        }
+      }
+
+      setAutoProgress({
+        current: i + 1,
+        total: unpaidList.length,
+        currentStudent: row.student.full_name,
+        logs: [...logs]
+      })
+
+      await new Promise(r => setTimeout(r, 1000))
+    }
+
+    setAutoSending(false)
+    if (successCount > 0) {
+      toast.success(`🎉 Đã gửi tự động thành công cho ${successCount} phụ huynh!`)
+    }
   }
 
   const startBatchZalo = () => {
@@ -668,10 +755,20 @@ export default function Tuition() {
                     </span>
                   )}
                   <button
-                    onClick={startBatchZalo}
-                    className="btn-teal text-xs py-2 px-4 flex items-center gap-1.5 font-extrabold shadow-md shadow-blue-500/10 bg-blue-600 hover:bg-blue-700 text-white"
+                    onClick={() => setAutoSendModal(true)}
+                    className="btn-teal text-xs py-2.5 px-4 flex items-center gap-2 font-black shadow-lg shadow-blue-600/20 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    title="Bấm 1 lần gửi toàn bộ học sinh trong lớp"
                   >
-                    <MessageCircle className="w-4 h-4" /> 🚀 Gửi Zalo Hàng Loạt ({stats.unpaidCount} HS)
+                    <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+                    ⚡ BẤM 1 LẦN: TỰ ĐỘNG GỬI TẤT CẢ ({stats.unpaidCount} HS)
+                  </button>
+
+                  <button
+                    onClick={startBatchZalo}
+                    className="btn-teal text-xs py-2 px-3.5 flex items-center gap-1.5 font-bold shadow-xs bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-xl cursor-pointer"
+                    title="Xem và gửi từng học sinh với mã QR to"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 text-blue-600" /> Trợ lý từng HS
                   </button>
 
                   <button
@@ -1033,6 +1130,128 @@ export default function Tuition() {
         </div>
       )}
 
+
+      {/* 1-Click Auto Bulk Send Modal */}
+      {autoSendModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden border border-blue-100 flex flex-col max-h-[92vh]">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-600 px-6 py-4 flex items-center justify-between text-white shrink-0">
+              <div>
+                <h3 className="font-black text-lg flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-amber-300" /> Bấm 1 Lần: Gửi Học Phí & VietQR Cho Cả Lớp
+                </h3>
+                <p className="text-xs text-blue-100 font-medium">
+                  Tự động gửi lời nhắn + Mã VietQR đúng số tiền và tên từng em
+                </p>
+              </div>
+              <button
+                onClick={() => { if (!autoSending) setAutoSendModal(false); }}
+                disabled={autoSending}
+                className="text-white/80 hover:text-white text-2xl font-extrabold w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer disabled:opacity-40"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 space-y-4 overflow-y-auto flex-1">
+              {/* Summary Card */}
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50/60 p-4 rounded-2xl border border-blue-100 space-y-2">
+                <div className="flex items-center justify-between border-b border-blue-100/80 pb-2">
+                  <span className="text-xs font-bold text-gray-500 uppercase">Lớp học:</span>
+                  <span className="font-black text-blue-800 text-sm">
+                    {classes.find(c => c.id === selClass)?.name || (classes.find(c => c.id === selClass) as any)?.class_name || 'Lớp đã chọn'}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between border-b border-blue-100/80 pb-2">
+                  <span className="text-xs font-bold text-gray-500 uppercase">Khóa học & Mức phí:</span>
+                  <span className="font-black text-emerald-600 text-sm">
+                    {courseName} ({fmtVNDShort(Number(courseAmount))})
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-gray-500 uppercase">Số phụ huynh cần gửi:</span>
+                  <span className="font-black text-rose-600 text-sm">
+                    {tuitionData.filter(r => r.status === 'unpaid').length} học sinh chưa nộp
+                  </span>
+                </div>
+              </div>
+
+              {/* Information Alert */}
+              <div className="bg-teal-50 p-3.5 rounded-2xl border border-teal-200 text-xs text-teal-900 leading-relaxed space-y-1">
+                <p className="font-bold flex items-center gap-1.5 text-teal-950">
+                  <Check className="w-4 h-4 text-teal-600 stroke-[3px]" />
+                  Mỗi phụ huynh sẽ nhận được đúng mã VietQR của con:
+                </p>
+                <p className="text-gray-600 pl-5">
+                  • <strong>Đúng số tiền:</strong> {fmtVNDShort(Number(courseAmount))}<br />
+                  • <strong>Đúng tên học sinh:</strong> Khi phụ huynh quét mã bằng App ngân hàng, màn hình tự hiện tên con (ví dụ: <code className="bg-white px-1.5 py-0.5 rounded text-blue-700 font-mono font-bold">HP NGUYEN MINH ANH 10</code>)<br />
+                  • <strong>Tự điền STK:</strong> 1070493932 (Vietcombank - HO KINH DOANH NGUYEN LUONG THO)
+                </p>
+              </div>
+
+              {/* Progress & Live Log */}
+              {autoSending && (
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-xs font-bold text-blue-800">
+                    <span>Đang tiến hành gửi tự động...</span>
+                    <span>{autoProgress.current} / {autoProgress.total} HS</span>
+                  </div>
+                  <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                    <div
+                      className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full transition-all duration-300 rounded-full"
+                      style={{ width: `${autoProgress.total > 0 ? (autoProgress.current / autoProgress.total) * 100 : 0}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {autoProgress.logs.length > 0 && (
+                <div className="bg-slate-900 text-slate-100 p-3 rounded-2xl font-mono text-[11px] max-h-40 overflow-y-auto space-y-1 border border-slate-800 shadow-inner">
+                  {autoProgress.logs.map((log, idx) => (
+                    <div key={idx} className="leading-tight">{log}</div>
+                  ))}
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div className="space-y-2.5 pt-2">
+                <button
+                  onClick={runAutoBulkSend}
+                  disabled={autoSending || tuitionData.filter(r => r.status === 'unpaid').length === 0}
+                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black rounded-2xl shadow-xl shadow-blue-500/25 text-sm flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
+                >
+                  {autoSending ? (
+                    <><Loader2 className="w-5 h-5 animate-spin" /> Đang tự động gửi qua Zalo...</>
+                  ) : (
+                    <><Sparkles className="w-5 h-5 text-amber-300" /> ▶ BẮT ĐẦU TỰ ĐỘNG GỬI (1-CLICK)</>
+                  )}
+                </button>
+
+                <div className="bg-amber-50 p-3 rounded-2xl border border-amber-200 text-xs text-amber-900 space-y-2">
+                  <p className="font-bold">💡 Tùy chọn gửi dự phòng nếu Zalo chưa cấu hình API:</p>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => { setAutoSendModal(false); startBatchZalo(); }}
+                      className="flex-1 py-2 bg-white hover:bg-amber-100 text-amber-950 font-bold rounded-xl border border-amber-300 text-xs shadow-xs cursor-pointer"
+                    >
+                      🚀 Mở Trợ Lý Gửi Siêu Tốc (Web)
+                    </button>
+                    <a
+                      href="/CHAY_BOT_ZALO_GUI_HOC_PHI.bat"
+                      download="CHAY_BOT_ZALO_GUI_HOC_PHI.bat"
+                      className="flex-1 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-center text-xs shadow-xs"
+                    >
+                      🤖 Tải File Robot Zalo (.bat)
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Batch Zalo Runner Modal */}
       {batchZaloModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
@@ -1069,10 +1288,12 @@ export default function Tuition() {
               const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
               const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
               const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
-              const addInfo     = 'HP ' + currentRow.student.student_code + ' KH'
-              const qrUrl       = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+              const cls = classes.find(c => c.id === selClass)
+              const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
+              const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName)
+              const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
 
-              const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\nThầy Thọ xin thông báo học phí khóa "${currentRow.notification.course_name}":\n- Số tiền: ${amt.toLocaleString('vi-VN')} VNĐ\n- STK: ${bankAccount} (Vietcombank)\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Link mã QR quét tự động (đã điền sẵn đúng số tiền & nội dung):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
+              const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${currentRow.notification.course_name}":\n- Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${currentRow.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amt.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
 
               const copyTextOnly = async () => {
                 try {

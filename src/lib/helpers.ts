@@ -171,3 +171,39 @@ export function toTitleCase(str: string | null | undefined): string {
     })
     .join(' ')
 }
+
+/** Loại bỏ dấu tiếng Việt để dùng cho VietQR, SMS, Ngân hàng */
+export function removeVietnameseTones(str: string | null | undefined): string {
+  if (!str) return ''
+  return str
+    .normalize('NFD')
+    .replace(/\u0300-\u036f/g, '')
+    .replace(/[đ]/g, 'd')
+    .replace(/[Đ]/g, 'D')
+    .replace(/[^a-zA-Z0-9\s]/g, '')
+    .trim()
+}
+
+/**
+ * Sinh cú pháp chuyển khoản VietQR chuẩn Napas 247: "HP [TÊN HỌC SINH] [LỚP]"
+ * Đảm bảo hiển thị tên học sinh khi quét mã QR và không quá 25 ký tự theo chuẩn ngân hàng.
+ */
+export function formatVietQRAddInfo(fullName: string, className = ''): string {
+  const cleanName = removeVietnameseTones(fullName).toUpperCase()
+  const cleanClass = removeVietnameseTones(className).replace(/\s+/g, '').toUpperCase()
+
+  let text = `HP ${cleanName}`
+  if (cleanClass) {
+    text = `HP ${cleanName} ${cleanClass}`
+  }
+
+  if (text.length > 25) {
+    const parts = cleanName.split(/\s+/).filter(Boolean)
+    if (parts.length > 1) {
+      const shortName = `${parts[0]} ${parts[parts.length - 1]}`
+      text = cleanClass ? `HP ${shortName} ${cleanClass}` : `HP ${shortName}`
+    }
+  }
+
+  return text.substring(0, 25).trim()
+}

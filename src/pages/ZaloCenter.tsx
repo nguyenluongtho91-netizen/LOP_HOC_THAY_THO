@@ -6,6 +6,7 @@ import {
   Settings, Key, ExternalLink, ShieldCheck, AlertCircle, Copy
 } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
+import { formatVietQRAddInfo } from '@/lib/helpers'
 import {
   sendZaloOAMessage,
   sendZNSNotification,
@@ -107,7 +108,7 @@ export default function ZaloCenter() {
       const notif = tuitionNotifications.find(n => n.student_id === st.id && (selectedClassId === 'all' || n.class_id === selectedClassId))
       const amount = notif ? Number(notif.amount) : (primaryClass?.tuition_fee || 600000)
       const studentCode = st.student_code || st.code || 'HS'
-      const addInfo = 'HP ' + studentCode + ' KH'
+      const addInfo = formatVietQRAddInfo(st.full_name || st.name || '', className)
       const bankId = 'VCB'
       const bankAccount = '1070493932'
       const bankName = 'HO KINH DOANH NGUYEN LUONG THO'

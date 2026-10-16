@@ -1,3 +1,32 @@
+function formatVietQRAddInfo(fullName, className) {
+  const cleanName = (fullName || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đ]/g, 'd')
+    .replace(/[Đ]/g, 'D')
+    .replace(/[^a-zA-Z0-9\s]/g, '')
+    .toUpperCase()
+    .trim();
+  const cleanClass = (className || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đ]/g, 'd')
+    .replace(/[Đ]/g, 'D')
+    .replace(/[^a-zA-Z0-9]/g, '')
+    .toUpperCase()
+    .trim();
+  let text = `HP ${cleanName}`;
+  if (cleanClass) text = `HP ${cleanName} ${cleanClass}`;
+  if (text.length > 25) {
+    const parts = cleanName.split(/\s+/).filter(Boolean);
+    if (parts.length > 1) {
+      const shortName = `${parts[0]} ${parts[parts.length - 1]}`;
+      text = cleanClass ? `HP ${shortName} ${cleanClass}` : `HP ${shortName}`;
+    }
+  }
+  return text.substring(0, 25).trim();
+}
+
 import puppeteer from 'puppeteer';
 import { createClient } from '@supabase/supabase-js';
 import fs from 'fs';
@@ -117,7 +146,7 @@ async function main() {
     const amountVal = Number(item.amount);
     const bankAccount = '1070493932';
     const bankName = 'HO KINH DOANH NGUYEN LUONG THO';
-    const addInfo = 'HP ' + student.student_code + ' KH';
+    const addInfo = formatVietQRAddInfo(student.full_name, item.course_name);
     const qrUrl = `https://img.vietqr.io/image/VCB-${bankAccount}-compact2.png?amount=${amountVal}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`;
     const msg = `Kính gửi Phụ huynh học sinh ${student.full_name},\nThầy Thọ xin thông báo học phí khóa "${item.course_name}":\n- Số tiền: ${amountVal.toLocaleString('vi-VN')} VNĐ\n- STK: ${bankAccount} (Vietcombank - ${bankName})\n- Cú pháp CK: ${addInfo}\n👉 Link mã QR quét tự động (đã điền sẵn đúng số tiền & nội dung):\n${qrUrl}\nThầy xin chân thành cảm ơn Quý phụ huynh! 🙏`;
 
