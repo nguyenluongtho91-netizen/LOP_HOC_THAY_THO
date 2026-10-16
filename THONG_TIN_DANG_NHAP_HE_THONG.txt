@@ -1,0 +1,28 @@
+=======================================================
+HỆ THỐNG LỚP HỌC THẦY THỌ - THÔNG TIN ĐĂNG NHẬP & LINK
+=======================================================
+
+1. TÀI KHOẢN ĐĂNG NHẬP (DÀNH CHO THẦY):
+- Tên đăng nhập: nguyenluongtho91
+- Email:         nguyenluongtho91@gmail.com
+- Mật khẩu:      67426728
+
+-------------------------------------------------------
+2. HỆ THỐNG MỚI (CÔNG NGHỆ AZOTA - ĐỘC LẬP 100%):
+- Link Giáo viên: https://lop-hoc-thay-tho.vercel.app
+- Link Đăng nhập: https://lop-hoc-thay-tho.vercel.app/login
+- Link Học sinh:  https://lop-hoc-thay-tho.vercel.app/thi
+
+* Tính năng nổi bật:
+  + Mật khẩu phòng (mã PIN).
+  + Hẹn giờ mở/đóng phòng + Màn hình đếm ngược trước giờ thi.
+  + Giám sát chống gian lận (bắt học sinh chuyển tab).
+  + Tự động đảo câu hỏi, đáp án và sinh mã đề 101, 102...
+  + Dữ liệu độc lập hoàn toàn với bản cũ (sửa/xóa không ảnh hưởng bản cũ).
+
+-------------------------------------------------------
+3. HỆ THỐNG CŨ (BẢN GỐC DỰ PHÒNG):
+- Link Giáo viên: https://lophocthaytho.vercel.app
+- Link Đăng nhập: https://lophocthaytho.vercel.app/login
+- Link Học sinh:  https://lophocthaytho.vercel.app/thi
+=======================================================

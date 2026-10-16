@@ -598,8 +598,17 @@ export default function Tuition() {
     if (!window.confirm('Bạn có muốn xóa thông báo học phí này?')) return
     try {
       const { supabase } = await import('@/lib/supabase')
-      const { error } = await supabase.from('tuition_notifications').delete().eq('id', notifId)
-      if (error) throw error
+      try {
+        await supabase.from('tuition_notifications').delete().eq('id', notifId)
+      } catch {}
+      try {
+        const { data } = await supabase.from('exams').select('data').eq('title', '__TUITION_NOTIFICATIONS_STORE__').maybeSingle()
+        if (data?.data?.items) {
+          const items = (data.data.items as any[]).filter(i => i.id !== notifId)
+          await supabase.from('exams').upsert({ title: '__TUITION_NOTIFICATIONS_STORE__', data: { items } }, { onConflict: 'title' })
+          localStorage.setItem('__TUITION_NOTIFICATIONS_STORE__', JSON.stringify(items))
+        }
+      } catch {}
       toast.success('Xóa thông báo học phí thành công!')
       void loadTuitionNotifications(selClass)
     } catch (e: any) {

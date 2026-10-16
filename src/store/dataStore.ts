@@ -280,37 +280,143 @@ export const useDataStore = create<DataState>((set, _get) => ({
 
   // ── Tuition Notifications ──────────────────────────────────────────────────
   loadTuitionNotifications: async (classId) => {
-    let q = supabase.from('tuition_notifications').select('*')
-    if (classId) q = q.eq('class_id', classId)
-    const { data } = await q.order('created_at', { ascending: false })
-    set({ tuitionNotifications: (data ?? []) as TuitionNotification[] })
+    try {
+      let q = supabase.from('tuition_notifications').select('*')
+      if (classId) q = q.eq('class_id', classId)
+      const { data, error } = await q.order('created_at', { ascending: false })
+      if (error) throw error
+      set({ tuitionNotifications: (data ?? []) as TuitionNotification[] })
+      return
+    } catch {
+      // Cloud fallback to exams JSON store and localStorage
+      try {
+        const { data } = await supabase.from('exams').select('data').eq('title', '__TUITION_NOTIFICATIONS_STORE__').maybeSingle()
+        if (data?.data?.items && Array.isArray(data.data.items)) {
+          const items = data.data.items as TuitionNotification[]
+          localStorage.setItem('__TUITION_NOTIFICATIONS_STORE__', JSON.stringify(items))
+          const filtered = classId ? items.filter(i => i.class_id === classId) : items
+          set({ tuitionNotifications: filtered })
+          return
+        }
+      } catch {}
+      try {
+        const local = localStorage.getItem('__TUITION_NOTIFICATIONS_STORE__')
+        if (local) {
+          const items = JSON.parse(local) as TuitionNotification[]
+          const filtered = classId ? items.filter(i => i.class_id === classId) : items
+          set({ tuitionNotifications: filtered })
+          return
+        }
+      } catch {}
+      set({ tuitionNotifications: [] })
+    }
   },
 
   upsertTuitionNotification: async (notif) => {
-    const { data, error } = await supabase.from('tuition_notifications')
-      .upsert([notif], { onConflict: 'student_id,class_id,course_name' })
-      .select().single()
-    if (error) throw error
-    const row = data as TuitionNotification
-    set(s => {
-      const exists = s.tuitionNotifications.find(n => n.id === row.id)
-      return {
-        tuitionNotifications: exists
-          ? s.tuitionNotifications.map(n => n.id === row.id ? row : n)
-          : [row, ...s.tuitionNotifications]
+    try {
+      const { data, error } = await supabase.from('tuition_notifications')
+        .upsert([notif], { onConflict: 'student_id,class_id,course_name' })
+        .select().single()
+      if (error) throw error
+      const row = data as TuitionNotification
+      set(s => {
+        const exists = s.tuitionNotifications.find(n => n.id === row.id)
+        return {
+          tuitionNotifications: exists
+            ? s.tuitionNotifications.map(n => n.id === row.id ? row : n)
+            : [row, ...s.tuitionNotifications]
+        }
+      })
+      return row
+    } catch {
+      // Cloud fallback
+      let items: TuitionNotification[] = []
+      try {
+        const { data } = await supabase.from('exams').select('data').eq('title', '__TUITION_NOTIFICATIONS_STORE__').maybeSingle()
+        if (data?.data?.items && Array.isArray(data.data.items)) items = data.data.items
+      } catch {}
+      if (items.length === 0) {
+        try {
+          const local = localStorage.getItem('__TUITION_NOTIFICATIONS_STORE__')
+          if (local) items = JSON.parse(local)
+        } catch {}
       }
-    })
-    return row
+
+      const existingIdx = items.findIndex(
+        i => i.student_id === notif.student_id && i.class_id === notif.class_id && i.course_name === notif.course_name
+      )
+      const now = new Date().toISOString()
+      const row: TuitionNotification = {
+        id: existingIdx >= 0 ? items[existingIdx].id : 'notif_' + Math.random().toString(36).slice(2, 11),
+        student_id: notif.student_id,
+        class_id: notif.class_id,
+        course_name: notif.course_name,
+        amount: notif.amount,
+        is_paid: notif.is_paid ?? false,
+        created_at: existingIdx >= 0 ? items[existingIdx].created_at : now
+      }
+
+      if (existingIdx >= 0) {
+        items[existingIdx] = row
+      } else {
+        items = [row, ...items]
+      }
+
+      try {
+        localStorage.setItem('__TUITION_NOTIFICATIONS_STORE__', JSON.stringify(items))
+      } catch {}
+      try {
+        await supabase.from('exams').upsert({ title: '__TUITION_NOTIFICATIONS_STORE__', data: { items } }, { onConflict: 'title' })
+      } catch {}
+
+      set(s => {
+        const exists = s.tuitionNotifications.find(n => n.id === row.id)
+        return {
+          tuitionNotifications: exists
+            ? s.tuitionNotifications.map(n => n.id === row.id ? row : n)
+            : [row, ...s.tuitionNotifications]
+        }
+      })
+      return row
+    }
   },
 
   updateTuitionNotification: async (id, updates) => {
-    const { data, error } = await supabase.from('tuition_notifications')
-      .update(updates).eq('id', id).select().single()
-    if (error) throw error
-    const row = data as TuitionNotification
-    set(s => ({
-      tuitionNotifications: s.tuitionNotifications.map(n => n.id === id ? row : n)
-    }))
-    return row
+    try {
+      const { data, error } = await supabase.from('tuition_notifications')
+        .update(updates).eq('id', id).select().single()
+      if (error) throw error
+      const row = data as TuitionNotification
+      set(s => ({
+        tuitionNotifications: s.tuitionNotifications.map(n => n.id === id ? row : n)
+      }))
+      return row
+    } catch {
+      let items: TuitionNotification[] = []
+      try {
+        const { data } = await supabase.from('exams').select('data').eq('title', '__TUITION_NOTIFICATIONS_STORE__').maybeSingle()
+        if (data?.data?.items && Array.isArray(data.data.items)) items = data.data.items
+      } catch {}
+      if (items.length === 0) {
+        try {
+          const local = localStorage.getItem('__TUITION_NOTIFICATIONS_STORE__')
+          if (local) items = JSON.parse(local)
+        } catch {}
+      }
+      const idx = items.findIndex(i => i.id === id)
+      if (idx >= 0) {
+        const row = { ...items[idx], ...updates }
+        items[idx] = row
+        try {
+          localStorage.setItem('__TUITION_NOTIFICATIONS_STORE__', JSON.stringify(items))
+          await supabase.from('exams').upsert({ title: '__TUITION_NOTIFICATIONS_STORE__', data: { items } }, { onConflict: 'title' })
+        } catch {}
+        set(s => ({
+          tuitionNotifications: s.tuitionNotifications.map(n => n.id === id ? row : n)
+        }))
+        return row
+      }
+      throw new Error('Khong tim thay ban ghi hoc phi')
+    }
   },
 }))

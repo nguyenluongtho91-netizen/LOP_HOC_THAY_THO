@@ -232,14 +232,40 @@ export default async function handler(req, res) {
     // 4. TỰ ĐỘNG GẠCH NỢ: Cập nhật tuition_notifications thành ĐÃ ĐÓNG (is_paid = true)
     let updatedNotifCount = 0;
     if (student) {
-      const { data: notifData } = await supabase
-        .from('tuition_notifications')
-        .update({ is_paid: true, updated_at: new Date().toISOString() })
-        .eq('student_id', student.id)
-        .eq('is_paid', false)
-        .select('id');
-      
-      updatedNotifCount = notifData?.length || 0;
+      try {
+        const { data: notifData } = await supabase
+          .from('tuition_notifications')
+          .update({ is_paid: true, updated_at: new Date().toISOString() })
+          .eq('student_id', student.id)
+          .eq('is_paid', false)
+          .select('id');
+        updatedNotifCount = notifData?.length || 0;
+      } catch {}
+
+      // Cập nhật thêm trong cloud store exams (__TUITION_NOTIFICATIONS_STORE__)
+      try {
+        const { data: storeRow } = await supabase
+          .from('exams')
+          .select('data')
+          .eq('title', '__TUITION_NOTIFICATIONS_STORE__')
+          .maybeSingle();
+        if (storeRow?.data?.items && Array.isArray(storeRow.data.items)) {
+          let changed = false;
+          const updatedItems = storeRow.data.items.map(item => {
+            if (item.student_id === student.id && !item.is_paid) {
+              changed = true;
+              return { ...item, is_paid: true, updated_at: new Date().toISOString() };
+            }
+            return item;
+          });
+          if (changed) {
+            await supabase
+              .from('exams')
+              .upsert({ title: '__TUITION_NOTIFICATIONS_STORE__', data: { items: updatedItems } }, { onConflict: 'title' });
+            updatedNotifCount = Math.max(updatedNotifCount, 1);
+          }
+        }
+      } catch {}
     }
 
     // 5. TỰ ĐỘNG GỬI TIN NHẮN CHO PHỤ HUYNH: "Thầy đã nhận học phí cháu rồi mẹ nhé"
