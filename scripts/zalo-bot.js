@@ -115,7 +115,11 @@ async function main() {
     }
 
     const amountVal = Number(item.amount);
-    const msg = `Học phí khóa ${item.course_name} của học sinh ${student.full_name} là ${amountVal.toLocaleString('vi-VN')} Đồng, phụ huynh vui lòng chuyển khoản vào stk: 3714235000320 HKD DINH CONG LINH (Nội dung: HP ${student.student_code} KH)`;
+    const bankAccount = '1070493932';
+    const bankName = 'HO KINH DOANH NGUYEN LUONG THO';
+    const addInfo = 'HP ' + student.student_code + ' KH';
+    const qrUrl = `https://img.vietqr.io/image/VCB-${bankAccount}-compact2.png?amount=${amountVal}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`;
+    const msg = `Kính gửi Phụ huynh học sinh ${student.full_name},\nThầy Thọ xin thông báo học phí khóa "${item.course_name}":\n- Số tiền: ${amountVal.toLocaleString('vi-VN')} VNĐ\n- STK: ${bankAccount} (Vietcombank - ${bankName})\n- Cú pháp CK: ${addInfo}\n👉 Link mã QR quét tự động (đã điền sẵn đúng số tiền & nội dung):\n${qrUrl}\nThầy xin chân thành cảm ơn Quý phụ huynh! 🙏`;
 
     console.log(`[${i + 1}/${notifications.length}] 💬 Đang gửi đến: ${student.full_name} (${cleanPhone})...`);
 

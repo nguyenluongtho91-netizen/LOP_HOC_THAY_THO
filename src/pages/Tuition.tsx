@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
-import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode } from 'lucide-react'
+import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort } from '@/lib/helpers'
 import Modal from '@/components/Modal'
@@ -34,6 +34,7 @@ export default function Tuition() {
   const [zaloModal, setZaloModal]   = useState<{row:TuitionNotificationRow;msg:string;qrUrl:string;phone:string}|null>(null)
   const [batchZaloModal, setBatchZaloModal] = useState<{ list: TuitionNotificationRow[]; currentIndex: number } | null>(null)
   const [copiedZalo, setCopiedZalo] = useState<'text'|'img'|null>(null)
+  const [copiedBatch, setCopiedBatch] = useState<'text'|'img'|null>(null)
 
   const [confirmModal, setConfirmModal] = useState<{studentName:string;amount:number;studentId:string;phone:string;email:string}|null>(null)
   const [sendingConfirm, setSendingConfirm] = useState(false)
@@ -294,7 +295,6 @@ export default function Tuition() {
     const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
     const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
 
-    const msg = `Học phí khóa ${row.notification.course_name} của học sinh ${row.student.full_name} là ${amountVal.toLocaleString('vi-VN')} Đồng, phụ huynh vui lòng chuyển khoản vào stk: ${bankAccount} ${bankName}`
     const addInfo     = 'HP ' + row.student.student_code + ' KH'
     const qrUrl       = bankId && bankAccount
       ? 'https://img.vietqr.io/image/' + bankId + '-' + bankAccount + '-compact2.png'
@@ -302,6 +302,7 @@ export default function Tuition() {
         + '&addInfo=' + encodeURIComponent(addInfo)
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
+    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\nThầy Thọ xin thông báo học phí khóa "${row.notification.course_name}":\n- Số tiền: ${amountVal.toLocaleString('vi-VN')} VNĐ\n- STK: ${bankAccount} (Vietcombank)\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Link mã QR quét tự động (đã điền sẵn đúng số tiền & nội dung):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^0/, '84')
     setZaloModal({ row, msg, qrUrl, phone: cleanPhone })
@@ -1034,21 +1035,21 @@ export default function Tuition() {
 
       {/* Batch Zalo Runner Modal */}
       {batchZaloModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden border border-blue-100">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden border border-blue-100 flex flex-col max-h-[92vh]">
             {/* Header */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4 flex items-center justify-between text-white">
+            <div className="bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-600 px-6 py-4 flex items-center justify-between text-white shrink-0">
               <div>
                 <h3 className="font-black text-lg flex items-center gap-2">
-                  <MessageCircle className="w-5 h-5" /> 🚀 Trợ lý Gửi Zalo Hàng Loạt
+                  <MessageCircle className="w-5 h-5 text-blue-200" /> Trợ lý Gửi Zalo Hàng Loạt
                 </h3>
                 <p className="text-xs text-blue-100 font-medium">
-                  Đang tiến hành: Học sinh {batchZaloModal.currentIndex + 1} / {batchZaloModal.list.length}
+                  Đang gửi: Học sinh {batchZaloModal.currentIndex + 1} / {batchZaloModal.list.length} (Chưa đóng học phí)
                 </p>
               </div>
               <button
-                onClick={() => setBatchZaloModal(null)}
-                className="text-white/80 hover:text-white text-xl font-extrabold"
+                onClick={() => { setBatchZaloModal(null); setCopiedBatch(null); }}
+                className="text-white/80 hover:text-white text-2xl font-extrabold w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer"
               >
                 ✕
               </button>
@@ -1062,74 +1063,208 @@ export default function Tuition() {
               const rawPhone = (studentObj as any)?.zalo || (studentObj as any)?.parent_phone || ''
               const digits = rawPhone.replace(/\D/g, '')
               const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
+              const phoneForLink = cleanPhone ? (cleanPhone.startsWith('0') ? '84' + cleanPhone.slice(1) : cleanPhone) : ''
               const amt = Number(currentRow.notification.amount)
 
-
+              const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
               const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
               const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
-              const msg = `Học phí khóa ${currentRow.notification.course_name} của học sinh ${currentRow.student.full_name} là ${amt.toLocaleString('vi-VN')} Đồng, phụ huynh vui lòng chuyển khoản vào stk: ${bankAccount} ${bankName}`
+              const addInfo     = 'HP ' + currentRow.student.student_code + ' KH'
+              const qrUrl       = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
 
-              const openAndCopy = async () => {
+              const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\nThầy Thọ xin thông báo học phí khóa "${currentRow.notification.course_name}":\n- Số tiền: ${amt.toLocaleString('vi-VN')} VNĐ\n- STK: ${bankAccount} (Vietcombank)\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Link mã QR quét tự động (đã điền sẵn đúng số tiền & nội dung):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
+
+              const copyTextOnly = async () => {
                 try {
                   await navigator.clipboard.writeText(msg)
-                  toast.success(`Đã copy tin nhắn học phí cho ${currentRow.student.full_name}`)
+                  setCopiedBatch('text')
+                  toast.success(`Đã copy tin nhắn kèm mã QR của ${currentRow.student.full_name}`)
+                  setTimeout(() => setCopiedBatch(null), 2500)
                 } catch {
-                  toast.error('Lỗi copy')
+                  toast.error('Lỗi khi sao chép')
                 }
-                const targetUrl = cleanPhone
-                  ? `https://zalo.me/${cleanPhone}`
+              }
+
+              const copyQrImageOnly = async () => {
+                try {
+                  const res = await fetch(qrUrl)
+                  const blob = await res.blob()
+                  await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
+                  setCopiedBatch('img')
+                  toast.success(`✅ Đã copy ảnh QR của ${currentRow.student.full_name}! Vào Zalo ấn Ctrl+V để dán ảnh`)
+                  setTimeout(() => setCopiedBatch(null), 3000)
+                } catch {
+                  const a = document.createElement('a')
+                  a.href = qrUrl
+                  a.download = `QR_${currentRow.student.student_code}_${amt}.png`
+                  a.click()
+                  toast.success('Đã tải ảnh mã QR xuống máy!')
+                }
+              }
+
+              const openAndCopy = async () => {
+                await copyTextOnly()
+                const targetUrl = phoneForLink
+                  ? `https://zalo.me/${phoneForLink}`
                   : 'https://chat.zalo.me'
                 window.open(targetUrl, '_blank')
               }
 
+              const markPaidAndNext = async () => {
+                const confirmCollect = window.confirm(`Xác nhận đã thu học phí ${fmtVNDShort(amt)} của ${currentRow.student.full_name}?`)
+                if (!confirmCollect) return
+                try {
+                  await addPayment({
+                    student_id: currentRow.student.id,
+                    class_id: selClass,
+                    amount: amt,
+                    method: 'transfer',
+                    note: `Thu học phí khóa ${currentRow.notification.course_name} (Thu nhanh qua Zalo)`,
+                  })
+                  await updateTuitionNotification(currentRow.notification.id, { is_paid: true })
+                  toast.success(`✅ Đã thu học phí từ ${currentRow.student.full_name}`)
+                  void loadTuitionNotifications(selClass)
+                  void loadPayments(selClass)
+
+                  if (batchZaloModal.currentIndex < batchZaloModal.list.length - 1) {
+                    setBatchZaloModal(b => b ? { ...b, currentIndex: b.currentIndex + 1 } : null)
+                  } else {
+                    setBatchZaloModal(null)
+                    toast.success('🎉 Đã hoàn tất danh sách gửi Zalo!')
+                  }
+                } catch (e: any) {
+                  toast.error('Lỗi: ' + e.message)
+                }
+              }
 
               return (
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 overflow-y-auto flex-1">
                   {/* Progress bar */}
-                  <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                  <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                     <div
-                      className="bg-blue-600 h-full transition-all duration-300 rounded-full"
+                      className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full transition-all duration-300 rounded-full"
                       style={{ width: `${((batchZaloModal.currentIndex + 1) / batchZaloModal.list.length) * 100}%` }}
                     />
                   </div>
 
-                  {/* Student Info Card */}
-                  <div className="bg-blue-50/60 p-4 rounded-2xl border border-blue-100">
-                    <p className="text-xs text-blue-700 font-extrabold uppercase tracking-wider">Học sinh hiện tại</p>
-                    <p className="text-lg font-black text-gray-900 mt-0.5">{currentRow.student.full_name}</p>
-                    <div className="flex items-center gap-3 mt-1 text-xs text-gray-600">
-                      <span>Mã: <strong>{currentRow.student.student_code}</strong></span>
-                      <span>SĐT: <strong>{rawPhone || 'Chưa cập nhật'}</strong></span>
-                      <span>Học phí: <strong>{amt.toLocaleString('vi-VN')} đ</strong></span>
+                  {/* Student & Tuition Info */}
+                  <div className="bg-gradient-to-br from-blue-50/80 to-indigo-50/50 p-4 rounded-2xl border border-blue-100 shadow-xs flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-lg shadow-md shadow-blue-500/20">
+                        {currentRow.student.full_name?.charAt(0).toUpperCase()}
+                      </div>
+                      <div>
+                        <p className="font-black text-gray-900 text-base">{currentRow.student.full_name}</p>
+                        <div className="flex items-center gap-2 mt-0.5 text-xs text-gray-600">
+                          <span className="font-mono font-bold bg-white px-2 py-0.5 rounded border border-blue-200 text-blue-700">
+                            {currentRow.student.student_code}
+                          </span>
+                          <span>SĐT: <strong className="text-gray-800">{rawPhone || 'Chưa có SĐT'}</strong></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-[11px] font-extrabold text-blue-700 uppercase tracking-wider">Học phí cần nộp</p>
+                      <p className="text-xl font-black text-emerald-600 font-mono">{fmtVNDShort(amt)}</p>
                     </div>
                   </div>
 
-                  {/* Script Helper note */}
-                  <div className="bg-amber-50 p-3.5 rounded-2xl border border-amber-200 text-xs text-amber-900 leading-relaxed">
-                    💡 <strong>Mẹo Tự Động 100%:</strong> Đã tạo file <a href="/zalo-auto-sender.user.js" target="_blank" className="underline font-bold text-amber-950">zalo-auto-sender.user.js</a>. Khi cài kịch bản này vào Tampermonkey/Violentmonkey, Zalo Web sẽ tự động dán tin nhắn & tự động bấm gửi!
+                  {/* VietQR Code Visual Display */}
+                  <div className="bg-white rounded-2xl border-2 border-dashed border-teal-300 p-4 flex flex-col sm:flex-row items-center gap-4 bg-teal-50/20">
+                    <div className="relative shrink-0 group">
+                      <img
+                        src={qrUrl}
+                        alt="VietQR"
+                        className="w-28 h-28 object-contain rounded-xl border border-teal-200 bg-white p-1 shadow-sm transition-transform group-hover:scale-105"
+                      />
+                      <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-teal-600 text-white text-[9px] font-black px-2 py-0.5 rounded-full whitespace-nowrap shadow-xs">
+                        Napas 247
+                      </span>
+                    </div>
+                    <div className="flex-1 text-center sm:text-left space-y-1">
+                      <p className="text-xs font-black text-teal-900 flex items-center justify-center sm:justify-start gap-1">
+                        <QrCode className="w-4 h-4 text-teal-600" /> Mã VietQR Chuẩn Đã Điền Số Tiền
+                      </p>
+                      <p className="text-[11px] text-gray-600 leading-relaxed">
+                        STK: <strong className="font-mono text-gray-800">{bankAccount}</strong> (Vietcombank)<br />
+                        Cú pháp: <strong className="font-mono text-blue-700">{addInfo}</strong><br />
+                        Số tiền: <strong className="text-emerald-700">{amt.toLocaleString('vi-VN')} đ</strong>
+                      </p>
+                      <div className="pt-1 flex flex-wrap gap-2 justify-center sm:justify-start">
+                        <button
+                          onClick={copyQrImageOnly}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs cursor-pointer
+                            ${copiedBatch === 'img' ? 'bg-emerald-600 text-white' : 'bg-teal-600 hover:bg-teal-700 text-white'}`}
+                        >
+                          <Copy className="w-3.5 h-3.5" />
+                          {copiedBatch === 'img' ? '✓ Đã Copy Ảnh QR' : 'Copy Ảnh QR (Ctrl+V)'}
+                        </button>
+                        <a
+                          href={qrUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-gray-100 text-gray-700 border border-gray-200 flex items-center gap-1"
+                        >
+                          <ExternalLink className="w-3 h-3 text-gray-500" /> Mở ảnh gốc
+                        </a>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Action buttons for Current Step */}
-                  <div className="space-y-2 pt-2">
+                  {/* Message Preview */}
+                  <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-wide">
+                        Nội dung tin nhắn gửi Zalo
+                      </span>
+                      <button
+                        onClick={copyTextOnly}
+                        className={`text-xs px-2.5 py-1 rounded-lg font-bold transition-all flex items-center gap-1 cursor-pointer
+                          ${copiedBatch === 'text' ? 'bg-emerald-600 text-white' : 'bg-slate-200 hover:bg-slate-300 text-slate-700'}`}
+                      >
+                        <Copy className="w-3 h-3" />
+                        {copiedBatch === 'text' ? '✓ Đã Copy' : 'Copy tin nhắn'}
+                      </button>
+                    </div>
+                    <pre className="text-xs text-slate-700 whitespace-pre-wrap leading-relaxed font-sans max-h-24 overflow-y-auto bg-white p-2.5 rounded-xl border border-slate-200/80">
+                      {msg}
+                    </pre>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="space-y-2.5 pt-1">
                     <button
                       onClick={openAndCopy}
-                      className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-2xl shadow-lg shadow-blue-500/20 text-sm flex items-center justify-center gap-2"
+                      className="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black rounded-2xl shadow-lg shadow-blue-500/25 text-sm flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.01] active:scale-[0.99]"
                     >
-                      <MessageCircle className="w-5 h-5" /> Copy & Mở Zalo Cho {currentRow.student.full_name}
+                      <MessageCircle className="w-5 h-5 text-blue-100" />
+                      {phoneForLink
+                        ? `🚀 Copy & Mở Zalo Cho ${currentRow.student.full_name}`
+                        : `🚀 Mở Zalo Web & Copy Tin Nhắn`}
                     </button>
 
-                    <div className="flex items-center gap-3 pt-2">
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={markPaidAndNext}
+                        className="w-full py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 font-extrabold rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors shadow-xs cursor-pointer"
+                      >
+                        <Check className="w-4 h-4 text-emerald-600 stroke-[3px]" />
+                        Đã thu tiền & Sang học sinh tiếp theo
+                      </button>
+                    </div>
+
+                    <div className="flex items-center justify-between gap-3 pt-1 border-t border-slate-100">
                       <button
                         disabled={batchZaloModal.currentIndex === 0}
-                        onClick={() => setBatchZaloModal(b => b ? { ...b, currentIndex: b.currentIndex - 1 } : null)}
-                        className="w-1/2 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs disabled:opacity-40"
+                        onClick={() => { setBatchZaloModal(b => b ? { ...b, currentIndex: b.currentIndex - 1 } : null); setCopiedBatch(null); }}
+                        className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs disabled:opacity-40 transition-colors cursor-pointer"
                       >
                         ← Học sinh trước
                       </button>
                       <button
                         disabled={batchZaloModal.currentIndex >= batchZaloModal.list.length - 1}
-                        onClick={() => setBatchZaloModal(b => b ? { ...b, currentIndex: b.currentIndex + 1 } : null)}
-                        className="w-1/2 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-xs disabled:opacity-40"
+                        onClick={() => { setBatchZaloModal(b => b ? { ...b, currentIndex: b.currentIndex + 1 } : null); setCopiedBatch(null); }}
+                        className="flex-1 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-extrabold rounded-xl text-xs disabled:opacity-40 transition-colors shadow-xs cursor-pointer"
                       >
                         Học sinh tiếp theo →
                       </button>

@@ -53,10 +53,21 @@ export default function ZaloCenter() {
   const [selectedClassId, setSelectedClassId] = useState('all')
   const [selectedMonth, setSelectedMonth]     = useState('Tháng 8/2026')
   const [tuitionTemplate, setTuitionTemplate] = useState(
-    'Kính gửi Phụ huynh học sinh {ten_hoc_sinh} ({lop}),\nTrung tâm xin gửi thông báo học phí {thang}:\n- Số tiền: {so_tien} VNĐ\n- Vui lòng chuyển khoản theo cú pháp: HP {ten_hoc_sinh} {lop}.\nXin cảm ơn!'
+    'Kính gửi Phụ huynh học sinh {ten_hoc_sinh} ({lop}),\nThầy Thọ xin thông báo học phí khóa "{thang}" của con:\n- Số tiền: {so_tien} VNĐ\n- STK: 1070493932 (Vietcombank - HO KINH DOANH NGUYEN LUONG THO)\n- Cú pháp CK: HP {ma_hoc_sinh} KH\n👉 Quét mã QR tự động (đã điền sẵn số tiền & nội dung):\n{link_qr}\nThầy xin cảm ơn Quý phụ huynh! 🙏'
   )
   const [isSendingBulk, setIsSendingBulk] = useState(false)
   const [sentItemIds, setSentItemIds]     = useState<string[]>([])
+
+  // Helper format tin nhắn học phí kèm link QR VietQR
+  const formatTuitionMessage = (item: any) => {
+    return tuitionTemplate
+      .replace(/{ten_hoc_sinh}/g, item.studentName)
+      .replace(/{lop}/g, item.class)
+      .replace(/{thang}/g, item.month)
+      .replace(/{so_tien}/g, item.amount.toLocaleString())
+      .replace(/{ma_hoc_sinh}/g, item.studentCode || 'HS')
+      .replace(/{link_qr}/g, item.qrUrl || '')
+  }
 
   // State quản lý chat
   const [inputText, setInputText]   = useState('')
@@ -93,21 +104,30 @@ export default function ZaloCenter() {
       const className = primaryClass ? (primaryClass.class_name || primaryClass.name || 'Chưa xếp lớp') : 'Chưa xếp lớp'
       const classId   = primaryClass ? primaryClass.id : 'no_class'
 
-      const amount = primaryClass?.tuition_fee || 1200000
+      const notif = tuitionNotifications.find(n => n.student_id === st.id && (selectedClassId === 'all' || n.class_id === selectedClassId))
+      const amount = notif ? Number(notif.amount) : (primaryClass?.tuition_fee || 600000)
+      const studentCode = st.student_code || st.code || 'HS'
+      const addInfo = 'HP ' + studentCode + ' KH'
+      const bankId = 'VCB'
+      const bankAccount = '1070493932'
+      const bankName = 'HO KINH DOANH NGUYEN LUONG THO'
+      const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
       const isSent = sentItemIds.includes(st.id)
 
       return {
         id: st.id,
         studentName: st.full_name || st.name || 'Học sinh',
+        studentCode: studentCode,
         class: className,
         classId: classId,
-        phone: st.parent_phone || st.phone || 'Chưa có SĐT',
+        phone: st.parent_phone || (st as any).zalo || st.phone || 'Chưa có SĐT',
         amount: amount,
-        month: selectedMonth,
-        status: isSent ? 'sent' : 'pending'
+        month: notif?.course_name || selectedMonth,
+        status: isSent ? 'sent' : 'pending',
+        qrUrl: qrUrl
       }
     })
-  }, [students, enrollments, classes, sentItemIds, selectedMonth])
+  }, [students, enrollments, classes, tuitionNotifications, selectedClassId, sentItemIds, selectedMonth])
 
   // Lọc theo lớp được chọn
   const filteredTuitionItems = useMemo(() => {
@@ -210,11 +230,7 @@ export default function ZaloCenter() {
     const item = filteredTuitionItems.find(i => i.id === id)
     if (!item) return
 
-    const msg = tuitionTemplate
-      .replace('{ten_hoc_sinh}', item.studentName)
-      .replace('{lop}', item.class)
-      .replace('{thang}', item.month)
-      .replace('{so_tien}', item.amount.toLocaleString())
+    const msg = formatTuitionMessage(item)
 
     try {
       if (sendChannel === 'personal') {
@@ -256,11 +272,7 @@ export default function ZaloCenter() {
     let lastErrorMsg = ''
 
     for (const item of pendingItems) {
-      const msg = tuitionTemplate
-        .replace('{ten_hoc_sinh}', item.studentName)
-        .replace('{lop}', item.class)
-        .replace('{thang}', item.month)
-        .replace('{so_tien}', item.amount.toLocaleString())
+      const msg = formatTuitionMessage(item)
 
       try {
         const res = sendChannel === 'personal'
@@ -508,6 +520,8 @@ export default function ZaloCenter() {
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{lop}'}</span>
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{thang}'}</span>
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{so_tien}'}</span>
+                <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{ma_hoc_sinh}'}</span>
+                <span className="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-mono font-bold">{'{link_qr}'}</span>
               </div>
             </div>
 
@@ -598,11 +612,7 @@ export default function ZaloCenter() {
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {filteredTuitionItems.map(item => {
-                    const msgText = tuitionTemplate
-                      .replace('{ten_hoc_sinh}', item.studentName)
-                      .replace('{lop}', item.class)
-                      .replace('{thang}', item.month)
-                      .replace('{so_tien}', item.amount.toLocaleString())
+                    const msgText = formatTuitionMessage(item)
 
                     return (
                       <tr key={item.id} className="hover:bg-slate-50">
