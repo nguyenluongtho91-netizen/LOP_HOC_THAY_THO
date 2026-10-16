@@ -313,7 +313,7 @@ export default function Tuition() {
       : ''
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${row.notification.course_name}":\n- Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${row.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amountVal.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
 
-    const cleanPhone = phone.replace(/\D/g, '').replace(/^0/, '84')
+    const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
     setZaloModal({ row, msg, qrUrl, phone: cleanPhone })
     setCopiedZalo(null)
   }
@@ -533,7 +533,7 @@ export default function Tuition() {
         studentName: payModal.student.full_name,
         amount:      amt,
         studentId:   payModal.student.id,
-        phone:       ((studentObj as any)?.zalo || (studentObj as any)?.parent_phone || '').replace(/\D/g,'').replace(/^0/,'84'),
+        phone:       ((studentObj as any)?.zalo || (studentObj as any)?.parent_phone || '').replace(/\D/g,'').replace(/^84/,'0'),
         email:       (studentObj as any)?.email || '',
       })
       setPayModal(null)
@@ -1411,7 +1411,7 @@ export default function Tuition() {
               const rawPhone = (studentObj as any)?.zalo || (studentObj as any)?.parent_phone || ''
               const digits = rawPhone.replace(/\D/g, '')
               const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
-              const phoneForLink = cleanPhone ? (cleanPhone.startsWith('0') ? '84' + cleanPhone.slice(1) : cleanPhone) : ''
+              const phoneForLink = cleanPhone ? (cleanPhone.startsWith('84') ? '0' + cleanPhone.slice(2) : cleanPhone) : ''
               const amt = Number(currentRow.notification.amount)
 
               const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
