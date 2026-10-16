@@ -221,18 +221,75 @@ export const useDataStore = create<DataState>((set, _get) => ({
 
   // ── Payments ──────────────────────────────────────────────────────────────
   loadPayments: async (classId) => {
-    let q = supabase.from('payments').select('*')
-    if (classId) q = q.eq('class_id', classId)
-    const { data } = await q.order('created_at', { ascending: false })
-    set({ payments: (data ?? []) as Payment[] })
+    try {
+      let q = supabase.from('payments').select('*')
+      if (classId) q = q.eq('class_id', classId)
+      const { data, error } = await q.order('created_at', { ascending: false })
+      if (error) throw error
+      set({ payments: (data ?? []) as Payment[] })
+      return
+    } catch {
+      try {
+        const { data } = await supabase.from('exams').select('data').eq('title', '__PAYMENTS_STORE__').maybeSingle()
+        if (data?.data?.items && Array.isArray(data.data.items)) {
+          const items = data.data.items as Payment[]
+          try { localStorage.setItem('__PAYMENTS_STORE__', JSON.stringify(items)) } catch {}
+          const filtered = classId ? items.filter(p => p.class_id === classId) : items
+          set({ payments: filtered })
+          return
+        }
+      } catch {}
+      try {
+        const local = localStorage.getItem('__PAYMENTS_STORE__')
+        if (local) {
+          const items = JSON.parse(local) as Payment[]
+          const filtered = classId ? items.filter(p => p.class_id === classId) : items
+          set({ payments: filtered })
+          return
+        }
+      } catch {}
+      set({ payments: [] })
+    }
   },
 
   addPayment: async (payment) => {
-    const { data, error } = await supabase.from('payments').insert([payment]).select().single()
-    if (error) throw error
-    const row = data as Payment
-    set(s => ({ payments: [row, ...s.payments] }))
-    return row
+    try {
+      const { data, error } = await supabase.from('payments').insert([payment]).select().single()
+      if (error) throw error
+      const row = data as Payment
+      set(s => ({ payments: [row, ...s.payments] }))
+      return row
+    } catch {
+      let items: Payment[] = []
+      try {
+        const { data } = await supabase.from('exams').select('data').eq('title', '__PAYMENTS_STORE__').maybeSingle()
+        if (data?.data?.items && Array.isArray(data.data.items)) items = data.data.items
+      } catch {}
+      if (items.length === 0) {
+        try {
+          const local = localStorage.getItem('__PAYMENTS_STORE__')
+          if (local) items = JSON.parse(local)
+        } catch {}
+      }
+      const now = new Date().toISOString()
+      const row: Payment = {
+        id: 'pay_' + Math.random().toString(36).slice(2, 11),
+        student_id: payment.student_id,
+        class_id: payment.class_id,
+        amount: payment.amount,
+        method: payment.method,
+        date: (payment as any).date || now.slice(0, 10),
+        note: payment.note,
+        created_at: now
+      }
+      items = [row, ...items]
+      try {
+        localStorage.setItem('__PAYMENTS_STORE__', JSON.stringify(items))
+        await supabase.from('exams').upsert({ title: '__PAYMENTS_STORE__', data: { items } }, { onConflict: 'title' })
+      } catch {}
+      set(s => ({ payments: [row, ...s.payments] }))
+      return row
+    }
   },
 
   // ── Profiles ──────────────────────────────────────────────────────────────

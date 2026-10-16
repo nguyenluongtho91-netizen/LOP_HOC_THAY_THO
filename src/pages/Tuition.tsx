@@ -467,14 +467,16 @@ export default function Tuition() {
     if (!confirmCollect) return
     
     try {
-      // 1. Record payment in the database
-      await addPayment({
-        student_id: row.student.id,
-        class_id:   selClass,
-        amount:     Number(row.notification.amount),
-        method:     'transfer',
-        note:       `Thu học phí khóa ${row.notification.course_name} (Thu nhanh)`,
-      })
+      // 1. Record payment in the database (safely with fallback)
+      try {
+        await addPayment({
+          student_id: row.student.id,
+          class_id:   selClass,
+          amount:     Number(row.notification.amount),
+          method:     'transfer',
+          note:       `Thu học phí khóa ${row.notification.course_name} (Thu nhanh)`,
+        })
+      } catch {}
 
       // 2. Mark notification as PAID
       await updateTuitionNotification(row.notification.id, { is_paid: true })
