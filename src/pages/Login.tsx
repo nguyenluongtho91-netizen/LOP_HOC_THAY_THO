@@ -16,8 +16,9 @@ export default function Login() {
     e.preventDefault()
     if (!email || !password) { toast.error('Vui lòng nhập đủ thông tin'); return }
     setLoading(true)
+    const cleanEmail = email.includes('@') ? email.trim() : `${email.trim()}@gmail.com`
     try {
-      await login(email, password)
+      await login(cleanEmail, password)
       toast.success('Đăng nhập thành công! 🎉')
       void navigate('/')
     } catch {
