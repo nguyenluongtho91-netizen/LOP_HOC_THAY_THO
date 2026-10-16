@@ -218,6 +218,9 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
   }, []);
 
   useEffect(() => {
+    // Nếu phòng thi tắt antiCheat thì không khởi động giám sát
+    if ((room as any).settings?.antiCheat === false) return;
+
     const tabService = getTabDetectionService();
     tabService.start({
       onTabSwitch: (count: number, warnings: Date[]) => {
@@ -377,6 +380,18 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden mb-6">
           <div className="px-6 py-5 text-center bg-gradient-to-r from-teal-500 to-teal-700">
             <h1 className="text-xl font-bold text-white">{exam?.title || 'Đề thi'}</h1>
+            <div className="flex items-center justify-center gap-2 mt-2.5 flex-wrap">
+              {((room as any)?.settings?.shuffle || (room as any)?.examCode) && (
+                <span className="px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-xs font-black tracking-widest border border-white/30 uppercase shadow-sm">
+                  🏷️ MÃ ĐỀ: {(room as any)?.examCode || (room as any)?.settings?.examCode || '101'}
+                </span>
+              )}
+              {(room as any)?.settings?.antiCheat !== false && (
+                <span className="px-3 py-1 rounded-full bg-rose-500/30 backdrop-blur-md text-rose-100 text-xs font-bold border border-rose-300/30 flex items-center gap-1">
+                  🛡️ Có giám sát chuyển tab
+                </span>
+              )}
+            </div>
           </div>
         </div>
 

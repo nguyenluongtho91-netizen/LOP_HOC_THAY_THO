@@ -36,19 +36,37 @@ export default function ExamRoomsMgmt() {
   const [editingRoomId, setEditingRoomId] = useState<string | null>(null)
   const [exportingRoomId, setExportingRoomId] = useState<string | null>(null)
   
-  // ✅ Đã thêm settings vào Form state
+  // ✅ Đã thêm settings vào Form state chuẩn Azota Pro
   const [form, setForm] = useState<{
     exam_id: string;
     class_id: string;
     time_limit: number;
     status: 'waiting' | 'active' | 'closed';
-    settings: { shuffle: boolean; allowRetry: boolean; showCorrectAnswers: boolean; showExplanations: boolean };
+    settings: {
+      shuffle: boolean;
+      allowRetry: boolean;
+      showCorrectAnswers: boolean;
+      showExplanations: boolean;
+      passcode: string;
+      antiCheat: boolean;
+      opens_at: string;
+      closes_at: string;
+    };
   }>({
     exam_id: '',
     class_id: '',
     time_limit: 45,
     status: 'active',
-    settings: { shuffle: true, allowRetry: false, showCorrectAnswers: false, showExplanations: false }
+    settings: {
+      shuffle: true,
+      allowRetry: false,
+      showCorrectAnswers: false,
+      showExplanations: false,
+      passcode: '',
+      antiCheat: true,
+      opens_at: '',
+      closes_at: ''
+    }
   })
 
   useEffect(() => {
@@ -81,7 +99,16 @@ export default function ExamRoomsMgmt() {
       setModalGrade('')
       setForm({ 
         exam_id: '', class_id: '', time_limit: 45, status: 'active', 
-        settings: { shuffle: true, allowRetry: false, showCorrectAnswers: false, showExplanations: false } 
+        settings: {
+          shuffle: true,
+          allowRetry: false,
+          showCorrectAnswers: false,
+          showExplanations: false,
+          passcode: '',
+          antiCheat: true,
+          opens_at: '',
+          closes_at: ''
+        } 
       })
     } catch (e: any) {
       toast.error(editingRoomId ? 'Lỗi khi cập nhật phòng thi' : 'Lỗi khi mở phòng thi')
@@ -98,7 +125,16 @@ export default function ExamRoomsMgmt() {
       class_id: room.class_id || '',
       time_limit: room.time_limit,
       status: room.status,
-      settings: room.settings || { shuffle: true, allowRetry: false, showCorrectAnswers: false, showExplanations: false }
+      settings: {
+        shuffle: room.settings?.shuffle ?? true,
+        allowRetry: room.settings?.allowRetry ?? false,
+        showCorrectAnswers: room.settings?.showCorrectAnswers ?? false,
+        showExplanations: room.settings?.showExplanations ?? false,
+        passcode: room.settings?.passcode || '',
+        antiCheat: room.settings?.antiCheat ?? true,
+        opens_at: room.settings?.opens_at || room.opens_at || '',
+        closes_at: room.settings?.closes_at || room.closes_at || ''
+      }
     })
     setModalOpen(true)
   }
@@ -334,7 +370,16 @@ export default function ExamRoomsMgmt() {
             setModalGrade(typeof activeGrade === 'number' ? activeGrade : '')
             setForm({ 
               exam_id: '', class_id: '', time_limit: 45, status: 'active', 
-              settings: { shuffle: true, allowRetry: false, showCorrectAnswers: false, showExplanations: false } 
+              settings: {
+                shuffle: true,
+                allowRetry: false,
+                showCorrectAnswers: false,
+                showExplanations: false,
+                passcode: '',
+                antiCheat: true,
+                opens_at: '',
+                closes_at: ''
+              } 
             })
             setModalOpen(true)
           }} 
@@ -464,6 +509,33 @@ export default function ExamRoomsMgmt() {
                           <p className="text-xs text-gray-400 font-bold mt-1">
                             Lớp học: <span className="text-gray-500 font-medium">{(room.classes as any)?.class_name || (room.classes as any)?.name || 'Tất cả'}</span>
                           </p>
+                          <div className="flex flex-wrap items-center gap-1.5 mt-2">
+                            {room.settings?.passcode && (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1" title="Mật khẩu vào phòng thi">
+                                🔒 PIN: {room.settings.passcode}
+                              </span>
+                            )}
+                            {room.settings?.shuffle && (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200">
+                                🔀 Đảo đề
+                              </span>
+                            )}
+                            {room.settings?.antiCheat && (
+                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200">
+                                🛡️ Giám sát tab
+                              </span>
+                            )}
+                            {room.settings?.opens_at && (
+                              <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">
+                                ⏰ Mở: {new Date(room.settings.opens_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })}
+                              </span>
+                            )}
+                            {room.settings?.closes_at && (
+                              <span className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-100">
+                                🛑 Đóng: {new Date(room.settings.closes_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' })}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </div>
 
@@ -655,57 +727,120 @@ export default function ExamRoomsMgmt() {
             </div>
           </div>
 
-          {/* ✅ TÙY CHỌN NÂNG CAO ĐÃ ĐƯỢC THÊM VÀO ĐÂY */}
-          <div className="col-span-1 md:col-span-2 flex flex-col gap-3 mt-4 p-4 bg-teal-50 border border-teal-100 rounded-xl">
-            <label className="flex items-center gap-3 cursor-pointer">
+          {/* ⏰ LỊCH MỞ / ĐÓNG PHÒNG THI (AZOTA STYLE) */}
+          <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
+            <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <span>⏰</span> Khung giờ làm bài (Tùy chọn)
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="text-[11px] font-bold text-slate-600 block mb-1">Thời gian bắt đầu mở đề</label>
+                <input 
+                  type="datetime-local" 
+                  value={form.settings.opens_at || ''} 
+                  onChange={e => setForm({...form, settings: {...form.settings, opens_at: e.target.value}})} 
+                  className="input text-xs py-2" 
+                />
+                <span className="text-[10px] text-slate-400">Để trống nếu cho làm bài ngay</span>
+              </div>
+              <div>
+                <label className="text-[11px] font-bold text-slate-600 block mb-1">Thời gian kết thúc (Khóa nộp bài)</label>
+                <input 
+                  type="datetime-local" 
+                  value={form.settings.closes_at || ''} 
+                  onChange={e => setForm({...form, settings: {...form.settings, closes_at: e.target.value}})} 
+                  className="input text-xs py-2" 
+                />
+                <span className="text-[10px] text-slate-400">Để trống nếu không giới hạn hạn chót</span>
+              </div>
+            </div>
+          </div>
+
+          {/* 🔒 BẢO MẬT & CHỐNG GIAN LẬN */}
+          <div className="p-4 bg-rose-50/50 border border-rose-100 rounded-2xl space-y-3">
+            <h4 className="text-xs font-bold text-rose-800 uppercase tracking-wider flex items-center gap-1.5">
+              <span>🛡️</span> Bảo mật & Giám sát chống gian lận
+            </h4>
+            <div>
+              <label className="text-[11px] font-bold text-slate-700 block mb-1">Mật khẩu vào phòng thi (Mã PIN / Passcode)</label>
+              <input 
+                type="text" 
+                value={form.settings.passcode || ''} 
+                onChange={e => setForm({...form, settings: {...form.settings, passcode: e.target.value}})} 
+                placeholder="Ví dụ: 2026 hoặc HOA11 (để trống nếu không yêu cầu)" 
+                className="input text-sm py-2 font-mono font-bold tracking-wider" 
+              />
+              <span className="text-[10px] text-slate-400">Chỉ học sinh được cấp mã này mới vào làm bài được</span>
+            </div>
+
+            <label className="flex items-start gap-3 cursor-pointer pt-2 border-t border-rose-100">
+              <input 
+                type="checkbox" 
+                checked={form.settings.antiCheat} 
+                onChange={e => setForm({...form, settings: {...form.settings, antiCheat: e.target.checked}})} 
+                className="w-5 h-5 mt-0.5 accent-rose-600 rounded cursor-pointer" 
+              />
+              <div>
+                <span className="text-gray-800 text-sm font-bold block">🛡️ Bật giám sát chống gian lận (Chuyển tab / Rời màn hình)</span>
+                <span className="text-gray-500 text-xs">Cảnh báo khi học sinh đổi tab trình duyệt, tự động thu bài nếu vi phạm quá 3 lần.</span>
+              </div>
+            </label>
+          </div>
+
+          {/* 🔀 CẤU HÌNH ĐỀ & KẾT QUẢ */}
+          <div className="p-4 bg-teal-50 border border-teal-100 rounded-2xl flex flex-col gap-3">
+            <h4 className="text-xs font-bold text-teal-800 uppercase tracking-wider flex items-center gap-1.5">
+              <span>⚙️</span> Cấu hình hiển thị & Đảo đề
+            </h4>
+            <label className="flex items-start gap-3 cursor-pointer">
               <input 
                 type="checkbox" 
                 checked={form.settings.shuffle} 
                 onChange={e => setForm({...form, settings: {...form.settings, shuffle: e.target.checked}})} 
-                className="w-5 h-5 accent-teal-600 rounded cursor-pointer" 
+                className="w-5 h-5 mt-0.5 accent-teal-600 rounded cursor-pointer" 
               />
               <div>
-                <span className="text-gray-800 text-sm font-bold block">🔀 Xáo trộn câu hỏi & đáp án</span>
-                <span className="text-gray-500 text-xs">(Hệ thống tự trộn mỗi học sinh 1 mã đề - Chỉ dùng cho đề Word)</span>
+                <span className="text-gray-800 text-sm font-bold block">🔀 Tự động đảo đề & trộn phương án A/B/C/D</span>
+                <span className="text-gray-500 text-xs">Mỗi học sinh nhận 1 mã đề ngẫu nhiên (101...108), các đáp án được hoán vị và tự cập nhật đáp án đúng.</span>
               </div>
             </label>
 
-            <label className="flex items-center gap-3 cursor-pointer">
+            <label className="flex items-start gap-3 cursor-pointer">
               <input 
                 type="checkbox" 
                 checked={form.settings.allowRetry} 
                 onChange={e => setForm({...form, settings: {...form.settings, allowRetry: e.target.checked}})} 
-                className="w-5 h-5 accent-teal-600 rounded cursor-pointer" 
+                className="w-5 h-5 mt-0.5 accent-teal-600 rounded cursor-pointer" 
               />
               <div>
                 <span className="text-gray-800 text-sm font-bold block">🔄 Cho phép thi lại nhiều lần</span>
-                <span className="text-gray-500 text-xs">(Học sinh có thể làm lại bài, điểm mới sẽ ghi đè điểm cũ)</span>
+                <span className="text-gray-500 text-xs">Học sinh có thể làm lại bài để ôn tập, điểm mới sẽ ghi đè điểm cũ.</span>
               </div>
             </label>
 
-            <label className="flex items-center gap-3 cursor-pointer">
+            <label className="flex items-start gap-3 cursor-pointer">
               <input 
                 type="checkbox" 
                 checked={form.settings.showCorrectAnswers} 
                 onChange={e => setForm({...form, settings: {...form.settings, showCorrectAnswers: e.target.checked}})} 
-                className="w-5 h-5 accent-teal-600 rounded cursor-pointer" 
+                className="w-5 h-5 mt-0.5 accent-teal-600 rounded cursor-pointer" 
               />
               <div>
-                <span className="text-gray-800 text-sm font-bold block">👁️ Hiển thị đáp án đúng sau khi nộp</span>
-                <span className="text-gray-500 text-xs">(Tô màu xanh đáp án đúng của các câu hỏi khi học sinh xem lại bài)</span>
+                <span className="text-gray-800 text-sm font-bold block">👁️ Hiển thị đáp án đúng sau khi nộp bài</span>
+                <span className="text-gray-500 text-xs">Tô màu xanh đáp án đúng của từng câu khi học sinh xem lại bài làm.</span>
               </div>
             </label>
 
-            <label className="flex items-center gap-3 cursor-pointer">
+            <label className="flex items-start gap-3 cursor-pointer">
               <input 
                 type="checkbox" 
                 checked={form.settings.showExplanations} 
                 onChange={e => setForm({...form, settings: {...form.settings, showExplanations: e.target.checked}})} 
-                className="w-5 h-5 accent-teal-600 rounded cursor-pointer" 
+                className="w-5 h-5 mt-0.5 accent-teal-600 rounded cursor-pointer" 
               />
               <div>
                 <span className="text-gray-800 text-sm font-bold block">📖 Hiển thị lời giải chi tiết sau khi nộp</span>
-                <span className="text-gray-500 text-xs">(Hiển thị các bước giải thích chi tiết bên dưới câu hỏi)</span>
+                <span className="text-gray-500 text-xs">Hiển thị các bước giải thích chi tiết bên dưới mỗi câu hỏi.</span>
               </div>
             </label>
           </div>

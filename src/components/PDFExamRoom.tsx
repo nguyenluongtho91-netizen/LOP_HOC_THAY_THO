@@ -334,8 +334,9 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
     if (!isSubmitted) updateProgress(totalAnswered, timeLeft);
   }, [totalAnswered, timeLeft, isSubmitted, updateProgress]);
 
-  // Tab detection
+  // Tab detection (Respect room.settings.antiCheat)
   useEffect(() => {
+    if ((room as any).settings?.antiCheat === false) return;
     const svc = getTabDetectionService();
     svc.start({
       onTabSwitch: (count, warnings) => {
@@ -434,9 +435,21 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
         </button>
         <div className="flex-1 min-w-0">
           <p className="font-bold text-gray-800 text-sm truncate">{exam.title}</p>
-          <p className="text-xs text-gray-500 truncate">
-            {student.name}{student.className ? ` · ${student.className}` : ''}
-          </p>
+          <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+            <p className="text-xs text-gray-500 truncate">
+              {student.name}{student.className ? ` · ${student.className}` : ''}
+            </p>
+            {((room as any)?.settings?.shuffle || (room as any)?.examCode) && (
+              <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 text-[10px] font-black border border-indigo-200 uppercase">
+                MÃ ĐỀ: {(room as any)?.examCode || (room as any)?.settings?.examCode || '101'}
+              </span>
+            )}
+            {(room as any)?.settings?.antiCheat !== false && (
+              <span className="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 text-[10px] font-bold border border-rose-200">
+                🛡️ Giám sát tab
+              </span>
+            )}
+          </div>
         </div>
 
         {/* ✅ Toggle Đề thi / Lời giải (chỉ hiện sau khi nộp & có lời giải & cho phép xem) */}
