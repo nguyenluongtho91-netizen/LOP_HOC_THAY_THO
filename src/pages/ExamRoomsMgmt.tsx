@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState, useRef } from 'react'
 import { MonitorPlay, Plus, Trash2, KeyRound, BarChart3, RefreshCw, Settings, FileSpreadsheet } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'

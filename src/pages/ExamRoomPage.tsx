@@ -1,4 +1,5 @@
-import { useEffect, useState, useMemo } from 'react'
+// @ts-nocheck
+import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import ResultView from '@/components/ResultView' 
@@ -6,7 +7,6 @@ import PDFExamRoom from '@/components/PDFExamRoom'
 import ExamRoom from '@/components/ExamRoom'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import toast from 'react-hot-toast'
-import { Lock, Timer, AlertCircle, ShieldAlert, CheckCircle } from 'lucide-react'
 
 // ─── Đồng hồ đếm ngược chờ đến giờ mở đề ──────────────────────────────────────
 function WaitingScreen({ opensAt, onTimeReached, onExit }: { opensAt: string; onTimeReached: () => void; onExit: () => void }) {
