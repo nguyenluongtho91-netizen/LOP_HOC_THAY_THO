@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
-import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink } from 'lucide-react'
+import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2 } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
 import Modal from '@/components/Modal'
@@ -41,6 +41,8 @@ export default function Tuition() {
   const [confirmModal, setConfirmModal] = useState<{studentName:string;amount:number;studentId:string;phone:string;email:string}|null>(null)
   const [sendingConfirm, setSendingConfirm] = useState(false)
   const [autoSendModal, setAutoSendModal] = useState(false)
+  const [bankModalOpen, setBankModalOpen] = useState(false)
+  const [copiedWebhook, setCopiedWebhook] = useState(false)
   const [autoSending, setAutoSending] = useState(false)
   const [autoProgress, setAutoProgress] = useState<{ current: number; total: number; currentStudent: string; logs: string[] }>({ current: 0, total: 0, currentStudent: '', logs: [] })
 
@@ -302,7 +304,7 @@ export default function Tuition() {
 
     const cls = classes.find(c => c.id === selClass)
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
-    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName)
+    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
     const qrUrl = bankId && bankAccount
       ? 'https://img.vietqr.io/image/' + bankId + '-' + bankAccount + '-compact2.png'
         + '?amount=' + amountVal
@@ -345,7 +347,7 @@ export default function Tuition() {
       const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
       const amt = Number(row.notification?.amount || courseAmount)
 
-      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName)
+      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
       const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
       const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${row.notification?.course_name || courseName}":\n- Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${row.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amt.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
 
@@ -607,10 +609,18 @@ export default function Tuition() {
 
   return (
     <div className="space-y-6">
-      <div className="page-header">
+      <div className="page-header flex flex-wrap items-center justify-between gap-4">
         <h1 className="section-title flex items-center gap-2">
           <Banknote className="w-7 h-7 text-teal-600" /> Học phí khóa học
         </h1>
+
+        <button
+          onClick={() => setBankModalOpen(true)}
+          className="px-4 py-2 rounded-2xl border border-teal-200 bg-teal-50 hover:bg-teal-100 text-teal-900 text-xs font-black flex items-center gap-2 transition-all shadow-xs cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <Building2 className="w-4 h-4 text-teal-700" />
+          🏦 Kết Nối Ngân Hàng (Tự Động Gạch Nợ & Nhắn Zalo)
+        </button>
       </div>
 
       {/* Summary Statistics Cards (School-wide or Selected Class) */}
@@ -1131,6 +1141,116 @@ export default function Tuition() {
       )}
 
 
+
+      {/* Bank Automation & Webhook Connection Modal */}
+      {bankModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden border border-teal-100 flex flex-col max-h-[92vh]">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-600 px-6 py-4 flex items-center justify-between text-white shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-white/15 rounded-xl backdrop-blur-xs">
+                  <Building2 className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-black text-lg">Liên Kết Ngân Hàng Tự Động</h3>
+                  <p className="text-xs text-teal-100">Tự động gạch nợ học phí & gửi tin nhắn xác nhận cho phụ huynh</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setBankModalOpen(false)}
+                className="text-white/80 hover:text-white text-2xl font-extrabold w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-6 space-y-4 overflow-y-auto flex-1 text-sm">
+              {/* How it works */}
+              <div className="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-200 text-emerald-950 space-y-2">
+                <p className="font-extrabold text-xs uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+                  <Check className="w-4 h-4 text-emerald-600 stroke-[3px]" /> Quy trình hoạt động tự động 100%:
+                </p>
+                <div className="text-xs text-gray-700 space-y-1.5 pl-1 leading-relaxed">
+                  <p>1. <strong>Phụ huynh quét mã QR</strong> bằng App ngân hàng: Màn hình điện thoại tự động hiện đúng số tiền (ví dụ: 640.000đ) và tên học sinh.</p>
+                  <p>2. <strong>Tài khoản Vietcombank nhận tiền</strong>: Dịch vụ SePay / Casso ngay lập tức nhận biến động số dư và báo về web.</p>
+                  <p>3. <strong>Hệ thống tự động đổi trạng thái</strong> học sinh thành <span className="bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">ĐÃ ĐÓNG</span> trên web.</p>
+                  <p>4. <strong>Hệ thống tự động gửi tin nhắn cho phụ huynh</strong>: <br/>
+                    <em className="text-emerald-900 font-semibold">"Dạ em chào anh/chị, Thầy Thọ đã nhận được học phí của cháu rồi mẹ nhé! Thầy cảm ơn gia đình nhiều ạ."</em>
+                  </p>
+                </div>
+              </div>
+
+              {/* Webhook URL Box */}
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                <label className="text-xs font-black text-gray-700 uppercase tracking-wide flex items-center justify-between">
+                  <span>Đường dẫn Webhook của Hệ thống:</span>
+                  <span className="text-[10px] text-teal-700 font-bold bg-teal-100 px-2 py-0.5 rounded-full">Sẵn sàng nhận dữ liệu</span>
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    readOnly
+                    value="https://lop-hoc-thay-tho.vercel.app/api/payment-webhook"
+                    className="input bg-white font-mono text-xs text-gray-700 font-bold border-slate-200 select-all"
+                  />
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText('https://lop-hoc-thay-tho.vercel.app/api/payment-webhook');
+                      setCopiedWebhook(true);
+                      setTimeout(() => setCopiedWebhook(null), 2500);
+                    }}
+                    className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer shadow-xs
+                      ${copiedWebhook ? 'bg-emerald-600 text-white' : 'bg-teal-600 hover:bg-teal-700 text-white'}`}
+                  >
+                    <Copy className="w-3.5 h-3.5" />
+                    {copiedWebhook ? '✓ Đã Copy' : 'Copy URL'}
+                  </button>
+                </div>
+                <p className="text-[11px] text-gray-500">
+                  * Dán đường dẫn này vào mục <strong>Webhooks</strong> trên SePay (sepay.vn) hoặc Casso (casso.vn).
+                </p>
+              </div>
+
+              {/* 3 Steps Setup Guide */}
+              <div className="space-y-2">
+                <p className="font-black text-gray-800 text-xs uppercase tracking-wider">3 Bước kết nối với SePay (Miễn phí):</p>
+                <div className="space-y-2 text-xs text-gray-700">
+                  <div className="p-3 bg-white border border-gray-200 rounded-xl flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-800 font-black flex items-center justify-center shrink-0">1</span>
+                    <div>
+                      <p className="font-bold text-gray-800">Tạo tài khoản tại sepay.vn</p>
+                      <p className="text-gray-500">Truy cập <a href="https://sepay.vn" target="_blank" rel="noreferrer" className="text-teal-600 underline font-bold">sepay.vn</a> và đăng ký tài khoản miễn phí.</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-white border border-gray-200 rounded-xl flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-800 font-black flex items-center justify-center shrink-0">2</span>
+                    <div>
+                      <p className="font-bold text-gray-800">Kết nối tài khoản Vietcombank của Thầy</p>
+                      <p className="text-gray-500">Thêm STK: <strong className="font-mono text-gray-700">1070493932</strong> (HO KINH DOANH NGUYEN LUONG THO).</p>
+                    </div>
+                  </div>
+                  <div className="p-3 bg-white border border-gray-200 rounded-xl flex items-start gap-3">
+                    <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-800 font-black flex items-center justify-center shrink-0">3</span>
+                    <div>
+                      <p className="font-bold text-gray-800">Dán Webhook URL</p>
+                      <p className="text-gray-500">Vào mục <strong>Cấu hình Webhooks</strong> trên SePay và dán đường link webhook ở trên vào là hoàn tất!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setBankModalOpen(false)}
+                className="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-extrabold rounded-xl shadow-md transition-all cursor-pointer text-xs"
+              >
+                Đã Hiểu & Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 1-Click Auto Bulk Send Modal */}
       {autoSendModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-fade-in">
@@ -1290,7 +1410,7 @@ export default function Tuition() {
               const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
               const cls = classes.find(c => c.id === selClass)
               const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
-              const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName)
+              const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code)
               const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
 
               const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${currentRow.notification.course_name}":\n- Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${currentRow.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amt.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`

@@ -185,24 +185,20 @@ export function removeVietnameseTones(str: string | null | undefined): string {
 }
 
 /**
- * Sinh cú pháp chuyển khoản VietQR chuẩn Napas 247: "HP [TÊN HỌC SINH] [LỚP]"
- * Đảm bảo hiển thị tên học sinh khi quét mã QR và không quá 25 ký tự theo chuẩn ngân hàng.
+ * Sinh cú pháp chuyển khoản VietQR chuẩn Napas 247: "HP [MÃ_HS] [TÊN HỌC SINH] [LỚP]"
+ * Đảm bảo hiển thị tên học sinh khi quét mã QR, đồng thời chứa mã học sinh để ngân hàng tự động gạch nợ.
  */
-export function formatVietQRAddInfo(fullName: string, className = ''): string {
+export function formatVietQRAddInfo(fullName: string, className = '', studentCode = ''): string {
   const cleanName = removeVietnameseTones(fullName).toUpperCase()
   const cleanClass = removeVietnameseTones(className).replace(/\s+/g, '').toUpperCase()
+  const cleanCode = (studentCode || '').toUpperCase().trim()
 
-  let text = `HP ${cleanName}`
+  const parts = cleanName.split(/\s+/).filter(Boolean)
+  const shortName = parts.length > 2 ? `${parts[0]} ${parts[parts.length - 1]}` : cleanName
+
+  let text = cleanCode ? `HP ${cleanCode} ${shortName}` : `HP ${shortName}`
   if (cleanClass) {
-    text = `HP ${cleanName} ${cleanClass}`
-  }
-
-  if (text.length > 25) {
-    const parts = cleanName.split(/\s+/).filter(Boolean)
-    if (parts.length > 1) {
-      const shortName = `${parts[0]} ${parts[parts.length - 1]}`
-      text = cleanClass ? `HP ${shortName} ${cleanClass}` : `HP ${shortName}`
-    }
+    text += ` ${cleanClass}`
   }
 
   return text.substring(0, 25).trim()

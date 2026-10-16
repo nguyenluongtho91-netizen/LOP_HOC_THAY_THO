@@ -92,7 +92,7 @@ export default function VietQRModal({
   const [qrLoaded, setQrLoaded] = useState(false)
   const [qrError, setQrError]   = useState(false)
 
-  const transferContent = formatVietQRAddInfo(studentName, className || month)
+  const transferContent = formatVietQRAddInfo(studentName, className || month, studentCode)
   const qrUrl           = buildVietQRUrl(amount, transferContent)
   
   let monthLabel = month
