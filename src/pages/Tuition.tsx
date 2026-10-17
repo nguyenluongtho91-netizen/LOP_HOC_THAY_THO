@@ -871,7 +871,7 @@ export default function Tuition() {
                 <thead>
                   <tr className="bg-teal-50/50">
                     {[
-                      'Học sinh', 'Khóa học', 'Mức học phí', 'Trạng thái', 'Thu học phí', 'Nhắc học phí', ''
+                      'Học sinh', 'Khóa học', 'Mức học phí', 'Trạng thái', 'Thu học phí', 'Gửi thông báo', ''
                     ].map(h => (
                       <th
                         key={h}
@@ -1155,7 +1155,7 @@ export default function Tuition() {
             <div className="bg-gradient-to-r from-blue-500 to-blue-400 px-5 py-4 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MessageCircle className="w-5 h-5 text-white" />
-                <span className="text-white font-extrabold">Nhắc phí qua Zalo</span>
+                <span className="text-white font-extrabold">Thông báo học phí qua Zalo</span>
               </div>
               <button onClick={() => setZaloModal(null)} className="text-white/70 hover:text-white text-xl leading-none font-bold">✕</button>
             </div>
@@ -1470,8 +1470,8 @@ export default function Tuition() {
               const digits = rawPhone.replace(/\D/g, '')
               const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
               const phoneForLink = cleanPhone ? (cleanPhone.startsWith('84') ? '0' + cleanPhone.slice(2) : cleanPhone) : ''
-              const amt = Number(currentRow.notification?.amount || courseAmount || 600000)
-              const activeCourseName = currentRow.notification?.course_name || courseName || 'Học phí'
+              const amt = courseAmount ? Number(courseAmount) : (Number(currentRow.notification?.amount) || 600000)
+              const activeCourseName = (courseName && courseName.trim()) || currentRow.notification?.course_name || 'Tháng ' + (selectedMonth || '9/2026')
 
               const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
               const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
