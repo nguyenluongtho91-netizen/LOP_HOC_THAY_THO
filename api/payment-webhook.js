@@ -96,7 +96,9 @@ async function sendZaloConfirmation(student, amount) {
   if (!phone) return { sent: false, reason: 'no_phone' };
 
   const formattedAmt = new Intl.NumberFormat('vi-VN').format(amount);
-  const msg = `Dạ em chào anh/chị phụ huynh em ${student.full_name}, Thầy Thọ đã nhận được học phí (${formattedAmt} đ) của cháu rồi mẹ nhé! Thầy cảm ơn gia đình nhiều ạ. 🙏`;
+  const msg = `Chào phụ huynh.
+Thầy đã nhận đủ học phí của em ${student.full_name} (${formattedAmt} đ).
+Thầy cảm ơn phụ huynh!`;
 
   let sent = false;
 

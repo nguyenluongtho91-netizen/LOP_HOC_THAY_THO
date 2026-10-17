@@ -292,11 +292,25 @@ export default function Tuition() {
   }
 
   // ── Send Zalo: open custom preview modal ──
-  const sendZalo = (row: TuitionNotificationRow) => {
-    if (!row.notification) return
+  const sendZalo = async (row: TuitionNotificationRow) => {
     const student = students.find((s: any) => s.id === row.student.id)
     const phone = (student as any)?.zalo || (student as any)?.parent_phone || ''
-    const amountVal = Number(row.notification.amount)
+    const amountVal = Number(row.notification?.amount || courseAmount || 600000)
+    const activeCourseName = row.notification?.course_name || courseName || 'Học phí'
+
+    // Tự động tạo bản ghi học phí nếu học sinh chưa được báo
+    if (!row.notification && selClass) {
+      try {
+        await upsertTuitionNotification({
+          student_id: row.student.id,
+          class_id: selClass,
+          course_name: activeCourseName,
+          amount: amountVal,
+          is_paid: false
+        })
+        void loadTuitionNotifications(selClass)
+      } catch (err) {}
+    }
 
     const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
     const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
@@ -304,17 +318,30 @@ export default function Tuition() {
 
     const cls = classes.find(c => c.id === selClass)
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
+    const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
     const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
     const qrUrl = bankId && bankAccount
-      ? 'https://img.vietqr.io/image/' + bankId + '-' + bankAccount + '-compact2.png'
+      ? 'https://img.vietqr.io/image/' + bankId + '-' + bankAccount + '-compact.png'
         + '?amount=' + amountVal
         + '&addInfo=' + encodeURIComponent(addInfo)
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
-    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${row.notification.course_name}":\n- Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${row.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amountVal.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
+    const msg = `Chào Quý phụ huynh.\n`
+              + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
+              + `• Học sinh: ${row.student.full_name}\n`
+              + `• Lớp: ${cleanClass}\n`
+              + `• Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n`
+              + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
+              + `• Hình thức nộp: Chuyển khoản\n`
+              + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
+              + `   - STK: ${bankAccount}\n`
+              + `   - Chủ TK (HKD): ${bankName}\n`
+              + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
+              + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):\n${qrUrl}`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
-    setZaloModal({ row, msg, qrUrl, phone: cleanPhone })
+    const synthRow = { ...row, notification: row.notification || { course_name: activeCourseName, amount: amountVal } as any }
+    setZaloModal({ row: synthRow, msg, qrUrl, phone: cleanPhone })
     setCopiedZalo(null)
   }
 
@@ -399,12 +426,15 @@ export default function Tuition() {
   }
 
   const startBatchZalo = () => {
-    const unpaidList = tuitionData.filter(r => r.status === 'unpaid')
-    if (unpaidList.length === 0) {
-      toast.error('Không có học sinh nào chưa đóng học phí.')
+    let targetList = tuitionData.filter(r => r.status === 'unpaid')
+    if (targetList.length === 0) {
+      targetList = tuitionData
+    }
+    if (targetList.length === 0) {
+      toast.error('Lớp học này hiện chưa có học sinh nào.')
       return
     }
-    setBatchZaloModal({ list: unpaidList, currentIndex: 0 })
+    setBatchZaloModal({ list: targetList, currentIndex: 0 })
   }
 
 
@@ -578,14 +608,9 @@ export default function Tuition() {
   // ── Send Receipt Confirm via Zalo copy ──
   const sendConfirmZalo = async () => {
     if (!confirmModal) return
-    const msg = `✅ Xác nhận thanh toán học phí\n`
-              + `----------------------------\n`
-              + `Học sinh: ${confirmModal.studentName}\n`
-              + `Số tiền: ${fmtVNDShort(confirmModal.amount)}\n`
-              + `Thời gian: ${new Date().toLocaleDateString('vi-VN')}\n`
-              + `Nội dung: Đóng học phí khóa ${courseName}\n`
-              + `----------------------------\n`
-              + `Trung tâm đã nhận được học phí. Cảm ơn quý phụ huynh! 🙏`
+    const msg = `Chào phụ huynh.\n`
+              + `Thầy đã nhận đủ học phí khóa ${courseName} của em ${confirmModal.studentName} (${fmtVNDShort(confirmModal.amount)} đ).\n`
+              + `Thầy cảm ơn phụ huynh!`
     try {
       await navigator.clipboard.writeText(msg)
       toast.success('✅ Đã copy! Dán vào Zalo và gửi.')
@@ -746,7 +771,8 @@ export default function Tuition() {
                 Hệ thống sẽ hiển thị thông báo đóng học phí cho học sinh trên trang cổng thi (`/thi`). Dòng thông báo sẽ tự biến mất sau khi bạn tích "Đã thu".
               </div>
               
-              <button
+              <div className="flex flex-wrap items-center gap-2.5">
+                <button
                 onClick={sendClassNotifications}
                 disabled={sendingNotif}
                 className="btn-teal py-3 px-6 shadow-md shadow-teal-500/15 flex items-center gap-2 font-extrabold text-sm rounded-xl"
@@ -757,6 +783,20 @@ export default function Tuition() {
                   <><Send className="w-4 h-4" /> Báo học phí cả lớp ({tuitionData.filter(r => r.status === 'unnotified').length} HS)</>
                 )}
               </button>
+                <button
+                  onClick={async () => {
+                    if (tuitionData.some(r => r.status === 'unnotified')) {
+                      await sendClassNotifications();
+                    }
+                    startBatchZalo();
+                  }}
+                  className="py-3 px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white font-black text-sm rounded-xl shadow-lg shadow-blue-500/25 flex items-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  title="Bấm 1 lần để phát hành và gửi Zalo cho cả lớp"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
+                  🚀 BÁO & GỬI ZALO CẢ LỚP ({tuitionData.length} HS)
+                </button>
+              </div>
             </div>
           </div>
 
@@ -916,9 +956,7 @@ export default function Tuition() {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => sendZalo(row)}
-                            disabled={row.status !== 'unpaid'}
-                            className="p-2 text-blue-600 hover:bg-blue-50 disabled:opacity-40 rounded-xl border border-blue-100 transition-all flex items-center justify-center"
-                            title="Nhắc qua Zalo"
+                            className="p-2 text-blue-600 hover:bg-blue-50 hover:border-blue-300 bg-blue-50/70 rounded-xl border border-blue-200 transition-all flex items-center justify-center cursor-pointer shadow-xs hover:scale-105" title="Báo riêng qua Zalo (Mở gửi trực tiếp)"
                           >
                             <MessageCircle className="w-4 h-4" />
                           </button>
@@ -1408,23 +1446,36 @@ export default function Tuition() {
             {/* Content for Current Student */}
             {(() => {
               const currentRow = batchZaloModal.list[batchZaloModal.currentIndex]
-              if (!currentRow || !currentRow.notification) return null
+              if (!currentRow) return null
               const studentObj = students.find((s: any) => s.id === currentRow.student.id)
               const rawPhone = (studentObj as any)?.zalo || (studentObj as any)?.parent_phone || ''
               const digits = rawPhone.replace(/\D/g, '')
               const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
               const phoneForLink = cleanPhone ? (cleanPhone.startsWith('84') ? '0' + cleanPhone.slice(2) : cleanPhone) : ''
-              const amt = Number(currentRow.notification.amount)
+              const amt = Number(currentRow.notification?.amount || courseAmount || 600000)
+              const activeCourseName = currentRow.notification?.course_name || courseName || 'Học phí'
 
               const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
               const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
               const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
               const cls = classes.find(c => c.id === selClass)
               const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
+              const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
               const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code)
-              const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+              const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
 
-              const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${currentRow.notification.course_name}":\n- Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${currentRow.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amt.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
+              const msg = `Chào Quý phụ huynh.\n`
+                        + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
+                        + `• Học sinh: ${currentRow.student.full_name}\n`
+                        + `• Lớp: ${cleanClass}\n`
+                        + `• Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n`
+                        + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
+                        + `• Hình thức nộp: Chuyển khoản\n`
+                        + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
+                        + `   - STK: ${bankAccount}\n`
+                        + `   - Chủ TK (HKD): ${bankName}\n`
+                        + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
+                        + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):\n${qrUrl}`
 
               const copyTextOnly = async () => {
                 try {
