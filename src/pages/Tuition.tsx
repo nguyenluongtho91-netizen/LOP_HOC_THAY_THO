@@ -295,11 +295,13 @@ export default function Tuition() {
   const sendZalo = async (row: TuitionNotificationRow) => {
     const student = students.find((s: any) => s.id === row.student.id)
     const phone = (student as any)?.zalo || (student as any)?.parent_phone || ''
-    const amountVal = Number(row.notification?.amount || courseAmount || 600000)
-    const activeCourseName = row.notification?.course_name || courseName || 'Học phí'
+    
+    // Ưu tiên số tiền và tên khóa Thầy đang nhập trên giao diện
+    const amountVal = courseAmount ? Number(courseAmount) : (Number(row.notification?.amount) || 600000)
+    const activeCourseName = (courseName && courseName.trim()) || row.notification?.course_name || 'Tháng ' + (selectedMonth || '9/2026')
 
-    // Tự động tạo bản ghi học phí nếu học sinh chưa được báo
-    if (!row.notification && selClass) {
+    // Tự động lưu/cập nhật thông báo học phí mới vào database
+    if (selClass) {
       try {
         await upsertTuitionNotification({
           student_id: row.student.id,
@@ -326,6 +328,8 @@ export default function Tuition() {
         + '&addInfo=' + encodeURIComponent(addInfo)
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
+    
+    // MẪU CHUẨN THẦY ĐÃ DUYỆT: Không có link thô, dùng V.C.B, không lặp chữ Lớp
     const msg = `Chào Quý phụ huynh.\n`
               + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
               + `• Học sinh: ${row.student.full_name}\n`
@@ -337,10 +341,10 @@ export default function Tuition() {
               + `   - STK: ${bankAccount}\n`
               + `   - Chủ TK (HKD): ${bankName}\n`
               + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
-              + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):\n${qrUrl}`
+              + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
-    const synthRow = { ...row, notification: row.notification || { course_name: activeCourseName, amount: amountVal } as any }
+    const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
     setZaloModal({ row: synthRow, msg, qrUrl, phone: cleanPhone })
     setCopiedZalo(null)
   }
@@ -374,9 +378,22 @@ export default function Tuition() {
       const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
       const amt = Number(row.notification?.amount || courseAmount)
 
+      const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
+      const activeCourseName = row.notification?.course_name || courseName || 'Học phí'
       const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
-      const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
-      const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name} (${clsName}),\nThầy Thọ xin thông báo học phí khóa "${row.notification?.course_name || courseName}":\n- Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n- Học sinh: ${row.student.full_name}\n- Ngân hàng: Vietcombank (VCB)\n- STK: ${bankAccount}\n- Chủ TK: ${bankName}\n- Cú pháp CK: ${addInfo}\n\n👉 Quý phụ huynh quét mã VietQR tự động (đã điền sẵn số tiền ${amt.toLocaleString('vi-VN')}đ và tên học sinh):\n${qrUrl}\n\nThầy xin cảm ơn Quý phụ huynh! 🙏`
+      const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+      const msg = `Chào Quý phụ huynh.\n`
+                + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
+                + `• Học sinh: ${row.student.full_name}\n`
+                + `• Lớp: ${cleanClass}\n`
+                + `• Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n`
+                + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
+                + `• Hình thức nộp: Chuyển khoản\n`
+                + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
+                + `   - STK: ${bankAccount}\n`
+                + `   - Chủ TK (HKD): ${bankName}\n`
+                + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
+                + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):`
 
       logs.push(`⏳ [${i + 1}/${unpaidList.length}] Đang gửi cho ${row.student.full_name} (${cleanPhone || 'Không có SĐT'})...`)
       setAutoProgress({
@@ -390,6 +407,7 @@ export default function Tuition() {
         failCount++
         logs.push(`⚠️ [${i + 1}/${unpaidList.length}] ${row.student.full_name}: Thiếu số điện thoại phụ huynh.`)
       } else {
+
         try {
           let res = await sendZaloPersonalMessage(cleanPhone, msg)
           if (!res.success && isZaloOAConfigured()) {
@@ -1475,7 +1493,7 @@ export default function Tuition() {
                         + `   - STK: ${bankAccount}\n`
                         + `   - Chủ TK (HKD): ${bankName}\n`
                         + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
-                        + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):\n${qrUrl}`
+                        + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):`
 
               const copyTextOnly = async () => {
                 try {
