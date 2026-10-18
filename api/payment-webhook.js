@@ -182,11 +182,14 @@ export default async function handler(req, res) {
     let student = null, classId = null;
 
     // 1. Tìm học sinh theo mã (student_code)
+    let debugInfo = { studentCode };
     if (studentCode) {
-      const { data } = await supabase.from('students')
+      const { data, error: qErr } = await supabase.from('students')
         .select('id, full_name, email, parent_phone, zalo, student_code')
         .ilike('student_code', studentCode)
         .maybeSingle();
+      debugInfo.qErr = qErr;
+      debugInfo.data = data;
       if (data) {
         student = data;
         classId = await findActiveClassId(data.id);
@@ -323,7 +326,8 @@ export default async function handler(req, res) {
       marked_paid: updatedNotifCount > 0,
       zalo_sent: zaloInfo.sent,
       email_sent: emailSent,
-      confirmation_text: zaloInfo.message || null
+      confirmation_text: zaloInfo.message || null,
+      debug: debugInfo
     });
   } catch (err) {
     console.error('Webhook error:', err);
