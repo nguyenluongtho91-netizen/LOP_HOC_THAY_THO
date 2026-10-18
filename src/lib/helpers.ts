@@ -189,17 +189,29 @@ export function removeVietnameseTones(str: string | null | undefined): string {
  * Đảm bảo hiển thị tên học sinh khi quét mã QR, đồng thời chứa mã học sinh để ngân hàng tự động gạch nợ.
  */
 export function formatVietQRAddInfo(fullName: string, className = '', studentCode = ''): string {
-  const cleanName = removeVietnameseTones(fullName).toUpperCase()
-  const cleanClass = removeVietnameseTones(className).replace(/\s+/g, '').toUpperCase()
+  const cleanName = removeVietnameseTones(fullName).toUpperCase().trim()
   const cleanCode = (studentCode || '').toUpperCase().trim()
+
+  // Rút gọn tên lớp: "LỚP 7. THẢO NGUYÊN VÀ THANH THẢO" -> "L7"
+  let classTag = ''
+  if (className) {
+    const m = className.match(/(?:lớp|lop)?\s*(\d+[A-Za-z0-9.]*)/i)
+    if (m && m[1]) {
+      const numOnly = m[1].replace(/[^0-9]/g, '')
+      classTag = numOnly ? `L${numOnly}` : `L${m[1]}`
+    } else {
+      classTag = removeVietnameseTones(className).replace(/\s+/g, '').slice(0, 4).toUpperCase()
+    }
+  }
 
   const parts = cleanName.split(/\s+/).filter(Boolean)
   const shortName = parts.length > 2 ? `${parts[0]} ${parts[parts.length - 1]}` : cleanName
 
   let text = cleanCode ? `HP ${cleanCode} ${shortName}` : `HP ${shortName}`
-  if (cleanClass) {
-    text += ` ${cleanClass}`
+  if (classTag) {
+    text += ` ${classTag}`
   }
 
-  return text.substring(0, 25).trim()
+  // Vietcombank cho phép tối đa 50 ký tự trong addInfo
+  return text.substring(0, 35).trim()
 }

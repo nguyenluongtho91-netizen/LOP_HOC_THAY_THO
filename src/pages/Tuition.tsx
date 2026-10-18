@@ -2026,7 +2026,7 @@ export default function Tuition() {
                 type="tel"
                 value={phoneEditModal.phoneInput}
                 onChange={e => setPhoneEditModal({ ...phoneEditModal, phoneInput: e.target.value })}
-                placeholder="VD: 0915991696..."
+                placeholder="VD: 0912345678..."
                 className="input border-blue-200 focus:border-blue-600 font-mono text-base font-bold text-blue-900 w-full"
                 autoFocus
                 onKeyDown={e => {
