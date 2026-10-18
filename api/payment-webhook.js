@@ -7,8 +7,8 @@
 import { createClient } from "@supabase/supabase-js";
 
 // Khởi tạo Supabase client có fallback an toàn
-const SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || 'https://kbowwwbmyrwmxmjnopsm.supabase.co';
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_Q9nAR2kWvrOh7ySG7R4iDA_1QOKtB5T';
+const SUPABASE_URL = 'https://kbowwwbmyrwmxmjnopsm.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Q9nAR2kWvrOh7ySG7R4iDA_1QOKtB5T';
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 function normalizePayload(body) {
