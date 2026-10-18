@@ -184,7 +184,7 @@ export default async function handler(req, res) {
     // 1. Tìm học sinh theo mã (student_code)
     if (studentCode) {
       const { data } = await supabase.from('students')
-        .select('id, full_name, email, parent_phone, zalo, phone, student_code')
+        .select('id, full_name, email, parent_phone, zalo, student_code')
         .ilike('student_code', studentCode)
         .maybeSingle();
       if (data) {
@@ -196,7 +196,7 @@ export default async function handler(req, res) {
     // 2. Nếu chưa tìm thấy theo mã, tìm kiếm theo tên học sinh không dấu trong nội dung chuyển tiền
     if (!student) {
       const { data: allStudents } = await supabase.from('students')
-        .select('id, full_name, email, parent_phone, zalo, phone, student_code')
+        .select('id, full_name, email, parent_phone, zalo, student_code')
         .eq('status', 'active');
       
       if (allStudents && allStudents.length > 0) {
