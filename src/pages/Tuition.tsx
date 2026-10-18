@@ -1,3 +1,4 @@
+import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
 import { useEffect, useState, useMemo } from 'react'
 import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2 } from 'lucide-react'
@@ -318,6 +319,7 @@ export default function Tuition() {
     try {
       // Lưu số điện thoại vào Supabase cho học sinh
       await supabase.from('students').update({ zalo: digits, parent_phone: digits }).eq('id', phoneEditModal.student.id)
+      try { loadStudents() } catch {}
       // Cập nhật local state
       const s = students.find((st: any) => st.id === phoneEditModal.student.id)
       if (s) {
