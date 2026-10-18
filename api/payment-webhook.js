@@ -168,7 +168,7 @@ export default async function handler(req, res) {
     if (existing) return res.status(200).json({ ok: true, duplicate: true, payment_id: existing.id });
   } catch {}
   try {
-    const { data: storeRow } = await supabase.from('exams').select('data').eq('title', '__PAYMENTS_STORE__').maybeSingle();
+    const { data: storeRow } = await supabase.from('exams').select('id, data').eq('title', '__PAYMENTS_STORE__').maybeSingle();
     const items = storeRow?.data?.items;
     if (Array.isArray(items)) {
       const targetNote = `[${payload.source}] ${payload.description}`.slice(0, 200);
@@ -249,7 +249,7 @@ export default async function handler(req, res) {
 
     if (!payment) {
       try {
-        const { data: storeRow } = await supabase.from('exams').select('data').eq('title', '__PAYMENTS_STORE__').maybeSingle();
+        const { data: storeRow } = await supabase.from('exams').select('id, data').eq('title', '__PAYMENTS_STORE__').maybeSingle();
         const items = Array.isArray(storeRow?.data?.items) ? storeRow.data.items : [];
         const newPay = {
           id: 'pay_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
@@ -262,7 +262,11 @@ export default async function handler(req, res) {
           created_at: new Date().toISOString()
         };
         items.unshift(newPay);
-        await supabase.from('exams').upsert({ title: '__PAYMENTS_STORE__', data: { items } }, { onConflict: 'title' });
+        if (storeRow?.id) {
+          await supabase.from('exams').update({ data: { items } }).eq('id', storeRow.id);
+        } else {
+          await supabase.from('exams').insert([{ title: '__PAYMENTS_STORE__', data: { items } }]);
+        }
         payment = newPay;
       } catch (err) {
         console.warn('Lỗi lưu fallback __PAYMENTS_STORE__:', err);
@@ -286,7 +290,7 @@ export default async function handler(req, res) {
       try {
         const { data: storeRow } = await supabase
           .from('exams')
-          .select('data')
+          .select('id, data')
           .eq('title', '__TUITION_NOTIFICATIONS_STORE__')
           .maybeSingle();
         if (storeRow?.data?.items && Array.isArray(storeRow.data.items)) {
@@ -298,11 +302,16 @@ export default async function handler(req, res) {
             }
             return item;
           });
-          if (changed) {
-            await supabase
+          if (changed && storeRow?.id) {
+            const { error: updErr } = await supabase
               .from('exams')
-              .upsert({ title: '__TUITION_NOTIFICATIONS_STORE__', data: { items: updatedItems } }, { onConflict: 'title' });
-            updatedNotifCount = Math.max(updatedNotifCount, 1);
+              .update({ data: { items: updatedItems } })
+              .eq('id', storeRow.id);
+            if (!updErr) {
+              updatedNotifCount = Math.max(updatedNotifCount, 1);
+            } else {
+              console.error('Error updating __TUITION_NOTIFICATIONS_STORE__:', updErr);
+            }
           }
         }
       } catch {}
