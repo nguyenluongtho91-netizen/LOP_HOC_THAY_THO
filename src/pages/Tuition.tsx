@@ -534,7 +534,7 @@ export default function Tuition() {
       } else {
 
         try {
-          let res = await sendZaloPersonalMessage(cleanPhone, msg, qrUrl)
+          let res = await sendZaloPersonalMessage(cleanPhone, msg, qrUrl, row.student.full_name)
           if (!res.success && isZaloOAConfigured()) {
             res = await sendZaloOAMessage(cleanPhone, msg)
           }
@@ -1562,6 +1562,68 @@ export default function Tuition() {
             </div>
 
             <div className="p-6 space-y-4 overflow-y-auto flex-1">
+              {/* Robot Zalo Status Banner */}
+              <div
+                className="flex items-center justify-between p-3.5 rounded-2xl border text-xs font-bold transition-all shadow-xs"
+                style={{
+                  backgroundColor: robotOnline ? '#ecfdf5' : '#fef2f2',
+                  borderColor: robotOnline ? '#a7f3d0' : '#fecaca',
+                  color: robotOnline ? '#065f46' : '#991b1b',
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <span className={`w-2.5 h-2.5 rounded-full ${robotOnline ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`} />
+                  <span>{robotOnline ? '🟢 Robot Zalo PC: Đang Online (Sẵn sàng gửi 1-Click)' : '🔴 Robot Zalo PC: Chưa kết nối (Hãy nhấp đúp file trên Desktop)'}</span>
+                </div>
+                {!robotOnline && (
+                  <button
+                    onClick={async () => {
+                      const onl = await isZaloRobotOnline();
+                      setRobotOnline(onl);
+                      if (onl) toast.success('Đã kết nối Robot Zalo PC thành công!');
+                      else toast.error('Robot chưa chạy. Hãy mở file CHAY_ROBOT_ZALO_TU_DONG.bat trên Desktop');
+                    }}
+                    className="text-[11px] underline cursor-pointer text-blue-700 hover:text-blue-900"
+                  >
+                    Kiểm tra lại
+                  </button>
+                )}
+              </div>
+
+              {/* Missing Phone Alert */}
+              {(() => {
+                const missingList = tuitionData.filter(r => {
+                  if (r.status !== 'unpaid') return false;
+                  const st = students.find((s: any) => s.id === r.student.id) || r.student;
+                  const p = ((st as any)?.zalo || (st as any)?.parent_phone || '').replace(/\D/g, '');
+                  return !p || p.length < 9;
+                });
+                if (missingList.length === 0) return null;
+                return (
+                  <div className="bg-amber-50 border border-amber-300 p-3.5 rounded-2xl text-xs text-amber-950 space-y-2">
+                    <p className="font-extrabold flex items-center gap-1.5 text-amber-900">
+                      ⚠️ Có {missingList.length} học sinh chưa có số điện thoại Zalo:
+                    </p>
+                    <div className="space-y-1.5">
+                      {missingList.map(r => {
+                        const st = students.find((s: any) => s.id === r.student.id) || r.student;
+                        return (
+                          <div key={r.student.id} className="flex items-center justify-between bg-white px-3 py-1.5 rounded-xl border border-amber-200">
+                            <span className="font-bold text-gray-800">{r.student.full_name}</span>
+                            <button
+                              onClick={() => setPhoneEditModal({ student: st, row: r, phoneInput: '' })}
+                              className="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white font-extrabold rounded-lg text-[11px] shadow-xs cursor-pointer"
+                            >
+                              + Nhập SĐT ngay
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })()}
+
               {/* Summary Card */}
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50/60 p-4 rounded-2xl border border-blue-100 space-y-2">
                 <div className="flex items-center justify-between border-b border-blue-100/80 pb-2">

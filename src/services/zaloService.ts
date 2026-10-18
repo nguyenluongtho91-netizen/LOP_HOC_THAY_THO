@@ -461,7 +461,7 @@ export async function sendZaloPersonalMessage(
         message,
         qr_url: qrUrl
       });
-      const res = await waitForZaloJob(jobId, 6000);
+      const res = await waitForZaloJob(jobId, 25000);
       if (res.success) {
         return {
           success: true,

@@ -143,7 +143,7 @@ export async function enqueueBatchZaloMessages(
  */
 export async function waitForZaloJob(
   jobId: string,
-  timeoutMs = 6000,
+  timeoutMs = 25000,
   onProgress?: (status: string) => void
 ): Promise<{ success: boolean; error?: string }> {
   const start = Date.now()
