@@ -161,10 +161,21 @@ export default async function handler(req, res) {
   }
 
   // Kiểm tra chống trùng lặp giao dịch
-  const { data: existing } = await supabase.from('payments').select('id')
-    .eq('note', `[${payload.source}] ${payload.description}`.slice(0, 200))
-    .eq('amount', payload.amount).maybeSingle();
-  if (existing) return res.status(200).json({ ok: true, duplicate: true, payment_id: existing.id });
+  try {
+    const { data: existing } = await supabase.from('payments').select('id')
+      .eq('note', `[${payload.source}] ${payload.description}`.slice(0, 200))
+      .eq('amount', payload.amount).maybeSingle();
+    if (existing) return res.status(200).json({ ok: true, duplicate: true, payment_id: existing.id });
+  } catch {}
+  try {
+    const { data: storeRow } = await supabase.from('exams').select('data').eq('title', '__PAYMENTS_STORE__').maybeSingle();
+    const items = storeRow?.data?.items;
+    if (Array.isArray(items)) {
+      const targetNote = `[${payload.source}] ${payload.description}`.slice(0, 200);
+      const dup = items.find(p => p.amount === payload.amount && p.note === targetNote);
+      if (dup) return res.status(200).json({ ok: true, duplicate: true, payment_id: dup.id });
+    }
+  } catch {}
 
   try {
     const { studentCode, month } = parseTransferContent(payload.description);
@@ -219,17 +230,41 @@ export default async function handler(req, res) {
       }
     }
 
-    // 3. Ghi nhận giao dịch vào bảng payments
-    const { data: payment, error: payErr } = await supabase.from('payments').insert({
-      student_id: student?.id || null,
-      class_id: classId || null,
-      amount: payload.amount,
-      method: 'transfer',
-      date: payload.transfer_at.slice(0, 10),
-      note: `[${payload.source}] ${payload.description}`.slice(0, 200),
-    }).select().single();
+    // 3. Ghi nhận giao dịch vào bảng payments (có fallback vào __PAYMENTS_STORE__)
+    let payment = null;
+    try {
+      const { data, error } = await supabase.from('payments').insert({
+        student_id: student?.id || null,
+        class_id: classId || null,
+        amount: payload.amount,
+        method: 'transfer',
+        date: payload.transfer_at.slice(0, 10),
+        note: `[${payload.source}] ${payload.description}`.slice(0, 200),
+      }).select().single();
+      if (!error && data) payment = data;
+    } catch {}
 
-    if (payErr) throw payErr;
+    if (!payment) {
+      try {
+        const { data: storeRow } = await supabase.from('exams').select('data').eq('title', '__PAYMENTS_STORE__').maybeSingle();
+        const items = Array.isArray(storeRow?.data?.items) ? storeRow.data.items : [];
+        const newPay = {
+          id: 'pay_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
+          student_id: student?.id || null,
+          class_id: classId || null,
+          amount: payload.amount,
+          method: 'transfer',
+          date: payload.transfer_at.slice(0, 10),
+          note: `[${payload.source}] ${payload.description}`.slice(0, 200),
+          created_at: new Date().toISOString()
+        };
+        items.unshift(newPay);
+        await supabase.from('exams').upsert({ title: '__PAYMENTS_STORE__', data: { items } }, { onConflict: 'title' });
+        payment = newPay;
+      } catch (err) {
+        console.warn('Lỗi lưu fallback __PAYMENTS_STORE__:', err);
+      }
+    }
 
     // 4. TỰ ĐỘNG GẠCH NỢ: Cập nhật tuition_notifications thành ĐÃ ĐÓNG (is_paid = true)
     let updatedNotifCount = 0;
