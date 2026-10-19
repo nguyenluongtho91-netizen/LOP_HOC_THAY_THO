@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react'
 import {
   CalendarCheck, CalendarDays, CheckSquare, XSquare, Save, RefreshCw,
   Clock, Sparkles, DollarSign, Users, Check, Trash2, Edit3, ArrowRight,
-  ExternalLink, AlertCircle, CheckCircle2, ChevronRight, FileText, Send,
+  ExternalLink, AlertCircle, CheckCircle2, ChevronRight, ChevronLeft, FileText, Send,
   Table as TableIcon, Layers, Calendar, ChevronDown, CheckCircle
 } from 'lucide-react'
 import { fmtVNDShort, fmt } from '@/lib/helpers'
@@ -65,6 +65,40 @@ export default function SessionAttendanceFeeManager({
 
   // Filter month (YYYY-MM)
   const [selectedMonth, setSelectedMonth] = useState<string>(format(new Date(), 'yyyy-MM'))
+
+  // Tách Tháng & Năm phục vụ giao diện chọn 100% Tiếng Việt
+  const [curYear, curMonth] = useMemo(() => {
+    const parts = (selectedMonth || format(new Date(), 'yyyy-MM')).split('-')
+    return [parseInt(parts[0], 10) || 2026, parseInt(parts[1], 10) || 10]
+  }, [selectedMonth])
+
+  const handlePrevMonth = () => {
+    let y = curYear
+    let m = curMonth - 1
+    if (m < 1) {
+      m = 12
+      y -= 1
+    }
+    setSelectedMonth(`${y}-${String(m).padStart(2, '0')}`)
+  }
+
+  const handleNextMonth = () => {
+    let y = curYear
+    let m = curMonth + 1
+    if (m > 12) {
+      m = 1
+      y += 1
+    }
+    setSelectedMonth(`${y}-${String(m).padStart(2, '0')}`)
+  }
+
+  const handleMonthChange = (m: number) => {
+    setSelectedMonth(`${curYear}-${String(m).padStart(2, '0')}`)
+  }
+
+  const handleYearChange = (y: number) => {
+    setSelectedMonth(`${y}-${String(curMonth).padStart(2, '0')}`)
+  }
 
   // View mode tab for the selected class: 'matrix' (Ma trận buổi học) | 'journal' (Nhật ký & điểm danh) | 'tuition' (Tổng hợp học phí)
   const [viewMode, setViewMode] = useState<'matrix' | 'journal' | 'tuition'>('matrix')
@@ -564,17 +598,60 @@ export default function SessionAttendanceFeeManager({
             </select>
           </div>
 
-          {/* 2. Chọn Tháng */}
+          {/* 2. Chọn Tháng Học (100% Tiếng Việt, không phụ thuộc trình duyệt) */}
           <div className="space-y-1">
-            <label className="text-[11px] font-bold text-teal-200 uppercase tracking-wider">
-              2. Xem theo tháng học:
-            </label>
-            <input
-              type="month"
-              value={selectedMonth}
-              onChange={e => setSelectedMonth(e.target.value)}
-              className="w-full bg-slate-800/90 border border-teal-500/40 rounded-xl px-3.5 py-2.5 text-xs font-bold text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
-            />
+            <div className="flex items-center justify-between">
+              <label className="text-[11px] font-bold text-teal-200 uppercase tracking-wider">
+                2. Xem theo tháng học:
+              </label>
+              <span className="text-[10px] text-amber-300 font-bold bg-amber-400/20 px-2 py-0.5 rounded border border-amber-400/30">
+                Tháng {curMonth < 10 ? `0${curMonth}` : curMonth}/{curYear}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1 bg-slate-800/90 border border-teal-500/40 rounded-xl p-1 text-xs text-white">
+              <button
+                type="button"
+                onClick={handlePrevMonth}
+                title="Lùi 1 tháng"
+                className="p-2 hover:bg-teal-600/40 text-teal-300 hover:text-white rounded-lg transition-colors cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <select
+                value={curMonth}
+                onChange={e => handleMonthChange(Number(e.target.value))}
+                className="flex-1 bg-slate-700/90 border-0 rounded-lg px-2 py-2 text-xs font-bold text-white focus:outline-none focus:ring-1 focus:ring-teal-400 cursor-pointer"
+              >
+                {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
+                  <option key={m} value={m} className="bg-slate-800 text-white font-medium">
+                    Tháng {m < 10 ? `0${m}` : m}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={curYear}
+                onChange={e => handleYearChange(Number(e.target.value))}
+                className="w-24 bg-slate-700/90 border-0 rounded-lg px-2 py-2 text-xs font-bold text-white focus:outline-none focus:ring-1 focus:ring-teal-400 cursor-pointer"
+              >
+                {[2024, 2025, 2026, 2027, 2028].map(y => (
+                  <option key={y} value={y} className="bg-slate-800 text-white font-medium">
+                    Năm {y}
+                  </option>
+                ))}
+              </select>
+
+              <button
+                type="button"
+                onClick={handleNextMonth}
+                title="Tiến 1 tháng"
+                className="p-2 hover:bg-teal-600/40 text-teal-300 hover:text-white rounded-lg transition-colors cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
           {/* 3. Đơn giá */}
@@ -692,7 +769,7 @@ export default function SessionAttendanceFeeManager({
                 <DollarSign className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-[11px] text-slate-400 uppercase font-bold">Doanh thu dự kiến tháng {selectedMonth.split('-')[1]}</p>
+                <p className="text-[11px] text-slate-400 uppercase font-bold">Doanh thu dự kiến Tháng {curMonth < 10 ? `0${curMonth}` : curMonth}/{curYear}</p>
                 <p className="text-xl font-black text-emerald-400 font-mono">
                   {fmtVNDShort(allClassesStats.reduce((sum, c) => sum + c.totalRevenue, 0))}
                 </p>
@@ -710,7 +787,7 @@ export default function SessionAttendanceFeeManager({
             <div>
               <h3 className="font-extrabold text-slate-900 text-base flex items-center gap-2">
                 <TableIcon className="w-5 h-5 text-teal-600" />
-                BẢNG THỐNG KÊ SỐ BUỔI ĐÃ HỌC CỦA TOÀN BỘ 21 LỚP HỌC (THÁNG {selectedMonth})
+                BẢNG THỐNG KÊ SỐ BUỔI ĐÃ HỌC CỦA TOÀN BỘ 21 LỚP HỌC (THÁNG {curMonth < 10 ? `0${curMonth}` : curMonth}/{curYear})
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
                 Nhấp vào bất kỳ lớp nào để mở bảng ma trận điểm danh từng buổi và đồng bộ học phí của lớp đó.
@@ -1053,9 +1130,14 @@ export default function SessionAttendanceFeeManager({
 
                 {/* Chọn Ngày học */}
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-teal-600" /> Ngày diễn ra buổi học:
-                  </label>
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-teal-600" /> Ngày diễn ra buổi học:
+                    </label>
+                    <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                      Ngày {fmt(sessionDate)}
+                    </span>
+                  </div>
                   <input
                     type="date"
                     value={sessionDate}
