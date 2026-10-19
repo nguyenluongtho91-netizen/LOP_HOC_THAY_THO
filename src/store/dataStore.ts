@@ -101,21 +101,46 @@ export const useDataStore = create<DataState>((set, _get) => ({
   // ── Classes ───────────────────────────────────────────────────────────────
   loadClasses: async () => {
     const { data } = await supabase.from('classes').select('*').order('created_at', { ascending: false })
-    set({ classes: (data ?? []) as Class[] })
+    const normalized = (data ?? []).map((c: any) => ({
+      ...c,
+      name: c.name || c.class_name || '',
+      class_name: c.name || c.class_name || ''
+    }))
+    set({ classes: normalized as Class[] })
   },
 
   addClass: async (cls) => {
-    const { data, error } = await supabase.from('classes').insert([cls]).select().single()
+    const payload: any = { ...cls }
+    if (payload.class_name && !payload.name) {
+      payload.name = payload.class_name
+    }
+    delete payload.class_name
+    delete payload.fee_per_session
+    const { data, error } = await supabase.from('classes').insert([payload]).select().single()
     if (error) throw error
-    const row = data as Class
+    const row = {
+      ...data,
+      name: (data as any)?.name || (data as any)?.class_name || '',
+      class_name: (data as any)?.name || (data as any)?.class_name || ''
+    } as Class
     set(s => ({ classes: [row, ...s.classes] }))
     return row
   },
 
   updateClass: async (id, updates) => {
-    const { data, error } = await supabase.from('classes').update(updates).eq('id', id).select().single()
+    const payload: any = { ...updates }
+    if (payload.class_name && !payload.name) {
+      payload.name = payload.class_name
+    }
+    delete payload.class_name
+    delete payload.fee_per_session
+    const { data, error } = await supabase.from('classes').update(payload).eq('id', id).select().single()
     if (error) throw error
-    const row = data as Class
+    const row = {
+      ...data,
+      name: (data as any)?.name || (data as any)?.class_name || '',
+      class_name: (data as any)?.name || (data as any)?.class_name || ''
+    } as Class
     set(s => ({ classes: s.classes.map(c => c.id === id ? row : c) }))
     return row
   },
