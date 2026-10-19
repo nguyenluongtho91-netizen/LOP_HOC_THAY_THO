@@ -2,7 +2,8 @@ import { useEffect, useState, useCallback, useMemo } from 'react'
 import { 
   Users, BookOpen, CalendarCheck, ChevronLeft, ChevronRight, Clock, 
   MapPin, Search, Eye, EyeOff, DollarSign, GraduationCap, CheckCircle2, 
-  ArrowRight, Sparkles, Layers, Calendar, ClipboardCheck, CreditCard
+  ArrowRight, Sparkles, Layers, Calendar, ClipboardCheck, CreditCard,
+  Edit3, Save, Plus, Filter, Check, X, RefreshCw
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useDataStore } from '@/store/dataStore'
@@ -12,6 +13,7 @@ import { fmt, parseScheduleToDays } from '@/lib/helpers'
 import type { LucideIcon } from 'lucide-react'
 import Modal from '@/components/Modal'
 import StudentScorecardModal from '@/components/StudentScorecardModal'
+import toast from 'react-hot-toast'
 
 type Color = 'teal' | 'green' | 'amber' | 'blue' | 'purple'
 
@@ -91,7 +93,7 @@ function parseTimeToMinutes(timeStr: string | null | undefined): number {
 export default function Dashboard() {
   const navigate = useNavigate()
   const { profile } = useAuthStore()
-  const { classes, students, enrollments, loadClasses, loadStudents, loadEnrollments } = useDataStore()
+  const { classes, students, enrollments, loadClasses, loadStudents, loadEnrollments, updateClass } = useDataStore()
 
   const [loaded, setLoaded]           = useState(false)
   const [detailClass, setDetailClass] = useState<any>(null)
@@ -99,8 +101,134 @@ export default function Dashboard() {
   const [scorecardStudent, setScorecardStudent] = useState<any>(null)
   const [statsLoading, setStatsLoading] = useState(false)
   const [completedStats, setCompletedStats] = useState<Record<string, number>>({})
-  const [showStudentCount, setShowStudentCount] = useState(true) // Mặc định hiển thị chuyên nghiệp
+  const [showStudentCount, setShowStudentCount] = useState(true)
   const [viewDate, setViewDate] = useState(new Date())
+
+  // Filters for Schedule
+  const [subjectFilter, setSubjectFilter] = useState<'all' | 'toan' | 'hoa'>('all')
+
+  // ── SCHEDULE EDITOR MODAL STATE ──
+  const [scheduleModalOpen, setScheduleModalOpen] = useState(false)
+  const [editingClassId, setEditingClassId] = useState<string>('')
+  const [selectedDays, setSelectedDays] = useState<number[]>([1, 4])
+  const [sessionTime, setSessionTime] = useState<string>('17:45 - 19:15')
+  const [sessionRoom, setSessionRoom] = useState<string>('Phòng Chuyên Toán')
+  const [savingSchedule, setSavingSchedule] = useState(false)
+
+  // Preset Times
+  const PRESET_TIMES = [
+    { label: '17:15 - 19:15', desc: 'Ca chiều 1' },
+    { label: '17:45 - 19:15', desc: 'Ca chiều 2' },
+    { label: '19:15 - 21:15', desc: 'Ca tối 1' },
+    { label: '19:30 - 21:30', desc: 'Ca tối 2' },
+    { label: '14:30 - 16:30', desc: 'Ca chiều T7/CN' },
+    { label: '08:30 - 10:30', desc: 'Ca sáng CN' }
+  ]
+
+  // Preset Rooms
+  const PRESET_ROOMS = [
+    'Phòng A1', 'Phòng A2', 'Phòng B1', 'Phòng R1', 
+    'Phòng Chuyên Toán', 'Phòng Hóa 1', 'Phòng Hóa 2', 'Phòng Luyện Thi'
+  ]
+
+  const DAY_LABELS = [
+    { day: 1, label: 'Thứ 2', short: 'T2' },
+    { day: 2, label: 'Thứ 3', short: 'T3' },
+    { day: 3, label: 'Thứ 4', short: 'T4' },
+    { day: 4, label: 'Thứ 5', short: 'T5' },
+    { day: 5, label: 'Thứ 6', short: 'T6' },
+    { day: 6, label: 'Thứ 7', short: 'T7' },
+    { day: 0, label: 'Chủ Nhật', short: 'CN' }
+  ]
+
+  // Open Schedule Editor Modal for a class
+  const openEditSchedule = (cls: any, defaultDayNum?: number) => {
+    setEditingClassId(cls.id)
+    setSessionRoom(cls.room || 'Phòng A1')
+
+    const parsed = parseScheduleToDays(cls.schedule)
+    if (parsed.length > 0) {
+      setSelectedDays(Array.from(new Set(parsed.map(p => p.day))))
+      setSessionTime(parsed[0].time || '17:45 - 19:15')
+    } else if (defaultDayNum !== undefined) {
+      setSelectedDays([defaultDayNum])
+      setSessionTime('17:45 - 19:15')
+    } else {
+      setSelectedDays([1, 4])
+      setSessionTime('17:45 - 19:15')
+    }
+    setScheduleModalOpen(true)
+  }
+
+  // Toggle Day selection
+  const toggleDaySelection = (dayNum: number) => {
+    setSelectedDays(prev => {
+      if (prev.includes(dayNum)) {
+        if (prev.length === 1) {
+          toast.error('Lớp học cần ít nhất 1 buổi trong tuần!')
+          return prev
+        }
+        return prev.filter(d => d !== dayNum)
+      } else {
+        return [...prev, dayNum]
+      }
+    })
+  }
+
+  // Computed schedule preview string
+  const previewScheduleString = useMemo(() => {
+    if (selectedDays.length === 0) return ''
+    const dayNamesMap: Record<number, string> = {
+      0: 'Chủ Nhật',
+      1: 'Thứ 2',
+      2: 'Thứ 3',
+      3: 'Thứ 4',
+      4: 'Thứ 5',
+      5: 'Thứ 6',
+      6: 'Thứ 7'
+    }
+    const sortedDays = [...selectedDays].sort((a, b) => {
+      const da = a === 0 ? 7 : a
+      const db = b === 0 ? 7 : b
+      return da - db
+    })
+    return sortedDays.map(d => `${dayNamesMap[d]}: ${sessionTime}`).join(', ')
+  }, [selectedDays, sessionTime])
+
+  // Save Schedule changes to database
+  const handleSaveSchedule = async () => {
+    if (!editingClassId) {
+      toast.error('Vui lòng chọn lớp học!')
+      return
+    }
+
+    if (selectedDays.length === 0) {
+      toast.error('Vui lòng chọn ít nhất 1 ngày trong tuần!')
+      return
+    }
+
+    setSavingSchedule(true)
+    try {
+      await updateClass(editingClassId, {
+        schedule: previewScheduleString,
+        room: sessionRoom.trim() || 'Phòng học'
+      })
+      await loadClasses()
+      const targetClass = classes.find(c => c.id === editingClassId)
+      toast.success(
+        `✅ Đã cập nhật lịch dạy lớp ${targetClass?.name || 'mới'}!
+` +
+        `• Lịch học: ${previewScheduleString}
+` +
+        `• Phòng học: ${sessionRoom}`
+      )
+      setScheduleModalOpen(false)
+    } catch (err: any) {
+      toast.error('Lỗi khi lưu lịch dạy: ' + err.message)
+    } finally {
+      setSavingSchedule(false)
+    }
+  }
 
   // Get Monday of the week containing viewDate, and return all 7 days
   const getWeekDays = (baseDate: Date) => {
@@ -109,35 +237,41 @@ export default function Dashboard() {
     const monday = new Date(baseDate)
     monday.setDate(baseDate.getDate() + diffToMonday)
 
-    const days = []
-    for (let i = 0; i < 7; i++) {
+    return Array.from({ length: 7 }, (_, i) => {
       const d = new Date(monday)
       d.setDate(monday.getDate() + i)
-      days.push(d)
-    }
-    return days
+      return d
+    })
   }
 
-  const weekDays = getWeekDays(viewDate)
-
-  const isToday = (date: Date) => {
-    const today = new Date()
-    return date.getDate() === today.getDate() &&
-      date.getMonth() === today.getMonth() &&
-      date.getFullYear() === today.getFullYear()
-  }
+  const weekDays = useMemo(() => getWeekDays(viewDate), [viewDate])
 
   const formatWeekRange = (days: Date[]) => {
-    if (days.length === 0) return ''
+    if (!days.length) return ''
     const start = days[0]
-    const end = days[days.length - 1]
-    const pad = (n: number) => String(n).padStart(2, '0')
-    return `${pad(start.getDate())}/${pad(start.getMonth() + 1)} - ${pad(end.getDate())}/${pad(end.getMonth() + 1)}/${end.getFullYear()}`
+    const end = days[6]
+    const fmtShort = (d: Date) => `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`
+    return `${fmtShort(start)} - ${fmtShort(end)}/${end.getFullYear()}`
   }
 
+  const isToday = (d: Date) => {
+    const today = new Date()
+    return (
+      d.getDate() === today.getDate() &&
+      d.getMonth() === today.getMonth() &&
+      d.getFullYear() === today.getFullYear()
+    )
+  }
+
+  // Filter classes for a given dayNum (0=Sun, 1=Mon, ..., 6=Sat)
   const getClassesForDay = (dayNum: number) => {
     return classes
       .filter(c => c.status === 'active')
+      .filter(c => {
+        if (subjectFilter === 'toan') return c.subject?.toLowerCase().includes('toán')
+        if (subjectFilter === 'hoa') return c.subject?.toLowerCase().includes('hóa')
+        return true
+      })
       .flatMap(c => {
         const scheduleDays = parseScheduleToDays(c.schedule)
         const matched = scheduleDays.filter(s => s.day === dayNum)
@@ -181,223 +315,289 @@ export default function Dashboard() {
     } finally {
       setLoaded(true)
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loadClasses, loadStudents, loadEnrollments])
 
-  useEffect(() => { void loadDashboard() }, [loadDashboard])
+  useEffect(() => {
+    void loadDashboard()
+  }, [loadDashboard])
 
-  // Count enrollments by class
+  const activeClasses = useMemo(() => classes.filter(c => c.status === 'active'), [classes])
+  const activeStudents = useMemo(() => students.filter(s => s.status === 'active'), [students])
+  const activeEnrollments = useMemo(() => enrollments.filter(e => e.status === 'active'), [enrollments])
+
+  // Map student counts per class
   const classStudentCounts = useMemo(() => {
     const map: Record<string, number> = {}
-    enrollments.forEach(e => {
-      if (e.status === 'active') {
-        map[e.class_id] = (map[e.class_id] || 0) + 1
-      }
-    })
+    for (const e of activeEnrollments) {
+      map[e.class_id] = (map[e.class_id] || 0) + 1
+    }
     return map
-  }, [enrollments])
+  }, [activeEnrollments])
 
-  // Group classes by grade (6 to 12)
+  // Grade overview for 7 grades K6-K12
   const gradeOverview = useMemo(() => {
     const grades = ['6', '7', '8', '9', '10', '11', '12']
     return grades.map(g => {
-      const gradeClasses = classes.filter(c => String(c.grade) === g)
-      const totalStudents = gradeClasses.reduce((sum, c) => sum + (classStudentCounts[c.id] || 0), 0)
+      const gradeClasses = activeClasses.filter(c => String(c.grade) === g)
+      const studentCount = gradeClasses.reduce((sum, c) => sum + (classStudentCounts[c.id] || 0), 0)
       return {
         grade: g,
         classes: gradeClasses,
-        studentCount: totalStudents
+        classCount: gradeClasses.length,
+        studentCount
       }
     })
-  }, [classes, classStudentCounts])
+  }, [activeClasses, classStudentCounts])
 
-  const todayClasses = useMemo(() => {
-    return getClassesForDay(new Date().getDay())
-  }, [classes])
-
-  const fetchClassStats = async (classId: string, roster: any[]) => {
-    if (!classId) {
-      setCompletedStats({})
-      return
-    }
+  // Fetch progress stats for modal roster
+  const fetchClassStats = async (classId: string, currentRoster: any[]) => {
+    if (!currentRoster.length) return
     setStatsLoading(true)
     try {
-      const { data: rooms, error: roomsErr } = await supabase
-        .from('exam_rooms')
-        .select('id')
+      const { data: assignments } = await supabase
+        .from('assignments')
+        .select('id, total_points')
         .eq('class_id', classId)
-        .eq('status', 'active')
 
-      if (roomsErr) throw roomsErr
-
-      const roomIds = rooms?.map(r => r.id) || []
-      if (roomIds.length === 0) {
+      const totalAssignments = assignments?.length || 0
+      if (totalAssignments === 0) {
         setCompletedStats({})
         return
       }
 
-      const { data: subs, error: subsErr } = await supabase
-        .from('exam_submissions')
-        .select('student_id, room_id, score')
-        .in('room_id', roomIds)
-        .eq('status', 'submitted')
-
-      if (subsErr) throw subsErr
+      const assignmentIds = assignments!.map(a => a.id)
+      const { data: submissions } = await supabase
+        .from('submissions')
+        .select('student_id, assignment_id, score')
+        .in('assignment_id', assignmentIds)
 
       const stats: Record<string, number> = {}
-      const studentIds = roster.map(s => s.id)
-
-      studentIds.forEach(studentId => {
-        const studentSubs = subs?.filter(sub => sub.student_id === studentId && sub.score !== 0) || []
-        const submittedRooms = new Set(studentSubs.map(sub => sub.room_id))
-        const completedCount = submittedRooms.size
-        const pct = Math.round((completedCount / roomIds.length) * 100)
-        stats[studentId] = pct
-      })
-
+      for (const s of currentRoster) {
+        const studentSubs = (submissions || []).filter(sub => sub.student_id === s.id)
+        stats[s.id] = Math.round((studentSubs.length / totalAssignments) * 100)
+      }
       setCompletedStats(stats)
-    } catch (err) {
-      console.error('Lỗi tính toán phần trăm bài tập:', err)
+    } catch {
+      setCompletedStats({})
     } finally {
       setStatsLoading(false)
     }
   }
 
-  useEffect(() => {
-    if (detailClass) {
-      const roster = enrollments
+  const rosterStudents: any[] = useMemo(() => {
+    if (!detailClass) return []
+    const sids = new Set(
+      enrollments
         .filter(e => e.class_id === detailClass.id && e.status === 'active')
-        .map(e => students.find(s => s.id === e.student_id))
-        .filter(Boolean)
-      void fetchClassStats(detailClass.id, roster)
-    } else {
-      setCompletedStats({})
-    }
+        .map(e => e.student_id)
+    )
+    return students.filter(s => sids.has(s.id) && s.status === 'active')
   }, [detailClass, enrollments, students])
 
-  const rosterStudents: any[] = detailClass
-    ? enrollments
-        .filter(e => e.class_id === detailClass.id && e.status === 'active')
-        .map(e => students.find(s => s.id === e.student_id))
-        .filter(Boolean)
-    : []
+  useEffect(() => {
+    if (detailClass) {
+      void fetchClassStats(detailClass.id, rosterStudents)
+    }
+  }, [detailClass, rosterStudents])
 
-  const filteredRoster = rosterStudents.filter(s =>
-    s.full_name?.toLowerCase().includes(modalSearch.toLowerCase()) ||
-    s.student_code?.toLowerCase().includes(modalSearch.toLowerCase())
-  )
+  const filteredRoster = useMemo(() => {
+    if (!modalSearch) return rosterStudents
+    const q = modalSearch.toLowerCase().trim()
+    return rosterStudents.filter(s =>
+      s.full_name?.toLowerCase().includes(q) ||
+      s.student_code?.toLowerCase().includes(q)
+    )
+  }, [rosterStudents, modalSearch])
 
-  const activeClasses  = classes.filter(c => c.status === 'active').length
-  const activeStudents = enrollments.filter(e => e.status === 'active').length
-
-  if (!loaded) return (
-    <div className="flex items-center justify-center h-64">
-      <div className="w-10 h-10 border-4 border-teal-200 border-t-teal-600 rounded-full animate-spin" />
-    </div>
-  )
+  const totalClassesCount = activeClasses.length
+  const mathClassesCount = activeClasses.filter(c => c.subject?.toLowerCase().includes('toán')).length
+  const chemClassesCount = activeClasses.filter(c => c.subject?.toLowerCase().includes('hóa')).length
 
   return (
     <div className="space-y-6">
-      {/* ── Page Header ────────────────────────────────────────────── */}
-      <div className="page-header flex flex-wrap items-center justify-between gap-4 pb-2 border-b border-gray-100">
+
+      {/* ── Top Header ────────────────────────────────────────────── */}
+      <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2.5">
-            <h1 className="text-2xl font-black text-gray-800 tracking-tight">HỆ THỐNG GIÁO DỤC THẦY THỌ</h1>
-            <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Đang hoạt động
+          <div className="flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl font-black text-gray-800 tracking-tight">
+              Bảng điều khiển trung tâm
+            </h1>
+            <span className="bg-teal-50 text-teal-700 text-[10px] font-black px-2 py-0.5 rounded-full border border-teal-200 uppercase tracking-wider">
+              Hệ thống Thầy Thọ
             </span>
           </div>
-          <p className="text-gray-500 text-sm mt-1">
-            Xin chào, <strong>{profile?.name ?? 'Thầy Thọ'}</strong> 👋 • Trung tâm bồi dưỡng Toán & Hóa học chuyên sâu
+          <p className="text-xs text-gray-500 mt-1 font-medium">
+            Xin chào <strong className="text-gray-700 font-bold">{profile?.name || 'Thầy Thọ'}</strong>, chúc Thầy một ngày giảng dạy hiệu quả và tràn đầy năng lượng!
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-gray-200 shadow-sm text-xs font-semibold text-gray-600">
-          <Calendar className="w-4 h-4 text-teal-600" />
-          <span>{fmt(new Date(), 'EEEE, dd/MM/yyyy')}</span>
+
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => openEditSchedule(classes[0] || { id: '' })}
+            className="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white rounded-xl text-xs font-black shadow-md shadow-teal-500/20 flex items-center gap-2 transition-all hover:scale-[1.02] cursor-pointer"
+          >
+            <Sparkles className="w-4 h-4 text-amber-300" />
+            <span>ĐỔI LỊCH DẠY NHANH</span>
+          </button>
+
+          <button
+            onClick={() => navigate('/tuition')}
+            className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl text-xs font-bold shadow-sm flex items-center gap-1.5 transition-all cursor-pointer"
+          >
+            <CalendarCheck className="w-4 h-4 text-teal-600" />
+            <span>Điểm Danh & Học Phí</span>
+          </button>
         </div>
       </div>
 
-      {/* ── 4 KPI Stat Cards ─────────────────────────────────────────── */}
+      {/* ── 4 KPI Stats Cards ──────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard 
-          icon={BookOpen} 
-          label="Lớp học tiêu chuẩn" 
-          value={`${activeClasses} Lớp`} 
-          sub="Quy chuẩn 3 lớp / khối (K6 - K12)" 
-          color="teal" 
-          badge="7 Khối"
-        />
-        <StatCard 
-          icon={Users} 
-          label="Tổng học sinh" 
-          value={`${activeStudents} HS`} 
-          sub="Đang theo học chính thức" 
-          color="green" 
-          hideable={true}
+        <StatCard
+          icon={Users}
+          label="Tổng học sinh trung tâm"
+          value={activeStudents.length}
+          sub="Đang theo học các lớp"
+          color="teal"
+          hideable
           isHidden={!showStudentCount}
-          onToggleHide={() => setShowStudentCount(!showStudentCount)}
-          badge="Đầy đủ"
+          onToggleHide={() => setShowStudentCount(prev => !prev)}
+          badge="Đang hoạt động"
         />
-        <StatCard 
-          icon={CalendarCheck} 
-          label="Lịch dạy hôm nay" 
-          value={`${todayClasses.length} Ca học`} 
-          sub={todayClasses.length > 0 ? todayClasses.map(c => c.name).join(', ') : 'Hôm nay nghỉ dạy'} 
-          color="amber" 
-          badge={fmt(new Date(), 'EEEE')}
+
+        <StatCard
+          icon={BookOpen}
+          label="Quy mô lớp học"
+          value={activeClasses.length}
+          sub="7 khối lớp chuẩn (K6 - K12)"
+          color="blue"
+          badge="3 lớp / khối"
         />
-        <StatCard 
-          icon={DollarSign} 
-          label="Biểu phí đào tạo" 
-          value="80.000 đ" 
-          sub="Lớp TOÁN 7.2: 60.000 đ/buổi" 
-          color="blue" 
-          badge="Chuẩn hóa"
+
+        <StatCard
+          icon={CreditCard}
+          label="Lượt phân lớp đào tạo"
+          value={activeEnrollments.length}
+          sub="Sĩ số phân bổ đồng đều"
+          color="green"
+          badge="Đồng bộ 100%"
+        />
+
+        <StatCard
+          icon={CalendarCheck}
+          label="Ca dạy tuần này"
+          value={classes.filter(c => c.schedule && c.schedule !== 'None').length}
+          sub="Phân bổ từ Thứ 2 đến CN"
+          color="purple"
+          badge="Thời khóa biểu"
         />
       </div>
 
-      {/* ── Weekly Schedule Section ─────────────────────────────────── */}
-      <div className="card p-5 flex flex-col justify-between border border-gray-100/90 shadow-sm">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-2 pb-3 border-b border-gray-100">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-teal-50 text-teal-700 flex items-center justify-center font-bold">
-              <CalendarCheck className="w-4 h-4 text-teal-600" />
+      {/* ══════════════════════════════════════════════════════════════
+          ── WEEKLY SCHEDULE SECTION (THỜI KHÓA BIỂU SIÊU HIỆN ĐẠI) ──
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xl shadow-slate-100/60 space-y-5">
+        
+        {/* HEADER BAR THỜI KHÓA BIỂU */}
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white flex items-center justify-center shadow-md shadow-teal-500/20">
+              <Calendar className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="font-extrabold text-gray-800 text-sm">Thời khóa biểu tuần này</h3>
-              <p className="text-[11px] text-gray-400">Xem và click vào lớp học để mở nhanh danh sách học sinh</p>
+              <div className="flex items-center gap-2">
+                <h3 className="font-black text-slate-900 text-base tracking-wide uppercase">
+                  THỜI KHÓA BIỂU GIẢNG DẠY TUẦN NÀY
+                </h3>
+                <span className="bg-emerald-50 text-emerald-700 border border-emerald-300 text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                  ĐANG DIỄN RA
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Xem ca dạy, click vào ca học để <strong>đổi lịch dạy</strong> hoặc mở danh sách học sinh & điểm danh
+              </p>
             </div>
           </div>
-          
-          <div className="flex items-center gap-2">
-            <button 
-              onClick={prevWeek} 
-              className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition border border-gray-200"
-              title="Tuần trước"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button 
-              onClick={goToday} 
-              className="text-xs font-bold px-3 py-1.5 rounded-lg bg-teal-50 text-teal-700 hover:bg-teal-100 transition border border-teal-200 shadow-sm"
-            >
-              Tuần hiện tại
-            </button>
-            <button 
-              onClick={nextWeek} 
-              className="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition border border-gray-200"
-              title="Tuần sau"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-            <span className="text-xs font-bold text-gray-650 bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200">
+
+          {/* FILTER VÀ ĐIỀU HƯỚNG TUẦN */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            {/* Filter buttons */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold">
+              <button
+                onClick={() => setSubjectFilter('all')}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  subjectFilter === 'all'
+                    ? 'bg-white text-slate-900 shadow-xs font-black'
+                    : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                Tất cả ({totalClassesCount})
+              </button>
+              <button
+                onClick={() => setSubjectFilter('toan')}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  subjectFilter === 'toan'
+                    ? 'bg-blue-600 text-white shadow-xs font-black'
+                    : 'text-slate-500 hover:text-blue-700'
+                }`}
+              >
+                📐 Toán ({mathClassesCount})
+              </button>
+              <button
+                onClick={() => setSubjectFilter('hoa')}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  subjectFilter === 'hoa'
+                    ? 'bg-purple-600 text-white shadow-xs font-black'
+                    : 'text-slate-500 hover:text-purple-700'
+                }`}
+              >
+                🧪 Hóa ({chemClassesCount})
+              </button>
+            </div>
+
+            {/* Navigation buttons */}
+            <div className="flex items-center gap-1.5 bg-slate-50 p-1 rounded-xl border border-slate-200">
+              <button 
+                onClick={prevWeek} 
+                className="p-1.5 rounded-lg hover:bg-white text-slate-600 hover:text-slate-900 transition cursor-pointer"
+                title="Tuần trước"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button 
+                onClick={goToday} 
+                className="text-xs font-black px-3 py-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition shadow-sm cursor-pointer"
+              >
+                Tuần hiện tại
+              </button>
+              <button 
+                onClick={nextWeek} 
+                className="p-1.5 rounded-lg hover:bg-white text-slate-600 hover:text-slate-900 transition cursor-pointer"
+                title="Tuần sau"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            <span className="text-xs font-black text-slate-700 bg-slate-100 px-3 py-2 rounded-xl border border-slate-200 font-mono">
               {formatWeekRange(weekDays)}
             </span>
+
+            {/* Nút sửa lịch dạy nổi bật */}
+            <button
+              onClick={() => openEditSchedule(classes[0] || { id: '' })}
+              className="px-3.5 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white rounded-xl text-xs font-black shadow-sm flex items-center gap-1.5 transition-all cursor-pointer"
+            >
+              <Edit3 className="w-3.5 h-3.5 text-amber-300" />
+              <span>Chỉnh Sửa Lịch</span>
+            </button>
           </div>
         </div>
 
+        {/* BẢNG LƯỚI 7 CỘT THỨ HIỆN ĐẠI */}
         <div className="overflow-x-auto -mx-2 px-2 scrollbar-thin">
-          <div className="grid grid-cols-7 gap-2 min-w-[850px] py-1">
+          <div className="grid grid-cols-7 gap-3 min-w-[980px] py-1">
             {weekDays.map((dayDate) => {
               const dayNum = dayDate.getDay()
               const isDayToday = isToday(dayDate)
@@ -407,45 +607,63 @@ export default function Dashboard() {
               return (
                 <div 
                   key={dayDate.toISOString()} 
-                  className={`flex flex-col gap-2 p-2 rounded-xl transition-all duration-300 ${
+                  className={`flex flex-col gap-2.5 p-2.5 rounded-2xl transition-all duration-300 ${
                     isDayToday 
-                      ? 'bg-gradient-to-b from-teal-50/70 to-emerald-50/40 border-2 border-teal-400 shadow-md ring-2 ring-teal-100/50' 
-                      : 'bg-gray-50/40 border border-gray-150 hover:bg-white hover:border-gray-300'
+                      ? 'bg-gradient-to-b from-teal-50/90 via-white to-emerald-50/40 border-2 border-teal-500 shadow-xl shadow-teal-500/10 ring-4 ring-teal-500/10' 
+                      : 'bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:border-slate-300 shadow-xs'
                   }`}
                 >
-                  {/* Day Header */}
-                  <div className={`flex flex-col items-center py-2 px-1 rounded-lg border transition-colors ${
+                  {/* Cột Header ngày */}
+                  <div className={`flex flex-col items-center py-2.5 px-1.5 rounded-xl transition-all ${
                     isDayToday 
-                      ? 'bg-teal-600 text-white border-teal-600 shadow-sm' 
-                      : 'bg-white border-gray-100 shadow-[0_1px_2px_rgba(0,0,0,0.03)]'
+                      ? 'bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-600 text-white shadow-md' 
+                      : 'bg-white border border-slate-200/90 shadow-xs'
                   }`}>
                     <span className={`text-[11px] font-black uppercase tracking-wider ${
-                      isDayToday ? 'text-teal-100' : 'text-gray-500'
+                      isDayToday ? 'text-teal-100' : 'text-slate-500'
                     }`}>
                       {dayNames[dayNum]}
                     </span>
-                    <span className={`text-base font-black mt-0.5 ${
-                      isDayToday ? 'text-white' : 'text-gray-800'
+                    <span className={`text-lg font-black mt-0.5 ${
+                      isDayToday ? 'text-white' : 'text-slate-800'
                     }`}>
                       {String(dayDate.getDate()).padStart(2, '0')}
                     </span>
-                    {isDayToday && (
-                      <span className="text-[9px] font-black bg-white text-teal-700 px-2 py-0.5 rounded-full uppercase tracking-tight shadow-sm mt-1">
-                        Hôm nay
+                    
+                    {isDayToday ? (
+                      <span className="text-[9px] font-black bg-white text-teal-800 px-2 py-0.5 rounded-full uppercase tracking-tight shadow-sm mt-1 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                        Hôm nay · {dayClasses.length} ca
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-bold text-slate-400 mt-0.5">
+                        {dayClasses.length > 0 ? `${dayClasses.length} ca dạy` : 'Nghỉ'}
                       </span>
                     )}
                   </div>
 
-                  {/* Classes list */}
-                  <div className="flex flex-col gap-2 flex-1 min-h-[190px]">
+                  {/* Danh sách các ca học trong ngày */}
+                  <div className="flex flex-col gap-2 flex-1 min-h-[200px]">
                     {dayClasses.length === 0 ? (
-                      <div className="flex-1 flex flex-col items-center justify-center py-6 border border-dashed border-gray-200 rounded-lg bg-white/50">
-                        <span className="text-[10px] text-gray-400 font-medium italic">Không có ca học</span>
+                      <div className="flex-1 flex flex-col items-center justify-center py-8 border-2 border-dashed border-slate-200 rounded-xl bg-white/60 text-center px-2 space-y-2">
+                        <Clock className="w-5 h-5 text-slate-300 mx-auto" />
+                        <span className="text-[11px] text-slate-400 font-medium italic">Không có ca dạy</span>
+                        <button
+                          onClick={() => {
+                            // Find a class without schedule or first class
+                            const cls = classes.find(c => !c.schedule || c.schedule === 'None') || classes[0]
+                            if (cls) openEditSchedule(cls, dayNum)
+                          }}
+                          className="text-[10px] font-bold text-teal-700 hover:text-teal-900 bg-teal-50 hover:bg-teal-100 px-2 py-1 rounded-lg border border-teal-200 transition-colors cursor-pointer"
+                        >
+                          + Xếp ca ngày này
+                        </button>
                       </div>
                     ) : (
                       dayClasses.map(cls => {
                         const isMath = cls.subject?.toLowerCase().includes('toán')
                         const stCount = classStudentCounts[cls.id] || 0
+                        
                         return (
                           <div 
                             key={`${cls.id}-${cls.time}`} 
@@ -453,39 +671,82 @@ export default function Dashboard() {
                               setDetailClass(cls)
                               setModalSearch('')
                             }}
-                            className="bg-white p-2.5 rounded-xl border border-gray-200/90 shadow-sm hover:shadow-md hover:border-teal-400 hover:-translate-y-0.5 transition-all duration-200 flex flex-col gap-1.5 cursor-pointer group"
+                            className="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all duration-200 flex flex-col gap-2 cursor-pointer group relative overflow-hidden"
                           >
-                            <div className="flex items-center justify-between gap-1">
-                              <span className={`px-1.5 py-0.5 text-[9px] font-black rounded-md uppercase border ${
+                            {/* Dải màu môn học bên trái */}
+                            <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${
+                              isMath 
+                                ? 'bg-gradient-to-b from-blue-500 to-indigo-600' 
+                                : 'bg-gradient-to-b from-purple-500 to-pink-600'
+                            }`} />
+
+                            {/* Hàng 1: Môn, Sĩ số, Nút sửa nhanh */}
+                            <div className="flex items-center justify-between gap-1 pl-1">
+                              <span className={`px-2 py-0.5 text-[9px] font-black rounded-md uppercase border ${
                                 isMath 
                                   ? 'bg-blue-50 text-blue-700 border-blue-200' 
                                   : 'bg-purple-50 text-purple-700 border-purple-200'
                               }`}>
-                                {cls.subject || 'Toán'}
+                                {cls.subject || 'Toán'} · K{cls.grade}
                               </span>
-                              <span className="text-[9px] font-bold text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-md">
-                                {stCount} HS
-                              </span>
+
+                              <div className="flex items-center gap-1">
+                                <span className="text-[10px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-md flex items-center gap-1">
+                                  <Users className="w-2.5 h-2.5 text-slate-500" />
+                                  <span>{stCount} HS</span>
+                                </span>
+
+                                {/* Nút bút chì đổi lịch ngay */}
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    openEditSchedule(cls, dayNum)
+                                  }}
+                                  className="w-6 h-6 rounded-lg bg-slate-100 hover:bg-teal-600 hover:text-white text-slate-600 flex items-center justify-center transition-colors cursor-pointer"
+                                  title="Đổi lịch dạy lớp này"
+                                >
+                                  <Edit3 className="w-3 h-3" />
+                                </button>
+                              </div>
                             </div>
 
-                            <div className="font-black text-gray-850 text-xs leading-snug group-hover:text-teal-700 transition-colors">
+                            {/* Hàng 2: Tên lớp to rõ */}
+                            <div className="font-black text-slate-900 text-xs leading-snug group-hover:text-teal-700 transition-colors pl-1">
                               {cls.name || cls.class_name}
                             </div>
                             
-                            <div className="flex flex-col gap-1 pt-1 border-t border-gray-100 text-[10px] text-gray-600 font-medium">
+                            {/* Hàng 3: Khung giờ & Phòng học */}
+                            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-100 text-[10px] pl-1">
                               {cls.time && (
-                                <div className="flex items-center gap-1 text-teal-700 font-bold">
+                                <div className="flex items-center gap-1.5 text-teal-800 font-bold bg-teal-50/80 px-2 py-1 rounded-lg border border-teal-200/50">
                                   <Clock className="w-3 h-3 flex-shrink-0 text-teal-600" />
-                                  <span>{cls.time}</span>
+                                  <span className="font-mono text-[11px]">{cls.time}</span>
                                 </div>
                               )}
-                              {cls.room && (
-                                <div className="flex items-center gap-1 text-gray-500 truncate">
-                                  <MapPin className="w-3 h-3 flex-shrink-0 text-gray-400" />
+                              {cls.room && cls.room !== 'None' && (
+                                <div className="flex items-center gap-1.5 text-slate-600 font-medium px-1 truncate">
+                                  <MapPin className="w-3 h-3 flex-shrink-0 text-slate-400" />
                                   <span className="truncate">{cls.room}</span>
                                 </div>
                               )}
                             </div>
+
+                            {/* Quick action bar on card hover */}
+                            <div className="pt-1 border-t border-slate-100 flex items-center justify-between gap-1 text-[9px] font-bold text-slate-500 opacity-90 group-hover:opacity-100 pl-1">
+                              <span className="text-teal-700 group-hover:underline">Chi tiết & Học sinh →</span>
+                              <span 
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  navigate('/tuition?tab=session-attendance&classId=' + cls.id)
+                                }}
+                                className="text-emerald-700 hover:underline cursor-pointer"
+                                title="Điểm danh lớp này"
+                              >
+                                ✓ Điểm danh
+                              </span>
+                            </div>
+
                           </div>
                         )
                       })
@@ -512,7 +773,7 @@ export default function Dashboard() {
           </div>
           <button 
             onClick={() => navigate('/classes')}
-            className="text-xs font-bold text-teal-600 hover:text-teal-800 flex items-center gap-1 transition"
+            className="text-xs font-bold text-teal-600 hover:text-teal-800 flex items-center gap-1 transition cursor-pointer"
           >
             Quản lý tất cả lớp <ArrowRight className="w-3.5 h-3.5" />
           </button>
@@ -530,51 +791,56 @@ export default function Dashboard() {
                   <span className="w-8 h-8 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shadow-sm">
                     K{g.grade}
                   </span>
-                  <span className="text-[11px] font-extrabold text-gray-700 bg-white border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">
-                    {g.studentCount} HS
+                  <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200">
+                    {g.classCount} lớp
                   </span>
                 </div>
-                <div className="space-y-1.5 mt-2">
-                  {g.classes.map(c => {
-                    const cnt = classStudentCounts[c.id] || 0
-                    const isMath = c.subject?.toLowerCase().includes('toán')
-                    return (
-                      <div key={c.id} className="bg-white p-1.5 rounded-lg border border-gray-100 flex items-center justify-between text-[11px]">
-                        <span className="font-extrabold text-gray-800 truncate" title={c.name}>
-                          {c.name}
-                        </span>
-                        <span className={`text-[9px] font-black px-1 rounded ${
-                          isMath ? 'text-blue-600 bg-blue-50' : 'text-purple-600 bg-purple-50'
-                        }`}>
-                          {cnt}
-                        </span>
-                      </div>
-                    )
-                  })}
+                <h4 className="font-black text-xs text-gray-800 mb-1">Khối {g.grade}</h4>
+                <div className="space-y-0.5 text-[11px] text-gray-500">
+                  {g.classes.slice(0, 3).map(c => (
+                    <div key={c.id} className="truncate hover:text-teal-700">
+                      • {c.name || c.class_name}
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="mt-3 pt-2 border-t border-gray-200/60 flex items-center justify-between text-[10px] text-gray-400 font-bold">
-                <span>3 Lớp học</span>
-                <span className="text-teal-600 group-hover:translate-x-0.5 transition-transform">Chi tiết →</span>
+              <div className="mt-3 pt-2 border-t border-gray-200/60 flex items-center justify-between text-[10px]">
+                <span className="text-gray-400">Tổng sĩ số:</span>
+                <span className="font-extrabold text-teal-700 bg-teal-50/80 px-1.5 py-0.5 rounded">
+                  {g.studentCount} HS
+                </span>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ── Quick Action Hub ────────────────────────────────────────── */}
+      {/* ── Quick Action Hub ─────────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div 
-          onClick={() => navigate('/attendance')}
+          onClick={() => navigate('/classes')}
+          className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-blue-300 cursor-pointer transition border border-gray-150 group"
+        >
+          <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
+            <BookOpen className="w-5 h-5" />
+          </div>
+          <div>
+            <h4 className="font-black text-gray-800 text-xs group-hover:text-blue-700 transition-colors">Quản lý 21 lớp học</h4>
+            <p className="text-[11px] text-gray-400 mt-0.5">Xếp lịch, đổi phòng & sĩ số</p>
+          </div>
+        </div>
+
+        <div 
+          onClick={() => navigate('/tuition?tab=session-attendance')}
           className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-teal-300 cursor-pointer transition border border-gray-150 group"
         >
           <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-            <ClipboardCheck className="w-5 h-5" />
+            <CalendarCheck className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-teal-700 transition-colors">Điểm danh buổi học</h4>
-            <p className="text-[11px] text-gray-400 mt-0.5">Ghi nhận sĩ số & tự động nhảy học phí</p>
+            <h4 className="font-black text-gray-800 text-xs group-hover:text-teal-700 transition-colors">Điểm danh & Học phí</h4>
+            <p className="text-[11px] text-gray-400 mt-0.5">Tự tính tiền học theo số buổi</p>
           </div>
         </div>
 
@@ -583,24 +849,11 @@ export default function Dashboard() {
           className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-emerald-300 cursor-pointer transition border border-gray-150 group"
         >
           <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-            <CreditCard className="w-5 h-5" />
+            <DollarSign className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-emerald-700 transition-colors">Quản lý học phí</h4>
-            <p className="text-[11px] text-gray-400 mt-0.5">Biểu phí 80k/buổi & 60k cho Lớp 7.2</p>
-          </div>
-        </div>
-
-        <div 
-          onClick={() => navigate('/classes')}
-          className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-blue-300 cursor-pointer transition border border-gray-150 group"
-        >
-          <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-            <GraduationCap className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-blue-700 transition-colors">21 Lớp học chuẩn hóa</h4>
-            <p className="text-[11px] text-gray-400 mt-0.5">Xếp lịch, phòng học và sĩ số 7 khối</p>
+            <h4 className="font-black text-gray-800 text-xs group-hover:text-emerald-700 transition-colors">Thu tiền & VietQR</h4>
+            <p className="text-[11px] text-gray-400 mt-0.5">Báo phí Zalo & hóa đơn điện tử</p>
           </div>
         </div>
 
@@ -612,20 +865,247 @@ export default function Dashboard() {
             <Users className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-amber-700 transition-colors">Hồ sơ 209 học sinh</h4>
+            <h4 className="font-black text-gray-800 text-xs group-hover:text-amber-700 transition-colors">Hồ sơ học sinh</h4>
             <p className="text-[11px] text-gray-400 mt-0.5">Tra cứu thông tin học sinh & phụ huynh</p>
           </div>
         </div>
       </div>
 
-      {/* ── Modal: Danh sách học sinh của lớp ─────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════════
+          ── MODAL 1: CHỈNH SỬA LỊCH DẠY & PHÒNG HỌC (SIÊU TIỆN ÍCH) ──
+          ══════════════════════════════════════════════════════════════ */}
+      <Modal
+        open={scheduleModalOpen}
+        onClose={() => setScheduleModalOpen(false)}
+        title="Chỉnh Sửa Lịch Giảng Dạy & Phòng Học"
+        size="lg"
+      >
+        <div className="space-y-5 py-1">
+          {/* 1. Chọn Lớp học */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-black text-slate-700 uppercase tracking-wider flex items-center justify-between">
+              <span>1. Chọn Lớp Học Cần Đổi Lịch:</span>
+              <span className="text-[11px] font-bold text-teal-700">
+                {classes.find(c => c.id === editingClassId)?.subject} · Khối {classes.find(c => c.id === editingClassId)?.grade}
+              </span>
+            </label>
+            <select
+              value={editingClassId}
+              onChange={e => {
+                const target = classes.find(c => c.id === e.target.value)
+                if (target) openEditSchedule(target)
+              }}
+              className="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            >
+              <option value="">— Chọn một lớp học trong danh sách 21 lớp —</option>
+              {classes.filter(c => c.status === 'active').map(c => (
+                <option key={c.id} value={c.id}>
+                  {c.name} ({c.subject} · Khối {c.grade}) — Hiện tại: {c.schedule || 'Chưa xếp lịch'}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* 2. Chọn Các Thứ Trong Tuần */}
+          <div className="space-y-2">
+            <label className="text-xs font-black text-slate-700 uppercase tracking-wider flex items-center justify-between">
+              <span>2. Chọn Các Ngày Học Trong Tuần:</span>
+              <span className="text-[11px] font-bold text-teal-600">
+                Đã chọn: {selectedDays.length} buổi/tuần
+              </span>
+            </label>
+            <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+              {DAY_LABELS.map(item => {
+                const isSelected = selectedDays.includes(item.day)
+                return (
+                  <button
+                    key={item.day}
+                    type="button"
+                    onClick={() => toggleDaySelection(item.day)}
+                    className={`p-2.5 rounded-xl text-xs font-bold flex flex-col items-center justify-center transition-all cursor-pointer border ${
+                      isSelected
+                        ? 'bg-teal-600 text-white border-teal-600 shadow-md scale-[1.02]'
+                        : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 hover:border-slate-300'
+                    }`}
+                  >
+                    <span className="font-black text-xs">{item.label}</span>
+                    <span className={`text-[10px] mt-0.5 ${isSelected ? 'text-teal-200' : 'text-slate-400'}`}>
+                      {isSelected ? '✓ Đang chọn' : '+ Chọn'}
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* 3. Chọn Khung Giờ Học */}
+          <div className="space-y-2">
+            <label className="text-xs font-black text-slate-700 uppercase tracking-wider flex items-center justify-between">
+              <span>3. Khung Giờ Giảng Dạy:</span>
+              <span className="text-[11px] font-mono font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                {sessionTime}
+              </span>
+            </label>
+            
+            {/* Quick preset chips */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {PRESET_TIMES.map(p => (
+                <button
+                  key={p.label}
+                  type="button"
+                  onClick={() => setSessionTime(p.label)}
+                  className={`p-2 rounded-xl text-left border transition-all cursor-pointer ${
+                    sessionTime === p.label
+                      ? 'bg-emerald-50 border-emerald-500 text-emerald-900 ring-2 ring-emerald-500/20'
+                      : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  <p className="font-mono font-black text-xs">{p.label}</p>
+                  <p className="text-[10px] text-slate-400 mt-0.5">{p.desc}</p>
+                </button>
+              ))}
+            </div>
+
+            {/* Custom Time input */}
+            <div className="pt-1">
+              <input
+                type="text"
+                value={sessionTime}
+                onChange={e => setSessionTime(e.target.value)}
+                placeholder="Hoặc tự gõ giờ: VD: 18:00 - 19:30"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-mono font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500"
+              />
+            </div>
+          </div>
+
+          {/* 4. Chọn Phòng Học */}
+          <div className="space-y-2">
+            <label className="text-xs font-black text-slate-700 uppercase tracking-wider flex items-center justify-between">
+              <span>4. Phòng Học:</span>
+              <span className="text-[11px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                {sessionRoom}
+              </span>
+            </label>
+
+            {/* Preset rooms */}
+            <div className="flex flex-wrap gap-1.5">
+              {PRESET_ROOMS.map(r => (
+                <button
+                  key={r}
+                  type="button"
+                  onClick={() => setSessionRoom(r)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                    sessionRoom === r
+                      ? 'bg-blue-50 border-blue-500 text-blue-900 font-black ring-2 ring-blue-500/20'
+                      : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'
+                  }`}
+                >
+                  {r}
+                </button>
+              ))}
+            </div>
+
+            <input
+              type="text"
+              value={sessionRoom}
+              onChange={e => setSessionRoom(e.target.value)}
+              placeholder="Hoặc tự gõ tên phòng..."
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 mt-1"
+            />
+          </div>
+
+          {/* 5. Live Preview Card */}
+          <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-4 space-y-2 border border-slate-800">
+            <div className="flex items-center justify-between text-xs font-bold text-teal-300">
+              <span className="flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-amber-300" />
+                XEM TRƯỚC LỊCH SẼ LƯU
+              </span>
+              <span className="bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded text-[10px]">Tự cập nhật bảng tuần</span>
+            </div>
+            <div className="font-black text-white text-sm">
+              Lớp: {classes.find(c => c.id === editingClassId)?.name || 'Chưa chọn'}
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-200">
+              <span className="bg-white/10 px-2.5 py-1 rounded-lg border border-white/15 flex items-center gap-1.5">
+                <Clock className="w-3.5 h-3.5 text-teal-300" />
+                <span>{previewScheduleString || 'Chưa có lịch'}</span>
+              </span>
+              <span className="bg-white/10 px-2.5 py-1 rounded-lg border border-white/15 flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-amber-300" />
+                <span>{sessionRoom}</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Action buttons */}
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={() => setScheduleModalOpen(false)}
+              className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-700 font-bold text-xs hover:bg-slate-50 transition-colors cursor-pointer"
+            >
+              Hủy bỏ
+            </button>
+            <button
+              type="button"
+              onClick={handleSaveSchedule}
+              disabled={savingSchedule || !editingClassId}
+              className="px-6 py-2.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-black text-xs rounded-xl shadow-md flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50"
+            >
+              {savingSchedule ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+              <span>{savingSchedule ? 'Đang lưu...' : 'LƯU LỊCH DẠY NGAY'}</span>
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* ── Modal 2: Danh sách học sinh của lớp ─────────────────────── */}
       <Modal
         open={!!detailClass}
         onClose={() => setDetailClass(null)}
-        title={`Danh sách học sinh · Lớp ${detailClass?.name || detailClass?.class_name}`}
+        title={`Thông tin lớp học · ${detailClass?.name || detailClass?.class_name}`}
         size="2xl"
       >
         <div className="space-y-4">
+          {/* Quick Action Header inside modal */}
+          <div className="flex flex-wrap items-center justify-between gap-2 p-3 bg-slate-50 rounded-2xl border border-slate-200">
+            <div>
+              <p className="text-xs font-black text-slate-800">
+                {detailClass?.name} ({detailClass?.subject} · Khối {detailClass?.grade})
+              </p>
+              <p className="text-[11px] text-slate-500 mt-0.5">
+                Lịch: {detailClass?.schedule || 'Chưa xếp'} · {detailClass?.room || 'Chưa có phòng'}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  const targetCls = detailClass
+                  setDetailClass(null)
+                  openEditSchedule(targetCls)
+                }}
+                className="px-3 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-xs cursor-pointer transition-colors"
+              >
+                <Edit3 className="w-3.5 h-3.5" />
+                <span>Đổi Lịch Lớp Này</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  const cid = detailClass?.id
+                  setDetailClass(null)
+                  navigate('/tuition?tab=session-attendance&classId=' + cid)
+                }}
+                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-xs cursor-pointer transition-colors"
+              >
+                <CalendarCheck className="w-3.5 h-3.5" />
+                <span>Điểm Danh Học Phí</span>
+              </button>
+            </div>
+          </div>
+
           <div className="relative">
             <Search className="absolute left-3 top-2.5 w-4 h-4 text-gray-400" />
             <input
@@ -660,16 +1140,19 @@ export default function Dashboard() {
                       key={s.id}
                       onClick={() => setScorecardStudent(s)}
                       style={bgStyle}
-                      className="relative border border-gray-200 hover:border-teal-300 rounded-xl hover:shadow-sm transition-all duration-200 cursor-pointer flex flex-col items-center justify-center py-4 px-3 min-h-[56px] text-center"
+                      className="p-3 rounded-xl border border-gray-200/90 shadow-sm hover:shadow-md hover:border-teal-400 transition cursor-pointer flex flex-col justify-between h-20"
                     >
-                      <span className="font-extrabold text-xs text-gray-800 tracking-wide uppercase line-clamp-2">
-                        {s.full_name}
-                      </span>
-                      {pct !== undefined && (
-                        <span className="absolute bottom-1 left-2 text-[9px] font-black font-mono text-gray-650 bg-white/70 px-1 py-0.2 rounded shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
-                          {pct}%
+                      <div className="min-w-0">
+                        <p className="font-black text-xs text-gray-800 truncate">{s.full_name}</p>
+                        <p className="text-[10px] text-gray-500 font-mono mt-0.5">{s.student_code}</p>
+                      </div>
+
+                      <div className="flex items-center justify-between text-[10px] font-bold text-gray-600 mt-1">
+                        <span>Tiến độ:</span>
+                        <span className="font-extrabold text-teal-700">
+                          {pct !== undefined ? `${pct}%` : 'Chưa có'}
                         </span>
-                      )}
+                      </div>
                     </div>
                   )
                 })}
@@ -679,17 +1162,14 @@ export default function Dashboard() {
         </div>
       </Modal>
 
-      {/* ── Modal: Xem hồ sơ và bảng điểm rút gọn của học sinh ───── */}
-      <StudentScorecardModal
-        student={scorecardStudent}
-        open={!!scorecardStudent}
-        onClose={() => {
-          setScorecardStudent(null)
-          if (detailClass) {
-            void fetchClassStats(detailClass.id, rosterStudents)
-          }
-        }}
-      />
+      {/* ── Modal 3: Bảng điểm học sinh ────────────────────────────── */}
+      {scorecardStudent && (
+        <StudentScorecardModal
+          student={scorecardStudent}
+          onClose={() => setScorecardStudent(null)}
+        />
+      )}
+
     </div>
   )
 }
