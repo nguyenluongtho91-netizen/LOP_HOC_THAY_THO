@@ -1,6 +1,6 @@
-﻿// src/lib/numberToWords.ts
+// src/lib/numberToWords.ts
 
-const DIGITS = ['khĂ´ng', 'má»™t', 'hai', 'ba', 'bá»‘n', 'nÄƒm', 'sĂ¡u', 'báº£y', 'tĂ¡m', 'chĂ­n']
+const DIGITS = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín']
 
 function readThreeDigitsGroup(n: number, isHighestGroup: boolean): string {
   const hundred = Math.floor(n / 100)
@@ -12,26 +12,26 @@ function readThreeDigitsGroup(n: number, isHighestGroup: boolean): string {
 
   const parts: string[] = []
 
-  // HĂ ng trÄƒm
+  // Hàng trăm
   if (hundred > 0 || !isHighestGroup) {
-    parts.push(DIGITS[hundred] + ' trÄƒm')
+    parts.push(DIGITS[hundred] + ' trăm')
   }
 
-  // HĂ ng chá»¥c
+  // Hàng chục
   if (ten > 1) {
-    parts.push(DIGITS[ten] + ' mÆ°Æ¡i')
+    parts.push(DIGITS[ten] + ' mươi')
   } else if (ten === 1) {
-    parts.push('mÆ°á»i')
+    parts.push('mười')
   } else if (ten === 0 && unit > 0 && (hundred > 0 || !isHighestGroup)) {
     parts.push('linh')
   }
 
-  // HĂ ng Ä‘Æ¡n vá»‹
+  // Hàng đơn vị
   if (unit > 0) {
     if (unit === 1 && ten >= 2) {
-      parts.push('má»‘t')
+      parts.push('mốt')
     } else if (unit === 5 && ten >= 1) {
-      parts.push('lÄƒm')
+      parts.push('lăm')
     } else {
       parts.push(DIGITS[unit])
     }
@@ -41,18 +41,18 @@ function readThreeDigitsGroup(n: number, isHighestGroup: boolean): string {
 }
 
 /**
- * Chuyá»ƒn Ä‘á»•i sá»‘ tiá»n thĂ nh chá»¯ Tiáº¿ng Viá»‡t chuáº©n hĂ³a Ä‘Æ¡n tĂ i chĂ­nh
- * VĂ­ dá»¥: 600000 -> 'SĂ¡u trÄƒm nghĂ¬n Ä‘á»“ng cháºµn'
- *       1000000 -> 'Má»™t triá»‡u Ä‘á»“ng cháºµn'
- *       1250000 -> 'Má»™t triá»‡u hai trÄƒm nÄƒm mÆ°Æ¡i nghĂ¬n Ä‘á»“ng cháºµn'
+ * Chuyển đổi số tiền thành chữ Tiếng Việt chuẩn hóa đơn tài chính
+ * Ví dụ: 600000 -> 'Sáu trăm nghìn đồng chẵn'
+ *       1000000 -> 'Một triệu đồng chẵn'
+ *       1250000 -> 'Một triệu hai trăm năm mươi nghìn đồng chẵn'
  */
 export function numberToVietnameseWords(amount: number | null | undefined): string {
   if (amount == null || isNaN(amount) || amount === 0) {
-    return 'KhĂ´ng Ä‘á»“ng cháºµn'
+    return 'Không đồng chẵn'
   }
 
   const num = Math.floor(Math.abs(amount))
-  if (num === 0) return 'KhĂ´ng Ä‘á»“ng cháºµn'
+  if (num === 0) return 'Không đồng chẵn'
 
   const groups: number[] = []
   let temp = num
@@ -61,7 +61,7 @@ export function numberToVietnameseWords(amount: number | null | undefined): stri
     temp = Math.floor(temp / 1000)
   }
 
-  const scales = ['', 'nghĂ¬n', 'triá»‡u', 'tá»·', 'nghĂ¬n tá»·', 'triá»‡u tá»·']
+  const scales = ['', 'nghìn', 'triệu', 'tỷ', 'nghìn tỷ', 'triệu tỷ']
   const resultWords: string[] = []
 
   for (let i = groups.length - 1; i >= 0; i--) {
@@ -77,8 +77,8 @@ export function numberToVietnameseWords(amount: number | null | undefined): stri
   }
 
   const full = resultWords.join(' ').replace(/\s+/g, ' ').trim()
-  if (!full) return 'KhĂ´ng Ä‘á»“ng cháºµn'
+  if (!full) return 'Không đồng chẵn'
 
   const formatted = full.charAt(0).toUpperCase() + full.slice(1)
-  return formatted + ' Ä‘á»“ng cháºµn'
+  return formatted + ' đồng chẵn'
 }

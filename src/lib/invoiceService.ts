@@ -1,4 +1,4 @@
-﻿// src/lib/invoiceService.ts
+// src/lib/invoiceService.ts
 import { supabase } from './supabase'
 import { numberToVietnameseWords } from './numberToWords'
 
@@ -12,22 +12,22 @@ export interface InvoiceItem {
 }
 
 export interface ElectronicInvoiceData {
-  id: string              // MĂ£ Ä‘á»‹nh danh hĂ³a Ä‘Æ¡n, vd: HD26-8F92A1
-  invoiceNumber: string   // Sá»‘ hĂ³a Ä‘Æ¡n, vd: HD26-00128
-  symbol: string          // KĂ½ hiá»‡u hĂ³a Ä‘Æ¡n, vd: TT/26E
-  templateCode: string    // Máº«u sá»‘, vd: 01GTKT0/001
-  issueDate: string       // NgĂ y láº­p: ISO string hoáº·c YYYY-MM-DD
-  issueDateFormatted: string // NgĂ y DD thĂ¡ng MM nÄƒm YYYY
+  id: string              // Mã định danh hóa đơn, vd: HD26-8F92A1
+  invoiceNumber: string   // Số hóa đơn, vd: HD26-00128
+  symbol: string          // Ký hiệu hóa đơn, vd: TT/26E
+  templateCode: string    // Mẫu số, vd: 01GTKT0/001
+  issueDate: string       // Ngày lập: ISO string hoặc YYYY-MM-DD
+  issueDateFormatted: string // Ngày DD tháng MM năm YYYY
 
-  // ÄÆ¡n vá»‹ phĂ¡t hĂ nh
-  sellerName: string      // Há»˜ KINH DOANH NGUYá»„N LÆ¯Æ NG THá»Œ
-  sellerBrand: string     // Lá»P Há»ŒC TOĂN THáº¦Y THá»Œ
+  // Đơn vị phát hành
+  sellerName: string      // HỘ KINH DOANH NGUYỄN LƯƠNG THỌ
+  sellerBrand: string     // LỚP HỌC TOÁN THẦY THỌ
   sellerTaxCode: string   // 0108833133
-  sellerAddress: string   // Sá»‘ 8 NgĂµ 198 LĂª Trá»ng Táº¥n, P. KhÆ°Æ¡ng Mai, Q. Thanh XuĂ¢n, HĂ  Ná»™i
+  sellerAddress: string   // Số 8 Ngõ 198 Lê Trọng Tấn, P. Khương Mai, Q. Thanh Xuân, TP. Hà Nội
   sellerHotline: string   // 0345.833.133
-  sellerBank: string      // Vietcombank - STK: 1070493932 (Chá»§ TK: NGUYEN LUONG THO)
+  sellerBank: string      // Vietcombank - STK: 1070493932 (Chủ TK: NGUYEN LUONG THO)
 
-  // KhĂ¡ch hĂ ng / Há»c sinh
+  // Khách hàng / Học sinh
   studentId?: string
   studentName: string
   studentCode?: string
@@ -35,23 +35,23 @@ export interface ElectronicInvoiceData {
   parentName?: string
   phone?: string
 
-  // Chi tiáº¿t hĂ³a Ä‘Æ¡n
+  // Chi tiết hóa đơn
   items: InvoiceItem[]
   totalAmount: number
   totalAmountWords: string
-  paymentMethod: string   // Chuyá»ƒn khoáº£n Vietcombank | Tiá»n máº·t
+  paymentMethod: string   // Chuyển khoản Vietcombank | Tiền mặt
   note?: string
 
-  // KĂ½ sá»‘ Ä‘iá»‡n tá»­
-  signedBy: string        // Há»˜ KINH DOANH NGUYá»„N LÆ¯Æ NG THá»Œ
-  signedAt: string        // Thá»i gian kĂ½ sá»‘
-  lookupCode: string      // MĂ£ tra cá»©u trá»±c tuyáº¿n (dĂ¹ng cho QR & URL)
+  // Ký số điện tử
+  signedBy: string        // HỘ KINH DOANH NGUYỄN LƯƠNG THỌ
+  signedAt: string        // Thời gian ký số
+  lookupCode: string      // Mã tra cứu trực tuyến (dùng cho QR & URL)
 }
 
 const LOCAL_STORAGE_KEY = '__INVOICES_STORE__'
 
 /**
- * Sinh mĂ£ tra cá»©u hĂ³a Ä‘Æ¡n duy nháº¥t
+ * Sinh mã tra cứu hóa đơn duy nhất
  */
 export function generateInvoiceLookupCode(seed?: string): string {
   const yearSuffix = new Date().getFullYear().toString().slice(-2) // "26"
@@ -69,18 +69,18 @@ export function generateInvoiceLookupCode(seed?: string): string {
 }
 
 /**
- * Äá»‹nh dáº¡ng ngĂ y theo chuáº©n hĂ³a Ä‘Æ¡n Viá»‡t Nam: "NgĂ y DD thĂ¡ng MM nÄƒm YYYY"
+ * Định dạng ngày theo chuẩn hóa đơn Việt Nam: "Ngày DD tháng MM năm YYYY"
  */
 export function formatVietnameseInvoiceDate(dateInput?: string | Date): string {
   const d = dateInput ? new Date(dateInput) : new Date()
   const day = String(d.getDate()).padStart(2, '0')
   const month = String(d.getMonth() + 1).padStart(2, '0')
   const year = d.getFullYear()
-  return `NgĂ y ${day} thĂ¡ng ${month} nÄƒm ${year}`
+  return `Ngày ${day} tháng ${month} năm ${year}`
 }
 
 /**
- * Khá»Ÿi táº¡o hĂ³a Ä‘Æ¡n Ä‘iá»‡n tá»­ tá»« thĂ´ng tin thanh toĂ¡n hoáº·c há»c phĂ­
+ * Khởi tạo hóa đơn điện tử từ thông tin thanh toán hoặc học phí
  */
 export function buildElectronicInvoice(params: {
   id?: string
@@ -101,16 +101,16 @@ export function buildElectronicInvoice(params: {
   const totalWords = numberToVietnameseWords(total)
 
   const courseTitle = params.courseName
-    ? `Há»c phĂ­ mĂ´n ToĂ¡n - ${params.courseName}`
+    ? `Học phí môn Toán - ${params.courseName}`
     : params.className
-    ? `Há»c phĂ­ mĂ´n ToĂ¡n - ${params.className}`
-    : 'Há»c phĂ­ mĂ´n ToĂ¡n Tháº§y Thá»'
+    ? `Học phí môn Toán - ${params.className}`
+    : 'Học phí môn Toán Thầy Thọ'
 
   const items: InvoiceItem[] = [
     {
       stt: 1,
       name: courseTitle,
-      unit: 'KhĂ³a / ThĂ¡ng',
+      unit: 'Khóa / Tháng',
       quantity: 1,
       unitPrice: total,
       amount: total,
@@ -130,14 +130,14 @@ export function buildElectronicInvoice(params: {
     issueDate: dateObj.toISOString(),
     issueDateFormatted: formatVietnameseInvoiceDate(dateObj),
 
-    sellerName: 'Há»˜ KINH DOANH NGUYá»„N LÆ¯Æ NG THá»Œ',
-    sellerBrand: 'Lá»P Há»ŒC TOĂN THáº¦Y THá»Œ',
+    sellerName: 'HỘ KINH DOANH NGUYỄN LƯƠNG THỌ',
+    sellerBrand: 'LỚP HỌC TOÁN THẦY THỌ',
     sellerTaxCode: '0108833133',
-    sellerAddress: 'Sá»‘ 8 NgĂµ 198 LĂª Trá»ng Táº¥n, P. KhÆ°Æ¡ng Mai, Q. Thanh XuĂ¢n, TP. HĂ  Ná»™i',
+    sellerAddress: 'Số 8 Ngõ 198 Lê Trọng Tấn, P. Khương Mai, Q. Thanh Xuân, TP. Hà Nội',
     sellerHotline: '0345.833.133',
-    sellerBank: 'Vietcombank - STK: 1070493932 (Chá»§ TK: NGUYEN LUONG THO)',
+    sellerBank: 'Vietcombank - STK: 1070493932 (Chủ TK: NGUYEN LUONG THO)',
 
-    studentName: params.studentName || 'Há»c sinh',
+    studentName: params.studentName || 'Học sinh',
     studentCode: params.studentCode || '',
     className: params.className || '',
     parentName: params.parentName || '',
@@ -146,20 +146,19 @@ export function buildElectronicInvoice(params: {
     items,
     totalAmount: total,
     totalAmountWords: totalWords,
-    paymentMethod: params.paymentMethod || 'Chuyá»ƒn khoáº£n Vietcombank',
-    note: params.note || 'ÄĂ£ hoĂ n táº¥t thanh toĂ¡n há»c phĂ­',
+    paymentMethod: params.paymentMethod || 'Chuyển khoản Vietcombank',
+    note: params.note || 'Đã hoàn tất thanh toán học phí',
 
-    signedBy: 'Há»˜ KINH DOANH NGUYá»„N LÆ¯Æ NG THá»Œ',
+    signedBy: 'HỘ KINH DOANH NGUYỄN LƯƠNG THỌ',
     signedAt: nowStr,
     lookupCode,
   }
 }
 
 /**
- * LÆ°u hĂ³a Ä‘Æ¡n vĂ o LocalStorage & Supabase
+ * Lưu hóa đơn vào LocalStorage & Supabase
  */
 export async function saveElectronicInvoice(invoice: ElectronicInvoiceData): Promise<void> {
-  // 1. LÆ°u LocalStorage
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_KEY)
     const map: Record<string, ElectronicInvoiceData> = raw ? JSON.parse(raw) : {}
@@ -167,10 +166,9 @@ export async function saveElectronicInvoice(invoice: ElectronicInvoiceData): Pro
     map[invoice.id] = invoice
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(map))
   } catch (e) {
-    console.error('Lá»—i lÆ°u invoice vĂ o localStorage:', e)
+    console.error('Lỗi lưu invoice vào localStorage:', e)
   }
 
-  // 2. LÆ°u vĂ o Supabase Cloud (báº£ng exams)
   try {
     const { data: existing } = await supabase
       .from('exams')
@@ -199,17 +197,16 @@ export async function saveElectronicInvoice(invoice: ElectronicInvoiceData): Pro
         })
     }
   } catch (err) {
-    console.warn('LÆ°u hĂ³a Ä‘Æ¡n lĂªn Supabase chÆ°a thĂ nh cĂ´ng, Ä‘Ă£ lÆ°u LocalStorage an toĂ n:', err)
+    console.warn('Lưu hóa đơn lên Supabase chưa thành công, đã lưu LocalStorage an toàn:', err)
   }
 }
 
 /**
- * Láº¥y thĂ´ng tin hĂ³a Ä‘Æ¡n theo mĂ£ tra cá»©u (lookupCode)
+ * Lấy thông tin hóa đơn theo mã tra cứu (lookupCode)
  */
 export async function getElectronicInvoice(lookupCode: string): Promise<ElectronicInvoiceData | null> {
   const cleanCode = lookupCode.trim().toUpperCase()
 
-  // 1. Kiá»ƒm tra LocalStorage trÆ°á»›c
   try {
     const raw = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (raw) {
@@ -218,7 +215,6 @@ export async function getElectronicInvoice(lookupCode: string): Promise<Electron
     }
   } catch {}
 
-  // 2. Kiá»ƒm tra Supabase Cloud
   try {
     const { data: row } = await supabase
       .from('exams')
@@ -231,7 +227,7 @@ export async function getElectronicInvoice(lookupCode: string): Promise<Electron
       if (item) return item
     }
   } catch (e) {
-    console.error('Lá»—i tra cá»©u hĂ³a Ä‘Æ¡n tá»« Supabase:', e)
+    console.error('Lỗi tra cứu hóa đơn từ Supabase:', e)
   }
 
   return null
