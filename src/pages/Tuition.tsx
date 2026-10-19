@@ -1,10 +1,12 @@
-import { supabase } from '@/lib/supabase'
+﻿import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
 import { useEffect, useState, useMemo } from 'react'
-import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
+import { Banknote, Plus, FileText, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
+import ElectronicInvoiceModal from '@/components/tuition/ElectronicInvoiceModal'
+import { buildElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
 import Modal from '@/components/Modal'
@@ -35,6 +37,7 @@ export default function Tuition() {
   // Modals state
   const [payModal, setPayModal] = useState<TuitionNotificationRow | null>(null)
   const [qrModal, setQrModal]   = useState<TuitionNotificationRow | null>(null)
+  const [activeInvoice, setActiveInvoice] = useState<ElectronicInvoiceData | null>(null)
   const [payForm, setPayForm]   = useState({ amount: '', method: 'transfer' as PaymentMethod, note: '' })
   const [saving, setSaving]     = useState(false)
   const [sending, setSending]   = useState(false)
@@ -56,6 +59,27 @@ export default function Tuition() {
   const [robotOnline, setRobotOnline] = useState<boolean>(false)
   const [activeTab, setActiveTab] = useState<'tuition' | 'custom-fee' | 'revenue'>('tuition')
   const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
+  const handleOpenInvoice = (row: TuitionNotificationRow) => {
+    const feeInfo = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+    const cls = classes.find(c => c.id === (row.student.class_id || selClass))
+    const className = cls ? ((cls as any).class_name || cls.name) : (row.student.class_name || '')
+    const phone = ((row.student as any)?.zalo || (row.student as any)?.parent_phone || '').replace(/\D/g, '')
+
+    const invoice = buildElectronicInvoice({
+      id: row.notification?.id ? ('HD26-' + row.notification.id.slice(0, 6).toUpperCase()) : undefined,
+      studentName: row.student.full_name,
+      studentCode: row.student.student_code,
+      className,
+      parentName: (row.student as any)?.parent_name || 'Quý phụ huynh',
+      phone,
+      amount: feeInfo.amount,
+      courseName: row.notification?.course_name || className || courseName,
+      paymentMethod: row.status === 'paid' ? 'Chuyển khoản Vietcombank' : 'Chưa thanh toán (Biên lai báo phí)',
+      note: feeInfo.note || row.notification?.note || 'Học phí môn Toán Thầy Thọ',
+      date: row.notification?.updated_at || new Date(),
+    })
+    setActiveInvoice(invoice)
+  }
   const [editingStudentFee, setEditingStudentFee] = useState<{ student: any; row: TuitionNotificationRow } | null>(null)
 
   const getStandardClassFee = (cls: any): number => {
@@ -1329,9 +1353,26 @@ export default function Tuition() {
                             >
                               <QrCode className="w-4 h-4" />
                             </button>
+
+                            <button
+                              onClick={() => handleOpenInvoice(row)}
+                              className="p-2 text-amber-600 hover:bg-amber-50 rounded-xl border border-amber-200 transition-colors"
+                              title="Xem trước hóa đơn / Phiếu thu"
+                            >
+                              <FileText className="w-4 h-4" />
+                            </button>
                           </div>
                         ) : row.status === 'paid' ? (
-                          <span className="text-xs text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg">✓ Hoàn tất</span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-1 rounded-lg">✓ Hoàn tất</span>
+                            <button
+                              onClick={() => handleOpenInvoice(row)}
+                              className="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 rounded-lg text-xs font-black flex items-center gap-1 shadow-xs transition-all hover:scale-105 cursor-pointer"
+                              title="Xuất & In Hóa đơn điện tử / Phiếu thu"
+                            >
+                              <FileText className="w-3.5 h-3.5 text-amber-600" /> Hóa đơn
+                            </button>
+                          </div>
                         ) : (
                           <button
                             onClick={() => sendSingleNotification(row.student.id)}
@@ -2298,6 +2339,13 @@ export default function Tuition() {
           onResetToStandard={async () => {
             await handleResetCustomFee(editingStudentFee.student.id, selClass)
           }}
+        />
+      )}
+      {/* Electronic Invoice Modal */}
+      {activeInvoice && (
+        <ElectronicInvoiceModal
+          invoice={activeInvoice}
+          onClose={() => setActiveInvoice(null)}
         />
       )}
     </div>

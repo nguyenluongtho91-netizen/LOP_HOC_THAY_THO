@@ -1,4 +1,4 @@
-// @ts-nocheck
+﻿// @ts-nocheck
 import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
@@ -47,6 +47,7 @@ import NhanVoPage from '@/pages/NhanVoPage'
 import StudentCards from '@/pages/StudentCards'
 import StudentProgressPage from '@/pages/StudentProgressPage'
 import ZaloCenter from '@/pages/ZaloCenter'
+import PublicInvoicePage from '@/pages/PublicInvoicePage'
 
 // --- PHỤ TRỢ: LOADER ---
 function Spinner() {
@@ -91,6 +92,11 @@ export default function App() {
       {/* 1. CỔNG CÔNG KHAI DÀNH CHO HỌC SINH VÀ ĐĂNG NHẬP */}
       <Route path="/login"    element={<Login />} />
       <Route path="/thi"      element={<StudentPortal />} />
+      {/* CỔNG TRA CỨU HÓA ĐƠN ĐIỆN TỬ DÀNH CHO PHỤ HUYNH */}
+      <Route path="/hoa-don/:invoiceId" element={<PublicInvoicePage />} />
+      <Route path="/hoa-don"            element={<PublicInvoicePage />} />
+      <Route path="/invoice/:invoiceId" element={<PublicInvoicePage />} />
+      <Route path="/invoice"            element={<PublicInvoicePage />} />
       {/* CỔNG NỘP BÀI TẬP VỀ NHÀ DÀNH CHO HỌC SINH (CHUẨN AZOTA) */}
       <Route path="/nop-bai/:assignmentId" element={<StudentSubmitHomeworkPage />} />
       <Route path="/nop-bai"               element={<StudentSubmitHomeworkPage />} />

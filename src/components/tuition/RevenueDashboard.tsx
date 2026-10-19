@@ -1,11 +1,13 @@
 import React, { useState, useMemo } from 'react'
 import {
-  TrendingUp, Calendar, DollarSign, CreditCard, Wallet,
+  TrendingUp, Calendar, FileText, DollarSign, CreditCard, Wallet,
   Building2, Printer, Search, Plus, Trash2, CheckCircle,
   ArrowUpRight, AlertCircle, Sparkles, Filter, ChevronDown
 } from 'lucide-react'
 import { fmtVNDShort } from '@/lib/helpers'
 import Modal from '@/components/Modal'
+import ElectronicInvoiceModal from './ElectronicInvoiceModal'
+import { buildElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import type { Payment, TuitionNotification, Class, Student, Enrollment, PaymentMethod } from '@/types'
 
 interface RevenueDashboardProps {
@@ -53,6 +55,7 @@ export default function RevenueDashboard({
     paidAt: new Date().toISOString().substring(0, 10)
   })
   const [addingPayment, setAddingPayment] = useState(false)
+  const [selectedInvoice, setSelectedInvoice] = useState<ElectronicInvoiceData | null>(null)
 
   // Generate list of available months (last 12 months)
   const availableMonths = useMemo(() => {
@@ -476,7 +479,7 @@ export default function RevenueDashboard({
                 <th className='px-5 py-3 text-right text-slate-700 font-extrabold text-xs uppercase tracking-wider'>Số tiền</th>
                 <th className='px-5 py-3 text-center text-slate-700 font-extrabold text-xs uppercase tracking-wider'>Phương thức</th>
                 <th className='px-5 py-3 text-left text-slate-700 font-extrabold text-xs uppercase tracking-wider'>Nội dung / Ghi chú</th>
-                {onDeletePayment && <th className='px-5 py-3 text-right text-slate-700 font-extrabold text-xs uppercase tracking-wider'></th>}
+                <th className='px-5 py-3 text-right text-slate-700 font-extrabold text-xs uppercase tracking-wider'>Chứng từ / Thao tác</th>
               </tr>
             </thead>
             <tbody className='divide-y divide-slate-100'>
@@ -530,21 +533,44 @@ export default function RevenueDashboard({
                       <td className='px-5 py-3 text-xs text-slate-600 font-medium'>
                         {p.note || '—'}
                       </td>
-                      {onDeletePayment && (
-                        <td className='px-5 py-3 text-right'>
+                      <td className='px-5 py-3 text-right whitespace-nowrap'>
+                        <button
+                          onClick={() => {
+                            const inv = buildElectronicInvoice({
+                              id: 'HD26-' + p.id.slice(0, 6).toUpperCase(),
+                              studentName: st?.full_name || 'Học sinh vãng lai',
+                              studentCode: st?.student_code,
+                              className: cls ? ((cls as any).class_name || cls.name) : '',
+                              parentName: (st as any)?.parent_name || 'Quý phụ huynh',
+                              phone: (st as any)?.zalo || (st as any)?.parent_phone,
+                              amount: Number(p.amount || 0),
+                              courseName: cls ? ((cls as any).class_name || cls.name) : 'Học phí môn Toán',
+                              paymentMethod: isTransfer ? 'Chuyển khoản Vietcombank' : 'Tiền mặt',
+                              note: p.note || 'Thanh toán học phí',
+                              date: p.paid_at || p.created_at || new Date(),
+                            })
+                            setSelectedInvoice(inv)
+                          }}
+                          className='px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 rounded-lg text-xs font-black inline-flex items-center gap-1 shadow-xs transition-all hover:scale-105 cursor-pointer mr-1.5'
+                          title='Xuất & In Hóa đơn điện tử'
+                        >
+                          <FileText className='w-3.5 h-3.5 text-amber-600' />
+                          Hóa đơn
+                        </button>
+                        {onDeletePayment && (
                           <button
                             onClick={() => {
                               if (window.confirm('Xóa bản ghi thu tiền này?')) {
                                 void onDeletePayment(p.id)
                               }
                             }}
-                            className='p-1 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer'
+                            className='p-1 rounded text-slate-300 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer inline-flex items-center align-middle'
                             title='Xóa bản ghi'
                           >
                             <Trash2 className='w-3.5 h-3.5' />
                           </button>
-                        </td>
-                      )}
+                        )}
+                      </td>
                     </tr>
                   )
                 })
@@ -685,6 +711,13 @@ export default function RevenueDashboard({
             </div>
           </form>
         </Modal>
+      )}
+      {/* Electronic Invoice Modal */}
+      {selectedInvoice && (
+        <ElectronicInvoiceModal
+          invoice={selectedInvoice}
+          onClose={() => setSelectedInvoice(null)}
+        />
       )}
     </div>
   )
