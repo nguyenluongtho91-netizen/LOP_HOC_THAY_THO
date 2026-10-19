@@ -155,7 +155,28 @@ export default function PublicInvoicePage() {
             </div>
           </div>
         ) : (
-          <div id="printable-invoice" className="bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-200 text-slate-800 print:border-none print:shadow-none print:p-6 print:rounded-none">
+          <div id="printable-invoice" className="relative bg-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-200 text-slate-800 print:border-none print:shadow-none print:p-6 print:rounded-none overflow-hidden">
+            <style>{`
+              @media print {
+                @page {
+                  size: A4 portrait;
+                  margin: 12mm 15mm;
+                }
+                body {
+                  background: white !important;
+                  color: black !important;
+                  -webkit-print-color-adjust: exact !important;
+                  print-color-adjust: exact !important;
+                }
+              }
+            `}</style>
+            
+            {/* Watermark bảo mật */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.035] rotate-[-28deg]">
+              <span className="text-6xl sm:text-7xl font-black uppercase text-slate-900 tracking-widest text-center leading-tight">
+                HÓA ĐƠN ĐIỆN TỬ<br />TOÁN THẦY THỌ
+              </span>
+            </div>
             
             {/* Header 2 cá»™t */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 border-b-2 border-slate-900/90 print:pb-4">

@@ -5,6 +5,7 @@ import { Banknote, Plus, FileText, CheckCircle, XCircle, Mail, Send, Loader2, Me
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
+import InvoiceManager from '@/components/tuition/InvoiceManager'
 import ElectronicInvoiceModal from '@/components/tuition/ElectronicInvoiceModal'
 import { buildElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
@@ -57,7 +58,7 @@ export default function Tuition() {
   const [sendingStudentId, setSendingStudentId] = useState<string | null>(null)
   const [phoneEditModal, setPhoneEditModal] = useState<{ student: any; row: TuitionNotificationRow; phoneInput: string } | null>(null)
   const [robotOnline, setRobotOnline] = useState<boolean>(false)
-  const [activeTab, setActiveTab] = useState<'tuition' | 'custom-fee' | 'revenue'>('tuition')
+  const [activeTab, setActiveTab] = useState<'tuition' | 'custom-fee' | 'revenue' | 'invoices'>('tuition')
   const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
   const handleOpenInvoice = (row: TuitionNotificationRow) => {
     const feeInfo = getStudentEffectiveFee(row.student.id, selClass, row.notification)
@@ -826,7 +827,20 @@ export default function Tuition() {
       await loadTuitionNotifications(selClass)
       await loadPayments(selClass)
 
-      toast.success(`✅ Đã thu học phí khóa ${row.notification.course_name} từ ${row.student.full_name}`)
+      toast.success((t) => (
+        <div className="flex items-center justify-between gap-3">
+          <span>✓ Đã thu học phí: {row.student.full_name}</span>
+          <button
+            onClick={() => {
+              toast.dismiss(t.id)
+              handleOpenInvoice({ ...row, status: 'paid' })
+            }}
+            className="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-black shadow-xs cursor-pointer whitespace-nowrap"
+          >
+            🧾 Mở Hóa Đơn
+          </button>
+        </div>
+      ), { duration: 6000 })
     } catch (error: any) {
       toast.error('Lỗi khi thu học phí: ' + error.message)
     }
@@ -1000,6 +1014,23 @@ export default function Tuition() {
         >
           <TrendingUp className='w-4 h-4 text-emerald-600' />
           Doanh Thu Hàng Tháng
+        </button>
+
+        <button
+          onClick={() => setActiveTab('invoices')}
+          className={'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ' + (
+            activeTab === 'invoices'
+              ? 'bg-white text-teal-800 shadow-sm shadow-slate-200'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          )}
+        >
+          <FileText className='w-4 h-4 text-rose-600' />
+          Sổ Hóa Đơn Điện Tử
+          {payments.length > 0 && (
+            <span className='px-2 py-0.5 rounded-full text-[10px] font-black bg-rose-100 text-rose-800'>
+              {payments.length}
+            </span>
+          )}
         </button>
       </div>
 
@@ -1466,6 +1497,17 @@ export default function Tuition() {
           enrollments={enrollments}
           onAddPayment={addPayment}
           onDeletePayment={handleDeletePayment}
+        />
+      )}
+
+      {activeTab === 'invoices' && (
+        <InvoiceManager
+          payments={payments}
+          tuitionNotifications={tuitionNotifications}
+          classes={classes}
+          students={students}
+          selectedClassId={selClass}
+          onSelectClassId={setSelClass}
         />
       )}
 

@@ -18,6 +18,7 @@ export default function ElectronicInvoiceModal({
   onClose,
 }: ElectronicInvoiceModalProps) {
   const [copied, setCopied] = useState(false)
+  const [copiedMsg, setCopiedMsg] = useState(false)
   const [sendingZalo, setSendingZalo] = useState(false)
 
   // Link tra cá»©u cĂ´ng khai trá»±c tuyáº¿n
