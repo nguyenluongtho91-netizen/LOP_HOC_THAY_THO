@@ -4,6 +4,8 @@ import { useEffect, useState, useMemo } from 'react'
 import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
+import SessionAttendanceFeeManager from '@/components/tuition/SessionAttendanceFeeManager'
+import { CalendarCheck, CalendarDays } from 'lucide-react'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import InvoiceManager from '@/components/tuition/InvoiceManager'
 import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
@@ -26,10 +28,10 @@ interface TuitionNotificationRow {
 
 export default function Tuition() {
   const {
-    classes, students, enrollments, payments, tuitionNotifications,
-    loadClasses, loadStudents, loadEnrollments, loadPayments, loadTuitionNotifications,
+    classes, students, enrollments, payments, tuitionNotifications, attendance,
+    loadClasses, loadStudents, loadEnrollments, loadPayments, loadTuitionNotifications, loadAttendance,
     addPayment, upsertTuitionNotification, updateTuitionNotification,
-    batchUpsertTuitionNotifications, deleteTuitionNotification
+    batchUpsertTuitionNotifications, deleteTuitionNotification, updateClass
   } = useDataStore()
 
   const [selClass, setSelClass] = useState('')
@@ -67,7 +69,7 @@ export default function Tuition() {
   const [sendingStudentId, setSendingStudentId] = useState<string | null>(null)
   const [phoneEditModal, setPhoneEditModal] = useState<{ student: any; row: TuitionNotificationRow; phoneInput: string } | null>(null)
   const [robotOnline, setRobotOnline] = useState<boolean>(false)
-  const [activeTab, setActiveTab] = useState<'tuition' | 'custom-fee' | 'revenue' | 'invoices' | 'tax-books'>('tuition')
+  const [activeTab, setActiveTab] = useState<'tuition' | 'session-attendance' | 'custom-fee' | 'revenue' | 'invoices' | 'tax-books'>('tuition')
   const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
   const handleOpenInvoice = (row: TuitionNotificationRow) => {
     const feeInfo = getStudentEffectiveFee(row.student.id, selClass, row.notification)
@@ -611,11 +613,19 @@ export default function Tuition() {
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
     
+    const studentAttendedCount = attendance.filter(
+      a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'late')
+    ).length
+    const sessionInfoLine = studentAttendedCount > 0
+      ? `• Số buổi đã học: ${studentAttendedCount} buổi\n`
+      : ''
+
     // MẪU CHUẨN THẦY ĐÃ DUYỆT: Không có link thô, dùng V.C.B, không lặp chữ Lớp
     const msg = `Chào Quý phụ huynh.\n`
               + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Lớp: ${cleanClass}\n`
+              + sessionInfoLine
               + `• Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n`
               + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
               + `• Hình thức nộp: Chuyển khoản\n`
@@ -631,6 +641,13 @@ export default function Tuition() {
     setCopiedZalo(null)
   }
 
+
+  // Tự động tải dữ liệu điểm danh buổi học khi chọn lớp
+  useEffect(() => {
+    if (selClass) {
+      void loadAttendance(selClass)
+    }
+  }, [selClass])
 
   // ── 1-CLICK AUTO SEND TO ALL PARENTS ──
   const runAutoBulkSend = async () => {
@@ -1024,20 +1041,36 @@ export default function Tuition() {
           </div>
         </div>
 
-        {/* 5 Hộp bước trong chuỗi - Bấm vào là nhảy trực tiếp đến bước đó */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-2.5">
+        {/* 6 Hộp bước trong chuỗi liên kết tự động */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
           
           <button
-            onClick={() => setActiveTab('tuition')}
+            onClick={() => setActiveTab('session-attendance')}
             className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
-              activeTab === 'tuition'
+              activeTab === 'session-attendance'
                 ? 'bg-teal-600/30 border-teal-400 ring-2 ring-teal-400/30'
                 : 'bg-white/5 border-white/10 hover:bg-white/10'
             }`}
           >
             <div className="flex items-center justify-between text-xs font-extrabold text-teal-300 mb-1">
               <span>BƯỚC 1</span>
-              <Banknote className="w-4 h-4 text-teal-400" />
+              <CalendarCheck className="w-4 h-4 text-teal-400" />
+            </div>
+            <p className="font-black text-sm text-white">Đánh Dấu Buổi Học</p>
+            <p className="text-[11px] text-slate-300 mt-0.5">Tự tính số buổi & tiền học</p>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('tuition')}
+            className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'tuition'
+                ? 'bg-blue-600/30 border-blue-400 ring-2 ring-blue-400/30'
+                : 'bg-white/5 border-white/10 hover:bg-white/10'
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs font-extrabold text-blue-300 mb-1">
+              <span>BƯỚC 2</span>
+              <Banknote className="w-4 h-4 text-blue-400" />
             </div>
             <p className="font-black text-sm text-white">Báo Học Phí</p>
             <p className="text-[11px] text-slate-300 mt-0.5">{stats.notifiedCount} HS đã báo • {stats.unpaidCount} chưa nộp</p>
@@ -1052,7 +1085,7 @@ export default function Tuition() {
             }`}
           >
             <div className="flex items-center justify-between text-xs font-extrabold text-indigo-300 mb-1">
-              <span>BƯỚC 2</span>
+              <span>BƯỚC 3</span>
               <SlidersHorizontal className="w-4 h-4 text-indigo-400" />
             </div>
             <p className="font-black text-sm text-white">Học Phí Riêng</p>
@@ -1068,7 +1101,7 @@ export default function Tuition() {
             }`}
           >
             <div className="flex items-center justify-between text-xs font-extrabold text-emerald-300 mb-1">
-              <span>BƯỚC 3</span>
+              <span>BƯỚC 4</span>
               <TrendingUp className="w-4 h-4 text-emerald-400" />
             </div>
             <p className="font-black text-sm text-white">Thu & Doanh Thu</p>
@@ -1084,7 +1117,7 @@ export default function Tuition() {
             }`}
           >
             <div className="flex items-center justify-between text-xs font-extrabold text-rose-300 mb-1">
-              <span>BƯỚC 4</span>
+              <span>BƯỚC 5</span>
               <FileText className="w-4 h-4 text-rose-400" />
             </div>
             <p className="font-black text-sm text-white">Hóa Đơn Điện Tử</p>
@@ -1100,7 +1133,7 @@ export default function Tuition() {
             }`}
           >
             <div className="flex items-center justify-between text-xs font-extrabold text-amber-300 mb-1">
-              <span>BƯỚC 5</span>
+              <span>BƯỚC 6</span>
               <BookOpen className="w-4 h-4 text-amber-400" />
             </div>
             <p className="font-black text-sm text-white">Sổ Thuế A1 & A2</p>
@@ -1495,6 +1528,25 @@ export default function Tuition() {
                                   Học phí riêng {effective.note ? effective.note : ''}
                                 </span>
                               )}
+                              {(() => {
+                                const attendedCount = attendance.filter(
+                                  a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'late')
+                                ).length
+                                if (attendedCount > 0) {
+                                  return (
+                                    <button
+                                      type='button'
+                                      onClick={() => setActiveTab('session-attendance')}
+                                      className='inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 cursor-pointer transition-colors mt-0.5'
+                                      title={`Học sinh này đã học ${attendedCount} buổi. Bấm để xem chi tiết buổi học`}
+                                    >
+                                      <CalendarCheck className='w-3 h-3 text-teal-600' />
+                                      Đã học: {attendedCount} buổi
+                                    </button>
+                                  )
+                                }
+                                return null
+                              })()}
                             </div>
                           )
                         })()}
@@ -1625,6 +1677,41 @@ export default function Tuition() {
       )}
 
       {/* TAB 2: MUC RIENG HOC PHI TUNG HOC SINH */}
+            {/* TAB 0: ĐÁNH DẤU BUỔI HỌC & TỰ TÍNH TIỀN THEO BUỔI */}
+      {activeTab === 'session-attendance' && (
+        <SessionAttendanceFeeManager
+          classes={classes}
+          selClass={selClass}
+          onSelectClass={setSelClass}
+          students={students}
+          enrollments={enrollments}
+          attendance={attendance}
+          loadAttendance={loadAttendance}
+          tuitionNotifications={tuitionNotifications}
+          upsertTuitionNotification={upsertTuitionNotification}
+          updateTuitionNotification={updateTuitionNotification}
+          updateClass={updateClass}
+          onOpenInvoice={(student, amount, count, unit) => {
+            const cls = classes.find(c => c.id === selClass)
+            const className = cls ? ((cls as any).class_name || cls.name) : ''
+            const invoice = buildElectronicInvoice({
+              studentName: student.full_name,
+              studentCode: student.student_code,
+              className,
+              parentName: (student as any)?.parent_name || 'Quý phụ huynh',
+              phone: ((student as any)?.zalo || (student as any)?.parent_phone || '').replace(/\D/g, ''),
+              amount,
+              courseName: `${className} (${count} buổi x ${fmtVNDShort(unit)})`,
+              paymentMethod: 'Chuyển khoản Vietcombank',
+              note: `Học phí môn Toán - ${count} buổi học thực tế`,
+              date: new Date()
+            })
+            setActiveInvoice(invoice)
+          }}
+          onSwitchToTuitionTab={() => setActiveTab('tuition')}
+        />
+      )}
+
       {activeTab === 'custom-fee' && (
         <CustomFeeManager
           classes={classes}
