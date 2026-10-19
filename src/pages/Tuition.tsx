@@ -224,7 +224,7 @@ export default function Tuition() {
 
   // ── Load foundational data on mount ──
   useEffect(() => {
-    void Promise.all([loadClasses(), loadStudents(), loadEnrollments(), loadPayments(), loadTuitionNotifications(), loadCustomFees()])
+    void Promise.all([loadClasses(), loadStudents(), loadEnrollments(), loadPayments(), loadTuitionNotifications(), loadCustomFees(), loadAttendance()])
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Load notifications + payments when class changes ──

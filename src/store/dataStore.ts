@@ -240,15 +240,29 @@ export const useDataStore = create<DataState>((set, _get) => ({
     if (dateFrom) q = q.gte('date', dateFrom)
     if (dateTo)   q = q.lte('date', dateTo)
     const { data } = await q.order('date', { ascending: false })
-    set({ attendance: (data ?? []) as AttendanceRecord[] })
+    const normalized = (data ?? []).map((r: any) => ({
+      ...r,
+      present: r.status === 'PRESENT' || r.status === 'present' || r.present === true
+    }))
+    set({ attendance: normalized as AttendanceRecord[] })
   },
 
   upsertAttendance: async (rows) => {
+    const payload = rows.map((r: any) => ({
+      class_id: r.class_id,
+      student_id: r.student_id,
+      date: r.date,
+      status: (r.present || r.status === 'present' || r.status === 'PRESENT') ? 'PRESENT' : 'ABSENT',
+      note: r.note || null
+    }))
     const { data, error } = await supabase.from('attendance')
-      .upsert(rows, { onConflict: 'date,class_id,student_id' })
+      .upsert(payload, { onConflict: 'date,class_id,student_id' })
       .select()
     if (error) throw error
-    const updated_rows = data as AttendanceRecord[]
+    const updated_rows = (data ?? []).map((r: any) => ({
+      ...r,
+      present: r.status === 'PRESENT' || r.status === 'present'
+    })) as AttendanceRecord[]
     set(s => {
       const updated = [...s.attendance]
       for (const row of updated_rows) {
