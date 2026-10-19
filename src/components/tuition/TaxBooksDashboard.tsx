@@ -378,7 +378,7 @@ export default function TaxBooksDashboard({
               <p className='font-black text-sm uppercase text-slate-900'>HỘ KINH DOANH NGUYỄN LƯƠNG THỌ</p>
               <p className='text-xs font-bold text-teal-700 uppercase'>CƠ SỞ: LỚP HỌC TOÁN THẦY THỌ</p>
               <p className='text-[11px] text-slate-600 mt-1'>Mã số thuế: <span className='font-mono font-bold text-slate-900'>0108833133</span></p>
-              <p className='text-[11px] text-slate-600'>Địa chỉ: Số 8 Ngõ 198 Lê Trọng Tấn, P. Khương Mai, Q. Thanh Xuân, Hà Nội</p>
+              <p className='text-[11px] text-slate-600'>Địa chỉ: Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh</p>
             </div>
             <div className='text-right space-y-1'>
               <p className='font-bold text-xs text-slate-700 uppercase'>Mẫu số: S1-HKD (SỔ A1)</p>
@@ -531,7 +531,7 @@ export default function TaxBooksDashboard({
               <p className='font-black text-sm uppercase text-slate-900'>HỘ KINH DOANH NGUYỄN LƯƠNG THỌ</p>
               <p className='text-xs font-bold text-teal-700 uppercase'>CƠ SỞ: LỚP HỌC TOÁN THẦY THỌ</p>
               <p className='text-[11px] text-slate-600 mt-1'>Mã số thuế: <span className='font-mono font-bold text-slate-900'>0108833133</span></p>
-              <p className='text-[11px] text-slate-600'>Địa chỉ: Số 8 Ngõ 198 Lê Trọng Tấn, P. Khương Mai, Q. Thanh Xuân, Hà Nội</p>
+              <p className='text-[11px] text-slate-600'>Địa chỉ: Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh</p>
             </div>
             <div className='text-right space-y-1'>
               <p className='font-bold text-xs text-slate-700 uppercase'>Mẫu số: S2-HKD (SỔ A2)</p>
@@ -684,6 +684,7 @@ export default function TaxBooksDashboard({
               <p className='font-black text-sm uppercase text-slate-900'>HỘ KINH DOANH NGUYỄN LƯƠNG THỌ</p>
               <p className='text-xs font-bold text-teal-700 uppercase'>CƠ SỞ: LỚP HỌC TOÁN THẦY THỌ</p>
               <p className='text-[11px] text-slate-600 mt-1'>Mã số thuế: <span className='font-mono font-bold text-slate-900'>0108833133</span></p>
+              <p className='text-[11px] text-slate-600'>Địa chỉ: Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh</p>
             </div>
             <div className='text-right space-y-1'>
               <p className='font-bold text-xs text-slate-700 uppercase'>BẢNG KÊ KHAI NGHĨA VỤ THUẾ</p>

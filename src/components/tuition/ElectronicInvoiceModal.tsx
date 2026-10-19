@@ -224,7 +224,7 @@ export default function ElectronicInvoiceModal({
               </p>
               <div className="text-[12px] text-slate-600 space-y-0.5 pt-1 leading-relaxed">
                 <p><span className="font-bold text-slate-700">Mã số thuế:</span> <span className="font-mono font-bold text-slate-800">{invoice.sellerTaxCode}</span></p>
-                <p><span className="font-bold text-slate-700">Địa chỉ:</span> {invoice.sellerAddress}</p>
+                <p><span className="font-bold text-slate-700">Địa chỉ:</span> {invoice.sellerAddress && !invoice.sellerAddress.includes('Lê Trọng Tấn') ? invoice.sellerAddress : 'Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh'}</p>
                 <p><span className="font-bold text-slate-700">Hotline / Zalo:</span> <span className="font-bold text-slate-900">{invoice.sellerHotline}</span></p>
                 <p><span className="font-bold text-slate-700">Số tài khoản:</span> <span className="font-bold text-blue-700 font-mono">1070493932</span> - Vietcombank</p>
               </div>

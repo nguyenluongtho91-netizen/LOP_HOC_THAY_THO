@@ -23,7 +23,7 @@ export interface ElectronicInvoiceData {
   sellerName: string      // HỘ KINH DOANH NGUYỄN LƯƠNG THỌ
   sellerBrand: string     // LỚP HỌC TOÁN THẦY THỌ
   sellerTaxCode: string   // 0108833133
-  sellerAddress: string   // Số 8 Ngõ 198 Lê Trọng Tấn, P. Khương Mai, Q. Thanh Xuân, TP. Hà Nội
+  sellerAddress: string   // Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh
   sellerHotline: string   // 0345.833.133
   sellerBank: string      // Vietcombank - STK: 1070493932 (Chủ TK: NGUYEN LUONG THO)
 
@@ -133,7 +133,7 @@ export function buildElectronicInvoice(params: {
     sellerName: 'HỘ KINH DOANH NGUYỄN LƯƠNG THỌ',
     sellerBrand: 'LỚP HỌC TOÁN THẦY THỌ',
     sellerTaxCode: '0108833133',
-    sellerAddress: 'Số 8 Ngõ 198 Lê Trọng Tấn, P. Khương Mai, Q. Thanh Xuân, TP. Hà Nội',
+    sellerAddress: 'Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh',
     sellerHotline: '0345.833.133',
     sellerBank: 'Vietcombank - STK: 1070493932 (Chủ TK: NGUYEN LUONG THO)',
 
@@ -224,7 +224,12 @@ export async function getElectronicInvoice(lookupCode: string): Promise<Electron
 
     if (row?.data?.items && typeof row.data.items === 'object') {
       const item = row.data.items[cleanCode]
-      if (item) return item
+      if (item) {
+        if (!item.sellerAddress || item.sellerAddress.includes('Lê Trọng Tấn')) {
+          item.sellerAddress = 'Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh'
+        }
+        return item
+      }
     }
   } catch (e) {
     console.error('Lỗi tra cứu hóa đơn từ Supabase:', e)
