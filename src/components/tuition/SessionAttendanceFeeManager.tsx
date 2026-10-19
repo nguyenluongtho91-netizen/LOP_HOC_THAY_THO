@@ -24,7 +24,7 @@ interface SessionAttendanceFeeManagerProps {
   upsertTuitionNotification: (payload: any) => Promise<any>
   updateTuitionNotification: (id: string, payload: any) => Promise<any>
   updateClass?: (id: string, payload: any) => Promise<any>
-  onOpenInvoice?: (student: Student, amount: number, sessionCount: number, unitPrice: number) => void
+  onOpenInvoice?: (student: Student, amount: number, sessionCount: number, unitPrice: number, attendedDates?: string[]) => void
   onSwitchToTuitionTab?: () => void
 }
 
@@ -421,7 +421,10 @@ export default function SessionAttendanceFeeManager({
         const studentId = item.student.id
         const amount = item.calculatedAmount
         const count = item.attendedCount
-        const courseNameWithSessions = `${activeMonthName} (${count} buổi)`
+        const datesDetail = item.attendedDates.length > 0
+          ? item.attendedDates.map((d, i) => `Buổi ${i + 1}: Ngày ${fmt(d)}`).join(', ')
+          : '0 buổi'
+        const courseNameWithSessions = `${activeMonthName} (${count} buổi: ${datesDetail})`
 
         if (item.notif) {
           await updateTuitionNotification(item.notif.id, {
@@ -456,7 +459,10 @@ export default function SessionAttendanceFeeManager({
   const handleSyncSingleStudent = async (item: typeof studentSummaries[0]) => {
     try {
       const activeMonthName = selectedMonth ? `Tháng ${selectedMonth.split('-')[1]}/${selectedMonth.split('-')[0]}` : 'Học phí'
-      const courseNameWithSessions = `${activeMonthName} (${item.attendedCount} buổi)`
+      const datesDetail = item.attendedDates.length > 0
+        ? item.attendedDates.map((d, i) => `Buổi ${i + 1}: Ngày ${fmt(d)}`).join(', ')
+        : '0 buổi'
+      const courseNameWithSessions = `${activeMonthName} (${item.attendedCount} buổi: ${datesDetail})`
 
       if (item.notif) {
         await updateTuitionNotification(item.notif.id, {
@@ -862,12 +868,13 @@ export default function SessionAttendanceFeeManager({
                           <span className="text-gray-400 italic text-[11px]">Chưa chấm buổi nào</span>
                         ) : (
                           <div className="flex flex-wrap gap-1 max-w-[320px]">
-                            {item.sessionDates.map(d => (
+                            {item.sessionDates.map((d, idx) => (
                               <span 
                                 key={d}
-                                className="bg-teal-50 text-teal-800 text-[9px] font-bold px-1.5 py-0.5 rounded border border-teal-200"
+                                className="bg-teal-50 text-teal-800 text-[10px] font-bold px-2 py-0.5 rounded-md border border-teal-200 flex items-center gap-1"
                               >
-                                {d.split('-').slice(1).reverse().join('/')}
+                                <span className="text-teal-600 font-extrabold">Buổi {idx + 1}:</span>
+                                <span>{fmt(d)}</span>
                               </span>
                             ))}
                           </div>
@@ -1007,7 +1014,7 @@ export default function SessionAttendanceFeeManager({
                             </th>
                           )
                         })}
-                        <th className="py-3 px-3 text-center border-l border-slate-200 w-24">Tổng buổi</th>
+                        <th className="py-3 px-3 text-center border-l border-slate-200 min-w-[170px]">Số buổi & Ngày học</th>
                         <th className="py-3 px-3 text-right w-28">Thành tiền</th>
                         <th className="py-3 px-3 text-center w-28">Học phí</th>
                         <th className="py-3 px-3 text-center w-24">Thao tác</th>
@@ -1052,11 +1059,28 @@ export default function SessionAttendanceFeeManager({
                             )
                           })}
 
-                          {/* Tổng số buổi */}
-                          <td className="py-2.5 px-3 text-center border-l border-slate-200 font-black text-indigo-700 bg-indigo-50/20">
-                            <span className="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full text-xs font-black">
-                              {item.attendedCount}/{sessionsHistory.length}
-                            </span>
+                          {/* Tổng số buổi & Danh sách từng ngày đã học */}
+                          <td className="py-2.5 px-3 border-l border-slate-200 bg-indigo-50/20">
+                            <div className="flex flex-col items-center gap-1.5">
+                              <span className="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-xs font-black shadow-xs">
+                                {item.attendedCount}/{sessionsHistory.length} buổi
+                              </span>
+                              {item.attendedDates.length > 0 ? (
+                                <div className="flex flex-col gap-1 w-full text-left">
+                                  {item.attendedDates.map((d, idx) => (
+                                    <div 
+                                      key={d} 
+                                      className="bg-white/95 text-teal-900 px-2 py-0.5 rounded-md border border-teal-200/90 flex items-center justify-between text-[10px] shadow-xs"
+                                    >
+                                      <span className="font-bold text-teal-700">Buổi {idx + 1}:</span>
+                                      <span className="font-mono font-black text-slate-800">Ngày {fmt(d)}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : (
+                                <span className="text-[10px] text-rose-500 font-semibold italic">Chưa học buổi nào</span>
+                              )}
+                            </div>
                           </td>
 
                           {/* Thành tiền */}
@@ -1088,7 +1112,7 @@ export default function SessionAttendanceFeeManager({
                           <td className="py-2.5 px-3 text-center">
                             {onOpenInvoice && (
                               <button
-                                onClick={() => onOpenInvoice(item.student, item.calculatedAmount, item.attendedCount, unitPrice)}
+                                onClick={() => onOpenInvoice(item.student, item.calculatedAmount, item.attendedCount, unitPrice, item.attendedDates)}
                                 className="p-1 text-rose-600 hover:bg-rose-50 rounded border border-rose-200 font-bold text-[10px] inline-flex items-center gap-1 cursor-pointer"
                                 title="Xuất hóa đơn điện tử cho học sinh này"
                               >
@@ -1402,10 +1426,27 @@ export default function SessionAttendanceFeeManager({
                         </td>
 
                         <td className="py-3 px-3 text-center">
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-700 border border-indigo-200">
-                            <CalendarCheck className="w-3.5 h-3.5" />
-                            {item.attendedCount} buổi
-                          </span>
+                          <div className="flex flex-col items-center gap-1.5">
+                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-800 border border-indigo-200 shadow-xs">
+                              <CalendarCheck className="w-3.5 h-3.5 text-indigo-600" />
+                              {item.attendedCount} buổi học
+                            </span>
+                            {item.attendedDates.length > 0 ? (
+                              <div className="flex flex-col gap-1 w-full max-w-[190px]">
+                                {item.attendedDates.map((d, idx) => (
+                                  <div 
+                                    key={d} 
+                                    className="bg-slate-50 text-teal-900 px-2 py-0.5 rounded-md border border-teal-200/80 flex items-center justify-between text-[10px]"
+                                  >
+                                    <span className="font-bold text-teal-700">Buổi {idx + 1}:</span>
+                                    <span className="font-mono font-black text-slate-800">Ngày {fmt(d)}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            ) : (
+                              <span className="text-[10px] text-slate-400 italic">0 buổi</span>
+                            )}
+                          </div>
                         </td>
 
                         <td className="py-3 px-3 text-right">
@@ -1447,7 +1488,7 @@ export default function SessionAttendanceFeeManager({
 
                           {onOpenInvoice && (
                             <button
-                              onClick={() => onOpenInvoice(item.student, item.calculatedAmount, item.attendedCount, unitPrice)}
+                              onClick={() => onOpenInvoice(item.student, item.calculatedAmount, item.attendedCount, unitPrice, item.attendedDates)}
                               className="p-1.5 text-rose-600 hover:bg-rose-50 rounded-lg border border-rose-200 font-bold text-[10px] inline-flex items-center gap-1 transition-colors cursor-pointer"
                             >
                               <FileText className="w-3 h-3" />

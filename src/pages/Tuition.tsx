@@ -553,10 +553,19 @@ export default function Tuition() {
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
 
+    // Lấy chi tiết các buổi học thực tế của học sinh để báo phụ huynh
+    const studentAttended = attendance
+      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+      .sort((a, b) => a.date.localeCompare(b.date))
+    const datesDetailText = studentAttended.length > 0
+      ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
+      : ''
+
     const msg = `Chào Quý phụ huynh.\n`
               + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Lớp: ${cleanClass}\n`
+              + (studentAttended.length > 0 ? `• Số buổi đã học (${studentAttended.length} buổi): ${datesDetailText}\n` : '')
               + `• Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n`
               + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
               + `• Hình thức nộp: Chuyển khoản\n`
@@ -1541,20 +1550,32 @@ export default function Tuition() {
                                 </span>
                               )}
                               {(() => {
-                                const attendedCount = attendance.filter(
-                                  a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'late')
-                                ).length
-                                if (attendedCount > 0) {
+                                const attendedRecords = attendance
+                                  .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+                                  .sort((a, b) => a.date.localeCompare(b.date))
+                                if (attendedRecords.length > 0) {
                                   return (
-                                    <button
-                                      type='button'
-                                      onClick={() => setActiveTab('session-attendance')}
-                                      className='inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 cursor-pointer transition-colors mt-0.5'
-                                      title={`Học sinh này đã học ${attendedCount} buổi. Bấm để xem chi tiết buổi học`}
-                                    >
-                                      <CalendarCheck className='w-3 h-3 text-teal-600' />
-                                      Đã học: {attendedCount} buổi
-                                    </button>
+                                    <div className="mt-1 flex flex-col gap-1 w-full max-w-[260px]">
+                                      <button
+                                        type='button'
+                                        onClick={() => setActiveTab('session-attendance')}
+                                        className='inline-flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-md bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 cursor-pointer transition-colors'
+                                        title={`Bấm để xem ma trận điểm danh`}
+                                      >
+                                        <CalendarCheck className='w-3 h-3 text-teal-600' />
+                                        <span>Đã học {attendedRecords.length} buổi</span>
+                                      </button>
+                                      <div className="flex flex-col gap-0.5 bg-slate-50 p-1.5 rounded-lg border border-slate-200">
+                                        {attendedRecords.map((r, idx) => (
+                                          <div key={r.id || r.date} className="flex items-center justify-between text-[10px]">
+                                            <span className="font-bold text-teal-700">Buổi {idx + 1}:</span>
+                                            <span className="font-mono font-bold text-slate-800 bg-white px-1 rounded border border-slate-200">
+                                              Ngày {fmt(r.date)}
+                                            </span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
                                   )
                                 }
                                 return null
@@ -1703,9 +1724,12 @@ export default function Tuition() {
           upsertTuitionNotification={upsertTuitionNotification}
           updateTuitionNotification={updateTuitionNotification}
           updateClass={updateClass}
-          onOpenInvoice={(student, amount, count, unit) => {
+          onOpenInvoice={(student, amount, count, unit, attendedDates) => {
             const cls = classes.find(c => c.id === selClass)
             const className = cls ? ((cls as any).class_name || cls.name) : ''
+            const datesDetail = (attendedDates && attendedDates.length > 0)
+              ? attendedDates.map((d, i) => `Buổi ${i + 1}: Ngày ${fmt(d)}`).join(', ')
+              : `${count} buổi`
             const invoice = buildElectronicInvoice({
               studentName: student.full_name,
               studentCode: student.student_code,
@@ -1713,9 +1737,9 @@ export default function Tuition() {
               parentName: (student as any)?.parent_name || 'Quý phụ huynh',
               phone: ((student as any)?.zalo || (student as any)?.parent_phone || '').replace(/\D/g, ''),
               amount,
-              courseName: `${className} (${count} buổi x ${fmtVNDShort(unit)})`,
+              courseName: `${className} (${count} buổi: ${datesDetail})`,
               paymentMethod: 'Chuyển khoản Vietcombank',
-              note: `Học phí môn Toán - ${count} buổi học thực tế`,
+              note: `Học phí môn Toán - ${count} buổi học thực tế (${datesDetail})`,
               date: new Date()
             })
             setActiveInvoice(invoice)
