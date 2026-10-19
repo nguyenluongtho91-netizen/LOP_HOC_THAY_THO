@@ -57,6 +57,14 @@ export default function LiveClassroomPage() {
   const [isEditingName, setIsEditingName] = useState(false);
   const [isKicked, setIsKicked] = useState(false);
   const [tempName, setTempName] = useState('');
+  const [isInAppBrowser, setIsInAppBrowser] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const ua = navigator.userAgent || '';
+      setIsInAppBrowser(/Zalo|FBAN|FBAV|Instagram|Messenger/i.test(ua));
+    }
+  }, []);
 
   // Trạng thái Quản trị viên (Thầy Thọ)
   const [isHost, setIsHost] = useState(false);
@@ -485,12 +493,31 @@ export default function LiveClassroomPage() {
     if (typeof window !== 'undefined') {
       const existing = document.querySelector(`script[src*="${JITSI_DOMAIN}"]`);
       if (!existing && !(window as any).JitsiMeetExternalAPI) {
+        let didInit = false;
         const script = document.createElement('script');
         script.src = `https://${JITSI_DOMAIN}/external_api.js`;
         script.async = true;
-        script.onload = initJitsi;
+
+        const fallbackTimer = setTimeout(() => {
+          if (!didInit && !jitsiApiRef.current && jitsiContainerRef.current && !jitsiContainerRef.current.querySelector('iframe')) {
+            didInit = true;
+            initJitsi();
+          }
+        }, 3500);
+
+        script.onload = () => {
+          clearTimeout(fallbackTimer);
+          if (!didInit) {
+            didInit = true;
+            initJitsi();
+          }
+        };
         script.onerror = () => {
-          initJitsi();
+          clearTimeout(fallbackTimer);
+          if (!didInit) {
+            didInit = true;
+            initJitsi();
+          }
         };
         document.body.appendChild(script);
       } else {
@@ -1344,9 +1371,20 @@ export default function LiveClassroomPage() {
             <h2 className="text-xl sm:text-2xl font-black text-white mb-1 tracking-tight">
               Lớp Học Trực Tuyến Thầy Thọ
             </h2>
-            <p className="text-xs sm:text-sm text-slate-400 mb-6">
+            <p className="text-xs sm:text-sm text-slate-400 mb-4">
               Nhập họ và tên để <span className="text-emerald-400 font-bold">vào thẳng phòng học ngay</span> (Không cần chờ đợi)
             </p>
+
+            {isInAppBrowser && (
+              <div className="mb-4 p-3.5 bg-amber-500/15 border border-amber-500/40 rounded-2xl text-left text-xs text-amber-200 space-y-1">
+                <p className="font-bold flex items-center gap-1.5 text-amber-300">
+                  <span>⚠️</span> Đang mở trong Zalo / Facebook!
+                </p>
+                <p className="text-[11px] leading-relaxed text-amber-100">
+                  Zalo chặn quyền Camera & Micro. Để bật được camera vào học với Thầy, em hãy bấm vào dấu <strong>3 chấm (...)</strong> ở góc trên bên phải màn hình và chọn <strong>"Mở bằng trình duyệt"</strong> (Safari / Chrome) nhé!
+                </p>
+              </div>
+            )}
 
             <form
               onSubmit={(e) => {
