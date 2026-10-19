@@ -29,7 +29,7 @@ export default function Layout() {
         { path: '/',           icon: LayoutDashboard, label: 'Tổng quan' },
         { path: '/classes',    icon: BookOpen,        label: 'Quản lý lớp học' },
         { path: '/students',   icon: Users,           label: 'Hồ sơ học sinh' },
-        { path: '/attendance', icon: CalendarCheck,   label: 'Điểm danh buổi học' },
+        { path: '/attendance', icon: CalendarCheck,   label: 'Điểm danh học sinh' },
       ],
     },
     {

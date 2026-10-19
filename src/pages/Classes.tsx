@@ -562,9 +562,9 @@ export default function Classes() {
                     </button>
 
                     <button
-                      onClick={() => navigate('/attendance')}
+                      onClick={() => navigate('/tuition?tab=session-attendance&classId=' + currentClass.id)}
                       className="px-3.5 py-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/30 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer"
-                      title="Điểm danh lớp này"
+                      title="Điểm danh lớp này trong Quản lý học phí"
                     >
                       <CalendarCheck className="w-3.5 h-3.5 text-teal-400" />
                       <span>Điểm Danh</span>

@@ -27,3 +27,6 @@ npm-debug.log*
 # Local sessions
 .zalo_session/
 
+
+# Local backups
+backups/

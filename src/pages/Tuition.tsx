@@ -1,4 +1,5 @@
-﻿import { supabase } from '@/lib/supabase'
+import { useSearchParams } from 'react-router-dom'
+import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
 import { useEffect, useState, useMemo } from 'react'
 import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
@@ -34,7 +35,7 @@ export default function Tuition() {
     batchUpsertTuitionNotifications, deleteTuitionNotification, updateClass
   } = useDataStore()
 
-  const [selClass, setSelClass] = useState('')
+  const [selClass, setSelClass] = useState(() => (new URLSearchParams(window.location.search).get('classId') || new URLSearchParams(window.location.search).get('class') || ''))
   const [courseName, setCourseName] = useState('Khóa hè')
   const [courseAmount, setCourseAmount] = useState('600000')
 
@@ -69,7 +70,18 @@ export default function Tuition() {
   const [sendingStudentId, setSendingStudentId] = useState<string | null>(null)
   const [phoneEditModal, setPhoneEditModal] = useState<{ student: any; row: TuitionNotificationRow; phoneInput: string } | null>(null)
   const [robotOnline, setRobotOnline] = useState<boolean>(false)
-  const [activeTab, setActiveTab] = useState<'tuition' | 'session-attendance' | 'custom-fee' | 'revenue' | 'invoices' | 'tax-books'>('tuition')
+  const [searchParams] = useSearchParams()
+  const qTab = searchParams.get('tab') as any
+  const qClassId = searchParams.get('classId') || searchParams.get('class') || ''
+
+  const [activeTab, setActiveTab] = useState<'tuition' | 'session-attendance' | 'custom-fee' | 'revenue' | 'invoices' | 'tax-books'>(
+    qTab || 'session-attendance'
+  )
+
+  useEffect(() => {
+    if (qTab) setActiveTab(qTab as any)
+    if (qClassId) setSelClass(qClassId)
+  }, [qTab, qClassId])
   const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
   const handleOpenInvoice = (row: TuitionNotificationRow) => {
     const feeInfo = getStudentEffectiveFee(row.student.id, selClass, row.notification)
@@ -1056,8 +1068,8 @@ export default function Tuition() {
               <span>BƯỚC 1</span>
               <CalendarCheck className="w-4 h-4 text-teal-400" />
             </div>
-            <p className="font-black text-sm text-white">Đánh Dấu Buổi Học</p>
-            <p className="text-[11px] text-slate-300 mt-0.5">Tự tính số buổi & tiền học</p>
+            <p className="font-black text-sm text-white">Điểm Danh & Buổi Học</p>
+            <p className="text-[11px] text-slate-300 mt-0.5">Điểm danh, tính buổi & liên kết học phí</p>
           </button>
 
           <button
