@@ -48,9 +48,9 @@ export default function SessionAttendanceFeeManager({
   const currentClass = classes.find(c => c.id === selClass)
 
   const [unitPricesMap, setUnitPricesMap] = useState<Record<string, number>>({})
-  const [unitPrice, setUnitPrice] = useState<number>(150000)
+  const [unitPrice, setUnitPrice] = useState<number>(80000)
   const [isEditingPrice, setIsEditingPrice] = useState(false)
-  const [priceInput, setPriceInput] = useState<string>('150000')
+  const [priceInput, setPriceInput] = useState<string>('80000')
   const [savingPrice, setSavingPrice] = useState(false)
 
   // Selected date for recording attendance
@@ -99,9 +99,15 @@ export default function SessionAttendanceFeeManager({
 
   // Update current unit price when selClass or unitPricesMap changes
   useEffect(() => {
+    // Quy định đơn giá: Lớp 7.2 là 60.000đ, tất cả các lớp khác đồng loạt 80.000đ
+    const name = ((currentClass as any)?.class_name || (currentClass as any)?.name || '').toLowerCase()
+    const grade = ((currentClass as any)?.grade || '').toLowerCase()
+    const is72 = name.includes('7.2') || name.includes('72') || (grade.includes('7') && name.includes('2'))
+    const standardDefault = is72 ? 60000 : 80000
+
     if (!selClass) {
-      setUnitPrice(150000)
-      setPriceInput('150000')
+      setUnitPrice(80000)
+      setPriceInput('80000')
       return
     }
 
@@ -112,18 +118,8 @@ export default function SessionAttendanceFeeManager({
       return
     }
 
-    if ((currentClass as any)?.fee_per_session && Number((currentClass as any).fee_per_session) > 0) {
-      const p = Number((currentClass as any).fee_per_session)
-      setUnitPrice(p)
-      setPriceInput(String(p))
-      return
-    }
-
-    // Default by grade: grade 6 = 100k, others = 150k
-    const grade = ((currentClass as any)?.grade || '').toLowerCase()
-    const def = grade.includes('6') ? 100000 : 150000
-    setUnitPrice(def)
-    setPriceInput(String(def))
+    setUnitPrice(standardDefault)
+    setPriceInput(String(standardDefault))
   }, [selClass, currentClass, unitPricesMap])
 
   // Load attendance when class changes
