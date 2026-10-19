@@ -53,7 +53,6 @@ export default function Layout() {
         { path: '/ocr',            icon: ScanText,   label: 'Smart OCR' },
         { path: '/latex-tools',    icon: Sigma,      label: 'Công cụ LaTeX' },
         { path: '/word-tools',     icon: FileType,   label: 'Công cụ Word' },
-        { path: '/casio',          icon: Calculator, label: 'Máy tính Casio 580' },
         { path: '/student-labels', icon: Tag,        label: 'Nhãn vở học sinh' },
       ],
     },
