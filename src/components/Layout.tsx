@@ -49,7 +49,6 @@ export default function Layout() {
     {
       title: 'Công cụ bổ trợ',
       items: [
-        { path: '/whiteboard',     icon: PenTool,    label: 'Bảng vẽ ô ly Toán - Hóa' },
         { path: '/ocr',            icon: ScanText,   label: 'Smart OCR' },
         { path: '/latex-tools',    icon: Sigma,      label: 'Công cụ LaTeX' },
         { path: '/word-tools',     icon: FileType,   label: 'Công cụ Word' },
