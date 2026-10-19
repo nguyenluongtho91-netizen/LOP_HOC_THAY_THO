@@ -211,8 +211,31 @@ export default function EmailCenter() {
             </select>
           </div>
           <div>
-            <label className="label">Tháng</label>
-            <input type="month" value={month} onChange={e => setMonth(e.target.value)} className="input" />
+            <label className="label">Tháng học</label>
+            <div className="flex items-center gap-1.5">
+              <select
+                value={m}
+                onChange={e => setMonth(`${y}-${String(e.target.value).padStart(2, '0')}`)}
+                className="input py-1.5 text-xs font-bold"
+              >
+                {Array.from({ length: 12 }, (_, i) => i + 1).map(mn => (
+                  <option key={mn} value={String(mn).padStart(2, '0')}>
+                    Tháng {mn < 10 ? `0${mn}` : mn}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={y}
+                onChange={e => setMonth(`${e.target.value}-${m}`)}
+                className="input py-1.5 text-xs font-bold w-24"
+              >
+                {[2024, 2025, 2026, 2027, 2028].map(yr => (
+                  <option key={yr} value={String(yr)}>
+                    Năm {yr}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
           {selClass && (
             <button onClick={() => { void sendAll(tab as EmailType) }} disabled={sendingAll}
