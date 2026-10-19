@@ -15,7 +15,7 @@ import {
   Video, MicOff, Hand, Volume2, Shield, ShieldAlert, Lock, Unlock,
   Copy, Check, FileText, ArrowLeft, Maximize2,
   Columns, Sparkles, LogIn, Bell, BellOff, Edit3, X, RefreshCw,
-  Radio, Square, Download, Grid, LayoutGrid, Users
+  Radio, Square, Download, Grid, LayoutGrid, Users, Monitor
 } from 'lucide-react';
 
 const TEACHER_PHONE = '0345833133';
@@ -90,6 +90,9 @@ export default function LiveClassroomPage() {
   const [showCasio, setShowCasio] = useState(false);
   const [showWhiteboard, setShowWhiteboard] = useState(false);
   const [showGamesModal, setShowGamesModal] = useState(false);
+
+  // --- TRẠNG THÁI CHIA SẺ MÀN HÌNH (SCREEN SHARING) ---
+  const [isSharingScreen, setIsSharingScreen] = useState(false);
 
   // --- CHẾ ĐỘ GHI MÀN HÌNH BÀI GIẢNG (SCREEN RECORDER) ---
   const [isRecording, setIsRecording] = useState(false);
@@ -373,15 +376,15 @@ export default function LiveClassroomPage() {
                 min: 25,
                 max: 30
               },
+              enableScreensharing: true,
+              disableScreensharing: false,
               disableSimulcast: false,
               enableLayerSuspension: false,
 
-              // Thanh công cụ gồm nút chọn chất lượng hình ảnh & ghi hình
-              toolbarButtons: isHost ? [
+              // Thanh công cụ luôn bao gồm nút chia sẻ màn hình 'desktop'
+              toolbarButtons: [
                 'microphone', 'camera', 'desktop', 'fullscreen', 'chat',
                 'raisehand', 'tileview', 'mute-everyone', 'settings', 'videoquality', 'localrecording'
-              ] : [
-                'microphone', 'camera', 'fullscreen', 'chat', 'raisehand', 'tileview', 'videoquality'
               ]
             },
             interfaceConfigOverwrite: {
@@ -389,12 +392,37 @@ export default function LiveClassroomPage() {
               SHOW_WATERMARK_FOR_GUESTS: false,
               DEFAULT_REMOTE_DISPLAY_NAME: 'Học sinh Thầy Thọ',
               TOOLBAR_ALWAYS_VISIBLE: true,
-              OPTIMAL_BROWSING_RESOLUTION: 1080
+              OPTIMAL_BROWSING_RESOLUTION: 1080,
+              TOOLBAR_BUTTONS: [
+                'microphone', 'camera', 'desktop', 'fullscreen', 'chat',
+                'raisehand', 'tileview', 'mute-everyone', 'settings', 'videoquality'
+              ]
             }
           };
 
           api = new (window as any).JitsiMeetExternalAPI(JITSI_DOMAIN, options);
           jitsiApiRef.current = api;
+
+          // Đảm bảo iframe có đầy đủ quyền chia sẻ màn hình display-capture
+          setTimeout(() => {
+            try {
+              const iframes = jitsiContainerRef.current?.querySelectorAll('iframe');
+              iframes?.forEach(f => {
+                f.setAttribute('allow', 'camera *; microphone *; fullscreen *; display-capture *; autoplay *; clipboard-write *');
+                f.allow = 'camera *; microphone *; fullscreen *; display-capture *; autoplay *; clipboard-write *';
+              });
+            } catch {}
+          }, 150);
+
+          api.addEventListener('screenSharingStatusChanged', (event: any) => {
+            const on = Boolean(event?.on);
+            setIsSharingScreen(on);
+            if (on) {
+              toast.success('🖥️ Đang chia sẻ màn hình bài giảng cho cả lớp!');
+            } else {
+              toast('Đã dừng chia sẻ màn hình.', { icon: 'ℹ️' });
+            }
+          });
 
           api.addEventListener('videoConferenceJoined', () => {
             toast.success(isHost ? 'Phòng học Thầy Thọ sẵn sàng ở độ phân giải Full HD 1080p!' : 'Đã kết nối vào phòng học trực tuyến Full HD!');
@@ -445,7 +473,7 @@ export default function LiveClassroomPage() {
 
       // Iframe trực tiếp: VÀO THẲNG PHÒNG ĐỘ NÉT CAO 1080P
       const iframe = document.createElement('iframe');
-      iframe.src = `https://${JITSI_DOMAIN}/${encodeURIComponent(currentRoomName)}#userInfo.displayName="${encodeURIComponent(displayName)}"&config.prejoinPageEnabled=false&config.prejoinConfig.enabled=false&config.requireDisplayName=false&config.disableDeepLinking=true&config.resolution=1080&config.p2p.enabled=true&config.startWithAudioMuted=${!isHost}&config.startWithVideoMuted=false&interfaceConfig.SHOW_JITSI_WATERMARK=false`;
+      iframe.src = `https://${JITSI_DOMAIN}/${encodeURIComponent(currentRoomName)}#userInfo.displayName="${encodeURIComponent(displayName)}"&config.prejoinPageEnabled=false&config.prejoinConfig.enabled=false&config.requireDisplayName=false&config.disableDeepLinking=true&config.resolution=1080&config.p2p.enabled=true&config.startWithAudioMuted=${!isHost}&config.startWithVideoMuted=false&config.enableScreensharing=true&config.disableScreensharing=false&interfaceConfig.SHOW_JITSI_WATERMARK=false`;
       iframe.style.width = '100%';
       iframe.style.height = '100%';
       iframe.style.border = 'none';
@@ -871,6 +899,22 @@ export default function LiveClassroomPage() {
     }
   };
 
+  // Bật / Tắt chia sẻ màn hình máy tính (Screen Sharing)
+  const handleToggleScreenShare = () => {
+    try {
+      if (jitsiApiRef.current) {
+        jitsiApiRef.current.executeCommand('toggleShareScreen');
+        toast(isSharingScreen ? 'Đang dừng chia sẻ màn hình...' : 'Đang bật hộp thoại chọn màn hình chia sẻ...', {
+          icon: '🖥️'
+        });
+      } else {
+        toast.error('Phòng học đang kết nối, vui lòng thử lại sau vài giây!');
+      }
+    } catch (e: any) {
+      toast.error('Lỗi chia sẻ màn hình: ' + (e?.message || e));
+    }
+  };
+
   return (
     <div className="flex flex-col h-screen w-screen bg-slate-950 text-slate-100 overflow-hidden font-sans">
       <Toaster position="top-right" />
@@ -951,6 +995,20 @@ export default function LiveClassroomPage() {
           >
             <Grid className="w-3.5 h-3.5 text-cyan-400" />
             <span className="hidden md:inline">Lưới Camera</span>
+          </button>
+
+          {/* NÚT CHIA SẺ MÀN HÌNH (TIỆN LỢI TRÊN HEADER) */}
+          <button
+            onClick={handleToggleScreenShare}
+            className={`px-3 py-1 rounded-lg transition flex items-center gap-1.5 text-xs font-black shadow-md active:scale-95 cursor-pointer ${
+              isSharingScreen
+                ? 'bg-rose-600 hover:bg-rose-500 text-white ring-2 ring-rose-400/50 animate-pulse'
+                : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-950/40'
+            }`}
+            title={isSharingScreen ? 'Bấm để dừng chia sẻ màn hình' : 'Bấm để chia sẻ màn hình máy tính (Slide bài giảng, Word, Bảng vẽ, Casio, Đề thi) cho cả lớp'}
+          >
+            <Monitor className="w-3.5 h-3.5 text-white" />
+            <span>{isSharingScreen ? 'Dừng Share' : 'Chia Sẻ Màn Hình 🖥️'}</span>
           </button>
 
           {activeExamId && (
@@ -1145,6 +1203,20 @@ export default function LiveClassroomPage() {
 
           {/* Nhóm 2: Quyền lớp học, Khóa tập trung, Ghi màn hình & Phát đề */}
           <div className="flex items-center gap-2 flex-wrap">
+            {/* NÚT CHIA SẺ MÀN HÌNH NỔI BẬT DÀNH CHO THẦY */}
+            <button
+              onClick={handleToggleScreenShare}
+              className={`px-3.5 py-1.5 rounded-lg font-black text-xs flex items-center gap-1.5 transition shadow-lg active:scale-95 cursor-pointer ${
+                isSharingScreen
+                  ? 'bg-rose-600 hover:bg-rose-500 text-white ring-2 ring-rose-400/50 animate-pulse'
+                  : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-emerald-950/40 ring-1 ring-emerald-400/30'
+              }`}
+              title={isSharingScreen ? 'Bấm để dừng chia sẻ màn hình' : 'Bấm để chia sẻ màn hình máy tính (Slide, Word, Đề bài, Casio, Geogebra) cho cả lớp'}
+            >
+              <Monitor className="w-4 h-4 text-emerald-200" />
+              <span>{isSharingScreen ? '🛑 Dừng Chia Sẻ Màn Hình' : '🖥️ Chia Sẻ Màn Hình (Trình Chiếu)'}</span>
+            </button>
+
             {/* NÚT GHI MÀN HÌNH BÀI GIẢNG (SCREEN RECORDER) */}
             {!isRecording ? (
               <button
