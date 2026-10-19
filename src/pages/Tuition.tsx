@@ -8,7 +8,7 @@ import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import InvoiceManager from '@/components/tuition/InvoiceManager'
 import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
 import ElectronicInvoiceModal from '@/components/tuition/ElectronicInvoiceModal'
-import { buildElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
+import { buildElectronicInvoice, saveElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
 import Modal from '@/components/Modal'
@@ -40,6 +40,14 @@ export default function Tuition() {
   const [payModal, setPayModal] = useState<TuitionNotificationRow | null>(null)
   const [qrModal, setQrModal]   = useState<TuitionNotificationRow | null>(null)
   const [activeInvoice, setActiveInvoice] = useState<ElectronicInvoiceData | null>(null)
+  const [chainModal, setChainModal] = useState<{
+    studentName: string
+    studentCode?: string
+    amount: number
+    className?: string
+    phone?: string
+    invoice: ElectronicInvoiceData
+  } | null>(null)
   const [payForm, setPayForm]   = useState({ amount: '', method: 'transfer' as PaymentMethod, note: '' })
   const [saving, setSaving]     = useState(false)
   const [sending, setSending]   = useState(false)
@@ -828,20 +836,35 @@ export default function Tuition() {
       await loadTuitionNotifications(selClass)
       await loadPayments(selClass)
 
-      toast.success((t) => (
-        <div className="flex items-center justify-between gap-3">
-          <span>✓ Đã thu học phí: {row.student.full_name}</span>
-          <button
-            onClick={() => {
-              toast.dismiss(t.id)
-              handleOpenInvoice({ ...row, status: 'paid' })
-            }}
-            className="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-black shadow-xs cursor-pointer whitespace-nowrap"
-          >
-            🧾 Mở Hóa Đơn
-          </button>
-        </div>
-      ), { duration: 6000 })
+      // 4. Kích hoạt chuỗi đồng bộ: Sinh hóa đơn điện tử & lưu tự động
+      const clsObj = classes.find(c => c.id === (row.student.class_id || selClass))
+      const clsName = clsObj ? ((clsObj as any).class_name || clsObj.name) : (row.student.class_name || '')
+      const phoneClean = ((row.student as any)?.zalo || (row.student as any)?.parent_phone || '').replace(/\D/g, '')
+
+      const inv = buildElectronicInvoice({
+        id: row.notification?.id ? ('HD26-' + row.notification.id.slice(0, 6).toUpperCase()) : undefined,
+        studentName: row.student.full_name,
+        studentCode: row.student.student_code,
+        className: clsName,
+        parentName: (row.student as any)?.parent_name || 'Quý phụ huynh',
+        phone: phoneClean,
+        amount: Number(row.notification.amount),
+        courseName: row.notification.course_name || clsName,
+        paymentMethod: 'Chuyển khoản Vietcombank',
+        note: `Thu học phí khóa ${row.notification.course_name}`,
+        date: new Date(),
+      })
+      void saveElectronicInvoice(inv)
+
+      // Mở hộp thoại xác nhận chuỗi hoàn tất
+      setChainModal({
+        studentName: row.student.full_name,
+        studentCode: row.student.student_code,
+        amount: Number(row.notification.amount),
+        className: clsName,
+        phone: phoneClean,
+        invoice: inv
+      })
     } catch (error: any) {
       toast.error('Lỗi khi thu học phí: ' + error.message)
     }
@@ -972,6 +995,119 @@ export default function Tuition() {
           <Building2 className="w-4 h-4 text-teal-700" />
           🏦 Kết Nối Ngân Hàng (Tự Động Gạch Nợ & Nhắn Zalo)
         </button>
+      </div>
+
+            {/* ============================================================ */}
+      {/* CHUỖI ĐỒNG BỘ LIÊN KẾT TỰ ĐỘNG KHÉP KÍN 5 BƯỚC               */}
+      {/* Báo Học Phí ➔ Mức Phí Riêng ➔ Thu & Doanh Thu ➔ Hóa Đơn ➔ Sổ Thuế A1-A2 */}
+      {/* ============================================================ */}
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-5 text-white shadow-xl border border-slate-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-500 text-white flex items-center justify-center shadow-md shadow-indigo-500/20 font-black">
+              <Sparkles className="w-5 h-5 text-amber-300 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-sm sm:text-base font-black tracking-wide uppercase">
+                  CHUỖI NGHIỆP VỤ LIÊN KẾT ĐỒNG BỘ KHÉP KÍN
+                </h2>
+                <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  ĐỒNG BỘ 100%
+                </span>
+              </div>
+              <p className="text-xs text-slate-400 font-medium mt-0.5">
+                Báo Phí VietQR ➔ Thu Tiền ➔ Xuất Hóa Đơn Điện Tử ➔ Cập Nhật Doanh Thu ➔ Kết Chuyển Sổ Thuế A1 & A2 (TT 88)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 5 Hộp bước trong chuỗi - Bấm vào là nhảy trực tiếp đến bước đó */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-2.5">
+          
+          <button
+            onClick={() => setActiveTab('tuition')}
+            className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'tuition'
+                ? 'bg-teal-600/30 border-teal-400 ring-2 ring-teal-400/30'
+                : 'bg-white/5 border-white/10 hover:bg-white/10'
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs font-extrabold text-teal-300 mb-1">
+              <span>BƯỚC 1</span>
+              <Banknote className="w-4 h-4 text-teal-400" />
+            </div>
+            <p className="font-black text-sm text-white">Báo Học Phí</p>
+            <p className="text-[11px] text-slate-300 mt-0.5">{stats.notifiedCount} HS đã báo • {stats.unpaidCount} chưa nộp</p>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('custom-fee')}
+            className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'custom-fee'
+                ? 'bg-indigo-600/30 border-indigo-400 ring-2 ring-indigo-400/30'
+                : 'bg-white/5 border-white/10 hover:bg-white/10'
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs font-extrabold text-indigo-300 mb-1">
+              <span>BƯỚC 2</span>
+              <SlidersHorizontal className="w-4 h-4 text-indigo-400" />
+            </div>
+            <p className="font-black text-sm text-white">Học Phí Riêng</p>
+            <p className="text-[11px] text-slate-300 mt-0.5">{Object.keys(customFees).length} HS có mức thu riêng</p>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('revenue')}
+            className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'revenue'
+                ? 'bg-emerald-600/30 border-emerald-400 ring-2 ring-emerald-400/30'
+                : 'bg-white/5 border-white/10 hover:bg-white/10'
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs font-extrabold text-emerald-300 mb-1">
+              <span>BƯỚC 3</span>
+              <TrendingUp className="w-4 h-4 text-emerald-400" />
+            </div>
+            <p className="font-black text-sm text-white">Thu & Doanh Thu</p>
+            <p className="text-[11px] text-emerald-300 font-mono font-bold mt-0.5">{fmtVNDShort(stats.totalPaidAmount)} đã thu</p>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('invoices')}
+            className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'invoices'
+                ? 'bg-rose-600/30 border-rose-400 ring-2 ring-rose-400/30'
+                : 'bg-white/5 border-white/10 hover:bg-white/10'
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs font-extrabold text-rose-300 mb-1">
+              <span>BƯỚC 4</span>
+              <FileText className="w-4 h-4 text-rose-400" />
+            </div>
+            <p className="font-black text-sm text-white">Hóa Đơn Điện Tử</p>
+            <p className="text-[11px] text-slate-300 mt-0.5">{payments.length} HĐ đã ký số & tạo QR</p>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('tax-books')}
+            className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
+              activeTab === 'tax-books'
+                ? 'bg-amber-600/30 border-amber-400 ring-2 ring-amber-400/30'
+                : 'bg-white/5 border-white/10 hover:bg-white/10'
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs font-extrabold text-amber-300 mb-1">
+              <span>BƯỚC 5</span>
+              <BookOpen className="w-4 h-4 text-amber-400" />
+            </div>
+            <p className="font-black text-sm text-white">Sổ Thuế A1 & A2</p>
+            <p className="text-[11px] text-slate-300 mt-0.5">Tự động kết chuyển TT 88</p>
+          </button>
+
+        </div>
       </div>
 
       {/* TAB NAVIGATION */}
@@ -1500,6 +1636,7 @@ export default function Tuition() {
           onResetCustomFee={handleResetCustomFee}
           selectedClassId={selClass}
           onSelectClassId={setSelClass}
+          onNavigateTab={(tab) => setActiveTab(tab as any)}
         />
       )}
 
@@ -1513,6 +1650,7 @@ export default function Tuition() {
           enrollments={enrollments}
           onAddPayment={addPayment}
           onDeletePayment={handleDeletePayment}
+          onNavigateTab={(tab) => setActiveTab(tab as any)}
         />
       )}
 
@@ -1524,6 +1662,7 @@ export default function Tuition() {
           students={students}
           selectedClassId={selClass}
           onSelectClassId={setSelClass}
+          onNavigateTab={(tab) => setActiveTab(tab as any)}
         />
       )}
 
@@ -2408,6 +2547,152 @@ export default function Tuition() {
           }}
         />
       )}
+      {/* POPUP XÁC NHẬN CHUỖI THU PHÍ & HÓA ĐƠN ĐIỆN TỬ HOÀN TẤT */}
+      {chainModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-700 text-white p-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl bg-white/20 text-white flex items-center justify-center font-black">
+                  <Check className="w-7 h-7 stroke-[3px]" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-black uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded-full">
+                      ✓ CHUỖI ĐỒNG BỘ KHÉP KÍN
+                    </span>
+                  </div>
+                  <h3 className="font-black text-base sm:text-lg mt-0.5">ĐÃ THU TIỀN & XUẤT HÓA ĐƠN!</h3>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-4 text-xs font-semibold text-slate-700">
+              
+              {/* Thẻ thông tin học sinh */}
+              <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-slate-500">Học sinh:</span>
+                  <span className="font-black text-slate-900 text-sm">{chainModal.studentName}</span>
+                </div>
+                {chainModal.className && (
+                  <div className="flex justify-between items-center">
+                    <span className="font-bold text-slate-500">Lớp học:</span>
+                    <span className="font-extrabold text-indigo-700">{chainModal.className}</span>
+                  </div>
+                )}
+                <div className="flex justify-between items-center pt-1 border-t border-slate-200">
+                  <span className="font-bold text-slate-500">Số tiền đã thu:</span>
+                  <span className="font-black text-emerald-600 text-base font-mono">{fmtVNDShort(chainModal.amount)}</span>
+                </div>
+              </div>
+
+              {/* 4 Tích xanh chuỗi liên kết */}
+              <div className="space-y-2 p-3 bg-emerald-50/60 border border-emerald-200 rounded-2xl">
+                <p className="text-[11px] font-black uppercase tracking-wide text-emerald-800">
+                  CÁC BƯỚC ĐÃ ĐƯỢC HỆ THỐNG XỬ LÝ TỰ ĐỘNG:
+                </p>
+                <div className="space-y-1.5 text-[11px]">
+                  <div className="flex items-center gap-2 text-emerald-900 font-bold">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[3px]" />
+                    <span>1. Ghi nhận thanh toán vào sổ thu tiền học phí</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-emerald-900 font-bold">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[3px]" />
+                    <span>2. Cập nhật doanh thu tháng của lớp học</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-emerald-900 font-bold">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[3px]" />
+                    <span>3. Phát hành Hóa đơn điện tử <strong className="font-mono text-rose-700">({chainModal.invoice.invoiceNumber})</strong> kèm chữ ký số</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-emerald-900 font-bold">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[3px]" />
+                    <span>4. Tự động kết chuyển vào Sổ Thuế A1 (Mẫu S1-HKD TT 88)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Nút thao tác */}
+              <div className="space-y-2 pt-2">
+                <button
+                  onClick={async () => {
+                    const rawPhone = (chainModal.phone || '').replace(/\D/g, '')
+                    if (!rawPhone) {
+                      toast.error('Học sinh chưa có số điện thoại Zalo của phụ huynh!')
+                      return
+                    }
+                    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://lop-hoc-thay-tho.vercel.app'
+                    const publicUrl = `${origin}/hoa-don/${chainModal.invoice.lookupCode}`
+                    const msg = `LỚP HỌC TOÁN THẦY THỌ - HÓA ĐƠN ĐIỆN TỬ\n` +
+                      `Kính gửi Quý phụ huynh học sinh ${chainModal.studentName},\n` +
+                      `Thầy Thọ xin gửi Hóa đơn điện tử xác nhận đã thu học phí ${fmtVNDShort(chainModal.amount)}:\n` +
+                      `• Số hóa đơn: ${chainModal.invoice.invoiceNumber}\n` +
+                      `• Môn học: ${chainModal.invoice.items[0]?.name || 'Học phí môn Toán'}\n` +
+                      `• Đơn vị: HỘ KINH DOANH NGUYỄN LƯƠNG THỌ\n` +
+                      `Quý phụ huynh bấm vào đường link sau để xem và lưu trữ hóa đơn gốc:\n${publicUrl}\n\n` +
+                      `Trân trọng cảm ơn Quý phụ huynh!`
+
+                    try {
+                      const res = await fetch('http://localhost:3001/send-direct', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ phone: rawPhone, message: msg }),
+                      })
+                      const data = await res.json()
+                      if (data.ok) {
+                        toast.success(`Đã tự động gửi Zalo cho phụ huynh ${chainModal.studentName}!`)
+                      } else {
+                        window.open(`https://zalo.me/${rawPhone}`, '_blank')
+                      }
+                    } catch {
+                      window.open(`https://zalo.me/${rawPhone}`, '_blank')
+                    }
+                    setChainModal(null)
+                  }}
+                  className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black rounded-2xl shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 cursor-pointer transition-transform hover:scale-[1.01]"
+                >
+                  <Send className="w-4 h-4 text-amber-300" />
+                  Gửi Hóa Đơn Qua Zalo Cho Phụ Huynh Ngay (1-Click)
+                </button>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => {
+                      const inv = chainModal.invoice
+                      setChainModal(null)
+                      setActiveInvoice(inv)
+                    }}
+                    className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold rounded-xl flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  >
+                    <FileText className="w-3.5 h-3.5 text-amber-600" />
+                    Xem / In Hóa Đơn A4
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      setChainModal(null)
+                      setActiveTab('tax-books')
+                    }}
+                    className="flex-1 py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold rounded-xl flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  >
+                    <BookOpen className="w-3.5 h-3.5 text-amber-600" />
+                    Xem Trong Sổ A1
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => setChainModal(null)}
+                  className="w-full py-2 text-slate-400 hover:text-slate-600 font-bold transition-colors cursor-pointer text-center text-xs"
+                >
+                  Đóng lại
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Electronic Invoice Modal */}
       {activeInvoice && (
         <ElectronicInvoiceModal

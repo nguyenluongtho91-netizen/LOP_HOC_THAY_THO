@@ -1,7 +1,7 @@
 // src/components/tuition/InvoiceManager.tsx
 import React, { useState, useMemo } from 'react'
 import {
-  FileText, Printer, Send, Copy, Check, Search,
+  FileText, BookOpen, Printer, Send, Copy, Check, Search,
   Calendar, Filter, Sparkles, ShieldCheck, TrendingUp,
   Download, Eye, QrCode, Phone, CheckCircle2, ChevronRight
 } from 'lucide-react'
@@ -18,6 +18,7 @@ interface InvoiceManagerProps {
   students: Student[]
   selectedClassId: string
   onSelectClassId: (classId: string) => void
+  onNavigateTab?: (tab: string) => void
 }
 
 export default function InvoiceManager({
@@ -26,7 +27,8 @@ export default function InvoiceManager({
   classes,
   students,
   selectedClassId,
-  onSelectClassId
+  onSelectClassId,
+  onNavigateTab
 }: InvoiceManagerProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedMonth, setSelectedMonth] = useState('all')
@@ -319,6 +321,17 @@ export default function InvoiceManager({
 
         {/* Nút Thao Tác Nhanh */}
         <div className='flex items-center gap-2'>
+          {onNavigateTab && (
+            <button
+              onClick={() => onNavigateTab('tax-books')}
+              className='px-3.5 py-2 bg-amber-50 hover:bg-amber-100 text-amber-900 font-black rounded-xl text-xs flex items-center gap-1.5 transition-colors cursor-pointer border border-amber-300 shadow-xs'
+              title='Xem kết chuyển toàn bộ hóa đơn vào Sổ Doanh Thu A1'
+            >
+              <BookOpen className='w-3.5 h-3.5 text-amber-600' />
+              Xem Trong Sổ Thuế A1
+            </button>
+          )}
+
           <button
             onClick={handlePrintRegistry}
             className='px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl text-xs flex items-center gap-1.5 transition-colors cursor-pointer'
@@ -454,6 +467,16 @@ export default function InvoiceManager({
                             <Send className='w-3 h-3 text-amber-300' />
                             {sendingZaloId === inv.id ? '...' : 'Zalo'}
                           </button>
+
+                          {onNavigateTab && (
+                            <button
+                              onClick={() => onNavigateTab('tax-books')}
+                              className='p-1.5 text-slate-400 hover:text-amber-700 hover:bg-amber-50 rounded-lg transition-colors cursor-pointer'
+                              title='Xem trong Sổ Thuế A1 (TT 88)'
+                            >
+                              <BookOpen className='w-3.5 h-3.5 text-amber-600' />
+                            </button>
+                          )}
 
                           <button
                             onClick={() => handleCopyLink(inv)}

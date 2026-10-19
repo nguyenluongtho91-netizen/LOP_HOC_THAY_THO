@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import {
-  TrendingUp, Calendar, FileText, DollarSign, CreditCard, Wallet,
+  TrendingUp, Calendar, FileText, BookOpen, DollarSign, CreditCard, Wallet,
   Building2, Printer, Search, Plus, Trash2, CheckCircle,
   ArrowUpRight, AlertCircle, Sparkles, Filter, ChevronDown
 } from 'lucide-react'
@@ -25,6 +25,7 @@ interface RevenueDashboardProps {
     paid_at?: string
   }) => Promise<any>
   onDeletePayment?: (id: string) => Promise<void>
+  onNavigateTab?: (tab: string) => void
 }
 
 export default function RevenueDashboard({
@@ -34,7 +35,8 @@ export default function RevenueDashboard({
   students,
   enrollments,
   onAddPayment,
-  onDeletePayment
+  onDeletePayment,
+  onNavigateTab
 }: RevenueDashboardProps) {
   const now = new Date()
   const currentMonthKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0')
@@ -557,6 +559,15 @@ export default function RevenueDashboard({
                           <FileText className='w-3.5 h-3.5 text-amber-600' />
                           Hóa đơn
                         </button>
+                        {onNavigateTab && (
+                          <button
+                            onClick={() => onNavigateTab('tax-books')}
+                            className='p-1.5 text-slate-400 hover:text-amber-700 hover:bg-amber-50 rounded-lg transition-colors cursor-pointer inline-flex items-center align-middle mr-1.5'
+                            title='Xem chứng từ này trong Sổ Thuế A1'
+                          >
+                            <BookOpen className='w-3.5 h-3.5 text-amber-600' />
+                          </button>
+                        )}
                         {onDeletePayment && (
                           <button
                             onClick={() => {

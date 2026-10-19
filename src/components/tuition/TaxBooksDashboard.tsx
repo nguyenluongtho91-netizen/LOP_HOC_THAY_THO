@@ -7,6 +7,8 @@ import {
 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { fmtVNDShort } from '@/lib/helpers'
+import ElectronicInvoiceModal from './ElectronicInvoiceModal'
+import { buildElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { numberToVietnameseWords } from '@/lib/numberToWords'
 import {
   ExpenseRecord, ExpenseCategory, EXPENSE_CATEGORIES,
@@ -32,6 +34,7 @@ export default function TaxBooksDashboard({
   const [selectedQuarter, setSelectedQuarter] = useState('all')
   const [expenses, setExpenses] = useState<ExpenseRecord[]>([])
   const [loadingExpenses, setLoadingExpenses] = useState(true)
+  const [selectedInvoice, setSelectedInvoice] = useState<ElectronicInvoiceData | null>(null)
 
   // State modal thêm chi phí Sổ A2
   const [isAddExpenseOpen, setIsAddExpenseOpen] = useState(false)
@@ -430,7 +433,35 @@ export default function TaxBooksDashboard({
                   a1Records.map((r, idx) => (
                     <tr key={idx} className='hover:bg-slate-50/50'>
                       <td className='border border-slate-300 px-3 py-2 text-center font-mono'>{r.date}</td>
-                      <td className='border border-slate-300 px-3 py-2 text-center font-mono font-bold text-rose-700'>{r.voucherNo}</td>
+                      <td className='border border-slate-300 px-3 py-2 text-center font-mono'>
+                        <button
+                          onClick={() => {
+                            const p = payments.find(pay => pay.id === r.id)
+                            const st = students.find(s => s.id === p?.student_id)
+                            const cls = classes.find(c => c.id === p?.class_id)
+                            const isTransfer = p?.method === 'transfer' || p?.method === 'seapay'
+                            const inv = buildElectronicInvoice({
+                              id: r.voucherNo,
+                              studentName: r.studentName,
+                              studentCode: r.studentCode,
+                              className: r.className,
+                              parentName: (st as any)?.parent_name || 'Quý phụ huynh',
+                              phone: ((st as any)?.zalo || (st as any)?.parent_phone || '').replace(/\D/g, ''),
+                              amount: r.amount,
+                              courseName: r.className ? `Học phí môn Toán Lớp ${r.className}` : 'Học phí môn Toán',
+                              paymentMethod: isTransfer ? 'Chuyển khoản Vietcombank' : 'Tiền mặt',
+                              note: r.description,
+                              date: r.date || new Date(),
+                            })
+                            setSelectedInvoice(inv)
+                          }}
+                          className='font-bold text-rose-700 hover:text-rose-900 hover:underline inline-flex items-center gap-1 cursor-pointer transition-colors'
+                          title='Bấm để xem Hóa đơn điện tử gốc kèm chữ ký số và mã QR'
+                        >
+                          <FileText className='w-3 h-3 text-rose-600' />
+                          {r.voucherNo}
+                        </button>
+                      </td>
                       <td className='border border-slate-300 px-3 py-2 text-center font-mono'>{r.date}</td>
                       <td className='border border-slate-300 px-4 py-2'>
                         <span className='font-bold text-slate-900'>{r.description}</span>
@@ -941,6 +972,13 @@ export default function TaxBooksDashboard({
             </form>
           </div>
         </div>
+      )}
+
+      {selectedInvoice && (
+        <ElectronicInvoiceModal
+          invoice={selectedInvoice}
+          onClose={() => setSelectedInvoice(null)}
+        />
       )}
 
     </div>
