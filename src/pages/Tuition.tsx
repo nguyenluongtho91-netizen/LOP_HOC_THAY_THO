@@ -1,7 +1,10 @@
 import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
 import { useEffect, useState, useMemo } from 'react'
-import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2 } from 'lucide-react'
+import { Banknote, Plus, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
+import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
+import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
+import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
 import Modal from '@/components/Modal'
@@ -19,7 +22,7 @@ interface TuitionNotificationRow {
 
 export default function Tuition() {
   const {
-    classes, students, enrollments, tuitionNotifications,
+    classes, students, enrollments, payments, tuitionNotifications,
     loadClasses, loadStudents, loadEnrollments, loadPayments, loadTuitionNotifications,
     addPayment, upsertTuitionNotification, updateTuitionNotification,
     batchUpsertTuitionNotifications, deleteTuitionNotification
@@ -51,6 +54,124 @@ export default function Tuition() {
   const [sendingStudentId, setSendingStudentId] = useState<string | null>(null)
   const [phoneEditModal, setPhoneEditModal] = useState<{ student: any; row: TuitionNotificationRow; phoneInput: string } | null>(null)
   const [robotOnline, setRobotOnline] = useState<boolean>(false)
+  const [activeTab, setActiveTab] = useState<'tuition' | 'custom-fee' | 'revenue'>('tuition')
+  const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
+  const [editingStudentFee, setEditingStudentFee] = useState<{ student: any; row: TuitionNotificationRow } | null>(null)
+
+  const getStandardClassFee = (cls: any): number => {
+    if (!cls) return 600000
+    const clsName = ((cls as any).class_name || cls.name || '').toLowerCase()
+    const clsGrade = ((cls as any).grade || '').toLowerCase()
+    if (clsName.includes('6') || clsGrade.includes('6')) return 1000000
+    return 600000
+  }
+
+  const getStudentEffectiveFee = (studentId: string, classId: string, notif?: any) => {
+    const key = studentId + '_' + classId
+    const custom = customFees[key] || customFees[studentId]
+    if (custom && custom.amount != null) {
+      return { amount: Number(custom.amount), note: custom.note || '', isCustom: true }
+    }
+    if (notif && notif.amount != null) {
+      const cls = classes.find(c => c.id === classId)
+      const std = getStandardClassFee(cls)
+      if (Number(notif.amount) !== std) {
+        return { amount: Number(notif.amount), note: notif.note || '', isCustom: true }
+      }
+      return { amount: Number(notif.amount), note: '', isCustom: false }
+    }
+    const cls = classes.find(c => c.id === classId)
+    return { amount: getStandardClassFee(cls), note: '', isCustom: false }
+  }
+
+  const loadCustomFees = async () => {
+    try {
+      const local = localStorage.getItem('__CUSTOM_STUDENT_FEES__')
+      if (local) setCustomFees(JSON.parse(local))
+      const { data } = await supabase.from('exams').select('data').eq('title', '__CUSTOM_STUDENT_FEES__').maybeSingle()
+      if (data?.data?.items && Array.isArray(data.data.items)) {
+        const map: Record<string, CustomFeeRecord> = {}
+        data.data.items.forEach((it: any) => { if (it.key) map[it.key] = it })
+        setCustomFees(prev => {
+          const merged = { ...prev, ...map }
+          try { localStorage.setItem('__CUSTOM_STUDENT_FEES__', JSON.stringify(merged)) } catch {}
+          return merged
+        })
+      }
+    } catch {}
+  }
+
+  const handleSaveCustomFee = async (studentId: string, classId: string, amount: number, note: string) => {
+    const key = studentId + '_' + classId
+    const record: CustomFeeRecord = { amount, note, updatedAt: new Date().toISOString() }
+    const nextFees = { ...customFees, [key]: record }
+    setCustomFees(nextFees)
+    try { localStorage.setItem('__CUSTOM_STUDENT_FEES__', JSON.stringify(nextFees)) } catch {}
+
+    try {
+      const items = Object.entries(nextFees).map(([k, v]) => ({ key: k, ...v }))
+      const { data: existing } = await supabase.from('exams').select('id').eq('title', '__CUSTOM_STUDENT_FEES__').maybeSingle()
+      if (existing?.id) {
+        await supabase.from('exams').update({ data: { items } }).eq('id', existing.id)
+      } else {
+        await supabase.from('exams').insert([{ title: '__CUSTOM_STUDENT_FEES__', data: { items } }])
+      }
+    } catch {}
+
+    const notif = tuitionNotifications.find(n => n.student_id === studentId && n.class_id === classId)
+    if (notif) {
+      await updateTuitionNotification(notif.id, { amount })
+    } else {
+      const activeCourseName = (courseName && courseName.trim()) || 'Học phí'
+      await upsertTuitionNotification({
+        student_id: studentId,
+        class_id: classId,
+        course_name: activeCourseName,
+        amount,
+        is_paid: false
+      })
+    }
+
+    toast.success('✅ Đã lưu mức học phí riêng cho học sinh!')
+    void loadTuitionNotifications(classId || selClass)
+  }
+
+  const handleResetCustomFee = async (studentId: string, classId: string) => {
+    const key = studentId + '_' + classId
+    const nextFees = { ...customFees }
+    delete nextFees[key]
+    delete nextFees[studentId]
+    setCustomFees(nextFees)
+    try { localStorage.setItem('__CUSTOM_STUDENT_FEES__', JSON.stringify(nextFees)) } catch {}
+
+    try {
+      const items = Object.entries(nextFees).map(([k, v]) => ({ key: k, ...v }))
+      const { data: existing } = await supabase.from('exams').select('id').eq('title', '__CUSTOM_STUDENT_FEES__').maybeSingle()
+      if (existing?.id) {
+        await supabase.from('exams').update({ data: { items } }).eq('id', existing.id)
+      }
+    } catch {}
+
+    const cls = classes.find(c => c.id === classId)
+    const std = getStandardClassFee(cls)
+    const notif = tuitionNotifications.find(n => n.student_id === studentId && n.class_id === classId)
+    if (notif) {
+      await updateTuitionNotification(notif.id, { amount: std })
+    }
+
+    toast.success('🔄 Đã khôi phục mức học phí chuẩn của lớp!')
+    void loadTuitionNotifications(classId || selClass)
+  }
+
+  const handleDeletePayment = async (paymentId: string) => {
+    try {
+      await supabase.from('payments').delete().eq('id', paymentId)
+      toast.success('Đã xóa bản ghi thu tiền!')
+      void loadPayments(selClass)
+    } catch (e: any) {
+      toast.error('Lỗi khi xóa: ' + e.message)
+    }
+  }
 
   useEffect(() => {
     let isMounted = true
@@ -67,7 +188,7 @@ export default function Tuition() {
 
   // ── Load foundational data on mount ──
   useEffect(() => {
-    void Promise.all([loadClasses(), loadStudents(), loadEnrollments(), loadTuitionNotifications()])
+    void Promise.all([loadClasses(), loadStudents(), loadEnrollments(), loadPayments(), loadTuitionNotifications(), loadCustomFees()])
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // ── Load notifications + payments when class changes ──
@@ -814,6 +935,54 @@ export default function Tuition() {
         </button>
       </div>
 
+      {/* TAB NAVIGATION */}
+      <div className='flex flex-wrap items-center gap-2 p-1.5 bg-slate-100/90 rounded-2xl border border-slate-200/80 w-fit'>
+        <button
+          onClick={() => setActiveTab('tuition')}
+          className={'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ' + (
+            activeTab === 'tuition'
+              ? 'bg-white text-teal-800 shadow-sm shadow-slate-200'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          )}
+        >
+          <Banknote className='w-4 h-4 text-teal-600' />
+          Quản Lý & Báo Học Phí
+        </button>
+
+        <button
+          onClick={() => setActiveTab('custom-fee')}
+          className={'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ' + (
+            activeTab === 'custom-fee'
+              ? 'bg-white text-teal-800 shadow-sm shadow-slate-200'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          )}
+        >
+          <SlidersHorizontal className='w-4 h-4 text-indigo-600' />
+          Học Phí Riêng Từng Học Sinh
+          {Object.keys(customFees).length > 0 && (
+            <span className='px-2 py-0.5 rounded-full text-[10px] font-black bg-indigo-100 text-indigo-800'>
+              {Object.keys(customFees).length}
+            </span>
+          )}
+        </button>
+
+        <button
+          onClick={() => setActiveTab('revenue')}
+          className={'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ' + (
+            activeTab === 'revenue'
+              ? 'bg-white text-teal-800 shadow-sm shadow-slate-200'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          )}
+        >
+          <TrendingUp className='w-4 h-4 text-emerald-600' />
+          Doanh Thu Hàng Tháng
+        </button>
+      </div>
+
+      {activeTab === 'tuition' && (
+        <div className='space-y-6'>
+
+
       {/* Summary Statistics Cards (School-wide or Selected Class) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
@@ -1100,8 +1269,28 @@ export default function Tuition() {
                       </td>
 
                       {/* Mức học phí */}
-                      <td className="px-5 py-4 font-mono font-bold text-gray-800">
-                        {row.notification ? fmtVNDShort(row.notification.amount) : '—'}
+                      <td className='px-5 py-4'>
+                        {(() => {
+                          const effective = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+                          return (
+                            <div className='flex flex-col gap-1 items-start'>
+                              <button
+                                type='button'
+                                onClick={() => setEditingStudentFee({ student: row.student, row })}
+                                className='font-mono font-black text-slate-900 hover:text-teal-600 flex items-center gap-1.5 cursor-pointer group text-left transition-colors'
+                                title='Chỉnh sửa mức học phí riêng cho học sinh này'
+                              >
+                                <span className='text-base'>{fmtVNDShort(effective.amount)}</span>
+                                <Edit3 className='w-3.5 h-3.5 text-slate-400 group-hover:text-teal-600 transition-colors' />
+                              </button>
+                              {effective.isCustom && (
+                                <span className='inline-flex items-center gap-1 text-[10px] font-black px-1.5 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200'>
+                                  Học phí riêng {effective.note ? effective.note : ''}
+                                </span>
+                              )}
+                            </div>
+                          )
+                        })()}
                       </td>
 
                       {/* Trạng thái */}
@@ -1208,6 +1397,37 @@ export default function Tuition() {
           </div>
         </>
       )}
+        </div>
+      )}
+
+      {/* TAB 2: MUC RIENG HOC PHI TUNG HOC SINH */}
+      {activeTab === 'custom-fee' && (
+        <CustomFeeManager
+          classes={classes}
+          students={students}
+          enrollments={enrollments}
+          tuitionNotifications={tuitionNotifications}
+          customFees={customFees}
+          onSaveCustomFee={handleSaveCustomFee}
+          onResetCustomFee={handleResetCustomFee}
+          selectedClassId={selClass}
+          onSelectClassId={setSelClass}
+        />
+      )}
+
+      {/* TAB 3: BAO CAO DOANH THU HANG THANG */}
+      {activeTab === 'revenue' && (
+        <RevenueDashboard
+          payments={payments}
+          tuitionNotifications={tuitionNotifications}
+          classes={classes}
+          students={students}
+          enrollments={enrollments}
+          onAddPayment={addPayment}
+          onDeletePayment={handleDeletePayment}
+        />
+      )}
+
 
       {/* QR VietQR Modal */}
       {qrModal && qrModal.notification && (
@@ -2055,6 +2275,30 @@ export default function Tuition() {
             </div>
           </div>
         </div>
+      )}
+      {/* Modal chinh sua hoc phi rieng tung hoc sinh */}
+      {editingStudentFee && (
+        <EditCustomFeeModal
+          isOpen={true}
+          onClose={() => setEditingStudentFee(null)}
+          student={editingStudentFee.student}
+          className={(() => {
+            const cls = classes.find(c => c.id === selClass)
+            return cls ? ((cls as any).class_name || cls.name) : ''
+          })()}
+          standardClassFee={(() => {
+            const cls = classes.find(c => c.id === selClass)
+            return getStandardClassFee(cls)
+          })()}
+          currentAmount={getStudentEffectiveFee(editingStudentFee.student.id, selClass, editingStudentFee.row.notification).amount}
+          currentNote={getStudentEffectiveFee(editingStudentFee.student.id, selClass, editingStudentFee.row.notification).note}
+          onSave={async (amt, note) => {
+            await handleSaveCustomFee(editingStudentFee.student.id, selClass, amt, note)
+          }}
+          onResetToStandard={async () => {
+            await handleResetCustomFee(editingStudentFee.student.id, selClass)
+          }}
+        />
       )}
     </div>
   )
