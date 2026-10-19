@@ -6,7 +6,7 @@ import {
   LayoutDashboard, Users, BookOpen, CalendarCheck, Banknote,
   Mail, Settings, LogOut, FileText, MonitorPlay, ScanText,
   GraduationCap, Sigma, FilePlus, PlaySquare, Zap, FileType, CreditCard,
-  ClipboardList, ClipboardCheck, Tag, MessageCircle, Calculator, PenTool,                                  // ← MỚI ZALO
+  ClipboardList, ClipboardCheck, Tag, MessageCircle, Calculator, PenTool,
 } from 'lucide-react'
 
 export default function Layout() {
@@ -26,48 +26,46 @@ export default function Layout() {
     {
       title: 'Quản lý Đào tạo',
       items: [
-        { path: '/',           icon: LayoutDashboard, label: 'LỚP HỌC THẦY THỌ' },
-        { path: '/classes',    icon: BookOpen,        label: 'Lớp học' },
-        { path: '/students',   icon: Users,           label: 'Học sinh' },
-        { path: '/attendance', icon: CalendarCheck,   label: 'Điểm danh' },
+        { path: '/',           icon: LayoutDashboard, label: 'Tổng quan' },
+        { path: '/classes',    icon: BookOpen,        label: 'Quản lý lớp học' },
+        { path: '/students',   icon: Users,           label: 'Hồ sơ học sinh' },
+        { path: '/attendance', icon: CalendarCheck,   label: 'Điểm danh buổi học' },
       ],
     },
     {
       title: 'Học liệu & Thi cử',
       items: [
-        {
-        path: '/homework',          icon: ClipboardCheck, label: 'Giao Bài Tập (Azota)'
-      },
-      { path: '/courses',           icon: PlaySquare,    label: 'Khóa học & Bài giảng' },
-        { path: '/exams',             icon: FileText,      label: 'Ngân hàng đề' },
-        { path: '/create-pdf-exam',   icon: FilePlus,      label: 'Tạo đề PDF' },
-        { path: '/create-tex-exam',   icon: Sigma,         label: 'Tạo đề LaTeX' },
-        { path: '/create-worksheet',  icon: ClipboardList, ClipboardCheck, label: 'Phiếu Bài Tập' },  // ← MỚI
-        { path: '/0345833133',        icon: Video,         label: '🔴 Phòng Live 0345.833.133' },
-        { path: '/exam-rooms',        icon: MonitorPlay,   label: 'Phòng thi' },
-        { path: '/phieu-grader',      icon: GraduationCap, label: 'Chấm Bài Học Sinh' },
+        { path: '/homework',          icon: ClipboardCheck, label: 'Giao bài tập' },
+        { path: '/courses',           icon: PlaySquare,     label: 'Khóa học & Bài giảng' },
+        { path: '/exams',             icon: FileText,       label: 'Ngân hàng đề thi' },
+        { path: '/create-pdf-exam',   icon: FilePlus,       label: 'Tạo đề PDF' },
+        { path: '/create-tex-exam',   icon: Sigma,          label: 'Tạo đề LaTeX' },
+        { path: '/create-worksheet',  icon: ClipboardList,  label: 'Phiếu bài tập' },
+        { path: '/0345833133',        icon: Video,          label: '🔴 Phòng Live 0345.833.133' },
+        { path: '/exam-rooms',        icon: MonitorPlay,    label: 'Phòng thi trực tuyến' },
+        { path: '/phieu-grader',      icon: GraduationCap,  label: 'Chấm bài học sinh' },
       ],
     },
     {
       title: 'Công cụ bổ trợ',
       items: [
-        { path: '/whiteboard',     icon: PenTool,  label: 'Bảng vẽ ô ly Toán - Hóa' },
-        { path: '/ocr',            icon: ScanText, label: 'Smart OCR' },
-        { path: '/latex-tools',    icon: Sigma,    label: 'Công cụ LaTeX' },
-        { path: '/word-tools',     icon: FileType, label: 'Công cụ Word' },
+        { path: '/whiteboard',     icon: PenTool,    label: 'Bảng vẽ ô ly Toán - Hóa' },
+        { path: '/ocr',            icon: ScanText,   label: 'Smart OCR' },
+        { path: '/latex-tools',    icon: Sigma,      label: 'Công cụ LaTeX' },
+        { path: '/word-tools',     icon: FileType,   label: 'Công cụ Word' },
         { path: '/casio',          icon: Calculator, label: 'Máy tính Casio 580' },
-        { path: '/student-labels', icon: Tag,      label: 'Nhãn vở học sinh' },
+        { path: '/student-labels', icon: Tag,        label: 'Nhãn vở học sinh' },
       ],
     },
     {
-      title: 'Hệ thống',
+      title: 'Tài chính & Hệ thống',
       adminOnly: true,
       items: [
-        { path: '/zalo',          icon: MessageCircle,  label: 'Zalo & Học phí',   adminOnly: true },
-        { path: '/student-cards', icon: CreditCard,     label: 'In thẻ học viên', adminOnly: true },
-        { path: '/tuition',       icon: Banknote,       label: 'Học phí',         adminOnly: true },
-        { path: '/email',         icon: Mail,           label: 'Email / Zalo',    adminOnly: true },
-        { path: '/users',         icon: Settings,       label: 'Người dùng',      adminOnly: true },
+        { path: '/tuition',       icon: Banknote,      label: 'Quản lý học phí',   adminOnly: true },
+        { path: '/zalo',          icon: MessageCircle, label: 'Zalo & Thông báo', adminOnly: true },
+        { path: '/student-cards', icon: CreditCard,    label: 'In thẻ học viên',   adminOnly: true },
+        { path: '/email',         icon: Mail,          label: 'Email / Tin nhắn',  adminOnly: true },
+        { path: '/users',         icon: Settings,      label: 'Quản lý tài khoản', adminOnly: true },
       ],
     },
   ]
@@ -111,7 +109,7 @@ export default function Layout() {
                         }`}
                       >
                         <Icon className={`w-5 h-5 ${isActive ? 'text-red-500' : 'opacity-80'}`} />
-                        <span className="text-sm">{item.label}</span>
+                        <span className="text-sm font-semibold">{item.label}</span>
                       </Link>
                     )
                   })}
