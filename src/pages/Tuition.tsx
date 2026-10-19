@@ -1,11 +1,12 @@
 ﻿import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
 import { useEffect, useState, useMemo } from 'react'
-import { Banknote, Plus, FileText, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
+import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import InvoiceManager from '@/components/tuition/InvoiceManager'
+import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
 import ElectronicInvoiceModal from '@/components/tuition/ElectronicInvoiceModal'
 import { buildElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
@@ -58,7 +59,7 @@ export default function Tuition() {
   const [sendingStudentId, setSendingStudentId] = useState<string | null>(null)
   const [phoneEditModal, setPhoneEditModal] = useState<{ student: any; row: TuitionNotificationRow; phoneInput: string } | null>(null)
   const [robotOnline, setRobotOnline] = useState<boolean>(false)
-  const [activeTab, setActiveTab] = useState<'tuition' | 'custom-fee' | 'revenue' | 'invoices'>('tuition')
+  const [activeTab, setActiveTab] = useState<'tuition' | 'custom-fee' | 'revenue' | 'invoices' | 'tax-books'>('tuition')
   const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
   const handleOpenInvoice = (row: TuitionNotificationRow) => {
     const feeInfo = getStudentEffectiveFee(row.student.id, selClass, row.notification)
@@ -1032,6 +1033,21 @@ export default function Tuition() {
             </span>
           )}
         </button>
+
+        <button
+          onClick={() => setActiveTab('tax-books')}
+          className={'flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black transition-all cursor-pointer ' + (
+            activeTab === 'tax-books'
+              ? 'bg-white text-amber-800 shadow-sm shadow-slate-200'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+          )}
+        >
+          <BookOpen className='w-4 h-4 text-amber-600' />
+          Sổ Kế Toán Thuế (A1 - A2)
+          <span className='px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-100 text-amber-800'>
+            TT 88
+          </span>
+        </button>
       </div>
 
       {activeTab === 'tuition' && (
@@ -1508,6 +1524,15 @@ export default function Tuition() {
           students={students}
           selectedClassId={selClass}
           onSelectClassId={setSelClass}
+        />
+      )}
+
+      {activeTab === 'tax-books' && (
+        <TaxBooksDashboard
+          payments={payments}
+          tuitionNotifications={tuitionNotifications}
+          classes={classes}
+          students={students}
         />
       )}
 
