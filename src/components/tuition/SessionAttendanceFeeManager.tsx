@@ -27,6 +27,8 @@ interface SessionAttendanceFeeManagerProps {
   onSwitchToTuitionTab?: () => void
 }
 
+const LOCAL_UNIT_PRICES_KEY = '__CLASS_UNIT_PRICES__'
+
 export default function SessionAttendanceFeeManager({
   classes,
   selClass,
@@ -45,14 +47,10 @@ export default function SessionAttendanceFeeManager({
   // Current active class object
   const currentClass = classes.find(c => c.id === selClass)
 
-  // Default unit price per session from class or 150.000 VNĐ
-  const initialFee = currentClass?.fee_per_session && currentClass.fee_per_session > 0
-    ? currentClass.fee_per_session
-    : 150000
-
-  const [unitPrice, setUnitPrice] = useState<number>(initialFee)
+  const [unitPricesMap, setUnitPricesMap] = useState<Record<string, number>>({})
+  const [unitPrice, setUnitPrice] = useState<number>(150000)
   const [isEditingPrice, setIsEditingPrice] = useState(false)
-  const [priceInput, setPriceInput] = useState<string>(String(initialFee))
+  const [priceInput, setPriceInput] = useState<string>('150000')
   const [savingPrice, setSavingPrice] = useState(false)
 
   // Selected date for recording attendance
@@ -60,7 +58,6 @@ export default function SessionAttendanceFeeManager({
   const [sessionNote, setSessionNote] = useState<string>('')
   
   // Draft attendance for current sessionDate
-  // studentId -> { present: boolean; late: boolean; note: string }
   const [draft, setDraft] = useState<Record<string, { present: boolean; late: boolean; note: string }>>({})
   const [savingSession, setSavingSession] = useState(false)
   const [syncingAll, setSyncingAll] = useState(false)
@@ -68,16 +65,66 @@ export default function SessionAttendanceFeeManager({
   // Filter month (YYYY-MM)
   const [selectedMonth, setSelectedMonth] = useState<string>(format(new Date(), 'yyyy-MM'))
 
-  // Sync unitPrice when class changes
+  // Load all unit prices from LocalStorage & Supabase exams
   useEffect(() => {
-    if (currentClass) {
-      const p = currentClass.fee_per_session && currentClass.fee_per_session > 0
-        ? currentClass.fee_per_session
-        : 150000
+    const loadUnitPrices = async () => {
+      let localMap: Record<string, number> = {}
+      try {
+        const raw = localStorage.getItem(LOCAL_UNIT_PRICES_KEY)
+        if (raw) localMap = JSON.parse(raw)
+      } catch {}
+
+      try {
+        const { data } = await supabase
+          .from('exams')
+          .select('data')
+          .eq('title', LOCAL_UNIT_PRICES_KEY)
+          .maybeSingle()
+
+        if (data?.data?.items && typeof data.data.items === 'object') {
+          const merged = { ...localMap, ...data.data.items }
+          setUnitPricesMap(merged)
+          try {
+            localStorage.setItem(LOCAL_UNIT_PRICES_KEY, JSON.stringify(merged))
+          } catch {}
+          return
+        }
+      } catch {}
+
+      setUnitPricesMap(localMap)
+    }
+
+    void loadUnitPrices()
+  }, [])
+
+  // Update current unit price when selClass or unitPricesMap changes
+  useEffect(() => {
+    if (!selClass) {
+      setUnitPrice(150000)
+      setPriceInput('150000')
+      return
+    }
+
+    if (unitPricesMap[selClass] && unitPricesMap[selClass] > 0) {
+      const p = unitPricesMap[selClass]
       setUnitPrice(p)
       setPriceInput(String(p))
+      return
     }
-  }, [currentClass])
+
+    if ((currentClass as any)?.fee_per_session && Number((currentClass as any).fee_per_session) > 0) {
+      const p = Number((currentClass as any).fee_per_session)
+      setUnitPrice(p)
+      setPriceInput(String(p))
+      return
+    }
+
+    // Default by grade: grade 6 = 100k, others = 150k
+    const grade = ((currentClass as any)?.grade || '').toLowerCase()
+    const def = grade.includes('6') ? 100000 : 150000
+    setUnitPrice(def)
+    setPriceInput(String(def))
+  }, [selClass, currentClass, unitPricesMap])
 
   // Load attendance when class changes
   useEffect(() => {
@@ -264,8 +311,11 @@ export default function SessionAttendanceFeeManager({
     }
   }
 
-  // Save unit price
+  // Save unit price (Resilient: LocalStorage + Supabase exams cloud store)
   const handleSavePrice = async () => {
+    if (!selClass) {
+      return toast.error('Vui lòng chọn lớp học trước khi lưu đơn giá')
+    }
     const num = Number(priceInput)
     if (isNaN(num) || num < 0) {
       return toast.error('Vui lòng nhập đơn giá hợp lệ')
@@ -273,11 +323,40 @@ export default function SessionAttendanceFeeManager({
     setSavingPrice(true)
     try {
       setUnitPrice(num)
-      if (currentClass && updateClass) {
-        await updateClass(currentClass.id, { fee_per_session: num })
-      } else if (currentClass) {
-        await supabase.from('classes').update({ fee_per_session: num }).eq('id', currentClass.id)
+
+      // 1. Cập nhật state & LocalStorage
+      const nextMap = { ...unitPricesMap, [selClass]: num }
+      setUnitPricesMap(nextMap)
+      try {
+        localStorage.setItem(LOCAL_UNIT_PRICES_KEY, JSON.stringify(nextMap))
+      } catch {}
+
+      // 2. Lưu lên Supabase Cloud (bảng exams)
+      try {
+        const { data: existing } = await supabase
+          .from('exams')
+          .select('id, data')
+          .eq('title', LOCAL_UNIT_PRICES_KEY)
+          .maybeSingle()
+
+        if (existing?.id) {
+          const currentItems = existing.data?.items || {}
+          currentItems[selClass] = num
+          await supabase.from('exams').update({ data: { items: currentItems } }).eq('id', existing.id)
+        } else {
+          await supabase.from('exams').insert([{ title: LOCAL_UNIT_PRICES_KEY, data: { items: { [selClass]: num } } }])
+        }
+      } catch (cloudErr) {
+        console.warn('Lưu Supabase exams:', cloudErr)
       }
+
+      // 3. Thử update classes table nếu có column, nếu không thì âm thầm bỏ qua
+      try {
+        if (currentClass) {
+          await supabase.from('classes').update({ fee_per_session: num }).eq('id', currentClass.id)
+        }
+      } catch {}
+
       setIsEditingPrice(false)
       toast.success(`✅ Đã lưu đơn giá ${fmtVNDShort(num)}/buổi cho lớp!`)
     } catch (err: any) {
@@ -484,15 +563,15 @@ export default function SessionAttendanceFeeManager({
                   step="5000"
                   value={priceInput}
                   onChange={e => setPriceInput(e.target.value)}
-                  placeholder="150000"
+                  placeholder="80000"
                   className="flex-1 bg-white text-slate-900 border border-amber-400 rounded-xl px-3 py-2 text-xs font-bold focus:outline-none"
                 />
                 <button
                   onClick={handleSavePrice}
                   disabled={savingPrice}
-                  className="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold cursor-pointer"
+                  className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold cursor-pointer"
                 >
-                  Lưu
+                  {savingPrice ? '...' : 'Lưu'}
                 </button>
                 <button
                   onClick={() => setIsEditingPrice(false)}
