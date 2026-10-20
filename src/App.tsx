@@ -1,4 +1,4 @@
-﻿// @ts-nocheck
+// @ts-nocheck
 import { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
@@ -48,6 +48,7 @@ import StudentCards from '@/pages/StudentCards'
 import StudentProgressPage from '@/pages/StudentProgressPage'
 import ZaloCenter from '@/pages/ZaloCenter'
 import PublicInvoicePage from '@/pages/PublicInvoicePage'
+import DebtPlannerPage from '@/pages/DebtPlannerPage'
 
 // --- PHỤ TRỢ: LOADER ---
 function Spinner() {
@@ -150,6 +151,7 @@ export default function App() {
         <Route path="student-labels" element={<NhanVoPage />} />
 
         {/* --- Nhóm Hệ thống (Chỉ Admin) --- */}
+        <Route path="debt-planner"  element={<ProtectedRoute adminOnly><DebtPlannerPage /></ProtectedRoute>} />
         <Route path="zalo"          element={<ProtectedRoute adminOnly><ZaloCenter /></ProtectedRoute>} />
         <Route path="student-cards" element={<ProtectedRoute adminOnly><StudentCards /></ProtectedRoute>} />
         <Route path="tuition"       element={<ProtectedRoute adminOnly><Tuition /></ProtectedRoute>} />

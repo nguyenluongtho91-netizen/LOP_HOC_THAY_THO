@@ -6,7 +6,7 @@ import {
   LayoutDashboard, Users, BookOpen, CalendarCheck, Banknote,
   Mail, Settings, LogOut, FileText, MonitorPlay, ScanText,
   GraduationCap, Sigma, FilePlus, PlaySquare, Zap, FileType, CreditCard,
-  ClipboardList, ClipboardCheck, Tag, MessageCircle, Calculator, PenTool,
+  ClipboardList, ClipboardCheck, Tag, MessageCircle, Calculator, PenTool, Target,
 } from 'lucide-react'
 
 export default function Layout() {
@@ -59,6 +59,7 @@ export default function Layout() {
       title: 'Tài chính & Hệ thống',
       adminOnly: true,
       items: [
+        { path: '/debt-planner',  icon: Target,        label: '🎯 Kế hoạch Trả nợ', adminOnly: true },
         { path: '/tuition',       icon: Banknote,      label: 'Quản lý học phí',   adminOnly: true },
         { path: '/zalo',          icon: MessageCircle, label: 'Zalo & Thông báo', adminOnly: true },
         { path: '/student-cards', icon: CreditCard,    label: 'In thẻ học viên',   adminOnly: true },

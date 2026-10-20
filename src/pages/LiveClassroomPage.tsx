@@ -15,7 +15,7 @@ import {
   Video, MicOff, Hand, Volume2, Shield, ShieldAlert, Lock, Unlock,
   Copy, Check, FileText, ArrowLeft, Maximize2,
   Columns, Sparkles, LogIn, Bell, BellOff, Edit3, X, RefreshCw,
-  Radio, Square, Download, Grid, LayoutGrid, Users, Monitor
+  Radio, Square, Download, Grid, LayoutGrid, Users, Monitor, Camera
 } from 'lucide-react';
 
 const TEACHER_PHONE = '0345833133';
@@ -408,6 +408,21 @@ export default function LiveClassroomPage() {
             }
           };
 
+          // Lắng nghe ngay khi Jitsi tạo iframe vào DOM để set display-capture tức thời
+          if (jitsiContainerRef.current) {
+            const observer = new MutationObserver((mutations) => {
+              mutations.forEach((m) => {
+                m.addedNodes.forEach((node: any) => {
+                  if (node && node.tagName === 'IFRAME') {
+                    node.setAttribute('allow', 'camera *; microphone *; fullscreen *; display-capture *; autoplay *; clipboard-write *');
+                    node.allow = 'camera *; microphone *; fullscreen *; display-capture *; autoplay *; clipboard-write *';
+                  }
+                });
+              });
+            });
+            observer.observe(jitsiContainerRef.current, { childList: true, subtree: true });
+          }
+
           api = new (window as any).JitsiMeetExternalAPI(JITSI_DOMAIN, options);
           jitsiApiRef.current = api;
 
@@ -750,6 +765,62 @@ export default function LiveClassroomPage() {
     if (recordingTimerRef.current) clearInterval(recordingTimerRef.current);
   };
 
+  // --- CHỤP ẢNH MÀN HÌNH BÀI GIẢNG / LỚP HỌC (SCREENSHOT PNG SIÊU NÉT) ---
+  const handleTakeScreenshot = async () => {
+    try {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
+        toast.error('Trình duyệt của bạn không hỗ trợ tính năng chụp màn hình trực tiếp. Vui lòng sử dụng Chrome, Edge hoặc Cốc Cốc trên máy tính!');
+        return;
+      }
+      toast('Đang mở hộp thoại chọn màn hình cần chụp ảnh...', { icon: '📸' });
+
+      // Mở hộp thoại chọn màn hình / cửa sổ / thẻ Chrome
+      const stream = await navigator.mediaDevices.getDisplayMedia({
+        video: {
+          width: { ideal: 1920, max: 3840 },
+          height: { ideal: 1080, max: 2160 }
+        },
+        audio: false
+      });
+
+      const video = document.createElement('video');
+      video.srcObject = stream;
+      video.muted = true;
+      await video.play();
+
+      // Đợi khung hình hiển thị ổn định
+      await new Promise(r => setTimeout(r, 400));
+
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth || 1920;
+      canvas.height = video.videoHeight || 1080;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataUrl = canvas.toDataURL('image/png');
+        const now = new Date();
+        const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}h${String(now.getMinutes()).padStart(2, '0')}m${String(now.getSeconds()).padStart(2, '0')}`;
+        const filename = `Anh_Chup_Bai_Giang_Thay_Tho_${dateStr}.png`;
+
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        toast.success(`📸 Đã chụp màn hình và lưu ảnh: ${filename}`, { duration: 5000 });
+      }
+
+      // Đóng luồng chụp ngay sau khi lưu ảnh
+      stream.getTracks().forEach(t => t.stop());
+    } catch (err: any) {
+      if (err.name !== 'NotAllowedError') {
+        toast.error('Lỗi khi chụp màn hình: ' + (err.message || 'Lỗi'));
+      }
+    }
+  };
+
   // Học sinh giơ tay / hạ tay
   const handleRaiseHand = () => {
     if (lockRaiseHand || focusMode) {
@@ -1038,6 +1109,16 @@ export default function LiveClassroomPage() {
             <span>{isSharingScreen ? 'Dừng Share' : 'Chia Sẻ Màn Hình 🖥️'}</span>
           </button>
 
+          {/* NÚT CHỤP MÀN HÌNH TỨC THÌ (HEADER) */}
+          <button
+            onClick={handleTakeScreenshot}
+            className="px-2.5 py-1 rounded-lg transition flex items-center gap-1.5 text-xs font-bold shadow-md active:scale-95 cursor-pointer bg-slate-800 hover:bg-slate-700 text-amber-300 hover:text-amber-200 border border-slate-700"
+            title="Bấm để chụp ảnh màn hình bài giảng và lưu file PNG về máy tính"
+          >
+            <Camera className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden sm:inline">Chụp Màn Hình 📸</span>
+          </button>
+
           {activeExamId && (
             <>
               <button
@@ -1264,6 +1345,16 @@ export default function LiveClassroomPage() {
                 <span>Dừng ghi ({formatDuration(recordingDuration)}) ⏹️</span>
               </button>
             )}
+
+            {/* NÚT CHỤP ẢNH MÀN HÌNH BÀI GIẢNG (SCREENSHOT PNG) */}
+            <button
+              onClick={handleTakeScreenshot}
+              className="px-2.5 py-1 rounded-md bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1.5 font-bold text-xs transition active:scale-95 shadow-sm cursor-pointer"
+              title="Bấm để chụp lại 1 ảnh bài giảng / bảng vẽ / bài làm và lưu file PNG về máy tính"
+            >
+              <Camera className="w-3.5 h-3.5 text-amber-400" />
+              <span>Chụp Màn Hình 📸</span>
+            </button>
 
             {/* NÚT CHẤT LƯỢNG HÌNH ẢNH FULL HD 1080P */}
             <button
