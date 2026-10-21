@@ -1117,7 +1117,7 @@ export default function Students() {
                         ? 'bg-teal-600 text-white shadow-xs'
                         : 'text-gray-600 hover:bg-slate-100'
                     }`}
-                    title="Theo từng lớp từ nhỏ đến lớn (TOÁN 6.1 → HÓA 12.1) và Mã HS từ nhỏ lên to"
+                    title="Theo từng lớp từ nhỏ đến lớn (LỚP 6A → LỚP 12) và Mã HS từ nhỏ lên to"
                   >
                     🏫 Theo Lớp & Mã HS (Nhỏ → To)
                   </button>
