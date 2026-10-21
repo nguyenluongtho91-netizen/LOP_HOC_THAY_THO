@@ -19,7 +19,8 @@ import {
   Upload,
   Trash2,
   X,
-  Loader2
+  Loader2,
+  Key
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import toast from 'react-hot-toast'
@@ -527,6 +528,22 @@ export default function StudentPortal() {
                   <span>VÀO HỆ THỐNG</span>
                 )}
               </button>
+
+              {/* Quên mật khẩu khi học sinh không nhớ */}
+              <div className="text-center pt-1">
+                <button
+                  type="button"
+                  onClick={() => {
+                    toast(
+                      `Mật khẩu mặc định là: 222\nNếu bạn đã đổi mật khẩu và không nhớ, hãy nhắn ngay cho Thầy Thọ để được cấp lại nhé!`,
+                      { icon: '🔑', duration: 7000 }
+                    )
+                  }}
+                  className="text-xs font-bold text-teal-700 hover:text-teal-900 inline-flex items-center gap-1.5 cursor-pointer bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-xl border border-teal-200 transition-all shadow-2xs"
+                >
+                  <Key className="w-3.5 h-3.5 text-amber-500" /> Quên mật khẩu? (Bấm vào đây)
+                </button>
+              </div>
             </form>
           </div>
           <p className="text-center text-white/60 text-xs mt-4">
