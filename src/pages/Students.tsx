@@ -767,10 +767,17 @@ export default function Students() {
   const getClassWeight = (className: string): number => {
     if (!className) return 999999
     const upper = className.toUpperCase().trim()
-    const m = upper.match(/(?:TOÁN|HÓA|LỚP|KHỐI)?\s*(\d+)(?:\.(\d+))?/)
+    const m = upper.match(/(?:TOÁN|HÓA|LỚP|KHỐI)?\s*(\d+)(?:[.\s_-]*([A-Z]|\d+))?/)
     if (m) {
       const grade = parseInt(m[1], 10)
-      const sub = m[2] ? parseInt(m[2], 10) : 1
+      let sub = 1
+      if (m[2]) {
+        if (/^\d+$/.test(m[2])) {
+          sub = parseInt(m[2], 10)
+        } else {
+          sub = m[2].charCodeAt(0) - 64
+        }
+      }
       const subjPriority = upper.includes('TOÁN') ? 1 : upper.includes('HÓA') ? 2 : 3
       return grade * 1000 + subjPriority * 100 + sub
     }
