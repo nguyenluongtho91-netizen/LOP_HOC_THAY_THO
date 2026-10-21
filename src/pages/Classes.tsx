@@ -729,7 +729,7 @@ export default function Classes() {
                                   </div>
                                 )}
                                 <div className="min-w-0">
-                                  <h4 className="font-black text-sm text-slate-900 group-hover:text-teal-700 transition-colors line-clamp-1">
+                                  <h4 className="font-black text-sm text-slate-900 group-hover:text-teal-700 transition-colors line-clamp-1 uppercase">
                                     {s.full_name}
                                   </h4>
                                   <span className="font-mono text-[10px] text-slate-400 bg-slate-100 px-1 rounded">
@@ -818,7 +818,7 @@ export default function Classes() {
                               <td className="py-3 px-3 font-extrabold text-slate-900">
                                 <button
                                   onClick={() => setScorecardStudent(s)}
-                                  className="text-slate-900 hover:text-teal-700 font-black cursor-pointer text-left"
+                                  className="text-slate-900 hover:text-teal-700 font-black cursor-pointer text-left uppercase"
                                 >
                                   {s.full_name}
                                 </button>
@@ -1032,7 +1032,7 @@ export default function Classes() {
                       
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5">
-                          <p className="font-black text-sm text-slate-900 truncate">{s.full_name}</p>
+                          <p className="font-black text-sm text-slate-900 truncate uppercase">{s.full_name}</p>
                           <span className="text-[10px] text-slate-400 font-mono bg-slate-100 px-1 py-0.5 rounded shrink-0">
                             {s.student_code}
                           </span>

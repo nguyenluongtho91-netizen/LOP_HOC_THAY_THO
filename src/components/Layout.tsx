@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import {
@@ -7,6 +8,7 @@ import {
   Mail, Settings, LogOut, FileText, MonitorPlay, ScanText,
   GraduationCap, Sigma, FilePlus, PlaySquare, Zap, FileType, CreditCard,
   ClipboardList, ClipboardCheck, Tag, MessageCircle, Calculator, PenTool, Target,
+  Menu, X,
 } from 'lucide-react'
 
 export default function Layout() {
