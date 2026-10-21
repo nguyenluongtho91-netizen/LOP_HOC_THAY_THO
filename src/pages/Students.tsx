@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useEffect, useState, useRef } from 'react'
-import { Plus, Pencil, Users, Search, Eye, EyeOff, Upload, Download, X, AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Trash2, Phone, Ghost, Info, ArrowUpDown } from 'lucide-react'
+import { Plus, Pencil, Users, Search, Eye, EyeOff, Upload, Download, X, AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Trash2, Phone, Ghost, Info, ArrowUpDown, Copy, Key } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { useAuthStore } from '@/store/authStore'
 import { supabase } from '@/lib/supabase'
@@ -640,6 +640,24 @@ export default function Students() {
       loadStudents()
     } catch (e: any) {
       toast.error(e.message || 'Lỗi khi xóa', { id: tid })
+    }
+  // ── Cấp lại mật khẩu nhanh ──────────────────────────────────────────
+  const handleQuickResetPassword = async (s: Student) => {
+    const currentPwd = (s as any).password || '222'
+    const newPwd = window.prompt(`Cấp lại mật khẩu mới cho học sinh:\n"${s.full_name}" (${s.student_code})\n\nNhập mật khẩu mới:`, currentPwd)
+    if (newPwd === null) return
+    const trimmed = newPwd.trim()
+    if (!trimmed) {
+      toast.error('Mật khẩu không được để trống')
+      return
+    }
+    const tid = toast.loading('Đang cập nhật mật khẩu...')
+    try {
+      await saveStudentCredential(s.student_code.trim(), trimmed, (s as any).note || '')
+      setCredentialsVersion(v => v + 1)
+      toast.success(`Đã cấp mật khẩu mới "${trimmed}" cho ${s.full_name}!`, { id: tid, icon: '🔑' })
+    } catch (e: any) {
+      toast.error(e.message || 'Lỗi khi cấp lại mật khẩu', { id: tid })
     }
   }
 
@@ -1281,9 +1299,20 @@ export default function Students() {
 
                             {/* Mật khẩu */}
                             <td className="px-3 py-3">
-                              <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full shadow-xs">
-                                ✓ {(s as any).password || '222'}
-                              </span>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const pwd = (s as any).password || '222'
+                                  navigator.clipboard.writeText(pwd)
+                                  toast.success(`Đã sao chép mật khẩu của ${s.full_name}: ${pwd}`, { icon: '📋' })
+                                }}
+                                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 hover:text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full shadow-xs transition-all active:scale-95 cursor-pointer"
+                                title="Nhấn để sao chép mật khẩu của học sinh này"
+                              >
+                                <span>✓</span>
+                                <span>{(s as any).password || '222'}</span>
+                                <Copy className="w-3 h-3 text-emerald-500 hover:text-emerald-700 ml-0.5" />
+                              </button>
                             </td>
 
                             {/* Trạng thái */}
@@ -1296,6 +1325,11 @@ export default function Students() {
                             {/* Actions */}
                             <td className="px-3 py-3">
                               <div className="flex items-center gap-1">
+                                <button onClick={() => handleQuickResetPassword(s)}
+                                  className="p-1.5 text-amber-600 hover:bg-amber-100 hover:text-amber-800 rounded-lg transition-all"
+                                  title="Cấp lại mật khẩu nhanh cho học sinh">
+                                  <Key className="w-3.5 h-3.5" />
+                                </button>
                                 <button onClick={() => openEdit(s)}
                                   className="p-1.5 text-teal-600 hover:bg-teal-100 rounded-lg transition-all"
                                   title="Sửa thông tin">
@@ -1362,19 +1396,33 @@ export default function Students() {
           </div>
 
           <div className="md:col-span-2">
-            <label className="label">
-              Mật khẩu đăng nhập{editing ? '' : ' *'}{' '}
-              <span className="text-gray-400 font-normal text-xs">
-                {editing ? '(để trống nếu không đổi)' : '(học sinh dùng để vào phòng thi)'}
-              </span>
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="label mb-0">
+                Mật khẩu đăng nhập{editing ? '' : ' *'}{' '}
+                <span className="text-gray-400 font-normal text-xs">
+                  {editing ? '(để trống nếu không đổi)' : '(dùng vào thi)'}
+                </span>
+              </label>
+              <button
+                type="button"
+                onClick={() => {
+                  setForm(f => ({ ...f, password: '222' }))
+                  setShowPassword(true)
+                  toast.success('Đã đặt mật khẩu về 222!')
+                }}
+                className="text-[11px] font-bold text-teal-600 hover:text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 px-2 py-0.5 rounded transition-all"
+                title="Đặt mật khẩu về mặc định 222"
+              >
+                Đặt về 222
+              </button>
+            </div>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={form.password ?? ''}
                 onChange={e => setForm(f => ({ ...f, password: e.target.value || null }))}
                 placeholder={editing ? 'Để trống nếu không thay đổi...' : 'Nhập mật khẩu...'}
-                className="input pr-12"
+                className="input pr-12 font-mono"
               />
               <button type="button" onClick={() => setShowPassword(v => !v)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-teal-600"
