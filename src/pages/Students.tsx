@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useEffect, useState, useRef } from 'react'
-import { Plus, Pencil, Users, Search, Eye, EyeOff, Upload, Download, X, AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Trash2, Phone, Ghost, Info } from 'lucide-react'
+import { Plus, Pencil, Users, Search, Eye, EyeOff, Upload, Download, X, AlertCircle, CheckCircle2, ChevronDown, ChevronUp, Trash2, Phone, Ghost, Info, ArrowUpDown } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { useAuthStore } from '@/store/authStore'
 import { supabase } from '@/lib/supabase'
@@ -547,6 +547,7 @@ export default function Students() {
 
   const [selectedClassId, setSelectedClassId] = useState<string | 'unassigned' | null>(null)
   const [hasInitGrade, setHasInitGrade] = useState(false)
+  const [sortMode, setSortMode] = useState<'code_asc' | 'code_desc' | 'grade_asc' | 'grade_desc' | 'name_asc' | 'name_desc'>('code_asc')
 
   const displayGrades = [6, 7, 8, 9, 10, 11, 12]
 
@@ -763,7 +764,12 @@ export default function Students() {
       : grade === activeGrade
     return belongsToGrade && c.status === 'active'
   })
-  classesInActiveGrade.sort((a, b) => getClassName(a).localeCompare(getClassName(b)))
+  classesInActiveGrade.sort((a, b) => {
+    const ga = getClassGrade(a) ?? 99
+    const gb = getClassGrade(b) ?? 99
+    if (ga !== gb) return ga - gb
+    return getClassName(a).localeCompare(getClassName(b), 'vi', { numeric: true })
+  })
 
   const unassignedStudentsCount = activeGradeStudents.filter(s => 
     !enrollments.some(e => e.student_id === s.id && e.status === 'active')
@@ -802,6 +808,41 @@ export default function Students() {
     (s.parent_phone ?? '').includes(search) ||
     (s.school ?? '').toLowerCase().includes(search.toLowerCase())
   )
+
+  const parseCodeNum = (code: string) => {
+    const num = parseInt((code || '').replace(/\D/g, ''), 10)
+    return isNaN(num) ? 999999 : num
+  }
+
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortMode === 'code_asc') {
+      const diff = parseCodeNum(a.student_code) - parseCodeNum(b.student_code)
+      return diff !== 0 ? diff : a.student_code.localeCompare(b.student_code, 'vi', { numeric: true })
+    }
+    if (sortMode === 'code_desc') {
+      const diff = parseCodeNum(b.student_code) - parseCodeNum(a.student_code)
+      return diff !== 0 ? diff : b.student_code.localeCompare(a.student_code, 'vi', { numeric: true })
+    }
+    if (sortMode === 'grade_asc') {
+      const ga = getStudentGrade(a) ?? 99
+      const gb = getStudentGrade(b) ?? 99
+      if (ga !== gb) return ga - gb
+      return parseCodeNum(a.student_code) - parseCodeNum(b.student_code)
+    }
+    if (sortMode === 'grade_desc') {
+      const ga = getStudentGrade(a) ?? 99
+      const gb = getStudentGrade(b) ?? 99
+      if (ga !== gb) return gb - ga
+      return parseCodeNum(b.student_code) - parseCodeNum(a.student_code)
+    }
+    if (sortMode === 'name_asc') {
+      return a.full_name.localeCompare(b.full_name, 'vi')
+    }
+    if (sortMode === 'name_desc') {
+      return b.full_name.localeCompare(a.full_name, 'vi')
+    }
+    return 0
+  })
 
   const getClassNames = (studentId: string) =>
     enrollments
@@ -990,33 +1031,75 @@ export default function Students() {
                 </div>
               )}
 
-              {/* ── Search + Tabs ────────────────────────────────────────────── */}
-              <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-                {/* Search */}
-                <div className="relative w-full sm:max-w-xs">
-                  <Search className="absolute left-3.5 top-3 w-4 h-4 text-teal-400" />
-                  <input value={search} onChange={e => setSearch(e.target.value)}
-                    placeholder="Tìm tên, mã, SĐT, trường..." className="input pl-10 bg-white" />
+              {/* ── Search + Tabs + Sort Controls ────────────────────────────── */}
+              <div className="flex flex-col xl:flex-row gap-3 items-start xl:items-center justify-between">
+                <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center w-full xl:w-auto">
+                  {/* Search */}
+                  <div className="relative w-full sm:max-w-xs">
+                    <Search className="absolute left-3.5 top-3 w-4 h-4 text-teal-400" />
+                    <input value={search} onChange={e => setSearch(e.target.value)}
+                      placeholder="Tìm tên, mã, SĐT, trường..." className="input pl-10 bg-white" />
+                  </div>
+
+                  {/* Tabs */}
+                  <div className="flex gap-1.5 bg-gray-100 rounded-xl p-1 flex-wrap">
+                    {TABS.map(t => (
+                      <button
+                        key={t.key}
+                        onClick={() => setTab(t.key)}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap border ${
+                          tab === t.key
+                            ? t.color + ' shadow-sm'
+                            : 'text-gray-400 bg-transparent border-transparent hover:bg-white hover:text-gray-600'
+                        }`}
+                      >
+                        {t.label}
+                        <span className={`ml-1.5 px-1.5 py-0.5 rounded-full text-xs ${tab === t.key ? 'bg-white/60' : 'bg-gray-200'}`}>
+                          {counts[t.key]}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Tabs */}
-                <div className="flex gap-1.5 bg-gray-100 rounded-xl p-1 flex-wrap">
-                  {TABS.map(t => (
-                    <button
-                      key={t.key}
-                      onClick={() => setTab(t.key)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap border ${
-                        tab === t.key
-                          ? t.color + ' shadow-sm'
-                          : 'text-gray-400 bg-transparent border-transparent hover:bg-white hover:text-gray-600'
-                      }`}
-                    >
-                      {t.label}
-                      <span className={`ml-1.5 px-1.5 py-0.5 rounded-full text-xs ${tab === t.key ? 'bg-white/60' : 'bg-gray-200'}`}>
-                        {counts[t.key]}
-                      </span>
-                    </button>
-                  ))}
+                {/* Sắp xếp nhanh (từ nhỏ lên to) */}
+                <div className="flex items-center gap-1 bg-white border border-slate-200 rounded-xl p-1 shadow-2xs self-stretch sm:self-auto overflow-x-auto">
+                  <span className="text-[11px] font-bold text-gray-500 px-2 flex items-center gap-1 shrink-0">
+                    <ArrowUpDown className="w-3.5 h-3.5 text-teal-600" /> Sắp xếp:
+                  </span>
+                  <button
+                    onClick={() => setSortMode('code_asc')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1 ${
+                      sortMode === 'code_asc'
+                        ? 'bg-teal-600 text-white shadow-xs'
+                        : 'text-gray-600 hover:bg-slate-100'
+                    }`}
+                    title="Mã học sinh từ số nhỏ lên số lớn (1001 → 9020)"
+                  >
+                    🔢 Mã HS (Nhỏ → To)
+                  </button>
+                  <button
+                    onClick={() => setSortMode('grade_asc')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1 ${
+                      sortMode === 'grade_asc'
+                        ? 'bg-teal-600 text-white shadow-xs'
+                        : 'text-gray-600 hover:bg-slate-100'
+                    }`}
+                    title="Theo khối lớp từ nhỏ lên to (Khối 6 → 12)"
+                  >
+                    🎓 Khối (6 → 12)
+                  </button>
+                  <button
+                    onClick={() => setSortMode('name_asc')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1 ${
+                      sortMode === 'name_asc'
+                        ? 'bg-teal-600 text-white shadow-xs'
+                        : 'text-gray-600 hover:bg-slate-100'
+                    }`}
+                    title="Theo họ tên A đến Z"
+                  >
+                    🔤 Tên (A → Z)
+                  </button>
                 </div>
               </div>
 
@@ -1037,13 +1120,52 @@ export default function Students() {
                   <table className="w-full text-sm">
                     <thead>
                       <tr style={{ background: 'linear-gradient(135deg,#0d9488,#14b8a6)' }}>
-                        {['Mã HS','Họ tên','Ngày sinh','Liên hệ PH','Trường · Khối','Lớp đang học','Mật khẩu','TT',''].map(h => (
-                          <th key={h} className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">{h}</th>
-                        ))}
+                        <th
+                          onClick={() => setSortMode(s => s === 'code_asc' ? 'code_desc' : 'code_asc')}
+                          className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-colors select-none"
+                          title="Bấm để đổi sắp xếp Mã HS (Nhỏ ↔ To)"
+                        >
+                          <div className="flex items-center gap-1.5">
+                            <span>Mã HS</span>
+                            {sortMode === 'code_asc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▲ Nhỏ→To</span>}
+                            {sortMode === 'code_desc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▼ To→Nhỏ</span>}
+                            {sortMode !== 'code_asc' && sortMode !== 'code_desc' && <ArrowUpDown className="w-3 h-3 text-white/50" />}
+                          </div>
+                        </th>
+                        <th
+                          onClick={() => setSortMode(s => s === 'name_asc' ? 'name_desc' : 'name_asc')}
+                          className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-colors select-none"
+                          title="Bấm để đổi sắp xếp Họ tên (A ↔ Z)"
+                        >
+                          <div className="flex items-center gap-1.5">
+                            <span>Họ tên</span>
+                            {sortMode === 'name_asc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▲ A→Z</span>}
+                            {sortMode === 'name_desc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▼ Z→A</span>}
+                            {sortMode !== 'name_asc' && sortMode !== 'name_desc' && <ArrowUpDown className="w-3 h-3 text-white/50" />}
+                          </div>
+                        </th>
+                        <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">Ngày sinh</th>
+                        <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">Liên hệ PH</th>
+                        <th
+                          onClick={() => setSortMode(s => s === 'grade_asc' ? 'grade_desc' : 'grade_asc')}
+                          className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-colors select-none"
+                          title="Bấm để đổi sắp xếp Khối (6 ↔ 12)"
+                        >
+                          <div className="flex items-center gap-1.5">
+                            <span>Trường · Khối</span>
+                            {sortMode === 'grade_asc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▲ 6→12</span>}
+                            {sortMode === 'grade_desc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▼ 12→6</span>}
+                            {sortMode !== 'grade_asc' && sortMode !== 'grade_desc' && <ArrowUpDown className="w-3 h-3 text-white/50" />}
+                          </div>
+                        </th>
+                        <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">Lớp đang học</th>
+                        <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">Mật khẩu</th>
+                        <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">TT</th>
+                        <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap"></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {filtered.length === 0 && (
+                      {sorted.length === 0 && (
                         <tr>
                           <td colSpan={9} className="text-center py-16 text-gray-400">
                             <div className="flex flex-col items-center gap-2">
@@ -1053,7 +1175,7 @@ export default function Students() {
                           </td>
                         </tr>
                       )}
-                      {filtered.map((s, i) => {
+                      {sorted.map((s, i) => {
                         const anon = isAnonymous(s as any)
                         return (
                           <tr key={s.id} className={`border-b border-teal-50 hover:bg-teal-50/40 transition-colors ${

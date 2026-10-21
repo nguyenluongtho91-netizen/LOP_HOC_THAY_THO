@@ -147,7 +147,7 @@ export const useDataStore = create<DataState>((set, _get) => ({
 
   // ── Students ──────────────────────────────────────────────────────────────
   loadStudents: async () => {
-    const { data } = await supabase.from('students').select('*').order('full_name')
+    const { data } = await supabase.from('students').select('*').order('student_code')
     set({ students: (data ?? []) as Student[] })
   },
 
