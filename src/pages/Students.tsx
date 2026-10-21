@@ -619,7 +619,7 @@ export default function Students() {
     const cred = getStudentCredentialSync(s.student_code)
     setForm({
       ...s,
-      password: (s as any).password ?? cred?.password ?? '',
+      password: (s as any).password || cred?.password || '222',
       note: (s as any).note ?? cred?.note ?? '',
       date_of_birth: (s as any).date_of_birth ?? null
     })
@@ -1092,10 +1092,9 @@ export default function Students() {
 
                             {/* Mật khẩu */}
                             <td className="px-3 py-3">
-                              {(s as any).password
-                                ? <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">✓</span>
-                                : <span className="inline-flex items-center gap-1 text-xs font-bold text-red-400 bg-red-50 border border-red-100 px-2 py-0.5 rounded-full">✗</span>
-                              }
+                              <span className="inline-flex items-center gap-1 text-xs font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full shadow-xs">
+                                ✓ {(s as any).password || '222'}
+                              </span>
                             </td>
 
                             {/* Trạng thái */}
