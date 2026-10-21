@@ -121,7 +121,7 @@ export async function saveBatchStudentCredentials(
       const cleanKey = item.student_code.trim().toUpperCase();
       memoryCache[cleanKey] = {
         ...(memoryCache[cleanKey] || {}),
-        password: item.password || memoryCache[cleanKey]?.password || '123456',
+        password: item.password || memoryCache[cleanKey]?.password || '222',
         note: item.note || memoryCache[cleanKey]?.note || '',
         updated_at: new Date().toISOString(),
       };
@@ -154,7 +154,7 @@ export function enrichStudentsWithCredentials(students: any[]): any[] {
     const cred = memoryCache[code];
     return {
       ...st,
-      password: cred?.password || st.password || null,
+      password: cred?.password || st.password || '222',
       note: cred?.note || st.note || null,
       avatar_url: cred?.avatar_url || st.avatar_url || null,
     };

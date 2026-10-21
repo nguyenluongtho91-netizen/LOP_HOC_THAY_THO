@@ -104,7 +104,7 @@ const EMPTY: FormData = {
   student_code: '', full_name: '', date_of_birth: null,
   parent_name: null, parent_phone: null, parent_email: null,
   zalo: null, school: null, grade: null, address: null,
-  note: null, status: 'active', password: null,
+  note: null, status: 'active', password: '222',
 }
 
 // Cột Excel mẫu – dùng để xuất template
@@ -606,7 +606,7 @@ export default function Students() {
   const getClassName = (cls: any) => cls?.class_name || cls?.name || 'Chưa rõ'
 
   useEffect(() => {
-    void Promise.all([loadStudents(), loadClasses(), loadEnrollments()])
+    void Promise.all([loadStudents(), loadClasses(), loadEnrollments(), getAllStudentCredentials()])
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -711,8 +711,8 @@ export default function Students() {
 
   // ── Lọc học sinh theo quyền ────────────────────────────────────────────
   const myClassIds   = isAdmin() ? [] : classes.filter((c: any) => c.teacher_id === user?.id).map((c: any) => c.id)
-  const myStudentIds = isAdmin() ? [] : enrollments.filter((e: any) => myClassIds.includes(e.class_id) && e.status === 'active').map((e: any) => e.student_id)
-  const myStudents   = isAdmin() ? students : students.filter(s => myStudentIds.includes(s.id))
+  const enrichedStudents = enrichStudentsWithCredentials(students)
+  const myStudents   = isAdmin() ? enrichedStudents : enrichedStudents.filter(s => myStudentIds.includes(s.id))
 
   const hasOtherStudents = myStudents.some(s => {
     const g = getStudentGrade(s)
