@@ -547,7 +547,7 @@ export default function Students() {
 
   const [selectedClassId, setSelectedClassId] = useState<string | 'unassigned' | null>(null)
   const [hasInitGrade, setHasInitGrade] = useState(false)
-  const [sortMode, setSortMode] = useState<'code_asc' | 'code_desc' | 'grade_asc' | 'grade_desc' | 'name_asc' | 'name_desc'>('code_asc')
+  const [sortMode, setSortMode] = useState<'class_asc' | 'class_desc' | 'code_asc' | 'code_desc' | 'grade_asc' | 'grade_desc' | 'name_asc' | 'name_desc'>('class_asc')
 
   const displayGrades = [6, 7, 8, 9, 10, 11, 12]
 
@@ -764,10 +764,39 @@ export default function Students() {
       : grade === activeGrade
     return belongsToGrade && c.status === 'active'
   })
+  const getClassWeight = (className: string): number => {
+    if (!className) return 999999
+    const upper = className.toUpperCase().trim()
+    const m = upper.match(/(?:TOÁN|HÓA|LỚP|KHỐI)?\s*(\d+)(?:\.(\d+))?/)
+    if (m) {
+      const grade = parseInt(m[1], 10)
+      const sub = m[2] ? parseInt(m[2], 10) : 1
+      const subjPriority = upper.includes('TOÁN') ? 1 : upper.includes('HÓA') ? 2 : 3
+      return grade * 1000 + subjPriority * 100 + sub
+    }
+    return 999999
+  }
+
+  const getStudentClassWeight = (studentId: string, fallbackGrade?: number | null): number => {
+    const studentEnrollments = enrollments.filter(e => e.student_id === studentId && e.status === 'active')
+    if (studentEnrollments.length > 0) {
+      let minW = 999999
+      for (const enr of studentEnrollments) {
+        const cls = classes.find(c => c.id === enr.class_id)
+        const cName = cls?.name || (cls as any)?.class_name || ''
+        const w = getClassWeight(cName)
+        if (w < minW) minW = w
+      }
+      return minW
+    }
+    if (fallbackGrade) return fallbackGrade * 1000 + 500
+    return 999999
+  }
+
   classesInActiveGrade.sort((a, b) => {
-    const ga = getClassGrade(a) ?? 99
-    const gb = getClassGrade(b) ?? 99
-    if (ga !== gb) return ga - gb
+    const wa = getClassWeight(getClassName(a))
+    const wb = getClassWeight(getClassName(b))
+    if (wa !== wb) return wa - wb
     return getClassName(a).localeCompare(getClassName(b), 'vi', { numeric: true })
   })
 
@@ -815,6 +844,20 @@ export default function Students() {
   }
 
   const sorted = [...filtered].sort((a, b) => {
+    if (sortMode === 'class_asc') {
+      const wa = getStudentClassWeight(a.id, getStudentGrade(a))
+      const wb = getStudentClassWeight(b.id, getStudentGrade(b))
+      if (wa !== wb) return wa - wb
+      const diff = parseCodeNum(a.student_code) - parseCodeNum(b.student_code)
+      return diff !== 0 ? diff : a.student_code.localeCompare(b.student_code, 'vi', { numeric: true })
+    }
+    if (sortMode === 'class_desc') {
+      const wa = getStudentClassWeight(a.id, getStudentGrade(a))
+      const wb = getStudentClassWeight(b.id, getStudentGrade(b))
+      if (wa !== wb) return wb - wa
+      const diff = parseCodeNum(b.student_code) - parseCodeNum(a.student_code)
+      return diff !== 0 ? diff : b.student_code.localeCompare(a.student_code, 'vi', { numeric: true })
+    }
     if (sortMode === 'code_asc') {
       const diff = parseCodeNum(a.student_code) - parseCodeNum(b.student_code)
       return diff !== 0 ? diff : a.student_code.localeCompare(b.student_code, 'vi', { numeric: true })
@@ -1062,11 +1105,22 @@ export default function Students() {
                   </div>
                 </div>
 
-                {/* Sắp xếp nhanh (từ nhỏ lên to) */}
+                {/* Sắp xếp nhanh (từ nhỏ lên to theo lớp & mã HS) */}
                 <div className="flex items-center gap-1 bg-white border border-slate-200 rounded-xl p-1 shadow-2xs self-stretch sm:self-auto overflow-x-auto">
                   <span className="text-[11px] font-bold text-gray-500 px-2 flex items-center gap-1 shrink-0">
                     <ArrowUpDown className="w-3.5 h-3.5 text-teal-600" /> Sắp xếp:
                   </span>
+                  <button
+                    onClick={() => setSortMode('class_asc')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1.5 ${
+                      sortMode === 'class_asc'
+                        ? 'bg-teal-600 text-white shadow-xs'
+                        : 'text-gray-600 hover:bg-slate-100'
+                    }`}
+                    title="Theo từng lớp từ nhỏ đến lớn (TOÁN 6.1 → HÓA 12.1) và Mã HS từ nhỏ lên to"
+                  >
+                    🏫 Theo Lớp & Mã HS (Nhỏ → To)
+                  </button>
                   <button
                     onClick={() => setSortMode('code_asc')}
                     className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1 ${
@@ -1076,18 +1130,7 @@ export default function Students() {
                     }`}
                     title="Mã học sinh từ số nhỏ lên số lớn (1001 → 9020)"
                   >
-                    🔢 Mã HS (Nhỏ → To)
-                  </button>
-                  <button
-                    onClick={() => setSortMode('grade_asc')}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all whitespace-nowrap flex items-center gap-1 ${
-                      sortMode === 'grade_asc'
-                        ? 'bg-teal-600 text-white shadow-xs'
-                        : 'text-gray-600 hover:bg-slate-100'
-                    }`}
-                    title="Theo khối lớp từ nhỏ lên to (Khối 6 → 12)"
-                  >
-                    🎓 Khối (6 → 12)
+                    🔢 Mã HS (1001 → 9020)
                   </button>
                   <button
                     onClick={() => setSortMode('name_asc')}
@@ -1158,7 +1201,18 @@ export default function Students() {
                             {sortMode !== 'grade_asc' && sortMode !== 'grade_desc' && <ArrowUpDown className="w-3 h-3 text-white/50" />}
                           </div>
                         </th>
-                        <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">Lớp đang học</th>
+                        <th
+                          onClick={() => setSortMode(s => s === 'class_asc' ? 'class_desc' : 'class_asc')}
+                          className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-colors select-none"
+                          title="Bấm để đổi sắp xếp Lớp đang học (Lớp nhỏ ↔ Lớp lớn)"
+                        >
+                          <div className="flex items-center gap-1.5">
+                            <span>Lớp đang học</span>
+                            {sortMode === 'class_asc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▲ Lớp 6→12</span>}
+                            {sortMode === 'class_desc' && <span className="bg-white/20 text-yellow-300 font-extrabold text-[10px] px-1.5 py-0.5 rounded">▼ Lớp 12→6</span>}
+                            {sortMode !== 'class_asc' && sortMode !== 'class_desc' && <ArrowUpDown className="w-3 h-3 text-white/50" />}
+                          </div>
+                        </th>
                         <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">Mật khẩu</th>
                         <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap">TT</th>
                         <th className="px-3 py-3 text-left text-white font-bold text-xs whitespace-nowrap"></th>
@@ -1208,8 +1262,14 @@ export default function Students() {
                             </td>
 
                             {/* Lớp đang học */}
-                            <td className="px-3 py-3 text-xs text-teal-700 font-semibold max-w-[140px]">
-                              <span className="line-clamp-2">{getClassNames(s.id) || '—'}</span>
+                            <td className="px-3 py-3 text-xs whitespace-nowrap">
+                              {getClassNames(s.id) ? (
+                                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200 shadow-2xs">
+                                  {getClassNames(s.id)}
+                                </span>
+                              ) : (
+                                <span className="text-gray-400 text-xs italic">Chưa xếp lớp</span>
+                              )}
                             </td>
 
                             {/* Mật khẩu */}
