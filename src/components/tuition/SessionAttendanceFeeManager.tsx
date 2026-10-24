@@ -202,7 +202,7 @@ export default function SessionAttendanceFeeManager({
     )
     return students
       .filter(s => sids.has(s.id) && s.status === 'active')
-      .sort((a, b) => a.full_name.localeCompare(b.full_name, 'vi'))
+      .sort((a, b) => (a.full_name || '').localeCompare(b.full_name || '', 'vi'))
   }, [selClass, enrollments, students])
 
   // Attendance records for the selected class (handling both uppercase and lowercase)
@@ -496,7 +496,7 @@ export default function SessionAttendanceFeeManager({
     return classes
       .filter(c => c.status === 'active')
       .map(c => {
-        const cPrice = unitPricesMap[c.id] || (c.name.includes('7.2') ? 60000 : 80000)
+        const cPrice = unitPricesMap[c.id] || ((c.name || '').includes('7.2') ? 60000 : 80000)
         const cEnrolls = enrollments.filter(e => e.class_id === c.id && e.status === 'active')
         const cAtts = attendance.filter(a => a.class_id === c.id && (!selectedMonth || a.date.startsWith(selectedMonth)))
         
@@ -519,7 +519,7 @@ export default function SessionAttendanceFeeManager({
         const ga = parseInt(String(a.cls.grade || '0').replace(/\D/g, ''), 10)
         const gb = parseInt(String(b.cls.grade || '0').replace(/\D/g, ''), 10)
         if (ga !== gb) return ga - gb
-        return a.cls.name.localeCompare(b.cls.name, 'vi')
+        return (a.cls.name || '').localeCompare(b.cls.name || '', 'vi')
       })
   }, [classes, enrollments, attendance, selectedMonth, unitPricesMap])
 
@@ -594,7 +594,7 @@ export default function SessionAttendanceFeeManager({
             >
               <option value="">📊 — TẤT CẢ 21 LỚP HỌC (XEM TỔNG QUAN) —</option>
               {classes.filter(c => c.status === 'active').map(c => {
-                const is72 = c.name.includes('7.2')
+                const is72 = (c.name || '').includes('7.2')
                 return (
                   <option key={c.id} value={c.id}>
                     {c.name} ({c.grade ? `Khối ${c.grade}` : 'Môn Toán'}) • {is72 ? '60k' : '80k'}/buổi
@@ -705,7 +705,7 @@ export default function SessionAttendanceFeeManager({
                   {fmtVNDShort(unitPrice)} <span className="text-[11px] font-normal text-slate-300">/ học sinh / buổi</span>
                 </span>
                 <span className="bg-amber-400/20 text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded">
-                  {selClass && currentClass?.name.includes('7.2') ? 'Quy chuẩn 60k' : 'Chuẩn hóa 80k'}
+                  {selClass && (currentClass?.name || '')?.includes('7.2') ? 'Quy chuẩn 60k' : 'Chuẩn hóa 80k'}
                 </span>
               </div>
             )}
