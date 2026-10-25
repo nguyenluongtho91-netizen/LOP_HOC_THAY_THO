@@ -52,23 +52,38 @@ export default function PrintableExamModal({
 
   if (!isOpen) return null;
 
-  // Xử lý mở khóa đáp án cho phụ huynh
+  // Xử lý mở khóa đáp án cho phụ huynh theo cú pháp: PH + Mã HS (Ví dụ: PH6001)
   const handleUnlock = () => {
-    const cleanEntered = enteredCode.trim().toUpperCase();
+    const cleanEntered = enteredCode.trim().toUpperCase().replace(/\s+/g, '');
     const cleanMaster = masterCode.trim().toUpperCase();
     if (!cleanEntered) {
-      toast.error('Vui lòng nhập mã bảo mật Thầy Thọ cấp!');
+      toast.error('Vui lòng nhập mã bảo mật (Ví dụ: PH6001)!');
       return;
     }
 
-    if (cleanEntered === cleanMaster || cleanEntered === 'THAYTHO' || cleanEntered === '123456') {
+    // 1. Kiểm tra nếu nhập đúng cú pháp PH + Mã HS (Ví dụ: PH6001, PH6002, PHUHUYNH6001...)
+    const isPhMatch = cleanEntered.startsWith('PH') || cleanEntered.startsWith('PHUHUYNH');
+    const studentPart = cleanEntered.replace(/^(PHUHUYNH|PH)/, '').trim();
+
+    if (isPhMatch && studentPart.length >= 2) {
       setIsUnlocked(true);
       localStorage.setItem('parent_exam_passcode_unlocked', 'true');
-      toast.success('🎉 Mở khóa thành công! Phụ huynh đã có thể xem và tải đáp án chi tiết.');
+      toast.success(`🎉 Xác thực thành công: Phụ huynh học sinh mã [${studentPart}]! Đã mở khóa toàn bộ đáp án chi tiết.`);
       setEnteredCode('');
-    } else {
-      toast.error('❌ Mã bảo mật không chính xác! Vui lòng liên hệ Thầy Thọ để nhận mã.');
+      return;
     }
+
+    // 2. Kiểm tra nếu nhập mã Master do Thầy Thọ đặt hoặc mã dự phòng
+    if (cleanEntered === cleanMaster || cleanEntered === 'THAYTHO' || cleanEntered === 'THAYTHO2026' || cleanEntered === '123456') {
+      setIsUnlocked(true);
+      localStorage.setItem('parent_exam_passcode_unlocked', 'true');
+      toast.success('🎉 Mở khóa thành công bằng Mã Quản Trị của Thầy Thọ!');
+      setEnteredCode('');
+      return;
+    }
+
+    // 3. Nếu sai cú pháp
+    toast.error('❌ Mã không đúng! Phụ huynh vui lòng nhập theo cú pháp: PH + Mã HS (Ví dụ: PH6001)');
   };
 
   // Khóa lại khi phụ huynh đưa máy cho con làm bài
@@ -160,11 +175,11 @@ export default function PrintableExamModal({
 
         {/* POPUP CÀI ĐẶT / XEM MÃ CỦA THẦY THỌ - KHÔNG IN */}
         {showConfigModal && (
-          <div className="no-print bg-amber-50 border-b border-amber-200 p-4 text-xs space-y-2 animate-fade-in">
+          <div className="no-print bg-amber-50 border-b border-amber-200 p-4 text-xs space-y-2.5 animate-fade-in">
             <div className="flex items-center justify-between">
-              <span className="font-extrabold text-amber-950 flex items-center gap-1.5">
+              <span className="font-extrabold text-amber-950 flex items-center gap-1.5 text-sm">
                 <KeyRound className="w-4 h-4 text-amber-700" />
-                Quản Lý Mã Mở Khóa Đáp Án (Thầy Thọ Cấp Cho Phụ Huynh):
+                Cơ Chế Cấp Mã Mở Khóa Đáp Án Cho Phụ Huynh:
               </span>
               <button 
                 onClick={() => setShowConfigModal(false)}
@@ -173,16 +188,28 @@ export default function PrintableExamModal({
                 ✕ Đóng
               </button>
             </div>
+
+            {/* CÔNG THỨC PH + MÃ HỌC SINH */}
+            <div className="p-2.5 bg-white border border-amber-300 rounded-xl space-y-1">
+              <div className="text-amber-950 font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>Công thức cấp mã cho phụ huynh: <strong className="text-purple-700 font-mono text-sm">PH + [Mã HS]</strong> (Ví dụ: <code className="bg-amber-100 text-amber-900 px-1 rounded font-black">PH6001</code>)</span>
+              </div>
+              <p className="text-[11px] text-slate-600">
+                Thầy chỉ cần dặn phụ huynh gõ chữ <strong>PH</strong> kèm <strong>Mã số học sinh</strong> của con (Ví dụ: Con mã 6001 ➔ gõ <strong>PH6001</strong>; Con mã 6002 ➔ gõ <strong>PH6002</strong>) là mở khóa đáp án ngay!
+              </p>
+            </div>
+
             <div className="flex flex-wrap items-center gap-3 pt-1">
               <div className="bg-white border border-amber-300 px-3 py-1.5 rounded-lg">
-                <span className="text-slate-500 text-[11px]">Mã hiện tại Thầy gửi cho PH: </span>
+                <span className="text-slate-500 text-[11px]">Mã tổng dùng chung (Master Code): </span>
                 <strong className="text-amber-700 font-mono text-sm ml-1">{masterCode}</strong>
               </div>
 
               <div className="flex items-center gap-1.5">
                 <input
                   type="text"
-                  placeholder="Nhập mã mới (VD: PH2026)..."
+                  placeholder="Đổi mã tổng (VD: PH2026)..."
                   value={newCodeInput}
                   onChange={(e) => setNewCodeInput(e.target.value)}
                   className="bg-white border border-amber-300 rounded-lg px-2.5 py-1.5 text-xs font-mono font-bold uppercase w-48"
@@ -191,12 +218,9 @@ export default function PrintableExamModal({
                   onClick={() => handleSaveNewMasterCode(newCodeInput)}
                   className="px-3 py-1.5 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition cursor-pointer"
                 >
-                  Đổi Mã Mới
+                  Lưu Mã Tổng
                 </button>
               </div>
-            </div>
-            <div className="text-[11px] text-amber-800 italic">
-              * Ghi chú: Học sinh luôn được tải và xem đề tự do 100%. Chỉ khi mở phần Đáp án & Lời giải thì phụ huynh mới cần nhập mã này.
             </div>
           </div>
         )}
@@ -570,13 +594,19 @@ export default function PrintableExamModal({
 
                   {/* KHUNG NHẬP MÃ MỞ KHÓA */}
                   <div className="max-w-md mx-auto bg-amber-50/80 p-5 rounded-2xl border border-amber-200 shadow-sm space-y-3">
-                    <label className="block text-xs font-bold text-amber-950 text-left">
-                      🔑 Nhập mã bảo mật Thầy Thọ cấp cho Phụ Huynh:
-                    </label>
+                    <div className="text-left">
+                      <label className="block text-xs font-bold text-amber-950">
+                        🔑 Nhập mã bảo mật Phụ Huynh:
+                      </label>
+                      <p className="text-[11px] text-amber-800 mt-0.5">
+                        Cú pháp: Gõ chữ <strong>PH</strong> sau đó đến <strong>Mã học sinh</strong> của con (Ví dụ: <code className="bg-amber-200/80 font-black px-1 rounded text-amber-950">PH6001</code>)
+                      </p>
+                    </div>
+
                     <div className="flex items-center gap-2">
                       <input
                         type="text"
-                        placeholder="Nhập mã (VD: THAYTHO2026)..."
+                        placeholder="Ví dụ: PH6001..."
                         value={enteredCode}
                         onChange={(e) => setEnteredCode(e.target.value)}
                         onKeyDown={(e) => {
