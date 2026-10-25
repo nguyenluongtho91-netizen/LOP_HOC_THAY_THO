@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { 
   Zap, ArrowRight, CheckCircle2, XCircle, RotateCcw, 
   HelpCircle, BookOpen, Award, Sparkles, Printer, 
   Flame, Clock, ChevronRight, Calculator, Shuffle, FileDown,
   Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target,
-  FlaskConical, Compass, Scale
+  FlaskConical, Compass, Scale, Bell, AlertTriangle, History, 
+  Volume2, ShieldAlert, Calendar, Eye, Activity, TrendingUp, AlertCircle
 } from 'lucide-react';
 import MathText from '@/components/MathText';
 import { useDataStore } from '@/store/dataStore';
@@ -27,6 +28,21 @@ import PrintableExamModal from '@/components/PrintableExamModal';
 import BatchExamScanModal from '@/components/BatchExamScanModal';
 import toast from 'react-hot-toast';
 
+export interface ExamAttempt {
+  id: string;
+  attemptNo: number; // Lần 1, Lần 2, Lần 3...
+  timestamp: number;
+  dateFormatted: string;
+  score10: number;
+  correctCount: number;
+  totalQuestions: number;
+  percentage: number;
+  timeSpentSeconds: number; // Thời gian làm bài (giây)
+  answers: Record<number, string>;
+  violations: number; // Số lần vi phạm rời tab
+  isAutoSubmittedByViolation?: boolean; // Tự động nộp do vi phạm 3 lần
+}
+
 export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolean }) {
   // Môn học đang chọn: 'toan' (Toán học Lớp 6-9) hoặc 'hoa' (Hóa học Lớp 6-12)
   const [currentSubject, setCurrentSubject] = useState<'toan' | 'hoa'>('toan');
@@ -47,6 +63,16 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const [showAllExplanations, setShowAllExplanations] = useState<boolean>(false);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState<boolean>(false);
   const [isScanModalOpen, setIsScanModalOpen] = useState<boolean>(false);
+
+  // CHỐNG GIAN LẬN: THOÁT RA 3 LẦN TỰ NỘP BÀI & CHUÔNG BÁO ĐỘNG
+  const [tabSwitchCount, setTabSwitchCount] = useState<number>(0);
+  const [showViolationModal, setShowViolationModal] = useState<boolean>(false);
+  const [lastViolationTime, setLastViolationTime] = useState<number>(0);
+
+  // LƯU LỊCH SỬ KẾT QUẢ CÁC LẦN LÀM BÀI
+  const [examHistory, setExamHistory] = useState<ExamAttempt[]>([]);
+  const [isHistoryModalOpen, setIsHistoryModalOpen] = useState<boolean>(false);
+  const [viewingPastAttempt, setViewingPastAttempt] = useState<ExamAttempt | null>(null);
 
   // Luyện tập nhanh tự do
   const [freeAnswers, setFreeAnswers] = useState<Record<number, string>>({});
@@ -86,6 +112,62 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     void loadExams();
   }, [loadClasses, loadStudents, loadEnrollments, loadExams]);
 
+  // Key lưu trữ lịch sử các lần làm bài vào localStorage
+  const historyStorageKey = `laygoc_history_${currentSubject}_${selectedTopicId}_exam_${selectedExamNo}`;
+
+  // Nạp lịch sử các lần làm bài khi chọn đề
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(historyStorageKey);
+      if (saved) {
+        setExamHistory(JSON.parse(saved));
+      } else {
+        setExamHistory([]);
+      }
+    } catch (e) {
+      setExamHistory([]);
+    }
+  }, [historyStorageKey]);
+
+  // PHÁT CHUÔNG BÁO ĐỘNG CẢNH BÁO VI PHẠM RỜI MÀN HÌNH (Web Audio API)
+  const playWarningAlarm = () => {
+    try {
+      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AudioCtx) return;
+      const ctx = new AudioCtx();
+      
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      osc1.type = 'sawtooth';
+      osc1.frequency.setValueAtTime(880, ctx.currentTime);
+      osc1.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.35);
+      gain1.gain.setValueAtTime(0.4, ctx.currentTime);
+      gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+      osc1.connect(gain1);
+      gain1.connect(ctx.destination);
+      osc1.start();
+      osc1.stop(ctx.currentTime + 0.35);
+
+      setTimeout(() => {
+        try {
+          const osc2 = ctx.createOscillator();
+          const gain2 = ctx.createGain();
+          osc2.type = 'sawtooth';
+          osc2.frequency.setValueAtTime(950, ctx.currentTime);
+          osc2.frequency.exponentialRampToValueAtTime(500, ctx.currentTime + 0.4);
+          gain2.gain.setValueAtTime(0.4, ctx.currentTime);
+          gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+          osc2.connect(gain2);
+          gain2.connect(ctx.destination);
+          osc2.start();
+          osc2.stop(ctx.currentTime + 0.4);
+        } catch (e) {}
+      }, 300);
+    } catch (e) {
+      console.warn('Audio warning error:', e);
+    }
+  };
+
   // Chuyển đổi môn học
   const handleSwitchSubject = (subject: 'toan' | 'hoa') => {
     setCurrentSubject(subject);
@@ -97,7 +179,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     setIsExamSubmitted(false);
     setIsExamTimerActive(false);
     setExamTimeLeft(1200);
+    setTabSwitchCount(0);
     setShowAllExplanations(false);
+    setViewingPastAttempt(null);
   };
 
   // Chuyển đổi nhánh Hóa Vô cơ / Hóa Hữu cơ
@@ -112,6 +196,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       setExamAnswers({});
       setIsExamSubmitted(false);
       setIsExamTimerActive(false);
+      setTabSwitchCount(0);
+      setViewingPastAttempt(null);
     }
   };
 
@@ -136,15 +222,111 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return activeTopics.find(t => t.id === selectedTopicId) || activeTopics[0];
   }, [activeTopics, selectedTopicId]);
 
+  // HÀM NỘP BÀI THI & TỰ ĐỘNG LƯU VÀO LỊCH SỬ TỪNG LẦN LÀM
+  const handleSubmitExamFinal = (isViolationSubmit = false) => {
+    let correctCount = 0;
+    currentExamQuestions.forEach(q => {
+      const userAns = (examAnswers[q.id] || '').trim();
+      const rightAns = (q.correctAnswer || '').trim();
+      if (userAns && userAns === rightAns) {
+        correctCount++;
+      }
+    });
+    const score10 = Number(((correctCount / currentExamQuestions.length) * 10).toFixed(1));
+    const percentage = Math.round((correctCount / currentExamQuestions.length) * 100);
+    const timeSpent = Math.max(1, 1200 - examTimeLeft);
+
+    // Tạo bản ghi lần thi mới
+    const newAttempt: ExamAttempt = {
+      id: `attempt_${Date.now()}`,
+      attemptNo: examHistory.length + 1,
+      timestamp: Date.now(),
+      dateFormatted: new Date().toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' }),
+      score10,
+      correctCount,
+      totalQuestions: currentExamQuestions.length,
+      percentage,
+      timeSpentSeconds: timeSpent,
+      answers: { ...examAnswers },
+      violations: tabSwitchCount + (isViolationSubmit ? 1 : 0),
+      isAutoSubmittedByViolation: isViolationSubmit
+    };
+
+    const updatedHistory = [newAttempt, ...examHistory];
+    setExamHistory(updatedHistory);
+    try {
+      localStorage.setItem(historyStorageKey, JSON.stringify(updatedHistory));
+    } catch (e) {}
+
+    setIsExamSubmitted(true);
+    setIsExamTimerActive(false);
+    setShowAllExplanations(true);
+    setShowViolationModal(false);
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+
+    if (isViolationSubmit) {
+      toast.error('🚨 TỰ ĐỘNG THU BÀI: Em đã vi phạm rời màn hình thi 3 lần!');
+    } else {
+      toast.success(`🎉 Đã nộp bài Lần ${newAttempt.attemptNo} thành công! Điểm: ${score10}/10`);
+    }
+  };
+
+  // CHẾ ĐỘ CHỐNG GIAN LẬN: THEO DÕI THOÁT RA / RỜI TAB (3 LẦN THÌ TỰ NỘP BÀI)
+  useEffect(() => {
+    if (!isExamTimerActive || isExamSubmitted) return;
+
+    const handleViolation = () => {
+      const now = Date.now();
+      if (now - lastViolationTime < 1500) return; // Debounce 1.5s
+      setLastViolationTime(now);
+
+      // 1. Phát âm thanh chuông cảnh báo
+      playWarningAlarm();
+
+      // 2. Tăng số lần vi phạm
+      setTabSwitchCount(prev => {
+        const next = prev + 1;
+        if (next >= 3) {
+          // Vi phạm lần thứ 3 -> Tự động nộp bài ngay lập tức!
+          handleSubmitExamFinal(true);
+          return 3;
+        } else {
+          // Lần 1 hoặc 2: Hiện popup cảnh báo đỏ
+          setShowViolationModal(true);
+          toast.error(`⚠️ CẢNH BÁO VI PHẠM (${next}/3): Em vừa chuyển tab hoặc rời khỏi trang thi!`, {
+            duration: 5000
+          });
+          return next;
+        }
+      });
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        handleViolation();
+      }
+    };
+
+    const handleBlur = () => {
+      handleViolation();
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handleBlur);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handleBlur);
+    };
+  }, [isExamTimerActive, isExamSubmitted, lastViolationTime, currentExamQuestions, examAnswers, examTimeLeft, tabSwitchCount, examHistory, historyStorageKey]);
+
   // Đồng hồ đếm ngược khi làm bài thi
   useEffect(() => {
     let timer: any;
     if (isExamTimerActive && examTimeLeft > 0 && !isExamSubmitted) {
       timer = setInterval(() => setExamTimeLeft(prev => prev - 1), 1000);
     } else if (examTimeLeft === 0 && isExamTimerActive && !isExamSubmitted) {
-      setIsExamSubmitted(true);
-      setIsExamTimerActive(false);
-      setShowAllExplanations(true);
+      handleSubmitExamFinal(false);
       toast('⏰ Đã hết 20 phút làm bài! Hệ thống tự động thu bài.', { icon: '🔔' });
     }
     return () => clearInterval(timer);
@@ -165,7 +347,35 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     setIsExamSubmitted(false);
     setIsExamTimerActive(false);
     setExamTimeLeft(1200);
+    setTabSwitchCount(0);
     setShowAllExplanations(false);
+    setViewingPastAttempt(null);
+  };
+
+  // CHẾ ĐỘ LÀM LẠI NHIỀU LẦN ĐỀ NÀY (BẮT ĐẦU LẦN TIẾP THEO)
+  const handleRetakeExam = () => {
+    setExamAnswers({});
+    setIsExamSubmitted(false);
+    setIsExamTimerActive(true);
+    setExamTimeLeft(1200);
+    setTabSwitchCount(0);
+    setShowAllExplanations(false);
+    setShowViolationModal(false);
+    setViewingPastAttempt(null);
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+    toast.success(`🚀 Bắt đầu làm bài Lần ${examHistory.length + 1}! Chúc em bứt phá điểm số.`);
+  };
+
+  // Xem lại bài làm của 1 lần trong quá khứ
+  const handleViewPastAttempt = (attempt: ExamAttempt) => {
+    setViewingPastAttempt(attempt);
+    setExamAnswers(attempt.answers);
+    setIsExamSubmitted(true);
+    setIsExamTimerActive(false);
+    setShowAllExplanations(true);
+    setIsHistoryModalOpen(false);
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+    toast(`👀 Đang xem lại bài làm Lần ${attempt.attemptNo} (${attempt.score10} điểm)`, { icon: '📜' });
   };
 
   // Tính điểm số bài thi hiện tại
@@ -675,6 +885,21 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
+                  {/* NÚT XEM LỊCH SỬ TẤT CẢ CÁC LẦN LÀM BÀI */}
+                  <button
+                    onClick={() => setIsHistoryModalOpen(true)}
+                    className="px-3.5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                    title="Xem lịch sử điểm số và kết quả các lần làm bài của đề này"
+                  >
+                    <History className="w-4 h-4 text-blue-700" />
+                    <span>Lịch Sử ({examHistory.length} lần)</span>
+                    {examHistory.length > 0 && (
+                      <span className="px-1.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-bold">
+                        Max: {Math.max(...examHistory.map(h => h.score10))}đ
+                      </span>
+                    )}
+                  </button>
+
                   <button
                     onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
                     className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm transition cursor-pointer"
@@ -701,12 +926,15 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     <span>Quét Ảnh Chấm Bài AI</span>
                   </button>
 
+                  {/* NÚT BẮT ĐẦU HOẶC ĐỒNG HỒ ĐANG ĐẾM NGƯỢC */}
                   {!isExamTimerActive && !isExamSubmitted ? (
                     <button
                       onClick={() => {
                         setIsExamTimerActive(true);
                         setExamTimeLeft(1200);
-                        toast.success('⏱️ Đã bắt đầu tính giờ 20 phút làm bài!');
+                        setTabSwitchCount(0);
+                        setViewingPastAttempt(null);
+                        toast.success('⏱️ Đã bắt đầu tính giờ 20 phút làm bài! Chú ý: Không thoát ra quá 3 lần nhé.');
                       }}
                       className="px-4 py-2.5 bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-extrabold flex items-center gap-1.5 shadow-sm transition cursor-pointer"
                     >
@@ -714,29 +942,84 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       <span>Bắt đầu tính giờ (20p)</span>
                     </button>
                   ) : isExamTimerActive && !isExamSubmitted ? (
-                    <div className="flex items-center gap-2 font-mono font-black text-rose-700 bg-rose-50 px-3 py-2 rounded-xl border border-rose-200 text-xs">
-                      <Clock className="w-4 h-4 animate-spin text-rose-600" />
-                      <span>{formatTime(examTimeLeft)}</span>
+                    <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1.5 font-mono font-black text-rose-700 bg-rose-50 px-3 py-2 rounded-xl border border-rose-200 text-xs shadow-xs">
+                        <Clock className="w-4 h-4 animate-spin text-rose-600" />
+                        <span>{formatTime(examTimeLeft)}</span>
+                      </div>
+                      
+                      {/* HUY HIỆU CẢNH BÁO RỜI TAB KHI ĐANG LÀM BÀI */}
+                      {tabSwitchCount > 0 ? (
+                        <div 
+                          onClick={() => setShowViolationModal(true)}
+                          className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-red-600 text-white font-black text-xs animate-pulse shadow-md cursor-pointer"
+                          title="Click xem chi tiết cảnh báo"
+                        >
+                          <ShieldAlert className="w-4 h-4 text-amber-300" />
+                          <span>RỜI TAB: {tabSwitchCount}/3 LẦN!</span>
+                        </div>
+                      ) : (
+                        <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs border border-slate-200">
+                          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>Chống gian lận: 0/3</span>
+                        </div>
+                      )}
                     </div>
                   ) : null}
 
+                  {/* NÚT LÀM LẠI BÀI NÀY (LẦN TIẾP THEO) KHI ĐÃ NỘP BÀI */}
                   {isExamSubmitted && (
                     <button
-                      onClick={() => {
-                        setExamAnswers({});
-                        setIsExamSubmitted(false);
-                        setIsExamTimerActive(false);
-                        setExamTimeLeft(1200);
-                        setShowAllExplanations(false);
-                      }}
-                      className="px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+                      onClick={handleRetakeExam}
+                      className="px-4 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white rounded-xl text-xs font-black flex items-center gap-1.5 shadow-md shadow-red-500/20 transition cursor-pointer"
+                      title="Làm lại đề này để cải thiện điểm số và lưu vào lịch sử"
                     >
-                      <RotateCcw className="w-4 h-4" />
-                      <span>Làm lại đề</span>
+                      <RotateCcw className="w-4 h-4 text-white" />
+                      <span>Làm Lại Bài Này (Lần {examHistory.length + 1})</span>
                     </button>
                   )}
                 </div>
               </div>
+
+              {/* BANNER NẾU ĐANG XEM LẠI BÀI LÀM CỦA 1 LẦN TRONG QUÁ KHỨ */}
+              {viewingPastAttempt && (
+                <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-300 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-base shadow-xs shrink-0">
+                      #{viewingPastAttempt.attemptNo}
+                    </div>
+                    <div>
+                      <div className="text-xs font-black text-blue-900 flex items-center gap-1.5">
+                        <Eye className="w-3.5 h-3.5 text-blue-700" />
+                        <span>ĐANG XEM LẠI KẾT QUẢ BÀI LÀM LẦN {viewingPastAttempt.attemptNo}</span>
+                        {viewingPastAttempt.isAutoSubmittedByViolation && (
+                          <span className="px-1.5 py-0.5 rounded-md bg-red-100 text-red-800 text-[10px] font-black">
+                            🚨 Thu bài do vi phạm rời tab
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-blue-800 mt-0.5">
+                        Điểm số: <strong className="text-red-600 font-black">{viewingPastAttempt.score10}/10</strong> ({viewingPastAttempt.correctCount}/{viewingPastAttempt.totalQuestions} câu) • Ngày nộp: {viewingPastAttempt.dateFormatted} • Vi phạm: {viewingPastAttempt.violations} lần
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 self-end sm:self-auto">
+                    <button
+                      onClick={() => setIsHistoryModalOpen(true)}
+                      className="px-3 py-1.5 bg-white border border-blue-200 hover:bg-blue-100 text-blue-900 rounded-lg text-xs font-bold transition cursor-pointer"
+                    >
+                      Xem các lần khác
+                    </button>
+                    <button
+                      onClick={handleRetakeExam}
+                      className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-black shadow-xs transition cursor-pointer flex items-center gap-1"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                      <span>Làm lần mới</span>
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* BẢNG KẾT QUẢ ĐIỂM SỐ NẾU ĐÃ NỘP BÀI */}
               {isExamSubmitted && (
@@ -757,24 +1040,47 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                             ? '👍 Khá tốt! Cần chú ý thêm một số bẫy câu hỏi và tính toán cẩn thận.'
                             : '⚡ Cần rèn luyện thêm: Đọc kỹ bí kíp thần chú và làm lại nhé!'}
                         </h3>
-                        <p className="text-xs text-slate-600 mt-0.5">
-                          Đúng: <strong className="text-emerald-700">{examResultStats.correctCount} / {examResultStats.total} câu</strong> ({examResultStats.percentage}%) • Điểm số quy đổi: <strong className="text-red-600">{examResultStats.score10} / 10.0</strong>
-                        </p>
+                        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 mt-1">
+                          <span>
+                            Đúng: <strong className="text-emerald-700 font-bold">{examResultStats.correctCount} / {examResultStats.total} câu</strong> ({examResultStats.percentage}%)
+                          </span>
+                          <span>•</span>
+                          <span>
+                            Điểm: <strong className="text-red-600 font-black">{examResultStats.score10} / 10.0</strong>
+                          </span>
+                          {tabSwitchCount > 0 && (
+                            <>
+                              <span>•</span>
+                              <span className="inline-flex items-center gap-1 font-bold text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-md">
+                                <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
+                                Rời tab: {tabSwitchCount} lần
+                              </span>
+                            </>
+                          )}
+                        </div>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <button
-                        onClick={() => setShowAllExplanations(!showAllExplanations)}
-                        className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition"
+                        onClick={() => setIsHistoryModalOpen(true)}
+                        className="px-3.5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5 cursor-pointer"
                       >
-                        {showAllExplanations ? 'Ẩn lời giải chi tiết' : 'Hiện toàn bộ lời giải'}
+                        <History className="w-4 h-4 text-blue-700" />
+                        <span>Xem Lịch Sử ({examHistory.length})</span>
                       </button>
                       <button
-                        onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
-                        className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-black shadow-xs transition"
+                        onClick={() => setShowAllExplanations(!showAllExplanations)}
+                        className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition cursor-pointer"
                       >
-                        Giao đề này cho lớp
+                        {showAllExplanations ? 'Ẩn lời giải' : 'Hiện toàn bộ lời giải'}
+                      </button>
+                      <button
+                        onClick={handleRetakeExam}
+                        className="px-4 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 text-white rounded-xl text-xs font-black shadow-xs transition flex items-center gap-1.5 cursor-pointer"
+                      >
+                        <RotateCcw className="w-3.5 h-3.5" />
+                        <span>Làm Lần Mới</span>
                       </button>
                     </div>
                   </div>
@@ -917,33 +1223,40 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                           return;
                         }
                       }
-                      setIsExamSubmitted(true);
-                      setIsExamTimerActive(false);
-                      setShowAllExplanations(true);
-                      window.scrollTo({ top: 300, behavior: 'smooth' });
-                      toast.success('🎉 Đã nộp bài và chấm điểm xong!');
+                      handleSubmitExamFinal(false);
                     }}
-                    className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-extrabold rounded-2xl shadow-md transition cursor-pointer"
+                    className="w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black text-sm rounded-2xl shadow-lg shadow-red-600/30 hover:shadow-xl transition cursor-pointer flex items-center justify-center gap-2"
                   >
-                    Nộp Bài & Chấm Điểm 20 Câu (Thang 10)
+                    <CheckCircle2 className="w-5 h-5" />
+                    <span>Nộp Bài & Lưu Kết Quả (Lần {examHistory.length + 1})</span>
                   </button>
                 ) : (
-                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                  <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                    <button
+                      onClick={handleRetakeExam}
+                      className="flex-1 sm:flex-none px-6 py-3 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black rounded-2xl shadow-md transition cursor-pointer flex items-center justify-center gap-2"
+                    >
+                      <RotateCcw className="w-4 h-4 text-white" />
+                      <span>Làm Lại Bài Này (Lần {examHistory.length + 1})</span>
+                    </button>
+
+                    <button
+                      onClick={() => setIsHistoryModalOpen(true)}
+                      className="px-5 py-3 bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 font-bold rounded-2xl transition cursor-pointer flex items-center justify-center gap-2"
+                    >
+                      <History className="w-4 h-4 text-blue-700" />
+                      <span>Xem Lịch Sử ({examHistory.length} lần)</span>
+                    </button>
+
                     {selectedExamNo < 10 && (
                       <button
                         onClick={() => handleSelectExam(selectedTopicId, selectedExamNo + 1)}
-                        className="flex-1 sm:flex-none px-6 py-3 bg-red-700 hover:bg-red-800 text-white font-bold rounded-2xl shadow-sm transition cursor-pointer flex items-center gap-2 justify-center"
+                        className="flex-1 sm:flex-none px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-2xl shadow-sm transition cursor-pointer flex items-center gap-2 justify-center"
                       >
-                        <span>Chuyển sang Đề {(selectedExamNo + 1).toString().padStart(2, '0')}</span>
+                        <span>Đề {(selectedExamNo + 1).toString().padStart(2, '0')}</span>
                         <ArrowRight className="w-4 h-4" />
                       </button>
                     )}
-                    <button
-                      onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
-                      className="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold rounded-2xl shadow-sm transition cursor-pointer"
-                    >
-                      🎯 Giao Đề Này Cho Học Sinh
-                    </button>
                   </div>
                 )}
               </div>
@@ -1675,6 +1988,243 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
           examNo={selectedExamNo}
           questions={currentExamQuestions}
         />
+
+        {/* 1. MODAL CẢNH BÁO VI PHẠM RỜI MÀN HÌNH / CHUYỂN TAB THI (3 LẦN TỰ NỘP BÀI) */}
+        <Modal
+          isOpen={showViolationModal}
+          onClose={() => setShowViolationModal(false)}
+          title="🚨 CẢNH BÁO VI PHẠM NỘI QUY PHÒNG THI"
+          maxWidth="max-w-lg"
+        >
+          <div className="p-6 text-center space-y-4">
+            <div className="w-20 h-20 mx-auto rounded-3xl bg-red-100 text-red-600 flex items-center justify-center animate-bounce shadow-lg shadow-red-500/20">
+              <ShieldAlert className="w-12 h-12 text-red-600" />
+            </div>
+
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white font-black text-xs uppercase tracking-wider mb-2 animate-pulse">
+                <Bell className="w-3.5 h-3.5 animate-spin" />
+                <span>Vi phạm lần {tabSwitchCount} / 3 lần tối đa</span>
+              </div>
+              <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                Em vừa rời khỏi màn hình làm bài!
+              </h3>
+              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                Hệ thống phát hiện em vừa chuyển tab trình duyệt, mở ứng dụng khác hoặc bấm ra ngoài cửa sổ bài thi.
+              </p>
+            </div>
+
+            <div className="p-4 bg-amber-50 rounded-2xl border border-amber-200 text-left text-xs space-y-2">
+              <div className="font-extrabold text-amber-900 flex items-center gap-1.5 text-sm">
+                <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+                <span>Quy định phòng thi nghiêm ngặt của Thầy Thọ:</span>
+              </div>
+              <ul className="list-disc pl-5 space-y-1 text-amber-950">
+                <li>Mỗi lần thoát ra ngoài, hệ thống sẽ <strong>phát chuông cảnh báo</strong> và ghi nhận vào lịch sử bài thi.</li>
+                <li>Nếu vi phạm đủ <strong>3 lần</strong>, hệ thống sẽ <strong>TỰ ĐỘNG THU VÀ NỘP BÀI NGAY LẬP TỨC</strong>!</li>
+                <li>Lần này là vi phạm thứ <strong>{tabSwitchCount}/3</strong>. Còn <strong>{Math.max(0, 3 - tabSwitchCount)} lần</strong> nữa là bị thu bài!</li>
+              </ul>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => playWarningAlarm()}
+                className="w-full sm:w-auto px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <Volume2 className="w-4 h-4 text-slate-600" />
+                <span>Nghe lại còi cảnh báo</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowViolationModal(false)}
+                className="w-full sm:flex-1 py-3 bg-red-600 hover:bg-red-700 text-white font-black text-sm rounded-xl shadow-md transition cursor-pointer flex items-center justify-center gap-1.5"
+              >
+                <span>Em đã hiểu, quay lại làm bài ngay!</span>
+              </button>
+            </div>
+          </div>
+        </Modal>
+
+        {/* 2. MODAL LỊCH SỬ TẤT CẢ CÁC LẦN LÀM BÀI & XEM LẠI KẾT QUẢ */}
+        <Modal
+          isOpen={isHistoryModalOpen}
+          onClose={() => setIsHistoryModalOpen(false)}
+          title={`📜 LỊCH SỬ LÀM BÀI • ĐỀ SỐ ${selectedExamNo.toString().padStart(2, '0')} (${currentTopic.shortTitle})`}
+          maxWidth="max-w-3xl"
+        >
+          <div className="p-5 space-y-5">
+            {/* THỐNG KÊ NHANH */}
+            {examHistory.length > 0 ? (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-center">
+                  <div className="text-[11px] font-bold text-slate-500 uppercase">Tổng số lần làm</div>
+                  <div className="text-2xl font-black text-slate-900 mt-1">{examHistory.length} lần</div>
+                </div>
+
+                <div className="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 text-center">
+                  <div className="text-[11px] font-bold text-emerald-700 uppercase">Điểm cao nhất</div>
+                  <div className="text-2xl font-black text-emerald-700 mt-1">
+                    {Math.max(...examHistory.map(h => h.score10))} / 10
+                  </div>
+                </div>
+
+                <div className="p-3.5 bg-blue-50 rounded-2xl border border-blue-200 text-center">
+                  <div className="text-[11px] font-bold text-blue-700 uppercase">Điểm lần gần nhất</div>
+                  <div className="text-2xl font-black text-blue-700 mt-1">
+                    {examHistory[0]?.score10 || 0} / 10
+                  </div>
+                </div>
+
+                <div className="p-3.5 bg-purple-50 rounded-2xl border border-purple-200 text-center">
+                  <div className="text-[11px] font-bold text-purple-700 uppercase">Điểm trung bình</div>
+                  <div className="text-2xl font-black text-purple-700 mt-1">
+                    {(examHistory.reduce((acc, cur) => acc + cur.score10, 0) / examHistory.length).toFixed(1)} / 10
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            {/* DANH SÁCH CHI TIẾT TỪNG LẦN LÀM BÀI */}
+            {examHistory.length === 0 ? (
+              <div className="text-center py-10 bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+                <History className="w-12 h-12 mx-auto text-slate-300 mb-2" />
+                <h4 className="font-bold text-slate-700 text-base">Chưa có lịch sử làm bài cho đề này</h4>
+                <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+                  Hãy bấm bắt đầu làm bài và nộp bài. Tất cả các lần làm sẽ được hệ thống tự động ghi lại đầy đủ tại đây!
+                </p>
+                <button
+                  onClick={() => {
+                    setIsHistoryModalOpen(false);
+                    handleRetakeExam();
+                  }}
+                  className="mt-4 px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs rounded-xl shadow-xs transition cursor-pointer"
+                >
+                  🚀 Bắt Đầu Làm Lần 1 Ngay
+                </button>
+              </div>
+            ) : (
+              <div className="space-y-3 max-h-[55vh] overflow-y-auto pr-1">
+                {examHistory.map((attempt, index) => {
+                  const isHighScore = attempt.score10 === Math.max(...examHistory.map(h => h.score10));
+                  return (
+                    <div
+                      key={attempt.id}
+                      className={`p-4 rounded-2xl border transition flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                        viewingPastAttempt?.id === attempt.id
+                          ? 'bg-blue-50/80 border-blue-400 ring-2 ring-blue-500/20'
+                          : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/50'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3.5">
+                        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-xs shrink-0 ${
+                          attempt.score10 >= 8
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                            : attempt.score10 >= 5
+                            ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                            : 'bg-rose-100 text-rose-800 border border-rose-300'
+                        }`}>
+                          {attempt.score10}
+                        </div>
+
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-black text-slate-900 text-sm">
+                              Lần làm thứ {attempt.attemptNo}
+                            </span>
+                            {isHighScore && (
+                              <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-black uppercase flex items-center gap-0.5">
+                                <Award className="w-3 h-3 text-amber-600" />
+                                Cao nhất
+                              </span>
+                            )}
+                            {attempt.isAutoSubmittedByViolation && (
+                              <span className="px-2 py-0.5 rounded-full bg-red-100 text-red-800 text-[10px] font-black uppercase">
+                                🚨 Tự động thu bài
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mt-1">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3 text-slate-400" />
+                              {attempt.dateFormatted}
+                            </span>
+                            <span>•</span>
+                            <span className="flex items-center gap-1 font-bold text-slate-700">
+                              <Clock className="w-3 h-3 text-slate-400" />
+                              {Math.floor(attempt.timeSpentSeconds / 60)}p {attempt.timeSpentSeconds % 60}s
+                            </span>
+                            <span>•</span>
+                            <span className="font-bold text-emerald-700">
+                              {attempt.correctCount}/{attempt.totalQuestions} câu đúng ({attempt.percentage}%)
+                            </span>
+                            <span>•</span>
+                            <span className={`font-bold ${attempt.violations > 0 ? 'text-rose-600' : 'text-slate-500'}`}>
+                              Rời tab: {attempt.violations} lần
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                        <button
+                          onClick={() => handleViewPastAttempt(attempt)}
+                          className="px-3.5 py-2 bg-blue-50 hover:bg-blue-100 text-blue-900 font-extrabold text-xs rounded-xl border border-blue-200 transition flex items-center gap-1.5 cursor-pointer"
+                        >
+                          <Eye className="w-3.5 h-3.5 text-blue-700" />
+                          <span>Xem lại bài làm</span>
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* CHÂN MODAL */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-slate-100">
+              {examHistory.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (confirm('Em có chắc chắn muốn xóa toàn bộ lịch sử các lần làm bài của đề này không?')) {
+                      localStorage.removeItem(historyStorageKey);
+                      setExamHistory([]);
+                      setViewingPastAttempt(null);
+                      toast.success('Đã xóa sạch lịch sử bài thi này!');
+                    }
+                  }}
+                  className="text-xs text-slate-400 hover:text-rose-600 font-semibold transition cursor-pointer"
+                >
+                  🗑️ Xóa lịch sử bài này
+                </button>
+              )}
+
+              <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+                <button
+                  type="button"
+                  onClick={() => setIsHistoryModalOpen(false)}
+                  className="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer"
+                >
+                  Đóng
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsHistoryModalOpen(false);
+                    handleRetakeExam();
+                  }}
+                  className="px-5 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 text-white font-black text-xs rounded-xl shadow-md transition flex items-center gap-1.5 cursor-pointer"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Làm Lại Bài Này (Lần {examHistory.length + 1})</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   );
