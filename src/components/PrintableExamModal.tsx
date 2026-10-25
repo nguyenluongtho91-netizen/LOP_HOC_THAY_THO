@@ -305,9 +305,9 @@ export default function PrintableExamModal({
                       key={q.id || idx} 
                       className="page-break-inside-avoid text-xs sm:text-[13px] border-b border-slate-200 pb-3"
                     >
-                      {/* Tiêu đề & nội dung câu hỏi */}
-                      <div className="font-normal text-black mb-2">
-                        <div className="flex items-start gap-1 font-serif text-sm sm:text-base leading-relaxed">
+                      {/* Tiêu đề & nội dung câu hỏi chuẩn đề kiểm tra */}
+                      <div className="font-normal text-slate-950 mb-2">
+                        <div className="flex items-start gap-1.5 font-serif text-sm sm:text-base leading-relaxed">
                           <span className="font-bold shrink-0 text-slate-950">
                             Câu {qNum}:
                           </span>
@@ -315,13 +315,6 @@ export default function PrintableExamModal({
                             <MathText html={(q.question || '').replace(/^Câu \d+:\s*/, '')} />
                           </div>
                         </div>
-
-                        {/* Biểu thức toán học nếu có */}
-                        {(q as any).mathExpression && (
-                          <div className="my-2.5 py-2 px-3 bg-slate-50 border border-slate-200 rounded text-center text-base sm:text-lg font-bold text-slate-950">
-                            <MathText html={`$$${(q as any).mathExpression}$$`} block />
-                          </div>
-                        )}
                       </div>
 
                       {/* 4 Phương án A, B, C, D */}
