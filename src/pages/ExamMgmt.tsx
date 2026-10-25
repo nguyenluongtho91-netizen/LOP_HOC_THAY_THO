@@ -49,16 +49,16 @@ export default function ExamMgmt() {
   const [downloadingId, setDownloadingId] = useState<string | null>(null)
   const [generatingSimilarId, setGeneratingSimilarId] = useState<string | null>(null)
 
-  // Bộ lọc Học kì (Học kì 1, Học kì 2, Tất cả)
-  const [semesterFilter, setSemesterFilter] = useState<'all' | 'hk1' | 'hk2'>('all')
+  // Bộ lọc Học kì (Học kì 1, Học kì 2, Lấy gốc Toán, Tất cả)
+  const [semesterFilter, setSemesterFilter] = useState<'all' | 'hk1' | 'hk2' | 'laygoc'>('all')
   const [openFolders, setOpenFolders] = useState<Record<string, boolean>>({
-    '6_hk1': true, '6_hk2': true, '6_other': true,
-    '7_hk1': true, '7_hk2': true, '7_other': true,
-    '8_hk1': true, '8_hk2': true, '8_other': true,
-    '9_hk1': true, '9_hk2': true, '9_other': true,
-    '10_hk1': true, '10_hk2': true, '10_other': true,
-    '11_hk1': true, '11_hk2': true, '11_other': true,
-    '12_hk1': true, '12_hk2': true, '12_other': true,
+    '6_hk1': true, '6_hk2': true, '6_laygoc': true, '6_other': true,
+    '7_hk1': true, '7_hk2': true, '7_laygoc': true, '7_other': true,
+    '8_hk1': true, '8_hk2': true, '8_laygoc': true, '8_other': true,
+    '9_hk1': true, '9_hk2': true, '9_laygoc': true, '9_other': true,
+    '10_hk1': true, '10_hk2': true, '10_laygoc': true, '10_other': true,
+    '11_hk1': true, '11_hk2': true, '11_laygoc': true, '11_other': true,
+    '12_hk1': true, '12_hk2': true, '12_laygoc': true, '12_other': true,
   })
 
   const toggleFolder = (key: string) => {
@@ -68,7 +68,7 @@ export default function ExamMgmt() {
     }))
   }
 
-  const getExamSemester = (title: string): 'hk1' | 'hk2' | 'other' => {
+  const getExamSemester = (title: string): 'hk1' | 'hk2' | 'laygoc' | 'other' => {
     const raw = (title || '').toLowerCase()
     const norm = raw
       .normalize('NFD')
@@ -77,6 +77,14 @@ export default function ExamMgmt() {
       .replace(/[^a-z0-9]/g, ' ')
       .replace(/\s+/g, ' ')
       .trim()
+
+    // Kiểm tra Lấy gốc Toán
+    const isLayGoc = 
+      norm.includes('lay goc') || norm.includes('mat goc') ||
+      norm.includes('chuyen ve') || norm.includes('so am') ||
+      norm.includes('doi dau') || norm.includes('so nguyen')
+
+    if (isLayGoc) return 'laygoc'
 
     // Kiểm tra Học kì 1: gk1, ck1, hk1, gki, cki, hki, ki 1, ky 1, giua ki 1, cuoi ki 1, chuong 1, 2, 3
     const isHk1 = 
@@ -670,11 +678,19 @@ export default function ExamMgmt() {
             >
               <span>📁 Học kì 2</span>
             </button>
+            <button
+              onClick={() => setSemesterFilter('laygoc')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center gap-1.5 ${
+                semesterFilter === 'laygoc' ? 'bg-rose-600 text-white shadow-xs' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <span>⚡ Lấy gốc Toán</span>
+            </button>
           </div>
         </div>
 
         <div className="text-xs text-gray-400 font-medium italic hidden sm:block">
-          Hệ thống tự động gom đề vào thư mục: <strong>Học kì 1</strong> (GK1, CK1, HK1) & <strong>Học kì 2</strong> (GK2, CK2, HK2)
+          Hệ thống tự động gom đề vào thư mục: <strong>Lấy gốc Toán</strong>, <strong>Học kì 1</strong> & <strong>Học kì 2</strong>
         </div>
       </div>
 
@@ -802,15 +818,17 @@ export default function ExamMgmt() {
           )
 
           // Nhóm các đề theo học kì
+          const layGocList = list.filter(e => getExamSemester(e.title) === 'laygoc')
           const hk1List = list.filter(e => getExamSemester(e.title) === 'hk1')
           const hk2List = list.filter(e => getExamSemester(e.title) === 'hk2')
           const otherList = list.filter(e => getExamSemester(e.title) === 'other')
 
           const semesterSections = [
+            ...(layGocList.length > 0 ? [{ id: 'laygoc', label: '⚡ Lấy gốc Toán', list: layGocList, badge: 'bg-rose-100 text-rose-800 border-rose-200', iconColor: 'text-rose-600', headerBg: 'bg-rose-50/70 border-rose-200 hover:bg-rose-100/60' }] : []),
             { id: 'hk1', label: 'Học kì 1', list: hk1List, badge: 'bg-amber-100 text-amber-800 border-amber-200', iconColor: 'text-amber-500', headerBg: 'bg-amber-50/70 border-amber-200 hover:bg-amber-100/60' },
             { id: 'hk2', label: 'Học kì 2', list: hk2List, badge: 'bg-blue-100 text-blue-800 border-blue-200', iconColor: 'text-blue-500', headerBg: 'bg-blue-50/70 border-blue-200 hover:bg-blue-100/60' },
             ...(otherList.length > 0 ? [{ id: 'other', label: 'Khác / Chuyên đề', list: otherList, badge: 'bg-gray-100 text-gray-700 border-gray-200', iconColor: 'text-gray-500', headerBg: 'bg-gray-50 border-gray-200 hover:bg-gray-100' }] : [])
-          ].filter(sec => semesterFilter === 'all' || semesterFilter === sec.id || (sec.id === 'other' && otherList.length > 0))
+          ].filter(sec => semesterFilter === 'all' || semesterFilter === sec.id || (sec.id === 'other' && otherList.length > 0) || (sec.id === 'laygoc' && layGocList.length > 0))
 
           return (
             <div key={grade} className={`flex flex-col rounded-2xl border-t-4 ${theme.border} bg-white shadow-sm overflow-hidden min-h-[400px]`}>

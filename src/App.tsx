@@ -26,6 +26,7 @@ import CreatePdfExamPage from '@/pages/CreatePdfExamPage'
 import CreateTexExamPage from '@/pages/CreateTexExamPage'
 import CreateWorksheetPage from '@/pages/CreateWorksheetPage'
 import WhiteboardPage from '@/pages/WhiteboardPage'   // ← MỚI
+import LayGocToanPage from '@/pages/LayGocToanPage'
 
 // Pages Khóa học mới
 import CourseMgmt from '@/pages/CourseMgmt'
@@ -93,6 +94,8 @@ export default function App() {
       {/* 1. CỔNG CÔNG KHAI DÀNH CHO HỌC SINH VÀ ĐĂNG NHẬP */}
       <Route path="/login"    element={<Login />} />
       <Route path="/thi"      element={<StudentPortal />} />
+      <Route path="/lay-goc"  element={<LayGocToanPage isPublic={true} />} />
+      <Route path="/lay-goc-toan" element={<LayGocToanPage isPublic={true} />} />
       {/* CỔNG TRA CỨU HÓA ĐƠN ĐIỆN TỬ DÀNH CHO PHỤ HUYNH */}
       <Route path="/hoa-don/:invoiceId" element={<PublicInvoicePage />} />
       <Route path="/hoa-don"            element={<PublicInvoicePage />} />
@@ -139,6 +142,7 @@ export default function App() {
         <Route path="phieu-grader"         element={<PhieuGrader />} />
         <Route path="homework"             element={<HomeworkMgmt />} />
         <Route path="giao-bai-tap"         element={<HomeworkMgmt />} />
+        <Route path="lay-goc-toan"         element={<LayGocToanPage />} />
 
 
         {/* --- Nhóm Công cụ chuyên dụng --- */}

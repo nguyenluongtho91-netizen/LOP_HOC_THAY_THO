@@ -37,6 +37,7 @@ export default function Layout() {
     {
       title: 'Học liệu & Thi cử',
       items: [
+        { path: '/lay-goc-toan',      icon: Zap,            label: '⚡ Lấy Gốc Toán' },
         { path: '/homework',          icon: ClipboardCheck, label: 'Giao bài tập' },
         { path: '/courses',           icon: PlaySquare,     label: 'Khóa học & Bài giảng' },
         { path: '/exams',             icon: FileText,       label: 'Ngân hàng đề thi' },
