@@ -39,7 +39,13 @@ export default function BatchExamScanModal({
   examNo,
   questions
 }: BatchExamScanModalProps) {
-  const [apiKey, setApiKey] = useState<string>(() => localStorage.getItem('gemini_api_key') || '');
+  const [apiKey, setApiKey] = useState<string>(() => {
+    return localStorage.getItem('gemini_api_key') 
+      || localStorage.getItem('gemini_essay_api_key') 
+      || localStorage.getItem('ocr_gemini_key')
+      || (import.meta as any).env?.VITE_GEMINI_API_KEY 
+      || '';
+  });
   const [showKeyInput, setShowKeyInput] = useState<boolean>(false);
   const [scannedFiles, setScannedFiles] = useState<ScannedStudentResult[]>([]);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -50,10 +56,12 @@ export default function BatchExamScanModal({
 
   if (!isOpen) return null;
 
-  // Lưu API key
+  // Lưu API key đồng bộ toàn hệ thống
   const handleSaveApiKey = (key: string) => {
     setApiKey(key);
     localStorage.setItem('gemini_api_key', key);
+    localStorage.setItem('gemini_essay_api_key', key);
+    localStorage.setItem('ocr_gemini_key', key);
     toast.success('Đã lưu khóa API Gemini!');
     setShowKeyInput(false);
   };
