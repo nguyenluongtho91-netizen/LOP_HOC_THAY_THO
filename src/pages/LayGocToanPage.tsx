@@ -4,7 +4,7 @@ import {
   HelpCircle, BookOpen, Award, Sparkles, Printer, 
   Flame, Clock, ChevronRight, Calculator, Shuffle, FileDown,
   Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target,
-  FlaskConical, Compass
+  FlaskConical, Compass, Scale
 } from 'lucide-react';
 import MathText from '@/components/MathText';
 import { useDataStore } from '@/store/dataStore';
@@ -948,6 +948,60 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-100/80 text-cyan-900 font-black text-sm max-w-fit border border-cyan-200">
                     <FlaskConical className="w-4 h-4 text-cyan-700" />
                     <span>I. BÍ KÍP THẦN CHÚ HÓA HỌC VÔ CƠ (LỚP 6 - 11)</span>
+                  </div>
+
+                  {/* Tính phân tử khối */}
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div className="flex items-center gap-2.5 mb-4 text-sky-800 font-black text-lg border-b pb-3">
+                      <Scale className="w-6 h-6 text-sky-600" />
+                      QUY TẮC TÍNH KHỐI LƯỢNG PHÂN TỬ (PHÂN TỬ KHỐI - LỚP 7 & 8)
+                    </div>
+                    <div className="p-4 bg-sky-50/70 border border-sky-200 rounded-xl mb-4 text-xs sm:text-sm text-slate-800 leading-relaxed">
+                      <div className="font-extrabold text-sky-950 mb-1">
+                        🎯 Công thức tổng quát cho hợp chất A_x B_y C_z:
+                      </div>
+                      <div className="text-sm sm:text-base font-black text-sky-900 bg-white/80 px-3 py-2 rounded-lg border border-sky-300 inline-block my-1.5">
+                        KLPT = x · M_A + y · M_B + z · M_C (đơn vị: amu hoặc đvC)
+                      </div>
+                      <p className="text-slate-600 text-xs mt-1">
+                        * Lưu ý với muối ngậm nước (ví dụ CuSO₄ · 5H₂O): Dấu chấm "·" nghĩa là cộng thêm phân tử nước kết tinh: KLPT = M(CuSO₄) + 5 · M(H₂O) = 160 + 90 = 250 amu.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700">
+                      <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 className="font-extrabold text-slate-900 mb-2">📊 Nguyên tử khối các nguyên tố hay gặp nhất:</h4>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">H = 1</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">C = 12</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">N = 14</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">O = 16</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Na = 23</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Mg = 24</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Al = 27</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">P = 31</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">S = 32</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Cl = 35.5</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">K = 39</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Ca = 40</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Fe = 56</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Cu = 64</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Zn = 65</span>
+                        </div>
+                      </div>
+
+                      <div className="bg-emerald-50/70 p-4 rounded-xl border border-emerald-200">
+                        <h4 className="font-extrabold text-emerald-900 mb-2">⚡ Các phân tử khối kinh điển cần nhớ:</h4>
+                        <ul className="space-y-1.5 text-xs text-slate-700 font-medium">
+                          <li>• <strong>H₂O:</strong> 1 · 2 + 16 = <strong>18</strong> amu</li>
+                          <li>• <strong>CO₂:</strong> 12 + 16 · 2 = <strong>44</strong> amu</li>
+                          <li>• <strong>NaOH:</strong> 23 + 16 + 1 = <strong>40</strong> amu</li>
+                          <li>• <strong>CaCO₃:</strong> 40 + 12 + 16 · 3 = <strong>100</strong> amu</li>
+                          <li>• <strong>H₂SO₄:</strong> 1 · 2 + 32 + 16 · 4 = <strong>98</strong> amu</li>
+                          <li>• <strong>Al₂O₃:</strong> 27 · 2 + 16 · 3 = <strong>102</strong> amu</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Bài ca hóa trị */}
