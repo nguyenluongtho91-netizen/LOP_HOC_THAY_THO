@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { 
   UploadCloud, Sparkles, CheckCircle2, XCircle, AlertCircle, 
-  Trash2, FileText, Check, ArrowRight, Download, Users, KeyRound, 
-  X, Eye, Edit3, RefreshCw, Send, Award
+  Trash2, Download, KeyRound, X, Eye, RefreshCw, Send, Award, Copy, Check
 } from 'lucide-react';
 import { LayGocQuestion } from '@/services/layGocExamService';
 import { LayGocHoaQuestion } from '@/services/layGocHoaExamService';
@@ -51,6 +50,7 @@ export default function BatchExamScanModal({
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [currentProcessingIndex, setCurrentProcessingIndex] = useState<number>(-1);
   const [selectedStudentDetail, setSelectedStudentDetail] = useState<ScannedStudentResult | null>(null);
+  const [copiedZalo, setCopiedZalo] = useState<boolean>(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -80,7 +80,7 @@ export default function BatchExamScanModal({
           id,
           fileName: file.name,
           imagePreview: reader.result as string,
-          studentName: `Học sinh ${scannedFiles.length + newResults.length}`,
+          studentName: `Học sinh ${scannedFiles.length + newResults.length + 1}`,
           studentClass: '',
           answers: {},
           correctCount: 0,
@@ -119,13 +119,11 @@ export default function BatchExamScanModal({
     answers: Record<number, string>;
   }> => {
     if (!apiKey) {
-      // Fallback Demo giả lập thông minh nếu Thầy chưa có Gemini API Key
-      await new Promise(r => setTimeout(r, 800)); // Delay mô phỏng quét
+      // Demo mô phỏng nếu chưa cấu hình API Key
+      await new Promise(r => setTimeout(r, 700));
       const answers: Record<number, string> = {};
-      let correct = 0;
       questions.forEach((q, idx) => {
         const qNum = idx + 1;
-        // Giả lập học sinh làm đúng 70-95%
         const isRight = Math.random() > 0.2;
         answers[qNum] = isRight 
           ? q.correctAnswer 
@@ -142,14 +140,14 @@ export default function BatchExamScanModal({
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
     
     const prompt = `Bạn là trợ lý AI chuyên nghiệp chấm thi môn ${subject === 'toan' ? 'Toán' : 'Hóa học'} của Thầy Thọ.
-Dưới đây là ảnh chụp tờ bài kiểm tra hoặc phiếu trả lời trắc nghiệm của học sinh.
+Dưới đây là ảnh chụp bài làm hoặc phiếu trả lời trắc nghiệm của học sinh.
 Nhiệm vụ của bạn:
 1. Đọc "Họ và tên học sinh" viết tay ở đầu bài làm.
 2. Đọc "Lớp" (nếu có).
 3. Đọc đáp án học sinh đã khoanh tròn hoặc tô đen cho từng câu từ Câu 1 đến Câu ${questions.length}:
    - Mỗi câu ghi chữ cái được chọn: A, B, C, hoặc D.
    - Nếu câu nào không khoanh hoặc mờ không đọc được, ghi "".
-   - Nếu có vết gạch bỏ và khoanh lại chữ khác, hãy lấy chữ cái cuối cùng học sinh chọn.
+   - Nếu có vết gạch bỏ và khoanh lại chữ khác, lấy chữ cái cuối cùng học sinh chọn.
 
 Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không dùng markdown backticks):
 {
@@ -268,6 +266,40 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
     toast.success('Đã tải xuống file bảng điểm Excel/CSV!');
   };
 
+  // Copy tin nhắn báo điểm chi tiết Zalo cho phụ huynh
+  const handleCopyZaloReport = (student: ScannedStudentResult) => {
+    let msg = `🔔 THÔNG BÁO KẾT QUẢ ĐỀ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC\n`;
+    msg += `Họ và tên học sinh: ${student.studentName}\n`;
+    msg += `Môn: ${subject === 'toan' ? 'Toán Học' : 'Hóa Học'} - ${topicTitle}\n`;
+    msg += `Đề số: ${examNo}\n`;
+    msg += `-----------------------------------------\n`;
+    msg += `📊 Điểm số: ${student.score10} / 10.0 điểm\n`;
+    msg += `✅ Số câu làm đúng: ${student.correctCount} / ${student.totalQuestions} câu\n`;
+    msg += `\n📝 CHI TIẾT TỪNG CÂU (TÍCH ĐÚNG / SAI):\n`;
+
+    questions.forEach((q, idx) => {
+      const qNum = idx + 1;
+      const userAns = (student.answers[qNum] || '').trim().toUpperCase();
+      const isRight = userAns === q.correctAnswer;
+      if (userAns) {
+        msg += `Câu ${qNum < 10 ? '0' + qNum : qNum}: Em chọn [${userAns}] ${isRight ? '-> ✓ ĐÚNG (+0.5đ)' : `-> ✗ SAI (Đáp án đúng: ${q.correctAnswer})`}\n`;
+      } else {
+        msg += `Câu ${qNum < 10 ? '0' + qNum : qNum}: [Chưa làm] -> ✗ SAI (Đáp án đúng: ${q.correctAnswer})\n`;
+      }
+    });
+
+    msg += `\n🌟 Nhận xét của Thầy Thọ: ${
+      student.score10 >= 8 ? 'Em nắm kiến thức rất vững vàng, phát huy nhé!' :
+      student.score10 >= 5 ? 'Em làm bài khá tốt, cần xem lại các câu sai để rút kinh nghiệm!' :
+      'Em cần đọc lại bí kíp thần chú và làm lại các bài tương tự nhé!'
+    }\n`;
+
+    navigator.clipboard.writeText(msg);
+    setCopiedZalo(true);
+    toast.success('Đã copy tin nhắn báo điểm chi tiết từng câu!');
+    setTimeout(() => setCopiedZalo(false), 3000);
+  };
+
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/85 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 animate-fade-in">
       <div className="bg-white w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
@@ -288,7 +320,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                 </span>
               </div>
               <h3 className="text-base font-bold text-white line-clamp-1 mt-0.5">
-                Quét Ảnh Bài Làm & Tự Động Chấm Điểm Hàng Loạt
+                Quét Ảnh Bài Làm & Tự Động Chấm Điểm (Tích Đúng / Sai Từng Câu)
               </h3>
             </div>
           </div>
@@ -340,7 +372,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                   const input = document.getElementById('api-key-input') as HTMLInputElement;
                   if (input) handleSaveApiKey(input.value.trim());
                 }}
-                className="px-4 py-1.5 bg-purple-700 text-white rounded-lg font-bold hover:bg-purple-800 transition"
+                className="px-4 py-1.5 bg-purple-700 text-white rounded-lg font-bold hover:bg-purple-800 transition cursor-pointer"
               >
                 Lưu Khóa
               </button>
@@ -370,7 +402,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                 Tải lên 10 - 50 bài làm đã chụp hoặc scan của học sinh
               </p>
               <p className="text-xs text-slate-500 mt-0.5">
-                Chấp nhận định dạng ảnh (JPG, PNG, WebP). Học sinh có thể khoanh trực tiếp trên đề hoặc tô trên phiếu.
+                Chấp nhận ảnh chụp bài làm (JPG, PNG). AI sẽ đọc tên và <strong>tự động tích câu đúng/sai</strong> trực tiếp!
               </p>
             </div>
             <div className="flex items-center justify-center gap-3 pt-1">
@@ -433,26 +465,26 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                     ) : (
                       <>
                         <Sparkles className="w-3.5 h-3.5" />
-                        <span>Bắt Đầu Nhận Diện & Chấm Điểm AI</span>
+                        <span>Bắt Đầu Nhận Diện & Tự Động Chấm Điểm</span>
                       </>
                     )}
                   </button>
                 </div>
               </div>
 
-              {/* BẢNG TỔNG HỢP KẾT QUẢ */}
+              {/* BẢNG TỔNG HỢP KẾT QUẢ - KÈM CỘT TÍCH ĐÚNG / SAI 20 CÂU */}
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold">
-                      <th className="py-2.5 px-3 text-center w-12">STT</th>
-                      <th className="py-2.5 px-3">Ảnh Bài Làm</th>
+                      <th className="py-2.5 px-3 text-center w-10">STT</th>
+                      <th className="py-2.5 px-3">Ảnh</th>
                       <th className="py-2.5 px-3">Họ và Tên Học Sinh</th>
                       <th className="py-2.5 px-3">Lớp</th>
-                      <th className="py-2.5 px-3 text-center">Số Câu Đúng</th>
+                      <th className="py-2.5 px-3 text-center">Kết Quả 20 Câu (Tích Đúng/Sai)</th>
+                      <th className="py-2.5 px-3 text-center">Đúng</th>
                       <th className="py-2.5 px-3 text-center">Điểm (/10)</th>
-                      <th className="py-2.5 px-3 text-center">Trạng Thái</th>
-                      <th className="py-2.5 px-3 text-right">Chi Tiết</th>
+                      <th className="py-2.5 px-3 text-right">Thao Tác</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -465,7 +497,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                           <img 
                             src={item.imagePreview} 
                             alt={item.fileName} 
-                            className="w-12 h-14 object-cover rounded border border-slate-300 shadow-2xs cursor-pointer hover:scale-105 transition"
+                            className="w-10 h-12 object-cover rounded border border-slate-300 shadow-2xs cursor-pointer hover:scale-105 transition"
                             onClick={() => setSelectedStudentDetail(item)}
                           />
                         </td>
@@ -477,7 +509,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                               const val = e.target.value;
                               setScannedFiles(prev => prev.map((s, i) => i === idx ? { ...s, studentName: val } : s));
                             }}
-                            className="font-bold text-slate-900 bg-transparent hover:bg-slate-100 px-1.5 py-0.5 rounded border border-transparent hover:border-slate-300 w-44"
+                            className="font-bold text-slate-900 bg-transparent hover:bg-slate-100 px-1.5 py-0.5 rounded border border-transparent hover:border-slate-300 w-40"
                           />
                           <div className="text-[10px] text-slate-400 truncate max-w-xs">{item.fileName}</div>
                         </td>
@@ -490,13 +522,46 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                               const val = e.target.value;
                               setScannedFiles(prev => prev.map((s, i) => i === idx ? { ...s, studentClass: val } : s));
                             }}
-                            className="text-slate-600 bg-transparent hover:bg-slate-100 px-1 py-0.5 rounded border border-transparent hover:border-slate-300 w-20"
+                            className="text-slate-600 bg-transparent hover:bg-slate-100 px-1 py-0.5 rounded border border-transparent hover:border-slate-300 w-16"
                           />
                         </td>
+
+                        {/* CỘT TÍCH ĐÚNG SAI 20 CÂU TRỰC QUAN */}
+                        <td className="py-2.5 px-3">
+                          {item.status === 'done' ? (
+                            <div className="flex flex-wrap items-center justify-center gap-0.5 max-w-[280px] mx-auto">
+                              {questions.map((q, qIdx) => {
+                                const qNum = qIdx + 1;
+                                const userAns = (item.answers[qNum] || '').trim().toUpperCase();
+                                const isRight = userAns === q.correctAnswer;
+                                return (
+                                  <span
+                                    key={qNum}
+                                    title={`Câu ${qNum}: HS chọn [${userAns || 'Trống'}] - Đáp án [${q.correctAnswer}] (${isRight ? 'Đúng' : 'Sai'})`}
+                                    className={`w-4 h-4 rounded text-[9px] font-black flex items-center justify-center ${
+                                      userAns
+                                        ? isRight
+                                          ? 'bg-emerald-500 text-white'
+                                          : 'bg-rose-500 text-white'
+                                        : 'bg-slate-200 text-slate-500'
+                                    }`}
+                                  >
+                                    {isRight ? '✓' : userAns ? '✗' : '·'}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <div className="text-center text-[11px] text-slate-400 italic">
+                              {item.status === 'processing' ? 'Đang nhận diện...' : 'Chờ quét'}
+                            </div>
+                          )}
+                        </td>
+
                         <td className="py-2.5 px-3 text-center font-bold">
                           {item.status === 'done' ? (
                             <span className="text-emerald-700 font-extrabold">
-                              {item.correctCount} / {item.totalQuestions}
+                              {item.correctCount}/{item.totalQuestions}
                             </span>
                           ) : (
                             <span className="text-slate-400">-</span>
@@ -514,37 +579,14 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
                             <span className="text-slate-400 font-bold">-</span>
                           )}
                         </td>
-                        <td className="py-2.5 px-3 text-center">
-                          {item.status === 'pending' && (
-                            <span className="text-[11px] text-slate-500 font-medium">Chờ quét</span>
-                          )}
-                          {item.status === 'processing' && (
-                            <span className="text-[11px] text-purple-700 font-bold flex items-center justify-center gap-1">
-                              <RefreshCw className="w-3 h-3 animate-spin" />
-                              Đang chấm
-                            </span>
-                          )}
-                          {item.status === 'done' && (
-                            <span className="text-[11px] text-emerald-700 font-bold flex items-center justify-center gap-1">
-                              <CheckCircle2 className="w-3.5 h-3.5" />
-                              Xong
-                            </span>
-                          )}
-                          {item.status === 'error' && (
-                            <span className="text-[11px] text-rose-600 font-bold flex items-center justify-center gap-1">
-                              <XCircle className="w-3.5 h-3.5" />
-                              Lỗi
-                            </span>
-                          )}
-                        </td>
                         <td className="py-2.5 px-3 text-right">
                           <div className="flex items-center justify-end gap-1">
                             <button
                               onClick={() => setSelectedStudentDetail(item)}
-                              className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-[11px] font-bold transition flex items-center gap-1 cursor-pointer"
+                              className="px-2.5 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-lg text-[11px] font-bold transition flex items-center gap-1 cursor-pointer"
                             >
                               <Eye className="w-3 h-3" />
-                              <span>Xem bài</span>
+                              <span>Xem Tích Câu</span>
                             </button>
                             <button
                               onClick={() => handleRemoveFile(item.id)}
@@ -563,104 +605,156 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
             </div>
           )}
 
-          {/* CHI TIẾT BÀI LÀM TỪNG HỌC SINH (KHI CLICK XEM BÀI) */}
+          {/* CHI TIẾT BÀI LÀM TỪNG HỌC SINH (KÈM DẤU TÍCH ĐÚNG / SAI RÕ RÀNG TỪNG CÂU) */}
           {selectedStudentDetail && (
-            <div className="bg-white p-5 rounded-2xl border-2 border-purple-300 shadow-md space-y-4 animate-fade-in">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+            <div className="bg-white p-5 rounded-2xl border-2 border-purple-400 shadow-lg space-y-4 animate-fade-in">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
-                    <Award className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+                    <Award className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-slate-900 text-sm">
-                      Chi Tiết Bài Làm: {selectedStudentDetail.studentName}
+                    <h4 className="font-extrabold text-slate-900 text-base">
+                      Phiếu Chấm Chi Tiết: {selectedStudentDetail.studentName}
                     </h4>
-                    <p className="text-xs text-slate-500">
-                      Điểm số: <strong className="text-purple-700">{selectedStudentDetail.score10}/10</strong> • Đúng {selectedStudentDetail.correctCount}/{selectedStudentDetail.totalQuestions} câu
+                    <p className="text-xs text-slate-600 mt-0.5">
+                      Điểm số: <strong className="text-purple-700 text-sm font-black">{selectedStudentDetail.score10} / 10.0</strong> • Làm đúng: <strong className="text-emerald-700">{selectedStudentDetail.correctCount} / {selectedStudentDetail.totalQuestions} câu</strong>
                     </p>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => setSelectedStudentDetail(null)}
-                  className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600"
-                >
-                  <X className="w-4 h-4" />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleCopyZaloReport(selectedStudentDetail)}
+                    className="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-300 rounded-lg text-xs font-bold flex items-center gap-1 transition cursor-pointer"
+                  >
+                    {copiedZalo ? <Check className="w-3.5 h-3.5 text-teal-600" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedZalo ? 'Đã Copy Báo Điểm' : 'Copy Báo Điểm Zalo Cho PH'}</span>
+                  </button>
+
+                  <button
+                    onClick={() => setSelectedStudentDetail(null)}
+                    className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 cursor-pointer"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {/* Cột trái: Ảnh bài làm gốc */}
-                <div>
-                  <div className="text-xs font-bold text-slate-700 mb-1.5">Ảnh bài làm scan của học sinh:</div>
-                  <div className="border border-slate-300 rounded-xl overflow-hidden max-h-96 overflow-y-auto bg-slate-100 flex justify-center">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+                {/* Cột trái: Ảnh bài làm scan */}
+                <div className="md:col-span-5">
+                  <div className="text-xs font-bold text-slate-700 mb-1.5 flex items-center justify-between">
+                    <span>Ảnh bài làm gốc của học sinh:</span>
+                    <span className="text-[11px] text-slate-400 font-normal">Nhấn đúp để phóng to</span>
+                  </div>
+                  <div className="border border-slate-300 rounded-xl overflow-hidden max-h-[460px] overflow-y-auto bg-slate-100 flex justify-center p-2">
                     <img 
                       src={selectedStudentDetail.imagePreview} 
                       alt="Ảnh bài làm" 
-                      className="w-full object-contain"
+                      className="w-full object-contain rounded shadow-xs"
                     />
                   </div>
                 </div>
 
-                {/* Cột phải: 20 Câu đối chiếu đáp án */}
-                <div>
-                  <div className="text-xs font-bold text-slate-700 mb-1.5">Kết quả từng câu (Thầy có thể sửa lại nếu cần):</div>
-                  <div className="grid grid-cols-2 gap-2 max-h-96 overflow-y-auto p-1 text-xs">
+                {/* Cột phải: 20 CÂU TÍCH ĐÚNG / SAI RÕ RÀNG */}
+                <div className="md:col-span-7">
+                  <div className="text-xs font-bold text-slate-800 mb-2 flex items-center justify-between">
+                    <span>Kết quả 20 câu trắc nghiệm (Tích đúng/sai trực quan):</span>
+                    <span className="text-[11px] text-slate-500 font-normal">Thầy có thể sửa đáp án nếu AI đọc nhầm</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 max-h-[460px] overflow-y-auto p-1 text-xs">
                     {questions.map((q, idx) => {
                       const qNum = idx + 1;
-                      const userAns = selectedStudentDetail.answers[qNum] || '';
+                      const userAns = (selectedStudentDetail.answers[qNum] || '').trim().toUpperCase();
                       const isCorrect = userAns === q.correctAnswer;
+                      const hasAnswer = Boolean(userAns);
 
                       return (
                         <div 
                           key={qNum}
-                          className={`p-2 rounded-lg border flex items-center justify-between ${
-                            userAns
+                          className={`p-2.5 rounded-xl border-2 transition ${
+                            hasAnswer
                               ? isCorrect 
-                                ? 'bg-emerald-50 border-emerald-300 text-emerald-950' 
-                                : 'bg-rose-50 border-rose-300 text-rose-950'
-                              : 'bg-slate-50 border-slate-200 text-slate-500'
+                                ? 'bg-emerald-50/70 border-emerald-400 text-emerald-950' 
+                                : 'bg-rose-50/70 border-rose-400 text-rose-950'
+                              : 'bg-slate-50 border-slate-300 text-slate-600'
                           }`}
                         >
-                          <div className="flex items-center gap-1.5 font-bold">
-                            <span>Câu {qNum < 10 ? `0${qNum}` : qNum}:</span>
-                            <span className="text-[11px] font-normal text-slate-600">Đ/A: <strong>{q.correctAnswer}</strong></span>
+                          {/* Dòng 1: Tên câu & Trạng thái Đúng/Sai */}
+                          <div className="flex items-center justify-between mb-1.5">
+                            <span className="font-extrabold text-slate-900">
+                              Câu {qNum < 10 ? `0${qNum}` : qNum}:
+                            </span>
+
+                            {hasAnswer ? (
+                              isCorrect ? (
+                                <span className="inline-flex items-center gap-1 text-[11px] font-black text-emerald-800 bg-emerald-200/80 px-2 py-0.5 rounded-full">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+                                  <span>ĐÚNG (+0.5đ)</span>
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center gap-1 text-[11px] font-black text-rose-800 bg-rose-200/80 px-2 py-0.5 rounded-full">
+                                  <XCircle className="w-3.5 h-3.5 text-rose-700" />
+                                  <span>SAI (0đ)</span>
+                                </span>
+                              )
+                            ) : (
+                              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-500 bg-slate-200 px-2 py-0.5 rounded-full">
+                                <AlertCircle className="w-3 h-3 text-slate-400" />
+                                <span>BỎ TRỐNG</span>
+                              </span>
+                            )}
                           </div>
 
-                          <div className="flex items-center gap-1 font-bold">
-                            <span>HS:</span>
-                            {/* Cho phép Thầy click đổi đáp án nếu AI nhận diện nhầm */}
-                            <select
-                              value={userAns}
-                              onChange={(e) => {
-                                const newAns = e.target.value;
-                                const updatedAnswers = { ...selectedStudentDetail.answers, [qNum]: newAns };
-                                const { correct, score10 } = calculateScore(updatedAnswers);
-                                
-                                setSelectedStudentDetail({
-                                  ...selectedStudentDetail,
-                                  answers: updatedAnswers,
-                                  correctCount: correct,
-                                  score10
-                                });
+                          {/* Dòng 2: Đối chiếu Đáp án Đề vs Đáp án Học Sinh */}
+                          <div className="flex items-center justify-between text-xs pt-1 border-t border-slate-200/60">
+                            <div>
+                              <span className="text-slate-500">Đ/A chuẩn: </span>
+                              <strong className="text-slate-900 font-black">{q.correctAnswer}</strong>
+                            </div>
 
-                                setScannedFiles(prev => prev.map(s => 
-                                  s.id === selectedStudentDetail.id ? {
-                                    ...s,
+                            <div className="flex items-center gap-1 font-bold">
+                              <span className="text-slate-600">HS khoanh:</span>
+                              <select
+                                value={userAns}
+                                onChange={(e) => {
+                                  const newAns = e.target.value;
+                                  const updatedAnswers = { ...selectedStudentDetail.answers, [qNum]: newAns };
+                                  const { correct, score10 } = calculateScore(updatedAnswers);
+                                  
+                                  setSelectedStudentDetail({
+                                    ...selectedStudentDetail,
                                     answers: updatedAnswers,
                                     correctCount: correct,
                                     score10
-                                  } : s
-                                ));
-                              }}
-                              className="bg-white border border-slate-300 rounded px-1.5 py-0.5 font-black text-xs cursor-pointer"
-                            >
-                              <option value="">-</option>
-                              <option value="A">A</option>
-                              <option value="B">B</option>
-                              <option value="C">C</option>
-                              <option value="D">D</option>
-                            </select>
+                                  });
+
+                                  setScannedFiles(prev => prev.map(s => 
+                                    s.id === selectedStudentDetail.id ? {
+                                      ...s,
+                                      answers: updatedAnswers,
+                                      correctCount: correct,
+                                      score10
+                                    } : s
+                                  ));
+                                }}
+                                className={`px-2 py-0.5 rounded font-black text-xs cursor-pointer border ${
+                                  isCorrect 
+                                    ? 'bg-emerald-100 border-emerald-400 text-emerald-950' 
+                                    : hasAnswer 
+                                    ? 'bg-rose-100 border-rose-400 text-rose-950'
+                                    : 'bg-white border-slate-300'
+                                }`}
+                              >
+                                <option value="">-</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                              </select>
+                            </div>
                           </div>
                         </div>
                       );
@@ -676,7 +770,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn (không d�
         {/* FOOTER MODAL */}
         <div className="bg-white border-t border-slate-200 px-5 py-3.5 flex items-center justify-between text-xs">
           <div className="text-slate-500 font-sans">
-            AI tự động đọc họ tên và nhận diện đáp án khoanh tròn của học sinh từ ảnh scan.
+            Mỗi câu đúng đạt 0.5 điểm. AI tự động tích xanh ✓ cho câu đúng và tích đỏ ✗ cho câu sai.
           </div>
           <div className="flex items-center gap-2">
             <button
