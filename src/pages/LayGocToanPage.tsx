@@ -3,7 +3,8 @@ import {
   Zap, ArrowRight, CheckCircle2, XCircle, RotateCcw, 
   HelpCircle, BookOpen, Award, Sparkles, Printer, 
   Flame, Clock, ChevronRight, Calculator, Shuffle, FileDown,
-  Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target
+  Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target,
+  FlaskConical, Compass
 } from 'lucide-react';
 import MathText from '@/components/MathText';
 import { useDataStore } from '@/store/dataStore';
@@ -15,15 +16,24 @@ import {
   convertLayGocQuestionsToExamFormat,
   LayGocQuestion 
 } from '@/services/layGocExamService';
+import {
+  LAY_GOC_HOA_TOPICS,
+  getLayGocHoaExamQuestions,
+  convertLayGocHoaQuestionsToExamFormat,
+  LayGocHoaQuestion
+} from '@/services/layGocHoaExamService';
 import Modal from '@/components/Modal';
 import toast from 'react-hot-toast';
 
 export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolean }) {
-  // Main Tab: kho_de (60 đề x 20 câu), ly_thuyet (thần chú), luyen_tap (tự do)
+  // Môn học đang chọn: 'toan' (Toán học Lớp 6-9) hoặc 'hoa' (Hóa học Lớp 6-12)
+  const [currentSubject, setCurrentSubject] = useState<'toan' | 'hoa'>('toan');
+
+  // Main Tab: kho_de (Đề thi 20 câu), ly_thuyet (thần chú), luyen_tap (tự do)
   const [activeTab, setActiveTab] = useState<'kho_de' | 'ly_thuyet' | 'luyen_tap'>('kho_de');
   
-  // State của Kho 60 đề (6 Phần x 10 Đề)
-  const [selectedTopicId, setSelectedTopicId] = useState<string>('tim_x_stn');
+  // State của Đề thi đang chọn
+  const [selectedTopicId, setSelectedTopicId] = useState<string>('so_tu_nhien');
   const [selectedExamNo, setSelectedExamNo] = useState<number>(1);
   const [examAnswers, setExamAnswers] = useState<Record<number, string>>({});
   const [isExamSubmitted, setIsExamSubmitted] = useState<boolean>(false);
@@ -43,7 +53,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const { createRoom } = useExamRoomStore();
 
   const [isAssignModalOpen, setIsAssignModalOpen] = useState(false);
-  const [assignTopicId, setAssignTopicId] = useState<string>('tim_x_stn');
+  const [assignSubject, setAssignSubject] = useState<'toan' | 'hoa'>('toan');
+  const [assignTopicId, setAssignTopicId] = useState<string>('so_tu_nhien');
   const [assignExamNo, setAssignExamNo] = useState<number>(1);
   const [assignMode, setAssignMode] = useState<'individual' | 'class'>('individual');
   const [assignClassId, setAssignClassId] = useState('');
@@ -68,15 +79,37 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     void loadExams();
   }, [loadClasses, loadStudents, loadEnrollments, loadExams]);
 
+  // Chuyển đổi môn học
+  const handleSwitchSubject = (subject: 'toan' | 'hoa') => {
+    setCurrentSubject(subject);
+    const defaultTopic = subject === 'toan' ? LAY_GOC_TOPICS[0].id : LAY_GOC_HOA_TOPICS[0].id;
+    setSelectedTopicId(defaultTopic);
+    setSelectedExamNo(1);
+    setExamAnswers({});
+    setIsExamSubmitted(false);
+    setIsExamTimerActive(false);
+    setExamTimeLeft(1200);
+    setShowAllExplanations(false);
+  };
+
+  // Danh sách chủ đề của môn đang chọn
+  const activeTopics = useMemo(() => {
+    return currentSubject === 'toan' ? LAY_GOC_TOPICS : LAY_GOC_HOA_TOPICS;
+  }, [currentSubject]);
+
   // Danh sách 20 câu hỏi của Đề đang chọn
-  const currentExamQuestions: LayGocQuestion[] = useMemo(() => {
-    return getLayGocExamQuestions(selectedTopicId, selectedExamNo);
-  }, [selectedTopicId, selectedExamNo]);
+  const currentExamQuestions = useMemo(() => {
+    if (currentSubject === 'toan') {
+      return getLayGocExamQuestions(selectedTopicId, selectedExamNo);
+    } else {
+      return getLayGocHoaExamQuestions(selectedTopicId, selectedExamNo);
+    }
+  }, [currentSubject, selectedTopicId, selectedExamNo]);
 
   // Thông tin chuyên đề đang chọn
   const currentTopic = useMemo(() => {
-    return LAY_GOC_TOPICS.find(t => t.id === selectedTopicId) || LAY_GOC_TOPICS[0];
-  }, [selectedTopicId]);
+    return activeTopics.find(t => t.id === selectedTopicId) || activeTopics[0];
+  }, [activeTopics, selectedTopicId]);
 
   // Đồng hồ đếm ngược khi làm bài thi
   useEffect(() => {
@@ -99,7 +132,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  // Đổi đề thi trong Kho 60 đề
+  // Đổi đề thi
   const handleSelectExam = (topicId: string, examNo: number) => {
     setSelectedTopicId(topicId);
     setSelectedExamNo(examNo);
@@ -180,14 +213,15 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   };
 
   // Mở modal giao bài với đề đã chọn
-  const handleOpenAssignModal = (topicId?: string, examNo?: number) => {
+  const handleOpenAssignModal = (subject?: 'toan' | 'hoa', topicId?: string, examNo?: number) => {
+    setAssignSubject(subject || currentSubject);
     setAssignTopicId(topicId || selectedTopicId);
     setAssignExamNo(examNo || selectedExamNo);
     setAssignedSuccessData(null);
     setIsAssignModalOpen(true);
   };
 
-  // Giao đề thi Lấy Gốc Toán cho học sinh
+  // Giao đề thi Lấy Gốc cho học sinh
   const handleAssignSubmit = async () => {
     if (assignMode === 'class' && !assignClassId) {
       toast.error('Vui lòng chọn lớp học!');
@@ -200,16 +234,27 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
     setIsSubmittingAssign(true);
     try {
-      const topicObj = LAY_GOC_TOPICS.find(t => t.id === assignTopicId) || LAY_GOC_TOPICS[0];
-      const examTitle = `[LẤY GỐC TOÁN] - ${topicObj.shortTitle} - Đề ${assignExamNo.toString().padStart(2, '0')} (20 câu)`;
-      const rawQuestions = getLayGocExamQuestions(assignTopicId, assignExamNo);
+      const topicList = assignSubject === 'toan' ? LAY_GOC_TOPICS : LAY_GOC_HOA_TOPICS;
+      const topicObj = topicList.find(t => t.id === assignTopicId) || topicList[0];
+      const subjectTag = assignSubject === 'toan' ? 'TOÁN' : 'HÓA HỌC';
+      const examTitle = `[LẤY GỐC ${subjectTag}] - ${topicObj.shortTitle} - Đề ${assignExamNo.toString().padStart(2, '0')} (20 câu)`;
+      
+      let rawQuestions: any[] = [];
+      let formattedQuestions: any[] = [];
+
+      if (assignSubject === 'toan') {
+        rawQuestions = getLayGocExamQuestions(assignTopicId, assignExamNo);
+        formattedQuestions = convertLayGocQuestionsToExamFormat(rawQuestions);
+      } else {
+        rawQuestions = getLayGocHoaExamQuestions(assignTopicId, assignExamNo);
+        formattedQuestions = convertLayGocHoaQuestionsToExamFormat(rawQuestions);
+      }
 
       let examId = '';
       const existingExam = exams.find(e => e.title === examTitle);
       if (existingExam) {
         examId = existingExam.id;
       } else {
-        const formattedQuestions = convertLayGocQuestionsToExamFormat(rawQuestions);
         examId = await createExam({
           title: examTitle,
           duration: assignTimeLimit,
@@ -255,7 +300,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         className: targetClassName,
         examTitle
       });
-      toast.success('🎉 Đã giao Đề Lấy Gốc Toán (20 câu) cho học sinh thành công!');
+      toast.success(`🎉 Đã giao Đề Lấy Gốc ${subjectTag} (20 câu) cho học sinh thành công!`);
     } catch (err: any) {
       console.error(err);
       toast.error('Lỗi khi giao bài: ' + (err.message || 'Thử lại'));
@@ -267,25 +312,70 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
       {/* ===================== BANNER ĐẦU TRANG ===================== */}
-      <div className="bg-gradient-to-r from-red-700 via-rose-700 to-amber-600 text-white shadow-lg print:hidden">
+      <div className={`shadow-lg print:hidden transition-colors ${
+        currentSubject === 'toan'
+          ? 'bg-gradient-to-r from-red-700 via-rose-700 to-amber-600 text-white'
+          : 'bg-gradient-to-r from-teal-800 via-cyan-800 to-blue-700 text-white'
+      }`}>
         <div className="max-w-6xl mx-auto px-4 py-8">
+          {/* THANH CHUYỂN ĐỔI MÔN HỌC TOÁN / HÓA */}
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-black/20 backdrop-blur-md p-1.5 rounded-2xl border border-white/20">
+            <div className="flex items-center gap-1.5 w-full sm:w-auto">
+              <button
+                onClick={() => handleSwitchSubject('toan')}
+                className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer ${
+                  currentSubject === 'toan'
+                    ? 'bg-white text-red-700 shadow-md ring-2 ring-amber-300'
+                    : 'text-white/80 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <Calculator className="w-4 h-4" />
+                <span>📐 Lấy Gốc Toán Học (Lớp 6 - 9)</span>
+              </button>
+
+              <button
+                onClick={() => handleSwitchSubject('hoa')}
+                className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer ${
+                  currentSubject === 'hoa'
+                    ? 'bg-white text-teal-800 shadow-md ring-2 ring-cyan-300'
+                    : 'text-white/80 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <FlaskConical className="w-4 h-4" />
+                <span>🧪 Lấy Gốc Hóa Học (Lớp 6 - 12)</span>
+              </button>
+            </div>
+
+            <div className="text-xs font-bold text-amber-200 px-3 hidden md:block">
+              {currentSubject === 'toan' ? '6 Chuyên đề • 60 Đề • 1.200 Câu' : '10 Chuyên đề • 100 Đề • 2.000 Câu'}
+            </div>
+          </div>
+
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs text-xs font-black uppercase tracking-wider mb-2">
                 <Zap className="w-4 h-4 text-amber-300 animate-pulse" />
-                Hệ Thống Phục Hồi Mất Gốc Toán Cấp 2 (Lớp 6 - Lớp 9)
+                {currentSubject === 'toan' 
+                  ? 'Hệ Thống Phục Hồi Mất Gốc Toán Cấp 2 (Lớp 6 - Lớp 9)' 
+                  : 'Hệ Thống Phục Hồi Mất Gốc Hóa Học Trọng Điểm (Lớp 6 Đến Lớp 12)'}
               </div>
               <h1 className="text-2xl md:text-3xl font-black tracking-tight">
-                ⚡ LẤY GỐC TOÁN – 60 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)
+                {currentSubject === 'toan' 
+                  ? '⚡ LẤY GỐC TOÁN HỌC – 60 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)' 
+                  : '🧪 LẤY GỐC HÓA HỌC – 100 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)'}
               </h1>
               <p className="text-rose-100 text-sm mt-1 max-w-2xl leading-relaxed">
-                6 Chuyên đề trọng điểm: <strong>Cộng trừ STN Lớp 6</strong>, <strong>Chuyên đề Tìm x STN Lớp 6</strong>, <strong>Số âm</strong>, <strong>Chuyển vế tìm x</strong>, <strong>Phân số</strong> và <strong>Khảo sát tổng hợp</strong>. Mỗi phần 10 Đề thi (20 câu trắc nghiệm chuẩn kèm lời giải chi tiết của Thầy Thọ).
+                {currentSubject === 'toan'
+                  ? 'Chuyên sâu số tự nhiên, tìm x lớp 6, số âm, chuyển vế, phân số và khảo sát tổng hợp. Mỗi đề chuẩn 20 câu trắc nghiệm kèm lời giải chi tiết của Thầy Thọ.'
+                  : 'Từ nguyên tố, hóa trị, lập CTHH, cân bằng PTHH, công thức tính mol, axit-bazơ-muối đến cấu tạo nguyên tử, oxi hóa khử và hóa hữu cơ 12.'}
               </p>
             </div>
 
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20">
               <div className="text-center px-3 border-r border-white/20">
-                <div className="text-2xl font-black text-amber-300">60</div>
+                <div className="text-2xl font-black text-amber-300">
+                  {currentSubject === 'toan' ? '60' : '100'}
+                </div>
                 <div className="text-[10px] text-white/80 font-bold uppercase">Tổng số đề</div>
               </div>
               <div className="text-center px-3 border-r border-white/20">
@@ -308,20 +398,20 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               onClick={() => setActiveTab('kho_de')}
               className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
                 activeTab === 'kho_de' 
-                  ? 'bg-white text-red-700 shadow-md ring-2 ring-white/50' 
-                  : 'bg-red-800/60 text-white hover:bg-red-800'
+                  ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
+                  : 'bg-black/20 text-white hover:bg-black/30'
               }`}
             >
               <Award className="w-4 h-4 text-amber-500" />
-              <span>📚 Kho 60 Đề Lấy Gốc (6 Phần x 10 Đề x 20 Câu)</span>
+              <span>📚 Kho {currentSubject === 'toan' ? '60 Đề Toán' : '100 Đề Hóa Học'} (20 Câu/Đề)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('ly_thuyet')}
               className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
                 activeTab === 'ly_thuyet' 
-                  ? 'bg-white text-red-700 shadow-md ring-2 ring-white/50' 
-                  : 'bg-red-800/60 text-white hover:bg-red-800'
+                  ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
+                  : 'bg-black/20 text-white hover:bg-black/30'
               }`}
             >
               <BookOpen className="w-4 h-4" />
@@ -332,8 +422,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               onClick={() => setActiveTab('luyen_tap')}
               className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
                 activeTab === 'luyen_tap' 
-                  ? 'bg-white text-red-700 shadow-md ring-2 ring-white/50' 
-                  : 'bg-red-800/60 text-white hover:bg-red-800'
+                  ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
+                  : 'bg-black/20 text-white hover:bg-black/30'
               }`}
             >
               <Calculator className="w-4 h-4" />
@@ -341,7 +431,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             </button>
 
             <button
-              onClick={() => handleOpenAssignModal()}
+              onClick={() => handleOpenAssignModal(currentSubject)}
               className="px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 shadow-md transition ml-auto cursor-pointer"
             >
               <Send className="w-4 h-4 text-slate-900" />
@@ -352,23 +442,27 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       </div>
 
       <div className="max-w-6xl mx-auto px-4 mt-6">
-        {/* ===================== TAB 1: KHO 60 ĐỀ LẤY GỐC (6 PHẦN x 10 ĐỀ x 20 CÂU) ===================== */}
+        {/* ===================== TAB 1: KHO ĐỀ THI ===================== */}
         {activeTab === 'kho_de' && (
           <div className="space-y-6">
-            {/* 1. BỘ CHỌN 6 CHUYÊN ĐỀ (PHẦN 1 -> PHẦN 6) */}
+            {/* 1. BỘ CHỌN CHUYÊN ĐỀ CỦA MÔN ĐANG CHỌN */}
             <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
               <div className="flex items-center justify-between gap-2 mb-3">
                 <div className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4 text-red-600" />
-                  BƯỚC 1: CHỌN CHUYÊN ĐỀ LẤY GỐC TOÁN (6 PHẦN CỐT LÕI)
+                  BƯỚC 1: CHỌN CHUYÊN ĐỀ {currentSubject === 'toan' ? 'TOÁN HỌC (6 PHẦN)' : 'HÓA HỌC (10 PHẦN LỚP 6-12)'}
                 </div>
                 <span className="text-[11px] font-bold text-slate-400">
                   Mỗi phần có đúng 10 Đề thi • Mỗi đề chuẩn 20 câu
                 </span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                {LAY_GOC_TOPICS.map((top) => {
+              <div className={`grid gap-3 ${
+                currentSubject === 'toan' 
+                  ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6' 
+                  : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'
+              }`}>
+                {activeTopics.map((top: any) => {
                   const isSelected = selectedTopicId === top.id;
                   return (
                     <button
@@ -376,7 +470,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       onClick={() => handleSelectExam(top.id, 1)}
                       className={`p-3 rounded-xl border text-left transition-all relative overflow-hidden cursor-pointer ${
                         isSelected
-                          ? 'bg-gradient-to-br from-red-50 to-amber-50/50 border-red-500 ring-2 ring-red-500/20 shadow-sm'
+                          ? 'bg-gradient-to-br from-amber-50 to-red-50/50 border-red-500 ring-2 ring-red-500/20 shadow-sm'
                           : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60'
                       }`}
                     >
@@ -439,7 +533,6 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
             {/* 3. CHI TIẾT ĐỀ THI ĐANG MỞ & KHU VỰC LÀM BÀI */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-              {/* Header của Đề thi */}
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-5 mb-6">
                 <div>
                   <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-red-100 text-red-800 text-[11px] font-black uppercase mb-1">
@@ -457,7 +550,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     <span>•</span>
                     <span className="flex items-center gap-1 font-bold text-slate-700">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                      20 câu có công thức MathJax & Lời giải
+                      20 câu chuẩn kiến thức có Lời giải
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1 font-bold text-slate-700">
@@ -467,10 +560,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   </div>
                 </div>
 
-                {/* Các nút hành động chính */}
                 <div className="flex flex-wrap items-center gap-2">
                   <button
-                    onClick={() => handleOpenAssignModal(selectedTopicId, selectedExamNo)}
+                    onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
                     className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm transition cursor-pointer"
                   >
                     <Send className="w-4 h-4 text-slate-900" />
@@ -538,7 +630,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                           {examResultStats.score10 >= 8 
                             ? '🎉 Xuất sắc! Em đã nắm rất vững kiến thức phần này!'
                             : examResultStats.score10 >= 5
-                            ? '👍 Khá tốt! Cần chú ý thêm một số bẫy dấu âm và chuyển vế.'
+                            ? '👍 Khá tốt! Cần chú ý thêm một số bẫy câu hỏi và tính toán cẩn thận.'
                             : '⚡ Cần rèn luyện thêm: Đọc kỹ bí kíp thần chú và làm lại nhé!'}
                         </h3>
                         <p className="text-xs text-slate-600 mt-0.5">
@@ -555,7 +647,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         {showAllExplanations ? 'Ẩn lời giải chi tiết' : 'Hiện toàn bộ lời giải'}
                       </button>
                       <button
-                        onClick={() => handleOpenAssignModal(selectedTopicId, selectedExamNo)}
+                        onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
                         className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-black shadow-xs transition"
                       >
                         Giao đề này cho lớp
@@ -567,7 +659,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
               {/* DANH SÁCH TOÀN BỘ 20 CÂU HỎI TRẮC NGHIỆM */}
               <div className="space-y-5">
-                {currentExamQuestions.map((q, idx) => {
+                {currentExamQuestions.map((q: any, idx: number) => {
                   const userAns = examAnswers[q.id];
                   const hasAnswered = userAns !== undefined;
                   const isCorrect = userAns === q.correctAnswer;
@@ -606,21 +698,18 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         )}
                       </div>
 
-                      {/* Tiêu đề câu hỏi */}
                       <p className="text-sm font-bold text-slate-800 mb-2">
                         {q.question.replace(/^Câu \d+:\s*/, '')}
                       </p>
 
-                      {/* Khối MathJax LaTeX biểu thức toán */}
                       {q.mathExpression && (
                         <div className="my-3 py-3 px-4 bg-teal-50/80 border border-teal-200 rounded-xl text-center text-xl font-black text-teal-900 tracking-wide shadow-xs">
                           <MathText html={`$$${q.mathExpression}$$`} block />
                         </div>
                       )}
 
-                      {/* 4 Lựa chọn A, B, C, D */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-3">
-                        {q.options.map((opt, oIdx) => {
+                        {q.options.map((opt: string, oIdx: number) => {
                           const letters = ['A', 'B', 'C', 'D'];
                           const letter = letters[oIdx] || 'A';
                           const isSelected = userAns === opt;
@@ -667,7 +756,6 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         })}
                       </div>
 
-                      {/* Lời giải chi tiết */}
                       {showExp && (
                         <div className={`mt-3.5 p-3.5 rounded-xl text-xs leading-relaxed border ${
                           isCorrect 
@@ -725,7 +813,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       </button>
                     )}
                     <button
-                      onClick={() => handleOpenAssignModal(selectedTopicId, selectedExamNo)}
+                      onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
                       className="px-6 py-3 bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold rounded-2xl shadow-sm transition cursor-pointer"
                     >
                       🎯 Giao Đề Này Cho Học Sinh
@@ -737,186 +825,135 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
           </div>
         )}
 
-        {/* ===================== TAB 2: BÍ KÍP THẦN CHÚ LÝ THUYẾT ===================== */}
+        {/* ===================== TAB 2: BÍ KÍP THẦN CHÚ LÝ THUYẾT (TOÁN & HÓA) ===================== */}
         {activeTab === 'ly_thuyet' && (
           <div className="space-y-6">
-            {/* Box 1: Tìm x số tự nhiên lớp 6 */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-              <div className="flex items-center gap-2.5 mb-4 text-emerald-800 font-black text-lg border-b pb-3">
-                <Target className="w-6 h-6 text-emerald-600" />
-                BẢNG THẦN CHÚ: GIẢI TOÁN TÌM X SỐ TỰ NHIÊN (LỚP 6)
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4">
-                  <h3 className="font-extrabold text-emerald-900 text-sm mb-2">
-                    🎯 4 Quy Tắc Cơ Bản
-                  </h3>
-                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
-                    <li className="bg-white p-2.5 rounded-lg border border-emerald-100 shadow-xs">
-                      <strong>Tìm số hạng:</strong> <span className="text-emerald-700 font-mono font-bold">x = Tổng - Số hạng đã biết</span><br/>
-                      <span className="font-mono">x + a = b =&gt; x = b - a</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-emerald-100 shadow-xs">
-                      <strong>Tìm số bị trừ:</strong> <span className="text-emerald-700 font-mono font-bold">x = Hiệu + Số trừ</span><br/>
-                      <span className="font-mono">x - a = b =&gt; x = b + a</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-emerald-100 shadow-xs">
-                      <strong>Tìm số trừ:</strong> <span className="text-emerald-700 font-mono font-bold">x = Số bị trừ - Hiệu</span><br/>
-                      <span className="font-mono">a - x = b =&gt; x = a - b</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-emerald-100 shadow-xs">
-                      <strong>Tìm thừa số / số chia:</strong><br/>
-                      <span className="font-mono">a.x = b =&gt; x = b : a</span><br/>
-                      <span className="font-mono">x : a = b =&gt; x = b.a</span> | <span className="font-mono">a : x = b =&gt; x = a : b</span>
-                    </li>
-                  </ul>
+            {currentSubject === 'hoa' ? (
+              /* BÍ KÍP HÓA HỌC */
+              <div className="space-y-6">
+                {/* Bài ca hóa trị */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                  <div className="flex items-center gap-2.5 mb-4 text-teal-800 font-black text-lg border-b pb-3">
+                    <FlaskConical className="w-6 h-6 text-teal-600" />
+                    BÀI CA HÓA TRỊ KINH ĐIỂN (XÓA MẤT GỐC HÓA HỌC)
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-700 leading-relaxed">
+                    <div className="bg-teal-50/70 p-4 rounded-xl border border-teal-200">
+                      <h4 className="font-extrabold text-teal-900 mb-2">⭐ Hóa trị I & II phổ biến</h4>
+                      <ul className="space-y-1.5 font-mono">
+                        <li><strong>Hóa trị I:</strong> K, Na, H, Ag, Cl (Kali, Natri, Hiđro, Bạc, Clo).</li>
+                        <li><strong>Hóa trị II:</strong> Ca, Ba, Mg, Zn, Fe, Cu, O (Canxi, Bari, Magie, Kẽm, Sắt, Đồng, Oxi).</li>
+                        <li><strong>Hóa trị III:</strong> Nhôm (Al), Sắt (Fe khi tác dụng Cl₂ hoặc axit có tính oxi hóa mạnh).</li>
+                      </ul>
+                    </div>
+                    <div className="bg-cyan-50/70 p-4 rounded-xl border border-cyan-200">
+                      <h4 className="font-extrabold text-cyan-900 mb-2">⚡ Hóa trị của các nhóm nguyên tử</h4>
+                      <ul className="space-y-1.5 font-mono">
+                        <li><strong>Hóa trị I:</strong> Nhóm -OH (hiđroxit), -NO₃ (nitrat).</li>
+                        <li><strong>Hóa trị II:</strong> Nhóm =SO₄ (sunfat), =CO₃ (cacbonat), =SO₃ (sunfit).</li>
+                        <li><strong>Hóa trị III:</strong> Nhóm ≡PO₄ (photphat).</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-4">
-                  <h3 className="font-extrabold text-blue-900 text-sm mb-2">
-                    📦 Biểu Thức Có Dấu Ngoặc
-                  </h3>
-                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
-                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
-                      <strong>Nguyên tắc: "Tìm từ ngoài vào trong"</strong><br/>
-                      Coi cả cụm trong ngoặc như một thành phần chưa biết để tìm trước.
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
-                      <span className="font-mono font-bold text-blue-700">(x - a) . b = c</span><br/>
-                      B1: <span className="font-mono">x - a = c : b</span><br/>
-                      B2: <span className="font-mono">x = (c : b) + a</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
-                      <span className="font-mono font-bold text-blue-700">m - (x + n) = p</span><br/>
-                      B1: <span className="font-mono">x + n = m - p</span><br/>
-                      B2: <span className="font-mono">x = (m - p) - n</span>
-                    </li>
-                  </ul>
+                {/* Dãy hoạt động kim loại */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                  <div className="flex items-center gap-2.5 mb-3 text-blue-800 font-black text-lg border-b pb-3">
+                    <Zap className="w-6 h-6 text-amber-500" />
+                    DÃY HOẠT ĐỘNG HÓA HỌC KIM LOẠI & MẸO NHỚ
+                  </div>
+                  <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-xl text-xs text-slate-700 leading-relaxed">
+                    <div className="font-mono text-sm font-black text-blue-900 mb-2">
+                      K, Na, Ba, Ca, Mg, Al, Zn, Fe, Ni, Sn, Pb, (H), Cu, Hg, Ag, Pt, Au
+                    </div>
+                    <div className="text-slate-800 font-bold mb-1">
+                      🗣️ Câu thần chú: <em>"Khi Nào Bạn Cần May Áo Giáp Sắt Nên Sang Phố Hỏi Cửa Hàng Á Phi Âu"</em>
+                    </div>
+                    <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600">
+                      <li>Kim loại đứng trước H tác dụng với HCl, H₂SO₄ loãng giải phóng khí H₂.</li>
+                      <li>Kim loại đứng trước đẩy kim loại đứng sau ra khỏi dung dịch muối (trừ K, Na, Ba, Ca tác dụng với nước trước).</li>
+                    </ul>
+                  </div>
                 </div>
 
-                <div className="bg-purple-50/70 border border-purple-200 rounded-xl p-4">
-                  <h3 className="font-extrabold text-purple-900 text-sm mb-2">
-                    ⚡ Lũy Thừa & Tích Bằng 0
-                  </h3>
-                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
-                    <li className="bg-white p-2.5 rounded-lg border border-purple-100 shadow-xs">
-                      <strong>Cùng cơ số:</strong><br/>
-                      <span className="font-mono font-bold text-purple-700">a^x = a^n =&gt; x = n</span><br/>
-                      Ví dụ: <span className="font-mono">2^x = 16 = 2^4 =&gt; x = 4</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-purple-100 shadow-xs">
-                      <strong>Cùng số mũ:</strong><br/>
-                      <span className="font-mono font-bold text-purple-700">(x - a)^2 = b^2 =&gt; x - a = b</span><br/>
-                      (với x là số tự nhiên)
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-purple-100 shadow-xs">
-                      <strong>Tích bằng 0:</strong><br/>
-                      <span className="font-mono font-bold text-purple-700">(x - a)(x - b) = 0</span><br/>
-                      Suy ra: <span className="font-mono">x = a</span> hoặc <span className="font-mono">x = b</span>.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Box 2: Quy tắc dấu số âm */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-              <div className="flex items-center gap-2.5 mb-4 text-red-700 font-black text-lg border-b pb-3">
-                <Zap className="w-6 h-6 text-amber-500" />
-                BẢNG THẦN CHÚ DẤU: CỘNG, TRỪ, NHÂN, CHIA SỐ ÂM
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-amber-50/70 border border-amber-200 rounded-xl p-4">
-                  <h3 className="font-extrabold text-amber-900 text-sm mb-2 flex items-center gap-1.5">
-                    <span>➕ Phép Cộng & Trừ Số Nguyên</span>
-                  </h3>
-                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
-                    <li className="bg-white p-2.5 rounded-lg border border-amber-100 shadow-xs">
-                      <strong>Cùng âm:</strong> Cộng 2 số lại rồi thêm dấu trừ ở trước.<br/>
-                      <span className="text-red-600 font-mono font-bold">(-5) + (-8) = -(5 + 8) = -13</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-amber-100 shadow-xs">
-                      <strong>Khác dấu:</strong> Lấy số lớn trừ số bé, kết quả mang dấu của số lớn hơn.<br/>
-                      <span className="text-red-600 font-mono font-bold">12 + (-20) = -(20 - 12) = -8</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-amber-100 shadow-xs">
-                      <strong>Trừ đi số âm:</strong> Biến thành cộng số dương: <br/>
-                      <span className="text-red-600 font-mono font-bold">a - (-b) = a + b</span> (Ví dụ: <span className="font-mono font-bold">7 - (-3) = 7 + 3 = 10</span>)
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-4">
-                  <h3 className="font-extrabold text-blue-900 text-sm mb-2 flex items-center gap-1.5">
-                    <span>✖️ Phép Nhân & Chia Số Nguyên</span>
-                  </h3>
-                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
-                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
-                      <strong>Cùng dấu:</strong> Kết quả luôn luôn là DƯƠNG (+).<br/>
-                      <span className="text-blue-700 font-mono font-bold">(-) x (-) = (+)</span> và <span className="text-blue-700 font-mono font-bold">(+) x (+) = (+)</span><br/>
-                      Ví dụ: <span className="font-mono font-bold">(-6) x (-7) = +42</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
-                      <strong>Khác dấu:</strong> Kết quả luôn luôn là ÂM (-).<br/>
-                      <span className="text-rose-600 font-mono font-bold">(-) x (+) = (-)</span> và <span className="text-rose-600 font-mono font-bold">(+) : (-) = (-)</span><br/>
-                      Ví dụ: <span className="font-mono font-bold">(-36) : 4 = -9</span>
-                    </li>
-                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
-                      <strong>Đếm số dấu trừ trong tích:</strong><br/>
-                      Số lượng dấu trừ LẺ ➜ Kết quả ÂM.<br/>
-                      Số lượng dấu trừ CHẴN ➜ Kết quả DƯƠNG.
-                    </li>
-                  </ul>
+                {/* Bộ công thức tính mol */}
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                  <div className="flex items-center gap-2.5 mb-3 text-purple-800 font-black text-lg border-b pb-3">
+                    <Calculator className="w-6 h-6 text-purple-600" />
+                    BỘ CÔNG THỨC TÍNH MOL & NỒNG ĐỘ DUNG DỊCH
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-center">
+                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                      <div className="text-xs font-bold text-slate-500">Theo khối lượng</div>
+                      <div className="font-mono font-black text-purple-800 text-base my-1">n = m / M</div>
+                      <div className="text-[10px] text-slate-500">m(g), M(g/mol)</div>
+                    </div>
+                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                      <div className="text-xs font-bold text-slate-500">Thể tích khí (đktc)</div>
+                      <div className="font-mono font-black text-purple-800 text-base my-1">n = V / 22,4</div>
+                      <div className="text-[10px] text-slate-500">V tính bằng lít</div>
+                    </div>
+                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                      <div className="text-xs font-bold text-slate-500">Nồng độ mol CM</div>
+                      <div className="font-mono font-black text-purple-800 text-base my-1">C_M = n / V</div>
+                      <div className="text-[10px] text-slate-500">V dung dịch (lít)</div>
+                    </div>
+                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                      <div className="text-xs font-bold text-slate-500">Nồng độ % C%</div>
+                      <div className="font-mono font-black text-purple-800 text-base my-1">C% = (m_ct/m_dd).100%</div>
+                      <div className="text-[10px] text-slate-500">m_dd = m_ct + m_dm</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Box 3: Quy tắc chuyển vế */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-              <div className="flex items-center gap-2.5 mb-4 text-emerald-800 font-black text-lg border-b pb-3">
-                <ArrowRight className="w-6 h-6 text-emerald-600" />
-                QUY TẮC CHUYỂN VẾ ĐỔI DẤU & GIẢI PHƯƠNG TRÌNH TÌM X (CẤP 2)
-              </div>
-
-              <div className="p-4 bg-emerald-50/60 border border-emerald-200 rounded-xl text-xs text-slate-700 leading-relaxed mb-4">
-                <span className="text-sm font-black text-emerald-900 block mb-1">
-                  🌟 KHẮC CỐT GHI TÂM: "QUA CẦU ĐỔI DẤU"
-                </span>
-                Khi chuyển một số hạng từ vế này sang vế kia của một đẳng thức, ta PHẢI ĐỔI DẤU số hạng đó:<br/>
-                Dấu <strong>(+) đổi thành (-)</strong>, dấu <strong>(-) đổi thành (+)</strong>.
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                  <div className="font-bold text-xs text-slate-500 uppercase mb-1">Dạng 1: Cơ bản</div>
-                  <div className="font-mono font-bold text-slate-800 text-sm mb-2">x - a = b</div>
-                  <p className="text-xs text-slate-600">
-                    Chuyển <span className="font-mono">-a</span> sang vế phải đổi thành <span className="font-mono">+a</span>:<br/>
-                    <strong className="text-emerald-700 font-mono">x = b + a</strong>
-                  </p>
+            ) : (
+              /* BÍ KÍP TOÁN HỌC */
+              <div className="space-y-6">
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                  <div className="flex items-center gap-2.5 mb-4 text-emerald-800 font-black text-lg border-b pb-3">
+                    <Target className="w-6 h-6 text-emerald-600" />
+                    BẢNG THẦN CHÚ: GIẢI TOÁN TÌM X SỐ TỰ NHIÊN (LỚP 6)
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4">
+                      <h3 className="font-extrabold text-emerald-900 text-sm mb-2">🎯 4 Quy Tắc Cơ Bản</h3>
+                      <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
+                        <li><strong>Số hạng:</strong> x = Tổng - Số hạng đã biết</li>
+                        <li><strong>Số bị trừ:</strong> x = Hiệu + Số trừ</li>
+                        <li><strong>Số trừ:</strong> x = Số bị trừ - Hiệu</li>
+                        <li><strong>Thừa số:</strong> x = Tích : Thừa số đã biết</li>
+                      </ul>
+                    </div>
+                    <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-4">
+                      <h3 className="font-extrabold text-blue-900 text-sm mb-2">📦 Biểu Thức Có Ngoặc</h3>
+                      <p className="text-xs text-slate-700">Nguyên tắc: Tìm từ ngoài vào trong, coi cụm trong ngoặc như thành phần chưa biết.</p>
+                    </div>
+                    <div className="bg-purple-50/70 border border-purple-200 rounded-xl p-4">
+                      <h3 className="font-extrabold text-purple-900 text-sm mb-2">⚡ Lũy Thừa & Tích Bằng 0</h3>
+                      <p className="text-xs text-slate-700">a^x = a^n =&gt; x = n; (x-a)(x-b) = 0 =&gt; x = a hoặc x = b.</p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                  <div className="font-bold text-xs text-slate-500 uppercase mb-1">Dạng 2: Có hệ số</div>
-                  <div className="font-mono font-bold text-slate-800 text-sm mb-2">ax + b = c</div>
-                  <p className="text-xs text-slate-600">
-                    B1: Chuyển +b sang phải thành -b: <span className="font-mono">ax = c - b</span><br/>
-                    B2: Chia 2 vế cho a: <strong className="text-emerald-700 font-mono">x = (c - b) / a</strong>
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50">
-                  <div className="font-bold text-xs text-slate-500 uppercase mb-1">Dạng 3: x ở hai vế</div>
-                  <div className="font-mono font-bold text-slate-800 text-sm mb-2">ax + b = cx + d</div>
-                  <p className="text-xs text-slate-600">
-                    Gom các số hạng chứa x sang trái, hằng số sang phải:<br/>
-                    <strong className="text-emerald-700 font-mono">ax - cx = d - b</strong>
-                  </p>
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                  <div className="flex items-center gap-2.5 mb-4 text-red-700 font-black text-lg border-b pb-3">
+                    <Zap className="w-6 h-6 text-amber-500" />
+                    BẢNG THẦN CHÚ DẤU: CỘNG, TRỪ, NHÂN, CHIA SỐ ÂM
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-700">
+                    <div className="bg-amber-50 p-4 rounded-xl border border-amber-200">
+                      <strong>Cộng cùng âm:</strong> (-5) + (-8) = -13.<br/>
+                      <strong>Trừ đi số âm:</strong> a - (-b) = a + b.
+                    </div>
+                    <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                      <strong>Nhân chia cùng dấu:</strong> Ra DƯƠNG (+).<br/>
+                      <strong>Nhân chia khác dấu:</strong> Ra ÂM (-).
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         )}
 
@@ -926,7 +963,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
               <div>
                 <h3 className="font-black text-slate-900 text-base">
-                  ⚡ Luyện Tập Nhanh Tự Do – Chấm Điểm Tức Thì
+                  ⚡ Luyện Tập Nhanh Tự Do {currentSubject === 'toan' ? 'Môn Toán' : 'Môn Hóa Học'} – Chấm Điểm Tức Thì
                 </h3>
                 <p className="text-xs text-slate-500 mt-0.5">
                   Làm câu nào kiểm tra câu đó, giải thích cặn kẽ để rèn phản xạ tính toán.
@@ -936,7 +973,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
-                    const randomTopic = LAY_GOC_TOPICS[Math.floor(Math.random() * LAY_GOC_TOPICS.length)].id;
+                    const randomTopic = activeTopics[Math.floor(Math.random() * activeTopics.length)].id;
                     const randomExam = Math.floor(Math.random() * 10) + 1;
                     handleSelectExam(randomTopic, randomExam);
                     setActiveTab('kho_de');
@@ -949,9 +986,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               </div>
             </div>
 
-            {/* Render 10 câu đầu của đề hiện tại làm bài tự do */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {currentExamQuestions.slice(0, 10).map((q, idx) => {
+              {currentExamQuestions.slice(0, 10).map((q: any, idx: number) => {
                 const userAns = freeAnswers[q.id] || '';
                 const isChecked = freeResults[q.id] !== undefined;
                 const isCorrect = freeResults[q.id];
@@ -993,7 +1029,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     )}
 
                     <div className="grid grid-cols-2 gap-2 mt-3">
-                      {q.options.map((opt, oIdx) => (
+                      {q.options.map((opt: string, oIdx: number) => (
                         <button
                           key={oIdx}
                           onClick={() => {
@@ -1037,7 +1073,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         <Modal 
           open={isAssignModalOpen} 
           onClose={() => setIsAssignModalOpen(false)} 
-          title="🎯 GIAO ĐỀ LẤY GỐC TOÁN CHO HỌC SINH CHỈ ĐỊNH"
+          title="🎯 GIAO ĐỀ LẤY GỐC CHO HỌC SINH CHỈ ĐỊNH"
           size="md"
         >
           {assignedSuccessData ? (
@@ -1086,7 +1122,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               <div className="flex flex-col sm:flex-row gap-3 pt-3">
                 <button
                   onClick={() => {
-                    const zaloMsg = `🔔 THÔNG BÁO BÀI TẬP LẤY GỐC TOÁN - THẦY THỌ\nThầy vừa mở bài thi: ${assignedSuccessData.examTitle} (20 câu) cho ${assignedSuccessData.count} bạn (${assignedSuccessData.className}).\nCác em đăng nhập vào cổng thi: https://lop-hoc-thay-tho.vercel.app/thi để hoàn thành trước buổi học nhé!`;
+                    const zaloMsg = `🔔 THÔNG BÁO BÀI TẬP LẤY GỐC - THẦY THỌ\nThầy vừa mở bài thi: ${assignedSuccessData.examTitle} (20 câu) cho ${assignedSuccessData.count} bạn (${assignedSuccessData.className}).\nCác em đăng nhập vào cổng thi: https://lop-hoc-thay-tho.vercel.app/thi để hoàn thành trước buổi học nhé!`;
                     navigator.clipboard.writeText(zaloMsg);
                     setCopiedZalo(true);
                     toast.success('Đã sao chép tin nhắn Zalo!');
@@ -1110,29 +1146,47 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             </div>
           ) : (
             <div className="space-y-4">
-              {/* Chọn Đề & Chuyên Đề cần giao */}
+              {/* Chọn Môn & Đề cần giao */}
               <div className="p-3.5 bg-gradient-to-r from-red-50 to-amber-50 rounded-2xl border border-red-200">
                 <div className="text-xs font-black text-red-800 uppercase mb-2 flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-red-600" />
-                  1. CHỌN ĐỀ THI LẤY GỐC TOÁN (20 CÂU/ĐỀ)
+                  1. CHỌN MÔN & ĐỀ THI LẤY GỐC (20 CÂU/ĐỀ)
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                   <div>
-                    <label className="text-[11px] font-bold text-slate-600 block mb-1">Chuyên đề (Phần):</label>
+                    <label className="text-[11px] font-bold text-slate-600 block mb-1">Môn học:</label>
+                    <select
+                      value={assignSubject}
+                      onChange={e => {
+                        const subj = e.target.value as 'toan' | 'hoa';
+                        setAssignSubject(subj);
+                        setAssignTopicId(subj === 'toan' ? LAY_GOC_TOPICS[0].id : LAY_GOC_HOA_TOPICS[0].id);
+                      }}
+                      className="input font-bold text-xs bg-white"
+                    >
+                      <option value="toan">📐 Môn Toán Học</option>
+                      <option value="hoa">🧪 Môn Hóa Học (6-12)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-600 block mb-1">Chuyên đề:</label>
                     <select
                       value={assignTopicId}
                       onChange={e => setAssignTopicId(e.target.value)}
                       className="input font-bold text-xs bg-white"
                     >
-                      {LAY_GOC_TOPICS.map(top => (
+                      {(assignSubject === 'toan' ? LAY_GOC_TOPICS : LAY_GOC_HOA_TOPICS).map((top: any) => (
                         <option key={top.id} value={top.id}>
                           {top.shortTitle}
                         </option>
                       ))}
                     </select>
                   </div>
+
                   <div>
-                    <label className="text-[11px] font-bold text-slate-600 block mb-1">Số đề (10 đề):</label>
+                    <label className="text-[11px] font-bold text-slate-600 block mb-1">Số đề:</label>
                     <select
                       value={assignExamNo}
                       onChange={e => setAssignExamNo(Number(e.target.value))}
@@ -1140,7 +1194,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     >
                       {Array.from({ length: 10 }, (_, i) => i + 1).map(no => (
                         <option key={no} value={no}>
-                          Đề {no.toString().padStart(2, '0')} (Chuẩn 20 câu)
+                          Đề {no.toString().padStart(2, '0')} (20 câu)
                         </option>
                       ))}
                     </select>
