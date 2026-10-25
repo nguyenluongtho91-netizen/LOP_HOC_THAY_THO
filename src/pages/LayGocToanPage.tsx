@@ -440,8 +440,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     </p>
 
                     {q.mathExpression && (
-                      <div className="my-3 py-3 px-4 bg-slate-50 border border-slate-150 rounded-xl text-center text-lg font-bold text-teal-800">
-                        <MathText text={`$$${q.mathExpression}$$`} />
+                      <div className="my-3 py-3.5 px-4 bg-teal-50/80 border border-teal-200 rounded-xl text-center text-xl font-black text-teal-800 tracking-wide shadow-xs">
+                        <MathText html={`$$${q.mathExpression}$$`} block />
                       </div>
                     )}
 
