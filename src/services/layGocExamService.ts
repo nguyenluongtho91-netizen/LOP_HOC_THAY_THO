@@ -315,18 +315,18 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
       explanation: `Thực hiện trong ngoặc tròn trước: (${q16_k1} + ${q16_k2}) = ${q16_k1 + q16_k2}. Trong ngoặc vuông: [${q16_mid} - ${q16_k1 + q16_k2}] = ${q16_mid - (q16_k1 + q16_k2)}. Cuối cùng: ${q16_outer} - ${q16_mid - (q16_k1 + q16_k2)} = ${q16_ans}.`
     },
     {
-      question: `Tính tổng bình phương của hai số tự nhiên: ${q17_a}² + ${q17_b}² = ?`,
+      question: `Tính tổng bình phương của hai số tự nhiên: $${q17_a}^2 + ${q17_b}^2 = ?$`,
       mathExpression: `${q17_a}^2 + ${q17_b}^2`,
       options: makeOptions(q17_ans, [q17_ans + 5, q17_ans - 5, (q17_a + q17_b) * 2], baseSeed + 38),
       correctAnswer: String(q17_ans),
-      explanation: `Lũy thừa trước, cộng sau: ${q17_a}² = ${q17_a * q17_a}, ${q17_b}² = ${q17_b * q17_b}. Tổng = ${q17_a * q17_a} + ${q17_b * q17_b} = ${q17_ans}.`
+      explanation: `Lũy thừa trước, cộng sau: $${q17_a}^2 = ${q17_a * q17_a}$, $${q17_b}^2 = ${q17_b * q17_b}$. Tổng = $${q17_a * q17_a} + ${q17_b * q17_b} = ${q17_ans}$.`
     },
     {
-      question: `Kết quả của phép chia hai lũy thừa cùng cơ số: ${q18_a}³ : ${q18_a} bằng bao nhiêu?`,
+      question: `Kết quả của phép chia hai lũy thừa cùng cơ số: $${q18_a}^3 : ${q18_a}$ bằng bao nhiêu?`,
       mathExpression: `${q18_a}^3 : ${q18_a}`,
       options: makeOptions(q18_ans, [q18_a, q18_ans * q18_a, q18_ans - 1], baseSeed + 40),
       correctAnswer: String(q18_ans),
-      explanation: `Quy tắc chia hai lũy thừa cùng cơ số: a^m : a^n = a^(m - n). Vậy ${q18_a}³ : ${q18_a}¹ = ${q18_a}² = ${q18_ans}.`
+      explanation: `Quy tắc chia hai lũy thừa cùng cơ số: $a^m : a^n = a^{m - n}$. Vậy $${q18_a}^3 : ${q18_a}^1 = ${q18_a}^{3 - 1} = ${q18_a}^2 = ${q18_ans}$.`
     },
     {
       question: `Một cửa hàng gạo buổi sáng bán được ${q19_morning} kg, buổi chiều bán nhiều hơn buổi sáng ${q19_diff} kg. Hỏi cả ngày cửa hàng bán được bao nhiêu kg gạo?`,
@@ -547,25 +547,25 @@ function generateTimXSoTuNhienExam(examNo: number): LayGocQuestion[] {
       explanation: `Trừ hai hạng tử: (${q14_a} - ${q14_b}) . x = ${q14_c} => ${q14_diff} . x = ${q14_c} => x = ${q14_ans}.`
     },
     {
-      question: `Tìm số tự nhiên x thỏa mãn đẳng thức lũy thừa bậc 2: x² = ${q15_a}`,
+      question: `Tìm số tự nhiên x thỏa mãn đẳng thức lũy thừa bậc 2: $x^2 = ${q15_a}$`,
       mathExpression: `x^2 = ${q15_a}`,
       options: makeOptions(q15_ans, [q15_ans + 1, q15_ans - 1, q15_a / 2], baseSeed + 37),
       correctAnswer: String(q15_ans),
-      explanation: `Vì ${q15_ans}² = ${q15_ans} . ${q15_ans} = ${q15_a} và x là số tự nhiên nên x = ${q15_ans}.`
+      explanation: `Vì $${q15_ans}^2 = ${q15_ans} \\cdot ${q15_ans} = ${q15_a}$ và x là số tự nhiên nên $x = ${q15_ans}$.`
     },
     {
-      question: `Tìm số mũ tự nhiên x thỏa mãn đẳng thức lũy thừa: 2ˣ = ${q16_a}`,
+      question: `Tìm số mũ tự nhiên x thỏa mãn đẳng thức lũy thừa: $2^x = ${q16_a}$`,
       mathExpression: `2^x = ${q16_a}`,
       options: makeOptions(q16_ans, [q16_ans + 1, q16_ans - 1, q16_a / 2], baseSeed + 38),
       correctAnswer: String(q16_ans),
-      explanation: `Phân tích ${q16_a} ra thừa số nguyên tố: ${q16_a} = 2^${q16_ans}. Do đó x = ${q16_ans}.`
+      explanation: `Phân tích ${q16_a} ra thừa số nguyên tố: $${q16_a} = 2^{${q16_ans}}$. Do đó $x = ${q16_ans}$.`
     },
     {
-      question: `Tìm số tự nhiên x thỏa mãn bình phương có ngoặc: (x - ${q17_a})² = ${q17_b}`,
+      question: `Tìm số tự nhiên x thỏa mãn bình phương có ngoặc: $(x - ${q17_a})^2 = ${q17_b}$`,
       mathExpression: `(x - ${q17_a})^2 = ${q17_b}`,
       options: makeOptions(q17_ans, [q17_ans + 2, q17_ans - 2, q17_k], baseSeed + 39),
       correctAnswer: String(q17_ans),
-      explanation: `Vì x là số tự nhiên nên x - ${q17_a} = ${q17_k} => x = ${q17_k} + ${q17_a} = ${q17_ans}.`
+      explanation: `Vì x là số tự nhiên nên $x - ${q17_a} = ${q17_k} \\Rightarrow x = ${q17_k} + ${q17_a} = ${q17_ans}$.`
     },
     {
       question: `Tìm x trong biểu thức có nhiều phép tính phối hợp: ${q18_a} + ${q18_b} · (x - ${q18_c}) = ${q18_d}`,
@@ -949,11 +949,11 @@ function generateChuyenVeExam(examNo: number): LayGocQuestion[] {
       explanation: `TH1: x - 3 = 0 => x = 3. TH2: x + 5 = 0 => x = -5.`
     },
     {
-      question: `Giải phương trình bậc hai dạng hiệu hai bình phương: x² - 25 = 0`,
+      question: `Giải phương trình bậc hai dạng hiệu hai bình phương: $x^2 - 25 = 0$`,
       mathExpression: `x^2 - 25 = 0`,
       options: makeOptions('x = 5 hoặc x = -5', ['Chỉ có x = 5', 'Chỉ có x = -5', 'x = 25'], baseSeed + 17),
       correctAnswer: 'x = 5 hoặc x = -5',
-      explanation: `Chuyển vế: x² = 25 => x = 5 hoặc x = -5.`
+      explanation: `Chuyển vế: $x^2 = 25 \\Rightarrow x = 5$ hoặc $x = -5$.`
     },
     {
       question: `Tìm nghiệm của phương trình chứa giá trị tuyệt đối: |2x - 1| = 5`,
