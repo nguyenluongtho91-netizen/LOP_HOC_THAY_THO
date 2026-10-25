@@ -24,6 +24,7 @@ import {
 } from '@/services/layGocHoaExamService';
 import Modal from '@/components/Modal';
 import PrintableExamModal from '@/components/PrintableExamModal';
+import BatchExamScanModal from '@/components/BatchExamScanModal';
 import toast from 'react-hot-toast';
 
 export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolean }) {
@@ -45,6 +46,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const [examTimeLeft, setExamTimeLeft] = useState<number>(1200); // 20 phút = 1200 giây
   const [showAllExplanations, setShowAllExplanations] = useState<boolean>(false);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState<boolean>(false);
+  const [isScanModalOpen, setIsScanModalOpen] = useState<boolean>(false);
 
   // Luyện tập nhanh tự do
   const [freeAnswers, setFreeAnswers] = useState<Record<number, string>>({});
@@ -688,6 +690,15 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   >
                     <Printer className="w-4 h-4 text-teal-700" />
                     <span>In Đề / Tải File PDF (A4)</span>
+                  </button>
+
+                  <button
+                    onClick={() => setIsScanModalOpen(true)}
+                    className="px-4 py-2.5 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                    title="Tải lên 10-50 ảnh bài làm đã scan để AI tự động nhận diện họ tên, đọc đáp án và chấm điểm hàng loạt"
+                  >
+                    <Sparkles className="w-4 h-4 text-purple-700" />
+                    <span>Quét Ảnh Chấm Bài AI</span>
                   </button>
 
                   {!isExamTimerActive && !isExamSubmitted ? (
@@ -1651,6 +1662,16 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
           subject={currentSubject}
           topicTitle={currentTopic?.title || 'Chuyên đề kiến thức cốt lõi'}
           topicGrade={currentTopic?.grade}
+          examNo={selectedExamNo}
+          questions={currentExamQuestions}
+        />
+
+        {/* MODAL QUÉT ẢNH SCAN BÀI LÀM & CHẤM ĐIỂM HÀNG LOẠT BẰNG AI */}
+        <BatchExamScanModal
+          isOpen={isScanModalOpen}
+          onClose={() => setIsScanModalOpen(false)}
+          subject={currentSubject}
+          topicTitle={currentTopic?.title || 'Chuyên đề kiến thức cốt lõi'}
           examNo={selectedExamNo}
           questions={currentExamQuestions}
         />
