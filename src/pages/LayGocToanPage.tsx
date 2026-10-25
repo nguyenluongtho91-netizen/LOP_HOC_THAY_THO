@@ -19,11 +19,11 @@ import Modal from '@/components/Modal';
 import toast from 'react-hot-toast';
 
 export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolean }) {
-  // Main Tab: kho_de (40 đề x 20 câu), ly_thuyet (thần chú), luyen_tap (tự do)
+  // Main Tab: kho_de (50 đề x 20 câu), ly_thuyet (thần chú), luyen_tap (tự do)
   const [activeTab, setActiveTab] = useState<'kho_de' | 'ly_thuyet' | 'luyen_tap'>('kho_de');
   
-  // State của Kho 40 đề (4 Phần x 10 Đề)
-  const [selectedTopicId, setSelectedTopicId] = useState<string>('so_am');
+  // State của Kho 50 đề (5 Phần x 10 Đề)
+  const [selectedTopicId, setSelectedTopicId] = useState<string>('so_tu_nhien');
   const [selectedExamNo, setSelectedExamNo] = useState<number>(1);
   const [examAnswers, setExamAnswers] = useState<Record<number, string>>({});
   const [isExamSubmitted, setIsExamSubmitted] = useState<boolean>(false);
@@ -43,7 +43,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const { createRoom } = useExamRoomStore();
 
   const [isAssignModalOpen, setIsAssignModalOpen] = useState(false);
-  const [assignTopicId, setAssignTopicId] = useState<string>('so_am');
+  const [assignTopicId, setAssignTopicId] = useState<string>('so_tu_nhien');
   const [assignExamNo, setAssignExamNo] = useState<number>(1);
   const [assignMode, setAssignMode] = useState<'individual' | 'class'>('individual');
   const [assignClassId, setAssignClassId] = useState('');
@@ -99,7 +99,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  // Đổi đề thi trong Kho 40 đề
+  // Đổi đề thi trong Kho 50 đề
   const handleSelectExam = (topicId: string, examNo: number) => {
     setSelectedTopicId(topicId);
     setSelectedExamNo(examNo);
@@ -277,16 +277,16 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 Hệ Thống Phục Hồi Mất Gốc Toán Cấp 2 (Lớp 6 - Lớp 9)
               </div>
               <h1 className="text-2xl md:text-3xl font-black tracking-tight">
-                ⚡ LẤY GỐC TOÁN – 40 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)
+                ⚡ LẤY GỐC TOÁN – 50 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)
               </h1>
               <p className="text-rose-100 text-sm mt-1 max-w-2xl leading-relaxed">
-                4 Chuyên đề cốt lõi: <strong>Số âm</strong>, <strong>Quy tắc chuyển vế</strong>, <strong>Phân số</strong> và <strong>Khảo sát tổng hợp</strong>. Mỗi phần có 10 Đề thi (mỗi đề chuẩn 20 câu trắc nghiệm kèm lời giải chi tiết của Thầy Thọ).
+                5 Chuyên đề cốt lõi: <strong>Số tự nhiên Lớp 6</strong>, <strong>Số âm</strong>, <strong>Quy tắc chuyển vế</strong>, <strong>Phân số</strong> và <strong>Khảo sát tổng hợp</strong>. Mỗi phần có 10 Đề thi (mỗi đề chuẩn 20 câu trắc nghiệm kèm lời giải chi tiết của Thầy Thọ).
               </p>
             </div>
 
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20">
               <div className="text-center px-3 border-r border-white/20">
-                <div className="text-2xl font-black text-amber-300">40</div>
+                <div className="text-2xl font-black text-amber-300">50</div>
                 <div className="text-[10px] text-white/80 font-bold uppercase">Tổng số đề</div>
               </div>
               <div className="text-center px-3 border-r border-white/20">
@@ -314,7 +314,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               }`}
             >
               <Award className="w-4 h-4 text-amber-500" />
-              <span>📚 Kho 40 Đề Lấy Gốc (4 Phần x 10 Đề x 20 Câu)</span>
+              <span>📚 Kho 50 Đề Lấy Gốc (5 Phần x 10 Đề x 20 Câu)</span>
             </button>
 
             <button
@@ -353,29 +353,29 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       </div>
 
       <div className="max-w-6xl mx-auto px-4 mt-6">
-        {/* ===================== TAB 1: KHO 40 ĐỀ LẤY GỐC (4 PHẦN x 10 ĐỀ x 20 CÂU) ===================== */}
+        {/* ===================== TAB 1: KHO 50 ĐỀ LẤY GỐC (5 PHẦN x 10 ĐỀ x 20 CÂU) ===================== */}
         {activeTab === 'kho_de' && (
           <div className="space-y-6">
-            {/* 1. BỘ CHỌN 4 CHUYÊN ĐỀ (PHẦN 1 -> PHẦN 4) */}
+            {/* 1. BỘ CHỌN 5 CHUYÊN ĐỀ (PHẦN 1 -> PHẦN 5) */}
             <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
               <div className="flex items-center justify-between gap-2 mb-3">
                 <div className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4 text-red-600" />
-                  BƯỚC 1: CHỌN CHUYÊN ĐỀ LẤY GỐC TOÁN (4 PHẦN)
+                  BƯỚC 1: CHỌN CHUYÊN ĐỀ LẤY GỐC TOÁN (5 PHẦN)
                 </div>
                 <span className="text-[11px] font-bold text-slate-400">
-                  Mỗi phần có đúng 10 Đề thi • Mỗi đề 20 câu
+                  Mỗi phần có đúng 10 Đề thi • Mỗi đề chuẩn 20 câu
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
                 {LAY_GOC_TOPICS.map((top) => {
                   const isSelected = selectedTopicId === top.id;
                   return (
                     <button
                       key={top.id}
                       onClick={() => handleSelectExam(top.id, 1)}
-                      className={`p-4 rounded-xl border text-left transition-all relative overflow-hidden cursor-pointer ${
+                      className={`p-3.5 rounded-xl border text-left transition-all relative overflow-hidden cursor-pointer ${
                         isSelected
                           ? 'bg-gradient-to-br from-red-50 to-amber-50/50 border-red-500 ring-2 ring-red-500/20 shadow-sm'
                           : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60'
@@ -383,16 +383,16 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     >
                       <div className="flex items-start justify-between gap-2">
                         <span className="text-2xl">{top.icon}</span>
-                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                        <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase ${
                           isSelected ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-600'
                         }`}>
                           10 Đề • 20 câu
                         </span>
                       </div>
-                      <h4 className="font-extrabold text-sm text-slate-800 mt-2 line-clamp-1">
+                      <h4 className="font-extrabold text-xs text-slate-800 mt-2 line-clamp-1">
                         {top.title}
                       </h4>
-                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                      <p className="text-[10px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
                         {top.description}
                       </p>
                     </button>
@@ -741,6 +741,69 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         {/* ===================== TAB 2: BÍ KÍP THẦN CHÚ LÝ THUYẾT ===================== */}
         {activeTab === 'ly_thuyet' && (
           <div className="space-y-6">
+            {/* Box 1: Bí kíp số tự nhiên lớp 6 */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+              <div className="flex items-center gap-2.5 mb-4 text-amber-700 font-black text-lg border-b pb-3">
+                <span className="text-2xl">🔢</span>
+                BẢNG THẦN CHÚ: CỘNG TRỪ SỐ TỰ NHIÊN & TÌM X (LỚP 6)
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-amber-50/70 border border-amber-200 rounded-xl p-4">
+                  <h3 className="font-extrabold text-amber-900 text-sm mb-2">
+                    ➕ Phép Cộng & Phép Trừ Có Nhớ
+                  </h3>
+                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
+                    <li className="bg-white p-2.5 rounded-lg border border-amber-100 shadow-xs">
+                      <strong>Đặt tính thẳng cột:</strong> Hàng đơn vị thẳng hàng đơn vị, hàng chục thẳng hàng chục.<br/>
+                      Cộng hoặc trừ lần lượt từ <strong>phải sang trái</strong>.
+                    </li>
+                    <li className="bg-white p-2.5 rounded-lg border border-amber-100 shadow-xs">
+                      <strong>Nhớ & Mượn:</strong> Khi cộng vượt quá 10 thì nhớ sang hàng bên trái. Khi trừ chữ số bé hơn thì mượn 1 chục ở hàng liền trước.
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-4">
+                  <h3 className="font-extrabold text-emerald-900 text-sm mb-2">
+                    ⚡ Bí Quyết Tính Nhanh (Giao Hoán & Kết Hợp)
+                  </h3>
+                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
+                    <li className="bg-white p-2.5 rounded-lg border border-emerald-100 shadow-xs">
+                      <strong>Ghép cặp tròn trăm, tròn chục:</strong><br/>
+                      <span className="text-emerald-700 font-mono font-bold">38 + 145 + 62 = (38 + 62) + 145 = 100 + 145 = 245</span>
+                    </li>
+                    <li className="bg-white p-2.5 rounded-lg border border-emerald-100 shadow-xs">
+                      <strong>Trừ một tổng thuận tiện:</strong><br/>
+                      <span className="text-emerald-700 font-mono font-bold">a - (b + c) = (a - b) - c</span><br/>
+                      Ví dụ: <span className="font-mono">358 - (158 + 40) = 200 - 40 = 160</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-4">
+                  <h3 className="font-extrabold text-blue-900 text-sm mb-2">
+                    🔍 3 Nguyên Tắc Tìm Số Tự Nhiên x
+                  </h3>
+                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
+                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
+                      <strong>Tìm số hạng:</strong> <span className="font-mono font-bold text-blue-700">x = Tổng - Số hạng đã biết</span><br/>
+                      <span className="font-mono">x + 25 = 70 =&gt; x = 70 - 25 = 45</span>
+                    </li>
+                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
+                      <strong>Tìm số bị trừ:</strong> <span className="font-mono font-bold text-blue-700">x = Hiệu + Số trừ</span><br/>
+                      <span className="font-mono">x - 40 = 60 =&gt; x = 60 + 40 = 100</span>
+                    </li>
+                    <li className="bg-white p-2.5 rounded-lg border border-blue-100 shadow-xs">
+                      <strong>Tìm số trừ:</strong> <span className="font-mono font-bold text-blue-700">x = Số bị trừ - Hiệu</span><br/>
+                      <span className="font-mono">80 - x = 35 =&gt; x = 80 - 35 = 45</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Box 2: Quy tắc dấu số âm */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
               <div className="flex items-center gap-2.5 mb-4 text-red-700 font-black text-lg border-b pb-3">
                 <Zap className="w-6 h-6 text-amber-500" />
@@ -793,7 +856,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               </div>
             </div>
 
-            {/* Box 2: Quy tắc chuyển vế */}
+            {/* Box 3: Quy tắc chuyển vế */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
               <div className="flex items-center gap-2.5 mb-4 text-emerald-800 font-black text-lg border-b pb-3">
                 <ArrowRight className="w-6 h-6 text-emerald-600" />
