@@ -3,11 +3,14 @@ import { useEffect, useState, useMemo } from 'react'
 import {
   Plus, Pencil, Users, BookOpen, User, Trash2, Search, UserPlus,
   GraduationCap, Calendar, MapPin, CheckCircle2, DollarSign, CalendarCheck,
-  LayoutGrid, Table as TableIcon, Phone, ExternalLink, ArrowRight, Sparkles, Filter
+  LayoutGrid, Table as TableIcon, Phone, ExternalLink, ArrowRight, Sparkles, Filter,
+  Zap, Check, Copy, Send
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useDataStore } from '@/store/dataStore'
 import { useAuthStore } from '@/store/authStore'
+import { useExamRoomStore } from '@/store/examRoomStore'
+import { useExamStore } from '@/store/examStore'
 import Modal from '@/components/Modal'
 import StudentScorecardModal from '@/components/StudentScorecardModal'
 import { fmtVNDShort } from '@/lib/helpers'
@@ -52,12 +55,74 @@ export default function Classes() {
   const [selectedGrade, setSelectedGrade] = useState<string | null>(null)
   const [viewMode, setViewMode]       = useState<'cards' | 'table'>('cards')
 
+  const { exams, loadExams } = useExamStore()
+  const { createRoom } = useExamRoomStore()
+
+  const [quickAssignStudent, setQuickAssignStudent] = useState<any>(null)
+  const [quickAssignClass, setQuickAssignClass] = useState<any>(null)
+  const [quickAssignTimeLimit, setQuickAssignTimeLimit] = useState(20)
+  const [quickAssignPasscode, setQuickAssignPasscode] = useState('')
+  const [isQuickAssigning, setIsQuickAssigning] = useState(false)
+  const [quickAssignSuccess, setQuickAssignSuccess] = useState<any>(null)
+  const [copiedZaloMsg, setCopiedZaloMsg] = useState(false)
+
   useEffect(() => {
     loadClasses()
     loadStudents()
     loadEnrollments()
     loadProfiles()
+    loadExams()
   }, [])
+
+  const handleOpenQuickAssignLayGoc = (s: any, cls: any) => {
+    setQuickAssignStudent(s)
+    setQuickAssignClass(cls)
+    setQuickAssignTimeLimit(20)
+    setQuickAssignPasscode('')
+    setQuickAssignSuccess(null)
+    setCopiedZaloMsg(false)
+  }
+
+  const handleConfirmQuickAssign = async () => {
+    if (!quickAssignStudent || !quickAssignClass) return
+    setIsQuickAssigning(true)
+    try {
+      let exam = exams.find(e => e.title?.includes('LẤY GỐC TOÁN') || e.title?.includes('Lấy gốc'))
+      if (!exam && exams.length > 0) exam = exams[0]
+      if (!exam) {
+        toast.error('Không tìm thấy đề thi mẫu!')
+        return
+      }
+
+      await createRoom({
+        exam_id: exam.id,
+        class_id: quickAssignClass.id,
+        time_limit: quickAssignTimeLimit,
+        status: 'active',
+        settings: {
+          shuffle: true,
+          allowRetry: true,
+          showCorrectAnswers: true,
+          showExplanations: true,
+          passcode: quickAssignPasscode.trim(),
+          antiCheat: true,
+          assigned_student_ids: [quickAssignStudent.id]
+        }
+      })
+
+      setQuickAssignSuccess({
+        studentName: quickAssignStudent.full_name,
+        studentCode: quickAssignStudent.student_code,
+        className: quickAssignClass.class_name || quickAssignClass.name
+      })
+      toast.success(`🎉 Đã giao đề Lấy Gốc Toán riêng cho em ${quickAssignStudent.full_name}!`)
+    } catch (err: any) {
+      console.error(err)
+      toast.error('Lỗi giao bài: ' + (err.message || 'Thử lại'))
+    } finally {
+      setIsQuickAssigning(false)
+    }
+  }
 
   const openAdd = () => {
     setEditing(null)
@@ -738,20 +803,36 @@ export default function Classes() {
                                 </div>
                               </div>
 
-                              {/* Nút xóa học sinh khỏi lớp */}
-                              <button
-                                onClick={async (e) => {
-                                  e.stopPropagation()
-                                  const cName = currentClass.class_name || currentClass.name
-                                  if (!window.confirm(`Thầy có muốn xóa học sinh "${s.full_name}" khỏi lớp "${cName}"?`)) return
-                                  await unenroll(s.id, currentClass.id)
-                                  toast.success(`Đã xóa ${s.full_name} khỏi lớp`)
-                                }}
-                                className="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-all cursor-pointer"
-                                title="Xóa khỏi lớp này"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </button>
+                              <div className="flex items-center gap-1.5">
+                                {/* Nút giao đề Lấy Gốc Toán riêng cho học sinh này */}
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleOpenQuickAssignLayGoc(s, currentClass)
+                                  }}
+                                  className="px-2 py-1 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-300 rounded-lg text-[10px] font-black flex items-center gap-1 shadow-xs transition-transform hover:scale-105 cursor-pointer"
+                                  title={`Giao đề Lấy Gốc Toán riêng cho ${s.full_name}`}
+                                >
+                                  <Zap className="w-3 h-3 text-amber-600 fill-amber-500 animate-pulse" />
+                                  <span>Giao Lấy Gốc</span>
+                                </button>
+
+                                {/* Nút xóa học sinh khỏi lớp */}
+                                <button
+                                  onClick={async (e) => {
+                                    e.stopPropagation()
+                                    const cName = currentClass.class_name || currentClass.name
+                                    if (!window.confirm(`Thầy có muốn xóa học sinh "${s.full_name}" khỏi lớp "${cName}"?`)) return
+                                    await unenroll(s.id, currentClass.id)
+                                    toast.success(`Đã xóa ${s.full_name} khỏi lớp`)
+                                  }}
+                                  className="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-rose-600 rounded-lg hover:bg-rose-50 transition-all cursor-pointer"
+                                  title="Xóa khỏi lớp này"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </button>
+                              </div>
                             </div>
 
                             {/* Thông tin phụ huynh & SĐT */}
@@ -1060,6 +1141,163 @@ export default function Classes() {
             )}
           </div>
         </div>
+      </Modal>
+
+      {/* ============================================================== */}
+      {/* MODAL: GIAO ĐỀ LẤY GỐC TOÁN CHO HỌC SINH RIÊNG BIỆT            */}
+      {/* ============================================================== */}
+      <Modal
+        open={!!quickAssignStudent}
+        onClose={() => {
+          setQuickAssignStudent(null)
+          setQuickAssignSuccess(null)
+        }}
+        title="⚡ GIAO ĐỀ LẤY GỐC TOÁN CHO HỌC SINH RIÊNG BIỆT"
+        size="md"
+      >
+        {quickAssignSuccess ? (
+          <div className="p-6 text-center space-y-4">
+            <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+              <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
+            </div>
+            <div>
+              <h3 className="text-xl font-black text-slate-800 uppercase tracking-wide">
+                ĐÃ GIAO ĐỀ THÀNH CÔNG!
+              </h3>
+              <p className="text-sm text-slate-600 mt-1">
+                Đã mở phòng thi Lấy Gốc Toán riêng cho học sinh: <strong className="text-emerald-700 font-black">{quickAssignSuccess.studentName}</strong> (Mã: <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono font-bold text-slate-800">{quickAssignSuccess.studentCode}</code>).
+              </p>
+              <p className="text-xs text-slate-400 mt-1">
+                Chỉ đúng em {quickAssignSuccess.studentName} mới thấy đề này trong tài khoản tại cổng thi!
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-left space-y-2">
+              <div className="text-xs font-bold text-slate-600">
+                🌐 Cổng làm bài thi của học sinh:
+              </div>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="text" 
+                  readOnly 
+                  value="https://lop-hoc-thay-tho.vercel.app/thi" 
+                  className="input text-xs font-mono py-2 bg-white flex-1" 
+                />
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText('https://lop-hoc-thay-tho.vercel.app/thi')
+                    toast.success('Đã sao chép link!')
+                  }}
+                  className="px-3 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer"
+                >
+                  <Copy className="w-3.5 h-3.5" />
+                  <span>Chép link</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                onClick={() => {
+                  const zaloMsg = `🔔 THÔNG BÁO BÀI TẬP LẤY GỐC TOÁN - THẦY THỌ\nChào phụ huynh em ${quickAssignSuccess.studentName},\nThầy vừa giao bài khảo sát [LẤY GỐC TOÁN] riêng cho em để củng cố kiến thức số âm và chuyển vế tìm x.\nEm vui lòng đăng nhập vào cổng thi: https://lop-hoc-thay-tho.vercel.app/thi (Mã HS: ${quickAssignSuccess.studentCode}) để hoàn thành bài nhé!`
+                  navigator.clipboard.writeText(zaloMsg)
+                  setCopiedZaloMsg(true)
+                  toast.success('Đã sao chép tin nhắn Zalo gửi phụ huynh!')
+                  setTimeout(() => setCopiedZaloMsg(false), 2500)
+                }}
+                className="btn-outline flex-1 py-3 text-xs font-bold flex items-center justify-center gap-2 text-blue-600 border-blue-200 hover:bg-blue-50 cursor-pointer"
+              >
+                {copiedZaloMsg ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                {copiedZaloMsg ? 'Đã sao chép' : 'Sao chép tin Zalo gửi phụ huynh'}
+              </button>
+              <button
+                onClick={() => {
+                  setQuickAssignStudent(null)
+                  setQuickAssignSuccess(null)
+                }}
+                className="btn-teal px-8 py-3 text-xs font-bold cursor-pointer"
+              >
+                Đóng
+              </button>
+            </div>
+          </div>
+        ) : quickAssignStudent && (
+          <div className="space-y-4">
+            <div className="p-3.5 bg-amber-50 border border-amber-200 rounded-2xl flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-black text-lg flex-shrink-0">
+                ⚡
+              </div>
+              <div className="min-w-0">
+                <div className="text-[11px] font-bold text-amber-700 uppercase tracking-wide">
+                  Giao bài phụ đạo riêng cho học sinh:
+                </div>
+                <div className="text-sm font-black text-slate-900 truncate">
+                  {quickAssignStudent.full_name} <span className="font-mono text-xs text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded font-bold">Mã: {quickAssignStudent.student_code}</span>
+                </div>
+                <div className="text-xs text-slate-500 mt-0.5">
+                  Lớp: <strong className="text-slate-700 font-bold">{quickAssignClass?.class_name || quickAssignClass?.name}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-1.5">
+              <div className="font-bold text-slate-900">📚 Đề thi được chọn:</div>
+              <div className="font-extrabold text-teal-800 flex items-center gap-1.5">
+                <span>[LẤY GỐC TOÁN] - Đề 01: Quy tắc cộng trừ số âm & Chuyển vế tìm x</span>
+              </div>
+              <div className="text-[11px] text-slate-500 leading-relaxed">
+                * Học sinh khác trong lớp sẽ không thấy đề này. Chỉ đúng em <strong>{quickAssignStudent.full_name}</strong> được làm bài.
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="label">Thời gian làm bài (Phút)</label>
+                <input
+                  type="number"
+                  value={quickAssignTimeLimit}
+                  onChange={e => setQuickAssignTimeLimit(Number(e.target.value))}
+                  className="input text-center font-bold"
+                />
+              </div>
+              <div>
+                <label className="label">Mã PIN bảo vệ (Tùy chọn)</label>
+                <input
+                  type="text"
+                  placeholder="Để trống nếu không đặt"
+                  value={quickAssignPasscode}
+                  onChange={e => setQuickAssignPasscode(e.target.value)}
+                  className="input font-mono text-center font-bold"
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setQuickAssignStudent(null)}
+                className="btn-outline px-6 py-2.5 text-xs font-bold cursor-pointer"
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                onClick={handleConfirmQuickAssign}
+                disabled={isQuickAssigning}
+                className="btn-teal px-8 py-2.5 text-xs font-bold shadow-lg shadow-teal-500/20 flex items-center gap-2 cursor-pointer"
+              >
+                {isQuickAssigning ? (
+                  <span>Đang giao...</span>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>Giao Ngay Cho {quickAssignStudent.full_name}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        )}
       </Modal>
 
       {/* ============================================================== */}

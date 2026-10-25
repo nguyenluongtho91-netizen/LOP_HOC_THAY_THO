@@ -161,6 +161,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const { createRoom } = useExamRoomStore();
 
   const [isAssignModalOpen, setIsAssignModalOpen] = useState(false);
+  const [assignMode, setAssignMode] = useState<'individual' | 'class'>('individual');
   const [assignClassId, setAssignClassId] = useState('');
   const [assignStudentIds, setAssignStudentIds] = useState<string[]>([]);
   const [assignTimeLimit, setAssignTimeLimit] = useState(20);
@@ -178,21 +179,46 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     void loadExams();
   }, [loadClasses, loadStudents, loadEnrollments, loadExams]);
 
-  const assignedClassStudents = assignClassId
-    ? students.filter(s => {
+  const allStudentsWithClasses = React.useMemo(() => {
+    return students.filter(s => s.status !== 'inactive').map(s => {
+      const studentEnrolls = enrollments.filter(e => e.student_id === s.id && e.status !== 'inactive');
+      const classNames = studentEnrolls.map(e => {
+        const cls = classes.find(c => c.id === e.class_id);
+        return (cls as any)?.class_name || (cls as any)?.name;
+      }).filter(Boolean);
+      return {
+        ...s,
+        classNamesString: classNames.join(', ') || 'Chưa xếp lớp'
+      };
+    });
+  }, [students, enrollments, classes]);
+
+  const displayedStudents = React.useMemo(() => {
+    if (assignMode === 'class') {
+      if (!assignClassId) return [];
+      return allStudentsWithClasses.filter(s => {
         const enrolled = enrollments.some(e => e.class_id === assignClassId && e.student_id === s.id && e.status !== 'inactive');
         if (!enrolled) return false;
         if (!studentSearch.trim()) return true;
         const q = studentSearch.toLowerCase();
         return (s.full_name || '').toLowerCase().includes(q) || (s.student_code || '').toLowerCase().includes(q);
-      })
-    : [];
+      });
+    } else {
+      if (!studentSearch.trim()) return allStudentsWithClasses;
+      const q = studentSearch.toLowerCase();
+      return allStudentsWithClasses.filter(s => 
+        (s.full_name || '').toLowerCase().includes(q) || 
+        (s.student_code || '').toLowerCase().includes(q) ||
+        s.classNamesString.toLowerCase().includes(q)
+      );
+    }
+  }, [assignMode, assignClassId, allStudentsWithClasses, enrollments, studentSearch]);
 
   const handleSelectAllStudents = () => {
-    if (assignStudentIds.length === assignedClassStudents.length) {
+    if (assignStudentIds.length === displayedStudents.length) {
       setAssignStudentIds([]);
     } else {
-      setAssignStudentIds(assignedClassStudents.map(s => s.id));
+      setAssignStudentIds(displayedStudents.map(s => s.id));
     }
   };
 
@@ -203,8 +229,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   };
 
   const handleAssignSubmit = async () => {
-    if (!assignClassId) {
+    if (assignMode === 'class' && !assignClassId) {
       toast.error('Vui lòng chọn lớp học!');
+      return;
+    }
+    if (assignMode === 'individual' && assignStudentIds.length === 0) {
+      toast.error('Vui lòng tích chọn ít nhất 1 học sinh!');
       return;
     }
 
@@ -220,12 +250,21 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         return;
       }
 
-      const selectedClass = classes.find(c => c.id === assignClassId);
-      const className = (selectedClass as any)?.class_name || (selectedClass as any)?.name || 'Lớp học';
+      let targetClassId: string | null = null;
+      let targetClassName = 'Chỉ định riêng';
+
+      if (assignMode === 'class' && assignClassId) {
+        targetClassId = assignClassId;
+        const selectedClass = classes.find(c => c.id === assignClassId);
+        targetClassName = (selectedClass as any)?.class_name || (selectedClass as any)?.name || 'Lớp học';
+      } else {
+        const studentNames = students.filter(s => assignStudentIds.includes(s.id)).map(s => s.full_name);
+        targetClassName = studentNames.length <= 2 ? studentNames.join(', ') : `${studentNames[0]} và ${studentNames.length - 1} bạn khác`;
+      }
 
       await createRoom({
         exam_id: exam.id,
-        class_id: assignClassId,
+        class_id: targetClassId,
         time_limit: assignTimeLimit,
         status: 'active',
         settings: {
@@ -239,11 +278,11 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         }
       });
 
-      const count = assignStudentIds.length > 0 ? assignStudentIds.length : assignedClassStudents.length;
+      const count = assignStudentIds.length > 0 ? assignStudentIds.length : displayedStudents.length;
       setAssignedSuccessData({
         roomCode: 'Đã mở phòng',
         count,
-        className
+        className: targetClassName
       });
       toast.success('🎉 Đã giao đề Lấy Gốc Toán cho học sinh thành công!');
     } catch (err: any) {
@@ -778,36 +817,78 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="bg-amber-50 p-3.5 rounded-2xl border border-amber-200/70 text-xs text-amber-900 leading-relaxed">
-              💡 <strong>Chế độ chỉ định:</strong> Thầy có thể giao đề Lấy Gốc Toán cho cả lớp, hoặc chỉ định đích danh từng em học sinh bị mất gốc (các em khác sẽ không nhìn thấy).
-            </div>
-
-            {/* Bước 1: Chọn lớp */}
-            <div>
-              <label className="label">1. Chọn lớp học *</label>
-              <select
-                value={assignClassId}
-                onChange={e => {
-                  setAssignClassId(e.target.value);
+            {/* Chuyển chế độ giao bài */}
+            <div className="flex bg-slate-100 p-1 rounded-2xl gap-1 border border-slate-200">
+              <button
+                type="button"
+                onClick={() => {
+                  setAssignMode('individual');
                   setAssignStudentIds([]);
                 }}
-                className="input font-bold"
+                className={`flex-1 py-2 text-xs font-bold rounded-xl transition cursor-pointer ${
+                  assignMode === 'individual'
+                    ? 'bg-amber-400 text-slate-900 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
               >
-                <option value="">-- Chọn lớp cần giao bài --</option>
-                {classes.filter(c => c.status === 'active').map(c => (
-                  <option key={c.id} value={c.id}>
-                    {(c as any).class_name || (c as any).name}
-                  </option>
-                ))}
-              </select>
+                👤 Giao Cho Học Sinh Riêng Biệt (Tùy chọn)
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setAssignMode('class');
+                  setAssignStudentIds([]);
+                }}
+                className={`flex-1 py-2 text-xs font-bold rounded-xl transition cursor-pointer ${
+                  assignMode === 'class'
+                    ? 'bg-teal-600 text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                🏫 Giao Theo Lớp Học
+              </button>
             </div>
 
-            {/* Bước 2: Danh sách học sinh */}
-            {assignClassId && (
+            <div className="bg-amber-50 p-3.5 rounded-2xl border border-amber-200/70 text-xs text-amber-900 leading-relaxed">
+              {assignMode === 'individual' ? (
+                <span>
+                  💡 <strong>Giao riêng biệt:</strong> Thầy có thể tìm và chọn bất kỳ học sinh nào trong toàn bộ học sinh (kể cả khác lớp). Chỉ những em được Thầy tích chọn mới nhìn thấy đề thi này!
+                </span>
+              ) : (
+                <span>
+                  💡 <strong>Giao theo lớp:</strong> Chọn lớp và giao cho cả lớp hoặc chọn riêng các em trong lớp đó.
+                </span>
+              )}
+            </div>
+
+            {/* Bước chọn lớp (nếu ở chế độ theo lớp) */}
+            {assignMode === 'class' && (
+              <div>
+                <label className="label">1. Chọn lớp học *</label>
+                <select
+                  value={assignClassId}
+                  onChange={e => {
+                    setAssignClassId(e.target.value);
+                    setAssignStudentIds([]);
+                  }}
+                  className="input font-bold"
+                >
+                  <option value="">-- Chọn lớp cần giao bài --</option>
+                  {classes.filter(c => c.status === 'active').map(c => (
+                    <option key={c.id} value={c.id}>
+                      {(c as any).class_name || (c as any).name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+            {/* Danh sách học sinh */}
+            {(assignMode === 'individual' || assignClassId) && (
               <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                    2. Danh sách học sinh ({assignedClassStudents.length} em):
+                    {assignMode === 'individual' ? 'Danh sách học sinh' : 'Học sinh trong lớp'} ({displayedStudents.length} em):
                   </label>
                   <div className="flex items-center gap-2">
                     <button
@@ -815,7 +896,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       onClick={handleSelectAllStudents}
                       className="text-[11px] font-bold text-teal-600 hover:underline"
                     >
-                      {assignStudentIds.length === assignedClassStudents.length ? 'Bỏ chọn hết' : `Chọn cả lớp (${assignedClassStudents.length})`}
+                      {assignStudentIds.length === displayedStudents.length ? 'Bỏ chọn hết' : `Chọn tất cả (${displayedStudents.length})`}
                     </button>
                   </div>
                 </div>
@@ -834,7 +915,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 <div className="text-[11px] text-slate-500">
                   {assignStudentIds.length === 0 ? (
                     <span className="text-amber-700 font-medium">
-                      ⚠️ <strong>Chưa tích chọn:</strong> Hệ thống sẽ giao cho CẢ LỚP ({assignedClassStudents.length} em). Thầy tích chọn từng em nếu chỉ muốn chỉ định riêng.
+                      ⚠️ <strong>Chưa tích chọn:</strong> Hệ thống sẽ giao cho TẤT CẢ ({displayedStudents.length} em). Thầy tích chọn riêng từng em nếu chỉ muốn chỉ định riêng.
                     </span>
                   ) : (
                     <span className="text-teal-700 font-bold">
@@ -843,8 +924,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   )}
                 </div>
 
-                <div className="max-h-48 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-white rounded-xl border border-slate-200">
-                  {assignedClassStudents.map(s => {
+                <div className="max-h-56 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-white rounded-xl border border-slate-200">
+                  {displayedStudents.map((s: any) => {
                     const isChecked = assignStudentIds.includes(s.id);
                     return (
                       <label
@@ -864,7 +945,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         <span className="font-mono text-[10px] bg-slate-100 px-1 py-0.5 rounded text-slate-600 font-bold">
                           {s.student_code}
                         </span>
-                        <span className="truncate flex-1">{s.full_name}</span>
+                        <div className="min-w-0 flex-1">
+                          <div className="truncate font-bold">{s.full_name}</div>
+                          {s.classNamesString && (
+                            <div className="text-[9px] text-slate-400 truncate">{s.classNamesString}</div>
+                          )}
+                        </div>
                       </label>
                     );
                   })}
