@@ -23,6 +23,7 @@ import {
   LayGocHoaQuestion
 } from '@/services/layGocHoaExamService';
 import Modal from '@/components/Modal';
+import PrintableExamModal from '@/components/PrintableExamModal';
 import toast from 'react-hot-toast';
 
 export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolean }) {
@@ -43,6 +44,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const [isExamTimerActive, setIsExamTimerActive] = useState<boolean>(false);
   const [examTimeLeft, setExamTimeLeft] = useState<number>(1200); // 20 phút = 1200 giây
   const [showAllExplanations, setShowAllExplanations] = useState<boolean>(false);
+  const [isPrintModalOpen, setIsPrintModalOpen] = useState<boolean>(false);
 
   // Luyện tập nhanh tự do
   const [freeAnswers, setFreeAnswers] = useState<Record<number, string>>({});
@@ -680,11 +682,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   </button>
 
                   <button
-                    onClick={() => window.print()}
-                    className="px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold flex items-center gap-1.5 transition cursor-pointer"
+                    onClick={() => setIsPrintModalOpen(true)}
+                    className="px-4 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                    title="In bản giấy A4 hoặc Tải file PDF cho con làm bài"
                   >
-                    <Printer className="w-4 h-4 text-slate-600" />
-                    <span>In đề / Xuất PDF</span>
+                    <Printer className="w-4 h-4 text-teal-700" />
+                    <span>In Đề / Tải File PDF (A4)</span>
                   </button>
 
                   {!isExamTimerActive && !isExamSubmitted ? (
@@ -1640,6 +1643,17 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             </div>
           )}
         </Modal>
+
+        {/* MODAL IN ẤN & XUẤT PDF CHUẨN A4 CHO PHỤ HUYNH & HỌC SINH */}
+        <PrintableExamModal
+          isOpen={isPrintModalOpen}
+          onClose={() => setIsPrintModalOpen(false)}
+          subject={currentSubject}
+          topicTitle={currentTopic?.title || 'Chuyên đề kiến thức cốt lõi'}
+          topicGrade={currentTopic?.grade}
+          examNo={selectedExamNo}
+          questions={currentExamQuestions}
+        />
       </div>
     </div>
   );

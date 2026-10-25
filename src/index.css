@@ -56,3 +56,59 @@
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ==============================================================================
+   CHẾ ĐỘ IN ẤN & XUẤT PDF CHUYÊN NGHIỆP CHO PHỤ HUYNH VÀ HỌC SINH
+   ============================================================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ẩn toàn bộ giao diện web, modal backdrops, nút bấm, navbar */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Chỉ hiện duy nhất bảng in đề thi */
+  #printable-exam-sheet,
+  #printable-exam-sheet * {
+    visibility: visible;
+  }
+
+  #printable-exam-sheet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .page-break-before {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm 15mm 15mm;
+  }
+}
+
