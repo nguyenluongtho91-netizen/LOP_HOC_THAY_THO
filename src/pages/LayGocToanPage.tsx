@@ -742,8 +742,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                                 {letter}
                               </span>
                               <div className="flex-1 font-mono text-sm">
-                                {opt.includes('\\frac') ? (
-                                  <MathText html={`$${opt}$`} />
+                                {opt.includes('$') || opt.includes('\\') ? (
+                                  <MathText html={opt.startsWith('$') ? opt : `$${opt}$`} />
                                 ) : (
                                   opt
                                 )}
@@ -769,7 +769,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                               Đáp án đúng: {q.correctAnswer}
                             </span>
                           </div>
-                          <div>{q.explanation}</div>
+                          <div>
+                            <MathText html={q.explanation} />
+                          </div>
                         </div>
                       )}
                     </div>
@@ -1050,7 +1052,11 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                               : 'bg-slate-50 border-slate-200 hover:bg-slate-100 text-slate-700'
                           }`}
                         >
-                          {opt.includes('\\frac') ? <MathText html={`$${opt}$`} /> : opt}
+                          {opt.includes('$') || opt.includes('\\') ? (
+                            <MathText html={opt.startsWith('$') ? opt : `$${opt}$`} />
+                          ) : (
+                            opt
+                          )}
                         </button>
                       ))}
                     </div>
@@ -1059,7 +1065,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       <div className={`mt-3 p-3 rounded-xl text-xs leading-relaxed ${
                         isCorrect ? 'bg-emerald-50 text-emerald-900 border border-emerald-100' : 'bg-rose-50 text-rose-900 border border-rose-100'
                       }`}>
-                        <strong>Lời giải Thầy Thọ:</strong> {q.explanation}
+                        <strong>Lời giải Thầy Thọ:</strong> <MathText html={q.explanation} />
                       </div>
                     )}
                   </div>

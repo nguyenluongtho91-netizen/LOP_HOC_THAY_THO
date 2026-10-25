@@ -396,7 +396,7 @@ function generateTimXSoTuNhienExam(examNo: number): LayGocQuestion[] {
           mathExpression: `x : ${a} = ${b}`,
           options: makeOptions(ans, [Math.floor(b / a), ans + a, ans - a], s),
           correctAnswer: String(ans),
-          explanation: `Muốn tìm số bị chia, lấy Thương nhân với số chia: x = ${b} \\times ${a} => x = ${ans}.`,
+          explanation: `Muốn tìm số bị chia, lấy Thương nhân với số chia: x = ${b} \\cdot ${a} => x = ${ans}.`,
           topic: 'tim_x_stn'
         });
       } else if (i === 7) {
@@ -423,7 +423,7 @@ function generateTimXSoTuNhienExam(examNo: number): LayGocQuestion[] {
           mathExpression: `${a} \\cdot x \\cdot ${c} = ${right}`,
           options: makeOptions(ans, [ans + 3, ans - 2, Math.floor(right / a)], s),
           correctAnswer: String(ans),
-          explanation: `Thu gọn vế trái: (${a} \\times ${c}) \\cdot x = ${a * c}x = ${right}. Khi đó x = ${right} : ${a * c} = ${ans}.`,
+          explanation: `Thu gọn vế trái: (${a} \\cdot ${c}) \\cdot x = ${a * c}x = ${right}. Khi đó x = ${right} : ${a * c} = ${ans}.`,
           topic: 'tim_x_stn'
         });
       }
@@ -478,7 +478,7 @@ function generateTimXSoTuNhienExam(examNo: number): LayGocQuestion[] {
           mathExpression: `x : ${d} + ${b} = ${c}`,
           options: makeOptions(ansVal, [ansVal + d, ansVal - d, (c - b) + d], s),
           correctAnswer: String(ansVal),
-          explanation: `Tìm x : ${d} trước: x : ${d} = ${c} - ${b} = ${c - b}. Sau đó: x = ${c - b} \\times ${d} = ${ansVal}.`,
+          explanation: `Tìm x : ${d} trước: x : ${d} = ${c} - ${b} = ${c - b}. Sau đó: x = ${c - b} \\cdot ${d} = ${ansVal}.`,
           topic: 'tim_x_stn'
         });
       }
@@ -510,7 +510,7 @@ function generateTimXSoTuNhienExam(examNo: number): LayGocQuestion[] {
           mathExpression: `(x + ${a}) : ${b} = ${c}`,
           options: makeOptions(exactAns, [exactAns + a, exactAns - a, c * b], s),
           correctAnswer: String(exactAns),
-          explanation: `Coi (x + ${a}) là số bị chia: x + ${a} = ${c} \\times ${b} = ${c * b}. Sau đó: x = ${c * b} - ${a} = ${exactAns}.`,
+          explanation: `Coi (x + ${a}) là số bị chia: x + ${a} = ${c} \\cdot ${b} = ${c * b}. Sau đó: x = ${c * b} - ${a} = ${exactAns}.`,
           topic: 'tim_x_stn'
         });
       } else {
@@ -596,7 +596,7 @@ function generateTimXSoTuNhienExam(examNo: number): LayGocQuestion[] {
           question: `Câu ${i}: Tìm số tự nhiên x biết rằng: Nếu đem x cộng với ${addVal} rồi nhân kết quả với ${mulVal} thì được ${result}?`,
           options: makeOptions(ans, [ans + 5, ans - 3, result - addVal], s),
           correctAnswer: String(ans),
-          explanation: `Lập biểu thức tìm x: (x + ${addVal}) \\times ${mulVal} = ${result} => x + ${addVal} = ${result} : ${mulVal} = ${ans + addVal} => x = ${ans}.`,
+          explanation: `Lập biểu thức tìm x: (x + ${addVal}) \\cdot ${mulVal} = ${result} => x + ${addVal} = ${result} : ${mulVal} = ${ans + addVal} => x = ${ans}.`,
           topic: 'tim_x_stn'
         });
       }
@@ -675,10 +675,10 @@ function generateSoAmExam(examNo: number): LayGocQuestion[] {
         questions.push({
           id: i,
           question: `Câu ${i}: Tính tích hai số nguyên âm:`,
-          mathExpression: `(-${a}) \\times (-${b})`,
+          mathExpression: `(-${a}) \\cdot (-${b})`,
           options: makeOptions(ans, [-ans, ans + 10, -ans - 10], s),
           correctAnswer: String(ans),
-          explanation: `Quy tắc dấu của phép nhân: Âm nhân Âm ra Dương: (-) x (-) = (+). Vậy (-${a}) x (-${b}) = ${ans}.`,
+          explanation: `Quy tắc dấu của phép nhân: Âm nhân Âm ra Dương: (-) . (-) = (+). Vậy (-${a}) . (-${b}) = ${ans}.`,
           topic: 'so_am'
         });
       } else {
@@ -828,10 +828,10 @@ function generatePhanSoExam(examNo: number): LayGocQuestion[] {
       questions.push({
         id: i,
         question: `Câu ${i}: Tính giá trị phép nhân:`,
-        mathExpression: `\\frac{-${n1}}{${d1}} \\times \\frac{${n2}}{5}`,
+        mathExpression: `\\frac{-${n1}}{${d1}} \\cdot \\frac{${n2}}{5}`,
         options: makeOptions(`\\frac{${ansNum}}{${ansDen}}`, [`\\frac{${Math.abs(ansNum)}}{${ansDen}}`, `\\frac{-${n1 + n2}}{${d1 + 5}}`, `-1`], s),
         correctAnswer: `\\frac{${ansNum}}{${ansDen}}`,
-        explanation: `Nhân tử với tử, mẫu với mẫu: (-${n1} x ${n2}) / (${d1} x 5) = ${ansNum}/${ansDen}.`,
+        explanation: `Nhân tử với tử, mẫu với mẫu: (-${n1} . ${n2}) / (${d1} . 5) = ${ansNum}/${ansDen}.`,
         topic: 'phan_so'
       });
     } else if (i <= 15) {
@@ -848,10 +848,10 @@ function generatePhanSoExam(examNo: number): LayGocQuestion[] {
       questions.push({
         id: i,
         question: `Câu ${i}: Thực hiện phép tính đúng thứ tự ưu tiên:`,
-        mathExpression: `\\frac{1}{2} - \\frac{3}{4} \\times \\frac{-2}{3}`,
+        mathExpression: `\\frac{1}{2} - \\frac{3}{4} \\cdot \\frac{-2}{3}`,
         options: makeOptions(`1`, [`0`, `\\frac{1}{4}`, `\\frac{-1}{2}`], s),
         correctAnswer: `1`,
-        explanation: `Thực hiện nhân trước, trừ sau: (3/4) x (-2/3) = -1/2. Khi đó: 1/2 - (-1/2) = 1/2 + 1/2 = 1.`,
+        explanation: `Thực hiện nhân trước, trừ sau: (3/4) . (-2/3) = -1/2. Khi đó: 1/2 - (-1/2) = 1/2 + 1/2 = 1.`,
         topic: 'phan_so'
       });
     }
