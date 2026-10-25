@@ -1,5 +1,5 @@
 // src/services/layGocExamService.ts
-// Bộ phát sinh & quản lý 50 Đề thi Lấy Gốc Toán (5 Phần x 10 Đề x 20 Câu/Đề = 1.000 câu)
+// Bộ phát sinh & quản lý 60 Đề thi Lấy Gốc Toán (6 Phần x 10 Đề x 20 Câu/Đề = 1.200 câu)
 // Chuẩn kiến thức Toán THCS Thầy Thọ (Lớp 6 - Lớp 9)
 
 export interface LayGocQuestion {
@@ -26,16 +26,25 @@ export const LAY_GOC_TOPICS: LayGocTopic[] = [
   {
     id: 'so_tu_nhien',
     title: 'Phần 1: Cộng, Trừ & Tính Nhanh Số Tự Nhiên (Lớp 6)',
-    shortTitle: 'Phần 1: Số Tự Nhiên (Lớp 6)',
+    shortTitle: 'Phần 1: Cộng Trừ STN (Lớp 6)',
     icon: '🔢',
-    description: 'Cộng trừ số tự nhiên có nhớ, nhóm tròn chục tròn trăm, tìm thành phần chưa biết (tìm x) và thứ tự phép tính.',
+    description: 'Cộng trừ số tự nhiên có nhớ, đặt tính thẳng cột, nhóm tròn chục tròn trăm và thứ tự phép tính.',
+    totalExams: 10,
+    questionsPerExam: 20
+  },
+  {
+    id: 'tim_x_stn',
+    title: 'Phần 2: Chuyên Đề Tìm x Số Tự Nhiên (Lớp 6)',
+    shortTitle: 'Phần 2: Tìm x STN (Lớp 6)',
+    icon: '🎯',
+    description: 'Bí kíp giải toán tìm x lớp 6: Tìm số hạng, số bị trừ, thừa số, số chia, phương trình có ngoặc và lũy thừa cơ bản.',
     totalExams: 10,
     questionsPerExam: 20
   },
   {
     id: 'so_am',
-    title: 'Phần 2: Số Âm & Quy Tắc Đổi Dấu',
-    shortTitle: 'Phần 2: Số Âm & Dấu',
+    title: 'Phần 3: Số Âm & Quy Tắc Đổi Dấu',
+    shortTitle: 'Phần 3: Số Âm & Dấu',
     icon: '➖',
     description: 'Quy tắc cộng trừ nhân chia số nguyên, bỏ dấu ngoặc có dấu trừ, tính nhanh biểu thức số âm.',
     totalExams: 10,
@@ -43,8 +52,8 @@ export const LAY_GOC_TOPICS: LayGocTopic[] = [
   },
   {
     id: 'chuyen_ve',
-    title: 'Phần 3: Quy Tắc Chuyển Vế & Tìm x',
-    shortTitle: 'Phần 3: Chuyển Vế & Tìm x',
+    title: 'Phần 4: Quy Tắc Chuyển Vế & Tìm x',
+    shortTitle: 'Phần 4: Chuyển Vế & Tìm x',
     icon: '🔍',
     description: 'Quy tắc chuyển vế đổi dấu, giải phương trình tìm x từ cơ bản đến có ngoặc và x ở cả 2 vế.',
     totalExams: 10,
@@ -52,8 +61,8 @@ export const LAY_GOC_TOPICS: LayGocTopic[] = [
   },
   {
     id: 'phan_so',
-    title: 'Phần 4: Phân Số & Thứ Tự Thực Hiện Phép Tính',
-    shortTitle: 'Phần 4: Phân Số',
+    title: 'Phần 5: Phân Số & Thứ Tự Thực Hiện Phép Tính',
+    shortTitle: 'Phần 5: Phân Số',
     icon: '➗',
     description: 'Quy đồng, rút gọn, cộng trừ nhân chia phân số có dấu âm và thứ tự thực hiện phép tính.',
     totalExams: 10,
@@ -61,8 +70,8 @@ export const LAY_GOC_TOPICS: LayGocTopic[] = [
   },
   {
     id: 'tong_hop',
-    title: 'Phần 5: Khảo Sát Tổng Hợp Lấy Gốc Toán',
-    shortTitle: 'Phần 5: Khảo Sát Tổng Hợp',
+    title: 'Phần 6: Khảo Sát Tổng Hợp Lấy Gốc Toán (Cấp 2)',
+    shortTitle: 'Phần 6: Khảo Sát Tổng Hợp',
     icon: '⚡',
     description: 'Đề tổng hợp 20 câu kiểm tra toàn diện khả năng xóa mất gốc để sẵn sàng vào chương trình chính khóa.',
     totalExams: 10,
@@ -107,7 +116,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
     const s = baseSeed + i * 7;
 
     if (i <= 4) {
-      // Dạng 1: Phép cộng có nhớ số tự nhiên
       const a = randInt(35 + examNo * 5, 250 + examNo * 10, s);
       const b = randInt(48 + examNo * 5, 380 + examNo * 10, s + 1);
       const ans = a + b;
@@ -121,7 +129,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
         topic: 'so_tu_nhien'
       });
     } else if (i <= 8) {
-      // Dạng 2: Phép trừ có mượn số tự nhiên
       const big = randInt(300 + examNo * 20, 950 + examNo * 20, s);
       const small = randInt(85, big - 50, s + 1);
       const ans = big - small;
@@ -135,7 +142,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
         topic: 'so_tu_nhien'
       });
     } else if (i <= 12) {
-      // Dạng 3: Tính nhanh nhóm tròn trăm, tròn chục
       if (i === 9) {
         const u1 = randInt(25, 75, s);
         const u2 = 100 - u1;
@@ -155,7 +161,7 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
         const k = 100;
         const a = m + k;
         const b = randInt(45, 95, s + 1);
-        const ans = a - m + b; // (a - m) + b = 100 + b
+        const ans = a - m + b;
         questions.push({
           id: i,
           question: `Câu ${i}: Tính hợp lý:`,
@@ -189,14 +195,12 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
           mathExpression: `${a} - (${sub1} + ${sub2})`,
           options: makeOptions(ans, [ans + 20, ans - 20, a - sub1], s),
           correctAnswer: String(ans),
-          explanation: `Tính trong ngoặc trước: ${sub1} + ${sub2} = ${sub1 + sub2}. Sau đó lấy ${a} - ${sub1 + sub2} = ${ans}. (Hoặc quy tắc trừ một tổng: a - b - c).`,
+          explanation: `Tính trong ngoặc trước: ${sub1} + ${sub2} = ${sub1 + sub2}. Sau đó lấy ${a} - ${sub1 + sub2} = ${ans}.`,
           topic: 'so_tu_nhien'
         });
       }
     } else if (i <= 16) {
-      // Dạng 4: Tìm số tự nhiên x cơ bản (số hạng, số bị trừ, số trừ)
       if (i === 13) {
-        // x + a = b
         const a = randInt(45, 230, s);
         const ans = randInt(50, 300, s + 1);
         const b = ans + a;
@@ -210,7 +214,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
           topic: 'so_tu_nhien'
         });
       } else if (i === 14) {
-        // x - a = b (tìm số bị trừ)
         const a = randInt(60, 280, s);
         const b = randInt(120, 450, s + 1);
         const ans = a + b;
@@ -224,7 +227,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
           topic: 'so_tu_nhien'
         });
       } else if (i === 15) {
-        // a - x = b (tìm số trừ)
         const ans = randInt(40, 220, s);
         const b = randInt(60, 310, s + 1);
         const a = ans + b;
@@ -238,7 +240,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
           topic: 'so_tu_nhien'
         });
       } else {
-        // (x - a) + b = c
         const a = randInt(25, 75, s);
         const b = randInt(30, 90, s + 1);
         const ans = randInt(100, 300, s + 2);
@@ -254,7 +255,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
         });
       }
     } else if (i <= 18) {
-      // Dạng 5: Thứ tự thực hiện phép tính có ngoặc tròn và vuông
       const k1 = randInt(15, 45, s);
       const k2 = randInt(20, 50, s + 1);
       const sumK = k1 + k2;
@@ -273,7 +273,6 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
         topic: 'so_tu_nhien'
       });
     } else {
-      // Dạng 6: Bài toán thực tế lớp 6
       if (i === 19) {
         const morning = randInt(120, 250, s);
         const diff = randInt(30, 80, s + 1);
@@ -308,7 +307,307 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
 }
 
 // ==============================================================================
-// 2. SINH ĐỀ PHẦN 2: SỐ ÂM & QUY TẮC DẤU (20 CÂU)
+// 2. SINH ĐỀ PHẦN 2: CHUYÊN ĐỀ TÌM X SỐ TỰ NHIÊN (LỚP 6) - 20 CÂU
+// ==============================================================================
+function generateTimXSoTuNhienExam(examNo: number): LayGocQuestion[] {
+  const questions: LayGocQuestion[] = [];
+  const baseSeed = 800 + examNo * 50;
+
+  for (let i = 1; i <= 20; i++) {
+    const s = baseSeed + i * 7;
+
+    if (i <= 4) {
+      // Dạng 1: Phép cộng trừ tìm số hạng, số bị trừ, số trừ
+      if (i === 1) {
+        const a = randInt(25 + examNo * 2, 180 + examNo * 5, s);
+        const ans = randInt(30, 200, s + 1);
+        const b = ans + a;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `x + ${a} = ${b}`,
+          options: makeOptions(ans, [b + a, ans + 10, ans - 10], s),
+          correctAnswer: String(ans),
+          explanation: `Muốn tìm số hạng chưa biết, lấy Tổng trừ đi số hạng đã biết: x = ${b} - ${a} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else if (i === 2) {
+        const a = randInt(40, 250, s);
+        const b = randInt(50, 320, s + 1);
+        const ans = a + b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `x - ${a} = ${b}`,
+          options: makeOptions(ans, [b - a, ans + 20, ans - 20], s),
+          correctAnswer: String(ans),
+          explanation: `Muốn tìm số bị trừ, lấy Hiệu cộng với số trừ: x = ${b} + ${a} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else if (i === 3) {
+        const ans = randInt(20, 150, s);
+        const b = randInt(45, 200, s + 1);
+        const a = ans + b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a} - x = ${b}`,
+          options: makeOptions(ans, [a + b, ans + 10, ans - 10], s),
+          correctAnswer: String(ans),
+          explanation: `Muốn tìm số trừ, lấy Số bị trừ trừ đi Hiệu: x = ${a} - ${b} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else {
+        const a = randInt(50, 160, s);
+        const ans = randInt(40, 180, s + 1);
+        const b = a + ans;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a} + x = ${b}`,
+          options: makeOptions(ans, [b + a, ans + 15, ans - 15], s),
+          correctAnswer: String(ans),
+          explanation: `Số hạng chưa biết = Tổng - Số hạng đã biết: x = ${b} - ${a} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      }
+    } else if (i <= 8) {
+      // Dạng 2: Phép nhân và chia (thừa số, số bị chia, số chia)
+      if (i === 5) {
+        const a = randInt(3, 9, s);
+        const ans = randInt(12, 45, s + 1);
+        const b = a * ans;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a} \\cdot x = ${b}`,
+          options: makeOptions(ans, [ans + a, ans - a, b * a], s),
+          correctAnswer: String(ans),
+          explanation: `Muốn tìm thừa số chưa biết, lấy Tích chia cho thừa số đã biết: x = ${b} : ${a} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else if (i === 6) {
+        const a = randInt(3, 8, s);
+        const b = randInt(15, 60, s + 1);
+        const ans = a * b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `x : ${a} = ${b}`,
+          options: makeOptions(ans, [Math.floor(b / a), ans + a, ans - a], s),
+          correctAnswer: String(ans),
+          explanation: `Muốn tìm số bị chia, lấy Thương nhân với số chia: x = ${b} \\times ${a} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else if (i === 7) {
+        const ans = randInt(4, 9, s);
+        const b = randInt(12, 35, s + 1);
+        const a = ans * b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a} : x = ${b}`,
+          options: makeOptions(ans, [ans + 2, ans - 1, a * b], s),
+          correctAnswer: String(ans),
+          explanation: `Muốn tìm số chia, lấy Số bị chia chia cho Thương: x = ${a} : ${b} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else {
+        const a = randInt(2, 5, s);
+        const c = randInt(2, 4, s + 1);
+        const ans = randInt(5, 20, s + 2);
+        const right = a * c * ans;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a} \\cdot x \\cdot ${c} = ${right}`,
+          options: makeOptions(ans, [ans + 3, ans - 2, Math.floor(right / a)], s),
+          correctAnswer: String(ans),
+          explanation: `Thu gọn vế trái: (${a} \\times ${c}) \\cdot x = ${a * c}x = ${right}. Khi đó x = ${right} : ${a * c} = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      }
+    } else if (i <= 12) {
+      // Dạng 3: Kết hợp 2 phép tính: ax + b = c, ax - b = c, b - ax = c
+      const a = randInt(2, 6, s);
+      const ans = randInt(4, 25, s + 1);
+      if (i === 9) {
+        const b = randInt(10, 45, s + 2);
+        const c = a * ans + b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a}x + ${b} = ${c}`,
+          options: makeOptions(ans, [ans + 2, ans - 2, c - b], s),
+          correctAnswer: String(ans),
+          explanation: `Coi ${a}x là số hạng chưa biết: ${a}x = ${c} - ${b} = ${a * ans}. Sau đó tìm x: x = ${a * ans} : ${a} = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else if (i === 10) {
+        const b = randInt(8, 35, s + 2);
+        const c = a * ans - b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a}x - ${b} = ${c}`,
+          options: makeOptions(ans, [ans + 2, ans - 2, c + b], s),
+          correctAnswer: String(ans),
+          explanation: `Coi ${a}x là số bị trừ: ${a}x = ${c} + ${b} = ${a * ans}. Sau đó tìm x: x = ${a * ans} : ${a} = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else if (i === 11) {
+        const b = a * ans + randInt(10, 50, s + 2);
+        const c = b - a * ans;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${b} - ${a}x = ${c}`,
+          options: makeOptions(ans, [ans + 1, ans - 1, b - c], s),
+          correctAnswer: String(ans),
+          explanation: `Coi ${a}x là số trừ: ${a}x = ${b} - ${c} = ${a * ans}. Sau đó tìm x: x = ${a * ans} : ${a} = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else {
+        const d = randInt(2, 6, s + 2);
+        const ansVal = d * randInt(3, 15, s + 3);
+        const b = randInt(5, 20, s + 4);
+        const c = Math.floor(ansVal / d) + b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `x : ${d} + ${b} = ${c}`,
+          options: makeOptions(ansVal, [ansVal + d, ansVal - d, (c - b) + d], s),
+          correctAnswer: String(ansVal),
+          explanation: `Tìm x : ${d} trước: x : ${d} = ${c} - ${b} = ${c - b}. Sau đó: x = ${c - b} \\times ${d} = ${ansVal}.`,
+          topic: 'tim_x_stn'
+        });
+      }
+    } else if (i <= 15) {
+      // Dạng 4: Có dấu ngoặc
+      if (i === 13) {
+        const a = randInt(3, 15, s);
+        const b = randInt(3, 8, s + 1);
+        const ans = randInt(5, 20, s + 2);
+        const c = (ans - a) * b;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `(x - ${a}) \\cdot ${b} = ${c}`,
+          options: makeOptions(ans, [ans + a, ans - a, Math.floor(c / b)], s),
+          correctAnswer: String(ans),
+          explanation: `Tìm biểu thức trong ngoặc trước: x - ${a} = ${c} : ${b} = ${ans - a}. Chuyển vế: x = ${ans - a} + ${a} = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else if (i === 14) {
+        const a = randInt(5, 25, s);
+        const b = randInt(2, 6, s + 1);
+        const ans = randInt(10, 40, s + 2);
+        const c = Math.floor((ans + a) / b);
+        const exactAns = c * b - a;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `(x + ${a}) : ${b} = ${c}`,
+          options: makeOptions(exactAns, [exactAns + a, exactAns - a, c * b], s),
+          correctAnswer: String(exactAns),
+          explanation: `Coi (x + ${a}) là số bị chia: x + ${a} = ${c} \\times ${b} = ${c * b}. Sau đó: x = ${c * b} - ${a} = ${exactAns}.`,
+          topic: 'tim_x_stn'
+        });
+      } else {
+        const a = randInt(60, 150, s);
+        const b = randInt(10, 30, s + 1);
+        const ans = randInt(15, 45, s + 2);
+        const c = a - (ans + b);
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${a} - (x + ${b}) = ${c}`,
+          options: makeOptions(ans, [ans + b, ans - b, a - c], s),
+          correctAnswer: String(ans),
+          explanation: `Coi (x + ${b}) là số trừ: x + ${b} = ${a} - ${c} = ${ans + b}. Sau đó: x = ${ans + b} - ${b} = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      }
+    } else if (i <= 17) {
+      // Dạng 5: Tìm x trong lũy thừa số tự nhiên
+      if (i === 16) {
+        const bases = [2, 3, 5];
+        const base = bases[i % bases.length];
+        const ans = randInt(2, 5, s);
+        const powerVal = Math.pow(base, ans);
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `${base}^x = ${powerVal}`,
+          options: makeOptions(ans, [ans + 1, ans - 1, Math.floor(powerVal / base)], s),
+          correctAnswer: String(ans),
+          explanation: `Viết số ${powerVal} dưới dạng lũy thừa cơ số ${base}: ${powerVal} = ${base}^${ans}. Vì cơ số bằng nhau nên số mũ bằng nhau: x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      } else {
+        const a = randInt(1, 5, s);
+        const ans = a + randInt(2, 6, s + 1);
+        const inner = ans - a;
+        const squareVal = inner * inner;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết:`,
+          mathExpression: `(x - ${a})^2 = ${squareVal}`,
+          options: makeOptions(ans, [ans + 2, inner, squareVal + a], s),
+          correctAnswer: String(ans),
+          explanation: `Vì ${squareVal} = ${inner}^2 nên với x là số tự nhiên ta có: x - ${a} = ${inner} => x = ${inner} + ${a} = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      }
+    } else if (i === 18) {
+      // Dạng 6: Dạng tích bằng 0: (x - a)(x - b) = 0
+      const a = randInt(3, 8, s);
+      const b = randInt(10, 25, s + 1);
+      questions.push({
+        id: i,
+        question: `Câu ${i}: Tìm các số tự nhiên x thỏa mãn:`,
+        mathExpression: `(x - ${a})(x - ${b}) = 0`,
+        options: makeOptions(`x = ${a} hoặc x = ${b}`, [`x = ${a + b}`, `x = ${b - a}`, `x = 0`], s),
+        correctAnswer: `x = ${a} hoặc x = ${b}`,
+        explanation: `Một tích bằng 0 khi ít nhất một thừa số bằng 0. Do đó: x - ${a} = 0 hoặc x - ${b} = 0 => x = ${a} hoặc x = ${b}.`,
+        topic: 'tim_x_stn'
+      });
+    } else {
+      // Dạng 7: Ước, Bội & Bài toán thực tế
+      if (i === 19) {
+        const m = randInt(6, 12, s);
+        const ansCount = 4;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Có bao nhiêu số tự nhiên x để biểu thức sau chia hết:`,
+          mathExpression: `(${m}) \\ \\vdots \\ x`,
+          options: makeOptions(`x ∈ Ư(${m})`, [`x = 0`, `x = ${m}`, `Không có x`], s),
+          correctAnswer: `x ∈ Ư(${m})`,
+          explanation: `Để ${m} chia hết cho x thì x phải là ước tự nhiên của ${m}: x ∈ Ư(${m}). (Lưu ý x khác 0).`,
+          topic: 'tim_x_stn'
+        });
+      } else {
+        const addVal = randInt(10, 30, s);
+        const mulVal = randInt(2, 4, s + 1);
+        const ans = randInt(5, 20, s + 2);
+        const result = (ans + addVal) * mulVal;
+        questions.push({
+          id: i,
+          question: `Câu ${i}: Tìm số tự nhiên x biết rằng: Nếu đem x cộng với ${addVal} rồi nhân kết quả với ${mulVal} thì được ${result}?`,
+          options: makeOptions(ans, [ans + 5, ans - 3, result - addVal], s),
+          correctAnswer: String(ans),
+          explanation: `Lập biểu thức tìm x: (x + ${addVal}) \\times ${mulVal} = ${result} => x + ${addVal} = ${result} : ${mulVal} = ${ans + addVal} => x = ${ans}.`,
+          topic: 'tim_x_stn'
+        });
+      }
+    }
+  }
+
+  return questions;
+}
+
+// ==============================================================================
+// 3. SINH ĐỀ PHẦN 3: SỐ ÂM & QUY TẮC DẤU (20 CÂU)
 // ==============================================================================
 function generateSoAmExam(examNo: number): LayGocQuestion[] {
   const questions: LayGocQuestion[] = [];
@@ -415,7 +714,7 @@ function generateSoAmExam(examNo: number): LayGocQuestion[] {
 }
 
 // ==============================================================================
-// 3. SINH ĐỀ PHẦN 3: CHUYỂN VẾ ĐỔI DẤU & TÌM X (20 CÂU)
+// 4. SINH ĐỀ PHẦN 4: CHUYỂN VẾ ĐỔI DẤU & TÌM X (20 CÂU)
 // ==============================================================================
 function generateChuyenVeExam(examNo: number): LayGocQuestion[] {
   const questions: LayGocQuestion[] = [];
@@ -500,7 +799,7 @@ function generateChuyenVeExam(examNo: number): LayGocQuestion[] {
 }
 
 // ==============================================================================
-// 4. SINH ĐỀ PHẦN 4: PHÂN SỐ & THỨ TỰ PHÉP TÍNH (20 CÂU)
+// 5. SINH ĐỀ PHẦN 5: PHÂN SỐ & THỨ TỰ PHÉP TÍNH (20 CÂU)
 // ==============================================================================
 function generatePhanSoExam(examNo: number): LayGocQuestion[] {
   const questions: LayGocQuestion[] = [];
@@ -562,15 +861,16 @@ function generatePhanSoExam(examNo: number): LayGocQuestion[] {
 }
 
 // ==============================================================================
-// 5. SINH ĐỀ PHẦN 5: KHẢO SÁT TỔNG HỢP LẤY GỐC TOÁN (20 CÂU)
+// 6. SINH ĐỀ PHẦN 6: KHẢO SÁT TỔNG HỢP LẤY GỐC TOÁN (20 CÂU)
 // ==============================================================================
 function generateTongHopExam(examNo: number): LayGocQuestion[] {
-  const q0 = generateSoTuNhienExam(examNo).slice(0, 4);
-  const q1 = generateSoAmExam(examNo).slice(0, 5);
-  const q2 = generateChuyenVeExam(examNo).slice(0, 6);
-  const q3 = generatePhanSoExam(examNo).slice(0, 5);
+  const q0 = generateSoTuNhienExam(examNo).slice(0, 3);
+  const q1 = generateTimXSoTuNhienExam(examNo).slice(0, 4);
+  const q2 = generateSoAmExam(examNo).slice(0, 4);
+  const q3 = generateChuyenVeExam(examNo).slice(0, 5);
+  const q4 = generatePhanSoExam(examNo).slice(0, 4);
 
-  const combined = [...q0, ...q1, ...q2, ...q3];
+  const combined = [...q0, ...q1, ...q2, ...q3, ...q4];
   return combined.map((q, idx) => ({
     ...q,
     id: idx + 1,
@@ -587,6 +887,8 @@ export function getLayGocExamQuestions(topicId: string, examNo: number): LayGocQ
   switch (topicId) {
     case 'so_tu_nhien':
       return generateSoTuNhienExam(safeNo);
+    case 'tim_x_stn':
+      return generateTimXSoTuNhienExam(safeNo);
     case 'so_am':
       return generateSoAmExam(safeNo);
     case 'chuyen_ve':
