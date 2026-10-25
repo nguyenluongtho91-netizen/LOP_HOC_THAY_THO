@@ -90,6 +90,9 @@
     color: #000000 !important;
     box-shadow: none !important;
     border: none !important;
+    font-family: "Times New Roman", Times, "Liberation Serif", serif !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
   }
 
   .no-print {
