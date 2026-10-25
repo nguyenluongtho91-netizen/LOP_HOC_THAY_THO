@@ -29,6 +29,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   // Môn học đang chọn: 'toan' (Toán học Lớp 6-9) hoặc 'hoa' (Hóa học Lớp 6-12)
   const [currentSubject, setCurrentSubject] = useState<'toan' | 'hoa'>('toan');
 
+  // Bộ lọc phân hệ Hóa học: 'all' (Tất cả), 'vo_co' (Hóa Vô Cơ), 'huu_co' (Hóa Hữu Cơ)
+  const [hoaBranchFilter, setHoaBranchFilter] = useState<'all' | 'vo_co' | 'huu_co'>('all');
+
   // Main Tab: kho_de (Đề thi 20 câu), ly_thuyet (thần chú), luyen_tap (tự do)
   const [activeTab, setActiveTab] = useState<'kho_de' | 'ly_thuyet' | 'luyen_tap'>('kho_de');
   
@@ -82,6 +85,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   // Chuyển đổi môn học
   const handleSwitchSubject = (subject: 'toan' | 'hoa') => {
     setCurrentSubject(subject);
+    setHoaBranchFilter('all');
     const defaultTopic = subject === 'toan' ? LAY_GOC_TOPICS[0].id : LAY_GOC_HOA_TOPICS[0].id;
     setSelectedTopicId(defaultTopic);
     setSelectedExamNo(1);
@@ -92,10 +96,27 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     setShowAllExplanations(false);
   };
 
-  // Danh sách chủ đề của môn đang chọn
+  // Chuyển đổi nhánh Hóa Vô cơ / Hóa Hữu cơ
+  const handleSwitchHoaBranch = (branch: 'all' | 'vo_co' | 'huu_co') => {
+    setHoaBranchFilter(branch);
+    const relevantTopics = branch === 'all' 
+      ? LAY_GOC_HOA_TOPICS 
+      : LAY_GOC_HOA_TOPICS.filter(t => t.branch === branch);
+    if (relevantTopics.length > 0 && !relevantTopics.some(t => t.id === selectedTopicId)) {
+      setSelectedTopicId(relevantTopics[0].id);
+      setSelectedExamNo(1);
+      setExamAnswers({});
+      setIsExamSubmitted(false);
+      setIsExamTimerActive(false);
+    }
+  };
+
+  // Danh sách chủ đề của môn đang chọn (kèm bộ lọc Vô Cơ / Hữu Cơ)
   const activeTopics = useMemo(() => {
-    return currentSubject === 'toan' ? LAY_GOC_TOPICS : LAY_GOC_HOA_TOPICS;
-  }, [currentSubject]);
+    if (currentSubject === 'toan') return LAY_GOC_TOPICS;
+    if (hoaBranchFilter === 'all') return LAY_GOC_HOA_TOPICS;
+    return LAY_GOC_HOA_TOPICS.filter(t => t.branch === hoaBranchFilter);
+  }, [currentSubject, hoaBranchFilter]);
 
   // Danh sách 20 câu hỏi của Đề đang chọn
   const currentExamQuestions = useMemo(() => {
@@ -347,9 +368,49 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             </div>
 
             <div className="text-xs font-bold text-amber-200 px-3 hidden md:block">
-              {currentSubject === 'toan' ? '6 Chuyên đề • 60 Đề • 1.200 Câu' : '10 Chuyên đề • 100 Đề • 2.000 Câu'}
+              {currentSubject === 'toan' ? '6 Chuyên đề • 60 Đề • 1.200 Câu' : '14 Chuyên đề (9 Vô cơ + 5 Hữu cơ) • 140 Đề • 2.800 Câu'}
             </div>
           </div>
+
+          {/* SUB-FILTER PHÂN HỆ HÓA VÔ CƠ / HÓA HỮU CƠ */}
+          {currentSubject === 'hoa' && (
+            <div className="flex flex-wrap items-center gap-2 mb-6 bg-black/25 backdrop-blur-md p-1.5 rounded-2xl border border-teal-300/30">
+              <span className="text-[11px] font-black uppercase text-teal-200 px-3">
+                Phân hệ:
+              </span>
+              <button
+                onClick={() => handleSwitchHoaBranch('all')}
+                className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
+                  hoaBranchFilter === 'all'
+                    ? 'bg-white text-teal-950 shadow-md ring-2 ring-cyan-400'
+                    : 'text-teal-100 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <span>🧪 Toàn Bộ Hóa Học (14 Chuyên Đề • 140 Đề)</span>
+              </button>
+              <button
+                onClick={() => handleSwitchHoaBranch('vo_co')}
+                className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
+                  hoaBranchFilter === 'vo_co'
+                    ? 'bg-cyan-400 text-slate-950 shadow-md font-black ring-2 ring-white'
+                    : 'text-cyan-200 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <FlaskConical className="w-3.5 h-3.5" />
+                <span>⚗️ Hóa Học Vô Cơ (9 Chuyên Đề • Lớp 6 - 11)</span>
+              </button>
+              <button
+                onClick={() => handleSwitchHoaBranch('huu_co')}
+                className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
+                  hoaBranchFilter === 'huu_co'
+                    ? 'bg-emerald-400 text-slate-950 shadow-md font-black ring-2 ring-white'
+                    : 'text-emerald-200 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <span>🌿 Hóa Học Hữu Cơ (5 Chuyên Đề • Lớp 11 - 12)</span>
+              </button>
+            </div>
+          )}
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
@@ -357,24 +418,24 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 <Zap className="w-4 h-4 text-amber-300 animate-pulse" />
                 {currentSubject === 'toan' 
                   ? 'Hệ Thống Phục Hồi Mất Gốc Toán Cấp 2 (Lớp 6 - Lớp 9)' 
-                  : 'Hệ Thống Phục Hồi Mất Gốc Hóa Học Trọng Điểm (Lớp 6 Đến Lớp 12)'}
+                  : 'Hệ Thống Phục Hồi Mất Gốc Hóa Học Toàn Diện (Hóa Vô Cơ & Hóa Hữu Cơ Lớp 6-12)'}
               </div>
               <h1 className="text-2xl md:text-3xl font-black tracking-tight">
                 {currentSubject === 'toan' 
                   ? '⚡ LẤY GỐC TOÁN HỌC – 60 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)' 
-                  : '🧪 LẤY GỐC HÓA HỌC – 100 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)'}
+                  : '🧪 LẤY GỐC HÓA HỌC – 140 ĐỀ THI VÔ CƠ & HỮU CƠ (20 CÂU/ĐỀ)'}
               </h1>
               <p className="text-rose-100 text-sm mt-1 max-w-2xl leading-relaxed">
                 {currentSubject === 'toan'
                   ? 'Chuyên sâu số tự nhiên, tìm x lớp 6, số âm, chuyển vế, phân số và khảo sát tổng hợp. Mỗi đề chuẩn 20 câu trắc nghiệm kèm lời giải chi tiết của Thầy Thọ.'
-                  : 'Từ nguyên tố, hóa trị, lập CTHH, cân bằng PTHH, công thức tính mol, axit-bazơ-muối đến cấu tạo nguyên tử, oxi hóa khử và hóa hữu cơ 12.'}
+                  : 'Phân định bài bản giữa Hóa Vô Cơ (nguyên tố, CTHH, mol, axit-bazơ-muối, cấu tạo nguyên tử, oxi hóa khử) và Hóa Hữu Cơ (hiđrocacbon, ancol, este, cacbohiđrat, amin).'}
               </p>
             </div>
 
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20">
               <div className="text-center px-3 border-r border-white/20">
                 <div className="text-2xl font-black text-amber-300">
-                  {currentSubject === 'toan' ? '60' : '100'}
+                  {currentSubject === 'toan' ? '60' : hoaBranchFilter === 'vo_co' ? '90' : hoaBranchFilter === 'huu_co' ? '50' : '140'}
                 </div>
                 <div className="text-[10px] text-white/80 font-bold uppercase">Tổng số đề</div>
               </div>
@@ -403,7 +464,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               }`}
             >
               <Award className="w-4 h-4 text-amber-500" />
-              <span>📚 Kho {currentSubject === 'toan' ? '60 Đề Toán' : '100 Đề Hóa Học'} (20 Câu/Đề)</span>
+              <span>📚 Kho {currentSubject === 'toan' ? '60 Đề Toán' : '140 Đề Hóa Học'} (20 Câu/Đề)</span>
             </button>
 
             <button
@@ -447,15 +508,52 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
           <div className="space-y-6">
             {/* 1. BỘ CHỌN CHUYÊN ĐỀ CỦA MÔN ĐANG CHỌN */}
             <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <div className="text-xs font-black uppercase text-slate-500 tracking-wider flex items-center gap-1.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <div className="text-xs font-black uppercase text-slate-600 tracking-wider flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4 text-red-600" />
-                  BƯỚC 1: CHỌN CHUYÊN ĐỀ {currentSubject === 'toan' ? 'TOÁN HỌC (6 PHẦN)' : 'HÓA HỌC (10 PHẦN LỚP 6-12)'}
+                  BƯỚC 1: CHỌN CHUYÊN ĐỀ {currentSubject === 'toan' ? 'TOÁN HỌC (6 PHẦN)' : hoaBranchFilter === 'vo_co' ? 'HÓA HỌC VÔ CƠ (9 PHẦN • LỚP 6-11)' : hoaBranchFilter === 'huu_co' ? 'HÓA HỌC HỮU CƠ (5 PHẦN • LỚP 11-12)' : 'HÓA HỌC (14 PHẦN VÔ CƠ & HỮU CƠ)'}
                 </div>
                 <span className="text-[11px] font-bold text-slate-400">
                   Mỗi phần có đúng 10 Đề thi • Mỗi đề chuẩn 20 câu
                 </span>
               </div>
+
+              {/* Nút lọc nhanh Vô cơ / Hữu cơ ngay trong khung chọn */}
+              {currentSubject === 'hoa' && (
+                <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl mb-3.5 max-w-fit border border-slate-200">
+                  <button
+                    onClick={() => handleSwitchHoaBranch('all')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                      hoaBranchFilter === 'all'
+                        ? 'bg-white text-slate-900 shadow-xs'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    🧪 Tất cả (14 Phần)
+                  </button>
+                  <button
+                    onClick={() => handleSwitchHoaBranch('vo_co')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
+                      hoaBranchFilter === 'vo_co'
+                        ? 'bg-cyan-600 text-white shadow-xs font-extrabold'
+                        : 'text-cyan-800 hover:bg-cyan-100/60'
+                    }`}
+                  >
+                    <FlaskConical className="w-3.5 h-3.5" />
+                    <span>⚗️ Hóa Vô Cơ (9 Phần)</span>
+                  </button>
+                  <button
+                    onClick={() => handleSwitchHoaBranch('huu_co')}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
+                      hoaBranchFilter === 'huu_co'
+                        ? 'bg-emerald-600 text-white shadow-xs font-extrabold'
+                        : 'text-emerald-800 hover:bg-emerald-100/60'
+                    }`}
+                  >
+                    <span>🌿 Hóa Hữu Cơ (5 Phần)</span>
+                  </button>
+                </div>
+              )}
 
               <div className={`grid gap-3 ${
                 currentSubject === 'toan' 
@@ -464,28 +562,40 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               }`}>
                 {activeTopics.map((top: any) => {
                   const isSelected = selectedTopicId === top.id;
+                  const isHuuCo = top.branch === 'huu_co';
                   return (
                     <button
                       key={top.id}
                       onClick={() => handleSelectExam(top.id, 1)}
-                      className={`p-3 rounded-xl border text-left transition-all relative overflow-hidden cursor-pointer ${
+                      className={`p-3.5 rounded-2xl border text-left transition-all relative overflow-hidden cursor-pointer ${
                         isSelected
-                          ? 'bg-gradient-to-br from-amber-50 to-red-50/50 border-red-500 ring-2 ring-red-500/20 shadow-sm'
-                          : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60'
+                          ? isHuuCo
+                            ? 'bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-500 ring-2 ring-emerald-500/20 shadow-md'
+                            : 'bg-gradient-to-br from-cyan-50 to-blue-50 border-cyan-500 ring-2 ring-cyan-500/20 shadow-md'
+                          : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/70 shadow-xs'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-1">
-                        <span className="text-xl">{top.icon}</span>
-                        <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full uppercase ${
-                          isSelected ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-600'
-                        }`}>
-                          10 Đề
-                        </span>
+                        <span className="text-2xl">{top.icon}</span>
+                        <div className="flex flex-col items-end gap-1">
+                          {top.branch && (
+                            <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-md uppercase tracking-wider ${
+                              isHuuCo ? 'bg-emerald-100 text-emerald-800' : 'bg-cyan-100 text-cyan-800'
+                            }`}>
+                              {isHuuCo ? 'Hữu cơ' : 'Vô cơ'}
+                            </span>
+                          )}
+                          <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full ${
+                            isSelected ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600'
+                          }`}>
+                            10 Đề
+                          </span>
+                        </div>
                       </div>
-                      <h4 className="font-extrabold text-[12px] text-slate-800 mt-2 line-clamp-1">
+                      <h4 className="font-extrabold text-[13px] text-slate-900 mt-2 line-clamp-1 leading-snug">
                         {top.title}
                       </h4>
-                      <p className="text-[10px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
+                      <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
                         {top.description}
                       </p>
                     </button>
@@ -698,24 +808,24 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         )}
                       </div>
 
-                      <p className="text-sm font-bold text-slate-800 mb-2">
-                        {q.question.replace(/^Câu \d+:\s*/, '')}
-                      </p>
+                      <div className="text-base sm:text-lg font-bold text-slate-900 mb-3 leading-relaxed tracking-normal">
+                        <MathText html={q.question.replace(/^Câu \d+:\s*/, '')} />
+                      </div>
 
                       {q.mathExpression && (
-                        <div className="my-3 py-3 px-4 bg-teal-50/80 border border-teal-200 rounded-xl text-center text-xl font-black text-teal-900 tracking-wide shadow-xs">
+                        <div className="my-3.5 py-3.5 px-4 bg-teal-50/90 border border-teal-200 rounded-2xl text-center text-xl sm:text-2xl font-black text-teal-950 tracking-wide shadow-xs">
                           <MathText html={`$$${q.mathExpression}$$`} block />
                         </div>
                       )}
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                         {q.options.map((opt: string, oIdx: number) => {
                           const letters = ['A', 'B', 'C', 'D'];
                           const letter = letters[oIdx] || 'A';
                           const isSelected = userAns === opt;
                           const isRightOption = opt === q.correctAnswer;
 
-                          let btnStyle = 'bg-slate-50 border-slate-200 hover:bg-slate-100 text-slate-700';
+                          let btnStyle = 'bg-slate-50/80 border-slate-200 hover:bg-slate-100 text-slate-800 hover:border-slate-300';
 
                           if (isExamSubmitted) {
                             if (isRightOption) {
@@ -734,14 +844,14 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                               onClick={() => {
                                 setExamAnswers(prev => ({ ...prev, [q.id]: opt }));
                               }}
-                              className={`p-3 rounded-xl border text-xs font-bold text-left transition flex items-center gap-2.5 cursor-pointer ${btnStyle}`}
+                              className={`p-3.5 sm:p-4 rounded-2xl border text-sm sm:text-base font-semibold text-left transition flex items-center gap-3 cursor-pointer ${btnStyle}`}
                             >
-                              <span className={`w-6 h-6 rounded-lg flex items-center justify-center font-black text-xs shrink-0 ${
-                                isSelected ? 'bg-red-600 text-white' : 'bg-white border border-slate-200 text-slate-600'
+                              <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 ${
+                                isSelected ? 'bg-red-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 shadow-xs'
                               }`}>
                                 {letter}
                               </span>
-                              <div className="flex-1 font-mono text-sm">
+                              <div className="flex-1 leading-relaxed">
                                 {opt.includes('$') || opt.includes('\\') ? (
                                   <MathText html={opt.startsWith('$') ? opt : `$${opt}$`} />
                                 ) : (
@@ -749,7 +859,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                                 )}
                               </div>
                               {isExamSubmitted && isRightOption && (
-                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                               )}
                             </button>
                           );
@@ -757,19 +867,19 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       </div>
 
                       {showExp && (
-                        <div className={`mt-3.5 p-3.5 rounded-xl text-xs leading-relaxed border ${
+                        <div className={`mt-4 p-4 rounded-2xl text-sm sm:text-base leading-relaxed border ${
                           isCorrect 
-                            ? 'bg-emerald-50/70 text-emerald-950 border-emerald-200' 
-                            : 'bg-amber-50/70 text-amber-950 border-amber-200'
+                            ? 'bg-emerald-50/80 text-emerald-950 border-emerald-200' 
+                            : 'bg-amber-50/80 text-amber-950 border-amber-200'
                         }`}>
-                          <div className="font-extrabold flex items-center gap-1.5 mb-1 text-slate-800">
-                            <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                          <div className="font-extrabold flex items-center gap-1.5 mb-1.5 text-slate-900 text-sm">
+                            <Sparkles className="w-4 h-4 text-amber-500" />
                             <span>💡 Lời giải chi tiết Thầy Thọ:</span>
-                            <span className="font-mono font-bold text-emerald-700 ml-auto">
+                            <span className="font-bold text-emerald-700 ml-auto text-sm">
                               Đáp án đúng: {q.correctAnswer}
                             </span>
                           </div>
-                          <div>
+                          <div className="text-slate-800 leading-relaxed font-normal">
                             <MathText html={q.explanation} />
                           </div>
                         </div>
@@ -831,80 +941,155 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         {activeTab === 'ly_thuyet' && (
           <div className="space-y-6">
             {currentSubject === 'hoa' ? (
-              /* BÍ KÍP HÓA HỌC */
-              <div className="space-y-6">
-                {/* Bài ca hóa trị */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <div className="flex items-center gap-2.5 mb-4 text-teal-800 font-black text-lg border-b pb-3">
-                    <FlaskConical className="w-6 h-6 text-teal-600" />
-                    BÀI CA HÓA TRỊ KINH ĐIỂN (XÓA MẤT GỐC HÓA HỌC)
+              /* BÍ KÍP HÓA HỌC - TÁCH RÕ VÔ CƠ & HỮU CƠ */
+              <div className="space-y-8">
+                {/* ----------------- I. PHẦN HÓA HỌC VÔ CƠ ----------------- */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-100/80 text-cyan-900 font-black text-sm max-w-fit border border-cyan-200">
+                    <FlaskConical className="w-4 h-4 text-cyan-700" />
+                    <span>I. BÍ KÍP THẦN CHÚ HÓA HỌC VÔ CƠ (LỚP 6 - 11)</span>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-slate-700 leading-relaxed">
-                    <div className="bg-teal-50/70 p-4 rounded-xl border border-teal-200">
-                      <h4 className="font-extrabold text-teal-900 mb-2">⭐ Hóa trị I & II phổ biến</h4>
-                      <ul className="space-y-1.5 font-mono">
-                        <li><strong>Hóa trị I:</strong> K, Na, H, Ag, Cl (Kali, Natri, Hiđro, Bạc, Clo).</li>
-                        <li><strong>Hóa trị II:</strong> Ca, Ba, Mg, Zn, Fe, Cu, O (Canxi, Bari, Magie, Kẽm, Sắt, Đồng, Oxi).</li>
-                        <li><strong>Hóa trị III:</strong> Nhôm (Al), Sắt (Fe khi tác dụng Cl₂ hoặc axit có tính oxi hóa mạnh).</li>
+
+                  {/* Bài ca hóa trị */}
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div className="flex items-center gap-2.5 mb-4 text-teal-800 font-black text-lg border-b pb-3">
+                      <Sparkles className="w-6 h-6 text-teal-600" />
+                      BÀI CA HÓA TRỊ KINH ĐIỂN (XÓA MẤT GỐC HÓA HỌC)
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      <div className="bg-teal-50/70 p-4 rounded-xl border border-teal-200">
+                        <h4 className="font-extrabold text-teal-900 mb-2">⭐ Hóa trị I & II phổ biến</h4>
+                        <ul className="space-y-1.5 font-sans">
+                          <li><strong>Hóa trị I:</strong> K, Na, H, Ag, Cl (Kali, Natri, Hiđro, Bạc, Clo).</li>
+                          <li><strong>Hóa trị II:</strong> Ca, Ba, Mg, Zn, Fe, Cu, O (Canxi, Bari, Magie, Kẽm, Sắt, Đồng, Oxi).</li>
+                          <li><strong>Hóa trị III:</strong> Nhôm (Al), Sắt (Fe khi tác dụng Cl₂ hoặc axit có tính oxi hóa mạnh).</li>
+                        </ul>
+                      </div>
+                      <div className="bg-cyan-50/70 p-4 rounded-xl border border-cyan-200">
+                        <h4 className="font-extrabold text-cyan-900 mb-2">⚡ Hóa trị của các nhóm nguyên tử</h4>
+                        <ul className="space-y-1.5 font-sans">
+                          <li><strong>Hóa trị I:</strong> Nhóm -OH (hiđroxit), -NO₃ (nitrat).</li>
+                          <li><strong>Hóa trị II:</strong> Nhóm =SO₄ (sunfat), =CO₃ (cacbonat), =SO₃ (sunfit).</li>
+                          <li><strong>Hóa trị III:</strong> Nhóm ≡PO₄ (photphat).</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Dãy hoạt động kim loại */}
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div className="flex items-center gap-2.5 mb-3 text-blue-800 font-black text-lg border-b pb-3">
+                      <Zap className="w-6 h-6 text-amber-500" />
+                      DÃY HOẠT ĐỘNG HÓA HỌC KIM LOẠI & MẸO NHỚ
+                    </div>
+                    <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-xl text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      <div className="font-sans text-sm sm:text-base font-black text-blue-900 mb-2 tracking-wide">
+                        K, Na, Ba, Ca, Mg, Al, Zn, Fe, Ni, Sn, Pb, (H), Cu, Hg, Ag, Pt, Au
+                      </div>
+                      <div className="text-slate-800 font-bold mb-1">
+                        🗣️ Câu thần chú: <em>"Khi Nào Bạn Cần May Áo Giáp Sắt Nên Sang Phố Hỏi Cửa Hàng Á Phi Âu"</em>
+                      </div>
+                      <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600">
+                        <li>Kim loại đứng trước H tác dụng với HCl, H₂SO₄ loãng giải phóng khí H₂.</li>
+                        <li>Kim loại đứng trước đẩy kim loại đứng sau ra khỏi dung dịch muối (trừ K, Na, Ba, Ca tác dụng với nước trước).</li>
                       </ul>
                     </div>
-                    <div className="bg-cyan-50/70 p-4 rounded-xl border border-cyan-200">
-                      <h4 className="font-extrabold text-cyan-900 mb-2">⚡ Hóa trị của các nhóm nguyên tử</h4>
-                      <ul className="space-y-1.5 font-mono">
-                        <li><strong>Hóa trị I:</strong> Nhóm -OH (hiđroxit), -NO₃ (nitrat).</li>
-                        <li><strong>Hóa trị II:</strong> Nhóm =SO₄ (sunfat), =CO₃ (cacbonat), =SO₃ (sunfit).</li>
-                        <li><strong>Hóa trị III:</strong> Nhóm ≡PO₄ (photphat).</li>
-                      </ul>
+                  </div>
+
+                  {/* Bộ công thức tính mol */}
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <div className="flex items-center gap-2.5 mb-3 text-purple-800 font-black text-lg border-b pb-3">
+                      <Calculator className="w-6 h-6 text-purple-600" />
+                      BỘ CÔNG THỨC TÍNH MOL & NỒNG ĐỘ DUNG DỊCH
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-center">
+                      <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                        <div className="text-xs font-bold text-slate-500">Theo khối lượng</div>
+                        <div className="font-black text-purple-800 text-base my-1">n = m / M</div>
+                        <div className="text-[11px] text-slate-500">m(g), M(g/mol)</div>
+                      </div>
+                      <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                        <div className="text-xs font-bold text-slate-500">Thể tích khí (đktc)</div>
+                        <div className="font-black text-purple-800 text-base my-1">n = V / 22,4</div>
+                        <div className="text-[11px] text-slate-500">V tính bằng lít</div>
+                      </div>
+                      <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                        <div className="text-xs font-bold text-slate-500">Nồng độ mol CM</div>
+                        <div className="font-black text-purple-800 text-base my-1">C_M = n / V</div>
+                        <div className="text-[11px] text-slate-500">V dung dịch (lít)</div>
+                      </div>
+                      <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
+                        <div className="text-xs font-bold text-slate-500">Nồng độ % C%</div>
+                        <div className="font-black text-purple-800 text-base my-1">C% = (m_ct/m_dd) . 100%</div>
+                        <div className="text-[11px] text-slate-500">m_dd = m_ct + m_dm</div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Dãy hoạt động kim loại */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <div className="flex items-center gap-2.5 mb-3 text-blue-800 font-black text-lg border-b pb-3">
-                    <Zap className="w-6 h-6 text-amber-500" />
-                    DÃY HOẠT ĐỘNG HÓA HỌC KIM LOẠI & MẸO NHỚ
+                {/* ----------------- II. PHẦN HÓA HỌC HỮU CƠ ----------------- */}
+                <div className="space-y-4 pt-4 border-t border-slate-200">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-900 font-black text-sm max-w-fit border border-emerald-200">
+                    <Award className="w-4 h-4 text-emerald-700" />
+                    <span>II. BÍ KÍP THẦN CHÚ HÓA HỌC HỮU CƠ (LỚP 11 - 12)</span>
                   </div>
-                  <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-xl text-xs text-slate-700 leading-relaxed">
-                    <div className="font-mono text-sm font-black text-blue-900 mb-2">
-                      K, Na, Ba, Ca, Mg, Al, Zn, Fe, Ni, Sn, Pb, (H), Cu, Hg, Ag, Pt, Au
-                    </div>
-                    <div className="text-slate-800 font-bold mb-1">
-                      🗣️ Câu thần chú: <em>"Khi Nào Bạn Cần May Áo Giáp Sắt Nên Sang Phố Hỏi Cửa Hàng Á Phi Âu"</em>
-                    </div>
-                    <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600">
-                      <li>Kim loại đứng trước H tác dụng với HCl, H₂SO₄ loãng giải phóng khí H₂.</li>
-                      <li>Kim loại đứng trước đẩy kim loại đứng sau ra khỏi dung dịch muối (trừ K, Na, Ba, Ca tác dụng với nước trước).</li>
-                    </ul>
-                  </div>
-                </div>
 
-                {/* Bộ công thức tính mol */}
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-                  <div className="flex items-center gap-2.5 mb-3 text-purple-800 font-black text-lg border-b pb-3">
-                    <Calculator className="w-6 h-6 text-purple-600" />
-                    BỘ CÔNG THỨC TÍNH MOL & NỒNG ĐỘ DUNG DỊCH
+                  {/* Bảng công thức tổng quát */}
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h3 className="font-black text-emerald-900 text-lg mb-3 flex items-center gap-2">
+                      <span>🌿</span>
+                      <span>BẢNG CÔNG THỨC TỔNG QUÁT CÁC DÃY ĐỒNG ĐẲNG HỮU CƠ</span>
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs sm:text-sm">
+                      <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200">
+                        <span className="font-bold text-emerald-900 block">Ankan (no, hở):</span>
+                        <div className="font-bold text-emerald-800 text-sm my-1">C_n H_{'{2n+2}'} (n ≥ 1)</div>
+                        <p className="text-[11px] text-slate-600">Đặc trưng: Phản ứng thế Cl₂ (ánh sáng).</p>
+                      </div>
+                      <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200">
+                        <span className="font-bold text-emerald-900 block">Anken (1 nối đôi C=C):</span>
+                        <div className="font-bold text-emerald-800 text-sm my-1">C_n H_{'{2n}'} (n ≥ 2)</div>
+                        <p className="text-[11px] text-slate-600">Đặc trưng: Làm mất màu dung dịch Br₂.</p>
+                      </div>
+                      <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200">
+                        <span className="font-bold text-emerald-900 block">Ankin (1 nối ba C≡C):</span>
+                        <div className="font-bold text-emerald-800 text-sm my-1">C_n H_{'{2n-2}'} (n ≥ 2)</div>
+                        <p className="text-[11px] text-slate-600">Ank-1-in tạo kết tủa vàng với AgNO₃/NH₃.</p>
+                      </div>
+                      <div className="p-3.5 bg-teal-50/70 rounded-xl border border-teal-200">
+                        <span className="font-bold text-teal-900 block">Ancol no, đơn chức:</span>
+                        <div className="font-bold text-teal-800 text-sm my-1">C_n H_{'{2n+1}'}OH (n ≥ 1)</div>
+                        <p className="text-[11px] text-slate-600">Tác dụng Na tạo H₂; không đổi màu quỳ tím.</p>
+                      </div>
+                      <div className="p-3.5 bg-teal-50/70 rounded-xl border border-teal-200">
+                        <span className="font-bold text-teal-900 block">Axit cacboxylic no, đơn:</span>
+                        <div className="font-bold text-teal-800 text-sm my-1">C_n H_{'{2n+1}'}COOH (n ≥ 0)</div>
+                        <p className="text-[11px] text-slate-600">Làm quỳ tím hóa đỏ; tác dụng bazơ, muối.</p>
+                      </div>
+                      <div className="p-3.5 bg-teal-50/70 rounded-xl border border-teal-200">
+                        <span className="font-bold text-teal-900 block">Este no, đơn chức:</span>
+                        <div className="font-bold text-teal-800 text-sm my-1">C_n H_{'{2n}'}O_2 (n ≥ 2)</div>
+                        <p className="text-[11px] text-slate-600">Thủy phân trong kiềm tạo xà phòng và ancol.</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-3 text-center">
-                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                      <div className="text-xs font-bold text-slate-500">Theo khối lượng</div>
-                      <div className="font-mono font-black text-purple-800 text-base my-1">n = m / M</div>
-                      <div className="text-[10px] text-slate-500">m(g), M(g/mol)</div>
-                    </div>
-                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                      <div className="text-xs font-bold text-slate-500">Thể tích khí (đktc)</div>
-                      <div className="font-mono font-black text-purple-800 text-base my-1">n = V / 22,4</div>
-                      <div className="text-[10px] text-slate-500">V tính bằng lít</div>
-                    </div>
-                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                      <div className="text-xs font-bold text-slate-500">Nồng độ mol CM</div>
-                      <div className="font-mono font-black text-purple-800 text-base my-1">C_M = n / V</div>
-                      <div className="text-[10px] text-slate-500">V dung dịch (lít)</div>
-                    </div>
-                    <div className="p-3 bg-purple-50 rounded-xl border border-purple-200">
-                      <div className="text-xs font-bold text-slate-500">Nồng độ % C%</div>
-                      <div className="font-mono font-black text-purple-800 text-base my-1">C% = (m_ct/m_dd).100%</div>
-                      <div className="text-[10px] text-slate-500">m_dd = m_ct + m_dm</div>
+
+                  {/* Mẹo nhận biết chất hữu cơ */}
+                  <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h3 className="font-black text-slate-900 text-lg mb-3 flex items-center gap-2">
+                      <span>💡</span>
+                      <span>MẸO NHẬN BIẾT NHANH CÁC CHẤT HỮU CƠ TRỌNG TÂM THI ĐẠI HỌC</span>
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      <div className="p-4 bg-amber-50/70 rounded-xl border border-amber-200 space-y-2">
+                        <div><strong>Mất màu nước Brom:</strong> Anken, Ankin, Benzen (có nhánh không no), Glucozơ, Anilin.</div>
+                        <div><strong>Phản ứng tráng bạc (Ag↓):</strong> Glucozơ, Fructozơ (trong kiềm), Este fomat (HCOOR), Axit fomic (HCOOH).</div>
+                      </div>
+                      <div className="p-4 bg-rose-50/70 rounded-xl border border-rose-200 space-y-2">
+                        <div><strong>Làm quỳ tím đổi màu:</strong> Axit cacboxylic (hóa đỏ), Amin bazơ như CH₃NH₂ (hóa xanh).</div>
+                        <div><strong>Hồ tinh bột:</strong> Nhỏ Iot vào xuất hiện màu xanh tím đặc trưng.</div>
+                        <div><strong>Phản ứng màu Biure:</strong> Peptit (từ tripeptit) và Protein tác dụng Cu(OH)₂ ra màu tím.</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1020,9 +1205,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       )}
                     </div>
 
-                    <p className="text-sm font-bold text-slate-800 mb-2">
-                      {q.question.replace(/^Câu \d+:\s*/, '')}
-                    </p>
+                    <div className="text-base font-bold text-slate-900 mb-2.5 leading-relaxed">
+                      <MathText html={q.question.replace(/^Câu \d+:\s*/, '')} />
+                    </div>
 
                     {q.mathExpression && (
                       <div className="my-2.5 py-2.5 px-3 bg-teal-50/80 border border-teal-200 rounded-xl text-center text-lg font-black text-teal-800 shadow-xs">
@@ -1185,7 +1370,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     >
                       {(assignSubject === 'toan' ? LAY_GOC_TOPICS : LAY_GOC_HOA_TOPICS).map((top: any) => (
                         <option key={top.id} value={top.id}>
-                          {top.shortTitle}
+                          {top.branch ? (top.branch === 'vo_co' ? '[Vô cơ] ' : '[Hữu cơ] ') : ''}{top.shortTitle}
                         </option>
                       ))}
                     </select>

@@ -18,7 +18,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui'],
+        sans: ['"Be Vietnam Pro"', '"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        lexend: ['"Lexend"', 'sans-serif'],
       },
       backgroundImage: {
         'teal-gradient': 'linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #5eead4 100%)',

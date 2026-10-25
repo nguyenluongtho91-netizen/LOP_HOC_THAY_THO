@@ -1,6 +1,6 @@
 // src/services/layGocHoaExamService.ts
-// Bộ phát sinh & quản lý 100 Đề thi Lấy Gốc Hóa Học Chuẩn (Lớp 6 đến Lớp 12)
-// 10 Chuyên Đề x 10 Đề x 20 Câu/Đề = 2.000 Câu hỏi chuẩn Hóa học Thầy Thọ
+// Bộ phát sinh & quản lý Đề thi Lấy Gốc Hóa Học (Lớp 6 đến Lớp 12)
+// PHÂN TÁCH RÕ RÀNG: HÓA HỌC VÔ CƠ (Lớp 6-11) & HÓA HỌC HỮU CƠ (Lớp 11-12)
 // ĐẶC BIỆT TUÂN THỦ: Dấu chấm (.) hoặc \cdot cho phép nhân & ngậm nước, TUYỆT ĐỐI KHÔNG DÙNG x hay X.
 
 export interface LayGocHoaQuestion {
@@ -15,6 +15,7 @@ export interface LayGocHoaQuestion {
 
 export interface LayGocHoaTopic {
   id: string;
+  branch: 'vo_co' | 'huu_co'; // Phân hệ: Hóa Vô Cơ vs Hóa Hữu Cơ
   title: string;
   shortTitle: string;
   grade: string;
@@ -25,18 +26,23 @@ export interface LayGocHoaTopic {
 }
 
 export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
+  // ============================================================================
+  // I. HÓA HỌC VÔ CƠ (LỚP 6 ĐẾN LỚP 11)
+  // ============================================================================
   {
     id: 'khtn_nguyen_to',
+    branch: 'vo_co',
     title: 'Phần 1: Kí Hiệu Hóa Học, Nguyên Tử & Nguyên Tử Khối (Lớp 6 - 8)',
     shortTitle: 'Phần 1: Nguyên Tố & NTK (Lớp 6-8)',
     grade: 'Lớp 6 - 8',
     icon: '⚛️',
-    description: 'Kí hiệu hóa học, nguyên tử khối của 20 nguyên tố đầu và các kim loại, phi kim phổ biến nhất.',
+    description: 'Kí hiệu hóa học quốc tế, nguyên tử khối của 20 nguyên tố đầu, kim loại, phi kim, đơn chất và hợp chất.',
     totalExams: 10,
     questionsPerExam: 20
   },
   {
     id: 'hoa_tri_cthh',
+    branch: 'vo_co',
     title: 'Phần 2: Hóa Trị & Lập Công Thức Hóa Học CTHH (Lớp 8)',
     shortTitle: 'Phần 2: Hóa Trị & CTHH (Lớp 8)',
     grade: 'Lớp 8',
@@ -47,6 +53,7 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   },
   {
     id: 'can_bang_pthh',
+    branch: 'vo_co',
     title: 'Phần 3: Cân Bằng Phương Trình Hóa Học & Định Luật BTKL (Lớp 8)',
     shortTitle: 'Phần 3: Cân Bằng PTHH (Lớp 8)',
     grade: 'Lớp 8',
@@ -57,6 +64,7 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   },
   {
     id: 'cong_thuc_mol',
+    branch: 'vo_co',
     title: 'Phần 4: Đại Lượng Mol, Thể Tích Khí & Nồng Độ Dung Dịch (Lớp 8 - 9)',
     shortTitle: 'Phần 4: Mol & Nồng Độ Dung Dịch',
     grade: 'Lớp 8 - 9',
@@ -67,6 +75,7 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   },
   {
     id: 'tinh_theo_pthh',
+    branch: 'vo_co',
     title: 'Phần 5: Bài Toán Tính Theo Phương Trình Hóa Học 3 Bước (Lớp 8 - 9)',
     shortTitle: 'Phần 5: Tính Theo PTHH 3 Bước',
     grade: 'Lớp 8 - 9',
@@ -77,16 +86,18 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   },
   {
     id: 'vo_co_lop9',
+    branch: 'vo_co',
     title: 'Phần 6: Tứ Đại Hợp Chất Vô Cơ: Oxit, Axit, Bazơ, Muối (Lớp 9)',
     shortTitle: 'Phần 6: Oxit, Axit, Bazơ, Muối',
     grade: 'Lớp 9',
     icon: '🔥',
-    description: 'Tính chất hóa học, dãy hoạt động hóa học kim loại (K Na Ba Ca Mg Al Zn Fe Ni Sn Pb H Cu Hg Ag Pt Au) và phản ứng trao đổi.',
+    description: 'Tính chất hóa học, dãy hoạt động hóa học kim loại và điều kiện xảy ra phản ứng trao đổi tạo kết tủa, khí hoặc nước.',
     totalExams: 10,
     questionsPerExam: 20
   },
   {
     id: 'cau_tao_nguyen_tu_lop10',
+    branch: 'vo_co',
     title: 'Phần 7: Cấu Tạo Nguyên Tử & Bảng Tuần Hoàn (Lớp 10)',
     shortTitle: 'Phần 7: Nguyên Tử & Bảng Tuần Hoàn',
     grade: 'Lớp 10',
@@ -97,6 +108,7 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   },
   {
     id: 'oxi_hoa_khu_lop10',
+    branch: 'vo_co',
     title: 'Phần 8: Phản Ứng Oxi Hóa - Khử & Cân Bằng E (Lớp 10)',
     shortTitle: 'Phần 8: Oxi Hóa - Khử & Thăng Bằng E',
     grade: 'Lớp 10',
@@ -107,6 +119,7 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   },
   {
     id: 'su_dien_li_lop11',
+    branch: 'vo_co',
     title: 'Phần 9: Sự Điện Li, pH & Hóa Học Vô Cơ Lớp 11 (Lớp 11)',
     shortTitle: 'Phần 9: Sự Điện Li & Vô Cơ 11',
     grade: 'Lớp 11',
@@ -115,13 +128,62 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
     totalExams: 10,
     questionsPerExam: 20
   },
+
+  // ============================================================================
+  // II. HÓA HỌC HỮU CƠ (LỚP 11 ĐẾN LỚP 12)
+  // ============================================================================
   {
-    id: 'huu_co_lop11_12',
-    title: 'Phần 10: Hóa Học Hữu Cơ: Hiđrocacbon, Este, Lipit, Amin (Lớp 11 - 12)',
-    shortTitle: 'Phần 10: Hóa Hữu Cơ Trọng Tâm (11-12)',
+    id: 'huu_co_hidrocacbon',
+    branch: 'huu_co',
+    title: 'Phần 10: Hiđrocacbon: Ankan, Anken, Ankin & Benzen (Lớp 11)',
+    shortTitle: 'Phần 10: Hiđrocacbon (11)',
+    grade: 'Lớp 11',
+    icon: '⛽',
+    description: 'Đồng đẳng, đồng phân, phản ứng thế của Ankan, phản ứng cộng làm mất màu brom của Anken/Ankin và quy tắc Maccopnhicop.',
+    totalExams: 10,
+    questionsPerExam: 20
+  },
+  {
+    id: 'huu_co_ancol_axit',
+    branch: 'huu_co',
+    title: 'Phần 11: Dẫn Xuất Chứa Oxi: Ancol Etylic & Axit Axetic (Lớp 11 - 12)',
+    shortTitle: 'Phần 11: Ancol & Axit Axetic (11-12)',
     grade: 'Lớp 11 - 12',
-    icon: '🌿',
-    description: 'Ankan, Anken, Ankin, Ancol, Axit, Este, Chất béo, Amin, Amino axit phục vụ tốt kì thi THPT Quốc Gia.',
+    icon: '🍷',
+    description: 'Cấu tạo nhóm -OH và -COOH, phản ứng với kim loại kiềm Na, phản ứng este hóa thuận nghịch và tính axit.',
+    totalExams: 10,
+    questionsPerExam: 20
+  },
+  {
+    id: 'huu_co_este_lipit',
+    branch: 'huu_co',
+    title: 'Phần 12: Este, Lipit (Chất Béo) & Xà Phòng Hóa (Lớp 12)',
+    shortTitle: 'Phần 12: Este & Chất Béo (12)',
+    grade: 'Lớp 12',
+    icon: '🧈',
+    description: 'Danh pháp este, mùi thơm hoa quả, phản ứng thủy phân trong môi trường axit và môi trường kiềm (xà phòng hóa triglixerit).',
+    totalExams: 10,
+    questionsPerExam: 20
+  },
+  {
+    id: 'huu_co_cacbohidrat',
+    branch: 'huu_co',
+    title: 'Phần 13: Cacbohiđrat: Glucozơ, Saccarozơ, Tinh Bột, Xenlulozơ (Lớp 12)',
+    shortTitle: 'Phần 13: Cacbohiđrat (12)',
+    grade: 'Lớp 12',
+    icon: '🌾',
+    description: 'Phân loại monosaccarit, đisaccarit, polisaccarit; phản ứng tráng bạc của glucozơ và phản ứng màu của tinh bột với iot.',
+    totalExams: 10,
+    questionsPerExam: 20
+  },
+  {
+    id: 'huu_co_amin_aminoaxit',
+    branch: 'huu_co',
+    title: 'Phần 14: Amin, Amino Axit, Peptit & Protein (Lớp 12)',
+    shortTitle: 'Phần 14: Amin & Amino Axit (12)',
+    grade: 'Lớp 12',
+    icon: '🧬',
+    description: 'Bậc của amin, tính bazơ, tính chất lưỡng tính của amino axit (Glyxin, Alanin, Valin), liên kết peptit và phản ứng màu biure.',
     totalExams: 10,
     questionsPerExam: 20
   }
@@ -444,7 +506,6 @@ function generateCongThucMolExam(examNo: number): LayGocHoaQuestion[] {
     const s = baseSeed + i * 7;
 
     if (i <= 5) {
-      // n = m / M
       const data = [
         { name: 'Sắt (Fe, M = 56)', m: 5.6, ans: '0,1 mol', d: ['0,2 mol', '1 mol', '0,05 mol'] },
         { name: 'Nhôm (Al, M = 27)', m: 5.4, ans: '0,2 mol', d: ['0,1 mol', '0,4 mol', '1 mol'] },
@@ -463,7 +524,6 @@ function generateCongThucMolExam(examNo: number): LayGocHoaQuestion[] {
         topic: 'cong_thuc_mol'
       });
     } else if (i <= 10) {
-      // V = n . 22,4 hoặc n = V / 22,4
       const gasData = [
         { lit: 2.24, mol: '0,1 mol', d: ['0,2 mol', '0,5 mol', '1 mol'] },
         { lit: 4.48, mol: '0,2 mol', d: ['0,1 mol', '0,4 mol', '0,3 mol'] },
@@ -482,7 +542,6 @@ function generateCongThucMolExam(examNo: number): LayGocHoaQuestion[] {
         topic: 'cong_thuc_mol'
       });
     } else if (i <= 15) {
-      // CM = n / V
       const cmData = [
         { n: 0.2, v: 0.5, ans: '0,4M', d: ['0,1M', '0,2M', '1M'], vMl: '500 ml' },
         { n: 0.5, v: 0.25, ans: '2,0M', d: ['1,0M', '0,5M', '0,125M'], vMl: '250 ml' },
@@ -501,7 +560,6 @@ function generateCongThucMolExam(examNo: number): LayGocHoaQuestion[] {
         topic: 'cong_thuc_mol'
       });
     } else {
-      // C% = (mct / mdd) . 100%
       const cPercentData = [
         { mct: 20, mdd: 200, ans: '10%', d: ['20%', '5%', '11,1%'], expl: 'Khối lượng dung dịch = 20 + 180 = 200g. Nồng độ % = (20 / 200) . 100% = 10%.' },
         { mct: 10, mdd: 100, ans: '10%', d: ['5%', '15%', '20%'], expl: 'Nồng độ % = (10 / 100) . 100% = 10%.' },
@@ -838,18 +896,19 @@ function generateSuDienLiExam(examNo: number): LayGocHoaQuestion[] {
 }
 
 // ==============================================================================
-// 10. SINH ĐỀ PHẦN 10: HÓA HỮU CƠ (LỚP 11 - 12) - 20 CÂU
+// 10. SINH ĐỀ PHẦN 10: HIĐROCACBON (LỚP 11) - 20 CÂU
 // ==============================================================================
-function generateHuuCoExam(examNo: number): LayGocHoaQuestion[] {
+function generateHidrocacbonExam(examNo: number): LayGocHoaQuestion[] {
   const questions: LayGocHoaQuestion[] = [];
   const baseSeed = 6800 + examNo * 50;
 
   const bank = [
     {
-      q: 'Hợp chất este metyl axetat có công thức cấu tạo thu gọn là:',
-      ans: 'CH₃COOCH₃',
-      d: ['HCOOCH₃', 'CH₃COOC₂H₅', 'HCOOC₂H₅'],
-      expl: 'Metyl axetat cấu tạo từ gốc axetat CH₃COO- và gốc metyl -CH₃: CH₃COOCH₃.'
+      q: 'Công thức phân tử tổng quát của dãy đồng đẳng Ankan (hiđrocacbon no mạch hở) là:',
+      math: '\\mathrm{C_nH_{2n+2}}\\ (n \\ge 1)',
+      ans: 'C_n H_{2n+2} (n ≥ 1)',
+      d: ['C_n H_{2n} (n ≥ 2)', 'C_n H_{2n-2} (n ≥ 2)', 'C_n H_{2n-6} (n ≥ 6)'],
+      expl: 'Ankan là hiđrocacbon no mạch hở, công thức chung là CnH2n+2 với n ≥ 1 (ví dụ CH₄, C₂H₆, C₃H₈).'
     },
     {
       q: 'Hiđrocacbon nào sau đây làm mất màu dung dịch nước brom ở điều kiện thường do có liên kết đôi C=C?',
@@ -858,22 +917,230 @@ function generateHuuCoExam(examNo: number): LayGocHoaQuestion[] {
       expl: 'Anken chứa liên kết đôi C=C (kém bền) dễ dàng tham gia phản ứng cộng làm mất màu dung dịch brom.'
     },
     {
-      q: 'Phản ứng xà phòng hóa chất béo (triglixerit) với dung dịch kiềm NaOH luôn sinh ra sản phẩm nào sau đây?',
-      ans: 'Glixerol (C₃H₅(OH)₃) và xà phòng',
-      d: ['Rượu etylic', 'Axit axetic', 'Glucozơ'],
-      expl: 'Chất béo + 3 NaOH → 3 Muối của axit béo (xà phòng) + Glixerol (C₃H₅(OH)₃).'
+      q: 'Phản ứng đặc trưng nhất của hiđrocacbon no (Ankan) là:',
+      ans: 'Phản ứng thế (với Halogen như clo dưới ánh sáng)',
+      d: ['Phản ứng cộng', 'Phản ứng trùng hợp', 'Phản ứng tráng bạc'],
+      expl: 'Ankan chỉ chứa các liên kết đơn C-C và C-H bền vững, phản ứng đặc trưng là phản ứng thế: CH₄ + Cl₂ → CH₃Cl + HCl (ánh sáng).'
     },
     {
-      q: 'Thuốc thử dùng để phân biệt dung dịch Glucozơ với dung dịch Rượu etylic bằng phản ứng tráng bạc là:',
-      ans: 'Dung dịch AgNO₃ trong NH₃, đun nóng',
-      d: ['Dung dịch quỳ tím', 'Kim loại Cu', 'Dung dịch NaCl'],
-      expl: 'Glucozơ có nhóm chức anđehit (-CHO) nên tham gia phản ứng tráng bạc tạo lớp Ag sáng bóng: C₆H₁₂O₆ + 2AgNO₃ + 3NH₃ + H₂O → 2Ag↓.'
+      q: 'Khí Axetilen (C₂H₂ hay CH≡CH) tác dụng với dung dịch AgNO₃ trong NH₃ tạo kết tủa màu gì?',
+      ans: 'Kết tủa màu vàng nhạt (AgC≡CAg↓)',
+      d: ['Kết tủa màu trắng', 'Kết tủa màu xanh', 'Kết tủa màu đỏ'],
+      expl: 'Các ankin có liên kết ba ở đầu mạch (ank-1-in) tác dụng với AgNO₃/NH₃ tạo kết tủa màu vàng nhạt đặc trưng.'
     },
     {
-      q: 'Amino axit thiên nhiên cấu thành nên protein của cơ thể sống có chứa những nhóm chức nào?',
-      ans: 'Nhóm amin (-NH₂) và nhóm cacboxyl (-COOH)',
-      d: ['Chỉ có nhóm -OH', 'Nhóm -CHO và -OH', 'Chỉ có nhóm -COOH'],
-      expl: 'Amino axit là hợp chất hữu cơ tạp chức, phân tử chứa đồng thời nhóm amino (-NH₂) và nhóm cacboxyl (-COOH), có tính chất lưỡng tính.'
+      q: 'Đốt cháy hoàn toàn 1 mol ankan bất kì luôn thu được số mol sản phẩm thỏa mãn:',
+      math: 'n_{\\mathrm{H_2O}} > n_{\\mathrm{CO_2}} \\Rightarrow n_{\\mathrm{ankan}} = n_{\\mathrm{H_2O}} - n_{\\mathrm{CO_2}}',
+      ans: 'n(H₂O) > n(CO₂)',
+      d: ['n(H₂O) = n(CO₂)', 'n(H₂O) < n(CO₂)', 'Không tạo thành CO₂'],
+      expl: 'Khi đốt cháy Ankan: CnH2n+2 + (3n+1)/2 O₂ → n CO₂ + (n+1) H₂O. Do đó n(H₂O) luôn lớn hơn n(CO₂).'
+    }
+  ];
+
+  for (let i = 1; i <= 20; i++) {
+    const s = baseSeed + i * 7;
+    const item = bank[(i + examNo) % bank.length];
+    questions.push({
+      id: i,
+      question: `Câu ${i}: ${item.q}`,
+      mathExpression: item.math,
+      options: makeOptions(item.ans, item.d, s),
+      correctAnswer: item.ans,
+      explanation: item.expl,
+      topic: 'huu_co_hidrocacbon'
+    });
+  }
+
+  return questions;
+}
+
+// ==============================================================================
+// 11. SINH ĐỀ PHẦN 11: ANCOL & AXIT AXETIC (LỚP 11-12) - 20 CÂU
+// ==============================================================================
+function generateAncolAxitExam(examNo: number): LayGocHoaQuestion[] {
+  const questions: LayGocHoaQuestion[] = [];
+  const baseSeed = 7000 + examNo * 50;
+
+  const bank = [
+    {
+      q: 'Chất nào sau đây tác dụng được với kim loại Na nhưng KHÔNG làm đổi màu quỳ tím?',
+      ans: 'Rượu etylic (C₂H₅OH)',
+      d: ['Axit axetic (CH₃COOH)', 'Dung dịch HCl', 'Dung dịch NaOH'],
+      expl: 'Ancol etylic có nhóm -OH linh động nên tác dụng được với Na giải phóng H₂, nhưng dung dịch không có tính axit nên không làm đổi màu quỳ tím.'
+    },
+    {
+      q: 'Phản ứng giữa axit axetic (CH₃COOH) và ancol etylic (C₂H₅OH) xúc tác H₂SO₄ đặc đun nóng được gọi là:',
+      math: '\\mathrm{CH_3COOH + C_2H_5OH \\overset{H_2SO_4,\\ t^\\circ}{\\rightleftharpoons} CH_3COOC_2H_5 + H_2O}',
+      ans: 'Phản ứng este hóa (phản ứng thuận nghịch)',
+      d: ['Phản ứng xà phòng hóa', 'Phản ứng trùng ngưng', 'Phản ứng thế halogen'],
+      expl: 'Phản ứng este hóa giữa axit cacboxylic và ancol là phản ứng thuận nghịch hai chiều, xúc tác axit H₂SO₄ đặc đun nóng.'
+    },
+    {
+      q: 'Để nhận biết dung dịch axit axetic (CH₃COOH) và rượu etylic (C₂H₅OH), thuốc thử đơn giản nhất là:',
+      ans: 'Quỳ tím (Axit axetic làm quỳ tím hóa đỏ, rượu etylic không đổi màu)',
+      d: ['Kim loại Na', 'Nước cất', 'Khí Oxi'],
+      expl: 'Axit axetic là axit yếu làm quỳ tím hóa đỏ; rượu etylic trung tính không làm đổi màu quỳ tím.'
+    },
+    {
+      q: 'Số liên kết pi (π) trong phân tử axit axetic (CH₃COOH) là:',
+      ans: '1 liên kết pi (nằm trong nhóm C=O)',
+      d: ['2 liên kết pi', '0 liên kết pi', '3 liên kết pi'],
+      expl: 'Nhóm chức cacboxyl -COOH có cấu tạo -C(=O)-OH, chứa 1 liên kết đôi C=O gồm 1 liên kết sigma (σ) và 1 liên kết pi (π).'
+    }
+  ];
+
+  for (let i = 1; i <= 20; i++) {
+    const s = baseSeed + i * 7;
+    const item = bank[(i + examNo) % bank.length];
+    questions.push({
+      id: i,
+      question: `Câu ${i}: ${item.q}`,
+      mathExpression: item.math,
+      options: makeOptions(item.ans, item.d, s),
+      correctAnswer: item.ans,
+      explanation: item.expl,
+      topic: 'huu_co_ancol_axit'
+    });
+  }
+
+  return questions;
+}
+
+// ==============================================================================
+// 12. SINH ĐỀ PHẦN 12: ESTE & CHẤT BÉO (LỚP 12) - 20 CÂU
+// ==============================================================================
+function generateEsteLipitExam(examNo: number): LayGocHoaQuestion[] {
+  const questions: LayGocHoaQuestion[] = [];
+  const baseSeed = 7200 + examNo * 50;
+
+  const bank = [
+    {
+      q: 'Hợp chất este etyl axetat có công thức cấu tạo thu gọn là:',
+      ans: 'CH₃COOC₂H₅',
+      d: ['HCOOC₂H₅', 'CH₃COOCH₃', 'C₂H₅COOCH₃'],
+      expl: 'Etyl axetat cấu tạo từ gốc axetat CH₃COO- và gốc etyl -C₂H₅: CH₃COOC₂H₅ (có mùi thơm dễ chịu của chuối chín/táo).'
+    },
+    {
+      q: 'Phản ứng thủy phân este trong môi trường kiềm (đun nóng) còn được gọi là:',
+      ans: 'Phản ứng xà phòng hóa (phản ứng một chiều)',
+      d: ['Phản ứng este hóa', 'Phản ứng trùng hợp', 'Phản ứng khử'],
+      expl: 'Thủy phân este trong dung dịch kiềm (NaOH, KOH) là phản ứng một chiều, sinh ra muối và ancol, được gọi là phản ứng xà phòng hóa.'
+    },
+    {
+      q: 'Xà phòng hóa hoàn toàn chất béo (triglixerit) bằng dung dịch NaOH luôn thu được sản phẩm nào sau đây?',
+      math: '\\mathrm{(RCOO)_3C_3H_5 + 3NaOH \\rightarrow 3RCOONa + C_3H_5(OH)_3}',
+      ans: 'Glixerol (C₃H₅(OH)₃) và muối của axit béo (xà phòng)',
+      d: ['Ancol etylic và axit béo', 'Axit axetic và glixerol', 'Glucozơ'],
+      expl: 'Chất béo là trieste của glixerol với các axit béo, do đó khi xà phòng hóa luôn luôn sinh ra glixerol (ancol 3 chức) và hỗn hợp muối.'
+    },
+    {
+      q: 'Este metyl fomat có công thức phân tử là C₂H₄O₂ và công thức cấu tạo là:',
+      ans: 'HCOOCH₃ (Có khả năng tham gia phản ứng tráng bạc)',
+      d: ['CH₃COOH', 'CH₃COOCH₃', 'CH₃CHO'],
+      expl: 'Metyl fomat là HCOOCH₃. Do chứa nhóm fomat H-COO- (tương tự anđehit) nên có khả năng tham gia phản ứng tráng bạc.'
+    }
+  ];
+
+  for (let i = 1; i <= 20; i++) {
+    const s = baseSeed + i * 7;
+    const item = bank[(i + examNo) % bank.length];
+    questions.push({
+      id: i,
+      question: `Câu ${i}: ${item.q}`,
+      mathExpression: item.math,
+      options: makeOptions(item.ans, item.d, s),
+      correctAnswer: item.ans,
+      explanation: item.expl,
+      topic: 'huu_co_este_lipit'
+    });
+  }
+
+  return questions;
+}
+
+// ==============================================================================
+// 13. SINH ĐỀ PHẦN 13: CACBOHIĐRAT (LỚP 12) - 20 CÂU
+// ==============================================================================
+function generateCacbohidratExam(examNo: number): LayGocHoaQuestion[] {
+  const questions: LayGocHoaQuestion[] = [];
+  const baseSeed = 7400 + examNo * 50;
+
+  const bank = [
+    {
+      q: 'Chất nào sau đây là monosaccarit không bị thủy phân và có phản ứng tráng bạc?',
+      ans: 'Glucozơ (C₆H₁₂O₆)',
+      d: ['Saccarozơ (C₁₂H₂₂O₁₁)', 'Tinh bột ((C₆H₁₀O₅)_n)', 'Xenlulozơ'],
+      expl: 'Glucozơ và Fructozơ là các monosaccarit đơn giản nhất, không bị thủy phân. Glucozơ có nhóm -CHO nên tráng bạc tạo 2 Ag.'
+    },
+    {
+      q: 'Để nhận biết hồ tinh bột, người ta nhỏ vài giọt dung dịch nào sau đây tạo hợp chất màu xanh tím?',
+      ans: 'Dung dịch Iot (I₂)',
+      d: ['Dung dịch NaOH', 'Dung dịch Cu(OH)₂', 'Quỳ tím'],
+      expl: 'Iot chui vào các khoang rỗng của chuỗi xoắn tinh bột tạo hợp chất màu xanh tím đặc trưng. Khi đun nóng màu xanh tím biến mất, để nguội lại xuất hiện.'
+    },
+    {
+      q: 'Saccarozơ (đường mía) khi bị thủy phân trong môi trường axit sinh ra những phân tử nào?',
+      math: '\\mathrm{C_{12}H_{22}O_{11} + H_2O \\xrightarrow{H^+,\\ t^\\circ} C_6H_{12}O_6\\text{ (Glucozơ)} + C_6H_{12}O_6\\text{ (Fructozơ)}}',
+      ans: '1 phân tử Glucozơ và 1 phân tử Fructozơ',
+      d: ['2 phân tử Glucozơ', '2 phân tử Fructozơ', 'Xenlulozơ'],
+      expl: 'Saccarozơ là đisaccarit được cấu tạo từ 1 gốc alpha-glucozơ và 1 gốc beta-fructozơ.'
+    },
+    {
+      q: 'Polisaccarit nào là thành phần chính tạo nên màng tế bào thực vật và có nhiều trong bông, gỗ?',
+      ans: 'Xenlulozơ ((C₆H₁₀O₅)_n)',
+      d: ['Tinh bột', 'Glucozơ', 'Saccarozơ'],
+      expl: 'Xenlulozơ chiếm gần 98% trong sợi bông noãn, là chất rắn dạng sợi màu trắng, không tan trong nước và dung môi hữu cơ thông thường.'
+    }
+  ];
+
+  for (let i = 1; i <= 20; i++) {
+    const s = baseSeed + i * 7;
+    const item = bank[(i + examNo) % bank.length];
+    questions.push({
+      id: i,
+      question: `Câu ${i}: ${item.q}`,
+      mathExpression: item.math,
+      options: makeOptions(item.ans, item.d, s),
+      correctAnswer: item.ans,
+      explanation: item.expl,
+      topic: 'huu_co_cacbohidrat'
+    });
+  }
+
+  return questions;
+}
+
+// ==============================================================================
+// 14. SINH ĐỀ PHẦN 14: AMIN, AMINO AXIT & PROTEIN (LỚP 12) - 20 CÂU
+// ==============================================================================
+function generateAminExam(examNo: number): LayGocHoaQuestion[] {
+  const questions: LayGocHoaQuestion[] = [];
+  const baseSeed = 7600 + examNo * 50;
+
+  const bank = [
+    {
+      q: 'Chất nào sau đây là amino axit đơn giản nhất có công thức phân tử C₂H₅O₂N (M = 75)?',
+      ans: 'Glyxin (H₂N-CH₂-COOH)',
+      d: ['Alanin (CH₃-CH(NH₂)-COOH)', 'Valin', 'Axit glutamic'],
+      expl: 'Glyxin (Gly) có CTHH H₂N-CH₂-COOH, phân tử khối M = 75 đvC, là amino axit không quang hoạt đơn giản nhất.'
+    },
+    {
+      q: 'Amino axit thiên nhiên chứa đồng thời nhóm chức nào giúp chúng có tính chất lưỡng tính?',
+      ans: 'Nhóm amino (-NH₂) có tính bazơ và nhóm cacboxyl (-COOH) có tính axit',
+      d: ['Chỉ có nhóm -OH', 'Chỉ có nhóm -CHO', 'Chỉ có liên kết este'],
+      expl: 'Amino axit vừa tác dụng được với axit mạnh (nhờ -NH₂), vừa tác dụng được với bazơ mạnh (nhờ -COOH), nên có tính chất lưỡng tính.'
+    },
+    {
+      q: 'Dung dịch chất nào sau đây làm quỳ tím chuyển sang màu XANH?',
+      ans: 'Metylamin (CH₃NH₂)',
+      d: ['Glyxin (H₂N-CH₂-COOH)', 'Anilin (C₆H₅NH₂)', 'Axit axetic'],
+      expl: 'Các ankylamin như CH₃NH₂, C₂H₅NH₂ có tính bazơ mạnh hơn amoniac (NH₃), làm quỳ tím hóa xanh. Anilin có tính bazơ cực yếu không đổi màu quỳ. Glyxin có 1 nhóm NH₂ và 1 nhóm COOH nên trung tính.'
+    },
+    {
+      q: 'Phản ứng màu biure đặc trưng của peptit và protein xảy ra khi cho tác dụng với:',
+      ans: 'Dung dịch Cu(OH)₂ trong môi trường kiềm (tạo hợp chất màu tím)',
+      d: ['Dung dịch AgNO₃/NH₃', 'Dung dịch nước Brom', 'Khí H₂'],
+      expl: 'Các hợp chất peptit có từ 2 liên kết peptit trở lên (tripeptit trở đi) và protein phản ứng với Cu(OH)₂ tạo phức chất màu tím biure đặc trưng.'
     }
   ];
 
@@ -886,7 +1153,7 @@ function generateHuuCoExam(examNo: number): LayGocHoaQuestion[] {
       options: makeOptions(item.ans, item.d, s),
       correctAnswer: item.ans,
       explanation: item.expl,
-      topic: 'huu_co_lop11_12'
+      topic: 'huu_co_amin_aminoaxit'
     });
   }
 
@@ -917,8 +1184,16 @@ export function getLayGocHoaExamQuestions(topicId: string, examNo: number): LayG
       return generateOxiHoaKhuExam(safeNo);
     case 'su_dien_li_lop11':
       return generateSuDienLiExam(safeNo);
-    case 'huu_co_lop11_12':
-      return generateHuuCoExam(safeNo);
+    case 'huu_co_hidrocacbon':
+      return generateHidrocacbonExam(safeNo);
+    case 'huu_co_ancol_axit':
+      return generateAncolAxitExam(safeNo);
+    case 'huu_co_este_lipit':
+      return generateEsteLipitExam(safeNo);
+    case 'huu_co_cacbohidrat':
+      return generateCacbohidratExam(safeNo);
+    case 'huu_co_amin_aminoaxit':
+      return generateAminExam(safeNo);
     default:
       return generateNguyenToExam(safeNo);
   }
