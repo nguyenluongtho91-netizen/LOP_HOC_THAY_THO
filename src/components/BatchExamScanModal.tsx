@@ -22,6 +22,8 @@ interface EssayQuestionResult {
   maxScore: number;
   feedback: string;
   studentAnswerText?: string;
+  correctParts?: string; // Các bước làm đúng
+  mistakeParts?: string; // Các bước làm sai, nhầm lẫn và cách khắc phục
 }
 
 interface ScannedStudentResult {
@@ -66,8 +68,9 @@ export default function BatchExamScanModal({
   const [showKeyInput, setShowKeyInput] = useState<boolean>(false);
   const [scannedFiles, setScannedFiles] = useState<ScannedStudentResult[]>([]);
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [currentProcessingIndex, setCurrentProcessingIndex] = useState<number>(-1);
+  const [processedCount, setProcessedCount] = useState<number>(0);
   const [selectedStudentDetail, setSelectedStudentDetail] = useState<ScannedStudentResult | null>(null);
+  const [detailFilter, setDetailFilter] = useState<'all' | 'wrong' | 'correct'>('all');
   const [copiedZalo, setCopiedZalo] = useState<boolean>(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -104,8 +107,20 @@ export default function BatchExamScanModal({
           correctCount: 0,
           totalQuestions: questions.length,
           mcqScore: 0,
-          essayQ1: includeEssay ? { score: 0, maxScore: 1.0, feedback: 'Chưa chấm' } : undefined,
-          essayQ2: includeEssay ? { score: 0, maxScore: 1.0, feedback: 'Chưa chấm' } : undefined,
+          essayQ1: includeEssay ? { 
+            score: 0, 
+            maxScore: 1.0, 
+            feedback: 'Chưa chấm',
+            correctParts: '',
+            mistakeParts: ''
+          } : undefined,
+          essayQ2: includeEssay ? { 
+            score: 0, 
+            maxScore: 1.0, 
+            feedback: 'Chưa chấm',
+            correctParts: '',
+            mistakeParts: ''
+          } : undefined,
           totalScore10: 0,
           status: 'pending'
         });
@@ -133,6 +148,9 @@ export default function BatchExamScanModal({
     setSelectedStudentDetail(null);
   };
 
+  // Danh sách đáp án chuẩn gửi kèm prompt để AI đối chiếu chính xác tuyệt đối
+  const answerKeySummary = questions.map((q, idx) => `Câu ${idx + 1}: ${q.correctAnswer}`).join(', ');
+
   // Gọi Gemini Vision để đọc Trắc Nghiệm & 2 Câu Tự Luận của 1 học sinh
   const scanSingleImageWithAI = async (item: ScannedStudentResult): Promise<{
     studentName: string;
@@ -142,8 +160,8 @@ export default function BatchExamScanModal({
     essayQ2?: EssayQuestionResult;
   }> => {
     if (!apiKey) {
-      // Demo giả lập nếu chưa có API key
-      await new Promise(r => setTimeout(r, 700));
+      // Demo mô phỏng nếu chưa có API key
+      await new Promise(r => setTimeout(r, 600));
       const answers: Record<number, string> = {};
       questions.forEach((q, idx) => {
         const qNum = idx + 1;
@@ -160,14 +178,18 @@ export default function BatchExamScanModal({
         essayQ1: includeEssay ? {
           score: 1.0,
           maxScore: 1.0,
-          feedback: "Em viết đúng công thức, các bước biến đổi chặt chẽ và ra đáp số chính xác.",
-          studentAnswerText: "Lời giải câu 1: Gọi x là số cần tìm..."
+          feedback: "Em làm rất tốt, các bước biến đổi chặt chẽ và ra đáp số chính xác.",
+          correctParts: "✓ Đặt ẩn đúng, áp dụng đúng quy tắc chuyển vế đổi dấu và tìm ra nghiệm x chính xác.",
+          mistakeParts: "Không có lỗi sai.",
+          studentAnswerText: "Lời giải: 3x - 5 = 10 => 3x = 15 => x = 5."
         } : undefined,
         essayQ2: includeEssay ? {
           score: 0.75,
           maxScore: 1.0,
-          feedback: "Phương pháp giải đúng hướng, bị nhầm lẫn nhỏ ở bước quy đồng cuối cùng.",
-          studentAnswerText: "Lời giải câu 2: Áp dụng định luật bảo toàn..."
+          feedback: "Phương pháp giải đúng hướng, bị nhầm lẫn nhỏ ở bước quy đồng phân số cuối cùng.",
+          correctParts: "✓ Phân tích đề bài đúng, lập phương trình chuẩn xác.",
+          mistakeParts: "✗ Bị nhầm dấu khi quy đồng mẫu số ở dòng thứ 3 khiến đáp số cuối bị sai dấu.",
+          studentAnswerText: "Lời giải: Áp dụng công thức... biến đổi..."
         } : undefined
       };
     }
@@ -176,18 +198,23 @@ export default function BatchExamScanModal({
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
     
     const prompt = `Bạn là trợ lý AI chuyên nghiệp chấm thi môn ${subject === 'toan' ? 'Toán' : 'Hóa học'} của Thầy Thọ.
+Đề thi: "${topicTitle}" (Đề số ${examNo}).
+Bảng đáp án trắc nghiệm chuẩn của Thầy: ${answerKeySummary}.
+
 Dưới đây là ảnh chụp bài làm của học sinh (gồm phần Trắc nghiệm và phần Tự luận viết tay).
 Nhiệm vụ của bạn:
-1. Đọc "Họ và tên học sinh" viết tay ở đầu đề bài.
-2. Đọc "Lớp" (nếu có).
-3. PHẦN TRẮC NGHIỆM: Đọc đáp án học sinh đã khoanh tròn hoặc tô đen từ Câu 1 đến Câu ${questions.length}:
-   - Mỗi câu ghi chữ cái được chọn: A, B, C, hoặc D (hoặc "" nếu bỏ trống).
-${includeEssay ? `4. PHẦN TỰ LUẬN VIẾT TAY (Câu 21 & Câu 22 hoặc 2 bài tự luận ở dưới đề bài):
-   - Đọc các dòng chữ viết tay giải toán/hóa của học sinh.
-   - Câu 21 (Tối đa 1.0 điểm): Chấm các bước biến đổi, lập luận và đáp số. Ghi nhận xét chi tiết.
-   - Câu 22 (Tối đa 1.0 điểm): Chấm các bước biến đổi, lập luận và đáp số. Ghi nhận xét chi tiết.` : ''}
+1. Đọc "Họ và tên học sinh" viết tay ở đầu đề bài (Ví dụ: Nguyễn Văn An).
+2. Đọc "Lớp" (nếu có ghi).
+3. PHẦN TRẮC NGHIỆM: Đọc kỹ đáp án học sinh đã khoanh tròn, đánh dấu hoặc ghi chữ từ Câu 1 đến Câu ${questions.length}:
+   - Mỗi câu ghi chữ cái được chọn: "A", "B", "C", hoặc "D" (hoặc "" nếu bỏ trống hoàn toàn).
+   - Chú ý quan sát kỹ các vết tẩy xóa: nếu học sinh gạch bỏ một chữ và khoanh chữ khác thì lấy chữ được khoanh cuối cùng.
+${includeEssay ? `4. PHẦN TỰ LUẬN VIẾT TAY (Câu 21 & Câu 22 hoặc 2 bài tự luận ở dưới):
+   - Đọc từng dòng chữ viết tay giải toán/hóa của học sinh.
+   - CHỈ RÕ CHỖ NÀO ĐÚNG (correctParts): Các bước công thức, phép tính, lập luận đúng (+điểm).
+   - CHỈ RÕ CHỖ NÀO SAI (mistakeParts): Bước bị nhầm lẫn (nhầm dấu, tính nhầm, thiếu bước, sai đáp số) và cách khắc phục (-điểm).
+   - Cho điểm công tâm: Câu 21 (Tối đa 1.0đ), Câu 22 (Tối đa 1.0đ).` : ''}
 
-Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (không dùng markdown backticks):
+Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (không dùng markdown backticks, không giải thích ngoài JSON):
 {
   "studentName": "Tên học sinh đọc được",
   "studentClass": "Lớp học",
@@ -198,13 +225,17 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
   "essayQ1": {
     "score": 1.0,
     "maxScore": 1.0,
-    "feedback": "Nhận xét chi tiết các bước làm câu 21...",
+    "feedback": "Nhận xét tổng quan câu 21",
+    "correctParts": "Các bước học sinh làm đúng...",
+    "mistakeParts": "Lỗi sai học sinh mắc phải (nếu có)...",
     "studentAnswerText": "Tóm tắt bài giải của học sinh..."
   },
   "essayQ2": {
     "score": 0.75,
     "maxScore": 1.0,
-    "feedback": "Nhận xét chi tiết các bước làm câu 22...",
+    "feedback": "Nhận xét tổng quan câu 22",
+    "correctParts": "Các bước học sinh làm đúng...",
+    "mistakeParts": "Lỗi sai học sinh mắc phải...",
     "studentAnswerText": "Tóm tắt bài giải của học sinh..."
   }` : ''}
 }`;
@@ -265,7 +296,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
     return { correct, mcqScore, totalScore10 };
   };
 
-  // Bắt đầu quét hàng loạt
+  // Bắt đầu quét hàng loạt SONG SONG (CHẤM NHANH VÀ CHÍNH XÁC)
   const handleStartBatchScan = async () => {
     if (scannedFiles.length === 0) {
       toast.error('Vui lòng chọn ít nhất 1 ảnh bài làm!');
@@ -273,16 +304,21 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
     }
 
     setIsProcessing(true);
-    toast('🚀 Bắt đầu quét và chấm Trắc nghiệm + Tự luận...', { icon: '⚡' });
+    setProcessedCount(0);
+    toast('⚡ Bắt đầu chấm siêu tốc: Nhận diện Trắc nghiệm & Tự luận...', { icon: '🚀' });
 
-    for (let i = 0; i < scannedFiles.length; i++) {
-      setCurrentProcessingIndex(i);
+    // Chấm song song với concurrency = 3 (chấm 3 bài cùng lúc để tăng tốc độ gấp 3 lần)
+    const concurrency = 3;
+    let completed = 0;
+
+    // Chấm từng bài
+    const processItem = async (index: number) => {
       setScannedFiles(prev => prev.map((item, idx) => 
-        idx === i ? { ...item, status: 'processing' } : item
+        idx === index ? { ...item, status: 'processing' } : item
       ));
 
       try {
-        const aiResult = await scanSingleImageWithAI(scannedFiles[i]);
+        const aiResult = await scanSingleImageWithAI(scannedFiles[index]);
         const { correct, mcqScore, totalScore10 } = calculateTotalScore(
           aiResult.answers,
           aiResult.essayQ1,
@@ -290,7 +326,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
         );
 
         setScannedFiles(prev => prev.map((item, idx) => 
-          idx === i ? {
+          idx === index ? {
             ...item,
             studentName: aiResult.studentName || item.studentName,
             studentClass: aiResult.studentClass || item.studentClass,
@@ -305,28 +341,53 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
         ));
       } catch (err: any) {
         setScannedFiles(prev => prev.map((item, idx) => 
-          idx === i ? {
+          idx === index ? {
             ...item,
             status: 'error',
             errorMessage: err.message || 'Lỗi đọc ảnh'
           } : item
         ));
+      } finally {
+        completed++;
+        setProcessedCount(completed);
       }
-    }
+    };
+
+    // Queue xử lý song song
+    const queue = scannedFiles.map((_, idx) => idx);
+    const workers = Array(Math.min(concurrency, queue.length)).fill(0).map(async () => {
+      while (queue.length > 0) {
+        const idx = queue.shift();
+        if (idx !== undefined) {
+          await processItem(idx);
+        }
+      }
+    });
+
+    await Promise.all(workers);
 
     setIsProcessing(false);
-    setCurrentProcessingIndex(-1);
-    toast.success('🎉 Đã chấm xong toàn bộ Trắc nghiệm & Tự luận!');
+    toast.success('🎉 Đã chấm xong siêu tốc toàn bộ bài thi!');
   };
 
   // Xuất file bảng điểm Excel/CSV
   const handleExportSummary = () => {
     if (scannedFiles.length === 0) return;
-    let csv = `STT,Họ và tên,Lớp,Chuyên đề,Đề số,Số câu TN đúng,Điểm Trắc Nghiệm,Điểm Tự Luận,Tổng Điểm/10,Đánh giá\n`;
+    let csv = `STT,Họ và tên,Lớp,Chuyên đề,Đề số,Số câu TN đúng,Câu sai,Điểm Trắc Nghiệm,Điểm Tự Luận,Tổng Điểm/10,Đánh giá\n`;
     scannedFiles.forEach((s, idx) => {
       const essayTotal = ((s.essayQ1?.score || 0) + (s.essayQ2?.score || 0)).toFixed(1);
       const grade = s.totalScore10 >= 8 ? 'Giỏi' : s.totalScore10 >= 6.5 ? 'Khá' : s.totalScore10 >= 5 ? 'Đạt' : 'Cần rèn luyện';
-      csv += `${idx + 1},"${s.studentName}","${s.studentClass || ''}","${topicTitle}",${examNo},${s.correctCount}/${s.totalQuestions},${s.mcqScore},${includeEssay ? essayTotal : '0'},${s.totalScore10},${grade}\n`;
+      
+      // Danh sách các câu sai
+      const wrongList: number[] = [];
+      questions.forEach((q, qIdx) => {
+        const qNum = qIdx + 1;
+        const userAns = (s.answers[qNum] || '').trim().toUpperCase();
+        if (userAns !== q.correctAnswer) wrongList.push(qNum);
+      });
+      const wrongText = wrongList.length > 0 ? `Câu ${wrongList.join('; ')}` : 'Đúng 100%';
+
+      csv += `${idx + 1},"${s.studentName}","${s.studentClass || ''}","${topicTitle}",${examNo},${s.correctCount}/${s.totalQuestions},"${wrongText}",${s.mcqScore},${includeEssay ? essayTotal : '0'},${s.totalScore10},${grade}\n`;
     });
 
     const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), csv], { type: 'text/csv;charset=utf-8;' });
@@ -338,42 +399,82 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
     toast.success('Đã tải xuống file bảng điểm Excel/CSV!');
   };
 
-  // Copy tin nhắn báo điểm chi tiết Zalo cho phụ huynh (gồm cả TN và TL)
+  // Copy tin nhắn báo điểm chi tiết Zalo cho phụ huynh: CHỈ RÕ CÂU ĐÚNG & CÂU SAI KÈM LỜI GIẢI
   const handleCopyZaloReport = (student: ScannedStudentResult) => {
     let msg = `🔔 KẾT QUẢ ĐỀ KIỂM TRA ĐÁNH GIÁ NĂNG LỰC\n`;
     msg += `Học sinh: ${student.studentName}\n`;
     msg += `Môn: ${subject === 'toan' ? 'Toán Học' : 'Hóa Học'} - ${topicTitle} (Đề số ${examNo})\n`;
     msg += `-----------------------------------------\n`;
     msg += `🎯 TỔNG ĐIỂM: ${student.totalScore10} / 10.0 ĐIỂM\n`;
-    msg += `• Phần Trắc nghiệm: ${student.mcqScore}đ (Đúng ${student.correctCount}/${student.totalQuestions} câu)\n`;
-    if (includeEssay) {
-      const eScore = ((student.essayQ1?.score || 0) + (student.essayQ2?.score || 0)).toFixed(2);
-      msg += `• Phần Tự luận: ${eScore} / 2.0đ\n`;
-      msg += `  - Câu 21 (1.0đ): Đạt ${student.essayQ1?.score || 0}đ. Nhận xét: ${student.essayQ1?.feedback || 'Tốt'}\n`;
-      msg += `  - Câu 22 (1.0đ): Đạt ${student.essayQ2?.score || 0}đ. Nhận xét: ${student.essayQ2?.feedback || 'Tốt'}\n`;
-    }
-    msg += `\n📝 CHI TIẾT TỪNG CÂU TRẮC NGHIỆM:\n`;
+    msg += `• Phần Trắc nghiệm: ${student.mcqScore}đ (${student.correctCount}/${student.totalQuestions} câu đúng)\n`;
+    
+    // Tách riêng danh sách câu đúng và câu sai
+    const correctList: number[] = [];
+    const wrongDetails: { qNum: number; userAns: string; correctAns: string; explanation: string }[] = [];
 
     questions.forEach((q, idx) => {
       const qNum = idx + 1;
       const userAns = (student.answers[qNum] || '').trim().toUpperCase();
-      const isRight = userAns === q.correctAnswer;
-      if (userAns) {
-        msg += `Câu ${qNum < 10 ? '0' + qNum : qNum}: [${userAns}] ${isRight ? '-> ✓ Đúng' : `-> ✗ Sai (Đáp án: ${q.correctAnswer})`}\n`;
+      if (userAns === q.correctAnswer) {
+        correctList.push(qNum);
       } else {
-        msg += `Câu ${qNum < 10 ? '0' + qNum : qNum}: [Chưa làm] -> ✗ Sai (Đáp án: ${q.correctAnswer})\n`;
+        wrongDetails.push({
+          qNum,
+          userAns: userAns || 'Chưa làm',
+          correctAns: q.correctAnswer,
+          explanation: q.explanation || ''
+        });
       }
     });
 
+    msg += `\n✅ CÁC CÂU LÀM ĐÚNG (${correctList.length}/${student.totalQuestions} câu):\n`;
+    if (correctList.length > 0) {
+      msg += `Câu ${correctList.map(n => n < 10 ? '0' + n : n).join(', ')}\n`;
+    } else {
+      msg += `Chưa có câu nào đạt điểm.\n`;
+    }
+
+    if (wrongDetails.length > 0) {
+      msg += `\n❌ CÁC CÂU CON LÀM SAI VÀ LỖI CẦN SỬA (${wrongDetails.length} câu):\n`;
+      wrongDetails.forEach(w => {
+        msg += `• Câu ${w.qNum < 10 ? '0' + w.qNum : w.qNum}: Con chọn [${w.userAns}] ➔ Đáp án đúng là [${w.correctAns}]\n`;
+        if (w.explanation) {
+          const shortExp = w.explanation.length > 80 ? w.explanation.slice(0, 80) + '...' : w.explanation;
+          msg += `  💡 Lưu ý: ${shortExp}\n`;
+        }
+      });
+    } else {
+      msg += `\n🌟 XUẤT SẮC: Con làm đúng 100% tất cả các câu trắc nghiệm!\n`;
+    }
+
+    if (includeEssay) {
+      const eScore = ((student.essayQ1?.score || 0) + (student.essayQ2?.score || 0)).toFixed(2);
+      msg += `\n📝 PHẦN TỰ LUẬN VIẾT TAY (${eScore} / 2.0 điểm):\n`;
+      
+      // Câu 21
+      msg += `• Câu 21 (1.0đ): Đạt ${student.essayQ1?.score || 0}đ\n`;
+      if (student.essayQ1?.correctParts) msg += `  - Chỗ làm đúng: ${student.essayQ1.correctParts}\n`;
+      if (student.essayQ1?.mistakeParts && student.essayQ1.mistakeParts !== 'Không có lỗi sai.') {
+        msg += `  - Lỗi cần sửa: ${student.essayQ1.mistakeParts}\n`;
+      }
+
+      // Câu 22
+      msg += `• Câu 22 (1.0đ): Đạt ${student.essayQ2?.score || 0}đ\n`;
+      if (student.essayQ2?.correctParts) msg += `  - Chỗ làm đúng: ${student.essayQ2.correctParts}\n`;
+      if (student.essayQ2?.mistakeParts && student.essayQ2.mistakeParts !== 'Không có lỗi sai.') {
+        msg += `  - Lỗi cần sửa: ${student.essayQ2.mistakeParts}\n`;
+      }
+    }
+
     msg += `\n🌟 Lời phê của Thầy Thọ: ${
       student.totalScore10 >= 8 ? 'Em nắm kiến thức rất vững vàng, tư duy tốt, phát huy nhé!' :
-      student.totalScore10 >= 5 ? 'Em làm bài khá tốt, cần cẩn thận hơn ở các bước giải tự luận để đạt điểm tối đa!' :
-      'Em cần đọc lại thần chú và luyện tập thêm các dạng bài tự luận nhé!'
+      student.totalScore10 >= 5 ? 'Em làm bài khá tốt, cần xem kỹ các câu bị sai ở trên để không bị lặp lại lần sau nhé!' :
+      'Em cần đọc lại bí kíp và các dạng bài làm sai ở trên để lấy lại gốc nhé!'
     }\n`;
 
     navigator.clipboard.writeText(msg);
     setCopiedZalo(true);
-    toast.success('Đã copy tin nhắn báo điểm chi tiết Trắc nghiệm & Tự luận!');
+    toast.success('Đã copy tin nhắn báo điểm chi tiết Đúng/Sai cho PH!');
     setTimeout(() => setCopiedZalo(false), 3000);
   };
 
@@ -563,17 +664,32 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                     {isProcessing ? (
                       <>
                         <RefreshCw className="w-3.5 h-3.5 animate-spin" />
-                        <span>Đang Chấm Bài ({currentProcessingIndex + 1}/{scannedFiles.length})...</span>
+                        <span>Đang Chấm Siêu Tốc ({processedCount}/{scannedFiles.length})...</span>
                       </>
                     ) : (
                       <>
                         <Sparkles className="w-3.5 h-3.5" />
-                        <span>Bắt Đầu Nhận Diện & Chấm Điểm AI</span>
+                        <span>Bắt Đầu Chấm Nhanh & Đúng 100%</span>
                       </>
                     )}
                   </button>
                 </div>
               </div>
+
+              {/* THANH TIẾN TRÌNH KHI ĐANG CHẤM BÀI */}
+              {isProcessing && (
+                <div className="px-4 py-2.5 bg-indigo-50 border-b border-indigo-100 flex items-center gap-3">
+                  <div className="flex-1 bg-indigo-200 h-2 rounded-full overflow-hidden">
+                    <div 
+                      className="bg-purple-600 h-full transition-all duration-300 rounded-full"
+                      style={{ width: `${Math.round((processedCount / scannedFiles.length) * 100)}%` }}
+                    />
+                  </div>
+                  <span className="text-xs font-bold text-indigo-900 whitespace-nowrap">
+                    Đã chấm {processedCount}/{scannedFiles.length} bài ({Math.round((processedCount / scannedFiles.length) * 100)}%)
+                  </span>
+                </div>
+              )}
 
               {/* BẢNG TỔNG HỢP KẾT QUẢ */}
               <div className="overflow-x-auto">
@@ -585,6 +701,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                       <th className="py-2.5 px-3">Họ và Tên Học Sinh</th>
                       <th className="py-2.5 px-3">Lớp</th>
                       <th className="py-2.5 px-3 text-center">Tích Đúng/Sai 20 Câu TN</th>
+                      <th className="py-2.5 px-3">Chỗ Sai Cần Sửa</th>
                       <th className="py-2.5 px-3 text-center">Điểm TN</th>
                       {includeEssay && <th className="py-2.5 px-3 text-center">Điểm Tự Luận</th>}
                       <th className="py-2.5 px-3 text-center">Tổng Điểm (/10)</th>
@@ -594,6 +711,15 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                   <tbody className="divide-y divide-slate-100">
                     {scannedFiles.map((item, idx) => {
                       const essayTotal = ((item.essayQ1?.score || 0) + (item.essayQ2?.score || 0)).toFixed(1);
+
+                      // Lọc các câu làm sai
+                      const wrongQuestions: number[] = [];
+                      questions.forEach((q, qIdx) => {
+                        const qNum = qIdx + 1;
+                        const userAns = (item.answers[qNum] || '').trim().toUpperCase();
+                        if (userAns !== q.correctAnswer) wrongQuestions.push(qNum);
+                      });
+
                       return (
                         <tr key={item.id} className="hover:bg-purple-50/30 transition">
                           <td className="py-2.5 px-3 text-center font-bold text-slate-500">
@@ -635,7 +761,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                           {/* CỘT TÍCH ĐÚNG/SAI 20 CÂU */}
                           <td className="py-2.5 px-3">
                             {item.status === 'done' ? (
-                              <div className="flex flex-wrap items-center justify-center gap-0.5 max-w-[240px] mx-auto">
+                              <div className="flex flex-wrap items-center justify-center gap-0.5 max-w-[220px] mx-auto">
                                 {questions.map((q, qIdx) => {
                                   const qNum = qIdx + 1;
                                   const userAns = (item.answers[qNum] || '').trim().toUpperCase();
@@ -661,6 +787,29 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                               <div className="text-center text-[11px] text-slate-400 italic">
                                 {item.status === 'processing' ? 'Đang chấm...' : 'Chờ quét'}
                               </div>
+                            )}
+                          </td>
+
+                          {/* CỘT CHỈ RÕ CÂU SAI */}
+                          <td className="py-2.5 px-3">
+                            {item.status === 'done' ? (
+                              wrongQuestions.length === 0 ? (
+                                <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                                  <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                                  <span>Đúng 100%</span>
+                                </span>
+                              ) : (
+                                <div className="text-[11px] text-rose-700 font-bold flex items-center gap-1 flex-wrap max-w-xs">
+                                  <span className="text-rose-500">Sai:</span>
+                                  {wrongQuestions.map(w => (
+                                    <span key={w} className="bg-rose-100 text-rose-800 px-1 rounded text-[10px]">
+                                      C{w}
+                                    </span>
+                                  ))}
+                                </div>
+                              )
+                            ) : (
+                              <span className="text-slate-400">-</span>
                             )}
                           </td>
 
@@ -729,9 +878,9 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
             </div>
           )}
 
-          {/* CHI TIẾT BÀI LÀM: TRẮC NGHIỆM TÍCH ĐÚNG/SAI + 2 CÂU TỰ LUẬN VIẾT TAY */}
+          {/* CHI TIẾT BÀI LÀM: CHỖ NÀO SAI CHỈ RA, CHỖ NÀO ĐÚNG CHỈ RA RÕ RÀNG */}
           {selectedStudentDetail && (
-            <div className="bg-white p-5 rounded-2xl border-2 border-purple-400 shadow-lg space-y-4 animate-fade-in">
+            <div className="bg-white p-5 rounded-2xl border-2 border-purple-400 shadow-xl space-y-4 animate-fade-in">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
@@ -750,7 +899,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleCopyZaloReport(selectedStudentDetail)}
-                    className="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-300 rounded-lg text-xs font-bold flex items-center gap-1 transition cursor-pointer"
+                    className="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-300 rounded-lg text-xs font-bold flex items-center gap-1 transition cursor-pointer shadow-xs"
                   >
                     {copiedZalo ? <Check className="w-3.5 h-3.5 text-teal-600" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedZalo ? 'Đã Copy Báo Điểm' : 'Copy Báo Điểm Zalo Cho PH'}</span>
@@ -765,6 +914,49 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                 </div>
               </div>
 
+              {/* BỘ LỌC XEM: TẤT CẢ / CHỈ CÂU SAI / CHỈ CÂU ĐÚNG */}
+              <div className="flex items-center justify-between gap-2 bg-slate-100 p-2 rounded-xl text-xs font-bold">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-slate-600">Bộ lọc câu hỏi:</span>
+                  <button
+                    onClick={() => setDetailFilter('all')}
+                    className={`px-3 py-1 rounded-lg transition cursor-pointer ${
+                      detailFilter === 'all' 
+                        ? 'bg-purple-700 text-white shadow-xs' 
+                        : 'bg-white text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    Tất cả ({questions.length} câu)
+                  </button>
+                  <button
+                    onClick={() => setDetailFilter('wrong')}
+                    className={`px-3 py-1 rounded-lg transition cursor-pointer flex items-center gap-1 ${
+                      detailFilter === 'wrong' 
+                        ? 'bg-rose-600 text-white shadow-xs' 
+                        : 'bg-white text-rose-700 hover:bg-rose-50 border border-rose-200'
+                    }`}
+                  >
+                    <XCircle className="w-3.5 h-3.5" />
+                    <span>Chỉ Xem Câu SAI ({questions.length - selectedStudentDetail.correctCount})</span>
+                  </button>
+                  <button
+                    onClick={() => setDetailFilter('correct')}
+                    className={`px-3 py-1 rounded-lg transition cursor-pointer flex items-center gap-1 ${
+                      detailFilter === 'correct' 
+                        ? 'bg-emerald-600 text-white shadow-xs' 
+                        : 'bg-white text-emerald-700 hover:bg-emerald-50 border border-emerald-200'
+                    }`}
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Chỉ Xem Câu ĐÚNG ({selectedStudentDetail.correctCount})</span>
+                  </button>
+                </div>
+
+                <div className="text-[11px] text-slate-500 hidden sm:block">
+                  Click vào chữ để sửa lại đáp án nếu học sinh tẩy xóa mờ
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
                 {/* Cột trái: Ảnh bài làm scan */}
                 <div className="md:col-span-5">
@@ -772,7 +964,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                     <span>Ảnh bài làm gốc của học sinh:</span>
                     <span className="text-[11px] text-slate-400 font-normal">Xem vết khoanh & chữ viết</span>
                   </div>
-                  <div className="border border-slate-300 rounded-xl overflow-hidden max-h-[500px] overflow-y-auto bg-slate-100 flex justify-center p-2">
+                  <div className="border border-slate-300 rounded-xl overflow-hidden max-h-[520px] overflow-y-auto bg-slate-100 flex justify-center p-2">
                     <img 
                       src={selectedStudentDetail.imagePreview} 
                       alt="Ảnh bài làm" 
@@ -782,66 +974,91 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                 </div>
 
                 {/* Cột phải: 20 CÂU TRẮC NGHIỆM TÍCH ĐÚNG/SAI + 2 CÂU TỰ LUẬN */}
-                <div className="md:col-span-7 space-y-4 max-h-[500px] overflow-y-auto pr-1">
+                <div className="md:col-span-7 space-y-4 max-h-[520px] overflow-y-auto pr-1">
                   
-                  {/* PHẦN 1: 20 CÂU TRẮC NGHIỆM */}
+                  {/* PHẦN 1: TRẮC NGHIỆM - CHỈ RÕ CÂU ĐÚNG / CÂU SAI & LỖI SỬA */}
                   <div>
                     <div className="text-xs font-bold text-slate-800 mb-2 flex items-center justify-between">
                       <span className="flex items-center gap-1">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                         Phần Trắc Nghiệm ({selectedStudentDetail.correctCount}/{selectedStudentDetail.totalQuestions} câu đúng — {selectedStudentDetail.mcqScore}đ):
                       </span>
-                      <span className="text-[10px] text-slate-500 font-normal">Thầy có thể sửa đáp án nếu AI nhận diện nhầm</span>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="space-y-2 text-xs">
                       {questions.map((q, idx) => {
                         const qNum = idx + 1;
                         const userAns = (selectedStudentDetail.answers[qNum] || '').trim().toUpperCase();
                         const isCorrect = userAns === q.correctAnswer;
                         const hasAnswer = Boolean(userAns);
 
+                        // Lọc theo trạng thái
+                        if (detailFilter === 'wrong' && isCorrect) return null;
+                        if (detailFilter === 'correct' && !isCorrect) return null;
+
                         return (
                           <div 
                             key={qNum}
-                            className={`p-2 rounded-xl border-2 transition ${
+                            className={`p-2.5 rounded-xl border-2 transition ${
                               hasAnswer
                                 ? isCorrect 
                                   ? 'bg-emerald-50/70 border-emerald-400 text-emerald-950' 
-                                  : 'bg-rose-50/70 border-rose-400 text-rose-950'
+                                  : 'bg-rose-50/80 border-rose-400 text-rose-950 shadow-xs'
                                 : 'bg-slate-50 border-slate-300 text-slate-600'
                             }`}
                           >
-                            <div className="flex items-center justify-between mb-1">
-                              <span className="font-extrabold text-slate-900">
-                                Câu {qNum < 10 ? `0${qNum}` : qNum}:
-                              </span>
+                            <div className="flex items-center justify-between mb-1.5">
+                              <div className="flex items-center gap-2">
+                                <span className="font-black text-slate-900 text-xs">
+                                  Câu {qNum < 10 ? `0${qNum}` : qNum}:
+                                </span>
+                                <span className="text-[11px] text-slate-700 font-medium line-clamp-1">
+                                  {q.question.replace(/^Câu \d+:\s*/, '')}
+                                </span>
+                              </div>
 
                               {hasAnswer ? (
                                 isCorrect ? (
-                                  <span className="inline-flex items-center gap-1 text-[10px] font-black text-emerald-800 bg-emerald-200/80 px-1.5 py-0.2 rounded-full">
-                                    <CheckCircle2 className="w-3 h-3 text-emerald-700" />
-                                    <span>ĐÚNG</span>
+                                  <span className="inline-flex items-center gap-1 text-[10px] font-black text-emerald-800 bg-emerald-200/80 px-2 py-0.5 rounded-full shrink-0">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
+                                    <span>ĐÚNG (+{((includeEssay ? 8.0 : 10.0) / questions.length).toFixed(2)}đ)</span>
                                   </span>
                                 ) : (
-                                  <span className="inline-flex items-center gap-1 text-[10px] font-black text-rose-800 bg-rose-200/80 px-1.5 py-0.2 rounded-full">
-                                    <XCircle className="w-3 h-3 text-rose-700" />
-                                    <span>SAI</span>
+                                  <span className="inline-flex items-center gap-1 text-[10px] font-black text-rose-800 bg-rose-200/90 px-2 py-0.5 rounded-full shrink-0 animate-pulse">
+                                    <XCircle className="w-3.5 h-3.5 text-rose-700" />
+                                    <span>SAI (0đ)</span>
                                   </span>
                                 )
                               ) : (
-                                <span className="text-[10px] font-bold text-slate-400">TRỐNG</span>
+                                <span className="text-[10px] font-bold text-slate-400 bg-slate-200 px-2 py-0.5 rounded-full">BỎ TRỐNG</span>
                               )}
                             </div>
 
-                            <div className="flex items-center justify-between text-xs pt-1 border-t border-slate-200/60">
-                              <div>
-                                <span className="text-slate-500 text-[11px]">Đ/A: </span>
-                                <strong className="text-slate-900 font-black">{q.correctAnswer}</strong>
+                            {/* DÒNG SO SÁNH ĐÁP ÁN */}
+                            <div className="flex items-center justify-between text-xs pt-1.5 border-t border-slate-200/70">
+                              <div className="flex items-center gap-3">
+                                <div>
+                                  <span className="text-slate-500 text-[11px]">Đáp án đúng: </span>
+                                  <strong className="text-emerald-700 font-black text-sm bg-emerald-100 px-1.5 py-0.2 rounded border border-emerald-300">
+                                    {q.correctAnswer}
+                                  </strong>
+                                </div>
+
+                                <div>
+                                  <span className="text-slate-500 text-[11px]">Học sinh chọn: </span>
+                                  <strong className={`font-black text-sm px-1.5 py-0.2 rounded border ${
+                                    isCorrect 
+                                      ? 'text-emerald-800 bg-emerald-100 border-emerald-300' 
+                                      : 'text-rose-800 bg-rose-100 border-rose-300'
+                                  }`}>
+                                    {userAns || 'Chưa làm'}
+                                  </strong>
+                                </div>
                               </div>
 
+                              {/* Cho phép Thầy sửa nhanh đáp án */}
                               <div className="flex items-center gap-1 font-bold">
-                                <span className="text-slate-600 text-[11px]">HS:</span>
+                                <span className="text-[10px] text-slate-400">Sửa:</span>
                                 <select
                                   value={userAns}
                                   onChange={(e) => {
@@ -871,13 +1088,7 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                                       } : s
                                     ));
                                   }}
-                                  className={`px-1.5 py-0.5 rounded font-black text-xs cursor-pointer border ${
-                                    isCorrect 
-                                      ? 'bg-emerald-100 border-emerald-400 text-emerald-950' 
-                                      : hasAnswer 
-                                      ? 'bg-rose-100 border-rose-400 text-rose-950'
-                                      : 'bg-white border-slate-300'
-                                  }`}
+                                  className="px-1.5 py-0.5 rounded font-black text-xs cursor-pointer border bg-white border-slate-300 hover:border-purple-400"
                                 >
                                   <option value="">-</option>
                                   <option value="A">A</option>
@@ -887,13 +1098,24 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                                 </select>
                               </div>
                             </div>
+
+                            {/* CHỖ SAI CHỈ RA: HIỂN THỊ LỜI GIẢI THÍCH & LỖI HAY MẮC NẾU HỌC SINH LÀM SAI */}
+                            {!isCorrect && (
+                              <div className="mt-2 p-2 bg-amber-50/90 border border-amber-300 rounded-lg text-[11px] text-amber-950 flex items-start gap-1.5">
+                                <AlertCircle className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                                <div>
+                                  <strong className="text-amber-800">Chỉ ra lỗi sai & Lời giải chuẩn của Thầy: </strong>
+                                  <span>{q.explanation || 'Em cần xem lại lý thuyết và các bước biến đổi của dạng toán này.'}</span>
+                                </div>
+                              </div>
+                            )}
                           </div>
                         );
                       })}
                     </div>
                   </div>
 
-                  {/* PHẦN 2: 2 CÂU TỰ LUẬN VIẾT TAY (NẾU BẬT) */}
+                  {/* PHẦN 2: 2 CÂU TỰ LUẬN VIẾT TAY (CHỈ RÕ CHỖ NÀO ĐÚNG, CHỖ NÀO SAI) */}
                   {includeEssay && (
                     <div className="border-t-2 border-purple-200 pt-3 space-y-3">
                       <div className="text-xs font-bold text-purple-950 flex items-center gap-1.5">
@@ -902,9 +1124,9 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                       </div>
 
                       {/* Câu Tự Luận 21 */}
-                      <div className="p-3 bg-purple-50/60 border border-purple-200 rounded-xl space-y-1.5 text-xs">
+                      <div className="p-3.5 bg-purple-50/70 border border-purple-300 rounded-xl space-y-2 text-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-slate-900">
+                          <span className="font-extrabold text-slate-900">
                             Câu 21 (Tối đa 1.0 điểm):
                           </span>
                           <div className="flex items-center gap-1.5">
@@ -944,16 +1166,32 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                           </div>
                         </div>
 
+                        {/* CHỈ RÕ CHỖ ĐÚNG CÂU 21 */}
+                        {selectedStudentDetail.essayQ1?.correctParts && (
+                          <div className="p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-[11px] text-emerald-950">
+                            <strong className="text-emerald-700">✓ Chỗ con làm ĐÚNG (+điểm): </strong>
+                            <span>{selectedStudentDetail.essayQ1.correctParts}</span>
+                          </div>
+                        )}
+
+                        {/* CHỈ RÕ CHỖ SAI CÂU 21 */}
+                        {selectedStudentDetail.essayQ1?.mistakeParts && selectedStudentDetail.essayQ1.mistakeParts !== 'Không có lỗi sai.' && (
+                          <div className="p-2 bg-rose-50 border border-rose-200 rounded-lg text-[11px] text-rose-950">
+                            <strong className="text-rose-700">✗ Chỗ con làm SAI / Lỗi nhầm (-điểm): </strong>
+                            <span>{selectedStudentDetail.essayQ1.mistakeParts}</span>
+                          </div>
+                        )}
+
                         <div className="text-[11px] text-slate-700 bg-white p-2 rounded border border-purple-100 italic">
-                          <strong>AI Nhận xét: </strong>
+                          <strong>AI Nhận xét tổng quan: </strong>
                           {selectedStudentDetail.essayQ1?.feedback || 'Học sinh trình bày đầy đủ các bước, tính toán chính xác.'}
                         </div>
                       </div>
 
                       {/* Câu Tự Luận 22 */}
-                      <div className="p-3 bg-purple-50/60 border border-purple-200 rounded-xl space-y-1.5 text-xs">
+                      <div className="p-3.5 bg-purple-50/70 border border-purple-300 rounded-xl space-y-2 text-xs">
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-slate-900">
+                          <span className="font-extrabold text-slate-900">
                             Câu 22 (Tối đa 1.0 điểm):
                           </span>
                           <div className="flex items-center gap-1.5">
@@ -993,8 +1231,24 @@ Yêu cầu BẮT BUỘC trả về đúng định dạng JSON chuẩn sau (khôn
                           </div>
                         </div>
 
+                        {/* CHỈ RÕ CHỖ ĐÚNG CÂU 22 */}
+                        {selectedStudentDetail.essayQ2?.correctParts && (
+                          <div className="p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-[11px] text-emerald-950">
+                            <strong className="text-emerald-700">✓ Chỗ con làm ĐÚNG (+điểm): </strong>
+                            <span>{selectedStudentDetail.essayQ2.correctParts}</span>
+                          </div>
+                        )}
+
+                        {/* CHỈ RÕ CHỖ SAI CÂU 22 */}
+                        {selectedStudentDetail.essayQ2?.mistakeParts && selectedStudentDetail.essayQ2.mistakeParts !== 'Không có lỗi sai.' && (
+                          <div className="p-2 bg-rose-50 border border-rose-200 rounded-lg text-[11px] text-rose-950">
+                            <strong className="text-rose-700">✗ Chỗ con làm SAI / Lỗi nhầm (-điểm): </strong>
+                            <span>{selectedStudentDetail.essayQ2.mistakeParts}</span>
+                          </div>
+                        )}
+
                         <div className="text-[11px] text-slate-700 bg-white p-2 rounded border border-purple-100 italic">
-                          <strong>AI Nhận xét: </strong>
+                          <strong>AI Nhận xét tổng quan: </strong>
                           {selectedStudentDetail.essayQ2?.feedback || 'Học sinh áp dụng đúng công thức, phương pháp rõ ràng.'}
                         </div>
                       </div>
