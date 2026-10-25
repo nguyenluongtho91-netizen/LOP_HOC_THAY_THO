@@ -29,7 +29,7 @@ export default function ExamRoomsMgmt() {
   const navigate = useNavigate()
   const { rooms, loading, loadRooms, createRoom, updateRoomStatus, updateRoom, deleteRoom } = useExamRoomStore()
   const { exams, loadExams } = useExamStore()
-  const { classes, loadClasses, enrollments, loadEnrollments } = useDataStore()
+  const { classes, loadClasses, enrollments, loadEnrollments, students, loadStudents } = useDataStore()
 
   const [modalOpen, setModalOpen] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -52,6 +52,7 @@ export default function ExamRoomsMgmt() {
       antiCheat: boolean;
       opens_at: string;
       closes_at: string;
+      assigned_student_ids?: string[];
     };
   }>({
     exam_id: '',
@@ -66,7 +67,8 @@ export default function ExamRoomsMgmt() {
       passcode: '',
       antiCheat: true,
       opens_at: '',
-      closes_at: ''
+      closes_at: '',
+      assigned_student_ids: []
     }
   })
 
@@ -75,7 +77,8 @@ export default function ExamRoomsMgmt() {
     void loadExams()
     void loadClasses()
     void loadEnrollments()
-  }, [loadRooms, loadExams, loadClasses, loadEnrollments])
+    void loadStudents()
+  }, [loadRooms, loadExams, loadClasses, loadEnrollments, loadStudents])
 
   const handleSave = async () => {
     if (!modalGrade) return toast.error('Vui lòng chọn khối lớp')
@@ -108,8 +111,9 @@ export default function ExamRoomsMgmt() {
           passcode: '',
           antiCheat: true,
           opens_at: '',
-          closes_at: ''
-        } 
+          closes_at: '',
+          assigned_student_ids: []
+        }
       })
     } catch (e: any) {
       toast.error(editingRoomId ? 'Lỗi khi cập nhật phòng thi' : 'Lỗi khi mở phòng thi')
@@ -134,7 +138,8 @@ export default function ExamRoomsMgmt() {
         passcode: room.settings?.passcode || '',
         antiCheat: room.settings?.antiCheat ?? true,
         opens_at: room.settings?.opens_at || room.opens_at || '',
-        closes_at: room.settings?.closes_at || room.closes_at || ''
+        closes_at: room.settings?.closes_at || room.closes_at || '',
+        assigned_student_ids: room.settings?.assigned_student_ids || []
       }
     })
     setModalOpen(true)
@@ -295,6 +300,13 @@ export default function ExamRoomsMgmt() {
   const filteredClasses = modalGrade
     ? classes.filter(c => c.status === 'active' && getClassGrade(c) === modalGrade)
     : classes.filter(c => c.status === 'active')
+
+  const classStudents = form.class_id
+    ? students.filter(s => {
+        const studentEnrollments = enrollments.filter(e => e.class_id === form.class_id && e.status !== 'inactive')
+        return studentEnrollments.some(e => e.student_id === s.id)
+      })
+    : []
 
   const getClassName = (cls: any) => cls?.class_name || cls?.name || 'Chưa rõ'
 
@@ -713,6 +725,97 @@ export default function ExamRoomsMgmt() {
               ))}
             </select>
           </div>
+
+          {/* 🎯 CHỈ ĐỊNH ĐÍCH DANH HỌC SINH */}
+          {form.class_id && (
+            <div className="p-4 bg-teal-50/50 border border-teal-200/80 rounded-2xl space-y-3">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-teal-800 uppercase tracking-wide flex items-center gap-1.5">
+                  <span>🎯</span> Chỉ định học sinh làm bài ({classStudents.length} em):
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const allIds = classStudents.map(s => s.id)
+                      setForm(prev => ({
+                        ...prev,
+                        settings: { ...prev.settings, assigned_student_ids: allIds }
+                      }))
+                    }}
+                    className="text-[11px] font-bold text-teal-700 hover:text-teal-900 hover:underline"
+                  >
+                    Chọn cả lớp
+                  </button>
+                  <span className="text-slate-300">|</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForm(prev => ({
+                        ...prev,
+                        settings: { ...prev.settings, assigned_student_ids: [] }
+                      }))
+                    }}
+                    className="text-[11px] font-bold text-rose-500 hover:text-rose-700 hover:underline"
+                  >
+                    Bỏ chọn hết
+                  </button>
+                </div>
+              </div>
+
+              <div className="text-[11px] text-slate-500 leading-tight">
+                {(!form.settings.assigned_student_ids || form.settings.assigned_student_ids.length === 0) ? (
+                  <span className="text-amber-700 font-medium">
+                    ⚠️ <strong>Mặc định (Cả lớp):</strong> Mọi học sinh trong lớp đều có thể làm bài. Hãy tích chọn riêng nếu Thầy chỉ định cụ thể từng em (ví dụ em yếu môn Toán).
+                  </span>
+                ) : (
+                  <span className="text-teal-700 font-bold">
+                    ✅ <strong>Đã chỉ định {form.settings.assigned_student_ids.length} học sinh:</strong> Chỉ những em được tích chọn mới nhìn thấy bài thi này trong tài khoản.
+                  </span>
+                )}
+              </div>
+
+              {classStudents.length > 0 ? (
+                <div className="max-h-48 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2.5 bg-white rounded-xl border border-teal-100">
+                  {classStudents.map(s => {
+                    const isChecked = (form.settings.assigned_student_ids || []).includes(s.id)
+                    return (
+                      <label
+                        key={s.id}
+                        className={`flex items-center gap-2 p-2 rounded-lg border text-xs cursor-pointer transition select-none ${
+                          isChecked 
+                            ? 'bg-teal-50 border-teal-300 text-teal-900 font-bold shadow-xs' 
+                            : 'bg-white border-slate-100 hover:bg-slate-50 text-slate-700'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={e => {
+                            const current = form.settings.assigned_student_ids || []
+                            const updated = e.target.checked 
+                              ? [...current, s.id]
+                              : current.filter(id => id !== s.id)
+                            setForm(prev => ({
+                              ...prev,
+                              settings: { ...prev.settings, assigned_student_ids: updated }
+                            }))
+                          }}
+                          className="w-4 h-4 accent-teal-600 rounded cursor-pointer"
+                        />
+                        <span className="font-mono text-[10px] bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-bold">
+                          {s.student_code}
+                        </span>
+                        <span className="truncate flex-1">{s.full_name}</span>
+                      </label>
+                    )
+                  })}
+                </div>
+              ) : (
+                <p className="text-xs text-slate-400 italic">Chưa có học sinh nào trong lớp này.</p>
+              )}
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-4">
             <div>

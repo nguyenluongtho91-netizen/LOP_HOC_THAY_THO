@@ -131,7 +131,16 @@ export default function StudentPortal() {
 
       // Lọc phòng thi học sinh được phép tham gia (phòng thi chung hoặc thuộc lớp của học sinh)
       const eligibleRooms = (rooms || []).filter((room: any) => {
-        return !room.class_id || myClassIds.includes(room.class_id)
+        const isMyClass = !room.class_id || myClassIds.includes(room.class_id)
+        if (!isMyClass) return false
+
+        // Kiểm tra nếu phòng thi có chỉ định danh sách học sinh cụ thể
+        const assignedIds = room.settings?.assigned_student_ids
+        if (Array.isArray(assignedIds) && assignedIds.length > 0) {
+          return assignedIds.includes(studentId)
+        }
+
+        return true
       })
 
       // 3. Lấy danh sách bài nộp của học sinh
@@ -797,6 +806,28 @@ export default function StudentPortal() {
             </div>
           )
         })}
+
+        {/* BANNER ÔN LUYỆN LẤY GỐC TOÁN */}
+        <div className="bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 rounded-2xl p-5 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 transition-all hover:shadow-xl">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-2xl flex-shrink-0 animate-pulse shadow-inner">
+              ⚡
+            </div>
+            <div>
+              <h3 className="font-black text-lg text-white tracking-wide">KHÔNG GIAN LẤY GỐC TOÁN (LỚP 6 - LỚP 9)</h3>
+              <p className="text-xs text-rose-100 font-medium mt-0.5">
+                Luyện tập cộng trừ số âm, quy tắc đổi dấu và chuyển vế tìm x cùng Thầy Thọ!
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => navigate('/lay-goc-toan')}
+            className="px-5 py-2.5 bg-white text-rose-700 hover:bg-rose-50 font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all whitespace-nowrap flex items-center gap-1.5"
+          >
+            <span>Vào Luyện Ngay</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
 
         {/* Cảnh báo bài tập chưa làm */}
         {activePendingCount > 0 && (

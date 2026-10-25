@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { 
   Zap, ArrowRight, CheckCircle2, XCircle, RotateCcw, 
   HelpCircle, BookOpen, Award, Sparkles, Printer, 
-  Flame, Clock, ChevronRight, Calculator, Shuffle, FileDown
+  Flame, Clock, ChevronRight, Calculator, Shuffle, FileDown,
+  Send, Users, Check, Copy, Search, ShieldCheck, X
 } from 'lucide-react';
 import MathText from '@/components/MathText';
+import { useDataStore } from '@/store/dataStore';
+import { useExamRoomStore } from '@/store/examRoomStore';
+import { useExamStore } from '@/store/examStore';
+import Modal from '@/components/Modal';
+import toast from 'react-hot-toast';
 
 interface Question {
   id: number;
@@ -149,6 +155,105 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const [timeLeft, setTimeLeft] = useState(1200); // 20 mins
   const [testSubmitted, setTestSubmitted] = useState(false);
 
+  // Giao bài cho học sinh chỉ định
+  const { classes, loadClasses, students, loadStudents, enrollments, loadEnrollments } = useDataStore();
+  const { exams, loadExams } = useExamStore();
+  const { createRoom } = useExamRoomStore();
+
+  const [isAssignModalOpen, setIsAssignModalOpen] = useState(false);
+  const [assignClassId, setAssignClassId] = useState('');
+  const [assignStudentIds, setAssignStudentIds] = useState<string[]>([]);
+  const [assignTimeLimit, setAssignTimeLimit] = useState(20);
+  const [assignPasscode, setAssignPasscode] = useState('');
+  const [studentSearch, setStudentSearch] = useState('');
+  const [isSubmittingAssign, setIsSubmittingAssign] = useState(false);
+  const [assignedSuccessData, setAssignedSuccessData] = useState<{ roomCode: string; count: number; className: string } | null>(null);
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [copiedZalo, setCopiedZalo] = useState(false);
+
+  useEffect(() => {
+    void loadClasses();
+    void loadStudents();
+    void loadEnrollments();
+    void loadExams();
+  }, [loadClasses, loadStudents, loadEnrollments, loadExams]);
+
+  const assignedClassStudents = assignClassId
+    ? students.filter(s => {
+        const enrolled = enrollments.some(e => e.class_id === assignClassId && e.student_id === s.id && e.status !== 'inactive');
+        if (!enrolled) return false;
+        if (!studentSearch.trim()) return true;
+        const q = studentSearch.toLowerCase();
+        return (s.full_name || '').toLowerCase().includes(q) || (s.student_code || '').toLowerCase().includes(q);
+      })
+    : [];
+
+  const handleSelectAllStudents = () => {
+    if (assignStudentIds.length === assignedClassStudents.length) {
+      setAssignStudentIds([]);
+    } else {
+      setAssignStudentIds(assignedClassStudents.map(s => s.id));
+    }
+  };
+
+  const handleToggleStudent = (id: string) => {
+    setAssignStudentIds(prev => 
+      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    );
+  };
+
+  const handleAssignSubmit = async () => {
+    if (!assignClassId) {
+      toast.error('Vui lòng chọn lớp học!');
+      return;
+    }
+
+    setIsSubmittingAssign(true);
+    try {
+      let exam = exams.find(e => e.title?.includes('LẤY GỐC TOÁN') || e.title?.includes('Lấy gốc'));
+      if (!exam && exams.length > 0) {
+        exam = exams[0];
+      }
+
+      if (!exam) {
+        toast.error('Không tìm thấy đề thi mẫu trong ngân hàng!');
+        return;
+      }
+
+      const selectedClass = classes.find(c => c.id === assignClassId);
+      const className = (selectedClass as any)?.class_name || (selectedClass as any)?.name || 'Lớp học';
+
+      await createRoom({
+        exam_id: exam.id,
+        class_id: assignClassId,
+        time_limit: assignTimeLimit,
+        status: 'active',
+        settings: {
+          shuffle: true,
+          allowRetry: true,
+          showCorrectAnswers: true,
+          showExplanations: true,
+          passcode: assignPasscode.trim(),
+          antiCheat: true,
+          assigned_student_ids: assignStudentIds
+        }
+      });
+
+      const count = assignStudentIds.length > 0 ? assignStudentIds.length : assignedClassStudents.length;
+      setAssignedSuccessData({
+        roomCode: 'Đã mở phòng',
+        count,
+        className
+      });
+      toast.success('🎉 Đã giao đề Lấy Gốc Toán cho học sinh thành công!');
+    } catch (err: any) {
+      console.error(err);
+      toast.error('Lỗi khi giao bài: ' + (err.message || 'Thử lại'));
+    } finally {
+      setIsSubmittingAssign(false);
+    }
+  };
+
   useEffect(() => {
     let timer: any;
     if (testActive && timeLeft > 0 && !testSubmitted) {
@@ -254,6 +359,17 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             >
               <Award className="w-4 h-4" />
               Kiểm Tra Nhanh (Flash Test)
+            </button>
+
+            <button
+              onClick={() => {
+                setAssignedSuccessData(null);
+                setIsAssignModalOpen(true);
+              }}
+              className="px-4 py-2 rounded-xl font-black text-xs uppercase tracking-wider flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 shadow-md transition ml-auto flex-shrink-0"
+            >
+              <Send className="w-4 h-4 text-slate-900" />
+              🎯 Giao Đề Cho Học Sinh Chỉ Định
             </button>
           </div>
         </div>
@@ -585,6 +701,227 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             )}
           </div>
         )}
+      {/* ===================== MODAL GIAO ĐỀ CHO HỌC SINH CHỈ ĐỊNH ===================== */}
+      <Modal 
+        open={isAssignModalOpen} 
+        onClose={() => setIsAssignModalOpen(false)} 
+        title="🎯 GIAO ĐỀ LẤY GỐC TOÁN CHO HỌC SINH CHỈ ĐỊNH"
+        size="md"
+      >
+        {assignedSuccessData ? (
+          <div className="p-6 text-center space-y-5">
+            <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+              <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
+            </div>
+            <div>
+              <h3 className="text-xl font-black text-slate-800 uppercase tracking-wide">
+                ĐÃ GIAO BÀI THÀNH CÔNG!
+              </h3>
+              <p className="text-sm text-slate-500 mt-1">
+                Đã mở phòng thi Lấy Gốc Toán cho <strong className="text-emerald-700">{assignedSuccessData.count} học sinh</strong> thuộc <strong className="text-emerald-700">{assignedSuccessData.className}</strong>.
+              </p>
+            </div>
+
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-left space-y-2">
+              <div className="text-xs font-bold text-slate-600">
+                🌐 Cổng làm bài thi trực tuyến của học sinh:
+              </div>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="text" 
+                  readOnly 
+                  value="https://lop-hoc-thay-tho.vercel.app/thi" 
+                  className="input text-xs font-mono py-2 bg-white flex-1" 
+                />
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText('https://lop-hoc-thay-tho.vercel.app/thi');
+                    setCopiedLink(true);
+                    toast.success('Đã sao chép link!');
+                    setTimeout(() => setCopiedLink(false), 2000);
+                  }}
+                  className="px-3 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1"
+                >
+                  {copiedLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copiedLink ? 'Đã chép' : 'Chép link'}
+                </button>
+              </div>
+              <p className="text-[11px] text-slate-400 italic">
+                * Học sinh đăng nhập bằng Mã học sinh và Mật khẩu riêng Thầy đã cấp là thấy ngay bài thi!
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 pt-3">
+              <button
+                onClick={() => {
+                  const zaloMsg = `🔔 THÔNG BÁO BÀI TẬP LẤY GỐC TOÁN - THẦY THỌ\nThầy vừa mở bài khảo sát Lấy Gốc Toán cho ${assignedSuccessData.count} bạn lớp ${assignedSuccessData.className}.\nCác em đăng nhập vào cổng thi: https://lop-hoc-thay-tho.vercel.app/thi để hoàn thành trước buổi học nhé!`;
+                  navigator.clipboard.writeText(zaloMsg);
+                  setCopiedZalo(true);
+                  toast.success('Đã sao chép tin nhắn Zalo!');
+                  setTimeout(() => setCopiedZalo(false), 2000);
+                }}
+                className="btn-outline flex-1 py-3 text-xs font-bold flex items-center justify-center gap-2 text-blue-600 border-blue-200 hover:bg-blue-50"
+              >
+                {copiedZalo ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                {copiedZalo ? 'Đã sao chép lời nhắn Zalo' : 'Sao chép tin nhắn Zalo gửi phụ huynh'}
+              </button>
+              <button
+                onClick={() => {
+                  setIsAssignModalOpen(false);
+                  setAssignedSuccessData(null);
+                }}
+                className="btn-teal px-8 py-3 text-xs font-bold"
+              >
+                Hoàn tất
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="bg-amber-50 p-3.5 rounded-2xl border border-amber-200/70 text-xs text-amber-900 leading-relaxed">
+              💡 <strong>Chế độ chỉ định:</strong> Thầy có thể giao đề Lấy Gốc Toán cho cả lớp, hoặc chỉ định đích danh từng em học sinh bị mất gốc (các em khác sẽ không nhìn thấy).
+            </div>
+
+            {/* Bước 1: Chọn lớp */}
+            <div>
+              <label className="label">1. Chọn lớp học *</label>
+              <select
+                value={assignClassId}
+                onChange={e => {
+                  setAssignClassId(e.target.value);
+                  setAssignStudentIds([]);
+                }}
+                className="input font-bold"
+              >
+                <option value="">-- Chọn lớp cần giao bài --</option>
+                {classes.filter(c => c.status === 'active').map(c => (
+                  <option key={c.id} value={c.id}>
+                    {(c as any).class_name || (c as any).name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Bước 2: Danh sách học sinh */}
+            {assignClassId && (
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
+                    2. Danh sách học sinh ({assignedClassStudents.length} em):
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={handleSelectAllStudents}
+                      className="text-[11px] font-bold text-teal-600 hover:underline"
+                    >
+                      {assignStudentIds.length === assignedClassStudents.length ? 'Bỏ chọn hết' : `Chọn cả lớp (${assignedClassStudents.length})`}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                  <input
+                    type="text"
+                    placeholder="Tìm tên hoặc mã học sinh..."
+                    value={studentSearch}
+                    onChange={e => setStudentSearch(e.target.value)}
+                    className="input text-xs pl-9 py-2 bg-white"
+                  />
+                </div>
+
+                <div className="text-[11px] text-slate-500">
+                  {assignStudentIds.length === 0 ? (
+                    <span className="text-amber-700 font-medium">
+                      ⚠️ <strong>Chưa tích chọn:</strong> Hệ thống sẽ giao cho CẢ LỚP ({assignedClassStudents.length} em). Thầy tích chọn từng em nếu chỉ muốn chỉ định riêng.
+                    </span>
+                  ) : (
+                    <span className="text-teal-700 font-bold">
+                      ✅ Đã chỉ định {assignStudentIds.length} em học sinh được làm bài.
+                    </span>
+                  )}
+                </div>
+
+                <div className="max-h-48 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-white rounded-xl border border-slate-200">
+                  {assignedClassStudents.map(s => {
+                    const isChecked = assignStudentIds.includes(s.id);
+                    return (
+                      <label
+                        key={s.id}
+                        className={`flex items-center gap-2 p-2 rounded-lg border text-xs cursor-pointer transition select-none ${
+                          isChecked 
+                            ? 'bg-amber-50 border-amber-300 text-amber-900 font-bold shadow-xs' 
+                            : 'bg-white border-slate-100 hover:bg-slate-50 text-slate-700'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => handleToggleStudent(s.id)}
+                          className="w-4 h-4 accent-amber-500 rounded cursor-pointer"
+                        />
+                        <span className="font-mono text-[10px] bg-slate-100 px-1 py-0.5 rounded text-slate-600 font-bold">
+                          {s.student_code}
+                        </span>
+                        <span className="truncate flex-1">{s.full_name}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Bước 3: Cấu hình phòng */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="label">Thời gian làm bài (Phút)</label>
+                <input
+                  type="number"
+                  value={assignTimeLimit}
+                  onChange={e => setAssignTimeLimit(Number(e.target.value))}
+                  className="input text-center font-bold"
+                />
+              </div>
+              <div>
+                <label className="label">Mã PIN bảo vệ (Tùy chọn)</label>
+                <input
+                  type="text"
+                  placeholder="Để trống nếu không đặt"
+                  value={assignPasscode}
+                  onChange={e => setAssignPasscode(e.target.value)}
+                  className="input font-mono text-center font-bold"
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3 pt-4 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setIsAssignModalOpen(false)}
+                className="btn-outline px-6 py-2.5 text-xs font-bold"
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                onClick={handleAssignSubmit}
+                disabled={isSubmittingAssign || !assignClassId}
+                className="btn-teal px-8 py-2.5 text-xs font-bold shadow-lg shadow-teal-500/20 flex items-center gap-2"
+              >
+                {isSubmittingAssign ? (
+                  <span>Đang giao bài...</span>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>Giao Đề Ngay {assignStudentIds.length > 0 ? `(${assignStudentIds.length} em)` : '(Cả lớp)'}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        )}
+      </Modal>
       </div>
     </div>
   );
