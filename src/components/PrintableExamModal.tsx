@@ -306,17 +306,26 @@ export default function PrintableExamModal({
                       className="page-break-inside-avoid text-xs sm:text-[13px] border-b border-slate-200 pb-3"
                     >
                       {/* Tiêu đề & nội dung câu hỏi */}
-                      <div className="font-normal text-black mb-2 flex items-start gap-1">
-                        <span className="font-bold shrink-0">
-                          Câu {qNum}:
-                        </span>
-                        <div className="flex-1 font-serif">
-                          <MathText text={q.question} />
+                      <div className="font-normal text-black mb-2">
+                        <div className="flex items-start gap-1 font-serif text-sm sm:text-base leading-relaxed">
+                          <span className="font-bold shrink-0 text-slate-950">
+                            Câu {qNum}:
+                          </span>
+                          <div className="flex-1 text-slate-950">
+                            <MathText html={(q.question || '').replace(/^Câu \d+:\s*/, '')} />
+                          </div>
                         </div>
+
+                        {/* Biểu thức toán học nếu có */}
+                        {(q as any).mathExpression && (
+                          <div className="my-2.5 py-2 px-3 bg-slate-50 border border-slate-200 rounded text-center text-base sm:text-lg font-bold text-slate-950">
+                            <MathText html={`$$${(q as any).mathExpression}$$`} block />
+                          </div>
+                        )}
                       </div>
 
                       {/* 4 Phương án A, B, C, D */}
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pl-4 mb-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pl-4 mb-2 text-xs sm:text-sm">
                         {q.options.map((opt, optIdx) => {
                           const letter = ['A', 'B', 'C', 'D'][optIdx];
                           return (
@@ -324,9 +333,9 @@ export default function PrintableExamModal({
                               <span className="font-bold font-sans text-slate-900 shrink-0">
                                 {letter}.
                               </span>
-                              <span className="text-black">
-                                <MathText text={opt} />
-                              </span>
+                              <div className="text-slate-950 font-medium">
+                                <MathText html={opt || ''} />
+                              </div>
                             </div>
                           );
                         })}
@@ -447,9 +456,9 @@ export default function PrintableExamModal({
                           </span>
                         </div>
 
-                        <div className="text-slate-800 leading-relaxed font-serif pt-1">
+                        <div className="text-slate-800 leading-relaxed font-serif pt-1 text-xs sm:text-sm">
                           <span className="font-semibold text-slate-900">Phương pháp & Lời giải: </span>
-                          <MathText text={q.explanation} />
+                          <MathText html={q.explanation || ''} />
                         </div>
                       </div>
                     );
