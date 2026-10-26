@@ -76,9 +76,14 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const navigate = useNavigate();
   const { user } = useAuthStore();
   const isStudentMode = useMemo(() => {
-    // NẾU LÀ GIÁO VIÊN / QUẢN TRỊ VIÊN ĐANG ĐĂNG NHẬP -> LUÔN LUÔN LÀ GIAO DIỆN QUẢN LÝ
+    // 1. NẾU ĐƯỜNG LINK CÓ CHỈ ĐỊNH mode=student HOẶC view=student -> LUÔN LUÔN LÀ GIAO DIỆN HỌC SINH (KỂ CẢ THẦY ĐANG TEST)
+    if (searchParams.get('mode') === 'student' || searchParams.get('view') === 'student') {
+      return true;
+    }
+    // 2. NẾU LÀ GIÁO VIÊN / ADMIN ĐANG ĐĂNG NHẬP -> GIAO DIỆN QUẢN LÝ
     if (user) return false;
-    return isPublic || searchParams.get('mode') === 'student' || searchParams.get('view') === 'student';
+    // 3. MẶC ĐỊNH CHO LINK CÔNG KHAI /lay-goc
+    return isPublic;
   }, [user, isPublic, searchParams]);
 
   // TÊN HỌC SINH LÀM BÀI TRỰC TIẾP (TỰ ĐỘNG NHẬN DIỆN NẾU ĐÃ LƯU)
@@ -825,7 +830,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
       {/* THANH ĐIỀU HƯỚNG QUẢN LÝ DÀNH CHO THẦY THỌ */}
-      {user && (
+      {/* THANH ĐIỀU HƯỚNG QUẢN LÝ DÀNH CHO THẦY THỌ */}
+      {user && !isStudentMode && (
         <div className="bg-slate-900 text-white px-4 py-2.5 flex flex-wrap items-center justify-between text-xs border-b border-slate-700 shadow-md print:hidden">
           <div className="flex items-center gap-2 font-bold text-amber-400">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -847,6 +853,23 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               Bàn Làm Việc (Dashboard)
             </button>
           </div>
+        </div>
+      )}
+
+      {/* THANH THÔNG BÁO XEM THỬ PHÍA HỌC SINH DÀNH CHO THẦY THỌ */}
+      {user && isStudentMode && (
+        <div className="bg-amber-400 text-slate-950 px-4 py-2.5 flex flex-wrap items-center justify-between text-xs font-black border-b border-amber-500 shadow-sm print:hidden">
+          <div className="flex items-center gap-2">
+            <Eye className="w-4 h-4 text-slate-950 shrink-0" />
+            <span>👁️ CHẾ ĐỘ XEM TRƯỚC PHÍA HỌC SINH: Học sinh chỉ nhìn thấy DUY NHẤT Đề số {selectedExamNo.toString().padStart(2, '0')} (khóa toàn bộ chuyên đề và đề khác).</span>
+          </div>
+          <button
+            onClick={() => navigate(`/lay-goc-toan?subject=${currentSubject}&topic=${selectedTopicId}&exam=${selectedExamNo}`)}
+            className="px-3.5 py-1.5 bg-slate-950 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition cursor-pointer flex items-center gap-1.5 shadow-xs"
+          >
+            <span>Trở về Giao diện Quản lý</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
         </div>
       )}
 

@@ -913,27 +913,29 @@ export default function StudentPortal() {
           )
         })}
 
-        {/* BANNER ÔN LUYỆN LẤY GỐC TOÁN */}
-        <div className="bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 rounded-2xl p-5 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 transition-all hover:shadow-xl">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-2xl flex-shrink-0 animate-pulse shadow-inner">
-              ⚡
+        {/* BANNER ÔN LUYỆN LẤY GỐC TOÁN (CHỈ HIỂN THỊ KHI THÍ SINH TỰ DO THAYTHO TRUY CẬP) */}
+        {student?.student_code === 'THAYTHO' && (
+          <div className="bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 rounded-2xl p-5 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 transition-all hover:shadow-xl">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-xs flex items-center justify-center text-2xl flex-shrink-0 animate-pulse shadow-inner">
+                ⚡
+              </div>
+              <div>
+                <h3 className="font-black text-lg text-white tracking-wide">KHÔNG GIAN LẤY GỐC TOÁN (LỚP 6 - LỚP 9)</h3>
+                <p className="text-xs text-rose-100 font-medium mt-0.5">
+                  Luyện tập cộng trừ số âm, quy tắc đổi dấu và chuyển vế tìm x cùng Thầy Thọ!
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-black text-lg text-white tracking-wide">KHÔNG GIAN LẤY GỐC TOÁN (LỚP 6 - LỚP 9)</h3>
-              <p className="text-xs text-rose-100 font-medium mt-0.5">
-                Luyện tập cộng trừ số âm, quy tắc đổi dấu và chuyển vế tìm x cùng Thầy Thọ!
-              </p>
-            </div>
+            <button
+              onClick={() => navigate('/lay-goc-toan')}
+              className="px-5 py-2.5 bg-white text-rose-700 hover:bg-rose-50 font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all whitespace-nowrap flex items-center gap-1.5"
+            >
+              <span>Vào Luyện Ngay</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
-          <button
-            onClick={() => navigate('/lay-goc-toan')}
-            className="px-5 py-2.5 bg-white text-rose-700 hover:bg-rose-50 font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all whitespace-nowrap flex items-center gap-1.5"
-          >
-            <span>Vào Luyện Ngay</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
+        )}
 
         {/* Cảnh báo bài tập chưa làm */}
         {activePendingCount > 0 && (
