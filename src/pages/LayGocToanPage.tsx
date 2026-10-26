@@ -185,25 +185,77 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
            `✨ Chúc các em làm bài thật tốt và đạt điểm 10 tuyệt đối!`;
   };
 
-  const handleCopyLinkOnly = async () => {
+  // HÀM SAO CHÉP CLIPBOARD ĐA TẦNG (TƯƠNG THÍCH 100% MỌI TRÌNH DUYỆT & THIẾT BỊ)
+  const robustCopy = async (text: string): Promise<boolean> => {
+    // 1. Thử Clipboard API hiện đại
+    if (navigator?.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (err) {
+        console.warn('navigator.clipboard.writeText không được cấp quyền, chuyển sang execCommand:', err);
+      }
+    }
+
+    // 2. Fallback dùng textarea ẩn kết hợp document.execCommand('copy')
     try {
-      await navigator.clipboard.writeText(getShareableExamUrl());
-      setIsCopiedShareLink(true);
-      toast.success('📋 Đã sao chép đường link đề thi vào bộ nhớ tạm!');
-      setTimeout(() => setIsCopiedShareLink(false), 3000);
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.contain = 'strict';
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+      textarea.style.fontSize = '12pt'; // Chống zoom trên iOS Safari
+      const selection = document.getSelection();
+      const originalRange = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+      document.body.appendChild(textarea);
+      textarea.select();
+      textarea.selectionStart = 0;
+      textarea.selectionEnd = text.length;
+
+      const success = document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      if (originalRange && selection) {
+        selection.removeAllRanges();
+        selection.addRange(originalRange);
+      }
+
+      if (success) return true;
+    } catch (err) {
+      console.warn('execCommand copy thất bại:', err);
+    }
+
+    // 3. Fallback cuối: Hiển thị prompt để người dùng copy trực tiếp
+    try {
+      window.prompt('Vui lòng nhấn Ctrl+C (hoặc Cmd+C trên Mac) để sao chép link:', text);
+      return true;
     } catch (e) {
-      toast.error('Không thể tự động sao chép link!');
+      return false;
+    }
+  };
+
+  const handleCopyLinkOnly = async () => {
+    const url = getShareableExamUrl();
+    const ok = await robustCopy(url);
+    if (ok) {
+      setIsCopiedShareLink(true);
+      toast.success('📋 Đã sao chép link đề thi! Thầy có thể dán (Paste / Ctrl+V) gửi cho phụ huynh ngay.', { duration: 4000 });
+      setTimeout(() => setIsCopiedShareLink(false), 3000);
+    } else {
+      toast.error('Vui lòng chọn link trong ô và bấm Ctrl+C để sao chép!');
     }
   };
 
   const handleCopyFullMessage = async () => {
-    try {
-      await navigator.clipboard.writeText(getShareableMessage());
+    const msg = getShareableMessage();
+    const ok = await robustCopy(msg);
+    if (ok) {
       setIsCopiedShareMessage(true);
-      toast.success('💬 Đã sao chép toàn bộ lời dặn dò kèm link gửi Zalo / Phụ huynh!');
+      toast.success('💬 Đã sao chép toàn bộ lời dặn dò kèm link! Thầy mở Zalo dán (Ctrl+V) gửi ngay nhé.', { duration: 4000 });
       setTimeout(() => setIsCopiedShareMessage(false), 3000);
-    } catch (e) {
-      toast.error('Không thể tự động sao chép!');
+    } else {
+      toast.error('Vui lòng bôi đen lời dặn dò và bấm Ctrl+C để sao chép!');
     }
   };
 
@@ -1160,10 +1212,20 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   <button
                     onClick={() => setIsShareModalOpen(true)}
                     className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
-                    title="Tạo đường link làm bài trực tiếp để copy gửi cho học sinh hoặc phụ huynh qua Zalo / Facebook"
+                    title="Mở bảng hướng dẫn gửi link và mã QR cho học sinh / phụ huynh"
                   >
                     <Share2 className="w-4 h-4 text-white" />
-                    <span>🔗 Tạo Link Gửi HS / Phụ Huynh</span>
+                    <span>🔗 Tạo Link & QR Gửi PH</span>
+                  </button>
+
+                  {/* NÚT COPY NHANH LINK ĐỀ THI 1 CHẠM */}
+                  <button
+                    onClick={handleCopyLinkOnly}
+                    className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                    title="Sao chép nhanh link làm bài của đề này để gửi ngay"
+                  >
+                    {isCopiedShareLink ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-emerald-600" />}
+                    <span>{isCopiedShareLink ? '✓ Đã Chép Link!' : 'Copy Link Nhanh'}</span>
                   </button>
 
                   {/* NÚT XEM LỊCH SỬ TẤT CẢ CÁC LẦN LÀM BÀI */}
