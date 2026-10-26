@@ -162,15 +162,33 @@ export class TabDetectionService {
     }
   }
 
+  private isPaused: boolean = false;
+
   /**
-   * Xử lý khi window mất focus
+   * Tạm dừng giám sát tạm thời (ví dụ: khi mở camera / chọn file ảnh tự luận)
+   */
+  pause(durationMs: number = 60000) {
+    this.isPaused = true;
+    setTimeout(() => {
+      this.isPaused = false;
+    }, durationMs);
+  }
+
+  resume() {
+    this.isPaused = false;
+  }
+
+  /**
+   * Xử lý khi window mất focus (chuyển sang cửa sổ khác, chia đôi màn hình...)
    */
   private handleBlur() {
     setTimeout(() => {
-      if (document.hidden) {
+      if (!this.isActive || this.isPaused) return;
+      // Bắt cả trường hợp chuyển tab (document.hidden) lẫn click sang app khác (!document.hasFocus())
+      if (document.hidden || !document.hasFocus()) {
         this.recordSwitch();
       }
-    }, 150);
+    }, 500);
   }
 
   /**

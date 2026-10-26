@@ -4,6 +4,7 @@
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { parseEssayAnswer, serializeEssayAnswer } from '../services/essayGradingService';
+import { getTabDetectionService } from '../services/tabDetectionService';
 
 // ─── MathLive alias ───────────
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -252,7 +253,17 @@ const EssayQuestionInput: React.FC<EssayQuestionInputProps> = ({
     } finally { setUploading(false); }
   }, [images, maxImages, onChange]);
 
+  const openFilePicker = () => {
+    try {
+      getTabDetectionService().pause(60000);
+    } catch {}
+    fileInputRef.current?.click();
+  };
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    try {
+      getTabDetectionService().resume();
+    } catch {}
     addImages(Array.from(e.target.files || []));
     e.target.value = '';
   };
@@ -390,7 +401,7 @@ const EssayQuestionInput: React.FC<EssayQuestionInputProps> = ({
                 </div>
               ))}
               {images.length < maxImages && !disabled && (
-                <button onClick={() => fileInputRef.current?.click()} disabled={uploading} className="flex flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-teal-300 bg-teal-50 text-teal-600 hover:bg-teal-100 hover:border-teal-400 transition-all" style={{ width: 104, height: 88 }}>
+                <button onClick={openFilePicker} disabled={uploading} className="flex flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-teal-300 bg-teal-50 text-teal-600 hover:bg-teal-100 hover:border-teal-400 transition-all" style={{ width: 104, height: 88 }}>
                   {uploading ? <div className="w-6 h-6 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" /> : <><span className="text-2xl">📷</span><span className="text-[10px] font-bold uppercase tracking-wider">Thêm ảnh</span></>}
                 </button>
               )}
@@ -403,7 +414,7 @@ const EssayQuestionInput: React.FC<EssayQuestionInputProps> = ({
           {!disabled && images.length < maxImages && (
             <>
               <input ref={fileInputRef} type="file" accept="image/*" multiple onChange={handleFileChange} className="hidden" />
-              <button onClick={() => fileInputRef.current?.click()} disabled={uploading} className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm border" style={{ background: isDragging ? '#ccfbf1' : '#fff', borderColor: isDragging ? '#0d9488' : '#99f6e4', color: '#0f766e' }}>
+              <button onClick={openFilePicker} disabled={uploading} className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all shadow-sm border" style={{ background: isDragging ? '#ccfbf1' : '#fff', borderColor: isDragging ? '#0d9488' : '#99f6e4', color: '#0f766e' }}>
                 <span className="text-base leading-none">📎</span>
                 <span>{images.length === 0 ? 'Đính kèm ảnh bài làm' : `Thêm ảnh (${images.length}/${maxImages})`}</span>
               </button>
