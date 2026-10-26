@@ -257,37 +257,37 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return userStr === String(q.correctAnswer).trim();
   };
 
-  // HÀM TẠO LỜI ĐỘNG VIÊN KHÍCH LỆ CHUẨN XÁC THEO 4 MỐC ĐIỂM (MỰC THƯỚC, KHÔNG KHEN QUÁ ĐÀ)
+  // HÀM TẠO LỜI ĐỘNG VIÊN KHÍCH LỆ CHUẨN XÁC THEO 4 MỐC ĐIỂM (XƯNG HÔ THẦY VÀ EM, MỰC THƯỚC)
   const getExamEncouragement = (score: number) => {
     if (score >= 10) {
       return {
         badge: '🎯 ĐẠT ĐIỂM 10 TUYỆT ĐỐI',
-        title: 'Chúc mừng con đã đạt điểm 10 tuyệt đối!',
-        message: 'Con đã làm bài rất cẩn thận và trả lời chính xác tất cả các câu hỏi. Hãy tiếp tục duy trì tinh thần học tập nghiêm túc và chăm chỉ này ở các đề tiếp theo nhé!',
+        title: 'Chúc mừng em đã đạt điểm 10 tuyệt đối!',
+        message: 'Em đã làm bài rất cẩn thận và trả lời chính xác tất cả các câu hỏi. Hãy tiếp tục duy trì tinh thần học tập nghiêm túc và chăm chỉ này ở các đề tiếp theo nhé!',
         colorClass: 'text-amber-900 bg-amber-100/90 border-amber-300',
         bgGradient: 'from-amber-50 via-yellow-50 to-emerald-50 border-amber-300'
       };
     } else if (score >= 8.0) {
       return {
         badge: '✨ KẾT QUẢ TỐT (8.0 – 9.9 ĐIỂM)',
-        title: 'Con làm bài rất tốt, gần đạt điểm tối đa rồi!',
-        message: 'Con đã nắm chắc kiến thức căn bản của bài học. Hãy xem lại kỹ những câu còn nhầm lẫn để rút kinh nghiệm và đạt điểm 10 ở lần làm tiếp theo nhé!',
+        title: 'Em làm bài rất tốt, gần đạt điểm tối đa rồi!',
+        message: 'Em đã nắm chắc kiến thức căn bản của bài học. Hãy xem lại kỹ những câu còn nhầm lẫn để rút kinh nghiệm và đạt điểm 10 ở lần làm tiếp theo nhé!',
         colorClass: 'text-emerald-800 bg-emerald-100/90 border-emerald-300',
         bgGradient: 'from-emerald-50 via-teal-50 to-sky-50 border-emerald-300'
       };
     } else if (score >= 7.0) {
       return {
         badge: '📘 ĐẠT YÊU CẦU CĂN BẢN (7.0 – 7.9 ĐIỂM)',
-        title: 'Con đã nắm được kiến thức nền tảng!',
-        message: 'Con đã hiểu được các nội dung trọng tâm. Cần chú ý đọc kỹ câu hỏi và tính toán cẩn thận hơn để nâng cao điểm số. Hãy thử làm lại một lần nữa để cải thiện kết quả nhé!',
+        title: 'Em đã nắm được kiến thức nền tảng!',
+        message: 'Em đã hiểu được các nội dung trọng tâm. Cần chú ý đọc kỹ câu hỏi và tính toán cẩn thận hơn để nâng cao điểm số. Hãy thử làm lại một lần nữa để cải thiện kết quả nhé!',
         colorClass: 'text-blue-800 bg-blue-100/90 border-blue-300',
         bgGradient: 'from-blue-50 via-indigo-50 to-cyan-50 border-blue-300'
       };
     } else {
       return {
         badge: '🌱 CẦN CỐ GẮNG HƠN (1.0 – 6.9 ĐIỂM)',
-        title: 'Con cần dành thêm thời gian ôn lại lý thuyết!',
-        message: 'Kết quả này cho thấy con cần xem lại bảng nguyên tử khối và kiến thức cốt lõi bên dưới. Con hãy đọc kỹ phần hướng dẫn giải của Thầy rồi bấm làm lại để nắm vững bài hơn nhé!',
+        title: 'Em cần dành thêm thời gian ôn lại lý thuyết!',
+        message: 'Kết quả này cho thấy em cần xem lại bảng nguyên tử khối và kiến thức cốt lõi bên dưới. Em hãy đọc kỹ phần hướng dẫn giải của Thầy rồi bấm làm lại để nắm vững bài hơn nhé!',
         colorClass: 'text-rose-800 bg-rose-100/90 border-rose-300',
         bgGradient: 'from-rose-50 via-orange-50 to-amber-50 border-rose-300'
       };
@@ -339,13 +339,13 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     } else {
       if (score10 >= 10) {
         setShowFireworks(true);
-        toast.success(`🎯 Chúc mừng con đã đạt điểm 10 tuyệt đối! Con làm bài rất cẩn thận và chính xác!`, { duration: 6000 });
+        toast.success(`🎯 Chúc mừng em đã đạt điểm 10 tuyệt đối! Em làm bài rất cẩn thận và chính xác!`, { duration: 6000 });
       } else if (score10 >= 8.0) {
-        toast.success(`✨ Kết quả rất tốt! Điểm: ${score10}/10. Con xem lại các câu chưa đúng để hoàn thiện nhé!`, { duration: 5000 });
+        toast.success(`✨ Kết quả rất tốt! Điểm: ${score10}/10. Em xem lại các câu chưa đúng để hoàn thiện nhé!`, { duration: 5000 });
       } else if (score10 >= 7.0) {
-        toast.success(`📘 Điểm: ${score10}/10. Con đã nắm được kiến thức nền tảng, cố gắng luyện thêm nhé!`, { duration: 5000 });
+        toast.success(`📘 Điểm: ${score10}/10. Em đã nắm được kiến thức nền tảng, cố gắng luyện thêm nhé!`, { duration: 5000 });
       } else {
-        toast(`🌱 Điểm: ${score10}/10. Con hãy đọc lại lý thuyết và lời giải chi tiết để làm lại nhé!`, { icon: '📖', duration: 6000 });
+        toast(`🌱 Điểm: ${score10}/10. Em hãy đọc lại lý thuyết và lời giải chi tiết để làm lại nhé!`, { icon: '📖', duration: 6000 });
       }
     }
   };
@@ -1089,7 +1089,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   <button
                     onClick={() => setIsPrintModalOpen(true)}
                     className="px-4 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
-                    title="In bản giấy A4 hoặc Tải file PDF cho con làm bài"
+                    title="In bản giấy A4 hoặc Tải file PDF cho học sinh làm bài"
                   >
                     <Printer className="w-4 h-4 text-teal-700" />
                     <span>In Đề / Tải File PDF (A4)</span>
@@ -2721,7 +2721,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         <FireworksEffect
           active={showFireworks}
           onClose={() => setShowFireworks(false)}
-          title="Chúc mừng con đã đạt điểm 10 tuyệt đối! 🎆"
+          title="Chúc mừng em đã đạt điểm 10 tuyệt đối! 🎆"
         />
       </div>
     </div>

@@ -31,7 +31,7 @@ interface Rocket {
 export const FireworksEffect: React.FC<FireworksEffectProps> = ({
   active,
   onClose,
-  title = 'Chúc mừng con đã đạt điểm 10 tuyệt đối! 🎆',
+  title = 'Chúc mừng em đã đạt điểm 10 tuyệt đối! 🎆',
   durationSeconds = 8
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -225,7 +225,7 @@ export const FireworksEffect: React.FC<FireworksEffectProps> = ({
           {title}
         </h3>
         <p className="text-xs text-slate-600 mt-1 font-medium">
-          Con làm bài rất cẩn thận và chính xác toàn bộ. Nhấp vào màn hình để bắn thêm pháo hoa nhé!
+          Em làm bài rất cẩn thận và chính xác toàn bộ. Nhấp vào màn hình để bắn thêm pháo hoa nhé!
         </p>
 
         <div className="mt-3.5 flex items-center justify-center gap-2">
