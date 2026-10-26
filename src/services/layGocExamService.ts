@@ -192,11 +192,10 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
   const q11_ans = randInt(25, 95, baseSeed + 22);
   const q11_a = q11_ans * 10;
 
-  // Dạng 12: Phép chia có dư cơ bản: tìm thương và số dư
+  // Dạng 12: Phép chia hết cơ bản trong bảng nhân chia (chia hết, không có số dư)
   const q12_b = randInt(4, 9, baseSeed + 23);
-  const q12_q = randInt(6, 15, baseSeed + 24);
-  const q12_r = randInt(1, q12_b - 1, baseSeed + 25);
-  const q12_a = q12_b * q12_q + q12_r;
+  const q12_ans = randInt(6, 12, baseSeed + 24);
+  const q12_a = q12_b * q12_ans;
 
   // Dạng 13: Biểu thức có ngoặc tròn: a + (b - c)
   const q13_c = randInt(15, 45, baseSeed + 26);
@@ -317,7 +316,7 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
       mathExpression: `${q10_a} : ${q10_b}`,
       options: makeOptions(q10_ans, [q10_ans + 2, q10_ans - 2, q10_ans + 5], baseSeed + 20),
       correctAnswer: String(q10_ans),
-      explanation: `Lấy ${q10_a} chia cho ${q10_b} được thương là ${q10_ans} (số dư bằng 0).`
+      explanation: `Thực hiện phép tính chia: ${q10_a} : ${q10_b} = ${q10_ans}.`
     },
     {
       question: `Tính nhẩm kết quả của phép chia số tròn chục cho 10:`,
@@ -327,11 +326,11 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
       explanation: `Khi chia một số tròn chục cho 10, ta bỏ đi một chữ số 0 ở tận cùng bên phải của số đó: ${q11_a} : 10 = ${q11_ans}.`
     },
     {
-      question: `Tìm thương q và số dư r trong phép chia có dư:`,
+      question: `Thực hiện phép tính chia hai số tự nhiên:`,
       mathExpression: `${q12_a} : ${q12_b}`,
-      options: makeOptions(`q = ${q12_q}, r = ${q12_r}`, [`q = ${q12_q + 1}, r = ${q12_r}`, `q = ${q12_q}, r = ${q12_r + 1}`, `q = ${q12_q - 1}, r = 0`], baseSeed + 23),
-      correctAnswer: `q = ${q12_q}, r = ${q12_r}`,
-      explanation: `Ta có: ${q12_a} = ${q12_b} . ${q12_q} + ${q12_r} (với 0 < ${q12_r} < ${q12_b}). Do đó q = ${q12_q}, r = ${q12_r}.`
+      options: makeOptions(q12_ans, [q12_ans + 1, q12_ans - 1, q12_ans + 2], baseSeed + 23),
+      correctAnswer: String(q12_ans),
+      explanation: `Thực hiện phép tính chia: ${q12_a} : ${q12_b} = ${q12_ans}.`
     },
     {
       question: `Thực hiện phép tính có chứa dấu ngoặc tròn:`,
