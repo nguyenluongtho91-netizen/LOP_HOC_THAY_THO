@@ -298,7 +298,8 @@ export default function ExamRoomPage() {
       const isPdf = !hasRealQuestions && (!!normalizedBase.pdfUrl || !!normalizedBase.pdfDriveUrl || !!normalizedBase.pdfBase64);
       
       let nextExamData = normalizedBase;
-      if (!isPdf && room?.settings?.shuffle) {
+      if (!isPdf) {
+        // ✅ Luôn đảo và xáo trộn câu hỏi khi học sinh làm lại đề
         nextExamData = normalizeExamData(shuffleExamForStudent(normalizedBase));
       }
 
@@ -324,16 +325,28 @@ export default function ExamRoomPage() {
 
   // ✅ 1. HIỂN THỊ KẾT QUẢ SAU KHI NỘP BÀI
   if (submittedResult && currentExamData) {
-    const mappedRoom = { ...room, examTitle: exam.title, settings: room.settings || { showCorrectAnswers: false, showExplanations: false } };
+    const mappedRoom = { 
+      ...room, 
+      examTitle: exam.title, 
+      settings: { 
+        showCorrectAnswers: true, 
+        showExplanations: true, 
+        ...room.settings 
+      } 
+    };
     return (
       <div className="relative">
-        <ResultView submission={submittedResult} room={mappedRoom} exam={{...currentExamData, title: exam.title}} onExit={() => { navigate('/thi'); }} />
+        <ResultView 
+          submission={submittedResult} 
+          room={mappedRoom} 
+          exam={{...currentExamData, title: exam.title}} 
+          onExit={() => { navigate('/thi'); }} 
+          onRetry={handleRetry} 
+        />
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3">
-          {room.settings?.allowRetry && (
-            <button onClick={handleRetry} className="px-6 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-full font-bold shadow-xl hover:bg-blue-50 hover:scale-105 transition flex items-center gap-1.5 whitespace-nowrap">
-              🔄 Bắt đầu thi lại
-            </button>
-          )}
+          <button onClick={handleRetry} className="px-6 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-full font-bold shadow-xl hover:bg-blue-50 hover:scale-105 transition flex items-center gap-1.5 whitespace-nowrap">
+            🔄 Bắt đầu thi lại (Đảo câu hỏi)
+          </button>
           <button onClick={() => navigate('/thi')} className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-full font-bold shadow-xl hover:scale-105 transition flex items-center gap-1.5 whitespace-nowrap">
             🏠 Về màn hình chính
           </button>

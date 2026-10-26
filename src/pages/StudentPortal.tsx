@@ -450,7 +450,8 @@ export default function StudentPortal() {
       const isPdf = !hasRealQuestions && (!!normalizedBase.pdfUrl || !!normalizedBase.pdfDriveUrl || !!normalizedBase.pdfBase64);
 
       let nextExamData = normalizedBase
-      if (!isPdf && room.settings?.shuffle) {
+      if (!isPdf) {
+        // ✅ Luôn đảo và xáo trộn câu hỏi khi học sinh làm lại đề
         nextExamData = normalizeExamData(shuffleExamForStudent(normalizedBase))
       }
 

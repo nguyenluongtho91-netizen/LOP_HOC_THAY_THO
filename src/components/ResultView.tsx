@@ -49,8 +49,9 @@ const ResultView: React.FC<ResultViewProps> = ({
   const scoreBreakdown = submission.scoreBreakdown || (submission as any).score_breakdown;
   const answers = submission.answers;
 
-  const canShowCorrectAnswers = room.settings?.showCorrectAnswers ?? false;
-  const canShowExplanations = room.settings?.showExplanations ?? false;
+  // ✅ Cho phép xem đáp án và lời giải chi tiết theo yêu cầu của Thầy Thọ
+  const canShowCorrectAnswers = room.settings?.showCorrectAnswers !== false;
+  const canShowExplanations = room.settings?.showExplanations !== false;
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -419,10 +420,14 @@ const MultipleChoiceReview: React.FC<{
             )}
           </div>
 
-          {showExplanations && question.solution && (
-            <div className="mt-3 p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-xl">
-              <span className="text-blue-700 font-bold text-sm">💡 Lời giải: </span>
-              <div className="text-sm text-gray-700 mt-1"><MathText html={question.solution} block /></div>
+          {showExplanations && (question.solution || question.explanation || (question as any).loigiai) && (
+            <div className="mt-3 p-3.5 bg-blue-50/90 border border-blue-200 rounded-xl">
+              <span className="text-blue-800 font-bold text-sm flex items-center gap-1.5 mb-1">
+                💡 Lời giải & Đáp án chi tiết:
+              </span>
+              <div className="text-sm text-gray-800 leading-relaxed font-normal">
+                <MathText html={question.solution || question.explanation || (question as any).loigiai} block />
+              </div>
             </div>
           )}
         </div>
@@ -596,10 +601,14 @@ const TrueFalseReview: React.FC<{
             </div>
           )}
 
-          {showExplanations && question.solution && (
-            <div className="mt-3 p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-xl">
-              <span className="text-blue-700 font-bold text-sm">💡 Lời giải: </span>
-              <div className="text-sm text-gray-700 mt-1"><MathText html={question.solution} block /></div>
+          {showExplanations && (question.solution || question.explanation || (question as any).loigiai) && (
+            <div className="mt-3 p-3.5 bg-blue-50/90 border border-blue-200 rounded-xl">
+              <span className="text-blue-800 font-bold text-sm flex items-center gap-1.5 mb-1">
+                💡 Lời giải & Đáp án chi tiết:
+              </span>
+              <div className="text-sm text-gray-800 leading-relaxed font-normal">
+                <MathText html={question.solution || question.explanation || (question as any).loigiai} block />
+              </div>
             </div>
           )}
         </div>
@@ -679,10 +688,14 @@ const ShortAnswerReview: React.FC<{
             )}
           </div>
 
-          {showExplanations && question.solution && (
-            <div className="mt-3 p-3 bg-blue-50 border-l-4 border-blue-400 rounded-r-xl">
-              <span className="text-blue-700 font-bold text-sm">💡 Lời giải: </span>
-              <div className="text-sm text-gray-700 mt-1"><MathText html={question.solution} block /></div>
+          {showExplanations && (question.solution || question.explanation || (question as any).loigiai) && (
+            <div className="mt-3 p-3.5 bg-blue-50/90 border border-blue-200 rounded-xl">
+              <span className="text-blue-800 font-bold text-sm flex items-center gap-1.5 mb-1">
+                💡 Lời giải & Đáp án chi tiết:
+              </span>
+              <div className="text-sm text-gray-800 leading-relaxed font-normal">
+                <MathText html={question.solution || question.explanation || (question as any).loigiai} block />
+              </div>
             </div>
           )}
         </div>

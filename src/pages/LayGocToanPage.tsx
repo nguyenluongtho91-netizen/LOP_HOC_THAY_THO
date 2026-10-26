@@ -48,6 +48,53 @@ export interface ExamAttempt {
   violations: number; // Số lần vi phạm rời tab
   isAutoSubmittedByViolation?: boolean; // Tự động nộp do vi phạm 3 lần
   candidateName?: string;
+  questions?: any[];
+}
+
+// ✅ HÀM ĐẢO VÀ XÁO TRỘN CÂU HỎI VÀ PHƯƠNG ÁN A, B, C, D KHI HỌC SINH LÀM LẠI ĐỀ
+function shuffleLayGocQuestionsAndOptions(questions: any[]): any[] {
+  const cloned = questions.map(q => {
+    if (!q.options || q.options.length === 0) {
+      return { ...q };
+    }
+
+    const letters = ['A', 'B', 'C', 'D'];
+    const correctLetter = String(q.correctAnswer || '').trim().toUpperCase();
+    const correctIndex = letters.indexOf(correctLetter);
+    const correctContent = correctIndex !== -1 && correctIndex < q.options.length 
+      ? q.options[correctIndex] 
+      : null;
+
+    // Đảo ngẫu nhiên các phương án (Fisher-Yates)
+    const shuffledOpts = [...q.options];
+    for (let i = shuffledOpts.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledOpts[i], shuffledOpts[j]] = [shuffledOpts[j], shuffledOpts[i]];
+    }
+
+    // Gán lại chữ cái đáp án đúng tương ứng với vị trí mới của phương án đúng
+    let newCorrectAnswer = q.correctAnswer;
+    if (correctContent !== null) {
+      const newIdx = shuffledOpts.indexOf(correctContent);
+      if (newIdx !== -1 && newIdx < letters.length) {
+        newCorrectAnswer = letters[newIdx];
+      }
+    }
+
+    return {
+      ...q,
+      options: shuffledOpts,
+      correctAnswer: newCorrectAnswer,
+    };
+  });
+
+  // Đảo ngẫu nhiên thứ tự các câu hỏi (Fisher-Yates)
+  for (let i = cloned.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cloned[i], cloned[j]] = [cloned[j], cloned[i]];
+  }
+
+  return cloned;
 }
 
 export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolean }) {
@@ -68,6 +115,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const [isExamTimerActive, setIsExamTimerActive] = useState<boolean>(false);
   const [examTimeLeft, setExamTimeLeft] = useState<number>(1200); // 20 phút = 1200 giây
   const [showAllExplanations, setShowAllExplanations] = useState<boolean>(false);
+  const [retakeSeed, setRetakeSeed] = useState<number>(0); // Seed kích hoạt đảo & xáo trộn câu hỏi khi làm lại đề
   const [isPrintModalOpen, setIsPrintModalOpen] = useState<boolean>(false);
   const [isScanModalOpen, setIsScanModalOpen] = useState<boolean>(false);
   const [showFireworks, setShowFireworks] = useState<boolean>(false);
@@ -344,14 +392,22 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return LAY_GOC_HOA_TOPICS.filter(t => t.branch === hoaBranchFilter);
   }, [currentSubject, hoaBranchFilter]);
 
-  // Danh sách 20 câu hỏi của Đề đang chọn
+  // Danh sách 20 câu hỏi của Đề đang chọn (Tự động đảo và xáo trộn khi học sinh làm lại đề)
   const currentExamQuestions = useMemo(() => {
-    if (currentSubject === 'toan') {
-      return getLayGocExamQuestions(selectedTopicId, selectedExamNo);
-    } else {
-      return getLayGocHoaExamQuestions(selectedTopicId, selectedExamNo);
+    if (viewingPastAttempt?.questions && viewingPastAttempt.questions.length > 0) {
+      return viewingPastAttempt.questions;
     }
-  }, [currentSubject, selectedTopicId, selectedExamNo]);
+
+    const baseQuestions = currentSubject === 'toan'
+      ? getLayGocExamQuestions(selectedTopicId, selectedExamNo)
+      : getLayGocHoaExamQuestions(selectedTopicId, selectedExamNo);
+
+    if (retakeSeed === 0) {
+      return baseQuestions;
+    }
+
+    return shuffleLayGocQuestionsAndOptions(baseQuestions);
+  }, [currentSubject, selectedTopicId, selectedExamNo, retakeSeed, viewingPastAttempt]);
 
   // Thông tin chuyên đề đang chọn
   const currentTopic = useMemo(() => {
@@ -451,7 +507,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       answers: { ...examAnswers },
       violations: tabSwitchCount + (isViolationSubmit ? 1 : 0),
       isAutoSubmittedByViolation: isViolationSubmit,
-      candidateName: candidateName.trim() || 'Học sinh'
+      candidateName: candidateName.trim() || 'Học sinh',
+      questions: currentExamQuestions
     };
 
     const updatedHistory = [newAttempt, ...examHistory];
@@ -578,10 +635,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     setTabSwitchCount(0);
     setShowAllExplanations(false);
     setViewingPastAttempt(null);
+    setRetakeSeed(0);
   };
 
   // CHẾ ĐỘ LÀM LẠI NHIỀU LẦN ĐỀ NÀY (BẮT ĐẦU LẦN TIẾP THEO)
   const handleRetakeExam = () => {
+    setRetakeSeed(prev => prev + 1); // ✅ Kích hoạt đảo ngẫu nhiên câu hỏi & phương án
     setExamAnswers({});
     setIsExamSubmitted(false);
     setIsExamTimerActive(true);
@@ -591,7 +650,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     setShowViolationModal(false);
     setViewingPastAttempt(null);
     window.scrollTo({ top: 300, behavior: 'smooth' });
-    toast.success(`🚀 Bắt đầu làm bài Lần ${examHistory.length + 1}! Chúc em bứt phá điểm số.`);
+    toast.success(`🔀 Đã đảo thứ tự câu hỏi & phương án! Bắt đầu Lần ${examHistory.length + 1}.`);
   };
 
   // Xem lại bài làm của 1 lần trong quá khứ
@@ -1874,24 +1933,44 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         </div>
                       )}
 
-                      {showExp && (
-                        <div className={`mt-4 p-4 rounded-2xl text-sm sm:text-base leading-relaxed border ${
-                          isCorrect 
-                            ? 'bg-emerald-50/80 text-emerald-950 border-emerald-200' 
-                            : 'bg-amber-50/80 text-amber-950 border-amber-200'
-                        }`}>
-                          <div className="font-extrabold flex items-center gap-1.5 mb-1.5 text-slate-900 text-sm">
-                            <Sparkles className="w-4 h-4 text-amber-500" />
-                            <span>💡 Lời giải chi tiết Thầy Thọ:</span>
-                            <span className="font-bold text-emerald-700 ml-auto text-sm">
-                              Đáp án đúng: {q.correctAnswer} {isShortAnswer ? 'amu' : ''}
-                            </span>
+                      {showExp && (() => {
+                        const correctLetterIdx = ['A', 'B', 'C', 'D'].indexOf(String(q.correctAnswer || '').trim().toUpperCase());
+                        const correctOptionText = !isShortAnswer && correctLetterIdx !== -1 && q.options?.[correctLetterIdx] 
+                          ? q.options[correctLetterIdx] 
+                          : '';
+
+                        return (
+                          <div className={`mt-4 p-4 sm:p-5 rounded-2xl text-sm sm:text-base leading-relaxed border-2 shadow-xs transition-all ${
+                            isCorrect 
+                              ? 'bg-emerald-50/90 text-emerald-950 border-emerald-300 ring-2 ring-emerald-500/10' 
+                              : 'bg-amber-50/90 text-amber-950 border-amber-300 ring-2 ring-amber-500/10'
+                          }`}>
+                            <div className="flex flex-wrap items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-200/60">
+                              <div className="font-extrabold flex items-center gap-1.5 text-slate-900 text-sm">
+                                <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+                                <span>💡 Lời giải & Đáp án chi tiết Thầy Thọ:</span>
+                              </div>
+                              <div className="flex flex-wrap items-center gap-2">
+                                {isCorrect ? (
+                                  <span className="font-bold text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                    ✅ Em đã làm đúng (+0.5đ)
+                                  </span>
+                                ) : (
+                                  <span className="font-bold text-xs px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-300">
+                                    ❌ Em chọn: {userAns || '(chưa làm)'}
+                                  </span>
+                                )}
+                                <span className="font-bold text-xs px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-300">
+                                  Đáp án đúng: {q.correctAnswer} {correctOptionText ? `(${correctOptionText})` : ''} {isShortAnswer ? 'amu' : ''}
+                                </span>
+                              </div>
+                            </div>
+                            <div className="text-slate-800 leading-relaxed font-normal mt-2">
+                              <MathText html={q.explanation || q.solution || (q as any).loigiai || 'Xem đáp án chuẩn phía trên.'} block />
+                            </div>
                           </div>
-                          <div className="text-slate-800 leading-relaxed font-normal">
-                            <MathText html={q.explanation} />
-                          </div>
-                        </div>
-                      )}
+                        );
+                      })()}
                     </div>
                   );
                 })}
