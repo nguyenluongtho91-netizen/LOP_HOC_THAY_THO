@@ -3,18 +3,93 @@
  * 
  * Features:
  * - Theo dõi khi học sinh chuyển tab/window
- * - Cảnh báo lần đầu
- * - Tự động nộp bài ở lần thứ 2
- * - Block F12/DevTools
+ * - Phát âm thanh cảnh báo bíp bíp / còi hú to rõ ngay khi chuyển tab
+ * - Cảnh báo 3 lần, quá 3 lần tự động nộp bài
+ * - Block F12/DevTools/Chuột phải
  */
 
 export type TabSwitchCallback = (switchCount: number, warnings: Date[]) => void;
 export type AutoSubmitCallback = () => void;
 
+/**
+ * Phát âm thanh cảnh báo bằng Web Audio API (chạy mượt trên mọi trình duyệt/thiết bị)
+ */
+export function playTabAlertSound(type: 'warning' | 'danger' = 'warning') {
+  try {
+    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    if (ctx.state === 'suspended') {
+      void ctx.resume();
+    }
+    const now = ctx.currentTime;
+
+    if (type === 'danger') {
+      // Còi báo động dồn dập (siren) 4 nhịp cao thấp khi bị thu bài / vi phạm nghiêm trọng
+      for (let i = 0; i < 4; i++) {
+        const start = now + i * 0.16;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(i % 2 === 0 ? 987.77 : 659.25, start);
+        gain.gain.setValueAtTime(0.5, start);
+        gain.gain.exponentialRampToValueAtTime(0.01, start + 0.14);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 0.15);
+      }
+    } else {
+      // 3 tiếng bíp cảnh báo to rõ, dứt khoát
+      for (let i = 0; i < 3; i++) {
+        const start = now + i * 0.14;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, start); // Nốt La cao (A5)
+        gain.gain.setValueAtTime(0.45, start);
+        gain.gain.exponentialRampToValueAtTime(0.01, start + 0.11);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(start);
+        osc.stop(start + 0.12);
+      }
+    }
+  } catch (err) {
+    console.warn('[TabDetection] Audio playback error:', err);
+  }
+}
+
+/**
+ * Mở khóa AudioContext khi người dùng tương tác với trang lần đầu
+ */
+export function unlockAudio() {
+  try {
+    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    if (ctx.state === 'suspended') {
+      const resume = () => {
+        void ctx.resume();
+        window.removeEventListener('click', resume);
+        window.removeEventListener('keydown', resume);
+        window.removeEventListener('touchstart', resume);
+      };
+      window.addEventListener('click', resume, { once: true });
+      window.addEventListener('keydown', resume, { once: true });
+      window.addEventListener('touchstart', resume, { once: true });
+    }
+  } catch {
+    // ignore
+  }
+}
+
 export class TabDetectionService {
   private switchCount: number = 0;
   private warnings: Date[] = [];
   private isActive: boolean = false;
+  private maxAllowedSwitches: number = 3;
+  private lastSwitchTime: number = 0;
   
   private onTabSwitch?: TabSwitchCallback;
   private onAutoSubmit?: AutoSubmitCallback;
@@ -32,12 +107,16 @@ export class TabDetectionService {
   start(callbacks: {
     onTabSwitch?: TabSwitchCallback;
     onAutoSubmit?: AutoSubmitCallback;
+    maxSwitches?: number;
   }) {
     if (this.isActive) return;
     
     this.onTabSwitch = callbacks.onTabSwitch;
     this.onAutoSubmit = callbacks.onAutoSubmit;
+    this.maxAllowedSwitches = callbacks.maxSwitches ?? 3;
     this.isActive = true;
+
+    unlockAudio();
 
     // Theo dõi visibility change
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
@@ -45,13 +124,13 @@ export class TabDetectionService {
     // Theo dõi window blur
     window.addEventListener('blur', this.handleBlur);
     
-    // Block phím tắt
+    // Block phím tắt nguy hiểm
     document.addEventListener('keydown', this.handleKeyDown);
     
     // Block right click
     document.addEventListener('contextmenu', this.handleContextMenu);
 
-    console.log('🔒 Tab Detection Service started');
+    console.log('🔒 Tab Detection Service started - Max switches allowed:', this.maxAllowedSwitches);
   }
 
   /**
@@ -70,11 +149,16 @@ export class TabDetectionService {
   }
 
   /**
-   * Xử lý khi tab bị ẩn
+   * Xử lý khi tab bị ẩn hoặc hiện lại
    */
   private handleVisibilityChange() {
     if (document.hidden) {
       this.recordSwitch();
+    } else {
+      // Khi học sinh quay lại tab, phát lại âm thanh cảnh báo nếu vừa vi phạm
+      if (this.switchCount > 0 && Date.now() - this.lastSwitchTime < 3000) {
+        playTabAlertSound(this.switchCount > this.maxAllowedSwitches ? 'danger' : 'warning');
+      }
     }
   }
 
@@ -82,44 +166,26 @@ export class TabDetectionService {
    * Xử lý khi window mất focus
    */
   private handleBlur() {
-    // Chỉ record nếu thực sự chuyển tab (không phải click vào DevTools)
     setTimeout(() => {
       if (document.hidden) {
         this.recordSwitch();
       }
-    }, 100);
+    }, 150);
   }
 
   /**
    * Block các phím tắt nguy hiểm
    */
   private handleKeyDown(e: KeyboardEvent) {
-    // Block F12
     if (e.key === 'F12') {
       e.preventDefault();
       return false;
     }
-
-    // Block Ctrl+Shift+I (DevTools)
-    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
       e.preventDefault();
       return false;
     }
-
-    // Block Ctrl+Shift+J (Console)
-    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-      e.preventDefault();
-      return false;
-    }
-
-    // Block Ctrl+U (View Source)
     if (e.ctrlKey && e.key === 'u') {
-      e.preventDefault();
-      return false;
-    }
-
-    // Block Ctrl+Shift+C (Inspect Element)
-    if (e.ctrlKey && e.shiftKey && e.key === 'C') {
       e.preventDefault();
       return false;
     }
@@ -139,20 +205,32 @@ export class TabDetectionService {
   private recordSwitch() {
     if (!this.isActive) return;
 
+    const nowMs = Date.now();
+    // Chống đếm đúp khi visibilitychange và blur cùng kích hoạt trong 1.5 giây
+    if (nowMs - this.lastSwitchTime < 1500) {
+      return;
+    }
+    this.lastSwitchTime = nowMs;
+
     this.switchCount++;
     const now = new Date();
     this.warnings.push(now);
 
-    console.warn(`⚠️ Tab switch detected! Count: ${this.switchCount}`);
+    console.warn(`⚠️ Tab switch detected! Count: ${this.switchCount}/${this.maxAllowedSwitches}`);
 
-    // Callback
+    const isOverLimit = this.switchCount > this.maxAllowedSwitches;
+
+    // Phát âm thanh cảnh báo ngay lập tức
+    playTabAlertSound(isOverLimit ? 'danger' : 'warning');
+
+    // Callback hiển thị thông báo
     if (this.onTabSwitch) {
       this.onTabSwitch(this.switchCount, [...this.warnings]);
     }
 
-    // Lần thứ 2 -> tự động nộp bài
-    if (this.switchCount >= 2) {
-      console.error('🚨 AUTO SUBMIT - Too many tab switches!');
+    // Quá 3 lần -> Tự động nộp bài luôn
+    if (isOverLimit) {
+      console.error(`🚨 AUTO SUBMIT - Tab switch count exceeded limit (${this.switchCount} > ${this.maxAllowedSwitches})!`);
       if (this.onAutoSubmit) {
         this.onAutoSubmit();
       }
@@ -166,7 +244,8 @@ export class TabDetectionService {
     return {
       switchCount: this.switchCount,
       warnings: [...this.warnings],
-      isActive: this.isActive
+      isActive: this.isActive,
+      maxAllowedSwitches: this.maxAllowedSwitches
     };
   }
 
@@ -176,6 +255,7 @@ export class TabDetectionService {
   reset() {
     this.switchCount = 0;
     this.warnings = [];
+    this.lastSwitchTime = 0;
   }
 }
 

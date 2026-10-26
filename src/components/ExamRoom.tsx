@@ -229,13 +229,14 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
 
     const tabService = getTabDetectionService();
     tabService.start({
+      maxSwitches: 3,
       onTabSwitch: (count: number, warnings: Date[]) => {
         setTabSwitchCount(count); setTabSwitchWarnings(warnings);
-        setShowTabWarning(true); setTimeout(() => setShowTabWarning(false), 5000);
+        setShowTabWarning(true);
         reportTabSwitch();
       },
       onAutoSubmit: () => {
-        reportViolation({ type: 'auto_submit', timestamp: new Date().toISOString(), detail: 'Chuyển tab quá nhiều lần' });
+        reportViolation({ type: 'auto_submit', timestamp: new Date().toISOString(), detail: 'Chuyển tab quá 3 lần' });
         submitSession(); handleSubmit(true, true);
       }
     });
@@ -407,9 +408,48 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
         </div>
       </div>
 
+      {/* 🚨 Popup Cảnh báo chuyển tab kèm còi báo động */}
       {showTabWarning && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 animate-bounce bg-red-500 text-white px-6 py-3 rounded-xl shadow-2xl font-bold text-sm">
-          ⚠️ CẢNH BÁO: Phát hiện chuyển tab! ({tabSwitchCount}/2)
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150">
+          <div className="bg-white rounded-3xl shadow-2xl border-4 border-red-500 max-w-md w-full p-6 text-center animate-in zoom-in-95 duration-150">
+            <div className="w-16 h-16 mx-auto mb-3 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-3xl animate-bounce">
+              🚨
+            </div>
+            <h3 className="text-xl font-black text-red-600 uppercase tracking-wide mb-2">
+              Cảnh báo rời phòng thi! ({tabSwitchCount}/3)
+            </h3>
+            <div className="text-gray-700 text-sm leading-relaxed mb-4">
+              {tabSwitchCount >= 3 ? (
+                <div className="p-3 bg-red-50 rounded-xl border border-red-200 text-red-700 font-bold">
+                  ⚠️ ĐÂY LÀ LẦN CẢNH BÁO THỨ 3 (LẦN CUỐI CÙNG)!<br />
+                  Nếu bạn rời phòng thi thêm 1 lần nữa, bài thi sẽ <u>TỰ ĐỘNG THU VÀ NỘP NGAY LẬP TỨC</u>!
+                </div>
+              ) : (
+                <p>
+                  Hệ thống phát hiện bạn vừa chuyển tab hoặc rời màn hình làm bài! Hệ thống đã ghi nhận vi phạm và phát còi cảnh báo. <strong className="text-red-600">Quá 3 lần bài thi sẽ tự động bị thu và nộp!</strong>
+                </p>
+              )}
+            </div>
+            
+            {/* Thanh tiến trình vi phạm 3 nấc */}
+            <div className="flex items-center justify-center gap-2 mb-5">
+              {[1, 2, 3].map((step) => (
+                <div
+                  key={step}
+                  className={`flex-1 h-3 rounded-full transition-all duration-300 ${
+                    step <= tabSwitchCount ? 'bg-red-500 shadow-sm' : 'bg-gray-200'
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={() => setShowTabWarning(false)}
+              className="w-full py-3.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 transition text-sm cursor-pointer"
+            >
+              Tôi đã hiểu, tiếp tục làm bài
+            </button>
+          </div>
         </div>
       )}
 
