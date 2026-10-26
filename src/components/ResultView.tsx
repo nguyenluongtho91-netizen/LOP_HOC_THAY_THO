@@ -3,7 +3,7 @@ import React from 'react';
 import { Submission, Room, Exam, Question, QuestionOption } from '../types';
 import MathText from './MathText';
 import { formatScore } from '../services/scoringService';
-import { cleanQuestionText } from '../services/examNormalizer';
+import { formatQuestionTitle } from '../services/examNormalizer';
 
 interface ResultViewProps {
   submission: Submission;
@@ -352,14 +352,14 @@ const MultipleChoiceReview: React.FC<{
   return (
     <div className={`p-5 ${statusColor}`}>
       <div className="flex items-start gap-3">
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm text-white flex-shrink-0 ${
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0 ${
           isUnanswered ? 'bg-slate-400' : isCorrect ? 'bg-emerald-500' : 'bg-red-500'
-        }`}>
-          {question.number % 100}
+        }`} title={isUnanswered ? 'Chưa trả lời' : isCorrect ? 'Đúng' : 'Sai'}>
+          {isUnanswered ? '—' : isCorrect ? '✓' : '✕'}
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-gray-800 mb-3 text-[15px] leading-relaxed">
-            <MathText html={cleanQuestionText(question.text || '')} block />
+            <MathText html={formatQuestionTitle(question.text || '', question.number)} block />
           </div>
 
           {question.images?.length > 0 && (
@@ -497,14 +497,14 @@ const TrueFalseReview: React.FC<{
   return (
     <div className={`p-5 ${statusBg}`}>
       <div className="flex items-start gap-3">
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm text-white flex-shrink-0 ${
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0 ${
           allCorrect ? 'bg-emerald-500' : partialCorrect ? 'bg-yellow-500' : 'bg-red-500'
-        }`}>
-          {question.number % 100}
+        }`} title={allCorrect ? 'Đúng hoàn toàn' : partialCorrect ? 'Đúng một phần' : 'Sai'}>
+          {allCorrect ? '✓' : partialCorrect ? '½' : '✕'}
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-gray-800 mb-2 text-[15px] leading-relaxed">
-            <MathText html={cleanQuestionText(question.text || '')} block />
+            <MathText html={formatQuestionTitle(question.text || '', question.number)} block />
           </div>
 
           {/* Badge điểm đúng sai */}
@@ -637,14 +637,14 @@ const ShortAnswerReview: React.FC<{
   return (
     <div className={`p-5 ${statusBg}`}>
       <div className="flex items-start gap-3">
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm text-white flex-shrink-0 ${
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0 ${
           isUnanswered ? 'bg-slate-400' : isCorrect ? 'bg-emerald-500' : 'bg-red-500'
-        }`}>
-          {question.number % 100}
+        }`} title={isUnanswered ? 'Chưa trả lời' : isCorrect ? 'Đúng' : 'Sai'}>
+          {isUnanswered ? '—' : isCorrect ? '✓' : '✕'}
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-gray-800 mb-2 text-[15px] leading-relaxed">
-            <MathText html={cleanQuestionText(question.text || '')} block />
+            <MathText html={formatQuestionTitle(question.text || '', question.number)} block />
             <span className="ml-2 px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded-full">TLN</span>
           </div>
 

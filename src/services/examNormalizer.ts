@@ -29,8 +29,22 @@ export interface NormalizedExamData {
 }
 
 /**
+ * Đảm bảo câu hỏi luôn có tiền tố "Câu X: " ở đầu để hiển thị rõ ràng, chuẩn sư phạm
+ */
+export function formatQuestionTitle(text: string = '', number?: number): string {
+  const trimmed = (text || '').trim();
+  if (!trimmed) return number ? `<strong>Câu ${number}:</strong>` : '';
+  if (/^(\s*<p[^>]*>)?\s*(<strong[^>]*>|<b[^>]*>|<span[^>]*>)?\s*(?:câu|bài)\s*\d+/i.test(trimmed)) {
+    return trimmed;
+  }
+  if (number) {
+    return `<strong>Câu ${number}:</strong> ${trimmed}`;
+  }
+  return trimmed;
+}
+
+/**
  * Xóa tiền tố thừa dạng "Câu X:", "Câu X.", "Bài X:" ở đầu câu hỏi
- * để tránh trùng lặp khi giao diện đã có huy hiệu số câu (1, 2, 19, v.v.)
  */
 export function cleanQuestionText(raw: string = ''): string {
   if (!raw) return '';
@@ -57,8 +71,8 @@ export function normalizeExamData(rawExamData: any): NormalizedExamData {
       ? Number(q.number)
       : (idx + 1);
 
-    // Xử lý text câu hỏi và mathExpression
-    let text = cleanQuestionText(q.text || q.question || '');
+    // Xử lý text câu hỏi: Giữ nguyên Câu X hoặc định dạng chuẩn Câu X
+    let text = formatQuestionTitle(q.text || q.question || '', number);
     if (q.mathExpression && typeof q.mathExpression === 'string' && q.mathExpression.trim()) {
       const mathExpr = q.mathExpression.trim();
       if (!text.includes(mathExpr)) {

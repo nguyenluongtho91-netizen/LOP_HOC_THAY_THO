@@ -6,7 +6,7 @@ import { formatScore, getGrade } from '../services/scoringService';
 import MathText from './MathText';
 import { supabase } from '@/lib/supabase';
 import toast from 'react-hot-toast';
-import { cleanQuestionText } from '../services/examNormalizer';
+import { formatQuestionTitle } from '../services/examNormalizer';
 
 interface SubmissionDetailViewProps {
   submission?: Submission;
@@ -528,7 +528,7 @@ const MultipleChoiceDetail = ({ question, userAnswer, displayIndex, maxPoints = 
 
       {/* Question content */}
       <div className="px-4 py-3">
-        <MathText html={cleanQuestionText(question.text)} block className="text-sm text-gray-800 leading-relaxed mb-3" />
+        <MathText html={formatQuestionTitle(question.text, question.number || displayIndex)} block className="text-sm text-gray-800 leading-relaxed mb-3" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {(question.options || []).map(opt => {
@@ -640,7 +640,7 @@ const TrueFalseDetail = ({ question, userAnswer, breakdown, displayIndex, maxPoi
 
       {/* Question content */}
       <div className="px-4 py-3">
-        <MathText html={cleanQuestionText(question.text)} block className="text-sm text-gray-800 leading-relaxed mb-3" />
+        <MathText html={formatQuestionTitle(question.text, question.number || displayIndex)} block className="text-sm text-gray-800 leading-relaxed mb-3" />
 
         {/* Bảng đúng/sai */}
         <div className="rounded-xl border-2 border-teal-200 overflow-hidden text-sm shadow-sm">
@@ -736,7 +736,7 @@ const ShortAnswerDetail = ({ question, userAnswer, displayIndex, maxPoints = 0 }
 
       {/* Content */}
       <div className="px-4 py-3">
-        <MathText html={cleanQuestionText(question.text)} block className="text-sm text-gray-800 leading-relaxed mb-3" />
+        <MathText html={formatQuestionTitle(question.text, question.number || displayIndex)} block className="text-sm text-gray-800 leading-relaxed mb-3" />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className={`p-3 rounded-xl border-2 ${isCorrect ? 'bg-orange-50 border-orange-200' : userAnswer ? 'bg-red-50 border-red-200' : 'bg-gray-50 border-gray-200'}`}>
             <p className="text-[10px] font-bold uppercase text-gray-500 mb-1">Học sinh trả lời:</p>
@@ -782,7 +782,7 @@ const EssayDetail = ({ question, userAnswer, displayIndex, scoreDetail }) => {
 
       {/* Content */}
       <div className="px-4 py-3">
-        <MathText html={cleanQuestionText(question.text)} block className="text-sm text-gray-800 mb-3 leading-relaxed" />
+        <MathText html={formatQuestionTitle(question.text, question.number || displayIndex)} block className="text-sm text-gray-800 mb-3 leading-relaxed" />
         {hasContent ? (
           <div className="space-y-3">
             {hasText && (
