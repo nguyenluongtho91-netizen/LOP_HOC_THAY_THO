@@ -128,122 +128,125 @@ function makeOptions(correct: string | number, distractors: (string | number)[],
 }
 
 // ==============================================================================
-// 1. SINH ĐỀ PHẦN 1: SỐ TỰ NHIÊN (LỚP 6) - 20 DẠNG CÂU HỎI ĐỘC LẬP
+// 1. SINH ĐỀ PHẦN 1: CỘNG, TRỪ, NHÂN, CHIA CƠ BẢN (LỚP 6) - 20 DẠNG CÂU HỎI THUẦN TÚY
 // ==============================================================================
 function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
   const baseSeed = 500 + examNo * 50;
 
-  // Dạng 1: Cộng số tự nhiên có nhớ
+  // Dạng 1: Đặt tính cộng 2 số tự nhiên
   const q1_a = randInt(125 + examNo * 8, 380 + examNo * 10, baseSeed + 1);
   const q1_b = randInt(148 + examNo * 6, 420 + examNo * 12, baseSeed + 2);
   const q1_ans = q1_a + q1_b;
 
-  // Dạng 2: Trừ số tự nhiên có mượn
-  const q2_a = randInt(520 + examNo * 15, 950 + examNo * 20, baseSeed + 3);
-  const q2_b = randInt(185, q2_a - 120, baseSeed + 4);
+  // Dạng 2: Đặt tính trừ 2 số tự nhiên có nhớ
+  const q2_a = randInt(520 + examNo * 15, 850 + examNo * 10, baseSeed + 3);
+  const q2_b = randInt(145 + examNo * 5, q2_a - 110, baseSeed + 4);
   const q2_ans = q2_a - q2_b;
 
-  // Dạng 3: Tính nhẩm thêm bớt (cộng/trừ 99)
-  const q3_a = randInt(135 + examNo * 10, 480, baseSeed + 5);
-  const q3_ans = q3_a + 99;
+  // Dạng 3: Cộng 3 số tự nhiên đơn giản
+  const q3_a = randInt(25 + examNo * 3, 75 + examNo * 5, baseSeed + 5);
+  const q3_b = randInt(30 + examNo * 4, 85 + examNo * 6, baseSeed + 6);
+  const q3_c = randInt(20 + examNo * 2, 60 + examNo * 4, baseSeed + 7);
+  const q3_ans = q3_a + q3_b + q3_c;
 
-  // Dạng 4: Nhóm tròn trăm trong phép cộng
-  const q4_u1 = randInt(25, 75, baseSeed + 6);
-  const q4_u2 = 100 - q4_u1;
-  const q4_mid = randInt(140, 460, baseSeed + 7);
-  const q4_ans = 100 + q4_mid;
+  // Dạng 4: Tính nhanh nhóm tròn chục trong phép cộng: (a + b) + c với a + b = tròn chục
+  const q4_round = randInt(4, 9, baseSeed + 8) * 10;
+  const q4_a = randInt(12, q4_round - 11, baseSeed + 9);
+  const q4_b = q4_round - q4_a;
+  const q4_c = randInt(15, 65, baseSeed + 10);
+  const q4_ans = q4_round + q4_c;
 
-  // Dạng 5: Nhóm trừ liên tiếp a - b - c = a - (b + c)
-  const q5_b = randInt(35, 75, baseSeed + 8);
-  const q5_c = 100 - q5_b;
-  const q5_a = randInt(350, 750, baseSeed + 9);
-  const q5_ans = q5_a - 100;
+  // Dạng 5: Tính nhanh nhóm tròn trăm trong phép cộng: (a + b) + c với a + b = 100
+  const q5_a = randInt(25, 75, baseSeed + 11);
+  const q5_b = 100 - q5_a;
+  const q5_c = randInt(120, 480, baseSeed + 12);
+  const q5_ans = 100 + q5_c;
 
-  // Dạng 6: Đặt thừa số chung phép cộng k . a + k . b
-  const q6_k = randInt(15, 45, baseSeed + 10);
-  const q6_a = randInt(26, 68, baseSeed + 11);
-  const q6_b = 100 - q6_a;
-  const q6_ans = q6_k * 100;
+  // Dạng 6: Phép trừ liên tiếp: a - b - c = a - (b + c)
+  const q6_b = randInt(25, 75, baseSeed + 13);
+  const q6_c = 100 - q6_b;
+  const q6_a = randInt(350, 750, baseSeed + 14);
+  const q6_ans = q6_a - 100;
 
-  // Dạng 7: Đặt thừa số chung phép trừ k . a - k . b
-  const q7_k = randInt(12, 38, baseSeed + 12);
-  const q7_diff = randInt(10, 20, baseSeed + 13);
-  const q7_b = randInt(15, 40, baseSeed + 14);
-  const q7_a = q7_b + q7_diff;
-  const q7_ans = q7_k * q7_diff;
+  // Dạng 7: Nhân số có 2 chữ số với số có 1 chữ số
+  const q7_a = randInt(24, 75, baseSeed + 15);
+  const q7_b = randInt(3, 8, baseSeed + 16);
+  const q7_ans = q7_a * q7_b;
 
-  // Dạng 8: Phép tính có dấu ngoặc tròn
-  const q8_out = randInt(250, 600, baseSeed + 15);
-  const q8_in1 = randInt(40, 110, baseSeed + 16);
-  const q8_in2 = randInt(30, 90, baseSeed + 17);
-  const q8_ans = q8_out - (q8_in1 + q8_in2);
+  // Dạng 8: Nhân nhẩm số tự nhiên với 10 hoặc 100
+  const q8_mult = examNo % 2 === 0 ? 100 : 10;
+  const q8_a = randInt(35, 95, baseSeed + 17);
+  const q8_ans = q8_a * q8_mult;
 
-  // Dạng 9: Thứ tự ưu tiên không ngoặc: nhân chia trước, cộng trừ sau
-  const q9_a = randInt(20, 80, baseSeed + 18);
-  const q9_b = randInt(4, 9, baseSeed + 19);
-  const q9_c = randInt(6, 15, baseSeed + 20);
-  const q9_ans = q9_a + q9_b * q9_c;
+  // Dạng 9: Nhân hai số có 2 chữ số cơ bản
+  const q9_a = randInt(14, 35, baseSeed + 18);
+  const q9_b = randInt(12, 25, baseSeed + 19);
+  const q9_ans = q9_a * q9_b;
 
-  // Dạng 10: Ngoặc vuông và ngoặc tròn: A - [B - (C + D)]
-  const q10_out = randInt(400, 800, baseSeed + 21);
-  const q10_mid = randInt(150, 280, baseSeed + 22);
-  const q10_k1 = randInt(35, 75, baseSeed + 23);
-  const q10_k2 = randInt(25, 55, baseSeed + 24);
-  const q10_ans = q10_out - (q10_mid - (q10_k1 + q10_k2));
+  // Dạng 10: Phép chia hết cơ bản: a : b (chia cho số có 1 chữ số)
+  const q10_b = randInt(3, 9, baseSeed + 20);
+  const q10_ans = randInt(15, 85, baseSeed + 21);
+  const q10_a = q10_b * q10_ans;
 
-  // Dạng 11: Đặt tính nhân hai số tự nhiên
-  const q11_a = randInt(24, 75, baseSeed + 25);
-  const q11_b = randInt(12, 28, baseSeed + 26);
-  const q11_ans = q11_a * q11_b;
+  // Dạng 11: Chia nhẩm số tròn chục cho 10
+  const q11_ans = randInt(25, 95, baseSeed + 22);
+  const q11_a = q11_ans * 10;
 
-  // Dạng 12: Phép chia hết hai số tự nhiên
-  const q12_b = randInt(12, 25, baseSeed + 27);
-  const q12_ans = randInt(14, 45, baseSeed + 28);
-  const q12_a = q12_b * q12_ans;
+  // Dạng 12: Phép chia có dư cơ bản: tìm thương và số dư
+  const q12_b = randInt(4, 9, baseSeed + 23);
+  const q12_q = randInt(6, 15, baseSeed + 24);
+  const q12_r = randInt(1, q12_b - 1, baseSeed + 25);
+  const q12_a = q12_b * q12_q + q12_r;
 
-  // Dạng 13: Phép chia có dư: a = b . q + r
-  const q13_b = randInt(12, 30, baseSeed + 29);
-  const q13_q = randInt(15, 35, baseSeed + 30);
-  const q13_r = randInt(3, q13_b - 1, baseSeed + 31);
-  const q13_a = q13_b * q13_q + q13_r;
+  // Dạng 13: Biểu thức có ngoặc tròn: a + (b - c)
+  const q13_c = randInt(15, 45, baseSeed + 26);
+  const q13_b = q13_c + randInt(20, 60, baseSeed + 27);
+  const q13_a = randInt(40, 150, baseSeed + 28);
+  const q13_ans = q13_a + (q13_b - q13_c);
 
-  // Dạng 14: Lũy thừa bậc 2 và bậc 3: a^2 + b^2
-  const q14_a = randInt(4, 9, baseSeed + 32);
-  const q14_b = randInt(3, 7, baseSeed + 33);
-  const q14_ans = q14_a * q14_a + q14_b * q14_b;
+  // Dạng 14: Biểu thức có ngoặc tròn: a - (b + c)
+  const q14_b = randInt(25, 75, baseSeed + 29);
+  const q14_c = randInt(20, 60, baseSeed + 30);
+  const q14_a = (q14_b + q14_c) + randInt(50, 200, baseSeed + 31);
+  const q14_ans = q14_a - (q14_b + q14_c);
 
-  // Dạng 15: Nhân hai lũy thừa cùng cơ số: a^m . a^n = a^(m + n)
-  const q15_base = randInt(2, 6, baseSeed + 34);
-  const q15_m = randInt(2, 4, baseSeed + 35);
-  const q15_n = randInt(3, 5, baseSeed + 36);
-  const q15_ans_exp = q15_m + q15_n;
+  // Dạng 15: Thứ tự phép tính: nhân trước, cộng sau (a + b . c)
+  const q15_b = randInt(4, 9, baseSeed + 32);
+  const q15_c = randInt(5, 12, baseSeed + 33);
+  const q15_a = randInt(25, 85, baseSeed + 34);
+  const q15_ans = q15_a + q15_b * q15_c;
 
-  // Dạng 16: Chia hai lũy thừa cùng cơ số: a^m : a^n = a^(m - n)
-  const q16_base = randInt(3, 7, baseSeed + 37);
-  const q16_m = randInt(5, 8, baseSeed + 38);
-  const q16_n = randInt(2, 4, baseSeed + 39);
-  const q16_ans_exp = q16_m - q16_n;
+  // Dạng 16: Thứ tự phép tính: nhân trước, trừ sau (a - b . c)
+  const q16_b = randInt(3, 8, baseSeed + 35);
+  const q16_c = randInt(4, 10, baseSeed + 36);
+  const q16_a = q16_b * q16_c + randInt(30, 90, baseSeed + 37);
+  const q16_ans = q16_a - q16_b * q16_c;
 
-  // Dạng 17: Dấu hiệu chia hết cho 2 và 5 (chữ số tận cùng)
-  const q17_val = (randInt(12, 48, baseSeed + 40) * 10);
+  // Dạng 17: Thứ tự phép tính: chia trước, cộng sau (a + b : c)
+  const q17_c = randInt(3, 8, baseSeed + 38);
+  const q17_div = randInt(5, 15, baseSeed + 39);
+  const q17_b = q17_c * q17_div;
+  const q17_a = randInt(20, 80, baseSeed + 40);
+  const q17_ans = q17_a + q17_div;
 
-  // Dạng 18: Dấu hiệu chia hết cho 3 và 9 (tổng chữ số)
-  const q18_base = randInt(15, 45, baseSeed + 41) * 9;
+  // Dạng 18: Thứ tự phép tính: chia trước, trừ sau (a - b : c)
+  const q18_c = randInt(2, 7, baseSeed + 41);
+  const q18_div = randInt(4, 12, baseSeed + 42);
+  const q18_b = q18_c * q18_div;
+  const q18_a = q18_div + randInt(25, 75, baseSeed + 43);
+  const q18_ans = q18_a - q18_div;
 
-  // Dạng 19: Toán thực tế mua sắm (tổng tiền và tiền thừa)
-  const q19_price_pen = 5000;
-  const q19_pens = randInt(3, 6, baseSeed + 42);
-  const q19_price_book = 12000;
-  const q19_books = randInt(2, 4, baseSeed + 43);
-  const q19_total = q19_price_pen * q19_pens + q19_price_book * q19_books;
-  const q19_money = 100000;
-  const q19_change = q19_money - q19_total;
+  // Dạng 19: Tính nhanh đặt thừa số chung phép cộng: a . b + a . c = a . (b + c)
+  const q19_a = randInt(12, 35, baseSeed + 44);
+  const q19_b = randInt(25, 75, baseSeed + 45);
+  const q19_c = 100 - q19_b;
+  const q19_ans = q19_a * 100;
 
-  // Dạng 20: Toán thực tế chia đều hàng / xếp hàng
-  const q20_students = randInt(120, 240, baseSeed + 44);
-  const q20_rows = randInt(6, 12, baseSeed + 45);
-  const q20_per_row = Math.floor(q20_students / q20_rows);
-  const q20_leftover = q20_students % q20_rows;
+  // Dạng 20: Tính nhanh đặt thừa số chung phép trừ: a . b - a . c = a . (b - c)
+  const q20_a = randInt(14, 45, baseSeed + 46);
+  const q20_c = randInt(15, 55, baseSeed + 47);
+  const q20_b = q20_c + 10;
+  const q20_ans = q20_a * 10;
 
   const rawQuestions: Omit<LayGocQuestion, 'id' | 'topic'>[] = [
     {
@@ -261,126 +264,130 @@ function generateSoTuNhienExam(examNo: number): LayGocQuestion[] {
       explanation: `Đặt tính thẳng cột rồi trừ lần lượt từ phải sang trái. Nếu chữ số bị trừ nhỏ hơn thì mượn 1 chục ở hàng liền trước. Ta được: ${q2_a} - ${q2_b} = ${q2_ans}.`
     },
     {
-      question: `Tính nhẩm nhanh bằng cách thêm bớt (cộng với 99):`,
-      mathExpression: `${q3_a} + 99`,
-      options: makeOptions(q3_ans, [q3_ans + 1, q3_ans - 2, q3_a + 100], baseSeed + 5),
+      question: `Tính tổng của ba số tự nhiên:`,
+      mathExpression: `${q3_a} + ${q3_b} + ${q3_c}`,
+      options: makeOptions(q3_ans, [q3_ans + 10, q3_ans - 10, q3_ans + 20], baseSeed + 5),
       correctAnswer: String(q3_ans),
-      explanation: `Quy tắc tính nhẩm: ${q3_a} + 99 = ${q3_a} + 100 - 1 = ${q3_a + 100} - 1 = ${q3_ans}.`
+      explanation: `Thực hiện phép cộng lần lượt từ trái sang phải: (${q3_a} + ${q3_b}) + ${q3_c} = ${q3_a + q3_b} + ${q3_c} = ${q3_ans}.`
+    },
+    {
+      question: `Tính nhanh bằng cách nhóm các số tạo thành số tròn chục:`,
+      mathExpression: `(${q4_a} + ${q4_c}) + ${q4_b}`,
+      options: makeOptions(q4_ans, [q4_ans - 10, q4_ans + 10, q4_round + 10], baseSeed + 8),
+      correctAnswer: String(q4_ans),
+      explanation: `Áp dụng tính chất giao hoán và kết hợp: (${q4_a} + ${q4_b}) + ${q4_c} = ${q4_round} + ${q4_c} = ${q4_ans}.`
     },
     {
       question: `Tính nhanh giá trị biểu thức bằng cách nhóm các số tròn trăm:`,
-      mathExpression: `${q4_u1} + ${q4_mid} + ${q4_u2}`,
-      options: makeOptions(q4_ans, [q4_ans - 20, q4_ans + 20, q4_ans + 100], baseSeed + 7),
-      correctAnswer: String(q4_ans),
-      explanation: `Áp dụng tính chất giao hoán và kết hợp: (${q4_u1} + ${q4_u2}) + ${q4_mid} = 100 + ${q4_mid} = ${q4_ans}.`
+      mathExpression: `(${q5_a} + ${q5_c}) + ${q5_b}`,
+      options: makeOptions(q5_ans, [q5_ans - 20, q5_ans + 20, q5_ans + 100], baseSeed + 11),
+      correctAnswer: String(q5_ans),
+      explanation: `Nhóm hai số có tổng bằng 100: (${q5_a} + ${q5_b}) + ${q5_c} = 100 + ${q5_c} = ${q5_ans}.`
     },
     {
       question: `Tính hợp lý biểu thức trừ liên tiếp bằng cách nhóm số trừ:`,
-      mathExpression: `${q5_a} - ${q5_b} - ${q5_c}`,
-      options: makeOptions(q5_ans, [q5_ans + 10, q5_ans - 10, q5_a - 10], baseSeed + 9),
-      correctAnswer: String(q5_ans),
-      explanation: `Áp dụng quy tắc a - b - c = a - (b + c): ${q5_a} - (${q5_b} + ${q5_c}) = ${q5_a} - 100 = ${q5_ans}.`
-    },
-    {
-      question: `Tính nhanh bằng cách đặt thừa số chung trong phép cộng:`,
-      mathExpression: `${q6_k} . ${q6_a} + ${q6_k} . ${q6_b}`,
-      options: makeOptions(q6_ans, [q6_ans - 100, q6_ans + 100, q6_k * 10], baseSeed + 11),
+      mathExpression: `${q6_a} - ${q6_b} - ${q6_c}`,
+      options: makeOptions(q6_ans, [q6_ans + 10, q6_ans - 10, q6_a - 10], baseSeed + 13),
       correctAnswer: String(q6_ans),
-      explanation: `Đặt ${q6_k} ra ngoài làm thừa số chung: ${q6_k} . (${q6_a} + ${q6_b}) = ${q6_k} . 100 = ${q6_ans}.`
+      explanation: `Áp dụng quy tắc a - b - c = a - (b + c): ${q6_a} - (${q6_b} + ${q6_c}) = ${q6_a} - 100 = ${q6_ans}.`
     },
     {
-      question: `Áp dụng tính chất phân phối đặt thừa số chung với phép trừ:`,
-      mathExpression: `${q7_k} . ${q7_a} - ${q7_k} . ${q7_b}`,
-      options: makeOptions(q7_ans, [q7_ans + q7_k, q7_ans - q7_k, q7_k * 10], baseSeed + 13),
+      question: `Đặt tính rồi tính kết quả phép nhân với số có 1 chữ số:`,
+      mathExpression: `${q7_a} . ${q7_b}`,
+      options: makeOptions(q7_ans, [q7_ans + q7_b, q7_ans - q7_b, q7_ans + 20], baseSeed + 15),
       correctAnswer: String(q7_ans),
-      explanation: `Đặt thừa số chung: ${q7_k} . (${q7_a} - ${q7_b}) = ${q7_k} . ${q7_diff} = ${q7_ans}.`
+      explanation: `Đặt tính nhân lần lượt từ phải sang trái: ${q7_a} . ${q7_b} = ${q7_ans}.`
     },
     {
-      question: `Thực hiện phép tính có chứa dấu ngoặc tròn:`,
-      mathExpression: `${q8_out} - (${q8_in1} + ${q8_in2})`,
-      options: makeOptions(q8_ans, [q8_ans + 20, q8_ans - 20, q8_out - q8_in1], baseSeed + 15),
+      question: `Tính nhẩm kết quả phép nhân với ${q8_mult}:`,
+      mathExpression: `${q8_a} . ${q8_mult}`,
+      options: makeOptions(q8_ans, [q8_ans * 10, Math.floor(q8_ans / 10), q8_ans + q8_mult], baseSeed + 17),
       correctAnswer: String(q8_ans),
-      explanation: `Tính trong ngoặc trước: ${q8_in1} + ${q8_in2} = ${q8_in1 + q8_in2}. Sau đó lấy ${q8_out} - ${q8_in1 + q8_in2} = ${q8_ans}.`
-    },
-    {
-      question: `Thực hiện phép tính đúng thứ tự ưu tiên (nhân trước, cộng sau):`,
-      mathExpression: `${q9_a} + ${q9_b} . ${q9_c}`,
-      options: makeOptions(q9_ans, [(q9_a + q9_b) * q9_c, q9_ans + 10, q9_ans - 10], baseSeed + 18),
-      correctAnswer: String(q9_ans),
-      explanation: `Nhân trước: ${q9_b} . ${q9_c} = ${q9_b * q9_c}. Sau đó cộng: ${q9_a} + ${q9_b * q9_c} = ${q9_ans}.`
-    },
-    {
-      question: `Thực hiện phép tính theo thứ tự ưu tiên trong ngoặc vuông và tròn:`,
-      mathExpression: `${q10_out} - [${q10_mid} - (${q10_k1} + ${q10_k2})]`,
-      options: makeOptions(q10_ans, [q10_ans + 10, q10_ans - 10, q10_out - q10_mid], baseSeed + 21),
-      correctAnswer: String(q10_ans),
-      explanation: `Trong ngoặc tròn trước: (${q10_k1} + ${q10_k2}) = ${q10_k1 + q10_k2}. Trong ngoặc vuông: [${q10_mid} - ${q10_k1 + q10_k2}] = ${q10_mid - (q10_k1 + q10_k2)}. Kết quả: ${q10_out} - ${q10_mid - (q10_k1 + q10_k2)} = ${q10_ans}.`
+      explanation: `Khi nhân một số tự nhiên với ${q8_mult}, ta chỉ việc viết thêm ${q8_mult === 100 ? 'hai chữ số 0' : 'một chữ số 0'} vào bên phải số đó: ${q8_a} . ${q8_mult} = ${q8_ans}.`
     },
     {
       question: `Đặt tính rồi tính kết quả của phép nhân hai số tự nhiên:`,
-      mathExpression: `${q11_a} . ${q11_b}`,
-      options: makeOptions(q11_ans, [q11_ans + 20, q11_ans - 20, q11_ans + 100], baseSeed + 25),
-      correctAnswer: String(q11_ans),
-      explanation: `Thực hiện phép nhân đặt tính thẳng hàng: ${q11_a} . ${q11_b} = ${q11_ans}.`
+      mathExpression: `${q9_a} . ${q9_b}`,
+      options: makeOptions(q9_ans, [q9_ans + 20, q9_ans - 20, q9_ans + 50], baseSeed + 18),
+      correctAnswer: String(q9_ans),
+      explanation: `Thực hiện phép nhân đặt tính theo hàng: ${q9_a} . ${q9_b} = ${q9_ans}.`
     },
     {
       question: `Thực hiện phép chia hết của hai số tự nhiên:`,
-      mathExpression: `${q12_a} : ${q12_b}`,
-      options: makeOptions(q12_ans, [q12_ans + 2, q12_ans - 2, q12_ans + 5], baseSeed + 27),
-      correctAnswer: String(q12_ans),
-      explanation: `Lấy ${q12_a} chia cho ${q12_b} được thương là ${q12_ans} (số dư bằng 0).`
+      mathExpression: `${q10_a} : ${q10_b}`,
+      options: makeOptions(q10_ans, [q10_ans + 2, q10_ans - 2, q10_ans + 5], baseSeed + 20),
+      correctAnswer: String(q10_ans),
+      explanation: `Lấy ${q10_a} chia cho ${q10_b} được thương là ${q10_ans} (số dư bằng 0).`
+    },
+    {
+      question: `Tính nhẩm kết quả của phép chia số tròn chục cho 10:`,
+      mathExpression: `${q11_a} : 10`,
+      options: makeOptions(q11_ans, [q11_ans * 10, q11_ans + 10, q11_ans - 10], baseSeed + 22),
+      correctAnswer: String(q11_ans),
+      explanation: `Khi chia một số tròn chục cho 10, ta bỏ đi một chữ số 0 ở tận cùng bên phải của số đó: ${q11_a} : 10 = ${q11_ans}.`
     },
     {
       question: `Tìm thương q và số dư r trong phép chia có dư:`,
-      mathExpression: `${q13_a} : ${q13_b}`,
-      options: makeOptions(`q = ${q13_q}, r = ${q13_r}`, [`q = ${q13_q + 1}, r = ${q13_r}`, `q = ${q13_q}, r = ${q13_r + 1}`, `q = ${q13_q - 1}, r = 0`], baseSeed + 29),
-      correctAnswer: `q = ${q13_q}, r = ${q13_r}`,
-      explanation: `Ta có: ${q13_a} = ${q13_b} . ${q13_q} + ${q13_r} (với 0 < ${q13_r} < ${q13_b}). Do đó q = ${q13_q}, r = ${q13_r}.`
+      mathExpression: `${q12_a} : ${q12_b}`,
+      options: makeOptions(`q = ${q12_q}, r = ${q12_r}`, [`q = ${q12_q + 1}, r = ${q12_r}`, `q = ${q12_q}, r = ${q12_r + 1}`, `q = ${q12_q - 1}, r = 0`], baseSeed + 23),
+      correctAnswer: `q = ${q12_q}, r = ${q12_r}`,
+      explanation: `Ta có: ${q12_a} = ${q12_b} . ${q12_q} + ${q12_r} (với 0 < ${q12_r} < ${q12_b}). Do đó q = ${q12_q}, r = ${q12_r}.`
     },
     {
-      question: `Tính tổng bình phương của hai số tự nhiên:`,
-      mathExpression: `${q14_a}^2 + ${q14_b}^2`,
-      options: makeOptions(q14_ans, [q14_ans + 5, q14_ans - 5, (q14_a + q14_b) * 2], baseSeed + 32),
+      question: `Thực hiện phép tính có chứa dấu ngoặc tròn:`,
+      mathExpression: `${q13_a} + (${q13_b} - ${q13_c})`,
+      options: makeOptions(q13_ans, [q13_ans + 10, q13_ans - 10, q13_a + q13_b], baseSeed + 26),
+      correctAnswer: String(q13_ans),
+      explanation: `Thực hiện trong ngoặc tròn trước: ${q13_b} - ${q13_c} = ${q13_b - q13_c}. Sau đó: ${q13_a} + ${q13_b - q13_c} = ${q13_ans}.`
+    },
+    {
+      question: `Thực hiện phép tính có chứa dấu ngoặc tròn:`,
+      mathExpression: `${q14_a} - (${q14_b} + ${q14_c})`,
+      options: makeOptions(q14_ans, [q14_ans + 10, q14_ans - 10, q14_a - q14_b], baseSeed + 29),
       correctAnswer: String(q14_ans),
-      explanation: `Tính lũy thừa trước: ${q14_a}^2 = ${q14_a * q14_a}, ${q14_b}^2 = ${q14_b * q14_b}. Tổng = ${q14_a * q14_a} + ${q14_b * q14_b} = ${q14_ans}.`
+      explanation: `Tính trong ngoặc trước: ${q14_b} + ${q14_c} = ${q14_b + q14_c}. Sau đó: ${q14_a} - ${q14_b + q14_c} = ${q14_ans}.`
     },
     {
-      question: `Áp dụng quy tắc nhân hai lũy thừa cùng cơ số, viết gọn biểu thức:`,
-      mathExpression: `${q15_base}^${q15_m} . ${q15_base}^${q15_n}`,
-      options: makeOptions(`${q15_base}^${q15_ans_exp}`, [`${q15_base}^${q15_m * q15_n}`, `${q15_base * 2}^${q15_ans_exp}`, `${q15_base}^${q15_ans_exp + 1}`], baseSeed + 34),
-      correctAnswer: `${q15_base}^${q15_ans_exp}`,
-      explanation: `Công thức: a^m . a^n = a^(m + n). Vậy ${q15_base}^${q15_m} . ${q15_base}^${q15_n} = ${q15_base}^(${q15_m} + ${q15_n}) = ${q15_base}^${q15_ans_exp}.`
+      question: `Thực hiện phép tính đúng thứ tự (nhân trước, cộng sau):`,
+      mathExpression: `${q15_a} + ${q15_b} . ${q15_c}`,
+      options: makeOptions(q15_ans, [(q15_a + q15_b) * q15_c, q15_ans + 10, q15_ans - 10], baseSeed + 32),
+      correctAnswer: String(q15_ans),
+      explanation: `Nhân trước: ${q15_b} . ${q15_c} = ${q15_b * q15_c}. Sau đó cộng: ${q15_a} + ${q15_b * q15_c} = ${q15_ans}.`
     },
     {
-      question: `Áp dụng quy tắc chia hai lũy thừa cùng cơ số, viết gọn biểu thức:`,
-      mathExpression: `${q16_base}^${q16_m} : ${q16_base}^${q16_n}`,
-      options: makeOptions(`${q16_base}^${q16_ans_exp}`, [`${q16_base}^${q16_m + q16_n}`, `${q16_base}^${Math.floor(q16_m / q16_n)}`, `1`], baseSeed + 37),
-      correctAnswer: `${q16_base}^${q16_ans_exp}`,
-      explanation: `Công thức: a^m : a^n = a^(m - n). Vậy ${q16_base}^${q16_m} : ${q16_base}^${q16_n} = ${q16_base}^(${q16_m} - ${q16_n}) = ${q16_base}^${q16_ans_exp}.`
+      question: `Thực hiện phép tính đúng thứ tự (nhân trước, trừ sau):`,
+      mathExpression: `${q16_a} - ${q16_b} . ${q16_c}`,
+      options: makeOptions(q16_ans, [(q16_a - q16_b) * q16_c, q16_ans + 10, q16_ans - 10], baseSeed + 35),
+      correctAnswer: String(q16_ans),
+      explanation: `Nhân trước: ${q16_b} . ${q16_c} = ${q16_b * q16_c}. Sau đó trừ: ${q16_a} - ${q16_b * q16_c} = ${q16_ans}.`
     },
     {
-      question: `Số tự nhiên nào sau đây vừa chia hết cho 2, vừa chia hết cho 5?`,
-      options: makeOptions(String(q17_val), [String(q17_val + 3), String(q17_val + 5), String(q17_val + 7)], baseSeed + 40),
-      correctAnswer: String(q17_val),
-      explanation: `Số chia hết cho cả 2 và 5 là số có chữ số tận cùng bằng 0. Do đó ${q17_val} thỏa mãn.`
+      question: `Thực hiện phép tính đúng thứ tự (chia trước, cộng sau):`,
+      mathExpression: `${q17_a} + ${q17_b} : ${q17_c}`,
+      options: makeOptions(q17_ans, [Math.floor((q17_a + q17_b) / q17_c), q17_ans + 5, q17_ans - 5], baseSeed + 38),
+      correctAnswer: String(q17_ans),
+      explanation: `Chia trước: ${q17_b} : ${q17_c} = ${q17_div}. Sau đó cộng: ${q17_a} + ${q17_div} = ${q17_ans}.`
     },
     {
-      question: `Số tự nhiên nào sau đây chia hết cho 9 (có tổng các chữ số chia hết cho 9)?`,
-      options: makeOptions(String(q18_base), [String(q18_base + 2), String(q18_base + 4), String(q18_base + 5)], baseSeed + 41),
-      correctAnswer: String(q18_base),
-      explanation: `Dấu hiệu chia hết cho 9: các số có tổng chữ số chia hết cho 9 thì chia hết cho 9. Số ${q18_base} chia hết cho 9.`
+      question: `Thực hiện phép tính đúng thứ tự (chia trước, trừ sau):`,
+      mathExpression: `${q18_a} - ${q18_b} : ${q18_c}`,
+      options: makeOptions(q18_ans, [Math.floor((q18_a - q18_b) / q18_c), q18_ans + 5, q18_ans - 5], baseSeed + 41),
+      correctAnswer: String(q18_ans),
+      explanation: `Chia trước: ${q18_b} : ${q18_c} = ${q18_div}. Sau đó trừ: ${q18_a} - ${q18_div} = ${q18_ans}.`
     },
     {
-      question: `Bạn Nam mua ${q19_pens} cây bút bi (giá ${q19_price_pen.toLocaleString('vi-VN')} đ/cây) và ${q19_books} quyển vở (giá ${q19_price_book.toLocaleString('vi-VN')} đ/quyển). Bạn đưa cô bán hàng tờ 100.000 đồng. Cô bán hàng phải trả lại bạn Nam bao nhiêu tiền?`,
-      options: makeOptions(`${q19_change.toLocaleString('vi-VN')} đồng`, [`${(q19_change - 5000).toLocaleString('vi-VN')} đồng`, `${(q19_change + 5000).toLocaleString('vi-VN')} đồng`, `${q19_total.toLocaleString('vi-VN')} đồng`], baseSeed + 42),
-      correctAnswer: `${q19_change.toLocaleString('vi-VN')} đồng`,
-      explanation: `Tổng tiền mua hàng: ${q19_pens} . ${q19_price_pen.toLocaleString('vi-VN')} + ${q19_books} . ${q19_price_book.toLocaleString('vi-VN')} = ${q19_total.toLocaleString('vi-VN')} đồng. Tiền trả lại: 100.000 - ${q19_total.toLocaleString('vi-VN')} = ${q19_change.toLocaleString('vi-VN')} đồng.`
+      question: `Tính nhanh bằng cách đặt thừa số chung trong phép cộng:`,
+      mathExpression: `${q19_a} . ${q19_b} + ${q19_a} . ${q19_c}`,
+      options: makeOptions(q19_ans, [q19_ans - 100, q19_ans + 100, q19_a * 10], baseSeed + 44),
+      correctAnswer: String(q19_ans),
+      explanation: `Đặt ${q19_a} ra ngoài làm thừa số chung: ${q19_a} . (${q19_b} + ${q19_c}) = ${q19_a} . 100 = ${q19_ans}.`
     },
     {
-      question: `Một khối học sinh có ${q20_students} em xếp thành ${q20_rows} hàng đều nhau. Hỏi mỗi hàng có bao nhiêu học sinh và còn dư mấy bạn?`,
-      options: makeOptions(`Mỗi hàng ${q20_per_row} em, dư ${q20_leftover} em`, [`Mỗi hàng ${q20_per_row + 1} em, dư 0 em`, `Mỗi hàng ${q20_per_row - 1} em, dư ${q20_leftover + 2} em`, `Mỗi hàng ${q20_per_row} em, không dư`], baseSeed + 44),
-      correctAnswer: `Mỗi hàng ${q20_per_row} em, dư ${q20_leftover} em`,
-      explanation: `Thực hiện phép chia: ${q20_students} : ${q20_rows} = ${q20_per_row} (dư ${q20_leftover}). Vậy mỗi hàng có ${q20_per_row} học sinh và dư ${q20_leftover} em.`
+      question: `Tính nhanh bằng cách đặt thừa số chung trong phép trừ:`,
+      mathExpression: `${q20_a} . ${q20_b} - ${q20_a} . ${q20_c}`,
+      options: makeOptions(q20_ans, [q20_ans + q20_a, q20_ans - q20_a, q20_a * 100], baseSeed + 46),
+      correctAnswer: String(q20_ans),
+      explanation: `Đặt thừa số chung: ${q20_a} . (${q20_b} - ${q20_c}) = ${q20_a} . 10 = ${q20_ans}.`
     }
   ];
 
