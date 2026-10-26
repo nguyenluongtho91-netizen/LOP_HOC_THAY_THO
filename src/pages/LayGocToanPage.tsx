@@ -255,6 +255,43 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return userStr === String(q.correctAnswer).trim();
   };
 
+  // HÀM TẠO LỜI ĐỘNG VIÊN KHÍCH LỆ CHUẨN XÁC THEO 4 MỐC ĐIỂM
+  const getExamEncouragement = (score: number) => {
+    if (score >= 10) {
+      return {
+        badge: '🏆 ĐIỂM 10 TUYỆT ĐỐI - ĐỈNH CAO XUẤT SẮC',
+        title: 'ĐỈNH CAO XUẤT SẮC! ĐIỂM 10 TUYỆT ĐỐI!',
+        message: 'Quá xuất sắc! Con đã hoàn toàn làm chủ kiến thức chuyên đề này và không mắc bất kỳ sai sót nào. Thầy Thọ rất tự hào về con! Hãy giữ vững phong độ đỉnh cao này ở các đề tiếp theo nhé!',
+        colorClass: 'text-amber-800 bg-amber-100/90 border-amber-300',
+        bgGradient: 'from-amber-50 via-yellow-50 to-emerald-50 border-amber-300'
+      };
+    } else if (score >= 8.0) {
+      return {
+        badge: '🌟 HỌC LỰC GIỎI (8.0 – 9.9 ĐIỂM)',
+        title: 'RẤT XUẤT SẮC! CON SẮP CHẠM MỐC ĐIỂM 10 RỒI!',
+        message: 'Tuyệt vời! Con học rất chắc, hiểu sâu và có tư duy rất nhạy bén! Chỉ còn thiếu một chút xíu nữa là chạm mốc 10 điểm tuyệt đối rồi. Hãy rà soát lại câu chưa đúng và chinh phục điểm 10 ngay nhé!',
+        colorClass: 'text-emerald-800 bg-emerald-100/90 border-emerald-300',
+        bgGradient: 'from-emerald-50 via-teal-50 to-sky-50 border-emerald-300'
+      };
+    } else if (score >= 7.0) {
+      return {
+        badge: '👍 HỌC LỰC KHÁ (7.0 – 7.9 ĐIỂM)',
+        title: 'RẤT TỐT! CON ĐÃ NẮM VỮNG NỀN TẢNG CĂN BẢN!',
+        message: 'Rất đáng khen! Con đã nắm được nền tảng căn bản rồi. Chỉ cần chú ý cẩn thận hơn ở vài câu bẫy nhỏ và tính toán kỹ hơn là con hoàn toàn có thể bứt phá lên 8+ hoặc 9+. Xem lại các câu sai rồi làm lại lần nữa nào!',
+        colorClass: 'text-blue-800 bg-blue-100/90 border-blue-300',
+        bgGradient: 'from-blue-50 via-indigo-50 to-cyan-50 border-blue-300'
+      };
+    } else {
+      return {
+        badge: '💪 CẦN CỐ GẮNG HƠN NỮA (1.0 – 6.9 ĐIỂM)',
+        title: 'CỐ GẮNG LÊN CON NHÉ! ĐỪNG NẢN LÒNG!',
+        message: 'Kết quả này cho thấy con cần xem lại kỹ phần lý thuyết, bài ca hóa trị và các công thức cốt lõi bên dưới. Đừng lo lắng, hãy đọc thật kỹ lời giải chi tiết của Thầy Thọ và bấm "Làm Lần Mới" để lấy lại gốc ngay nhé!',
+        colorClass: 'text-rose-800 bg-rose-100/90 border-rose-300',
+        bgGradient: 'from-rose-50 via-orange-50 to-amber-50 border-rose-300'
+      };
+    }
+  };
+
   // HÀM NỘP BÀI THI & TỰ ĐỘNG LƯU VÀO LỊCH SỬ TỪNG LẦN LÀM
   const handleSubmitExamFinal = (isViolationSubmit = false) => {
     let correctCount = 0;
@@ -298,7 +335,15 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     if (isViolationSubmit) {
       toast.error('🚨 TỰ ĐỘNG THU BÀI: Em đã vi phạm rời màn hình thi 3 lần!');
     } else {
-      toast.success(`🎉 Đã nộp bài Lần ${newAttempt.attemptNo} thành công! Điểm: ${score10}/10`);
+      if (score10 >= 10) {
+        toast.success(`🏆 ĐỈNH CAO XUẤT SẮC! Điểm 10 Tuyệt Đối! Thầy Thọ rất tự hào về con!`, { duration: 6000 });
+      } else if (score10 >= 8.0) {
+        toast.success(`🌟 Rất xuất sắc! Điểm: ${score10}/10. Con sắp chạm mốc 10 điểm tuyệt đối rồi!`, { duration: 5000 });
+      } else if (score10 >= 7.0) {
+        toast.success(`👍 Khá tốt! Điểm: ${score10}/10. Con nắm chắc căn bản rồi, cố lên 8-9 điểm nhé!`, { duration: 5000 });
+      } else {
+        toast(`💪 Điểm: ${score10}/10. Cố gắng hơn nữa con nhé! Đừng nản lòng, đọc kỹ lý thuyết và làm lại để lấy gốc nào!`, { icon: '⚡', duration: 6000 });
+      }
     }
   };
 
@@ -1151,71 +1196,81 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 </div>
               )}
 
-              {/* BẢNG KẾT QUẢ ĐIỂM SỐ NẾU ĐÃ NỘP BÀI */}
-              {isExamSubmitted && (
-                <div className="mb-8 p-6 bg-gradient-to-r from-red-50 via-amber-50 to-emerald-50 rounded-2xl border border-red-200/80 shadow-sm">
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-white border border-red-200 flex items-center justify-center text-3xl font-black text-red-600 shadow-sm">
-                        {examResultStats.score10}
-                      </div>
-                      <div>
-                        <div className="text-xs font-black uppercase text-red-700 tracking-wider">
-                          KẾT QUẢ LÀM BÀI – ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}
-                        </div>
-                        <h3 className="text-lg font-black text-slate-800">
-                          {examResultStats.score10 >= 8 
-                            ? '🎉 Xuất sắc! Em đã nắm rất vững kiến thức phần này!'
-                            : examResultStats.score10 >= 5
-                            ? '👍 Khá tốt! Cần chú ý thêm một số bẫy câu hỏi và tính toán cẩn thận.'
-                            : '⚡ Cần rèn luyện thêm: Đọc kỹ bí kíp thần chú và làm lại nhé!'}
-                        </h3>
-                        <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 mt-1">
-                          <span>
-                            Đúng: <strong className="text-emerald-700 font-bold">{examResultStats.correctCount} / {examResultStats.total} câu</strong> ({examResultStats.percentage}%)
+              {/* BẢNG KẾT QUẢ ĐIỂM SỐ NẾU ĐÃ NỘP BÀI (THEO 4 MỐC ĐỘNG VIÊN) */}
+              {isExamSubmitted && (() => {
+                const enc = getExamEncouragement(examResultStats.score10);
+                return (
+                  <div className={`mb-8 p-6 bg-gradient-to-r ${enc.bgGradient} rounded-2xl border shadow-sm transition-all`}>
+                    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
+                      <div className="flex items-start sm:items-center gap-4">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white border border-slate-200 flex flex-col items-center justify-center shrink-0 shadow-sm">
+                          <span className="text-2xl sm:text-3xl font-black text-red-600 leading-none">
+                            {examResultStats.score10}
                           </span>
-                          <span>•</span>
-                          <span>
-                            Điểm: <strong className="text-red-600 font-black">{examResultStats.score10} / 10.0</strong>
-                          </span>
-                          {tabSwitchCount > 0 && (
-                            <>
-                              <span>•</span>
-                              <span className="inline-flex items-center gap-1 font-bold text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-md">
-                                <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
-                                Rời tab: {tabSwitchCount} lần
-                              </span>
-                            </>
-                          )}
+                          <span className="text-[10px] font-bold text-slate-400 mt-1">/ 10.0 đ</span>
+                        </div>
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span className="text-xs font-black uppercase text-slate-700 tracking-wider">
+                              KẾT QUẢ LÀM BÀI – ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}
+                            </span>
+                            <span className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border shadow-2xs ${enc.colorClass}`}>
+                              {enc.badge}
+                            </span>
+                          </div>
+                          <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
+                            {enc.title}
+                          </h3>
+                          <div className="text-xs sm:text-sm text-slate-700 mt-2 font-medium leading-relaxed max-w-2xl bg-white/80 p-3 rounded-xl border border-slate-200/80 shadow-2xs">
+                            💬 <strong className="text-slate-900">Lời Thầy Thọ nhắn nhủ:</strong> {enc.message}
+                          </div>
+                          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 mt-2.5">
+                            <span>
+                              Đúng: <strong className="text-emerald-700 font-bold">{examResultStats.correctCount} / {examResultStats.total} câu</strong> ({examResultStats.percentage}%)
+                            </span>
+                            <span>•</span>
+                            <span>
+                              Điểm: <strong className="text-red-600 font-black">{examResultStats.score10} / 10.0</strong>
+                            </span>
+                            {tabSwitchCount > 0 && (
+                              <>
+                                <span>•</span>
+                                <span className="inline-flex items-center gap-1 font-bold text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-md">
+                                  <ShieldAlert className="w-3.5 h-3.5 text-amber-600" />
+                                  Rời tab: {tabSwitchCount} lần
+                                </span>
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <div className="flex flex-wrap items-center gap-2">
-                      <button
-                        onClick={() => setIsHistoryModalOpen(true)}
-                        className="px-3.5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5 cursor-pointer"
-                      >
-                        <History className="w-4 h-4 text-blue-700" />
-                        <span>Xem Lịch Sử ({examHistory.length})</span>
-                      </button>
-                      <button
-                        onClick={() => setShowAllExplanations(!showAllExplanations)}
-                        className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition cursor-pointer"
-                      >
-                        {showAllExplanations ? 'Ẩn lời giải' : 'Hiện toàn bộ lời giải'}
-                      </button>
-                      <button
-                        onClick={handleRetakeExam}
-                        className="px-4 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 text-white rounded-xl text-xs font-black shadow-xs transition flex items-center gap-1.5 cursor-pointer"
-                      >
-                        <RotateCcw className="w-3.5 h-3.5" />
-                        <span>Làm Lần Mới</span>
-                      </button>
+                      <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto justify-end shrink-0">
+                        <button
+                          onClick={() => setIsHistoryModalOpen(true)}
+                          className="px-3.5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5 cursor-pointer"
+                        >
+                          <History className="w-4 h-4 text-blue-700" />
+                          <span>Xem Lịch Sử ({examHistory.length})</span>
+                        </button>
+                        <button
+                          onClick={() => setShowAllExplanations(!showAllExplanations)}
+                          className="px-4 py-2.5 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-xl text-xs font-bold shadow-xs transition cursor-pointer"
+                        >
+                          {showAllExplanations ? 'Ẩn lời giải' : 'Hiện toàn bộ lời giải'}
+                        </button>
+                        <button
+                          onClick={handleRetakeExam}
+                          className="px-4 py-2.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 text-white rounded-xl text-xs font-black shadow-xs transition flex items-center gap-1.5 cursor-pointer"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5" />
+                          <span>Làm Lần Mới</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
 
               {/* DANH SÁCH TOÀN BỘ 20 CÂU HỎI (TRẮC NGHIỆM HOẶC TRẢ LỜI NGẮN) */}
               <div className="space-y-5">
@@ -2539,10 +2594,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     >
                       <div className="flex items-center gap-3.5">
                         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shadow-xs shrink-0 ${
-                          attempt.score10 >= 8
+                          attempt.score10 >= 10
+                            ? 'bg-amber-100 text-amber-900 border-2 border-amber-400 ring-2 ring-amber-400/20'
+                            : attempt.score10 >= 8
                             ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                            : attempt.score10 >= 5
-                            ? 'bg-amber-100 text-amber-800 border border-amber-300'
+                            : attempt.score10 >= 7
+                            ? 'bg-blue-100 text-blue-800 border border-blue-300'
                             : 'bg-rose-100 text-rose-800 border border-rose-300'
                         }`}>
                           {attempt.score10}
