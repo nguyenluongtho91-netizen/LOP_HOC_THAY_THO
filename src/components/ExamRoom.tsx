@@ -72,10 +72,13 @@ export function serializeTFAnswer(map: Record<string, 'T' | 'F'>): string {
     .join(',');
 }
 
-export function isTFFullyAnswered(answer: string | undefined, options: Array<{ letter: string }>): boolean {
-  if (!answer) return false;
+export function isTFFullyAnswered(answer: string | undefined, options: Array<any>): boolean {
+  if (!answer || !options || options.length === 0) return false;
   const map = parseTFAnswer(answer);
-  return options.every((opt) => map[opt.letter.toLowerCase()] !== undefined);
+  return options.every((opt) => {
+    const key = (opt.letter || opt.id || '').toLowerCase();
+    return key ? map[key] !== undefined : false;
+  });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -265,7 +268,7 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
     if (!exam?.questions) return [];
     const groups: any[] = [];
     
-    const mc = exam.questions.filter(q => q.type === 'multiple_choice');
+    const mc = exam.questions.filter(q => !q.type || q.type === 'multiple_choice');
     const tf = exam.questions.filter(q => q.type === 'true_false');
     const sa = exam.questions.filter(q => q.type === 'short_answer');
     const wr = exam.questions.filter(q => q.type === 'writing');
@@ -485,8 +488,8 @@ const QuestionCard: React.FC<any> = ({ question, displayNum, userAnswer, onChang
     if (!shuffleEnabled) return question.options;
     if (qType === 'multiple_choice') return seededShuffle(question.options, shuffleSeed);
     if (qType === 'true_false') {
-      const dOpt = question.options.find((o: any) => o.letter.toLowerCase() === 'd');
-      const movable = question.options.filter((o: any) => o.letter.toLowerCase() !== 'd');
+      const dOpt = question.options.find((o: any) => (o.letter || o.id || '').toLowerCase() === 'd');
+      const movable = question.options.filter((o: any) => (o.letter || o.id || '').toLowerCase() !== 'd');
       const shuffled = seededShuffle(movable, shuffleSeed);
       return dOpt ? [...shuffled, dOpt] : shuffled;
     }
@@ -519,9 +522,12 @@ const QuestionCard: React.FC<any> = ({ question, displayNum, userAnswer, onChang
       </div>
 
       <div className="px-5 py-4">
-        {/* Nội dung câu hỏi */}
+        {/* Nội dung câu hỏi & biểu thức toán */}
         {(() => {
-          const cleanText = (question.text || '').trim().replace(/^(<strong>)?Câu\s*\d+\s*[.:]?(<\/strong>)?\s*/i, '');
+          let cleanText = (question.text || question.question || '').trim().replace(/^(<strong>)?Câu\s*\d+\s*[.:]?(<\/strong>)?\s*/i, '');
+          if (question.mathExpression && !cleanText.includes(question.mathExpression)) {
+            cleanText = cleanText ? `${cleanText}\n\n$$${question.mathExpression}$$` : `$$${question.mathExpression}$$`;
+          }
           return (
             <MathText html={cleanText} className="text-gray-800 leading-relaxed text-[15px] mb-3" block />
           );
@@ -535,11 +541,12 @@ const QuestionCard: React.FC<any> = ({ question, displayNum, userAnswer, onChang
           {qType === 'multiple_choice' && (
             <div className="space-y-2.5">
               {shuffledOptions.map((opt: any, idx: number) => {
+                const optLetter = (opt.letter || opt.id || String.fromCharCode(65 + idx)).toUpperCase();
                 const displayLetter = String.fromCharCode(65 + idx);
-                const selected = userAnswer?.toUpperCase() === opt.letter.toUpperCase();
+                const selected = userAnswer?.toUpperCase() === optLetter;
                 return (
-                  <label key={opt.letter} className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 cursor-pointer ${selected ? 'border-amber-400 bg-amber-50' : 'border-gray-200 bg-gray-50'}`}>
-                    <input type="radio" value={opt.letter} checked={selected} onChange={(e) => onChange(e.target.value)} className="hidden" />
+                  <label key={optLetter || idx} className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 cursor-pointer ${selected ? 'border-amber-400 bg-amber-50' : 'border-gray-200 bg-gray-50'}`}>
+                    <input type="radio" value={optLetter} checked={selected} onChange={(e) => onChange(e.target.value)} className="hidden" />
                     <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm text-white ${selected ? 'bg-amber-400' : 'bg-teal-500'}`}>{displayLetter}</span>
                     <MathText html={opt.text || ''} className="flex-1 text-gray-700 text-sm" />
                   </label>
@@ -580,11 +587,12 @@ const TrueFalseGrid: React.FC<any> = ({ options, userAnswer, onChange }) => {
       {/* CÁC DÒNG MỆNH ĐỀ */}
       <div className="divide-y-2 divide-teal-100">
         {options.map((opt: any, idx: number) => {
+          const letter = (opt.letter || opt.id || String.fromCharCode(97 + idx)).toLowerCase();
           const displayLetter = String.fromCharCode(97 + idx); // a, b, c, d
-          const cVal = tfMap[opt.letter.toLowerCase()];
+          const cVal = tfMap[letter];
           
           return (
-            <div key={opt.letter} className="grid grid-cols-[1fr_70px_70px] sm:grid-cols-[1fr_90px_90px] bg-white divide-x-2 divide-teal-100 hover:bg-teal-50/30 transition-colors">
+            <div key={letter || idx} className="grid grid-cols-[1fr_70px_70px] sm:grid-cols-[1fr_90px_90px] bg-white divide-x-2 divide-teal-100 hover:bg-teal-50/30 transition-colors">
               
               <div className="px-4 py-4 flex gap-3 items-start">
                 <span className="w-7 h-7 rounded-full bg-teal-50 text-teal-700 flex items-center justify-center text-[13px] font-black shrink-0 shadow-sm border border-teal-100">
@@ -595,7 +603,7 @@ const TrueFalseGrid: React.FC<any> = ({ options, userAnswer, onChange }) => {
 
               {/* NÚT ĐÚNG: Nút nhỏ, tinh tế */}
               <button 
-                onClick={() => handleSelect(opt.letter, 'T')} 
+                onClick={() => handleSelect(letter, 'T')} 
                 className={`flex items-center justify-center transition-all outline-none hover:bg-emerald-50 ${cVal === 'T' ? 'bg-emerald-500 text-white shadow-inner' : 'text-gray-300'}`}
               >
                 {cVal === 'T' ? <CheckIcon className="w-6 h-6 stroke-[3]" /> : ''}
@@ -603,7 +611,7 @@ const TrueFalseGrid: React.FC<any> = ({ options, userAnswer, onChange }) => {
 
               {/* NÚT SAI: Nút nhỏ, tinh tế */}
               <button 
-                onClick={() => handleSelect(opt.letter, 'F')} 
+                onClick={() => handleSelect(letter, 'F')} 
                 className={`flex items-center justify-center transition-all outline-none hover:bg-red-50 ${cVal === 'F' ? 'bg-red-500 text-white shadow-inner' : 'text-gray-300'}`}
               >
                 {cVal === 'F' ? <XIcon className="w-6 h-6 stroke-[3]" /> : ''}

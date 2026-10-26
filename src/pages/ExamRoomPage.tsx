@@ -6,6 +6,7 @@ import ResultView from '@/components/ResultView'
 import PDFExamRoom from '@/components/PDFExamRoom'
 import ExamRoom from '@/components/ExamRoom'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
+import { normalizeExamData } from '@/services/examNormalizer'
 import toast from 'react-hot-toast'
 
 // ─── Đồng hồ đếm ngược chờ đến giờ mở đề ──────────────────────────────────────
@@ -208,21 +209,31 @@ export default function ExamRoomPage() {
         if (examErr || !examData) throw new Error('Không tìm thấy đề thi')
         setExam(examData)
 
-        const hasRealQuestions = examData.data?.questions && examData.data.questions.length > 0 &&
-          !examData.data.questions.every((q: any) => 
+        // ✅ Chuẩn hóa đề gốc ngay khi tải về (đảm bảo đầy đủ number, text, type, options letter)
+        const normalizedBase = normalizeExamData(examData.data);
+
+        const hasRealQuestions = normalizedBase.questions && normalizedBase.questions.length > 0 &&
+          !normalizedBase.questions.every((q: any) => 
             /^(câu\s+\d+|câu\s+tự\s+luận\s+\d+):?$/i.test((q.text || '').trim())
           );
-        const isPdf = !hasRealQuestions && (!!examData.data?.pdfUrl || !!examData.data?.pdfDriveUrl || !!examData.data?.pdfBase64);
+        const isPdf = !hasRealQuestions && (!!normalizedBase.pdfUrl || !!normalizedBase.pdfDriveUrl || !!normalizedBase.pdfBase64);
         
         const { data: submission } = await supabase
           .from('exam_submissions').select('*').eq('room_id', roomId).eq('student_id', currentStudent.id).maybeSingle()
         
-        let finalExamData = examData.data;
+        let finalExamData = normalizedBase;
 
-        if (submission && submission.score_breakdown?.shuffled_exam) {
-          finalExamData = submission.score_breakdown.shuffled_exam;
+        if (submission?.score_breakdown?.shuffled_exam?.questions && Array.isArray(submission.score_breakdown.shuffled_exam.questions) && submission.score_breakdown.shuffled_exam.questions.length > 0) {
+          finalExamData = normalizeExamData(submission.score_breakdown.shuffled_exam);
         } else if (!isPdf && roomData.settings?.shuffle) {
-          finalExamData = shuffleExamForStudent(examData.data);
+          finalExamData = normalizeExamData(shuffleExamForStudent(normalizedBase));
+        } else {
+          finalExamData = normalizedBase;
+        }
+
+        // Đảm bảo tuyệt đối: finalExamData phải có mảng questions hợp lệ
+        if (!finalExamData?.questions || !Array.isArray(finalExamData.questions) || finalExamData.questions.length === 0) {
+          finalExamData = normalizedBase;
         }
 
         setCurrentExamData(finalExamData);
@@ -232,7 +243,7 @@ export default function ExamRoomPage() {
           if (submission.status === 'submitted') {
             const b = submission.score_breakdown || {};
             const correct = (b.multipleChoice?.correct || 0) + (b.trueFalse?.correct || 0) + (b.shortAnswer?.correct || 0);
-            const total = (b.multipleChoice?.total || 0) + (b.trueFalse?.total || 0) + (b.shortAnswer?.total || 0) || finalExamData.questions.length;
+            const total = (b.multipleChoice?.total || 0) + (b.trueFalse?.total || 0) + (b.shortAnswer?.total || 0) || (finalExamData?.questions?.length || 0);
             
             setSubmittedResult({
               ...submission, student: currentStudent, percentage: b.percentage || 0,
@@ -279,15 +290,16 @@ export default function ExamRoomPage() {
       
       const newHistory = [...currentHistory, finishedAttemptData];
 
-      const hasRealQuestions = exam?.data?.questions && exam.data.questions.length > 0 &&
-        !exam.data.questions.every((q: any) => 
+      const normalizedBase = normalizeExamData(exam?.data);
+      const hasRealQuestions = normalizedBase.questions && normalizedBase.questions.length > 0 &&
+        !normalizedBase.questions.every((q: any) => 
           /^(câu\s+\d+|câu\s+tự\s+luận\s+\d+):?$/i.test((q.text || '').trim())
         );
-      const isPdf = !hasRealQuestions && (!!exam?.data?.pdfUrl || !!exam?.data?.pdfDriveUrl || !!exam?.data?.pdfBase64);
+      const isPdf = !hasRealQuestions && (!!normalizedBase.pdfUrl || !!normalizedBase.pdfDriveUrl || !!normalizedBase.pdfBase64);
       
-      let nextExamData = exam?.data;
+      let nextExamData = normalizedBase;
       if (!isPdf && room?.settings?.shuffle) {
-        nextExamData = shuffleExamForStudent(exam.data);
+        nextExamData = normalizeExamData(shuffleExamForStudent(normalizedBase));
       }
 
       await supabase.from('exam_submissions').update({
@@ -372,18 +384,26 @@ export default function ExamRoomPage() {
     }
   };
 
+  const enrichedStudent = {
+    ...student,
+    name: student?.name || student?.full_name || 'Học sinh',
+    full_name: student?.full_name || student?.name || 'Học sinh',
+    className: student?.className || student?.classes?.class_name || student?.grade || ''
+  };
+
   // ✅ 4. NẾU LÀ ĐỀ PDF -> MỞ GIAO DIỆN PDFExamRoom
-  const hasRealQuestions = currentExamData.questions && currentExamData.questions.length > 0 &&
-    !currentExamData.questions.every((q: any) => 
+  const questionsArr = currentExamData?.questions || [];
+  const hasRealQuestions = questionsArr.length > 0 &&
+    !questionsArr.every((q: any) => 
       /^(câu\s+\d+|câu\s+tự\s+luận\s+\d+):?$/i.test((q.text || '').trim())
     );
-  const isPdfExam = !hasRealQuestions && (!!currentExamData.pdfUrl || !!currentExamData.pdfDriveUrl || !!currentExamData.pdfBase64);
+  const isPdfExam = !hasRealQuestions && (!!currentExamData?.pdfUrl || !!currentExamData?.pdfDriveUrl || !!currentExamData?.pdfBase64);
   if (isPdfExam) {
     return (
       <PDFExamRoom 
         room={enrichedRoom} 
         exam={{ ...currentExamData, id: exam.id, title: exam.title }} 
-        student={student} 
+        student={enrichedStudent} 
         existingSubmissionId={submissionId} 
         onSubmitted={setSubmittedResult} 
         onExit={handleExit} 
@@ -396,7 +416,7 @@ export default function ExamRoomPage() {
     <ExamRoom 
       room={enrichedRoom}
       exam={{ ...currentExamData, id: exam.id, title: exam.title }}
-      student={student}
+      student={enrichedStudent}
       existingSubmissionId={submissionId}
       initialAnswers={answers}
       onSubmitted={setSubmittedResult}

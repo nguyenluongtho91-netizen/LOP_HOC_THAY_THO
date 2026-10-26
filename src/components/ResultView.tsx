@@ -371,9 +371,10 @@ const MultipleChoiceReview: React.FC<{
 
           {displayOptions.length > 0 && (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {displayOptions.map((opt: QuestionOption) => {
-                const isUserAnswer = userAnswer?.toUpperCase() === opt.letter.toUpperCase();
-                const isCorrectOpt = correctAnswer?.toUpperCase() === opt.letter.toUpperCase();
+              {displayOptions.map((opt: QuestionOption, idx: number) => {
+                const optLetter = (opt.letter || (opt as any).id || String.fromCharCode(65 + idx)).toUpperCase();
+                const isUserAnswer = userAnswer?.toUpperCase() === optLetter;
+                const isCorrectOpt = correctAnswer?.toUpperCase() === optLetter;
 
                 let optClass = 'bg-white border-gray-200 text-gray-700';
                 if (isUserAnswer) {
@@ -384,13 +385,13 @@ const MultipleChoiceReview: React.FC<{
                 }
 
                 return (
-                  <div key={opt.letter} className={`flex items-center gap-2 p-2.5 rounded-xl border-2 text-sm ${optClass}`}>
+                  <div key={optLetter || idx} className={`flex items-center gap-2 p-2.5 rounded-xl border-2 text-sm ${optClass}`}>
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
                       isUserAnswer
                         ? isCorrect ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'
                         : showCorrectAnswers && isCorrectOpt ? 'bg-emerald-500 text-white' : 'bg-gray-200 text-gray-600'
                     }`}>
-                      {opt.letter}
+                      {optLetter}
                     </span>
                     <span className="flex-1"><MathText html={opt.text || ''} /></span>
                     {isUserAnswer && isCorrect && <span className="text-emerald-600 font-bold">✔</span>}
@@ -543,8 +544,9 @@ const TrueFalseReview: React.FC<{
                 <div className="py-2.5 text-center bg-teal-800">Kết quả</div>
               </div>
               <div className="divide-y divide-teal-100">
-                {displayOptions.map((opt: QuestionOption) => {
-                  const key = opt.letter.toLowerCase();
+                {displayOptions.map((opt: QuestionOption, idx: number) => {
+                  const letter = (opt.letter || (opt as any).id || String.fromCharCode(97 + idx)).toLowerCase();
+                  const key = letter;
                   const shouldBeTrue = correctMap[key] ?? false;
                   const userVal = userAnswers[key];
                   const isCorrectStatement = userVal 
@@ -552,16 +554,16 @@ const TrueFalseReview: React.FC<{
                     : null;
 
                   return (
-                    <div key={opt.letter} className="grid items-center text-sm"
+                    <div key={letter || idx} className="grid items-center text-sm"
                          style={{ 
                            gridTemplateColumns: showCorrectAnswers ? '1fr 60px 60px 60px' : '1fr 60px 60px',
                            backgroundColor: isCorrectStatement !== null ? (isCorrectStatement ? '#f0fdf4' : '#fef2f2') : '#ffffff'
                          }}>
                       <div className="px-4 py-3 flex gap-2 items-start">
                         <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-black flex-shrink-0">
-                          {opt.letter.toLowerCase()}
+                          {letter}
                         </span>
-                        <div className="flex-1"><MathText html={opt.text || opt.letter} /></div>
+                        <div className="flex-1"><MathText html={opt.text || letter} /></div>
                       </div>
                       <div className="text-center py-3">
                         <span className={`px-2 py-0.5 rounded text-xs font-bold ${

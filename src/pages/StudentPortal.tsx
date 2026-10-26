@@ -28,6 +28,7 @@ import { supabase } from '@/lib/supabase'
 import toast from 'react-hot-toast'
 import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
+import { normalizeExamData } from '@/services/examNormalizer'
 import { getStudentCredential, saveStudentCredential } from '@/services/studentCredentialsService'
 
 const BANK_ID      = import.meta.env.VITE_BANK_ID      || 'VCB'
@@ -440,15 +441,17 @@ export default function StudentPortal() {
 
       if (examErr || !examData) throw new Error('Không tìm thấy đề thi')
 
-      const hasRealQuestions = examData.data?.questions && examData.data.questions.length > 0 &&
-        !examData.data.questions.every((q: any) => 
+      const normalizedBase = normalizeExamData(examData.data)
+
+      const hasRealQuestions = normalizedBase.questions && normalizedBase.questions.length > 0 &&
+        !normalizedBase.questions.every((q: any) => 
           /^(câu\s+\d+|câu\s+tự\s+luận\s+\d+):?$/i.test((q.text || '').trim())
         );
-      const isPdf = !hasRealQuestions && (!!examData.data?.pdfUrl || !!examData.data?.pdfDriveUrl || !!examData.data?.pdfBase64);
+      const isPdf = !hasRealQuestions && (!!normalizedBase.pdfUrl || !!normalizedBase.pdfDriveUrl || !!normalizedBase.pdfBase64);
 
-      let nextExamData = examData.data
+      let nextExamData = normalizedBase
       if (!isPdf && room.settings?.shuffle) {
-        nextExamData = shuffleExamForStudent(examData.data)
+        nextExamData = normalizeExamData(shuffleExamForStudent(normalizedBase))
       }
 
       const { error: updateErr } = await supabase
