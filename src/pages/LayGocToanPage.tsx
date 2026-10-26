@@ -1104,6 +1104,40 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         </div>
       )}
 
+      {/* NẾU LÀ HỌC SINH MÀ KHÔNG CÓ ĐỀ ĐƯỢC CHỈ ĐỊNH CỤ THỂ TỪ THẦY THỌ */}
+      {isStudentMode && (!searchParams.get('topic') || !searchParams.get('exam')) ? (
+        <div className="max-w-xl mx-auto px-4 my-16 text-center animate-fade-in">
+          <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200">
+            <div className="w-20 h-20 bg-amber-100 text-amber-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-inner">
+              <Lock className="w-10 h-10 text-amber-600" />
+            </div>
+            <span className="inline-block px-3.5 py-1 rounded-full bg-amber-50 text-amber-800 text-[11px] font-black uppercase tracking-wider mb-3 border border-amber-200">
+              Chỉ nhận bài tập được giao
+            </span>
+            <h2 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 tracking-tight">
+              BÀI TẬP CẦN ĐƯỢC THẦY THỌ GIAO
+            </h2>
+            <p className="text-slate-600 text-sm leading-relaxed mb-6">
+              Học sinh chỉ làm các bài tập và đề thi được Thầy Thọ giao riêng cho lớp của mình. Em vui lòng mở đúng đường link đề thi mà Thầy Thọ gửi trên nhóm lớp, hoặc đăng nhập Cổng Thi để làm bài nhé!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => navigate('/thi')}
+                className="px-6 py-3.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition cursor-pointer flex items-center justify-center gap-2"
+              >
+                <GraduationCap className="w-4 h-4" />
+                <span>Vào Cổng Thi Học Sinh (/thi)</span>
+              </button>
+              <a
+                href="tel:0345833133"
+                className="px-5 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition flex items-center justify-center gap-2"
+              >
+                <span>Hỏi Thầy Thọ: 0345.833.133</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      ) : (
       <div className="max-w-6xl mx-auto px-4 mt-6">
         {/* ===================== TAB 1: KHO ĐỀ THI ===================== */}
         {activeTab === 'kho_de' && (
@@ -3353,6 +3387,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
           title={`Chúc mừng em đã đạt điểm 10 tuyệt đối môn ${currentSubject === 'hoa' ? 'Hóa học' : 'Toán học'}! 🎆`}
         />
       </div>
+      )}
     </div>
   );
 }
