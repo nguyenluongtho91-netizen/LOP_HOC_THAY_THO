@@ -153,7 +153,7 @@ export default function StudentCards() {
     const load = async () => {
       try {
         const [{ data: cls }, { data: stu }, { data: enr }] = await Promise.all([
-          supabase.from('classes').select('*').eq('status', 'active').order('class_name'),
+          supabase.from('classes').select('*').eq('status', 'active').order('created_at', { ascending: false }),
           supabase.from('students').select('*').eq('status', 'active'),
           supabase.from('enrollments').select('*').eq('status', 'active'),
         ])

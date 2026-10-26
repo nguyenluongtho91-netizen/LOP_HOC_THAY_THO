@@ -40,13 +40,24 @@ export const useExamRoomStore = create<ExamRoomState>((set, get) => ({
         .select(`
           *,
           exams ( title ),
-          classes ( class_name ),
+          classes ( * ),
           exam_submissions ( id )
         `)
         .order('created_at', { ascending: false })
       
       if (error) throw error
-      set({ rooms: data as ExamRoom[] })
+
+      const normalized = (data || []).map((r: any) => ({
+        ...r,
+        classes: r.classes ? {
+          ...r.classes,
+          class_name: r.classes.class_name || r.classes.name || ''
+        } : undefined
+      }))
+
+      set({ rooms: normalized as ExamRoom[] })
+    } catch (err) {
+      console.error('Lỗi tải danh sách phòng thi:', err)
     } finally {
       set({ loading: false })
     }
@@ -67,7 +78,11 @@ export const useExamRoomStore = create<ExamRoomState>((set, get) => ({
       throw error
     }
     
-    await get().loadRooms() 
+    try {
+      await get().loadRooms() 
+    } catch (loadErr) {
+      console.warn('Lỗi làm mới danh sách phòng sau khi tạo:', loadErr)
+    }
     return newRoom || { code }
   },
 

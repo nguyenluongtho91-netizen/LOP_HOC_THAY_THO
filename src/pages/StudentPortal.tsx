@@ -119,15 +119,22 @@ export default function StudentPortal() {
         setTuitionNotifications(tuitionNotifs || [])
       }
 
-      // 2. Lấy tất cả phòng thi
-      const { data: rooms, error: roomsErr } = await supabase
+      const { data: rawRooms, error: roomsErr } = await supabase
         .from('exam_rooms')
         .select(`
           *,
           exams ( title ),
-          classes ( class_name )
+          classes ( * )
         `)
         .order('created_at', { ascending: false })
+
+      const rooms = (rawRooms || []).map((r: any) => ({
+        ...r,
+        classes: r.classes ? {
+          ...r.classes,
+          class_name: r.classes.class_name || r.classes.name || ''
+        } : undefined
+      }))
 
       // 3. Lấy danh sách bài nộp của học sinh
       const { data: subs, error: subsErr } = await supabase

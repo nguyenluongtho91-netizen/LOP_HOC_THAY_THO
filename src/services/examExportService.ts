@@ -57,7 +57,7 @@ export async function exportExamRoomToExcel(options: ExportRoomOptions | string)
   if (!room || !exam || !exam.data) {
     const { data: roomData, error: roomErr } = await supabase
       .from('exam_rooms')
-      .select('*, exams(id, title, data), classes(id, class_name)')
+      .select('*, exams(id, title, data), classes(*)')
       .eq('id', roomId)
       .single();
 
@@ -105,7 +105,7 @@ export async function exportExamRoomToExcel(options: ExportRoomOptions | string)
   }
 
   const examQuestions = exam?.data?.questions || [];
-  const className = room.classes?.class_name || 'Tất cả học sinh';
+  const className = room.classes?.class_name || room.classes?.name || 'Tất cả học sinh';
   const examTitle = exam?.title || 'Đề kiểm tra';
   const timeLimit = room.time_limit || 45;
   const roomCode = room.code || '—';

@@ -52,7 +52,7 @@ export default function StudentProgressPage() {
 
         // Lấy danh sách lớp học sinh tham gia
         supabase.from('enrollments')
-          .select('class_id, classes(class_name)')
+          .select('class_id, classes(*)')
           .eq('student_id', s.id)
           .eq('status', 'active'),
 
@@ -79,7 +79,7 @@ export default function StudentProgressPage() {
 
       // Tính các lớp tham gia
       const myClasses = enrollsRes.data
-        ?.map((e: any) => e.classes?.class_name)
+        ?.map((e: any) => e.classes?.class_name || e.classes?.name)
         .filter(Boolean) || []
       setClassNames(myClasses)
 
