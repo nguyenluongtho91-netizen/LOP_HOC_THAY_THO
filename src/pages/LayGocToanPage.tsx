@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { 
   Zap, ArrowRight, CheckCircle2, XCircle, RotateCcw, 
   HelpCircle, BookOpen, Award, Sparkles, Printer, 
   Flame, Clock, ChevronRight, Calculator, Shuffle, FileDown,
   Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target,
   FlaskConical, Compass, Scale, Bell, AlertTriangle, History, 
-  Volume2, ShieldAlert, Calendar, Eye, Activity, TrendingUp, AlertCircle
+  Volume2, ShieldAlert, Calendar, Eye, Activity, TrendingUp, AlertCircle,
+  Share2, Link, MessageCircle, QrCode, ExternalLink, Smartphone
 } from 'lucide-react';
 import MathText from '@/components/MathText';
 import { useDataStore } from '@/store/dataStore';
@@ -66,6 +68,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const [isScanModalOpen, setIsScanModalOpen] = useState<boolean>(false);
   const [showFireworks, setShowFireworks] = useState<boolean>(false);
 
+  // CHIA SẺ LINK ĐỀ THI TRỰC TIẾP CHO HỌC SINH & PHỤ HUYNH
+  const [searchParams] = useSearchParams();
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
+  const [isCopiedShareLink, setIsCopiedShareLink] = useState<boolean>(false);
+  const [isCopiedShareMessage, setIsCopiedShareMessage] = useState<boolean>(false);
+
   // CHỐNG GIAN LẬN: THOÁT RA 3 LẦN TỰ NỘP BÀI & CHUÔNG BÁO ĐỘNG
   const [tabSwitchCount, setTabSwitchCount] = useState<number>(0);
   const [showViolationModal, setShowViolationModal] = useState<boolean>(false);
@@ -122,6 +130,83 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       void loadClasses();
     }
   }, [isAssignModalOpen, loadStudents, loadEnrollments, loadClasses]);
+
+  // TỰ ĐỘNG NHẬN DIỆN MÔN HỌC, CHUYÊN ĐỀ VÀ ĐỀ SỐ TỪ LINK CHIA SẺ GỬI CHO HỌC SINH / PHỤ HUYNH
+  useEffect(() => {
+    const sParam = searchParams.get('subject');
+    const tParam = searchParams.get('topic');
+    const eParam = searchParams.get('exam');
+
+    if (sParam === 'toan' || sParam === 'hoa') {
+      setCurrentSubject(sParam);
+    }
+    if (tParam) {
+      setSelectedTopicId(tParam);
+    }
+    if (eParam) {
+      const eNum = parseInt(eParam, 10);
+      if (!isNaN(eNum) && eNum >= 1 && eNum <= 10) {
+        setSelectedExamNo(eNum);
+      }
+    }
+  }, [searchParams]);
+
+  // HÀM TẠO LINK TRỰC TIẾP ĐỂ GỬI QUA ZALO / PHỤ HUYNH / HỌC SINH
+  const getShareableExamUrl = () => {
+    const origin = window.location.origin;
+    return `${origin}/lay-goc?subject=${currentSubject}&topic=${selectedTopicId}&exam=${selectedExamNo}`;
+  };
+
+  // HÀM TẠO LỜI DẶN DÒ TRANG TRỌNG KÈM LINK GỬI CHO HỌC SINH & PHỤ HUYNH
+  const getShareableMessage = () => {
+    const isHoa = currentSubject === 'hoa';
+    const subjectName = isHoa ? 'Hóa học' : 'Toán học';
+    const topicList = isHoa ? LAY_GOC_HOA_TOPICS : LAY_GOC_TOPICS;
+    const topicObj = topicList.find(t => t.id === selectedTopicId) || topicList[0];
+    const examUrl = getShareableExamUrl();
+
+    let examDetailName = `Đề số ${selectedExamNo.toString().padStart(2, '0')}`;
+    if (isHoa && selectedTopicId === 'nguyen_tu_khoi_18') {
+      examDetailName = selectedExamNo % 2 === 1 
+        ? `Đề ${selectedExamNo.toString().padStart(2, '0')} (Xác định tên nguyên tố cũ & mới)`
+        : `Đề ${selectedExamNo.toString().padStart(2, '0')} (Tìm chọn số nguyên tử khối NTK)`;
+    } else if (isHoa && selectedTopicId === 'nguyen_tu_khoi_short_ans') {
+      examDetailName = `Đề ${selectedExamNo.toString().padStart(2, '0')} (Trả lời ngắn: Điền nguyên tử khối)`;
+    }
+
+    return `📚 BÀI TẬP LẤY GỐC KIẾN THỨC – LỚP HỌC THẦY THỌ\n` +
+           `👨‍🏫 Thầy Thọ gửi link bài tập trực tuyến:\n` +
+           `• Môn học: ${subjectName}\n` +
+           `• Chuyên đề: ${topicObj.title}\n` +
+           `• Nội dung: ${examDetailName} (20 câu)\n` +
+           `• Thời gian làm bài: 20 phút (Tự động chấm điểm, có lời giải chi tiết và bắn pháo hoa khi 10đ)\n\n` +
+           `👉 Phụ huynh và các em học sinh mở link này trên điện thoại hoặc máy tính để làm bài trực tiếp:\n` +
+           `${examUrl}\n\n` +
+           `✨ Chúc các em làm bài thật tốt và đạt điểm 10 tuyệt đối!`;
+  };
+
+  const handleCopyLinkOnly = async () => {
+    try {
+      await navigator.clipboard.writeText(getShareableExamUrl());
+      setIsCopiedShareLink(true);
+      toast.success('📋 Đã sao chép đường link đề thi vào bộ nhớ tạm!');
+      setTimeout(() => setIsCopiedShareLink(false), 3000);
+    } catch (e) {
+      toast.error('Không thể tự động sao chép link!');
+    }
+  };
+
+  const handleCopyFullMessage = async () => {
+    try {
+      await navigator.clipboard.writeText(getShareableMessage());
+      setIsCopiedShareMessage(true);
+      toast.success('💬 Đã sao chép toàn bộ lời dặn dò kèm link gửi Zalo / Phụ huynh!');
+      setTimeout(() => setIsCopiedShareMessage(false), 3000);
+    } catch (e) {
+      toast.error('Không thể tự động sao chép!');
+    }
+  };
+
 
   // Key lưu trữ lịch sử các lần làm bài vào localStorage
   const historyStorageKey = `laygoc_history_${currentSubject}_${selectedTopicId}_exam_${selectedExamNo}`;
@@ -1071,6 +1156,16 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
+                  {/* NÚT TẠO VÀ SAO CHÉP LINK GỬI CHO HỌC SINH / PHỤ HUYNH */}
+                  <button
+                    onClick={() => setIsShareModalOpen(true)}
+                    className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                    title="Tạo đường link làm bài trực tiếp để copy gửi cho học sinh hoặc phụ huynh qua Zalo / Facebook"
+                  >
+                    <Share2 className="w-4 h-4 text-white" />
+                    <span>🔗 Tạo Link Gửi HS / Phụ Huynh</span>
+                  </button>
+
                   {/* NÚT XEM LỊCH SỬ TẤT CẢ CÁC LẦN LÀM BÀI */}
                   <button
                     onClick={() => setIsHistoryModalOpen(true)}
@@ -1086,13 +1181,26 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     )}
                   </button>
 
-                  <button
-                    onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
-                    className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm transition cursor-pointer"
-                  >
-                    <Send className="w-4 h-4 text-slate-900" />
-                    <span>Giao Đề Này Cho HS</span>
-                  </button>
+                  {!isPublic && (
+                    <>
+                      <button
+                        onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
+                        className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm transition cursor-pointer"
+                      >
+                        <Send className="w-4 h-4 text-slate-900" />
+                        <span>Giao Đề Này Cho HS</span>
+                      </button>
+
+                      <button
+                        onClick={() => setIsScanModalOpen(true)}
+                        className="px-4 py-2.5 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                        title="Tải lên 10-50 ảnh bài làm đã scan để AI tự động nhận diện họ tên, đọc đáp án và chấm điểm hàng loạt"
+                      >
+                        <Sparkles className="w-4 h-4 text-purple-700" />
+                        <span>Quét Ảnh Chấm Bài AI</span>
+                      </button>
+                    </>
+                  )}
 
                   <button
                     onClick={() => setIsPrintModalOpen(true)}
@@ -1101,15 +1209,6 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   >
                     <Printer className="w-4 h-4 text-teal-700" />
                     <span>In Đề / Tải File PDF (A4)</span>
-                  </button>
-
-                  <button
-                    onClick={() => setIsScanModalOpen(true)}
-                    className="px-4 py-2.5 bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
-                    title="Tải lên 10-50 ảnh bài làm đã scan để AI tự động nhận diện họ tên, đọc đáp án và chấm điểm hàng loạt"
-                  >
-                    <Sparkles className="w-4 h-4 text-purple-700" />
-                    <span>Quét Ảnh Chấm Bài AI</span>
                   </button>
 
                   {/* NÚT BẮT ĐẦU HOẶC ĐỒNG HỒ ĐANG ĐẾM NGƯỢC */}
@@ -2463,6 +2562,147 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               </div>
             </div>
           )}
+        </Modal>
+
+        {/* MODAL CHIA SẺ ĐƯỜNG LINK ĐỀ THI CHO HỌC SINH & PHỤ HUYNH */}
+        <Modal
+          isOpen={isShareModalOpen}
+          onClose={() => setIsShareModalOpen(false)}
+          title="🔗 TẠO ĐƯỜNG LINK GỬI HỌC SINH & PHỤ HUYNH LÀM BÀI"
+          maxWidth="max-w-2xl"
+        >
+          <div className="p-6 space-y-6">
+            {/* THÔNG TIN TÓM TẮT ĐỀ THI */}
+            <div className="p-4 bg-gradient-to-r from-emerald-50 via-teal-50 to-cyan-50 border border-emerald-200 rounded-2xl flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
+                  {selectedExamNo.toString().padStart(2, '0')}
+                </div>
+                <div>
+                  <span className="text-[11px] font-black uppercase text-emerald-800 tracking-wider">
+                    {currentSubject === 'hoa' ? '🧪 MÔN HÓA HỌC' : '📐 MÔN TOÁN HỌC'} – ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}
+                  </span>
+                  <h4 className="text-sm font-extrabold text-slate-900 leading-snug">
+                    {currentTopic?.title}
+                  </h4>
+                  <div className="flex items-center gap-2 text-xs text-slate-600 mt-0.5">
+                    <span>⏱️ 20 phút</span>
+                    <span>•</span>
+                    <span>📝 20 câu</span>
+                    <span>•</span>
+                    <span>🎯 Tự động chấm điểm & lời giải</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* MỤC 1: ĐƯỜNG LINK TRỰC TIẾP */}
+            <div className="space-y-2">
+              <label className="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                <Link className="w-4 h-4 text-emerald-600" />
+                <span>1. Đường Link Làm Bài Trực Tiếp (1 Chạm Vào Ngay)</span>
+              </label>
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  readOnly
+                  value={getShareableExamUrl()}
+                  className="flex-1 bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2.5 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 select-all"
+                  onClick={(e) => (e.target as HTMLInputElement).select()}
+                />
+                <button
+                  type="button"
+                  onClick={handleCopyLinkOnly}
+                  className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black rounded-xl transition flex items-center gap-1.5 shadow-sm shrink-0 cursor-pointer"
+                >
+                  {isCopiedShareLink ? <Check className="w-4 h-4 text-white" /> : <Copy className="w-4 h-4" />}
+                  <span>{isCopiedShareLink ? 'Đã Chép Link!' : 'Sao Chép Link'}</span>
+                </button>
+                <a
+                  href={getShareableExamUrl()}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition shrink-0"
+                  title="Mở thử trong tab mới để kiểm tra"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+              <p className="text-[11px] text-slate-500">
+                💡 Học sinh hoặc phụ huynh chỉ cần bấm vào link này trên điện thoại hoặc máy tính là mở ngay đề thi, không cần đăng nhập.
+              </p>
+            </div>
+
+            {/* MỤC 2: TIN NHẮN MẪU SOẠN SẴN GỬI QUA ZALO / MESSENGER / PHỤ HUYNH */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                  <MessageCircle className="w-4 h-4 text-blue-600" />
+                  <span>2. Tin Nhắn Soạn Sẵn Kèm Lời Dặn Dò (Gửi Zalo / Nhóm Lớp)</span>
+                </label>
+                <span className="text-[11px] text-emerald-700 font-bold">Chuẩn mực Thầy và em</span>
+              </div>
+              
+              <div className="relative">
+                <textarea
+                  readOnly
+                  rows={7}
+                  value={getShareableMessage()}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-2xl p-3.5 text-xs text-slate-800 leading-relaxed font-sans focus:outline-none focus:ring-2 focus:ring-blue-500 select-all resize-none"
+                  onClick={(e) => (e.target as HTMLTextAreaElement).select()}
+                />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                <button
+                  type="button"
+                  onClick={handleCopyFullMessage}
+                  className="flex-1 py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black rounded-xl transition flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+                >
+                  {isCopiedShareMessage ? <Check className="w-4 h-4 text-white" /> : <Copy className="w-4 h-4" />}
+                  <span>{isCopiedShareMessage ? '✓ Đã Sao Chép Lời Nhắn!' : '📋 Sao Chép Lời Nhắn & Link (Gửi Zalo / PH)'}</span>
+                </button>
+                <a
+                  href="https://chat.zalo.me"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="py-2.5 px-4 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-black rounded-xl transition flex items-center gap-1.5 shrink-0"
+                >
+                  <span>Mở Zalo Web</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* MỤC 3: MÃ QR CODE CHO HỌC SINH QUÉT ĐIỆN THOẠI TRỰC TIẾP */}
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col sm:flex-row items-center gap-4">
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=140x140&margin=10&data=${encodeURIComponent(getShareableExamUrl())}`}
+                alt="QR Code Đề Thi"
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl border border-slate-200 bg-white p-1 shrink-0 shadow-xs"
+              />
+              <div className="text-center sm:text-left space-y-1">
+                <span className="text-xs font-black uppercase text-slate-800 flex items-center justify-center sm:justify-start gap-1">
+                  <QrCode className="w-4 h-4 text-slate-700" />
+                  <span>Mã QR Quét Làm Bài Ngay Tại Lớp</span>
+                </span>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Thầy có thể chiếu mã QR này lên máy chiếu hoặc màn hình tivi tại lớp học. Học sinh chỉ cần mở Camera hoặc Zalo quét là vào thẳng đề thi làm bài ngay!
+                </p>
+              </div>
+            </div>
+
+            {/* CHÂN MODAL */}
+            <div className="flex justify-end pt-2 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setIsShareModalOpen(false)}
+                className="px-6 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition cursor-pointer"
+              >
+                Đóng
+              </button>
+            </div>
+          </div>
         </Modal>
 
         {/* MODAL IN ẤN & XUẤT PDF CHUẨN A4 CHO PHỤ HUYNH & HỌC SINH */}
