@@ -872,18 +872,31 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   BƯỚC 2: CHỌN ĐỀ THI TRONG {currentTopic.shortTitle.toUpperCase()} (ĐỀ 01 ➜ ĐỀ 10)
                 </div>
                 <div className="text-xs font-bold text-red-700 bg-red-50 px-2.5 py-1 rounded-lg border border-red-100">
-                  🎯 Đang mở: Đề {selectedExamNo.toString().padStart(2, '0')} (Chuẩn 20 câu hỏi)
+                  {selectedTopicId === 'khtn_nguyen_to' ? (
+                    <span>
+                      🎯 Đang mở: Đề {selectedExamNo.toString().padStart(2, '0')} (
+                      <strong className="text-red-900">
+                        {selectedExamNo % 2 === 1 ? 'Đề lẻ: Luyện Tên Nguyên Tố Cũ & Mới' : 'Đề chẵn: Cho Tên ➜ Tìm Nguyên Tử Khối'}
+                      </strong>
+                      )
+                    </span>
+                  ) : (
+                    <span>🎯 Đang mở: Đề {selectedExamNo.toString().padStart(2, '0')} (Chuẩn 20 câu hỏi)</span>
+                  )}
                 </div>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((no) => {
                   const isCur = selectedExamNo === no;
+                  const isNtkTopic = selectedTopicId === 'khtn_nguyen_to';
+                  const ntkSubtitle = no % 2 === 1 ? '🏷️ Tên ng.tố' : '⚖️ Tìm NTK';
+
                   return (
                     <button
                       key={no}
                       onClick={() => handleSelectExam(selectedTopicId, no)}
-                      className={`py-3 px-2 rounded-xl text-center border font-extrabold transition-all cursor-pointer ${
+                      className={`py-2.5 px-1.5 rounded-xl text-center border font-extrabold transition-all cursor-pointer ${
                         isCur
                           ? 'bg-gradient-to-b from-red-600 to-rose-700 text-white border-red-700 shadow-md shadow-red-600/30 ring-2 ring-red-400'
                           : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700 hover:border-slate-300'
@@ -892,8 +905,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       <div className="text-sm font-black">
                         Đề {no.toString().padStart(2, '0')}
                       </div>
-                      <div className={`text-[10px] mt-0.5 ${isCur ? 'text-amber-200 font-bold' : 'text-slate-400'}`}>
-                        20 câu
+                      <div className={`text-[10px] mt-0.5 truncate ${isCur ? 'text-amber-200 font-bold' : isNtkTopic ? 'text-teal-700 font-semibold' : 'text-slate-400'}`}>
+                        {isNtkTopic ? ntkSubtitle : '20 câu'}
                       </div>
                     </button>
                   );
@@ -910,7 +923,11 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   </div>
                   <h2 className="text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
                     <span>{currentTopic.icon}</span>
-                    <span>ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')} – 20 CÂU HỎI TRẮC NGHIỆM</span>
+                    <span>
+                      {selectedTopicId === 'khtn_nguyen_to'
+                        ? `ĐỀ SỐ ${selectedExamNo.toString().padStart(2, '0')} – ${selectedExamNo % 2 === 1 ? 'XÁC ĐỊNH TÊN NGUYÊN TỐ (CẢ TÊN CŨ & MỚI)' : 'CHO TÊN ➜ TÌM CHỌN NGUYÊN TỬ KHỐI (NTK)'}`
+                        : `ĐỀ SỐ ${selectedExamNo.toString().padStart(2, '0')} – 20 CÂU HỎI TRẮC NGHIỆM`}
+                    </span>
                   </h2>
                   <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 mt-1.5">
                     <span className="flex items-center gap-1 font-bold text-slate-700">

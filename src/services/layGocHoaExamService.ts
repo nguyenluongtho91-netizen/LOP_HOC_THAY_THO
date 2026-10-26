@@ -3513,31 +3513,36 @@ function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
     return NTK_18_ELEMENTS[(i + shift) % 20];
   });
 
+  // Quy tắc chuẩn sư phạm:
+  // - Đề lẻ (1, 3, 5, 7, 9): ĐỀ TÊN NGUYÊN TỐ (Cho kí hiệu & NTK -> Chọn Tên nguyên tố cũ & mới)
+  // - Đề chẵn (2, 4, 6, 8, 10): ĐỀ NGUYÊN TỬ KHỐI (Cho tên nguyên tố -> Tìm chọn Nguyên tử khối)
+  const isNameQuestionType = safeNo % 2 === 1;
+
   return orderedElements.map((el, idx) => {
     const s = baseSeed + (idx + 1) * 23;
-    // Đề chẵn: xen kẽ các câu hỏi ngược (từ NTK tìm nguyên tố) để rèn phản xạ 2 chiều
-    const isReverseQuestion = (safeNo % 2 === 0) ? (idx % 2 === 1) : false;
 
-    if (isReverseQuestion) {
+    if (isNameQuestionType) {
+      // ĐỀ 1, 3, 5, 7, 9: TÌM TÊN NGUYÊN TỐ
       const correctAnswer = el.combinedName;
       return {
         id: idx + 1,
-        question: `Câu ${idx + 1}: Nguyên tố hóa học nào sau đây có nguyên tử khối bằng ${el.ntk}?`,
-        mathExpression: `M = ${el.ntk}`,
+        question: `Câu ${idx + 1}: Kí hiệu hóa học "${el.symbol}" (nguyên tử khối M = ${el.ntk}) tương ứng với tên nguyên tố nào sau đây?`,
+        mathExpression: `\\text{Kí hiệu: } \\mathbf{${el.symbol}} \\quad (M = ${el.ntk})`,
         options: makeOptions(correctAnswer, el.elementDistractors, s),
         correctAnswer,
-        explanation: `Nguyên tố có nguyên tử khối M = ${el.ntk} là ${el.nameVi} (tên quốc tế mới IUPAC: ${el.nameIupac}), kí hiệu hóa học là ${el.symbol}.`,
+        explanation: `👉 Kí hiệu hóa học "${el.symbol}" (M = ${el.ntk}) là của nguyên tố ${el.nameVi} (tên quốc tế mới IUPAC: ${el.nameIupac}).`,
         topic: 'khtn_nguyen_to'
       };
     } else {
+      // ĐỀ 2, 4, 6, 8, 10: CHO TÊN RỒI TÌM CHỌN NGUYÊN TỬ KHỐI
       const correctAnswer = el.ntk;
       return {
         id: idx + 1,
-        question: `Câu ${idx + 1}: Nguyên tử khối (khối lượng nguyên tử) của nguyên tố ${el.nameVi} / ${el.nameIupac} (${el.symbol}) là:`,
+        question: `Câu ${idx + 1}: Cho nguyên tố ${el.nameVi} / ${el.nameIupac} (kí hiệu: ${el.symbol}), nguyên tử khối (khối lượng nguyên tử) đúng là:`,
         mathExpression: `M_{\\mathrm{${el.symbol}}} = ?`,
         options: makeOptions(correctAnswer, el.distractors, s),
         correctAnswer,
-        explanation: `Nguyên tố ${el.nameVi} (tên mới: ${el.nameIupac}), kí hiệu hóa học ${el.symbol}, có nguyên tử khối M = ${el.ntk}.`,
+        explanation: `👉 Nguyên tố ${el.nameVi} (tên quốc tế mới IUPAC: ${el.nameIupac}), kí hiệu hóa học ${el.symbol}, có nguyên tử khối M = ${el.ntk}.`,
         topic: 'khtn_nguyen_to'
       };
     }
