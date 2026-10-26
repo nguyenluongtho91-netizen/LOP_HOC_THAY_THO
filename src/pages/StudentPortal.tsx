@@ -127,9 +127,17 @@ export default function StudentPortal() {
         `)
         .order('created_at', { ascending: false })
 
-      if (roomsErr) throw roomsErr
+      // 3. Lấy danh sách bài nộp của học sinh
+      const { data: subs, error: subsErr } = await supabase
+        .from('exam_submissions')
+        .select('*')
+        .eq('student_id', studentId)
 
-      // Lọc phòng thi học sinh được phép tham gia (phòng thi chung hoặc thuộc lớp của học sinh)
+      if (subsErr) throw subsErr
+
+      const submittedRoomIds = (subs || []).map((s: any) => s.room_id)
+
+      // Lọc phòng thi học sinh được phép tham gia (chỉ thấy đúng đề thuộc lớp của mình)
       const isFreeCandidate = latestStudent?.student_code?.toUpperCase() === 'THAYTHO' || 
                               latestStudent?.grade === 'Thí Sinh Tự Do' ||
                               latestStudent?.student_code?.toUpperCase() === 'TUDO';
@@ -138,25 +146,25 @@ export default function StudentPortal() {
         // NẾU LÀ THÍ SINH TỰ DO (THẦY THỌ) -> ĐẶC QUYỀN LÀM ĐƯỢC 100% TẤT CẢ PHÒNG THI!
         if (isFreeCandidate) return true;
 
-        const isMyClass = !room.class_id || myClassIds.includes(room.class_id)
-        if (!isMyClass) return false
+        // Chỉ hiển thị phòng thi thuộc đúng lớp của học sinh (hoặc được chỉ định cụ thể)
+        const isMyClass = room.class_id && myClassIds.includes(room.class_id)
+        const assignedIds = room.settings?.assigned_student_ids
+        const isExplicitlyAssigned = Array.isArray(assignedIds) && assignedIds.includes(studentId)
+
+        if (!isMyClass && !isExplicitlyAssigned) return false
 
         // Kiểm tra nếu phòng thi có chỉ định danh sách học sinh cụ thể
-        const assignedIds = room.settings?.assigned_student_ids
-        if (Array.isArray(assignedIds) && assignedIds.length > 0) {
-          return assignedIds.includes(studentId)
+        if (Array.isArray(assignedIds) && assignedIds.length > 0 && !assignedIds.includes(studentId)) {
+          return false
+        }
+
+        // Nếu phòng thi đã kết thúc/khóa (closed) mà học sinh chưa từng nộp bài -> ẩn đi
+        if (room.status === 'closed' && !submittedRoomIds.includes(room.id)) {
+          return false
         }
 
         return true
       })
-
-      // 3. Lấy danh sách bài nộp của học sinh
-      const { data: subs, error: subsErr } = await supabase
-        .from('exam_submissions')
-        .select('*')
-        .eq('student_id', studentId)
-
-      if (subsErr) throw subsErr
 
       // Đã loại bỏ logic tự động nộp bài (0 điểm) khi quay về portal để hỗ trợ làm tiếp
       setExamsList(eligibleRooms)

@@ -7,7 +7,7 @@ import {
   Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target,
   FlaskConical, Compass, Scale, Bell, AlertTriangle, History, 
   Volume2, ShieldAlert, Calendar, Eye, Activity, TrendingUp, AlertCircle,
-  Share2, Link, MessageCircle, QrCode, ExternalLink, Smartphone
+  Share2, Link, MessageCircle, QrCode, ExternalLink, Smartphone, Lock
 } from 'lucide-react';
 import MathText from '@/components/MathText';
 import { useDataStore } from '@/store/dataStore';
@@ -70,6 +70,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
   // CHIA SẺ LINK ĐỀ THI TRỰC TIẾP CHO HỌC SINH & PHỤ HUYNH
   const [searchParams] = useSearchParams();
+  const isStudentMode = useMemo(() => {
+    return isPublic || searchParams.get('mode') === 'student' || searchParams.get('view') === 'student';
+  }, [isPublic, searchParams]);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isCopiedShareLink, setIsCopiedShareLink] = useState<boolean>(false);
   const [isCopiedShareMessage, setIsCopiedShareMessage] = useState<boolean>(false);
@@ -151,10 +154,10 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     }
   }, [searchParams]);
 
-  // HÀM TẠO LINK TRỰC TIẾP ĐỂ GỬI QUA ZALO / PHỤ HUYNH / HỌC SINH
+  // HÀM TẠO LINK TRỰC TIẾP ĐỂ GỬI QUA ZALO / PHỤ HUYNH / HỌC SINH (CHỈ MỞ DUY NHẤT ĐỀ ĐƯỢC GIAO)
   const getShareableExamUrl = () => {
     const origin = window.location.origin;
-    return `${origin}/lay-goc?subject=${currentSubject}&topic=${selectedTopicId}&exam=${selectedExamNo}`;
+    return `${origin}/lay-goc?subject=${currentSubject}&topic=${selectedTopicId}&exam=${selectedExamNo}&mode=student`;
   };
 
   // HÀM TẠO LỜI DẶN DÒ TRANG TRỌNG KÈM LINK GỬI CHO HỌC SINH & PHỤ HUYNH
@@ -806,181 +809,219 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
       {/* ===================== BANNER ĐẦU TRANG ===================== */}
-      <div className={`shadow-lg print:hidden transition-colors ${
-        currentSubject === 'toan'
-          ? 'bg-gradient-to-r from-red-700 via-rose-700 to-amber-600 text-white'
-          : 'bg-gradient-to-r from-teal-800 via-cyan-800 to-blue-700 text-white'
-      }`}>
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          {/* THANH CHUYỂN ĐỔI MÔN HỌC TOÁN / HÓA */}
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-black/20 backdrop-blur-md p-1.5 rounded-2xl border border-white/20">
-            <div className="flex items-center gap-1.5 w-full sm:w-auto">
+      {isStudentMode ? (
+        <div className={`shadow-lg print:hidden transition-colors ${
+          currentSubject === 'toan'
+            ? 'bg-gradient-to-r from-red-800 via-rose-800 to-amber-700 text-white'
+            : 'bg-gradient-to-r from-teal-900 via-cyan-900 to-blue-900 text-white'
+        }`}>
+          <div className="max-w-6xl mx-auto px-4 py-5 sm:py-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-2xl border border-white/20 shrink-0 shadow-inner">
+                  {currentSubject === 'toan' ? '📐' : '🧪'}
+                </div>
+                <div>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-wider text-amber-200 mb-1">
+                    <span>LỚP HỌC THẦY THỌ • BÀI TẬP VỀ NHÀ ĐƯỢC GIAO</span>
+                  </div>
+                  <h1 className="text-lg sm:text-xl font-black text-white tracking-tight">
+                    {currentSubject === 'hoa' ? 'Môn Hóa Học' : 'Môn Toán Học'} – {currentTopic.title}
+                  </h1>
+                  <p className="text-white/80 text-xs mt-0.5">
+                    🎯 <strong>ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}</strong> • Chuẩn 20 câu hỏi trắc nghiệm • Thời gian làm bài: 20 phút (Tự động chấm điểm)
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <div className="px-3.5 py-2 rounded-xl bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                  <Lock className="w-4 h-4 text-amber-300" />
+                  <span>Đề thi được khóa cố định</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className={`shadow-lg print:hidden transition-colors ${
+          currentSubject === 'toan'
+            ? 'bg-gradient-to-r from-red-700 via-rose-700 to-amber-600 text-white'
+            : 'bg-gradient-to-r from-teal-800 via-cyan-800 to-blue-700 text-white'
+        }`}>
+          <div className="max-w-6xl mx-auto px-4 py-8">
+            {/* THANH CHUYỂN ĐỔI MÔN HỌC TOÁN / HÓA */}
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-black/20 backdrop-blur-md p-1.5 rounded-2xl border border-white/20">
+              <div className="flex items-center gap-1.5 w-full sm:w-auto">
+                <button
+                  onClick={() => handleSwitchSubject('toan')}
+                  className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer ${
+                    currentSubject === 'toan'
+                      ? 'bg-white text-red-700 shadow-md ring-2 ring-amber-300'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Calculator className="w-4 h-4" />
+                  <span>📐 Lấy Gốc Toán Học (Lớp 6 - 9)</span>
+                </button>
+
+                <button
+                  onClick={() => handleSwitchSubject('hoa')}
+                  className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer ${
+                    currentSubject === 'hoa'
+                      ? 'bg-white text-teal-800 shadow-md ring-2 ring-cyan-300'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <FlaskConical className="w-4 h-4" />
+                  <span>🧪 Lấy Gốc Hóa Học (Lớp 6 - 12)</span>
+                </button>
+              </div>
+
+              <div className="text-xs font-bold text-amber-200 px-3 hidden md:block">
+                {currentSubject === 'toan' ? '6 Chuyên đề • 60 Đề • 1.200 Câu' : '14 Chuyên đề (9 Vô cơ + 5 Hữu cơ) • 140 Đề • 2.800 Câu'}
+              </div>
+            </div>
+
+            {/* SUB-FILTER PHÂN HỆ HÓA VÔ CƠ / HÓA HỮU CƠ */}
+            {currentSubject === 'hoa' && (
+              <div className="flex flex-wrap items-center gap-2 mb-6 bg-black/25 backdrop-blur-md p-1.5 rounded-2xl border border-teal-300/30">
+                <span className="text-[11px] font-black uppercase text-teal-200 px-3">
+                  Phân hệ:
+                </span>
+                <button
+                  onClick={() => handleSwitchHoaBranch('all')}
+                  className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
+                    hoaBranchFilter === 'all'
+                      ? 'bg-white text-teal-950 shadow-md ring-2 ring-cyan-400'
+                      : 'text-teal-100 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <span>🧪 Toàn Bộ Hóa Học (14 Chuyên Đề • 140 Đề)</span>
+                </button>
+                <button
+                  onClick={() => handleSwitchHoaBranch('vo_co')}
+                  className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
+                    hoaBranchFilter === 'vo_co'
+                      ? 'bg-cyan-400 text-slate-950 shadow-md font-black ring-2 ring-white'
+                      : 'text-cyan-200 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <FlaskConical className="w-3.5 h-3.5" />
+                  <span>⚗️ Hóa Học Vô Cơ (9 Chuyên Đề • Lớp 6 - 11)</span>
+                </button>
+                <button
+                  onClick={() => handleSwitchHoaBranch('huu_co')}
+                  className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
+                    hoaBranchFilter === 'huu_co'
+                      ? 'bg-emerald-400 text-slate-950 shadow-md font-black ring-2 ring-white'
+                      : 'text-emerald-200 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <span>🌿 Hóa Học Hữu Cơ (5 Chuyên Đề • Lớp 11 - 12)</span>
+                </button>
+              </div>
+            )}
+
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs text-xs font-black uppercase tracking-wider mb-2">
+                  <Zap className="w-4 h-4 text-amber-300 animate-pulse" />
+                  {currentSubject === 'toan' 
+                    ? 'Hệ Thống Phục Hồi Mất Gốc Toán Cấp 2 (Lớp 6 - Lớp 9)' 
+                    : 'Hệ Thống Phục Hồi Mất Gốc Hóa Học Toàn Diện (Hóa Vô Cơ & Hóa Hữu Cơ Lớp 6-12)'}
+                </div>
+                <h1 className="text-2xl md:text-3xl font-black tracking-tight">
+                  {currentSubject === 'toan' 
+                    ? '⚡ LẤY GỐC TOÁN HỌC – 60 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)' 
+                    : '🧪 LẤY GỐC HÓA HỌC – 140 ĐỀ THI VÔ CƠ & HỮU CƠ (20 CÂU/ĐỀ)'}
+                </h1>
+                <p className="text-rose-100 text-sm mt-1 max-w-2xl leading-relaxed">
+                  {currentSubject === 'toan'
+                    ? 'Chuyên sâu số tự nhiên, tìm x lớp 6, số âm, chuyển vế, phân số và khảo sát tổng hợp. Mỗi đề chuẩn 20 câu trắc nghiệm kèm lời giải chi tiết của Thầy Thọ.'
+                    : 'Phân định bài bản giữa Hóa Vô Cơ (nguyên tố, CTHH, mol, axit-bazơ-muối, cấu tạo nguyên tử, oxi hóa khử) và Hóa Hữu Cơ (hiđrocacbon, ancol, este, cacbohiđrat, amin).'}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20">
+                <div className="text-center px-3 border-r border-white/20">
+                  <div className="text-2xl font-black text-amber-300">
+                    {currentSubject === 'toan' ? '60' : hoaBranchFilter === 'vo_co' ? '90' : hoaBranchFilter === 'huu_co' ? '50' : '140'}
+                  </div>
+                  <div className="text-[10px] text-white/80 font-bold uppercase">Tổng số đề</div>
+                </div>
+                <div className="text-center px-3 border-r border-white/20">
+                  <div className="text-2xl font-black text-emerald-300">20</div>
+                  <div className="text-[10px] text-white/80 font-bold uppercase">Câu / Mỗi đề</div>
+                </div>
+                <div className="text-center px-3">
+                  <div className="text-2xl font-black text-orange-300 flex items-center justify-center gap-1">
+                    <Flame className="w-5 h-5 text-orange-400 fill-orange-400" />
+                    {streak}
+                  </div>
+                  <div className="text-[10px] text-white/80 font-bold uppercase">Chuỗi đúng</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation Tabs */}
+            <div className="flex flex-wrap items-center gap-2 mt-6">
               <button
-                onClick={() => handleSwitchSubject('toan')}
-                className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer ${
-                  currentSubject === 'toan'
-                    ? 'bg-white text-red-700 shadow-md ring-2 ring-amber-300'
-                    : 'text-white/80 hover:text-white hover:bg-white/10'
+                onClick={() => setActiveTab('kho_de')}
+                className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
+                  activeTab === 'kho_de' 
+                    ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
+                    : 'bg-black/20 text-white hover:bg-black/30'
+                }`}
+              >
+                <Award className="w-4 h-4 text-amber-500" />
+                <span>📚 Kho {currentSubject === 'toan' ? '60 Đề Toán' : '140 Đề Hóa Học'} (20 Câu/Đề)</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('ly_thuyet')}
+                className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
+                  activeTab === 'ly_thuyet' 
+                    ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
+                    : 'bg-black/20 text-white hover:bg-black/30'
+                }`}
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>📖 Bí Kíp Thần Chú & Lý Thuyết</span>
+              </button>
+
+              <button
+                onClick={() => setActiveTab('luyen_tap')}
+                className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
+                  activeTab === 'luyen_tap' 
+                    ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
+                    : 'bg-black/20 text-white hover:bg-black/30'
                 }`}
               >
                 <Calculator className="w-4 h-4" />
-                <span>📐 Lấy Gốc Toán Học (Lớp 6 - 9)</span>
+                <span>⚡ Luyện Tập Nhanh Tự Do</span>
               </button>
 
               <button
-                onClick={() => handleSwitchSubject('hoa')}
-                className={`flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition cursor-pointer ${
-                  currentSubject === 'hoa'
-                    ? 'bg-white text-teal-800 shadow-md ring-2 ring-cyan-300'
-                    : 'text-white/80 hover:text-white hover:bg-white/10'
-                }`}
+                onClick={() => handleOpenAssignModal(currentSubject)}
+                className="px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 shadow-md transition ml-auto cursor-pointer"
               >
-                <FlaskConical className="w-4 h-4" />
-                <span>🧪 Lấy Gốc Hóa Học (Lớp 6 - 12)</span>
+                <Send className="w-4 h-4 text-slate-900" />
+                <span>🎯 Giao Đề Cho Học Sinh Chỉ Định</span>
               </button>
             </div>
-
-            <div className="text-xs font-bold text-amber-200 px-3 hidden md:block">
-              {currentSubject === 'toan' ? '6 Chuyên đề • 60 Đề • 1.200 Câu' : '14 Chuyên đề (9 Vô cơ + 5 Hữu cơ) • 140 Đề • 2.800 Câu'}
-            </div>
-          </div>
-
-          {/* SUB-FILTER PHÂN HỆ HÓA VÔ CƠ / HÓA HỮU CƠ */}
-          {currentSubject === 'hoa' && (
-            <div className="flex flex-wrap items-center gap-2 mb-6 bg-black/25 backdrop-blur-md p-1.5 rounded-2xl border border-teal-300/30">
-              <span className="text-[11px] font-black uppercase text-teal-200 px-3">
-                Phân hệ:
-              </span>
-              <button
-                onClick={() => handleSwitchHoaBranch('all')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
-                  hoaBranchFilter === 'all'
-                    ? 'bg-white text-teal-950 shadow-md ring-2 ring-cyan-400'
-                    : 'text-teal-100 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                <span>🧪 Toàn Bộ Hóa Học (14 Chuyên Đề • 140 Đề)</span>
-              </button>
-              <button
-                onClick={() => handleSwitchHoaBranch('vo_co')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
-                  hoaBranchFilter === 'vo_co'
-                    ? 'bg-cyan-400 text-slate-950 shadow-md font-black ring-2 ring-white'
-                    : 'text-cyan-200 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                <FlaskConical className="w-3.5 h-3.5" />
-                <span>⚗️ Hóa Học Vô Cơ (9 Chuyên Đề • Lớp 6 - 11)</span>
-              </button>
-              <button
-                onClick={() => handleSwitchHoaBranch('huu_co')}
-                className={`px-4 py-2 rounded-xl font-bold text-xs flex items-center gap-1.5 transition cursor-pointer ${
-                  hoaBranchFilter === 'huu_co'
-                    ? 'bg-emerald-400 text-slate-950 shadow-md font-black ring-2 ring-white'
-                    : 'text-emerald-200 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                <span>🌿 Hóa Học Hữu Cơ (5 Chuyên Đề • Lớp 11 - 12)</span>
-              </button>
-            </div>
-          )}
-
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-xs text-xs font-black uppercase tracking-wider mb-2">
-                <Zap className="w-4 h-4 text-amber-300 animate-pulse" />
-                {currentSubject === 'toan' 
-                  ? 'Hệ Thống Phục Hồi Mất Gốc Toán Cấp 2 (Lớp 6 - Lớp 9)' 
-                  : 'Hệ Thống Phục Hồi Mất Gốc Hóa Học Toàn Diện (Hóa Vô Cơ & Hóa Hữu Cơ Lớp 6-12)'}
-              </div>
-              <h1 className="text-2xl md:text-3xl font-black tracking-tight">
-                {currentSubject === 'toan' 
-                  ? '⚡ LẤY GỐC TOÁN HỌC – 60 ĐỀ THI TIÊU CHUẨN (20 CÂU/ĐỀ)' 
-                  : '🧪 LẤY GỐC HÓA HỌC – 140 ĐỀ THI VÔ CƠ & HỮU CƠ (20 CÂU/ĐỀ)'}
-              </h1>
-              <p className="text-rose-100 text-sm mt-1 max-w-2xl leading-relaxed">
-                {currentSubject === 'toan'
-                  ? 'Chuyên sâu số tự nhiên, tìm x lớp 6, số âm, chuyển vế, phân số và khảo sát tổng hợp. Mỗi đề chuẩn 20 câu trắc nghiệm kèm lời giải chi tiết của Thầy Thọ.'
-                  : 'Phân định bài bản giữa Hóa Vô Cơ (nguyên tố, CTHH, mol, axit-bazơ-muối, cấu tạo nguyên tử, oxi hóa khử) và Hóa Hữu Cơ (hiđrocacbon, ancol, este, cacbohiđrat, amin).'}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md p-3 rounded-2xl border border-white/20">
-              <div className="text-center px-3 border-r border-white/20">
-                <div className="text-2xl font-black text-amber-300">
-                  {currentSubject === 'toan' ? '60' : hoaBranchFilter === 'vo_co' ? '90' : hoaBranchFilter === 'huu_co' ? '50' : '140'}
-                </div>
-                <div className="text-[10px] text-white/80 font-bold uppercase">Tổng số đề</div>
-              </div>
-              <div className="text-center px-3 border-r border-white/20">
-                <div className="text-2xl font-black text-emerald-300">20</div>
-                <div className="text-[10px] text-white/80 font-bold uppercase">Câu / Mỗi đề</div>
-              </div>
-              <div className="text-center px-3">
-                <div className="text-2xl font-black text-orange-300 flex items-center justify-center gap-1">
-                  <Flame className="w-5 h-5 text-orange-400 fill-orange-400" />
-                  {streak}
-                </div>
-                <div className="text-[10px] text-white/80 font-bold uppercase">Chuỗi đúng</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation Tabs */}
-          <div className="flex flex-wrap items-center gap-2 mt-6">
-            <button
-              onClick={() => setActiveTab('kho_de')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
-                activeTab === 'kho_de' 
-                  ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
-                  : 'bg-black/20 text-white hover:bg-black/30'
-              }`}
-            >
-              <Award className="w-4 h-4 text-amber-500" />
-              <span>📚 Kho {currentSubject === 'toan' ? '60 Đề Toán' : '140 Đề Hóa Học'} (20 Câu/Đề)</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('ly_thuyet')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
-                activeTab === 'ly_thuyet' 
-                  ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
-                  : 'bg-black/20 text-white hover:bg-black/30'
-              }`}
-            >
-              <BookOpen className="w-4 h-4" />
-              <span>📖 Bí Kíp Thần Chú & Lý Thuyết</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('luyen_tap')}
-              className={`px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition cursor-pointer ${
-                activeTab === 'luyen_tap' 
-                  ? 'bg-white text-slate-900 shadow-md ring-2 ring-white/50' 
-                  : 'bg-black/20 text-white hover:bg-black/30'
-              }`}
-            >
-              <Calculator className="w-4 h-4" />
-              <span>⚡ Luyện Tập Nhanh Tự Do</span>
-            </button>
-
-            <button
-              onClick={() => handleOpenAssignModal(currentSubject)}
-              className="px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-900 shadow-md transition ml-auto cursor-pointer"
-            >
-              <Send className="w-4 h-4 text-slate-900" />
-              <span>🎯 Giao Đề Cho Học Sinh Chỉ Định</span>
-            </button>
           </div>
         </div>
-      </div>
+      )}
 
       <div className="max-w-6xl mx-auto px-4 mt-6">
         {/* ===================== TAB 1: KHO ĐỀ THI ===================== */}
         {activeTab === 'kho_de' && (
           <div className="space-y-6">
             {/* 1. BỘ CHỌN CHUYÊN ĐỀ CỦA MÔN ĐANG CHỌN */}
-            <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
+            {!isStudentMode && (
+              <>
+                <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                 <div className="text-xs font-black uppercase text-slate-600 tracking-wider flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4 text-red-600" />
@@ -1171,6 +1212,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 })}
               </div>
             </div>
+          </>
+        )}
 
             {/* 3. CHI TIẾT ĐỀ THI ĐANG MỞ & KHU VỰC LÀM BÀI */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
@@ -1208,25 +1251,34 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  {/* NÚT TẠO VÀ SAO CHÉP LINK GỬI CHO HỌC SINH / PHỤ HUYNH */}
-                  <button
-                    onClick={() => setIsShareModalOpen(true)}
-                    className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
-                    title="Mở bảng hướng dẫn gửi link và mã QR cho học sinh / phụ huynh"
-                  >
-                    <Share2 className="w-4 h-4 text-white" />
-                    <span>🔗 Tạo Link & QR Gửi PH</span>
-                  </button>
+                  {!isStudentMode ? (
+                    <>
+                      {/* NÚT TẠO VÀ SAO CHÉP LINK GỬI CHO HỌC SINH / PHỤ HUYNH */}
+                      <button
+                        onClick={() => setIsShareModalOpen(true)}
+                        className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                        title="Mở bảng hướng dẫn gửi link và mã QR cho học sinh / phụ huynh"
+                      >
+                        <Share2 className="w-4 h-4 text-white" />
+                        <span>🔗 Tạo Link & QR Gửi PH</span>
+                      </button>
 
-                  {/* NÚT COPY NHANH LINK ĐỀ THI 1 CHẠM */}
-                  <button
-                    onClick={handleCopyLinkOnly}
-                    className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
-                    title="Sao chép nhanh link làm bài của đề này để gửi ngay"
-                  >
-                    {isCopiedShareLink ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-emerald-600" />}
-                    <span>{isCopiedShareLink ? '✓ Đã Chép Link!' : 'Copy Link Nhanh'}</span>
-                  </button>
+                      {/* NÚT COPY NHANH LINK ĐỀ THI 1 CHẠM */}
+                      <button
+                        onClick={handleCopyLinkOnly}
+                        className="px-3.5 py-2.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                        title="Sao chép nhanh link làm bài của đề này để gửi ngay"
+                      >
+                        {isCopiedShareLink ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-emerald-600" />}
+                        <span>{isCopiedShareLink ? '✓ Đã Chép Link!' : 'Copy Link Nhanh'}</span>
+                      </button>
+                    </>
+                  ) : (
+                    <div className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold shadow-xs">
+                      <Lock className="w-3.5 h-3.5 text-amber-600" />
+                      <span>Đề thi được giao chỉ định bởi Thầy Thọ</span>
+                    </div>
+                  )}
 
                   {/* NÚT XEM LỊCH SỬ TẤT CẢ CÁC LẦN LÀM BÀI */}
                   <button
@@ -1243,7 +1295,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     )}
                   </button>
 
-                  {!isPublic && (
+                  {!isStudentMode && !isPublic && (
                     <>
                       <button
                         onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
@@ -1264,14 +1316,16 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     </>
                   )}
 
-                  <button
-                    onClick={() => setIsPrintModalOpen(true)}
-                    className="px-4 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
-                    title="In bản giấy A4 hoặc Tải file PDF cho học sinh làm bài"
-                  >
-                    <Printer className="w-4 h-4 text-teal-700" />
-                    <span>In Đề / Tải File PDF (A4)</span>
-                  </button>
+                  {!isStudentMode && (
+                    <button
+                      onClick={() => setIsPrintModalOpen(true)}
+                      className="px-4 py-2.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                      title="In bản giấy A4 hoặc Tải file PDF cho học sinh làm bài"
+                    >
+                      <Printer className="w-4 h-4 text-teal-700" />
+                      <span>In Đề / Tải File PDF (A4)</span>
+                    </button>
+                  )}
 
                   {/* NÚT BẮT ĐẦU HOẶC ĐỒNG HỒ ĐANG ĐẾM NGƯỢC */}
                   {!isExamTimerActive && !isExamSubmitted ? (
@@ -1676,7 +1730,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       <span>Xem Lịch Sử ({examHistory.length} lần)</span>
                     </button>
 
-                    {selectedExamNo < 10 && (
+                    {!isStudentMode && selectedExamNo < 10 && (
                       <button
                         onClick={() => handleSelectExam(selectedTopicId, selectedExamNo + 1)}
                         className="flex-1 sm:flex-none px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-2xl shadow-sm transition cursor-pointer flex items-center gap-2 justify-center"
