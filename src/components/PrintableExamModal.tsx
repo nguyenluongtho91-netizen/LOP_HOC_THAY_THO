@@ -505,8 +505,12 @@ export default function PrintableExamModal({
                       const qNum = idx + 1;
                       const questionText = (q.question || '').replace(/^Câu \d+:\s*/, '');
 
+                      const isShortAnswer = (q as any).questionType === 'short_answer' || !q.options || q.options.length === 0;
+
                       // Tự động tính toán số cột để dàn 4 đáp án A B C D cân đối đẹp mắt nhất
-                      const maxOptionLength = Math.max(...q.options.map(o => (o || '').length));
+                      const maxOptionLength = q.options && q.options.length > 0 
+                        ? Math.max(...q.options.map((o: string) => (o || '').length)) 
+                        : 0;
                       let gridLayout = 'grid-cols-4'; // Dàn 4 cột nếu đáp án ngắn
                       if (maxOptionLength > 40) {
                         gridLayout = 'grid-cols-1'; // 1 cột nếu đáp án rất dài
@@ -530,22 +534,29 @@ export default function PrintableExamModal({
                             </span>
                           </div>
 
-                          {/* 4 Phương án A, B, C, D cân chỉnh thẳng tắp */}
-                          <div className={`grid ${gridLayout} gap-x-4 gap-y-1 pl-4`}>
-                            {q.options.map((opt, optIdx) => {
-                              const letter = ['A', 'B', 'C', 'D'][optIdx];
-                              return (
-                                <div key={optIdx} className="flex items-start gap-1.5">
-                                  <span className="font-bold text-black shrink-0">
-                                    {letter}.
-                                  </span>
-                                  <div className="text-black">
-                                    <MathText html={opt || ''} />
+                          {/* DẠNG 1: TRẢ LỜI NGẮN (DÒNG KẺ ĐIỀN ĐÁP ÁN) */}
+                          {isShortAnswer ? (
+                            <div className="pl-4 py-1 text-black italic">
+                              <span className="font-bold">Trả lời:</span> ............................................................................................................
+                            </div>
+                          ) : (
+                            /* DẠNG 2: 4 Phương án A, B, C, D cân chỉnh thẳng tắp */
+                            <div className={`grid ${gridLayout} gap-x-4 gap-y-1 pl-4`}>
+                              {q.options.map((opt: string, optIdx: number) => {
+                                const letter = ['A', 'B', 'C', 'D'][optIdx];
+                                return (
+                                  <div key={optIdx} className="flex items-start gap-1.5">
+                                    <span className="font-bold text-black shrink-0">
+                                      {letter}.
+                                    </span>
+                                    <div className="text-black">
+                                      <MathText html={opt || ''} />
+                                    </div>
                                   </div>
-                                </div>
-                              );
-                            })}
-                          </div>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
                       );
                     })}

@@ -231,13 +231,35 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return activeTopics.find(t => t.id === selectedTopicId) || activeTopics[0];
   }, [activeTopics, selectedTopicId]);
 
+  // HÀM KIỂM TRA ĐÁP ÁN ĐÚNG CHO CẢ TRẮC NGHIỆM VÀ TRẢ LỜI NGẮN (ĐIỀN ĐÁP ÁN)
+  const checkLayGocAnswerCorrect = (userAns: any, q: any): boolean => {
+    if (userAns === undefined || userAns === null) return false;
+    const userStr = String(userAns).trim();
+    if (!userStr) return false;
+
+    const isShortAnswer = q.questionType === 'short_answer' || !q.options || q.options.length === 0;
+    if (isShortAnswer) {
+      const clean = (s: string) => String(s || '').toLowerCase()
+        .replace(/,/g, '.')
+        .replace(/\s*(amu|đvc|dvc|g\/mol)\s*/gi, '')
+        .trim();
+      const cleanUser = clean(userStr);
+      const cleanCorrect = clean(q.correctAnswer);
+      if (cleanUser === cleanCorrect) return true;
+      const numU = parseFloat(cleanUser);
+      const numC = parseFloat(cleanCorrect);
+      if (!isNaN(numU) && !isNaN(numC) && Math.abs(numU - numC) < 0.001) return true;
+      return false;
+    }
+
+    return userStr === String(q.correctAnswer).trim();
+  };
+
   // HÀM NỘP BÀI THI & TỰ ĐỘNG LƯU VÀO LỊCH SỬ TỪNG LẦN LÀM
   const handleSubmitExamFinal = (isViolationSubmit = false) => {
     let correctCount = 0;
     currentExamQuestions.forEach(q => {
-      const userAns = (examAnswers[q.id] || '').trim();
-      const rightAns = (q.correctAnswer || '').trim();
-      if (userAns && userAns === rightAns) {
+      if (checkLayGocAnswerCorrect(examAnswers[q.id], q)) {
         correctCount++;
       }
     });
@@ -391,9 +413,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const examResultStats = useMemo(() => {
     let correctCount = 0;
     currentExamQuestions.forEach(q => {
-      const userAns = (examAnswers[q.id] || '').trim();
-      const rightAns = (q.correctAnswer || '').trim();
-      if (userAns && userAns === rightAns) {
+      if (checkLayGocAnswerCorrect(examAnswers[q.id], q)) {
         correctCount++;
       }
     });
@@ -880,16 +900,53 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       </strong>
                       )
                     </span>
+                  ) : selectedTopicId === 'khtn_nguyen_to_short' ? (
+                    <span>
+                      🎯 Đang mở: Đề {selectedExamNo.toString().padStart(2, '0')} (
+                      <strong className="text-teal-900">
+                        ✍️ Đề Trả Lời Ngắn: Cho Kí Hiệu ➜ Điền Số Nguyên Tử Khối
+                      </strong>
+                      )
+                    </span>
                   ) : (
                     <span>🎯 Đang mở: Đề {selectedExamNo.toString().padStart(2, '0')} (Chuẩn 20 câu hỏi)</span>
                   )}
                 </div>
               </div>
 
+              {/* NÚT CHUYỂN NHANH 2 BỘ ĐỀ TRẮC NGHIỆM & TRẢ LỜI NGẮN */}
+              {(selectedTopicId === 'khtn_nguyen_to' || selectedTopicId === 'khtn_nguyen_to_short') && (
+                <div className="flex flex-wrap items-center gap-2 mb-3.5 p-1.5 bg-slate-100 rounded-2xl w-fit border border-slate-200">
+                  <button
+                    type="button"
+                    onClick={() => handleSelectExam('khtn_nguyen_to', selectedExamNo)}
+                    className={`px-3.5 py-2 rounded-xl text-xs font-black transition cursor-pointer flex items-center gap-1.5 ${
+                      selectedTopicId === 'khtn_nguyen_to'
+                        ? 'bg-white text-teal-900 shadow-sm ring-1 ring-slate-300'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <span>⚛️ 10 Đề Trắc Nghiệm (Xen kẽ Tên & NTK)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSelectExam('khtn_nguyen_to_short', selectedExamNo)}
+                    className={`px-3.5 py-2 rounded-xl text-xs font-black transition cursor-pointer flex items-center gap-1.5 ${
+                      selectedTopicId === 'khtn_nguyen_to_short'
+                        ? 'bg-gradient-to-r from-teal-600 to-emerald-700 text-white shadow-sm ring-1 ring-teal-500'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    <span>✍️ 10 Đề Trả Lời Ngắn (Cho Kí Hiệu ➜ Điền NTK)</span>
+                  </button>
+                </div>
+              )}
+
               <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-2">
                 {Array.from({ length: 10 }, (_, i) => i + 1).map((no) => {
                   const isCur = selectedExamNo === no;
                   const isNtkTopic = selectedTopicId === 'khtn_nguyen_to';
+                  const isShortTopic = selectedTopicId === 'khtn_nguyen_to_short';
                   const ntkSubtitle = no % 2 === 1 ? '🏷️ Tên ng.tố' : '⚖️ Tìm NTK';
 
                   return (
@@ -905,8 +962,16 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       <div className="text-sm font-black">
                         Đề {no.toString().padStart(2, '0')}
                       </div>
-                      <div className={`text-[10px] mt-0.5 truncate ${isCur ? 'text-amber-200 font-bold' : isNtkTopic ? 'text-teal-700 font-semibold' : 'text-slate-400'}`}>
-                        {isNtkTopic ? ntkSubtitle : '20 câu'}
+                      <div className={`text-[10px] mt-0.5 truncate ${
+                        isCur 
+                          ? 'text-amber-200 font-bold' 
+                          : isShortTopic 
+                          ? 'text-teal-700 font-bold' 
+                          : isNtkTopic 
+                          ? 'text-teal-700 font-semibold' 
+                          : 'text-slate-400'
+                      }`}>
+                        {isShortTopic ? '✍️ Điền NTK' : isNtkTopic ? ntkSubtitle : '20 câu'}
                       </div>
                     </button>
                   );
@@ -926,6 +991,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     <span>
                       {selectedTopicId === 'khtn_nguyen_to'
                         ? `ĐỀ SỐ ${selectedExamNo.toString().padStart(2, '0')} – ${selectedExamNo % 2 === 1 ? 'XÁC ĐỊNH TÊN NGUYÊN TỐ (CẢ TÊN CŨ & MỚI)' : 'CHO TÊN ➜ TÌM CHỌN NGUYÊN TỬ KHỐI (NTK)'}`
+                        : selectedTopicId === 'khtn_nguyen_to_short'
+                        ? `ĐỀ SỐ ${selectedExamNo.toString().padStart(2, '0')} – TRẢ LỜI NGẮN: CHO KÍ HIỆU HOÁ HỌC ➜ ĐIỀN NGUYÊN TỬ KHỐI`
                         : `ĐỀ SỐ ${selectedExamNo.toString().padStart(2, '0')} – 20 CÂU HỎI TRẮC NGHIỆM`}
                     </span>
                   </h2>
@@ -1150,13 +1217,14 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 </div>
               )}
 
-              {/* DANH SÁCH TOÀN BỘ 20 CÂU HỎI TRẮC NGHIỆM */}
+              {/* DANH SÁCH TOÀN BỘ 20 CÂU HỎI (TRẮC NGHIỆM HOẶC TRẢ LỜI NGẮN) */}
               <div className="space-y-5">
                 {currentExamQuestions.map((q: any, idx: number) => {
                   const userAns = examAnswers[q.id];
-                  const hasAnswered = userAns !== undefined;
-                  const isCorrect = userAns === q.correctAnswer;
+                  const hasAnswered = userAns !== undefined && String(userAns).trim() !== '';
+                  const isCorrect = checkLayGocAnswerCorrect(userAns, q);
                   const showExp = showAllExplanations || isExamSubmitted;
+                  const isShortAnswer = q.questionType === 'short_answer' || !q.options || q.options.length === 0;
 
                   return (
                     <div
@@ -1176,8 +1244,10 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                           <span className="text-xs font-black px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
                             Câu {idx + 1} / 20
                           </span>
-                          <span className="text-[11px] font-bold text-slate-400">
-                            (0.5 điểm)
+                          <span className={`text-[11px] font-bold px-2 py-0.5 rounded ${
+                            isShortAnswer ? 'bg-teal-50 text-teal-800 border border-teal-200' : 'text-slate-400'
+                          }`}>
+                            {isShortAnswer ? '✍️ Trả lời ngắn (0.5 điểm)' : '(0.5 điểm)'}
                           </span>
                         </div>
 
@@ -1201,53 +1271,110 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         </div>
                       )}
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-                        {q.options.map((opt: string, oIdx: number) => {
-                          const letters = ['A', 'B', 'C', 'D'];
-                          const letter = letters[oIdx] || 'A';
-                          const isSelected = userAns === opt;
-                          const isRightOption = opt === q.correctAnswer;
-
-                          let btnStyle = 'bg-slate-50/80 border-slate-200 hover:bg-slate-100 text-slate-800 hover:border-slate-300';
-
-                          if (isExamSubmitted) {
-                            if (isRightOption) {
-                              btnStyle = 'bg-emerald-100 border-emerald-500 text-emerald-950 font-black ring-2 ring-emerald-500/20';
-                            } else if (isSelected && !isRightOption) {
-                              btnStyle = 'bg-rose-100 border-rose-400 text-rose-900 line-through';
-                            }
-                          } else if (isSelected) {
-                            btnStyle = 'bg-red-50 border-red-500 text-red-700 font-extrabold ring-2 ring-red-500/20';
-                          }
-
-                          return (
-                            <button
-                              key={oIdx}
-                              disabled={isExamSubmitted}
-                              onClick={() => {
-                                setExamAnswers(prev => ({ ...prev, [q.id]: opt }));
-                              }}
-                              className={`p-3.5 sm:p-4 rounded-2xl border text-sm sm:text-base font-semibold text-left transition flex items-center gap-3 cursor-pointer ${btnStyle}`}
-                            >
-                              <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 ${
-                                isSelected ? 'bg-red-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 shadow-xs'
+                      {/* DẠNG 1: TRẢ LỜI NGẮN (ĐIỀN SỐ HOẶC CHỮ VÀO Ô TRỐNG) */}
+                      {isShortAnswer ? (
+                        <div className="mt-4 p-4 rounded-2xl bg-teal-50/40 border border-teal-100">
+                          <div className="text-xs font-bold text-teal-900 mb-2 flex items-center gap-1.5">
+                            <Sparkles className="w-4 h-4 text-teal-600" />
+                            <span>✍️ Ô nhập trả lời ngắn (Nhập số nguyên tử khối):</span>
+                          </div>
+                          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                            <div className="relative flex-1 max-w-md">
+                              <input
+                                type="text"
+                                disabled={isExamSubmitted}
+                                value={examAnswers[q.id] || ''}
+                                onChange={(e) => {
+                                  setExamAnswers(prev => ({ ...prev, [q.id]: e.target.value }));
+                                }}
+                                placeholder="Nhập số NTK (ví dụ: 23, 56, 35.5)..."
+                                className={`w-full px-4 py-3 text-base sm:text-lg font-bold rounded-xl border transition outline-none ${
+                                  isExamSubmitted
+                                    ? isCorrect
+                                      ? 'bg-emerald-50 border-emerald-500 text-emerald-950 ring-2 ring-emerald-500/20'
+                                      : 'bg-rose-50 border-rose-400 text-rose-950 ring-2 ring-rose-400/20'
+                                    : hasAnswered
+                                    ? 'bg-white border-teal-500 ring-2 ring-teal-500/20 text-slate-900 shadow-xs'
+                                    : 'bg-white border-slate-300 text-slate-900 focus:border-teal-500'
+                                }`}
+                              />
+                            </div>
+                            {isExamSubmitted && (
+                              <div className={`px-3.5 py-2.5 rounded-xl text-xs font-black flex items-center gap-1.5 shrink-0 ${
+                                isCorrect
+                                  ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
+                                  : 'bg-rose-100 text-rose-900 border border-rose-300'
                               }`}>
-                                {letter}
-                              </span>
-                              <div className="flex-1 leading-relaxed">
-                                {opt.includes('$') || opt.includes('\\') ? (
-                                  <MathText html={opt.startsWith('$') ? opt : `$${opt}$`} />
+                                {isCorrect ? (
+                                  <>
+                                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                                    <span>Chính xác (+0.5đ)</span>
+                                  </>
                                 ) : (
-                                  opt
+                                  <>
+                                    <XCircle className="w-4 h-4 text-rose-600" />
+                                    <span>Đ/A đúng: {q.correctAnswer} amu</span>
+                                  </>
                                 )}
                               </div>
-                              {isExamSubmitted && isRightOption && (
-                                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                              )}
-                            </button>
-                          );
-                        })}
-                      </div>
+                            )}
+                          </div>
+                          {!isExamSubmitted && (
+                            <div className="text-[11px] text-slate-500 mt-2 italic">
+                              * Hướng dẫn: Thí sinh chỉ cần gõ số nguyên tử khối (ví dụ: <strong>23</strong>, <strong>56</strong>, <strong>35.5</strong>) rồi chuyển sang câu tiếp theo.
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        /* DẠNG 2: TRẮC NGHIỆM 4 PHƯƠNG ÁN A, B, C, D */
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                          {q.options.map((opt: string, oIdx: number) => {
+                            const letters = ['A', 'B', 'C', 'D'];
+                            const letter = letters[oIdx] || 'A';
+                            const isSelected = userAns === opt;
+                            const isRightOption = opt === q.correctAnswer;
+
+                            let btnStyle = 'bg-slate-50/80 border-slate-200 hover:bg-slate-100 text-slate-800 hover:border-slate-300';
+
+                            if (isExamSubmitted) {
+                              if (isRightOption) {
+                                btnStyle = 'bg-emerald-100 border-emerald-500 text-emerald-950 font-black ring-2 ring-emerald-500/20';
+                              } else if (isSelected && !isRightOption) {
+                                btnStyle = 'bg-rose-100 border-rose-400 text-rose-900 line-through';
+                              }
+                            } else if (isSelected) {
+                              btnStyle = 'bg-red-50 border-red-500 text-red-700 font-extrabold ring-2 ring-red-500/20';
+                            }
+
+                            return (
+                              <button
+                                key={oIdx}
+                                disabled={isExamSubmitted}
+                                onClick={() => {
+                                  setExamAnswers(prev => ({ ...prev, [q.id]: opt }));
+                                }}
+                                className={`p-3.5 sm:p-4 rounded-2xl border text-sm sm:text-base font-semibold text-left transition flex items-center gap-3 cursor-pointer ${btnStyle}`}
+                              >
+                                <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 ${
+                                  isSelected ? 'bg-red-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 shadow-xs'
+                                }`}>
+                                  {letter}
+                                </span>
+                                <div className="flex-1 leading-relaxed">
+                                  {opt.includes('$') || opt.includes('\\') ? (
+                                    <MathText html={opt.startsWith('$') ? opt : `$${opt}$`} />
+                                  ) : (
+                                    opt
+                                  )}
+                                </div>
+                                {isExamSubmitted && isRightOption && (
+                                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
 
                       {showExp && (
                         <div className={`mt-4 p-4 rounded-2xl text-sm sm:text-base leading-relaxed border ${
@@ -1259,7 +1386,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                             <Sparkles className="w-4 h-4 text-amber-500" />
                             <span>💡 Lời giải chi tiết Thầy Thọ:</span>
                             <span className="font-bold text-emerald-700 ml-auto text-sm">
-                              Đáp án đúng: {q.correctAnswer}
+                              Đáp án đúng: {q.correctAnswer} {isShortAnswer ? 'amu' : ''}
                             </span>
                           </div>
                           <div className="text-slate-800 leading-relaxed font-normal">
@@ -1392,22 +1519,36 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       ))}
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-teal-100 flex items-center justify-between text-xs">
+                    <div className="mt-4 pt-3 border-t border-teal-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                       <span className="text-slate-500 italic">
                         * Mẹo nhớ: C (12), N (14), O (16) chẵn cách nhau 2 đơn vị; Na (23), Mg (24), Al (27); Fe (56), Cu (64), Zn (65).
                       </span>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setSelectedTopicId('khtn_nguyen_to');
-                          setSelectedExamNo(1);
-                          setActiveTab('exams');
-                          toast.success('Đã mở 10 Đề Lấy Gốc Nguyên Tử Khối!');
-                        }}
-                        className="font-bold text-teal-700 hover:text-teal-900 flex items-center gap-1 cursor-pointer hover:underline"
-                      >
-                        👉 Làm 10 đề luyện Nguyên Tử Khối ngay
-                      </button>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedTopicId('khtn_nguyen_to');
+                            setSelectedExamNo(1);
+                            setActiveTab('exams');
+                            toast.success('Đã mở 10 Đề Trắc Nghiệm Nguyên Tử Khối!');
+                          }}
+                          className="px-3 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-lg font-bold flex items-center gap-1 cursor-pointer transition"
+                        >
+                          👉 10 Đề Trắc Nghiệm NTK
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSelectedTopicId('khtn_nguyen_to_short');
+                            setSelectedExamNo(1);
+                            setActiveTab('exams');
+                            toast.success('Đã mở 10 Đề Trả Lời Ngắn Theo Kí Hiệu!');
+                          }}
+                          className="px-3 py-1.5 bg-gradient-to-r from-teal-600 to-emerald-700 hover:from-teal-700 hover:to-emerald-800 text-white rounded-lg font-black flex items-center gap-1 cursor-pointer shadow-xs transition"
+                        >
+                          ✍️ 10 Đề Trả Lời Ngắn (Điền NTK)
+                        </button>
+                      </div>
                     </div>
                   </div>
 

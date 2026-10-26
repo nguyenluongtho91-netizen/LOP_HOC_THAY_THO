@@ -11,6 +11,7 @@ export interface LayGocHoaQuestion {
   correctAnswer: string;
   explanation: string;
   topic: string;
+  questionType?: 'multiple_choice' | 'short_answer';
 }
 
 export interface LayGocHoaTopic {
@@ -30,11 +31,22 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   {
     id: 'khtn_nguyen_to',
     branch: 'vo_co',
-    title: 'Phần 1: Xác Định Nguyên Tử Khối (H, Li, C, N, O, F, Na, Mg, Al, Ca, Fe, Cu, Zn, Ag, Ba, Ne, Ar, Cl)',
-    shortTitle: 'Phần 1: Nguyên Tử Khối (H, Li, Na, Fe...)',
+    title: 'Phần 1A: Trắc Nghiệm Nguyên Tử Khối & Tên Nguyên Tố (Đề Lẻ: Tên, Đề Chẵn: NTK)',
+    shortTitle: 'Phần 1A: TN Nguyên Tử Khối',
     icon: '⚛️',
     gradeBadge: 'Lớp 6-12',
-    description: 'Chuyên mục xác định chính xác nguyên tử khối (amu/đvC) của 18 nguyên tố cốt lõi: H, Li, C, N, O, F, Na, Mg, Al, Ca, Fe, Cu, Zn, Ag, Ba, Ne, Ar, Cl.',
+    description: '10 đề thi trắc nghiệm xen kẽ: Đề lẻ luyện Tên nguyên tố cũ & mới, đề chẵn cho tên tìm chọn Nguyên tử khối (18 nguyên tố cốt lõi).',
+    totalExams: 10,
+    questionsPerExam: 20
+  },
+  {
+    id: 'khtn_nguyen_to_short',
+    branch: 'vo_co',
+    title: 'Phần 1B: Trả Lời Ngắn - Cho Kí Hiệu Hoá Học Điền Nguyên Tử Khối (18 Nguyên Tố)',
+    shortTitle: 'Phần 1B: Trả lời ngắn NTK',
+    icon: '✍️',
+    gradeBadge: 'Điền Đáp Án',
+    description: '10 đề thi Trả lời ngắn: Cho biết kí hiệu hoá học (H, Li, C, N, Na, Fe, Cu, Cl...), học sinh tự gõ số nguyên tử khối vào ô trống để rèn phản xạ thuộc lòng.',
     totalExams: 10,
     questionsPerExam: 20
   },
@@ -3549,15 +3561,45 @@ function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
   });
 }
 
+// Hàm sinh 10 đề thi Trả lời ngắn: Cho biết kí hiệu hoá học -> Điền số nguyên tử khối
+function generateNguyenTuKhoiShortExam(safeNo: number): LayGocHoaQuestion[] {
+  // Hoán vị xoay vòng vị trí 20 nguyên tố theo safeNo để mỗi đề có thứ tự khác biệt
+  const shift = (safeNo - 1) * 7;
+  const orderedElements = Array.from({ length: 20 }, (_, i) => {
+    return NTK_18_ELEMENTS[(i + shift) % 20];
+  });
+
+  return orderedElements.map((el, idx) => {
+    // Giá trị số chuẩn (ví dụ "23", "35.5", "56"...)
+    const cleanNumber = el.ntk.replace(/\s*amu/i, '').replace(/,/g, '.').trim();
+
+    return {
+      id: idx + 1,
+      question: `Câu ${idx + 1}: Cho biết kí hiệu hoá học "${el.symbol}" (nguyên tố ${el.nameVi} / ${el.nameIupac}). Nguyên tử khối của nguyên tố này là bao nhiêu amu? (Học sinh điền số vào ô trả lời ngắn)`,
+      mathExpression: `\\text{Kí hiệu: } \\mathbf{${el.symbol}} \\implies M = \\text{? amu}`,
+      options: [],
+      correctAnswer: cleanNumber,
+      explanation: `👉 Kí hiệu hóa học "${el.symbol}" là của nguyên tố ${el.nameVi} (tên quốc tế mới IUPAC: ${el.nameIupac}), có nguyên tử khối M = ${el.ntk}.`,
+      topic: 'khtn_nguyen_to_short',
+      questionType: 'short_answer'
+    };
+  });
+}
+
 // ==============================================================================
 // HÀM LẤY ĐỀ THI HÓA THEO CHUYÊN ĐỀ VÀ SỐ ĐỀ (1 -> 10)
 // ==============================================================================
 export function getLayGocHoaExamQuestions(topicId: string, examNo: number): LayGocHoaQuestion[] {
   const safeNo = Math.min(10, Math.max(1, examNo));
 
-  // Chuyên đề Phần 1: Chuyên sâu xác định Nguyên tử khối 18 nguyên tố nền tảng
+  // Phần 1A: 10 Đề trắc nghiệm Nguyên tử khối xen kẽ
   if (topicId === 'khtn_nguyen_to') {
     return generateNguyenTuKhoiExam(safeNo);
+  }
+
+  // Phần 1B: 10 Đề Trả lời ngắn - Cho biết kí hiệu hoá học điền nguyên tử khối
+  if (topicId === 'khtn_nguyen_to_short') {
+    return generateNguyenTuKhoiShortExam(safeNo);
   }
 
   const baseSeed = 7000 + safeNo * 50;
