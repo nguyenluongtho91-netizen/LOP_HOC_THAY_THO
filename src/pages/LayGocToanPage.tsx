@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { 
   Zap, ArrowRight, CheckCircle2, XCircle, RotateCcw, 
   HelpCircle, BookOpen, Award, Sparkles, Printer, 
@@ -70,6 +70,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
   // CHIA SẺ LINK ĐỀ THI TRỰC TIẾP CHO HỌC SINH & PHỤ HUYNH
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const isStudentMode = useMemo(() => {
     return isPublic || searchParams.get('mode') === 'student' || searchParams.get('view') === 'student';
   }, [isPublic, searchParams]);
@@ -774,7 +775,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         targetClassName = studentNames.length <= 2 ? studentNames.join(', ') : `${studentNames[0]} và ${studentNames.length - 1} bạn khác`;
       }
 
-      await createRoom({
+      const createdRoom = await createRoom({
         exam_id: examId,
         class_id: targetClassId,
         time_limit: assignTimeLimit,
@@ -792,12 +793,14 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
       const count = assignStudentIds.length > 0 ? assignStudentIds.length : displayedStudents.length;
       setAssignedSuccessData({
-        roomCode: 'Đã mở phòng',
+        roomId: createdRoom?.id,
+        roomCode: createdRoom?.code || 'PHONGTHI',
         count,
         className: targetClassName,
-        examTitle
+        examTitle,
+        timeLimit: assignTimeLimit
       });
-      toast.success(`🎉 Đã giao Đề Lấy Gốc ${subjectTag} (20 câu) cho học sinh thành công!`);
+      toast.success(`🎉 Đã giao Đề Lấy Gốc ${subjectTag} cho ${targetClassName} thành công!`);
     } catch (err: any) {
       console.error(err);
       toast.error('Lỗi khi giao bài: ' + (err.message || 'Thử lại'));
@@ -1299,10 +1302,11 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     <>
                       <button
                         onClick={() => handleOpenAssignModal(currentSubject, selectedTopicId, selectedExamNo)}
-                        className="px-4 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-900 rounded-xl text-xs font-black flex items-center gap-1.5 shadow-sm transition cursor-pointer"
+                        className="px-4 py-2.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black rounded-xl text-xs flex items-center gap-1.5 shadow-sm hover:shadow transition cursor-pointer"
+                        title="Giao bài kiểm tra này cho cả lớp làm để chấm điểm và xuất bảng điểm Excel chuẩn A4"
                       >
-                        <Send className="w-4 h-4 text-slate-900" />
-                        <span>Giao Đề Này Cho HS</span>
+                        <Send className="w-4 h-4 text-slate-950" />
+                        <span>⚡ Giao Cho Cả Lớp (Chấm Điểm & Xuất Excel)</span>
                       </button>
 
                       <button
@@ -2225,65 +2229,89 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
               </div>
               <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-black uppercase mb-2">
+                  <span>MÃ PHÒNG: {assignedSuccessData.roomCode}</span>
+                </div>
                 <h3 className="text-xl font-black text-slate-800 uppercase tracking-wide">
-                  ĐÃ GIAO BÀI THÀNH CÔNG!
+                  ĐÃ MỞ PHÒNG THI & GIAO BÀI THÀNH CÔNG!
                 </h3>
                 <p className="text-sm text-slate-600 mt-1">
-                  Đã mở phòng thi <strong>{assignedSuccessData.examTitle}</strong> cho <strong className="text-emerald-700">{assignedSuccessData.count} học sinh</strong> ({assignedSuccessData.className}).
+                  Đã tạo phòng thi <strong>{assignedSuccessData.examTitle}</strong> cho <strong className="text-emerald-700">{assignedSuccessData.count} học sinh</strong> ({assignedSuccessData.className}).
                 </p>
               </div>
 
               <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-left space-y-2">
-                <div className="text-xs font-bold text-slate-600">
-                  🌐 Cổng làm bài thi trực tuyến của học sinh:
+                <div className="text-xs font-bold text-slate-700 flex items-center justify-between">
+                  <span>🌐 Cổng làm bài trực tuyến của học sinh:</span>
+                  <span className="text-[11px] font-mono text-teal-700 font-bold">Mã phòng: {assignedSuccessData.roomCode}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <input 
                     type="text" 
                     readOnly 
-                    value="https://lop-hoc-thay-tho.vercel.app/thi" 
+                    value={`${window.location.origin}/thi`} 
                     className="input text-xs font-mono py-2 bg-white flex-1" 
                   />
                   <button
-                    onClick={() => {
-                      navigator.clipboard.writeText('https://lop-hoc-thay-tho.vercel.app/thi');
-                      setCopiedLink(true);
-                      toast.success('Đã sao chép link!');
-                      setTimeout(() => setCopiedLink(false), 2000);
+                    onClick={async () => {
+                      const ok = await robustCopy(`${window.location.origin}/thi`);
+                      if (ok) {
+                        setCopiedLink(true);
+                        toast.success('Đã sao chép link cổng thi!');
+                        setTimeout(() => setCopiedLink(false), 2500);
+                      }
                     }}
-                    className="px-3 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer"
+                    className="px-3.5 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-xs shrink-0"
                   >
                     {copiedLink ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    {copiedLink ? 'Đã chép' : 'Chép link'}
+                    <span>{copiedLink ? 'Đã chép' : 'Chép link'}</span>
                   </button>
                 </div>
-                <p className="text-[11px] text-slate-400 italic">
-                  * Học sinh chỉ cần đăng nhập bằng Mã học sinh và Mật khẩu riêng Thầy đã cấp là thấy ngay đề thi 20 câu này!
+                <p className="text-[11px] text-slate-500 italic">
+                  * Học sinh chỉ cần mở link trên, đăng nhập bằng Mã học sinh là thấy ngay bài kiểm tra để làm bài. Điểm số sẽ tự động lưu về hệ thống của Thầy!
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-3">
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
-                  onClick={() => {
-                    const zaloMsg = `🔔 THÔNG BÁO BÀI TẬP LẤY GỐC - THẦY THỌ\nThầy vừa mở bài thi: ${assignedSuccessData.examTitle} (20 câu) cho ${assignedSuccessData.count} bạn (${assignedSuccessData.className}).\nCác em đăng nhập vào cổng thi: https://lop-hoc-thay-tho.vercel.app/thi để hoàn thành trước buổi học nhé!`;
-                    navigator.clipboard.writeText(zaloMsg);
-                    setCopiedZalo(true);
-                    toast.success('Đã sao chép tin nhắn Zalo!');
-                    setTimeout(() => setCopiedZalo(false), 2000);
+                  onClick={async () => {
+                    const portalUrl = `${window.location.origin}/thi`;
+                    const zaloMsg = 
+                      `📚 BÀI KIỂM TRA LẤY GỐC KIẾN THỨC – LỚP HỌC THẦY THỌ\n` +
+                      `👨‍🏫 Thầy Thọ gửi bài kiểm tra cho các em học sinh ${assignedSuccessData.className}:\n` +
+                      `• Nội dung: ${assignedSuccessData.examTitle}\n` +
+                      `• Thời gian làm bài: ${assignedSuccessData.timeLimit || 20} phút (20 câu trắc nghiệm)\n` +
+                      `• Mã phòng thi: ${assignedSuccessData.roomCode}\n\n` +
+                      `👉 Các em mở link sau trên điện thoại hoặc máy tính, đăng nhập bằng Mã học sinh để làm bài:\n` +
+                      `${portalUrl}\n\n` +
+                      `✨ Thầy chúc các em làm bài thật cẩn thận và đạt điểm 10 tuyệt đối!`;
+                    
+                    const ok = await robustCopy(zaloMsg);
+                    if (ok) {
+                      setCopiedZalo(true);
+                      toast.success('Đã sao chép tin nhắn Zalo gửi phụ huynh & học sinh!');
+                      setTimeout(() => setCopiedZalo(false), 3000);
+                    }
                   }}
-                  className="btn-outline flex-1 py-3 text-xs font-bold flex items-center justify-center gap-2 text-blue-600 border-blue-200 hover:bg-blue-50 cursor-pointer"
+                  className="btn-outline flex-1 py-3 text-xs font-bold flex items-center justify-center gap-2 text-blue-600 border-blue-200 hover:bg-blue-50 cursor-pointer shadow-xs"
                 >
                   {copiedZalo ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
-                  {copiedZalo ? 'Đã sao chép lời nhắn' : 'Sao chép tin nhắn Zalo gửi phụ huynh'}
+                  <span>{copiedZalo ? '✓ Đã sao chép lời nhắn' : '📋 Sao chép tin nhắn Zalo gửi lớp'}</span>
                 </button>
+
                 <button
                   onClick={() => {
                     setIsAssignModalOpen(false);
-                    setAssignedSuccessData(null);
+                    if (assignedSuccessData.roomId) {
+                      navigate(`/exam-results/${assignedSuccessData.roomId}`);
+                    } else {
+                      navigate('/exam-rooms');
+                    }
                   }}
-                  className="btn-teal px-8 py-3 text-xs font-bold cursor-pointer"
+                  className="px-5 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-bold rounded-2xl text-xs transition cursor-pointer flex items-center justify-center gap-1.5 shadow-md"
                 >
-                  Hoàn tất
+                  <Award className="w-4 h-4" />
+                  <span>📊 Xem Kết Quả & Xuất Excel</span>
                 </button>
               </div>
             </div>

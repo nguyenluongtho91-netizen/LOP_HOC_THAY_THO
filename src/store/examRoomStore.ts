@@ -20,7 +20,7 @@ interface ExamRoomState {
   rooms: ExamRoom[]
   loading: boolean
   loadRooms: () => Promise<void>
-  createRoom: (roomData: Partial<ExamRoom>) => Promise<void>
+  createRoom: (roomData: Partial<ExamRoom>) => Promise<any>
   updateRoomStatus: (id: string, status: string) => Promise<void>
   updateRoom: (id: string, roomData: Partial<ExamRoom>) => Promise<void>
   deleteRoom: (id: string) => Promise<void>
@@ -56,11 +56,11 @@ export const useExamRoomStore = create<ExamRoomState>((set, get) => ({
     let code = generateRoomCode()
     const { data: { user } } = await supabase.auth.getUser() 
     
-    const { error } = await supabase.from('exam_rooms').insert([{
+    const { data: newRoom, error } = await supabase.from('exam_rooms').insert([{
       ...roomData, // ✅ Lúc này roomData đã có sẵn settings bên trong
       code,
       teacher_id: user?.id
-    }])
+    }]).select().single()
 
     if (error) {
       console.error('Lỗi tạo phòng:', error)
@@ -68,6 +68,7 @@ export const useExamRoomStore = create<ExamRoomState>((set, get) => ({
     }
     
     await get().loadRooms() 
+    return newRoom || { code }
   },
 
   updateRoomStatus: async (id, status) => {
