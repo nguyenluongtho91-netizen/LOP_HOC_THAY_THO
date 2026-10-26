@@ -1721,10 +1721,10 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     >
                       <div className="flex items-start justify-between gap-2 mb-3">
                         <div className="flex items-center gap-2">
-                          <span className={`text-xs font-black px-3 py-1 rounded-xl uppercase tracking-wider ${
+                          <span className={`text-xs font-black px-3 py-1 rounded-xl uppercase tracking-wider whitespace-nowrap ${
                             currentSubject === 'hoa' ? 'bg-teal-100 text-teal-800' : 'bg-red-100 text-red-800'
                           }`}>
-                            CÂU {idx + 1} / 20
+                            CÂU {idx + 1}.
                           </span>
                           <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-lg ${
                             isShortAnswer ? 'bg-teal-50 text-teal-800 border border-teal-200' : 'text-slate-400 bg-slate-50'
