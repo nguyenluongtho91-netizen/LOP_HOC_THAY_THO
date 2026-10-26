@@ -3542,7 +3542,7 @@ function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
       return {
         id: idx + 1,
         question: `Câu ${idx + 1}: Kí hiệu hóa học "${el.symbol}" (nguyên tử khối M = ${el.ntk}) tương ứng với tên nguyên tố nào sau đây?`,
-        mathExpression: `\\text{Kí hiệu: } \\mathbf{${el.symbol}} \\quad (M = ${el.ntk})`,
+        mathExpression: `\\mathbf{${el.symbol}} \\quad (M = ${el.ntk})`,
         options: makeOptions(correctAnswer, el.elementDistractors, s),
         correctAnswer,
         explanation: `👉 Kí hiệu hóa học "${el.symbol}" (M = ${el.ntk}) là của nguyên tố ${el.nameVi} (tên quốc tế mới IUPAC: ${el.nameIupac}).`,

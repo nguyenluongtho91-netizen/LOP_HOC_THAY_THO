@@ -1753,8 +1753,10 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       </div>
 
                       {q.mathExpression && (
-                        <div className="my-4 py-4 px-5 bg-teal-50/80 border border-teal-200 rounded-2xl text-center text-xl sm:text-2xl font-black text-teal-950 tracking-wide shadow-2xs">
-                          <MathText html={`$$${q.mathExpression}$$`} block />
+                        <div className="my-3 py-3 px-3 sm:px-5 bg-teal-50/80 border border-teal-200 rounded-2xl text-center text-sm sm:text-base md:text-lg font-black text-teal-950 tracking-normal shadow-2xs overflow-x-auto max-w-full flex items-center justify-center">
+                          <div className="max-w-full overflow-x-auto py-1">
+                            <MathText html={`$$${q.mathExpression}$$`} block />
+                          </div>
                         </div>
                       )}
 
@@ -2419,8 +2421,10 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     </div>
 
                     {q.mathExpression && (
-                      <div className="my-2.5 py-2.5 px-3 bg-teal-50/80 border border-teal-200 rounded-xl text-center text-lg font-black text-teal-800 shadow-xs">
-                        <MathText html={`$$${q.mathExpression}$$`} block />
+                      <div className="my-2 py-2 px-3 bg-teal-50/80 border border-teal-200 rounded-xl text-center text-sm sm:text-base font-black text-teal-800 shadow-xs overflow-x-auto max-w-full flex items-center justify-center">
+                        <div className="max-w-full overflow-x-auto py-0.5">
+                          <MathText html={`$$${q.mathExpression}$$`} block />
+                        </div>
                       </div>
                     )}
 

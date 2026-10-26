@@ -123,3 +123,35 @@
   }
 }
 
+/* Chống tràn công thức toán học và biểu thức MathJax / KaTeX trên mọi màn hình di động */
+mjx-container {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  vertical-align: middle !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+mjx-container[display="true"] {
+  display: block !important;
+  text-align: center !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  margin: 0.25em auto !important;
+  padding: 0.15em 0 !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.katex-display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.katex {
+  max-width: 100% !important;
+  white-space: normal !important;
+}
+
