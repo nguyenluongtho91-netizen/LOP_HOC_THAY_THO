@@ -32,6 +32,7 @@ import PrintableExamModal from '@/components/PrintableExamModal';
 import BatchExamScanModal from '@/components/BatchExamScanModal';
 import { FireworksEffect } from '@/components/FireworksEffect';
 import toast from 'react-hot-toast';
+import { playTabAlertSound, unlockAudio } from '@/services/tabDetectionService';
 
 export interface ExamAttempt {
   id: string;
@@ -298,43 +299,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     }
   }, [historyStorageKey]);
 
-  // PHÁT CHUÔNG BÁO ĐỘNG CẢNH BÁO VI PHẠM RỜI MÀN HÌNH (Web Audio API)
-  const playWarningAlarm = () => {
-    try {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-      if (!AudioCtx) return;
-      const ctx = new AudioCtx();
-      
-      const osc1 = ctx.createOscillator();
-      const gain1 = ctx.createGain();
-      osc1.type = 'sawtooth';
-      osc1.frequency.setValueAtTime(880, ctx.currentTime);
-      osc1.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.35);
-      gain1.gain.setValueAtTime(0.4, ctx.currentTime);
-      gain1.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
-      osc1.connect(gain1);
-      gain1.connect(ctx.destination);
-      osc1.start();
-      osc1.stop(ctx.currentTime + 0.35);
-
-      setTimeout(() => {
-        try {
-          const osc2 = ctx.createOscillator();
-          const gain2 = ctx.createGain();
-          osc2.type = 'sawtooth';
-          osc2.frequency.setValueAtTime(950, ctx.currentTime);
-          osc2.frequency.exponentialRampToValueAtTime(500, ctx.currentTime + 0.4);
-          gain2.gain.setValueAtTime(0.4, ctx.currentTime);
-          gain2.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
-          osc2.connect(gain2);
-          gain2.connect(ctx.destination);
-          osc2.start();
-          osc2.stop(ctx.currentTime + 0.4);
-        } catch (e) {}
-      }, 300);
-    } catch (e) {
-      console.warn('Audio warning error:', e);
-    }
+  // PHÁT CHUÔNG BÁO ĐỘNG CẢNH BÁO VI PHẠM RỜI MÀN HÌNH (Dual Mode Web Audio + HTML5 Data URI)
+  const playWarningAlarm = (type: 'warning' | 'danger' = 'warning') => {
+    playTabAlertSound(type);
   };
 
   // Chuyển đổi môn học
@@ -517,27 +484,33 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     }
   };
 
-  // CHẾ ĐỘ CHỐNG GIAN LẬN: THEO DÕI THOÁT RA / RỜI TAB (3 LẦN THÌ TỰ NỘP BÀI)
+  // CHẾ ĐỘ CHỐNG GIAN LẬN: THEO DÕI THOÁT RA / RỜI TAB (QUÁ 3 LẦN THÌ TỰ NỘP BÀI)
   useEffect(() => {
-    if (!isExamTimerActive || isExamSubmitted) return;
+    // Kích hoạt khi đang ở tab kho_de và chưa nộp bài
+    if (activeTab !== 'kho_de' || isExamSubmitted) return;
+
+    unlockAudio();
 
     const handleViolation = () => {
       const now = Date.now();
       if (now - lastViolationTime < 1500) return; // Debounce 1.5s
       setLastViolationTime(now);
 
-      // 1. Phát âm thanh chuông cảnh báo
-      playWarningAlarm();
-
-      // 2. Tăng số lần vi phạm
+      // Tăng số lần vi phạm
       setTabSwitchCount(prev => {
         const next = prev + 1;
-        if (next >= 3) {
-          // Vi phạm lần thứ 3 -> Tự động nộp bài ngay lập tức!
+        const isOverLimit = next > 3;
+
+        // Phát âm thanh chuông cảnh báo to rõ
+        playTabAlertSound(isOverLimit || next === 3 ? 'danger' : 'warning');
+
+        if (isOverLimit) {
+          // Quá 3 lần -> Tự động nộp bài ngay lập tức!
+          toast.error('🚨 VI PHẠM QUÁ 3 LẦN: Hệ thống đang tự động thu và nộp bài thi của em!', { duration: 6000 });
           handleSubmitExamFinal(true);
-          return 3;
+          return 4;
         } else {
-          // Lần 1 hoặc 2: Hiện popup cảnh báo đỏ
+          // Lần 1, 2, 3: Hiện popup cảnh báo đỏ
           setShowViolationModal(true);
           toast.error(`⚠️ CẢNH BÁO VI PHẠM (${next}/3): Em vừa chuyển tab hoặc rời khỏi trang thi!`, {
             duration: 5000
@@ -550,11 +523,20 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     const handleVisibilityChange = () => {
       if (document.hidden) {
         handleViolation();
+      } else {
+        // Khi quay lại tab, phát lại chuông cảnh báo nếu có vi phạm
+        if (tabSwitchCount > 0) {
+          playTabAlertSound(tabSwitchCount >= 3 ? 'danger' : 'warning');
+        }
       }
     };
 
     const handleBlur = () => {
-      handleViolation();
+      setTimeout(() => {
+        if (document.hidden || !document.hasFocus()) {
+          handleViolation();
+        }
+      }, 400);
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
@@ -564,7 +546,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('blur', handleBlur);
     };
-  }, [isExamTimerActive, isExamSubmitted, lastViolationTime, currentExamQuestions, examAnswers, examTimeLeft, tabSwitchCount, examHistory, historyStorageKey]);
+  }, [activeTab, isExamSubmitted, lastViolationTime, tabSwitchCount, currentExamQuestions, examAnswers]);
 
   // Đồng hồ đếm ngược khi làm bài thi
   useEffect(() => {
