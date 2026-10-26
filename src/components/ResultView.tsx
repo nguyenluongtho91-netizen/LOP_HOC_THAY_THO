@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from 'react';
+import React, { useState } from 'react';
 import { Submission, Room, Exam, Question, QuestionOption } from '../types';
 import MathText from './MathText';
 import { formatScore } from '../services/scoringService';
@@ -52,6 +52,44 @@ const ResultView: React.FC<ResultViewProps> = ({
   // ✅ Cho phép xem đáp án và lời giải chi tiết theo yêu cầu của Thầy Thọ
   const canShowCorrectAnswers = room.settings?.showCorrectAnswers !== false;
   const canShowExplanations = room.settings?.showExplanations !== false;
+
+  // ✅ State lọc 2 chế độ: 'all' (xem lại cả đề) hoặc 'wrong' (xem lại câu sai)
+  const [filterMode, setFilterMode] = useState<'all' | 'wrong'>('all');
+
+  // ✅ Kiểm tra câu hỏi đúng hay sai
+  const isQuestionCorrect = (q: Question): boolean => {
+    const userAnswer = getAnswer(answers, q.number);
+    const correctAnswer = q.correctAnswer || '';
+
+    if (q.type === 'true_false') {
+      const detail = getTFDetail(scoreBreakdown, q.number);
+      const totalStatements = detail?.totalStatements ?? (q.options?.length || 4);
+      return (detail?.correctCount ?? 0) === totalStatements;
+    } else if (q.type === 'short_answer') {
+      const normalize = (s: string) => (s || '').toLowerCase().replace(/\s+/g, '').replace(/,/g, '.').trim();
+      const u = normalize(userAnswer || '');
+      const c = normalize(correctAnswer || '');
+      const numU = Number(u);
+      const numC = Number(c);
+      if (!isNaN(numU) && u !== '' && !isNaN(numC) && c !== '') return numU === numC;
+      return !!u && u === c;
+    } else {
+      // Multiple choice
+      return !!userAnswer && userAnswer.trim().toUpperCase() === correctAnswer.trim().toUpperCase();
+    }
+  };
+
+  const allQuestions = exam?.questions || [];
+  const wrongQuestions = allQuestions.filter(q => !isQuestionCorrect(q));
+  const displayedQuestions = filterMode === 'wrong' ? wrongQuestions : allQuestions;
+
+  const scrollToReview = (mode?: 'all' | 'wrong') => {
+    if (mode) setFilterMode(mode);
+    setTimeout(() => {
+      const el = document.getElementById('review-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  };
 
   const formatDuration = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -153,20 +191,30 @@ const ResultView: React.FC<ResultViewProps> = ({
             </div>
           </div>
 
-          {/* Hàng 3 chỉ số thống kê gọn gàng */}
+          {/* Hàng 3 chỉ số thống kê - Bấm vào xem ngay danh sách câu */}
           <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-5">
-            <div className="bg-emerald-50/60 border border-emerald-100 rounded-xl p-2.5 sm:p-3 text-center">
+            <button 
+              type="button"
+              onClick={() => scrollToReview('all')}
+              className="bg-emerald-50/60 border border-emerald-100 rounded-xl p-2.5 sm:p-3 text-center hover:bg-emerald-100/70 active:scale-95 transition cursor-pointer"
+              title="Bấm để xem danh sách toàn bộ câu hỏi"
+            >
               <div className="text-xl sm:text-2xl font-black text-emerald-600 leading-none mb-1">
                 {submission.correctCount}
               </div>
               <div className="text-[11px] sm:text-xs font-medium text-emerald-700">Câu đúng</div>
-            </div>
-            <div className="bg-rose-50/60 border border-rose-100 rounded-xl p-2.5 sm:p-3 text-center">
+            </button>
+            <button 
+              type="button"
+              onClick={() => scrollToReview('wrong')}
+              className="bg-rose-50/60 border border-rose-100 rounded-xl p-2.5 sm:p-3 text-center hover:bg-rose-100/70 active:scale-95 transition cursor-pointer"
+              title="Bấm để lọc và xem ngay các câu làm sai"
+            >
               <div className="text-xl sm:text-2xl font-black text-rose-500 leading-none mb-1">
-                {submission.wrongCount}
+                {wrongQuestions.length}
               </div>
-              <div className="text-[11px] sm:text-xs font-medium text-rose-600">Câu sai</div>
-            </div>
+              <div className="text-[11px] sm:text-xs font-bold text-rose-600">Câu sai</div>
+            </button>
             <div className="bg-sky-50/60 border border-sky-100 rounded-xl p-2.5 sm:p-3 text-center">
               <div className="text-xl sm:text-2xl font-black text-sky-600 leading-none mb-1">
                 {formatDurationShort(submission.duration || 0)}
@@ -241,6 +289,46 @@ const ResultView: React.FC<ResultViewProps> = ({
               </button>
             )}
           </div>
+
+          {/* 🔘 HAI CHẾ ĐỘ XEM: XEM LẠI CÂU SAI & XEM LẠI CẢ ĐỀ */}
+          {allQuestions.length > 0 && (
+            <div className="mt-4 pt-3.5 border-t border-gray-100">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">
+                  Chế độ xem lại bài:
+                </span>
+                <span className="text-[11px] font-semibold text-teal-700">
+                  {filterMode === 'wrong' ? `Đang lọc: ${wrongQuestions.length} câu sai` : `Xem toàn bộ đề`}
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 p-1 bg-gray-100/90 rounded-xl">
+                <button
+                  type="button"
+                  onClick={() => scrollToReview('all')}
+                  className={`py-2 px-2.5 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 ${
+                    filterMode === 'all'
+                      ? 'bg-white text-teal-900 shadow-xs border border-gray-200/60'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  <span>📋 Xem cả đề</span>
+                  <span className="text-[11px] font-semibold opacity-75">({allQuestions.length})</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToReview('wrong')}
+                  className={`py-2 px-2.5 rounded-lg text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 ${
+                    filterMode === 'wrong'
+                      ? 'bg-rose-500 text-white shadow-xs'
+                      : 'text-rose-700 hover:bg-rose-50'
+                  }`}
+                >
+                  <span>❌ Xem câu sai</span>
+                  <span className="text-[11px] font-semibold opacity-90">({wrongQuestions.length})</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ✅ FIX: Link xem lại đề thi PDF */}
@@ -259,9 +347,44 @@ const ResultView: React.FC<ResultViewProps> = ({
 
         {/* Xem lại bài làm */}
         {exam && (
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-4 text-white font-bold" style={{ background: 'linear-gradient(135deg, #f97316 0%, #c2410c 100%)' }}>
-              📋 Xem lại bài làm
+          <div id="review-section" className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-gray-200/80 overflow-hidden">
+            {/* Header Xem lại bài làm tích hợp 2 chế độ lọc */}
+            <div className="p-3.5 sm:p-4 text-white font-bold flex flex-wrap items-center justify-between gap-2.5" style={{ background: 'linear-gradient(135deg, #0d9488 0%, #0f766e 100%)' }}>
+              <div className="flex items-center gap-2">
+                <span className="text-lg">📋</span>
+                <span className="text-sm sm:text-base">Xem lại bài làm</span>
+                <span className="text-xs font-medium bg-white/20 px-2 py-0.5 rounded-full">
+                  {displayedQuestions.length}/{allQuestions.length} câu
+                </span>
+              </div>
+
+              {/* Toggle 2 chế độ: Xem toàn bộ đề / Chỉ câu sai */}
+              <div className="flex items-center gap-1 bg-teal-900/40 p-1 rounded-xl text-xs">
+                <button
+                  type="button"
+                  onClick={() => setFilterMode('all')}
+                  className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1 ${
+                    filterMode === 'all'
+                      ? 'bg-white text-teal-900 shadow-xs'
+                      : 'text-teal-100 hover:text-white'
+                  }`}
+                >
+                  <span>📋 Cả đề</span>
+                  <span>({allQuestions.length})</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFilterMode('wrong')}
+                  className={`px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1 ${
+                    filterMode === 'wrong'
+                      ? 'bg-rose-500 text-white shadow-xs'
+                      : 'text-teal-100 hover:text-white'
+                  }`}
+                >
+                  <span>❌ Câu sai</span>
+                  <span>({wrongQuestions.length})</span>
+                </button>
+              </div>
             </div>
 
             <div className="divide-y divide-gray-100">
@@ -280,7 +403,23 @@ const ResultView: React.FC<ResultViewProps> = ({
                 </div>
               )}
 
-              {exam.questions.map((q: Question) => {
+              {/* Thông báo nếu chế độ lọc câu sai mà không có câu nào sai */}
+              {filterMode === 'wrong' && displayedQuestions.length === 0 && (
+                <div className="p-8 text-center bg-emerald-50/40">
+                  <div className="text-4xl mb-2">🎉</div>
+                  <h4 className="font-bold text-emerald-800 text-base mb-1">Tuyệt vời! Bạn không làm sai câu nào</h4>
+                  <p className="text-emerald-700 text-xs sm:text-sm mb-4">Bạn đã trả lời chính xác tất cả câu hỏi trong bài thi.</p>
+                  <button
+                    type="button"
+                    onClick={() => setFilterMode('all')}
+                    className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition shadow-xs"
+                  >
+                    Xem lại toàn bộ đề thi
+                  </button>
+                </div>
+              )}
+
+              {displayedQuestions.map((q: Question) => {
                 // ✅ FIX: robust answer lookup với cả number và string key
                 const userAnswer = getAnswer(answers, q.number);
                 const correctAnswer = q.correctAnswer || '';
