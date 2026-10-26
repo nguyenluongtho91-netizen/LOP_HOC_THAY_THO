@@ -59,21 +59,29 @@ const ResultView: React.FC<ResultViewProps> = ({
     return `${mins} phút ${secs} giây`;
   };
 
+  const formatDurationShort = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    if (mins === 0) return `${secs}s`;
+    if (secs === 0) return `${mins}m`;
+    return `${mins}m ${secs}s`;
+  };
+
   const getGrade = (percentage: number) => {
-    if (percentage >= 90) return { grade: 'A+', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-300', emoji: '🏆', label: 'Xuất sắc' };
-    if (percentage >= 80) return { grade: 'A', color: 'text-green-600', bg: 'bg-green-50', border: 'border-green-300', emoji: '🌟', label: 'Giỏi' };
-    if (percentage >= 70) return { grade: 'B+', color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-300', emoji: '👍', label: 'Khá' };
-    if (percentage >= 60) return { grade: 'B', color: 'text-blue-600', bg: 'bg-blue-50', border: 'border-blue-300', emoji: '📚', label: 'Trung bình khá' };
-    if (percentage >= 50) return { grade: 'C', color: 'text-yellow-600', bg: 'bg-yellow-50', border: 'border-yellow-300', emoji: '💪', label: 'Trung bình' };
-    if (percentage >= 40) return { grade: 'D', color: 'text-orange-600', bg: 'bg-orange-50', border: 'border-orange-300', emoji: '📖', label: 'Yếu' };
-    return { grade: 'F', color: 'text-red-600', bg: 'bg-red-50', border: 'border-red-300', emoji: '😞', label: 'Kém' };
+    if (percentage >= 90) return { grade: 'A+', color: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200', emoji: '🏆', label: 'Xuất sắc' };
+    if (percentage >= 80) return { grade: 'A', color: 'text-emerald-700', bg: 'bg-emerald-50', border: 'border-emerald-200', emoji: '🌟', label: 'Giỏi' };
+    if (percentage >= 70) return { grade: 'B+', color: 'text-teal-700', bg: 'bg-teal-50', border: 'border-teal-200', emoji: '👍', label: 'Khá' };
+    if (percentage >= 60) return { grade: 'B', color: 'text-blue-700', bg: 'bg-blue-50', border: 'border-blue-200', emoji: '📚', label: 'Trung bình khá' };
+    if (percentage >= 50) return { grade: 'C', color: 'text-amber-700', bg: 'bg-amber-50', border: 'border-amber-200', emoji: '💪', label: 'Trung bình' };
+    if (percentage >= 40) return { grade: 'D', color: 'text-orange-700', bg: 'bg-orange-50', border: 'border-orange-200', emoji: '📖', label: 'Cần cố gắng' };
+    return { grade: 'F', color: 'text-rose-700', bg: 'bg-rose-50', border: 'border-rose-200', emoji: '🌱', label: 'Cần cố gắng hơn' };
   };
 
   const gradeInfo = getGrade(submission.percentage);
   const maxScore = exam?.pointsConfig?.maxScore || 10;
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%)' }}>
+    <div className="min-h-screen bg-slate-50/80">
       {submission.percentage >= 80 && (
         <style>{`
           @keyframes confetti {
@@ -93,152 +101,143 @@ const ResultView: React.FC<ResultViewProps> = ({
         </>
       )}
 
-      {/* Header */}
-      <div className="text-white p-6" style={{ background: 'linear-gradient(135deg, #0d9488 0%, #115e59 100%)' }}>
+      {/* Header nhẹ nhàng */}
+      <div className="bg-gradient-to-r from-teal-700 to-teal-800 text-white px-4 py-5 shadow-sm">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl font-bold mb-2">🎉 Đã nộp bài thành công!</h1>
-          <p className="text-teal-100">{room.examTitle}</p>
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Kết Quả Bài Thi</h1>
+          <p className="text-teal-200/90 text-xs sm:text-sm mt-0.5 line-clamp-1">{room.examTitle}</p>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto p-4 sm:p-6 pb-12">
-        {/* Điểm + Xếp loại */}
-        <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8">
-          <div className="text-center mb-6">
-            <div className={`w-32 h-32 ${gradeInfo.bg} border-4 ${gradeInfo.border} rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg`}>
-              <div>
-                <div className="text-4xl mb-1">{gradeInfo.emoji}</div>
-                <div className={`text-3xl font-black ${gradeInfo.color}`}>{gradeInfo.grade}</div>
+      <div className="max-w-3xl mx-auto p-3.5 sm:p-6 pb-12">
+        {/* Card Kết quả trung tâm - Tối giản & Chuyên nghiệp */}
+        <div className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-gray-200/70 p-4 sm:p-7 mb-6 relative overflow-hidden">
+          
+          {/* Header học sinh & phòng thi gọn gàng */}
+          <div className="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-gray-100 text-xs text-gray-500">
+            <div className="flex items-center gap-1.5 truncate">
+              <span className="font-semibold text-gray-800 truncate">
+                {submission.student?.name || 'Học sinh'}
+              </span>
+              {submission.student?.className && (
+                <span className="px-1.5 py-0.5 rounded bg-gray-100 text-gray-600 font-medium text-[11px] shrink-0">
+                  {submission.student.className}
+                </span>
+              )}
+            </div>
+            {submission.roomCode && (
+              <span className="font-mono text-teal-700 font-semibold bg-teal-50 px-2 py-0.5 rounded text-[11px] shrink-0 border border-teal-100/60">
+                Mã: {submission.roomCode}
+              </span>
+            )}
+          </div>
+
+          {/* Điểm số trung tâm tối giản */}
+          <div className="text-center py-1 sm:py-3 mb-4">
+            <div className="inline-flex items-baseline justify-center gap-1">
+              <span className="text-5xl sm:text-6xl font-black tracking-tight text-teal-600">
+                {formatScore(submission.totalScore)}
+              </span>
+              <span className="text-xl sm:text-2xl font-semibold text-gray-300">/{maxScore}</span>
+            </div>
+            
+            {/* Tag xếp loại & tỉ lệ */}
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold ${gradeInfo.bg} ${gradeInfo.color} border ${gradeInfo.border}`}>
+                <span>{gradeInfo.emoji}</span>
+                <span>{gradeInfo.label}</span>
+              </span>
+              <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600">
+                {submission.percentage}%
+              </span>
+            </div>
+          </div>
+
+          {/* Hàng 3 chỉ số thống kê gọn gàng */}
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-5">
+            <div className="bg-emerald-50/60 border border-emerald-100 rounded-xl p-2.5 sm:p-3 text-center">
+              <div className="text-xl sm:text-2xl font-black text-emerald-600 leading-none mb-1">
+                {submission.correctCount}
               </div>
+              <div className="text-[11px] sm:text-xs font-medium text-emerald-700">Câu đúng</div>
             </div>
-            <div className={`inline-block px-4 py-2 rounded-full ${gradeInfo.bg} border ${gradeInfo.border} ${gradeInfo.color} font-bold`}>
-              {gradeInfo.label}
+            <div className="bg-rose-50/60 border border-rose-100 rounded-xl p-2.5 sm:p-3 text-center">
+              <div className="text-xl sm:text-2xl font-black text-rose-500 leading-none mb-1">
+                {submission.wrongCount}
+              </div>
+              <div className="text-[11px] sm:text-xs font-medium text-rose-600">Câu sai</div>
+            </div>
+            <div className="bg-sky-50/60 border border-sky-100 rounded-xl p-2.5 sm:p-3 text-center">
+              <div className="text-xl sm:text-2xl font-black text-sky-600 leading-none mb-1">
+                {formatDurationShort(submission.duration || 0)}
+              </div>
+              <div className="text-[11px] sm:text-xs font-medium text-sky-700">Thời gian</div>
             </div>
           </div>
 
-          <div className="text-center mb-8">
-            <div className="text-6xl font-black mb-2">
-              <span className="text-teal-600">{formatScore(submission.totalScore)}</span>
-              <span className="text-gray-300 text-4xl">/{maxScore}</span>
-            </div>
-            <div className="text-2xl font-bold text-gray-400">{submission.percentage}%</div>
-          </div>
-
-          {/* ✅ FIX: dùng scoreBreakdown đã được map đúng */}
-          {scoreBreakdown && (
-            <div className="mb-8">
-              <h3 className="text-center text-base font-bold text-gray-600 mb-4 uppercase tracking-wide">📊 Điểm chi tiết theo phần</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Chi tiết theo phần (nếu có) - Gọn nhẹ, tinh tế */}
+          {scoreBreakdown && (scoreBreakdown.multipleChoice?.total > 0 || scoreBreakdown.trueFalse?.total > 0 || scoreBreakdown.shortAnswer?.total > 0) && (
+            <div className="mb-5 bg-gray-50/80 rounded-xl p-3 border border-gray-100">
+              <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">
+                Điểm chi tiết từng phần
+              </div>
+              <div className="space-y-1.5">
                 {scoreBreakdown.multipleChoice?.total > 0 && (
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-4 border-2 border-blue-200 shadow-sm">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xl">🔘</span>
-                      <span className="font-bold text-blue-900 text-sm">Trắc nghiệm</span>
+                  <div className="flex items-center justify-between py-1.5 px-2.5 bg-white rounded-lg border border-gray-100 text-xs">
+                    <div className="flex items-center gap-1.5 truncate">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0" />
+                      <span className="font-semibold text-gray-800">Trắc nghiệm</span>
+                      <span className="text-gray-400 text-[11px]">({scoreBreakdown.multipleChoice.correct}/{scoreBreakdown.multipleChoice.total} câu)</span>
                     </div>
-                    <div className="text-2xl font-black text-blue-600 mb-1">
-                      {formatScore(scoreBreakdown.multipleChoice.points)}
-                      <span className="text-sm font-normal text-blue-400">đ</span>
-                    </div>
-                    <div className="text-sm text-blue-700">
-                      Đúng {scoreBreakdown.multipleChoice.correct}/{scoreBreakdown.multipleChoice.total}
-                    </div>
-                    {scoreBreakdown.multipleChoice.pointsPerQuestion > 0 && (
-                      <div className="text-xs text-blue-500 mt-1">({formatScore(scoreBreakdown.multipleChoice.pointsPerQuestion)}đ/câu)</div>
-                    )}
+                    <span className="font-bold text-blue-600 shrink-0 ml-2">
+                      {formatScore(scoreBreakdown.multipleChoice.points)}đ
+                    </span>
                   </div>
                 )}
-
                 {scoreBreakdown.trueFalse?.total > 0 && (
-                  <div className="bg-gradient-to-br from-teal-50 to-emerald-100 rounded-2xl p-4 border-2 border-teal-200 shadow-sm">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xl">✅</span>
-                      <span className="font-bold text-teal-900 text-sm">Đúng / Sai</span>
+                  <div className="flex items-center justify-between py-1.5 px-2.5 bg-white rounded-lg border border-gray-100 text-xs">
+                    <div className="flex items-center gap-1.5 truncate">
+                      <span className="w-2 h-2 rounded-full bg-teal-500 shrink-0" />
+                      <span className="font-semibold text-gray-800">Đúng / Sai</span>
+                      <span className="text-gray-400 text-[11px]">({scoreBreakdown.trueFalse.correct}/{scoreBreakdown.trueFalse.total} câu)</span>
                     </div>
-                    <div className="text-2xl font-black text-teal-600 mb-1">
-                      {formatScore(scoreBreakdown.trueFalse.points)}
-                      <span className="text-sm font-normal text-teal-400">đ</span>
-                    </div>
-                    <div className="text-sm text-teal-700">
-                      Đúng hoàn toàn: {scoreBreakdown.trueFalse.correct}/{scoreBreakdown.trueFalse.total}
-                      {scoreBreakdown.trueFalse.partial > 0 && (
-                        <span className="text-yellow-600"> · +{scoreBreakdown.trueFalse.partial} phần</span>
-                      )}
-                    </div>
-                    {scoreBreakdown.trueFalse.pointsPerQuestion > 0 && (
-                      <div className="text-xs text-teal-500 mt-1">({formatScore(scoreBreakdown.trueFalse.pointsPerQuestion)}đ/câu)</div>
-                    )}
+                    <span className="font-bold text-teal-600 shrink-0 ml-2">
+                      {formatScore(scoreBreakdown.trueFalse.points)}đ
+                    </span>
                   </div>
                 )}
-
                 {scoreBreakdown.shortAnswer?.total > 0 && (
-                  <div className="bg-gradient-to-br from-orange-50 to-amber-100 rounded-2xl p-4 border-2 border-orange-200 shadow-sm">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xl">✏️</span>
-                      <span className="font-bold text-orange-900 text-sm">Trả lời ngắn</span>
+                  <div className="flex items-center justify-between py-1.5 px-2.5 bg-white rounded-lg border border-gray-100 text-xs">
+                    <div className="flex items-center gap-1.5 truncate">
+                      <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                      <span className="font-semibold text-gray-800">Tự luận / Ngắn</span>
+                      <span className="text-gray-400 text-[11px]">({scoreBreakdown.shortAnswer.correct}/{scoreBreakdown.shortAnswer.total} câu)</span>
                     </div>
-                    <div className="text-2xl font-black text-orange-600 mb-1">
-                      {formatScore(scoreBreakdown.shortAnswer.points)}
-                      <span className="text-sm font-normal text-orange-400">đ</span>
-                    </div>
-                    <div className="text-sm text-orange-700">
-                      Đúng {scoreBreakdown.shortAnswer.correct}/{scoreBreakdown.shortAnswer.total}
-                    </div>
-                    {scoreBreakdown.shortAnswer.pointsPerQuestion > 0 && (
-                      <div className="text-xs text-orange-500 mt-1">({formatScore(scoreBreakdown.shortAnswer.pointsPerQuestion)}đ/câu)</div>
-                    )}
+                    <span className="font-bold text-amber-600 shrink-0 ml-2">
+                      {formatScore(scoreBreakdown.shortAnswer.points)}đ
+                    </span>
                   </div>
                 )}
               </div>
             </div>
           )}
 
-          {/* Stats row */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-center">
-              <div className="text-3xl font-black text-emerald-600">{submission.correctCount}</div>
-              <div className="text-xs font-semibold text-emerald-700 mt-1">Câu đúng</div>
-            </div>
-            <div className="bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
-              <div className="text-3xl font-black text-red-500">{submission.wrongCount}</div>
-              <div className="text-xs font-semibold text-red-600 mt-1">Câu sai</div>
-            </div>
-            <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 text-center">
-              <div className="text-3xl font-black text-blue-500">{Math.floor((submission.duration || 0) / 60)}</div>
-              <div className="text-xs font-semibold text-blue-600 mt-1">Phút làm bài</div>
-            </div>
-          </div>
-
-          {/* Info */}
-          <div className="bg-gray-50 rounded-2xl p-4 mb-6 text-sm">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="flex gap-2">
-                <span className="text-gray-400">👤 Họ tên:</span>
-                <span className="font-semibold text-gray-700">{submission.student.name}</span>
-              </div>
-              {submission.student.className && (
-                <div className="flex gap-2">
-                  <span className="text-gray-400">🏫 Lớp:</span>
-                  <span className="font-semibold text-gray-700">{submission.student.className}</span>
-                </div>
-              )}
-              <div className="flex gap-2">
-                <span className="text-gray-400">🔑 Mã phòng:</span>
-                <span className="font-mono font-bold text-teal-600">{submission.roomCode}</span>
-              </div>
-              <div className="flex gap-2">
-                <span className="text-gray-400">⏱ Thời gian:</span>
-                <span className="font-semibold text-gray-700">{formatDuration(submission.duration || 0)}</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4 justify-center items-center w-full px-2">
-            <button onClick={onExit} className="flex-1 sm:flex-initial px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-semibold text-teal-600 border-2 border-teal-300 hover:bg-teal-50 transition text-sm sm:text-base text-center">
-              ← Về trang chủ
+          {/* 2 Nút điều hướng - Gọn gàng, chuẩn tỉ lệ, không bị rớt dòng */}
+          <div className="grid grid-cols-2 gap-2.5 pt-1">
+            <button 
+              onClick={onExit} 
+              className="py-2.5 px-3 rounded-xl font-bold text-teal-700 bg-teal-50/80 hover:bg-teal-100 border border-teal-200 transition text-xs sm:text-sm flex items-center justify-center gap-1.5 active:scale-95 whitespace-nowrap"
+            >
+              <span>←</span>
+              <span>Trang chủ</span>
             </button>
             {onRetry && (
-              <button onClick={onRetry} className="flex-1 sm:flex-initial px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-bold text-white transition text-sm sm:text-base text-center shadow-md hover:opacity-95" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}>
-                🔄 Làm lại bài thi
+              <button 
+                onClick={onRetry} 
+                className="py-2.5 px-3 rounded-xl font-bold text-white transition text-xs sm:text-sm flex items-center justify-center gap-1.5 active:scale-95 shadow-sm hover:shadow whitespace-nowrap bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800" 
+              >
+                <span>🔄</span>
+                <span>Làm lại đề</span>
               </button>
             )}
           </div>
