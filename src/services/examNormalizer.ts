@@ -29,16 +29,25 @@ export interface NormalizedExamData {
 }
 
 /**
- * Đảm bảo câu hỏi luôn có tiền tố "Câu X: " ở đầu để hiển thị rõ ràng, chuẩn sư phạm
+ * Đảm bảo câu hỏi luôn có tiền tố "CÂU X." ở đầu, với chữ "CÂU" in hoa đậm theo chuẩn sư phạm
  */
 export function formatQuestionTitle(text: string = '', number?: number): string {
   const trimmed = (text || '').trim();
-  if (!trimmed) return number ? `<strong>Câu ${number}:</strong>` : '';
-  if (/^(\s*<p[^>]*>)?\s*(<strong[^>]*>|<b[^>]*>|<span[^>]*>)?\s*(?:câu|bài)\s*\d+/i.test(trimmed)) {
-    return trimmed;
+  if (!trimmed) return number ? `<strong>CÂU ${number}.</strong>` : '';
+
+  // Nhận diện nếu text đã có tiền tố Câu X / Bài X / CÂU X (kể cả có HTML bao quanh hay không)
+  const prefixRegex = /^(\s*<p[^>]*>)?\s*(?:<strong[^>]*>|<b[^>]*>|<span[^>]*>)?\s*(?:câu|bài)\s*(\d+)\s*[:.-]?\s*(?:<\/strong>|<\/b>|<\/span>)?\s*(.*)$/is;
+  const match = trimmed.match(prefixRegex);
+
+  if (match) {
+    const pTag = match[1] || '';
+    const qNum = match[2] || number || 1;
+    const rest = match[3] || '';
+    return `${pTag}<strong>CÂU ${qNum}.</strong> ${rest}`.trim();
   }
+
   if (number) {
-    return `<strong>Câu ${number}:</strong> ${trimmed}`;
+    return `<strong>CÂU ${number}.</strong> ${trimmed}`;
   }
   return trimmed;
 }
