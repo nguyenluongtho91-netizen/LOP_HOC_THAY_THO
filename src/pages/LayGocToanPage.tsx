@@ -7,9 +7,10 @@ import {
   Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target,
   FlaskConical, Compass, Scale, Bell, AlertTriangle, History, 
   Volume2, ShieldAlert, Calendar, Eye, Activity, TrendingUp, AlertCircle,
-  Share2, Link, MessageCircle, QrCode, ExternalLink, Smartphone, Lock
+  Share2, Link, MessageCircle, QrCode, ExternalLink, Smartphone, Lock, MonitorPlay
 } from 'lucide-react';
 import MathText from '@/components/MathText';
+import { useAuthStore } from '@/store/authStore';
 import { useDataStore } from '@/store/dataStore';
 import { useExamRoomStore } from '@/store/examRoomStore';
 import { useExamStore } from '@/store/examStore';
@@ -71,9 +72,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   // CHIA SẺ LINK ĐỀ THI TRỰC TIẾP CHO HỌC SINH & PHỤ HUYNH
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { user } = useAuthStore();
   const isStudentMode = useMemo(() => {
+    // NẾU LÀ GIÁO VIÊN / QUẢN TRỊ VIÊN ĐANG ĐĂNG NHẬP -> LUÔN LUÔN LÀ GIAO DIỆN QUẢN LÝ
+    if (user) return false;
     return isPublic || searchParams.get('mode') === 'student' || searchParams.get('view') === 'student';
-  }, [isPublic, searchParams]);
+  }, [user, isPublic, searchParams]);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isCopiedShareLink, setIsCopiedShareLink] = useState<boolean>(false);
   const [isCopiedShareMessage, setIsCopiedShareMessage] = useState<boolean>(false);
@@ -811,6 +815,32 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 pb-16">
+      {/* THANH ĐIỀU HƯỚNG QUẢN LÝ DÀNH CHO THẦY THỌ */}
+      {user && (
+        <div className="bg-slate-900 text-white px-4 py-2.5 flex flex-wrap items-center justify-between text-xs border-b border-slate-700 shadow-md print:hidden">
+          <div className="flex items-center gap-2 font-bold text-amber-400">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>👑 GIAO DIỆN QUẢN LÝ: THẦY NGUYỄN LƯƠNG THỌ</span>
+          </div>
+          <div className="flex items-center gap-2 mt-1 sm:mt-0">
+            <button 
+              onClick={() => navigate('/exam-rooms')} 
+              className="px-3.5 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 rounded-xl text-white font-bold transition flex items-center gap-1.5 shadow-xs cursor-pointer"
+              title="Đi tới danh sách phòng thi và xuất bảng điểm Excel chuẩn A4"
+            >
+              <MonitorPlay className="w-3.5 h-3.5 text-white" />
+              <span>Phòng Thi Trực Tuyến & Xuất Excel</span>
+            </button>
+            <button 
+              onClick={() => navigate('/')} 
+              className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-xl text-slate-300 font-bold transition cursor-pointer"
+            >
+              Bàn Làm Việc (Dashboard)
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* ===================== BANNER ĐẦU TRANG ===================== */}
       {isStudentMode ? (
         <div className={`shadow-lg print:hidden transition-colors ${

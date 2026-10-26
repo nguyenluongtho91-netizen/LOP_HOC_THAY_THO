@@ -95,7 +95,6 @@ export default function App() {
       <Route path="/login"    element={<Login />} />
       <Route path="/thi"      element={<StudentPortal />} />
       <Route path="/lay-goc"  element={<LayGocToanPage isPublic={true} />} />
-      <Route path="/lay-goc-toan" element={<LayGocToanPage isPublic={true} />} />
       {/* CỔNG TRA CỨU HÓA ĐƠN ĐIỆN TỬ DÀNH CHO PHỤ HUYNH */}
       <Route path="/hoa-don/:invoiceId" element={<PublicInvoicePage />} />
       <Route path="/hoa-don"            element={<PublicInvoicePage />} />
@@ -141,8 +140,8 @@ export default function App() {
         <Route path="exam-results/:roomId" element={<ExamResultsPage />} />
         <Route path="phieu-grader"         element={<PhieuGrader />} />
         <Route path="homework"             element={<HomeworkMgmt />} />
-        <Route path="giao-bai-tap"         element={<HomeworkMgmt />} />
-        <Route path="lay-goc-toan"         element={<LayGocToanPage />} />
+        <Route path="lay-goc-toan"         element={<LayGocToanPage isPublic={false} />} />
+        <Route path="lay-goc"              element={<LayGocToanPage isPublic={false} />} />
 
 
         {/* --- Nhóm Công cụ chuyên dụng --- */}
