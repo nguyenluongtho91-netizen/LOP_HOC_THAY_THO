@@ -180,6 +180,25 @@ export default function StudentProgressPage() {
 
       <div className="-mt-12 relative z-10 px-4 pb-12 space-y-4 max-w-md mx-auto">
 
+        {/* Thẻ Giáo viên giảng dạy Thầy Thọ - Phụ huynh & Học sinh thấy */}
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3.5 border border-teal-100 shadow-sm flex items-center gap-3 text-left">
+          <img 
+            src="/thay_tho_avatar.png" 
+            alt="Thầy Nguyễn Lương Thọ" 
+            className="w-13 h-13 rounded-full object-cover border-2 border-teal-500 shadow-sm shrink-0" 
+          />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="font-extrabold text-gray-900 text-sm">Thầy Nguyễn Lương Thọ</span>
+              <span className="px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 text-[10px] font-bold border border-teal-100">
+                Giáo viên
+              </span>
+            </div>
+            <p className="text-[11px] font-bold text-teal-700 mt-0.5">Lớp Học Thầy Thọ • Hotline: 0345.833.133</p>
+            <p className="text-[10px] text-gray-500 italic mt-0.5 truncate">"Cố gắng không bỏ cuộc. Quả ngọt luôn cần thời gian."</p>
+          </div>
+        </div>
+
         {/* Thông báo học phí */}
         {tuitionNotifications.length > 0 && tuitionNotifications.map((notif) => {
           let addInfo = `HP ${student.student_code}`
@@ -693,11 +712,12 @@ export default function StudentProgressPage() {
         )}
 
         {/* Footer */}
-        <div className="flex flex-col items-center py-4 gap-1">
-          <div className="flex items-center gap-2 text-teal-600 font-black text-sm">
-            <GraduationCap className="w-4 h-4" /> {centerName}
+        <div className="flex flex-col items-center py-5 gap-1.5">
+          <img src="/thay_tho_avatar.png" alt="Thầy Thọ" className="w-9 h-9 rounded-full object-cover border-2 border-teal-400 shadow-xs" />
+          <div className="flex items-center gap-1.5 text-teal-700 font-black text-sm">
+            <span>{centerName || 'LỚP HỌC THẦY THỌ'}</span>
           </div>
-          <p className="text-xs text-gray-400">Hệ thống quản lý học tập</p>
+          <p className="text-[11px] text-gray-400 italic">"Cố gắng không bỏ cuộc. Quả ngọt luôn cần thời gian."</p>
         </div>
       </div>
     </div>

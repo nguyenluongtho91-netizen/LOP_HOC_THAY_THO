@@ -511,13 +511,21 @@ export default function StudentPortal() {
           <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-teal-200 overflow-hidden">
             {/* Header */}
             <div 
-              className="px-8 pt-10 pb-8 text-center text-white"
+              className="px-8 pt-8 pb-7 text-center text-white"
               style={{ background: 'linear-gradient(135deg, #0d9488, #14b8a6, #5eead4)' }}
             >
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg backdrop-blur-sm">
-                <GraduationCap className="w-9 h-9 text-white" />
+              <div className="relative mx-auto mb-3 w-20 h-20">
+                <img 
+                  src="/thay_tho_avatar.png" 
+                  alt="Thầy Nguyễn Lương Thọ" 
+                  className="w-20 h-20 rounded-full border-4 border-white/80 shadow-2xl object-cover ring-4 ring-teal-400/30 mx-auto" 
+                />
+                <div className="absolute -bottom-1 -right-1 bg-amber-400 text-slate-900 rounded-full w-6 h-6 flex items-center justify-center shadow-md border-2 border-white text-xs" title="Giáo viên">
+                  👨‍🏫
+                </div>
               </div>
               <h1 className="font-extrabold text-2xl tracking-wide uppercase">LỚP HỌC THẦY THỌ</h1>
+              <p className="text-teal-100 text-xs font-semibold mt-0.5">Giáo viên: Thầy Nguyễn Lương Thọ</p>
             </div>
 
             <form onSubmit={handleLogin} className="p-8 space-y-5">
@@ -649,15 +657,22 @@ export default function StudentPortal() {
         <div className="max-w-5xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
           {/* Logo & Tên Cổng Thi */}
           <div className="flex items-center gap-2.5 sm:gap-3 text-teal-700 min-w-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-tr from-teal-700 to-teal-500 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <div className="relative flex-shrink-0">
+              <img 
+                src="/thay_tho_avatar.png" 
+                alt="Thầy Thọ" 
+                className="w-10 h-10 rounded-full object-cover border-2 border-teal-500 shadow-sm" 
+              />
+              <div className="absolute -bottom-0.5 -right-0.5 bg-emerald-500 w-3 h-3 rounded-full border-2 border-white" title="Trực tuyến" />
             </div>
             <div className="min-w-0">
               <h1 className="font-black text-sm sm:text-base leading-tight text-teal-800 uppercase tracking-wide truncate">
                 LỚP HỌC THẦY THỌ
               </h1>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-teal-600 truncate">
-                Cổng Thi Học Sinh
+              <p className="text-[10px] font-bold uppercase tracking-wider text-teal-600 truncate flex items-center gap-1">
+                <span>👨‍🏫 Thầy Thọ</span>
+                <span>•</span>
+                <span>Cổng Thi Học Sinh</span>
               </p>
             </div>
           </div>

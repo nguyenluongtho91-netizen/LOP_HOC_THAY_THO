@@ -183,15 +183,21 @@ export default function PublicInvoicePage() {
               
               {/* Cột trái: Đơn vị phát hành */}
               <div className="space-y-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
-                  <h2 className="font-black text-slate-900 text-base sm:text-lg tracking-tight uppercase">
-                    {invoice.sellerName}
-                  </h2>
+                <div className="flex items-center gap-3 mb-2">
+                  <img 
+                    src="/thay_tho_avatar.png" 
+                    alt="Thầy Nguyễn Lương Thọ" 
+                    className="w-12 h-12 rounded-full object-cover border-2 border-teal-500 shadow-sm shrink-0" 
+                  />
+                  <div>
+                    <h2 className="font-black text-slate-900 text-base sm:text-lg tracking-tight uppercase leading-snug">
+                      {invoice.sellerName}
+                    </h2>
+                    <p className="text-xs font-extrabold text-teal-700 tracking-wide uppercase">
+                      {invoice.sellerBrand}
+                    </p>
+                  </div>
                 </div>
-                <p className="text-xs font-extrabold text-teal-700 tracking-wide uppercase">
-                  {invoice.sellerBrand}
-                </p>
                 <div className="text-[12px] text-slate-600 space-y-0.5 pt-1 leading-relaxed">
                   <p><span className="font-bold text-slate-700">Mã số thuế:</span> <span className="font-mono font-bold text-slate-800">{invoice.sellerTaxCode}</span></p>
                   <p><span className="font-bold text-slate-700">Địa chỉ:</span> {invoice.sellerAddress && !invoice.sellerAddress.includes('Lê Trọng Tấn') ? invoice.sellerAddress : 'Số nhà 10, Ngõ 32 Hồ Phi Chấn, Phường Thành Sen, TP. Hà Tĩnh'}</p>
