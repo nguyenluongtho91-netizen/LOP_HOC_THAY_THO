@@ -45,11 +45,16 @@ function normalizeMathAndExponents(rawText: string): string {
   }
 
   // 2. Chuyển đổi biểu thức số mũ có ngoặc: a^(m - n) -> a<sup>m - n</sup>, (x - 1)^(2) -> (x - 1)<sup>2</sup>
-  str = str.replace(/([a-zA-Z0-9\(\)]+)\^([a-zA-Z0-9\(\)\s\-\+]+)(?=[^$]*(\$|$))/g, (match, base, exp) => {
+  str = str.replace(/([a-zA-Z0-9\(\)]+)\^([a-zA-Z0-9\(\)\s\-\+]+)(?=[^$]*(\$|$))/g, (_match, base, exp) => {
     // Nếu exp có ngoặc đơn bao bọc: (m - n) -> gỡ ngoặc khi lên số mũ
     const cleanExp = exp.replace(/^\((.*)\)$/, '$1');
     return `${base}<sup>${cleanExp}</sup>`;
   });
+
+  // 3. Chuẩn hóa dấu chấm phép nhân theo sách mới (GDPT 2018):
+  // Dấu nhân phải là dấu chấm ở phía dưới chân dòng (baseline dot '.'), không được lơ lửng trên cao
+  str = str.replace(/·/g, ' . ');
+  str = str.replace(/\\cdot/g, ' . ');
 
   return str;
 }

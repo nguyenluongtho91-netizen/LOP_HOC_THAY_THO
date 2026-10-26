@@ -112,6 +112,15 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     void loadExams();
   }, [loadClasses, loadStudents, loadEnrollments, loadExams]);
 
+  // Luôn nạp lại học sinh và danh sách lớp mới nhất từ server khi mở modal giao đề
+  useEffect(() => {
+    if (isAssignModalOpen) {
+      void loadStudents();
+      void loadEnrollments();
+      void loadClasses();
+    }
+  }, [isAssignModalOpen, loadStudents, loadEnrollments, loadClasses]);
+
   // Key lưu trữ lịch sử các lần làm bài vào localStorage
   const historyStorageKey = `laygoc_history_${currentSubject}_${selectedTopicId}_exam_${selectedExamNo}`;
 
@@ -412,26 +421,63 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     });
   }, [students, enrollments, classes]);
 
+  const currentClassStudents = useMemo(() => {
+    if (!assignClassId) return [];
+    return allStudentsWithClasses.filter(s =>
+      enrollments.some(e => e.class_id === assignClassId && e.student_id === s.id && e.status !== 'inactive')
+    );
+  }, [assignClassId, allStudentsWithClasses, enrollments]);
+
+  const matchStudentQuery = (s: any, q: string) => {
+    if (!q) return true;
+    const name = (s.full_name || '').toLowerCase();
+    const code = (s.student_code || '').toLowerCase().trim();
+    const phone = (s.parent_phone || '').trim();
+
+    // 1. Khớp thông thường (substring)
+    if (name.includes(q) || code.includes(q) || phone.includes(q)) return true;
+
+    // 2. Xử lý đặc biệt khi Thầy gõ chuỗi toàn số 0 (ví dụ "000" hoặc "0000")
+    if (/^0+$/.test(q)) {
+      // Khớp học sinh có mã toàn số 0 (ví dụ "0", "00", "000", "0000")
+      if (/^0+$/.test(code)) return true;
+      // Hoặc khớp học sinh có chứa cụm "00" trong mã (ví dụ "6001", "6002"...)
+      if (code.includes('00')) return true;
+    }
+
+    // 3. Khớp linh hoạt theo đuôi số (ví dụ gõ "001" hoặc "01" sẽ khớp mã "6001")
+    const strippedLeadingZeros = q.replace(/^0+/, '');
+    if (strippedLeadingZeros && code.endsWith(strippedLeadingZeros)) {
+      return true;
+    }
+
+    return false;
+  };
+
   const displayedStudents = useMemo(() => {
+    const q = studentSearch.trim().toLowerCase();
     if (assignMode === 'class') {
       if (!assignClassId) return [];
-      return allStudentsWithClasses.filter(s => {
-        const enrolled = enrollments.some(e => e.class_id === assignClassId && e.student_id === s.id && e.status !== 'inactive');
-        if (!enrolled) return false;
-        if (!studentSearch.trim()) return true;
-        const q = studentSearch.toLowerCase();
-        return (s.full_name || '').toLowerCase().includes(q) || (s.student_code || '').toLowerCase().includes(q);
-      });
+      if (!q) return currentClassStudents;
+      return currentClassStudents.filter(s => matchStudentQuery(s, q));
     } else {
-      if (!studentSearch.trim()) return allStudentsWithClasses;
-      const q = studentSearch.toLowerCase();
+      if (!q) return allStudentsWithClasses;
       return allStudentsWithClasses.filter(s => 
-        (s.full_name || '').toLowerCase().includes(q) || 
-        (s.student_code || '').toLowerCase().includes(q) ||
-        s.classNamesString.toLowerCase().includes(q)
+        matchStudentQuery(s, q) || s.classNamesString.toLowerCase().includes(q)
       );
     }
-  }, [assignMode, assignClassId, allStudentsWithClasses, enrollments, studentSearch]);
+  }, [assignMode, assignClassId, currentClassStudents, allStudentsWithClasses, studentSearch]);
+
+  // Tìm học sinh khớp mã/tên trong toàn bộ trung tâm nhưng KHÔNG thuộc lớp đang chọn
+  const otherMatchingStudents = useMemo(() => {
+    if (assignMode !== 'class' || !studentSearch.trim() || !assignClassId) return [];
+    const q = studentSearch.trim().toLowerCase();
+    return allStudentsWithClasses.filter(s => {
+      const isEnrolledInCurrentClass = enrollments.some(e => e.class_id === assignClassId && e.student_id === s.id && e.status !== 'inactive');
+      if (isEnrolledInCurrentClass) return false;
+      return matchStudentQuery(s, q);
+    });
+  }, [assignMode, assignClassId, studentSearch, allStudentsWithClasses, enrollments]);
 
   const handleSelectAllStudents = () => {
     if (assignStudentIds.length === displayedStudents.length) {
@@ -1288,10 +1334,10 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         🎯 Công thức tổng quát cho hợp chất A_x B_y C_z:
                       </div>
                       <div className="text-sm sm:text-base font-black text-sky-900 bg-white/80 px-3 py-2 rounded-lg border border-sky-300 inline-block my-1.5">
-                        KLPT = x · M_A + y · M_B + z · M_C (đơn vị: amu hoặc đvC)
+                        KLPT = x . M_A + y . M_B + z . M_C (đơn vị: amu hoặc đvC)
                       </div>
                       <p className="text-slate-600 text-xs mt-1">
-                        * Lưu ý với muối ngậm nước (ví dụ CuSO₄ · 5H₂O): Dấu chấm "·" nghĩa là cộng thêm phân tử nước kết tinh: KLPT = M(CuSO₄) + 5 · M(H₂O) = 160 + 90 = 250 amu.
+                        * Lưu ý với muối ngậm nước (ví dụ CuSO₄ . 5H₂O): Dấu chấm "." nghĩa là cộng thêm phân tử nước kết tinh: KLPT = M(CuSO₄) + 5 . M(H₂O) = 160 + 90 = 250 amu.
                       </p>
                     </div>
 
@@ -1320,12 +1366,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       <div className="bg-emerald-50/70 p-4 rounded-xl border border-emerald-200">
                         <h4 className="font-extrabold text-emerald-900 mb-2">⚡ Các phân tử khối kinh điển cần nhớ:</h4>
                         <ul className="space-y-1.5 text-xs text-slate-700 font-medium">
-                          <li>• <strong>H₂O:</strong> 1 · 2 + 16 = <strong>18</strong> amu</li>
-                          <li>• <strong>CO₂:</strong> 12 + 16 · 2 = <strong>44</strong> amu</li>
+                          <li>• <strong>H₂O:</strong> 1 . 2 + 16 = <strong>18</strong> amu</li>
+                          <li>• <strong>CO₂:</strong> 12 + 16 . 2 = <strong>44</strong> amu</li>
                           <li>• <strong>NaOH:</strong> 23 + 16 + 1 = <strong>40</strong> amu</li>
-                          <li>• <strong>CaCO₃:</strong> 40 + 12 + 16 · 3 = <strong>100</strong> amu</li>
-                          <li>• <strong>H₂SO₄:</strong> 1 · 2 + 32 + 16 · 4 = <strong>98</strong> amu</li>
-                          <li>• <strong>Al₂O₃:</strong> 27 · 2 + 16 · 3 = <strong>102</strong> amu</li>
+                          <li>• <strong>CaCO₃:</strong> 40 + 12 + 16 . 3 = <strong>100</strong> amu</li>
+                          <li>• <strong>H₂SO₄:</strong> 1 . 2 + 32 + 16 . 4 = <strong>98</strong> amu</li>
+                          <li>• <strong>Al₂O₃:</strong> 27 . 2 + 16 . 3 = <strong>102</strong> amu</li>
                         </ul>
                       </div>
                     </div>
@@ -1810,11 +1856,11 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
               <div className="bg-amber-50 p-3 rounded-xl border border-amber-200 text-xs text-amber-900 leading-relaxed">
                 {assignMode === 'individual' ? (
                   <span>
-                    💡 <strong>Giao riêng biệt:</strong> Thầy có thể tìm và tích chọn bất kỳ học sinh nào (kể cả khác lớp). Chỉ những em được Thầy tích chọn mới thấy đề thi này!
+                    💡 <strong>Giao riêng biệt:</strong> Thầy có thể tìm theo mã hoặc tên để chọn bất kỳ học sinh nào trong toàn bộ trung tâm (kể cả khác lớp hoặc chưa xếp lớp).
                   </span>
                 ) : (
                   <span>
-                    💡 <strong>Giao theo lớp:</strong> Chọn lớp và giao cho cả lớp hoặc chọn riêng một số em trong lớp.
+                    💡 <strong>Giao theo lớp:</strong> Ô tìm kiếm dưới đây chỉ lọc các em <u>đã được xếp vào lớp này</u>. Nếu muốn tìm học sinh theo mã trên toàn trường, Thầy vui lòng bấm chọn tab <strong>"Giao Cho Học Sinh Riêng Biệt"</strong> ở trên!
                   </span>
                 )}
               </div>
@@ -1846,9 +1892,23 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-3">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <label className="text-xs font-bold text-slate-700 uppercase tracking-wide">
-                      {assignMode === 'individual' ? 'Danh sách học sinh' : 'Học sinh trong lớp'} ({displayedStudents.length} em):
+                      {assignMode === 'individual' ? 'Danh sách học sinh' : 'Học sinh trong lớp'}{' '}
+                      {assignMode === 'class' && studentSearch.trim()
+                        ? `(${displayedStudents.length}/${currentClassStudents.length} em)`
+                        : `(${displayedStudents.length} em)`}:
                     </label>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          await Promise.all([loadStudents(), loadEnrollments(), loadClasses()]);
+                          toast.success('Đã tải lại danh sách học sinh mới nhất!');
+                        }}
+                        className="text-[11px] font-bold text-slate-500 hover:text-teal-700 flex items-center gap-1 cursor-pointer"
+                        title="Tải lại danh sách học sinh mới nhất từ hệ thống"
+                      >
+                        <RotateCcw className="w-3 h-3" /> Làm mới dữ liệu
+                      </button>
                       <button
                         type="button"
                         onClick={handleSelectAllStudents}
@@ -1866,9 +1926,34 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       placeholder="Tìm tên hoặc mã học sinh..."
                       value={studentSearch}
                       onChange={e => setStudentSearch(e.target.value)}
-                      className="input text-xs pl-9 py-2 bg-white"
+                      className="input text-xs pl-9 pr-9 py-2 bg-white"
                     />
+                    {studentSearch && (
+                      <button
+                        type="button"
+                        onClick={() => setStudentSearch('')}
+                        className="absolute right-2.5 top-2 text-slate-400 hover:text-slate-600 p-0.5 rounded-full hover:bg-slate-100 transition cursor-pointer"
+                        title="Xóa tìm kiếm để hiện đủ danh sách"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    )}
                   </div>
+
+                  {studentSearch.trim() && (
+                    <div className="flex items-center justify-between bg-sky-50 px-3 py-1.5 rounded-xl border border-sky-200 text-[11px] text-sky-800">
+                      <span>
+                        🔍 Đang lọc theo: <strong>"{studentSearch}"</strong> (tìm thấy {displayedStudents.length} em)
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setStudentSearch('')}
+                        className="font-bold text-sky-700 hover:underline cursor-pointer ml-2 flex items-center gap-1"
+                      >
+                        <X className="w-3 h-3" /> Hiện đủ {assignMode === 'class' ? currentClassStudents.length : allStudentsWithClasses.length} em
+                      </button>
+                    </div>
+                  )}
 
                   <div className="text-[11px] text-slate-500">
                     {assignStudentIds.length === 0 ? (
@@ -1882,37 +1967,139 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     )}
                   </div>
 
-                  <div className="max-h-56 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-white rounded-xl border border-slate-200">
-                    {displayedStudents.map((s: any) => {
-                      const isChecked = assignStudentIds.includes(s.id);
-                      return (
-                        <label
-                          key={s.id}
-                          className={`flex items-center gap-2 p-2 rounded-lg border text-xs cursor-pointer transition select-none ${
-                            isChecked 
-                              ? 'bg-amber-50 border-amber-300 text-amber-900 font-bold shadow-xs' 
-                              : 'bg-white border-slate-100 hover:bg-slate-50 text-slate-700'
-                          }`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={() => handleToggleStudent(s.id)}
-                            className="w-4 h-4 accent-amber-500 rounded cursor-pointer"
-                          />
-                          <span className="font-mono text-[10px] bg-slate-100 px-1 py-0.5 rounded text-slate-600 font-bold">
-                            {s.student_code}
-                          </span>
-                          <div className="min-w-0 flex-1">
-                            <div className="truncate font-bold">{s.full_name}</div>
-                            {s.classNamesString && (
-                              <div className="text-[9px] text-slate-400 truncate">{s.classNamesString}</div>
-                            )}
+                  {displayedStudents.length === 0 ? (
+                    <div className="p-4 text-center text-xs text-slate-500 bg-white rounded-xl border border-dashed border-slate-300 space-y-3">
+                      {studentSearch.trim() ? (
+                        <div>
+                          <p className="font-bold text-slate-700">
+                            ❌ Không tìm thấy học sinh nào trong lớp có mã/tên khớp với "{studentSearch}".
+                          </p>
+                          <p className="text-[11px] text-slate-500 mt-1">
+                            (Học sinh này có thể chưa được thêm vào lớp này hoặc đang ở lớp khác).
+                          </p>
+
+                          {otherMatchingStudents.length > 0 && (
+                            <div className="mt-3 p-3 bg-teal-50 border border-teal-200 rounded-xl text-left">
+                              <p className="text-[11px] font-black text-teal-900 mb-2">
+                                🎯 TÌM THẤY {otherMatchingStudents.length} HỌC SINH KHỚP MÃ TRONG DANH SÁCH TOÀN TRƯỜNG:
+                              </p>
+                              <div className="space-y-1.5">
+                                {otherMatchingStudents.map((s: any) => (
+                                  <div key={s.id} className="flex items-center justify-between gap-2 p-2 bg-white rounded-lg border border-teal-200 text-xs">
+                                    <div className="min-w-0 flex-1">
+                                      <span className="font-mono font-bold text-teal-800 bg-teal-100 px-1.5 py-0.5 rounded text-[10px] mr-1.5">
+                                        {s.student_code}
+                                      </span>
+                                      <span className="font-bold text-slate-900">{s.full_name}</span>
+                                      <span className="text-[10px] text-slate-400 ml-1.5">
+                                        [{s.classNamesString}]
+                                      </span>
+                                    </div>
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        setAssignMode('individual');
+                                        handleToggleStudent(s.id);
+                                        toast.success(`Đã chọn học sinh ${s.full_name} (${s.student_code})`);
+                                      }}
+                                      className="px-2.5 py-1 bg-teal-600 hover:bg-teal-700 text-white rounded-lg text-xs font-bold transition flex items-center gap-1 cursor-pointer shrink-0"
+                                    >
+                                      + Chọn giao ngay
+                                    </button>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          <div className="mt-2.5">
+                            <button
+                              type="button"
+                              onClick={() => setAssignMode('individual')}
+                              className="text-xs font-bold text-teal-600 hover:underline cursor-pointer"
+                            >
+                              👉 Bấm vào đây để chuyển sang tìm kiếm trong toàn bộ học sinh
+                            </button>
                           </div>
-                        </label>
-                      );
-                    })}
-                  </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <p className="font-semibold text-slate-600">Lớp này hiện chưa có học sinh nào được ghi danh (0 em).</p>
+                          <button
+                            type="button"
+                            onClick={() => setAssignMode('individual')}
+                            className="mt-2 text-xs font-bold text-teal-600 hover:underline cursor-pointer inline-block"
+                          >
+                            👉 Bấm vào đây để chuyển sang Giao cho học sinh riêng biệt (Toàn trường)
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <>
+                      <div className="max-h-56 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-white rounded-xl border border-slate-200">
+                        {displayedStudents.map((s: any) => {
+                          const isChecked = assignStudentIds.includes(s.id);
+                          return (
+                            <label
+                              key={s.id}
+                              className={`flex items-center gap-2 p-2 rounded-lg border text-xs cursor-pointer transition select-none ${
+                                isChecked 
+                                  ? 'bg-amber-50 border-amber-300 text-amber-900 font-bold shadow-xs' 
+                                  : 'bg-white border-slate-100 hover:bg-slate-50 text-slate-700'
+                              }`}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={isChecked}
+                                onChange={() => handleToggleStudent(s.id)}
+                                className="w-4 h-4 accent-amber-500 rounded cursor-pointer"
+                              />
+                              <span className="font-mono text-[10px] bg-slate-100 px-1 py-0.5 rounded text-slate-600 font-bold">
+                                {s.student_code}
+                              </span>
+                              <div className="min-w-0 flex-1">
+                                <div className="truncate font-bold">{s.full_name}</div>
+                                {s.classNamesString && (
+                                  <div className="text-[9px] text-slate-400 truncate">{s.classNamesString}</div>
+                                )}
+                              </div>
+                            </label>
+                          );
+                        })}
+                      </div>
+
+                      {/* Gợi ý học sinh ngoài lớp nếu có kết quả tìm kiếm */}
+                      {otherMatchingStudents.length > 0 && (
+                        <div className="p-2.5 bg-amber-50/80 border border-amber-200 rounded-xl text-left">
+                          <p className="text-[11px] font-bold text-amber-900 mb-1.5">
+                            💡 Có thêm {otherMatchingStudents.length} học sinh khớp mã ở lớp khác hoặc chưa xếp lớp:
+                          </p>
+                          <div className="space-y-1">
+                            {otherMatchingStudents.slice(0, 3).map((s: any) => (
+                              <div key={s.id} className="flex items-center justify-between gap-2 p-1.5 bg-white rounded border border-amber-200 text-xs">
+                                <span className="truncate">
+                                  <strong className="font-mono text-amber-800 mr-1">{s.student_code}</strong>
+                                  {s.full_name} <span className="text-[10px] text-slate-400">({s.classNamesString})</span>
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setAssignMode('individual');
+                                    handleToggleStudent(s.id);
+                                    toast.success(`Đã chọn học sinh ${s.full_name}`);
+                                  }}
+                                  className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded hover:bg-teal-100 shrink-0"
+                                >
+                                  + Chọn em này
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
                 </div>
               )}
 
