@@ -10,6 +10,7 @@ import { hasEssayAnswer } from '../services/essayGradingService';
 
 // ✅ Import Icon cực đẹp từ Lucide
 import { List, CheckCircle2, Type, FileEdit, Check as CheckIcon, X as XIcon } from 'lucide-react';
+import { normalizeExamData } from '../services/examNormalizer';
 
 // ─── Seeded shuffle (Fisher-Yates với seed đơn giản) ─────────────────────────
 function mulberry32(seed: number) {
@@ -94,6 +95,9 @@ interface ExamRoomProps {
 }
 
 const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmissionId, initialAnswers, onSubmitted, onExit }) => {
+  // ✅ Chuẩn hóa triệt để cấu trúc đề thi để không bao giờ bị rỗng hay thiếu trường
+  const safeExam = useMemo(() => normalizeExamData(exam), [exam]);
+
   const [submissionId, setSubmissionId] = useState<string | null>(existingSubmissionId || null);
   const [userAnswers, setUserAnswers] = useState<{ [key: number]: string }>(initialAnswers || {});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -125,7 +129,7 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
 
   const handleSubmit = useCallback(async (force = false, auto = false) => {
     if (!force && !showConfirmSubmit) { setShowConfirmSubmit(true); return; }
-    if (!exam || !submissionId || isSubmittingRef.current) return;
+    if (!safeExam || !submissionId || isSubmittingRef.current) return;
 
     isSubmittingRef.current = true;
     setIsSubmitting(true);
@@ -145,7 +149,7 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
 
     try {
       const submission = await Promise.race([
-        submitExam(submissionId, userAnswers, exam, {
+        submitExam(submissionId, userAnswers, safeExam, {
           tabSwitchCount,
           tabSwitchWarnings: safeWarnings as any,
           autoSubmitted: auto,
@@ -167,8 +171,8 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
           percentage: breakdown.percentage || 0,
           totalScore: submission.score || breakdown.totalScore || 0,
           correctCount: totalCorrect,
-          wrongCount: exam.questions.length - totalCorrect,
-          totalQuestions: exam.questions.length,
+          wrongCount: (safeExam.questions?.length || 0) - totalCorrect,
+          totalQuestions: safeExam.questions?.length || 0,
           scoreBreakdown: breakdown,
           answers: submission.answers
         };
@@ -190,7 +194,7 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
       isSubmittingRef.current = false;
       setIsSubmitting(false);
     }
-  }, [exam, submissionId, userAnswers, tabSwitchCount, tabSwitchWarnings, timeLeft]);
+  }, [safeExam, submissionId, userAnswers, tabSwitchCount, tabSwitchWarnings, timeLeft]);
 
   const { reportTabSwitch, reportViolation, updateProgress, submitSession } = useExamSession({
     roomId: room.id, studentId: student.id, studentName: student.name,
@@ -265,13 +269,14 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
   const shuffleSeed = useMemo(() => strToSeed(`${student.id}|${room.id}|${submissionId ?? 'init'}`), [student.id, room.id, submissionId]);
 
   const groupedQuestions = useMemo(() => {
-    if (!exam?.questions) return [];
+    const questions = safeExam?.questions || [];
+    if (questions.length === 0) return [];
     const groups: any[] = [];
     
-    const mc = exam.questions.filter(q => !q.type || q.type === 'multiple_choice');
-    const tf = exam.questions.filter(q => q.type === 'true_false');
-    const sa = exam.questions.filter(q => q.type === 'short_answer');
-    const wr = exam.questions.filter(q => q.type === 'writing');
+    const mc = questions.filter(q => !q.type || q.type === 'multiple_choice');
+    const tf = questions.filter(q => q.type === 'true_false');
+    const sa = questions.filter(q => q.type === 'short_answer');
+    const wr = questions.filter(q => q.type === 'writing');
 
     // Numbering resets per section (Câu 1..N)
     if (mc.length > 0) {
@@ -295,23 +300,55 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
       });
     }
 
+    // Nếu còn câu hỏi nào chưa vào 4 nhóm trên
+    const mappedIds = new Set([
+      ...mc.map(q => q.id || q.number),
+      ...tf.map(q => q.id || q.number),
+      ...sa.map(q => q.id || q.number),
+      ...wr.map(q => q.id || q.number)
+    ]);
+    const others = questions.filter(q => !mappedIds.has(q.id || q.number));
+    if (others.length > 0) {
+      if (groups.length > 0) {
+        groups[0].questions.push(...others.map((q, idx) => ({ q, displayNum: (q.number % 100) || (groups[0].questions.length + idx + 1) })));
+      } else {
+        groups.push({
+          part: 1,
+          title: 'PHẦN 1. TRẮC NGHIỆM',
+          desc: 'Chọn một phương án đúng A, B, C hoặc D',
+          questions: others.map((q, idx) => ({ q, displayNum: (q.number % 100) || (idx + 1) }))
+        });
+      }
+    }
+
+    // ĐẢM BẢO TUYỆT ĐỐI: NẾU VẪN CHƯA CÓ NHÓM NÀO THÌ TỰ ĐỘNG TẠO NHÓM HIỂN THỊ
+    if (groups.length === 0 && questions.length > 0) {
+      groups.push({
+        part: 1,
+        title: 'DANH SÁCH CÂU HỎI',
+        desc: 'Chọn một phương án đúng cho mỗi câu hỏi',
+        questions: questions.map((q, idx) => ({ q, displayNum: q.number || (idx + 1) }))
+      });
+    }
+
     return groups;
-  }, [exam]);
+  }, [safeExam]);
 
   const answeredCount = useMemo(() => {
-    if (!exam?.questions) return 0;
-    return exam.questions.filter((q) => {
-      const ans = userAnswers[q.number];
+    if (!safeExam?.questions) return 0;
+    return safeExam.questions.filter((q) => {
+      const qNum = q.number !== undefined ? q.number : 1;
+      const ans = userAnswers[qNum];
       if (!ans) return false;
       const qType = q.type || 'multiple_choice';
       if (qType === 'true_false') return isTFFullyAnswered(ans, q.options || []);
       return true;
     }).length;
-  }, [exam, userAnswers]);
+  }, [safeExam, userAnswers]);
 
   useEffect(() => { updateProgress(answeredCount, timeLeft); }, [answeredCount, timeLeft, updateProgress]);
 
-  const totalQuestions = exam?.questions.length || 0;
+  const totalQuestions = safeExam?.questions?.length || 0;
   const progress = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
 
   return (
@@ -416,17 +453,20 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
                   <p className="text-white/90 text-sm mt-1 font-medium">{group.desc}</p>
                 </div>
                 <div className="space-y-4">
-                  {group.questions.map(({ q, displayNum }) => (
-                    <QuestionCard
-                      key={q.number}
-                      question={q}
-                      displayNum={displayNum}
-                      userAnswer={userAnswers[q.number]}
-                      onChange={(ans) => handleAnswerChange(q.number, ans)}
-                      shuffleSeed={shuffleSeed + q.number}
-                      shuffleEnabled={shuffleEnabled}
-                    />
-                  ))}
+                  {group.questions.map(({ q, displayNum }, qIdx) => {
+                    const qNum = q.number !== undefined ? q.number : (displayNum || qIdx + 1);
+                    return (
+                      <QuestionCard
+                        key={qNum || q.id || qIdx}
+                        question={q}
+                        displayNum={displayNum}
+                        userAnswer={userAnswers[qNum]}
+                        onChange={(ans) => handleAnswerChange(qNum, ans)}
+                        shuffleSeed={shuffleSeed + Number(qNum)}
+                        shuffleEnabled={shuffleEnabled}
+                      />
+                    );
+                  })}
                 </div>
               </div>
             );
@@ -466,7 +506,8 @@ export default ExamRoom;
 // ============================================================
 
 const QuestionCard: React.FC<any> = ({ question, displayNum, userAnswer, onChange, shuffleSeed = 0, shuffleEnabled = false }) => {
-  const qType = question.type || 'multiple_choice';
+  const normalizedQType = (question.type === 'true_false' || question.type === 'short_answer' || question.type === 'writing') ? question.type : 'multiple_choice';
+  const qType = normalizedQType;
   const isAnswered = qType === 'true_false' ? isTFFullyAnswered(userAnswer, question.options || []) : qType === 'writing' ? hasEssayAnswer(userAnswer) : !!userAnswer;
   const questionImages = question.images || [];
 
@@ -483,17 +524,18 @@ const QuestionCard: React.FC<any> = ({ question, displayNum, userAnswer, onChang
   }, [questionImages, question.text]);
 
   const shuffledOptions = useMemo(() => {
-    if (!question.options) return [];
+    const opts = Array.isArray(question.options) ? question.options : [];
+    if (opts.length === 0) return [];
     // ✅ FIX: Phòng KHÔNG bật xáo trộn → giữ nguyên thứ tự phương án gốc.
-    if (!shuffleEnabled) return question.options;
-    if (qType === 'multiple_choice') return seededShuffle(question.options, shuffleSeed);
+    if (!shuffleEnabled) return opts;
+    if (qType === 'multiple_choice') return seededShuffle(opts, shuffleSeed);
     if (qType === 'true_false') {
-      const dOpt = question.options.find((o: any) => (o.letter || o.id || '').toLowerCase() === 'd');
-      const movable = question.options.filter((o: any) => (o.letter || o.id || '').toLowerCase() !== 'd');
+      const dOpt = opts.find((o: any) => (o.letter || o.id || '').toLowerCase() === 'd');
+      const movable = opts.filter((o: any) => (o.letter || o.id || '').toLowerCase() !== 'd');
       const shuffled = seededShuffle(movable, shuffleSeed);
       return dOpt ? [...shuffled, dOpt] : shuffled;
     }
-    return question.options;
+    return opts;
   }, [question.options, qType, shuffleSeed, shuffleEnabled]);
 
   // ✅ Định dạng Icon và Label theo loại câu hỏi
@@ -502,7 +544,7 @@ const QuestionCard: React.FC<any> = ({ question, displayNum, userAnswer, onChang
     true_false: { icon: <CheckCircle2 className="w-3.5 h-3.5" />, label: 'Đúng / Sai', color: 'text-teal-700 bg-teal-100 border-teal-300' },
     short_answer: { icon: <Type className="w-3.5 h-3.5" />, label: 'Trả lời ngắn', color: 'text-amber-700 bg-amber-100 border-amber-300' },
     writing: { icon: <FileEdit className="w-3.5 h-3.5" />, label: 'Tự luận', color: 'text-purple-700 bg-purple-100 border-purple-300' },
-  }[qType as keyof typeof TypeBadge];
+  }[qType as keyof typeof TypeBadge] || { icon: <List className="w-3.5 h-3.5" />, label: 'Trắc nghiệm', color: 'text-blue-700 bg-blue-100 border-blue-300' };
 
   return (
     <div className={`bg-white rounded-2xl border-2 overflow-hidden shadow-sm ${isAnswered ? 'border-teal-400' : 'border-gray-200'}`}>
