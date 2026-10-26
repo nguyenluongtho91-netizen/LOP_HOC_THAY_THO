@@ -101,7 +101,7 @@ const ResultView: React.FC<ResultViewProps> = ({
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto p-6">
+      <div className="max-w-4xl mx-auto p-4 sm:p-6 pb-12">
         {/* Điểm + Xếp loại */}
         <div className="bg-white rounded-3xl shadow-2xl p-8 mb-8">
           <div className="text-center mb-6">
@@ -232,13 +232,13 @@ const ResultView: React.FC<ResultViewProps> = ({
             </div>
           </div>
 
-          <div className="flex gap-4 justify-center">
-            <button onClick={onExit} className="px-8 py-3 rounded-xl font-semibold text-teal-600 border-2 border-teal-300 hover:bg-teal-50 transition">
+          <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4 justify-center items-center w-full px-2">
+            <button onClick={onExit} className="flex-1 sm:flex-initial px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-semibold text-teal-600 border-2 border-teal-300 hover:bg-teal-50 transition text-sm sm:text-base text-center">
               ← Về trang chủ
             </button>
             {onRetry && (
-              <button onClick={onRetry} className="px-8 py-3 rounded-xl font-bold text-white transition" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}>
-                🔄 Làm lại
+              <button onClick={onRetry} className="flex-1 sm:flex-initial px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl font-bold text-white transition text-sm sm:text-base text-center shadow-md hover:opacity-95" style={{ background: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)' }}>
+                🔄 Làm lại bài thi
               </button>
             )}
           </div>
@@ -327,6 +327,32 @@ const ResultView: React.FC<ResultViewProps> = ({
             </div>
           </div>
         )}
+
+        {/* Action card ở cuối trang sau khi học sinh xem xong toàn bộ bài */}
+        <div className="mt-8 bg-white rounded-3xl shadow-lg border border-teal-100 p-6 text-center">
+          <p className="text-gray-700 font-semibold mb-4 text-base">
+            🎉 Bạn đã xem hết kết quả & lời giải chi tiết của đề thi!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center max-w-md mx-auto">
+            {onRetry && (
+              <button 
+                onClick={onRetry} 
+                className="w-full sm:flex-1 px-6 py-3 rounded-2xl font-bold text-white transition text-center shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base" 
+                style={{ background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)' }}
+              >
+                <span>🔄</span>
+                <span>Bắt đầu thi lại (Đảo câu)</span>
+              </button>
+            )}
+            <button 
+              onClick={onExit} 
+              className="w-full sm:flex-1 px-6 py-3 rounded-2xl font-bold text-teal-700 bg-teal-50 border-2 border-teal-300 hover:bg-teal-100 active:scale-95 transition text-center flex items-center justify-center gap-2 text-sm sm:text-base"
+            >
+              <span>🏠</span>
+              <span>Về màn hình chính</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
