@@ -353,7 +353,6 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
 
   return (
     <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-      <DynamicWatermark studentId={student.id} studentName={student.name} roomCode={room.code} />
 
       {isKicked && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
@@ -666,9 +665,4 @@ const TrueFalseGrid: React.FC<any> = ({ options, userAnswer, onChange }) => {
   );
 };
 
-const DynamicWatermark: React.FC<any> = ({ studentId, studentName, roomCode }) => (
-  <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden opacity-[0.06] select-none text-black font-black text-2xl md:text-4xl whitespace-nowrap tracking-widest flex flex-col justify-between">
-    <div style={{ transform: 'rotate(-30deg) translate(-20%, 50%)' }}>{studentId} - {studentName} - {roomCode}</div>
-    <div style={{ transform: 'rotate(-30deg) translate(20%, -50%)' }}>{studentId} - {studentName} - {roomCode}</div>
-  </div>
-);
+const DynamicWatermark = () => null;
