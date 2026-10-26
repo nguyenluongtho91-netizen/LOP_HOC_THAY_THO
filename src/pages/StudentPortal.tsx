@@ -66,6 +66,9 @@ export default function StudentPortal() {
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState<string | null>(null)
   const [isUploadingAvatar, setIsUploadingAvatar] = useState(false)
 
+  // Quản lý Tab hiển thị: 'pending' (cần làm) | 'completed' (lịch sử) | 'all' (tất cả)
+  const [activeTab, setActiveTab] = useState<'pending' | 'completed' | 'all'>('pending')
+
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
     if (sessionStr) {
@@ -633,9 +636,6 @@ export default function StudentPortal() {
   // Chưa thi: chưa có bài nộp status = 'submitted'
   const pendingExams = examsList.filter(room => !submittedRoomIds.includes(room.id))
   const activePendingCount = pendingExams.filter(room => room.status !== 'closed' && room.status !== 'waiting').length
-
-  // Quản lý Tab hiển thị: 'pending' (cần làm) | 'completed' (lịch sử) | 'all' (tất cả)
-  const [activeTab, setActiveTab] = useState<'pending' | 'completed' | 'all'>('pending')
 
   // ── DASHBOARD (đã đăng nhập) ─────────────────────────────────
   return (
