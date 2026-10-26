@@ -1323,6 +1323,73 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     <span>I. BÍ KÍP THẦN CHÚ HÓA HỌC VÔ CƠ (LỚP 6 - 11)</span>
                   </div>
 
+                  {/* BẢNG NGUYÊN TỬ KHỐI 18 NGUYÊN TỐ CỐT LÕI */}
+                  <div className="bg-gradient-to-br from-teal-50 via-white to-sky-50 rounded-2xl p-6 shadow-sm border border-teal-200">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 border-b border-teal-100 pb-3">
+                      <div className="flex items-center gap-2.5 text-teal-900 font-black text-lg">
+                        <Award className="w-6 h-6 text-teal-600" />
+                        <span>BẢNG NGUYÊN TỬ KHỐI 18 NGUYÊN TỐ CỐT LÕI (BẮT BUỘC THUỘC LÒNG)</span>
+                      </div>
+                      <span className="text-xs font-bold px-3 py-1 rounded-full bg-teal-600 text-white shadow-sm w-fit">
+                        Lấy Gốc Hóa Học Cấp 2 & 3
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+                      💡 <strong>Nguyên tử khối (M)</strong> tính theo đơn vị <strong>amu</strong> (hoặc đvC). Đây là 18 nguyên tố xuất hiện 95% trong mọi đề thi kiểm tra, thi vào 10 và THPT Quốc gia:
+                    </p>
+
+                    <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 gap-2.5 text-center">
+                      {[
+                        { s: 'H', name: 'Hiđro', m: '1' },
+                        { s: 'Li', name: 'Liti', m: '7' },
+                        { s: 'C', name: 'Cacbon', m: '12' },
+                        { s: 'N', name: 'Nitơ', m: '14' },
+                        { s: 'O', name: 'Oxi', m: '16' },
+                        { s: 'F', name: 'Flo', m: '19' },
+                        { s: 'Ne', name: 'Neon', m: '20' },
+                        { s: 'Na', name: 'Natri', m: '23' },
+                        { s: 'Mg', name: 'Magie', m: '24' },
+                        { s: 'Al', name: 'Nhôm', m: '27' },
+                        { s: 'Cl', name: 'Clo', m: '35.5' },
+                        { s: 'Ar', name: 'Agon', m: '40' },
+                        { s: 'K', name: 'Kali', m: '39' },
+                        { s: 'Ca', name: 'Canxi', m: '40' },
+                        { s: 'Fe', name: 'Sắt', m: '56' },
+                        { s: 'Cu', name: 'Đồng', m: '64' },
+                        { s: 'Zn', name: 'Kẽm', m: '65' },
+                        { s: 'Ag', name: 'Bạc', m: '108' },
+                        { s: 'Ba', name: 'Bari', m: '137' },
+                      ].map((item, idx) => (
+                        <div key={idx} className="bg-white p-2.5 rounded-xl border border-teal-100 shadow-xs hover:border-teal-400 hover:shadow-md transition">
+                          <div className="text-lg font-black text-teal-700 font-mono">{item.s}</div>
+                          <div className="text-[10px] text-slate-500 truncate font-medium">{item.name}</div>
+                          <div className="text-xs font-black text-rose-600 mt-1 bg-rose-50 rounded py-0.5 border border-rose-100">
+                            M = {item.m}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-teal-100 flex items-center justify-between text-xs">
+                      <span className="text-slate-500 italic">
+                        * Mẹo nhớ: C (12), N (14), O (16) chẵn cách nhau 2 đơn vị; Na (23), Mg (24), Al (27); Fe (56), Cu (64), Zn (65).
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedTopicId('khtn_nguyen_to');
+                          setSelectedExamNo(1);
+                          setActiveTab('exams');
+                          toast.success('Đã mở 10 Đề Lấy Gốc Nguyên Tử Khối!');
+                        }}
+                        className="font-bold text-teal-700 hover:text-teal-900 flex items-center gap-1 cursor-pointer hover:underline"
+                      >
+                        👉 Làm 10 đề luyện Nguyên Tử Khối ngay
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Tính phân tử khối */}
                   <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
                     <div className="flex items-center gap-2.5 mb-4 text-sky-800 font-black text-lg border-b pb-3">

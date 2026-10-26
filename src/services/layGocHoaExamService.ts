@@ -30,11 +30,11 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
   {
     id: 'khtn_nguyen_to',
     branch: 'vo_co',
-    title: 'Phần 1: Nguyên Tố Hóa Học & Nguyên Tử Khối (Lớp 6 - 7)',
-    shortTitle: 'Phần 1: Kí Hiệu & NTK',
+    title: 'Phần 1: Xác Định Nguyên Tử Khối (H, Li, C, N, O, F, Na, Mg, Al, Ca, Fe, Cu, Zn, Ag, Ba, Ne, Ar, Cl)',
+    shortTitle: 'Phần 1: Nguyên Tử Khối (H, Li, Na, Fe...)',
     icon: '⚛️',
-    gradeBadge: 'Lớp 6-7',
-    description: 'Bảng 20 nguyên tố hóa học đầu tiên, tên gọi IUPAC mới, kí hiệu hóa học quốc tế và nguyên tử khối.',
+    gradeBadge: 'Lớp 6-12',
+    description: 'Chuyên mục xác định chính xác nguyên tử khối (amu/đvC) của 18 nguyên tố cốt lõi: H, Li, C, N, O, F, Na, Mg, Al, Ca, Fe, Cu, Zn, Ag, Ba, Ne, Ar, Cl.',
     totalExams: 10,
     questionsPerExam: 20
   },
@@ -221,224 +221,144 @@ const RAW_CHEM_DATA: Record<string, Array<{
 }>> = {
   "khtn_nguyen_to": [
     {
-      "question": "Kí hiệu hóa học quốc tế của nguyên tố Hiđro (Hydrogen) là:",
-      "mathExpression": null,
-      "correctAnswer": "H",
-      "distractors": [
-        "He",
-        "Hg",
-        "Ho"
-      ],
-      "explanation": "Hiđro có kí hiệu là H, nguyên tử khối M = 1 amu."
+      "question": "Nguyên tử khối (khối lượng nguyên tử) của nguyên tố Hiđro (Hydrogen, H) là:",
+      "mathExpression": "M_{\\mathrm{H}} = ?",
+      "correctAnswer": "1 amu",
+      "distractors": ["2 amu", "4 amu", "16 amu"],
+      "explanation": "Hiđro có kí hiệu H, nguyên tử khối M = 1 amu (hoặc 1 đvC)."
     },
     {
-      "question": "Khối lượng nguyên tử (nguyên tử khối) xấp xỉ của Oxi (Oxygen) là:",
-      "mathExpression": "M_{\\mathrm{O}} = ?",
-      "correctAnswer": "16 amu",
-      "distractors": [
-        "8 amu",
-        "32 amu",
-        "14 amu"
-      ],
-      "explanation": "Oxi có Z = 8 và nguyên tử khối xấp xỉ 16 amu."
+      "question": "Nguyên tử khối của nguyên tố Liti (Lithium, Li) bằng:",
+      "mathExpression": "M_{\\mathrm{Li}} = ?",
+      "correctAnswer": "7 amu",
+      "distractors": ["3 amu", "6 amu", "9 amu"],
+      "explanation": "Liti có kí hiệu Li (Z = 3), nguyên tử khối M = 7 amu."
     },
     {
-      "question": "Kí hiệu hóa học quốc tế của nguyên tố Cacbon (Carbon) là:",
-      "mathExpression": null,
-      "correctAnswer": "C",
-      "distractors": [
-        "Ca",
-        "Cl",
-        "Cu"
-      ],
-      "explanation": "Cacbon có kí hiệu là C, nguyên tử khối M = 12 amu."
+      "question": "Nguyên tử khối của nguyên tố Cacbon (Carbon, C) bằng:",
+      "mathExpression": "M_{\\mathrm{C}} = ?",
+      "correctAnswer": "12 amu",
+      "distractors": ["6 amu", "14 amu", "16 amu"],
+      "explanation": "Cacbon có kí hiệu C, nguyên tử khối M = 12 amu."
     },
     {
-      "question": "Nguyên tố Nitơ (Nitrogen) có khối lượng nguyên tử bằng:",
+      "question": "Nguyên tố Nitơ (Nitrogen, N) có nguyên tử khối bằng:",
       "mathExpression": "M_{\\mathrm{N}} = ?",
       "correctAnswer": "14 amu",
-      "distractors": [
-        "7 amu",
-        "28 amu",
-        "16 amu"
-      ],
-      "explanation": "Nitơ có kí hiệu là N, nguyên tử khối M = 14 amu."
+      "distractors": ["7 amu", "12 amu", "28 amu"],
+      "explanation": "Nitơ có kí hiệu N, nguyên tử khối M = 14 amu."
     },
     {
-      "question": "Kí hiệu hóa học Na đại diện cho nguyên tố kim loại kiềm nào sau đây?",
-      "mathExpression": null,
-      "correctAnswer": "Natri (Sodium)",
-      "distractors": [
-        "Nitơ",
-        "Niken",
-        "Neon"
-      ],
-      "explanation": "Na là kí hiệu của Natri (Sodium), nguyên tử khối M = 23 amu."
+      "question": "Nguyên tử khối của nguyên tố Oxi (Oxygen, O) là:",
+      "mathExpression": "M_{\\mathrm{O}} = ?",
+      "correctAnswer": "16 amu",
+      "distractors": ["8 amu", "32 amu", "14 amu"],
+      "explanation": "Oxi có kí hiệu O (Z = 8), nguyên tử khối M = 16 amu."
     },
     {
-      "question": "Khối lượng nguyên tử của Nhôm (Aluminium, Al) là:",
+      "question": "Nguyên tử khối của nguyên tố Flo (Fluorine, F) bằng:",
+      "mathExpression": "M_{\\mathrm{F}} = ?",
+      "correctAnswer": "19 amu",
+      "distractors": ["9 amu", "18 amu", "35,5 amu"],
+      "explanation": "Flo có kí hiệu F (Z = 9), nguyên tử khối M = 19 amu."
+    },
+    {
+      "question": "Nguyên tử khối của khí hiếm Neon (Ne) là:",
+      "mathExpression": "M_{\\mathrm{Ne}} = ?",
+      "correctAnswer": "20 amu",
+      "distractors": ["10 amu", "19 amu", "40 amu"],
+      "explanation": "Neon có kí hiệu Ne (Z = 10), nguyên tử khối M = 20 amu."
+    },
+    {
+      "question": "Kim loại kiềm Natri (Sodium, Na) có nguyên tử khối bằng:",
+      "mathExpression": "M_{\\mathrm{Na}} = ?",
+      "correctAnswer": "23 amu",
+      "distractors": ["11 amu", "24 amu", "39 amu"],
+      "explanation": "Natri có kí hiệu Na, nguyên tử khối M = 23 amu."
+    },
+    {
+      "question": "Nguyên tử khối của kim loại Magie (Magnesium, Mg) là:",
+      "mathExpression": "M_{\\mathrm{Mg}} = ?",
+      "correctAnswer": "24 amu",
+      "distractors": ["12 amu", "23 amu", "27 amu"],
+      "explanation": "Magie có kí hiệu Mg, nguyên tử khối M = 24 amu."
+    },
+    {
+      "question": "Nguyên tử khối của kim loại Nhôm (Aluminium, Al) là:",
       "mathExpression": "M_{\\mathrm{Al}} = ?",
       "correctAnswer": "27 amu",
-      "distractors": [
-        "13 amu",
-        "26 amu",
-        "54 amu"
-      ],
+      "distractors": ["13 amu", "26 amu", "56 amu"],
       "explanation": "Nhôm có kí hiệu Al, nguyên tử khối M = 27 amu."
     },
     {
-      "question": "Kim loại Sắt (Iron) có kí hiệu hóa học quốc tế là:",
-      "mathExpression": null,
-      "correctAnswer": "Fe",
-      "distractors": [
-        "F",
-        "Fr",
-        "Ir"
-      ],
-      "explanation": "Sắt có kí hiệu hóa học là Fe (từ Ferrum), nguyên tử khối M = 56 amu."
+      "question": "Nguyên tố Clo (Chlorine, Cl) có nguyên tử khối quy ước là:",
+      "mathExpression": "M_{\\mathrm{Cl}} = ?",
+      "correctAnswer": "35,5 amu",
+      "distractors": ["35 amu", "36 amu", "17 amu"],
+      "explanation": "Clo có kí hiệu Cl, nguyên tử khối trung bình quy ước là 35,5 amu."
     },
     {
-      "question": "Nguyên tử khối của nguyên tố Đồng (Copper, Cu) bằng:",
+      "question": "Nguyên tử khối của khí hiếm Agon (Argon, Ar) xấp xỉ bằng:",
+      "mathExpression": "M_{\\mathrm{Ar}} = ?",
+      "correctAnswer": "40 amu",
+      "distractors": ["18 amu", "20 amu", "39 amu"],
+      "explanation": "Agon có kí hiệu Ar (Z = 18), nguyên tử khối xấp xỉ M = 40 amu (chính xác 39,95 amu)."
+    },
+    {
+      "question": "Kim loại kiềm Kali (Potassium, K) có nguyên tử khối bằng:",
+      "mathExpression": "M_{\\mathrm{K}} = ?",
+      "correctAnswer": "39 amu",
+      "distractors": ["19 amu", "23 amu", "40 amu"],
+      "explanation": "Kali có kí hiệu K, nguyên tử khối M = 39 amu."
+    },
+    {
+      "question": "Nguyên tử khối của kim loại Canxi (Calcium, Ca) bằng:",
+      "mathExpression": "M_{\\mathrm{Ca}} = ?",
+      "correctAnswer": "40 amu",
+      "distractors": ["20 amu", "39 amu", "24 amu"],
+      "explanation": "Canxi có kí hiệu Ca, nguyên tử khối M = 40 amu."
+    },
+    {
+      "question": "Kim loại Sắt (Iron, Fe) có nguyên tử khối bằng:",
+      "mathExpression": "M_{\\mathrm{Fe}} = ?",
+      "correctAnswer": "56 amu",
+      "distractors": ["26 amu", "64 amu", "65 amu"],
+      "explanation": "Sắt có kí hiệu Fe, nguyên tử khối M = 56 amu."
+    },
+    {
+      "question": "Nguyên tử khối của kim loại Đồng (Copper, Cu) là:",
       "mathExpression": "M_{\\mathrm{Cu}} = ?",
       "correctAnswer": "64 amu",
-      "distractors": [
-        "65 amu",
-        "56 amu",
-        "32 amu"
-      ],
+      "distractors": ["29 amu", "56 amu", "65 amu"],
       "explanation": "Đồng có kí hiệu Cu, nguyên tử khối M = 64 amu."
     },
     {
-      "question": "Kí hiệu hóa học Ca biểu diễn nguyên tố kim loại nào?",
-      "mathExpression": null,
-      "correctAnswer": "Canxi (Calcium)",
-      "distractors": [
-        "Cacbon",
-        "Đồng",
-        "Clo"
-      ],
-      "explanation": "Ca là kí hiệu của Canxi (Calcium), nguyên tử khối M = 40 amu."
+      "question": "Nguyên tử khối của kim loại Kẽm (Zinc, Zn) bằng:",
+      "mathExpression": "M_{\\mathrm{Zn}} = ?",
+      "correctAnswer": "65 amu",
+      "distractors": ["30 amu", "56 amu", "64 amu"],
+      "explanation": "Kẽm có kí hiệu Zn, nguyên tử khối M = 65 amu."
     },
     {
-      "question": "Nguyên tố Kali (Potassium) có khối lượng nguyên tử là:",
-      "mathExpression": "M_{\\mathrm{K}} = ?",
-      "correctAnswer": "39 amu",
-      "distractors": [
-        "19 amu",
-        "23 amu",
-        "40 amu"
-      ],
-      "explanation": "Kali có kí hiệu là K, nguyên tử khối M = 39 amu."
+      "question": "Kim loại quý Bạc (Silver, Ag) có nguyên tử khối bằng:",
+      "mathExpression": "M_{\\mathrm{Ag}} = ?",
+      "correctAnswer": "108 amu",
+      "distractors": ["47 amu", "64 amu", "137 amu"],
+      "explanation": "Bạc có kí hiệu Ag, nguyên tử khối M = 108 amu."
     },
     {
-      "question": "Trong hạt nhân nguyên tử, loại hạt mang điện tích dương (+) là:",
-      "mathExpression": null,
-      "correctAnswer": "Proton",
-      "distractors": [
-        "Electron",
-        "Nơtron",
-        "Photon"
-      ],
-      "explanation": "Hạt nhân gồm proton mang điện dương (+) và nơtron không mang điện."
+      "question": "Kim loại Bari (Barium, Ba) có nguyên tử khối bằng:",
+      "mathExpression": "M_{\\mathrm{Ba}} = ?",
+      "correctAnswer": "137 amu",
+      "distractors": ["56 amu", "108 amu", "40 amu"],
+      "explanation": "Bari có kí hiệu Ba, nguyên tử khối M = 137 amu."
     },
     {
-      "question": "Vỏ nguyên tử được tạo bởi các hạt mang điện tích âm (-) gọi là:",
-      "mathExpression": null,
-      "correctAnswer": "Electron",
-      "distractors": [
-        "Proton",
-        "Nơtron",
-        "Ion"
-      ],
-      "explanation": "Lớp vỏ nguyên tử gồm các electron chuyển động rất nhanh quanh hạt nhân."
-    },
-    {
-      "question": "Nguyên tử trung hòa về điện là do:",
-      "mathExpression": null,
-      "correctAnswer": "Số hạt proton bằng số hạt electron",
-      "distractors": [
-        "Số proton bằng số nơtron",
-        "Số nơtron bằng số electron",
-        "Không có hạt mang điện"
-      ],
-      "explanation": "Trong mọi nguyên tử: Số p = Số e, điện tích triệt tiêu nhau."
-    },
-    {
-      "question": "Một nguyên tử Oxi (M = 16) nặng gấp bao nhiêu lần một nguyên tử Hiđro (M = 1)?",
-      "mathExpression": "\\frac{M_{\\mathrm{O}}}{M_{\\mathrm{H}}} = \\frac{16}{1}",
-      "correctAnswer": "Nặng hơn 16 lần",
-      "distractors": [
-        "Nặng hơn 8 lần",
-        "Nặng hơn 2 lần",
-        "Bằng nhau"
-      ],
-      "explanation": "Tỉ số khối lượng: 16 : 1 = 16 lần."
-    },
-    {
-      "question": "Trong các chất sau, đâu là đơn chất kim loại dẫn điện và nhiệt tốt?",
-      "mathExpression": null,
-      "correctAnswer": "Nhôm (Al)",
-      "distractors": [
-        "Khí Oxi (O₂)",
-        "Nước (H₂O)",
-        "Khí Cacbonic (CO₂)"
-      ],
-      "explanation": "Nhôm (Al) là đơn chất kim loại có tính dẻo, dẫn điện và nhiệt rất tốt."
-    },
-    {
-      "question": "Chất nào sau đây là đơn chất phi kim duy trì sự sống và sự hô hấp?",
-      "mathExpression": null,
-      "correctAnswer": "Khí Oxi (O₂)",
-      "distractors": [
-        "Khí Nitơ (N₂)",
-        "Kim loại Sắt (Fe)",
-        "Khí Cacbonic (CO₂)"
-      ],
-      "explanation": "Khí Oxi (O₂) là đơn chất phi kim duy trì sự sống và hô hấp."
-    },
-    {
-      "question": "Hợp chất là những chất được tạo nên từ bao nhiêu nguyên tố hóa học trở lên?",
-      "mathExpression": null,
-      "correctAnswer": "Từ 2 nguyên tố hóa học trở lên",
-      "distractors": [
-        "Chỉ từ 1 nguyên tố",
-        "Từ 5 nguyên tố",
-        "Chỉ từ kim loại"
-      ],
-      "explanation": "Đơn chất do 1 nguyên tố tạo nên, hợp chất do từ 2 nguyên tố trở lên tạo nên."
-    },
-    {
-      "question": "Kim loại duy nhất ở thể lỏng ở nhiệt độ thường là:",
-      "mathExpression": null,
-      "correctAnswer": "Thủy ngân (Hg)",
-      "distractors": [
-        "Sắt (Fe)",
-        "Đồng (Cu)",
-        "Chì (Pb)"
-      ],
-      "explanation": "Thủy ngân (Hg) là kim loại ở thể lỏng ở điều kiện thường."
-    },
-    {
-      "question": "Khí Clo (Chlorine) có nguyên tử khối bằng:",
-      "mathExpression": "M_{\\mathrm{Cl}} = ?",
-      "correctAnswer": "35,5 amu",
-      "distractors": [
-        "35 amu",
-        "36 amu",
-        "17 amu"
-      ],
-      "explanation": "Nguyên tử khối quy ước của Clo là 35,5 amu."
-    },
-    {
-      "question": "Khối lượng của nguyên tử hầu như tập trung toàn bộ ở bộ phận nào?",
-      "mathExpression": null,
-      "correctAnswer": "Hạt nhân nguyên tử",
-      "distractors": [
-        "Lớp vỏ electron",
-        "Phân bố đều",
-        "Bên ngoài nguyên tử"
-      ],
-      "explanation": "Khối lượng electron rất nhỏ (khoảng 1/1840 amu) nên khối lượng nguyên tử tập trung ở hạt nhân."
+      "question": "Nguyên tố phi kim Lưu huỳnh (Sulfur, S) có nguyên tử khối bằng:",
+      "mathExpression": "M_{\\mathrm{S}} = ?",
+      "correctAnswer": "32 amu",
+      "distractors": ["16 amu", "31 amu", "35,5 amu"],
+      "explanation": "Lưu huỳnh có kí hiệu S (Z = 16), nguyên tử khối M = 32 amu."
     }
   ],
   "tinh_phan_tu_khoi": [
@@ -3552,13 +3472,89 @@ const RAW_CHEM_DATA: Record<string, Array<{
 };
 
 
+export interface ElementNTK {
+  symbol: string;
+  nameVi: string;
+  nameIupac: string;
+  ntk: string;
+  distractors: string[];
+  elementDistractors: string[];
+}
+
+export const NTK_18_ELEMENTS: ElementNTK[] = [
+  { symbol: 'H', nameVi: 'Hiđro', nameIupac: 'Hydrogen', ntk: '1 amu', distractors: ['2 amu', '4 amu', '16 amu'], elementDistractors: ['Heli (He)', 'Liti (Li)', 'Cacbon (C)'] },
+  { symbol: 'Li', nameVi: 'Liti', nameIupac: 'Lithium', ntk: '7 amu', distractors: ['3 amu', '6 amu', '9 amu'], elementDistractors: ['Beri (Be)', 'Bo (B)', 'Hiđro (H)'] },
+  { symbol: 'C', nameVi: 'Cacbon', nameIupac: 'Carbon', ntk: '12 amu', distractors: ['6 amu', '14 amu', '16 amu'], elementDistractors: ['Nitơ (N)', 'Oxi (O)', 'Canxi (Ca)'] },
+  { symbol: 'N', nameVi: 'Nitơ', nameIupac: 'Nitrogen', ntk: '14 amu', distractors: ['7 amu', '12 amu', '28 amu'], elementDistractors: ['Cacbon (C)', 'Oxi (O)', 'Natri (Na)'] },
+  { symbol: 'O', nameVi: 'Oxi', nameIupac: 'Oxygen', ntk: '16 amu', distractors: ['8 amu', '32 amu', '14 amu'], elementDistractors: ['Nitơ (N)', 'Flo (F)', 'Lưu huỳnh (S)'] },
+  { symbol: 'F', nameVi: 'Flo', nameIupac: 'Fluorine', ntk: '19 amu', distractors: ['9 amu', '18 amu', '35,5 amu'], elementDistractors: ['Clo (Cl)', 'Neon (Ne)', 'Oxi (O)'] },
+  { symbol: 'Ne', nameVi: 'Neon', nameIupac: 'Neon', ntk: '20 amu', distractors: ['10 amu', '19 amu', '40 amu'], elementDistractors: ['Agon (Ar)', 'Flo (F)', 'Natri (Na)'] },
+  { symbol: 'Na', nameVi: 'Natri', nameIupac: 'Sodium', ntk: '23 amu', distractors: ['11 amu', '24 amu', '39 amu'], elementDistractors: ['Magie (Mg)', 'Kali (K)', 'Nhôm (Al)'] },
+  { symbol: 'Mg', nameVi: 'Magie', nameIupac: 'Magnesium', ntk: '24 amu', distractors: ['12 amu', '23 amu', '27 amu'], elementDistractors: ['Natri (Na)', 'Nhôm (Al)', 'Canxi (Ca)'] },
+  { symbol: 'Al', nameVi: 'Nhôm', nameIupac: 'Aluminium', ntk: '27 amu', distractors: ['13 amu', '26 amu', '56 amu'], elementDistractors: ['Magie (Mg)', 'Sắt (Fe)', 'Silic (Si)'] },
+  { symbol: 'Cl', nameVi: 'Clo', nameIupac: 'Chlorine', ntk: '35,5 amu', distractors: ['35 amu', '36 amu', '17 amu'], elementDistractors: ['Flo (F)', 'Brom (Br)', 'Lưu huỳnh (S)'] },
+  { symbol: 'Ar', nameVi: 'Agon', nameIupac: 'Argon', ntk: '40 amu', distractors: ['18 amu', '20 amu', '39 amu'], elementDistractors: ['Neon (Ne)', 'Canxi (Ca)', 'Kali (K)'] },
+  { symbol: 'K', nameVi: 'Kali', nameIupac: 'Potassium', ntk: '39 amu', distractors: ['19 amu', '23 amu', '40 amu'], elementDistractors: ['Natri (Na)', 'Canxi (Ca)', 'Liti (Li)'] },
+  { symbol: 'Ca', nameVi: 'Canxi', nameIupac: 'Calcium', ntk: '40 amu', distractors: ['20 amu', '39 amu', '24 amu'], elementDistractors: ['Kali (K)', 'Magie (Mg)', 'Bari (Ba)'] },
+  { symbol: 'Fe', nameVi: 'Sắt', nameIupac: 'Iron', ntk: '56 amu', distractors: ['26 amu', '64 amu', '65 amu'], elementDistractors: ['Đồng (Cu)', 'Kẽm (Zn)', 'Mangan (Mn)'] },
+  { symbol: 'Cu', nameVi: 'Đồng', nameIupac: 'Copper', ntk: '64 amu', distractors: ['29 amu', '56 amu', '65 amu'], elementDistractors: ['Sắt (Fe)', 'Kẽm (Zn)', 'Bạc (Ag)'] },
+  { symbol: 'Zn', nameVi: 'Kẽm', nameIupac: 'Zinc', ntk: '65 amu', distractors: ['30 amu', '56 amu', '64 amu'], elementDistractors: ['Đồng (Cu)', 'Sắt (Fe)', 'Nhôm (Al)'] },
+  { symbol: 'Ag', nameVi: 'Bạc', nameIupac: 'Silver', ntk: '108 amu', distractors: ['47 amu', '64 amu', '137 amu'], elementDistractors: ['Đồng (Cu)', 'Bari (Ba)', 'Chì (Pb)'] },
+  { symbol: 'Ba', nameVi: 'Bari', nameIupac: 'Barium', ntk: '137 amu', distractors: ['56 amu', '108 amu', '40 amu'], elementDistractors: ['Canxi (Ca)', 'Bạc (Ag)', 'Magie (Mg)'] },
+  { symbol: 'S', nameVi: 'Lưu huỳnh', nameIupac: 'Sulfur', ntk: '32 amu', distractors: ['16 amu', '31 amu', '35,5 amu'], elementDistractors: ['Oxi (O)', 'Photpho (P)', 'Clo (Cl)'] }
+];
+
+function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
+  const baseSeed = 7500 + safeNo * 60;
+  // Hoán vị xoay vòng vị trí 20 nguyên tố theo safeNo để mỗi đề có thứ tự khác biệt
+  const shift = (safeNo - 1) * 7;
+  const orderedElements = Array.from({ length: 20 }, (_, i) => {
+    return NTK_18_ELEMENTS[(i + shift) % 20];
+  });
+
+  return orderedElements.map((el, idx) => {
+    const s = baseSeed + (idx + 1) * 23;
+    // Đề chẵn: xen kẽ các câu hỏi ngược (từ NTK tìm nguyên tố) để rèn phản xạ 2 chiều
+    const isReverseQuestion = (safeNo % 2 === 0) ? (idx % 2 === 1) : false;
+
+    if (isReverseQuestion) {
+      const correctAnswer = `${el.nameVi} (${el.symbol})`;
+      return {
+        id: idx + 1,
+        question: `Câu ${idx + 1}: Nguyên tố hóa học nào sau đây có nguyên tử khối bằng ${el.ntk}?`,
+        mathExpression: `M = ${el.ntk}`,
+        options: makeOptions(correctAnswer, el.elementDistractors, s),
+        correctAnswer,
+        explanation: `Nguyên tố có nguyên tử khối M = ${el.ntk} là ${el.nameVi} (${el.nameIupac}), kí hiệu hóa học là ${el.symbol}.`,
+        topic: 'khtn_nguyen_to'
+      };
+    } else {
+      const correctAnswer = el.ntk;
+      return {
+        id: idx + 1,
+        question: `Câu ${idx + 1}: Nguyên tử khối (khối lượng nguyên tử) của nguyên tố ${el.nameVi} (${el.symbol}) là:`,
+        mathExpression: `M_{\\mathrm{${el.symbol}}} = ?`,
+        options: makeOptions(correctAnswer, el.distractors, s),
+        correctAnswer,
+        explanation: `Nguyên tố ${el.nameVi} (${el.nameIupac}), kí hiệu hóa học ${el.symbol}, có nguyên tử khối M = ${el.ntk}.`,
+        topic: 'khtn_nguyen_to'
+      };
+    }
+  });
+}
+
 // ==============================================================================
 // HÀM LẤY ĐỀ THI HÓA THEO CHUYÊN ĐỀ VÀ SỐ ĐỀ (1 -> 10)
 // ==============================================================================
 export function getLayGocHoaExamQuestions(topicId: string, examNo: number): LayGocHoaQuestion[] {
   const safeNo = Math.min(10, Math.max(1, examNo));
-  const baseSeed = 7000 + safeNo * 50;
 
+  // Chuyên đề Phần 1: Chuyên sâu xác định Nguyên tử khối 18 nguyên tố nền tảng
+  if (topicId === 'khtn_nguyen_to') {
+    return generateNguyenTuKhoiExam(safeNo);
+  }
+
+  const baseSeed = 7000 + safeNo * 50;
   const topicQuestions = RAW_CHEM_DATA[topicId] || RAW_CHEM_DATA['khtn_nguyen_to'];
 
   // Hoán vị câu hỏi theo số đề để các đề 1..10 có thứ tự câu và đáp án xáo trộn sinh động,
