@@ -20,7 +20,9 @@ import {
   Trash2,
   X,
   Loader2,
-  Key
+  Key,
+  Sparkles,
+  Trophy
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import toast from 'react-hot-toast'
@@ -780,6 +782,48 @@ export default function StudentPortal() {
       </header>
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8 animate-fade-in">
+        {/* BANNER CHÀO MỪNG HỌC SINH & THỐNG KÊ NHANH */}
+        <div className="bg-gradient-to-br from-teal-800 via-teal-700 to-emerald-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 backdrop-blur-md text-teal-100 text-xs font-black uppercase tracking-wider border border-white/20">
+                <GraduationCap className="w-4 h-4 text-amber-300" />
+                <span>Không gian học tập & thi trực tuyến</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                Xin chào, {student.full_name}! 👋
+              </h2>
+              <p className="text-teal-100/90 text-sm font-medium max-w-xl leading-relaxed">
+                Thầy Thọ chúc em luôn giữ vững tinh thần tự giác, hoàn thành xuất sắc các bài tập và đạt điểm số cao nhất nhé!
+              </p>
+            </div>
+
+            {/* Quick 3 Stats Cards */}
+            <div className="grid grid-cols-3 gap-3 shrink-0">
+              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 text-center flex flex-col items-center justify-center min-w-[90px] shadow-sm">
+                <span className="text-[10px] font-bold text-teal-200 uppercase tracking-wider">Đã Nộp</span>
+                <span className="text-2xl font-black text-white mt-0.5">{completedExams.length}</span>
+                <span className="text-[10px] text-teal-200 font-medium">bài thi</span>
+              </div>
+              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 text-center flex flex-col items-center justify-center min-w-[90px] shadow-sm">
+                <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider">Điểm TB</span>
+                <span className="text-2xl font-black text-amber-300 mt-0.5">
+                  {completedExams.length > 0 
+                    ? (completedExams.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / completedExams.length).toFixed(1)
+                    : '-'}
+                </span>
+                <span className="text-[10px] text-teal-200 font-medium">thang 10</span>
+              </div>
+              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 text-center flex flex-col items-center justify-center min-w-[90px] shadow-sm">
+                <span className="text-[10px] font-bold text-rose-300 uppercase tracking-wider">Cần Làm</span>
+                <span className="text-2xl font-black text-rose-300 mt-0.5">{pendingExams.length}</span>
+                <span className="text-[10px] text-teal-200 font-medium">bài chờ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Thông báo học phí */}
         {tuitionNotifications.length > 0 && tuitionNotifications.map((notif) => {
           let addInfo = `HP ${student.student_code}`
@@ -1078,48 +1122,49 @@ export default function StudentPortal() {
                 return (
                   <div 
                     key={room.id} 
-                    className="bg-white rounded-2xl p-5 border border-teal-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                    className="bg-white rounded-3xl p-6 border border-teal-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
-                      <div className="flex justify-between items-start gap-2 mb-3">
-                        <span className="text-xs font-bold text-teal-600 bg-teal-50 px-2 py-0.5 rounded border border-teal-100">
-                          {room.classes?.class_name || 'Bài thi tự do'}
+                      <div className="flex justify-between items-start gap-2 mb-3.5">
+                        <span className="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-xl border border-teal-100/80 shadow-2xs">
+                          🏫 {room.classes?.class_name || 'Bài thi tự do'}
                         </span>
                         {statusBadge}
                       </div>
-                      <h3 className="text-base font-extrabold text-gray-800 mb-2 line-clamp-2 leading-snug">
+                      <h3 className="text-base sm:text-lg font-black text-slate-800 mb-2.5 line-clamp-2 leading-snug group-hover:text-teal-700 transition-colors">
                         {room.exams?.title || `Phòng thi ${room.code}`}
                       </h3>
-                      <div className="flex items-center gap-4 text-gray-500 text-xs font-semibold mb-4">
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-gray-400" />
-                          Thời gian: {room.time_limit} phút
+                      <div className="flex flex-wrap items-center gap-3 text-slate-500 text-xs font-semibold mb-5">
+                        <span className="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+                          <Clock className="w-3.5 h-3.5 text-teal-600" />
+                          Thời gian: <strong className="text-slate-700 font-bold">{room.time_limit} phút</strong>
                         </span>
                         {hasSub && (
-                          <span className="bg-orange-50 text-orange-700 px-2 py-0.5 rounded border border-orange-100 text-[10px] uppercase font-black">
-                            Đang làm dở
+                          <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[10px] uppercase font-black animate-pulse">
+                            ⚡ Đang làm dở
                           </span>
                         )}
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
-                      <span className="text-xs text-gray-400 font-medium">Mã phòng: <span className="font-mono font-bold text-gray-600">{room.code}</span></span>
+                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                      <span className="text-xs text-slate-400 font-medium">Mã phòng: <span className="font-mono font-black text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">{room.code}</span></span>
                       
                       {isClosed ? (
-                        <button disabled className="px-4 py-2 bg-gray-100 text-gray-400 text-sm font-bold rounded-xl cursor-not-allowed border border-gray-200">
-                          Hết thời gian
+                        <button disabled className="px-4 py-2 bg-slate-100 text-slate-400 text-xs font-bold rounded-xl cursor-not-allowed border border-slate-200">
+                          Đã đóng
                         </button>
                       ) : isWaiting ? (
-                        <button disabled className="px-4 py-2 bg-amber-50 text-amber-500 text-sm font-bold rounded-xl cursor-not-allowed border border-amber-100">
+                        <button disabled className="px-4 py-2 bg-amber-50 text-amber-600 text-xs font-bold rounded-xl cursor-not-allowed border border-amber-200">
                           Chờ mở phòng
                         </button>
                       ) : (
                         <button 
                           onClick={() => navigate(`/exam-room/${room.id}`)}
-                          className="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white text-sm font-extrabold rounded-xl transition-all shadow-md shadow-teal-500/20 flex items-center gap-1"
+                          className="px-5 py-2.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white text-xs sm:text-sm font-black rounded-xl transition-all shadow-md shadow-teal-500/20 hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
                         >
-                          {hasSub ? 'Tiếp tục ⚡' : 'Làm bài ⚡'}
+                          <Sparkles className="w-4 h-4 text-amber-300" />
+                          <span>{hasSub ? 'Làm tiếp ⚡' : 'Vào làm bài 🚀'}</span>
                         </button>
                       )}
                     </div>
@@ -1151,39 +1196,48 @@ export default function StudentPortal() {
                 return (
                   <div 
                     key={room.id} 
-                    className="bg-white rounded-2xl p-5 border border-gray-150 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                    className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex justify-between items-start gap-2 mb-3">
-                        <span className="text-xs font-bold text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
-                          {room.classes?.class_name || 'Bài thi tự do'}
+                        <span className="text-xs font-bold text-slate-600 bg-slate-50 px-3 py-1 rounded-xl border border-slate-200/60 shadow-2xs">
+                          🏫 {room.classes?.class_name || 'Bài thi tự do'}
                         </span>
-                        <span className="bg-teal-50 text-teal-700 text-xs font-extrabold px-2.5 py-1 rounded-full border border-teal-150">
-                          Đã nộp bài
+                        <span className="bg-emerald-50 text-emerald-800 text-xs font-black px-3 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+                          <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>Đã nộp bài</span>
                         </span>
                       </div>
-                      <h3 className="text-base font-extrabold text-gray-800 mb-2 line-clamp-2 leading-snug">
+                      <h3 className="text-base sm:text-lg font-black text-slate-800 mb-2 line-clamp-2 leading-snug">
                         {room.exams?.title || `Phòng thi ${room.code}`}
                       </h3>
-                      <p className="text-xs text-gray-400 font-semibold mb-4">
-                        Nộp lúc: {formattedDate}
+                      <p className="text-xs text-slate-400 font-medium mb-4 flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5 text-slate-400" />
+                        Nộp lúc: <strong className="text-slate-600">{formattedDate}</strong>
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-gray-100 flex items-center justify-between">
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-xs text-gray-500 font-medium">Điểm:</span>
-                        <span className="text-xl font-black text-teal-600">
+                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                      <div className="flex items-baseline gap-1.5 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-100">
+                        <span className="text-xs text-slate-500 font-bold">Điểm:</span>
+                        <span className={`text-2xl font-black ${
+                          typeof sub.score === 'number' && sub.score >= 8.0 
+                            ? 'text-emerald-600' 
+                            : typeof sub.score === 'number' && sub.score >= 5.0 
+                            ? 'text-teal-600' 
+                            : 'text-rose-600'
+                        }`}>
                           {typeof sub.score === 'number' ? sub.score.toFixed(1) : 'Chưa chấm'}
                         </span>
-                        <span className="text-[10px] text-gray-400">/10</span>
+                        <span className="text-[10px] text-slate-400 font-bold">/10</span>
                       </div>
 
                       <button 
                         onClick={() => navigate(`/exam-room/${room.id}`)}
-                        className="px-4 py-2 bg-teal-50 hover:bg-teal-100 border border-teal-200 text-teal-700 text-sm font-extrabold rounded-xl transition-all flex items-center gap-1"
+                        className="px-4 py-2 bg-slate-100 hover:bg-teal-50 border border-slate-200 hover:border-teal-300 text-slate-700 hover:text-teal-800 text-xs font-black rounded-xl transition-all flex items-center gap-1.5 cursor-pointer"
                       >
-                        Xem kết quả 🔍
+                        <span>Xem bài giải</span>
+                        <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-teal-600" />
                       </button>
                     </div>
                   </div>

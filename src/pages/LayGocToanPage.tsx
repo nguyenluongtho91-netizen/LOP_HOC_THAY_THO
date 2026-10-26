@@ -7,7 +7,8 @@ import {
   Send, Users, Check, Copy, Search, ShieldCheck, X, CheckSquare, Target,
   FlaskConical, Compass, Scale, Bell, AlertTriangle, History, 
   Volume2, ShieldAlert, Calendar, Eye, Activity, TrendingUp, AlertCircle,
-  Share2, Link, MessageCircle, QrCode, ExternalLink, Smartphone, Lock, MonitorPlay
+  Share2, Link, MessageCircle, QrCode, ExternalLink, Smartphone, Lock, MonitorPlay,
+  User, Trophy, GraduationCap
 } from 'lucide-react';
 import MathText from '@/components/MathText';
 import { useAuthStore } from '@/store/authStore';
@@ -45,6 +46,7 @@ export interface ExamAttempt {
   answers: Record<number, string>;
   violations: number; // Số lần vi phạm rời tab
   isAutoSubmittedByViolation?: boolean; // Tự động nộp do vi phạm 3 lần
+  candidateName?: string;
 }
 
 export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolean }) {
@@ -78,6 +80,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     if (user) return false;
     return isPublic || searchParams.get('mode') === 'student' || searchParams.get('view') === 'student';
   }, [user, isPublic, searchParams]);
+
+  // TÊN HỌC SINH LÀM BÀI TRỰC TIẾP (TỰ ĐỘNG NHẬN DIỆN NẾU ĐÃ LƯU)
+  const [candidateName, setCandidateName] = useState<string>(() => {
+    return localStorage.getItem('current_student_name') || localStorage.getItem('student_name') || localStorage.getItem('studentName') || '';
+  });
+
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isCopiedShareLink, setIsCopiedShareLink] = useState<boolean>(false);
   const [isCopiedShareMessage, setIsCopiedShareMessage] = useState<boolean>(false);
@@ -470,7 +478,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       timeSpentSeconds: timeSpent,
       answers: { ...examAnswers },
       violations: tabSwitchCount + (isViolationSubmit ? 1 : 0),
-      isAutoSubmittedByViolation: isViolationSubmit
+      isAutoSubmittedByViolation: isViolationSubmit,
+      candidateName: candidateName.trim() || 'Học sinh'
     };
 
     const updatedHistory = [newAttempt, ...examHistory];
@@ -843,34 +852,59 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
 
       {/* ===================== BANNER ĐẦU TRANG ===================== */}
       {isStudentMode ? (
-        <div className={`shadow-lg print:hidden transition-colors ${
+        <div className={`shadow-xl print:hidden transition-all border-b ${
           currentSubject === 'toan'
-            ? 'bg-gradient-to-r from-red-800 via-rose-800 to-amber-700 text-white'
-            : 'bg-gradient-to-r from-teal-900 via-cyan-900 to-blue-900 text-white'
+            ? 'bg-gradient-to-r from-red-900 via-rose-900 to-slate-900 border-red-700/40 text-white'
+            : 'bg-gradient-to-r from-teal-950 via-slate-900 to-cyan-950 border-teal-700/40 text-white'
         }`}>
           <div className="max-w-6xl mx-auto px-4 py-5 sm:py-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="flex items-center gap-3.5">
-                <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-2xl border border-white/20 shrink-0 shadow-inner">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-3xl border border-white/20 shrink-0 shadow-inner">
                   {currentSubject === 'toan' ? '📐' : '🧪'}
                 </div>
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-[10px] font-black uppercase tracking-wider text-amber-200 mb-1">
-                    <span>LỚP HỌC THẦY THỌ • BÀI TẬP VỀ NHÀ ĐƯỢC GIAO</span>
+                  <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-white/15 text-[10px] font-black uppercase tracking-widest text-amber-300 mb-1 border border-white/10">
+                    <GraduationCap className="w-3.5 h-3.5 text-amber-300" />
+                    <span>LỚP HỌC THẦY THỌ • BÀI KIỂM TRA ĐÁNH GIÁ NĂNG LỰC</span>
                   </div>
-                  <h1 className="text-lg sm:text-xl font-black text-white tracking-tight">
-                    {currentSubject === 'hoa' ? 'Môn Hóa Học' : 'Môn Toán Học'} – {currentTopic.title}
+                  <h1 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
+                    <span>{currentSubject === 'hoa' ? 'Môn Hóa Học' : 'Môn Toán Học'} – {currentTopic.title}</span>
                   </h1>
-                  <p className="text-white/80 text-xs mt-0.5">
-                    🎯 <strong>ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}</strong> • Chuẩn 20 câu hỏi trắc nghiệm • Thời gian làm bài: 20 phút (Tự động chấm điểm)
+                  <p className="text-white/80 text-xs mt-1 flex flex-wrap items-center gap-2">
+                    <span className="font-extrabold text-amber-300">🎯 ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}</span>
+                    <span>•</span>
+                    <span>20 câu hỏi trắc nghiệm</span>
+                    <span>•</span>
+                    <span>Thời gian: 20 phút</span>
+                    <span>•</span>
+                    <span className="text-emerald-300 font-bold">Chấm điểm tự động & Lời giải chi tiết</span>
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <div className="px-3.5 py-2 rounded-xl bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                  <Lock className="w-4 h-4 text-amber-300" />
-                  <span>Đề thi được khóa cố định</span>
+              {/* KHUNG THÔNG TIN THÍ SINH LÀM BÀI */}
+              <div className="flex flex-wrap items-center gap-2.5 bg-black/30 backdrop-blur-md p-2.5 rounded-2xl border border-white/15 self-start md:self-auto shadow-sm">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 border border-white/15">
+                  <User className="w-4 h-4 text-amber-300 shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-[9px] text-white/60 font-bold uppercase tracking-wider">Họ & Tên Thí Sinh:</span>
+                    <input
+                      type="text"
+                      placeholder="Nhập tên em vào đây..."
+                      value={candidateName}
+                      onChange={(e) => {
+                        setCandidateName(e.target.value);
+                        localStorage.setItem('student_name', e.target.value);
+                      }}
+                      className="bg-transparent border-b border-white/30 focus:border-amber-300 text-white font-black text-xs outline-none py-0.5 placeholder:text-white/40 max-w-[160px]"
+                    />
+                  </div>
+                </div>
+
+                <div className="px-3 py-2 rounded-xl bg-amber-400/20 border border-amber-300/30 text-amber-200 text-xs font-bold flex items-center gap-1.5 shadow-2xs">
+                  <Lock className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Đề thi chính quy</span>
                 </div>
               </div>
             </div>
@@ -1471,8 +1505,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         </div>
                         <div>
                           <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                            <span className="text-xs font-black uppercase text-slate-700 tracking-wider">
-                              KẾT QUẢ LÀM BÀI – ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}
+                            <span className="text-xs font-black uppercase text-slate-700 tracking-wider flex items-center gap-1.5">
+                              <Trophy className="w-4 h-4 text-amber-500 shrink-0" />
+                              KẾT QUẢ BÀI THI {candidateName ? `CỦA EM: ${candidateName.toUpperCase()}` : ''} – ĐỀ SỐ {selectedExamNo.toString().padStart(2, '0')}
                             </span>
                             <span className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border shadow-2xs ${enc.colorClass}`}>
                               {enc.badge}
@@ -1543,8 +1578,87 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                 );
               })()}
 
+              {/* BẢNG ĐIỀU HƯỚNG 20 CÂU HỎI TRỰC QUAN (QUESTION MATRIX) */}
+              <div className="mb-6 bg-slate-50 border border-slate-200/80 rounded-2xl p-4 sm:p-5 shadow-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3.5">
+                  <div className="flex items-center gap-2">
+                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-sm shadow-xs text-white ${
+                      currentSubject === 'hoa' ? 'bg-teal-600' : 'bg-red-600'
+                    }`}>
+                      📝
+                    </div>
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wide">
+                        Bảng Theo Dõi & Nhảy Nhanh 20 Câu Hỏi
+                      </h4>
+                      <p className="text-[11px] text-slate-500 font-medium">
+                        Bấm vào số câu để xem lại hoặc trả lời nhanh
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="text-xs font-bold text-slate-700 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs">
+                      Đã làm: <strong className={currentSubject === 'hoa' ? 'text-teal-700 font-black' : 'text-red-700 font-black'}>
+                        {Object.keys(examAnswers).length}
+                      </strong> / 20 câu ({Math.round((Object.keys(examAnswers).length / 20) * 100)}%)
+                    </div>
+                  </div>
+                </div>
+
+                {/* Thanh progress bar */}
+                <div className="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden mb-4">
+                  <div 
+                    className={`h-full transition-all duration-300 rounded-full ${
+                      currentSubject === 'hoa'
+                        ? 'bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500'
+                        : 'bg-gradient-to-r from-red-500 via-rose-500 to-amber-500'
+                    }`}
+                    style={{ width: `${(Object.keys(examAnswers).length / 20) * 100}%` }}
+                  />
+                </div>
+
+                {/* Lưới 20 nút số câu */}
+                <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
+                  {currentExamQuestions.map((q: any, i: number) => {
+                    const isAnswered = examAnswers[q.id] !== undefined && String(examAnswers[q.id]).trim() !== '';
+                    const isCorrect = isExamSubmitted && checkLayGocAnswerCorrect(examAnswers[q.id], q);
+
+                    let btnColor = 'bg-white text-slate-700 border-slate-200 hover:border-slate-400 hover:bg-slate-100';
+                    if (isExamSubmitted) {
+                      btnColor = isCorrect 
+                        ? 'bg-emerald-500 text-white border-emerald-600 shadow-xs font-black' 
+                        : 'bg-rose-500 text-white border-rose-600 shadow-xs font-black';
+                    } else if (isAnswered) {
+                      btnColor = currentSubject === 'hoa'
+                        ? 'bg-teal-600 text-white border-teal-700 font-black shadow-xs ring-2 ring-teal-200'
+                        : 'bg-red-600 text-white border-red-700 font-black shadow-xs ring-2 ring-red-200';
+                    }
+
+                    return (
+                      <button
+                        key={q.id}
+                        type="button"
+                        onClick={() => {
+                          document.getElementById(`question-${i + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }}
+                        className={`py-2 px-1 rounded-xl text-xs font-extrabold border transition-all flex flex-col items-center justify-center cursor-pointer ${btnColor}`}
+                        title={`Cuộn đến Câu ${i + 1}`}
+                      >
+                        <span>{i + 1}</span>
+                        {isExamSubmitted ? (
+                          <span className="text-[9px] mt-0.5">{isCorrect ? '✓' : '✗'}</span>
+                        ) : isAnswered ? (
+                          <span className="text-[9px] mt-0.5">✓</span>
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
               {/* DANH SÁCH TOÀN BỘ 20 CÂU HỎI (TRẮC NGHIỆM HOẶC TRẢ LỜI NGẮN) */}
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {currentExamQuestions.map((q: any, idx: number) => {
                   const userAns = examAnswers[q.id];
                   const hasAnswered = userAns !== undefined && String(userAns).trim() !== '';
@@ -1555,44 +1669,52 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   return (
                     <div
                       key={q.id}
-                      className={`p-5 rounded-2xl border transition-all ${
+                      id={`question-${idx + 1}`}
+                      className={`p-5 sm:p-6 rounded-3xl border-2 transition-all scroll-mt-24 ${
                         isExamSubmitted
                           ? isCorrect
-                            ? 'bg-emerald-50/40 border-emerald-300 ring-2 ring-emerald-500/10'
-                            : 'bg-rose-50/40 border-rose-300 ring-2 ring-rose-500/10'
+                            ? 'bg-emerald-50/40 border-emerald-300 ring-2 ring-emerald-500/10 shadow-sm'
+                            : 'bg-rose-50/40 border-rose-300 ring-2 ring-rose-500/10 shadow-sm'
                           : hasAnswered
-                          ? 'bg-amber-50/20 border-amber-300'
-                          : 'bg-white border-slate-200 hover:border-slate-300'
+                          ? 'bg-white border-slate-300 shadow-sm ring-1 ring-slate-200'
+                          : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
                       }`}
                     >
-                      <div className="flex items-start justify-between gap-2 mb-2">
+                      <div className="flex items-start justify-between gap-2 mb-3">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-black px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
-                            Câu {idx + 1} / 20
+                          <span className={`text-xs font-black px-3 py-1 rounded-xl uppercase tracking-wider ${
+                            currentSubject === 'hoa' ? 'bg-teal-100 text-teal-800' : 'bg-red-100 text-red-800'
+                          }`}>
+                            CÂU {idx + 1} / 20
                           </span>
-                          <span className={`text-[11px] font-bold px-2 py-0.5 rounded ${
-                            isShortAnswer ? 'bg-teal-50 text-teal-800 border border-teal-200' : 'text-slate-400'
+                          <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-lg ${
+                            isShortAnswer ? 'bg-teal-50 text-teal-800 border border-teal-200' : 'text-slate-400 bg-slate-50'
                           }`}>
                             {isShortAnswer ? '✍️ Trả lời ngắn (0.5 điểm)' : '(0.5 điểm)'}
                           </span>
                         </div>
 
-                        {isExamSubmitted && (
-                          <span className={`inline-flex items-center gap-1 text-xs font-black px-2.5 py-0.5 rounded-full ${
-                            isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                        {isExamSubmitted ? (
+                          <span className={`inline-flex items-center gap-1.5 text-xs font-black px-3 py-1 rounded-full ${
+                            isCorrect ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 'bg-rose-100 text-rose-800 border border-rose-200'
                           }`}>
-                            {isCorrect ? <CheckCircle2 className="w-3.5 h-3.5" /> : <XCircle className="w-3.5 h-3.5" />}
+                            {isCorrect ? <CheckCircle2 className="w-4 h-4 text-emerald-600" /> : <XCircle className="w-4 h-4 text-rose-600" />}
                             {isCorrect ? 'Chính xác (+0.5đ)' : 'Chưa đúng'}
                           </span>
-                        )}
+                        ) : hasAnswered ? (
+                          <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            <span>Đã chọn</span>
+                          </span>
+                        ) : null}
                       </div>
 
-                      <div className="text-base sm:text-lg font-bold text-slate-900 mb-3 leading-relaxed tracking-normal">
+                      <div className="text-base sm:text-lg font-bold text-slate-900 mb-3.5 leading-relaxed tracking-normal">
                         <MathText html={q.question.replace(/^Câu \d+:\s*/, '')} />
                       </div>
 
                       {q.mathExpression && (
-                        <div className="my-3.5 py-3.5 px-4 bg-teal-50/90 border border-teal-200 rounded-2xl text-center text-xl sm:text-2xl font-black text-teal-950 tracking-wide shadow-xs">
+                        <div className="my-4 py-4 px-5 bg-teal-50/80 border border-teal-200 rounded-2xl text-center text-xl sm:text-2xl font-black text-teal-950 tracking-wide shadow-2xs">
                           <MathText html={`$$${q.mathExpression}$$`} block />
                         </div>
                       )}
@@ -1653,23 +1775,27 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         </div>
                       ) : (
                         /* DẠNG 2: TRẮC NGHIỆM 4 PHƯƠNG ÁN A, B, C, D */
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-4">
                           {q.options.map((opt: string, oIdx: number) => {
                             const letters = ['A', 'B', 'C', 'D'];
                             const letter = letters[oIdx] || 'A';
                             const isSelected = userAns === opt;
                             const isRightOption = opt === q.correctAnswer;
 
-                            let btnStyle = 'bg-slate-50/80 border-slate-200 hover:bg-slate-100 text-slate-800 hover:border-slate-300';
+                            let btnStyle = 'bg-white border-slate-200/90 hover:border-slate-300 hover:bg-slate-50 text-slate-800 shadow-2xs';
 
                             if (isExamSubmitted) {
                               if (isRightOption) {
-                                btnStyle = 'bg-emerald-100 border-emerald-500 text-emerald-950 font-black ring-2 ring-emerald-500/20';
+                                btnStyle = 'bg-emerald-50 border-emerald-500 text-emerald-950 font-black shadow-sm ring-2 ring-emerald-500/20';
                               } else if (isSelected && !isRightOption) {
-                                btnStyle = 'bg-rose-100 border-rose-400 text-rose-900 line-through';
+                                btnStyle = 'bg-rose-50 border-rose-300 text-rose-900 line-through opacity-85';
+                              } else {
+                                btnStyle = 'bg-white/70 border-slate-200 text-slate-400 opacity-60';
                               }
                             } else if (isSelected) {
-                              btnStyle = 'bg-red-50 border-red-500 text-red-700 font-extrabold ring-2 ring-red-500/20';
+                              btnStyle = currentSubject === 'hoa'
+                                ? 'bg-gradient-to-r from-teal-50 to-cyan-50 border-teal-500 text-teal-950 font-black shadow-md ring-2 ring-teal-500/25 scale-[1.01]'
+                                : 'bg-gradient-to-r from-red-50 to-rose-50 border-red-500 text-red-950 font-black shadow-md ring-2 ring-red-500/25 scale-[1.01]';
                             }
 
                             return (
@@ -1679,20 +1805,25 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                                 onClick={() => {
                                   setExamAnswers(prev => ({ ...prev, [q.id]: opt }));
                                 }}
-                                className={`p-3.5 sm:p-4 rounded-2xl border text-sm sm:text-base font-semibold text-left transition flex items-center gap-3 cursor-pointer ${btnStyle}`}
+                                className={`p-4 rounded-2xl border-2 text-left transition-all duration-200 flex items-center gap-3.5 cursor-pointer ${btnStyle}`}
                               >
-                                <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 ${
-                                  isSelected ? 'bg-red-600 text-white shadow-xs' : 'bg-white border border-slate-200 text-slate-700 shadow-xs'
+                                <span className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 transition-all ${
+                                  isSelected 
+                                    ? currentSubject === 'hoa' ? 'bg-teal-600 text-white shadow-sm ring-2 ring-teal-300' : 'bg-red-600 text-white shadow-sm ring-2 ring-red-300' 
+                                    : 'bg-slate-100 text-slate-700 border border-slate-200/60'
                                 }`}>
                                   {letter}
                                 </span>
-                                <div className="flex-1 leading-relaxed">
+                                <div className="flex-1 text-sm sm:text-base font-bold leading-relaxed">
                                   {opt.includes('$') || opt.includes('\\') ? (
                                     <MathText html={opt.startsWith('$') ? opt : `$${opt}$`} />
                                   ) : (
                                     opt
                                   )}
                                 </div>
+                                {isSelected && !isExamSubmitted && (
+                                  <CheckCircle2 className={`w-5 h-5 shrink-0 ${currentSubject === 'hoa' ? 'text-teal-600' : 'text-red-600'}`} />
+                                )}
                                 {isExamSubmitted && isRightOption && (
                                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                                 )}
@@ -1776,6 +1907,59 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                   </div>
                 )}
               </div>
+
+              {/* THANH ĐIỀU HƯỚNG CỐ ĐỊNH Ở ĐÁY MÀN HÌNH (STICKY BOTTOM ACTION BAR KHI ĐANG LÀM BÀI) */}
+              {!isExamSubmitted && isExamTimerActive && (
+                <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 max-w-4xl w-[calc(100%-2rem)] bg-white/95 backdrop-blur-md rounded-2xl border border-slate-200/90 shadow-2xl px-4 sm:px-6 py-3 flex items-center justify-between gap-3 animate-fade-in">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5 font-mono font-black text-rose-700 bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-200 text-sm">
+                      <Clock className="w-4 h-4 animate-spin text-rose-600" />
+                      <span>{formatTime(examTimeLeft)}</span>
+                    </div>
+                    <div className="hidden sm:block text-xs font-bold text-slate-700">
+                      ✍️ Đã làm: <strong className={currentSubject === 'hoa' ? 'text-teal-700 font-black' : 'text-red-700 font-black'}>{Object.keys(examAnswers).length}</strong> / 20 câu
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const firstUnansweredIdx = currentExamQuestions.findIndex(q => !examAnswers[q.id]);
+                        if (firstUnansweredIdx >= 0) {
+                          document.getElementById(`question-${firstUnansweredIdx + 1}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          toast(`Đã cuộn đến Câu ${firstUnansweredIdx + 1} chưa làm! 📌`);
+                        } else {
+                          toast.success('Em đã hoàn thành tất cả 20 câu! Sẵn sàng nộp bài 🚀');
+                        }
+                      }}
+                      className="hidden md:flex items-center gap-1 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition cursor-pointer"
+                    >
+                      <span>Câu chưa làm 🔍</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (Object.keys(examAnswers).length < 20) {
+                          if (!confirm(`Em mới trả lời ${Object.keys(examAnswers).length}/20 câu. Em có chắc muốn nộp bài ngay không?`)) {
+                            return;
+                          }
+                        }
+                        handleSubmitExamFinal(false);
+                      }}
+                      className={`px-5 sm:px-6 py-2.5 text-white font-black text-xs sm:text-sm rounded-xl shadow-lg transition cursor-pointer flex items-center gap-2 ${
+                        currentSubject === 'hoa'
+                          ? 'bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 shadow-teal-600/30'
+                          : 'bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 shadow-red-600/30'
+                      }`}
+                    >
+                      <CheckCircle2 className="w-4 h-4" />
+                      <span>NỘP BÀI NGAY</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
