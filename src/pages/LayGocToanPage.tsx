@@ -1467,12 +1467,12 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     <span>I. BÍ KÍP THẦN CHÚ HÓA HỌC VÔ CƠ (LỚP 6 - 11)</span>
                   </div>
 
-                  {/* BẢNG NGUYÊN TỬ KHỐI 18 NGUYÊN TỐ CỐT LÕI */}
+                  {/* BẢNG NGUYÊN TỬ KHỐI CÁC NGUYÊN TỐ CỐT LÕI */}
                   <div className="bg-gradient-to-br from-teal-50 via-white to-sky-50 rounded-2xl p-6 shadow-sm border border-teal-200">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 border-b border-teal-100 pb-3">
                       <div className="flex items-center gap-2.5 text-teal-900 font-black text-lg">
                         <Award className="w-6 h-6 text-teal-600" />
-                        <span>BẢNG NGUYÊN TỬ KHỐI 18 NGUYÊN TỐ CỐT LÕI (BẮT BUỘC THUỘC LÒNG)</span>
+                        <span>BẢNG NGUYÊN TỬ KHỐI CÁC NGUYÊN TỐ CỐT LÕI (BẮT BUỘC THUỘC LÒNG)</span>
                       </div>
                       <span className="text-xs font-bold px-3 py-1 rounded-full bg-teal-600 text-white shadow-sm w-fit">
                         Lấy Gốc Hóa Học Cấp 2 & 3
@@ -1480,7 +1480,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                     </div>
 
                     <p className="text-xs text-slate-600 mb-4 leading-relaxed">
-                      💡 <strong>Nguyên tử khối (M)</strong> tính theo đơn vị <strong>amu</strong> (hoặc đvC). Đây là 18 nguyên tố xuất hiện 95% trong mọi đề thi kiểm tra, thi vào 10 và THPT Quốc gia:
+                      💡 <strong>Nguyên tử khối (M)</strong> tính theo đơn vị <strong>amu</strong> (hoặc đvC). Đây là các nguyên tố xuất hiện 98% trong mọi đề kiểm tra, thi vào 10 và THPT Quốc gia (đã bổ sung đầy đủ cả <strong>Brom (Br = 80)</strong> và <strong>Crom (Cr = 52)</strong>):
                     </p>
 
                     <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-2.5 text-center">
@@ -1505,6 +1505,8 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                         { s: 'Ag', oldName: 'Bạc', newName: 'Silver', m: '108' },
                         { s: 'Ba', oldName: 'Bari', newName: 'Barium', m: '137' },
                         { s: 'S', oldName: 'Lưu huỳnh', newName: 'Sulfur', m: '32' },
+                        { s: 'Br', oldName: 'Brom', newName: 'Bromine', m: '80' },
+                        { s: 'Cr', oldName: 'Crom', newName: 'Chromium', m: '52' },
                       ].map((item, idx) => (
                         <div key={idx} className="bg-white p-2.5 rounded-xl border border-teal-100 shadow-xs hover:border-teal-400 hover:shadow-md transition flex flex-col justify-between">
                           <div className="text-xl font-black text-teal-700 font-mono">{item.s}</div>
@@ -1586,9 +1588,11 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                           <span className="bg-white px-2.5 py-1 rounded border font-semibold">Cl = 35.5</span>
                           <span className="bg-white px-2.5 py-1 rounded border font-semibold">K = 39</span>
                           <span className="bg-white px-2.5 py-1 rounded border font-semibold">Ca = 40</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Cr = 52</span>
                           <span className="bg-white px-2.5 py-1 rounded border font-semibold">Fe = 56</span>
                           <span className="bg-white px-2.5 py-1 rounded border font-semibold">Cu = 64</span>
                           <span className="bg-white px-2.5 py-1 rounded border font-semibold">Zn = 65</span>
+                          <span className="bg-white px-2.5 py-1 rounded border font-semibold">Br = 80</span>
                         </div>
                       </div>
 

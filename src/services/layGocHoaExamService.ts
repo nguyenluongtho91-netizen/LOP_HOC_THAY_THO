@@ -35,18 +35,18 @@ export const LAY_GOC_HOA_TOPICS: LayGocHoaTopic[] = [
     shortTitle: 'Phần 1A: TN Nguyên Tử Khối',
     icon: '⚛️',
     gradeBadge: 'Lớp 6-12',
-    description: '10 đề thi trắc nghiệm xen kẽ: Đề lẻ luyện Tên nguyên tố cũ & mới, đề chẵn cho tên tìm chọn Nguyên tử khối (18 nguyên tố cốt lõi).',
+    description: '10 đề thi trắc nghiệm xen kẽ: Đề lẻ luyện Tên nguyên tố cũ & mới, đề chẵn cho tên tìm chọn Nguyên tử khối (gồm cả Br = 80, Cr = 52).',
     totalExams: 10,
     questionsPerExam: 20
   },
   {
     id: 'khtn_nguyen_to_short',
     branch: 'vo_co',
-    title: 'Phần 1B: Trả Lời Ngắn - Cho Kí Hiệu Hoá Học Điền Nguyên Tử Khối (18 Nguyên Tố)',
+    title: 'Phần 1B: Trả Lời Ngắn - Cho Kí Hiệu Hoá Học Điền Nguyên Tử Khối (H, Na, Fe, Br, Cr...)',
     shortTitle: 'Phần 1B: Trả lời ngắn NTK',
     icon: '✍️',
     gradeBadge: 'Điền Đáp Án',
-    description: '10 đề thi Trả lời ngắn: Cho biết kí hiệu hoá học (H, Li, C, N, Na, Fe, Cu, Cl...), học sinh tự gõ số nguyên tử khối vào ô trống để rèn phản xạ thuộc lòng.',
+    description: '10 đề thi Trả lời ngắn: Cho biết kí hiệu hoá học (H, Li, C, N, Na, Fe, Cu, Cl, Br, Cr...), học sinh tự gõ số nguyên tử khối vào ô trống để rèn phản xạ thuộc lòng.',
     totalExams: 10,
     questionsPerExam: 20
   },
@@ -3514,15 +3514,18 @@ export const NTK_18_ELEMENTS: ElementNTK[] = [
   { symbol: 'Zn', nameVi: 'Kẽm', nameIupac: 'Zinc', combinedName: 'Kẽm / Zinc (Zn)', ntk: '65 amu', distractors: ['30 amu', '56 amu', '64 amu'], elementDistractors: ['Đồng / Copper (Cu)', 'Sắt / Iron (Fe)', 'Nhôm / Aluminium (Al)'] },
   { symbol: 'Ag', nameVi: 'Bạc', nameIupac: 'Silver', combinedName: 'Bạc / Silver (Ag)', ntk: '108 amu', distractors: ['47 amu', '64 amu', '137 amu'], elementDistractors: ['Đồng / Copper (Cu)', 'Bari / Barium (Ba)', 'Chì / Lead (Pb)'] },
   { symbol: 'Ba', nameVi: 'Bari', nameIupac: 'Barium', combinedName: 'Bari / Barium (Ba)', ntk: '137 amu', distractors: ['56 amu', '108 amu', '40 amu'], elementDistractors: ['Canxi / Calcium (Ca)', 'Bạc / Silver (Ag)', 'Magie / Magnesium (Mg)'] },
-  { symbol: 'S', nameVi: 'Lưu huỳnh', nameIupac: 'Sulfur', combinedName: 'Lưu huỳnh / Sulfur (S)', ntk: '32 amu', distractors: ['16 amu', '31 amu', '35,5 amu'], elementDistractors: ['Oxi / Oxygen (O)', 'Photpho / Phosphorus (P)', 'Clo / Chlorine (Cl)'] }
+  { symbol: 'S', nameVi: 'Lưu huỳnh', nameIupac: 'Sulfur', combinedName: 'Lưu huỳnh / Sulfur (S)', ntk: '32 amu', distractors: ['16 amu', '31 amu', '35,5 amu'], elementDistractors: ['Oxi / Oxygen (O)', 'Photpho / Phosphorus (P)', 'Clo / Chlorine (Cl)'] },
+  { symbol: 'Br', nameVi: 'Brom', nameIupac: 'Bromine', combinedName: 'Brom / Bromine (Br)', ntk: '80 amu', distractors: ['35 amu', '79 amu', '108 amu'], elementDistractors: ['Clo / Chlorine (Cl)', 'Iot / Iodine (I)', 'Kẽm / Zinc (Zn)'] },
+  { symbol: 'Cr', nameVi: 'Crom', nameIupac: 'Chromium', combinedName: 'Crom / Chromium (Cr)', ntk: '52 amu', distractors: ['24 amu', '56 amu', '55 amu'], elementDistractors: ['Sắt / Iron (Fe)', 'Mangan / Manganese (Mn)', 'Đồng / Copper (Cu)'] }
 ];
 
 function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
   const baseSeed = 7500 + safeNo * 60;
-  // Hoán vị xoay vòng vị trí 20 nguyên tố theo safeNo để mỗi đề có thứ tự khác biệt
+  const totalElements = NTK_18_ELEMENTS.length;
+  // Hoán vị xoay vòng vị trí các nguyên tố theo safeNo để mỗi đề có thứ tự khác biệt
   const shift = (safeNo - 1) * 7;
   const orderedElements = Array.from({ length: 20 }, (_, i) => {
-    return NTK_18_ELEMENTS[(i + shift) % 20];
+    return NTK_18_ELEMENTS[(i + shift) % totalElements];
   });
 
   // Quy tắc chuẩn sư phạm:
@@ -3563,14 +3566,15 @@ function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
 
 // Hàm sinh 10 đề thi Trả lời ngắn: Cho biết kí hiệu hoá học -> Điền số nguyên tử khối
 function generateNguyenTuKhoiShortExam(safeNo: number): LayGocHoaQuestion[] {
-  // Hoán vị xoay vòng vị trí 20 nguyên tố theo safeNo để mỗi đề có thứ tự khác biệt
+  const totalElements = NTK_18_ELEMENTS.length;
+  // Hoán vị xoay vòng vị trí các nguyên tố theo safeNo để mỗi đề có thứ tự khác biệt
   const shift = (safeNo - 1) * 7;
   const orderedElements = Array.from({ length: 20 }, (_, i) => {
-    return NTK_18_ELEMENTS[(i + shift) % 20];
+    return NTK_18_ELEMENTS[(i + shift) % totalElements];
   });
 
   return orderedElements.map((el, idx) => {
-    // Giá trị số chuẩn (ví dụ "23", "35.5", "56"...)
+    // Giá trị số chuẩn (ví dụ "23", "35.5", "56", "80", "52"...)
     const cleanNumber = el.ntk.replace(/\s*amu/i, '').replace(/,/g, '.').trim();
 
     return {
