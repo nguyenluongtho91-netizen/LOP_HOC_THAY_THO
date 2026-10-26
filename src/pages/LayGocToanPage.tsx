@@ -257,13 +257,19 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return userStr === String(q.correctAnswer).trim();
   };
 
-  // HÀM TẠO LỜI ĐỘNG VIÊN KHÍCH LỆ CHUẨN XÁC THEO 4 MỐC ĐIỂM (XƯNG HÔ THẦY VÀ EM, MỰC THƯỚC)
+  // HÀM TẠO LỜI ĐỘNG VIÊN KHÍCH LỆ CHUẨN XÁC THEO 4 MỐC ĐIỂM (XƯNG HÔ THẦY VÀ EM, PHÂN BIỆT RÕ MÔN TOÁN VÀ HÓA)
   const getExamEncouragement = (score: number) => {
+    const isHoa = currentSubject === 'hoa';
+    const subjectName = isHoa ? 'Hóa học' : 'Toán học';
+    const reviewGuideText = isHoa 
+      ? 'bảng nguyên tử khối, bài ca hóa trị và các định luật cốt lõi'
+      : 'các quy tắc tính toán, công thức và phương pháp giải cốt lõi';
+
     if (score >= 10) {
       return {
-        badge: '🎯 ĐẠT ĐIỂM 10 TUYỆT ĐỐI',
-        title: 'Chúc mừng em đã đạt điểm 10 tuyệt đối!',
-        message: 'Em đã làm bài rất cẩn thận và trả lời chính xác tất cả các câu hỏi. Hãy tiếp tục duy trì tinh thần học tập nghiêm túc và chăm chỉ này ở các đề tiếp theo nhé!',
+        badge: `🎯 ĐẠT ĐIỂM 10 TUYỆT ĐỐI (${subjectName})`,
+        title: `Chúc mừng em đã đạt điểm 10 tuyệt đối môn ${subjectName}!`,
+        message: `Em đã làm bài rất cẩn thận và trả lời chính xác tất cả các câu hỏi của đề thi môn ${subjectName}. Hãy tiếp tục duy trì tinh thần học tập nghiêm túc và chăm chỉ này ở các đề tiếp theo nhé!`,
         colorClass: 'text-amber-900 bg-amber-100/90 border-amber-300',
         bgGradient: 'from-amber-50 via-yellow-50 to-emerald-50 border-amber-300'
       };
@@ -271,7 +277,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       return {
         badge: '✨ KẾT QUẢ TỐT (8.0 – 9.9 ĐIỂM)',
         title: 'Em làm bài rất tốt, gần đạt điểm tối đa rồi!',
-        message: 'Em đã nắm chắc kiến thức căn bản của bài học. Hãy xem lại kỹ những câu còn nhầm lẫn để rút kinh nghiệm và đạt điểm 10 ở lần làm tiếp theo nhé!',
+        message: `Em đã nắm chắc kiến thức căn bản của bài học môn ${subjectName}. Hãy xem lại kỹ những câu còn nhầm lẫn để rút kinh nghiệm và đạt điểm 10 ở lần làm tiếp theo nhé!`,
         colorClass: 'text-emerald-800 bg-emerald-100/90 border-emerald-300',
         bgGradient: 'from-emerald-50 via-teal-50 to-sky-50 border-emerald-300'
       };
@@ -279,7 +285,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       return {
         badge: '📘 ĐẠT YÊU CẦU CĂN BẢN (7.0 – 7.9 ĐIỂM)',
         title: 'Em đã nắm được kiến thức nền tảng!',
-        message: 'Em đã hiểu được các nội dung trọng tâm. Cần chú ý đọc kỹ câu hỏi và tính toán cẩn thận hơn để nâng cao điểm số. Hãy thử làm lại một lần nữa để cải thiện kết quả nhé!',
+        message: `Em đã hiểu được các nội dung trọng tâm môn ${subjectName}. Cần chú ý đọc kỹ câu hỏi và tính toán cẩn thận hơn để nâng cao điểm số. Hãy thử làm lại một lần nữa để cải thiện kết quả nhé!`,
         colorClass: 'text-blue-800 bg-blue-100/90 border-blue-300',
         bgGradient: 'from-blue-50 via-indigo-50 to-cyan-50 border-blue-300'
       };
@@ -287,7 +293,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       return {
         badge: '🌱 CẦN CỐ GẮNG HƠN (1.0 – 6.9 ĐIỂM)',
         title: 'Em cần dành thêm thời gian ôn lại lý thuyết!',
-        message: 'Kết quả này cho thấy em cần xem lại bảng nguyên tử khối và kiến thức cốt lõi bên dưới. Em hãy đọc kỹ phần hướng dẫn giải của Thầy rồi bấm làm lại để nắm vững bài hơn nhé!',
+        message: `Kết quả này cho thấy em cần xem lại ${reviewGuideText} bên dưới. Em hãy đọc kỹ phần hướng dẫn giải của Thầy rồi bấm làm lại để nắm vững bài hơn nhé!`,
         colorClass: 'text-rose-800 bg-rose-100/90 border-rose-300',
         bgGradient: 'from-rose-50 via-orange-50 to-amber-50 border-rose-300'
       };
@@ -334,18 +340,20 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     setShowViolationModal(false);
     window.scrollTo({ top: 300, behavior: 'smooth' });
 
+    const subjectName = currentSubject === 'hoa' ? 'Hóa học' : 'Toán học';
+
     if (isViolationSubmit) {
       toast.error('🚨 TỰ ĐỘNG THU BÀI: Em đã vi phạm rời màn hình thi 3 lần!');
     } else {
       if (score10 >= 10) {
         setShowFireworks(true);
-        toast.success(`🎯 Chúc mừng em đã đạt điểm 10 tuyệt đối! Em làm bài rất cẩn thận và chính xác!`, { duration: 6000 });
+        toast.success(`🎯 Chúc mừng em đã đạt điểm 10 tuyệt đối môn ${subjectName}! Em làm bài rất cẩn thận và chính xác!`, { duration: 6000 });
       } else if (score10 >= 8.0) {
-        toast.success(`✨ Kết quả rất tốt! Điểm: ${score10}/10. Em xem lại các câu chưa đúng để hoàn thiện nhé!`, { duration: 5000 });
+        toast.success(`✨ Kết quả rất tốt! Điểm môn ${subjectName}: ${score10}/10. Em xem lại các câu chưa đúng để hoàn thiện nhé!`, { duration: 5000 });
       } else if (score10 >= 7.0) {
-        toast.success(`📘 Điểm: ${score10}/10. Em đã nắm được kiến thức nền tảng, cố gắng luyện thêm nhé!`, { duration: 5000 });
+        toast.success(`📘 Điểm môn ${subjectName}: ${score10}/10. Em đã nắm được kiến thức nền tảng, cố gắng luyện thêm nhé!`, { duration: 5000 });
       } else {
-        toast(`🌱 Điểm: ${score10}/10. Em hãy đọc lại lý thuyết và lời giải chi tiết để làm lại nhé!`, { icon: '📖', duration: 6000 });
+        toast(`🌱 Điểm môn ${subjectName}: ${score10}/10. Em hãy đọc lại lý thuyết và lời giải chi tiết để làm lại nhé!`, { icon: '📖', duration: 6000 });
       }
     }
   };
@@ -2721,7 +2729,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
         <FireworksEffect
           active={showFireworks}
           onClose={() => setShowFireworks(false)}
-          title="Chúc mừng em đã đạt điểm 10 tuyệt đối! 🎆"
+          title={`Chúc mừng em đã đạt điểm 10 tuyệt đối môn ${currentSubject === 'hoa' ? 'Hóa học' : 'Toán học'}! 🎆`}
         />
       </div>
     </div>
