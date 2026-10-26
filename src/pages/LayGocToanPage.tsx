@@ -26,6 +26,7 @@ import {
 import Modal from '@/components/Modal';
 import PrintableExamModal from '@/components/PrintableExamModal';
 import BatchExamScanModal from '@/components/BatchExamScanModal';
+import { FireworksEffect } from '@/components/FireworksEffect';
 import toast from 'react-hot-toast';
 
 export interface ExamAttempt {
@@ -63,6 +64,7 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
   const [showAllExplanations, setShowAllExplanations] = useState<boolean>(false);
   const [isPrintModalOpen, setIsPrintModalOpen] = useState<boolean>(false);
   const [isScanModalOpen, setIsScanModalOpen] = useState<boolean>(false);
+  const [showFireworks, setShowFireworks] = useState<boolean>(false);
 
   // CHỐNG GIAN LẬN: THOÁT RA 3 LẦN TỰ NỘP BÀI & CHUÔNG BÁO ĐỘNG
   const [tabSwitchCount, setTabSwitchCount] = useState<number>(0);
@@ -255,37 +257,37 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
     return userStr === String(q.correctAnswer).trim();
   };
 
-  // HÀM TẠO LỜI ĐỘNG VIÊN KHÍCH LỆ CHUẨN XÁC THEO 4 MỐC ĐIỂM
+  // HÀM TẠO LỜI ĐỘNG VIÊN KHÍCH LỆ CHUẨN XÁC THEO 4 MỐC ĐIỂM (MỰC THƯỚC, KHÔNG KHEN QUÁ ĐÀ)
   const getExamEncouragement = (score: number) => {
     if (score >= 10) {
       return {
-        badge: '🏆 ĐIỂM 10 TUYỆT ĐỐI - ĐỈNH CAO XUẤT SẮC',
-        title: 'ĐỈNH CAO XUẤT SẮC! ĐIỂM 10 TUYỆT ĐỐI!',
-        message: 'Quá xuất sắc! Con đã hoàn toàn làm chủ kiến thức chuyên đề này và không mắc bất kỳ sai sót nào. Thầy Thọ rất tự hào về con! Hãy giữ vững phong độ đỉnh cao này ở các đề tiếp theo nhé!',
-        colorClass: 'text-amber-800 bg-amber-100/90 border-amber-300',
+        badge: '🎯 ĐẠT ĐIỂM 10 TUYỆT ĐỐI',
+        title: 'Chúc mừng con đã đạt điểm 10 tuyệt đối!',
+        message: 'Con đã làm bài rất cẩn thận và trả lời chính xác tất cả các câu hỏi. Hãy tiếp tục duy trì tinh thần học tập nghiêm túc và chăm chỉ này ở các đề tiếp theo nhé!',
+        colorClass: 'text-amber-900 bg-amber-100/90 border-amber-300',
         bgGradient: 'from-amber-50 via-yellow-50 to-emerald-50 border-amber-300'
       };
     } else if (score >= 8.0) {
       return {
-        badge: '🌟 HỌC LỰC GIỎI (8.0 – 9.9 ĐIỂM)',
-        title: 'RẤT XUẤT SẮC! CON SẮP CHẠM MỐC ĐIỂM 10 RỒI!',
-        message: 'Tuyệt vời! Con học rất chắc, hiểu sâu và có tư duy rất nhạy bén! Chỉ còn thiếu một chút xíu nữa là chạm mốc 10 điểm tuyệt đối rồi. Hãy rà soát lại câu chưa đúng và chinh phục điểm 10 ngay nhé!',
+        badge: '✨ KẾT QUẢ TỐT (8.0 – 9.9 ĐIỂM)',
+        title: 'Con làm bài rất tốt, gần đạt điểm tối đa rồi!',
+        message: 'Con đã nắm chắc kiến thức căn bản của bài học. Hãy xem lại kỹ những câu còn nhầm lẫn để rút kinh nghiệm và đạt điểm 10 ở lần làm tiếp theo nhé!',
         colorClass: 'text-emerald-800 bg-emerald-100/90 border-emerald-300',
         bgGradient: 'from-emerald-50 via-teal-50 to-sky-50 border-emerald-300'
       };
     } else if (score >= 7.0) {
       return {
-        badge: '👍 HỌC LỰC KHÁ (7.0 – 7.9 ĐIỂM)',
-        title: 'RẤT TỐT! CON ĐÃ NẮM VỮNG NỀN TẢNG CĂN BẢN!',
-        message: 'Rất đáng khen! Con đã nắm được nền tảng căn bản rồi. Chỉ cần chú ý cẩn thận hơn ở vài câu bẫy nhỏ và tính toán kỹ hơn là con hoàn toàn có thể bứt phá lên 8+ hoặc 9+. Xem lại các câu sai rồi làm lại lần nữa nào!',
+        badge: '📘 ĐẠT YÊU CẦU CĂN BẢN (7.0 – 7.9 ĐIỂM)',
+        title: 'Con đã nắm được kiến thức nền tảng!',
+        message: 'Con đã hiểu được các nội dung trọng tâm. Cần chú ý đọc kỹ câu hỏi và tính toán cẩn thận hơn để nâng cao điểm số. Hãy thử làm lại một lần nữa để cải thiện kết quả nhé!',
         colorClass: 'text-blue-800 bg-blue-100/90 border-blue-300',
         bgGradient: 'from-blue-50 via-indigo-50 to-cyan-50 border-blue-300'
       };
     } else {
       return {
-        badge: '💪 CẦN CỐ GẮNG HƠN NỮA (1.0 – 6.9 ĐIỂM)',
-        title: 'CỐ GẮNG LÊN CON NHÉ! ĐỪNG NẢN LÒNG!',
-        message: 'Kết quả này cho thấy con cần xem lại kỹ phần lý thuyết, bài ca hóa trị và các công thức cốt lõi bên dưới. Đừng lo lắng, hãy đọc thật kỹ lời giải chi tiết của Thầy Thọ và bấm "Làm Lần Mới" để lấy lại gốc ngay nhé!',
+        badge: '🌱 CẦN CỐ GẮNG HƠN (1.0 – 6.9 ĐIỂM)',
+        title: 'Con cần dành thêm thời gian ôn lại lý thuyết!',
+        message: 'Kết quả này cho thấy con cần xem lại bảng nguyên tử khối và kiến thức cốt lõi bên dưới. Con hãy đọc kỹ phần hướng dẫn giải của Thầy rồi bấm làm lại để nắm vững bài hơn nhé!',
         colorClass: 'text-rose-800 bg-rose-100/90 border-rose-300',
         bgGradient: 'from-rose-50 via-orange-50 to-amber-50 border-rose-300'
       };
@@ -336,13 +338,14 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
       toast.error('🚨 TỰ ĐỘNG THU BÀI: Em đã vi phạm rời màn hình thi 3 lần!');
     } else {
       if (score10 >= 10) {
-        toast.success(`🏆 ĐỈNH CAO XUẤT SẮC! Điểm 10 Tuyệt Đối! Thầy Thọ rất tự hào về con!`, { duration: 6000 });
+        setShowFireworks(true);
+        toast.success(`🎯 Chúc mừng con đã đạt điểm 10 tuyệt đối! Con làm bài rất cẩn thận và chính xác!`, { duration: 6000 });
       } else if (score10 >= 8.0) {
-        toast.success(`🌟 Rất xuất sắc! Điểm: ${score10}/10. Con sắp chạm mốc 10 điểm tuyệt đối rồi!`, { duration: 5000 });
+        toast.success(`✨ Kết quả rất tốt! Điểm: ${score10}/10. Con xem lại các câu chưa đúng để hoàn thiện nhé!`, { duration: 5000 });
       } else if (score10 >= 7.0) {
-        toast.success(`👍 Khá tốt! Điểm: ${score10}/10. Con nắm chắc căn bản rồi, cố lên 8-9 điểm nhé!`, { duration: 5000 });
+        toast.success(`📘 Điểm: ${score10}/10. Con đã nắm được kiến thức nền tảng, cố gắng luyện thêm nhé!`, { duration: 5000 });
       } else {
-        toast(`💪 Điểm: ${score10}/10. Cố gắng hơn nữa con nhé! Đừng nản lòng, đọc kỹ lý thuyết và làm lại để lấy gốc nào!`, { icon: '⚡', duration: 6000 });
+        toast(`🌱 Điểm: ${score10}/10. Con hãy đọc lại lý thuyết và lời giải chi tiết để làm lại nhé!`, { icon: '📖', duration: 6000 });
       }
     }
   };
@@ -1246,6 +1249,17 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       </div>
 
                       <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto justify-end shrink-0">
+                        {examResultStats.score10 >= 10 && (
+                          <button
+                            type="button"
+                            onClick={() => setShowFireworks(true)}
+                            className="px-3.5 py-2.5 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-black rounded-xl text-xs shadow-xs transition flex items-center gap-1.5 cursor-pointer"
+                            title="Bắn pháo hoa chúc mừng điểm 10 tuyệt đối"
+                          >
+                            <span>🎆</span>
+                            <span>Bắn Pháo Hoa</span>
+                          </button>
+                        )}
                         <button
                           onClick={() => setIsHistoryModalOpen(true)}
                           className="px-3.5 py-2.5 bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 rounded-xl text-xs font-bold shadow-xs transition flex items-center gap-1.5 cursor-pointer"
@@ -2702,6 +2716,13 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
             </div>
           </div>
         </Modal>
+        
+        {/* HIỆU ỨNG BẮN PHÁO HOA KHI ĐẠT 10 ĐIỂM TUYỆT ĐỐI */}
+        <FireworksEffect
+          active={showFireworks}
+          onClose={() => setShowFireworks(false)}
+          title="Chúc mừng con đã đạt điểm 10 tuyệt đối! 🎆"
+        />
       </div>
     </div>
   );
