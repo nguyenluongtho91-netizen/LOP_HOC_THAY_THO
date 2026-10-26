@@ -130,7 +130,14 @@ export default function StudentPortal() {
       if (roomsErr) throw roomsErr
 
       // Lọc phòng thi học sinh được phép tham gia (phòng thi chung hoặc thuộc lớp của học sinh)
+      const isFreeCandidate = latestStudent?.student_code?.toUpperCase() === 'THAYTHO' || 
+                              latestStudent?.grade === 'Thí Sinh Tự Do' ||
+                              latestStudent?.student_code?.toUpperCase() === 'TUDO';
+
       const eligibleRooms = (rooms || []).filter((room: any) => {
+        // NẾU LÀ THÍ SINH TỰ DO (THẦY THỌ) -> ĐẶC QUYỀN LÀM ĐƯỢC 100% TẤT CẢ PHÒNG THI!
+        if (isFreeCandidate) return true;
+
         const isMyClass = !room.class_id || myClassIds.includes(room.class_id)
         if (!isMyClass) return false
 
@@ -187,6 +194,15 @@ export default function StudentPortal() {
     if (data.status === 'inactive') {
       toast.error('Tài khoản học sinh này đã bị khóa hoặc nghỉ học.')
       return null
+    }
+
+    // ĐẶC BIỆT: NẾU LÀ THÍ SINH TỰ DO (THẦY THỌ) -> ĐĂNG NHẬP THUẬN TIỆN VỚI MỌI MẬT KHẨU
+    const isFreeCode = code.trim().toUpperCase() === 'THAYTHO' || code.trim().toUpperCase() === 'TUDO';
+    if (isFreeCode) {
+      localStorage.setItem('current_student', JSON.stringify(data))
+      localStorage.setItem('studentName', data.full_name)
+      localStorage.setItem('student_name', data.full_name)
+      return data
     }
 
     const cred = await getStudentCredential(code.trim())
@@ -553,6 +569,22 @@ export default function StudentPortal() {
                   <Key className="w-3.5 h-3.5 text-amber-500" /> Quên mật khẩu? (Bấm vào đây)
                 </button>
               </div>
+
+              {/* Nút đăng nhập nhanh dành riêng cho Thầy Thọ (Thí sinh tự do) */}
+              <div className="pt-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStudentCodeInput('THAYTHO')
+                    setPasswordInput('123456')
+                    toast.success('👑 Đã điền sẵn tài khoản Thí sinh tự do: THAYTHO. Bấm "VÀO HỆ THỐNG" để làm tất cả bài thi!');
+                  }}
+                  className="w-full py-2.5 px-3 bg-gradient-to-r from-amber-50 to-yellow-50 hover:from-amber-100 hover:to-yellow-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                >
+                  <span>👑 Thí Sinh Tự Do (Thầy Thọ)</span>
+                  <span className="text-[10px] font-normal text-amber-700">(Bấm điền tự động)</span>
+                </button>
+              </div>
             </form>
           </div>
           <p className="text-center text-white/60 text-xs mt-4">
@@ -691,7 +723,22 @@ export default function StudentPortal() {
               </div>
               <span className="text-sm font-bold text-teal-800">{student.full_name}</span>
               <span className="bg-teal-200 text-teal-800 text-[10px] font-bold px-1.5 py-0.5 rounded-md ml-1 font-mono">{student.student_code}</span>
+              {student.student_code === 'THAYTHO' && (
+                <span className="bg-amber-400 text-amber-950 text-[10px] font-black px-2 py-0.5 rounded-full ml-1 shadow-xs flex items-center gap-1">
+                  <span>👑 Thí Sinh Tự Do</span>
+                </span>
+              )}
             </div>
+            {student.student_code === 'THAYTHO' && (
+              <button
+                onClick={() => navigate('/lay-goc-toan')}
+                className="w-10 sm:w-auto h-10 px-0 sm:px-3.5 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white rounded-xl flex items-center justify-center gap-1.5 transition-all flex-shrink-0 shadow-sm cursor-pointer"
+                title="Mở toàn bộ Kho Đề Lấy Gốc Toán & Hóa"
+              >
+                <BookOpen className="w-4 h-4 text-white" />
+                <span className="hidden sm:inline text-xs font-black">Kho Đề Lấy Gốc</span>
+              </button>
+            )}
             <button
               onClick={() => {
                 setSelectedAvatarFile(null)

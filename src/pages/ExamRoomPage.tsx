@@ -164,32 +164,42 @@ export default function ExamRoomPage() {
         const { data: roomData, error: roomErr } = await supabase.from('exam_rooms').select('*').eq('id', roomId).single()
         if (roomErr || !roomData) throw new Error('Không tìm thấy phòng thi')
 
-        // 1. Kiểm tra khung giờ làm bài (opens_at & closes_at)
-        const opensAt = roomData.opens_at || roomData.settings?.opens_at;
-        const closesAt = roomData.closes_at || roomData.settings?.closes_at;
-        const now = new Date();
+        // 1. Kiểm tra quyền Thí sinh Tự Do (Thầy Thọ) -> Luôn được vào phòng thi
+        const isFreeCandidate = currentStudent?.student_code?.toUpperCase() === 'THAYTHO' || 
+                                currentStudent?.grade === 'Thí Sinh Tự Do' ||
+                                currentStudent?.student_code?.toUpperCase() === 'TUDO';
 
-        if (opensAt && now < new Date(opensAt)) {
-          setGateOpensAt(opensAt);
-          setTimeStatus('waiting');
-        } else if (closesAt && now > new Date(closesAt)) {
-          setGateClosesAt(closesAt);
-          setTimeStatus('closed');
-        } else {
+        if (isFreeCandidate) {
           setTimeStatus('open');
-        }
-
-        // 2. Kiểm tra mật khẩu phòng thi
-        const requiredPasscode = roomData.settings?.passcode;
-        if (requiredPasscode && requiredPasscode.trim()) {
-          const cachedPass = sessionStorage.getItem(`passcode_${roomId}`);
-          if (cachedPass === requiredPasscode.trim()) {
-            setPasscodeVerified(true);
-          } else {
-            setPasscodeVerified(false);
-          }
-        } else {
           setPasscodeVerified(true);
+        } else {
+          // Kiểm tra khung giờ làm bài (opens_at & closes_at)
+          const opensAt = roomData.opens_at || roomData.settings?.opens_at;
+          const closesAt = roomData.closes_at || roomData.settings?.closes_at;
+          const now = new Date();
+
+          if (opensAt && now < new Date(opensAt)) {
+            setGateOpensAt(opensAt);
+            setTimeStatus('waiting');
+          } else if (closesAt && now > new Date(closesAt)) {
+            setGateClosesAt(closesAt);
+            setTimeStatus('closed');
+          } else {
+            setTimeStatus('open');
+          }
+
+          // Kiểm tra mật khẩu phòng thi
+          const requiredPasscode = roomData.settings?.passcode;
+          if (requiredPasscode && requiredPasscode.trim()) {
+            const cachedPass = sessionStorage.getItem(`passcode_${roomId}`);
+            if (cachedPass === requiredPasscode.trim()) {
+              setPasscodeVerified(true);
+            } else {
+              setPasscodeVerified(false);
+            }
+          } else {
+            setPasscodeVerified(true);
+          }
         }
 
         setRoom(roomData)
