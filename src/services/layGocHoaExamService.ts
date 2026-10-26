@@ -3476,32 +3476,33 @@ export interface ElementNTK {
   symbol: string;
   nameVi: string;
   nameIupac: string;
+  combinedName: string; // Tên cũ / Tên mới (Kí hiệu)
   ntk: string;
   distractors: string[];
   elementDistractors: string[];
 }
 
 export const NTK_18_ELEMENTS: ElementNTK[] = [
-  { symbol: 'H', nameVi: 'Hiđro', nameIupac: 'Hydrogen', ntk: '1 amu', distractors: ['2 amu', '4 amu', '16 amu'], elementDistractors: ['Heli (He)', 'Liti (Li)', 'Cacbon (C)'] },
-  { symbol: 'Li', nameVi: 'Liti', nameIupac: 'Lithium', ntk: '7 amu', distractors: ['3 amu', '6 amu', '9 amu'], elementDistractors: ['Beri (Be)', 'Bo (B)', 'Hiđro (H)'] },
-  { symbol: 'C', nameVi: 'Cacbon', nameIupac: 'Carbon', ntk: '12 amu', distractors: ['6 amu', '14 amu', '16 amu'], elementDistractors: ['Nitơ (N)', 'Oxi (O)', 'Canxi (Ca)'] },
-  { symbol: 'N', nameVi: 'Nitơ', nameIupac: 'Nitrogen', ntk: '14 amu', distractors: ['7 amu', '12 amu', '28 amu'], elementDistractors: ['Cacbon (C)', 'Oxi (O)', 'Natri (Na)'] },
-  { symbol: 'O', nameVi: 'Oxi', nameIupac: 'Oxygen', ntk: '16 amu', distractors: ['8 amu', '32 amu', '14 amu'], elementDistractors: ['Nitơ (N)', 'Flo (F)', 'Lưu huỳnh (S)'] },
-  { symbol: 'F', nameVi: 'Flo', nameIupac: 'Fluorine', ntk: '19 amu', distractors: ['9 amu', '18 amu', '35,5 amu'], elementDistractors: ['Clo (Cl)', 'Neon (Ne)', 'Oxi (O)'] },
-  { symbol: 'Ne', nameVi: 'Neon', nameIupac: 'Neon', ntk: '20 amu', distractors: ['10 amu', '19 amu', '40 amu'], elementDistractors: ['Agon (Ar)', 'Flo (F)', 'Natri (Na)'] },
-  { symbol: 'Na', nameVi: 'Natri', nameIupac: 'Sodium', ntk: '23 amu', distractors: ['11 amu', '24 amu', '39 amu'], elementDistractors: ['Magie (Mg)', 'Kali (K)', 'Nhôm (Al)'] },
-  { symbol: 'Mg', nameVi: 'Magie', nameIupac: 'Magnesium', ntk: '24 amu', distractors: ['12 amu', '23 amu', '27 amu'], elementDistractors: ['Natri (Na)', 'Nhôm (Al)', 'Canxi (Ca)'] },
-  { symbol: 'Al', nameVi: 'Nhôm', nameIupac: 'Aluminium', ntk: '27 amu', distractors: ['13 amu', '26 amu', '56 amu'], elementDistractors: ['Magie (Mg)', 'Sắt (Fe)', 'Silic (Si)'] },
-  { symbol: 'Cl', nameVi: 'Clo', nameIupac: 'Chlorine', ntk: '35,5 amu', distractors: ['35 amu', '36 amu', '17 amu'], elementDistractors: ['Flo (F)', 'Brom (Br)', 'Lưu huỳnh (S)'] },
-  { symbol: 'Ar', nameVi: 'Agon', nameIupac: 'Argon', ntk: '40 amu', distractors: ['18 amu', '20 amu', '39 amu'], elementDistractors: ['Neon (Ne)', 'Canxi (Ca)', 'Kali (K)'] },
-  { symbol: 'K', nameVi: 'Kali', nameIupac: 'Potassium', ntk: '39 amu', distractors: ['19 amu', '23 amu', '40 amu'], elementDistractors: ['Natri (Na)', 'Canxi (Ca)', 'Liti (Li)'] },
-  { symbol: 'Ca', nameVi: 'Canxi', nameIupac: 'Calcium', ntk: '40 amu', distractors: ['20 amu', '39 amu', '24 amu'], elementDistractors: ['Kali (K)', 'Magie (Mg)', 'Bari (Ba)'] },
-  { symbol: 'Fe', nameVi: 'Sắt', nameIupac: 'Iron', ntk: '56 amu', distractors: ['26 amu', '64 amu', '65 amu'], elementDistractors: ['Đồng (Cu)', 'Kẽm (Zn)', 'Mangan (Mn)'] },
-  { symbol: 'Cu', nameVi: 'Đồng', nameIupac: 'Copper', ntk: '64 amu', distractors: ['29 amu', '56 amu', '65 amu'], elementDistractors: ['Sắt (Fe)', 'Kẽm (Zn)', 'Bạc (Ag)'] },
-  { symbol: 'Zn', nameVi: 'Kẽm', nameIupac: 'Zinc', ntk: '65 amu', distractors: ['30 amu', '56 amu', '64 amu'], elementDistractors: ['Đồng (Cu)', 'Sắt (Fe)', 'Nhôm (Al)'] },
-  { symbol: 'Ag', nameVi: 'Bạc', nameIupac: 'Silver', ntk: '108 amu', distractors: ['47 amu', '64 amu', '137 amu'], elementDistractors: ['Đồng (Cu)', 'Bari (Ba)', 'Chì (Pb)'] },
-  { symbol: 'Ba', nameVi: 'Bari', nameIupac: 'Barium', ntk: '137 amu', distractors: ['56 amu', '108 amu', '40 amu'], elementDistractors: ['Canxi (Ca)', 'Bạc (Ag)', 'Magie (Mg)'] },
-  { symbol: 'S', nameVi: 'Lưu huỳnh', nameIupac: 'Sulfur', ntk: '32 amu', distractors: ['16 amu', '31 amu', '35,5 amu'], elementDistractors: ['Oxi (O)', 'Photpho (P)', 'Clo (Cl)'] }
+  { symbol: 'H', nameVi: 'Hiđro', nameIupac: 'Hydrogen', combinedName: 'Hiđro / Hydrogen (H)', ntk: '1 amu', distractors: ['2 amu', '4 amu', '16 amu'], elementDistractors: ['Heli / Helium (He)', 'Liti / Lithium (Li)', 'Cacbon / Carbon (C)'] },
+  { symbol: 'Li', nameVi: 'Liti', nameIupac: 'Lithium', combinedName: 'Liti / Lithium (Li)', ntk: '7 amu', distractors: ['3 amu', '6 amu', '9 amu'], elementDistractors: ['Beri / Beryllium (Be)', 'Bo / Boron (B)', 'Hiđro / Hydrogen (H)'] },
+  { symbol: 'C', nameVi: 'Cacbon', nameIupac: 'Carbon', combinedName: 'Cacbon / Carbon (C)', ntk: '12 amu', distractors: ['6 amu', '14 amu', '16 amu'], elementDistractors: ['Nitơ / Nitrogen (N)', 'Oxi / Oxygen (O)', 'Canxi / Calcium (Ca)'] },
+  { symbol: 'N', nameVi: 'Nitơ', nameIupac: 'Nitrogen', combinedName: 'Nitơ / Nitrogen (N)', ntk: '14 amu', distractors: ['7 amu', '12 amu', '28 amu'], elementDistractors: ['Cacbon / Carbon (C)', 'Oxi / Oxygen (O)', 'Natri / Sodium (Na)'] },
+  { symbol: 'O', nameVi: 'Oxi', nameIupac: 'Oxygen', combinedName: 'Oxi / Oxygen (O)', ntk: '16 amu', distractors: ['8 amu', '32 amu', '14 amu'], elementDistractors: ['Nitơ / Nitrogen (N)', 'Flo / Fluorine (F)', 'Lưu huỳnh / Sulfur (S)'] },
+  { symbol: 'F', nameVi: 'Flo', nameIupac: 'Fluorine', combinedName: 'Flo / Fluorine (F)', ntk: '19 amu', distractors: ['9 amu', '18 amu', '35,5 amu'], elementDistractors: ['Clo / Chlorine (Cl)', 'Neon / Neon (Ne)', 'Oxi / Oxygen (O)'] },
+  { symbol: 'Ne', nameVi: 'Neon', nameIupac: 'Neon', combinedName: 'Neon / Neon (Ne)', ntk: '20 amu', distractors: ['10 amu', '19 amu', '40 amu'], elementDistractors: ['Agon / Argon (Ar)', 'Flo / Fluorine (F)', 'Natri / Sodium (Na)'] },
+  { symbol: 'Na', nameVi: 'Natri', nameIupac: 'Sodium', combinedName: 'Natri / Sodium (Na)', ntk: '23 amu', distractors: ['11 amu', '24 amu', '39 amu'], elementDistractors: ['Magie / Magnesium (Mg)', 'Kali / Potassium (K)', 'Nhôm / Aluminium (Al)'] },
+  { symbol: 'Mg', nameVi: 'Magie', nameIupac: 'Magnesium', combinedName: 'Magie / Magnesium (Mg)', ntk: '24 amu', distractors: ['12 amu', '23 amu', '27 amu'], elementDistractors: ['Natri / Sodium (Na)', 'Nhôm / Aluminium (Al)', 'Canxi / Calcium (Ca)'] },
+  { symbol: 'Al', nameVi: 'Nhôm', nameIupac: 'Aluminium', combinedName: 'Nhôm / Aluminium (Al)', ntk: '27 amu', distractors: ['13 amu', '26 amu', '56 amu'], elementDistractors: ['Magie / Magnesium (Mg)', 'Sắt / Iron (Fe)', 'Silic / Silicon (Si)'] },
+  { symbol: 'Cl', nameVi: 'Clo', nameIupac: 'Chlorine', combinedName: 'Clo / Chlorine (Cl)', ntk: '35,5 amu', distractors: ['35 amu', '36 amu', '17 amu'], elementDistractors: ['Flo / Fluorine (F)', 'Brom / Bromine (Br)', 'Lưu huỳnh / Sulfur (S)'] },
+  { symbol: 'Ar', nameVi: 'Agon', nameIupac: 'Argon', combinedName: 'Agon / Argon (Ar)', ntk: '40 amu', distractors: ['18 amu', '20 amu', '39 amu'], elementDistractors: ['Neon / Neon (Ne)', 'Canxi / Calcium (Ca)', 'Kali / Potassium (K)'] },
+  { symbol: 'K', nameVi: 'Kali', nameIupac: 'Potassium', combinedName: 'Kali / Potassium (K)', ntk: '39 amu', distractors: ['19 amu', '23 amu', '40 amu'], elementDistractors: ['Natri / Sodium (Na)', 'Canxi / Calcium (Ca)', 'Liti / Lithium (Li)'] },
+  { symbol: 'Ca', nameVi: 'Canxi', nameIupac: 'Calcium', combinedName: 'Canxi / Calcium (Ca)', ntk: '40 amu', distractors: ['20 amu', '39 amu', '24 amu'], elementDistractors: ['Kali / Potassium (K)', 'Magie / Magnesium (Mg)', 'Bari / Barium (Ba)'] },
+  { symbol: 'Fe', nameVi: 'Sắt', nameIupac: 'Iron', combinedName: 'Sắt / Iron (Fe)', ntk: '56 amu', distractors: ['26 amu', '64 amu', '65 amu'], elementDistractors: ['Đồng / Copper (Cu)', 'Kẽm / Zinc (Zn)', 'Mangan / Manganese (Mn)'] },
+  { symbol: 'Cu', nameVi: 'Đồng', nameIupac: 'Copper', combinedName: 'Đồng / Copper (Cu)', ntk: '64 amu', distractors: ['29 amu', '56 amu', '65 amu'], elementDistractors: ['Sắt / Iron (Fe)', 'Kẽm / Zinc (Zn)', 'Bạc / Silver (Ag)'] },
+  { symbol: 'Zn', nameVi: 'Kẽm', nameIupac: 'Zinc', combinedName: 'Kẽm / Zinc (Zn)', ntk: '65 amu', distractors: ['30 amu', '56 amu', '64 amu'], elementDistractors: ['Đồng / Copper (Cu)', 'Sắt / Iron (Fe)', 'Nhôm / Aluminium (Al)'] },
+  { symbol: 'Ag', nameVi: 'Bạc', nameIupac: 'Silver', combinedName: 'Bạc / Silver (Ag)', ntk: '108 amu', distractors: ['47 amu', '64 amu', '137 amu'], elementDistractors: ['Đồng / Copper (Cu)', 'Bari / Barium (Ba)', 'Chì / Lead (Pb)'] },
+  { symbol: 'Ba', nameVi: 'Bari', nameIupac: 'Barium', combinedName: 'Bari / Barium (Ba)', ntk: '137 amu', distractors: ['56 amu', '108 amu', '40 amu'], elementDistractors: ['Canxi / Calcium (Ca)', 'Bạc / Silver (Ag)', 'Magie / Magnesium (Mg)'] },
+  { symbol: 'S', nameVi: 'Lưu huỳnh', nameIupac: 'Sulfur', combinedName: 'Lưu huỳnh / Sulfur (S)', ntk: '32 amu', distractors: ['16 amu', '31 amu', '35,5 amu'], elementDistractors: ['Oxi / Oxygen (O)', 'Photpho / Phosphorus (P)', 'Clo / Chlorine (Cl)'] }
 ];
 
 function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
@@ -3518,25 +3519,25 @@ function generateNguyenTuKhoiExam(safeNo: number): LayGocHoaQuestion[] {
     const isReverseQuestion = (safeNo % 2 === 0) ? (idx % 2 === 1) : false;
 
     if (isReverseQuestion) {
-      const correctAnswer = `${el.nameVi} (${el.symbol})`;
+      const correctAnswer = el.combinedName;
       return {
         id: idx + 1,
         question: `Câu ${idx + 1}: Nguyên tố hóa học nào sau đây có nguyên tử khối bằng ${el.ntk}?`,
         mathExpression: `M = ${el.ntk}`,
         options: makeOptions(correctAnswer, el.elementDistractors, s),
         correctAnswer,
-        explanation: `Nguyên tố có nguyên tử khối M = ${el.ntk} là ${el.nameVi} (${el.nameIupac}), kí hiệu hóa học là ${el.symbol}.`,
+        explanation: `Nguyên tố có nguyên tử khối M = ${el.ntk} là ${el.nameVi} (tên quốc tế mới IUPAC: ${el.nameIupac}), kí hiệu hóa học là ${el.symbol}.`,
         topic: 'khtn_nguyen_to'
       };
     } else {
       const correctAnswer = el.ntk;
       return {
         id: idx + 1,
-        question: `Câu ${idx + 1}: Nguyên tử khối (khối lượng nguyên tử) của nguyên tố ${el.nameVi} (${el.symbol}) là:`,
+        question: `Câu ${idx + 1}: Nguyên tử khối (khối lượng nguyên tử) của nguyên tố ${el.nameVi} / ${el.nameIupac} (${el.symbol}) là:`,
         mathExpression: `M_{\\mathrm{${el.symbol}}} = ?`,
         options: makeOptions(correctAnswer, el.distractors, s),
         correctAnswer,
-        explanation: `Nguyên tố ${el.nameVi} (${el.nameIupac}), kí hiệu hóa học ${el.symbol}, có nguyên tử khối M = ${el.ntk}.`,
+        explanation: `Nguyên tố ${el.nameVi} (tên mới: ${el.nameIupac}), kí hiệu hóa học ${el.symbol}, có nguyên tử khối M = ${el.ntk}.`,
         topic: 'khtn_nguyen_to'
       };
     }

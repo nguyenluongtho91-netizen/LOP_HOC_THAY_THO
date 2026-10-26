@@ -1339,31 +1339,35 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                       💡 <strong>Nguyên tử khối (M)</strong> tính theo đơn vị <strong>amu</strong> (hoặc đvC). Đây là 18 nguyên tố xuất hiện 95% trong mọi đề thi kiểm tra, thi vào 10 và THPT Quốc gia:
                     </p>
 
-                    <div className="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-9 gap-2.5 text-center">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-2.5 text-center">
                       {[
-                        { s: 'H', name: 'Hiđro', m: '1' },
-                        { s: 'Li', name: 'Liti', m: '7' },
-                        { s: 'C', name: 'Cacbon', m: '12' },
-                        { s: 'N', name: 'Nitơ', m: '14' },
-                        { s: 'O', name: 'Oxi', m: '16' },
-                        { s: 'F', name: 'Flo', m: '19' },
-                        { s: 'Ne', name: 'Neon', m: '20' },
-                        { s: 'Na', name: 'Natri', m: '23' },
-                        { s: 'Mg', name: 'Magie', m: '24' },
-                        { s: 'Al', name: 'Nhôm', m: '27' },
-                        { s: 'Cl', name: 'Clo', m: '35.5' },
-                        { s: 'Ar', name: 'Agon', m: '40' },
-                        { s: 'K', name: 'Kali', m: '39' },
-                        { s: 'Ca', name: 'Canxi', m: '40' },
-                        { s: 'Fe', name: 'Sắt', m: '56' },
-                        { s: 'Cu', name: 'Đồng', m: '64' },
-                        { s: 'Zn', name: 'Kẽm', m: '65' },
-                        { s: 'Ag', name: 'Bạc', m: '108' },
-                        { s: 'Ba', name: 'Bari', m: '137' },
+                        { s: 'H', oldName: 'Hiđro', newName: 'Hydrogen', m: '1' },
+                        { s: 'Li', oldName: 'Liti', newName: 'Lithium', m: '7' },
+                        { s: 'C', oldName: 'Cacbon', newName: 'Carbon', m: '12' },
+                        { s: 'N', oldName: 'Nitơ', newName: 'Nitrogen', m: '14' },
+                        { s: 'O', oldName: 'Oxi', newName: 'Oxygen', m: '16' },
+                        { s: 'F', oldName: 'Flo', newName: 'Fluorine', m: '19' },
+                        { s: 'Ne', oldName: 'Neon', newName: 'Neon', m: '20' },
+                        { s: 'Na', oldName: 'Natri', newName: 'Sodium', m: '23' },
+                        { s: 'Mg', oldName: 'Magie', newName: 'Magnesium', m: '24' },
+                        { s: 'Al', oldName: 'Nhôm', newName: 'Aluminium', m: '27' },
+                        { s: 'Cl', oldName: 'Clo', newName: 'Chlorine', m: '35.5' },
+                        { s: 'Ar', oldName: 'Agon', newName: 'Argon', m: '40' },
+                        { s: 'K', oldName: 'Kali', newName: 'Potassium', m: '39' },
+                        { s: 'Ca', oldName: 'Canxi', newName: 'Calcium', m: '40' },
+                        { s: 'Fe', oldName: 'Sắt', newName: 'Iron', m: '56' },
+                        { s: 'Cu', oldName: 'Đồng', newName: 'Copper', m: '64' },
+                        { s: 'Zn', oldName: 'Kẽm', newName: 'Zinc', m: '65' },
+                        { s: 'Ag', oldName: 'Bạc', newName: 'Silver', m: '108' },
+                        { s: 'Ba', oldName: 'Bari', newName: 'Barium', m: '137' },
+                        { s: 'S', oldName: 'Lưu huỳnh', newName: 'Sulfur', m: '32' },
                       ].map((item, idx) => (
-                        <div key={idx} className="bg-white p-2.5 rounded-xl border border-teal-100 shadow-xs hover:border-teal-400 hover:shadow-md transition">
-                          <div className="text-lg font-black text-teal-700 font-mono">{item.s}</div>
-                          <div className="text-[10px] text-slate-500 truncate font-medium">{item.name}</div>
+                        <div key={idx} className="bg-white p-2.5 rounded-xl border border-teal-100 shadow-xs hover:border-teal-400 hover:shadow-md transition flex flex-col justify-between">
+                          <div className="text-xl font-black text-teal-700 font-mono">{item.s}</div>
+                          <div className="my-1">
+                            <div className="text-[11px] font-bold text-slate-800 leading-tight">{item.oldName}</div>
+                            <div className="text-[10px] text-sky-600 font-medium italic leading-tight">({item.newName})</div>
+                          </div>
                           <div className="text-xs font-black text-rose-600 mt-1 bg-rose-50 rounded py-0.5 border border-rose-100">
                             M = {item.m}
                           </div>
