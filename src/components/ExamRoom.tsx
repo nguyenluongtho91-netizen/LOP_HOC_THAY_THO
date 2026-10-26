@@ -352,8 +352,7 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
   const progress = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
 
   return (
-    <div className="min-h-screen relative" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-      <TeacherWatermark />
+    <div className="min-h-screen" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
 
       {isKicked && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
@@ -666,19 +665,3 @@ const TrueFalseGrid: React.FC<any> = ({ options, userAnswer, onChange }) => {
   );
 };
 
-const TeacherWatermark = () => (
-  <div 
-    className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none flex flex-col justify-around py-16 opacity-[0.04]"
-    aria-hidden="true"
-  >
-    <div className="text-center font-black text-xl sm:text-2xl md:text-3xl text-slate-900 tracking-[0.25em] uppercase whitespace-nowrap">
-      BẢN QUYỀN ĐỀ THI • THẦY NGUYỄN LƯƠNG THỌ
-    </div>
-    <div className="text-center font-black text-xl sm:text-2xl md:text-3xl text-slate-900 tracking-[0.25em] uppercase whitespace-nowrap">
-      BẢN QUYỀN ĐỀ THI • THẦY NGUYỄN LƯƠNG THỌ
-    </div>
-    <div className="text-center font-black text-xl sm:text-2xl md:text-3xl text-slate-900 tracking-[0.25em] uppercase whitespace-nowrap">
-      BẢN QUYỀN ĐỀ THI • THẦY NGUYỄN LƯƠNG THỌ
-    </div>
-  </div>
-);
