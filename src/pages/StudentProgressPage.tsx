@@ -2,9 +2,10 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { format, subDays, startOfMonth, endOfMonth } from 'date-fns'
-import { CalendarCheck, Trophy, BookOpen, GraduationCap, AlertCircle, Clock, ChevronDown, ChevronUp, CheckCircle, XCircle } from 'lucide-react'
+import { CalendarCheck, Trophy, BookOpen, GraduationCap, AlertCircle, Clock, ChevronDown, ChevronUp, CheckCircle, XCircle, Info, Phone } from 'lucide-react'
 import MathText from '@/components/MathText'
 import toast from 'react-hot-toast'
+import { TeacherProfileModal } from '@/components/TeacherProfileModal'
 
 const BANK_ID      = import.meta.env.VITE_BANK_ID      || 'VCB'
 const BANK_ACCOUNT = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
@@ -24,6 +25,7 @@ export default function StudentProgressPage() {
   const [loadingDetail, setLoadingDetail] = useState(false)
   const [pendingExams, setPendingExams] = useState<any[]>([])
   const [classNames, setClassNames] = useState<string[]>([])
+  const [showTeacherModal, setShowTeacherModal] = useState(false)
 
   useEffect(() => {
     if (code) load()
@@ -181,21 +183,30 @@ export default function StudentProgressPage() {
       <div className="-mt-12 relative z-10 px-4 pb-12 space-y-4 max-w-md mx-auto">
 
         {/* Thẻ Giáo viên giảng dạy Thầy Thọ - Phụ huynh & Học sinh thấy */}
-        <div className="bg-white/95 backdrop-blur-md rounded-2xl p-3.5 border border-teal-100 shadow-sm flex items-center gap-3 text-left">
-          <img 
-            src="/thay_tho_avatar.png" 
-            alt="Thầy Nguyễn Lương Thọ" 
-            className="w-13 h-13 rounded-full object-cover border-2 border-teal-500 shadow-sm shrink-0" 
-          />
+        <div 
+          onClick={() => setShowTeacherModal(true)}
+          className="bg-white/95 backdrop-blur-md rounded-2xl p-3.5 border border-teal-100 shadow-sm flex items-center gap-3 text-left cursor-pointer hover:border-teal-300 hover:shadow-md transition-all group"
+        >
+          <div className="relative shrink-0">
+            <img 
+              src="/thay_tho_avatar.png" 
+              alt="Thầy Nguyễn Lương Thọ" 
+              className="w-13 h-13 rounded-full object-cover border-2 border-teal-500 shadow-sm group-hover:scale-105 transition-transform" 
+            />
+            <div className="absolute -bottom-0.5 -right-0.5 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-white" />
+          </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="font-extrabold text-gray-900 text-sm">Thầy Nguyễn Lương Thọ</span>
+              <span className="font-extrabold text-gray-900 text-sm group-hover:text-teal-700 transition-colors">Thầy Nguyễn Lương Thọ</span>
               <span className="px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 text-[10px] font-bold border border-teal-100">
                 Giáo viên
               </span>
             </div>
             <p className="text-[11px] font-bold text-teal-700 mt-0.5">Lớp Học Thầy Thọ • Hotline: 0345.833.133</p>
             <p className="text-[10px] text-gray-500 italic mt-0.5 truncate">"Cố gắng không bỏ cuộc. Quả ngọt luôn cần thời gian."</p>
+          </div>
+          <div className="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-teal-50 text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-all text-xs" title="Xem chi tiết">
+            <Info className="w-4 h-4" />
           </div>
         </div>
 
@@ -712,13 +723,29 @@ export default function StudentProgressPage() {
         )}
 
         {/* Footer */}
-        <div className="flex flex-col items-center py-5 gap-1.5">
-          <img src="/thay_tho_avatar.png" alt="Thầy Thọ" className="w-9 h-9 rounded-full object-cover border-2 border-teal-400 shadow-xs" />
-          <div className="flex items-center gap-1.5 text-teal-700 font-black text-sm">
+        <div 
+          onClick={() => setShowTeacherModal(true)}
+          className="flex flex-col items-center py-5 gap-1.5 cursor-pointer group"
+        >
+          <img 
+            src="/thay_tho_avatar.png" 
+            alt="Thầy Thọ" 
+            className="w-10 h-10 rounded-full object-cover border-2 border-teal-400 shadow-xs group-hover:scale-110 transition-transform" 
+          />
+          <div className="flex items-center gap-1.5 text-teal-700 group-hover:text-teal-900 font-black text-sm transition-colors">
             <span>{centerName || 'LỚP HỌC THẦY THỌ'}</span>
           </div>
           <p className="text-[11px] text-gray-400 italic">"Cố gắng không bỏ cuộc. Quả ngọt luôn cần thời gian."</p>
+          <span className="text-[10px] text-teal-600 font-bold bg-teal-50 px-2 py-0.5 rounded-full border border-teal-100 mt-1">
+            Xem thông tin Thầy Thọ & Liên hệ
+          </span>
         </div>
+
+        {/* Modal thông tin Thầy Thọ */}
+        <TeacherProfileModal
+          isOpen={showTeacherModal}
+          onClose={() => setShowTeacherModal(false)}
+        />
       </div>
     </div>
   )

@@ -30,6 +30,7 @@ import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import { normalizeExamData } from '@/services/examNormalizer'
 import { getStudentCredential, saveStudentCredential } from '@/services/studentCredentialsService'
+import { TeacherProfileModal } from '@/components/TeacherProfileModal'
 
 const BANK_ID      = import.meta.env.VITE_BANK_ID      || 'VCB'
 const BANK_ACCOUNT = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
@@ -39,6 +40,7 @@ export default function StudentPortal() {
   const navigate = useNavigate()
   const [student, setStudent] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const [showTeacherModal, setShowTeacherModal] = useState(false)
 
   // Đăng nhập form
   const [studentCodeInput, setStudentCodeInput] = useState('')
@@ -511,14 +513,16 @@ export default function StudentPortal() {
           <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-teal-200 overflow-hidden">
             {/* Header */}
             <div 
-              className="px-8 pt-8 pb-7 text-center text-white"
+              className="px-8 pt-8 pb-7 text-center text-white cursor-pointer group"
               style={{ background: 'linear-gradient(135deg, #0d9488, #14b8a6, #5eead4)' }}
+              onClick={() => setShowTeacherModal(true)}
+              title="Bấm để xem thông tin giới thiệu Thầy Thọ"
             >
               <div className="relative mx-auto mb-3 w-20 h-20">
                 <img 
                   src="/thay_tho_avatar.png" 
                   alt="Thầy Nguyễn Lương Thọ" 
-                  className="w-20 h-20 rounded-full border-4 border-white/80 shadow-2xl object-cover ring-4 ring-teal-400/30 mx-auto" 
+                  className="w-20 h-20 rounded-full border-4 border-white/80 shadow-2xl object-cover ring-4 ring-teal-400/30 mx-auto group-hover:scale-105 transition-transform" 
                 />
                 <div className="absolute -bottom-1 -right-1 bg-amber-400 text-slate-900 rounded-full w-6 h-6 flex items-center justify-center shadow-md border-2 border-white text-xs" title="Giáo viên">
                   👨‍🏫
@@ -526,6 +530,9 @@ export default function StudentPortal() {
               </div>
               <h1 className="font-extrabold text-2xl tracking-wide uppercase">LỚP HỌC THẦY THỌ</h1>
               <p className="text-teal-100 text-xs font-semibold mt-0.5">Giáo viên: Thầy Nguyễn Lương Thọ</p>
+              <span className="inline-block mt-2 text-[10px] bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-2.5 py-0.5 rounded-full border border-white/30 font-bold transition-all">
+                ℹ️ Giới thiệu Thầy giáo & Liên hệ
+              </span>
             </div>
 
             <form onSubmit={handleLogin} className="p-8 space-y-5">
@@ -656,21 +663,25 @@ export default function StudentPortal() {
       <header className="bg-white shadow-xs border-b border-teal-100 sticky top-0 z-20">
         <div className="max-w-5xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
           {/* Logo & Tên Cổng Thi */}
-          <div className="flex items-center gap-2.5 sm:gap-3 text-teal-700 min-w-0">
+          <div 
+            onClick={() => setShowTeacherModal(true)}
+            className="flex items-center gap-2.5 sm:gap-3 text-teal-700 min-w-0 cursor-pointer group hover:opacity-90 transition-all"
+            title="Bấm để xem thông tin giới thiệu Thầy Thọ"
+          >
             <div className="relative flex-shrink-0">
               <img 
                 src="/thay_tho_avatar.png" 
                 alt="Thầy Thọ" 
-                className="w-10 h-10 rounded-full object-cover border-2 border-teal-500 shadow-sm" 
+                className="w-10 h-10 rounded-full object-cover border-2 border-teal-500 shadow-sm group-hover:scale-105 transition-transform" 
               />
               <div className="absolute -bottom-0.5 -right-0.5 bg-emerald-500 w-3 h-3 rounded-full border-2 border-white" title="Trực tuyến" />
             </div>
             <div className="min-w-0">
-              <h1 className="font-black text-sm sm:text-base leading-tight text-teal-800 uppercase tracking-wide truncate">
+              <h1 className="font-black text-sm sm:text-base leading-tight text-teal-800 uppercase tracking-wide truncate group-hover:text-teal-900">
                 LỚP HỌC THẦY THỌ
               </h1>
               <p className="text-[10px] font-bold uppercase tracking-wider text-teal-600 truncate flex items-center gap-1">
-                <span>👨‍🏫 Thầy Thọ</span>
+                <span className="group-hover:underline">👨‍🏫 Thầy Thọ</span>
                 <span>•</span>
                 <span>Cổng Thi Học Sinh</span>
               </p>
@@ -1518,6 +1529,12 @@ export default function StudentPortal() {
           </div>
         </div>
       )}
+
+      {/* Modal thông tin & Giới thiệu Thầy Thọ */}
+      <TeacherProfileModal
+        isOpen={showTeacherModal}
+        onClose={() => setShowTeacherModal(false)}
+      />
     </div>
   )
 }
