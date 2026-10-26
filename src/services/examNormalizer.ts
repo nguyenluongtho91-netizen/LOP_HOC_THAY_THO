@@ -29,6 +29,19 @@ export interface NormalizedExamData {
 }
 
 /**
+ * Xóa tiền tố thừa dạng "Câu X:", "Câu X.", "Bài X:" ở đầu câu hỏi
+ * để tránh trùng lặp khi giao diện đã có huy hiệu số câu (1, 2, 19, v.v.)
+ */
+export function cleanQuestionText(raw: string = ''): string {
+  if (!raw) return '';
+  const cleaned = raw
+    .trim()
+    .replace(/^(\s*<p[^>]*>)?\s*(<strong[^>]*>|<b[^>]*>|<span[^>]*>)?\s*(?:câu|bài)\s*\d+\s*[:.-]?\s*(<\/strong>|<\/b>|<\/span>)?\s*/i, (match, pOpening = '') => pOpening || '')
+    .trim();
+  return cleaned || raw;
+}
+
+/**
  * Chuẩn hóa toàn diện mọi định dạng đề thi (từ Word import, Sinh đề tự động, Đề Lấy Gốc Toán, v.v.)
  * đảm bảo 100% câu hỏi có number, text, type, và options có letter hợp lệ.
  */
@@ -45,7 +58,7 @@ export function normalizeExamData(rawExamData: any): NormalizedExamData {
       : (idx + 1);
 
     // Xử lý text câu hỏi và mathExpression
-    let text = (q.text || q.question || '').trim();
+    let text = cleanQuestionText(q.text || q.question || '');
     if (q.mathExpression && typeof q.mathExpression === 'string' && q.mathExpression.trim()) {
       const mathExpr = q.mathExpression.trim();
       if (!text.includes(mathExpr)) {

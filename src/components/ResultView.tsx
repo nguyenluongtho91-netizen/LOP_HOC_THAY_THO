@@ -3,6 +3,7 @@ import React from 'react';
 import { Submission, Room, Exam, Question, QuestionOption } from '../types';
 import MathText from './MathText';
 import { formatScore } from '../services/scoringService';
+import { cleanQuestionText } from '../services/examNormalizer';
 
 interface ResultViewProps {
   submission: Submission;
@@ -358,7 +359,7 @@ const MultipleChoiceReview: React.FC<{
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-gray-800 mb-3 text-[15px] leading-relaxed">
-            <MathText html={question.text || ''} block />
+            <MathText html={cleanQuestionText(question.text || '')} block />
           </div>
 
           {question.images?.length > 0 && (
@@ -503,7 +504,7 @@ const TrueFalseReview: React.FC<{
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-gray-800 mb-2 text-[15px] leading-relaxed">
-            <MathText html={question.text || ''} block />
+            <MathText html={cleanQuestionText(question.text || '')} block />
           </div>
 
           {/* Badge điểm đúng sai */}
@@ -643,7 +644,7 @@ const ShortAnswerReview: React.FC<{
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-gray-800 mb-2 text-[15px] leading-relaxed">
-            <MathText html={question.text || ''} block />
+            <MathText html={cleanQuestionText(question.text || '')} block />
             <span className="ml-2 px-2 py-0.5 bg-orange-100 text-orange-700 text-xs rounded-full">TLN</span>
           </div>
 

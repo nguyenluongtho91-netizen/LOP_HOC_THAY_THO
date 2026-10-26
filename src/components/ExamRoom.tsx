@@ -8,9 +8,8 @@ import MathText from './MathText';
 import EssayQuestionInput from './EssayQuestionInput';
 import { hasEssayAnswer } from '../services/essayGradingService';
 
-// ✅ Import Icon cực đẹp từ Lucide
 import { List, CheckCircle2, Type, FileEdit, Check as CheckIcon, X as XIcon } from 'lucide-react';
-import { normalizeExamData } from '../services/examNormalizer';
+import { normalizeExamData, cleanQuestionText } from '../services/examNormalizer';
 
 // ─── Seeded shuffle (Fisher-Yates với seed đơn giản) ─────────────────────────
 function mulberry32(seed: number) {
@@ -565,7 +564,7 @@ const QuestionCard: React.FC<any> = ({ question, displayNum, userAnswer, onChang
       <div className="px-5 py-4">
         {/* Nội dung câu hỏi & biểu thức toán */}
         {(() => {
-          let cleanText = (question.text || question.question || '').trim().replace(/^(<strong>)?Câu\s*\d+\s*[.:]?(<\/strong>)?\s*/i, '');
+          let cleanText = cleanQuestionText(question.text || question.question || '');
           if (question.mathExpression && !cleanText.includes(question.mathExpression)) {
             cleanText = cleanText ? `${cleanText}\n\n$$${question.mathExpression}$$` : `$$${question.mathExpression}$$`;
           }
