@@ -88,9 +88,15 @@ export default function StudentPortal() {
 
   // Xác định chính xác học sinh có thuộc Khối 12 hay không (Tài liệu lớp nào chỉ hiện cho lớp đó)
   const isGrade12 = useMemo(() => {
-    if (!student) return false
-    const g = String(student.grade || '').toLowerCase().trim()
-    return /\b12\b/.test(g) || g.includes('12') || g.includes('khối 12') || g.includes('lớp 12')
+    if (!student) return false;
+    const code = String(student.student_code || '').toUpperCase().trim();
+    const name = String(student.full_name || '').toLowerCase();
+    const role = String(student.role || '').toUpperCase();
+    if (code === 'THAYTHO' || code === 'TUDO' || name.includes('thọ') || role === 'ADMIN' || role === 'TEACHER') {
+      return true; // Thầy giáo luôn thấy học liệu Hóa 12
+    }
+    const g = String(student.grade || '').toLowerCase().trim();
+    return /12/.test(g) || g.includes('12') || g.includes('khối 12') || g.includes('lớp 12');
   }, [student])
 
   useEffect(() => {
@@ -1241,7 +1247,7 @@ export default function StudentPortal() {
               <button
                 type="button"
                 onClick={() => {
-                  navigate('/hoa12');
+                  setActiveTab('chapter');
                 }}
                 className={`p-2.5 sm:p-3 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[85px] sm:min-w-[100px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
                   activeTab === 'chapter'
