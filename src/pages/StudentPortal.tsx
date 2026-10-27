@@ -190,17 +190,36 @@ export default function StudentPortal() {
         // NẾU LÀ THÍ SINH TỰ DO (THẦY THỌ) -> ĐẶC QUYỀN LÀM ĐƯỢC 100% TẤT CẢ PHÒNG THI!
         if (isFreeCandidate) return true;
 
-        // Chỉ hiển thị phòng thi thuộc đúng lớp của học sinh (hoặc được chỉ định cụ thể)
-        const isMyClass = room.class_id && myClassIds.includes(room.class_id)
+        // 1. Kiểm tra nếu phòng thi có chỉ định danh sách học sinh cụ thể
         const assignedIds = room.settings?.assigned_student_ids
         const isExplicitlyAssigned = Array.isArray(assignedIds) && assignedIds.includes(studentId)
-
-        if (!isMyClass && !isExplicitlyAssigned) return false
-
-        // Kiểm tra nếu phòng thi có chỉ định danh sách học sinh cụ thể
         if (Array.isArray(assignedIds) && assignedIds.length > 0 && !assignedIds.includes(studentId)) {
           return false
         }
+
+        // 2. Thuộc đúng lớp của học sinh
+        const isMyClass = room.class_id && myClassIds.includes(room.class_id)
+
+        // 3. Giao cho toàn khối (Khối 12, 11, 10...)
+        const sGrade = String(latestStudent?.grade || '').toLowerCase().trim()
+        const targetGrade = String(room.settings?.targetGrade || '').toLowerCase().trim()
+        const isGradeMatch = targetGrade && (
+          sGrade === targetGrade ||
+          sGrade.includes(targetGrade) ||
+          (sGrade.includes('12') && targetGrade.includes('12')) ||
+          (sGrade.includes('11') && targetGrade.includes('11')) ||
+          (sGrade.includes('10') && targetGrade.includes('10')) ||
+          (sGrade.includes('9') && targetGrade.includes('9')) ||
+          (sGrade.includes('8') && targetGrade.includes('8')) ||
+          (sGrade.includes('7') && targetGrade.includes('7')) ||
+          (sGrade.includes('6') && targetGrade.includes('6'))
+        )
+        const isAllGrade = (room.settings?.targetScope === 'all_grade') && isGradeMatch
+
+        // 4. Giao cho toàn bộ học sinh trung tâm hoặc đề mở chung
+        const isAllCenter = room.settings?.targetScope === 'all_center' || (!room.class_id && !room.settings?.targetScope)
+
+        if (!isMyClass && !isExplicitlyAssigned && !isAllGrade && !isAllCenter) return false
 
         // Nếu phòng thi đã kết thúc/khóa (closed) mà học sinh chưa từng nộp bài -> ẩn đi
         if (room.status === 'closed' && !submittedRoomIds.includes(room.id)) {
@@ -783,7 +802,7 @@ export default function StudentPortal() {
                 <div className="flex justify-between items-start gap-2 mb-3">
                   <div className="flex items-center gap-1.5 flex-wrap">
                     <span className="text-xs font-bold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-xl border border-slate-200">
-                      🏫 {room.classes?.class_name || 'Đề chung'}
+                      🏫 {room.classes?.class_name || (room.settings?.targetScope === 'all_grade' ? `Toàn Khối ${room.settings.targetGrade}` : room.settings?.targetScope === 'all_center' ? 'Toàn Trung Tâm' : 'Đề chung')}
                     </span>
                     <span className={`text-[11px] font-black px-2.5 py-1 rounded-xl border ${meta.tagBg}`}>
                       {meta.shortLabel}

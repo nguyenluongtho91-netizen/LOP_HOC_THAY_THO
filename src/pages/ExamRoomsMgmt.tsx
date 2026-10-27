@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { useEffect, useState, useRef } from 'react'
 import { MonitorPlay, Plus, Trash2, KeyRound, BarChart3, RefreshCw, Settings, FileSpreadsheet } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useExamRoomStore } from '@/store/examRoomStore'
 import { useExamStore } from '@/store/examStore'
 import { useDataStore } from '@/store/dataStore'
@@ -28,6 +28,7 @@ const getExamNo = (title: string) => {
 
 export default function ExamRoomsMgmt() {
   const navigate = useNavigate()
+  const location = useLocation()
   const { rooms, loading, loadRooms, createRoom, updateRoomStatus, updateRoom, deleteRoom } = useExamRoomStore()
   const { exams, loadExams } = useExamStore()
   const { classes, loadClasses, enrollments, loadEnrollments, students, loadStudents } = useDataStore()
@@ -37,6 +38,38 @@ export default function ExamRoomsMgmt() {
   const [modalGrade, setModalGrade] = useState<number | ''>('')
   const [editingRoomId, setEditingRoomId] = useState<string | null>(null)
   const [exportingRoomId, setExportingRoomId] = useState<string | null>(null)
+
+  // Tự động mở modal tạo phòng thi khi Thầy bấm nút "Giao bài" từ ngân hàng đề thi
+  useEffect(() => {
+    if (location.state?.preselectExamId && exams.length > 0) {
+      const ex = exams.find(e => e.id === location.state.preselectExamId)
+      if (ex) {
+        const title = (ex.title || '').toLowerCase()
+        let g: number | '' = ''
+        if (title.includes('12')) g = 12
+        else if (title.includes('11')) g = 11
+        else if (title.includes('10')) g = 10
+        else if (title.includes('9')) g = 9
+        else if (title.includes('8')) g = 8
+        else if (title.includes('7')) g = 7
+        else if (title.includes('6')) g = 6
+        
+        if (g) setModalGrade(g)
+        const autoCat = getExamCategory({ exams: ex, settings: {} })
+        setForm(prev => ({
+          ...prev,
+          exam_id: ex.id,
+          settings: {
+            ...prev.settings,
+            category: autoCat,
+            antiCheat: true
+          }
+        }))
+        setModalOpen(true)
+        window.history.replaceState({}, document.title)
+      }
+    }
+  }, [location.state, exams])
   
   // ✅ Đã thêm settings vào Form state chuẩn Azota Pro
   const [form, setForm] = useState<{
@@ -95,8 +128,11 @@ export default function ExamRoomsMgmt() {
           settings: form.settings
         })
         toast.success('Cập nhật phòng thi thành công!')
-      } else {
-        await createRoom(form)
+        const payload = {
+          ...form,
+          class_id: form.class_id ? form.class_id : null
+        }
+        await createRoom(payload)
         toast.success('Mở phòng thi thành công!')
       }
       setModalOpen(false)
@@ -157,6 +193,10 @@ export default function ExamRoomsMgmt() {
   }
 
   const getRoomGrade = (room: any) => {
+    if (room.settings?.targetGrade) {
+      const g = Number(room.settings.targetGrade)
+      if (!isNaN(g)) return g
+    }
     const roomClass = classes.find(c => c.id === room.class_id) as any
     if (roomClass) {
       const gradeStr = (roomClass.grade || '').toLowerCase().trim()
@@ -334,7 +374,7 @@ export default function ExamRoomsMgmt() {
   const currentClassId = selectedClassId !== null ? selectedClassId : defaultClassId
 
   const displayedRooms = currentClassId 
-    ? activeRooms.filter(r => r.class_id === currentClassId)
+    ? activeRooms.filter(r => r.class_id === currentClassId || (!r.class_id && (r.settings?.targetScope === 'all_grade' || r.settings?.targetScope === 'all_center')))
     : activeRooms
 
   // Sắp xếp danh sách phòng thi ngược lại: Buổi lớn -> Buổi nhỏ -> ... -> thời gian tạo mới nhất lên đầu
@@ -710,7 +750,20 @@ export default function ExamRoomsMgmt() {
             <label className="label">1. Chọn đề thi từ thư viện *</label>
             <select 
               value={form.exam_id} 
-              onChange={e => setForm({...form, exam_id: e.target.value})} 
+              onChange={e => {
+                const exId = e.target.value
+                const selectedEx = exams.find(ex => ex.id === exId)
+                const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : 'homework'
+                setForm(prev => ({
+                  ...prev, 
+                  exam_id: exId,
+                  settings: {
+                    ...prev.settings,
+                    category: autoCat,
+                    antiCheat: true
+                  }
+                }))
+              }} 
               className="input font-semibold text-teal-900"
               disabled={!!editingRoomId || !modalGrade}
             >
@@ -722,29 +775,64 @@ export default function ExamRoomsMgmt() {
           </div>
 
           <div>
-            <label className="label">2. Giao cho lớp học nào? *</label>
+            <label className="label">2. Giao cho ai làm bài? *</label>
             <select 
-              value={form.class_id} 
+              value={form.settings?.targetScope === 'all_grade' ? '__ALL_GRADE__' : form.settings?.targetScope === 'all_center' ? '__ALL_CENTER__' : form.class_id} 
               onChange={e => {
-                const newClassId = e.target.value
-                const selectedCls = classes.find(c => c.id === newClassId) as any
-                const isPractice = selectedCls ? isPracticeClassName(selectedCls.class_name || selectedCls.name) : false
-                setForm(prev => ({
-                  ...prev, 
-                  class_id: newClassId,
-                  settings: {
-                    ...prev.settings,
-                    antiCheat: isPractice ? false : prev.settings.antiCheat
-                  }
-                }))
+                const val = e.target.value
+                if (val === '__ALL_GRADE__') {
+                  setForm(prev => ({
+                    ...prev,
+                    class_id: '',
+                    settings: {
+                      ...prev.settings,
+                      targetScope: 'all_grade',
+                      targetGrade: modalGrade,
+                      assigned_student_ids: []
+                    }
+                  }))
+                } else if (val === '__ALL_CENTER__') {
+                  setForm(prev => ({
+                    ...prev,
+                    class_id: '',
+                    settings: {
+                      ...prev.settings,
+                      targetScope: 'all_center',
+                      targetGrade: null,
+                      assigned_student_ids: []
+                    }
+                  }))
+                } else {
+                  setForm(prev => ({
+                    ...prev, 
+                    class_id: val,
+                    settings: {
+                      ...prev.settings,
+                      targetScope: 'class',
+                      targetGrade: modalGrade
+                    }
+                  }))
+                }
               }} 
-              className="input"
+              className="input font-semibold"
               disabled={!!editingRoomId || !modalGrade}
             >
-              <option value="">{modalGrade ? '-- Chọn lớp học --' : '-- Vui lòng chọn khối lớp trước --'}</option>
-              {filteredClasses.map(c => (
-                <option key={c.id} value={c.id}>{(c as any).class_name || (c as any).name}</option>
-              ))}
+              <option value="">{modalGrade ? '-- Chọn đối tượng giao bài --' : '-- Vui lòng chọn khối lớp trước --'}</option>
+              {modalGrade && (
+                <option value="__ALL_GRADE__" className="font-bold text-teal-700">
+                  🌟 GIAO CHO TẤT CẢ HỌC SINH KHỐI {modalGrade} (Toàn khối)
+                </option>
+              )}
+              <option value="__ALL_CENTER__" className="font-bold text-purple-700">
+                🌐 GIAO CHO TOÀN BỘ HỌC SINH TRUNG TÂM (Tất cả các khối)
+              </option>
+              {filteredClasses.length > 0 && (
+                <optgroup label={`Danh sách lớp học Khối ${modalGrade || ''}:`}>
+                  {filteredClasses.map(c => (
+                    <option key={c.id} value={c.id}>{(c as any).class_name || (c as any).name}</option>
+                  ))}
+                </optgroup>
+              )}
             </select>
           </div>
 

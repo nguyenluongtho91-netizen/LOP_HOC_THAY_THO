@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FileUp, FileText, Trash2, RefreshCw, Eye, Edit2, Save, X, Settings, Download, BookOpen, Sparkles, Folder, FolderOpen, ChevronDown, ChevronRight, Filter } from 'lucide-react'
+import { FileUp, FileText, Trash2, RefreshCw, Eye, Edit2, Save, X, Settings, Download, BookOpen, Sparkles, Folder, FolderOpen, ChevronDown, ChevronRight, Filter, Send } from 'lucide-react'
 import { useExamStore } from '@/store/examStore'
 import { parseWordToExam } from '@/services/mathWordParserService'
 import { parseTexToExam } from '@/services/texParserService'
@@ -766,7 +766,16 @@ export default function ExamMgmt() {
                 {fmt(new Date(exam.created_at), 'dd/MM/yyyy HH:mm')}
               </p>
               
-              <div className="flex justify-end gap-1.5 pt-1.5 border-t border-gray-50">
+              <div className="flex items-center justify-between gap-1.5 pt-1.5 border-t border-gray-50">
+                <button 
+                  onClick={() => navigate('/exam-rooms', { state: { preselectExamId: exam.id, preselectExamTitle: exam.title } })}
+                  className="px-2.5 py-1 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white rounded-lg text-xs font-bold transition-all shadow-xs flex items-center gap-1 cursor-pointer"
+                  title="Giao đề thi này cho học sinh / Mở phòng thi"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Giao bài</span>
+                </button>
+                <div className="flex items-center gap-1">
                 <button 
                   onClick={() => handleViewPdf(exam)}
                   disabled={compilingId === exam.id}
@@ -813,6 +822,7 @@ export default function ExamMgmt() {
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
+                </div>
               </div>
             </div>
           )
