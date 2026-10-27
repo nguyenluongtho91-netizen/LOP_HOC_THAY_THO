@@ -27,7 +27,14 @@ import {
   CheckCircle2
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
-import { isPracticeExam, isPracticeClassName } from '@/utils/practiceExamHelper'
+import { 
+  isPracticeExam, 
+  isPracticeClassName, 
+  isChapterClassName, 
+  getExamCategory, 
+  getCategoryMeta, 
+  ExamCategory 
+} from '@/utils/practiceExamHelper'
 import toast from 'react-hot-toast'
 import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
@@ -70,8 +77,8 @@ export default function StudentPortal() {
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState<string | null>(null)
   const [isUploadingAvatar, setIsUploadingAvatar] = useState(false)
 
-  // Quản lý Tab hiển thị: 'pending' (cần làm) | 'practice' (Lớp Luyện Đề) | 'completed' (lịch sử) | 'all' (tất cả)
-  const [activeTab, setActiveTab] = useState<'pending' | 'practice' | 'completed' | 'all'>('pending')
+  // Quản lý Tab hiển thị: 'homework' (1. BTVN Bắt buộc) | 'chapter' (2. Luyện Đề Chương) | 'practice' (3. Luyện Đề Thi) | 'all' (Tất cả)
+  const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'all'>('homework')
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
 
   useEffect(() => {
@@ -666,17 +673,334 @@ export default function StudentPortal() {
   const pendingExams = examsList.filter(room => !submittedRoomIds.includes(room.id))
   const activePendingCount = pendingExams.filter(room => room.status !== 'closed' && room.status !== 'waiting').length
 
-  // PHÂN TÁCH HỆ THỐNG LUYỆN ĐỀ & BÀI THI CHÍNH KHÓA
-  const practiceClasses = enrolledClasses.filter(c => isPracticeClassName(c.class_name))
-  const allPracticeExams = examsList.filter(room => isPracticeExam(room))
-  const practicePendingExams = pendingExams.filter(room => isPracticeExam(room))
-  const practiceCompletedExams = completedExams.filter(({ room }) => isPracticeExam(room))
-  const regularPendingExams = pendingExams.filter(room => !isPracticeExam(room))
-  const regularCompletedExams = completedExams.filter(({ room }) => !isPracticeExam(room))
+  // ── PHÂN LOẠI 3 PHẦN ĐỘC LẬP & LOGIC ─────────────────────────────
+  // 1. Bài Tập Về Nhà (homework) - Bắt buộc sau mỗi buổi học, chống gian lận
+  // 2. Luyện Đề Chương (chapter) - Ôn tập lý thuyết & chuyên đề, tự do tra cứu
+  // 3. Luyện Đề Thi (practice) - Đề thi thử, tổng hợp, tự do tra cứu & làm lại
+  const homeworkRooms = examsList.filter(r => getExamCategory(r) === 'homework')
+  const chapterRooms = examsList.filter(r => getExamCategory(r) === 'chapter')
+  const practiceRooms = examsList.filter(r => getExamCategory(r) === 'practice')
 
-  const practiceAvgScore = practiceCompletedExams.length > 0
-    ? practiceCompletedExams.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / practiceCompletedExams.length
+  const homeworkPending = pendingExams.filter(r => getExamCategory(r) === 'homework')
+  const chapterPending = pendingExams.filter(r => getExamCategory(r) === 'chapter')
+  const practicePending = pendingExams.filter(r => getExamCategory(r) === 'practice')
+
+  const homeworkCompleted = completedExams.filter(({ room }) => getExamCategory(room) === 'homework')
+  const chapterCompleted = completedExams.filter(({ room }) => getExamCategory(room) === 'chapter')
+  const practiceCompleted = completedExams.filter(({ room }) => getExamCategory(room) === 'practice')
+
+  const homeworkAvgScore = homeworkCompleted.length > 0
+    ? homeworkCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / homeworkCompleted.length
     : null
+
+  const chapterAvgScore = chapterCompleted.length > 0
+    ? chapterCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / chapterCompleted.length
+    : null
+
+  const practiceAvgScore = practiceCompleted.length > 0
+    ? practiceCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / practiceCompleted.length
+    : null
+
+  const practiceClasses = enrolledClasses.filter(c => isPracticeClassName(c.class_name))
+
+  // ── RENDER HELPER: DANH SÁCH ĐỀ THI CẦN LÀM ─────────────────────
+  const renderPendingGrid = (rooms: any[], category: ExamCategory) => {
+    const meta = getCategoryMeta(category)
+
+    if (rooms.length === 0) {
+      return (
+        <div className="bg-white rounded-3xl p-8 sm:p-10 text-center border-2 border-dashed border-slate-200 shadow-2xs">
+          <div className="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-3 border border-emerald-100 shadow-inner">
+            <CheckCircle className="w-8 h-8" />
+          </div>
+          <h4 className="text-base sm:text-lg font-black text-slate-800">
+            {category === 'homework' 
+              ? '🎉 Tuyệt vời! Em đã hoàn thành tất cả bài tập về nhà.'
+              : category === 'chapter'
+              ? '📘 Hiện tại chưa có bài ôn tập chương nào đang chờ.'
+              : '🎯 Em đã làm xong các bộ đề thi thử hiện có!'}
+          </h4>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
+            {category === 'homework'
+              ? 'Thầy Thọ khen ngợi tinh thần tự giác của em! Hãy tiếp tục duy trì nhé.'
+              : 'Em có thể xem lại bài giải hoặc bấm thi lại ở bảng điểm bên dưới để rèn luyện thêm!'}
+          </p>
+        </div>
+      )
+    }
+
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {rooms.map(room => {
+          const hasSub = inProgressSubMap.has(room.id)
+          const isClosed = room.status === 'closed'
+          const isWaiting = room.status === 'waiting'
+
+          let statusBadge = null
+          if (isClosed) {
+            statusBadge = <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2.5 py-1 rounded-full border border-slate-200">Đã đóng</span>
+          } else if (isWaiting) {
+            statusBadge = <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-200">Chờ mở</span>
+          } else {
+            statusBadge = (
+              <span className="bg-emerald-50 text-emerald-800 text-xs font-black px-3 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                <span>Đang mở thi</span>
+              </span>
+            )
+          }
+
+          const btnGradient = category === 'homework'
+            ? 'from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white shadow-rose-600/20'
+            : category === 'chapter'
+            ? 'from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-blue-600/20'
+            : 'from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white shadow-emerald-600/20'
+
+          return (
+            <div 
+              key={room.id}
+              className={`bg-white rounded-3xl p-6 border-2 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-2xs hover:shadow-xl hover:-translate-y-1 ${
+                category === 'homework' 
+                  ? 'border-rose-100 hover:border-rose-300' 
+                  : category === 'chapter'
+                  ? 'border-blue-100 hover:border-blue-300'
+                  : 'border-emerald-100 hover:border-emerald-300'
+              }`}
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-200/20 to-transparent rounded-bl-full pointer-events-none" />
+
+              <div>
+                <div className="flex justify-between items-start gap-2 mb-3">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-xs font-bold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-xl border border-slate-200">
+                      🏫 {room.classes?.class_name || 'Đề tự do'}
+                    </span>
+                    <span className={`text-[11px] font-black px-2.5 py-1 rounded-xl border ${meta.tagBg}`}>
+                      {meta.shortLabel}
+                    </span>
+                  </div>
+                  {statusBadge}
+                </div>
+
+                <h4 className="text-base sm:text-lg font-black text-slate-800 mb-2.5 line-clamp-2 leading-snug group-hover:text-teal-700 transition-colors">
+                  {room.exams?.title || `Phòng thi ${room.code}`}
+                </h4>
+
+                <div className="flex flex-wrap items-center gap-2 text-slate-500 text-xs font-semibold mb-4">
+                  <span className="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+                    <Clock className="w-3.5 h-3.5 text-teal-600" />
+                    Thời gian: <strong className="text-slate-800 font-bold">{room.time_limit} phút</strong>
+                  </span>
+                  {category === 'homework' ? (
+                    <span className="bg-rose-50 text-rose-700 px-2.5 py-1 rounded-lg border border-rose-200 text-[11px] font-bold">
+                      🛡️ Có giám sát chuyển tab
+                    </span>
+                  ) : (
+                    <span className="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-lg border border-emerald-200 text-[11px] font-bold">
+                      ✨ Tự do tra cứu tài liệu
+                    </span>
+                  )}
+                  {hasSub && (
+                    <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[10px] uppercase font-black animate-pulse">
+                      ⚡ Đang làm dở
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+                <span className="text-xs text-slate-400 font-medium">
+                  Mã đề: <span className="font-mono font-black text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">{room.code}</span>
+                </span>
+
+                {isClosed ? (
+                  <button disabled className="px-4 py-2 bg-slate-100 text-slate-400 text-xs font-bold rounded-xl cursor-not-allowed border border-slate-200">
+                    Đã đóng
+                  </button>
+                ) : isWaiting ? (
+                  <button disabled className="px-4 py-2 bg-amber-50 text-amber-600 text-xs font-bold rounded-xl cursor-not-allowed border border-amber-200">
+                    Chờ mở phòng
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => navigate(`/exam-room/${room.id}`)}
+                    className={`px-5 py-2.5 bg-gradient-to-r ${btnGradient} text-xs sm:text-sm font-black rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer`}
+                  >
+                    <Sparkles className="w-4 h-4 text-amber-300" />
+                    <span>{hasSub ? 'Làm tiếp ⚡' : category === 'homework' ? 'Vào làm BTVN 🚀' : category === 'chapter' ? 'Ôn chương ngay 🚀' : 'Bắt đầu luyện 🚀'}</span>
+                  </button>
+                )}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+
+  // ── RENDER HELPER: BẢNG KẾT QUẢ & ĐIỂM SỐ ĐÃ NỘP ──────────────────
+  const renderCompletedTable = (items: any[], category: ExamCategory) => {
+    const meta = getCategoryMeta(category)
+
+    if (items.length === 0) {
+      return (
+        <div className="bg-white rounded-3xl p-8 text-center border border-slate-200 shadow-2xs text-slate-400">
+          <Trophy className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+          <h4 className="text-base sm:text-lg font-bold text-slate-700">Chưa có kết quả làm bài nào</h4>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-sm mx-auto">
+            Hãy hoàn thành các bài thi ở danh sách bên trên để xem điểm số, xếp loại và bài giải chi tiết nhé!
+          </p>
+        </div>
+      )
+    }
+
+    const tableHeaderGrad = category === 'homework'
+      ? 'from-rose-700 to-rose-800'
+      : category === 'chapter'
+      ? 'from-blue-700 to-indigo-800'
+      : 'from-emerald-700 to-teal-800'
+
+    return (
+      <div className="space-y-4">
+        {/* Dạng Bảng Desktop */}
+        <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+          <table className="w-full border-collapse text-left">
+            <thead>
+              <tr className={`bg-gradient-to-r ${tableHeaderGrad} text-white font-black text-xs uppercase tracking-wider`}>
+                <th className="py-3.5 px-4 text-center w-12">#</th>
+                <th className="py-3.5 px-4">Tên Đề Thi</th>
+                <th className="py-3.5 px-4 text-center">Lớp Học</th>
+                <th className="py-3.5 px-4 text-center">Thời Gian Nộp</th>
+                <th className="py-3.5 px-4 text-center w-36">Điểm Số</th>
+                <th className="py-3.5 px-4 text-center w-48">Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-sm">
+              {items.map(({ room, sub }, index) => {
+                const formattedDate = sub.submitted_at 
+                  ? format(new Date(sub.submitted_at), 'dd/MM/yyyy HH:mm') 
+                  : 'N/A'
+                const score = typeof sub.score === 'number' ? sub.score : null
+                const isHigh = score !== null && score >= 8.0
+                const isPass = score !== null && score >= 5.0
+                const canRetake = room.status === 'active'
+
+                return (
+                  <tr key={room.id} className="hover:bg-slate-50/70 transition-colors">
+                    <td className="py-4 px-4 text-center font-bold text-slate-400 text-xs">
+                      {index + 1}
+                    </td>
+                    <td className="py-4 px-4 font-black text-slate-800">
+                      <div className="line-clamp-2 leading-snug">
+                        {room.exams?.title || `Phòng thi ${room.code}`}
+                      </div>
+                      <span className="text-[11px] font-mono text-slate-400 font-medium">Mã phòng: {room.code}</span>
+                    </td>
+                    <td className="py-4 px-4 text-center">
+                      <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 whitespace-nowrap inline-block">
+                        {room.classes?.class_name || 'Tự do'}
+                      </span>
+                    </td>
+                    <td className="py-4 px-4 text-center text-xs font-semibold text-slate-500 whitespace-nowrap">
+                      {formattedDate}
+                    </td>
+                    <td className="py-4 px-4 text-center">
+                      <div className="inline-flex flex-col items-center">
+                        <span className={`text-xl font-black ${
+                          isHigh ? 'text-emerald-600' : isPass ? 'text-teal-600' : 'text-rose-600'
+                        }`}>
+                          {score !== null ? score : '-'}
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                          {isHigh ? 'Giỏi' : isPass ? 'Đạt' : 'Cần cố gắng'}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-4 px-4 text-center">
+                      <div className="flex items-center justify-center gap-2">
+                        <button
+                          onClick={() => navigate(`/exam-room/${room.id}`)}
+                          className="px-3.5 py-1.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-black transition-all shadow-2xs flex items-center gap-1 cursor-pointer"
+                        >
+                          <span>Xem giải</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                        {canRetake && (
+                          <button
+                            onClick={() => handleRetakeExam(room, sub)}
+                            className="p-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-xl text-xs font-black transition-all cursor-pointer"
+                            title="Luyện lại bài này"
+                          >
+                            <RefreshCw className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Dạng Card Mobile */}
+        <div className="grid grid-cols-1 gap-3 md:hidden">
+          {items.map(({ room, sub }, index) => {
+            const formattedDate = sub.submitted_at 
+              ? format(new Date(sub.submitted_at), 'dd/MM/yyyy HH:mm') 
+              : 'N/A'
+            const score = typeof sub.score === 'number' ? sub.score : null
+            const isHigh = score !== null && score >= 8.0
+            const isPass = score !== null && score >= 5.0
+            const canRetake = room.status === 'active'
+
+            return (
+              <div 
+                key={room.id}
+                className="bg-white rounded-2xl p-4 border border-slate-200 shadow-2xs flex flex-col justify-between gap-3"
+              >
+                <div>
+                  <div className="flex justify-between items-start gap-2 mb-1.5">
+                    <span className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
+                      #{index + 1} · {room.classes?.class_name || 'Tự do'}
+                    </span>
+                    <span className={`text-lg font-black ${
+                      isHigh ? 'text-emerald-600' : isPass ? 'text-teal-600' : 'text-rose-600'
+                    }`}>
+                      {score !== null ? `${score} đ` : '-'}
+                    </span>
+                  </div>
+
+                  <h5 className="font-black text-slate-800 text-sm line-clamp-2 leading-snug">
+                    {room.exams?.title || `Phòng thi ${room.code}`}
+                  </h5>
+                  <p className="text-[11px] text-slate-400 mt-1">Nộp: {formattedDate}</p>
+                </div>
+
+                <div className="pt-2 border-t border-slate-100 flex items-center justify-end gap-2">
+                  <button
+                    onClick={() => navigate(`/exam-room/${room.id}`)}
+                    className="px-3.5 py-1.5 bg-teal-600 text-white rounded-xl text-xs font-black"
+                  >
+                    Xem giải 🔍
+                  </button>
+                  {canRetake && (
+                    <button
+                      onClick={() => handleRetakeExam(room, sub)}
+                      className="p-1.5 bg-amber-50 text-amber-800 border border-amber-200 rounded-xl"
+                      title="Thi lại"
+                    >
+                      <RefreshCw className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
+  }
 
   // ── DASHBOARD (đã đăng nhập) ─────────────────────────────────
   return (
@@ -804,27 +1128,72 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* Quick 3 Stats Cards */}
-            <div className="grid grid-cols-3 gap-3 shrink-0">
-              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 text-center flex flex-col items-center justify-center min-w-[90px] shadow-sm">
-                <span className="text-[10px] font-bold text-teal-200 uppercase tracking-wider">Đã Nộp</span>
-                <span className="text-2xl font-black text-white mt-0.5">{completedExams.length}</span>
-                <span className="text-[10px] text-teal-200 font-medium">bài thi</span>
-              </div>
-              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 text-center flex flex-col items-center justify-center min-w-[90px] shadow-sm">
-                <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider">Điểm TB</span>
-                <span className="text-2xl font-black text-amber-300 mt-0.5">
-                  {completedExams.length > 0 
-                    ? (completedExams.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / completedExams.length).toFixed(1)
-                    : '-'}
+            {/* 3 Thẻ thống kê tương ứng trực tiếp với 3 Trụ Cột (Bấm vào thẻ để chuyển tab) */}
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-3 shrink-0">
+              {/* Thẻ 1: 🔴 BTVN */}
+              <button
+                type="button"
+                onClick={() => setActiveTab('homework')}
+                className={`p-3 sm:p-3.5 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[90px] sm:min-w-[105px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
+                  activeTab === 'homework'
+                    ? 'bg-rose-500/35 border-rose-300 ring-2 ring-rose-400/50'
+                    : 'bg-white/15 border-white/20 hover:bg-white/25'
+                }`}
+              >
+                <span className="text-[10px] font-black text-rose-200 uppercase tracking-wider flex items-center gap-1">
+                  <span>🔴</span> 1. BTVN
                 </span>
-                <span className="text-[10px] text-teal-200 font-medium">thang 10</span>
-              </div>
-              <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 text-center flex flex-col items-center justify-center min-w-[90px] shadow-sm">
-                <span className="text-[10px] font-bold text-rose-300 uppercase tracking-wider">Cần Làm</span>
-                <span className="text-2xl font-black text-rose-300 mt-0.5">{pendingExams.length}</span>
-                <span className="text-[10px] text-teal-200 font-medium">bài chờ</span>
-              </div>
+                <span className="text-xl sm:text-2xl font-black text-white mt-0.5">
+                  {homeworkCompleted.length}/{homeworkRooms.length}
+                </span>
+                <span className={`text-[10px] font-bold ${
+                  homeworkPending.length > 0 ? 'text-rose-300 animate-pulse font-black' : 'text-teal-200'
+                }`}>
+                  {homeworkPending.length > 0 ? `Nợ ${homeworkPending.length} bài ⚠️` : 'Hoàn thành ✅'}
+                </span>
+              </button>
+
+              {/* Thẻ 2: 📘 Đề Chương */}
+              <button
+                type="button"
+                onClick={() => setActiveTab('chapter')}
+                className={`p-3 sm:p-3.5 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[90px] sm:min-w-[105px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
+                  activeTab === 'chapter'
+                    ? 'bg-blue-500/35 border-blue-300 ring-2 ring-blue-400/50'
+                    : 'bg-white/15 border-white/20 hover:bg-white/25'
+                }`}
+              >
+                <span className="text-[10px] font-black text-blue-200 uppercase tracking-wider flex items-center gap-1">
+                  <span>📘</span> 2. Chương
+                </span>
+                <span className="text-xl sm:text-2xl font-black text-white mt-0.5">
+                  {chapterCompleted.length}/{chapterRooms.length}
+                </span>
+                <span className="text-[10px] text-blue-200 font-bold">
+                  {chapterAvgScore !== null ? `ĐTB: ${chapterAvgScore.toFixed(1)}` : 'Tự do ôn tập'}
+                </span>
+              </button>
+
+              {/* Thẻ 3: 🎯 Luyện Đề Thi */}
+              <button
+                type="button"
+                onClick={() => setActiveTab('practice')}
+                className={`p-3 sm:p-3.5 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[90px] sm:min-w-[105px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
+                  activeTab === 'practice'
+                    ? 'bg-emerald-500/35 border-emerald-300 ring-2 ring-emerald-400/50'
+                    : 'bg-white/15 border-white/20 hover:bg-white/25'
+                }`}
+              >
+                <span className="text-[10px] font-black text-emerald-200 uppercase tracking-wider flex items-center gap-1">
+                  <span>🎯</span> 3. Luyện Đề
+                </span>
+                <span className="text-xl sm:text-2xl font-black text-white mt-0.5">
+                  {practiceCompleted.length}/{practiceRooms.length}
+                </span>
+                <span className="text-[10px] text-emerald-200 font-bold">
+                  {practiceAvgScore !== null ? `ĐTB: ${practiceAvgScore.toFixed(1)}` : 'Đề thi thử'}
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -935,97 +1304,109 @@ export default function StudentPortal() {
           </div>
         )}
 
-        {/* Cảnh báo bài tập chưa làm */}
-        {activePendingCount > 0 && (
-          <div className="bg-rose-50 border border-rose-200 rounded-2xl p-5 flex items-center gap-4 shadow-md shadow-rose-100/50 transition-all hover:scale-[1.01]">
-            <div className="w-12 h-12 rounded-xl bg-rose-600 flex items-center justify-center text-white flex-shrink-0 animate-bounce">
-              <AlertCircle className="w-7 h-7" />
+        {/* CẢNH BÁO BÀI TẬP VỀ NHÀ CHƯA NỘP (CHỈ CẢNH BÁO KHI BTVN CHƯA HOÀN THÀNH) */}
+        {homeworkPending.length > 0 && (
+          <div className="bg-gradient-to-r from-rose-500 via-red-600 to-rose-600 rounded-2xl p-5 text-white shadow-lg shadow-rose-600/20 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white flex-shrink-0 animate-bounce">
+                <AlertCircle className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 className="font-black text-base sm:text-lg uppercase tracking-wide flex items-center gap-2 text-white">
+                  <span>⚠️ CẢNH BÁO BÀI TẬP VỀ NHÀ (BẮT BUỘC)</span>
+                </h3>
+                <p className="text-rose-100 font-medium text-xs sm:text-sm mt-0.5">
+                  Em còn <strong className="text-white text-base font-black underline underline-offset-4 mx-1">{homeworkPending.length} bài tập về nhà</strong> bắt buộc cần hoàn thành. Hãy nộp bài đúng hạn nhé!
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-rose-800 font-extrabold text-lg uppercase tracking-wide flex items-center gap-2">
-                <span>⚠️ CẢNH BÁO HOÀN THÀNH BÀI TẬP</span>
-              </h3>
-              <p className="text-rose-700 font-bold text-base mt-0.5">
-                Em còn <span className="text-2xl font-black text-rose-600 mx-1">{activePendingCount}</span> bài tập chưa làm. Vui lòng hoàn thành hết bài tập về nhà!
-              </p>
-            </div>
+            <button
+              onClick={() => setActiveTab('homework')}
+              className="px-4 py-2.5 bg-white text-rose-700 hover:bg-rose-50 font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer"
+            >
+              <span>Vào Làm BTVN Ngay</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
           </div>
         )}
 
-        {/* Cảnh báo chung */}
-        <div className="bg-amber-50 text-amber-800 p-4 rounded-2xl flex gap-3 text-sm font-medium border border-amber-200/60 shadow-sm">
+        {/* LƯU Ý QUY CHẾ LÀM BÀI LOGIC & RÕ RÀNG */}
+        <div className="bg-amber-50 text-amber-800 p-4 rounded-2xl flex gap-3 text-xs sm:text-sm font-medium border border-amber-200/60 shadow-2xs">
           <AlertCircle className="w-5 h-5 flex-shrink-0 text-amber-600 mt-0.5" />
-          <div>
-            <span className="font-bold">Lưu ý quan trọng:</span> Hệ thống có tính năng giám sát chuyển tab/thoát màn hình khi đang làm bài. Các em hãy tập trung và không chuyển tab khi đang làm bài thi để tránh bị nhắc nhở hoặc khóa bài tự động.
+          <div className="leading-relaxed">
+            <span className="font-bold">Lưu ý phân biệt các phần:</span> Mục <strong className="text-rose-700 font-black">1. Bài Tập Về Nhà</strong> có giám sát chuyển tab để rèn luyện tính tự giác. Còn mục <strong className="text-blue-700 font-black">2. Luyện Đề Chương</strong> và <strong className="text-emerald-700 font-black">3. Luyện Đề Thi</strong> hoàn toàn tự do tra cứu tài liệu, không phạt chuyển tab và có thể thi lại nhiều lần.
           </div>
         </div>
 
-        {/* THANH ĐIỀU HƯỚNG TAB THÔNG MINH (CHUYÊN NGHIỆP & LOGIC) */}
+        {/* THANH ĐIỀU HƯỚNG 3 PHẦN THÔNG MINH (CHUYÊN NGHIỆP & DỄ SỬ DỤNG) */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-2 sm:p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs">
           <div className="grid grid-cols-3 sm:flex sm:items-center gap-1.5">
+            {/* Tab 1: BTVN */}
             <button
-              onClick={() => setActiveTab('pending')}
+              onClick={() => setActiveTab('homework')}
               className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
-                activeTab === 'pending'
-                  ? 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-md shadow-teal-600/20'
-                  : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200/60'
+                activeTab === 'homework'
+                  ? 'bg-gradient-to-r from-rose-600 to-red-600 text-white shadow-md shadow-rose-600/25 ring-2 ring-rose-400/40'
+                  : 'bg-rose-50/70 hover:bg-rose-100/70 text-rose-900 border border-rose-200/60'
               }`}
             >
-              <FileText className="w-4 h-4" />
-              <span className="truncate">Bài Cần Làm</span>
+              <span>🔴</span>
+              <span className="truncate">1. Bài Tập Về Nhà</span>
               <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
-                activeTab === 'pending'
+                activeTab === 'homework'
                   ? 'bg-white/20 text-white'
-                  : regularPendingExams.length > 0
-                  ? 'bg-rose-500 text-white animate-pulse'
-                  : 'bg-slate-200 text-slate-600'
+                  : homeworkPending.length > 0
+                  ? 'bg-rose-600 text-white animate-pulse'
+                  : 'bg-rose-200 text-rose-800'
               }`}>
-                {regularPendingExams.length}
+                {homeworkPending.length > 0 ? `Nợ ${homeworkPending.length}` : homeworkRooms.length}
               </span>
             </button>
 
+            {/* Tab 2: Luyện Đề Chương */}
+            <button
+              onClick={() => setActiveTab('chapter')}
+              className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
+                activeTab === 'chapter'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40'
+                  : 'bg-blue-50/70 hover:bg-blue-100/70 text-blue-900 border border-blue-200/60'
+              }`}
+            >
+              <BookOpen className="w-4 h-4 text-blue-500" />
+              <span className="truncate">2. Luyện Đề Chương</span>
+              <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
+                activeTab === 'chapter'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-blue-200 text-blue-800'
+              }`}>
+                {chapterRooms.length}
+              </span>
+            </button>
+
+            {/* Tab 3: Luyện Đề Thi */}
             <button
               onClick={() => setActiveTab('practice')}
               className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
                 activeTab === 'practice'
                   ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-md shadow-emerald-600/25 ring-2 ring-emerald-400/40'
-                  : 'bg-emerald-50/80 hover:bg-emerald-100/80 text-emerald-900 border border-emerald-200/80'
+                  : 'bg-emerald-50/70 hover:bg-emerald-100/70 text-emerald-900 border border-emerald-200/60'
               }`}
             >
               <Target className="w-4 h-4 text-emerald-500" />
-              <span className="truncate">Lớp Luyện Đề</span>
+              <span className="truncate">3. Luyện Đề Thi</span>
               <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
                 activeTab === 'practice' 
                   ? 'bg-white/20 text-white' 
-                  : practicePendingExams.length > 0
-                  ? 'bg-emerald-600 text-white font-black'
                   : 'bg-emerald-200 text-emerald-800'
               }`}>
-                {allPracticeExams.length}
-              </span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('completed')}
-              className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
-                activeTab === 'completed'
-                  ? 'bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-md shadow-teal-600/20'
-                  : 'bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200/60'
-              }`}
-            >
-              <Trophy className="w-4 h-4 text-amber-400" />
-              <span className="truncate">Bảng Điểm & Đã Nộp</span>
-              <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
-                activeTab === 'completed' ? 'bg-white/20 text-white' : 'bg-teal-100 text-teal-800'
-              }`}>
-                {completedExams.length}
+                {practiceRooms.length}
               </span>
             </button>
           </div>
 
           <div className="flex items-center justify-between sm:justify-end gap-3 px-2 text-xs font-bold text-slate-500">
             <button
-              onClick={() => setActiveTab(activeTab === 'all' ? 'pending' : 'all')}
+              onClick={() => setActiveTab(activeTab === 'all' ? 'homework' : 'all')}
               className="text-xs text-teal-700 hover:text-teal-900 font-bold underline cursor-pointer"
             >
               {activeTab === 'all' ? 'Chỉ hiện tab đang chọn' : 'Xem tất cả trên 1 trang'}
@@ -1033,737 +1414,197 @@ export default function StudentPortal() {
           </div>
         </div>
 
-        {/* ── 1. BÀI THI CẦN LÀM (HIỆN KHI Ở TAB 'pending' HOẶC 'all') ── */}
-        {(activeTab === 'pending' || activeTab === 'all') && (
-          <section className="space-y-4">
-            <div className="flex items-center justify-between border-b-2 border-teal-500 pb-2.5">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-700">
-                  <FileText className="w-5 h-5 text-teal-600" />
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {/* ── PHẦN 1: BÀI TẬP VỀ NHÀ (BẮT BUỘC - GIÁM SÁT CHỐNG GIAN LẬN) ── */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {(activeTab === 'homework' || activeTab === 'all') && (
+          <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-rose-100 shadow-sm">
+            {/* Header Phần 1 */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-rose-200 pb-4">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-black uppercase tracking-wider mb-1.5">
+                  <span>🔴 PHẦN 1</span>
+                  <span>·</span>
+                  <span>BẮT BUỘC HOÀN THÀNH</span>
                 </div>
-                <div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                    <span>Bài Thi Cần Làm Ngay</span>
-                    <span className="text-xs font-black bg-rose-500 text-white px-2 py-0.5 rounded-full">
-                      {regularPendingExams.length}
-                    </span>
-                  </h2>
-                  <p className="text-xs text-slate-500 font-medium">Bấm "Vào làm bài" để làm và nộp cho Thầy Thọ</p>
-                </div>
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                  <span>Bài Tập Về Nhà Sau Buổi Học</span>
+                  <span className="text-xs font-black bg-rose-600 text-white px-2.5 py-0.5 rounded-full">
+                    {homeworkPending.length > 0 ? `Còn ${homeworkPending.length} bài` : 'Đã xong hết'}
+                  </span>
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+                  Nhiệm vụ bắt buộc hoàn thành sau mỗi buổi học. Hệ thống bật giám sát chống gian lận để rèn luyện tính tự giác.
+                </p>
+              </div>
+
+              {/* Stats Box */}
+              <div className="flex items-center gap-2 bg-rose-50 px-3.5 py-2 rounded-2xl border border-rose-200 text-xs font-bold text-rose-800 shrink-0">
+                <span>Tiến độ:</span>
+                <span className="text-sm font-black text-rose-700">
+                  {homeworkCompleted.length}/{homeworkRooms.length}
+                </span>
+                {homeworkAvgScore !== null && (
+                  <>
+                    <span className="text-rose-300">|</span>
+                    <span>Điểm TB: <strong className="text-rose-700">{homeworkAvgScore.toFixed(1)}</strong></span>
+                  </>
+                )}
               </div>
             </div>
 
-            {/* Banner gợi ý chuyển sang Lớp Luyện Đề nếu có đề luyện chờ */}
-            {practicePendingExams.length > 0 && (
-              <div 
-                onClick={() => setActiveTab('practice')}
-                className="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 p-4 rounded-2xl border border-emerald-200 shadow-2xs flex items-center justify-between gap-3 cursor-pointer hover:border-emerald-400 transition-all group"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black flex-shrink-0 shadow-xs">
-                    <Target className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-black text-emerald-900 group-hover:text-emerald-700 transition-colors">
-                      🎯 Em có {practicePendingExams.length} đề thi trong phần "Lớp Luyện Đề"
-                    </h4>
-                    <p className="text-xs text-emerald-700/80 font-medium">
-                      Chế độ luyện đề tự do, không cảnh báo vi phạm chuyển tab để em tra cứu thoải mái!
-                    </p>
-                  </div>
-                </div>
-                <button className="px-3.5 py-1.5 bg-emerald-600 group-hover:bg-emerald-700 text-white text-xs font-black rounded-xl transition-all shadow-2xs flex items-center gap-1 flex-shrink-0 cursor-pointer">
-                  <span>Vào Luyện Đề</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            )}
+            {/* A. Danh sách BTVN Cần Nộp */}
+            <div className="space-y-3">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>📝 Đề BTVN Cần Nộp Cho Thầy</span>
+                <span className="text-xs font-bold text-slate-500">({homeworkPending.length} bài chờ)</span>
+              </h3>
+              {renderPendingGrid(homeworkPending, 'homework')}
+            </div>
 
-            {regularPendingExams.length === 0 ? (
-              <div className="bg-white rounded-3xl p-8 sm:p-12 text-center border-2 border-dashed border-emerald-200 shadow-2xs">
-                <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-4 border border-emerald-100 shadow-inner">
-                  <CheckCircle className="w-9 h-9" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-black text-slate-800">
-                  {practicePendingExams.length > 0 
-                    ? 'Đã hoàn thành các bài kiểm tra chính khóa!' 
-                    : 'Tuyệt vời! Em đã hoàn thành hết bài tập'}
-                </h3>
-                <p className="text-slate-500 text-sm mt-1 max-w-md mx-auto">
-                  {practicePendingExams.length > 0
-                    ? `Em còn ${practicePendingExams.length} bài luyện thi tại tab Lớp Luyện Đề. Bấm sang tab "Lớp Luyện Đề" để tiếp tục ôn luyện nhé!`
-                    : 'Hiện tại không có bài thi nào đang chờ. Em có thể bấm sang tab "Bảng Điểm & Đã Nộp" hoặc "Lớp Luyện Đề" để xem lại kết quả nhé!'}
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                {regularPendingExams.map(room => {
-                  const hasSub = inProgressSubMap.has(room.id)
-                  const isClosed = room.status === 'closed'
-                  const isWaiting = room.status === 'waiting'
-
-                  let statusBadge = null
-                  if (isClosed) {
-                    statusBadge = <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2.5 py-1 rounded-full border border-slate-200">Đã đóng</span>
-                  } else if (isWaiting) {
-                    statusBadge = <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-200">Chờ mở</span>
-                  } else {
-                    statusBadge = (
-                      <span className="bg-emerald-50 text-emerald-800 text-xs font-black px-3 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-2xs">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                        <span>Đang mở thi</span>
-                      </span>
-                    )
-                  }
-
-                  return (
-                    <div 
-                      key={room.id} 
-                      className="bg-white rounded-3xl p-6 border border-teal-100/80 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
-                    >
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-teal-500/10 to-transparent rounded-bl-full pointer-events-none" />
-                      
-                      <div>
-                        <div className="flex justify-between items-start gap-2 mb-3">
-                          <span className="text-xs font-bold text-teal-800 bg-teal-50 px-3 py-1 rounded-xl border border-teal-100/80 shadow-2xs">
-                            🏫 {room.classes?.class_name || 'Bài thi tự do'}
-                          </span>
-                          {statusBadge}
-                        </div>
-
-                        <h3 className="text-base sm:text-lg font-black text-slate-800 mb-2.5 line-clamp-2 leading-snug group-hover:text-teal-700 transition-colors">
-                          {room.exams?.title || `Phòng thi ${room.code}`}
-                        </h3>
-
-                        <div className="flex flex-wrap items-center gap-3 text-slate-500 text-xs font-semibold mb-5">
-                          <span className="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
-                            <Clock className="w-3.5 h-3.5 text-teal-600" />
-                            Thời gian: <strong className="text-slate-800 font-bold">{room.time_limit} phút</strong>
-                          </span>
-                          {hasSub && (
-                            <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[10px] uppercase font-black animate-pulse">
-                              ⚡ Đang làm dở
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
-                        <span className="text-xs text-slate-400 font-medium">
-                          Mã phòng: <span className="font-mono font-black text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">{room.code}</span>
-                        </span>
-                        
-                        {isClosed ? (
-                          <button disabled className="px-4 py-2 bg-slate-100 text-slate-400 text-xs font-bold rounded-xl cursor-not-allowed border border-slate-200">
-                            Đã đóng
-                          </button>
-                        ) : isWaiting ? (
-                          <button disabled className="px-4 py-2 bg-amber-50 text-amber-600 text-xs font-bold rounded-xl cursor-not-allowed border border-amber-200">
-                            Chờ mở phòng
-                          </button>
-                        ) : (
-                          <button 
-                            onClick={() => navigate(`/exam-room/${room.id}`)}
-                            className="px-5 py-2.5 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white text-xs sm:text-sm font-black rounded-xl transition-all shadow-md shadow-teal-500/20 hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
-                          >
-                            <Sparkles className="w-4 h-4 text-amber-300" />
-                            <span>{hasSub ? 'Làm tiếp ⚡' : 'Vào làm bài 🚀'}</span>
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
+            {/* B. Bảng Điểm & Bài Giải BTVN Đã Nộp */}
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>📊 Bảng Điểm & Lịch Sử BTVN Đã Nộp</span>
+                <span className="text-xs font-bold text-slate-500">({homeworkCompleted.length} bài)</span>
+              </h3>
+              {renderCompletedTable(homeworkCompleted, 'homework')}
+            </div>
           </section>
         )}
 
-        {/* ── 2. KHU VỰC CHUYÊN BIỆT: LỚP LUYỆN ĐỀ & BẢNG ĐIỂM KẾT QUẢ (HIỆN KHI Ở TAB 'practice' HOẶC 'all') ── */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {/* ── PHẦN 2: LUYỆN ĐỀ THEO CHƯƠNG / CHUYÊN ĐỀ (TỰ DO TRA CỨU) ──── */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {(activeTab === 'chapter' || activeTab === 'all') && (
+          <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
+            {/* Header Phần 2 */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-blue-200 pb-4">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-black uppercase tracking-wider mb-1.5">
+                  <span>📘 PHẦN 2</span>
+                  <span>·</span>
+                  <span>TỰ DO TRA CỨU TÀI LIỆU</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                  <span>Luyện Đề Theo Chương & Chuyên Đề</span>
+                  <span className="text-xs font-black bg-blue-600 text-white px-2.5 py-0.5 rounded-full">
+                    {chapterRooms.length} bộ đề
+                  </span>
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+                  Ôn tập củng cố lý thuyết & các dạng bài tập theo từng chương. Tự do tra cứu sách vở, không phạt chuyển tab.
+                </p>
+              </div>
+
+              {/* Stats Box */}
+              <div className="flex items-center gap-2 bg-blue-50 px-3.5 py-2 rounded-2xl border border-blue-200 text-xs font-bold text-blue-800 shrink-0">
+                <span>Đã luyện:</span>
+                <span className="text-sm font-black text-blue-700">
+                  {chapterCompleted.length}/{chapterRooms.length}
+                </span>
+                {chapterAvgScore !== null && (
+                  <>
+                    <span className="text-blue-300">|</span>
+                    <span>Điểm TB: <strong className="text-blue-700">{chapterAvgScore.toFixed(1)}</strong></span>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* A. Danh sách Đề Chương Cần Luyện */}
+            <div className="space-y-3">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>📚 Đề Chương Cần Luyện</span>
+                <span className="text-xs font-bold text-slate-500">({chapterPending.length} đề chờ)</span>
+              </h3>
+              {renderPendingGrid(chapterPending, 'chapter')}
+            </div>
+
+            {/* B. Bảng Điểm & Bài Giải Đề Chương Đã Nộp */}
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>📈 Bảng Điểm Luyện Đề Chương</span>
+                <span className="text-xs font-bold text-slate-500">({chapterCompleted.length} bài)</span>
+              </h3>
+              {renderCompletedTable(chapterCompleted, 'chapter')}
+            </div>
+          </section>
+        )}
+
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {/* ── PHẦN 3: LUYỆN ĐỀ THI THỬ & THỰC CHIẾN (TỰ DO TRA CỨU) ──────── */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
         {(activeTab === 'practice' || activeTab === 'all') && (
-          <section className="space-y-6">
-            {/* Header Luyện Đề & Thống Kê Điểm Số */}
-            <div className="bg-gradient-to-br from-emerald-800 via-teal-800 to-teal-900 rounded-3xl p-6 sm:p-7 text-white shadow-lg border border-emerald-500/30 relative overflow-hidden">
-              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-emerald-100 shadow-sm">
+            {/* Banner Luyện Đề Thi Thử Ngọc Lục Bảo Sang Trọng */}
+            <div className="bg-gradient-to-br from-emerald-800 via-teal-800 to-teal-900 rounded-2xl p-5 sm:p-6 text-white shadow-md relative overflow-hidden">
+              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
                 <div className="space-y-2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/25 border border-emerald-400/30 text-emerald-200 text-xs font-black uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-emerald-500/25 border border-emerald-400/30 text-emerald-200 text-xs font-black uppercase tracking-wider">
                     <Target className="w-4 h-4 text-emerald-300" />
-                    <span>Không Gian Ôn Luyện Chuyên Sâu</span>
+                    <span>PHẦN 3 · THỰC CHIẾN ĐỀ THI</span>
                   </div>
                   <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
-                    <span>🎯 Hệ Thống Bài Thi & Điểm Số Luyện Đề</span>
+                    <span>🎯 Hệ Thống Luyện Đề Thi Thử</span>
                   </h2>
                   <p className="text-emerald-100/90 text-xs sm:text-sm max-w-xl leading-relaxed">
-                    Khu vực dành riêng cho các bạn học sinh Lớp Luyện Đề của Thầy Thọ. 
-                    <span className="font-bold text-emerald-200"> Hoàn toàn tự do tra cứu, không giới hạn chuyển tab</span> để em yên tâm rèn giũa kỹ năng và bứt phá điểm số!
+                    Tổng hợp các bộ đề thi thử vào 10, tốt nghiệp THPT và đề thi định kỳ. 
+                    <span className="font-bold text-emerald-200"> Hoàn toàn tự do tra cứu, không giới hạn chuyển tab</span> để rèn giũa bản lĩnh phòng thi!
                   </p>
                   
-                  {/* Danh sách lớp luyện đề của học sinh */}
-                  {practiceClasses.length > 0 ? (
-                    <div className="flex items-center gap-2 flex-wrap pt-1.5">
+                  {practiceClasses.length > 0 && (
+                    <div className="flex items-center gap-2 flex-wrap pt-1">
                       <span className="text-xs text-emerald-200 font-bold">Lớp luyện đề của em:</span>
                       {practiceClasses.map((cls, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-black text-white border border-white/30 shadow-2xs">
+                        <span key={idx} className="px-2.5 py-0.5 bg-white/20 rounded-full text-xs font-black text-white border border-white/30">
                           🎯 {cls.class_name}
                         </span>
                       ))}
-                    </div>
-                  ) : (
-                    <div className="pt-1.5 text-xs text-emerald-200/90 bg-emerald-950/30 px-3 py-1.5 rounded-xl border border-emerald-400/20 inline-block">
-                      <span>💡 Khi Thầy Thọ thêm em vào Lớp Luyện Đề, toàn bộ đề thi và kết quả sẽ tự động hiển thị tại đây.</span>
                     </div>
                   )}
                 </div>
 
                 {/* 3 Thẻ thống kê riêng phần Luyện Đề */}
-                <div className="grid grid-cols-3 gap-2.5 shrink-0">
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15 text-center min-w-[85px] shadow-sm">
-                    <span className="text-[10px] font-bold text-emerald-200 uppercase tracking-wider">Tổng Đề</span>
-                    <span className="text-xl sm:text-2xl font-black text-white mt-0.5 block">{allPracticeExams.length}</span>
-                    <span className="text-[10px] text-emerald-200">bộ đề</span>
+                <div className="grid grid-cols-3 gap-2 shrink-0">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-2.5 border border-white/15 text-center min-w-[75px]">
+                    <span className="text-[10px] font-bold text-emerald-200 uppercase tracking-wider block">Tổng Đề</span>
+                    <span className="text-lg sm:text-xl font-black text-white mt-0.5 block">{practiceRooms.length}</span>
+                    <span className="text-[9px] text-emerald-200">bộ đề</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15 text-center min-w-[85px] shadow-sm">
-                    <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider">Đã Luyện</span>
-                    <span className="text-xl sm:text-2xl font-black text-amber-300 mt-0.5 block">{practiceCompletedExams.length}</span>
-                    <span className="text-[10px] text-emerald-200">bài đã nộp</span>
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-2.5 border border-white/15 text-center min-w-[75px]">
+                    <span className="text-[10px] font-bold text-amber-300 uppercase tracking-wider block">Đã Luyện</span>
+                    <span className="text-lg sm:text-xl font-black text-amber-300 mt-0.5 block">{practiceCompleted.length}</span>
+                    <span className="text-[9px] text-emerald-200">bài đã nộp</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15 text-center min-w-[85px] shadow-sm">
-                    <span className="text-[10px] font-bold text-yellow-300 uppercase tracking-wider">Điểm TB</span>
-                    <span className="text-xl sm:text-2xl font-black text-yellow-300 mt-0.5 block">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-2.5 border border-white/15 text-center min-w-[75px]">
+                    <span className="text-[10px] font-bold text-yellow-300 uppercase tracking-wider block">Điểm TB</span>
+                    <span className="text-lg sm:text-xl font-black text-yellow-300 mt-0.5 block">
                       {practiceAvgScore !== null ? practiceAvgScore.toFixed(1) : '-'}
                     </span>
-                    <span className="text-[10px] text-emerald-200">/ 10</span>
+                    <span className="text-[9px] text-emerald-200">thang 10</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* ── A. HỆ THỐNG ĐỀ THI LUYỆN ĐỀ CẦN LÀM ── */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b-2 border-emerald-500 pb-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-700">
-                    <FileText className="w-5 h-5 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
-                      <span>Đề Thi Luyện Đề Cần Làm</span>
-                      <span className="text-xs font-black bg-emerald-600 text-white px-2 py-0.5 rounded-full">
-                        {practicePendingExams.length}
-                      </span>
-                    </h3>
-                    <p className="text-xs text-slate-500 font-medium">Bấm "Bắt đầu luyện" để làm bài (Tự do tra cứu, không giới hạn chuyển tab)</p>
-                  </div>
-                </div>
-              </div>
-
-              {practicePendingExams.length === 0 ? (
-                <div className="bg-white rounded-3xl p-8 text-center border-2 border-dashed border-emerald-200 shadow-2xs">
-                  <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
-                  <h4 className="text-base sm:text-lg font-black text-slate-800">
-                    {allPracticeExams.length === 0 
-                      ? 'Chưa có đề luyện đề nào được giao' 
-                      : 'Em đã hoàn thành tất cả đề luyện hiện có!'}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
-                    {allPracticeExams.length === 0
-                      ? 'Khi Thầy Thọ đăng đề luyện thi lên cho lớp, các bài thi sẽ tự động hiển thị tại đây để em làm bài.'
-                      : 'Em có thể xem lại bài giải hoặc luyện lại các đề đã nộp ở bảng kết quả bên dưới để ghi nhớ sâu hơn nhé!'}
-                  </p>
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {practicePendingExams.map(room => {
-                    const hasSub = inProgressSubMap.has(room.id)
-                    const isClosed = room.status === 'closed'
-                    const isWaiting = room.status === 'waiting'
-
-                    let statusBadge = null
-                    if (isClosed) {
-                      statusBadge = <span className="bg-slate-100 text-slate-600 text-xs font-bold px-2.5 py-1 rounded-full border border-slate-200">Đã đóng</span>
-                    } else if (isWaiting) {
-                      statusBadge = <span className="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full border border-amber-200">Chờ mở</span>
-                    } else {
-                      statusBadge = (
-                        <span className="bg-emerald-50 text-emerald-800 text-xs font-black px-3 py-1 rounded-full border border-emerald-200 flex items-center gap-1.5 shadow-2xs">
-                          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                          <span>Đang mở luyện</span>
-                        </span>
-                      )
-                    }
-
-                    return (
-                      <div 
-                        key={room.id}
-                        className="bg-white rounded-3xl p-6 border-2 border-emerald-100 hover:border-emerald-300 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
-                      >
-                        <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-emerald-500/15 to-transparent rounded-bl-full pointer-events-none" />
-
-                        <div>
-                          <div className="flex justify-between items-start gap-2 mb-3">
-                            <span className="text-xs font-bold text-emerald-900 bg-emerald-50 px-3 py-1 rounded-xl border border-emerald-200 shadow-2xs">
-                              🎯 {room.classes?.class_name || 'Luyện đề tự do'}
-                            </span>
-                            {statusBadge}
-                          </div>
-
-                          <h4 className="text-base sm:text-lg font-black text-slate-800 mb-2.5 line-clamp-2 leading-snug group-hover:text-emerald-700 transition-colors">
-                            {room.exams?.title || `Phòng thi ${room.code}`}
-                          </h4>
-
-                          <div className="flex flex-wrap items-center gap-2.5 text-slate-500 text-xs font-semibold mb-4">
-                            <span className="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
-                              <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                              Thời gian: <strong className="text-slate-800 font-bold">{room.time_limit} phút</strong>
-                            </span>
-                            <span className="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-lg border border-emerald-200 text-[11px] font-bold">
-                              ✨ Không phạt chuyển tab
-                            </span>
-                            {hasSub && (
-                              <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[10px] uppercase font-black animate-pulse">
-                                ⚡ Đang làm dở
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
-                          <span className="text-xs text-slate-400 font-medium">
-                            Mã đề: <span className="font-mono font-black text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md">{room.code}</span>
-                          </span>
-
-                          {isClosed ? (
-                            <button disabled className="px-4 py-2 bg-slate-100 text-slate-400 text-xs font-bold rounded-xl cursor-not-allowed border border-slate-200">
-                              Đã đóng
-                            </button>
-                          ) : isWaiting ? (
-                            <button disabled className="px-4 py-2 bg-amber-50 text-amber-600 text-xs font-bold rounded-xl cursor-not-allowed border border-amber-200">
-                              Chờ mở phòng
-                            </button>
-                          ) : (
-                            <button 
-                              onClick={() => navigate(`/exam-room/${room.id}`)}
-                              className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white text-xs sm:text-sm font-black rounded-xl transition-all shadow-md shadow-emerald-600/20 hover:shadow-lg flex items-center gap-1.5 cursor-pointer"
-                            >
-                              <Sparkles className="w-4 h-4 text-amber-300" />
-                              <span>{hasSub ? 'Luyện tiếp ⚡' : 'Bắt đầu luyện ngay 🚀'}</span>
-                            </button>
-                          )}
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              )}
+            {/* A. Danh sách Đề Thi Thử Cần Luyện */}
+            <div className="space-y-3">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>🎯 Đề Thi Thử Cần Luyện</span>
+                <span className="text-xs font-bold text-slate-500">({practicePending.length} đề chờ)</span>
+              </h3>
+              {renderPendingGrid(practicePending, 'practice')}
             </div>
 
-            {/* ── B. BẢNG ĐIỂM & KẾT QUẢ CÁC BÀI THI LUYỆN ĐỀ ĐÃ NỘP ── */}
-            <div className="space-y-4 pt-4">
-              <div className="flex items-center justify-between border-b-2 border-amber-500 pb-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-700">
-                    <Trophy className="w-5 h-5 text-amber-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
-                      <span>Bảng Điểm & Kết Quả Luyện Đề</span>
-                      <span className="text-xs font-black bg-amber-500 text-white px-2 py-0.5 rounded-full">
-                        {practiceCompletedExams.length} bài
-                      </span>
-                    </h3>
-                    <p className="text-xs text-slate-500 font-medium">Bảng điểm tổng hợp tất cả bài thi luyện đề, xem bài giải và luyện lại</p>
-                  </div>
-                </div>
-
-                {practiceCompletedExams.length > 0 && practiceAvgScore !== null && (
-                  <div className="hidden sm:flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-slate-600">
-                    <span>Điểm TB Luyện Đề:</span>
-                    <span className="text-sm font-black text-emerald-700">
-                      {practiceAvgScore.toFixed(1)} / 10
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {practiceCompletedExams.length === 0 ? (
-                <div className="bg-white rounded-3xl p-8 text-center border border-slate-200 shadow-2xs text-slate-400">
-                  <Trophy className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                  <h4 className="text-base sm:text-lg font-bold text-slate-700">Chưa có kết quả luyện đề nào</h4>
-                  <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-sm mx-auto">
-                    Hãy làm và nộp các đề luyện thi ở trên để xem điểm số, xếp loại và bài chữa chi tiết của Thầy Thọ tại đây!
-                  </p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {/* Dạng Bảng chuẩn Desktop */}
-                  <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-                    <table className="w-full border-collapse text-left">
-                      <thead>
-                        <tr className="bg-gradient-to-r from-emerald-800 to-teal-800 text-white font-black text-xs uppercase tracking-wider">
-                          <th className="py-3.5 px-4 text-center w-12">#</th>
-                          <th className="py-3.5 px-4">Tên Đề Thi Luyện Đề</th>
-                          <th className="py-3.5 px-4 text-center">Lớp Luyện</th>
-                          <th className="py-3.5 px-4 text-center">Thời Gian Nộp</th>
-                          <th className="py-3.5 px-4 text-center w-36">Điểm Số</th>
-                          <th className="py-3.5 px-4 text-center w-48">Thao Tác</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-100 text-sm">
-                        {practiceCompletedExams.map(({ room, sub }, index) => {
-                          const formattedDate = sub.submitted_at 
-                            ? format(new Date(sub.submitted_at), 'dd/MM/yyyy HH:mm') 
-                            : 'N/A'
-                          const score = typeof sub.score === 'number' ? sub.score : null
-                          const isHigh = score !== null && score >= 8.0
-                          const isPass = score !== null && score >= 5.0
-                          const canRetake = room.status === 'active'
-
-                          return (
-                            <tr key={room.id} className="hover:bg-emerald-50/30 transition-colors">
-                              <td className="py-4 px-4 text-center font-bold text-slate-400 text-xs">
-                                {index + 1}
-                              </td>
-                              <td className="py-4 px-4 font-black text-slate-800">
-                                <div className="line-clamp-2 leading-snug">
-                                  {room.exams?.title || `Phòng thi ${room.code}`}
-                                </div>
-                                <span className="text-[11px] font-mono text-slate-400 font-medium">Mã: {room.code}</span>
-                              </td>
-                              <td className="py-4 px-4 text-center">
-                                <span className="bg-emerald-50 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-lg border border-emerald-200 whitespace-nowrap inline-block">
-                                  🎯 {room.classes?.class_name || 'Luyện đề'}
-                                </span>
-                              </td>
-                              <td className="py-4 px-4 text-center text-xs font-semibold text-slate-500 whitespace-nowrap">
-                                {formattedDate}
-                              </td>
-                              <td className="py-4 px-4 text-center">
-                                <div className="inline-flex flex-col items-center">
-                                  <span className={`text-xl font-black ${
-                                    isHigh ? 'text-emerald-600' : isPass ? 'text-teal-600' : 'text-rose-600'
-                                  }`}>
-                                    {score !== null ? score.toFixed(1) : 'Chưa chấm'}
-                                    <span className="text-xs text-slate-400 font-medium ml-0.5">/10</span>
-                                  </span>
-                                  <span className={`text-[10px] font-black px-2 py-0.5 rounded-full mt-0.5 ${
-                                    isHigh ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
-                                    isPass ? 'bg-teal-50 text-teal-700 border border-teal-200' :
-                                    'bg-rose-50 text-rose-700 border border-rose-200'
-                                  }`}>
-                                    {isHigh ? 'Xuất sắc ⭐' : isPass ? 'Đạt yêu cầu' : 'Cần cố gắng'}
-                                  </span>
-                                </div>
-                              </td>
-                              <td className="py-4 px-4 text-center">
-                                <div className="flex items-center justify-center gap-2">
-                                  <button
-                                    onClick={() => navigate(`/exam-room/${room.id}`)}
-                                    className="px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-black transition-all flex items-center gap-1 cursor-pointer"
-                                    title="Xem bài giải chi tiết"
-                                  >
-                                    <span>Xem Lời Giải 🔍</span>
-                                  </button>
-                                  {canRetake && (
-                                    <button
-                                      onClick={() => handleRetakeExam(room, sub)}
-                                      className="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-xl text-xs font-black transition-all flex items-center gap-1 cursor-pointer"
-                                      title="Luyện lại đề này để nâng cao điểm số"
-                                    >
-                                      <RefreshCw className="w-3.5 h-3.5" />
-                                      <span>Luyện lại</span>
-                                    </button>
-                                  )}
-                                </div>
-                              </td>
-                            </tr>
-                          )
-                        })}
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* Dạng Mobile cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden gap-4">
-                    {practiceCompletedExams.map(({ room, sub }) => {
-                      const formattedDate = sub.submitted_at 
-                        ? format(new Date(sub.submitted_at), 'dd/MM/yyyy HH:mm') 
-                        : 'N/A'
-                      const score = typeof sub.score === 'number' ? sub.score : null
-                      const isHigh = score !== null && score >= 8.0
-                      const isPass = score !== null && score >= 5.0
-                      const canRetake = room.status === 'active'
-
-                      return (
-                        <div 
-                          key={room.id}
-                          className="bg-white rounded-3xl p-5 border-2 border-emerald-100 shadow-2xs flex flex-col justify-between"
-                        >
-                          <div>
-                            <div className="flex justify-between items-start gap-2 mb-2.5">
-                              <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-lg border border-emerald-200">
-                                🎯 {room.classes?.class_name || 'Luyện đề'}
-                              </span>
-                              <span className="bg-emerald-50 text-emerald-800 text-[11px] font-black px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-                                <CheckCircle className="w-3 h-3 text-emerald-600" />
-                                <span>Đã nộp</span>
-                              </span>
-                            </div>
-
-                            <h4 className="text-base font-black text-slate-900 mb-2 leading-snug">
-                              {room.exams?.title || `Phòng thi ${room.code}`}
-                            </h4>
-
-                            <p className="text-xs text-slate-400 font-medium mb-4 flex items-center gap-1">
-                              <Clock className="w-3 h-3 text-slate-400" />
-                              Nộp lúc: <strong className="text-slate-600">{formattedDate}</strong>
-                            </p>
-                          </div>
-
-                          <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-                            <div className="flex items-baseline gap-1 bg-emerald-50/50 px-3 py-1.5 rounded-xl border border-emerald-200/60">
-                              <span className="text-xs text-slate-500 font-bold">Điểm:</span>
-                              <span className={`text-xl font-black ${
-                                isHigh ? 'text-emerald-600' : isPass ? 'text-teal-600' : 'text-rose-600'
-                              }`}>
-                                {score !== null ? score.toFixed(1) : '-'}
-                              </span>
-                              <span className="text-[10px] text-slate-400 font-bold">/10</span>
-                            </div>
-
-                            <div className="flex items-center gap-1.5">
-                              <button
-                                onClick={() => navigate(`/exam-room/${room.id}`)}
-                                className="px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black rounded-xl transition-all shadow-2xs cursor-pointer"
-                              >
-                                Xem giải 🔍
-                              </button>
-                              {canRetake && (
-                                <button
-                                  onClick={() => handleRetakeExam(room, sub)}
-                                  className="p-2 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-xl text-xs font-black transition-all cursor-pointer"
-                                  title="Luyện lại đề này"
-                                >
-                                  <RefreshCw className="w-4 h-4" />
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              )}
+            {/* B. Bảng Điểm & Bài Giải Đề Thi Thử Đã Nộp */}
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>🏆 Bảng Điểm & Kết Quả Luyện Đề Thi</span>
+                <span className="text-xs font-bold text-slate-500">({practiceCompleted.length} bài)</span>
+              </h3>
+              {renderCompletedTable(practiceCompleted, 'practice')}
             </div>
-          </section>
-        )}
-
-        {/* ── 2. BẢNG TỔNG HỢP KẾT QUẢ & LỊCH SỬ THI CHI TIẾT (HIỆN KHI Ở TAB 'completed' HOẶC 'all') ── */}
-        {(activeTab === 'completed' || activeTab === 'all') && (
-          <section className="space-y-4">
-            <div className="flex items-center justify-between border-b-2 border-teal-500 pb-2.5">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-700">
-                  <Trophy className="w-5 h-5 text-amber-600" />
-                </div>
-                <div>
-                  <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                    <span>Bảng Tổng Hợp Kết Quả & Điểm Số</span>
-                    <span className="text-xs font-black bg-teal-100 text-teal-800 px-2 py-0.5 rounded-full">
-                      {completedExams.length} bài
-                    </span>
-                  </h2>
-                  <p className="text-xs text-slate-500 font-medium">Bảng theo dõi điểm số thực tế và xem lại bài giải chi tiết</p>
-                </div>
-              </div>
-
-              {completedExams.length > 0 && (
-                <div className="hidden sm:flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-slate-600">
-                  <span>Điểm TB:</span>
-                  <span className="text-sm font-black text-teal-700">
-                    {(completedExams.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / completedExams.length).toFixed(1)} / 10
-                  </span>
-                </div>
-              )}
-            </div>
-
-            {completedExams.length === 0 ? (
-              <div className="bg-white rounded-3xl p-8 sm:p-12 text-center border border-slate-200 shadow-2xs text-slate-400">
-                <FileText className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                <h3 className="text-base sm:text-lg font-bold text-slate-700">Chưa có bài thi nào được hoàn thành</h3>
-                <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-sm mx-auto">
-                  Hãy hoàn thành các bài thi được giao ở trên để xem điểm số, xếp loại và bài chữa chi tiết tại đây!
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {/* Dạng Bảng chuẩn Desktop / Tablet */}
-                <div className="hidden md:block overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-                  <table className="w-full border-collapse text-left">
-                    <thead>
-                      <tr className="bg-gradient-to-r from-teal-700 to-teal-800 text-white font-black text-xs uppercase tracking-wider">
-                        <th className="py-3.5 px-4 text-center w-12">#</th>
-                        <th className="py-3.5 px-4">Tên Đề Thi</th>
-                        <th className="py-3.5 px-4 text-center">Lớp Học</th>
-                        <th className="py-3.5 px-4 text-center">Thời Gian Nộp</th>
-                        <th className="py-3.5 px-4 text-center w-36">Điểm Số</th>
-                        <th className="py-3.5 px-4 text-center w-48">Thao Tác</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 text-sm">
-                      {completedExams.map(({ room, sub }, index) => {
-                        const formattedDate = sub.submitted_at 
-                          ? format(new Date(sub.submitted_at), 'dd/MM/yyyy HH:mm') 
-                          : 'N/A'
-                        const score = typeof sub.score === 'number' ? sub.score : null
-                        const isHigh = score !== null && score >= 8.0
-                        const isPass = score !== null && score >= 5.0
-                        const canRetake = room.status === 'active'
-
-                        return (
-                          <tr key={room.id} className="hover:bg-teal-50/30 transition-colors">
-                            <td className="py-4 px-4 text-center font-bold text-slate-400 text-xs">
-                              {index + 1}
-                            </td>
-                            <td className="py-4 px-4 font-black text-slate-800">
-                              <div className="line-clamp-2 leading-snug">
-                                {room.exams?.title || `Phòng thi ${room.code}`}
-                              </div>
-                              <span className="text-[11px] font-mono text-slate-400 font-medium">Mã: {room.code}</span>
-                            </td>
-                            <td className="py-4 px-4 text-center">
-                              <span className={`text-xs font-bold px-2.5 py-1 rounded-lg whitespace-nowrap inline-block ${
-                                isPracticeExam(room) 
-                                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
-                                  : 'bg-slate-100 text-slate-700'
-                              }`}>
-                                {isPracticeExam(room) ? '🎯 ' : ''}{room.classes?.class_name || 'Tự do'}
-                              </span>
-                            </td>
-                            <td className="py-4 px-4 text-center text-xs font-semibold text-slate-500 whitespace-nowrap">
-                              {formattedDate}
-                            </td>
-                            <td className="py-4 px-4 text-center">
-                              <div className="inline-flex flex-col items-center">
-                                <span className={`text-xl font-black ${
-                                  isHigh ? 'text-emerald-600' : isPass ? 'text-teal-600' : 'text-rose-600'
-                                }`}>
-                                  {score !== null ? score.toFixed(1) : 'Chưa chấm'}
-                                  <span className="text-xs text-slate-400 font-medium ml-0.5">/10</span>
-                                </span>
-                                <span className={`text-[10px] font-black px-2 py-0.5 rounded-full mt-0.5 ${
-                                  isHigh ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' :
-                                  isPass ? 'bg-teal-50 text-teal-700 border border-teal-200' :
-                                  'bg-rose-50 text-rose-700 border border-rose-200'
-                                }`}>
-                                  {isHigh ? 'Xuất sắc ⭐' : isPass ? 'Đạt yêu cầu' : 'Cần cố gắng'}
-                                </span>
-                              </div>
-                            </td>
-                            <td className="py-4 px-4 text-center">
-                              <div className="flex items-center justify-center gap-2">
-                                <button
-                                  onClick={() => navigate(`/exam-room/${room.id}`)}
-                                  className="px-3.5 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-xl text-xs font-black transition-all flex items-center gap-1 cursor-pointer"
-                                  title="Xem bài giải chi tiết"
-                                >
-                                  <span>Xem Lời Giải 🔍</span>
-                                </button>
-                                {canRetake && (
-                                  <button
-                                    onClick={() => handleRetakeExam(room, sub)}
-                                    className="px-2.5 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-xl text-xs font-black transition-all flex items-center gap-1 cursor-pointer"
-                                    title="Thi lại để cải thiện điểm số"
-                                  >
-                                    <RefreshCw className="w-3.5 h-3.5" />
-                                    <span>Thi lại</span>
-                                  </button>
-                                )}
-                              </div>
-                            </td>
-                          </tr>
-                        )
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Dạng Thẻ chuẩn Mobile (Đảm bảo không bị vỡ giao diện trên điện thoại) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:hidden gap-4">
-                  {completedExams.map(({ room, sub }) => {
-                    const formattedDate = sub.submitted_at 
-                      ? format(new Date(sub.submitted_at), 'dd/MM/yyyy HH:mm') 
-                      : 'N/A'
-                    const score = typeof sub.score === 'number' ? sub.score : null
-                    const isHigh = score !== null && score >= 8.0
-                    const isPass = score !== null && score >= 5.0
-                    const canRetake = room.status === 'active'
-
-                    return (
-                      <div 
-                        key={room.id}
-                        className="bg-white rounded-3xl p-5 border border-slate-200 shadow-2xs flex flex-col justify-between"
-                      >
-                        <div>
-                          <div className="flex justify-between items-start gap-2 mb-2.5">
-                            <span className={`text-xs font-bold px-2.5 py-0.5 rounded-lg ${
-                              isPracticeExam(room) 
-                                ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
-                                : 'bg-slate-100 text-slate-700'
-                            }`}>
-                              {isPracticeExam(room) ? '🎯 ' : '🏫 '}{room.classes?.class_name || 'Tự do'}
-                            </span>
-                            <span className="bg-emerald-50 text-emerald-800 text-[11px] font-black px-2.5 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-                              <CheckCircle className="w-3 h-3 text-emerald-600" />
-                              <span>Đã nộp</span>
-                            </span>
-                          </div>
-
-                          <h3 className="text-base font-black text-slate-900 mb-2 leading-snug">
-                            {room.exams?.title || `Phòng thi ${room.code}`}
-                          </h3>
-
-                          <p className="text-xs text-slate-400 font-medium mb-4 flex items-center gap-1">
-                            <Clock className="w-3 h-3 text-slate-400" />
-                            Nộp lúc: <strong className="text-slate-600">{formattedDate}</strong>
-                          </p>
-                        </div>
-
-                        <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-                          <div className="flex items-baseline gap-1 bg-slate-50 px-3 py-1.5 rounded-xl border border-slate-200/60">
-                            <span className="text-xs text-slate-500 font-bold">Điểm:</span>
-                            <span className={`text-xl font-black ${
-                              isHigh ? 'text-emerald-600' : isPass ? 'text-teal-600' : 'text-rose-600'
-                            }`}>
-                              {score !== null ? score.toFixed(1) : '-'}
-                            </span>
-                            <span className="text-[10px] text-slate-400 font-bold">/10</span>
-                          </div>
-
-                          <div className="flex items-center gap-1.5">
-                            <button
-                              onClick={() => navigate(`/exam-room/${room.id}`)}
-                              className="px-3 py-2 bg-teal-600 hover:bg-teal-700 text-white text-xs font-black rounded-xl transition-all shadow-2xs cursor-pointer"
-                            >
-                              Xem giải 🔍
-                            </button>
-                            {canRetake && (
-                              <button
-                                onClick={() => handleRetakeExam(room, sub)}
-                                className="p-2 bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 rounded-xl text-xs font-black transition-all cursor-pointer"
-                                title="Thi lại"
-                              >
-                                <RefreshCw className="w-4 h-4" />
-                              </button>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
           </section>
         )}
       </main>

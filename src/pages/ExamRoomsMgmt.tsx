@@ -8,7 +8,7 @@ import { useDataStore } from '@/store/dataStore'
 import { exportExamRoomToExcel } from '@/services/examExportService'
 import Modal from '@/components/Modal'
 import toast from 'react-hot-toast'
-import { isPracticeClassName } from '@/utils/practiceExamHelper'
+import { isPracticeClassName, getExamCategory, getCategoryMeta, ExamCategory } from '@/utils/practiceExamHelper'
 
 const getExamSessionNumber = (title: string) => {
   const match = title.toLowerCase().match(/buổi\s*(\d+)|buoi\s*(\d+)/)
@@ -524,6 +524,15 @@ export default function ExamRoomsMgmt() {
                             Lớp học: <span className="text-gray-500 font-medium">{(room.classes as any)?.class_name || (room.classes as any)?.name || 'Tất cả'}</span>
                           </p>
                           <div className="flex flex-wrap items-center gap-1.5 mt-2">
+                            {(() => {
+                              const cat = getExamCategory(room)
+                              const meta = getCategoryMeta(cat)
+                              return (
+                                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border ${meta.tagBg}`}>
+                                  {meta.icon} {meta.label}
+                                </span>
+                              )
+                            })()}
                             {room.settings?.passcode && (
                               <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-200 flex items-center gap-1" title="Mật khẩu vào phòng thi">
                                 🔒 PIN: {room.settings.passcode}
@@ -737,6 +746,78 @@ export default function ExamRoomsMgmt() {
                 <option key={c.id} value={c.id}>{(c as any).class_name || (c as any).name}</option>
               ))}
             </select>
+          </div>
+
+          {/* 🎯 PHÂN LOẠI 3 PHẦN HỌC TẬP */}
+          <div>
+            <label className="label">3. Phân loại bài thi (Hệ thống 3 phần):</label>
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setForm(prev => ({
+                    ...prev,
+                    settings: {
+                      ...prev.settings,
+                      category: 'homework',
+                      antiCheat: true
+                    }
+                  }))
+                }}
+                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
+                  (form.settings.category || 'homework') === 'homework'
+                    ? 'bg-rose-50 border-rose-400 text-rose-800 shadow-xs ring-2 ring-rose-200'
+                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <span>🔴 1. BTVN</span>
+                <span className="text-[10px] text-slate-500 font-normal">Bắt buộc & Giám sát</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setForm(prev => ({
+                    ...prev,
+                    settings: {
+                      ...prev.settings,
+                      category: 'chapter',
+                      antiCheat: false
+                    }
+                  }))
+                }}
+                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
+                  form.settings.category === 'chapter'
+                    ? 'bg-blue-50 border-blue-400 text-blue-800 shadow-xs ring-2 ring-blue-200'
+                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <span>📘 2. Đề Chương</span>
+                <span className="text-[10px] text-slate-500 font-normal">Tự do tra cứu</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setForm(prev => ({
+                    ...prev,
+                    settings: {
+                      ...prev.settings,
+                      category: 'practice',
+                      antiCheat: false
+                    }
+                  }))
+                }}
+                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
+                  form.settings.category === 'practice'
+                    ? 'bg-emerald-50 border-emerald-400 text-emerald-800 shadow-xs ring-2 ring-emerald-200'
+                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <span>🎯 3. Luyện Đề Thi</span>
+                <span className="text-[10px] text-slate-500 font-normal">Tự do làm đề</span>
+              </button>
+            </div>
           </div>
 
           {/* 🎯 CHỈ ĐỊNH ĐÍCH DANH HỌC SINH */}

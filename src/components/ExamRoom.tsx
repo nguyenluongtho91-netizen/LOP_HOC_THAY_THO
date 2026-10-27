@@ -10,7 +10,7 @@ import { hasEssayAnswer } from '../services/essayGradingService';
 
 import { List, CheckCircle2, Type, FileEdit, Check as CheckIcon, X as XIcon, Loader2, AlertTriangle } from 'lucide-react';
 import { normalizeExamData, cleanQuestionText } from '../services/examNormalizer';
-import { isPracticeExam } from '../utils/practiceExamHelper';
+import { isPracticeExam, getExamCategory } from '../utils/practiceExamHelper';
 
 // ─── Seeded shuffle (Fisher-Yates với seed đơn giản) ─────────────────────────
 function mulberry32(seed: number) {
@@ -553,11 +553,15 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
               )}
               {!isPracticeExam(room) && (room as any)?.settings?.antiCheat !== false ? (
                 <span className="px-3 py-1 rounded-full bg-rose-500/30 backdrop-blur-md text-rose-100 text-xs font-bold border border-rose-300/30 flex items-center gap-1">
-                  🛡️ Có giám sát chuyển tab
+                  🛡️ BTVN Bắt Buộc · Có giám sát chuyển tab
+                </span>
+              ) : getExamCategory(room) === 'chapter' ? (
+                <span className="px-3.5 py-1 rounded-full bg-blue-500/30 backdrop-blur-md text-blue-100 text-xs font-bold border border-blue-300/30 flex items-center gap-1.5 shadow-xs">
+                  📘 Đề Luyện Chương Tự Do · Thoải mái tra cứu tài liệu
                 </span>
               ) : (
                 <span className="px-3.5 py-1 rounded-full bg-emerald-500/30 backdrop-blur-md text-emerald-100 text-xs font-bold border border-emerald-300/30 flex items-center gap-1.5 shadow-xs">
-                  🎯 Đề Luyện Tập Tự Do · Thoải mái tra cứu (Không tính vi phạm)
+                  🎯 Đề Luyện Thi Tự Do · Không giới hạn chuyển tab
                 </span>
               )}
             </div>
