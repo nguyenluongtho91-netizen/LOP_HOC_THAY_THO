@@ -53,7 +53,6 @@ export default function StudentPortal() {
   const navigate = useNavigate()
   const [student, setStudent] = useState<any>(null)
   const [loading, setLoading] = useState(true)
-  const [showDirectHoa12, setShowDirectHoa12] = useState(false)
 
   // Đăng nhập form
   const [studentCodeInput, setStudentCodeInput] = useState('')
@@ -87,8 +86,9 @@ export default function StudentPortal() {
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
 
   // Xác định chính xác học sinh có thuộc Khối 12 hay không (Tài liệu lớp nào chỉ hiện cho lớp đó)
+  // Xác định học sinh Khối 12 hoặc Thầy giáo (Thầy giáo luôn xem được toàn bộ)
   const isGrade12 = useMemo(() => {
-    if (!student) return false;
+    if (!student) return true; // Khách / chưa đăng nhập cho phép xem
     const code = String(student.student_code || '').toUpperCase().trim();
     const name = String(student.full_name || '').toLowerCase();
     const role = String(student.role || '').toUpperCase();
@@ -574,22 +574,6 @@ export default function StudentPortal() {
   }
 
   // ── GIAO DIỆN ĐĂNG NHẬP ─────────────────────────────────────
-  if (showDirectHoa12) {
-    return (
-      <Suspense fallback={
-        <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center p-8">
-          <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mr-3" />
-          <span className="font-bold">Đang tải kho tài liệu Hóa 12 Chương 1...</span>
-        </div>
-      }>
-        <Hoa12Chuong1View 
-          studentName="Học sinh"
-          studentGrade="12"
-          onClose={() => setShowDirectHoa12(false)}
-        />
-      </Suspense>
-    );
-  }
 
   if (!student) {
     return (
@@ -693,19 +677,39 @@ export default function StudentPortal() {
                 </button>
               </div>
 
-              {/* Nút đăng nhập nhanh dành riêng cho Thầy Thọ (Thí sinh tự do) */}
-              <div className="pt-2 border-t border-slate-100">
+              {/* Nút truy cập nhanh Hóa 12 không cần đăng nhập */}
+              <div className="pt-2 border-t border-slate-100 space-y-2">
                 <button
                   type="button"
-                  onClick={() => {
+                  onClick={() => navigate('/hoa12')}
+                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
+                >
+                  <span>🧪 VÀO HỌC LIỆU & 7 ĐỀ HÓA 12 (TRUY CẬP NGAY)</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <button
+                  type="button"
+                  onClick={async () => {
                     setStudentCodeInput('THAYTHO')
                     setPasswordInput('123456')
-                    toast.success('👑 Đã điền sẵn tài khoản Thí sinh tự do: THAYTHO. Bấm "VÀO HỆ THỐNG" để làm tất cả bài thi!');
+                    setIsLoggingIn(true)
+                    try {
+                      const user = await verifyStudent('THAYTHO', '123456')
+                      if (user) {
+                        setStudent(user)
+                        toast.success('👑 Xin chào Thầy Thọ! Chúc Thầy kiểm tra đề hiệu quả.')
+                        await fetchStudentData(user.id)
+                      }
+                    } catch (e) {
+                      toast.error('Lỗi kết nối máy chủ!')
+                    } finally {
+                      setIsLoggingIn(false)
+                    }
                   }}
-                  className="w-full py-2.5 px-3 bg-gradient-to-r from-amber-50 to-yellow-50 hover:from-amber-100 hover:to-yellow-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+                  className="w-full py-2.5 px-3 bg-gradient-to-r from-amber-50 to-yellow-50 hover:from-amber-100 hover:to-yellow-100 text-amber-900 border border-amber-300 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
                 >
-                  <span>👑 Thí Sinh Tự Do (Thầy Thọ)</span>
-                  <span className="text-[10px] font-normal text-amber-700">(Bấm điền tự động)</span>
+                  <span>👑 Đăng nhập nhanh Thầy Thọ (1-Chạm)</span>
                 </button>
               </div>
             </form>
@@ -1479,15 +1483,11 @@ export default function StudentPortal() {
           <button
             type="button"
             onClick={() => {
-              setActiveTab("chapter");
-              setTimeout(() => {
-                const el = document.getElementById("hoa12-chuong1-section");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-              }, 100);
+              navigate('/hoa12');
             }}
             className="w-full md:w-auto bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-6 py-3 rounded-2xl text-xs sm:text-sm shadow-xl shadow-amber-400/20 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
           >
-            <span>VÀO LÀM BÀI NGAY</span>
+            <span>🚀 VÀO LÀM BÀI NGAY (HÓA 12)</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
@@ -1520,13 +1520,7 @@ export default function StudentPortal() {
 
             {/* Tab 2: LUYỆN ĐỀ THEO CHƯƠNG */}
             <button
-              onClick={() => {
-                setActiveTab('chapter');
-                setTimeout(() => {
-                  const el = document.getElementById('hoa12-chuong1-section');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-              }}
+              onClick={() => setActiveTab('chapter')}
               className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
                 activeTab === 'chapter'
                   ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40'
