@@ -1018,7 +1018,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                     {q.topicTitle}
                                   </span>
                                 )}
-                                {renderLevelBadge(q.level, q.levelName)}
+                                {(isRevealed || isCurrentSetSubmitted) && renderLevelBadge(q.level, q.levelName)}
                               </div>
 
                               <div className="flex items-center gap-2">
@@ -1183,9 +1183,12 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             {/* Explanation Accordion */}
                             {isRevealed && q.explanation && (
                               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-2 mt-4 animate-fade-in">
-                                <div className="font-extrabold text-indigo-900 flex items-center gap-1.5">
-                                  <HelpCircle className="w-4 h-4 text-indigo-600" />
-                                  Hướng dẫn giải chi tiết:
+                                <div className="font-extrabold text-indigo-900 flex flex-wrap items-center gap-2">
+                                  <div className="flex items-center gap-1.5">
+                                    <HelpCircle className="w-4 h-4 text-indigo-600" />
+                                    <span>Hướng dẫn giải chi tiết:</span>
+                                  </div>
+                                  {renderLevelBadge(q.level, q.levelName)}
                                 </div>
                                 <div dangerouslySetInnerHTML={{ __html: q.explanation }} />
                               </div>
@@ -1381,7 +1384,6 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200/60 text-slate-700">
                               Phần {q.part}
                             </span>
-                            {renderLevelBadge(q.level, q.levelName)}
                           </div>
                           <span className="text-xs font-bold text-slate-400">
                             {q.part === 1 ? '0,25 đ' : q.part === 2 ? '1,0 đ' : '0,25 đ'}
