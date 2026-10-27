@@ -35,6 +35,7 @@ import {
   getCategoryMeta, 
   ExamCategory 
 } from '@/utils/practiceExamHelper'
+import { Hoa12Chuong1View } from "../components/Hoa12Chuong1View";
 import toast from 'react-hot-toast'
 import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
@@ -1547,6 +1548,12 @@ export default function StudentPortal() {
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {(activeTab === 'chapter' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
+            {/* 🌟 HỆ THỐNG LUYỆN ĐỀ & RÈN LUYỆN CHƯƠNG 1 HOÁ HỌC 12 (CT MỚI 2025) */}
+            <Hoa12Chuong1View 
+              studentName={student?.name}
+              studentGrade={student?.grade || "12"}
+            />
+
             {/* Header Phần 2 */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-blue-200 pb-4">
               <div>
