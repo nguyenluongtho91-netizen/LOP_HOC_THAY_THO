@@ -90,6 +90,10 @@ export default function StudentPortal() {
     if (sessionStr) {
       const parsed = JSON.parse(sessionStr)
       setStudent(parsed)
+      const g = String(parsed.grade || '').toLowerCase()
+      if (g.includes('12') || g.includes('khối 12')) {
+        setActiveTab('chapter')
+      }
       fetchStudentData(parsed.id)
     } else {
       setLoading(false)
@@ -315,6 +319,10 @@ export default function StudentPortal() {
       if (!studentData) return
 
       setStudent(studentData)
+      const gGrade = String(studentData.grade || '').toLowerCase()
+      if (gGrade.includes('12') || gGrade.includes('khối 12')) {
+        setActiveTab('chapter')
+      }
       toast.success(`Xin chào, ${studentData.full_name}! 👋`)
       await fetchStudentData(studentData.id)
     } catch (err) {
@@ -761,6 +769,27 @@ export default function StudentPortal() {
               ? 'Thầy Thọ khen ngợi tinh thần học tập của em! Hãy tiếp tục duy trì nhé.'
               : 'Em có thể xem lại bài giải hoặc bấm thi lại ở bảng điểm bên dưới để rèn luyện thêm!'}
           </p>
+          {category === 'homework' && (
+            <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col items-center">
+              <p className="text-xs font-semibold text-slate-600 mb-2.5">
+                Em hãy thử sức với 7 Đề và 5 Chuyên đề Hóa 12 mới nhất:
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTab('chapter');
+                  setTimeout(() => {
+                    const el = document.getElementById('hoa12-chuong1-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-md shadow-blue-500/25 active:scale-95 transition-all cursor-pointer"
+              >
+                <span>🧪 VÀO LUYỆN ĐỀ CHƯƠNG 1 (HÓA 12) NGAY</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       )
     }

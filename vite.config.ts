@@ -17,8 +17,28 @@ export default defineConfig({
     },
   },
   build: {
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('pdfjs-dist') || id.includes('jspdf') || id.includes('html2canvas')) {
+              return 'vendor-pdf';
+            }
+            if (id.includes('xlsx') || id.includes('exceljs') || id.includes('jszip')) {
+              return 'vendor-excel';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons';
+            }
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('@supabase')) {
+              return 'vendor-supabase';
+            }
+          }
+        },
         entryFileNames: `assets/[name]-[hash]-${Date.now()}.js`,
         chunkFileNames: `assets/[name]-[hash]-${Date.now()}.js`,
         assetFileNames: `assets/[name]-[hash].[ext]`
