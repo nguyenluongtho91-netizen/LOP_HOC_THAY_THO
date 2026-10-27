@@ -2,10 +2,9 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { format, subDays, startOfMonth, endOfMonth } from 'date-fns'
-import { CalendarCheck, Trophy, BookOpen, GraduationCap, AlertCircle, Clock, ChevronDown, ChevronUp, CheckCircle, XCircle, Info, Phone } from 'lucide-react'
+import { CalendarCheck, Trophy, BookOpen, GraduationCap, AlertCircle, Clock, ChevronDown, ChevronUp, CheckCircle, XCircle } from 'lucide-react'
 import MathText from '@/components/MathText'
 import toast from 'react-hot-toast'
-import { TeacherProfileModal } from '@/components/TeacherProfileModal'
 
 const BANK_ID      = import.meta.env.VITE_BANK_ID      || 'VCB'
 const BANK_ACCOUNT = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
@@ -25,7 +24,6 @@ export default function StudentProgressPage() {
   const [loadingDetail, setLoadingDetail] = useState(false)
   const [pendingExams, setPendingExams] = useState<any[]>([])
   const [classNames, setClassNames] = useState<string[]>([])
-  const [showTeacherModal, setShowTeacherModal] = useState(false)
 
   useEffect(() => {
     if (code) load()
@@ -157,25 +155,12 @@ export default function StudentProgressPage() {
         <div className="absolute inset-0 opacity-[0.07]"
           style={{ backgroundImage: 'radial-gradient(circle, white 1.5px, transparent 1.5px)', backgroundSize: '28px 28px' }} />
 
-        {/* Góc thanh tiêu đề (Topbar) nhỏ gọn như avatar 32px tinh tế */}
+        {/* Góc thanh tiêu đề (Topbar) */}
         <div className="relative z-20 max-w-md mx-auto flex items-center justify-between mb-5">
-          <div 
-            onClick={() => setShowTeacherModal(true)}
-            className="inline-flex items-center gap-2 bg-black/25 hover:bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 text-white cursor-pointer transition-all group"
-            title="Bấm để xem thông tin Thầy Thọ & Liên hệ"
-          >
-            <div className="relative shrink-0">
-              <img 
-                src="/thay_tho_avatar.png" 
-                alt="Thầy Thọ" 
-                className="w-8 h-8 rounded-full object-cover border border-white/70 shadow-xs group-hover:scale-105 transition-transform" 
-              />
-              <div className="absolute -bottom-0.5 -right-0.5 bg-emerald-400 w-2 h-2 rounded-full border border-white" />
-            </div>
-            <div className="text-left pr-1">
-              <span className="text-[11px] font-bold block leading-tight">Thầy Thọ</span>
-              <span className="text-[9px] text-teal-200 block leading-none">0345.833.133</span>
-            </div>
+          <div className="inline-flex items-center gap-2 bg-black/25 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-white">
+            <GraduationCap className="w-4 h-4 text-teal-300" />
+            <span className="text-[11px] font-bold">Lớp Học Thầy Thọ</span>
+            <span className="text-[10px] text-teal-200">• 0345.833.133</span>
           </div>
 
           <div className="text-[10px] font-extrabold uppercase tracking-wider bg-white/15 px-3 py-1.5 rounded-full border border-white/20 text-teal-100">
@@ -722,24 +707,15 @@ export default function StudentProgressPage() {
         )}
 
         {/* Footer */}
-        <div 
-          onClick={() => setShowTeacherModal(true)}
-          className="flex flex-col items-center py-5 gap-1.5 cursor-pointer group"
-        >
-          <div className="flex items-center gap-1.5 text-teal-700 group-hover:text-teal-900 font-black text-sm transition-colors">
+        <div className="flex flex-col items-center py-5 gap-1.5">
+          <div className="flex items-center gap-1.5 text-teal-700 font-black text-sm">
             <span>{centerName || 'LỚP HỌC THẦY THỌ'}</span>
           </div>
           <p className="text-[11px] text-gray-400 italic">"Cố gắng không bỏ cuộc. Quả ngọt luôn cần thời gian."</p>
-          <span className="text-[10px] text-teal-600 font-bold bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100 mt-1 hover:bg-teal-100 transition-colors">
+          <span className="text-[10px] text-teal-600 font-bold bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100 mt-1">
             📞 Hotline / Zalo: 0345.833.133
           </span>
         </div>
-
-        {/* Modal thông tin Thầy Thọ */}
-        <TeacherProfileModal
-          isOpen={showTeacherModal}
-          onClose={() => setShowTeacherModal(false)}
-        />
       </div>
     </div>
   )
