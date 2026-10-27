@@ -10,6 +10,7 @@ import { hasEssayAnswer } from '../services/essayGradingService';
 
 import { List, CheckCircle2, Type, FileEdit, Check as CheckIcon, X as XIcon, Loader2, AlertTriangle } from 'lucide-react';
 import { normalizeExamData, cleanQuestionText } from '../services/examNormalizer';
+import { isPracticeExam } from '../utils/practiceExamHelper';
 
 // ─── Seeded shuffle (Fisher-Yates với seed đơn giản) ─────────────────────────
 function mulberry32(seed: number) {
@@ -239,8 +240,8 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
   }, []);
 
   useEffect(() => {
-    // Nếu phòng thi tắt antiCheat thì không khởi động giám sát
-    if ((room as any).settings?.antiCheat === false) return;
+    // Nếu phòng thi tắt antiCheat hoặc thuộc lớp/đề Luyện Đề thì KHÔNG khởi động giám sát (không cảnh báo)
+    if ((room as any).settings?.antiCheat === false || isPracticeExam(room)) return;
 
     const tabService = getTabDetectionService();
     tabService.start({
@@ -550,9 +551,13 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
                   🏷️ MÃ ĐỀ: {(room as any)?.examCode || (room as any)?.settings?.examCode || '101'}
                 </span>
               )}
-              {(room as any)?.settings?.antiCheat !== false && (
+              {!isPracticeExam(room) && (room as any)?.settings?.antiCheat !== false ? (
                 <span className="px-3 py-1 rounded-full bg-rose-500/30 backdrop-blur-md text-rose-100 text-xs font-bold border border-rose-300/30 flex items-center gap-1">
                   🛡️ Có giám sát chuyển tab
+                </span>
+              ) : (
+                <span className="px-3.5 py-1 rounded-full bg-emerald-500/30 backdrop-blur-md text-emerald-100 text-xs font-bold border border-emerald-300/30 flex items-center gap-1.5 shadow-xs">
+                  🎯 Đề Luyện Tập Tự Do · Thoải mái tra cứu (Không tính vi phạm)
                 </span>
               )}
             </div>

@@ -8,6 +8,7 @@ import { useDataStore } from '@/store/dataStore'
 import { exportExamRoomToExcel } from '@/services/examExportService'
 import Modal from '@/components/Modal'
 import toast from 'react-hot-toast'
+import { isPracticeClassName } from '@/utils/practiceExamHelper'
 
 const getExamSessionNumber = (title: string) => {
   const match = title.toLowerCase().match(/buổi\s*(\d+)|buoi\s*(\d+)/)
@@ -715,7 +716,19 @@ export default function ExamRoomsMgmt() {
             <label className="label">2. Giao cho lớp học nào? *</label>
             <select 
               value={form.class_id} 
-              onChange={e => setForm({...form, class_id: e.target.value})} 
+              onChange={e => {
+                const newClassId = e.target.value
+                const selectedCls = classes.find(c => c.id === newClassId) as any
+                const isPractice = selectedCls ? isPracticeClassName(selectedCls.class_name || selectedCls.name) : false
+                setForm(prev => ({
+                  ...prev, 
+                  class_id: newClassId,
+                  settings: {
+                    ...prev.settings,
+                    antiCheat: isPractice ? false : prev.settings.antiCheat
+                  }
+                }))
+              }} 
               className="input"
               disabled={!!editingRoomId || !modalGrade}
             >
@@ -885,7 +898,14 @@ export default function ExamRoomsMgmt() {
                 className="w-5 h-5 mt-0.5 accent-rose-600 rounded cursor-pointer" 
               />
               <div>
-                <span className="text-gray-800 text-sm font-bold block">🛡️ Bật giám sát chống gian lận (Chuyển tab / Rời màn hình)</span>
+                <span className="text-gray-800 text-sm font-bold block flex items-center gap-2 flex-wrap">
+                  <span>🛡️ Bật giám sát chống gian lận (Chuyển tab / Rời màn hình)</span>
+                  {form.class_id && isPracticeClassName(classes.find(c => c.id === form.class_id)?.class_name || (classes.find(c => c.id === form.class_id) as any)?.name) && (
+                    <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                      🎯 Đã tự động tắt cho Lớp Luyện Đề
+                    </span>
+                  )}
+                </span>
                 <span className="text-gray-500 text-xs">Cảnh báo khi học sinh đổi tab trình duyệt, tự động thu bài nếu vi phạm quá 3 lần.</span>
               </div>
             </label>

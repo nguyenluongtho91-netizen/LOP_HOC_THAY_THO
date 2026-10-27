@@ -15,6 +15,7 @@ import { getTabDetectionService } from '../services/tabDetectionService';
 import { useExamSession, generateSessionId } from '../services/sessionService';
 import EssayQuestionInput from './EssayQuestionInput';
 import { Loader2, AlertTriangle } from 'lucide-react';
+import { isPracticeExam } from '../utils/practiceExamHelper';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -337,9 +338,9 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
     if (!isSubmitted) updateProgress(totalAnswered, timeLeft);
   }, [totalAnswered, timeLeft, isSubmitted, updateProgress]);
 
-  // Tab detection (Respect room.settings.antiCheat)
+  // Tab detection (Respect room.settings.antiCheat and practice exams)
   useEffect(() => {
-    if ((room as any).settings?.antiCheat === false) return;
+    if ((room as any).settings?.antiCheat === false || isPracticeExam(room)) return;
     const svc = getTabDetectionService();
     svc.start({
       maxSwitches: 3,
@@ -471,9 +472,13 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
                 MÃ ĐỀ: {(room as any)?.examCode || (room as any)?.settings?.examCode || '101'}
               </span>
             )}
-            {(room as any)?.settings?.antiCheat !== false && (
+            {!isPracticeExam(room) && (room as any)?.settings?.antiCheat !== false ? (
               <span className="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 text-[10px] font-bold border border-rose-200">
                 🛡️ Giám sát tab
+              </span>
+            ) : (
+              <span className="px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">
+                🎯 Luyện đề tự do (Không phạt tab)
               </span>
             )}
           </div>
