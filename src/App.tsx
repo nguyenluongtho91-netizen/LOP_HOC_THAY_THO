@@ -8,6 +8,7 @@ import Layout from '@/components/Layout'
 import Login from '@/pages/Login'
 import StudentPortal from '@/pages/StudentPortal'
 import ExamRoomPage from '@/pages/ExamRoomPage'
+import Hoa12Page from '@/pages/Hoa12Page'
 
 // Lazy Load các Pages Quản lý (CRM), Công cụ nặng, Chấm thi AI giúp tối ưu tải trang siêu tốc
 const Dashboard = lazy(() => import('@/pages/Dashboard'))
@@ -29,7 +30,7 @@ const CreateTexExamPage = lazy(() => import('@/pages/CreateTexExamPage'))
 const CreateWorksheetPage = lazy(() => import('@/pages/CreateWorksheetPage'))
 const WhiteboardPage = lazy(() => import('@/pages/WhiteboardPage'))
 const LayGocToanPage = lazy(() => import('@/pages/LayGocToanPage'))
-const Hoa12Page = lazy(() => import('@/pages/Hoa12Page'))
+// Hoa12Page loaded eagerly above
 
 // Pages Khóa học
 const CourseMgmt = lazy(() => import('@/pages/CourseMgmt'))

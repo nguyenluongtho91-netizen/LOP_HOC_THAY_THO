@@ -107,13 +107,22 @@ export default function StudentPortal() {
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
     if (sessionStr) {
-      const parsed = JSON.parse(sessionStr)
-      setStudent(parsed)
-      const g = String(parsed.grade || '').toLowerCase()
-      if (g.includes('12') || g.includes('khối 12')) {
-        setActiveTab('chapter')
+      try {
+        const parsed = JSON.parse(sessionStr)
+        setStudent(parsed)
+        const g = String(parsed?.grade || '').toLowerCase()
+        if (g.includes('12') || g.includes('khối 12')) {
+          setActiveTab('chapter')
+        }
+        if (parsed?.id) {
+          fetchStudentData(parsed.id)
+        } else {
+          setLoading(false)
+        }
+      } catch (err) {
+        console.error('Failed to parse student session:', err)
+        setLoading(false)
       }
-      fetchStudentData(parsed.id)
     } else {
       setLoading(false)
     }

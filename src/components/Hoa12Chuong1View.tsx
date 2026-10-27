@@ -38,13 +38,15 @@ class ChemistrySoundFX {
   private isMuted: boolean = false;
 
   private init() {
-    if (!this.ctx) {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-      if (AudioCtx) this.ctx = new AudioCtx();
-    }
-    if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume();
-    }
+    try {
+      if (!this.ctx && typeof window !== 'undefined') {
+        const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+        if (AudioCtx) this.ctx = new AudioCtx();
+      }
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
+    } catch (e) {}
   }
 
   setMuted(m: boolean) { this.isMuted = m; }
@@ -124,19 +126,29 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 }) => {
   // ── Access Control & Security Lock ──────────────────────────────────
   const [currentPasscode, setCurrentPasscode] = useState<string>(() => {
-    return localStorage.getItem('hoa12_passcode') || 'THAYTHO2026';
+    try {
+      return localStorage.getItem('hoa12_passcode') || 'THAYTHO2026';
+    } catch (e) {
+      return 'THAYTHO2026';
+    }
   });
   const [isLockEnabled, setIsLockEnabled] = useState<boolean>(() => {
-    const val = localStorage.getItem('hoa12_lock_status');
-    return val === 'locked'; // Mặc định mở tự do, chỉ khóa khi Thầy chủ động bấm khóa
+    try {
+      const val = localStorage.getItem('hoa12_lock_status');
+      return val === 'locked';
+    } catch (e) {
+      return false;
+    }
   });
   const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
     if (isTeacher) return true;
-    const val = localStorage.getItem('hoa12_lock_status');
-    if (val === 'locked') {
-      return localStorage.getItem('hoa12_student_authorized') === 'true';
-    }
-    return true; // Mặc định mở để Thầy và học sinh vào mượt mà
+    try {
+      const val = localStorage.getItem('hoa12_lock_status');
+      if (val === 'locked') {
+        return localStorage.getItem('hoa12_student_authorized') === 'true';
+      }
+    } catch (e) {}
+    return true;
   });
   const [passcodeInput, setPasscodeInput] = useState('');
   const [isTeacherModalOpen, setIsTeacherModalOpen] = useState(false);
