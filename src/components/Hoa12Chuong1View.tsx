@@ -864,7 +864,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                     <BookOpen className="w-5 h-5 text-indigo-600" />
                     Lý thuyết trọng tâm: {activeLesson.title}
                   </h3>
-                  <div className="text-sm leading-relaxed space-y-4">
+                  <div className={`${fontClasses.opt} ${fontClasses.lead} space-y-4`}>
                     {selectedLessonId === 'bai1' ? (
                       <>
                         <div className="bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
@@ -894,7 +894,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                     ) : (
                       <>
                         <div className="bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
-                          <h4 className="font-bold text-indigo-900 mb-1">1. Phân tử lưỡng cực & Hạt Micelle</h4>
+                          <h4 className="font-bold text-indigo-900 mb-1">1. Phản ứng lưỡng cực & Hạt Micelle</h4>
                           <p className="text-slate-700">
                             Xà phòng và chất giặt rửa gồm đầu ưa nước (&minus;COONa hoặc &minus;SO<sub>3</sub>Na) và đuôi kị nước (mạch alkyl dài). Khi vò giặt, các phân tử bao bọc hạt dầu mỡ tạo hạt keo <b>micelle</b> phân tán vào nước để rửa trôi.
                           </p>
@@ -924,21 +924,21 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                           <span className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 font-extrabold flex items-center justify-center text-xs">
                             D{idx + 1}
                           </span>
-                          <h4 className="text-base font-bold">
+                          <h4 className="text-base font-bold text-indigo-950">
                             {mf.title}
                           </h4>
                         </div>
-                        <div className="bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80 text-xs sm:text-sm text-slate-800 leading-relaxed overflow-x-auto" dangerouslySetInnerHTML={{ __html: mf.method }} />
+                        <div className={`bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 overflow-x-auto`} dangerouslySetInnerHTML={{ __html: mf.method }} />
 
                         <div className="space-y-4 pt-2">
                           {mf.examples.map((ex) => (
                             <div key={ex.number} className="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-sm hover:shadow-md transition-shadow">
                               <div className="flex items-start gap-2.5">
-                                <span className="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-800 font-bold text-xs border border-indigo-200 shrink-0 select-none">
+                                <span className="px-3 py-1 rounded-xl bg-indigo-100 text-indigo-800 font-extrabold text-sm border border-indigo-200 shrink-0 select-none shadow-2xs">
                                   Câu {ex.number}:
                                 </span>
                                 <div 
-                                  className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed flex-1 pt-0.5" 
+                                  className={`${fontClasses.stem} ${fontClasses.lead} font-normal text-slate-900 flex-1 pt-0.5`} 
                                   dangerouslySetInnerHTML={{ 
                                     __html: ex.text.replace(/^(?:<[^>]+>|\s)*(?:Ví\s*dụ|Câu)(?:<[^>]+>|[\s\d\.\:\-\–\,])*(?=[A-ZÀ-Ỹ])/i, '') 
                                   }} 
@@ -954,7 +954,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                 </div>
                               )}
                               {ex.solution && (
-                                <div className="bg-emerald-50/80 p-4 rounded-xl border border-emerald-200 text-xs sm:text-sm text-slate-800 leading-relaxed space-y-1.5" dangerouslySetInnerHTML={{ __html: ex.solution }} />
+                                <div className={`bg-emerald-50/80 p-4 sm:p-5 rounded-2xl border border-emerald-200 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 space-y-2.5`} dangerouslySetInnerHTML={{ __html: ex.solution }} />
                               )}
                             </div>
                           ))}
