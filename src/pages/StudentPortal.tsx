@@ -24,7 +24,8 @@ import {
   Sparkles,
   Trophy,
   Target,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { 
