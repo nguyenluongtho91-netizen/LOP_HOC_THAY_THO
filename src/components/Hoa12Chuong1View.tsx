@@ -928,13 +928,17 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             {mf.title}
                           </h4>
                         </div>
-                        <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs font-mono" dangerouslySetInnerHTML={{ __html: mf.method }} />
+                        <div className="bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80 text-xs sm:text-sm text-slate-800 leading-relaxed overflow-x-auto" dangerouslySetInnerHTML={{ __html: mf.method }} />
 
-                        <div className="space-y-3 pt-2">
+                        <div className="space-y-4 pt-2">
                           {mf.examples.map((ex) => (
-                            <div key={ex.number} className="p-4 rounded-2xl border border-slate-200 bg-white space-y-2">
-                              <div className="text-xs font-bold text-indigo-700">Ví dụ {ex.number}:</div>
-                              <div className="text-sm" dangerouslySetInnerHTML={{ __html: ex.text }} />
+                            <div key={ex.number} className="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-sm hover:shadow-md transition-shadow">
+                              <div className="flex items-center gap-2">
+                                <span className="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 font-bold text-xs border border-indigo-100">
+                                  Ví dụ {ex.number}
+                                </span>
+                              </div>
+                              <div className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed" dangerouslySetInnerHTML={{ __html: ex.text }} />
                               {ex.images && ex.images.length > 0 && (
                                 <div className="flex flex-wrap gap-2 my-2">
                                   {ex.images.map((img, i) => (
@@ -943,7 +947,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                 </div>
                               )}
                               {ex.solution && (
-                                <div className="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200 text-xs text-slate-800 leading-relaxed" dangerouslySetInnerHTML={{ __html: ex.solution }} />
+                                <div className="bg-emerald-50/80 p-4 rounded-xl border border-emerald-200 text-xs sm:text-sm text-slate-800 leading-relaxed space-y-1.5" dangerouslySetInnerHTML={{ __html: ex.solution }} />
                               )}
                             </div>
                           ))}
