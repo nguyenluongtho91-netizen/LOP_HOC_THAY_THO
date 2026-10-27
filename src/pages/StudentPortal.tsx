@@ -578,17 +578,29 @@ export default function StudentPortal() {
   if (!student) {
     return (
       <div 
-        className="min-h-screen flex items-center justify-center p-4"
+        className="min-h-screen py-8 px-4 flex flex-col items-center justify-center relative overflow-y-auto"
         style={{ background: 'linear-gradient(135deg, #ccfbf1 0%, #5eead4 50%, #0d9488 100%)' }}
       >
-        {/* Background decoration */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-teal-300/30 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-teal-600/20 rounded-full blur-3xl" />
+        {/* THẺ LỐI TẮT VÀO HÓA 12 SIÊU TỐC TRÊN CÙNG CHO THẦY VÀ HỌC SINH */}
+        <div className="mb-4 w-full max-w-md bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-4 rounded-2xl border-2 border-indigo-400/60 shadow-xl text-white flex items-center justify-between gap-3 relative z-10">
+          <div className="flex items-center gap-2.5">
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-xl shrink-0 shadow-md">🧪</div>
+            <div>
+              <div className="text-[10px] font-black uppercase text-amber-400 tracking-wider">ĐẶC BIỆT KHỐI 12</div>
+              <div className="text-xs sm:text-sm font-black text-white">CHƯƠNG 1 (7 ĐỀ & 495 CÂU)</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => navigate('/hoa12')}
+            className="px-3.5 py-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black text-xs rounded-xl shadow-md cursor-pointer shrink-0 active:scale-95 transition-all"
+          >
+            VÀO NGAY ➔
+          </button>
         </div>
 
-        <div className="relative w-full max-w-md animate-fade-in">
-          <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-teal-200 overflow-hidden">
+        <div className="relative w-full max-w-md z-10">
+          <div className="bg-white rounded-3xl shadow-2xl border-2 border-teal-200 overflow-hidden">
             {/* Header */}
             <div 
               className="px-8 pt-10 pb-8 text-center text-white"
