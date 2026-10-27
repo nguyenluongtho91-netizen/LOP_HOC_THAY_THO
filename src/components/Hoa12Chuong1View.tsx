@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 // import { createPortal } from 'react-dom';
 import {
-  Trophy, Flame, Sparkles, CheckCircle2, XCircle, Lock, Unlock,
+  Target, Trophy, Flame, Sparkles, CheckCircle2, XCircle, Lock, Unlock,
   Clock, BookOpen, ChevronRight, Award, Zap, Play, RotateCcw,
   Check, ArrowRight, ShieldCheck, HelpCircle, Eye, AlertCircle,
   TrendingUp, Star, Filter, Share2, Volume2, VolumeX, Shuffle,
@@ -544,167 +544,154 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
   return (
     <div className={`h-screen ${bgTheme} flex flex-col font-sans overflow-hidden antialiased transition-colors duration-200`}>
-      {/* HEADER BAR */}
-      <header className={`h-16 ${eyeComfortMode ? 'bg-[#FFFDF9] border-[#E8E2D5]' : 'bg-white border-slate-200'} border-b px-4 md:px-8 flex items-center justify-between shadow-xs shrink-0`}>
-        <div className="flex items-center gap-3">
-          {onClose && (
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl bg-slate-200/60 hover:bg-slate-300/60 text-slate-700 transition-colors flex items-center gap-1 text-sm font-bold mr-1"
-              title="Quay lại"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Quay lại</span>
-            </button>
-          )}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center text-white shadow-md">
-            <Atom className="w-6 h-6 animate-spin-slow" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h1 className="text-base md:text-xl font-extrabold tracking-tight leading-tight">
-                Hóa Học 12: Chương 1 – Ester, Lipid & Xà Phòng
-              </h1>
-              <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-black bg-indigo-100 text-indigo-700 border border-indigo-200 uppercase">
-                BỘ ĐỀ CHỐNG MỎI MẮT
-              </span>
+      {/* HEADER BAR (TWO-TIER PREMIUM DESIGN) */}
+      <header className={`${eyeComfortMode ? 'bg-[#FFFDF9]/95 border-[#E8E2D5]' : 'bg-white/95 border-slate-200'} backdrop-blur-md border-b sticky top-0 z-30 shadow-xs shrink-0 transition-colors`}>
+        {/* Tier 1: Branding, Badges & Quick Tools */}
+        <div className="px-4 lg:px-8 py-2.5 flex items-center justify-between gap-3 border-b border-slate-100/80">
+          <div className="flex items-center gap-3 min-w-0">
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center gap-1.5 text-xs font-bold shrink-0"
+                title="Quay lại"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span className="hidden sm:inline">Quay lại</span>
+              </button>
+            )}
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-sky-400 flex items-center justify-center text-white shadow-md shadow-indigo-200 shrink-0">
+              <Atom className="w-5 h-5 animate-spin-slow" />
             </div>
-            <p className="text-xs text-slate-500 hidden sm:block">
-              Chia nhỏ mỗi đề 12–15 câu • Tùy chỉnh mức độ • Chế độ tông màu dịu mắt & chỉnh cỡ chữ
-            </p>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h1 className="text-sm sm:text-base md:text-lg font-black tracking-tight text-slate-900 truncate">
+                  Hóa Học 12: Chương 1 – Ester, Lipid & Xà Phòng
+                </h1>
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-indigo-500 to-blue-600 text-white uppercase tracking-wider shadow-2xs">
+                  BỘ ĐỀ 2025
+                </span>
+              </div>
+              <p className="text-xs text-slate-500 truncate hidden sm:block">
+                Hệ thống ôn luyện chuyên sâu: 495 câu hỏi phân loại • 7 đề chuẩn Bộ GD&ĐT • Cẩm nang dạng toán
+              </p>
+            </div>
+          </div>
+
+          {/* Right Action Tools */}
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {isTeacher && (
+              <div className="flex items-center gap-1.5">
+                <span className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300">
+                  <Award className="w-3.5 h-3.5 text-amber-600" />
+                  👑 Thầy giáo
+                </span>
+                <button
+                  onClick={() => {
+                    setNewPasscodeForm(currentPasscode);
+                    setTempLockEnabled(isLockEnabled);
+                    setIsTeacherModalOpen(true);
+                  }}
+                  className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"
+                  title="Quản lý quyền truy cập của học sinh"
+                >
+                  <Lock className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">Cấp quyền</span>
+                </button>
+              </div>
+            )}
+
+            {/* Eye Comfort Toggle */}
+            <button
+              onClick={() => {
+                const next = !eyeComfortMode;
+                setEyeComfortMode(next);
+                toast(next ? 'Đã bật chế độ kem ấm dịu mắt ☕' : 'Đã chuyển về tông sáng tiêu chuẩn ☀️', { icon: '👁️' });
+              }}
+              className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${eyeComfortMode ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200/80'}`}
+              title="Chế độ tông màu dịu mắt (chống mỏi mắt)"
+            >
+              <Coffee className="w-3.5 h-3.5 text-amber-700" />
+              <span className="hidden md:inline">Dịu mắt</span>
+            </button>
+
+            {/* Font Size Toggle */}
+            <button
+              onClick={() => {
+                if (fontSizeLevel === 'normal') setFontSizeLevel('large');
+                else if (fontSizeLevel === 'large') setFontSizeLevel('xlarge');
+                else setFontSizeLevel('normal');
+              }}
+              className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80 transition-colors flex items-center gap-1.5 text-xs font-bold"
+              title="Thay đổi cỡ chữ (Chuẩn / To / Rất to)"
+            >
+              <Type className="w-3.5 h-3.5" />
+              <span className="hidden md:inline">{fontSizeLevel === 'normal' ? 'Cỡ chữ' : fontSizeLevel === 'large' ? 'Chữ to' : 'Chữ cực to'}</span>
+            </button>
+
+            {/* Sound Toggle */}
+            <button
+              onClick={() => {
+                const nm = !isMuted;
+                setIsMuted(nm);
+                sfx.setMuted(nm);
+              }}
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200/80 transition-colors"
+              title={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
+            >
+              {isMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-indigo-600" />}
+            </button>
+
+            {/* Exit / Close */}
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition-colors"
+              >
+                Thoát
+              </button>
+            )}
           </div>
         </div>
 
-        {/* Global Controls & Tabs */}
-        <div className="flex items-center gap-2">
-          {isTeacher && (
-            <div className="flex items-center gap-1.5 mr-1">
-              <span className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300">
-                <Award className="w-3.5 h-3.5 text-amber-600" />
-                👑 Thầy giáo
-              </span>
-              <button
-                onClick={() => {
-                  setNewPasscodeForm(currentPasscode);
-                  setTempLockEnabled(isLockEnabled);
-                  setIsTeacherModalOpen(true);
-                }}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
-                title="Quản lý quyền truy cập của học sinh"
-              >
-                <Lock className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">Quản lý cấp quyền</span>
-              </button>
-            </div>
-          )}
-          {/* Main Navigation Tabs */}
-          <div className="hidden lg:flex items-center bg-slate-200/50 p-1 rounded-xl border border-slate-200 text-sm font-semibold">
-            <button
-              onClick={() => { setActiveTab('overview'); setIsExamActive(false); }}
-              className={`px-3 py-1.5 rounded-lg transition-all ${activeTab === 'overview' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-            >
-              Tổng quan
-            </button>
-            <button
-              onClick={() => { setActiveTab('handbook'); setIsExamActive(false); }}
-              className={`px-3 py-1.5 rounded-lg transition-all ${activeTab === 'handbook' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-            >
-              Cẩm nang & Dạng toán
-            </button>
-            <button
-              onClick={() => { setActiveTab('practice'); setIsExamActive(false); }}
-              className={`px-3 py-1.5 rounded-lg transition-all ${activeTab === 'practice' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-            >
-              Bộ Đề Luyện Nhỏ (15 câu)
-            </button>
-            <button
-              onClick={() => { setActiveTab('exam'); }}
-              className={`px-3 py-1.5 rounded-lg transition-all ${activeTab === 'exam' ? 'bg-white text-indigo-700 shadow-sm font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-            >
-              7 Đề thi 50 phút
-            </button>
-          </div>
-
-          {/* Eye Comfort Toggle */}
+        {/* Tier 2: Navigation Segmented Pill Tabs */}
+        <div className="px-4 lg:px-8 py-2 overflow-x-auto flex items-center gap-2 scrollbar-none bg-slate-50/50">
           <button
-            onClick={() => {
-              const next = !eyeComfortMode;
-              setEyeComfortMode(next);
-              toast(next ? 'Đã bật chế độ kem ấm dịu mắt ☕' : 'Đã chuyển về tông sáng tiêu chuẩn ☀️', { icon: '👁️' });
-            }}
-            className={`p-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${eyeComfortMode ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-slate-200/70 text-slate-700 hover:bg-slate-300'}`}
-            title="Chế độ tông màu dịu mắt (chống mỏi mắt)"
+            onClick={() => { setActiveTab('overview'); setIsExamActive(false); }}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'overview' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
-            <Coffee className="w-4 h-4 text-amber-700" />
-            <span className="hidden xl:inline">Dịu mắt</span>
+            <Sparkles className="w-4 h-4" />
+            <span>Tổng quan</span>
           </button>
-
-          {/* Font Size Toggle */}
           <button
-            onClick={() => {
-              if (fontSizeLevel === 'normal') setFontSizeLevel('large');
-              else if (fontSizeLevel === 'large') setFontSizeLevel('xlarge');
-              else setFontSizeLevel('normal');
-            }}
-            className="p-2 rounded-xl bg-slate-200/70 hover:bg-slate-300 text-slate-700 transition-colors flex items-center gap-1 text-xs font-bold"
-            title="Thay đổi cỡ chữ (Bình thường / To / Rất to)"
+            onClick={() => { setActiveTab('handbook'); setIsExamActive(false); }}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'handbook' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
-            <Type className="w-4 h-4" />
-            <span className="hidden xl:inline">{fontSizeLevel === 'normal' ? 'Cỡ chữ chuẩn' : fontSizeLevel === 'large' ? 'Chữ to' : 'Chữ rất to'}</span>
+            <BookOpen className="w-4 h-4" />
+            <span>Cẩm nang & Dạng toán</span>
           </button>
-
-          {/* Sound Toggle */}
           <button
-            onClick={() => {
-              const nm = !isMuted;
-              setIsMuted(nm);
-              sfx.setMuted(nm);
-            }}
-            className="p-2 rounded-xl bg-slate-200/70 hover:bg-slate-300 text-slate-700 transition-colors"
-            title={isMuted ? 'Bật âm thanh' : 'Tắt âm thanh'}
+            onClick={() => { setActiveTab('practice'); setIsExamActive(false); }}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
-            {isMuted ? <VolumeX className="w-4 h-4 text-slate-400" /> : <Volume2 className="w-4 h-4 text-indigo-600" />}
+            <Target className="w-4 h-4" />
+            <span>Bộ Đề Luyện Nhỏ (15 câu)</span>
+            <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
+              13 Đề
+            </span>
           </button>
-
-          {/* Exit / Close */}
-          {onClose && (
-            <button
-              onClick={onClose}
-              className="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition-colors"
-            >
-              Thoát
-            </button>
-          )}
+          <button
+            onClick={() => { setActiveTab('exam'); }}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'exam' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
+          >
+            <Clock className="w-4 h-4" />
+            <span>7 Đề Thi Chuẩn (50 phút)</span>
+            <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'exam' ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-800'}`}>
+              HOT
+            </span>
+          </button>
         </div>
       </header>
 
-      {/* MOBILE NAV BAR */}
-      <div className={`lg:hidden ${eyeComfortMode ? 'bg-[#FFFDF9] border-[#E8E2D5]' : 'bg-white border-slate-200'} border-b px-2 py-2 flex items-center justify-around text-xs font-bold shrink-0`}>
-        <button
-          onClick={() => { setActiveTab('overview'); setIsExamActive(false); }}
-          className={`px-2.5 py-1 rounded-lg ${activeTab === 'overview' ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}
-        >
-          Tổng quan
-        </button>
-        <button
-          onClick={() => { setActiveTab('handbook'); setIsExamActive(false); }}
-          className={`px-2.5 py-1 rounded-lg ${activeTab === 'handbook' ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}
-        >
-          Lý thuyết
-        </button>
-        <button
-          onClick={() => { setActiveTab('practice'); setIsExamActive(false); }}
-          className={`px-2.5 py-1 rounded-lg ${activeTab === 'practice' ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}
-        >
-          Bộ đề nhỏ
-        </button>
-        <button
-          onClick={() => { setActiveTab('exam'); }}
-          className={`px-2.5 py-1 rounded-lg ${activeTab === 'exam' ? 'bg-indigo-600 text-white' : 'text-slate-600'}`}
-        >
-          7 Đề thi
-        </button>
-      </div>
 
       {/* BODY CONTENT AREA */}
       <main className="flex-1 overflow-y-auto p-4 md:p-8">
@@ -932,13 +919,13 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
                         <div className="space-y-4 pt-2">
                           {mf.examples.map((ex) => (
-                            <div key={ex.number} className="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-sm hover:shadow-md transition-shadow">
-                              <div className="flex items-start gap-2.5">
-                                <span className="px-3 py-1 rounded-xl bg-indigo-100 text-indigo-800 font-extrabold text-sm border border-indigo-200 shrink-0 select-none shadow-2xs">
-                                  Câu {ex.number}:
+                            <div key={ex.number} className="p-5 md:p-6 rounded-3xl border border-slate-200/90 bg-white space-y-4 shadow-sm hover:shadow-md transition-all">
+                              <div className="flex items-start gap-3">
+                                <span className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-black text-xs sm:text-sm shadow-sm tracking-wide shrink-0 select-none">
+                                  Câu {ex.number}
                                 </span>
                                 <div 
-                                  className={`${fontClasses.stem} ${fontClasses.lead} font-normal text-slate-900 flex-1 pt-0.5`} 
+                                  className={`${fontClasses.stem} ${fontClasses.lead} font-medium text-slate-900 flex-1 pt-0.5`} 
                                   dangerouslySetInnerHTML={{ 
                                     __html: ex.text.replace(/^(?:<[^>]+>|\s)*(?:Ví\s*dụ|Câu)(?:<[^>]+>|[\s\d\.\:\-\–\,])*(?=[A-ZÀ-Ỹ])/i, '') 
                                   }} 
@@ -949,12 +936,19 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                   {ex.images.map((img, i) => (
                                     <div key={i} className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow max-w-full flex flex-col items-center">
                                       <img key={i} src={img} alt="Hình minh họa" className="max-h-64 sm:max-h-72 w-auto object-contain rounded-xl" />
+                                      <span className="text-[11px] font-semibold text-slate-400 mt-2">Hình minh họa phổ khối lượng / cấu trúc phân tử</span>
                                     </div>
                                   ))}
                                 </div>
                               )}
                               {ex.solution && (
-                                <div className={`bg-emerald-50/80 p-4 sm:p-5 rounded-2xl border border-emerald-200 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 space-y-2.5`} dangerouslySetInnerHTML={{ __html: ex.solution }} />
+                                <div className="rounded-2xl border border-emerald-200/90 overflow-hidden shadow-2xs">
+                                  <div className="bg-gradient-to-r from-emerald-600 to-teal-600 px-4 py-2 text-white font-extrabold text-xs sm:text-sm flex items-center gap-2">
+                                    <CheckCircle2 className="w-4 h-4" />
+                                    <span>Hướng dẫn giải chi tiết & Phương pháp tư duy</span>
+                                  </div>
+                                  <div className={`bg-emerald-50/40 p-4 sm:p-5 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 space-y-3`} dangerouslySetInnerHTML={{ __html: ex.solution }} />
+                                </div>
                               )}
                             </div>
                           ))}
