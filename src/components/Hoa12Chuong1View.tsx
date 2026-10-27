@@ -262,6 +262,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
+  // Active Lesson Practice Bank
+  const activePractice = useMemo(() => {
+    return activeLesson?.practice || (activeLesson as any)?.practiceBank || {};
+  }, [activeLesson]);
+
   // Practice Questions with Sub-topic & Level filtering (Tối ưu memoization)
   const allPracticeQuestions: Chuong1Question[] = useMemo(() => {
     const practice = activeLesson?.practice || (activeLesson as any)?.practiceBank || {};
@@ -1000,21 +1005,21 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 1 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      Phần I: 4 Lựa chọn ({practiceData.part1?.length || 0})
+                      Phần I: 4 Lựa chọn ({activePractice.part1?.length || 0})
                     </button>
                     <button
                       onClick={() => { setPracticePart(2); setSelectedSetIndex(0); }}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 2 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
                     >
                       <CheckSquare className="w-3.5 h-3.5" />
-                      Phần II: Đúng / Sai ({practiceData.part2?.length || 0})
+                      Phần II: Đúng / Sai ({activePractice.part2?.length || 0})
                     </button>
                     <button
                       onClick={() => { setPracticePart(3); setSelectedSetIndex(0); }}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 3 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
                     >
                       <Edit3 className="w-3.5 h-3.5" />
-                      Phần III: Trả lời ngắn ({practiceData.part3?.length || 0})
+                      Phần III: Trả lời ngắn ({activePractice.part3?.length || 0})
                     </button>
                   </div>
 
