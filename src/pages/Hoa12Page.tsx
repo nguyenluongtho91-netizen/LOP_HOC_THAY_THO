@@ -16,27 +16,54 @@ class Hoa12ErrorBoundary extends React.Component<
     return { hasError: true, error };
   }
   componentDidCatch(error: any, info: any) {
-    console.error('Hoa12 local error:', error, info);
+    console.error('Hoa12 local error caught:', error, info);
   }
   render() {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-[#FAF7EE] text-slate-800 flex flex-col items-center justify-center p-6 text-center font-sans">
-          <div className="w-16 h-16 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-3xl mb-4 border border-indigo-300">
-            🧪
+          <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mb-4 border border-amber-300">
+            👑
           </div>
-          <h2 className="text-xl font-black mb-2 text-slate-900">Đang đồng bộ học liệu Hóa 12</h2>
-          <p className="text-sm text-slate-600 max-w-md mb-6 leading-relaxed">
-            Hệ thống vừa cập nhật dữ liệu câu hỏi và 7 đề thi mới nhất. Em bấm nút bên dưới để vào làm bài ngay nhé!
+          <h2 className="text-xl font-black mb-2 text-slate-900">Hệ Thống Đang Nạp Giao Diện Quản Trị Hóa 12</h2>
+          <p className="text-sm text-slate-600 max-w-md mb-4 leading-relaxed">
+            Kính gửi Thầy Thọ: Hệ thống đang đồng bộ kho câu hỏi Chương 1 và 7 đề thi. Nếu giao diện chưa hiện ra, Thầy xem chi tiết kỹ thuật bên dưới:
           </p>
-          <button
-            onClick={() => {
-              this.setState({ hasError: false, error: null });
-            }}
-            className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
-          >
-            Vào học Hóa 12 ngay
-          </button>
+
+          <div className="mb-5 p-4 bg-red-50 border border-red-300 rounded-2xl text-left text-xs font-mono text-red-800 max-w-xl w-full max-h-60 overflow-auto whitespace-pre-wrap select-all shadow-inner">
+            <div className="font-bold text-red-700 mb-1">Chi tiết lỗi kỹ thuật:</div>
+            {String(this.state.error?.message || this.state.error)}
+            {this.state.error?.stack && (
+              <div className="mt-2 text-[10px] text-red-500 border-t border-red-200 pt-1">
+                {this.state.error.stack}
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-wrap gap-3 justify-center">
+            <button
+              onClick={() => {
+                sessionStorage.clear();
+                window.location.reload();
+              }}
+              className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+            >
+              🔄 Tải lại trang ngay
+            </button>
+            <button
+              onClick={() => {
+                try {
+                  localStorage.removeItem('hoa12_lock_status');
+                  localStorage.removeItem('hoa12_passcode');
+                  sessionStorage.clear();
+                } catch (e) {}
+                window.location.href = '/hoa12?t=' + Date.now();
+              }}
+              className="px-6 py-3 rounded-xl bg-slate-700 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+            >
+              🧹 Làm mới bộ nhớ & Vào lại
+            </button>
+          </div>
         </div>
       );
     }
