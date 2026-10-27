@@ -19,10 +19,14 @@ import {
   calculateChuong1ExamScore,
   getChuong1UserProgress,
   saveChuong1ExamResult,
+  saveChuong1ExamAttempt,
+  getChuong1ExamHistory,
+  shuffleChuong1Exam,
   getRankTitle,
   Chuong1Exam,
   Chuong1Question,
-  Chuong1Lesson
+  Chuong1Lesson,
+  Chuong1ExamAttempt
 } from '../services/hoa12Chuong1Service';
 
 interface Hoa12Chuong1ViewProps {
@@ -163,6 +167,20 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   }, [studentGrade, isTeacher]);
   // Navigation
   const [activeTab, setActiveTab] = useState<'overview' | 'handbook' | 'practice' | 'exam' | 'results'>('overview');
+  
+  // ── GIÁM SÁT THI & CHỐNG GIAN LẬN (CHUYỂN TAB / RỜI MÀN HÌNH) ──────────
+  const [tabSwitchViolations, setTabSwitchViolations] = useState<number>(0);
+  const [showViolationModal, setShowViolationModal] = useState<boolean>(false);
+  const [violationReason, setViolationReason] = useState<string>('');
+
+  // ── ĐẢO CÂU, ĐẢO ĐÁP ÁN, ĐẢO Ý KHI LÀM LẠI ────────────────────────────
+  const [isShuffleEnabled, setIsShuffleEnabled] = useState<boolean>(true);
+  const [examSessionExam, setExamSessionExam] = useState<Chuong1Exam | null>(null);
+
+  // ── LỊCH SỬ TẤT CẢ CÁC LẦN LÀM BÀI ─────────────────────────────────────
+  const [examHistory, setExamHistory] = useState<Chuong1ExamAttempt[]>([]);
+  const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
+  const [filterResultType, setFilterResultType] = useState<'all' | 'wrong' | 'correct'>('all');
   const [selectedLessonId, setSelectedLessonId] = useState<'bai1' | 'bai2' | 'bai3'>('bai1');
   const [practicePart, setPracticePart] = useState<1 | 2 | 3>(1);
 
@@ -204,8 +222,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
   // Active Exam
   const activeExam: Chuong1Exam = useMemo(() => {
+    if (examSessionExam && examSessionExam.id === selectedExamId) {
+      return examSessionExam;
+    }
     return HOA12_CHUONG1_7_EXAMS.find(e => e.id === selectedExamId) || HOA12_CHUONG1_7_EXAMS[0];
-  }, [selectedExamId]);
+  }, [selectedExamId, examSessionExam]);
 
   // Timer for Exam (Tối ưu: chỉ chạy khi isExamActive, không re-bind mỗi giây)
   useEffect(() => {
@@ -229,31 +250,81 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
   const handleAutoSubmitExam = () => {
     toast('Đã hết 50 phút! Hệ thống đang chấm bài...', { icon: '⏰' });
-    handleSubmitExam();
+    handleSubmitExam(false);
   };
 
-  const handleStartExam = (examId: string) => {
+  const handleStartExam = (examId: string, shouldShuffle: boolean = isShuffleEnabled) => {
     setSelectedExamId(examId);
+    const baseExam = HOA12_CHUONG1_7_EXAMS.find(e => e.id === examId) || HOA12_CHUONG1_7_EXAMS[0];
+    const sessionExam = shouldShuffle ? shuffleChuong1Exam(baseExam) : baseExam;
+
+    setExamSessionExam(sessionExam);
     setExamAnswers({});
     setExamTimeLeft(50 * 60);
+    setTabSwitchViolations(0);
+    setShowViolationModal(false);
     setIsExamActive(true);
     setActiveTab('exam');
-    toast.success('Bắt đầu làm đề kiểm tra 50 phút. Chúc em làm bài thật tốt!');
+    
+    // Nạp lịch sử các lần làm của đề này
+    setExamHistory(getChuong1ExamHistory(examId));
+
+    if (shouldShuffle) {
+      toast.success('Bắt đầu làm đề 50 phút (ĐÃ ĐẢO CÂU & ĐẢO ĐÁP ÁN). Chúc em làm bài thật tốt!', { duration: 4000 });
+    } else {
+      toast.success('Bắt đầu làm đề kiểm tra 50 phút. Chúc em làm bài thật tốt!', { duration: 4000 });
+    }
   };
 
-  const handleSubmitExam = () => {
+  const handleSubmitExam = (forcedByViolation: boolean = false) => {
     setIsExamActive(false);
-    const scoreResult = calculateChuong1ExamScore(activeExam, examAnswers);
-    saveChuong1ExamResult(activeExam.id, scoreResult.totalScore, activeExam.duration * 60 - examTimeLeft);
+    const currentExam = activeExam;
+    const scoreResult = calculateChuong1ExamScore(currentExam, examAnswers);
+    const durationSec = currentExam.duration * 60 - examTimeLeft;
+
+    // Lưu bản ghi lịch sử lần làm này
+    const attempt: Chuong1ExamAttempt = {
+      id: `att_${Date.now()}`,
+      examId: currentExam.id,
+      examTitle: currentExam.title,
+      score: scoreResult.totalScore,
+      part1Score: scoreResult.part1Score,
+      part2Score: scoreResult.part2Score,
+      part3Score: scoreResult.part3Score,
+      correctCount: scoreResult.totalCorrect,
+      totalQuestions: currentExam.questions.length,
+      durationSeconds: durationSec,
+      tabSwitchCount: tabSwitchViolations,
+      autoSubmittedDueToViolation: forcedByViolation,
+      date: new Date().toISOString(),
+      formattedDate: new Date().toLocaleString('vi-VN', {
+        hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric'
+      }),
+      answers: { ...examAnswers }
+    };
+
+    saveChuong1ExamAttempt(attempt);
+
     setLastExamResult({
-      exam: activeExam,
+      exam: currentExam,
       score: scoreResult,
       answers: { ...examAnswers },
+      durationSeconds: durationSec,
+      tabSwitchCount: tabSwitchViolations,
+      autoSubmittedDueToViolation: forcedByViolation,
       completedAt: new Date().toLocaleTimeString('vi-VN')
     });
-    sfx.playComplete();
+
+    setExamHistory(getChuong1ExamHistory(currentExam.id));
+
+    try { sfx.playComplete(); } catch (e) {}
     setActiveTab('results');
-    toast.success(`Nộp bài thành công! Điểm số: ${scoreResult.totalScore}/10 điểm`);
+
+    if (forcedByViolation) {
+      toast.error(`Bài thi bị thu do vi phạm rời màn hình quá 3 lần! Điểm số: ${scoreResult.totalScore}/10 điểm`, { duration: 6000 });
+    } else {
+      toast.success(`Nộp bài thành công! Điểm số: ${scoreResult.totalScore}/10 điểm`, { duration: 5000 });
+    }
   };
 
   const formatTimer = (sec: number) => {
@@ -1470,10 +1541,10 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           {activeTab === 'exam' && (
             <div className="space-y-6">
               {/* Exam Header */}
-              <div className={`${cardTheme} p-6 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-4`}>
+              <div className={`${cardTheme} p-6 rounded-3xl flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-sm`}>
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300 shadow-2xs">
                       7 ĐỀ KIỂM TRA CHUẨN BỘ 2025
                     </span>
                     <h2 className="text-xl font-extrabold tracking-tight">
@@ -1481,30 +1552,81 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                     </h2>
                   </div>
                   <p className="text-xs text-slate-500 mt-1">
-                    50 phút • 28 câu (18 câu P1 + 4 câu P2 + 6 câu P3) • Ma trận phân loại học sinh chuẩn Bộ
+                    50 phút • 28 câu (18 câu P1 + 4 câu P2 + 6 câu P3) • Tự động chấm điểm chuẩn xác
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  {/* Status Pills during Exam */}
                   {isExamActive && (
-                    <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-200 px-4 py-2 rounded-2xl text-indigo-900 font-mono font-black text-lg">
-                      <Clock className="w-5 h-5 text-indigo-600 animate-pulse" />
-                      {formatTimer(examTimeLeft)}
-                    </div>
+                    <>
+                      <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-xl text-indigo-900 font-mono font-black text-base shadow-2xs">
+                        <Clock className="w-4 h-4 text-indigo-600 animate-pulse" />
+                        {formatTimer(examTimeLeft)}
+                      </div>
+
+                      {/* Proctoring Shield Pill */}
+                      <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs border shadow-2xs ${tabSwitchViolations === 0 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-rose-50 text-rose-800 border-rose-300 animate-pulse'}`}>
+                        {tabSwitchViolations === 0 ? (
+                          <>
+                            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                            <span>Giám sát: 0 vi phạm</span>
+                          </>
+                        ) : (
+                          <>
+                            <AlertCircle className="w-4 h-4 text-rose-600" />
+                            <span>Vi phạm: {tabSwitchViolations}/3</span>
+                          </>
+                        )}
+                      </div>
+
+                      <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs font-semibold">
+                        <Shuffle className="w-3.5 h-3.5 text-indigo-600" />
+                        <span>Đã đảo câu & đáp án</span>
+                      </div>
+                    </>
                   )}
 
                   {!isExamActive ? (
-                    <button
-                      onClick={() => handleStartExam(selectedExamId)}
-                      className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-black rounded-2xl shadow-md text-xs flex items-center gap-2 transition-all"
-                    >
-                      <Play className="w-4 h-4 fill-white" />
-                      Bắt đầu tính giờ thi (50 phút)
-                    </button>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {/* Shuffle Toggle Option */}
+                      <label className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-bold text-slate-700 cursor-pointer select-none">
+                        <input
+                          type="checkbox"
+                          checked={isShuffleEnabled}
+                          onChange={(e) => setIsShuffleEnabled(e.target.checked)}
+                          className="w-4 h-4 text-indigo-600 rounded"
+                        />
+                        <Shuffle className="w-3.5 h-3.5 text-indigo-600" />
+                        <span>Đảo câu & đáp án</span>
+                      </label>
+
+                      {/* History Button */}
+                      <button
+                        onClick={() => {
+                          setExamHistory(getChuong1ExamHistory(selectedExamId));
+                          setShowHistoryModal(true);
+                        }}
+                        className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-bold text-slate-700 flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                        title="Xem lịch sử tất cả các lần làm bài"
+                      >
+                        <Clock className="w-3.5 h-3.5 text-slate-600" />
+                        <span>Lịch sử làm bài</span>
+                      </button>
+
+                      {/* Start Exam Button */}
+                      <button
+                        onClick={() => handleStartExam(selectedExamId, isShuffleEnabled)}
+                        className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-extrabold rounded-2xl shadow-md shadow-indigo-200 text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
+                      >
+                        <Play className="w-4 h-4 fill-white" />
+                        Bắt đầu tính giờ thi (50 phút)
+                      </button>
+                    </div>
                   ) : (
                     <button
-                      onClick={handleSubmitExam}
-                      className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black rounded-2xl shadow-md text-xs flex items-center gap-2 transition-all"
+                      onClick={() => handleSubmitExam(false)}
+                      className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black rounded-2xl shadow-md text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
                     >
                       <Check className="w-4 h-4 stroke-[3]" />
                       Nộp bài & Chấm điểm
@@ -1694,64 +1816,368 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </div>
           )}
 
-          {/* ================= TAB 5: EXAM SCORE REPORT ================= */}
+          {/* ================= TAB 5: EXAM SCORE REPORT & FULL HISTORY ================= */}
           {activeTab === 'results' && lastExamResult && (
-            <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
-              <div className={`${cardTheme} rounded-3xl p-8 text-center space-y-4 shadow-md`}>
-                <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto shadow-inner">
+            <div className="max-w-4xl mx-auto space-y-6 animate-fade-in pb-12">
+              {/* Scorecard Hero */}
+              <div className={`${cardTheme} rounded-3xl p-6 sm:p-8 text-center space-y-5 shadow-lg border-2 border-indigo-100`}>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-white flex items-center justify-center mx-auto shadow-md shadow-amber-200">
                   <Trophy className="w-8 h-8" />
                 </div>
-                <h2 className="text-2xl font-black">
-                  Kết Quả Đề Kiểm Tra: {lastExamResult.exam.title}
-                </h2>
-                <div className="text-5xl font-black text-indigo-600 my-2">
-                  {lastExamResult.score.totalScore} <span className="text-2xl text-slate-400 font-bold">/ 10</span>
+                <div>
+                  <span className="px-3 py-1 rounded-full text-xs font-black bg-indigo-100 text-indigo-800 uppercase tracking-wider inline-block mb-1">
+                    BÁO CÁO KẾT QUẢ THI CHÍNH THỨC
+                  </span>
+                  <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                    {lastExamResult.exam.title}
+                  </h2>
+                  <p className="text-xs text-slate-500 mt-1">
+                    Thời gian làm bài: {Math.floor((lastExamResult.durationSeconds || 0) / 60)} phút {(lastExamResult.durationSeconds || 0) % 60} giây • Nộp lúc: {lastExamResult.completedAt}
+                  </p>
                 </div>
-                <p className="text-sm font-bold text-slate-600">
-                  Xếp loại năng lực: <span className="text-indigo-600 font-extrabold">{getRankTitle(lastExamResult.score.totalScore)}</span>
-                </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 max-w-2xl mx-auto border-t border-slate-200/70 text-left">
+                {/* Score Circle & Title */}
+                <div className="py-2">
+                  <div className="text-6xl font-black text-indigo-600 tracking-tight">
+                    {lastExamResult.score.totalScore.toFixed(2)} <span className="text-2xl text-slate-400 font-bold">/ 10</span>
+                  </div>
+                  <div className="mt-2 text-sm font-extrabold text-slate-700 flex items-center justify-center gap-2">
+                    <span>Xếp loại năng lực:</span>
+                    <span className="px-3 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 font-black">
+                      {getRankTitle(lastExamResult.score.totalScore * 400)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Proctoring Status Banner */}
+                <div className={`p-3.5 rounded-2xl border flex items-center justify-between flex-wrap gap-2 text-xs sm:text-sm font-bold ${lastExamResult.tabSwitchCount === 0 ? 'bg-emerald-50/80 border-emerald-200 text-emerald-950' : 'bg-rose-50/90 border-rose-300 text-rose-950'}`}>
+                  <div className="flex items-center gap-2">
+                    {lastExamResult.tabSwitchCount === 0 ? (
+                      <>
+                        <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
+                        <span>Giám sát thi: Hoàn toàn trung thực, không rời màn hình!</span>
+                      </>
+                    ) : (
+                      <>
+                        <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+                        <span>Hệ thống ghi nhận: {lastExamResult.tabSwitchCount} lần rời màn hình / chuyển tab</span>
+                      </>
+                    )}
+                  </div>
+                  {lastExamResult.autoSubmittedDueToViolation && (
+                    <span className="px-2.5 py-0.5 rounded-lg bg-rose-600 text-white text-xs font-black">
+                      Tự động thu bài do vi phạm 3 lần
+                    </span>
+                  )}
+                </div>
+
+                {/* 3 Parts Score Breakdown */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2 text-left">
                   <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                     <div className="text-xs font-bold text-slate-500 uppercase">Phần I (4 lựa chọn)</div>
                     <div className="text-xl font-black text-slate-900 mt-1">
                       {lastExamResult.score.part1Score.toFixed(2)} <span className="text-xs text-slate-400">/ 4,50 đ</span>
                     </div>
+                    <p className="text-[11px] text-slate-500 mt-1">Đúng {lastExamResult.score.p1Correct} / 18 câu</p>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                     <div className="text-xs font-bold text-slate-500 uppercase">Phần II (Đúng/Sai)</div>
                     <div className="text-xl font-black text-slate-900 mt-1">
                       {lastExamResult.score.part2Score.toFixed(2)} <span className="text-xs text-slate-400">/ 4,00 đ</span>
                     </div>
+                    <p className="text-[11px] text-slate-500 mt-1">4 câu lệnh (16 mệnh đề con)</p>
                   </div>
                   <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
                     <div className="text-xs font-bold text-slate-500 uppercase">Phần III (Trả lời ngắn)</div>
                     <div className="text-xl font-black text-slate-900 mt-1">
                       {lastExamResult.score.part3Score.toFixed(2)} <span className="text-xs text-slate-400">/ 1,50 đ</span>
                     </div>
+                    <p className="text-[11px] text-slate-500 mt-1">Đúng {lastExamResult.score.p3Correct} / 6 câu</p>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center gap-3 pt-6">
+                {/* Action Buttons */}
+                <div className="flex items-center justify-center gap-3 pt-4 flex-wrap">
                   <button
-                    onClick={() => handleStartExam(lastExamResult.exam.id)}
-                    className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs flex items-center gap-2"
+                    onClick={() => handleStartExam(lastExamResult.exam.id, true)}
+                    className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-extrabold rounded-2xl shadow-md shadow-indigo-200 text-xs sm:text-sm flex items-center gap-2 cursor-pointer transition-all"
                   >
                     <RotateCcw className="w-4 h-4" />
-                    Làm lại đề này
+                    Làm lại đề này (Đảo câu & đáp án)
+                  </button>
+                  <button
+                    onClick={() => {
+                      setExamHistory(getChuong1ExamHistory(lastExamResult.exam.id));
+                      setShowHistoryModal(true);
+                    }}
+                    className="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-extrabold rounded-2xl text-xs sm:text-sm flex items-center gap-2 cursor-pointer transition-all"
+                  >
+                    <Clock className="w-4 h-4 text-slate-600" />
+                    Lịch sử các lần làm ({examHistory.length} lần)
                   </button>
                   <button
                     onClick={() => setActiveTab('exam')}
-                    className="px-5 py-2.5 bg-slate-200/60 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs flex items-center gap-2"
+                    className="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 font-extrabold rounded-2xl text-xs sm:text-sm flex items-center gap-2 cursor-pointer transition-all"
                   >
                     Chọn đề khác
                   </button>
+                </div>
+              </div>
+
+              {/* Detailed Question Review */}
+              <div className={`${cardTheme} rounded-3xl p-6 sm:p-8 space-y-5 shadow-sm`}>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                  <div>
+                    <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-indigo-600" />
+                      Chi Tiết Từng Câu Hỏi & Lời Giải Chuyên Sâu
+                    </h3>
+                    <p className="text-xs text-slate-500">Xem lại đáp án đã chọn và học phương pháp tư duy</p>
+                  </div>
+
+                  {/* Filter Pills */}
+                  <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl text-xs font-bold">
+                    <button
+                      onClick={() => setFilterResultType('all')}
+                      className={`px-3 py-1.5 rounded-lg transition-all ${filterResultType === 'all' ? 'bg-white text-indigo-700 shadow-2xs font-extrabold' : 'text-slate-600'}`}
+                    >
+                      Tất cả (28)
+                    </button>
+                    <button
+                      onClick={() => setFilterResultType('wrong')}
+                      className={`px-3 py-1.5 rounded-lg transition-all ${filterResultType === 'wrong' ? 'bg-white text-rose-700 shadow-2xs font-extrabold' : 'text-slate-600'}`}
+                    >
+                      Chỉ câu sai
+                    </button>
+                    <button
+                      onClick={() => setFilterResultType('correct')}
+                      className={`px-3 py-1.5 rounded-lg transition-all ${filterResultType === 'correct' ? 'bg-white text-emerald-700 shadow-2xs font-extrabold' : 'text-slate-600'}`}
+                    >
+                      Chỉ câu đúng
+                    </button>
+                  </div>
+                </div>
+
+                {/* Questions List */}
+                <div className="space-y-4">
+                  {lastExamResult.exam.questions.map((q, idx) => {
+                    const qKey = q.id || q.number;
+                    const det = lastExamResult.score.detail?.[qKey] || {};
+                    const isCorrect = q.part === 2 ? (det.correctSubCount === 4) : det.isCorrect;
+
+                    if (filterResultType === 'wrong' && isCorrect) return null;
+                    if (filterResultType === 'correct' && !isCorrect) return null;
+
+                    return (
+                      <div
+                        key={q.id || idx}
+                        className={`p-5 rounded-2xl border transition-all ${isCorrect ? 'bg-emerald-50/20 border-emerald-200' : 'bg-rose-50/20 border-rose-200'}`}
+                      >
+                        <div className="flex items-start justify-between gap-3 mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className={`px-2.5 py-1 rounded-lg font-black text-xs ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
+                              Câu {q.displayNumber || idx + 1}
+                            </span>
+                            <span className="text-xs font-bold text-slate-500">
+                              {q.part === 1 ? 'Phần I (Trắc nghiệm)' : q.part === 2 ? 'Phần II (Đúng/Sai)' : 'Phần III (Trả lời ngắn)'}
+                            </span>
+                          </div>
+                          <span className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
+                            {isCorrect ? '✓ Đúng' : '✗ Chưa đúng'}
+                          </span>
+                        </div>
+
+                        {/* Question Stem */}
+                        <div className="text-sm font-medium text-slate-900 my-2" dangerouslySetInnerHTML={{ __html: q.text }} />
+
+                        {/* Part 1 Review */}
+                        {q.part === 1 && (
+                          <div className="my-2 space-y-1 text-xs">
+                            <div className="flex items-center gap-2">
+                              <span className="text-slate-500 font-semibold">Em đã chọn:</span>
+                              <span className={`font-black px-2 py-0.5 rounded ${det.userAns === det.correctAns ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
+                                {det.userAns || 'Chưa chọn'}
+                              </span>
+                              {!isCorrect && (
+                                <span className="text-emerald-700 font-black ml-2">
+                                  &bull; Đáp án đúng: <strong>{det.correctAns}</strong>
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Part 2 Review */}
+                        {q.part === 2 && (
+                          <div className="my-2 space-y-1.5 text-xs">
+                            <div className="font-semibold text-slate-600">Kết quả từng mệnh đề:</div>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                              {q.options?.map((opt) => {
+                                const userSub = lastExamResult.answers[qKey]?.[opt.letter];
+                                const isSubOk = det.subDetail?.[opt.letter];
+                                return (
+                                  <div key={opt.letter} className={`p-2 rounded-xl border text-center ${isSubOk ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200'}`}>
+                                    <div className="font-black text-slate-800">Ý {opt.letter.toUpperCase()}</div>
+                                    <div className="text-[11px] text-slate-500">Chọn: {userSub === true ? 'Đúng' : userSub === false ? 'Sai' : 'Chưa chọn'}</div>
+                                    <div className="text-[11px] font-bold text-emerald-700">Đ/A: {opt.isCorrect ? 'Đúng' : 'Sai'}</div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Part 3 Review */}
+                        {q.part === 3 && (
+                          <div className="my-2 space-y-1 text-xs">
+                            <div className="flex items-center gap-2">
+                              <span className="text-slate-500 font-semibold">Em đã nhập:</span>
+                              <span className={`font-black px-2 py-0.5 rounded ${isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
+                                {det.userAns || 'Chưa trả lời'}
+                              </span>
+                              {!isCorrect && (
+                                <span className="text-emerald-700 font-black ml-2">
+                                  &bull; Đáp án chuẩn: <strong>{det.correctAns}</strong>
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Explanation Box */}
+                        {q.explanation && (
+                          <div className="mt-3 p-3.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-700 leading-relaxed space-y-1 shadow-2xs">
+                            <div className="font-bold text-indigo-950 flex items-center gap-1.5">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
+                              <span>Phương pháp & Lời giải chi tiết:</span>
+                            </div>
+                            <div dangerouslySetInnerHTML={{ __html: q.explanation }} />
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
           )}
         </div>
       </main>
+
+      {/* ── MODAL CẢNH BÁO VI PHẠM RỜI MÀN HÌNH / CHUYỂN TAB ────────────────── */}
+      {showViolationModal && isExamActive && (
+        <div className="fixed inset-0 z-[99999999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in select-none">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 text-center space-y-5 shadow-2xl border-2 border-rose-500 text-slate-900">
+            <div className="w-16 h-16 rounded-3xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto shadow-inner animate-bounce">
+              <AlertCircle className="w-8 h-8" />
+            </div>
+            <div>
+              <span className="px-3 py-1 rounded-full text-xs font-black bg-rose-100 text-rose-800 border border-rose-300 uppercase tracking-wider inline-block mb-2">
+                🚨 CẢNH BÁO VI PHẠM THI CỬ
+              </span>
+              <h3 className="text-xl font-black text-slate-900">
+                Bạn vừa rời khỏi màn hình thi!
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                Hệ thống phát hiện hành vi chuyển tab trình duyệt hoặc chuyển sang ứng dụng khác ({violationReason}).
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-950 text-sm font-bold flex items-center justify-between">
+              <span>Số lần vi phạm ghi nhận:</span>
+              <span className="px-3.5 py-1 rounded-xl bg-rose-600 text-white font-black text-base shadow-xs">
+                {tabSwitchViolations} / 3 Lần
+              </span>
+            </div>
+
+            <p className="text-xs text-rose-700 font-semibold italic">
+              ⚠️ Quy chế thi: Nếu vi phạm quá 3 lần, bài thi sẽ bị hệ thống tự động khóa và nộp bài ngay lập tức!
+            </p>
+
+            <button
+              onClick={() => setShowViolationModal(false)}
+              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white font-extrabold text-sm shadow-md shadow-rose-200 transition-all flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <ShieldCheck className="w-4 h-4" />
+              Tôi hiểu và cam kết quay lại làm bài
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── MODAL LỊCH SỬ TẤT CẢ CÁC LẦN LÀM BÀI ──────────────────────────── */}
+      {showHistoryModal && (
+        <div className="fixed inset-0 z-[9999999] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in select-none">
+          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-200 text-slate-900 max-h-[90vh] flex flex-col">
+            <div className="flex items-center justify-between border-b pb-4 shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-black">
+                  <Clock className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Lịch Sử Các Lần Làm Bài</h3>
+                  <p className="text-xs text-slate-500">Ghi nhận tiến độ và số lần vi phạm rời màn hình</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowHistoryModal(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 text-lg font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1">
+              {examHistory.length === 0 ? (
+                <div className="text-center py-12 text-slate-400 text-sm">
+                  Chưa có lượt làm bài nào được ghi nhận cho đề thi này.
+                </div>
+              ) : (
+                examHistory.map((att, idx) => (
+                  <div
+                    key={att.id || idx}
+                    className="p-4 rounded-2xl border border-slate-200 bg-slate-50/80 hover:bg-slate-50 transition-all flex items-center justify-between flex-wrap gap-3 shadow-2xs"
+                  >
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2.5 py-0.5 rounded-lg bg-indigo-100 text-indigo-800 font-black text-xs">
+                          Lần {examHistory.length - idx}
+                        </span>
+                        <span className="text-xs font-semibold text-slate-500">{att.formattedDate || att.date}</span>
+                      </div>
+                      <div className="text-xs text-slate-600 flex items-center gap-2 flex-wrap">
+                        <span>Thời gian: {Math.floor((att.durationSeconds || 0) / 60)}p {(att.durationSeconds || 0) % 60}s</span>
+                        <span>&bull;</span>
+                        <span className={att.tabSwitchCount === 0 ? 'text-emerald-700 font-bold' : 'text-rose-700 font-bold'}>
+                          {att.tabSwitchCount === 0 ? '✓ 0 vi phạm' : `⚠️ ${att.tabSwitchCount} lần rời tab`}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="text-right">
+                      <div className="text-2xl font-black text-indigo-600">
+                        {att.score.toFixed(2)} <span className="text-xs text-slate-400 font-normal">/ 10</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-500">
+                        P1: {att.part1Score.toFixed(2)} | P2: {att.part2Score.toFixed(2)} | P3: {att.part3Score.toFixed(2)}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <div className="pt-3 border-t shrink-0 flex justify-end">
+              <button
+                onClick={() => setShowHistoryModal(false)}
+                className="px-5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-xl text-xs"
+              >
+                Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* MODAL CÀI ĐẶT CẤP QUYỀN DÀNH CHO THẦY GIÁO */}
       {isTeacherModalOpen && (

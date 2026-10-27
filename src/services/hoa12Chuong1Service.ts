@@ -86,6 +86,24 @@ export const HOA12_CHUONG1_HANDBOOK = [{"title": "1. Khái Niệm & Công Thức
 // ============================================================================
 const STORAGE_PREFIX = 'hoa12_c1_';
 
+export interface Chuong1ExamAttempt {
+  id: string;
+  examId: string;
+  examTitle: string;
+  score: number;
+  part1Score: number;
+  part2Score: number;
+  part3Score: number;
+  correctCount: number;
+  totalQuestions: number;
+  durationSeconds: number;
+  tabSwitchCount: number;
+  autoSubmittedDueToViolation?: boolean;
+  date: string;
+  formattedDate: string;
+  answers: Record<string | number, any>;
+}
+
 export interface Chuong1UserProgress {
   completedLessons: string[];
   examScores: Record<string, { score: number; date: string; attempts: number }>;
@@ -113,7 +131,8 @@ export function getChuong1UserProgress(): Chuong1UserProgress {
   };
 }
 
-export function calculateChuong1ExamScore(questions: Chuong1Question[], userAnswers: Record<string | number, any>) {
+export function calculateChuong1ExamScore(questionsInput: any, userAnswers: Record<string | number, any>) {
+  const questions: Chuong1Question[] = Array.isArray(questionsInput) ? questionsInput : (questionsInput?.questions || []);
   let p1Correct = 0;
   let p1Score = 0;
   let p2Score = 0;
@@ -184,17 +203,140 @@ export function calculateChuong1ExamScore(questions: Chuong1Question[], userAnsw
   };
 }
 
-export function saveChuong1ExamResult(examId: string, score: number) {
-  const p = getChuong1UserProgress();
-  const prev = p.examScores[examId] || { score: 0, date: '', attempts: 0 };
-  p.examScores[examId] = {
-    score: Math.max(prev.score, score),
-    date: new Date().toISOString(),
-    attempts: prev.attempts + 1
+export function getChuong1ExamHistory(examId?: string): Chuong1ExamAttempt[] {
+  try {
+    const raw = localStorage.getItem(`${STORAGE_PREFIX}exam_history`);
+    const list: Chuong1ExamAttempt[] = raw ? JSON.parse(raw) : [];
+    if (examId) {
+      return list.filter(item => item.examId === examId);
+    }
+    return list;
+  } catch (e) {
+    return [];
+  }
+}
+
+export function saveChuong1ExamAttempt(attempt: Chuong1ExamAttempt) {
+  try {
+    const raw = localStorage.getItem(`${STORAGE_PREFIX}exam_history`);
+    const list: Chuong1ExamAttempt[] = raw ? JSON.parse(raw) : [];
+    list.unshift(attempt);
+    if (list.length > 100) list.length = 100;
+    localStorage.setItem(`${STORAGE_PREFIX}exam_history`, JSON.stringify(list));
+  } catch (e) {}
+
+  try {
+    const p = getChuong1UserProgress();
+    const prev = p.examScores[attempt.examId] || { score: 0, date: '', attempts: 0 };
+    p.examScores[attempt.examId] = {
+      score: Math.max(prev.score, attempt.score),
+      date: attempt.date,
+      attempts: prev.attempts + 1
+    };
+    p.totalXP += Math.round(attempt.score * 20);
+    p.rankTitle = getRankTitle(p.totalXP);
+    localStorage.setItem(`${STORAGE_PREFIX}progress`, JSON.stringify(p));
+  } catch (e) {}
+}
+
+export function saveChuong1ExamResult(examId: string, score: number, durationSeconds: number = 0) {
+  try {
+    const p = getChuong1UserProgress();
+    const prev = p.examScores[examId] || { score: 0, date: '', attempts: 0 };
+    p.examScores[examId] = {
+      score: Math.max(prev.score, score),
+      date: new Date().toISOString(),
+      attempts: prev.attempts + 1
+    };
+    p.totalXP += Math.round(score * 20);
+    p.rankTitle = getRankTitle(p.totalXP);
+    localStorage.setItem(`${STORAGE_PREFIX}progress`, JSON.stringify(p));
+  } catch (e) {}
+}
+
+/**
+ * Thuật toán đảo câu, đảo đáp án A-B-C-D, đảo ý a-b-c-d khi làm lại
+ */
+export function shuffleChuong1Exam(exam: Chuong1Exam): Chuong1Exam {
+  if (!exam || !exam.questions) return exam;
+
+  // Deep clone exam để không làm thay đổi đề gốc
+  const clonedQuestions: Chuong1Question[] = JSON.parse(JSON.stringify(exam.questions));
+
+  // Tách câu hỏi theo từng phần để đảo trong từng phần
+  const p1 = clonedQuestions.filter(q => q.part === 1);
+  const p2 = clonedQuestions.filter(q => q.part === 2);
+  const p3 = clonedQuestions.filter(q => q.part === 3);
+
+  const shuffleArray = <T>(arr: T[]): T[] => {
+    const res = [...arr];
+    for (let i = res.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [res[i], res[j]] = [res[j], res[i]];
+    }
+    return res;
   };
-  p.totalXP += Math.round(score * 20);
-  p.rankTitle = getRankTitle(p.totalXP);
-  localStorage.setItem(`${STORAGE_PREFIX}progress`, JSON.stringify(p));
+
+  // 1. Đảo câu trong Phần 1 và đảo vị trí 4 đáp án A, B, C, D
+  const shuffledP1 = shuffleArray(p1).map(q => {
+    if (q.options && q.options.length > 0) {
+      const origCorrectOpt = q.options.find(o => o.isCorrect) || q.options.find(o => o.letter === q.correctAnswer);
+      const origCorrectText = origCorrectOpt?.text;
+
+      const shuffledOptions = shuffleArray(q.options);
+      const letters = ['A', 'B', 'C', 'D'];
+
+      shuffledOptions.forEach((opt, idx) => {
+        opt.letter = letters[idx];
+      });
+
+      const newCorrectOpt = shuffledOptions.find(o => (origCorrectText && o.text === origCorrectText) || o.isCorrect);
+      const newCorrectLetter = newCorrectOpt?.letter || 'A';
+
+      shuffledOptions.forEach(opt => {
+        opt.isCorrect = (opt.letter === newCorrectLetter);
+      });
+
+      return {
+        ...q,
+        options: shuffledOptions,
+        correctAnswer: newCorrectLetter
+      };
+    }
+    return q;
+  });
+
+  // 2. Đảo câu trong Phần 2 và đảo thứ tự 4 ý con a, b, c, d
+  const shuffledP2 = shuffleArray(p2).map(q => {
+    if (q.options && q.options.length > 0) {
+      const shuffledOptions = shuffleArray(q.options);
+      const letters = ['a', 'b', 'c', 'd'];
+
+      shuffledOptions.forEach((opt, idx) => {
+        opt.letter = letters[idx];
+      });
+
+      return {
+        ...q,
+        options: shuffledOptions
+      };
+    }
+    return q;
+  });
+
+  // 3. Đảo câu trong Phần 3
+  const shuffledP3 = shuffleArray(p3);
+
+  // Đánh lại số thứ tự hiển thị từ 1 đến 28
+  const finalQuestions = [...shuffledP1, ...shuffledP2, ...shuffledP3].map((q, idx) => ({
+    ...q,
+    displayNumber: idx + 1
+  }));
+
+  return {
+    ...exam,
+    questions: finalQuestions
+  };
 }
 
 export function getRankTitle(xp: number): string {
