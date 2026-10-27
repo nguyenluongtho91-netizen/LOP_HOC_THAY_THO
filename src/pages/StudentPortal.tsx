@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useState, Suspense, lazy } from 'react'
+import React, { useEffect, useState, useMemo, Suspense, lazy } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { 
   LogOut, 
