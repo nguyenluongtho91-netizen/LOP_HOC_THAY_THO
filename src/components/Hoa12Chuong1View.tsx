@@ -29,6 +29,7 @@ interface Hoa12Chuong1ViewProps {
   studentName?: string;
   studentGrade?: string;
   onClose?: () => void;
+  isTeacher?: boolean;
 }
 
 // Bộ tạo âm thanh Web Audio API
@@ -118,8 +119,27 @@ const sfx = new ChemistrySoundFX();
 export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   studentName = 'Học sinh',
   studentGrade = 'Lớp 12',
-  onClose
+  onClose,
+  isTeacher = false
 }) => {
+  // ── Access Control & Security Lock ──────────────────────────────────
+  const [currentPasscode, setCurrentPasscode] = useState<string>(() => {
+    return localStorage.getItem('hoa12_passcode') || 'THAYTHO2026';
+  });
+  const [isLockEnabled, setIsLockEnabled] = useState<boolean>(() => {
+    const val = localStorage.getItem('hoa12_lock_status');
+    return val !== 'open';
+  });
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
+    if (isTeacher) return true;
+    const val = localStorage.getItem('hoa12_lock_status');
+    if (val === 'open') return true;
+    return localStorage.getItem('hoa12_student_authorized') === 'true';
+  });
+  const [passcodeInput, setPasscodeInput] = useState('');
+  const [isTeacherModalOpen, setIsTeacherModalOpen] = useState(false);
+  const [newPasscodeForm, setNewPasscodeForm] = useState(currentPasscode);
+  const [tempLockEnabled, setTempLockEnabled] = useState(isLockEnabled);
   // Navigation
   const [activeTab, setActiveTab] = useState<'overview' | 'handbook' | 'practice' | 'exam' | 'results'>('overview');
   const [selectedLessonId, setSelectedLessonId] = useState<'bai1' | 'bai2' | 'bai3'>('bai1');
@@ -378,6 +398,107 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     ? 'bg-[#FFFDF9] border-[#E8E2D5] text-stone-900 shadow-sm'
     : 'bg-white border-slate-200 text-slate-900 shadow-sm';
 
+  // ── MÀN HÌNH KHÓA NẾU CHƯA ĐƯỢC CẤP QUYỀN ──────────────────────────
+  if (!isUnlocked && !isTeacher) {
+    const lockContent = (
+      <div className={`fixed inset-0 z-[999999] ${bgTheme} flex flex-col font-sans overflow-y-auto antialiased`}>
+        <header className={`h-16 ${eyeComfortMode ? 'bg-[#FFFDF9] border-[#E8E2D5]' : 'bg-white border-slate-200'} border-b px-4 md:px-8 flex items-center justify-between shadow-xs shrink-0`}>
+          <div className="flex items-center gap-3">
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="p-2 rounded-xl bg-slate-200/60 hover:bg-slate-300/60 text-slate-700 transition-colors flex items-center gap-1 text-sm font-bold"
+                title="Quay lại"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span className="hidden sm:inline">Quay lại</span>
+              </button>
+            )}
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🧪</span>
+              <span className="font-extrabold text-base tracking-tight">HÓA HỌC 12 - CHƯƠNG 1</span>
+            </div>
+          </div>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">
+            <Lock className="w-3.5 h-3.5" />
+            Đang Khóa Bảo Mật
+          </span>
+        </header>
+
+        <div className="flex-1 flex items-center justify-center p-4 sm:p-6 my-auto">
+          <div className="w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl space-y-6 text-center animate-fade-in">
+            <div className="w-20 h-20 rounded-3xl bg-amber-50 border-2 border-amber-200 text-amber-600 flex items-center justify-center mx-auto shadow-inner">
+              <Lock className="w-10 h-10" />
+            </div>
+
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                KHO HỌC LIỆU ĐANG TẠM KHÓA
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-2 leading-relaxed">
+                Nội dung ôn luyện và đề kiểm tra Chương 1 Hóa 12 đang trong chế độ bảo mật nội bộ. Chỉ Thầy giáo hoặc học sinh được Thầy cấp quyền mới có thể truy cập.
+              </p>
+            </div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (!passcodeInput.trim()) {
+                  toast.error('Vui lòng nhập mã cấp quyền do Thầy cấp!');
+                  return;
+                }
+                const entered = passcodeInput.trim().toUpperCase();
+                const validCode = (localStorage.getItem('hoa12_passcode') || 'THAYTHO2026').trim().toUpperCase();
+                if (entered === validCode) {
+                  localStorage.setItem('hoa12_student_authorized', 'true');
+                  setIsUnlocked(true);
+                  sfx.playComplete();
+                  toast.success('Mở khóa thành công! Chúc em học tập thật tốt.', { icon: '🎉', duration: 4000 });
+                } else {
+                  toast.error('Mã cấp quyền không chính xác. Em vui lòng liên hệ Thầy Thọ để nhận mã nhé!');
+                }
+              }}
+              className="space-y-4 text-left"
+            >
+              <div>
+                <label className="block text-xs font-black text-slate-700 uppercase tracking-wider mb-2">
+                  Mã cấp quyền mở khóa (do Thầy Thọ cấp):
+                </label>
+                <input
+                  type="text"
+                  value={passcodeInput}
+                  onChange={(e) => setPasscodeInput(e.target.value.toUpperCase())}
+                  placeholder="VD: THAYTHO2026"
+                  className="w-full px-4 py-3.5 rounded-2xl border-2 border-slate-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 text-center text-lg font-mono font-black uppercase tracking-widest bg-slate-50 transition-all outline-none"
+                  autoFocus
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <Unlock className="w-5 h-5" />
+                XÁC NHẬN MỞ KHÓA BÀI HỌC
+              </button>
+            </form>
+
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500">
+              <span>Dành cho Thầy giáo:</span>
+              <a
+                href="/login"
+                className="text-indigo-600 hover:text-indigo-800 underline flex items-center gap-1"
+              >
+                Đăng nhập tài khoản Thầy <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+    return createPortal(lockContent, document.body);
+  }
+
   const content = (
     <div className={`fixed inset-0 z-[999999] ${bgTheme} flex flex-col font-sans overflow-hidden antialiased transition-colors duration-200`}>
       {/* HEADER BAR */}
@@ -413,6 +534,26 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
         {/* Global Controls & Tabs */}
         <div className="flex items-center gap-2">
+          {isTeacher && (
+            <div className="flex items-center gap-1.5 mr-1">
+              <span className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300">
+                <Award className="w-3.5 h-3.5 text-amber-600" />
+                👑 Thầy giáo
+              </span>
+              <button
+                onClick={() => {
+                  setNewPasscodeForm(currentPasscode);
+                  setTempLockEnabled(isLockEnabled);
+                  setIsTeacherModalOpen(true);
+                }}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+                title="Quản lý quyền truy cập của học sinh"
+              >
+                <Lock className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Quản lý cấp quyền</span>
+              </button>
+            </div>
+          )}
           {/* Main Navigation Tabs */}
           <div className="hidden lg:flex items-center bg-slate-200/50 p-1 rounded-xl border border-slate-200 text-sm font-semibold">
             <button
@@ -1559,6 +1700,115 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           )}
         </div>
       </main>
+
+      {/* MODAL CÀI ĐẶT CẤP QUYỀN DÀNH CHO THẦY GIÁO */}
+      {isTeacherModalOpen && (
+        <div className="fixed inset-0 z-[9999999] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200 text-slate-900">
+            <div className="flex items-center justify-between border-b pb-4">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-black">
+                  <Lock className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900">Quản Lý Quyền Truy Cập Hóa 12</h3>
+                  <p className="text-xs text-slate-500">Khóa tài liệu & cấp quyền cho học sinh</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsTeacherModalOpen(false)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 text-lg font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="space-y-4 text-left">
+              <div className="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-3">
+                <label className="text-xs font-black text-slate-700 uppercase tracking-wider block">
+                  Trạng thái bảo mật học liệu:
+                </label>
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2.5 text-xs font-bold text-slate-800 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="lockMode"
+                      checked={tempLockEnabled}
+                      onChange={() => setTempLockEnabled(true)}
+                      className="w-4 h-4 text-indigo-600"
+                    />
+                    <span>🔒 Đang khóa (Học sinh phải có mã mở khóa do Thầy cấp)</span>
+                  </label>
+                  <label className="flex items-center gap-2.5 text-xs font-bold text-slate-800 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="lockMode"
+                      checked={!tempLockEnabled}
+                      onChange={() => setTempLockEnabled(false)}
+                      className="w-4 h-4 text-indigo-600"
+                    />
+                    <span>🔓 Mở tự do cho toàn bộ học sinh</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-black text-slate-700 uppercase tracking-wider mb-1.5">
+                  Mã cấp quyền mở khóa hiện tại:
+                </label>
+                <input
+                  type="text"
+                  value={newPasscodeForm}
+                  onChange={(e) => setNewPasscodeForm(e.target.value.toUpperCase())}
+                  placeholder="VD: THAYTHO2026"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 font-mono font-black text-lg text-center uppercase tracking-widest focus:border-indigo-600 focus:outline-none bg-white"
+                />
+                <p className="text-[11px] text-slate-500 mt-1">
+                  Thầy có thể đổi mã này bất cứ lúc nào (ví dụ: HOA12VIP, THAYTHO,...).
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  const code = newPasscodeForm.trim().toUpperCase() || 'THAYTHO2026';
+                  const msg = `Chào các em, Thầy Thọ gửi mã mở khóa kho học liệu Chương 1 Hóa 12: ${code}. Các em truy cập vào để ôn luyện nhé!`;
+                  navigator.clipboard.writeText(msg);
+                  toast.success('Đã sao chép tin nhắn kèm mã để gửi Zalo cho học sinh!', { icon: '📋' });
+                }}
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-2 transition-all border border-slate-300 cursor-pointer"
+              >
+                <span>📋 Sao chép tin nhắn & mã gửi Zalo cho học sinh</span>
+              </button>
+            </div>
+
+            <div className="flex items-center justify-end gap-3 pt-4 border-t">
+              <button
+                type="button"
+                onClick={() => setIsTeacherModalOpen(false)}
+                className="px-4 py-2 rounded-xl text-slate-600 hover:bg-slate-100 font-bold text-xs"
+              >
+                Đóng
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const cleanedCode = newPasscodeForm.trim().toUpperCase() || 'THAYTHO2026';
+                  localStorage.setItem('hoa12_passcode', cleanedCode);
+                  localStorage.setItem('hoa12_lock_status', tempLockEnabled ? 'locked' : 'open');
+                  setCurrentPasscode(cleanedCode);
+                  setIsLockEnabled(tempLockEnabled);
+                  setIsTeacherModalOpen(false);
+                  toast.success('Đã lưu cấu hình cấp quyền thành công!', { icon: '✅' });
+                }}
+                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs shadow-md transition-all cursor-pointer"
+              >
+                Lưu cài đặt
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 
