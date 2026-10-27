@@ -945,9 +945,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                 />
                               </div>
                               {ex.images && ex.images.length > 0 && (
-                                <div className="flex flex-wrap gap-2 my-2">
+                                <div className="my-4 flex flex-wrap justify-center items-center gap-4">
                                   {ex.images.map((img, i) => (
-                                    <img key={i} src={img} alt="Hình minh họa" className="max-h-48 rounded border border-slate-200" />
+                                    <div key={i} className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow max-w-full flex flex-col items-center">
+                                      <img key={i} src={img} alt="Hình minh họa" className="max-h-64 sm:max-h-72 w-auto object-contain rounded-xl" />
+                                    </div>
                                   ))}
                                 </div>
                               )}
@@ -1223,14 +1225,16 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
                             {/* Images if any */}
                             {q.images && q.images.length > 0 && (
-                              <div className="flex flex-wrap gap-3 my-3">
+                              <div className="my-4 flex flex-wrap justify-center items-center gap-4">
                                 {q.images.map((img, i) => (
-                                  <img
-                                    key={i}
-                                    src={img}
-                                    alt="Hình câu hỏi"
-                                    className="max-h-56 max-w-full rounded-2xl border border-slate-200 shadow-xs object-contain bg-white p-2"
-                                  />
+                                  <div key={i} className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow max-w-full flex flex-col items-center">
+                                    <img
+                                      key={i}
+                                      src={img}
+                                      alt="Hình câu hỏi"
+                                      className="max-h-64 sm:max-h-72 w-auto object-contain rounded-xl"
+                                    />
+                                  </div>
                                 ))}
                               </div>
                             )}
@@ -1567,9 +1571,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                         </div>
 
                         {q.images && q.images.length > 0 && (
-                          <div className="flex flex-wrap gap-2 my-2">
+                          <div className="my-4 flex flex-wrap justify-center items-center gap-4">
                             {q.images.map((img, i) => (
-                              <img key={i} src={img} alt="Đề thi" className="max-h-56 rounded-2xl border border-slate-200 object-contain p-2 bg-white" />
+                              <div key={i} className="p-3 bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow max-w-full flex flex-col items-center">
+                                <img key={i} src={img} alt="Đề thi" className="max-h-64 sm:max-h-72 w-auto object-contain rounded-xl" />
+                              </div>
                             ))}
                           </div>
                         )}
