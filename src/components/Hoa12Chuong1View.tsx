@@ -193,10 +193,10 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     return HOA12_CHUONG1_7_EXAMS.find(e => e.id === selectedExamId) || HOA12_CHUONG1_7_EXAMS[0];
   }, [selectedExamId]);
 
-  // Timer for Exam
+  // Timer for Exam (Tối ưu: chỉ chạy khi isExamActive, không re-bind mỗi giây)
   useEffect(() => {
     let timer: any = null;
-    if (isExamActive && examTimeLeft > 0) {
+    if (isExamActive) {
       timer = setInterval(() => {
         setExamTimeLeft(prev => {
           if (prev <= 1) {
@@ -208,8 +208,10 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
         });
       }, 1000);
     }
-    return () => clearInterval(timer);
-  }, [isExamActive, examTimeLeft]);
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [isExamActive]);
 
   const handleAutoSubmitExam = () => {
     toast('Đã hết 50 phút! Hệ thống đang chấm bài...', { icon: '⏰' });
@@ -246,13 +248,13 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
-  // Practice Questions with Sub-topic & Level filtering
-  const practiceData = activeLesson.practice || (activeLesson as any).practiceBank || {};
+  // Practice Questions with Sub-topic & Level filtering (Tối ưu memoization)
   const allPracticeQuestions: Chuong1Question[] = useMemo(() => {
-    if (practicePart === 1) return practiceData.part1 || [];
-    if (practicePart === 2) return practiceData.part2 || [];
-    return practiceData.part3 || [];
-  }, [practiceData, practicePart]);
+    const practice = activeLesson?.practice || (activeLesson as any)?.practiceBank || {};
+    if (practicePart === 1) return practice.part1 || [];
+    if (practicePart === 2) return practice.part2 || [];
+    return practice.part3 || [];
+  }, [activeLesson, practicePart]);
 
   // Filtered practice questions
   const filteredQuestions = useMemo(() => {

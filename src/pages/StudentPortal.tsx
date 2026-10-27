@@ -43,9 +43,7 @@ import { normalizeExamData } from '@/services/examNormalizer'
 import { getStudentCredential, saveStudentCredential } from '@/services/studentCredentialsService'
 
 // Lazy load Chapter 1 to keep StudentPortal initial load blazing fast
-const Hoa12Chuong1View = lazy(() => 
-  import('../components/Hoa12Chuong1View').then(m => ({ default: m.Hoa12Chuong1View }))
-);
+// Hoa12Chuong1View loaded on-demand via route /hoa12;
 
 const BANK_ID      = import.meta.env.VITE_BANK_ID      || 'VCB'
 const BANK_ACCOUNT = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
@@ -806,11 +804,7 @@ export default function StudentPortal() {
               <button
                 type="button"
                 onClick={() => {
-                  setActiveTab('chapter');
-                  setTimeout(() => {
-                    const el = document.getElementById('hoa12-chuong1-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
+                  navigate('/hoa12');
                 }}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm shadow-md shadow-blue-500/25 active:scale-95 transition-all cursor-pointer"
               >
@@ -1247,11 +1241,7 @@ export default function StudentPortal() {
               <button
                 type="button"
                 onClick={() => {
-                  setActiveTab('chapter');
-                  setTimeout(() => {
-                    const el = document.getElementById('hoa12-chuong1-section');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }, 100);
+                  navigate('/hoa12');
                 }}
                 className={`p-2.5 sm:p-3 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[85px] sm:min-w-[100px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
                   activeTab === 'chapter'
@@ -1663,20 +1653,40 @@ export default function StudentPortal() {
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {(activeTab === 'chapter' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
-            {/* 🌟 HỆ THỐNG LUYỆN ĐỀ & RÈN LUYỆN CHƯƠNG 1 HOÁ HỌC 12 (CHỈ HIỂN THỊ VỚI HỌC SINH KHỐI 12) */}
+            {/* 🌟 THẺ ĐẶC BIỆT KHO HỌC LIỆU HÓA 12 (TỐI ƯU SIÊU TỐC, CHỈ DÀNH CHO KHỐI 12) */}
             {isGrade12 && (
-              <div id="hoa12-chuong1-section">
-                <Suspense fallback={
-                  <div className="bg-slate-900 text-slate-200 rounded-3xl p-8 text-center border border-slate-800 shadow-xl">
-                    <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                    <p className="text-sm font-bold">Đang tải kho tài liệu Chương 1 Hóa 12...</p>
+              <div id="hoa12-chuong1-section" className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-7 rounded-3xl border-2 border-indigo-500/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+                <div className="flex items-center gap-4 relative z-10">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-blue-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-lg shadow-indigo-600/30">
+                    🧪
                   </div>
-                }>
-                  <Hoa12Chuong1View 
-                    studentName={student?.name}
-                    studentGrade={student?.grade || "12"}
-                  />
-                </Suspense>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1 flex-wrap">
+                      <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+                        ĐẶC QUYỀN KHỐI 12
+                      </span>
+                      <span className="text-xs text-indigo-300 font-bold">
+                        HÓA HỌC 12 · CHƯƠNG 1 (ESTER - LIPID)
+                      </span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-black text-white">
+                      KHO HỌC LIỆU & 7 ĐỀ THI TỔNG HỢP 2025
+                    </h3>
+                    <p className="text-xs text-slate-300 mt-0.5 max-w-xl">
+                      Chia nhỏ bộ đề 15 câu chống mỏi mắt • Chế độ tông ấm dịu mắt • Tự động chấm điểm & lời giải chi tiết
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa12')}
+                  className="w-full md:w-auto px-6 py-3.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-sm rounded-2xl shadow-xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+                >
+                  <span>🚀 VÀO ÔN LUYỆN HÓA 12</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             )}
 
