@@ -1009,11 +1009,8 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                           >
                             {/* Card Header */}
                             <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200/60">
-                              <div className="flex items-center gap-2">
-                                <span className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-800 font-black flex items-center justify-center text-sm border border-indigo-200">
-                                  {displayIndex}
-                                </span>
-                                <span className="font-bold text-sm">
+                              <div className="flex items-center gap-2.5">
+                                <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400">
                                   Câu {q.number || displayIndex}
                                 </span>
                                 {q.topicTitle && (
@@ -1377,11 +1374,8 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                         className={`${cardTheme} rounded-3xl p-6 md:p-8 space-y-4`}
                       >
                         <div className="flex items-center justify-between pb-3 border-b border-slate-200/60">
-                          <div className="flex items-center gap-2">
-                            <span className="w-7 h-7 rounded-xl bg-indigo-100 text-indigo-800 font-black flex items-center justify-center text-xs">
-                              {idx + 1}
-                            </span>
-                            <span className="font-bold text-sm">
+                          <div className="flex items-center gap-2.5">
+                            <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400">
                               Câu {idx + 1}
                             </span>
                             <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200/60 text-slate-700">
