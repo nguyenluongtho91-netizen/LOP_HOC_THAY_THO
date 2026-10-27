@@ -148,6 +148,31 @@ const ResultView: React.FC<ResultViewProps> = ({
       </div>
 
       <div className="max-w-3xl mx-auto p-3.5 sm:p-6 pb-12">
+        {/* 🚨 Cảnh báo nếu bài thi bị thu do vi phạm quá 3 lần */}
+        {(submission.isViolationSubmit || submission.autoSubmittedReason?.includes('Chuyển tab') || submission.autoSubmittedReason?.includes('vi phạm') || (submission.tabSwitchCount && submission.tabSwitchCount > 3)) && (
+          <div className="mb-5 p-4 sm:p-5 rounded-2xl bg-rose-50 border-2 border-rose-300 text-rose-950 shadow-xs flex items-start gap-3.5 animate-fadeIn">
+            <div className="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center text-xl shrink-0 mt-0.5 shadow-sm">
+              🚨
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-black text-rose-700 text-sm sm:text-base uppercase tracking-wide">
+                  BÀI THI BỊ THU HỒI DO VI PHẠM QUY CHẾ THI
+                </h3>
+                <span className="px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 text-[10px] font-black border border-rose-200">
+                  {submission.tabSwitchCount || 4} lần vi phạm
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-rose-900 font-semibold mt-1 leading-relaxed">
+                <strong>Lý do thu bài:</strong> {submission.autoSubmittedReason || `Rời khỏi phòng thi / chuyển tab quá 3 lần (${submission.tabSwitchCount || 4} lần vi phạm)`}.
+              </p>
+              <p className="text-[11px] text-rose-700 mt-1 italic">
+                Hệ thống đã tự động khóa bài thi và chỉ chấm điểm những câu em đã tích chọn trước thời điểm vi phạm.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Card Kết quả trung tâm - Tối giản & Chuyên nghiệp */}
         <div className="bg-white rounded-2xl sm:rounded-3xl shadow-sm border border-gray-200/70 p-4 sm:p-7 mb-6 relative overflow-hidden">
           

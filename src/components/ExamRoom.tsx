@@ -8,7 +8,7 @@ import MathText from './MathText';
 import EssayQuestionInput from './EssayQuestionInput';
 import { hasEssayAnswer } from '../services/essayGradingService';
 
-import { List, CheckCircle2, Type, FileEdit, Check as CheckIcon, X as XIcon } from 'lucide-react';
+import { List, CheckCircle2, Type, FileEdit, Check as CheckIcon, X as XIcon, Loader2, AlertTriangle } from 'lucide-react';
 import { normalizeExamData, cleanQuestionText } from '../services/examNormalizer';
 
 // ─── Seeded shuffle (Fisher-Yates với seed đơn giản) ─────────────────────────
@@ -105,6 +105,8 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
   const [tabSwitchCount, setTabSwitchCount] = useState(0);
   const [tabSwitchWarnings, setTabSwitchWarnings] = useState<Date[]>([]);
   const [showTabWarning, setShowTabWarning] = useState(false);
+  const [violationNotice, setViolationNotice] = useState<{ isOpen: boolean; reason: string; count: number } | null>(null);
+  const [pendingSubmissionResult, setPendingSubmissionResult] = useState<any | null>(null);
 
   const [mySessionId] = useState<string>(() => generateSessionId());
   const [isKicked, setIsKicked] = useState(false);
@@ -126,7 +128,7 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
 
   const isSubmittingRef = useRef(false);
 
-  const handleSubmit = useCallback(async (force = false, auto = false) => {
+  const handleSubmit = useCallback(async (force = false, auto = false, autoReason?: string, countViolations?: number) => {
     if (!force && !showConfirmSubmit) { setShowConfirmSubmit(true); return; }
     if (!safeExam || !submissionId || isSubmittingRef.current) return;
 
@@ -147,9 +149,12 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
     );
 
     try {
+      const isViolation = Boolean(autoReason && (autoReason.includes('tab') || autoReason.includes('vi phạm')));
+      const effectiveCount = countViolations ?? tabSwitchCount;
+
       const submission = await Promise.race([
         submitExam(submissionId, userAnswers, safeExam, {
-          tabSwitchCount,
+          tabSwitchCount: effectiveCount,
           tabSwitchWarnings: safeWarnings as any,
           autoSubmitted: auto,
           duration: (limit * 60) - timeLeft
@@ -173,27 +178,37 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
           wrongCount: (safeExam.questions?.length || 0) - totalCorrect,
           totalQuestions: safeExam.questions?.length || 0,
           scoreBreakdown: breakdown,
-          answers: submission.answers
+          answers: submission.answers,
+          autoSubmitted: auto,
+          autoSubmittedReason: autoReason || (auto ? 'Hết giờ làm bài' : undefined),
+          isViolationSubmit: isViolation,
+          tabSwitchCount: effectiveCount
         };
-        onSubmitted(formatted);
+
+        if (isViolation) {
+          // Lưu kết quả để học sinh đọc lý do trên popup và bấm xem kết quả
+          setPendingSubmissionResult(formatted);
+        } else {
+          onSubmitted(formatted);
+        }
       } else {
         console.warn('submitExam returned null');
-        alert('Khong the nop bai. Vui long thu lai.');
+        alert('Không thể nộp bài. Vui lòng thử lại.');
       }
     } catch (err: any) {
       console.error('Submit error:', err);
       if (err?.message === 'TIMEOUT') {
-        alert('Ket noi cham! Bai lam co the da duoc luu.\nHay bam "Nop bai" lai de kiem tra.');
+        alert('Kết nối chậm! Bài làm có thể đã được lưu.\nHãy bấm "Nộp bài" lại để kiểm tra.');
       } else {
         const msg = err?.message || err?.code || JSON.stringify(err);
-        alert('Loi nop bai: ' + msg + '\nVui long thu lai.');
+        alert('Lỗi nộp bài: ' + msg + '\nVui lòng thử lại.');
       }
     } finally {
       // LUON mo khoa nut du thanh cong hay that bai
       isSubmittingRef.current = false;
       setIsSubmitting(false);
     }
-  }, [safeExam, submissionId, userAnswers, tabSwitchCount, tabSwitchWarnings, timeLeft]);
+  }, [safeExam, submissionId, userAnswers, tabSwitchCount, tabSwitchWarnings, timeLeft, limit, student, onSubmitted, showConfirmSubmit]);
 
   const { reportTabSwitch, reportViolation, updateProgress, submitSession } = useExamSession({
     roomId: room.id, studentId: student.id, studentName: student.name,
@@ -216,7 +231,7 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
   useEffect(() => {
     const t = setInterval(() => {
       setTimeLeft((p) => {
-        if (p <= 1) { submitSession(); handleSubmit(true, true); return 0; }
+        if (p <= 1) { submitSession(); void handleSubmit(true, true, 'Hết giờ làm bài'); return 0; }
         return p - 1;
       });
     }, 1000);
@@ -232,12 +247,25 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
       maxSwitches: 3,
       onTabSwitch: (count: number, warnings: Date[]) => {
         setTabSwitchCount(count); setTabSwitchWarnings(warnings);
-        setShowTabWarning(true);
+        if (count <= 3) {
+          setShowTabWarning(true);
+        }
         reportTabSwitch();
       },
       onAutoSubmit: () => {
-        reportViolation({ type: 'auto_submit', timestamp: new Date().toISOString(), detail: 'Chuyển tab quá 3 lần' });
-        submitSession(); handleSubmit(true, true);
+        const stats = getTabDetectionService().getStats();
+        const count = stats.switchCount || 4;
+        const reason = `Chuyển tab hoặc rời màn hình làm bài quá 3 lần (${count} lần vi phạm)`;
+        setTabSwitchCount(count);
+        setShowTabWarning(false);
+        setViolationNotice({
+          isOpen: true,
+          reason,
+          count
+        });
+        reportViolation({ type: 'auto_submit', timestamp: new Date().toISOString(), detail: reason });
+        submitSession(); 
+        void handleSubmit(true, true, reason, count);
       }
     });
     return () => tabService.stop();
@@ -408,8 +436,8 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
         </div>
       </div>
 
-      {/* 🚨 Popup Cảnh báo chuyển tab kèm còi báo động */}
-      {showTabWarning && (
+      {/* 🚨 Popup Cảnh báo chuyển tab kèm còi báo động (Lần 1, 2, 3) */}
+      {showTabWarning && !violationNotice?.isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150">
           <div className="bg-white rounded-3xl shadow-2xl border-4 border-red-500 max-w-md w-full p-6 text-center animate-in zoom-in-95 duration-150">
             <div className="w-16 h-16 mx-auto mb-3 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-3xl animate-bounce">
@@ -448,6 +476,64 @@ const ExamRoom: React.FC<ExamRoomProps> = ({ room, exam, student, existingSubmis
               className="w-full py-3.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white font-bold rounded-xl shadow-lg shadow-red-500/30 transition text-sm cursor-pointer"
             >
               Tôi đã hiểu, tiếp tục làm bài
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* 🚨 Popup THU BÀI DO VI PHẠM QUY CHẾ VÀ NÓI RÕ LÝ DO */}
+      {violationNotice?.isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl shadow-2xl border-4 border-rose-600 max-w-lg w-full p-6 sm:p-8 text-center animate-in zoom-in-95 duration-200">
+            <div className="w-20 h-20 mx-auto mb-4 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center text-4xl shadow-inner animate-bounce">
+              🚨
+            </div>
+            
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-600 text-white font-black text-xs uppercase tracking-wider mb-3">
+              Quy chế phòng thi Thầy Thọ
+            </div>
+
+            <h3 className="text-2xl font-black text-rose-600 uppercase tracking-tight mb-2">
+              HỆ THỐNG ĐÃ THU BÀI THI CỦA BẠN!
+            </h3>
+
+            <div className="p-4 bg-rose-50 rounded-2xl border border-rose-200 text-left my-4 space-y-2">
+              <div className="font-extrabold text-rose-950 text-sm flex items-center gap-1.5">
+                <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+                <span>LÝ DO THU BÀI:</span>
+              </div>
+              <p className="text-sm text-rose-900 font-bold leading-relaxed">
+                {violationNotice.reason}
+              </p>
+              <div className="text-xs text-rose-800 leading-relaxed pt-2 border-t border-rose-200/80 space-y-1">
+                <p>• Bạn đã vượt quá giới hạn <strong>3 lần</strong> rời khỏi màn hình hoặc chuyển tab.</p>
+                <p>• Hệ thống đã tự động dừng bài làm, khóa phòng thi và thu lại toàn bộ các câu bạn đã tích để chấm điểm.</p>
+                <p>• Mọi mốc thời gian vi phạm đã được ghi nhận trong biên bản gửi cho Thầy giáo.</p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => {
+                if (pendingSubmissionResult) {
+                  onSubmitted(pendingSubmissionResult);
+                } else {
+                  setIsSubmitting(true);
+                }
+              }}
+              disabled={!pendingSubmissionResult}
+              className="w-full py-4 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 disabled:opacity-60 text-white font-black text-sm uppercase tracking-wider rounded-2xl shadow-xl shadow-rose-600/30 transition cursor-pointer flex items-center justify-center gap-2"
+            >
+              {pendingSubmissionResult ? (
+                <>
+                  <span>Xem kết quả bài thi</span>
+                  <span>→</span>
+                </>
+              ) : (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Đang tổng hợp điểm và thu bài...</span>
+                </>
+              )}
             </button>
           </div>
         </div>
