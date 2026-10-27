@@ -9,10 +9,27 @@ export default function Hoa12Page() {
   const auth = useAuthStore() as any;
   const isTeacher = Boolean(auth?.user && (auth.isAdmin?.() || auth.isTeacher?.() || auth.user?.email));
 
+  let studentName = 'Học sinh';
+  let studentGrade = 'Khối 12';
+
+  if (isTeacher) {
+    studentName = auth.user?.user_metadata?.full_name || auth.user?.email || 'Thầy Thọ';
+    studentGrade = 'Giáo viên';
+  } else {
+    try {
+      const studentSession = localStorage.getItem('current_student');
+      if (studentSession) {
+        const student = JSON.parse(studentSession);
+        studentName = student.name || 'Học sinh';
+        studentGrade = student.grade || 'Khối 12';
+      }
+    } catch (e) {}
+  }
+
   return (
     <Hoa12Chuong1View
-      studentName={isTeacher ? (auth.user?.user_metadata?.full_name || auth.user?.email || 'Thầy Thọ') : 'Học sinh'}
-      studentGrade="Lớp 12"
+      studentName={studentName}
+      studentGrade={studentGrade}
       isTeacher={isTeacher}
       onClose={() => navigate(-1)}
     />

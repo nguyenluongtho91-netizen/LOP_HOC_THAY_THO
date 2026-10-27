@@ -140,6 +140,13 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   const [isTeacherModalOpen, setIsTeacherModalOpen] = useState(false);
   const [newPasscodeForm, setNewPasscodeForm] = useState(currentPasscode);
   const [tempLockEnabled, setTempLockEnabled] = useState(isLockEnabled);
+
+  // ── Phân lập khối lớp: Chỉ Khối 12 hoặc Thầy giáo mới được truy cập ─────────
+  const isTargetGrade = useMemo(() => {
+    if (isTeacher) return true; // Thầy giáo xem được mọi khối
+    const g = String(studentGrade || '').toLowerCase().trim();
+    return /\b12\b/.test(g) || g.includes('12') || g.includes('khối 12') || g.includes('lớp 12');
+  }, [studentGrade, isTeacher]);
   // Navigation
   const [activeTab, setActiveTab] = useState<'overview' | 'handbook' | 'practice' | 'exam' | 'results'>('overview');
   const [selectedLessonId, setSelectedLessonId] = useState<'bai1' | 'bai2' | 'bai3'>('bai1');
@@ -397,6 +404,65 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   const cardTheme = eyeComfortMode
     ? 'bg-[#FFFDF9] border-[#E8E2D5] text-stone-900 shadow-sm'
     : 'bg-white border-slate-200 text-slate-900 shadow-sm';
+
+  // ── MÀN HÌNH CHẶN NẾU SAI KHỐI LỚP (LỚP NÀO CHỈ HIỆN LỚP ĐÓ) ────────
+  if (!isTargetGrade && !isTeacher) {
+    const wrongGradeContent = (
+      <div className={`fixed inset-0 z-[999999] ${bgTheme} flex flex-col font-sans overflow-y-auto antialiased`}>
+        <header className={`h-16 ${eyeComfortMode ? 'bg-[#FFFDF9] border-[#E8E2D5]' : 'bg-white border-slate-200'} border-b px-4 md:px-8 flex items-center justify-between shadow-xs shrink-0`}>
+          <div className="flex items-center gap-3">
+            {onClose && (
+              <button
+                onClick={onClose}
+                className="p-2 rounded-xl bg-slate-200/60 hover:bg-slate-300/60 text-slate-700 transition-colors flex items-center gap-1 text-sm font-bold"
+                title="Quay lại"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span className="hidden sm:inline">Quay lại</span>
+              </button>
+            )}
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🧪</span>
+              <span className="font-extrabold text-base tracking-tight">HÓA HỌC 12 - CHƯƠNG 1</span>
+            </div>
+          </div>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300">
+            <AlertCircle className="w-3.5 h-3.5" />
+            Không Đúng Khối Lớp
+          </span>
+        </header>
+
+        <div className="flex-1 flex items-center justify-center p-4 sm:p-6 my-auto">
+          <div className="w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-2xl space-y-6 text-center animate-fade-in">
+            <div className="w-20 h-20 rounded-3xl bg-rose-50 border-2 border-rose-200 text-rose-600 flex items-center justify-center mx-auto shadow-inner">
+              <BookOpen className="w-10 h-10" />
+            </div>
+
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                TÀI LIỆU DÀNH RIÊNG CHO KHỐI 12
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-2 leading-relaxed">
+                Kho học liệu này thuộc chương trình <b>Hóa học 12</b>. Hệ thống ghi nhận tài khoản của em là <b>{studentGrade}</b> nên không hiển thị nội dung này.
+              </p>
+            </div>
+
+            <button
+              onClick={() => {
+                if (onClose) onClose();
+                else window.location.href = '/thi';
+              }}
+              className="w-full py-3.5 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+            >
+              <ArrowLeft className="w-5 h-5" />
+              QUAY LẠI CỔNG HỌC TẬP
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+    return createPortal(wrongGradeContent, document.body);
+  }
 
   // ── MÀN HÌNH KHÓA NẾU CHƯA ĐƯỢC CẤP QUYỀN ──────────────────────────
   if (!isUnlocked && !isTeacher) {

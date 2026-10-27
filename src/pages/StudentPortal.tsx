@@ -88,6 +88,13 @@ export default function StudentPortal() {
   const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'survey' | 'all'>('homework')
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
 
+  // Xác định chính xác học sinh có thuộc Khối 12 hay không (Tài liệu lớp nào chỉ hiện cho lớp đó)
+  const isGrade12 = useMemo(() => {
+    if (!student) return false
+    const g = String(student.grade || '').toLowerCase().trim()
+    return /\b12\b/.test(g) || g.includes('12') || g.includes('khối 12') || g.includes('lớp 12')
+  }, [student])
+
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
     if (sessionStr) {
@@ -791,7 +798,7 @@ export default function StudentPortal() {
               ? 'Thầy Thọ khen ngợi tinh thần học tập của em! Hãy tiếp tục duy trì nhé.'
               : 'Em có thể xem lại bài giải hoặc bấm thi lại ở bảng điểm bên dưới để rèn luyện thêm!'}
           </p>
-          {category === 'homework' && (
+          {category === 'homework' && isGrade12 && (
             <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col items-center">
               <p className="text-xs font-semibold text-slate-600 mb-2.5">
                 Em hãy thử sức với 7 Đề và 5 Chuyên đề Hóa 12 mới nhất:
@@ -1256,7 +1263,7 @@ export default function StudentPortal() {
                   <span>📘</span> 2. LUYỆN ĐỀ THEO CHƯƠNG
                 </span>
                 <span className="text-lg sm:text-2xl font-black text-white mt-0.5">
-                  {chapterCompleted.length}/{chapterRooms.length + 7}
+                  {chapterCompleted.length}/{chapterRooms.length + (isGrade12 ? 7 : 0)}
                 </span>
                 <span className="text-[10px] text-amber-300 font-black">
                   🔥 7 Đề Mới (C1)
@@ -1448,8 +1455,9 @@ export default function StudentPortal() {
           </div>
         </div>
 
-        {/* 🌟 BANNER ĐẶC BIỆT CHƯƠNG 1 HOÁ 12 MỚI 2025 */}
-        <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white p-5 sm:p-6 rounded-3xl shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-2 border-blue-500/40 relative overflow-hidden">
+        {/* 🌟 BANNER ĐẶC BIỆT CHƯƠNG 1 HOÁ 12 MỚI 2025 (CHỈ DÀNH CHO KHỐI 12) */}
+        {isGrade12 && (
+          <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white p-5 sm:p-6 rounded-3xl shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-2 border-blue-500/40 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="flex items-center gap-3.5 relative z-10">
             <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg shadow-blue-600/30">
@@ -1487,6 +1495,7 @@ export default function StudentPortal() {
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
+        )}
 
         {/* THANH ĐIỀU HƯỚNG 4 PHÒNG THI (CHUYÊN NGHIỆP & DỄ SỬ DỤNG) */}
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 bg-white p-2 sm:p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs">
@@ -1535,7 +1544,7 @@ export default function StudentPortal() {
                   ? 'bg-white/20 text-white'
                   : 'bg-amber-400 text-slate-950 font-black'
               }`}>
-                {chapterRooms.length + 7} đề
+                {chapterRooms.length + (isGrade12 ? 7 : 0)} đề
               </span>
             </button>
 
@@ -1654,20 +1663,22 @@ export default function StudentPortal() {
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {(activeTab === 'chapter' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
-            {/* 🌟 HỆ THỐNG LUYỆN ĐỀ & RÈN LUYỆN CHƯƠNG 1 HOÁ HỌC 12 (CT MỚI 2025) */}
-            <div id="hoa12-chuong1-section">
-              <Suspense fallback={
-                <div className="bg-slate-900 text-slate-200 rounded-3xl p-8 text-center border border-slate-800 shadow-xl">
-                  <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                  <p className="text-sm font-bold">Đang tải kho tài liệu Chương 1 Hóa 12...</p>
-                </div>
-              }>
-                <Hoa12Chuong1View 
-                  studentName={student?.name}
-                  studentGrade={student?.grade || "12"}
-                />
-              </Suspense>
-            </div>
+            {/* 🌟 HỆ THỐNG LUYỆN ĐỀ & RÈN LUYỆN CHƯƠNG 1 HOÁ HỌC 12 (CHỈ HIỂN THỊ VỚI HỌC SINH KHỐI 12) */}
+            {isGrade12 && (
+              <div id="hoa12-chuong1-section">
+                <Suspense fallback={
+                  <div className="bg-slate-900 text-slate-200 rounded-3xl p-8 text-center border border-slate-800 shadow-xl">
+                    <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                    <p className="text-sm font-bold">Đang tải kho tài liệu Chương 1 Hóa 12...</p>
+                  </div>
+                }>
+                  <Hoa12Chuong1View 
+                    studentName={student?.name}
+                    studentGrade={student?.grade || "12"}
+                  />
+                </Suspense>
+              </div>
+            )}
 
             {/* Header Phần 2 */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-blue-200 pb-4">
