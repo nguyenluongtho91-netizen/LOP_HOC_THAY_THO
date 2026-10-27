@@ -4,7 +4,8 @@ import {
   Trophy, Flame, Sparkles, CheckCircle2, XCircle, Lock, Unlock,
   Clock, BookOpen, ChevronRight, Award, Zap, Play, RotateCcw,
   Check, ArrowRight, ShieldCheck, HelpCircle, Eye, AlertCircle,
-  TrendingUp, Star, Filter, Share2, Volume2, VolumeX, Shuffle
+  TrendingUp, Star, Filter, Share2, Volume2, VolumeX, Shuffle,
+  Maximize2, X
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import {
@@ -86,6 +87,53 @@ class ChemistrySoundFX {
 
 const sfx = new ChemistrySoundFX();
 
+// Hiển thị công thức hóa học với chỉ số dưới (sub) & chỉ số trên (sup) chuẩn xác
+export const ChemistryText = React.memo(({ html, className = '' }: { html?: string; className?: string }) => {
+  if (!html) return null;
+  if (!/<[a-z][\s\S]*>/i.test(html)) {
+    return <span className={className}>{html}</span>;
+  }
+  return (
+    <span
+      className={`chem-content ${className}`}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+});
+
+// Hiển thị thư viện hình ảnh từ đề gốc kèm nút phóng to
+export const QuestionImages = React.memo(({ 
+  images, 
+  onPreview 
+}: { 
+  images?: string[]; 
+  onPreview: (src: string) => void 
+}) => {
+  if (!images || images.length === 0) return null;
+  return (
+    <div className="my-3.5 flex flex-wrap gap-3 items-center justify-start">
+      {images.map((src, idx) => (
+        <div
+          key={idx}
+          onClick={() => onPreview(src)}
+          className="relative group cursor-zoom-in bg-white rounded-2xl p-2 sm:p-2.5 border border-slate-700/80 hover:border-cyan-400 shadow-lg transition-all max-w-full"
+          title="Nhấn để xem ảnh phóng to từ đề gốc"
+        >
+          <img
+            src={src}
+            alt={`Hình ảnh đề gốc ${idx + 1}`}
+            className="max-h-56 sm:max-h-72 object-contain rounded-xl mx-auto"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-[1px]">
+            <Eye className="w-4 h-4 text-cyan-300" /> Phóng to hình ảnh
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+});
+
 export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   studentName = 'Học sinh Lớp 12',
   studentGrade = '12',
@@ -106,6 +154,20 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   const [topicAnswers, setTopicAnswers] = useState<Record<number, string>>({});
   const [isTopicSubmitted, setIsTopicSubmitted] = useState<boolean>(false);
   const [topicScore, setTopicScore] = useState<number>(0);
+
+  // Modal xem ảnh phóng to chất lượng gốc
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+
+  // Đóng modal khi bấm ESC
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && previewImage) {
+        setPreviewImage(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [previewImage]);
 
   useEffect(() => {
     let timer: any = null;
@@ -133,12 +195,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   const startExam = (exam: Chuong1Exam) => {
     setCurrentExam(exam);
     setExamAnswers({});
-    setTimeLeft(exam.timeLimit * 60);
+    setTimeLeft(50 * 60);
     setIsExamSubmitted(false);
     setExamResult(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     sfx.click();
-    toast.success(`Đã vào phòng thi: ${exam.title}`, { icon: '⏱️' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectP1 = (qKey: string | number, optLetter: string) => {
@@ -231,6 +292,31 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
   return (
     <div className="w-full bg-slate-900 text-slate-100 rounded-3xl p-4 sm:p-7 border border-slate-800 shadow-2xl relative overflow-hidden">
+      {/* CSS tùy biến cho chỉ số Hóa học và ảnh */}
+      <style>{`
+        .chem-content sub {
+          font-size: 0.72em !important;
+          vertical-align: sub !important;
+          line-height: 0 !important;
+          position: relative !important;
+          bottom: -0.22em !important;
+          font-weight: 700 !important;
+        }
+        .chem-content sup {
+          font-size: 0.72em !important;
+          vertical-align: super !important;
+          line-height: 0 !important;
+          position: relative !important;
+          top: -0.38em !important;
+          font-weight: 700 !important;
+        }
+        .chem-content br {
+          display: block;
+          margin: 4px 0;
+          content: "";
+        }
+      `}</style>
+
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-600/10 via-indigo-600/5 to-transparent rounded-full pointer-events-none blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-cyan-600/10 via-emerald-600/5 to-transparent rounded-full pointer-events-none blur-3xl" />
 
@@ -375,6 +461,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   const qKey = q.id || q.number;
                   const selectedOpt = examAnswers[qKey];
                   const resDetail = examResult?.detail?.[qKey];
+                  const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
 
                   return (
                     <div 
@@ -388,13 +475,16 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <span className="w-7 h-7 rounded-xl bg-blue-600 text-white text-xs font-black flex items-center justify-center shrink-0">
+                        <span className="w-7 h-7 rounded-xl bg-blue-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                           {q.number}
                         </span>
                         <div className="flex-1">
-                          <p className="text-sm sm:text-base font-semibold text-white whitespace-pre-line leading-relaxed">
-                            {q.text}
-                          </p>
+                          <div className="text-sm sm:text-base font-semibold text-white leading-relaxed">
+                            <ChemistryText html={q.text} />
+                          </div>
+
+                          {/* Hình ảnh minh họa câu hỏi đề gốc */}
+                          <QuestionImages images={qImgs} onPreview={setPreviewImage} />
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                             {q.options?.map(opt => {
@@ -415,18 +505,42 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                   type="button"
                                   onClick={() => handleSelectP1(qKey, opt.letter)}
                                   disabled={isExamSubmitted}
-                                  className={`p-3 rounded-xl border text-left text-xs sm:text-sm transition-all flex items-start gap-2.5 ${optStyle}`}
+                                  className={`p-3 rounded-xl border text-left text-xs sm:text-sm transition-all flex flex-col gap-2 ${optStyle}`}
                                 >
-                                  <span className={`w-5 h-5 rounded-lg flex items-center justify-center font-black text-xs shrink-0 ${
-                                    isSelected && !isExamSubmitted ? 'bg-white text-blue-700' : 'bg-slate-700/60 text-slate-200'
-                                  }`}>
-                                    {opt.letter}
-                                  </span>
-                                  <span className="leading-snug">{opt.text}</span>
+                                  <div className="flex items-start gap-2.5 w-full">
+                                    <span className={`w-5 h-5 rounded-lg flex items-center justify-center font-black text-xs shrink-0 ${
+                                      isSelected && !isExamSubmitted ? 'bg-white text-blue-700' : 'bg-slate-700/60 text-slate-200'
+                                    }`}>
+                                      {opt.letter}
+                                    </span>
+                                    <ChemistryText html={opt.text} className="leading-snug flex-1" />
+                                  </div>
+
+                                  {/* Ảnh đáp án trắc nghiệm đề gốc */}
+                                  {opt.image && (
+                                    <div 
+                                      onClick={(e) => { e.stopPropagation(); setPreviewImage(opt.image!); }}
+                                      className="ml-7 bg-white rounded-lg p-1.5 border border-slate-600 inline-block cursor-zoom-in hover:border-cyan-400 max-w-xs transition-colors"
+                                      title="Nhấn để phóng to hình đáp án"
+                                    >
+                                      <img src={opt.image} alt={opt.letter} className="max-h-24 object-contain rounded" />
+                                    </div>
+                                  )}
                                 </button>
                               );
                             })}
                           </div>
+
+                          {/* Lời giải chi tiết sau khi nộp bài */}
+                          {isExamSubmitted && (q.solution || q.explanation) && (
+                            <div className="mt-4 p-4 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-slate-300 leading-relaxed">
+                              <div className="font-bold text-cyan-300 flex items-center gap-1.5 mb-1.5">
+                                <Sparkles className="w-4 h-4 text-amber-400" /> Lời giải chi tiết:
+                              </div>
+                              <ChemistryText html={q.solution || q.explanation} />
+                              <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
@@ -450,6 +564,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                 {currentExam.questions.filter(q => q.part === 2).map((q) => {
                   const qKey = q.id || q.number;
                   const currentSubAns = examAnswers[qKey] || {};
+                  const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
 
                   return (
                     <div 
@@ -461,17 +576,21 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <span className="w-7 h-7 rounded-xl bg-indigo-600 text-white text-xs font-black flex items-center justify-center shrink-0">
+                        <span className="w-7 h-7 rounded-xl bg-indigo-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                           {q.displayNumber || (q.number - 18)}
                         </span>
                         <div className="flex-1">
-                          <p className="text-sm sm:text-base font-semibold text-white whitespace-pre-line leading-relaxed">
-                            {q.text}
-                          </p>
+                          <div className="text-sm sm:text-base font-semibold text-white leading-relaxed">
+                            <ChemistryText html={q.text} />
+                          </div>
+
+                          {/* Hình ảnh minh họa đề gốc */}
+                          <QuestionImages images={qImgs} onPreview={setPreviewImage} />
 
                           <div className="mt-4 space-y-3">
                             {q.options?.map(opt => {
-                              const choice = currentSubAns[opt.letter];
+                              const subKey = opt.letter;
+                              const choice = currentSubAns[subKey] !== undefined ? currentSubAns[subKey] : (currentSubAns[subKey.toLowerCase()] !== undefined ? currentSubAns[subKey.toLowerCase()] : currentSubAns[subKey.toUpperCase()]);
                               const isCorrectAnswer = opt.isCorrect;
 
                               return (
@@ -483,9 +602,20 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                       : 'bg-slate-800/60 border-slate-700/60'
                                   }`}
                                 >
-                                  <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-200">
-                                    <span className="font-black text-indigo-400">{opt.letter})</span>
-                                    <span>{opt.text}</span>
+                                  <div className="flex flex-col gap-1.5 flex-1">
+                                    <div className="flex items-start gap-2 text-xs sm:text-sm text-slate-200">
+                                      <span className="font-black text-indigo-400 uppercase">{opt.letter})</span>
+                                      <ChemistryText html={opt.text} className="flex-1" />
+                                    </div>
+                                    {opt.image && (
+                                      <div 
+                                        onClick={() => setPreviewImage(opt.image!)}
+                                        className="ml-6 bg-white rounded-lg p-1.5 border border-slate-600 inline-block cursor-zoom-in hover:border-indigo-400 max-w-xs"
+                                        title="Nhấn để phóng to hình ảnh"
+                                      >
+                                        <img src={opt.image} alt={opt.letter} className="max-h-24 object-contain rounded" />
+                                      </div>
+                                    )}
                                   </div>
 
                                   <div className="flex items-center gap-2 shrink-0">
@@ -519,10 +649,13 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             })}
                           </div>
 
-                          {isExamSubmitted && q.solution && (
-                            <div className="mt-4 p-4 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 whitespace-pre-line">
-                              <span className="font-bold text-cyan-300">💡 Hướng dẫn giải chi tiết:</span>
-                              <div className="mt-1">{q.solution}</div>
+                          {isExamSubmitted && (q.solution || q.explanation) && (
+                            <div className="mt-4 p-4 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-slate-300 leading-relaxed">
+                              <div className="font-bold text-cyan-300 flex items-center gap-1.5 mb-1.5">
+                                <Sparkles className="w-4 h-4 text-amber-400" /> Lời giải chi tiết từng ý:
+                              </div>
+                              <ChemistryText html={q.solution || q.explanation} />
+                              <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
                             </div>
                           )}
                         </div>
@@ -549,6 +682,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   const qKey = q.id || q.number;
                   const userVal = examAnswers[qKey] || '';
                   const resDetail = examResult?.detail?.[qKey];
+                  const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
 
                   return (
                     <div 
@@ -562,13 +696,16 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <span className="w-7 h-7 rounded-xl bg-amber-600 text-white text-xs font-black flex items-center justify-center shrink-0">
+                        <span className="w-7 h-7 rounded-xl bg-amber-600 text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
                           {q.displayNumber || (q.number - 22)}
                         </span>
                         <div className="flex-1">
-                          <p className="text-sm sm:text-base font-semibold text-white whitespace-pre-line leading-relaxed">
-                            {q.text}
-                          </p>
+                          <div className="text-sm sm:text-base font-semibold text-white leading-relaxed">
+                            <ChemistryText html={q.text} />
+                          </div>
+
+                          {/* Hình ảnh minh họa đề gốc */}
+                          <QuestionImages images={qImgs} onPreview={setPreviewImage} />
 
                           <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3">
                             <label className="text-xs font-bold text-slate-300">
@@ -589,10 +726,13 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             )}
                           </div>
 
-                          {isExamSubmitted && q.solution && (
-                            <div className="mt-4 p-4 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 whitespace-pre-line">
-                              <span className="font-bold text-cyan-300">💡 Hướng dẫn giải chi tiết:</span>
-                              <div className="mt-1">{q.solution}</div>
+                          {isExamSubmitted && (q.solution || q.explanation) && (
+                            <div className="mt-4 p-4 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-slate-300 leading-relaxed">
+                              <div className="font-bold text-cyan-300 flex items-center gap-1.5 mb-1.5">
+                                <Sparkles className="w-4 h-4 text-amber-400" /> Hướng dẫn giải chi tiết:
+                              </div>
+                              <ChemistryText html={q.solution || q.explanation} />
+                              <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
                             </div>
                           )}
                         </div>
@@ -604,48 +744,50 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </div>
           </div>
 
-          {!isExamSubmitted && (
-            <div className="mt-10 p-5 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-              <span className="text-xs text-slate-400">
-                Hãy kiểm tra kỹ cả 3 phần trước khi bấm Nộp bài.
-              </span>
+          <div className="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
+            <button
+              onClick={() => setCurrentExam(null)}
+              className="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-5 py-2.5 rounded-xl font-bold text-xs"
+            >
+              ← Thoát Về Danh Sách Đề
+            </button>
+            {!isExamSubmitted && (
               <button
                 onClick={submitExam}
-                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black px-8 py-3 rounded-2xl shadow-xl shadow-emerald-500/25 transition-all text-sm flex items-center gap-2"
+                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black px-8 py-3 rounded-2xl shadow-lg shadow-emerald-500/25 text-sm flex items-center gap-2"
               >
-                <CheckCircle2 className="w-5 h-5" /> Nộp Bài Chấm Điểm
+                <CheckCircle2 className="w-5 h-5" /> Nộp Bài & Chấm Điểm
               </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
 
-      {/* CHUYÊN ĐỀ THEO CẤP ĐỘ */}
+      {/* PHÒNG RÈN LUYỆN CHUYÊN ĐỀ THEO BẬC THANG (TOPIC PRACTICE) */}
       {activeTopic && activeLevel && (
         <div className="relative z-10 mt-6 bg-slate-950/80 rounded-3xl p-5 sm:p-8 border border-indigo-500/30 shadow-2xl animate-in fade-in duration-300">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
             <div>
               <span className="text-xs font-bold text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
-                {activeTopic.title} · {activeLevel.title}
+                {activeTopic.title} · CẤP ĐỘ {activeLevel.level}
               </span>
               <h3 className="text-lg sm:text-xl font-black text-white mt-2">
-                Bộ câu hỏi rèn luyện ({activeLevel.questions.length} câu)
+                {activeLevel.title}
               </h3>
+              <p className="text-xs text-slate-400 mt-0.5">Mục tiêu chuẩn: {activeLevel.target} (Đạt từ 7.0 điểm trở lên để mở cấp độ tiếp theo)</p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => { setActiveTopic(null); setActiveLevel(null); }}
-                className="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-4 py-2 rounded-xl border border-slate-700 text-xs flex items-center gap-1"
-              >
-                <ArrowRight className="w-4 h-4" /> Quay Về Chuyên Đề
-              </button>
-            </div>
+            <button
+              onClick={() => { setActiveTopic(null); setActiveLevel(null); }}
+              className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-xl text-xs border border-slate-700"
+            >
+              Quay Về Danh Sách Chuyên Đề
+            </button>
           </div>
 
           {isTopicSubmitted && (
-            <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-indigo-950/40 to-blue-950/40 border border-indigo-500/40">
-              <div className="flex items-center justify-between">
+            <div className="mt-6 p-6 rounded-3xl bg-slate-800/80 border-2 border-indigo-500/40 shadow-xl">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                   <div className="text-xs text-indigo-300 font-bold uppercase">Điểm Rèn Luyện</div>
                   <div className="text-3xl font-black text-white">{topicScore} / 10 Điểm</div>
@@ -664,6 +806,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               const selectedOpt = topicAnswers[idx];
               const isCorrectOpt = q.options?.find((o: any) => o.isCorrect)?.letter || q.correctAnswer;
               const isUserCorrect = isTopicSubmitted && selectedOpt === isCorrectOpt;
+              const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
 
               return (
                 <div 
@@ -674,10 +817,12 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       : 'bg-slate-900 border-slate-800'
                   }`}
                 >
-                  <p className="text-sm sm:text-base font-semibold text-white">
+                  <div className="text-sm sm:text-base font-semibold text-white leading-relaxed">
                     <span className="text-indigo-400 font-black mr-2">Câu {idx + 1}.</span>
-                    {q.text}
-                  </p>
+                    <ChemistryText html={q.text} />
+                  </div>
+
+                  <QuestionImages images={qImgs} onPreview={setPreviewImage} />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                     {q.options?.map((opt: any) => {
@@ -699,20 +844,32 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             sfx.click();
                             setTopicAnswers(prev => ({ ...prev, [idx]: opt.letter }));
                           }}
-                          className={`p-3 rounded-xl border text-left text-xs sm:text-sm flex items-start gap-2.5 transition-all ${btnStyle}`}
+                          className={`p-3 rounded-xl border text-left text-xs sm:text-sm flex flex-col gap-2 transition-all ${btnStyle}`}
                         >
-                          <span className="w-5 h-5 rounded-lg bg-slate-700/60 flex items-center justify-center font-black text-xs shrink-0">
-                            {opt.letter}
-                          </span>
-                          <span>{opt.text}</span>
+                          <div className="flex items-start gap-2.5 w-full">
+                            <span className="w-5 h-5 rounded-lg bg-slate-700/60 flex items-center justify-center font-black text-xs shrink-0">
+                              {opt.letter}
+                            </span>
+                            <ChemistryText html={opt.text} className="flex-1" />
+                          </div>
+                          {opt.image && (
+                            <div 
+                              onClick={(e) => { e.stopPropagation(); setPreviewImage(opt.image); }}
+                              className="ml-7 bg-white rounded-lg p-1.5 border border-slate-600 inline-block cursor-zoom-in hover:border-cyan-400 max-w-xs"
+                            >
+                              <img src={opt.image} alt={opt.letter} className="max-h-24 object-contain rounded" />
+                            </div>
+                          )}
                         </button>
                       );
                     })}
                   </div>
 
-                  {isTopicSubmitted && q.explanation && (
-                    <div className="mt-3 p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 whitespace-pre-line">
-                      <span className="font-bold text-cyan-300">💡 Lời giải:</span> {q.explanation}
+                  {isTopicSubmitted && (q.explanation || q.solution) && (
+                    <div className="mt-3 p-3 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300 leading-relaxed">
+                      <span className="font-bold text-cyan-300 mr-1.5">💡 Lời giải:</span>
+                      <ChemistryText html={q.explanation || q.solution} />
+                      <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
                     </div>
                   )}
                 </div>
@@ -769,7 +926,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </button>
           </div>
 
-          {/* TAB 1 */}
+          {/* TAB 1: 7 ĐỀ KIỂM TRA */}
           {activeTab === 'exams' && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {HOA12_CHUONG1_7_EXAMS.map((exam) => {
@@ -824,7 +981,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </div>
           )}
 
-          {/* TAB 2 */}
+          {/* TAB 2: 5 CHUYÊN ĐỀ RÈN LUYỆN */}
           {activeTab === 'topics' && (
             <div className="space-y-6">
               {HOA12_CHUONG1_TOPICS.map((topic) => {
@@ -894,7 +1051,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </div>
           )}
 
-          {/* TAB 3 */}
+          {/* TAB 3: SỔ TAY KIẾN THỨC */}
           {activeTab === 'handbook' && (
             <div className="space-y-6">
               {HOA12_CHUONG1_HANDBOOK.sections.map((sec, sIdx) => (
@@ -902,11 +1059,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   <h4 className="text-base font-black text-cyan-300 flex items-center gap-2 mb-3">
                     <span>{sec.icon}</span> {sec.title}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2.5">
                     {sec.content.map((item, iIdx) => (
                       <li key={iIdx} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5 leading-relaxed">
                         <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0" />
-                        <span>{item}</span>
+                        <ChemistryText html={item} className="flex-1" />
                       </li>
                     ))}
                   </ul>
@@ -914,6 +1071,45 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               ))}
             </div>
           )}
+        </div>
+      )}
+
+      {/* MODAL PHÓNG TO HÌNH ẢNH GỐC */}
+      {previewImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-150"
+          onClick={() => setPreviewImage(null)}
+        >
+          <div
+            className="relative max-w-4xl max-h-[92vh] bg-slate-900 border border-slate-700 rounded-3xl p-4 sm:p-5 shadow-2xl flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="w-full flex items-center justify-between pb-3 mb-2 border-b border-slate-800">
+              <div className="flex items-center gap-2 text-cyan-300 text-xs sm:text-sm font-bold">
+                <Sparkles className="w-4 h-4 text-amber-400" />
+                <span>Hình ảnh trích xuất từ đề kiểm tra gốc</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setPreviewImage(null)}
+                className="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-rose-600 transition-colors flex items-center justify-center text-sm font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="bg-white rounded-2xl p-2 sm:p-4 max-h-[75vh] max-w-full overflow-auto flex items-center justify-center shadow-inner">
+              <img
+                src={previewImage}
+                alt="Xem phóng to đề gốc"
+                className="max-w-full max-h-[70vh] object-contain rounded"
+              />
+            </div>
+
+            <div className="mt-3 text-[11px] text-slate-400">
+              Nhấn phím ESC hoặc nhấn ra ngoài màn hình để đóng
+            </div>
+          </div>
         </div>
       )}
     </div>
