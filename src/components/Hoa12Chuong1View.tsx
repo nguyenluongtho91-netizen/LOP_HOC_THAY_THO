@@ -1014,11 +1014,6 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                   Câu {q.number || displayIndex}:
                                 </span>
                                 <span className="inline" dangerouslySetInnerHTML={{ __html: q.text }} />
-                                {q.topicTitle && (
-                                  <span className="ml-2 inline-block px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200/70 text-slate-700 align-middle">
-                                    {q.topicTitle}
-                                  </span>
-                                )}
                                 {isCurrentSetSubmitted && (
                                   <span className="ml-2 inline-block align-middle">
                                     {renderLevelBadge(q.level, q.levelName)}
