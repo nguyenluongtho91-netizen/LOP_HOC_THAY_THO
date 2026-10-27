@@ -1615,7 +1615,9 @@ export default function LayGocToanPage({ isPublic = false }: { isPublic?: boolea
                             {enc.title}
                           </h3>
                           <div className="text-xs sm:text-sm text-slate-700 mt-2 font-medium leading-relaxed max-w-2xl bg-white/90 p-3 rounded-xl border border-teal-200/80 shadow-2xs flex items-start gap-3">
-                            <img src="/thay_tho_avatar.png" alt="Thầy Thọ" className="w-10 h-10 rounded-full object-cover border-2 border-teal-500 shadow-xs shrink-0 mt-0.5" />
+                            <div className="w-8 h-8 rounded-full bg-teal-50 border border-teal-200 flex items-center justify-center text-sm shrink-0 mt-0.5">
+                              👨‍🏫
+                            </div>
                             <div>
                               <div className="font-extrabold text-teal-900 text-xs uppercase tracking-wide mb-0.5">Lời Thầy Thọ nhắn nhủ:</div>
                               <div>{enc.message}</div>

@@ -153,25 +153,52 @@ export default function StudentProgressPage() {
     <div className="min-h-screen bg-slate-100">
 
       {/* HERO */}
-      <div className="relative bg-gradient-to-br from-teal-500 via-teal-700 to-slate-800 text-white px-5 pt-14 pb-24 text-center overflow-hidden">
+      <div className="relative bg-gradient-to-br from-teal-500 via-teal-700 to-slate-800 text-white px-5 pt-6 pb-20 text-center overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07]"
           style={{ backgroundImage: 'radial-gradient(circle, white 1.5px, transparent 1.5px)', backgroundSize: '28px 28px' }} />
+
+        {/* Góc thanh tiêu đề (Topbar) nhỏ gọn như avatar 32px tinh tế */}
+        <div className="relative z-20 max-w-md mx-auto flex items-center justify-between mb-5">
+          <div 
+            onClick={() => setShowTeacherModal(true)}
+            className="inline-flex items-center gap-2 bg-black/25 hover:bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 text-white cursor-pointer transition-all group"
+            title="Bấm để xem thông tin Thầy Thọ & Liên hệ"
+          >
+            <div className="relative shrink-0">
+              <img 
+                src="/thay_tho_avatar.png" 
+                alt="Thầy Thọ" 
+                className="w-8 h-8 rounded-full object-cover border border-white/70 shadow-xs group-hover:scale-105 transition-transform" 
+              />
+              <div className="absolute -bottom-0.5 -right-0.5 bg-emerald-400 w-2 h-2 rounded-full border border-white" />
+            </div>
+            <div className="text-left pr-1">
+              <span className="text-[11px] font-bold block leading-tight">Thầy Thọ</span>
+              <span className="text-[9px] text-teal-200 block leading-none">0345.833.133</span>
+            </div>
+          </div>
+
+          <div className="text-[10px] font-extrabold uppercase tracking-wider bg-white/15 px-3 py-1.5 rounded-full border border-white/20 text-teal-100">
+            Tiến độ học tập
+          </div>
+        </div>
+
         <div className="relative z-10">
           {student.avatar_url ? (
             <img 
               src={student.avatar_url} 
               alt={student.full_name} 
-              className="w-28 h-28 rounded-full object-cover border-4 border-white/40 mx-auto mb-4 shadow-xl"
+              className="w-24 h-24 rounded-full object-cover border-4 border-white/40 mx-auto mb-3 shadow-xl"
             />
           ) : (
-            <div className="w-28 h-28 rounded-full bg-white/20 border-4 border-white/40 flex items-center justify-center mx-auto mb-4 text-3xl font-black tracking-tight shadow-xl">
+            <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/40 flex items-center justify-center mx-auto mb-3 text-2xl font-black tracking-tight shadow-xl">
               {initials}
             </div>
           )}
           <h1 className="text-2xl font-black leading-tight">{student.full_name}</h1>
           <p className="text-teal-200 text-sm mt-1 font-mono tracking-widest">{student.student_code}</p>
           {classNames.length > 0 && (
-            <div className="mt-3 flex flex-wrap justify-center gap-2">
+            <div className="mt-2.5 flex flex-wrap justify-center gap-2">
               {classNames.map(cls => (
                 <span key={cls} className="bg-white/15 border border-white/25 px-3 py-1 rounded-full text-xs font-bold">{cls}</span>
               ))}
@@ -180,35 +207,7 @@ export default function StudentProgressPage() {
         </div>
       </div>
 
-      <div className="-mt-12 relative z-10 px-4 pb-12 space-y-4 max-w-md mx-auto">
-
-        {/* Thẻ Giáo viên giảng dạy Thầy Thọ - Phụ huynh & Học sinh thấy */}
-        <div 
-          onClick={() => setShowTeacherModal(true)}
-          className="bg-white/95 backdrop-blur-md rounded-2xl p-3.5 border border-teal-100 shadow-sm flex items-center gap-3 text-left cursor-pointer hover:border-teal-300 hover:shadow-md transition-all group"
-        >
-          <div className="relative shrink-0">
-            <img 
-              src="/thay_tho_avatar.png" 
-              alt="Thầy Nguyễn Lương Thọ" 
-              className="w-13 h-13 rounded-full object-cover border-2 border-teal-500 shadow-sm group-hover:scale-105 transition-transform" 
-            />
-            <div className="absolute -bottom-0.5 -right-0.5 bg-emerald-500 w-3.5 h-3.5 rounded-full border-2 border-white" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="font-extrabold text-gray-900 text-sm group-hover:text-teal-700 transition-colors">Thầy Nguyễn Lương Thọ</span>
-              <span className="px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 text-[10px] font-bold border border-teal-100">
-                Giáo viên
-              </span>
-            </div>
-            <p className="text-[11px] font-bold text-teal-700 mt-0.5">Lớp Học Thầy Thọ • Hotline: 0345.833.133</p>
-            <p className="text-[10px] text-gray-500 italic mt-0.5 truncate">"Cố gắng không bỏ cuộc. Quả ngọt luôn cần thời gian."</p>
-          </div>
-          <div className="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-teal-50 text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-all text-xs" title="Xem chi tiết">
-            <Info className="w-4 h-4" />
-          </div>
-        </div>
+      <div className="-mt-8 relative z-10 px-4 pb-12 space-y-4 max-w-md mx-auto">
 
         {/* Thông báo học phí */}
         {tuitionNotifications.length > 0 && tuitionNotifications.map((notif) => {
@@ -727,17 +726,12 @@ export default function StudentProgressPage() {
           onClick={() => setShowTeacherModal(true)}
           className="flex flex-col items-center py-5 gap-1.5 cursor-pointer group"
         >
-          <img 
-            src="/thay_tho_avatar.png" 
-            alt="Thầy Thọ" 
-            className="w-10 h-10 rounded-full object-cover border-2 border-teal-400 shadow-xs group-hover:scale-110 transition-transform" 
-          />
           <div className="flex items-center gap-1.5 text-teal-700 group-hover:text-teal-900 font-black text-sm transition-colors">
             <span>{centerName || 'LỚP HỌC THẦY THỌ'}</span>
           </div>
           <p className="text-[11px] text-gray-400 italic">"Cố gắng không bỏ cuộc. Quả ngọt luôn cần thời gian."</p>
-          <span className="text-[10px] text-teal-600 font-bold bg-teal-50 px-2 py-0.5 rounded-full border border-teal-100 mt-1">
-            Xem thông tin Thầy Thọ & Liên hệ
+          <span className="text-[10px] text-teal-600 font-bold bg-teal-50 px-2.5 py-1 rounded-full border border-teal-100 mt-1 hover:bg-teal-100 transition-colors">
+            📞 Hotline / Zalo: 0345.833.133
           </span>
         </div>
 
