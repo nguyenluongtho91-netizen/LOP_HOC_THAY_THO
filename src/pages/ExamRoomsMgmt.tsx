@@ -748,10 +748,10 @@ export default function ExamRoomsMgmt() {
             </select>
           </div>
 
-          {/* 🎯 PHÂN LOẠI 3 PHẦN HỌC TẬP */}
+          {/* 🎯 PHÂN LOẠI 4 PHÒNG THI */}
           <div>
-            <label className="label">3. Phân loại bài thi (Hệ thống 3 phần):</label>
-            <div className="grid grid-cols-3 gap-2">
+            <label className="label">3. Phân loại phòng thi (Hệ thống 4 phòng):</label>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               <button
                 type="button"
                 onClick={() => {
@@ -770,8 +770,8 @@ export default function ExamRoomsMgmt() {
                     : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
-                <span>🔴 1. BTVN</span>
-                <span className="text-[10px] text-slate-500 font-normal">Bắt buộc & Giám sát</span>
+                <span className="uppercase font-black text-center">🔴 1. BÀI TẬP VỀ NHÀ</span>
+                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
               </button>
 
               <button
@@ -782,7 +782,7 @@ export default function ExamRoomsMgmt() {
                     settings: {
                       ...prev.settings,
                       category: 'chapter',
-                      antiCheat: false
+                      antiCheat: true
                     }
                   }))
                 }}
@@ -792,8 +792,8 @@ export default function ExamRoomsMgmt() {
                     : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
-                <span>📘 2. Đề Chương</span>
-                <span className="text-[10px] text-slate-500 font-normal">Tự do tra cứu</span>
+                <span className="uppercase font-black text-center">📘 2. LUYỆN ĐỀ THEO CHƯƠNG</span>
+                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
               </button>
 
               <button
@@ -804,7 +804,7 @@ export default function ExamRoomsMgmt() {
                     settings: {
                       ...prev.settings,
                       category: 'practice',
-                      antiCheat: false
+                      antiCheat: true
                     }
                   }))
                 }}
@@ -814,8 +814,30 @@ export default function ExamRoomsMgmt() {
                     : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
-                <span>🎯 3. Luyện Đề Thi</span>
-                <span className="text-[10px] text-slate-500 font-normal">Tự do làm đề</span>
+                <span className="uppercase font-black text-center">🎯 3. LUYỆN ĐỀ THI</span>
+                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setForm(prev => ({
+                    ...prev,
+                    settings: {
+                      ...prev.settings,
+                      category: 'survey',
+                      antiCheat: true
+                    }
+                  }))
+                }}
+                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
+                  form.settings.category === 'survey'
+                    ? 'bg-purple-50 border-purple-400 text-purple-800 shadow-xs ring-2 ring-purple-200'
+                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                <span className="uppercase font-black text-center">🟣 4. KHẢO SÁT CHẤT LƯỢNG</span>
+                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
               </button>
             </div>
           </div>

@@ -15,7 +15,7 @@ import { getTabDetectionService } from '../services/tabDetectionService';
 import { useExamSession, generateSessionId } from '../services/sessionService';
 import EssayQuestionInput from './EssayQuestionInput';
 import { Loader2, AlertTriangle } from 'lucide-react';
-import { isPracticeExam, getExamCategory } from '../utils/practiceExamHelper';
+import { isPracticeExam, getExamCategory, getCategoryMeta } from '../utils/practiceExamHelper';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -340,7 +340,7 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
 
   // Tab detection (Respect room.settings.antiCheat and practice exams)
   useEffect(() => {
-    if ((room as any).settings?.antiCheat === false || isPracticeExam(room)) return;
+    if ((room as any).settings?.antiCheat === false) return;
     const svc = getTabDetectionService();
     svc.start({
       maxSwitches: 3,
@@ -472,19 +472,9 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
                 MÃ ĐỀ: {(room as any)?.examCode || (room as any)?.settings?.examCode || '101'}
               </span>
             )}
-            {!isPracticeExam(room) && (room as any)?.settings?.antiCheat !== false ? (
-              <span className="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 text-[10px] font-bold border border-rose-200">
-                🛡️ BTVN · Giám sát tab
-              </span>
-            ) : getExamCategory(room) === 'chapter' ? (
-              <span className="px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200">
-                📘 Luyện chương (Không phạt tab)
-              </span>
-            ) : (
-              <span className="px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-bold border border-emerald-200">
-                🎯 Luyện đề tự do (Không phạt tab)
-              </span>
-            )}
+            <span className="px-2.5 py-0.5 rounded-md bg-amber-50 text-amber-800 text-[10px] font-black border border-amber-200 uppercase tracking-wide">
+              {getCategoryMeta(getExamCategory(room)).antiCheatNotice}
+            </span>
           </div>
         </div>
 

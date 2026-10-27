@@ -77,8 +77,8 @@ export default function StudentPortal() {
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState<string | null>(null)
   const [isUploadingAvatar, setIsUploadingAvatar] = useState(false)
 
-  // Quản lý Tab hiển thị: 'homework' (1. BTVN Bắt buộc) | 'chapter' (2. Luyện Đề Chương) | 'practice' (3. Luyện Đề Thi) | 'all' (Tất cả)
-  const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'all'>('homework')
+  // Quản lý Tab hiển thị: 'homework' (1. BÀI TẬP VỀ NHÀ) | 'chapter' (2. LUYỆN ĐỀ THEO CHƯƠNG) | 'practice' (3. LUYỆN ĐỀ THI) | 'survey' (4. KHẢO SÁT CHẤT LƯỢNG) | 'all' (Tất cả)
+  const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'survey' | 'all'>('homework')
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
 
   useEffect(() => {
@@ -673,21 +673,25 @@ export default function StudentPortal() {
   const pendingExams = examsList.filter(room => !submittedRoomIds.includes(room.id))
   const activePendingCount = pendingExams.filter(room => room.status !== 'closed' && room.status !== 'waiting').length
 
-  // ── PHÂN LOẠI 3 PHẦN ĐỘC LẬP & LOGIC ─────────────────────────────
-  // 1. Bài Tập Về Nhà (homework) - Bắt buộc sau mỗi buổi học, chống gian lận
-  // 2. Luyện Đề Chương (chapter) - Ôn tập lý thuyết & chuyên đề, tự do tra cứu
-  // 3. Luyện Đề Thi (practice) - Đề thi thử, tổng hợp, tự do tra cứu & làm lại
+  // ── PHÂN LOẠI 4 PHÒNG THI ĐỘC LẬP & LOGIC ─────────────────────────────
+  // 1. BÀI TẬP VỀ NHÀ (homework) - Có giám sát chuyển tab
+  // 2. LUYỆN ĐỀ THEO CHƯƠNG (chapter) - Có giám sát chuyển tab
+  // 3. LUYỆN ĐỀ THI (practice) - Có giám sát chuyển tab
+  // 4. KHẢO SÁT CHẤT LƯỢNG (survey) - Có giám sát chuyển tab
   const homeworkRooms = examsList.filter(r => getExamCategory(r) === 'homework')
   const chapterRooms = examsList.filter(r => getExamCategory(r) === 'chapter')
   const practiceRooms = examsList.filter(r => getExamCategory(r) === 'practice')
+  const surveyRooms = examsList.filter(r => getExamCategory(r) === 'survey')
 
   const homeworkPending = pendingExams.filter(r => getExamCategory(r) === 'homework')
   const chapterPending = pendingExams.filter(r => getExamCategory(r) === 'chapter')
   const practicePending = pendingExams.filter(r => getExamCategory(r) === 'practice')
+  const surveyPending = pendingExams.filter(r => getExamCategory(r) === 'survey')
 
   const homeworkCompleted = completedExams.filter(({ room }) => getExamCategory(room) === 'homework')
   const chapterCompleted = completedExams.filter(({ room }) => getExamCategory(room) === 'chapter')
   const practiceCompleted = completedExams.filter(({ room }) => getExamCategory(room) === 'practice')
+  const surveyCompleted = completedExams.filter(({ room }) => getExamCategory(room) === 'survey')
 
   const homeworkAvgScore = homeworkCompleted.length > 0
     ? homeworkCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / homeworkCompleted.length
@@ -699,6 +703,10 @@ export default function StudentPortal() {
 
   const practiceAvgScore = practiceCompleted.length > 0
     ? practiceCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / practiceCompleted.length
+    : null
+
+  const surveyAvgScore = surveyCompleted.length > 0
+    ? surveyCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / surveyCompleted.length
     : null
 
   const practiceClasses = enrolledClasses.filter(c => isPracticeClassName(c.class_name))
@@ -717,12 +725,14 @@ export default function StudentPortal() {
             {category === 'homework' 
               ? '🎉 Tuyệt vời! Em đã hoàn thành tất cả bài tập về nhà.'
               : category === 'chapter'
-              ? '📘 Hiện tại chưa có bài ôn tập chương nào đang chờ.'
-              : '🎯 Em đã làm xong các bộ đề thi thử hiện có!'}
+              ? '📘 Hiện tại chưa có bài luyện đề chương nào đang chờ.'
+              : category === 'practice'
+              ? '🎯 Em đã hoàn thành tất cả đề thi hiện có!'
+              : '🟣 Hiện tại chưa có đề khảo sát chất lượng nào đang chờ.'}
           </h4>
           <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
             {category === 'homework'
-              ? 'Thầy Thọ khen ngợi tinh thần tự giác của em! Hãy tiếp tục duy trì nhé.'
+              ? 'Thầy Thọ khen ngợi tinh thần học tập của em! Hãy tiếp tục duy trì nhé.'
               : 'Em có thể xem lại bài giải hoặc bấm thi lại ở bảng điểm bên dưới để rèn luyện thêm!'}
           </p>
         </div>
@@ -773,7 +783,7 @@ export default function StudentPortal() {
                 <div className="flex justify-between items-start gap-2 mb-3">
                   <div className="flex items-center gap-1.5 flex-wrap">
                     <span className="text-xs font-bold text-slate-800 bg-slate-100 px-2.5 py-1 rounded-xl border border-slate-200">
-                      🏫 {room.classes?.class_name || 'Đề tự do'}
+                      🏫 {room.classes?.class_name || 'Đề chung'}
                     </span>
                     <span className={`text-[11px] font-black px-2.5 py-1 rounded-xl border ${meta.tagBg}`}>
                       {meta.shortLabel}
@@ -791,15 +801,9 @@ export default function StudentPortal() {
                     <Clock className="w-3.5 h-3.5 text-teal-600" />
                     Thời gian: <strong className="text-slate-800 font-bold">{room.time_limit} phút</strong>
                   </span>
-                  {category === 'homework' ? (
-                    <span className="bg-rose-50 text-rose-700 px-2.5 py-1 rounded-lg border border-rose-200 text-[11px] font-bold">
-                      🛡️ Có giám sát chuyển tab
-                    </span>
-                  ) : (
-                    <span className="bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-lg border border-emerald-200 text-[11px] font-bold">
-                      ✨ Tự do tra cứu tài liệu
-                    </span>
-                  )}
+                  <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[11px] font-bold">
+                    🛡️ Có giám sát chuyển tab
+                  </span>
                   {hasSub && (
                     <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[10px] uppercase font-black animate-pulse">
                       ⚡ Đang làm dở
@@ -827,7 +831,7 @@ export default function StudentPortal() {
                     className={`px-5 py-2.5 bg-gradient-to-r ${btnGradient} text-xs sm:text-sm font-black rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer`}
                   >
                     <Sparkles className="w-4 h-4 text-amber-300" />
-                    <span>{hasSub ? 'Làm tiếp ⚡' : category === 'homework' ? 'Vào làm BTVN 🚀' : category === 'chapter' ? 'Ôn chương ngay 🚀' : 'Bắt đầu luyện 🚀'}</span>
+                    <span>{hasSub ? 'Làm tiếp ⚡' : 'Vào phòng thi 🚀'}</span>
                   </button>
                 )}
               </div>
@@ -858,6 +862,8 @@ export default function StudentPortal() {
       ? 'from-rose-700 to-rose-800'
       : category === 'chapter'
       ? 'from-blue-700 to-indigo-800'
+      : category === 'survey'
+      ? 'from-purple-700 to-indigo-800'
       : 'from-emerald-700 to-teal-800'
 
     return (
@@ -898,7 +904,7 @@ export default function StudentPortal() {
                     </td>
                     <td className="py-4 px-4 text-center">
                       <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 whitespace-nowrap inline-block">
-                        {room.classes?.class_name || 'Tự do'}
+                        {room.classes?.class_name || 'Đề chung'}
                       </span>
                     </td>
                     <td className="py-4 px-4 text-center text-xs font-semibold text-slate-500 whitespace-nowrap">
@@ -962,7 +968,7 @@ export default function StudentPortal() {
                 <div>
                   <div className="flex justify-between items-start gap-2 mb-1.5">
                     <span className="text-[11px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
-                      #{index + 1} · {room.classes?.class_name || 'Tự do'}
+                      #{index + 1} · {room.classes?.class_name || 'Đề chung'}
                     </span>
                     <span className={`text-lg font-black ${
                       isHigh ? 'text-emerald-600' : isPass ? 'text-teal-600' : 'text-rose-600'
@@ -1128,22 +1134,22 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* 3 Thẻ thống kê tương ứng trực tiếp với 3 Trụ Cột (Bấm vào thẻ để chuyển tab) */}
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-3 shrink-0">
-              {/* Thẻ 1: 🔴 BTVN */}
+            {/* 4 Thẻ thống kê tương ứng trực tiếp với 4 Phòng Thi (Bấm vào thẻ để chuyển tab) */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 shrink-0">
+              {/* Thẻ 1: 🔴 1. BÀI TẬP VỀ NHÀ */}
               <button
                 type="button"
                 onClick={() => setActiveTab('homework')}
-                className={`p-3 sm:p-3.5 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[90px] sm:min-w-[105px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
+                className={`p-2.5 sm:p-3 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[85px] sm:min-w-[100px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
                   activeTab === 'homework'
                     ? 'bg-rose-500/35 border-rose-300 ring-2 ring-rose-400/50'
                     : 'bg-white/15 border-white/20 hover:bg-white/25'
                 }`}
               >
                 <span className="text-[10px] font-black text-rose-200 uppercase tracking-wider flex items-center gap-1">
-                  <span>🔴</span> 1. BTVN
+                  <span>🔴</span> 1. BÀI TẬP VỀ NHÀ
                 </span>
-                <span className="text-xl sm:text-2xl font-black text-white mt-0.5">
+                <span className="text-lg sm:text-2xl font-black text-white mt-0.5">
                   {homeworkCompleted.length}/{homeworkRooms.length}
                 </span>
                 <span className={`text-[10px] font-bold ${
@@ -1153,45 +1159,66 @@ export default function StudentPortal() {
                 </span>
               </button>
 
-              {/* Thẻ 2: 📘 Đề Chương */}
+              {/* Thẻ 2: 📘 2. LUYỆN ĐỀ THEO CHƯƠNG */}
               <button
                 type="button"
                 onClick={() => setActiveTab('chapter')}
-                className={`p-3 sm:p-3.5 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[90px] sm:min-w-[105px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
+                className={`p-2.5 sm:p-3 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[85px] sm:min-w-[100px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
                   activeTab === 'chapter'
                     ? 'bg-blue-500/35 border-blue-300 ring-2 ring-blue-400/50'
                     : 'bg-white/15 border-white/20 hover:bg-white/25'
                 }`}
               >
                 <span className="text-[10px] font-black text-blue-200 uppercase tracking-wider flex items-center gap-1">
-                  <span>📘</span> 2. Chương
+                  <span>📘</span> 2. LUYỆN ĐỀ THEO CHƯƠNG
                 </span>
-                <span className="text-xl sm:text-2xl font-black text-white mt-0.5">
+                <span className="text-lg sm:text-2xl font-black text-white mt-0.5">
                   {chapterCompleted.length}/{chapterRooms.length}
                 </span>
                 <span className="text-[10px] text-blue-200 font-bold">
-                  {chapterAvgScore !== null ? `ĐTB: ${chapterAvgScore.toFixed(1)}` : 'Tự do ôn tập'}
+                  {chapterAvgScore !== null ? `ĐTB: ${chapterAvgScore.toFixed(1)}` : 'Đang mở'}
                 </span>
               </button>
 
-              {/* Thẻ 3: 🎯 Luyện Đề Thi */}
+              {/* Thẻ 3: 🎯 3. LUYỆN ĐỀ THI */}
               <button
                 type="button"
                 onClick={() => setActiveTab('practice')}
-                className={`p-3 sm:p-3.5 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[90px] sm:min-w-[105px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
+                className={`p-2.5 sm:p-3 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[85px] sm:min-w-[100px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
                   activeTab === 'practice'
                     ? 'bg-emerald-500/35 border-emerald-300 ring-2 ring-emerald-400/50'
                     : 'bg-white/15 border-white/20 hover:bg-white/25'
                 }`}
               >
                 <span className="text-[10px] font-black text-emerald-200 uppercase tracking-wider flex items-center gap-1">
-                  <span>🎯</span> 3. Luyện Đề
+                  <span>🎯</span> 3. LUYỆN ĐỀ THI
                 </span>
-                <span className="text-xl sm:text-2xl font-black text-white mt-0.5">
+                <span className="text-lg sm:text-2xl font-black text-white mt-0.5">
                   {practiceCompleted.length}/{practiceRooms.length}
                 </span>
                 <span className="text-[10px] text-emerald-200 font-bold">
-                  {practiceAvgScore !== null ? `ĐTB: ${practiceAvgScore.toFixed(1)}` : 'Đề thi thử'}
+                  {practiceAvgScore !== null ? `ĐTB: ${practiceAvgScore.toFixed(1)}` : 'Đang mở'}
+                </span>
+              </button>
+
+              {/* Thẻ 4: 🟣 4. KHẢO SÁT CHẤT LƯỢNG */}
+              <button
+                type="button"
+                onClick={() => setActiveTab('survey')}
+                className={`p-2.5 sm:p-3 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[85px] sm:min-w-[100px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
+                  activeTab === 'survey'
+                    ? 'bg-purple-500/35 border-purple-300 ring-2 ring-purple-400/50'
+                    : 'bg-white/15 border-white/20 hover:bg-white/25'
+                }`}
+              >
+                <span className="text-[10px] font-black text-purple-200 uppercase tracking-wider flex items-center gap-1">
+                  <span>🟣</span> 4. KHẢO SÁT CHẤT LƯỢNG
+                </span>
+                <span className="text-lg sm:text-2xl font-black text-white mt-0.5">
+                  {surveyCompleted.length}/{surveyRooms.length}
+                </span>
+                <span className="text-[10px] text-purple-200 font-bold">
+                  {surveyAvgScore !== null ? `ĐTB: ${surveyAvgScore.toFixed(1)}` : 'Đang mở'}
                 </span>
               </button>
             </div>
@@ -1313,10 +1340,10 @@ export default function StudentPortal() {
               </div>
               <div>
                 <h3 className="font-black text-base sm:text-lg uppercase tracking-wide flex items-center gap-2 text-white">
-                  <span>⚠️ CẢNH BÁO BÀI TẬP VỀ NHÀ (BẮT BUỘC)</span>
+                  <span>⚠️ NHẮC NHỞ BÀI TẬP VỀ NHÀ</span>
                 </h3>
                 <p className="text-rose-100 font-medium text-xs sm:text-sm mt-0.5">
-                  Em còn <strong className="text-white text-base font-black underline underline-offset-4 mx-1">{homeworkPending.length} bài tập về nhà</strong> bắt buộc cần hoàn thành. Hãy nộp bài đúng hạn nhé!
+                  Em còn <strong className="text-white text-base font-black underline underline-offset-4 mx-1">{homeworkPending.length} bài tập về nhà</strong> cần hoàn thành. Hãy nộp bài đúng hạn nhé!
                 </p>
               </div>
             </div>
@@ -1324,24 +1351,24 @@ export default function StudentPortal() {
               onClick={() => setActiveTab('homework')}
               className="px-4 py-2.5 bg-white text-rose-700 hover:bg-rose-50 font-black text-xs uppercase tracking-wider rounded-xl shadow-md transition-all whitespace-nowrap flex items-center gap-1.5 cursor-pointer"
             >
-              <span>Vào Làm BTVN Ngay</span>
+              <span>VÀO LÀM BTVN NGAY</span>
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         )}
 
-        {/* LƯU Ý QUY CHẾ LÀM BÀI LOGIC & RÕ RÀNG */}
+        {/* LƯU Ý QUY CHẾ LÀM BÀI & CẢNH BÁO CHUYỂN TAB */}
         <div className="bg-amber-50 text-amber-800 p-4 rounded-2xl flex gap-3 text-xs sm:text-sm font-medium border border-amber-200/60 shadow-2xs">
           <AlertCircle className="w-5 h-5 flex-shrink-0 text-amber-600 mt-0.5" />
           <div className="leading-relaxed">
-            <span className="font-bold">Lưu ý phân biệt các phần:</span> Mục <strong className="text-rose-700 font-black">1. Bài Tập Về Nhà</strong> có giám sát chuyển tab để rèn luyện tính tự giác. Còn mục <strong className="text-blue-700 font-black">2. Luyện Đề Chương</strong> và <strong className="text-emerald-700 font-black">3. Luyện Đề Thi</strong> hoàn toàn tự do tra cứu tài liệu, không phạt chuyển tab và có thể thi lại nhiều lần.
+            <span className="font-bold">Quy chế phòng thi:</span> Tất cả các phòng thi (<strong className="text-rose-700 font-black">1. BÀI TẬP VỀ NHÀ</strong>, <strong className="text-blue-700 font-black">2. LUYỆN ĐỀ THEO CHƯƠNG</strong>, <strong className="text-emerald-700 font-black">3. LUYỆN ĐỀ THI</strong>, <strong className="text-purple-700 font-black">4. KHẢO SÁT CHẤT LƯỢNG</strong>) đều có hệ thống giám sát chuyển tab / rời màn hình. Học sinh chuyển tab quá 3 lần sẽ bị tự động thu bài và ghi rõ lý do.
           </div>
         </div>
 
-        {/* THANH ĐIỀU HƯỚNG 3 PHẦN THÔNG MINH (CHUYÊN NGHIỆP & DỄ SỬ DỤNG) */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-2 sm:p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs">
-          <div className="grid grid-cols-3 sm:flex sm:items-center gap-1.5">
-            {/* Tab 1: BTVN */}
+        {/* THANH ĐIỀU HƯỚNG 4 PHÒNG THI (CHUYÊN NGHIỆP & DỄ SỬ DỤNG) */}
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 bg-white p-2 sm:p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs">
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-1.5 flex-wrap">
+            {/* Tab 1: BÀI TẬP VỀ NHÀ */}
             <button
               onClick={() => setActiveTab('homework')}
               className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
@@ -1351,7 +1378,7 @@ export default function StudentPortal() {
               }`}
             >
               <span>🔴</span>
-              <span className="truncate">1. Bài Tập Về Nhà</span>
+              <span className="truncate uppercase">1. BÀI TẬP VỀ NHÀ</span>
               <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
                 activeTab === 'homework'
                   ? 'bg-white/20 text-white'
@@ -1363,7 +1390,7 @@ export default function StudentPortal() {
               </span>
             </button>
 
-            {/* Tab 2: Luyện Đề Chương */}
+            {/* Tab 2: LUYỆN ĐỀ THEO CHƯƠNG */}
             <button
               onClick={() => setActiveTab('chapter')}
               className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
@@ -1373,7 +1400,7 @@ export default function StudentPortal() {
               }`}
             >
               <BookOpen className="w-4 h-4 text-blue-500" />
-              <span className="truncate">2. Luyện Đề Chương</span>
+              <span className="truncate uppercase">2. LUYỆN ĐỀ THEO CHƯƠNG</span>
               <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
                 activeTab === 'chapter'
                   ? 'bg-white/20 text-white'
@@ -1383,7 +1410,7 @@ export default function StudentPortal() {
               </span>
             </button>
 
-            {/* Tab 3: Luyện Đề Thi */}
+            {/* Tab 3: LUYỆN ĐỀ THI */}
             <button
               onClick={() => setActiveTab('practice')}
               className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
@@ -1393,13 +1420,33 @@ export default function StudentPortal() {
               }`}
             >
               <Target className="w-4 h-4 text-emerald-500" />
-              <span className="truncate">3. Luyện Đề Thi</span>
+              <span className="truncate uppercase">3. LUYỆN ĐỀ THI</span>
               <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
                 activeTab === 'practice' 
                   ? 'bg-white/20 text-white' 
                   : 'bg-emerald-200 text-emerald-800'
               }`}>
                 {practiceRooms.length}
+              </span>
+            </button>
+
+            {/* Tab 4: KHẢO SÁT CHẤT LƯỢNG */}
+            <button
+              onClick={() => setActiveTab('survey')}
+              className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
+                activeTab === 'survey'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md shadow-purple-600/25 ring-2 ring-purple-400/40'
+                  : 'bg-purple-50/70 hover:bg-purple-100/70 text-purple-900 border border-purple-200/60'
+              }`}
+            >
+              <span>🟣</span>
+              <span className="truncate uppercase">4. KHẢO SÁT CHẤT LƯỢNG</span>
+              <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
+                activeTab === 'survey'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-purple-200 text-purple-800'
+              }`}>
+                {surveyRooms.length}
               </span>
             </button>
           </div>
@@ -1415,7 +1462,7 @@ export default function StudentPortal() {
         </div>
 
         {/* ═════════════════════════════════════════════════════════════════════ */}
-        {/* ── PHẦN 1: BÀI TẬP VỀ NHÀ (BẮT BUỘC - GIÁM SÁT CHỐNG GIAN LẬN) ── */}
+        {/* ── PHẦN 1: BÀI TẬP VỀ NHÀ (CÓ GIÁM SÁT CHUYỂN TAB) ─────────────── */}
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {(activeTab === 'homework' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-rose-100 shadow-sm">
@@ -1425,16 +1472,16 @@ export default function StudentPortal() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-black uppercase tracking-wider mb-1.5">
                   <span>🔴 PHẦN 1</span>
                   <span>·</span>
-                  <span>BẮT BUỘC HOÀN THÀNH</span>
+                  <span>CÓ GIÁM SÁT CHUYỂN TAB</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                  <span>Bài Tập Về Nhà Sau Buổi Học</span>
-                  <span className="text-xs font-black bg-rose-600 text-white px-2.5 py-0.5 rounded-full">
-                    {homeworkPending.length > 0 ? `Còn ${homeworkPending.length} bài` : 'Đã xong hết'}
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 uppercase">
+                  <span>BÀI TẬP VỀ NHÀ</span>
+                  <span className="text-xs font-black bg-rose-600 text-white px-2.5 py-0.5 rounded-full normal-case">
+                    {homeworkPending.length > 0 ? `Còn ${homeworkPending.length} bài` : 'Đã xong'}
                   </span>
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-                  Nhiệm vụ bắt buộc hoàn thành sau mỗi buổi học. Hệ thống bật giám sát chống gian lận để rèn luyện tính tự giác.
+                  Hệ thống có giám sát chuyển tab / rời màn hình thi để đánh giá chính xác năng lực làm bài.
                 </p>
               </div>
 
@@ -1474,7 +1521,7 @@ export default function StudentPortal() {
         )}
 
         {/* ═════════════════════════════════════════════════════════════════════ */}
-        {/* ── PHẦN 2: LUYỆN ĐỀ THEO CHƯƠNG / CHUYÊN ĐỀ (TỰ DO TRA CỨU) ──── */}
+        {/* ── PHẦN 2: LUYỆN ĐỀ THEO CHƯƠNG (CÓ GIÁM SÁT CHUYỂN TAB) ───────── */}
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {(activeTab === 'chapter' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
@@ -1484,16 +1531,16 @@ export default function StudentPortal() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-black uppercase tracking-wider mb-1.5">
                   <span>📘 PHẦN 2</span>
                   <span>·</span>
-                  <span>TỰ DO TRA CỨU TÀI LIỆU</span>
+                  <span>CÓ GIÁM SÁT CHUYỂN TAB</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
-                  <span>Luyện Đề Theo Chương & Chuyên Đề</span>
-                  <span className="text-xs font-black bg-blue-600 text-white px-2.5 py-0.5 rounded-full">
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 uppercase">
+                  <span>LUYỆN ĐỀ THEO CHƯƠNG</span>
+                  <span className="text-xs font-black bg-blue-600 text-white px-2.5 py-0.5 rounded-full normal-case">
                     {chapterRooms.length} bộ đề
                   </span>
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-                  Ôn tập củng cố lý thuyết & các dạng bài tập theo từng chương. Tự do tra cứu sách vở, không phạt chuyển tab.
+                  Ôn tập củng cố kiến thức theo từng chuyên đề chương học. Hệ thống bật giám sát chuyển tab để rèn luyện thói quen tập trung.
                 </p>
               </div>
 
@@ -1533,24 +1580,23 @@ export default function StudentPortal() {
         )}
 
         {/* ═════════════════════════════════════════════════════════════════════ */}
-        {/* ── PHẦN 3: LUYỆN ĐỀ THI THỬ & THỰC CHIẾN (TỰ DO TRA CỨU) ──────── */}
+        {/* ── PHẦN 3: LUYỆN ĐỀ THI (CÓ GIÁM SÁT CHUYỂN TAB) ───────────────── */}
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {(activeTab === 'practice' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-emerald-100 shadow-sm">
-            {/* Banner Luyện Đề Thi Thử Ngọc Lục Bảo Sang Trọng */}
+            {/* Banner Luyện Đề Thi Ngọc Lục Bảo Sang Trọng */}
             <div className="bg-gradient-to-br from-emerald-800 via-teal-800 to-teal-900 rounded-2xl p-5 sm:p-6 text-white shadow-md relative overflow-hidden">
               <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-5">
                 <div className="space-y-2">
                   <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-emerald-500/25 border border-emerald-400/30 text-emerald-200 text-xs font-black uppercase tracking-wider">
                     <Target className="w-4 h-4 text-emerald-300" />
-                    <span>PHẦN 3 · THỰC CHIẾN ĐỀ THI</span>
+                    <span>PHẦN 3 · CÓ GIÁM SÁT CHUYỂN TAB</span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
-                    <span>🎯 Hệ Thống Luyện Đề Thi Thử</span>
+                  <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2.5 uppercase">
+                    <span>🎯 LUYỆN ĐỀ THI</span>
                   </h2>
                   <p className="text-emerald-100/90 text-xs sm:text-sm max-w-xl leading-relaxed">
-                    Tổng hợp các bộ đề thi thử vào 10, tốt nghiệp THPT và đề thi định kỳ. 
-                    <span className="font-bold text-emerald-200"> Hoàn toàn tự do tra cứu, không giới hạn chuyển tab</span> để rèn giũa bản lĩnh phòng thi!
+                    Tổng hợp các bộ đề thi thử vào 10, tốt nghiệp THPT và đề thi định kỳ có giám sát chuyển tab để rèn giũa bản lĩnh phòng thi nghiêm túc!
                   </p>
                   
                   {practiceClasses.length > 0 && (
@@ -1588,22 +1634,81 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* A. Danh sách Đề Thi Thử Cần Luyện */}
+            {/* A. Danh sách Đề Thi Cần Luyện */}
             <div className="space-y-3">
               <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>🎯 Đề Thi Thử Cần Luyện</span>
+                <span>🎯 Đề Thi Cần Luyện</span>
                 <span className="text-xs font-bold text-slate-500">({practicePending.length} đề chờ)</span>
               </h3>
               {renderPendingGrid(practicePending, 'practice')}
             </div>
 
-            {/* B. Bảng Điểm & Bài Giải Đề Thi Thử Đã Nộp */}
+            {/* B. Bảng Điểm & Bài Giải Đề Thi Đã Nộp */}
             <div className="space-y-3 pt-4 border-t border-slate-100">
               <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
                 <span>🏆 Bảng Điểm & Kết Quả Luyện Đề Thi</span>
                 <span className="text-xs font-bold text-slate-500">({practiceCompleted.length} bài)</span>
               </h3>
               {renderCompletedTable(practiceCompleted, 'practice')}
+            </div>
+          </section>
+        )}
+
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {/* ── PHẦN 4: KHẢO SÁT CHẤT LƯỢNG (CÓ GIÁM SÁT CHUYỂN TAB) ───────── */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {(activeTab === 'survey' || activeTab === 'all') && (
+          <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-purple-100 shadow-sm">
+            {/* Header Phần 4 */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-purple-200 pb-4">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-black uppercase tracking-wider mb-1.5">
+                  <span>🟣 PHẦN 4</span>
+                  <span>·</span>
+                  <span>CÓ GIÁM SÁT CHUYỂN TAB</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 uppercase">
+                  <span>KHẢO SÁT CHẤT LƯỢNG</span>
+                  <span className="text-xs font-black bg-purple-600 text-white px-2.5 py-0.5 rounded-full normal-case">
+                    {surveyPending.length > 0 ? `Còn ${surveyPending.length} đề` : 'Đã hoàn thành'}
+                  </span>
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
+                  Khảo sát chất lượng định kỳ và đánh giá năng lực học sinh. Có giám sát chuyển tab để đảm bảo tính khách quan.
+                </p>
+              </div>
+
+              {/* Stats Box */}
+              <div className="flex items-center gap-2 bg-purple-50 px-3.5 py-2 rounded-2xl border border-purple-200 text-xs font-bold text-purple-800 shrink-0">
+                <span>Tiến độ:</span>
+                <span className="text-sm font-black text-purple-700">
+                  {surveyCompleted.length}/{surveyRooms.length}
+                </span>
+                {surveyAvgScore !== null && (
+                  <>
+                    <span className="text-purple-300">|</span>
+                    <span>Điểm TB: <strong className="text-purple-700">{surveyAvgScore.toFixed(1)}</strong></span>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* A. Danh sách Đề Khảo Sát Cần Làm */}
+            <div className="space-y-3">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>📝 Đề Khảo Sát Chất Lượng Cần Làm</span>
+                <span className="text-xs font-bold text-slate-500">({surveyPending.length} đề chờ)</span>
+              </h3>
+              {renderPendingGrid(surveyPending, 'survey')}
+            </div>
+
+            {/* B. Bảng Điểm & Kết Quả Khảo Sát Đã Nộp */}
+            <div className="space-y-3 pt-4 border-t border-slate-100">
+              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
+                <span>📊 Bảng Điểm Khảo Sát Chất Lượng</span>
+                <span className="text-xs font-bold text-slate-500">({surveyCompleted.length} bài)</span>
+              </h3>
+              {renderCompletedTable(surveyCompleted, 'survey')}
             </div>
           </section>
         )}
