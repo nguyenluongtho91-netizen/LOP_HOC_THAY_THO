@@ -1,8 +1,9 @@
 // @ts-nocheck
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Hoa12Chuong1View from '@/components/Hoa12Chuong1View';
-import { useAuthStore } from '@/store/authStore';
+import React, { useState } from "react";
+import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
+import Hoa12Chuong1View from "@/components/Hoa12Chuong1View";
+import Hoa12Chuong5View from "@/components/Hoa12Chuong5View";
+import { useAuthStore } from "@/store/authStore";
 
 class Hoa12ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -16,7 +17,7 @@ class Hoa12ErrorBoundary extends React.Component<
     return { hasError: true, error };
   }
   componentDidCatch(error: any, info: any) {
-    console.error('Hoa12 local error caught:', error, info);
+    console.error("Hoa12 local error caught:", error, info);
   }
   render() {
     if (this.state.hasError) {
@@ -25,9 +26,10 @@ class Hoa12ErrorBoundary extends React.Component<
           <div className="w-16 h-16 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mb-4 border border-amber-300">
             👑
           </div>
-          <h2 className="text-xl font-black mb-2 text-slate-900">Hệ Thống Đang Nạp Giao Diện Quản Trị Hóa 12</h2>
-          <p className="text-sm text-slate-600 max-w-md mb-4 leading-relaxed">
-            Kính gửi Thầy Thọ: Hệ thống đang đồng bộ kho câu hỏi Chương 1 và 7 đề thi. Nếu giao diện chưa hiện ra, Thầy xem chi tiết kỹ thuật bên dưới:
+
+          <h2 className="text-xl font-bold text-slate-900 mb-2">Đang tải lại dữ liệu Hóa 12...</h2>
+          <p className="text-sm text-slate-600 max-w-md mb-6 leading-relaxed">
+            Hệ thống đang đồng bộ dữ liệu đề thi và bài giảng mới nhất. Vui lòng nhấn nút bên dưới để tải lại.
           </p>
 
           <div className="mb-5 p-4 bg-red-50 border border-red-300 rounded-2xl text-left text-xs font-mono text-red-800 max-w-xl w-full max-h-60 overflow-auto whitespace-pre-wrap select-all shadow-inner">
@@ -53,11 +55,11 @@ class Hoa12ErrorBoundary extends React.Component<
             <button
               onClick={() => {
                 try {
-                  localStorage.removeItem('hoa12_lock_status');
-                  localStorage.removeItem('hoa12_passcode');
+                  localStorage.removeItem("hoa12_lock_status");
+                  localStorage.removeItem("hoa12_passcode");
                   sessionStorage.clear();
                 } catch (e) {}
-                window.location.href = '/hoa12?t=' + Date.now();
+                window.location.href = "/hoa12?t=" + Date.now();
               }}
               className="px-6 py-3 rounded-xl bg-slate-700 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
             >
@@ -71,45 +73,106 @@ class Hoa12ErrorBoundary extends React.Component<
   }
 }
 
-export default function Hoa12Page() {
+interface Hoa12PageProps {
+  defaultChapter?: number;
+}
+
+export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
   const auth = useAuthStore() as any;
+
+  // Khởi tạo chương học (1 hoặc 5)
+  const initialChapter = () => {
+    if (defaultChapter) return defaultChapter;
+    const urlC = searchParams.get("c") || searchParams.get("chuong");
+    if (urlC === "5" || location.pathname.includes("chuong5") || location.pathname.includes("chuong-5")) return 5;
+    if (urlC === "1" || location.pathname.includes("chuong1") || location.pathname.includes("chuong-1")) return 1;
+    const saved = localStorage.getItem("hoa12_active_chapter");
+    return saved === "5" ? 5 : 1;
+  };
+
+  const [activeChapter, setActiveChapter] = useState<number>(initialChapter);
+
+  const handleSelectChapter = (ch: number) => {
+    setActiveChapter(ch);
+    localStorage.setItem("hoa12_active_chapter", String(ch));
+    setSearchParams({ c: String(ch) });
+  };
 
   // Kiểm tra quyền Thầy giáo từ mọi nguồn (Supabase Auth, Student Session, LocalStorage)
   let studentSession: any = null;
   try {
-    const raw = localStorage.getItem('current_student');
+    const raw = localStorage.getItem("current_student");
     if (raw) studentSession = JSON.parse(raw);
   } catch (e) {}
 
   const isTeacherByAuth = Boolean(auth?.user && (auth.isAdmin?.() || auth.isTeacher?.() || auth.user?.email));
   const isTeacherByStudentCode = Boolean(
     studentSession && (
-      ['THAYTHO', 'TUDO', 'ADMIN', 'TEACHER'].includes(String(studentSession.student_code || '').toUpperCase().trim()) ||
-      String(studentSession.full_name || '').toLowerCase().includes('thọ') ||
-      String(studentSession.role || '').toUpperCase() === 'ADMIN' ||
-      String(studentSession.role || '').toUpperCase() === 'TEACHER' ||
-      String(studentSession.grade || '').toLowerCase().includes('giáo viên')
+      ["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code || "").toUpperCase().trim()) ||
+      String(studentSession.full_name || "").toLowerCase().includes("thọ") ||
+      String(studentSession.role || "").toUpperCase() === "ADMIN" ||
+      String(studentSession.role || "").toUpperCase() === "TEACHER" ||
+      String(studentSession.grade || "").toLowerCase().includes("giáo viên")
     )
   );
-  const isTeacherByLocalFlag = localStorage.getItem('is_teacher_mode') === 'true' ||
-                               localStorage.getItem('hoa12_student_authorized') === 'true' ||
-                               localStorage.getItem('role') === 'teacher' ||
-                               localStorage.getItem('role') === 'admin';
+  const isTeacherByLocalFlag = localStorage.getItem("is_teacher_mode") === "true" ||
+                               localStorage.getItem("hoa12_student_authorized") === "true" ||
+                               localStorage.getItem("role") === "teacher" ||
+                               localStorage.getItem("role") === "admin";
 
   const isTeacher = isTeacherByAuth || isTeacherByStudentCode || isTeacherByLocalFlag;
 
-  let studentName = isTeacher ? 'Thầy Thọ' : (studentSession?.full_name || studentSession?.name || 'Học sinh');
-  let studentGrade = isTeacher ? 'Khối 12' : (studentSession?.grade || 'Khối 12');
+  let studentName = isTeacher ? "Thầy Thọ" : (studentSession?.full_name || studentSession?.name || "Học sinh");
+  let studentGrade = isTeacher ? "Khối 12" : (studentSession?.grade || "Khối 12");
 
   return (
     <Hoa12ErrorBoundary>
-      <Hoa12Chuong1View
-        studentName={studentName}
-        studentGrade={studentGrade}
-        isTeacher={isTeacher}
-        onClose={() => navigate(-1)}
-      />
+      {/* Nút chuyển đổi nhanh giữa Chương 1 & Chương 5 */}
+      <div className="fixed top-3 right-4 z-50 flex items-center bg-slate-900/90 backdrop-blur-md p-1 rounded-2xl border border-slate-700/80 shadow-2xl">
+        <button
+          onClick={() => handleSelectChapter(1)}
+          className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+            activeChapter === 1
+              ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
+              : "text-slate-400 hover:text-white"
+          }`}
+          title="Chương 1: Ester – Lipid – Xà phòng"
+        >
+          <span>🧪</span>
+          <span className="hidden sm:inline">Chương 1:</span> Ester – Lipid
+        </button>
+        <button
+          onClick={() => handleSelectChapter(5)}
+          className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+            activeChapter === 5
+              ? "bg-gradient-to-r from-teal-500 to-indigo-600 text-white shadow-md"
+              : "text-slate-400 hover:text-white"
+          }`}
+          title="Chương 5: Pin điện hoá và Điện phân"
+        >
+          <span>⚡</span>
+          <span className="hidden sm:inline">Chương 5:</span> Pin & Điện Phân
+        </button>
+      </div>
+
+      {activeChapter === 5 ? (
+        <Hoa12Chuong5View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate(-1)}
+        />
+      ) : (
+        <Hoa12Chuong1View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate(-1)}
+        />
+      )}
     </Hoa12ErrorBoundary>
   );
 }
