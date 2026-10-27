@@ -8,6 +8,7 @@ import EssayGraderPanel from '@/components/EssayGraderPanel'
 import SubmissionDetailView from '@/components/SubmissionDetailView'
 import toast from 'react-hot-toast'
 import StudentScorecardModal from '@/components/StudentScorecardModal'
+import { getExamCategory, getCategoryMeta } from '@/utils/practiceExamHelper'
 
 export default function ExamResultsPage() {
   const { roomId } = useParams()
@@ -51,21 +52,27 @@ export default function ExamResultsPage() {
       const activeSubs = rawSubs.filter((s: any) => s.score !== 0)
       setSubmissions(activeSubs)
 
-      // Lấy danh sách học sinh thuộc lớp của phòng thi để tìm ai chưa nộp
-      if (roomData?.class_id) {
+      // Lấy danh sách học sinh thuộc các lớp được giao để tìm ai chưa nộp
+      const assignedClassIds: string[] = Array.isArray(roomData?.settings?.assigned_class_ids) && roomData.settings.assigned_class_ids.length > 0
+        ? roomData.settings.assigned_class_ids
+        : roomData?.class_id ? [roomData.class_id] : []
+
+      if (assignedClassIds.length > 0) {
         const { data: enrolledStudents } = await supabase
           .from('enrollments')
           .select('student_id, students(id, full_name, student_code)')
-          .eq('class_id', roomData.class_id)
+          .in('class_id', assignedClassIds)
           .eq('status', 'active')
 
         if (enrolledStudents) {
           const activeStudentIds = new Set(activeSubs.map((s: any) => s.student_id))
-          const notSubmitted = enrolledStudents
-            .filter((e: any) => !activeStudentIds.has(e.student_id))
-            .map((e: any) => e.students)
-            .filter(Boolean)
-          setNotSubmittedStudents(notSubmitted)
+          const studentMap = new Map()
+          enrolledStudents.forEach((e: any) => {
+            if (e.students && !activeStudentIds.has(e.student_id)) {
+              studentMap.set(e.student_id, e.students)
+            }
+          })
+          setNotSubmittedStudents(Array.from(studentMap.values()))
         }
       }
     } catch (err) {
@@ -156,6 +163,9 @@ export default function ExamResultsPage() {
 
   if (loading) return <div className="p-20 text-center text-teal-600 font-bold">Đang tải bảng điểm...</div>
 
+  const category = getExamCategory(room)
+  const catMeta = getCategoryMeta(category)
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -164,6 +174,15 @@ export default function ExamResultsPage() {
             <ChevronLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div>
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider border ${catMeta.tagBg}`}>
+                <span>{catMeta.icon}</span>
+                <span>{catMeta.label}</span>
+              </span>
+              <span className="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">
+                🛡️ Giám sát chuyển tab
+              </span>
+            </div>
             <h1 className="section-title text-2xl">Kết quả: {room?.exams?.title}</h1>
             <p className="text-gray-400 text-sm">
               Mã phòng: <span className="font-mono font-bold text-teal-600">{room?.code}</span> · {submissions.length}/{totalEnrolled} đã nộp
