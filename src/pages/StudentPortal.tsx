@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense, lazy } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { 
   LogOut, 
@@ -36,7 +36,7 @@ import {
   ExamCategory 
 } from '@/utils/practiceExamHelper'
 // Lazy load Chapter 1 to keep StudentPortal initial load blazing fast
-const Hoa12Chuong1View = React.lazy(() => 
+const Hoa12Chuong1View = lazy(() => 
   import('../components/Hoa12Chuong1View').then(m => ({ default: m.Hoa12Chuong1View }))
 );
 import toast from 'react-hot-toast'
@@ -1634,7 +1634,7 @@ export default function StudentPortal() {
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
             {/* 🌟 HỆ THỐNG LUYỆN ĐỀ & RÈN LUYỆN CHƯƠNG 1 HOÁ HỌC 12 (CT MỚI 2025) */}
             <div id="hoa12-chuong1-section">
-              <React.Suspense fallback={
+              <Suspense fallback={
                 <div className="bg-slate-900 text-slate-200 rounded-3xl p-8 text-center border border-slate-800 shadow-xl">
                   <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
                   <p className="text-sm font-bold">Đang tải kho tài liệu Chương 1 Hóa 12...</p>
@@ -1644,7 +1644,7 @@ export default function StudentPortal() {
                   studentName={student?.name}
                   studentGrade={student?.grade || "12"}
                 />
-              </React.Suspense>
+              </Suspense>
             </div>
 
             {/* Header Phần 2 */}
