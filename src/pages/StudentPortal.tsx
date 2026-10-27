@@ -197,8 +197,11 @@ export default function StudentPortal() {
           return false
         }
 
-        // 2. Thuộc đúng lớp của học sinh
-        const isMyClass = room.class_id && myClassIds.includes(room.class_id)
+        // 2. Thuộc đúng lớp của học sinh (hỗ trợ 1 lớp hoặc nhiều lớp được chọn)
+        const assignedClassIds = Array.isArray(room.settings?.assigned_class_ids) && room.settings.assigned_class_ids.length > 0
+          ? room.settings.assigned_class_ids 
+          : room.class_id ? [room.class_id] : []
+        const isMyClass = assignedClassIds.some((cid: string) => myClassIds.includes(cid))
 
         // 3. Giao cho toàn khối (Khối 12, 11, 10...)
         const sGrade = String(latestStudent?.grade || '').toLowerCase().trim()
@@ -1615,7 +1618,7 @@ export default function StudentPortal() {
                     <span>🎯 LUYỆN ĐỀ THI</span>
                   </h2>
                   <p className="text-emerald-100/90 text-xs sm:text-sm max-w-xl leading-relaxed">
-                    Tổng hợp các bộ đề thi thử vào 10, tốt nghiệp THPT và đề thi định kỳ có giám sát chuyển tab để rèn giũa bản lĩnh phòng thi nghiêm túc!
+                    Tổng hợp các bộ đề thi học kỳ, thi thử, kiểm tra định kỳ cho từng khối lớp (Khối 6, 7, 8, 9, 10, 11, 12). Có giám sát chuyển tab để rèn giũa bản lĩnh phòng thi nghiêm túc!
                   </p>
                   
                   {practiceClasses.length > 0 && (

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useEffect, useState, useRef } from 'react'
-import { MonitorPlay, Plus, Trash2, KeyRound, BarChart3, RefreshCw, Settings, FileSpreadsheet } from 'lucide-react'
+import { MonitorPlay, Plus, Trash2, KeyRound, BarChart3, RefreshCw, Settings, FileSpreadsheet, Users, CheckCircle2 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useExamRoomStore } from '@/store/examRoomStore'
 import { useExamStore } from '@/store/examStore'
@@ -35,7 +35,8 @@ export default function ExamRoomsMgmt() {
 
   const [modalOpen, setModalOpen] = useState(false)
   const [saving, setSaving] = useState(false)
-  const [modalGrade, setModalGrade] = useState<number | ''>('')
+  const [modalGrade, setModalGrade] = useState<number | 'all' | ''>('')
+  const [modalClassGradeTab, setModalClassGradeTab] = useState<string>('all')
   const [editingRoomId, setEditingRoomId] = useState<string | null>(null)
   const [exportingRoomId, setExportingRoomId] = useState<string | null>(null)
 
@@ -78,6 +79,10 @@ export default function ExamRoomsMgmt() {
     time_limit: number;
     status: 'waiting' | 'active' | 'closed';
     settings: {
+      category?: 'homework' | 'chapter_practice' | 'exam_practice' | 'survey';
+      targetScope?: 'classes' | 'all_grade' | 'all_center';
+      targetGrade?: number | null;
+      assigned_class_ids?: string[];
       shuffle: boolean;
       allowRetry: boolean;
       showCorrectAnswers: boolean;
@@ -94,6 +99,10 @@ export default function ExamRoomsMgmt() {
     time_limit: 45,
     status: 'active',
     settings: {
+      category: 'homework',
+      targetScope: 'classes',
+      targetGrade: null,
+      assigned_class_ids: [],
       shuffle: true,
       allowRetry: false,
       showCorrectAnswers: false,
@@ -115,22 +124,40 @@ export default function ExamRoomsMgmt() {
   }, [loadRooms, loadExams, loadClasses, loadEnrollments, loadStudents])
 
   const handleSave = async () => {
-    if (!modalGrade) return toast.error('Vui lòng chọn khối lớp')
+    if (!modalGrade) return toast.error('Vui lòng chọn khối lớp (hoặc Tất cả các khối)')
     if (!form.exam_id) return toast.error('Vui lòng chọn đề thi')
-    if (!form.class_id) return toast.error('Vui lòng chọn lớp học')
+
+    const scope = form.settings?.targetScope || 'classes'
+    const selectedClassIds = form.settings?.assigned_class_ids || (form.class_id ? [form.class_id] : [])
+
+    if (scope === 'classes' && selectedClassIds.length === 0) {
+      return toast.error('Vui lòng chọn ít nhất một lớp học')
+    }
 
     setSaving(true)
     try {
+      const finalAssignedClassIds = scope === 'classes' ? selectedClassIds : []
+      const primaryClassId = scope === 'classes' ? (finalAssignedClassIds[0] || null) : null
+
+      const updatedSettings = {
+        ...form.settings,
+        targetScope: scope,
+        targetGrade: modalGrade === 'all' ? null : (typeof modalGrade === 'number' ? modalGrade : null),
+        assigned_class_ids: finalAssignedClassIds,
+      }
+
       if (editingRoomId) {
         await updateRoom(editingRoomId, {
           time_limit: form.time_limit,
           status: form.status,
-          settings: form.settings
+          settings: updatedSettings
         })
         toast.success('Cập nhật phòng thi thành công!')
+      } else {
         const payload = {
           ...form,
-          class_id: form.class_id ? form.class_id : null
+          class_id: primaryClassId,
+          settings: updatedSettings
         }
         await createRoom(payload)
         toast.success('Mở phòng thi thành công!')
@@ -141,6 +168,10 @@ export default function ExamRoomsMgmt() {
       setForm({ 
         exam_id: '', class_id: '', time_limit: 45, status: 'active', 
         settings: {
+          category: 'homework',
+          targetScope: 'classes',
+          targetGrade: null,
+          assigned_class_ids: [],
           shuffle: true,
           allowRetry: false,
           showCorrectAnswers: false,
@@ -161,13 +192,23 @@ export default function ExamRoomsMgmt() {
 
   const handleOpenEdit = (room: any) => {
     setEditingRoomId(room.id)
-    setModalGrade(getRoomGrade(room) || '')
+    const rGrade = getRoomGrade(room)
+    setModalGrade(rGrade || (room.settings?.targetScope === 'all_center' ? 'all' : ''))
+    
+    const assignedIds: string[] = Array.isArray(room.settings?.assigned_class_ids) && room.settings.assigned_class_ids.length > 0
+      ? room.settings.assigned_class_ids
+      : room.class_id ? [room.class_id] : []
+
     setForm({
       exam_id: room.exam_id,
-      class_id: room.class_id || '',
+      class_id: room.class_id || (assignedIds[0] || ''),
       time_limit: room.time_limit,
       status: room.status,
       settings: {
+        category: room.settings?.category || getExamCategory(room),
+        targetScope: room.settings?.targetScope || (room.class_id ? 'classes' : 'all_grade'),
+        targetGrade: room.settings?.targetGrade || null,
+        assigned_class_ids: assignedIds,
         shuffle: room.settings?.shuffle ?? true,
         allowRetry: room.settings?.allowRetry ?? false,
         showCorrectAnswers: room.settings?.showCorrectAnswers ?? false,
@@ -334,30 +375,70 @@ export default function ExamRoomsMgmt() {
     return null
   }
 
-  const filteredExams = modalGrade 
+  const filteredExams = modalGrade && modalGrade !== 'all'
     ? exams.filter(ex => getExamGrade(ex.title) === modalGrade)
     : exams
 
-  const filteredClasses = modalGrade
+  const filteredClasses = modalGrade && modalGrade !== 'all'
     ? classes.filter(c => c.status === 'active' && getClassGrade(c) === modalGrade)
     : classes.filter(c => c.status === 'active')
 
-  const classStudents = form.class_id
+  const selectedClassIds = form.settings?.assigned_class_ids || (form.class_id ? [form.class_id] : [])
+
+  const displayedModalClasses = classes.filter(c => {
+    if (c.status !== 'active') return false
+    if (modalClassGradeTab === 'all') return true
+    return String(getClassGrade(c)) === String(modalClassGradeTab)
+  }).sort((a, b) => getClassName(a).localeCompare(getClassName(b)))
+
+  const classStudents = selectedClassIds.length > 0
     ? students.filter(s => {
-        const studentEnrollments = enrollments.filter(e => e.class_id === form.class_id && e.status !== 'inactive')
+        const studentEnrollments = enrollments.filter(e => selectedClassIds.includes(e.class_id) && e.status !== 'inactive')
         return studentEnrollments.some(e => e.student_id === s.id)
       })
     : []
 
   const getClassName = (cls: any) => cls?.class_name || cls?.name || 'Chưa rõ'
 
-  const activeRooms = rooms.filter(r => 
-    activeGrade === 'others' 
-      ? (getRoomGrade(r) === null || !displayGrades.includes(getRoomGrade(r)!)) 
-      : getRoomGrade(r) === activeGrade
-  )
+  const getRoomGrades = (room: any): number[] => {
+    if (room.settings?.targetGrade) {
+      const g = Number(room.settings.targetGrade)
+      if (!isNaN(g)) return [g]
+    }
+    const grades = new Set<number>()
+    const assignedIds: string[] = Array.isArray(room.settings?.assigned_class_ids) && room.settings.assigned_class_ids.length > 0
+      ? room.settings.assigned_class_ids
+      : room.class_id ? [room.class_id] : []
 
-  const classIdsWithRooms = new Set(activeRooms.map(r => r.class_id).filter(Boolean))
+    assignedIds.forEach(cid => {
+      const c = classes.find(cl => cl.id === cid)
+      if (c) {
+        const g = getClassGrade(c)
+        if (g) grades.add(Number(g))
+      }
+    })
+
+    if (grades.size > 0) return Array.from(grades)
+    const singleGrade = getRoomGrade(room)
+    return singleGrade ? [singleGrade] : []
+  }
+
+  const activeRooms = rooms.filter(r => {
+    if (r.settings?.targetScope === 'all_center') return true
+    const roomGrades = getRoomGrades(r)
+    if (activeGrade === 'others') {
+      return roomGrades.length === 0 || roomGrades.some(g => !displayGrades.includes(g))
+    }
+    return roomGrades.includes(Number(activeGrade))
+  })
+
+  const classIdsWithRooms = new Set<string>()
+  activeRooms.forEach(r => {
+    if (r.class_id) classIdsWithRooms.add(r.class_id)
+    if (Array.isArray(r.settings?.assigned_class_ids)) {
+      r.settings.assigned_class_ids.forEach((id: string) => classIdsWithRooms.add(id))
+    }
+  })
 
   const classesInActiveGrade = classes.filter(c => {
     const grade = getClassGrade(c)
@@ -374,7 +455,12 @@ export default function ExamRoomsMgmt() {
   const currentClassId = selectedClassId !== null ? selectedClassId : defaultClassId
 
   const displayedRooms = currentClassId 
-    ? activeRooms.filter(r => r.class_id === currentClassId || (!r.class_id && (r.settings?.targetScope === 'all_grade' || r.settings?.targetScope === 'all_center')))
+    ? activeRooms.filter(r => {
+        if (r.class_id === currentClassId) return true
+        if (Array.isArray(r.settings?.assigned_class_ids) && r.settings.assigned_class_ids.includes(currentClassId)) return true
+        if (!r.class_id && (r.settings?.targetScope === 'all_grade' || r.settings?.targetScope === 'all_center')) return true
+        return false
+      })
     : activeRooms
 
   // Sắp xếp danh sách phòng thi ngược lại: Buổi lớn -> Buổi nhỏ -> ... -> thời gian tạo mới nhất lên đầu
@@ -561,7 +647,22 @@ export default function ExamRoomsMgmt() {
                             {room.exams?.title || '—'}
                           </h4>
                           <p className="text-xs text-gray-400 font-bold mt-1">
-                            Lớp học: <span className="text-gray-500 font-medium">{(room.classes as any)?.class_name || (room.classes as any)?.name || 'Tất cả'}</span>
+                            Lớp học: {room.settings?.targetScope === 'all_center' ? (
+                              <span className="text-purple-700 font-bold bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200">🌐 Toàn trung tâm</span>
+                            ) : room.settings?.targetScope === 'all_grade' ? (
+                              <span className="text-teal-700 font-bold bg-teal-50 px-2 py-0.5 rounded-md border border-teal-200">🌟 Toàn Khối {room.settings?.targetGrade || getRoomGrade(room)}</span>
+                            ) : Array.isArray(room.settings?.assigned_class_ids) && room.settings.assigned_class_ids.length > 1 ? (
+                              <span className="text-blue-700 font-bold bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
+                                🏫 {room.settings.assigned_class_ids.length} lớp: {
+                                  room.settings.assigned_class_ids.map((cid: string) => {
+                                    const c = classes.find(cl => cl.id === cid)
+                                    return (c as any)?.class_name || (c as any)?.name
+                                  }).filter(Boolean).join(', ')
+                                }
+                              </span>
+                            ) : (
+                              <span className="text-gray-600 font-medium">{(room.classes as any)?.class_name || (room.classes as any)?.name || 'Tất cả'}</span>
+                            )}
                           </p>
                           <div className="flex flex-wrap items-center gap-1.5 mt-2">
                             {(() => {
@@ -604,7 +705,19 @@ export default function ExamRoomsMgmt() {
 
                       {/* Middle: Stats */}
                       {(() => {
-                        const totalStudents = enrollments.filter(e => e.class_id === room.class_id && e.status === 'active').length
+                        const assignedIds: string[] = Array.isArray(room.settings?.assigned_class_ids) && room.settings.assigned_class_ids.length > 0
+                          ? room.settings.assigned_class_ids
+                          : room.class_id ? [room.class_id] : []
+
+                        const totalStudents = room.settings?.targetScope === 'all_center'
+                          ? enrollments.filter(e => e.status === 'active').length
+                          : room.settings?.targetScope === 'all_grade'
+                          ? enrollments.filter(e => {
+                              const cls = classes.find(c => c.id === e.class_id)
+                              return e.status === 'active' && getClassGrade(cls) === (room.settings?.targetGrade || getRoomGrade(room))
+                            }).length
+                          : enrollments.filter(e => assignedIds.includes(e.class_id) && e.status === 'active').length
+
                         const submittedCount = room.exam_submissions?.length || 0
                         return (
                           <div className="flex-col items-start shrink-0 min-w-[100px] gap-0.5 pl-4 border-l border-slate-200 hidden md:flex">
@@ -626,7 +739,19 @@ export default function ExamRoomsMgmt() {
                       <div className="flex items-center justify-between md:justify-end gap-5 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100">
                         {/* Mobile view of stats */}
                         {(() => {
-                          const totalStudents = enrollments.filter(e => e.class_id === room.class_id && e.status === 'active').length
+                          const assignedIds: string[] = Array.isArray(room.settings?.assigned_class_ids) && room.settings.assigned_class_ids.length > 0
+                            ? room.settings.assigned_class_ids
+                            : room.class_id ? [room.class_id] : []
+
+                          const totalStudents = room.settings?.targetScope === 'all_center'
+                            ? enrollments.filter(e => e.status === 'active').length
+                            : room.settings?.targetScope === 'all_grade'
+                            ? enrollments.filter(e => {
+                                const cls = classes.find(c => c.id === e.class_id)
+                                return e.status === 'active' && getClassGrade(cls) === (room.settings?.targetGrade || getRoomGrade(room))
+                              }).length
+                            : enrollments.filter(e => assignedIds.includes(e.class_id) && e.status === 'active').length
+
                           const submittedCount = room.exam_submissions?.length || 0
                           return (
                             <span className="text-[11px] font-bold text-gray-500 md:hidden bg-slate-50 border border-slate-200/50 px-2 py-1 rounded-xl">
@@ -724,18 +849,29 @@ export default function ExamRoomsMgmt() {
           </div>
 
           <div>
-            <label className="label">Chọn Khối Lớp *</label>
+            <label className="label font-bold text-gray-800">Chọn Khối Lớp *</label>
             <select 
               value={modalGrade} 
               onChange={e => {
                 const val = e.target.value
-                setModalGrade(val ? Number(val) : '')
-                setForm(f => ({ ...f, exam_id: '', class_id: '' }))
+                if (val === 'all') {
+                  setModalGrade('all')
+                  setModalClassGradeTab('all')
+                } else if (val) {
+                  const num = Number(val)
+                  setModalGrade(num)
+                  setModalClassGradeTab(String(num))
+                } else {
+                  setModalGrade('')
+                  setModalClassGradeTab('all')
+                }
+                setForm(f => ({ ...f, exam_id: '', class_id: '', settings: { ...f.settings, assigned_class_ids: [] } }))
               }} 
               className="input font-bold"
               disabled={!!editingRoomId}
             >
               <option value="">-- Chọn khối lớp --</option>
+              <option value="all" className="font-extrabold text-teal-700">🌟 TẤT CẢ CÁC KHỐI (Tự do chọn nhiều lớp 6, 7, 8...)</option>
               <option value="6">Khối 6</option>
               <option value="7">Khối 7</option>
               <option value="8">Khối 8</option>
@@ -747,7 +883,7 @@ export default function ExamRoomsMgmt() {
           </div>
 
           <div>
-            <label className="label">1. Chọn đề thi từ thư viện *</label>
+            <label className="label font-bold text-gray-800">1. Chọn đề thi từ thư viện *</label>
             <select 
               value={form.exam_id} 
               onChange={e => {
@@ -774,24 +910,79 @@ export default function ExamRoomsMgmt() {
             </select>
           </div>
 
-          <div>
-            <label className="label">2. Giao cho ai làm bài? *</label>
-            <select 
-              value={form.settings?.targetScope === 'all_grade' ? '__ALL_GRADE__' : form.settings?.targetScope === 'all_center' ? '__ALL_CENTER__' : form.class_id} 
-              onChange={e => {
-                const val = e.target.value
-                if (val === '__ALL_GRADE__') {
+          {/* 🎯 ĐỐI TƯỢNG GIAO BÀI (HỖ TRỢ CHỌN NHIỀU LỚP) */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <label className="label m-0 font-bold text-gray-800 flex items-center gap-1.5">
+                <Users className="w-4 h-4 text-teal-600" />
+                2. Giao cho ai làm bài? *
+              </label>
+              {(form.settings?.targetScope || 'classes') === 'classes' && (
+                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-teal-100 text-teal-800 border border-teal-200">
+                  Đã chọn {selectedClassIds.length} lớp ({classStudents.length} học sinh)
+                </span>
+              )}
+            </div>
+
+            {/* Scope Selector: Radio/Pills */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <button
+                type="button"
+                disabled={!!editingRoomId}
+                onClick={() => {
+                  setForm(prev => ({
+                    ...prev,
+                    settings: {
+                      ...prev.settings,
+                      targetScope: 'classes'
+                    }
+                  }))
+                }}
+                className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                  (form.settings?.targetScope || 'classes') === 'classes'
+                    ? 'border-teal-500 bg-teal-50/70 text-teal-900 shadow-xs ring-1 ring-teal-400 font-bold'
+                    : 'border-slate-200 hover:border-slate-300 text-gray-600 bg-white'
+                }`}
+              >
+                <span className="text-lg">🏫</span>
+                <div className="min-w-0">
+                  <div className="font-bold text-xs">Chọn danh sách lớp</div>
+                  <div className="text-[10px] text-gray-500 truncate">Chọn nhiều lớp (6, 7, 8...)</div>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                disabled={!!editingRoomId || modalGrade === 'all' || !modalGrade}
+                onClick={() => {
                   setForm(prev => ({
                     ...prev,
                     class_id: '',
                     settings: {
                       ...prev.settings,
                       targetScope: 'all_grade',
-                      targetGrade: modalGrade,
-                      assigned_student_ids: []
+                      targetGrade: modalGrade === 'all' ? null : (typeof modalGrade === 'number' ? modalGrade : null),
+                      assigned_class_ids: []
                     }
                   }))
-                } else if (val === '__ALL_CENTER__') {
+                }}
+                className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                  form.settings?.targetScope === 'all_grade'
+                    ? 'border-indigo-500 bg-indigo-50/70 text-indigo-900 shadow-xs ring-1 ring-indigo-400 font-bold'
+                    : 'border-slate-200 hover:border-slate-300 text-gray-600 bg-white disabled:opacity-40 disabled:cursor-not-allowed'
+                }`}
+              >
+                <span className="text-lg">🌟</span>
+                <div className="min-w-0">
+                  <div className="font-bold text-xs">Toàn Khối {modalGrade && modalGrade !== 'all' ? modalGrade : ''}</div>
+                  <div className="text-[10px] text-gray-500 truncate">Tất cả HS khối đang chọn</div>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                disabled={!!editingRoomId}
+                onClick={() => {
                   setForm(prev => ({
                     ...prev,
                     class_id: '',
@@ -799,41 +990,152 @@ export default function ExamRoomsMgmt() {
                       ...prev.settings,
                       targetScope: 'all_center',
                       targetGrade: null,
-                      assigned_student_ids: []
+                      assigned_class_ids: []
                     }
                   }))
-                } else {
-                  setForm(prev => ({
-                    ...prev, 
-                    class_id: val,
-                    settings: {
-                      ...prev.settings,
-                      targetScope: 'class',
-                      targetGrade: modalGrade
-                    }
-                  }))
-                }
-              }} 
-              className="input font-semibold"
-              disabled={!!editingRoomId || !modalGrade}
-            >
-              <option value="">{modalGrade ? '-- Chọn đối tượng giao bài --' : '-- Vui lòng chọn khối lớp trước --'}</option>
-              {modalGrade && (
-                <option value="__ALL_GRADE__" className="font-bold text-teal-700">
-                  🌟 GIAO CHO TẤT CẢ HỌC SINH KHỐI {modalGrade} (Toàn khối)
-                </option>
-              )}
-              <option value="__ALL_CENTER__" className="font-bold text-purple-700">
-                🌐 GIAO CHO TOÀN BỘ HỌC SINH TRUNG TÂM (Tất cả các khối)
-              </option>
-              {filteredClasses.length > 0 && (
-                <optgroup label={`Danh sách lớp học Khối ${modalGrade || ''}:`}>
-                  {filteredClasses.map(c => (
-                    <option key={c.id} value={c.id}>{(c as any).class_name || (c as any).name}</option>
-                  ))}
-                </optgroup>
-              )}
-            </select>
+                }}
+                className={`p-2.5 rounded-xl border text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                  form.settings?.targetScope === 'all_center'
+                    ? 'border-purple-500 bg-purple-50/70 text-purple-900 shadow-xs ring-1 ring-purple-400 font-bold'
+                    : 'border-slate-200 hover:border-slate-300 text-gray-600 bg-white'
+                }`}
+              >
+                <span className="text-lg">🌐</span>
+                <div className="min-w-0">
+                  <div className="font-bold text-xs">Toàn Trung Tâm</div>
+                  <div className="text-[10px] text-gray-500 truncate">Tất cả học sinh mọi khối</div>
+                </div>
+              </button>
+            </div>
+
+            {/* If scope is 'classes': Multi-class picker */}
+            {(form.settings?.targetScope || 'classes') === 'classes' && (
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2.5">
+                {/* Grade filter tabs & batch select */}
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200/80 pb-2">
+                  <div className="flex flex-wrap items-center gap-1">
+                    <span className="text-[11px] font-bold text-gray-500 mr-1">Lọc:</span>
+                    {['all', '6', '7', '8', '9', '10', '11', '12'].map((g) => (
+                      <button
+                        key={g}
+                        type="button"
+                        onClick={() => setModalClassGradeTab(g)}
+                        className={`px-2 py-0.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                          modalClassGradeTab === g
+                            ? 'bg-teal-600 text-white shadow-xs'
+                            : 'bg-white text-gray-600 border border-slate-200 hover:bg-slate-100'
+                        }`}
+                      >
+                        {g === 'all' ? 'Tất cả' : `Khối ${g}`}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const idsToAdd = displayedModalClasses.map(c => c.id)
+                        const current = new Set(form.settings?.assigned_class_ids || (form.class_id ? [form.class_id] : []))
+                        idsToAdd.forEach(id => current.add(id))
+                        const arr = Array.from(current)
+                        setForm(f => ({
+                          ...f,
+                          class_id: arr[0] || '',
+                          settings: { ...f.settings, assigned_class_ids: arr }
+                        }))
+                      }}
+                      className="text-[11px] font-bold text-teal-700 hover:text-teal-900 hover:underline cursor-pointer"
+                    >
+                      + Chọn tất cả
+                    </button>
+                    <span className="text-slate-300">|</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const idsToRemove = new Set(displayedModalClasses.map(c => c.id))
+                        const arr = (form.settings?.assigned_class_ids || (form.class_id ? [form.class_id] : [])).filter(id => !idsToRemove.has(id))
+                        setForm(f => ({
+                          ...f,
+                          class_id: arr[0] || '',
+                          settings: { ...f.settings, assigned_class_ids: arr }
+                        }))
+                      }}
+                      className="text-[11px] font-bold text-rose-600 hover:text-rose-800 hover:underline cursor-pointer"
+                    >
+                      Bỏ chọn
+                    </button>
+                  </div>
+                </div>
+
+                {/* Class list with Checkboxes */}
+                {displayedModalClasses.length === 0 ? (
+                  <div className="text-center py-6 text-gray-400 text-xs">
+                    Không tìm thấy lớp học nào cho bộ lọc này.
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-56 overflow-y-auto pr-1">
+                    {displayedModalClasses.map(cls => {
+                      const currentSelected = form.settings?.assigned_class_ids || (form.class_id ? [form.class_id] : [])
+                      const isSelected = currentSelected.includes(cls.id)
+                      const cGrade = getClassGrade(cls)
+                      const stCount = enrollments.filter(e => e.class_id === cls.id && e.status !== 'inactive').length
+                      const name = (cls as any).class_name || (cls as any).name
+
+                      return (
+                        <div
+                          key={cls.id}
+                          onClick={() => {
+                            if (editingRoomId) return
+                            let next: string[]
+                            if (isSelected) {
+                              next = currentSelected.filter(id => id !== cls.id)
+                            } else {
+                              next = [...currentSelected, cls.id]
+                            }
+                            setForm(f => ({
+                              ...f,
+                              class_id: next[0] || '',
+                              settings: {
+                                ...f.settings,
+                                assigned_class_ids: next
+                              }
+                            }))
+                          }}
+                          className={`p-2.5 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                            isSelected
+                              ? 'border-teal-500 bg-teal-50/80 shadow-xs'
+                              : 'border-slate-200 bg-white hover:border-teal-300 hover:bg-slate-50/50'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <input
+                              type="checkbox"
+                              checked={isSelected}
+                              readOnly
+                              className="w-4 h-4 text-teal-600 rounded-sm border-slate-300 focus:ring-teal-500 cursor-pointer pointer-events-none"
+                            />
+                            <div className="min-w-0">
+                              <div className="font-bold text-xs text-gray-800 truncate" title={name}>
+                                {name}
+                              </div>
+                              <div className="text-[10px] text-gray-400 font-medium flex items-center gap-1">
+                                {cGrade && <span className="text-teal-700 font-bold">Khối {cGrade}</span>}
+                                <span>•</span>
+                                <span>{stCount} học sinh</span>
+                              </div>
+                            </div>
+                          </div>
+                          {isSelected && (
+                            <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* 🎯 PHÂN LOẠI 4 PHÒNG THI */}
@@ -931,7 +1233,7 @@ export default function ExamRoomsMgmt() {
           </div>
 
           {/* 🎯 CHỈ ĐỊNH ĐÍCH DANH HỌC SINH */}
-          {form.class_id && (
+          {selectedClassIds.length > 0 && classStudents.length > 0 && (
             <div className="p-4 bg-teal-50/50 border border-teal-200/80 rounded-2xl space-y-3">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold text-teal-800 uppercase tracking-wide flex items-center gap-1.5">
@@ -947,9 +1249,9 @@ export default function ExamRoomsMgmt() {
                         settings: { ...prev.settings, assigned_student_ids: allIds }
                       }))
                     }}
-                    className="text-[11px] font-bold text-teal-700 hover:text-teal-900 hover:underline"
+                    className="text-[11px] font-bold text-teal-700 hover:text-teal-900 hover:underline cursor-pointer"
                   >
-                    Chọn cả lớp
+                    Chọn tất cả
                   </button>
                   <span className="text-slate-300">|</span>
                   <button
@@ -960,7 +1262,7 @@ export default function ExamRoomsMgmt() {
                         settings: { ...prev.settings, assigned_student_ids: [] }
                       }))
                     }}
-                    className="text-[11px] font-bold text-rose-500 hover:text-rose-700 hover:underline"
+                    className="text-[11px] font-bold text-rose-500 hover:text-rose-700 hover:underline cursor-pointer"
                   >
                     Bỏ chọn hết
                   </button>
