@@ -1662,23 +1662,61 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   {activeExam.questions.map((q, idx) => {
                     const qId = q.id;
                     const userAnswer = examAnswers[qId];
+                    const isFirstOfPart = idx === 0 || q.part !== activeExam.questions[idx - 1].part;
 
                     return (
-                      <div
-                        key={qId}
-                        id={`exam-q-${qId}`}
-                        className={`${cardTheme} rounded-3xl p-6 md:p-8 space-y-4`}
-                      >
-                        <div className="flex items-start justify-between gap-4">
-                          <div className={`${fontClasses.stem} ${fontClasses.lead} font-normal flex-1`}>
-                            <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400 mr-2 inline">
-                              Câu {idx + 1}:
-                            </span>
-                            <span className="inline" dangerouslySetInnerHTML={{ __html: q.text }} />
-                            <span className="ml-2 inline-block px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200/70 text-slate-700 align-middle">
-                              Phần {q.part}
-                            </span>
+                      <React.Fragment key={qId}>
+                        {isFirstOfPart && (
+                          <div className="rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-5 md:p-6 shadow-md border-l-4 border-indigo-500 my-6 first:mt-0">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-white/15 pb-3">
+                              <div className="flex items-center gap-3">
+                                <span className="w-9 h-9 rounded-xl bg-indigo-500 text-white flex items-center justify-center font-black text-sm shadow-sm shrink-0">
+                                  {q.part === 1 ? "I" : q.part === 2 ? "II" : "III"}
+                                </span>
+                                <div>
+                                  <h3 className="text-base md:text-lg font-black tracking-wide text-white">
+                                    {q.part === 1 && "PHẦN I. CÂU TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN"}
+                                    {q.part === 2 && "PHẦN II. CÂU TRẮC NGHIỆM ĐÚNG SAI"}
+                                    {q.part === 3 && "PHẦN III. CÂU TRẮC NGHIỆM YÊU CẦU TRẢ LỜI NGẮN"}
+                                  </h3>
+                                  <span className="text-[11px] font-semibold text-indigo-300">
+                                    Chuẩn cấu trúc định dạng đề thi Kỳ thi tốt nghiệp THPT từ năm 2025 - Bộ GD&ĐT
+                                  </span>
+                                </div>
+                              </div>
+                              <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-indigo-500/20 text-indigo-200 border border-indigo-400/30 self-start md:self-auto shrink-0">
+                                {q.part === 1 && "18 câu • 4,5 điểm (0,25 đ/câu)"}
+                                {q.part === 2 && "4 câu • 4,0 điểm (Tối đa 1,0 đ/câu)"}
+                                {q.part === 3 && "6 câu • 1,5 điểm (0,25 đ/câu)"}
+                              </span>
+                            </div>
+                            <p className="text-xs md:text-sm text-indigo-100/90 pt-3 leading-relaxed">
+                              {q.part === 1 && "Thí sinh trả lời từ câu 1 đến câu 18. Mỗi câu hỏi thí sinh chỉ chọn một phương án."}
+                              {q.part === 2 && "Thí sinh trả lời từ câu 19 đến câu 22. Trong mỗi ý a), b), c), d) ở mỗi câu, thí sinh chọn đúng hoặc sai."}
+                              {q.part === 3 && "Thí sinh trả lời từ câu 23 đến câu 28. Thí sinh điền kết quả vào ô trả lời tương ứng."}
+                            </p>
+                            {q.part === 2 && (
+                              <div className="mt-2.5 text-[11px] text-indigo-200/90 bg-white/5 px-3.5 py-2 rounded-xl border border-white/10 flex flex-wrap gap-x-5 gap-y-1">
+                                <span>• Đúng 1 ý: <strong className="text-white">0,10 điểm</strong></span>
+                                <span>• Đúng 2 ý: <strong className="text-white">0,25 điểm</strong></span>
+                                <span>• Đúng 3 ý: <strong className="text-white">0,50 điểm</strong></span>
+                                <span>• Đúng cả 4 ý: <strong className="text-emerald-300">1,00 điểm</strong></span>
+                              </div>
+                            )}
                           </div>
+                        )}
+
+                        <div
+                          id={`exam-q-${qId}`}
+                          className={`${cardTheme} rounded-3xl p-6 md:p-8 space-y-4`}
+                        >
+                          <div className="flex items-start justify-between gap-4">
+                            <div className={`${fontClasses.stem} ${fontClasses.lead} font-normal flex-1`}>
+                              <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400 mr-2 inline">
+                                Câu {idx + 1}:
+                              </span>
+                              <span className="inline" dangerouslySetInnerHTML={{ __html: q.text }} />
+                            </div>
                           <div className="shrink-0 pt-0.5">
                             <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200">
                               {q.part === 1 ? '0,25 đ' : q.part === 2 ? '1,0 đ' : '0,25 đ'}
@@ -1769,8 +1807,9 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                           </div>
                         )}
                       </div>
-                    );
-                  })}
+                    </React.Fragment>
+                  );
+                })}
                 </div>
 
                 {/* Exam Quick Nav */}
