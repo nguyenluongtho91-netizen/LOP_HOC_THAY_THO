@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import {
-  Video,
+  Video, Atom,
   LayoutDashboard, Users, BookOpen, CalendarCheck, Banknote,
   Mail, Settings, LogOut, FileText, MonitorPlay, ScanText,
   GraduationCap, Sigma, FilePlus, PlaySquare, Zap, FileType, CreditCard,
@@ -38,6 +38,7 @@ export default function Layout() {
       title: 'Học liệu & Thi cử',
       items: [
         { path: '/lay-goc-toan',      icon: Zap,            label: '⚡ Lấy Gốc Toán' },
+        { path: '/hoa12',              icon: Atom,           label: '🧪 Hóa 12 - Chương 1' },
         { path: '/homework',          icon: ClipboardCheck, label: 'Giao bài tập' },
         { path: '/courses',           icon: PlaySquare,     label: 'Khóa học & Bài giảng' },
         { path: '/exams',             icon: FileText,       label: 'Ngân hàng đề thi' },

@@ -29,6 +29,7 @@ const CreateTexExamPage = lazy(() => import('@/pages/CreateTexExamPage'))
 const CreateWorksheetPage = lazy(() => import('@/pages/CreateWorksheetPage'))
 const WhiteboardPage = lazy(() => import('@/pages/WhiteboardPage'))
 const LayGocToanPage = lazy(() => import('@/pages/LayGocToanPage'))
+const Hoa12Page = lazy(() => import('@/pages/Hoa12Page'))
 
 // Pages Khóa học
 const CourseMgmt = lazy(() => import('@/pages/CourseMgmt'))
@@ -97,6 +98,10 @@ export default function App() {
         <Route path="/login"    element={<Login />} />
         <Route path="/thi"      element={<StudentPortal />} />
         <Route path="/lay-goc"  element={<LayGocToanPage isPublic={true} />} />
+        <Route path="/hoa12"    element={<Hoa12Page />} />
+        <Route path="/hoa-12"   element={<Hoa12Page />} />
+        <Route path="/chuong-1" element={<Hoa12Page />} />
+        <Route path="/hoa12-chuong1" element={<Hoa12Page />} />
         {/* CỔNG TRA CỨU HÓA ĐƠN ĐIỆN TỬ DÀNH CHO PHỤ HUYNH */}
         <Route path="/hoa-don/:invoiceId" element={<PublicInvoicePage />} />
         <Route path="/hoa-don"            element={<PublicInvoicePage />} />
@@ -144,6 +149,8 @@ export default function App() {
           <Route path="homework"             element={<HomeworkMgmt />} />
           <Route path="lay-goc-toan"         element={<LayGocToanPage isPublic={false} />} />
           <Route path="lay-goc"              element={<LayGocToanPage isPublic={false} />} />
+          <Route path="hoa12"                 element={<Hoa12Page />} />
+          <Route path="hoa-12"                element={<Hoa12Page />} />
 
           {/* --- Nhóm Công cụ chuyên dụng --- */}
           <Route path="whiteboard"    element={<WhiteboardPage />} />

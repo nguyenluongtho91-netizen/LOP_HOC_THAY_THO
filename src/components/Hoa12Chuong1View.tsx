@@ -209,12 +209,12 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   };
 
   // Practice Questions with Sub-topic & Level filtering
+  const practiceData = activeLesson.practice || (activeLesson as any).practiceBank || {};
   const allPracticeQuestions: Chuong1Question[] = useMemo(() => {
-    if (!activeLesson.practiceBank) return [];
-    if (practicePart === 1) return activeLesson.practiceBank.part1 || [];
-    if (practicePart === 2) return activeLesson.practiceBank.part2 || [];
-    return activeLesson.practiceBank.part3 || [];
-  }, [activeLesson, practicePart]);
+    if (practicePart === 1) return practiceData.part1 || [];
+    if (practicePart === 2) return practiceData.part2 || [];
+    return practiceData.part3 || [];
+  }, [practiceData, practicePart]);
 
   // Filtered practice questions
   const filteredPracticeQuestions = useMemo(() => {
@@ -479,11 +479,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             <span>{l.mathForms.length} dạng toán trọng tâm có bài giải</span>
                           </div>
                         )}
-                        {l.practiceBank && (
+                        {(l.practice || (l as any).practiceBank) && (
                           <div className="flex items-center gap-2 text-xs text-slate-600 bg-slate-50 p-2 rounded-lg border border-slate-100">
                             <CheckSquare className="w-4 h-4 text-emerald-600 shrink-0" />
                             <span>
-                              {(l.practiceBank.part1?.length || 0) + (l.practiceBank.part2?.length || 0) + (l.practiceBank.part3?.length || 0)} câu hỏi chia 4 mức độ (NB, TH, VD)
+                              {((l.practice || (l as any).practiceBank).part1?.length || 0) + ((l.practice || (l as any).practiceBank).part2?.length || 0) + ((l.practice || (l as any).practiceBank).part3?.length || 0)} câu hỏi chia 4 mức độ (NB, TH, VD)
                             </span>
                           </div>
                         )}
@@ -764,21 +764,21 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 1 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      Phần I: 4 Lựa chọn ({activeLesson.practiceBank?.part1?.length || 0})
+                      Phần I: 4 Lựa chọn ({practiceData.part1?.length || 0})
                     </button>
                     <button
                       onClick={() => setPracticePart(2)}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 2 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
                     >
                       <CheckSquare className="w-3.5 h-3.5" />
-                      Phần II: Đúng / Sai ({activeLesson.practiceBank?.part2?.length || 0})
+                      Phần II: Đúng / Sai ({practiceData.part2?.length || 0})
                     </button>
                     <button
                       onClick={() => setPracticePart(3)}
                       className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 3 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
                     >
                       <Edit3 className="w-3.5 h-3.5" />
-                      Phần III: Trả lời ngắn ({activeLesson.practiceBank?.part3?.length || 0})
+                      Phần III: Trả lời ngắn ({practiceData.part3?.length || 0})
                     </button>
                   </div>
 

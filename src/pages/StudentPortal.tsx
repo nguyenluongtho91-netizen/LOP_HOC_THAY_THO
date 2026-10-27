@@ -55,6 +55,7 @@ export default function StudentPortal() {
   const navigate = useNavigate()
   const [student, setStudent] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const [showDirectHoa12, setShowDirectHoa12] = useState(false)
 
   // Đăng nhập form
   const [studentCodeInput, setStudentCodeInput] = useState('')
@@ -562,6 +563,23 @@ export default function StudentPortal() {
   }
 
   // ── GIAO DIỆN ĐĂNG NHẬP ─────────────────────────────────────
+  if (showDirectHoa12) {
+    return (
+      <Suspense fallback={
+        <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center p-8">
+          <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mr-3" />
+          <span className="font-bold">Đang tải kho tài liệu Hóa 12 Chương 1...</span>
+        </div>
+      }>
+        <Hoa12Chuong1View 
+          studentName="Học sinh"
+          studentGrade="12"
+          onClose={() => setShowDirectHoa12(false)}
+        />
+      </Suspense>
+    );
+  }
+
   if (!student) {
     return (
       <div 
@@ -589,6 +607,21 @@ export default function StudentPortal() {
             </div>
 
             <form onSubmit={handleLogin} className="p-8 space-y-5">
+              <button
+                type="button"
+                onClick={() => setShowDirectHoa12(true)}
+                className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 hover:from-indigo-700 hover:to-blue-800 text-white font-extrabold text-sm shadow-xl shadow-indigo-500/30 flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5 cursor-pointer border border-white/20 mb-3"
+              >
+                <span className="text-xl">🧪</span>
+                <span>VÀO ÔN LUYỆN CHƯƠNG 1 HÓA 12 (TỰ DO)</span>
+              </button>
+
+              <div className="relative flex py-2 items-center">
+                <div className="flex-grow border-t border-slate-200"></div>
+                <span className="flex-shrink mx-3 text-xs font-bold text-slate-400 uppercase tracking-wider">HOẶC ĐĂNG NHẬP</span>
+                <div className="flex-grow border-t border-slate-200"></div>
+              </div>
+
               <h3 className="text-gray-800 font-extrabold text-xl mb-4 text-center">ĐĂNG NHẬP CỔNG THI</h3>
 
               {/* Mã học sinh */}
