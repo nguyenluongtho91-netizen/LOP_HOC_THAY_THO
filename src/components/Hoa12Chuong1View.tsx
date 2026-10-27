@@ -6,18 +6,17 @@ import {
   Clock, BookOpen, ChevronRight, Award, Zap, Play, RotateCcw,
   Check, ArrowRight, ShieldCheck, HelpCircle, Eye, AlertCircle,
   TrendingUp, Star, Filter, Share2, Volume2, VolumeX, Shuffle,
-  Layers, Compass, Atom, Beaker, Maximize2, Minimize2, ChevronUp
+  Layers, Compass, Atom, Beaker, Maximize2, Minimize2, ChevronDown,
+  Calculator, CheckSquare, Edit3, ArrowLeft
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import {
   HOA12_CHUONG1_LESSONS,
   HOA12_CHUONG1_7_EXAMS,
-  HOA12_CHUONG1_TOPICS,
   HOA12_CHUONG1_HANDBOOK,
   calculateChuong1ExamScore,
   getChuong1UserProgress,
   saveChuong1ExamResult,
-  saveChuong1TopicLevelSuccess,
   getRankTitle,
   Chuong1Exam,
   Chuong1Question,
@@ -124,7 +123,7 @@ export const QuestionImages = React.memo(({
         >
           <img
             src={src}
-            alt={`Hình ảnh đề gốc ${idx + 1}`}
+            alt={`Hình ảnh minh họa ${idx + 1}`}
             className="max-h-64 sm:max-h-80 object-contain rounded-xl mx-auto"
             loading="lazy"
           />
@@ -145,8 +144,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   // Quản lý chọn Bài học: Bài 1, Bài 2 hoặc Bài 3
   const [selectedLessonId, setSelectedLessonId] = useState<'bai1' | 'bai2' | 'bai3'>('bai1');
   
-  // Tab con trong từng bài: 'practice' (Luyện tập / Vượt ải / Đề thi) | 'theory' (Lý thuyết trọng tâm)
+  // Tab con trong Bài: 'practice' (Luyện tập 3 phần / 7 Đề) | 'theory' (Lý thuyết & Dạng toán)
   const [lessonSubTab, setLessonSubTab] = useState<'practice' | 'theory'>('practice');
+
+  // Phân chia phần luyện tập tự luyện: 'all' | 'part1' | 'part2' | 'part3'
+  const [practicePartFilter, setPracticePartFilter] = useState<'all' | 'part1' | 'part2' | 'part3'>('all');
 
   const [progress, setProgress] = useState(getChuong1UserProgress());
   const [isMuted, setIsMuted] = useState(false);
@@ -154,19 +156,26 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   // Chế độ Toàn màn hình cả chiều ngang và chiều dọc (Full Screen & Full Width)
   const [isFullscreen, setIsFullscreen] = useState(true);
 
-  // Trạng thái Phòng thi
+  // Trạng thái Phòng thi 7 Đề
   const [currentExam, setCurrentExam] = useState<Chuong1Exam | null>(null);
   const [examAnswers, setExamAnswers] = useState<Record<string | number, any>>({});
   const [timeLeft, setTimeLeft] = useState<number>(50 * 60);
   const [isExamSubmitted, setIsExamSubmitted] = useState<boolean>(false);
   const [examResult, setExamResult] = useState<any>(null);
 
-  // Trạng thái Phòng rèn luyện chuyên đề
-  const [activeTopic, setActiveTopic] = useState<any>(null);
-  const [activeLevel, setActiveLevel] = useState<any>(null);
-  const [topicAnswers, setTopicAnswers] = useState<Record<number, string>>({});
-  const [isTopicSubmitted, setIsTopicSubmitted] = useState<boolean>(false);
-  const [topicScore, setTopicScore] = useState<number>(0);
+  // Trạng thái Phòng rèn luyện theo Bài (3 phần)
+  const [activePracticeSession, setActivePracticeSession] = useState<{
+    lessonId: 'bai1' | 'bai2';
+    partFilter: 'all' | 'part1' | 'part2' | 'part3';
+    title: string;
+    questions: Chuong1Question[];
+  } | null>(null);
+  const [practiceAnswers, setPracticeAnswers] = useState<Record<string | number, any>>({});
+  const [isPracticeSubmitted, setIsPracticeSubmitted] = useState<boolean>(false);
+  const [practiceResult, setPracticeResult] = useState<any>(null);
+
+  // Dạng toán đang mở lời giải
+  const [expandedMathForm, setExpandedMathForm] = useState<string | null>(null);
 
   // Modal phóng to ảnh gốc
   const [previewImage, setPreviewImage] = useState<string | null>(null);
@@ -178,7 +187,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
   // Khóa cuộn trang nền khi đang ở chế độ toàn màn hình
   useEffect(() => {
-    if (isFullscreen && (currentExam || (activeTopic && activeLevel))) {
+    if (isFullscreen && (currentExam || activePracticeSession)) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -186,18 +195,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isFullscreen, currentExam, activeTopic, activeLevel]);
-
-  // Lắng nghe sự kiện fullscreenchange của trình duyệt
-  useEffect(() => {
-    const handleFsChange = () => {
-      if (!document.fullscreenElement && isFullscreen) {
-        // người dùng bấm Esc trên trình duyệt
-      }
-    };
-    document.addEventListener('fullscreenchange', handleFsChange);
-    return () => document.removeEventListener('fullscreenchange', handleFsChange);
-  }, [isFullscreen]);
+  }, [isFullscreen, currentExam, activePracticeSession]);
 
   const toggleFullscreen = () => {
     if (!isFullscreen) {
@@ -224,6 +222,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [previewImage]);
 
+  // Bộ đếm thời gian cho đề thi 50 phút
   useEffect(() => {
     let timer: any = null;
     if (currentExam && !isExamSubmitted && timeLeft > 0) {
@@ -258,27 +257,37 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectP1 = (qKey: string | number, optLetter: string) => {
-    if (isExamSubmitted) return;
+  const handleSelectP1 = (qKey: string | number, optLetter: string, isExam = true) => {
+    if (isExam && isExamSubmitted) return;
+    if (!isExam && isPracticeSubmitted) return;
     sfx.click();
-    setExamAnswers(prev => ({ ...prev, [qKey]: optLetter }));
+    if (isExam) {
+      setExamAnswers(prev => ({ ...prev, [qKey]: optLetter }));
+    } else {
+      setPracticeAnswers(prev => ({ ...prev, [qKey]: optLetter }));
+    }
   };
 
-  const handleSelectP2 = (qKey: string | number, subLetter: string, val: boolean) => {
-    if (isExamSubmitted) return;
+  const handleSelectP2 = (qKey: string | number, subLetter: string, val: boolean, isExam = true) => {
+    if (isExam && isExamSubmitted) return;
+    if (!isExam && isPracticeSubmitted) return;
     sfx.click();
-    setExamAnswers(prev => {
+    const updater = (prev: any) => {
       const currentSub = prev[qKey] || {};
       return {
         ...prev,
         [qKey]: { ...currentSub, [subLetter]: val }
       };
-    });
+    };
+    if (isExam) setExamAnswers(updater);
+    else setPracticeAnswers(updater);
   };
 
-  const handleInputP3 = (qKey: string | number, val: string) => {
-    if (isExamSubmitted) return;
-    setExamAnswers(prev => ({ ...prev, [qKey]: val }));
+  const handleInputP3 = (qKey: string | number, val: string, isExam = true) => {
+    if (isExam && isExamSubmitted) return;
+    if (!isExam && isPracticeSubmitted) return;
+    if (isExam) setExamAnswers(prev => ({ ...prev, [qKey]: val }));
+    else setPracticeAnswers(prev => ({ ...prev, [qKey]: val }));
   };
 
   const handleAutoSubmitExam = () => {
@@ -302,43 +311,46 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const startTopicLevel = (topic: any, level: any) => {
-    const highestUnlocked = progress.unlockedLevels[topic.id] || 1;
-    if (level.level > highestUnlocked) {
-      toast.error(`Mức độ ${level.level} đang bị khóa 🔒! Em hãy hoàn thành Mức độ ${level.level - 1} để mở khóa nhé!`);
-      return;
-    }
-    setActiveTopic(topic);
-    setActiveLevel(level);
-    setTopicAnswers({});
-    setIsTopicSubmitted(false);
-    setTopicScore(0);
+  const startPractice = (lesson: Chuong1Lesson, filter: 'all' | 'part1' | 'part2' | 'part3' = 'all') => {
+    if (!lesson.practice) return;
+    let qs: Chuong1Question[] = [];
+    if (filter === 'part1') qs = lesson.practice.part1;
+    else if (filter === 'part2') qs = lesson.practice.part2;
+    else if (filter === 'part3') qs = lesson.practice.part3;
+    else qs = [...lesson.practice.part1.slice(0, 18), ...lesson.practice.part2.slice(0, 4), ...lesson.practice.part3.slice(0, 6)];
+
+    const partNames = {
+      'all': 'Đề Tổng Hợp Tự Luyện (18 P1 + 4 P2 + 6 P3)',
+      'part1': 'Phần I: Trắc Nghiệm 4 Lựa Chọn',
+      'part2': 'Phần II: Trắc Nghiệm Đúng / Sai',
+      'part3': 'Phần III: Trắc Nghiệm Trả Lời Ngắn (Điền Số)'
+    };
+
+    setActivePracticeSession({
+      lessonId: lesson.id as any,
+      partFilter: filter,
+      title: `${lesson.shortTitle} · ${partNames[filter]}`,
+      questions: qs
+    });
+    setPracticeAnswers({});
+    setIsPracticeSubmitted(false);
+    setPracticeResult(null);
     setIsFullscreen(true);
     sfx.click();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const submitTopicPractice = () => {
-    if (!activeLevel || isTopicSubmitted) return;
-    let correct = 0;
-    activeLevel.questions.forEach((q: any, idx: number) => {
-      const userAns = topicAnswers[idx];
-      const correctOpt = q.options?.find((o: any) => o.isCorrect)?.letter || q.correctAnswer;
-      if (userAns && userAns === correctOpt) correct++;
+  const submitPractice = () => {
+    if (!activePracticeSession || isPracticeSubmitted) return;
+    const result = calculateChuong1ExamScore(activePracticeSession.questions, practiceAnswers);
+    setPracticeResult(result);
+    setIsPracticeSubmitted(true);
+    sfx.celebration();
+    toast.success(`Hoàn thành tự luyện! Điểm của em: ${result.score10}/10 Điểm`, {
+      icon: '🎉',
+      duration: 6000
     });
-
-    const score10 = Math.round((correct / activeLevel.questions.length) * 100) / 10;
-    setTopicScore(score10);
-    setIsTopicSubmitted(true);
-
-    if (score10 >= 7.0) {
-      saveChuong1TopicLevelSuccess(activeTopic.id, activeLevel.level);
-      reloadProgress();
-      sfx.celebration();
-      toast.success(`🎉 Xuất sắc! Em đạt ${score10}/10 điểm và đã mở khóa cấp độ tiếp theo!`, { duration: 5000 });
-    } else {
-      toast('Em đạt ' + score10 + '/10 điểm. Hãy ôn lại lý thuyết và làm lại để đạt >= 7.0 điểm mở khóa nhé!', { icon: '💪' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const formatTimer = (secs: number) => {
@@ -348,7 +360,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   };
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // RENDER MODAL PHÓNG TO ẢNH GỐC
+  // MODAL PHÓNG TO ẢNH GỐC
   // ─────────────────────────────────────────────────────────────────────────────
   const renderPreviewModal = () => {
     if (!previewImage) return null;
@@ -364,7 +376,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           <div className="w-full flex items-center justify-between pb-3 mb-2 border-b border-slate-200">
             <div className="flex items-center gap-2 text-slate-800 text-sm font-bold">
               <Sparkles className="w-4 h-4 text-amber-500" />
-              <span>Hình ảnh trích xuất từ đề kiểm tra gốc</span>
+              <span>Hình ảnh minh họa trích xuất từ tài liệu gốc</span>
             </div>
             <button
               type="button"
@@ -383,6 +395,326 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             />
           </div>
         </div>
+      </div>
+    );
+  };
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  // RENDER DANH SÁCH CÂU HỎI (DÙNG CHUNG CHO CẢ THI THỬ & TỰ LUYỆN)
+  // ─────────────────────────────────────────────────────────────────────────────
+  const renderQuestionsList = (
+    questions: Chuong1Question[], 
+    answers: Record<string | number, any>, 
+    isSubmitted: boolean, 
+    resultDetail: any,
+    isExam = true
+  ) => {
+    return (
+      <div className="space-y-8">
+        {/* PHẦN I */}
+        {questions.some(q => q.part === 1) && (
+          <div>
+            <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4 sm:p-5 mb-5">
+              <h3 className="text-base sm:text-lg font-black text-blue-900 uppercase tracking-wide flex items-center gap-2">
+                <CheckSquare className="w-5 h-5 text-blue-600" /> PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
+                Thí sinh chọn 1 phương án đúng duy nhất (A, B, C hoặc D). Mỗi câu trả lời đúng được 0,25 điểm.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {questions.filter(q => q.part === 1).map((q, idx) => {
+                const qKey = q.id || q.number;
+                const selectedOpt = answers[qKey];
+                const resDetail = resultDetail?.detail?.[qKey];
+                const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
+
+                const isShortOptions = q.options?.every(o => (o.text || '').replace(/<[^>]+>/g, '').length < 35);
+                const gridClass = isShortOptions 
+                  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4' 
+                  : 'grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4';
+
+                return (
+                  <div 
+                    id={`exam-q-${qKey}`}
+                    key={qKey} 
+                    className={`p-6 sm:p-8 rounded-3xl border-2 transition-all bg-white shadow-sm ${
+                      isSubmitted
+                        ? resDetail?.isCorrect 
+                          ? 'border-emerald-400 bg-emerald-50/30' 
+                          : 'border-rose-300 bg-rose-50/30'
+                        : 'border-slate-200 hover:border-blue-400'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-blue-600 text-white text-sm font-black flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        {q.number || idx + 1}
+                      </span>
+                      <div className="flex-1">
+                        <div className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
+                          <ChemistryText html={q.text} />
+                        </div>
+
+                        <QuestionImages images={qImgs} onPreview={setPreviewImage} />
+
+                        <div className={gridClass}>
+                          {q.options?.map(opt => {
+                            const isSelected = selectedOpt === opt.letter;
+                            const isCorrectOpt = opt.isCorrect;
+
+                            let optStyle = 'bg-white text-slate-800 border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/40';
+                            if (isSubmitted) {
+                              if (isCorrectOpt) optStyle = 'bg-emerald-50 text-emerald-950 border-2 border-emerald-500 font-bold';
+                              else if (isSelected && !isCorrectOpt) optStyle = 'bg-rose-50 text-rose-900 border-2 border-rose-400 line-through';
+                            } else if (isSelected) {
+                              optStyle = 'bg-blue-50 text-blue-950 border-2 border-blue-600 font-bold shadow-md';
+                            }
+
+                            return (
+                              <button
+                                key={opt.letter}
+                                type="button"
+                                onClick={() => handleSelectP1(qKey, opt.letter, isExam)}
+                                disabled={isSubmitted}
+                                className={`p-4 sm:p-5 rounded-2xl border text-left transition-all flex flex-col gap-2 ${optStyle}`}
+                              >
+                                <div className="flex items-start gap-3 w-full">
+                                  <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 ${
+                                    isSelected && !isSubmitted 
+                                      ? 'bg-blue-600 text-white shadow-sm' 
+                                      : 'bg-slate-100 text-slate-700 border border-slate-300'
+                                  }`}>
+                                    {opt.letter}
+                                  </span>
+                                  <ChemistryText html={opt.text} className="text-base sm:text-lg font-semibold leading-relaxed flex-1" />
+                                </div>
+
+                                {opt.image && (
+                                  <div 
+                                    onClick={(e) => { e.stopPropagation(); setPreviewImage(opt.image!); }}
+                                    className="ml-10 bg-white rounded-xl p-2 border border-slate-300 inline-block cursor-zoom-in hover:border-blue-500 max-w-xs transition-colors"
+                                    title="Nhấn để phóng to hình đáp án"
+                                  >
+                                    <img src={opt.image} alt={opt.letter} className="max-h-28 object-contain rounded" />
+                                  </div>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        {isSubmitted && (q.solution || q.explanation) && (
+                          <div className="mt-5 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-sm sm:text-base text-slate-900 leading-relaxed shadow-sm">
+                            <div className="font-bold text-amber-800 flex items-center gap-1.5 mb-2">
+                              <Sparkles className="w-5 h-5 text-amber-600" /> Lời giải chi tiết:
+                            </div>
+                            <ChemistryText html={q.solution || q.explanation} />
+                            <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* PHẦN II */}
+        {questions.some(q => q.part === 2) && (
+          <div>
+            <div className="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 mb-5">
+              <h3 className="text-base sm:text-lg font-black text-indigo-900 uppercase tracking-wide flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-indigo-600" /> PHẦN II. Câu trắc nghiệm Đúng / Sai
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
+                Thí sinh chọn Đúng hoặc Sai cho mỗi ý a, b, c, d. Điểm: Đúng 1 ý = 0.1đ · Đúng 2 ý = 0.25đ · Đúng 3 ý = 0.5đ · Đúng cả 4 ý = 1.0đ.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {questions.filter(q => q.part === 2).map((q, idx) => {
+                const qKey = q.id || q.number;
+                const currentSubAns = answers[qKey] || {};
+                const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
+
+                return (
+                  <div 
+                    id={`exam-q-${qKey}`}
+                    key={qKey} 
+                    className="p-6 sm:p-8 rounded-3xl border-2 border-slate-200 bg-white shadow-sm"
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-indigo-600 text-white text-sm font-black flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        {q.displayNumber || q.number || idx + 1}
+                      </span>
+                      <div className="flex-1">
+                        <div className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
+                          <ChemistryText html={q.text} />
+                        </div>
+
+                        <QuestionImages images={qImgs} onPreview={setPreviewImage} />
+
+                        <div className="mt-5 space-y-3.5">
+                          {q.options?.map(opt => {
+                            const subKey = opt.letter;
+                            const choice = currentSubAns[subKey] !== undefined ? currentSubAns[subKey] : (currentSubAns[subKey.toLowerCase()] !== undefined ? currentSubAns[subKey.toLowerCase()] : currentSubAns[subKey.toUpperCase()]);
+                            const isCorrectAnswer = opt.isCorrect;
+
+                            return (
+                              <div 
+                                key={opt.letter} 
+                                className={`p-4 sm:p-5 rounded-2xl border-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+                                  isSubmitted 
+                                    ? (choice === isCorrectAnswer ? 'bg-emerald-50/70 border-emerald-300' : 'bg-rose-50/70 border-rose-300')
+                                    : 'bg-slate-50 border-slate-200'
+                                }`}
+                              >
+                                <div className="flex flex-col gap-2 flex-1">
+                                  <div className="flex items-start gap-3 text-base sm:text-lg text-slate-900">
+                                    <span className="font-black text-indigo-700 uppercase">{opt.letter})</span>
+                                    <ChemistryText html={opt.text} className="flex-1 font-semibold leading-relaxed" />
+                                  </div>
+                                  {opt.image && (
+                                    <div 
+                                      onClick={() => setPreviewImage(opt.image!)}
+                                      className="ml-8 bg-white rounded-xl p-2 border border-slate-300 inline-block cursor-zoom-in hover:border-indigo-400 max-w-xs"
+                                      title="Nhấn để phóng to hình ảnh"
+                                    >
+                                      <img src={opt.image} alt={opt.letter} className="max-h-28 object-contain rounded" />
+                                    </div>
+                                  )}
+                                </div>
+
+                                <div className="flex items-center gap-3 shrink-0">
+                                  <button
+                                    type="button"
+                                    disabled={isSubmitted}
+                                    onClick={() => handleSelectP2(qKey, opt.letter, true, isExam)}
+                                    className={`px-5 py-2.5 rounded-xl text-sm font-black transition-all border-2 ${
+                                      choice === true 
+                                        ? 'bg-emerald-600 text-white border-emerald-700 shadow-md' 
+                                        : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                                    }`}
+                                  >
+                                    Đúng
+                                  </button>
+                                  <button
+                                    type="button"
+                                    disabled={isSubmitted}
+                                    onClick={() => handleSelectP2(qKey, opt.letter, false, isExam)}
+                                    className={`px-5 py-2.5 rounded-xl text-sm font-black transition-all border-2 ${
+                                      choice === false 
+                                        ? 'bg-rose-600 text-white border-rose-700 shadow-md' 
+                                        : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
+                                    }`}
+                                  >
+                                    Sai
+                                  </button>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        {isSubmitted && (q.solution || q.explanation) && (
+                          <div className="mt-5 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-sm sm:text-base text-slate-900 leading-relaxed">
+                            <div className="font-bold text-amber-800 flex items-center gap-1.5 mb-2">
+                              <Sparkles className="w-5 h-5 text-amber-600" /> Lời giải chi tiết từng ý:
+                            </div>
+                            <ChemistryText html={q.solution || q.explanation} />
+                            <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* PHẦN III */}
+        {questions.some(q => q.part === 3) && (
+          <div>
+            <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 sm:p-5 mb-5">
+              <h3 className="text-base sm:text-lg font-black text-amber-900 uppercase tracking-wide flex items-center gap-2">
+                <Edit3 className="w-5 h-5 text-amber-600" /> PHẦN III. Câu trắc nghiệm yêu cầu trả lời ngắn
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
+                Thí sinh tự tính toán và nhập đáp số vào ô trống. Mỗi câu trả lời đúng được 0,25 điểm.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {questions.filter(q => q.part === 3).map((q, idx) => {
+                const qKey = q.id || q.number;
+                const userVal = answers[qKey] || '';
+                const resDetail = resultDetail?.detail?.[qKey];
+                const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
+
+                return (
+                  <div 
+                    id={`exam-q-${qKey}`}
+                    key={qKey} 
+                    className={`p-6 sm:p-8 rounded-3xl border-2 transition-all bg-white shadow-sm ${
+                      isSubmitted
+                        ? resDetail?.isCorrect 
+                          ? 'border-emerald-400 bg-emerald-50/30' 
+                          : 'border-rose-300 bg-rose-50/30'
+                        : 'border-slate-200 hover:border-amber-400'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-amber-500 text-white text-sm font-black flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        {q.displayNumber || q.number || idx + 1}
+                      </span>
+                      <div className="flex-1">
+                        <div className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
+                          <ChemistryText html={q.text} />
+                        </div>
+
+                        <QuestionImages images={qImgs} onPreview={setPreviewImage} />
+
+                        <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-4">
+                          <label className="text-sm font-bold text-slate-700">
+                            Đáp số của em:
+                          </label>
+                          <input
+                            type="text"
+                            disabled={isSubmitted}
+                            value={userVal}
+                            onChange={(e) => handleInputP3(qKey, e.target.value, isExam)}
+                            placeholder="Nhập số kết quả (VD: 4 hoặc 82,3)..."
+                            className="w-full sm:w-80 bg-white border-2 border-slate-300 rounded-xl px-5 py-3 text-slate-900 font-mono font-bold text-base focus:outline-none focus:border-amber-500 shadow-inner"
+                          />
+                          {isSubmitted && (
+                            <div className="text-sm text-slate-700 flex items-center gap-2">
+                              <span>Đáp án chuẩn: <strong className="text-emerald-700 font-mono text-base bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-300">{q.correctAnswer}</strong></span>
+                            </div>
+                          )}
+                        </div>
+
+                        {isSubmitted && (q.solution || q.explanation) && (
+                          <div className="mt-5 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-sm sm:text-base text-slate-900 leading-relaxed">
+                            <div className="font-bold text-amber-800 flex items-center gap-1.5 mb-2">
+                              <Sparkles className="w-5 h-5 text-amber-600" /> Hướng dẫn giải chi tiết:
+                            </div>
+                            <ChemistryText html={q.solution || q.explanation} />
+                            <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     );
   };
@@ -417,7 +749,6 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </div>
 
             <div className="flex items-center gap-3 flex-wrap">
-              {/* NÚT TOÀN MÀN HÌNH CẢ CHIỀU NGANG */}
               <button
                 type="button"
                 onClick={toggleFullscreen}
@@ -428,7 +759,6 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                 <span>{isFullscreen ? 'Thu nhỏ' : 'Toàn màn hình rộng'}</span>
               </button>
 
-              {/* ĐỒNG HỒ ĐẾM NGƯỢC */}
               <div className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-mono text-xl lg:text-2xl font-black border-2 ${
                 timeLeft < 300 
                   ? 'bg-rose-50 text-rose-600 border-rose-300 animate-pulse' 
@@ -456,7 +786,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </div>
           </div>
 
-          {/* BẢNG CHỌN CÂU HỎI NHANH (PALETTE) */}
+          {/* BẢNG CHỌN CÂU HỎI NHANH */}
           <div className="bg-white rounded-2xl p-4 sm:p-5 border-2 border-slate-200 shadow-sm">
             <div className="text-xs sm:text-sm font-black text-slate-700 uppercase mb-2.5 flex items-center justify-between">
               <span>Bảng chuyển nhanh câu hỏi:</span>
@@ -519,308 +849,8 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             </div>
           )}
 
-          {/* DANH SÁCH 28 CÂU HỎI THI - RỘNG TOÀN MÀN HÌNH */}
-          <div className="space-y-8">
-            {/* PHẦN I */}
-            <div>
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4 sm:p-5 mb-5">
-                <h3 className="text-base sm:text-lg font-black text-blue-900 uppercase tracking-wide">
-                  PHẦN I. Câu trắc nghiệm nhiều phương án lựa chọn (Câu 1 đến Câu 18)
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
-                  Thí sinh chọn 1 phương án đúng duy nhất (A, B, C hoặc D). Mỗi câu trả lời đúng được 0,25 điểm.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {currentExam.questions.filter(q => q.part === 1).map((q) => {
-                  const qKey = q.id || q.number;
-                  const selectedOpt = examAnswers[qKey];
-                  const resDetail = examResult?.detail?.[qKey];
-                  const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
-
-                  // Tự động căn chỉnh 4 cột nếu tất cả các lựa chọn là công thức ngắn
-                  const isShortOptions = q.options?.every(o => (o.text || '').replace(/<[^>]+>/g, '').length < 35);
-                  const gridClass = isShortOptions 
-                    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4' 
-                    : 'grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4';
-
-                  return (
-                    <div 
-                      id={`exam-q-${qKey}`}
-                      key={qKey} 
-                      className={`p-6 sm:p-8 rounded-3xl border-2 transition-all bg-white shadow-sm ${
-                        isExamSubmitted
-                          ? resDetail?.isCorrect 
-                            ? 'border-emerald-400 bg-emerald-50/30' 
-                            : 'border-rose-300 bg-rose-50/30'
-                          : 'border-slate-200 hover:border-blue-400'
-                      }`}
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-blue-600 text-white text-sm font-black flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                          {q.number}
-                        </span>
-                        <div className="flex-1">
-                          <div className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
-                            <ChemistryText html={q.text} />
-                          </div>
-
-                          <QuestionImages images={qImgs} onPreview={setPreviewImage} />
-
-                          <div className={gridClass}>
-                            {q.options?.map(opt => {
-                              const isSelected = selectedOpt === opt.letter;
-                              const isCorrectOpt = opt.isCorrect;
-
-                              let optStyle = 'bg-white text-slate-800 border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/40';
-                              if (isExamSubmitted) {
-                                if (isCorrectOpt) optStyle = 'bg-emerald-50 text-emerald-950 border-2 border-emerald-500 font-bold';
-                                else if (isSelected && !isCorrectOpt) optStyle = 'bg-rose-50 text-rose-900 border-2 border-rose-400 line-through';
-                              } else if (isSelected) {
-                                optStyle = 'bg-blue-50 text-blue-950 border-2 border-blue-600 font-bold shadow-md';
-                              }
-
-                              return (
-                                <button
-                                  key={opt.letter}
-                                  type="button"
-                                  onClick={() => handleSelectP1(qKey, opt.letter)}
-                                  disabled={isExamSubmitted}
-                                  className={`p-4 sm:p-5 rounded-2xl border text-left transition-all flex flex-col gap-2 ${optStyle}`}
-                                >
-                                  <div className="flex items-start gap-3 w-full">
-                                    <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 ${
-                                      isSelected && !isExamSubmitted 
-                                        ? 'bg-blue-600 text-white shadow-sm' 
-                                        : 'bg-slate-100 text-slate-700 border border-slate-300'
-                                    }`}>
-                                      {opt.letter}
-                                    </span>
-                                    <ChemistryText html={opt.text} className="text-base sm:text-lg font-semibold leading-relaxed flex-1" />
-                                  </div>
-
-                                  {opt.image && (
-                                    <div 
-                                      onClick={(e) => { e.stopPropagation(); setPreviewImage(opt.image!); }}
-                                      className="ml-10 bg-white rounded-xl p-2 border border-slate-300 inline-block cursor-zoom-in hover:border-blue-500 max-w-xs transition-colors"
-                                      title="Nhấn để phóng to hình đáp án"
-                                    >
-                                      <img src={opt.image} alt={opt.letter} className="max-h-28 object-contain rounded" />
-                                    </div>
-                                  )}
-                                </button>
-                              );
-                            })}
-                          </div>
-
-                          {isExamSubmitted && (q.solution || q.explanation) && (
-                            <div className="mt-5 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-sm sm:text-base text-slate-900 leading-relaxed shadow-sm">
-                              <div className="font-bold text-amber-800 flex items-center gap-1.5 mb-2">
-                                <Sparkles className="w-5 h-5 text-amber-600" /> Lời giải chi tiết:
-                              </div>
-                              <ChemistryText html={q.solution || q.explanation} />
-                              <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* PHẦN II */}
-            <div>
-              <div className="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 sm:p-5 mb-5">
-                <h3 className="text-base sm:text-lg font-black text-indigo-900 uppercase tracking-wide">
-                  PHẦN II. Câu trắc nghiệm Đúng / Sai (Câu 19 đến Câu 22 - Gồm 4 ý a, b, c, d)
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
-                  Thí sinh chọn Đúng hoặc Sai cho mỗi ý. Điểm: Đúng 1 ý = 0.1đ · Đúng 2 ý = 0.25đ · Đúng 3 ý = 0.5đ · Đúng cả 4 ý = 1.0đ.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {currentExam.questions.filter(q => q.part === 2).map((q) => {
-                  const qKey = q.id || q.number;
-                  const currentSubAns = examAnswers[qKey] || {};
-                  const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
-
-                  return (
-                    <div 
-                      id={`exam-q-${qKey}`}
-                      key={qKey} 
-                      className="p-6 sm:p-8 rounded-3xl border-2 border-slate-200 bg-white shadow-sm"
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-indigo-600 text-white text-sm font-black flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                          {q.displayNumber || (q.number - 18)}
-                        </span>
-                        <div className="flex-1">
-                          <div className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
-                            <ChemistryText html={q.text} />
-                          </div>
-
-                          <QuestionImages images={qImgs} onPreview={setPreviewImage} />
-
-                          <div className="mt-5 space-y-3.5">
-                            {q.options?.map(opt => {
-                              const subKey = opt.letter;
-                              const choice = currentSubAns[subKey] !== undefined ? currentSubAns[subKey] : (currentSubAns[subKey.toLowerCase()] !== undefined ? currentSubAns[subKey.toLowerCase()] : currentSubAns[subKey.toUpperCase()]);
-                              const isCorrectAnswer = opt.isCorrect;
-
-                              return (
-                                <div 
-                                  key={opt.letter} 
-                                  className={`p-4 sm:p-5 rounded-2xl border-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
-                                    isExamSubmitted 
-                                      ? (choice === isCorrectAnswer ? 'bg-emerald-50/70 border-emerald-300' : 'bg-rose-50/70 border-rose-300')
-                                      : 'bg-slate-50 border-slate-200'
-                                  }`}
-                                >
-                                  <div className="flex flex-col gap-2 flex-1">
-                                    <div className="flex items-start gap-3 text-base sm:text-lg text-slate-900">
-                                      <span className="font-black text-indigo-700 uppercase">{opt.letter})</span>
-                                      <ChemistryText html={opt.text} className="flex-1 font-semibold leading-relaxed" />
-                                    </div>
-                                    {opt.image && (
-                                      <div 
-                                        onClick={() => setPreviewImage(opt.image!)}
-                                        className="ml-8 bg-white rounded-xl p-2 border border-slate-300 inline-block cursor-zoom-in hover:border-indigo-400 max-w-xs"
-                                        title="Nhấn để phóng to hình ảnh"
-                                      >
-                                        <img src={opt.image} alt={opt.letter} className="max-h-28 object-contain rounded" />
-                                      </div>
-                                    )}
-                                  </div>
-
-                                  <div className="flex items-center gap-3 shrink-0">
-                                    <button
-                                      type="button"
-                                      disabled={isExamSubmitted}
-                                      onClick={() => handleSelectP2(qKey, opt.letter, true)}
-                                      className={`px-5 py-2.5 rounded-xl text-sm font-black transition-all border-2 ${
-                                        choice === true 
-                                          ? 'bg-emerald-600 text-white border-emerald-700 shadow-md' 
-                                          : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
-                                      }`}
-                                    >
-                                      Đúng
-                                    </button>
-                                    <button
-                                      type="button"
-                                      disabled={isExamSubmitted}
-                                      onClick={() => handleSelectP2(qKey, opt.letter, false)}
-                                      className={`px-5 py-2.5 rounded-xl text-sm font-black transition-all border-2 ${
-                                        choice === false 
-                                          ? 'bg-rose-600 text-white border-rose-700 shadow-md' 
-                                          : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
-                                      }`}
-                                    >
-                                      Sai
-                                    </button>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-
-                          {isExamSubmitted && (q.solution || q.explanation) && (
-                            <div className="mt-5 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-sm sm:text-base text-slate-900 leading-relaxed">
-                              <div className="font-bold text-amber-800 flex items-center gap-1.5 mb-2">
-                                <Sparkles className="w-5 h-5 text-amber-600" /> Lời giải chi tiết từng ý:
-                              </div>
-                              <ChemistryText html={q.solution || q.explanation} />
-                              <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* PHẦN III */}
-            <div>
-              <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 sm:p-5 mb-5">
-                <h3 className="text-base sm:text-lg font-black text-amber-900 uppercase tracking-wide">
-                  PHẦN III. Câu trắc nghiệm yêu cầu trả lời ngắn (Câu 23 đến Câu 28)
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
-                  Thí sinh tự tính toán và nhập đáp số vào ô trống. Mỗi câu trả lời đúng được 0,25 điểm.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {currentExam.questions.filter(q => q.part === 3).map((q) => {
-                  const qKey = q.id || q.number;
-                  const userVal = examAnswers[qKey] || '';
-                  const resDetail = examResult?.detail?.[qKey];
-                  const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
-
-                  return (
-                    <div 
-                      id={`exam-q-${qKey}`}
-                      key={qKey} 
-                      className={`p-6 sm:p-8 rounded-3xl border-2 transition-all bg-white shadow-sm ${
-                        isExamSubmitted
-                          ? resDetail?.isCorrect 
-                            ? 'border-emerald-400 bg-emerald-50/30' 
-                            : 'border-rose-300 bg-rose-50/30'
-                          : 'border-slate-200 hover:border-amber-400'
-                      }`}
-                    >
-                      <div className="flex items-start gap-4">
-                        <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-amber-500 text-white text-sm font-black flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                          {q.displayNumber || (q.number - 22)}
-                        </span>
-                        <div className="flex-1">
-                          <div className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
-                            <ChemistryText html={q.text} />
-                          </div>
-
-                          <QuestionImages images={qImgs} onPreview={setPreviewImage} />
-
-                          <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-4">
-                            <label className="text-sm font-bold text-slate-700">
-                              Đáp số của em:
-                            </label>
-                            <input
-                              type="text"
-                              disabled={isExamSubmitted}
-                              value={userVal}
-                              onChange={(e) => handleInputP3(qKey, e.target.value)}
-                              placeholder="Nhập số kết quả (VD: 4 hoặc 82,3)..."
-                              className="w-full sm:w-80 bg-white border-2 border-slate-300 rounded-xl px-5 py-3 text-slate-900 font-mono font-bold text-base focus:outline-none focus:border-amber-500 shadow-inner"
-                            />
-                            {isExamSubmitted && (
-                              <div className="text-sm text-slate-700 flex items-center gap-2">
-                                <span>Đáp án chuẩn: <strong className="text-emerald-700 font-mono text-base bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-300">{q.correctAnswer}</strong></span>
-                              </div>
-                            )}
-                          </div>
-
-                          {isExamSubmitted && (q.solution || q.explanation) && (
-                            <div className="mt-5 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-sm sm:text-base text-slate-900 leading-relaxed">
-                              <div className="font-bold text-amber-800 flex items-center gap-1.5 mb-2">
-                                <Sparkles className="w-5 h-5 text-amber-600" /> Hướng dẫn giải chi tiết:
-                              </div>
-                              <ChemistryText html={q.solution || q.explanation} />
-                              <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          {/* RENDER CÂU HỎI THI */}
+          {renderQuestionsList(currentExam.questions, examAnswers, isExamSubmitted, examResult, true)}
 
           <div className="mt-10 pt-6 border-t-2 border-slate-300 flex items-center justify-between">
             <button
@@ -844,10 +874,10 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   };
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // 🌟 NỘI DUNG PHÒNG RÈN LUYỆN CHUYÊN ĐỀ (TOPIC PRACTICE) - FULL CHIỀU NGANG
+  // 🌟 NỘI DUNG PHÒNG RÈN LUYỆN TỰ LUYỆN (BÀI 1 & BÀI 2)
   // ─────────────────────────────────────────────────────────────────────────────
-  const renderTopicPracticeRoom = () => {
-    if (!activeTopic || !activeLevel) return null;
+  const renderPracticeRoom = () => {
+    if (!activePracticeSession) return null;
 
     return (
       <div className={`w-full bg-slate-100 text-slate-900 ${
@@ -859,12 +889,14 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-6 border-2 border-slate-300 shadow-md flex flex-col xl:flex-row xl:items-center justify-between gap-4">
             <div>
               <span className="text-xs sm:text-sm font-black text-blue-800 bg-blue-100 px-3.5 py-1 rounded-full border border-blue-200">
-                {currentLesson.shortTitle} · {activeTopic.title} · CẤP ĐỘ {activeLevel.level}
+                LUYỆN TẬP CHUẨN CẤU TRÚC BỘ GD&ĐT 2025
               </span>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 mt-2">
-                {activeLevel.title}
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 mt-1.5">
+                {activePracticeSession.title}
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">Mục tiêu chuẩn: {activeLevel.target} (Đạt từ 7.0 điểm trở lên để mở cấp độ tiếp theo)</p>
+              <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+                Gồm {activePracticeSession.questions.length} câu hỏi tự luyện có chấm điểm và lời giải chi tiết.
+              </p>
             </div>
 
             <div className="flex items-center gap-3">
@@ -879,119 +911,36 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               </button>
 
               <button
-                onClick={() => { setActiveTopic(null); setActiveLevel(null); }}
+                onClick={() => setActivePracticeSession(null)}
                 className="bg-white hover:bg-slate-100 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm border-2 border-slate-300 shadow-sm"
               >
-                Quay Về Danh Sách Chuyên Đề
+                Quay Về Bài Học
               </button>
             </div>
           </div>
 
-          {isTopicSubmitted && (
+          {isPracticeSubmitted && practiceResult && (
             <div className="p-6 sm:p-8 rounded-3xl bg-blue-50 border-2 border-blue-300 shadow-md">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                   <div className="text-xs sm:text-sm text-blue-800 font-black uppercase">Điểm Rèn Luyện Của Em</div>
-                  <div className="text-4xl sm:text-5xl font-black text-slate-900 mt-1">{topicScore} / 10 Điểm</div>
+                  <div className="text-4xl sm:text-5xl font-black text-slate-900 mt-1">{practiceResult.score10} / 10 Điểm</div>
                 </div>
-                {topicScore >= 7.0 && (
+                {practiceResult.score10 >= 7.0 && (
                   <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm sm:text-base bg-emerald-100 px-5 py-2.5 rounded-2xl border border-emerald-300">
-                    <CheckCircle2 className="w-6 h-6 text-emerald-600" /> Đã mở khóa Mức độ tiếp theo!
+                    <CheckCircle2 className="w-6 h-6 text-emerald-600" /> Xuất sắc! Nắm vững kiến thức trọng tâm!
                   </div>
                 )}
               </div>
             </div>
           )}
 
-          <div className="space-y-6">
-            {activeLevel.questions.map((q: any, idx: number) => {
-              const selectedOpt = topicAnswers[idx];
-              const isCorrectOpt = q.options?.find((o: any) => o.isCorrect)?.letter || q.correctAnswer;
-              const isUserCorrect = isTopicSubmitted && selectedOpt === isCorrectOpt;
-              const qImgs = (q.images && q.images.length > 0) ? q.images : (q.image ? [q.image] : []);
+          {renderQuestionsList(activePracticeSession.questions, practiceAnswers, isPracticeSubmitted, practiceResult, false)}
 
-              const isShortOptions = q.options?.every(o => (o.text || '').replace(/<[^>]+>/g, '').length < 35);
-              const gridClass = isShortOptions 
-                ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4' 
-                : 'grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4';
-
-              return (
-                <div 
-                  key={idx}
-                  className={`p-6 sm:p-8 rounded-3xl border-2 transition-all bg-white shadow-sm ${
-                    isTopicSubmitted 
-                      ? (isUserCorrect ? 'bg-emerald-50/40 border-emerald-400' : 'bg-rose-50/40 border-rose-300')
-                      : 'border-slate-200 hover:border-blue-400'
-                  }`}
-                >
-                  <div className="text-lg sm:text-xl font-bold text-slate-900 leading-relaxed">
-                    <span className="text-blue-600 font-black mr-2">Câu {idx + 1}.</span>
-                    <ChemistryText html={q.text} />
-                  </div>
-
-                  <QuestionImages images={qImgs} onPreview={setPreviewImage} />
-
-                  <div className={gridClass}>
-                    {q.options?.map((opt: any) => {
-                      const isSelected = selectedOpt === opt.letter;
-                      let btnStyle = 'bg-white text-slate-800 border-2 border-slate-200 hover:border-blue-400 hover:bg-blue-50/40';
-                      if (isTopicSubmitted) {
-                        if (opt.letter === isCorrectOpt) btnStyle = 'bg-emerald-50 text-emerald-950 border-2 border-emerald-500 font-bold';
-                        else if (isSelected && opt.letter !== isCorrectOpt) btnStyle = 'bg-rose-50 text-rose-900 border-2 border-rose-400 line-through';
-                      } else if (isSelected) {
-                        btnStyle = 'bg-blue-50 text-blue-950 border-2 border-blue-600 font-bold shadow-md';
-                      }
-
-                      return (
-                        <button
-                          key={opt.letter}
-                          type="button"
-                          disabled={isTopicSubmitted}
-                          onClick={() => {
-                            sfx.click();
-                            setTopicAnswers(prev => ({ ...prev, [idx]: opt.letter }));
-                          }}
-                          className={`p-4 sm:p-5 rounded-2xl border text-left flex flex-col gap-2 transition-all ${btnStyle}`}
-                        >
-                          <div className="flex items-start gap-3 w-full">
-                            <span className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl flex items-center justify-center font-black text-xs sm:text-sm shrink-0 ${
-                              isSelected && !isTopicSubmitted 
-                                ? 'bg-blue-600 text-white shadow-sm' 
-                                : 'bg-slate-100 text-slate-700 border border-slate-300'
-                            }`}>
-                              {opt.letter}
-                            </span>
-                            <ChemistryText html={opt.text} className="flex-1 font-semibold text-base sm:text-lg leading-relaxed" />
-                          </div>
-                          {opt.image && (
-                            <div 
-                              onClick={(e) => { e.stopPropagation(); setPreviewImage(opt.image); }}
-                              className="ml-10 bg-white rounded-xl p-2 border border-slate-300 inline-block cursor-zoom-in hover:border-blue-500 max-w-xs"
-                            >
-                              <img src={opt.image} alt={opt.letter} className="max-h-28 object-contain rounded" />
-                            </div>
-                          )}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {isTopicSubmitted && (q.explanation || q.solution) && (
-                    <div className="mt-5 p-5 rounded-2xl bg-amber-50 border border-amber-200 text-sm sm:text-base text-slate-900 leading-relaxed">
-                      <span className="font-bold text-amber-800 mr-2">💡 Lời giải:</span>
-                      <ChemistryText html={q.explanation || q.solution} />
-                      <QuestionImages images={q.explanationImages} onPreview={setPreviewImage} />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {!isTopicSubmitted && (
+          {!isPracticeSubmitted && (
             <div className="mt-10 text-right">
               <button
-                onClick={submitTopicPractice}
+                onClick={submitPractice}
                 className="bg-blue-600 hover:bg-blue-700 text-white font-black px-10 py-3.5 rounded-2xl shadow-lg text-base"
               >
                 Nộp Bài Rèn Luyện
@@ -1017,8 +966,8 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   }
 
   // NẾU ĐANG TRONG PHÒNG RÈN LUYỆN: RENDER BẰNG CREATEPORTAL VÀO BODY NẾU FULLSCREEN
-  if (activeTopic && activeLevel) {
-    const practiceElement = renderTopicPracticeRoom();
+  if (activePracticeSession) {
+    const practiceElement = renderPracticeRoom();
     return (
       <>
         {isFullscreen && typeof document !== 'undefined'
@@ -1030,7 +979,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   }
 
   // ─────────────────────────────────────────────────────────────────────────────
-  // GIAO DIỆN CHÍNH (DANH SÁCH BÀI HỌC, CHUYÊN ĐỀ, ĐỀ THI)
+  // GIAO DIỆN CHÍNH (CHỌN BÀI HỌC, DẠNG TOÁN, BÀI TẬP 3 PHẦN, 7 ĐỀ THI)
   // ─────────────────────────────────────────────────────────────────────────────
   return (
     <div className="w-full bg-slate-50 text-slate-900 rounded-3xl p-4 sm:p-7 border-2 border-slate-200 shadow-xl">
@@ -1079,11 +1028,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             ESTER – LIPID & CHẤT GIẶT RỬA
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-            Học tập theo lộ trình 3 Bài học riêng biệt · Rèn luyện bậc thang vượt ải · Bộ 7 Đề kiểm tra chuẩn Bộ 2025
+            Giáo trình toàn diện: Lý thuyết chuẩn SGK · Phương pháp giải các dạng toán · Bài tập tự luyện 3 phần · Bộ 7 Đề kiểm tra chuẩn Bộ 2025
           </p>
         </div>
 
-        {/* Thanh Gamification: Chuỗi Lửa, XP, Rank */}
+        {/* Gamification Bar */}
         <div className="flex items-center gap-3 bg-white p-2.5 sm:p-3 rounded-2xl border-2 border-slate-200 shadow-sm flex-wrap">
           <div className="flex items-center gap-2 px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-xl">
             <Flame className="w-5 h-5 text-amber-500 animate-bounce" />
@@ -1115,7 +1064,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
         </div>
       </div>
 
-      {/* THANH ĐIỀU HƯỚNG 3 BÀI HỌC RIÊNG BIỆT (3 DISTINCT LESSONS) */}
+      {/* THANH ĐIỀU HƯỚNG 3 BÀI HỌC RIÊNG BIỆT */}
       <div className="mt-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mb-6">
           {HOA12_CHUONG1_LESSONS.map((les) => {
@@ -1190,7 +1139,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                 </>
               ) : (
                 <>
-                  <Award className="w-4 h-4" /> CÁC CHUYÊN ĐỀ RÈN LUYỆN VƯỢT ẢI
+                  <Award className="w-4 h-4" /> BÀI TẬP TỰ LUYỆN 3 PHẦN
                 </>
               )}
             </button>
@@ -1204,7 +1153,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               }`}
             >
               <BookOpen className="w-4 h-4" /> 
-              {selectedLessonId === 'bai3' ? 'TỔNG KẾT CỐT LÕI CHƯƠNG 1' : `LÝ THUYẾT TRỌNG TÂM ${currentLesson.shortTitle.toUpperCase()}`}
+              {selectedLessonId === 'bai3' ? 'SỔ TAY TỔNG KẾT CỐT LÕI CHƯƠNG 1' : 'LÝ THUYẾT & CÁC DẠNG TOÁN'}
             </button>
           </div>
 
@@ -1213,7 +1162,9 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           </div>
         </div>
 
-        {/* NỘI DUNG 1: LUYỆN TẬP (PRACTICE / EXAMS) */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {/* TAB 1: LUYỆN TẬP / THI THỬ (PRACTICE) */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
         {lessonSubTab === 'practice' && (
           <div>
             {/* Nếu là Bài 3: Hiển thị 7 Đề kiểm tra định kỳ */}
@@ -1270,95 +1221,230 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                 })}
               </div>
             ) : (
-              /* Nếu là Bài 1 hoặc Bài 2: Hiển thị các Chuyên đề rèn luyện */
+              /* Nếu là Bài 1 hoặc Bài 2: Hiển thị bộ luyện tập tự luyện chuẩn cấu trúc 3 phần */
               <div className="space-y-6">
-                {currentLesson.topics?.map((topic) => {
-                  const highestUnlocked = progress.unlockedLevels[topic.id] || 1;
-
-                  return (
-                    <div key={topic.id} className="bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-sm">
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-2xl bg-blue-50 border-2 border-blue-200 flex items-center justify-center text-2xl shrink-0">
-                          {topic.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="text-base font-black text-slate-900">{topic.title}</h4>
-                          <p className="text-xs text-slate-600 mt-0.5 font-medium">{topic.description}</p>
-
-                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-4">
-                            {topic.levels.map((lvl) => {
-                              const isUnlocked = lvl.level <= highestUnlocked;
-
-                              return (
-                                <div
-                                  key={lvl.level}
-                                  className={`p-4 rounded-2xl border-2 transition-all flex flex-col justify-between ${
-                                    isUnlocked 
-                                      ? 'bg-slate-50 border-slate-200 hover:border-blue-500 hover:bg-white shadow-sm' 
-                                      : 'bg-slate-100 border-slate-200 opacity-60'
-                                  }`}
-                                >
-                                  <div>
-                                    <div className="flex items-center justify-between text-xs mb-1">
-                                      <span className="font-bold text-slate-600">Cấp độ {lvl.level}</span>
-                                      {isUnlocked ? (
-                                        <span className="text-emerald-700 font-bold flex items-center gap-1 text-[11px] bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                                          <Unlock className="w-3 h-3" /> Đã mở
-                                        </span>
-                                      ) : (
-                                        <span className="text-slate-500 font-bold flex items-center gap-1 text-[11px] bg-slate-200 px-2 py-0.5 rounded-full">
-                                          <Lock className="w-3 h-3" /> Khóa
-                                        </span>
-                                      )}
-                                    </div>
-                                    <div className="font-black text-sm text-slate-900">{lvl.title}</div>
-                                    <div className="text-[11px] text-blue-700 font-bold mt-1">Mục tiêu: {lvl.target}</div>
-                                  </div>
-
-                                  <button
-                                    onClick={() => startTopicLevel(topic, lvl)}
-                                    disabled={!isUnlocked}
-                                    className={`mt-4 w-full py-2.5 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 ${
-                                      isUnlocked 
-                                        ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-md' 
-                                        : 'bg-slate-200 text-slate-400 cursor-not-allowed'
-                                    }`}
-                                  >
-                                    {isUnlocked ? <Play className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
-                                    {isUnlocked ? 'Luyện Tập Ngay' : 'Cần Mở Khóa'}
-                                  </button>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </div>
+                <div className="bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                    <div>
+                      <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                        <Award className="w-5 h-5 text-blue-600" /> Ngân Hàng Câu Hỏi Tự Luyện Chuẩn Cấu Trúc 2025
+                      </h3>
+                      <p className="text-xs text-slate-600 mt-0.5 font-medium">
+                        Em hãy chọn luyện tập theo từng phần cụ thể hoặc làm đề tổng hợp 3 phần:
+                      </p>
                     </div>
-                  );
-                })}
+
+                    <button
+                      onClick={() => startPractice(currentLesson, 'all')}
+                      className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black px-6 py-2.5 rounded-2xl text-xs sm:text-sm shadow-md flex items-center gap-2"
+                    >
+                      <Play className="w-4 h-4" /> Làm Đề Tổng Hợp 3 Phần (28 Câu)
+                    </button>
+                  </div>
+
+                  {/* 3 Khối Luyện Tập Riêng Biệt */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                    {/* PHẦN 1 */}
+                    <div className="bg-slate-50 hover:bg-white rounded-2xl p-5 border-2 border-slate-200 hover:border-blue-400 transition-all flex flex-col justify-between shadow-sm">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[11px] font-black text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-full">
+                            PHẦN I (0,25đ/câu)
+                          </span>
+                          <span className="text-xs font-bold text-slate-500">
+                            {currentLesson.practice?.part1.length || 0} câu
+                          </span>
+                        </div>
+                        <h4 className="text-base font-black text-slate-900">
+                          Trắc Nghiệm 4 Lựa Chọn
+                        </h4>
+                        <p className="text-xs text-slate-600 mt-1 font-medium leading-relaxed">
+                          Chọn 1 phương án đúng duy nhất (A, B, C hoặc D). Bao gồm cả câu hỏi lý thuyết và nhận biết hình ảnh phổ, đồ thị.
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={() => startPractice(currentLesson, 'part1')}
+                        className="mt-4 w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-xs shadow-sm flex items-center justify-center gap-1.5"
+                      >
+                        <Play className="w-3.5 h-3.5" /> Luyện Tập Phần I
+                      </button>
+                    </div>
+
+                    {/* PHẦN 2 */}
+                    <div className="bg-slate-50 hover:bg-white rounded-2xl p-5 border-2 border-slate-200 hover:border-indigo-400 transition-all flex flex-col justify-between shadow-sm">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[11px] font-black text-indigo-800 bg-indigo-100 px-2.5 py-0.5 rounded-full">
+                            PHẦN II (1,0đ/câu)
+                          </span>
+                          <span className="text-xs font-bold text-slate-500">
+                            {currentLesson.practice?.part2.length || 0} câu
+                          </span>
+                        </div>
+                        <h4 className="text-base font-black text-slate-900">
+                          Trắc Nghiệm Đúng / Sai
+                        </h4>
+                        <p className="text-xs text-slate-600 mt-1 font-medium leading-relaxed">
+                          Mỗi câu gồm 4 nhận định a, b, c, d. Điểm lũy tiến: 1 ý = 0.1đ, 2 ý = 0.25đ, 3 ý = 0.5đ, 4 ý = 1.0đ.
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={() => startPractice(currentLesson, 'part2')}
+                        className="mt-4 w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs shadow-sm flex items-center justify-center gap-1.5"
+                      >
+                        <Play className="w-3.5 h-3.5" /> Luyện Tập Phần II
+                      </button>
+                    </div>
+
+                    {/* PHẦN 3 */}
+                    <div className="bg-slate-50 hover:bg-white rounded-2xl p-5 border-2 border-slate-200 hover:border-amber-400 transition-all flex flex-col justify-between shadow-sm">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[11px] font-black text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">
+                            PHẦN III (0,25đ/câu)
+                          </span>
+                          <span className="text-xs font-bold text-slate-500">
+                            {currentLesson.practice?.part3.length || 0} câu
+                          </span>
+                        </div>
+                        <h4 className="text-base font-black text-slate-900">
+                          Trả Lời Ngắn (Điền Số)
+                        </h4>
+                        <p className="text-xs text-slate-600 mt-1 font-medium leading-relaxed">
+                          Tự tính toán số mol, khối lượng, nhiệt độ, hiệu suất và điền đáp số vào ô trống. Rèn luyện tư duy tự luận.
+                        </p>
+                      </div>
+
+                      <button
+                        onClick={() => startPractice(currentLesson, 'part3')}
+                        className="mt-4 w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-black text-xs shadow-sm flex items-center justify-center gap-1.5"
+                      >
+                        <Play className="w-3.5 h-3.5" /> Luyện Tập Phần III
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
         )}
 
-        {/* NỘI DUNG 2: LÝ THUYẾT TRỌNG TÂM TỪNG BÀI (THEORY) */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
+        {/* TAB 2: LÝ THUYẾT & CÁC DẠNG TOÁN (THEORY & MATH FORMS) */}
+        {/* ═════════════════════════════════════════════════════════════════════ */}
         {lessonSubTab === 'theory' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
-            {currentLesson.theory.sections.map((sec, sIdx) => (
-              <div key={sIdx} className="bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-sm">
-                <h4 className="text-base font-black text-blue-800 flex items-center gap-2 mb-3.5">
-                  <span className="text-xl">{sec.icon}</span> {sec.title}
-                </h4>
-                <ul className="space-y-2.5">
-                  {sec.content.map((item, iIdx) => (
-                    <li key={iIdx} className="text-xs sm:text-sm text-slate-800 flex items-start gap-2.5 leading-relaxed font-medium">
-                      <span className="w-2 h-2 rounded-full bg-blue-600 mt-2 shrink-0" />
-                      <ChemistryText html={item} className="flex-1" />
-                    </li>
-                  ))}
-                </ul>
+          <div className="space-y-6">
+            {/* Nếu là Bài 3: Hiển thị Sổ tay tổng kết toàn diện */}
+            {selectedLessonId === 'bai3' ? (
+              <div className="space-y-5">
+                {HOA12_CHUONG1_HANDBOOK.map((sec, sIdx) => (
+                  <div key={sIdx} className="bg-white rounded-3xl p-6 border-2 border-slate-200 shadow-sm">
+                    <h4 className="text-base font-black text-blue-900 flex items-center gap-2 mb-3.5">
+                      <span className="text-xl">{sec.icon}</span> {sec.title}
+                    </h4>
+                    <ul className="space-y-2.5">
+                      {sec.content.map((item, iIdx) => (
+                        <li key={iIdx} className="text-xs sm:text-sm text-slate-800 flex items-start gap-2.5 leading-relaxed font-medium">
+                          <span className="w-2 h-2 rounded-full bg-blue-600 mt-2 shrink-0" />
+                          <ChemistryText html={item} className="flex-1" />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
-            ))}
+            ) : (
+              /* Nếu là Bài 1 hoặc Bài 2: Hiển thị các Dạng toán tính toán kèm phương pháp & ví dụ */
+              <div className="space-y-6">
+                {/* KHỐI 1: CÁC DẠNG TOÁN TÍNH TOÁN TRỌNG TÂM */}
+                {currentLesson.mathForms && currentLesson.mathForms.length > 0 && (
+                  <div className="space-y-5">
+                    <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-3xl p-5">
+                      <h3 className="text-lg font-black text-blue-900 flex items-center gap-2">
+                        <Calculator className="w-5 h-5 text-blue-600" /> Các Dạng Bài Toán Trọng Tâm (Phương Pháp & Ví Dụ Mẫu)
+                      </h3>
+                      <p className="text-xs text-slate-600 mt-0.5 font-medium">
+                        Nắm vững phương pháp giải, công thức tính toán và các bài tập mẫu có lời giải chi tiết từng bước.
+                      </p>
+                    </div>
+
+                    {currentLesson.mathForms.map((mf, mfIdx) => {
+                      const isExpanded = expandedMathForm === mf.id || expandedMathForm === null; // default open first
+
+                      return (
+                        <div key={mf.id} className="bg-white rounded-3xl border-2 border-slate-200 shadow-sm overflow-hidden">
+                          <div 
+                            onClick={() => setExpandedMathForm(expandedMathForm === mf.id ? '' : mf.id)}
+                            className="p-5 sm:p-6 bg-slate-50 hover:bg-slate-100/80 cursor-pointer flex items-center justify-between border-b border-slate-200 transition-colors"
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">
+                                {mfIdx + 1}
+                              </span>
+                              <div>
+                                <h4 className="text-base sm:text-lg font-black text-slate-900">
+                                  {mf.title}
+                                </h4>
+                                <span className="text-xs font-semibold text-slate-500">
+                                  Gồm {mf.examples.length} ví dụ tự luận mẫu có lời giải chi tiết
+                                </span>
+                              </div>
+                            </div>
+
+                            <ChevronDown className={`w-5 h-5 text-slate-600 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                          </div>
+
+                          {isExpanded && (
+                            <div className="p-6 space-y-6 animate-in fade-in duration-150">
+                              {/* Phương pháp giải */}
+                              {mf.method && (
+                                <div className="p-5 rounded-2xl bg-blue-50/60 border border-blue-200">
+                                  <h5 className="text-sm font-black text-blue-900 uppercase tracking-wide mb-2 flex items-center gap-1.5">
+                                    <Sparkles className="w-4 h-4 text-blue-600" /> Phương pháp & Công thức giải nhanh:
+                                  </h5>
+                                  <div className="text-sm text-slate-800 leading-relaxed font-medium">
+                                    <ChemistryText html={mf.method} />
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* Danh sách bài tập mẫu */}
+                              <div className="space-y-5">
+                                <h5 className="text-sm font-black text-slate-900 uppercase tracking-wide">
+                                  Các ví dụ minh họa có giải chi tiết:
+                                </h5>
+
+                                {mf.examples.map((ex, eIdx) => (
+                                  <div key={eIdx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                    <div className="text-base font-bold text-slate-900">
+                                      <span className="text-blue-700 font-black mr-2">Ví dụ {ex.number || eIdx + 1}.</span>
+                                      <ChemistryText html={ex.text} />
+                                    </div>
+
+                                    <QuestionImages images={ex.images} onPreview={setPreviewImage} />
+
+                                    {ex.solution && (
+                                      <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-sm text-slate-900 leading-relaxed font-medium">
+                                        <div className="font-bold text-amber-800 mb-1 flex items-center gap-1">
+                                          💡 Hướng dẫn giải chi tiết:
+                                        </div>
+                                        <ChemistryText html={ex.solution} />
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
