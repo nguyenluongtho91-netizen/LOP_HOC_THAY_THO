@@ -998,7 +998,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       {currentSetQuestions.map((q, idx) => {
                         const qId = q.id;
                         const userAnswer = practiceAnswers[qId];
-                        const isRevealed = practiceRevealed[qId];
+                        const isRevealed = isCurrentSetSubmitted || !!practiceRevealed[qId];
                         const displayIndex = selectedSetIndex === -1 ? idx + 1 : selectedSetIndex * setSize + idx + 1;
 
                         return (
@@ -1007,39 +1007,31 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             id={`question-${qId}`}
                             className={`${cardTheme} rounded-3xl p-6 md:p-8 space-y-4`}
                           >
-                            {/* Card Header */}
-                            <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200/60">
-                              <div className="flex items-center gap-2.5">
-                                <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400">
-                                  Câu {q.number || displayIndex}
+                            {/* Question Stem inline with Câu X */}
+                            <div className="flex items-start justify-between gap-4">
+                              <div className={`${fontClasses.stem} ${fontClasses.lead} font-normal flex-1`}>
+                                <span className="font-extrabold text-indigo-600 dark:text-indigo-400 mr-2 inline">
+                                  Câu {q.number || displayIndex}:
                                 </span>
+                                <span className="inline" dangerouslySetInnerHTML={{ __html: q.text }} />
                                 {q.topicTitle && (
-                                  <span className="px-2.5 py-0.5 rounded-md text-xs font-semibold bg-slate-200/60 text-slate-700">
+                                  <span className="ml-2 inline-block px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200/70 text-slate-700 align-middle">
                                     {q.topicTitle}
                                   </span>
                                 )}
-                                {(isRevealed || isCurrentSetSubmitted) && renderLevelBadge(q.level, q.levelName)}
+                                {isCurrentSetSubmitted && (
+                                  <span className="ml-2 inline-block align-middle">
+                                    {renderLevelBadge(q.level, q.levelName)}
+                                  </span>
+                                )}
                               </div>
 
-                              <div className="flex items-center gap-2">
-                                <span className="text-xs font-bold text-slate-400">
+                              <div className="shrink-0 pt-0.5">
+                                <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200">
                                   {q.part === 1 ? '0,25 đ' : q.part === 2 ? '1,0 đ' : '0,25 đ'}
                                 </span>
-                                <button
-                                  onClick={() => handleToggleReveal(qId)}
-                                  className={`px-3 py-1 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${isRevealed ? 'bg-amber-100 text-amber-900 border border-amber-300' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
-                                >
-                                  <Eye className="w-3.5 h-3.5" />
-                                  {isRevealed ? 'Ẩn lời giải' : 'Xem đáp án'}
-                                </button>
                               </div>
                             </div>
-
-                            {/* Question Stem Text */}
-                            <div
-                              className={`${fontClasses.stem} ${fontClasses.lead} font-normal`}
-                              dangerouslySetInnerHTML={{ __html: q.text }}
-                            />
 
                             {/* Images if any */}
                             {q.images && q.images.length > 0 && (
@@ -1078,8 +1070,6 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                       key={opt.letter}
                                       onClick={() => {
                                         handleAnswerPractice(qId, opt.letter);
-                                        if (isCorrectChoice) sfx.playCorrect();
-                                        else sfx.playWrong();
                                       }}
                                       className={`w-full text-left p-4 rounded-2xl border transition-all flex items-start gap-3 ${btnStyle}`}
                                     >
@@ -1158,17 +1148,12 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                                   <input
                                     type="text"
+                                    disabled={isCurrentSetSubmitted}
                                     value={userAnswer || ''}
                                     onChange={(e) => handleAnswerPractice(qId, e.target.value)}
                                     placeholder="Nhập đáp số (ví dụ: 2 hoặc 107)..."
-                                    className="w-full max-w-xs px-4 py-3 rounded-2xl border-2 border-slate-300 text-base font-bold focus:outline-none focus:border-indigo-500 bg-white"
+                                    className="w-full max-w-xs px-4 py-3 rounded-2xl border-2 border-slate-300 text-base font-bold focus:outline-none focus:border-indigo-500 bg-white disabled:bg-slate-100"
                                   />
-                                  <button
-                                    onClick={() => handleToggleReveal(qId)}
-                                    className="px-4 py-3 rounded-2xl bg-indigo-100 hover:bg-indigo-200 text-indigo-900 font-bold text-xs transition-colors"
-                                  >
-                                    Kiểm tra đáp số
-                                  </button>
                                 </div>
 
                                 {isRevealed && (
@@ -1376,21 +1361,22 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                         id={`exam-q-${qId}`}
                         className={`${cardTheme} rounded-3xl p-6 md:p-8 space-y-4`}
                       >
-                        <div className="flex items-center justify-between pb-3 border-b border-slate-200/60">
-                          <div className="flex items-center gap-2.5">
-                            <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400">
-                              Câu {idx + 1}
+                        <div className="flex items-start justify-between gap-4">
+                          <div className={`${fontClasses.stem} ${fontClasses.lead} font-normal flex-1`}>
+                            <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400 mr-2 inline">
+                              Câu {idx + 1}:
                             </span>
-                            <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200/60 text-slate-700">
+                            <span className="inline" dangerouslySetInnerHTML={{ __html: q.text }} />
+                            <span className="ml-2 inline-block px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200/70 text-slate-700 align-middle">
                               Phần {q.part}
                             </span>
                           </div>
-                          <span className="text-xs font-bold text-slate-400">
-                            {q.part === 1 ? '0,25 đ' : q.part === 2 ? '1,0 đ' : '0,25 đ'}
-                          </span>
+                          <div className="shrink-0 pt-0.5">
+                            <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200">
+                              {q.part === 1 ? '0,25 đ' : q.part === 2 ? '1,0 đ' : '0,25 đ'}
+                            </span>
+                          </div>
                         </div>
-
-                        <div className={`${fontClasses.stem} ${fontClasses.lead}`} dangerouslySetInnerHTML={{ __html: q.text }} />
 
                         {q.images && q.images.length > 0 && (
                           <div className="flex flex-wrap gap-2 my-2">
