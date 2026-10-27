@@ -5,10 +5,11 @@ import {
   Clock, BookOpen, ChevronRight, Award, Zap, Play, RotateCcw,
   Check, ArrowRight, ShieldCheck, HelpCircle, Eye, AlertCircle,
   TrendingUp, Star, Filter, Share2, Volume2, VolumeX, Shuffle,
-  Maximize2, X
+  Layers, Compass, Atom, Beaker
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import {
+  HOA12_CHUONG1_LESSONS,
   HOA12_CHUONG1_7_EXAMS,
   HOA12_CHUONG1_TOPICS,
   HOA12_CHUONG1_HANDBOOK,
@@ -18,7 +19,8 @@ import {
   saveChuong1TopicLevelSuccess,
   getRankTitle,
   Chuong1Exam,
-  Chuong1Question
+  Chuong1Question,
+  Chuong1Lesson
 } from '../services/hoa12Chuong1Service';
 
 interface Hoa12Chuong1ViewProps {
@@ -139,24 +141,36 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   studentGrade = '12',
   onClose
 }) => {
-  const [activeTab, setActiveTab] = useState<'exams' | 'topics' | 'handbook'>('exams');
+  // Quản lý chọn Bài học: Bài 1, Bài 2 hoặc Bài 3
+  const [selectedLessonId, setSelectedLessonId] = useState<'bai1' | 'bai2' | 'bai3'>('bai1');
+  
+  // Tab con trong từng bài: 'practice' (Luyện tập / Vượt ải / Đề thi) | 'theory' (Lý thuyết trọng tâm)
+  const [lessonSubTab, setLessonSubTab] = useState<'practice' | 'theory'>('practice');
+
   const [progress, setProgress] = useState(getChuong1UserProgress());
   const [isMuted, setIsMuted] = useState(false);
 
+  // Trạng thái Phòng thi
   const [currentExam, setCurrentExam] = useState<Chuong1Exam | null>(null);
   const [examAnswers, setExamAnswers] = useState<Record<string | number, any>>({});
   const [timeLeft, setTimeLeft] = useState<number>(50 * 60);
   const [isExamSubmitted, setIsExamSubmitted] = useState<boolean>(false);
   const [examResult, setExamResult] = useState<any>(null);
 
+  // Trạng thái Phòng rèn luyện chuyên đề
   const [activeTopic, setActiveTopic] = useState<any>(null);
   const [activeLevel, setActiveLevel] = useState<any>(null);
   const [topicAnswers, setTopicAnswers] = useState<Record<number, string>>({});
   const [isTopicSubmitted, setIsTopicSubmitted] = useState<boolean>(false);
   const [topicScore, setTopicScore] = useState<number>(0);
 
-  // Modal xem ảnh phóng to chất lượng gốc
+  // Modal phóng to ảnh gốc
   const [previewImage, setPreviewImage] = useState<string | null>(null);
+
+  // Lấy dữ liệu bài học hiện tại
+  const currentLesson = useMemo(() => {
+    return HOA12_CHUONG1_LESSONS.find(l => l.id === selectedLessonId) || HOA12_CHUONG1_LESSONS[0];
+  }, [selectedLessonId]);
 
   // Đóng modal khi bấm ESC
   useEffect(() => {
@@ -292,7 +306,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
   return (
     <div className="w-full bg-slate-900 text-slate-100 rounded-3xl p-4 sm:p-7 border border-slate-800 shadow-2xl relative overflow-hidden">
-      {/* CSS tùy biến cho chỉ số Hóa học và ảnh */}
+      {/* CSS tùy biến cho chỉ số Hóa học và hiển thị đề thi */}
       <style>{`
         .chem-content sub {
           font-size: 0.72em !important;
@@ -328,14 +342,14 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               <Sparkles className="w-3.5 h-3.5" /> CTGDPT 2018 MỚI · THI 2025
             </span>
             <span className="bg-slate-800 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full border border-slate-700">
-              🧪 KHỐI 12 HOÁ HỌC
+              🧪 KHỐI 12 HOÁ HỌC · CHƯƠNG 1
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2">
-            CHƯƠNG 1: ESTER – LIPID & CHẤT GIẶT RỬA
+            ESTER – LIPID & CHẤT GIẶT RỬA
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
-            Trọn bộ 7 Đề kiểm tra chuẩn Bộ GD&ĐT 2025 · 5 Chuyên đề rèn luyện vượt ải · Sổ tay lý thuyết cốt lõi
+            Học tập theo lộ trình 3 Bài học riêng biệt · Rèn luyện bậc thang vượt ải · Bộ 7 Đề kiểm tra chuẩn Bộ 2025
           </p>
         </div>
 
@@ -371,13 +385,263 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
         </div>
       </div>
 
+      {/* THANH ĐIỀU HƯỚNG 3 BÀI HỌC RIÊNG BIỆT (3 DISTINCT LESSONS) */}
+      {!currentExam && !activeTopic && (
+        <div className="relative z-10 mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 mb-6">
+            {HOA12_CHUONG1_LESSONS.map((les) => {
+              const isSelected = selectedLessonId === les.id;
+              
+              return (
+                <button
+                  key={les.id}
+                  onClick={() => {
+                    setSelectedLessonId(les.id);
+                    setLessonSubTab('practice');
+                    sfx.click();
+                  }}
+                  className={`p-4 rounded-3xl border text-left transition-all relative overflow-hidden group flex flex-col justify-between ${
+                    isSelected
+                      ? 'bg-gradient-to-br from-slate-800 to-slate-850 border-cyan-400/80 shadow-xl shadow-cyan-500/10 ring-2 ring-cyan-400/20'
+                      : 'bg-slate-800/60 border-slate-700/60 hover:bg-slate-800 hover:border-slate-600 opacity-80 hover:opacity-100'
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-3 w-full mb-2">
+                    <span className="w-10 h-10 rounded-2xl bg-slate-700/60 flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform">
+                      {les.icon}
+                    </span>
+                    <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                      isSelected
+                        ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-black'
+                        : 'bg-slate-700/50 text-slate-400 border-slate-600'
+                    }`}>
+                      {les.badge}
+                    </span>
+                  </div>
+
+                  <div>
+                    <div className="text-[11px] font-black uppercase tracking-wider text-slate-400">
+                      BÀI HỌC SỐ {les.lessonNumber}
+                    </div>
+                    <h3 className={`text-base font-black transition-colors ${
+                      isSelected ? 'text-white' : 'text-slate-300 group-hover:text-white'
+                    }`}>
+                      {les.shortTitle}
+                    </h3>
+                    <p className="text-[11px] text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                      {les.description}
+                    </p>
+                  </div>
+
+                  <div className={`mt-3 pt-2.5 border-t w-full flex items-center justify-between text-xs font-bold ${
+                    isSelected ? 'border-cyan-500/30 text-cyan-300' : 'border-slate-700/60 text-slate-400'
+                  }`}>
+                    <span>{isSelected ? 'Đang mở bài học này' : 'Bấm để mở bài học'}</span>
+                    <ChevronRight className={`w-4 h-4 transition-transform ${isSelected ? 'translate-x-1 text-cyan-400' : ''}`} />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* THANH CHUYỂN ĐỔI CHẾ ĐỘ TRONG BÀI (SUB-TABS) */}
+          <div className="flex items-center justify-between gap-3 pb-4 mb-6 border-b border-slate-800 flex-wrap">
+            <div className="flex items-center gap-2 p-1.5 bg-slate-950/80 rounded-2xl border border-slate-800">
+              <button
+                onClick={() => { setLessonSubTab('practice'); sfx.click(); }}
+                className={`px-5 py-2.5 rounded-xl font-black text-xs transition-all flex items-center gap-2 ${
+                  lessonSubTab === 'practice'
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                {selectedLessonId === 'bai3' ? (
+                  <>
+                    <Trophy className="w-4 h-4" /> BỘ 7 ĐỀ KIỂM TRA ĐỊNH KỲ (50P)
+                  </>
+                ) : (
+                  <>
+                    <Award className="w-4 h-4" /> CÁC CHUYÊN ĐỀ RÈN LUYỆN VƯỢT ẢI
+                  </>
+                )}
+              </button>
+
+              <button
+                onClick={() => { setLessonSubTab('theory'); sfx.click(); }}
+                className={`px-5 py-2.5 rounded-xl font-black text-xs transition-all flex items-center gap-2 ${
+                  lessonSubTab === 'theory'
+                    ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-md'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <BookOpen className="w-4 h-4" /> 
+                {selectedLessonId === 'bai3' ? 'TỔNG KẾT CỐT LÕI CHƯƠNG 1' : `LÝ THUYẾT TRỌNG TÂM ${currentLesson.shortTitle.toUpperCase()}`}
+              </button>
+            </div>
+
+            <div className="text-xs text-slate-400 font-medium">
+              Đang xem: <strong className="text-white">{currentLesson.title}</strong>
+            </div>
+          </div>
+
+          {/* NỘI DUNG 1: LUYỆN TẬP (PRACTICE / EXAMS) */}
+          {lessonSubTab === 'practice' && (
+            <div>
+              {/* Nếu là Bài 3: Hiển thị 7 Đề kiểm tra định kỳ */}
+              {selectedLessonId === 'bai3' ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {HOA12_CHUONG1_7_EXAMS.map((exam) => {
+                    const prevResult = progress.examScores[exam.id];
+                    const hasScore = prevResult && prevResult.score !== undefined;
+
+                    return (
+                      <div
+                        key={exam.id}
+                        className="bg-slate-800/80 hover:bg-slate-800 rounded-3xl p-6 border border-slate-700/80 hover:border-amber-500/50 transition-all flex flex-col justify-between group shadow-lg"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="text-xs font-black text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                              MÃ ĐỀ: {exam.code}
+                            </span>
+                            {hasScore ? (
+                              <span className="text-xs font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1">
+                                <CheckCircle2 className="w-3.5 h-3.5" /> Điểm cao nhất: {prevResult.score}/10
+                              </span>
+                            ) : (
+                              <span className="text-xs font-bold text-slate-400 bg-slate-700/50 px-2.5 py-0.5 rounded-full">
+                                Chưa làm bài
+                              </span>
+                            )}
+                          </div>
+
+                          <h4 className="text-base font-black text-white group-hover:text-amber-300 transition-colors">
+                            {exam.title}
+                          </h4>
+                          <p className="text-xs text-slate-400 mt-2 flex items-center gap-4">
+                            <span>⏱️ 50 Phút</span>
+                            <span>📝 28 Câu (18 P1 + 4 P2 + 6 P3)</span>
+                            <span>🎯 Thang điểm 10</span>
+                          </p>
+                        </div>
+
+                        <div className="mt-5 pt-4 border-t border-slate-700/60 flex items-center justify-between">
+                          <span className="text-xs text-slate-400">
+                            {hasScore ? `Đã làm ${prevResult.attempts} lần` : 'Chuẩn cấu trúc Bộ 2025'}
+                          </span>
+                          <button
+                            onClick={() => startExam(exam)}
+                            className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-black px-5 py-2 rounded-xl text-xs shadow-md shadow-amber-600/30 transition-all flex items-center gap-1.5"
+                          >
+                            <Play className="w-4 h-4" /> {hasScore ? 'Làm Lại Đề' : 'Vào Thi Ngay'}
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                /* Nếu là Bài 1 hoặc Bài 2: Hiển thị các Chuyên đề rèn luyện */
+                <div className="space-y-6">
+                  {currentLesson.topics?.map((topic) => {
+                    const highestUnlocked = progress.unlockedLevels[topic.id] || 1;
+
+                    return (
+                      <div key={topic.id} className="bg-slate-800/80 rounded-3xl p-6 border border-slate-700/80">
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-2xl shrink-0">
+                            {topic.icon}
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="text-base font-black text-white">{topic.title}</h4>
+                            <p className="text-xs text-slate-400 mt-0.5">{topic.description}</p>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
+                              {topic.levels.map((lvl) => {
+                                const isUnlocked = lvl.level <= highestUnlocked;
+
+                                return (
+                                  <div
+                                    key={lvl.level}
+                                    className={`p-4 rounded-2xl border transition-all flex flex-col justify-between ${
+                                      isUnlocked 
+                                        ? 'bg-slate-900 border-slate-700 hover:border-indigo-500' 
+                                        : 'bg-slate-950/60 border-slate-800/80 opacity-60'
+                                    }`}
+                                  >
+                                    <div>
+                                      <div className="flex items-center justify-between text-xs mb-1">
+                                        <span className="font-bold text-slate-400">Cấp độ {lvl.level}</span>
+                                        {isUnlocked ? (
+                                          <span className="text-emerald-400 font-bold flex items-center gap-1 text-[11px]">
+                                            <Unlock className="w-3 h-3" /> Đã mở
+                                          </span>
+                                        ) : (
+                                          <span className="text-rose-400 font-bold flex items-center gap-1 text-[11px]">
+                                            <Lock className="w-3 h-3" /> Khóa
+                                          </span>
+                                        )}
+                                      </div>
+                                      <div className="font-black text-sm text-white">{lvl.title}</div>
+                                      <div className="text-[11px] text-cyan-400 font-bold mt-1">Mục tiêu: {lvl.target}</div>
+                                    </div>
+
+                                    <button
+                                      onClick={() => startTopicLevel(topic, lvl)}
+                                      disabled={!isUnlocked}
+                                      className={`mt-4 w-full py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 ${
+                                        isUnlocked 
+                                          ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30' 
+                                          : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                                      }`}
+                                    >
+                                      {isUnlocked ? <Play className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
+                                      {isUnlocked ? 'Luyện Tập Ngay' : 'Cần Mở Khóa'}
+                                    </button>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* NỘI DUNG 2: LÝ THUYẾT TRỌNG TÂM TỪNG BÀI (THEORY) */}
+          {lessonSubTab === 'theory' && (
+            <div className="space-y-6 animate-in fade-in duration-200">
+              {currentLesson.theory.sections.map((sec, sIdx) => (
+                <div key={sIdx} className="bg-slate-800/80 rounded-3xl p-6 border border-slate-700/80 shadow-lg">
+                  <h4 className="text-base font-black text-cyan-300 flex items-center gap-2 mb-3.5">
+                    <span className="text-xl">{sec.icon}</span> {sec.title}
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {sec.content.map((item, iIdx) => (
+                      <li key={iIdx} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0" />
+                        <ChemistryText html={item} className="flex-1" />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* PHÒNG THI 7 ĐỀ KIỂM TRA (EXAM ROOM) */}
       {currentExam && (
-        <div className="relative z-10 mt-6 bg-slate-950/80 rounded-3xl p-5 sm:p-8 border border-blue-500/30 shadow-2xl animate-in fade-in duration-300">
+        <div className="relative z-10 mt-6 bg-slate-950/80 rounded-3xl p-5 sm:p-8 border border-amber-500/30 shadow-2xl animate-in fade-in duration-300">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
             <div>
-              <span className="text-xs font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
-                MÃ ĐỀ: {currentExam.code} · THỜI GIAN: 50 PHÚT · THANG ĐIỂM 10
+              <span className="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                BÀI 3 · MÃ ĐỀ: {currentExam.code} · THỜI GIAN: 50 PHÚT · THANG ĐIỂM 10
               </span>
               <h3 className="text-lg sm:text-xl font-black text-white mt-2">
                 {currentExam.title}
@@ -406,7 +670,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   onClick={() => setCurrentExam(null)}
                   className="bg-slate-800 hover:bg-slate-700 text-white font-bold px-5 py-2.5 rounded-2xl border border-slate-700 transition-all flex items-center gap-2"
                 >
-                  <ArrowRight className="w-4 h-4" /> Quay Về Danh Sách Đề
+                  <ArrowRight className="w-4 h-4" /> Quay Về Bài 3
                 </button>
               )}
             </div>
@@ -436,7 +700,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                     onClick={() => setCurrentExam(null)}
                     className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2 rounded-xl text-xs"
                   >
-                    Hoàn Tất & Chọn Đề Khác
+                    Hoàn Tất & Xem Đề Khác
                   </button>
                 </div>
               </div>
@@ -749,7 +1013,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               onClick={() => setCurrentExam(null)}
               className="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-5 py-2.5 rounded-xl font-bold text-xs"
             >
-              ← Thoát Về Danh Sách Đề
+              ← Thoát Về Bài 3
             </button>
             {!isExamSubmitted && (
               <button
@@ -769,7 +1033,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
             <div>
               <span className="text-xs font-bold text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">
-                {activeTopic.title} · CẤP ĐỘ {activeLevel.level}
+                {currentLesson.shortTitle} · {activeTopic.title} · CẤP ĐỘ {activeLevel.level}
               </span>
               <h3 className="text-lg sm:text-xl font-black text-white mt-2">
                 {activeLevel.title}
@@ -885,190 +1149,6 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               >
                 Nộp Bài Rèn Luyện
               </button>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* 3 TABS CHỌN ĐỀ / CHUYÊN ĐỀ / SỔ TAY */}
-      {!currentExam && !activeTopic && (
-        <div className="relative z-10 mt-6">
-          <div className="flex items-center gap-2 p-1.5 bg-slate-950/80 rounded-2xl border border-slate-800 mb-6 max-w-xl">
-            <button
-              onClick={() => { setActiveTab('exams'); sfx.click(); }}
-              className={`flex-1 py-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-2 ${
-                activeTab === 'exams'
-                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <Trophy className="w-4 h-4" /> 7 ĐỀ KIỂM TRA (50P)
-            </button>
-            <button
-              onClick={() => { setActiveTab('topics'); sfx.click(); }}
-              className={`flex-1 py-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-2 ${
-                activeTab === 'topics'
-                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <Award className="w-4 h-4" /> 5 CHUYÊN ĐỀ VƯỢT ẢI
-            </button>
-            <button
-              onClick={() => { setActiveTab('handbook'); sfx.click(); }}
-              className={`flex-1 py-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-2 ${
-                activeTab === 'handbook'
-                  ? 'bg-gradient-to-r from-cyan-600 to-teal-600 text-white shadow-md'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              <BookOpen className="w-4 h-4" /> SỔ TAY LÝ THUYẾT
-            </button>
-          </div>
-
-          {/* TAB 1: 7 ĐỀ KIỂM TRA */}
-          {activeTab === 'exams' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {HOA12_CHUONG1_7_EXAMS.map((exam) => {
-                const prevResult = progress.examScores[exam.id];
-                const hasScore = prevResult && prevResult.score !== undefined;
-
-                return (
-                  <div
-                    key={exam.id}
-                    className="bg-slate-800/80 hover:bg-slate-800 rounded-3xl p-6 border border-slate-700/80 hover:border-blue-500/50 transition-all flex flex-col justify-between group shadow-lg"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="text-xs font-black text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
-                          MÃ ĐỀ: {exam.code}
-                        </span>
-                        {hasScore ? (
-                          <span className="text-xs font-black text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 flex items-center gap-1">
-                            <CheckCircle2 className="w-3.5 h-3.5" /> Điểm cao nhất: {prevResult.score}/10
-                          </span>
-                        ) : (
-                          <span className="text-xs font-bold text-slate-400 bg-slate-700/50 px-2.5 py-0.5 rounded-full">
-                            Chưa làm bài
-                          </span>
-                        )}
-                      </div>
-
-                      <h4 className="text-base font-black text-white group-hover:text-blue-300 transition-colors">
-                        {exam.title}
-                      </h4>
-                      <p className="text-xs text-slate-400 mt-2 flex items-center gap-4">
-                        <span>⏱️ 50 Phút</span>
-                        <span>📝 28 Câu (18 P1 + 4 P2 + 6 P3)</span>
-                        <span>🎯 Thang điểm 10</span>
-                      </p>
-                    </div>
-
-                    <div className="mt-5 pt-4 border-t border-slate-700/60 flex items-center justify-between">
-                      <span className="text-xs text-slate-400">
-                        {hasScore ? `Đã làm ${prevResult.attempts} lần` : 'Chuẩn cấu trúc Bộ 2025'}
-                      </span>
-                      <button
-                        onClick={() => startExam(exam)}
-                        className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black px-5 py-2 rounded-xl text-xs shadow-md shadow-blue-600/30 transition-all flex items-center gap-1.5"
-                      >
-                        <Play className="w-4 h-4" /> {hasScore ? 'Làm Lại Đề' : 'Vào Thi Ngay'}
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* TAB 2: 5 CHUYÊN ĐỀ RÈN LUYỆN */}
-          {activeTab === 'topics' && (
-            <div className="space-y-6">
-              {HOA12_CHUONG1_TOPICS.map((topic) => {
-                const highestUnlocked = progress.unlockedLevels[topic.id] || 1;
-
-                return (
-                  <div key={topic.id} className="bg-slate-800/80 rounded-3xl p-6 border border-slate-700/80">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-2xl shrink-0">
-                        {topic.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="text-base font-black text-white">{topic.title}</h4>
-                        <p className="text-xs text-slate-400 mt-0.5">{topic.description}</p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4">
-                          {topic.levels.map((lvl) => {
-                            const isUnlocked = lvl.level <= highestUnlocked;
-
-                            return (
-                              <div
-                                key={lvl.level}
-                                className={`p-4 rounded-2xl border transition-all flex flex-col justify-between ${
-                                  isUnlocked 
-                                    ? 'bg-slate-900 border-slate-700 hover:border-indigo-500' 
-                                    : 'bg-slate-950/60 border-slate-800/80 opacity-60'
-                                }`}
-                              >
-                                <div>
-                                  <div className="flex items-center justify-between text-xs mb-1">
-                                    <span className="font-bold text-slate-400">Cấp độ {lvl.level}</span>
-                                    {isUnlocked ? (
-                                      <span className="text-emerald-400 font-bold flex items-center gap-1 text-[11px]">
-                                        <Unlock className="w-3 h-3" /> Đã mở
-                                      </span>
-                                    ) : (
-                                      <span className="text-rose-400 font-bold flex items-center gap-1 text-[11px]">
-                                        <Lock className="w-3 h-3" /> Khóa
-                                      </span>
-                                    )}
-                                  </div>
-                                  <div className="font-black text-sm text-white">{lvl.title}</div>
-                                  <div className="text-[11px] text-cyan-400 font-bold mt-1">Mục tiêu: {lvl.target}</div>
-                                </div>
-
-                                <button
-                                  onClick={() => startTopicLevel(topic, lvl)}
-                                  disabled={!isUnlocked}
-                                  className={`mt-4 w-full py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 ${
-                                    isUnlocked 
-                                      ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30' 
-                                      : 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                                  }`}
-                                >
-                                  {isUnlocked ? <Play className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
-                                  {isUnlocked ? 'Luyện Tập Ngay' : 'Cần Mở Khóa'}
-                                </button>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* TAB 3: SỔ TAY KIẾN THỨC */}
-          {activeTab === 'handbook' && (
-            <div className="space-y-6">
-              {HOA12_CHUONG1_HANDBOOK.sections.map((sec, sIdx) => (
-                <div key={sIdx} className="bg-slate-800/80 rounded-3xl p-6 border border-slate-700/80">
-                  <h4 className="text-base font-black text-cyan-300 flex items-center gap-2 mb-3">
-                    <span>{sec.icon}</span> {sec.title}
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {sec.content.map((item, iIdx) => (
-                      <li key={iIdx} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5 leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0" />
-                        <ChemistryText html={item} className="flex-1" />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
             </div>
           )}
         </div>
