@@ -1185,7 +1185,13 @@ export default function StudentPortal() {
               {/* Thẻ 2: 📘 2. LUYỆN ĐỀ THEO CHƯƠNG */}
               <button
                 type="button"
-                onClick={() => setActiveTab('chapter')}
+                onClick={() => {
+                  setActiveTab('chapter');
+                  setTimeout(() => {
+                    const el = document.getElementById('hoa12-chuong1-section');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
                 className={`p-2.5 sm:p-3 rounded-2xl border text-center flex flex-col items-center justify-center min-w-[85px] sm:min-w-[100px] transition-all cursor-pointer backdrop-blur-md shadow-sm ${
                   activeTab === 'chapter'
                     ? 'bg-blue-500/35 border-blue-300 ring-2 ring-blue-400/50'
@@ -1196,10 +1202,10 @@ export default function StudentPortal() {
                   <span>📘</span> 2. LUYỆN ĐỀ THEO CHƯƠNG
                 </span>
                 <span className="text-lg sm:text-2xl font-black text-white mt-0.5">
-                  {chapterCompleted.length}/{chapterRooms.length}
+                  {chapterCompleted.length}/{chapterRooms.length + 7}
                 </span>
-                <span className="text-[10px] text-blue-200 font-bold">
-                  {chapterAvgScore !== null ? `ĐTB: ${chapterAvgScore.toFixed(1)}` : 'Đang mở'}
+                <span className="text-[10px] text-amber-300 font-black">
+                  🔥 7 Đề Mới (C1)
                 </span>
               </button>
 
@@ -1388,6 +1394,46 @@ export default function StudentPortal() {
           </div>
         </div>
 
+        {/* 🌟 BANNER ĐẶC BIỆT CHƯƠNG 1 HOÁ 12 MỚI 2025 */}
+        <div className="bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white p-5 sm:p-6 rounded-3xl shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-2 border-blue-500/40 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="flex items-center gap-3.5 relative z-10">
+            <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg shadow-blue-600/30">
+              🧪
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+                  🔥 ĐÃ CẬP NHẬT MỚI
+                </span>
+                <span className="text-xs text-cyan-300 font-bold">
+                  HÓA HỌC 12 · CHUẨN BỘ GD&ĐT 2025
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-black text-white">
+                CHƯƠNG 1: ESTER – LIPID & CHẤT GIẶT RỬA
+              </h3>
+              <p className="text-xs text-slate-300 mt-0.5">
+                Trọn bộ 7 đề 50 phút · 5 Chuyên đề vượt ải mở khóa · Chuỗi lửa Streak & Rank
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveTab("chapter");
+              setTimeout(() => {
+                const el = document.getElementById("hoa12-chuong1-section");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+              }, 100);
+            }}
+            className="w-full md:w-auto bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-6 py-3 rounded-2xl text-xs sm:text-sm shadow-xl shadow-amber-400/20 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+          >
+            <span>VÀO LÀM BÀI NGAY</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+
         {/* THANH ĐIỀU HƯỚNG 4 PHÒNG THI (CHUYÊN NGHIỆP & DỄ SỬ DỤNG) */}
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 bg-white p-2 sm:p-2.5 rounded-2xl border border-slate-200/80 shadow-2xs">
           <div className="grid grid-cols-2 sm:flex sm:items-center gap-1.5 flex-wrap">
@@ -1415,7 +1461,13 @@ export default function StudentPortal() {
 
             {/* Tab 2: LUYỆN ĐỀ THEO CHƯƠNG */}
             <button
-              onClick={() => setActiveTab('chapter')}
+              onClick={() => {
+                setActiveTab('chapter');
+                setTimeout(() => {
+                  const el = document.getElementById('hoa12-chuong1-section');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
               className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-1.5 sm:gap-2 cursor-pointer ${
                 activeTab === 'chapter'
                   ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-600/25 ring-2 ring-blue-400/40'
@@ -1427,9 +1479,9 @@ export default function StudentPortal() {
               <span className={`text-[10px] font-black px-1.5 sm:px-2 py-0.5 rounded-full ${
                 activeTab === 'chapter'
                   ? 'bg-white/20 text-white'
-                  : 'bg-blue-200 text-blue-800'
+                  : 'bg-amber-400 text-slate-950 font-black'
               }`}>
-                {chapterRooms.length}
+                {chapterRooms.length + 7} đề
               </span>
             </button>
 
@@ -1549,10 +1601,12 @@ export default function StudentPortal() {
         {(activeTab === 'chapter' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
             {/* 🌟 HỆ THỐNG LUYỆN ĐỀ & RÈN LUYỆN CHƯƠNG 1 HOÁ HỌC 12 (CT MỚI 2025) */}
+            <div id="hoa12-chuong1-section">
             <Hoa12Chuong1View 
               studentName={student?.name}
               studentGrade={student?.grade || "12"}
             />
+            </div>
 
             {/* Header Phần 2 */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-blue-200 pb-4">
