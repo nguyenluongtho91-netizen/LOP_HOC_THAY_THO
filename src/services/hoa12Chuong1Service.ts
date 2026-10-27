@@ -239,26 +239,26 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 7,
-                "text": "Chất X có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>2</sub>, là ester của acetic acid. Công thức cấu tạo của X là",
+                "text": "Chất X có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>2</sub>, là ester của acetic acid (CH<sub>3</sub>COOH).<br/>Công thức cấu tạo của X là:",
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "HCOOC<sub>2</sub>H<sub>5</sub>",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "CH<sub>3</sub>COOCH<sub>3</sub>",
                     "isCorrect": true
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "C<sub>2</sub>H<sub>5</sub>COOH",
                     "isCorrect": false
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "HCOOCH<sub>3</sub>",
                     "isCorrect": false
                   }
                 ],
@@ -582,7 +582,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "questions": [
               {
                 "rawNum": 11,
-                "text": "Thủy phân hoàn toàn triglyceride X trong dung dịch NaOH thu được C<sub>17</sub>H<sub>35</sub>COONa và C<sub>3</sub>H<sub>5</sub>(OH)3. Tên gọi của X là",
+                "text": "Thủy phân hoàn toàn triglyceride X trong dung dịch NaOH thu được C<sub>17</sub>H<sub>35</sub>COONa và C<sub>3</sub>H<sub>5</sub>(OH)3.<br/>Tên gọi của X là",
                 "options": [
                   {
                     "letter": "A",
@@ -1121,7 +1121,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 17,
-                "text": "Ester X có công thức cấu tạo như sau:\nTên gọi của X là",
+                "text": "Ester X có công thức cấu tạo như sau:<br/>Tên gọi của X là",
                 "options": [
                   {
                     "letter": "A",
@@ -1383,26 +1383,26 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 26,
-                "text": "Cho ester X tác dụng với dung dịch NaOH đun nóng, thu được sodium propionate và methyl alcohol. Công thức cấu tạo của X là",
+                "text": "Cho ester X tác dụng với dung dịch NaOH đun nóng, thu được sodium propionate (C<sub>2</sub>H<sub>5</sub>COONa) và methyl alcohol (CH<sub>3</sub>OH).<br/>Công thức cấu tạo của X là:",
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "C<sub>2</sub>H<sub>5</sub>COOCH<sub>3</sub>",
                     "isCorrect": true
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "HCOOC<sub>3</sub>H<sub>7</sub>",
                     "isCorrect": false
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "C<sub>3</sub>H<sub>7</sub>COOH",
                     "isCorrect": false
                   }
                 ],
@@ -1734,21 +1734,26 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 38,
-                "text": "Cho phản ứng: CH<sub>3</sub>COOH + HOC<sub>2</sub>H<sub>5</sub> ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + HOH Biểu thức tỉnh hằng số cân bằng của phản ứng trên là",
+                "text": "Cho phản ứng ester hoá:<br/><div class=\"my-2 p-2 bg-slate-100 rounded-lg text-center font-bold text-slate-800\">CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O</div>Biểu thức tính hằng số cân bằng (K<sub>C</sub>) của phản ứng trên là:",
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "K<sub>C</sub> = [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH] / [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>][H<sub>2</sub>O]",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "K<sub>C</sub> = [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>][H<sub>2</sub>O] / [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH]",
                     "isCorrect": true
                   },
                   {
                     "letter": "C",
-                    "text": ".D ",
+                    "text": "K<sub>C</sub> = [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>] / [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH]",
+                    "isCorrect": false
+                  },
+                  {
+                    "letter": "D",
+                    "text": "K<sub>C</sub> = [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH] / [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>]",
                     "isCorrect": false
                   }
                 ],
@@ -1785,26 +1790,26 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 40,
-                "text": "Chất X có công thức phân tử , là ester của acetic acid. Công thức cấu tạo của X là",
+                "text": "Chất X có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>2</sub>, là ester của acetic acid (CH<sub>3</sub>COOH).<br/>Công thức cấu tạo của X là:",
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "HCOOC<sub>2</sub>H<sub>5</sub>",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "CH<sub>3</sub>COOCH<sub>3</sub>",
                     "isCorrect": true
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "C<sub>2</sub>H<sub>5</sub>COOH",
                     "isCorrect": false
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "HCOOCH<sub>3</sub>",
                     "isCorrect": false
                   }
                 ],
@@ -1841,7 +1846,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 42,
-                "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Tên gọi của X là",
+                "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>.<br/>Tên gọi của X là",
                 "options": [
                   {
                     "letter": "A",
@@ -2240,7 +2245,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 56,
-                "text": "Xà phòng hóa ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng dung dịch NaOH dư thu được muối Y và alcohol Z (bậc II). Công thức cấu tạo thu gọn của X là",
+                "text": "Xà phòng hóa ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng dung dịch NaOH dư thu được muối Y và alcohol Z (bậc II).<br/>Công thức cấu tạo thu gọn của X là",
                 "options": [
                   {
                     "letter": "A",
@@ -2268,7 +2273,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 57,
-                "text": "Hợp chất X có công thức phân tử là C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> (phân tử có chứa vòng benzene). Đung nóng X với dung dịch NaOH dư, thu được hỗn hợp hai muối. Công thức cấu tạo của X là",
+                "text": "Hợp chất X có công thức phân tử là C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> (phân tử có chứa vòng benzene). Đung nóng X với dung dịch NaOH dư, thu được hỗn hợp hai muối.<br/>Công thức cấu tạo của X là",
                 "options": [
                   {
                     "letter": "A",
@@ -2675,26 +2680,26 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 71,
-                "text": "Thực hiện phản ứng ester hoá sau: cho 0,1 mol alcohol tác dụng với 0,1 mol carboxylic acid, có mặt H<sub>2</sub>SO<sub>4</sub> đặc làm xúc tác. Đồ thị nào sau đây biểu diễn sự thay đổi số mol (n) alcohol theo thời gian (t)?",
+                "text": "Thực hiện phản ứng ester hoá sau: cho 0,1 mol alcohol tác dụng với 0,1 mol carboxylic acid (xúc tác H<sub>2</sub>SO<sub>4</sub> đặc). Đồ thị nào sau đây biểu diễn sự thay đổi số mol (n) alcohol theo thời gian (t)?",
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "Đường cong giảm dần đều về 0 khi kết thúc phản ứng",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "Đường nằm ngang song song trục thời gian (không đổi)",
                     "isCorrect": false
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "Đường cong giảm dần rồi đi ngang ở giá trị hằng số khác 0 (đạt trạng thái cân bằng)",
                     "isCorrect": true
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "Đường cong tăng dần theo thời gian",
                     "isCorrect": false
                   }
                 ],
@@ -2703,7 +2708,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 72,
-                "text": "Thuỷ phân ester có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> (với xúc tác acid), thu được 2 sản phẩm hữu cơ X và Y. Từ X có thể điều chế trực tiếp ra Y bằng một phản ứng. Tên gọi của X là",
+                "text": "Thuỷ phân ester có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> (với xúc tác acid), thu được 2 sản phẩm hữu cơ X và Y. Từ X có thể điều chế trực tiếp ra Y bằng một phản ứng.<br/>Tên gọi của X là",
                 "options": [
                   {
                     "letter": "A",
@@ -2738,26 +2743,26 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "questions": [
               {
                 "rawNum": 73,
-                "text": "Aspirin là một trong những loại thuốc giảm đau, hạ sốt được sử dụng rộng rãi trên toàn thế giới. Aspirin có công thức cấu tạo như sau:\nTrong điều kiện ẩm ướt, aspirin có thể bị thuỷ phân để tạo thành salicylic acid và acetic acid. Công thức cấu tạo nào sau đây là của salicylic acid?",
+                "text": "Aspirin là một trong những loại thuốc giảm đau, hạ sốt được sử dụng rộng rãi trên toàn thế giới. Aspirin có cấu tạo acetylsalicylic acid (CH<sub>3</sub>COOC<sub>6</sub>H<sub>4</sub>COOH).<br/>Trong điều kiện ẩm ướt, aspirin có thể bị thuỷ phân để tạo thành salicylic acid và acetic acid.<br/>Công thức cấu tạo nào sau đây là của salicylic acid?",
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "p-HO-C<sub>6</sub>H<sub>4</sub>-COOH",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "m-HO-C<sub>6</sub>H<sub>4</sub>-COOH",
                     "isCorrect": false
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "o-HO-C<sub>6</sub>H<sub>4</sub>-COOH (2-hydroxybenzoic acid)",
                     "isCorrect": true
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "C<sub>6</sub>H<sub>5</sub>COOH",
                     "isCorrect": false
                   }
                 ],
@@ -2934,7 +2939,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 80,
-                "text": "Thuỷ phân hoàn toàn m gam methyl acetate bằng dung dịch NaOH đun nóng thu được 8,2 gam muối. Giá trị của m là",
+                "text": "Thuỷ phân hoàn toàn m gam methyl acetate bằng dung dịch NaOH đun nóng thu được 8,2 gam muối.<br/>Giá trị của m là",
                 "options": [
                   {
                     "letter": "A",
@@ -3018,7 +3023,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 83,
-                "text": "Đun nóng 0,1 mol ester đơn chức X với 135 mL dung dịch NaOH 1M. Sau khi phản ứng xảy ra hoàn toàn, cô cạn dung dịch thu được ethyl alcohol và 9,6 gam chất rắn khan. Công thức cấu tạo của X:",
+                "text": "Đun nóng 0,1 mol ester đơn chức X với 135 mL dung dịch NaOH 1M. Sau khi phản ứng xảy ra hoàn toàn, cô cạn dung dịch thu được ethyl alcohol và 9,6 gam chất rắn khan.<br/>Công thức cấu tạo của X:",
                 "options": [
                   {
                     "letter": "A",
@@ -3046,7 +3051,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 84,
-                "text": "Cho 27,2 gam phenyl acetate tác dụng với 400 mL dung dịch NaOH 1,5M đun nóng. Sau khi phản ứng xảy ra hoàn toàn thu được dung dịch X. Cô cạn X thu được a gam rắn khan. Giá trị của a là",
+                "text": "Cho 27,2 gam phenyl acetate tác dụng với 400 mL dung dịch NaOH 1,5M đun nóng. Sau khi phản ứng xảy ra hoàn toàn thu được dung dịch X. Cô cạn X thu được a gam rắn khan.<br/>Giá trị của a là",
                 "options": [
                   {
                     "letter": "A",
@@ -3165,7 +3170,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "questions": [
               {
                 "rawNum": 88,
-                "text": "Methyl butanoate là một ester có mùi táo. Khi đun nóng hỗn hợp 17,6 g butanoic acid và 4,8 g methyl alcohol với xúc tác H<sub>2</sub>SO<sub>4</sub> đặc, thu được m g methyl butanoate. Biết hiệu suất phản ứng đạt 75%. Giá trị của m là",
+                "text": "Methyl butanoate là một ester có mùi táo. Khi đun nóng hỗn hợp 17,6 g butanoic acid và 4,8 g methyl alcohol với xúc tác H<sub>2</sub>SO<sub>4</sub> đặc, thu được m g methyl butanoate. Biết hiệu suất phản ứng đạt 75%.<br/>Giá trị của m là",
                 "options": [
                   {
                     "letter": "A",
@@ -3421,22 +3426,22 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "Oleic acid",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "α-Linolenic acid (ALA)",
                     "isCorrect": true
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "Linoleic acid",
                     "isCorrect": false
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "Stearic acid",
                     "isCorrect": false
                   }
                 ],
@@ -4566,7 +4571,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 48,
-                "text": "Cho sơ đồ chuyển hoá: Triolein  X Y Z. Tên gọi của Z là",
+                "text": "Cho sơ đồ chuyển hoá: Triolein  X Y Z.<br/>Tên gọi của Z là",
                 "options": [
                   {
                     "letter": "A",
@@ -4594,7 +4599,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 49,
-                "text": "Cho 0,1 mol tristearin tác dụng hoàn toàn với dung dịch NaOH dư, đun nóng, thu được m gam glycerol. Giá trị của m là",
+                "text": "Cho 0,1 mol tristearin tác dụng hoàn toàn với dung dịch NaOH dư, đun nóng, thu được m gam glycerol.<br/>Giá trị của m là",
                 "options": [
                   {
                     "letter": "A",
@@ -4650,7 +4655,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 51,
-                "text": "Xà phòng hóa hoàn toàn 17,8 gam chất béo X cần vừa đủ dung dịch chứa 0,06 mol NaOH. Cô cạn dung dịch sau phản ứng thu được m gam muối khan. Giá trị của m là",
+                "text": "Xà phòng hóa hoàn toàn 17,8 gam chất béo X cần vừa đủ dung dịch chứa 0,06 mol NaOH. Cô cạn dung dịch sau phản ứng thu được m gam muối khan.<br/>Giá trị của m là",
                 "options": [
                   {
                     "letter": "A",
@@ -4678,7 +4683,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 52,
-                "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối. Giá trị của m là",
+                "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối.<br/>Giá trị của m là",
                 "options": [
                   {
                     "letter": "A",
@@ -5055,22 +5060,22 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
                 "options": [
                   {
                     "letter": "A",
-                    "text": "C<sub>3</sub>H<sub>5</sub>(OH)3",
+                    "text": "C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "CH<sub>3</sub>[CH<sub>2</sub>]16COONa",
+                    "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>16</sub>COONa",
                     "isCorrect": false
                   },
                   {
                     "letter": "C",
-                    "text": "CH<sub>3</sub>[CH<sub>2</sub>]4COONa",
+                    "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>4</sub>COONa",
                     "isCorrect": false
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>11</sub>C<sub>6</sub>H<sub>4</sub>SO<sub>3</sub>Na (Sodium alkylbenzenesulfonate)",
                     "isCorrect": true
                   }
                 ],
@@ -5338,26 +5343,26 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 17,
-                "text": "Cấu trúc phân tử sodium palmitate (C<sub>15</sub>H<sub>31</sub>COONa) có thể được minh họa như sau:\nKhi hòa tan vào nước, các phân tử sodium palmitate sẽ hình thành nên cấu trúc nào dưới đây?",
+                "text": "Cấu trúc phân tử sodium palmitate (C<sub>15</sub>H<sub>31</sub>COONa) gồm đầu ưa nước và đuôi kị nước.<br/>Khi hòa tan vào nước, các phân tử sodium palmitate sẽ hình thành nên cấu trúc nào dưới đây?",
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "Cấu trúc hạt micelle hình cầu (đầu ưa nước quay ra ngoài, đuôi kị nước tụ vào bên trong)",
                     "isCorrect": true
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "Cấu trúc hạt micelle ngược (đuôi kị nước quay ra ngoài)",
                     "isCorrect": false
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "Dung dịch đồng nhất phân tán hoàn toàn, không tạo hạt",
                     "isCorrect": false
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "Kết tủa tinh thể không tan ở đáy bình",
                     "isCorrect": false
                   }
                 ],
@@ -6092,22 +6097,22 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
                 "options": [
                   {
                     "letter": "A",
-                    "text": "",
+                    "text": "Sodium alkylbenzenesulfonate có mạch carbon phân nhánh phức tạp",
                     "isCorrect": false
                   },
                   {
                     "letter": "B",
-                    "text": "",
+                    "text": "Sodium dodecylbenzene sulfonate mang nhóm tert-butyl phân nhánh",
                     "isCorrect": false
                   },
                   {
                     "letter": "C",
-                    "text": "",
+                    "text": "Sodium linear alkylbenzenesulfonate (LAS) có mạch hydrocarbon thẳng, không phân nhánh",
                     "isCorrect": true
                   },
                   {
                     "letter": "D",
-                    "text": "",
+                    "text": "Alkylbenzene sulfonate mạch thơm gắn nhiều nhánh methyl",
                     "isCorrect": false
                   }
                 ],
@@ -6256,7 +6261,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               },
               {
                 "rawNum": 49,
-                "text": "Xà phòng hóa hoàn toàn 1 tấn chất béo trung tính bằng dung dịch chứa 150 kg NaOH (vừa đủ), thu được m tấn xà phòng. Biết xà phòng chứa 75% muối sodium của các acid béo, còn lại là chất dư. Giá trị của m là",
+                "text": "Xà phòng hóa hoàn toàn 1 tấn chất béo trung tính bằng dung dịch chứa 150 kg NaOH (vừa đủ), thu được m tấn xà phòng. Biết xà phòng chứa 75% muối sodium của các acid béo, còn lại là chất dư.<br/>Giá trị của m là",
                 "options": [
                   {
                     "letter": "A",
@@ -6661,7 +6666,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "number": 8,
             "part": 1,
             "type": "multiple_choice",
-            "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Tên gọi của X là",
+            "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>.<br/>Tên gọi của X là",
             "image": null,
             "images": [],
             "options": [
@@ -7453,7 +7458,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "displayNumber": 3,
             "part": 3,
             "type": "short_answer",
-            "text": "X là ester no, đơn chức, mạch hở có công thức dạng C<sub>6</sub>H<sub>m</sub>O<sub>2</sub>. Giá trị của m là bao nhiêu?",
+            "text": "X là ester no, đơn chức, mạch hở có công thức dạng C<sub>6</sub>H<sub>m</sub>O<sub>2</sub>.<br/>Giá trị của m là bao nhiêu?",
             "image": null,
             "images": [],
             "correctAnswer": "12",
@@ -7483,7 +7488,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "displayNumber": 5,
             "part": 3,
             "type": "short_answer",
-            "text": "Ethyl acetate là chất lỏng, có mùi đặc trưng, được sản xuất ở quy mô lớn làm dung môi trong công nghiệp. Để một nhà máy sản xuất được 1000 lít ethyl acetate mỗi ngày thì khối lượng acetic acid cần tiêu thụ tối thiểu là m (kg). Biết rằng hao hụt trong quá trình sản xuất trên là 25%. Cho khối lượng riêng của ethyl acetate bằng 0,902 (g/cm³). Giá trị của m là bao nhiêu?",
+            "text": "Ethyl acetate là chất lỏng, có mùi đặc trưng, được sản xuất ở quy mô lớn làm dung môi trong công nghiệp. Để một nhà máy sản xuất được 1000 lít ethyl acetate mỗi ngày thì khối lượng acetic acid cần tiêu thụ tối thiểu là m (kg). Biết rằng hao hụt trong quá trình sản xuất trên là 25%. Cho khối lượng riêng của ethyl acetate bằng 0,902 (g/cm³).<br/>Giá trị của m là bao nhiêu?",
             "image": null,
             "images": [],
             "correctAnswer": "820",
@@ -8107,28 +8112,28 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               {
                 "id": "a",
                 "letter": "A",
-                "text": "",
+                "text": "Oleic acid",
                 "image": "/assets/hoa12/c1/image9.png",
                 "isCorrect": false
               },
               {
                 "id": "b",
                 "letter": "B",
-                "text": "",
+                "text": "α-Linolenic acid (ALA)",
                 "image": "/assets/hoa12/c1/image10.png",
                 "isCorrect": true
               },
               {
                 "id": "c",
                 "letter": "C",
-                "text": "",
+                "text": "Linoleic acid",
                 "image": "/assets/hoa12/c1/image11.png",
                 "isCorrect": false
               },
               {
                 "id": "d",
                 "letter": "D",
-                "text": "",
+                "text": "Stearic acid",
                 "image": "/assets/hoa12/c1/image12.png",
                 "isCorrect": false
               }
@@ -8148,28 +8153,28 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               {
                 "id": "a",
                 "letter": "A",
-                "text": "",
+                "text": "Đồ thị giảm về 0",
                 "image": "/assets/hoa12/c1/image13.png",
                 "isCorrect": false
               },
               {
                 "id": "b",
                 "letter": "B",
-                "text": "",
+                "text": "Đường nằm ngang không đổi",
                 "image": "/assets/hoa12/c1/image14.png",
                 "isCorrect": false
               },
               {
                 "id": "c",
                 "letter": "C",
-                "text": "",
+                "text": "Đồ thị giảm dần rồi giữ nguyên khác 0 (cân bằng)",
                 "image": "/assets/hoa12/c1/image15.png",
                 "isCorrect": true
               },
               {
                 "id": "d",
                 "letter": "D",
-                "text": "",
+                "text": "Đồ thị tăng dần",
                 "image": "/assets/hoa12/c1/image16.png",
                 "isCorrect": false
               }
@@ -9133,7 +9138,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "number": 12,
             "part": 1,
             "type": "multiple_choice",
-            "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối. Giá trị của m là",
+            "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối.<br/>Giá trị của m là",
             "image": null,
             "images": [],
             "options": [
@@ -9263,28 +9268,28 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               {
                 "id": "a",
                 "letter": "A",
-                "text": "",
+                "text": "Oleic acid",
                 "image": "/assets/hoa12/c1/image22.png",
                 "isCorrect": false
               },
               {
                 "id": "b",
                 "letter": "B",
-                "text": "",
+                "text": "Linoleic acid",
                 "image": "/assets/hoa12/c1/image23.png",
-                "isCorrect": false
+                "isCorrect": true
               },
               {
                 "id": "c",
                 "letter": "C",
-                "text": "",
+                "text": "α-Linolenic acid",
                 "image": "/assets/hoa12/c1/image24.png",
                 "isCorrect": false
               },
               {
                 "id": "d",
                 "letter": "D",
-                "text": "",
+                "text": "Palmitic acid",
                 "image": "/assets/hoa12/c1/image25.png",
                 "isCorrect": true
               }
@@ -9795,7 +9800,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "displayNumber": 5,
             "part": 3,
             "type": "short_answer",
-            "text": "Methyl salicylate dùng làm thuốc xoa bóp giảm đau, được điều chế theo phản ứng sau:<br/>HOC<sub>6</sub>H<sub>4</sub>COOH + CH<sub>3</sub>OH  HOC<sub>6</sub>H<sub>4</sub>COOCH<sub>3</sub> + H<sub>2</sub>O<br/>salicylic acid      methanol                 methyl salicylate<br/>Để sản xuất 1,9 triệu tuýp thuốc xoa bóp giảm đau cần tối thiểu m tấn salicylic acid. Biết mỗi tuýp thuốc chứa 2,7 gam methyl salicylate và hiệu suất phản ứng tính theo salicylic acid là 75%. Giá trị của m là bao nhiêu?",
+            "text": "Methyl salicylate dùng làm thuốc xoa bóp giảm đau, được điều chế theo phản ứng sau:<br/>HOC<sub>6</sub>H<sub>4</sub>COOH + CH<sub>3</sub>OH  HOC<sub>6</sub>H<sub>4</sub>COOCH<sub>3</sub> + H<sub>2</sub>O<br/>salicylic acid      methanol                 methyl salicylate<br/>Để sản xuất 1,9 triệu tuýp thuốc xoa bóp giảm đau cần tối thiểu m tấn salicylic acid. Biết mỗi tuýp thuốc chứa 2,7 gam methyl salicylate và hiệu suất phản ứng tính theo salicylic acid là 75%.<br/>Giá trị của m là bao nhiêu?",
             "image": null,
             "images": [],
             "correctAnswer": "6,21",
@@ -10091,28 +10096,28 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               {
                 "id": "a",
                 "letter": "A",
-                "text": "",
+                "text": "(Xem hình cấu tạo)",
                 "image": "/assets/hoa12/c1/image34.png",
                 "isCorrect": false
               },
               {
                 "id": "b",
                 "letter": "B",
-                "text": "",
+                "text": "(Xem hình cấu tạo)",
                 "image": "/assets/hoa12/c1/image35.png",
                 "isCorrect": false
               },
               {
                 "id": "c",
                 "letter": "C",
-                "text": "",
+                "text": "(Xem hình cấu tạo)",
                 "image": "/assets/hoa12/c1/image36.png",
                 "isCorrect": true
               },
               {
                 "id": "d",
                 "letter": "D",
-                "text": "",
+                "text": "(Xem hình cấu tạo)",
                 "image": "/assets/hoa12/c1/image37.png",
                 "isCorrect": false
               }
@@ -10808,7 +10813,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "displayNumber": 4,
             "part": 2,
             "type": "true_false",
-            "text": "Diethyl phthalate (còn gọi là DEP) được sử dụng làm thuốc trị ghẻ ngứa, côn trùng đốt. Công thức cấu tạo của DEP được biểu diễn như sau:",
+            "text": "Diethyl phthalate (còn gọi là DEP) được sử dụng làm thuốc trị ghẻ ngứa, côn trùng đốt.<br/>Công thức cấu tạo của DEP được biểu diễn như sau:",
             "image": "/assets/hoa12/c1/image38.png",
             "images": [
               "/assets/hoa12/c1/image38.png",
@@ -11617,28 +11622,28 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               {
                 "id": "a",
                 "letter": "A",
-                "text": "",
+                "text": "Mạch alkyl phân nhánh phức tạp",
                 "image": "/assets/hoa12/c1/image51.png",
                 "isCorrect": false
               },
               {
                 "id": "b",
                 "letter": "B",
-                "text": "",
+                "text": "Mạch alkyl gắn nhóm tert-butyl",
                 "image": "/assets/hoa12/c1/image52.png",
                 "isCorrect": false
               },
               {
                 "id": "c",
                 "letter": "C",
-                "text": "",
+                "text": "Sodium linear alkylbenzenesulfonate (mạch thẳng, không phân nhánh)",
                 "image": "/assets/hoa12/c1/image53.png",
                 "isCorrect": true
               },
               {
                 "id": "d",
                 "letter": "D",
-                "text": "",
+                "text": "Mạch alkyl gắn nhiều nhánh methyl",
                 "image": "/assets/hoa12/c1/image54.png",
                 "isCorrect": false
               }
@@ -11651,7 +11656,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "number": 17,
             "part": 1,
             "type": "multiple_choice",
-            "text": "Xà phòng hóa hoàn toàn 8,8 gam ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng một lượng dung dịch NaOH vừa đủ, cô cạn dung dịch sau phản ứng, thu được 8,2 gam muối khan. Tên gọi của X là",
+            "text": "Xà phòng hóa hoàn toàn 8,8 gam ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng một lượng dung dịch NaOH vừa đủ, cô cạn dung dịch sau phản ứng, thu được 8,2 gam muối khan.<br/>Tên gọi của X là",
             "image": null,
             "images": [],
             "options": [
@@ -12110,7 +12115,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "displayNumber": 5,
             "part": 3,
             "type": "short_answer",
-            "text": "Một carboxylic acid X có hàm lượng các nguyên tố carbon và hydrogen lần lượt là 40,7% và 5,1% về khối lượng. Phổ khối lượng của X có kết quả như hình bên dưới.<br/>Đun 0,1 mol X với lượng dư ethanol có xúc tác H<sub>2</sub>SO<sub>4</sub> đặc thu được m gam chất hữu cơ Z chỉ chứa một loại nhóm chức. Giá trị của m là bao nhiêu? Biết hiệu suất của phản ứng trên là 50%.",
+            "text": "Một carboxylic acid X có hàm lượng các nguyên tố carbon và hydrogen lần lượt là 40,7% và 5,1% về khối lượng. Phổ khối lượng của X có kết quả như hình bên dưới.<br/>Đun 0,1 mol X với lượng dư ethanol có xúc tác H<sub>2</sub>SO<sub>4</sub> đặc thu được m gam chất hữu cơ Z chỉ chứa một loại nhóm chức.<br/>Giá trị của m là bao nhiêu? Biết hiệu suất của phản ứng trên là 50%.",
             "image": "/assets/hoa12/c1/image59.png",
             "images": [
               "/assets/hoa12/c1/image59.png"
@@ -12649,7 +12654,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
             "number": 13,
             "part": 1,
             "type": "multiple_choice",
-            "text": "Chất nào sau đây là thành phần chính của chất giặt rửa tồng hợp?",
+            "text": "Chất nào sau đây là thành phần chính của chất giặt rửa tổng hợp?",
             "image": null,
             "images": [],
             "options": [
@@ -12670,7 +12675,7 @@ export const HOA12_CHUONG1_LESSONS: Chuong1Lesson[] = [
               {
                 "id": "c",
                 "letter": "C",
-                "text": "",
+                "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>11</sub>C<sub>6</sub>H<sub>4</sub>SO<sub>3</sub>Na (Sodium alkylbenzenesulfonate)",
                 "image": null,
                 "isCorrect": true
               },
@@ -14764,7 +14769,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "number": 8,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Tên gọi của X là",
+        "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>.<br/>Tên gọi của X là",
         "image": null,
         "images": [],
         "options": [
@@ -15556,7 +15561,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "displayNumber": 3,
         "part": 3,
         "type": "short_answer",
-        "text": "X là ester no, đơn chức, mạch hở có công thức dạng C<sub>6</sub>H<sub>m</sub>O<sub>2</sub>. Giá trị của m là bao nhiêu?",
+        "text": "X là ester no, đơn chức, mạch hở có công thức dạng C<sub>6</sub>H<sub>m</sub>O<sub>2</sub>.<br/>Giá trị của m là bao nhiêu?",
         "image": null,
         "images": [],
         "correctAnswer": "12",
@@ -15586,7 +15591,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "displayNumber": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Ethyl acetate là chất lỏng, có mùi đặc trưng, được sản xuất ở quy mô lớn làm dung môi trong công nghiệp. Để một nhà máy sản xuất được 1000 lít ethyl acetate mỗi ngày thì khối lượng acetic acid cần tiêu thụ tối thiểu là m (kg). Biết rằng hao hụt trong quá trình sản xuất trên là 25%. Cho khối lượng riêng của ethyl acetate bằng 0,902 (g/cm³). Giá trị của m là bao nhiêu?",
+        "text": "Ethyl acetate là chất lỏng, có mùi đặc trưng, được sản xuất ở quy mô lớn làm dung môi trong công nghiệp. Để một nhà máy sản xuất được 1000 lít ethyl acetate mỗi ngày thì khối lượng acetic acid cần tiêu thụ tối thiểu là m (kg). Biết rằng hao hụt trong quá trình sản xuất trên là 25%. Cho khối lượng riêng của ethyl acetate bằng 0,902 (g/cm³).<br/>Giá trị của m là bao nhiêu?",
         "image": null,
         "images": [],
         "correctAnswer": "820",
@@ -16210,28 +16215,28 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "",
+            "text": "Oleic acid",
             "image": "/assets/hoa12/c1/image9.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
+            "text": "α-Linolenic acid (ALA)",
             "image": "/assets/hoa12/c1/image10.png",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "Linoleic acid",
             "image": "/assets/hoa12/c1/image11.png",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "",
+            "text": "Stearic acid",
             "image": "/assets/hoa12/c1/image12.png",
             "isCorrect": false
           }
@@ -16251,28 +16256,28 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "",
+            "text": "Đồ thị giảm về 0",
             "image": "/assets/hoa12/c1/image13.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
+            "text": "Đường nằm ngang không đổi",
             "image": "/assets/hoa12/c1/image14.png",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "Đồ thị giảm dần rồi giữ nguyên khác 0 (cân bằng)",
             "image": "/assets/hoa12/c1/image15.png",
             "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "",
+            "text": "Đồ thị tăng dần",
             "image": "/assets/hoa12/c1/image16.png",
             "isCorrect": false
           }
@@ -17236,7 +17241,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối. Giá trị của m là",
+        "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối.<br/>Giá trị của m là",
         "image": null,
         "images": [],
         "options": [
@@ -17366,28 +17371,28 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "",
+            "text": "Oleic acid",
             "image": "/assets/hoa12/c1/image22.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
+            "text": "Linoleic acid",
             "image": "/assets/hoa12/c1/image23.png",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "α-Linolenic acid",
             "image": "/assets/hoa12/c1/image24.png",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "",
+            "text": "Palmitic acid",
             "image": "/assets/hoa12/c1/image25.png",
             "isCorrect": true
           }
@@ -17898,7 +17903,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "displayNumber": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Methyl salicylate dùng làm thuốc xoa bóp giảm đau, được điều chế theo phản ứng sau:<br/>HOC<sub>6</sub>H<sub>4</sub>COOH + CH<sub>3</sub>OH  HOC<sub>6</sub>H<sub>4</sub>COOCH<sub>3</sub> + H<sub>2</sub>O<br/>salicylic acid      methanol                 methyl salicylate<br/>Để sản xuất 1,9 triệu tuýp thuốc xoa bóp giảm đau cần tối thiểu m tấn salicylic acid. Biết mỗi tuýp thuốc chứa 2,7 gam methyl salicylate và hiệu suất phản ứng tính theo salicylic acid là 75%. Giá trị của m là bao nhiêu?",
+        "text": "Methyl salicylate dùng làm thuốc xoa bóp giảm đau, được điều chế theo phản ứng sau:<br/>HOC<sub>6</sub>H<sub>4</sub>COOH + CH<sub>3</sub>OH  HOC<sub>6</sub>H<sub>4</sub>COOCH<sub>3</sub> + H<sub>2</sub>O<br/>salicylic acid      methanol                 methyl salicylate<br/>Để sản xuất 1,9 triệu tuýp thuốc xoa bóp giảm đau cần tối thiểu m tấn salicylic acid. Biết mỗi tuýp thuốc chứa 2,7 gam methyl salicylate và hiệu suất phản ứng tính theo salicylic acid là 75%.<br/>Giá trị của m là bao nhiêu?",
         "image": null,
         "images": [],
         "correctAnswer": "6,21",
@@ -18194,28 +18199,28 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "",
+            "text": "(Xem hình cấu tạo)",
             "image": "/assets/hoa12/c1/image34.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
+            "text": "(Xem hình cấu tạo)",
             "image": "/assets/hoa12/c1/image35.png",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "(Xem hình cấu tạo)",
             "image": "/assets/hoa12/c1/image36.png",
             "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "",
+            "text": "(Xem hình cấu tạo)",
             "image": "/assets/hoa12/c1/image37.png",
             "isCorrect": false
           }
@@ -18911,7 +18916,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "displayNumber": 4,
         "part": 2,
         "type": "true_false",
-        "text": "Diethyl phthalate (còn gọi là DEP) được sử dụng làm thuốc trị ghẻ ngứa, côn trùng đốt. Công thức cấu tạo của DEP được biểu diễn như sau:",
+        "text": "Diethyl phthalate (còn gọi là DEP) được sử dụng làm thuốc trị ghẻ ngứa, côn trùng đốt.<br/>Công thức cấu tạo của DEP được biểu diễn như sau:",
         "image": "/assets/hoa12/c1/image38.png",
         "images": [
           "/assets/hoa12/c1/image38.png",
@@ -19720,28 +19725,28 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "",
+            "text": "Mạch alkyl phân nhánh phức tạp",
             "image": "/assets/hoa12/c1/image51.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
+            "text": "Mạch alkyl gắn nhóm tert-butyl",
             "image": "/assets/hoa12/c1/image52.png",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "Sodium linear alkylbenzenesulfonate (mạch thẳng, không phân nhánh)",
             "image": "/assets/hoa12/c1/image53.png",
             "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "",
+            "text": "Mạch alkyl gắn nhiều nhánh methyl",
             "image": "/assets/hoa12/c1/image54.png",
             "isCorrect": false
           }
@@ -19754,7 +19759,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "number": 17,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Xà phòng hóa hoàn toàn 8,8 gam ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng một lượng dung dịch NaOH vừa đủ, cô cạn dung dịch sau phản ứng, thu được 8,2 gam muối khan. Tên gọi của X là",
+        "text": "Xà phòng hóa hoàn toàn 8,8 gam ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng một lượng dung dịch NaOH vừa đủ, cô cạn dung dịch sau phản ứng, thu được 8,2 gam muối khan.<br/>Tên gọi của X là",
         "image": null,
         "images": [],
         "options": [
@@ -20213,7 +20218,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "displayNumber": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Một carboxylic acid X có hàm lượng các nguyên tố carbon và hydrogen lần lượt là 40,7% và 5,1% về khối lượng. Phổ khối lượng của X có kết quả như hình bên dưới.<br/>Đun 0,1 mol X với lượng dư ethanol có xúc tác H<sub>2</sub>SO<sub>4</sub> đặc thu được m gam chất hữu cơ Z chỉ chứa một loại nhóm chức. Giá trị của m là bao nhiêu? Biết hiệu suất của phản ứng trên là 50%.",
+        "text": "Một carboxylic acid X có hàm lượng các nguyên tố carbon và hydrogen lần lượt là 40,7% và 5,1% về khối lượng. Phổ khối lượng của X có kết quả như hình bên dưới.<br/>Đun 0,1 mol X với lượng dư ethanol có xúc tác H<sub>2</sub>SO<sub>4</sub> đặc thu được m gam chất hữu cơ Z chỉ chứa một loại nhóm chức.<br/>Giá trị của m là bao nhiêu? Biết hiệu suất của phản ứng trên là 50%.",
         "image": "/assets/hoa12/c1/image59.png",
         "images": [
           "/assets/hoa12/c1/image59.png"
@@ -20752,7 +20757,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
         "number": 13,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Chất nào sau đây là thành phần chính của chất giặt rửa tồng hợp?",
+        "text": "Chất nào sau đây là thành phần chính của chất giặt rửa tổng hợp?",
         "image": null,
         "images": [],
         "options": [
@@ -20773,7 +20778,7 @@ export const HOA12_CHUONG1_7_EXAMS: Chuong1Exam[] = [
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>11</sub>C<sub>6</sub>H<sub>4</sub>SO<sub>3</sub>Na (Sodium alkylbenzenesulfonate)",
             "image": null,
             "isCorrect": true
           },
@@ -22660,26 +22665,26 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 7,
-            "text": "Chất X có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>2</sub>, là ester của acetic acid. Công thức cấu tạo của X là",
+            "text": "Chất X có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>2</sub>, là ester của acetic acid (CH<sub>3</sub>COOH).<br/>Công thức cấu tạo của X là:",
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "HCOOC<sub>2</sub>H<sub>5</sub>",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "CH<sub>3</sub>COOCH<sub>3</sub>",
                 "isCorrect": true
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "C<sub>2</sub>H<sub>5</sub>COOH",
                 "isCorrect": false
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "HCOOCH<sub>3</sub>",
                 "isCorrect": false
               }
             ],
@@ -23003,7 +23008,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
         "questions": [
           {
             "rawNum": 11,
-            "text": "Thủy phân hoàn toàn triglyceride X trong dung dịch NaOH thu được C<sub>17</sub>H<sub>35</sub>COONa và C<sub>3</sub>H<sub>5</sub>(OH)3. Tên gọi của X là",
+            "text": "Thủy phân hoàn toàn triglyceride X trong dung dịch NaOH thu được C<sub>17</sub>H<sub>35</sub>COONa và C<sub>3</sub>H<sub>5</sub>(OH)3.<br/>Tên gọi của X là",
             "options": [
               {
                 "letter": "A",
@@ -23542,7 +23547,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 17,
-            "text": "Ester X có công thức cấu tạo như sau:\nTên gọi của X là",
+            "text": "Ester X có công thức cấu tạo như sau:<br/>Tên gọi của X là",
             "options": [
               {
                 "letter": "A",
@@ -23804,26 +23809,26 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 26,
-            "text": "Cho ester X tác dụng với dung dịch NaOH đun nóng, thu được sodium propionate và methyl alcohol. Công thức cấu tạo của X là",
+            "text": "Cho ester X tác dụng với dung dịch NaOH đun nóng, thu được sodium propionate (C<sub>2</sub>H<sub>5</sub>COONa) và methyl alcohol (CH<sub>3</sub>OH).<br/>Công thức cấu tạo của X là:",
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "C<sub>2</sub>H<sub>5</sub>COOCH<sub>3</sub>",
                 "isCorrect": true
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "HCOOC<sub>3</sub>H<sub>7</sub>",
                 "isCorrect": false
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "C<sub>3</sub>H<sub>7</sub>COOH",
                 "isCorrect": false
               }
             ],
@@ -24155,21 +24160,26 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 38,
-            "text": "Cho phản ứng: CH<sub>3</sub>COOH + HOC<sub>2</sub>H<sub>5</sub> ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + HOH Biểu thức tỉnh hằng số cân bằng của phản ứng trên là",
+            "text": "Cho phản ứng ester hoá:<br/><div class=\"my-2 p-2 bg-slate-100 rounded-lg text-center font-bold text-slate-800\">CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH ⇌ CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O</div>Biểu thức tính hằng số cân bằng (K<sub>C</sub>) của phản ứng trên là:",
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "K<sub>C</sub> = [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH] / [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>][H<sub>2</sub>O]",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "K<sub>C</sub> = [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>][H<sub>2</sub>O] / [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH]",
                 "isCorrect": true
               },
               {
                 "letter": "C",
-                "text": ".D ",
+                "text": "K<sub>C</sub> = [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>] / [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH]",
+                "isCorrect": false
+              },
+              {
+                "letter": "D",
+                "text": "K<sub>C</sub> = [CH<sub>3</sub>COOH][C<sub>2</sub>H<sub>5</sub>OH] / [CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>]",
                 "isCorrect": false
               }
             ],
@@ -24206,26 +24216,26 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 40,
-            "text": "Chất X có công thức phân tử , là ester của acetic acid. Công thức cấu tạo của X là",
+            "text": "Chất X có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>2</sub>, là ester của acetic acid (CH<sub>3</sub>COOH).<br/>Công thức cấu tạo của X là:",
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "HCOOC<sub>2</sub>H<sub>5</sub>",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "CH<sub>3</sub>COOCH<sub>3</sub>",
                 "isCorrect": true
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "C<sub>2</sub>H<sub>5</sub>COOH",
                 "isCorrect": false
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "HCOOCH<sub>3</sub>",
                 "isCorrect": false
               }
             ],
@@ -24262,7 +24272,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 42,
-            "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Tên gọi của X là",
+            "text": "Ester X mạch hở có công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>.<br/>Tên gọi của X là",
             "options": [
               {
                 "letter": "A",
@@ -24661,7 +24671,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 56,
-            "text": "Xà phòng hóa ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng dung dịch NaOH dư thu được muối Y và alcohol Z (bậc II). Công thức cấu tạo thu gọn của X là",
+            "text": "Xà phòng hóa ester X có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> bằng dung dịch NaOH dư thu được muối Y và alcohol Z (bậc II).<br/>Công thức cấu tạo thu gọn của X là",
             "options": [
               {
                 "letter": "A",
@@ -24689,7 +24699,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 57,
-            "text": "Hợp chất X có công thức phân tử là C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> (phân tử có chứa vòng benzene). Đung nóng X với dung dịch NaOH dư, thu được hỗn hợp hai muối. Công thức cấu tạo của X là",
+            "text": "Hợp chất X có công thức phân tử là C<sub>9</sub>H<sub>10</sub>O<sub>2</sub> (phân tử có chứa vòng benzene). Đung nóng X với dung dịch NaOH dư, thu được hỗn hợp hai muối.<br/>Công thức cấu tạo của X là",
             "options": [
               {
                 "letter": "A",
@@ -25096,26 +25106,26 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 71,
-            "text": "Thực hiện phản ứng ester hoá sau: cho 0,1 mol alcohol tác dụng với 0,1 mol carboxylic acid, có mặt H<sub>2</sub>SO<sub>4</sub> đặc làm xúc tác. Đồ thị nào sau đây biểu diễn sự thay đổi số mol (n) alcohol theo thời gian (t)?",
+            "text": "Thực hiện phản ứng ester hoá sau: cho 0,1 mol alcohol tác dụng với 0,1 mol carboxylic acid (xúc tác H<sub>2</sub>SO<sub>4</sub> đặc). Đồ thị nào sau đây biểu diễn sự thay đổi số mol (n) alcohol theo thời gian (t)?",
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "Đường cong giảm dần đều về 0 khi kết thúc phản ứng",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "Đường nằm ngang song song trục thời gian (không đổi)",
                 "isCorrect": false
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "Đường cong giảm dần rồi đi ngang ở giá trị hằng số khác 0 (đạt trạng thái cân bằng)",
                 "isCorrect": true
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "Đường cong tăng dần theo thời gian",
                 "isCorrect": false
               }
             ],
@@ -25124,7 +25134,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 72,
-            "text": "Thuỷ phân ester có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> (với xúc tác acid), thu được 2 sản phẩm hữu cơ X và Y. Từ X có thể điều chế trực tiếp ra Y bằng một phản ứng. Tên gọi của X là",
+            "text": "Thuỷ phân ester có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> (với xúc tác acid), thu được 2 sản phẩm hữu cơ X và Y. Từ X có thể điều chế trực tiếp ra Y bằng một phản ứng.<br/>Tên gọi của X là",
             "options": [
               {
                 "letter": "A",
@@ -25159,26 +25169,26 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
         "questions": [
           {
             "rawNum": 73,
-            "text": "Aspirin là một trong những loại thuốc giảm đau, hạ sốt được sử dụng rộng rãi trên toàn thế giới. Aspirin có công thức cấu tạo như sau:\nTrong điều kiện ẩm ướt, aspirin có thể bị thuỷ phân để tạo thành salicylic acid và acetic acid. Công thức cấu tạo nào sau đây là của salicylic acid?",
+            "text": "Aspirin là một trong những loại thuốc giảm đau, hạ sốt được sử dụng rộng rãi trên toàn thế giới. Aspirin có cấu tạo acetylsalicylic acid (CH<sub>3</sub>COOC<sub>6</sub>H<sub>4</sub>COOH).<br/>Trong điều kiện ẩm ướt, aspirin có thể bị thuỷ phân để tạo thành salicylic acid và acetic acid.<br/>Công thức cấu tạo nào sau đây là của salicylic acid?",
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "p-HO-C<sub>6</sub>H<sub>4</sub>-COOH",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "m-HO-C<sub>6</sub>H<sub>4</sub>-COOH",
                 "isCorrect": false
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "o-HO-C<sub>6</sub>H<sub>4</sub>-COOH (2-hydroxybenzoic acid)",
                 "isCorrect": true
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "C<sub>6</sub>H<sub>5</sub>COOH",
                 "isCorrect": false
               }
             ],
@@ -25355,7 +25365,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 80,
-            "text": "Thuỷ phân hoàn toàn m gam methyl acetate bằng dung dịch NaOH đun nóng thu được 8,2 gam muối. Giá trị của m là",
+            "text": "Thuỷ phân hoàn toàn m gam methyl acetate bằng dung dịch NaOH đun nóng thu được 8,2 gam muối.<br/>Giá trị của m là",
             "options": [
               {
                 "letter": "A",
@@ -25439,7 +25449,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 83,
-            "text": "Đun nóng 0,1 mol ester đơn chức X với 135 mL dung dịch NaOH 1M. Sau khi phản ứng xảy ra hoàn toàn, cô cạn dung dịch thu được ethyl alcohol và 9,6 gam chất rắn khan. Công thức cấu tạo của X:",
+            "text": "Đun nóng 0,1 mol ester đơn chức X với 135 mL dung dịch NaOH 1M. Sau khi phản ứng xảy ra hoàn toàn, cô cạn dung dịch thu được ethyl alcohol và 9,6 gam chất rắn khan.<br/>Công thức cấu tạo của X:",
             "options": [
               {
                 "letter": "A",
@@ -25467,7 +25477,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 84,
-            "text": "Cho 27,2 gam phenyl acetate tác dụng với 400 mL dung dịch NaOH 1,5M đun nóng. Sau khi phản ứng xảy ra hoàn toàn thu được dung dịch X. Cô cạn X thu được a gam rắn khan. Giá trị của a là",
+            "text": "Cho 27,2 gam phenyl acetate tác dụng với 400 mL dung dịch NaOH 1,5M đun nóng. Sau khi phản ứng xảy ra hoàn toàn thu được dung dịch X. Cô cạn X thu được a gam rắn khan.<br/>Giá trị của a là",
             "options": [
               {
                 "letter": "A",
@@ -25586,7 +25596,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
         "questions": [
           {
             "rawNum": 88,
-            "text": "Methyl butanoate là một ester có mùi táo. Khi đun nóng hỗn hợp 17,6 g butanoic acid và 4,8 g methyl alcohol với xúc tác H<sub>2</sub>SO<sub>4</sub> đặc, thu được m g methyl butanoate. Biết hiệu suất phản ứng đạt 75%. Giá trị của m là",
+            "text": "Methyl butanoate là một ester có mùi táo. Khi đun nóng hỗn hợp 17,6 g butanoic acid và 4,8 g methyl alcohol với xúc tác H<sub>2</sub>SO<sub>4</sub> đặc, thu được m g methyl butanoate. Biết hiệu suất phản ứng đạt 75%.<br/>Giá trị của m là",
             "options": [
               {
                 "letter": "A",
@@ -25842,22 +25852,22 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "Oleic acid",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "α-Linolenic acid (ALA)",
                 "isCorrect": true
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "Linoleic acid",
                 "isCorrect": false
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "Stearic acid",
                 "isCorrect": false
               }
             ],
@@ -26987,7 +26997,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 48,
-            "text": "Cho sơ đồ chuyển hoá: Triolein  X Y Z. Tên gọi của Z là",
+            "text": "Cho sơ đồ chuyển hoá: Triolein  X Y Z.<br/>Tên gọi của Z là",
             "options": [
               {
                 "letter": "A",
@@ -27015,7 +27025,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 49,
-            "text": "Cho 0,1 mol tristearin tác dụng hoàn toàn với dung dịch NaOH dư, đun nóng, thu được m gam glycerol. Giá trị của m là",
+            "text": "Cho 0,1 mol tristearin tác dụng hoàn toàn với dung dịch NaOH dư, đun nóng, thu được m gam glycerol.<br/>Giá trị của m là",
             "options": [
               {
                 "letter": "A",
@@ -27071,7 +27081,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 51,
-            "text": "Xà phòng hóa hoàn toàn 17,8 gam chất béo X cần vừa đủ dung dịch chứa 0,06 mol NaOH. Cô cạn dung dịch sau phản ứng thu được m gam muối khan. Giá trị của m là",
+            "text": "Xà phòng hóa hoàn toàn 17,8 gam chất béo X cần vừa đủ dung dịch chứa 0,06 mol NaOH. Cô cạn dung dịch sau phản ứng thu được m gam muối khan.<br/>Giá trị của m là",
             "options": [
               {
                 "letter": "A",
@@ -27099,7 +27109,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 52,
-            "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối. Giá trị của m là",
+            "text": "Thủy phân hoàn toàn m gam chất béo bằng dung dịch NaOH, đun nóng thu được 9,2 gam glycerol và 91,8 gam muối.<br/>Giá trị của m là",
             "options": [
               {
                 "letter": "A",
@@ -27426,22 +27436,22 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
             "options": [
               {
                 "letter": "A",
-                "text": "C<sub>3</sub>H<sub>5</sub>(OH)3",
+                "text": "C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "CH<sub>3</sub>[CH<sub>2</sub>]16COONa",
+                "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>16</sub>COONa",
                 "isCorrect": false
               },
               {
                 "letter": "C",
-                "text": "CH<sub>3</sub>[CH<sub>2</sub>]4COONa",
+                "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>4</sub>COONa",
                 "isCorrect": false
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>11</sub>C<sub>6</sub>H<sub>4</sub>SO<sub>3</sub>Na (Sodium alkylbenzenesulfonate)",
                 "isCorrect": true
               }
             ],
@@ -27709,26 +27719,26 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 17,
-            "text": "Cấu trúc phân tử sodium palmitate (C<sub>15</sub>H<sub>31</sub>COONa) có thể được minh họa như sau:\nKhi hòa tan vào nước, các phân tử sodium palmitate sẽ hình thành nên cấu trúc nào dưới đây?",
+            "text": "Cấu trúc phân tử sodium palmitate (C<sub>15</sub>H<sub>31</sub>COONa) gồm đầu ưa nước và đuôi kị nước.<br/>Khi hòa tan vào nước, các phân tử sodium palmitate sẽ hình thành nên cấu trúc nào dưới đây?",
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "Cấu trúc hạt micelle hình cầu (đầu ưa nước quay ra ngoài, đuôi kị nước tụ vào bên trong)",
                 "isCorrect": true
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "Cấu trúc hạt micelle ngược (đuôi kị nước quay ra ngoài)",
                 "isCorrect": false
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "Dung dịch đồng nhất phân tán hoàn toàn, không tạo hạt",
                 "isCorrect": false
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "Kết tủa tinh thể không tan ở đáy bình",
                 "isCorrect": false
               }
             ],
@@ -28463,22 +28473,22 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
             "options": [
               {
                 "letter": "A",
-                "text": "",
+                "text": "Sodium alkylbenzenesulfonate có mạch carbon phân nhánh phức tạp",
                 "isCorrect": false
               },
               {
                 "letter": "B",
-                "text": "",
+                "text": "Sodium dodecylbenzene sulfonate mang nhóm tert-butyl phân nhánh",
                 "isCorrect": false
               },
               {
                 "letter": "C",
-                "text": "",
+                "text": "Sodium linear alkylbenzenesulfonate (LAS) có mạch hydrocarbon thẳng, không phân nhánh",
                 "isCorrect": true
               },
               {
                 "letter": "D",
-                "text": "",
+                "text": "Alkylbenzene sulfonate mạch thơm gắn nhiều nhánh methyl",
                 "isCorrect": false
               }
             ],
@@ -28627,7 +28637,7 @@ export const HOA12_CHUONG1_TOPICS: Chuong1Topic[] = [
           },
           {
             "rawNum": 49,
-            "text": "Xà phòng hóa hoàn toàn 1 tấn chất béo trung tính bằng dung dịch chứa 150 kg NaOH (vừa đủ), thu được m tấn xà phòng. Biết xà phòng chứa 75% muối sodium của các acid béo, còn lại là chất dư. Giá trị của m là",
+            "text": "Xà phòng hóa hoàn toàn 1 tấn chất béo trung tính bằng dung dịch chứa 150 kg NaOH (vừa đủ), thu được m tấn xà phòng. Biết xà phòng chứa 75% muối sodium của các acid béo, còn lại là chất dư.<br/>Giá trị của m là",
             "options": [
               {
                 "letter": "A",
