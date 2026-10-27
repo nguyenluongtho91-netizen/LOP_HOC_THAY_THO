@@ -85,10 +85,9 @@ export default function StudentPortal() {
   const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'survey' | 'all'>('homework')
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
 
-  // Xác định chính xác học sinh có thuộc Khối 12 hay không (Tài liệu lớp nào chỉ hiện cho lớp đó)
-  // Xác định học sinh Khối 12 hoặc Thầy giáo (Thầy giáo luôn xem được toàn bộ)
+  // Xác định học sinh Khối 12 hoặc Thầy giáo (Tài liệu lớp nào chỉ hiện cho lớp đó)
   const isGrade12 = useMemo(() => {
-    if (!student) return true; // Khách / chưa đăng nhập cho phép xem
+    if (!student) return true; // Khách / chưa đăng nhập cho phép xem lối tắt
     const code = String(student.student_code || '').toUpperCase().trim();
     const name = String(student.full_name || '').toLowerCase();
     const role = String(student.role || '').toUpperCase();
@@ -96,8 +95,14 @@ export default function StudentPortal() {
       return true; // Thầy giáo luôn thấy học liệu Hóa 12
     }
     const g = String(student.grade || '').toLowerCase().trim();
-    return /12/.test(g) || g.includes('12') || g.includes('khối 12') || g.includes('lớp 12');
-  }, [student])
+    if (g.includes('12') || g.includes('khối 12') || g.includes('lớp 12')) {
+      return true;
+    }
+    if (Array.isArray(enrolledClasses) && enrolledClasses.some(c => String(c?.class_name || '').includes('12'))) {
+      return true;
+    }
+    return false;
+  }, [student, enrolledClasses])
 
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
