@@ -35,15 +35,16 @@ import {
   getCategoryMeta, 
   ExamCategory 
 } from '@/utils/practiceExamHelper'
-// Lazy load Chapter 1 to keep StudentPortal initial load blazing fast
-const Hoa12Chuong1View = lazy(() => 
-  import('../components/Hoa12Chuong1View').then(m => ({ default: m.Hoa12Chuong1View }))
-);
 import toast from 'react-hot-toast'
 import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import { normalizeExamData } from '@/services/examNormalizer'
 import { getStudentCredential, saveStudentCredential } from '@/services/studentCredentialsService'
+
+// Lazy load Chapter 1 to keep StudentPortal initial load blazing fast
+const Hoa12Chuong1View = lazy(() => 
+  import('../components/Hoa12Chuong1View').then(m => ({ default: m.Hoa12Chuong1View }))
+);
 
 const BANK_ID      = import.meta.env.VITE_BANK_ID      || 'VCB'
 const BANK_ACCOUNT = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
