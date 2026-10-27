@@ -933,12 +933,17 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                         <div className="space-y-4 pt-2">
                           {mf.examples.map((ex) => (
                             <div key={ex.number} className="p-5 rounded-2xl border border-slate-200 bg-white space-y-3 shadow-sm hover:shadow-md transition-shadow">
-                              <div className="flex items-center gap-2">
-                                <span className="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 font-bold text-xs border border-indigo-100">
-                                  Ví dụ {ex.number}
+                              <div className="flex items-start gap-2.5">
+                                <span className="px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-800 font-bold text-xs border border-indigo-200 shrink-0 select-none">
+                                  Câu {ex.number}:
                                 </span>
+                                <div 
+                                  className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed flex-1 pt-0.5" 
+                                  dangerouslySetInnerHTML={{ 
+                                    __html: ex.text.replace(/^(?:<[^>]+>|\s)*(?:Ví\s*dụ|Câu)(?:<[^>]+>|[\s\d\.\:\-\–\,])*(?=[A-ZÀ-Ỹ])/i, '') 
+                                  }} 
+                                />
                               </div>
-                              <div className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed" dangerouslySetInnerHTML={{ __html: ex.text }} />
                               {ex.images && ex.images.length > 0 && (
                                 <div className="flex flex-wrap gap-2 my-2">
                                   {ex.images.map((img, i) => (
