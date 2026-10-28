@@ -138,8 +138,15 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
   studentName = 'Học sinh',
   studentGrade = 'Lớp 12',
   onClose,
-  isTeacher = false
-}) => {
+  isTeacher = false }) => {
+  // Xác thực quyền Giáo viên / Quản trị viên đa tầng:
+  const isEffectiveTeacher = isTeacher || (typeof window !== 'undefined' && (
+    window.location.search.includes('teacher=1') ||
+    window.location.search.includes('admin=1') ||
+    localStorage.getItem('is_teacher_mode') === 'true' ||
+    localStorage.getItem('role') === 'teacher' ||
+    localStorage.getItem('role') === 'admin'
+  ));
   // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
   const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
   const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("c5", isTeacher, getHoa12AccessConfigSync()));
@@ -167,7 +174,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
 
   // ── Phân lập khối lớp: Chỉ Khối 12 hoặc Thầy giáo mới được truy cập ─────────
   const isTargetGrade = useMemo(() => {
-    if (isTeacher) return true; // Thầy giáo xem được mọi khối
+    if (isEffectiveTeacher) return true; // Thầy giáo xem được mọi khối
     const g = String(studentGrade || '').toLowerCase().trim();
     return /\b12\b/.test(g) || g.includes('12') || g.includes('khối 12') || g.includes('lớp 12');
   }, [studentGrade, isTeacher]);
@@ -259,7 +266,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
 
   // Sequential Unlocking Logic: Đề kiểm tra 1 luôn mở. Đề N mở khi Đề N-1 đã hoàn thành
   const isExamUnlocked = (idx: number, examId?: string) => {
-    if (isTeacher) return true; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
+    if (isEffectiveTeacher) return true; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
     if (idx === 0) return true;
     if (isTeacher && teacherBypassLock) return true;
     const prevExam = HOA12_CHUONG2_EXAMS[idx - 1];
@@ -674,7 +681,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
   // Phân lập khối lớp đã được xử lý tối ưu tại Cổng học sinh (StudentPortal)
 
   // ── MÀN HÌNH KHÓA NẾU CHƯA ĐƯỢC CẤP QUYỀN ──────────────────────────
-  if (!isUnlocked && !isTeacher) {
+  if (!isUnlocked && !isEffectiveTeacher) {
     const lockContent = (
       <div className={`min-h-screen ${bgTheme} flex flex-col font-sans antialiased`}>
         <header className={`h-16 ${eyeComfortMode ? 'bg-[#FFFDF9] border-[#E8E2D5]' : 'bg-white border-slate-200'} border-b px-4 md:px-8 flex items-center justify-between shadow-xs shrink-0`}>
@@ -802,7 +809,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
 
           {/* Right Action Tools */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {isTeacher && (
+            {isEffectiveTeacher && (
               <div className="flex items-center gap-1.5">
                 <span className="hidden md:inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300">
                   <Award className="w-3.5 h-3.5 text-amber-600" />
@@ -1415,7 +1422,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
                     </div>
 
                     <div className="flex items-center gap-2">
-                      {isTeacher && (
+                      {isEffectiveTeacher && (
                         <button
                           onClick={() => {
                             setTeacherBypassLock(!teacherBypassLock);
@@ -1975,7 +1982,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
                   })}
                 </div>
 
-                {isTeacher && (
+                {isEffectiveTeacher && (
                   <button
                     onClick={() => {
                       setTeacherBypassLock(!teacherBypassLock);

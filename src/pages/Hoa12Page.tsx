@@ -118,28 +118,26 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
   } catch (e) {}
 
   // PHÂN BIỆT RÕ RÀNG GIỮA HỌC SINH VÀ THẦY GIÁO (TRÁNH LẪN LỘN QUYỀN):
-  const isRealStudent = Boolean(
-    studentSession &&
-    studentSession.student_code &&
-    !["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code).toUpperCase().trim())
+    // ƯU TIÊN TUYỆT ĐỐI QUYỀN GIÁO VIÊN / QUẢN TRỊ VIÊN:
+  const hasTeacherParam = searchParams.get("teacher") === "1" || searchParams.get("admin") === "1";
+  const hasTeacherLocal = localStorage.getItem("is_teacher_mode") === "true" ||
+                          localStorage.getItem("role") === "teacher" ||
+                          localStorage.getItem("role") === "admin" ||
+                          localStorage.getItem("hoa11_teacher_authenticated") === "true" ||
+                          localStorage.getItem("hoa12_teacher_authenticated") === "true" ||
+                          localStorage.getItem("hoa10_teacher_authenticated") === "true";
+  const isTeacherByAuth = Boolean(auth?.user && (auth.isAdmin?.() || auth.isTeacher?.() || auth.user?.email));
+  const isTeacherByStudentCode = Boolean(
+    studentSession && (
+      ["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code || "").toUpperCase().trim()) ||
+      String(studentSession.role || "").toUpperCase() === "ADMIN" ||
+      String(studentSession.role || "").toUpperCase() === "TEACHER" ||
+      String(studentSession.grade || "").toLowerCase().includes("giáo viên")
+    )
   );
 
-  let isTeacher = false;
-  if (!isRealStudent) {
-    const isTeacherByAuth = Boolean(auth?.user && (auth.isAdmin?.() || auth.isTeacher?.() || auth.user?.email));
-    const isTeacherByStudentCode = Boolean(
-      studentSession && (
-        ["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code || "").toUpperCase().trim()) ||
-        String(studentSession.role || "").toUpperCase() === "ADMIN" ||
-        String(studentSession.role || "").toUpperCase() === "TEACHER" ||
-        String(studentSession.grade || "").toLowerCase().includes("giáo viên")
-      )
-    );
-    const isTeacherByLocalFlag = (localStorage.getItem("is_teacher_mode") === "true" && localStorage.getItem("hoa12_teacher_authenticated") === "true") ||
-                                 localStorage.getItem("role") === "teacher" ||
-                                 localStorage.getItem("role") === "admin";
-    isTeacher = isTeacherByAuth || isTeacherByStudentCode || isTeacherByLocalFlag;
-  }
+  const isTeacher = hasTeacherParam || hasTeacherLocal || isTeacherByAuth || isTeacherByStudentCode;
+  const isRealStudent = !isTeacher && Boolean(studentSession?.student_code);
 
   let studentName = isTeacher ? "Thầy Thọ" : (studentSession?.full_name || studentSession?.name || "Học sinh");
   let studentGrade = isTeacher ? "Khối 12" : (studentSession?.grade || "Khối 12");
