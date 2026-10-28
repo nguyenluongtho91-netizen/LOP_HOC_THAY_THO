@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import Hoa11Chuong1View from "@/components/Hoa11Chuong1View";
 import Hoa11Chuong2View from "@/components/Hoa11Chuong2View";
+import Hoa11Chuong3View from "@/components/Hoa11Chuong3View";
+import Hoa11Chuong4View from "@/components/Hoa11Chuong4View";
 import { useAuthStore } from "@/store/authStore";
 
 export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: number }) {
@@ -12,9 +14,13 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
   const auth = useAuthStore() as any;
 
   const resolveChapter = (): number => {
-    if (defaultChapter === 1 || defaultChapter === 2) return defaultChapter;
+    if ([1, 2, 3, 4].includes(defaultChapter)) return defaultChapter;
     const urlC = searchParams.get("c") || searchParams.get("chuong");
     if (urlC === "2" || location.pathname.includes("chuong2") || location.pathname.includes("chuong-2")) return 2;
+    if (urlC === "3" || location.pathname.includes("chuong3") || location.pathname.includes("chuong-3")) return 3;
+    if (urlC === "4" || location.pathname.includes("chuong4") || location.pathname.includes("chuong-4")) return 4;
+    const saved = localStorage.getItem("hoa11_active_chapter");
+    if (saved && ["1", "2", "3", "4"].includes(saved)) return Number(saved);
     return 1;
   };
 
@@ -36,7 +42,7 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
     if (raw) studentSession = JSON.parse(raw);
   } catch (e) {}
 
-    // ƯU TIÊN TUYỆT ĐỐI QUYỀN GIÁO VIÊN / QUẢN TRỊ VIÊN:
+  // ƯU TIÊN TUYỆT ĐỐI QUYỀN GIÁO VIÊN / QUẢN TRỊ VIÊN:
   const hasTeacherParam = searchParams.get("teacher") === "1" || searchParams.get("admin") === "1";
   const hasTeacherLocal = localStorage.getItem("is_teacher_mode") === "true" ||
                           localStorage.getItem("role") === "teacher" ||
@@ -70,7 +76,13 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
             Học Liệu Ôn Thi Hóa 11 Chuẩn Bộ 2025:
           </span>
           <span className="font-bold text-amber-400">
-            {activeChapter === 2 ? "💨 Đang mở: Chương 2 – Nitrogen & Sulfur" : "⚖️ Đang mở: Chương 1 – Cân Bằng Hóa Học"}
+            {activeChapter === 2
+              ? "💨 Đang mở: Chương 2 – Nitrogen & Sulfur"
+              : activeChapter === 3
+              ? "🧪 Đang mở: Chương 3 – Đại Cương Hóa Học Hữu Cơ"
+              : activeChapter === 4
+              ? "⛽ Đang mở: Chương 4 – Hydrocarbon"
+              : "⚖️ Đang mở: Chương 1 – Cân Bằng Hóa Học"}
           </span>
         </div>
 
@@ -85,7 +97,7 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
             }`}
           >
             <span>⚖️</span>
-            <span>Chương 1: Cân Bằng Hóa Học (3 Đề)</span>
+            <span>Chương 1: Cân Bằng Hóa Học (2 Đề)</span>
           </button>
           <button
             type="button"
@@ -99,11 +111,49 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
             <span>💨</span>
             <span>Chương 2: Nitrogen & Sulfur (2 Đề)</span>
           </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(3)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 3
+                ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🧪</span>
+            <span>Chương 3: Đại Cương Hóa Hữu Cơ (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(4)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 4
+                ? "bg-gradient-to-r from-amber-600 to-rose-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>⛽</span>
+            <span>Chương 4: Hydrocarbon (4 Đề)</span>
+          </button>
         </div>
       </div>
 
       {activeChapter === 2 ? (
         <Hoa11Chuong2View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate("/")}
+        />
+      ) : activeChapter === 3 ? (
+        <Hoa11Chuong3View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate("/")}
+        />
+      ) : activeChapter === 4 ? (
+        <Hoa11Chuong4View
           studentName={studentName}
           studentGrade={studentGrade}
           isTeacher={isTeacher}

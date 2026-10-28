@@ -9,6 +9,8 @@ import { HOA12_CHUONG4_EXAMS } from './hoa12Chuong4Service';
 import { HOA12_CHUONG5_EXAMS } from './hoa12Chuong5Service';
 import { HOA11_CHUONG1_EXAMS } from './hoa11Chuong1Service';
 import { HOA11_CHUONG2_EXAMS } from './hoa11Chuong2Service';
+import { HOA11_CHUONG3_EXAMS } from './hoa11Chuong3Service';
+import { HOA11_CHUONG4_EXAMS } from './hoa11Chuong4Service';
 import { HOA10_CHUONG1_EXAMS } from './hoa10Chuong1Service';
 import { HOA10_CHUONG2_EXAMS } from './hoa10Chuong2Service';
 
@@ -21,6 +23,8 @@ export function getAllStandardExamsList() {
     ...HOA12_CHUONG5_EXAMS.map(e => ({ ...e, grade: '12', chapter: 'Chương 5: Pin & Điện Phân' })),
     ...HOA11_CHUONG1_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Chương 1: Cân Bằng Hóa Học' })),
     ...HOA11_CHUONG2_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Chương 2: Nitrogen - Sulfur' })),
+    ...HOA11_CHUONG3_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Chương 3: Đại Cương Hóa Hữu Cơ' })),
+    ...HOA11_CHUONG4_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Chương 4: Hydrocarbon' })),
     ...HOA10_CHUONG1_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 1: Cấu Tạo Nguyên Tử' })),
     ...HOA10_CHUONG2_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 2: Bảng Tuần Hoàn NTHH' })),
   ];

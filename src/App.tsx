@@ -135,6 +135,8 @@ export default function App() {
         <Route path="/hoa-11"   element={<Hoa11Page />} />
         <Route path="/hoa11-chuong1" element={<Hoa11Page defaultChapter={1} />} />
         <Route path="/hoa11-chuong2" element={<Hoa11Page defaultChapter={2} />} />
+        <Route path="/hoa11-chuong3" element={<Hoa11Page defaultChapter={3} />} />
+        <Route path="/hoa11-chuong4" element={<Hoa11Page defaultChapter={4} />} />
 
         {/* HỌC LIỆU HÓA HỌC KHỐI 12 */}
         <Route path="/hoa12"    element={<Hoa12Page />} />
