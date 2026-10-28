@@ -41,6 +41,15 @@ export default function PublicPortalHub() {
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               type="button"
+              onClick={() => navigate('/thpt')}
+              className="px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 hover:bg-amber-500 text-amber-300 hover:text-slate-950 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+              title="Trang Quản Trị: Mở / Khóa Đề thi & Xem đáp án"
+            >
+              <Shield className="w-3.5 h-3.5" />
+              <span>Quản Trị Đề THPT</span>
+            </button>
+            <button
+              type="button"
               onClick={() => navigate('/thi')}
               className="px-3.5 py-2 rounded-xl bg-teal-600/20 border border-teal-500/40 hover:bg-teal-600 text-teal-300 hover:text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
             >
@@ -108,6 +117,14 @@ export default function PublicPortalHub() {
             >
               <Trophy className="w-4 h-4 text-amber-400" />
               <span>Phòng Thi Học Sinh (Theo Mã)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/thpt')}
+              className="px-6 py-3.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-extrabold text-sm transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-amber-500/10"
+            >
+              <Shield className="w-4 h-4 text-amber-400" />
+              <span>Trang Quản Trị & Đóng/Mở Đề</span>
             </button>
           </div>
         </div>
