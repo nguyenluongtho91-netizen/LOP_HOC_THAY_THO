@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   GraduationCap, BookOpen, Trophy, Sparkles, Clock, CheckCircle2,
-  Atom, Zap, ArrowRight, ShieldCheck, Calculator, Play, Star,
+  Atom, Zap, ArrowRight, Shield, ShieldCheck, Calculator, Play, Star,
   Compass, Users, Check, Flame, ChevronRight, LogIn, ExternalLink
 } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';

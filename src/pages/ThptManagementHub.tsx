@@ -7,7 +7,7 @@ import {
   GraduationCap, BookOpen, Users, Atom, Plus,
   CalendarCheck, ClipboardList, MonitorPlay, Search, Filter,
   ArrowRight, Sparkles, CheckCircle2, ChevronRight, Zap, Shield, KeyRound,
-  FlaskConical, Layers, Scale, Dna, TestTube2
+  FlaskConical, Layers, Scale, Dna, TestTube2, Eye
 } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort } from '@/lib/helpers'
