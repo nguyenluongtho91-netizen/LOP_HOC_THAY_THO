@@ -266,13 +266,10 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
 
   // Sequential Unlocking Logic: Đề kiểm tra 1 luôn mở. Đề N mở khi Đề N-1 đã hoàn thành
   const isExamUnlocked = (idx: number, examId?: string) => {
-    if (isEffectiveTeacher) return true; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
-    if (idx === 0) return true;
-    if (isTeacher && teacherBypassLock) return true;
-    const prevExam = HOA12_CHUONG5_EXAMS[idx - 1];
-    if (!prevExam) return true;
-    const history = getChuong5ExamHistory(prevExam.id);
-    return (history && history.length > 0) || Boolean(completedExams[prevExam.id]);
+    if (isEffectiveTeacher) return true; // QUẢN TRỊ VIÊN LUÔN VÀO ĐƯỢC TẤT CẢ CÁC ĐỀ
+    // Bỏ khóa tuần tự cứng nhắc: Tất cả các đề đều mở tự do trừ khi Thầy giáo bấm Khóa với HS
+    if (examId && Boolean(accessConfig?.exams?.[examId])) return false;
+    return true;
   };
 
   // Eye comfort & Accessibility controls (Bảo vệ mắt & Chống mỏi mắt)

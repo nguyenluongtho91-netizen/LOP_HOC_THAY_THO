@@ -113,6 +113,10 @@ export default function App() {
     <Suspense fallback={<Spinner />}>
       <Routes>
         {/* 1. CỔNG CÔNG KHAI DÀNH CHO HỌC SINH VÀ HỌC LIỆU TOÀN DIỆN */}
+                {/* CỔNG QUẢN TRỊ THPT TRỰC TIẾP */}
+        <Route path="/thpt"            element={<ThptManagementHub />} />
+        <Route path="/thpt/hoa"        element={<ThptManagementHub defaultSubject="Hóa" />} />
+        <Route path="/thpt/toan"       element={<ThptManagementHub defaultSubject="Toán" />} />
         <Route path="/portal"   element={<PublicPortalHub />} />
         <Route path="/hub"      element={<PublicPortalHub />} />
         <Route path="/trang-chu" element={<PublicPortalHub />} />

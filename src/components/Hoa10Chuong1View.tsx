@@ -149,7 +149,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
   ));
   // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
   const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("c1", isTeacher, getHoa12AccessConfigSync()));
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h10_c1", isTeacher, getHoa12AccessConfigSync()));
   const [passcodeInput, setPasscodeInput] = useState('');
   const [showTeacherPinModal, setShowTeacherPinModal] = useState(false);
   const [teacherPinInput, setTeacherPinInput] = useState('');
@@ -166,7 +166,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
       setAccessConfig(cfg);
       setNewPasscodeForm(cfg.passcode || 'THAYTHO2026');
       setTempLockEnabled(cfg.is_locked);
-      const auth = !isChapterLocked("c1", isTeacher, cfg);
+      const auth = !isChapterLocked("h10_c1", isTeacher, cfg);
       setIsUnlocked(auth);
     });
     return () => { isMounted = false; };
@@ -266,13 +266,10 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
 
   // Sequential Unlocking Logic: Đề kiểm tra 1 luôn mở. Đề N mở khi Đề N-1 đã hoàn thành
   const isExamUnlocked = (idx: number, examId?: string) => {
-    if (isEffectiveTeacher) return true; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
-    if (idx === 0) return true;
-    if (isTeacher && teacherBypassLock) return true;
-    const prevExam = HOA10_CHUONG1_EXAMS[idx - 1];
-    if (!prevExam) return true;
-    const history = getChuong1ExamHistory(prevExam.id);
-    return (history && history.length > 0) || Boolean(completedExams[prevExam.id]);
+    if (isEffectiveTeacher) return true; // QUẢN TRỊ VIÊN LUÔN VÀO ĐƯỢC TẤT CẢ CÁC ĐỀ
+    // Bỏ khóa tuần tự cứng nhắc: Tất cả các đề đều mở tự do trừ khi Thầy giáo bấm Khóa với HS
+    if (examId && Boolean(accessConfig?.exams?.[examId])) return false;
+    return true;
   };
 
   // Eye comfort & Accessibility controls (Bảo vệ mắt & Chống mỏi mắt)
@@ -1890,7 +1887,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
 
                           {/* Action Button */}
                           <div className="pt-2 flex items-center gap-2">
-                            {!isTeacher && Boolean(accessConfig.exams?.[e.id]) ? (
+                            {!isEffectiveTeacher && Boolean(accessConfig.exams?.[e.id]) ? (
                               <div className="w-full py-3 px-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold text-center flex items-center justify-center gap-1.5">
                                 <Lock className="w-4 h-4 text-rose-600" />
                                 <span>Đề thi này đang được Thầy giáo tạm đóng</span>
