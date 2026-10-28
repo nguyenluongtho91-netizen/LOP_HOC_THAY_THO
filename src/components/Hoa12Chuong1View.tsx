@@ -12,6 +12,7 @@ import {
   ArrowUpRight, Coffee
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { MotivationModal } from './MotivationModal';
 import {
   HOA12_CHUONG1_LESSONS,
   HOA12_CHUONG1_7_EXAMS,
@@ -194,8 +195,77 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   const [selectedLevel, setSelectedLevel] = useState<'all' | 'NB' | 'TH' | 'VD' | 'VDC'>('all');
 
   // Mini-set pagination (Chia nhỏ đề thành 10-15 câu để học sinh không mỏi mắt)
+  // Mini-set pagination (Chia nhỏ đề thành 10-15 câu để học sinh không mỏi mắt)
   const [selectedSetIndex, setSelectedSetIndex] = useState<number>(0); // 0 = Set 1, -1 = Tất cả
-  const [submittedSets, setSubmittedSets] = useState<Record<string, boolean>>({});
+  const STORAGE_KEY_SETS = 'hoa12_c1_set_results';
+  const [submittedSets, setSubmittedSets] = useState<Record<string, boolean>>(() => {
+    try {
+      const saved = localStorage.getItem('hoa12_c1_submitted_sets');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+  const [setResults, setSetResults] = useState<Record<string, { correct: number; total: number; score: number; completedAt: string }>>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_SETS);
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  // Completed exams state for persistence & sequential unlocking
+  const [completedExams, setCompletedExams] = useState<Record<string, { score: number; passed: boolean }>>(() => {
+    try {
+      const saved = localStorage.getItem('hoa12_c1_completed_exams');
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  // Teacher unlock bypass toggle
+  const [teacherBypassLock, setTeacherBypassLock] = useState<boolean>(false);
+
+  // Motivational emotional feedback modal state
+  const [motivationModal, setMotivationModal] = useState<{
+    isOpen: boolean;
+    setName: string;
+    correctCount: number;
+    totalQuestions: number;
+    score: number;
+    timeSpent?: string;
+    hasNextSet?: boolean;
+    onNextSet?: () => void;
+    onRetry?: () => void;
+    onReviewSolutions?: () => void;
+    onOpenHandbook?: () => void;
+  }>({
+    isOpen: false,
+    setName: '',
+    correctCount: 0,
+    totalQuestions: 0,
+    score: 0,
+  });
+
+  // Sequential Unlocking Logic: Bộ đề 1 luôn mở. Bộ N chỉ mở khi Bộ N-1 đã hoàn thành (hoặc Thầy mở)
+  const isMiniSetUnlocked = (idx: number) => {
+    if (idx === 0) return true;
+    if (isTeacher && teacherBypassLock) return true;
+    const prevKey = `${selectedLessonId}_p${practicePart}_sub${selectedSubTopic}_lvl${selectedLevel}_set${idx - 1}`;
+    return Boolean(submittedSets[prevKey] || setResults[prevKey]);
+  };
+
+  // Sequential Unlocking Logic: Đề kiểm tra 1 luôn mở. Đề N mở khi Đề N-1 đã hoàn thành
+  const isExamUnlocked = (idx: number) => {
+    if (idx === 0) return true;
+    if (isTeacher && teacherBypassLock) return true;
+    const prevExam = HOA12_CHUONG1_7_EXAMS[idx - 1];
+    if (!prevExam) return true;
+    const history = getChuong1ExamHistory(prevExam.id);
+    return (history && history.length > 0) || Boolean(completedExams[prevExam.id]);
+  };
 
   // Eye comfort & Accessibility controls (Bảo vệ mắt & Chống mỏi mắt)
   const [eyeComfortMode, setEyeComfortMode] = useState<boolean>(true); // Nền kem ấm dịu mắt
@@ -325,6 +395,50 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     try { sfx.playComplete(); } catch (e) {}
     setActiveTab('results');
 
+    // Lưu vào completedExams cho lộ trình mở khóa bậc thang
+    const newCompleted = {
+      ...completedExams,
+      [currentExam.id]: {
+        score: scoreResult.totalScore,
+        passed: scoreResult.totalScore >= 5.0
+      }
+    };
+    setCompletedExams(newCompleted);
+    try {
+      localStorage.setItem('hoa12_c1_completed_exams', JSON.stringify(newCompleted));
+    } catch (e) {}
+
+    // Bật Modal Động viên & Vinh danh cho Đề thi
+    const currentExamIndex = HOA12_CHUONG1_7_EXAMS.findIndex(e => e.id === currentExam.id);
+    const hasNextExam = currentExamIndex < HOA12_CHUONG1_7_EXAMS.length - 1;
+
+    setMotivationModal({
+      isOpen: true,
+      setName: currentExam.title,
+      correctCount: scoreResult.totalCorrect,
+      totalQuestions: currentExam.questions.length,
+      score: scoreResult.totalScore,
+      timeSpent: `${Math.floor(durationSec / 60)} phút ${durationSec % 60} giây`,
+      hasNextSet: hasNextExam,
+      onNextSet: () => {
+        if (hasNextExam) {
+          handleStartExam(HOA12_CHUONG1_7_EXAMS[currentExamIndex + 1].id);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      },
+      onRetry: () => {
+        handleStartExam(currentExam.id, true);
+      },
+      onReviewSolutions: () => {
+        setActiveTab('results');
+        window.scrollTo({ top: 500, behavior: 'smooth' });
+      },
+      onOpenHandbook: () => {
+        setActiveTab('handbook');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
     if (forcedByViolation) {
       toast.error(`Bài thi bị thu do vi phạm rời màn hình quá 3 lần! Điểm số: ${scoreResult.totalScore}/10 điểm`, { duration: 6000 });
     } else {
@@ -417,7 +531,12 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
 
   // Submit Mini Set
   const handleSubmitCurrentSet = () => {
-    setSubmittedSets(prev => ({ ...prev, [currentSetKey]: true }));
+    const newSubmitted = { ...submittedSets, [currentSetKey]: true };
+    setSubmittedSets(newSubmitted);
+    try {
+      localStorage.setItem('hoa12_c1_submitted_sets', JSON.stringify(newSubmitted));
+    } catch (e) {}
+
     // Tự động mở lời giải cho các câu trong bộ
     const newRevealed = { ...practiceRevealed };
     currentSetQuestions.forEach(q => {
@@ -425,7 +544,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
     });
     setPracticeRevealed(newRevealed);
 
-    // Tính điểm của bộ đề này
+    // Tính điểm của bộ đề này (quy đổi theo thang điểm 10 chuẩn xác)
     let correctCount = 0;
     currentSetQuestions.forEach(q => {
       const userAns = practiceAnswers[q.id];
@@ -443,10 +562,59 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
       }
     });
 
+    const calculatedScore = currentSetQuestions.length > 0
+      ? Math.round((correctCount / currentSetQuestions.length) * 10 * 10) / 10
+      : 0;
+
+    const newResults = {
+      ...setResults,
+      [currentSetKey]: {
+        correct: correctCount,
+        total: currentSetQuestions.length,
+        score: calculatedScore,
+        completedAt: new Date().toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }),
+      }
+    };
+    setSetResults(newResults);
+    try {
+      localStorage.setItem(STORAGE_KEY_SETS, JSON.stringify(newResults));
+    } catch (e) {}
+
     sfx.playComplete();
-    toast.success(`Đã nộp Bộ đề số ${selectedSetIndex + 1}! Đúng ${correctCount}/${currentSetQuestions.length} câu.`, {
-      icon: '🎉',
-      duration: 5000
+
+    // Mở Modal Động viên & Vinh danh Cảm xúc
+    const hasNext = selectedSetIndex < questionSets.length - 1;
+    setMotivationModal({
+      isOpen: true,
+      setName: `Bộ đề số ${selectedSetIndex + 1} (${currentSetQuestions.length} câu)`,
+      correctCount,
+      totalQuestions: currentSetQuestions.length,
+      score: calculatedScore,
+      hasNextSet: hasNext,
+      onNextSet: () => {
+        if (hasNext) {
+          setSelectedSetIndex(selectedSetIndex + 1);
+          window.scrollTo({ top: 350, behavior: 'smooth' });
+        }
+      },
+      onRetry: () => {
+        const resetAns = { ...practiceAnswers };
+        const resetRev = { ...practiceRevealed };
+        currentSetQuestions.forEach(q => {
+          delete resetAns[q.id];
+          delete resetRev[q.id];
+        });
+        setPracticeAnswers(resetAns);
+        setPracticeRevealed(resetRev);
+        toast('Đã làm mới bộ đề! Chúc em làm bài thật tốt nhé.', { icon: '🔄' });
+      },
+      onReviewSolutions: () => {
+        window.scrollTo({ top: 550, behavior: 'smooth' });
+      },
+      onOpenHandbook: () => {
+        setActiveTab('handbook');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   };
 
@@ -1151,19 +1319,44 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   </div>
                 </div>
 
-                {/* Row 3: BỘ ĐỀ NHỎ (MINI-SETS) SELECTOR - CHỐNG MỎI MẮT */}
+                {/* Row 3: BỘ ĐỀ NHỎ (MINI-SETS) SELECTOR - LỘ TRÌNH MỞ KHÓA BẬC THANG */}
                 <div className="pt-3 border-t border-slate-200/70">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-extrabold text-indigo-700 flex items-center gap-1.5 uppercase tracking-wider">
-                      <Sparkles className="w-4 h-4 text-amber-500" />
-                      Chọn bộ đề nhỏ vừa sức (Mỗi bộ {setSize} câu ~ 15 phút làm bài):
-                    </span>
-                    <button
-                      onClick={() => setSelectedSetIndex(selectedSetIndex === -1 ? 0 : -1)}
-                      className="text-xs font-bold text-slate-500 hover:text-indigo-600 underline"
-                    >
-                      {selectedSetIndex === -1 ? 'Thu gọn thành từng bộ 15 câu' : 'Xem danh sách toàn bộ'}
-                    </button>
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs font-black text-indigo-700 flex items-center gap-1.5 uppercase tracking-wider">
+                        <Sparkles className="w-4 h-4 text-amber-500" />
+                        Lộ trình mở khóa từng bộ đề (Mỗi bộ {setSize} câu ~ 15 phút):
+                      </span>
+                      <span className="text-[11px] font-medium text-slate-500 hidden sm:inline">
+                        (Hoàn thành Bộ 1 để mở khóa Bộ 2)
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      {isTeacher && (
+                        <button
+                          onClick={() => {
+                            setTeacherBypassLock(!teacherBypassLock);
+                            toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả bộ đề!' : 'Đã khôi phục chế độ khóa theo lộ trình học sinh', { icon: '👑' });
+                          }}
+                          className={`px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
+                            teacherBypassLock
+                              ? 'bg-amber-500 text-white border-amber-600 shadow-xs'
+                              : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
+                          }`}
+                          title="Chế độ Thầy giáo: Bỏ qua khóa đề để duyệt bài nhanh"
+                        >
+                          {teacherBypassLock ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5 text-amber-600" />}
+                          <span>{teacherBypassLock ? 'Mở khóa tất cả (Thầy)' : 'Mở khóa hết (Thầy)'}</span>
+                        </button>
+                      )}
+                      <button
+                        onClick={() => setSelectedSetIndex(selectedSetIndex === -1 ? 0 : -1)}
+                        className="text-xs font-bold text-slate-500 hover:text-indigo-600 underline cursor-pointer"
+                      >
+                        {selectedSetIndex === -1 ? 'Thu gọn thành từng bộ 15 câu' : 'Xem danh sách toàn bộ'}
+                      </button>
+                    </div>
                   </div>
 
                   {/* Mini-set Buttons Grid */}
@@ -1173,28 +1366,51 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                       const startQ = idx * setSize + 1;
                       const endQ = idx * setSize + s.length;
                       const sKey = `${selectedLessonId}_p${practicePart}_sub${selectedSubTopic}_lvl${selectedLevel}_set${idx}`;
-                      const isDone = submittedSets[sKey];
+                      const isDone = Boolean(submittedSets[sKey] || setResults[sKey]);
+                      const setResult = setResults[sKey];
+                      const isUnlocked = isMiniSetUnlocked(idx);
 
                       return (
                         <button
                           key={idx}
                           onClick={() => {
+                            if (!isUnlocked) {
+                              toast.error(`🔒 Hãy hoàn thành Bộ đề số ${idx} trước để mở khóa Bộ đề số ${idx + 1} nhé! Cùng Thầy Thọ vượt ải từng bước nào!`, {
+                                icon: '⏳',
+                                duration: 4000
+                              });
+                              return;
+                            }
                             setSelectedSetIndex(idx);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            window.scrollTo({ top: 350, behavior: 'smooth' });
                           }}
-                          className={`px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border ${
-                            isSelected
+                          className={`px-3.5 py-2 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
+                            !isUnlocked
+                              ? 'bg-slate-100/80 text-slate-400 border-dashed border-slate-300 hover:bg-slate-100 cursor-not-allowed opacity-75'
+                              : isSelected
                               ? 'bg-indigo-600 text-white border-indigo-600 shadow-md transform -translate-y-0.5'
                               : isDone
-                              ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100'
-                              : 'bg-white border-slate-300 text-slate-700 hover:border-indigo-400'
+                              ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-2xs'
+                              : 'bg-white border-slate-300 text-slate-700 hover:border-indigo-400 shadow-2xs'
                           }`}
                         >
+                          {!isUnlocked && <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />}
                           <span>Bộ {idx + 1}</span>
-                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-black ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}>
+                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-black ${
+                            !isUnlocked 
+                              ? 'bg-slate-200/60 text-slate-400' 
+                              : isSelected 
+                              ? 'bg-white/20 text-white' 
+                              : 'bg-slate-100 text-slate-600'
+                          }`}>
                             Câu {startQ}–{endQ}
                           </span>
-                          {isDone && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />}
+                          {isDone && (
+                            <span className="flex items-center gap-1 text-[10px] font-black text-emerald-700 bg-emerald-100/90 px-1.5 py-0.5 rounded-md">
+                              <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                              {setResult?.score !== undefined ? `${setResult.score.toFixed(1)}đ` : 'Xong'}
+                            </span>
+                          )}
                         </button>
                       );
                     })}
@@ -1634,25 +1850,77 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                 </div>
               </div>
 
-              {/* Exam Picker */}
-              <div className={`flex flex-wrap items-center gap-2 ${cardTheme} p-3 rounded-2xl`}>
-                <span className="text-xs font-bold text-slate-500 px-2">Chọn đề thi:</span>
-                {HOA12_CHUONG1_7_EXAMS.map((e) => (
+              {/* Exam Picker - LỘ TRÌNH MỞ KHÓA ĐỀ THI BẬC THANG */}
+              <div className={`flex flex-wrap items-center justify-between gap-2 ${cardTheme} p-3 rounded-2xl`}>
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 px-2">
+                    <Trophy className="w-4 h-4 text-amber-500" />
+                    <span>Lộ trình đề thi:</span>
+                    <span className="text-[11px] text-slate-400 font-normal hidden sm:inline">(Hoàn thành Đề 1 để mở khóa Đề 2)</span>
+                  </div>
+                  {HOA12_CHUONG1_7_EXAMS.map((e, idx) => {
+                    const isUnlocked = isExamUnlocked(idx);
+                    const isSelected = selectedExamId === e.id;
+                    const history = getChuong1ExamHistory(e.id);
+                    const bestScore = history && history.length > 0 
+                      ? Math.max(...history.map(h => h.score)) 
+                      : (completedExams[e.id]?.score);
+
+                    return (
+                      <button
+                        key={e.id}
+                        onClick={() => {
+                          if (!isUnlocked) {
+                            const prevBadge = HOA12_CHUONG1_7_EXAMS[idx - 1]?.badge || `Đề ${idx}`;
+                            toast.error(`🔒 Hãy hoàn thành ${prevBadge} trước để mở khóa đề này nhé! Cùng Thầy Thọ chinh phục từng đề nào!`, {
+                              icon: '⏳',
+                              duration: 4000
+                            });
+                            return;
+                          }
+                          if (isExamActive && !window.confirm('Bạn đang làm bài, bạn có chắc muốn đổi sang đề khác?')) {
+                            return;
+                          }
+                          setSelectedExamId(e.id);
+                          setIsExamActive(false);
+                          setExamAnswers({});
+                        }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
+                          !isUnlocked
+                            ? 'bg-slate-100 text-slate-400 border-dashed border-slate-300 cursor-not-allowed opacity-75'
+                            : isSelected
+                            ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
+                            : 'bg-slate-200/60 border-transparent text-slate-700 hover:bg-slate-300'
+                        }`}
+                      >
+                        {!isUnlocked && <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />}
+                        <span>{e.badge}</span>
+                        {bestScore !== undefined && (
+                          <span className={`text-[10px] font-black px-1.5 py-0.2 rounded ml-0.5 ${isSelected ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-900'}`}>
+                            {bestScore.toFixed(1)}đ
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {isTeacher && (
                   <button
-                    key={e.id}
                     onClick={() => {
-                      if (isExamActive && !window.confirm('Bạn đang làm bài, bạn có chắc muốn đổi sang đề khác?')) {
-                        return;
-                      }
-                      setSelectedExamId(e.id);
-                      setIsExamActive(false);
-                      setExamAnswers({});
+                      setTeacherBypassLock(!teacherBypassLock);
+                      toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả đề thi!' : 'Đã khôi phục chế độ khóa theo lộ trình học sinh', { icon: '👑' });
                     }}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${selectedExamId === e.id ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
+                      teacherBypassLock
+                        ? 'bg-amber-500 text-white border-amber-600 shadow-2xs'
+                        : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
+                    }`}
                   >
-                    {e.badge}
+                    {teacherBypassLock ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5 text-amber-600" />}
+                    <span>{teacherBypassLock ? 'Mở khóa tất cả đề (Thầy)' : 'Mở khóa hết đề (Thầy)'}</span>
                   </button>
-                ))}
+                )}
               </div>
 
               {/* Exam Questions Container */}
@@ -2411,7 +2679,12 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
         </div>
       )}
 
-</div>
+      {/* Smart Motivational Emotional Feedback Modal */}
+      <MotivationModal
+        {...motivationModal}
+        onClose={() => setMotivationModal(prev => ({ ...prev, isOpen: false }))}
+      />
+    </div>
   );
 };
 
