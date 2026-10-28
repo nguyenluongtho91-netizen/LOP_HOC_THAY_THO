@@ -424,28 +424,83 @@ export default function HierarchicalGradeTree() {
                     )}
                   </div>
 
-                  {/* Chương 6, 7, 8 */}
-                  <Link
-                    to="/hoa12"
-                    className="flex items-center gap-1.5 px-1.5 py-1 rounded text-red-100 hover:bg-red-700/60 hover:text-white transition-colors"
-                  >
-                    <Bookmark className="w-3 h-3 text-yellow-300" />
-                    <span>Chương 6: Đại cương kim loại</span>
-                  </Link>
-                  <Link
-                    to="/hoa12"
-                    className="flex items-center gap-1.5 px-1.5 py-1 rounded text-red-100 hover:bg-red-700/60 hover:text-white transition-colors"
-                  >
-                    <Bookmark className="w-3 h-3 text-orange-300" />
-                    <span>Chương 7: Nhóm IA, IIA & Nhôm</span>
-                  </Link>
-                  <Link
-                    to="/hoa12"
-                    className="flex items-center gap-1.5 px-1.5 py-1 rounded text-red-100 hover:bg-red-700/60 hover:text-white transition-colors"
-                  >
-                    <Bookmark className="w-3 h-3 text-pink-300" />
-                    <span>Chương 8: Kim loại chuyển tiếp</span>
-                  </Link>
+                  {/* Chương 6: Đại cương kim loại */}
+                  <div className="rounded-lg bg-blue-950/40 p-1.5 border border-blue-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_12_c6', e)}
+                      className="flex items-center justify-between font-bold text-blue-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa12-chuong6" className="hover:underline flex items-center gap-1">
+                        <span>⚙️ Chương 6: Đại Cương Kim Loại</span>
+                      </Link>
+                      {expanded['thpt_12_c6'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                    </div>
+                    {expanded['thpt_12_c6'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-blue-100/80">
+                        <Link to="/hoa12-chuong6" className="block py-0.5 hover:text-white hover:underline">
+                          • Bài 18 - 19: Tinh thể & Tính chất kim loại
+                        </Link>
+                        <Link to="/hoa12-chuong6" className="block py-0.5 hover:text-white hover:underline">
+                          • Bài 20 - 22: Tách kim loại & Ăn mòn
+                        </Link>
+                        <Link to="/hoa12-chuong6" className="block py-0.5 text-cyan-300 font-bold hover:text-white hover:underline">
+                          • Luyện 4 Đề Thi Chuẩn Bộ 2025
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Chương 7: Nhóm IA & IIA */}
+                  <div className="rounded-lg bg-orange-950/40 p-1.5 border border-orange-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_12_c7', e)}
+                      className="flex items-center justify-between font-bold text-orange-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa12-chuong7" className="hover:underline flex items-center gap-1">
+                        <span>🔥 Chương 7: Nhóm IA & IIA</span>
+                      </Link>
+                      {expanded['thpt_12_c7'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                    </div>
+                    {expanded['thpt_12_c7'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-orange-100/80">
+                        <Link to="/hoa12-chuong7" className="block py-0.5 hover:text-white hover:underline">
+                          • Bài 24: Kim loại kiềm (Nhóm IA)
+                        </Link>
+                        <Link to="/hoa12-chuong7" className="block py-0.5 hover:text-white hover:underline">
+                          • Bài 25: Kim loại kiềm thổ & Nước cứng
+                        </Link>
+                        <Link to="/hoa12-chuong7" className="block py-0.5 text-amber-300 font-bold hover:text-white hover:underline">
+                          • Luyện 4 Đề Thi Chuẩn Bộ 2025
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Chương 8: Kim loại chuyển tiếp & Phức chất */}
+                  <div className="rounded-lg bg-purple-950/40 p-1.5 border border-purple-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_12_c8', e)}
+                      className="flex items-center justify-between font-bold text-purple-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa12-chuong8" className="hover:underline flex items-center gap-1">
+                        <span>🔮 Chương 8: Chuyển Tiếp & Phức Chất</span>
+                      </Link>
+                      {expanded['thpt_12_c8'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                    </div>
+                    {expanded['thpt_12_c8'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-purple-100/80">
+                        <Link to="/hoa12-chuong8" className="block py-0.5 hover:text-white hover:underline">
+                          • Bài 27: Đại cương kim loại chuyển tiếp
+                        </Link>
+                        <Link to="/hoa12-chuong8" className="block py-0.5 hover:text-white hover:underline">
+                          • Bài 28 - 29: Cấu tạo & Ứng dụng phức chất
+                        </Link>
+                        <Link to="/hoa12-chuong8" className="block py-0.5 text-pink-300 font-bold hover:text-white hover:underline">
+                          • Luyện 4 Đề Thi Chuẩn Bộ 2025
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>

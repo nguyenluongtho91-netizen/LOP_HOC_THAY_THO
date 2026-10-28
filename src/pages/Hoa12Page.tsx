@@ -6,6 +6,9 @@ import Hoa12Chuong2View from "@/components/Hoa12Chuong2View";
 import Hoa12Chuong3View from "@/components/Hoa12Chuong3View";
 import Hoa12Chuong4View from "@/components/Hoa12Chuong4View";
 import Hoa12Chuong5View from "@/components/Hoa12Chuong5View";
+import Hoa12Chuong6View from "@/components/Hoa12Chuong6View";
+import Hoa12Chuong7View from "@/components/Hoa12Chuong7View";
+import Hoa12Chuong8View from "@/components/Hoa12Chuong8View";
 import { useAuthStore } from "@/store/authStore";
 
 class Hoa12ErrorBoundary extends React.Component<
@@ -88,15 +91,18 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
 
   // Khởi tạo chương học (1 hoặc 5)
   const resolveChapter = (): number => {
-    if ([1, 2, 3, 4, 5].includes(defaultChapter)) return defaultChapter;
+    if ([1, 2, 3, 4, 5, 6, 7, 8].includes(defaultChapter)) return defaultChapter;
     const urlC = searchParams.get("c") || searchParams.get("chuong");
+    if (urlC === "8" || location.pathname.includes("chuong8") || location.pathname.includes("chuong-8")) return 8;
+    if (urlC === "7" || location.pathname.includes("chuong7") || location.pathname.includes("chuong-7")) return 7;
+    if (urlC === "6" || location.pathname.includes("chuong6") || location.pathname.includes("chuong-6")) return 6;
     if (urlC === "5" || location.pathname.includes("chuong5") || location.pathname.includes("chuong-5")) return 5;
     if (urlC === "4" || location.pathname.includes("chuong4") || location.pathname.includes("chuong-4")) return 4;
     if (urlC === "3" || location.pathname.includes("chuong3") || location.pathname.includes("chuong-3")) return 3;
     if (urlC === "2" || location.pathname.includes("chuong2") || location.pathname.includes("chuong-2")) return 2;
     if (urlC === "1" || location.pathname.includes("chuong1") || location.pathname.includes("chuong-1")) return 1;
     const saved = localStorage.getItem("hoa12_active_chapter");
-    if (saved && ["1", "2", "3", "4", "5"].includes(saved)) return Number(saved);
+    if (saved && ["1", "2", "3", "4", "5", "6", "7", "8"].includes(saved)) return Number(saved);
     return 1;
   };
 
@@ -163,11 +169,17 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
               ? "🧶 Đang mở: Chương 4 – Polymer & Vật Liệu"
               : activeChapter === 5
               ? "⚡ Đang mở: Chương 5 – Pin & Điện Phân"
+              : activeChapter === 6
+              ? "⚙️ Đang mở: Chương 6 – Đại Cương Về Kim Loại"
+              : activeChapter === 7
+              ? "🔥 Đang mở: Chương 7 – Nguyên Tố Nhóm IA & IIA"
+              : activeChapter === 8
+              ? "🔮 Đang mở: Chương 8 – Kim Loại Chuyển Tiếp & Phức Chất"
               : "🧪 Đang mở: Chương 1 – Ester – Lipid"}
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-700/80">
+        <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-700/80 overflow-x-auto max-w-full">
           <button
             type="button"
             onClick={() => handleSelectChapter(1)}
@@ -178,7 +190,7 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
             }`}
           >
             <span>🧪</span>
-            <span>Chương 1: Ester – Lipid (7 Đề)</span>
+            <span>C1: Ester – Lipid (7 Đề)</span>
           </button>
           <button
             type="button"
@@ -190,7 +202,7 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
             }`}
           >
             <span>🍇</span>
-            <span>Chương 2: Carbohydrate (4 Đề)</span>
+            <span>C2: Carbohydrate (4 Đề)</span>
           </button>
           <button
             type="button"
@@ -202,7 +214,7 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
             }`}
           >
             <span>🧬</span>
-            <span>Chương 3: Hợp Chất Chứa Nitrogen (4 Đề)</span>
+            <span>C3: Hợp Chất N (4 Đề)</span>
           </button>
           <button
             type="button"
@@ -214,19 +226,55 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
             }`}
           >
             <span>🧶</span>
-            <span>Chương 4: Polymer (4 Đề)</span>
+            <span>C4: Polymer (4 Đề)</span>
           </button>
           <button
             type="button"
             onClick={() => handleSelectChapter(5)}
-            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
               activeChapter === 5
                 ? "bg-gradient-to-r from-teal-500 to-indigo-600 text-white shadow-md font-extrabold"
                 : "text-slate-400 hover:text-white hover:bg-slate-800"
             }`}
           >
             <span>⚡</span>
-            <span>Chương 5: Pin & Điện Phân (4 Đề)</span>
+            <span>C5: Pin & Điện Phân (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(6)}
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
+              activeChapter === 6
+                ? "bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>⚙️</span>
+            <span>C6: Đại Cương Kim Loại (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(7)}
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
+              activeChapter === 7
+                ? "bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🔥</span>
+            <span>C7: Nhóm IA & IIA (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(8)}
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
+              activeChapter === 8
+                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🔮</span>
+            <span>C8: Chuyển Tiếp & Phức Chất (4 Đề)</span>
           </button>
         </div>
       </div>

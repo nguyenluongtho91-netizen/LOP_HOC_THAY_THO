@@ -152,6 +152,9 @@ export default function App() {
         <Route path="/hoa12-chuong4" element={<Hoa12Page defaultChapter={4} />} />
         <Route path="/chuong-4" element={<Hoa12Page defaultChapter={4} />} />
         <Route path="/hoa12-chuong5" element={<Hoa12Page defaultChapter={5} />} />
+        <Route path="/hoa12-chuong6" element={<Hoa12Page defaultChapter={6} />} />
+        <Route path="/hoa12-chuong7" element={<Hoa12Page defaultChapter={7} />} />
+        <Route path="/hoa12-chuong8" element={<Hoa12Page defaultChapter={8} />} />
         <Route path="/chuong-5" element={<Hoa12Page defaultChapter={5} />} />
         {/* CỔNG TRA CỨU HÓA ĐƠN ĐIỆN TỬ DÀNH CHO PHỤ HUYNH */}
         <Route path="/hoa-don/:invoiceId" element={<PublicInvoicePage />} />
