@@ -1,9 +1,61 @@
 /**
  * TIỆN ÍCH CHUẨN HÓA & HIỂN THỊ CÔNG THỨC HÓA HỌC / TOÁN HỌC (GDPT 2018)
  * 
- * Chuyển đổi toàn diện các ký hiệu LaTeX thô (\mathrm, \rightleftharpoons, \Delta, \circ, _{...}, ^{...})
- * thành định dạng HTML chuẩn (<sub>, <sup>, ⇌, →, ΔrH°298) sắc nét, chuẩn mực sư phạm.
+ * Chuyển đổi toàn diện:
+ * - Ký hiệu LaTeX thô (\mathrm, \rightleftharpoons, \Delta, \circ, _{...}, ^{...})
+ * - Biểu thức hằng số cân bằng Kc = (tử) / (mẫu) thành phân số phân tầng chuẩn sư phạm (vertical fraction)
+ * - Nồng độ mol [H2], [I2] thành [H2], [I2]
+ * - Chuẩn hóa định dạng HTML (<sub>, <sup>, ⇌, →, ΔrH°298) sắc nét, chuyên nghiệp.
  */
+
+function cleanTerm(t: string): string {
+  let s = (t || '').trim();
+  while (s.startsWith('(') && s.endsWith(')')) {
+    let depth = 0;
+    let outer = true;
+    for (let i = 0; i < s.length - 1; i++) {
+      if (s[i] === '(') depth++;
+      else if (s[i] === ')') depth--;
+      if (depth === 0) { outer = false; break; }
+    }
+    if (outer) s = s.substring(1, s.length - 1).trim();
+    else break;
+  }
+  s = s.replace(/\s*&times;\s*/g, ' · ');
+  s = s.replace(/\s*×\s*/g, ' · ');
+  s = s.replace(/\]\s*\[/g, '] · [');
+  return s;
+}
+
+function formatFractionSlash(text: string): string {
+  // Tìm dấu gạch chéo chia (không phải thẻ đóng HTML </...>)
+  const slashIdx = text.search(/(?<!<)\//);
+  if (slashIdx === -1) return text;
+
+  let contentBefore = text.substring(0, slashIdx).trim();
+  let contentAfter = text.substring(slashIdx + 1).trim();
+
+  let prefix = '';
+  const prefixMatch = contentBefore.match(/^(\s*(?:K<sub>[Cc]<\/sub>|K[Cc])\s*=\s*)(.*)$/i);
+  if (prefixMatch) {
+    prefix = 'K<sub>c</sub> = ';
+    contentBefore = prefixMatch[2].trim();
+  } else if (!contentBefore.includes('[') && !contentBefore.match(/^\d+$/)) {
+    return text;
+  }
+
+  let trailing = '';
+  const trailMatch = contentAfter.match(/([\.,;]?<br\s*\/?>[\s\S]*|[\.,;]$)/);
+  if (trailMatch) {
+    trailing = trailMatch[0];
+    contentAfter = contentAfter.substring(0, contentAfter.length - trailing.length).trim();
+  }
+
+  const num = cleanTerm(contentBefore);
+  const den = cleanTerm(contentAfter);
+
+  return `<span class="inline-flex items-center gap-1.5 align-middle font-medium">${prefix ? `<span>${prefix}</span>` : ''}<span class="inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight"><span class="border-b border-current px-1 pb-0.5">${num}</span><span class="px-1 pt-0.5">${den}</span></span></span>${trailing}`;
+}
 
 export function formatChemicalText(raw: string | undefined | null): string {
   if (!raw || typeof raw !== 'string') return raw || '';
@@ -71,7 +123,23 @@ export function formatChemicalText(raw: string | undefined | null): string {
   s = s.replace(/Ca\s+CO<sub>3<\/sub>/g, 'CaCO<sub>3</sub>');
   s = s.replace(/Ca\s+O/g, 'CaO');
 
-  // 11. Chuẩn hóa ký hiệu biến thiên Enthalpy chuẩn theo SGK mới:
+  // 11. Chuẩn hóa nồng độ mol trong ngoặc vuông: [H2] -> [H2], [I2] -> [I2], [NH3] -> [NH3]
+  s = s.replace(/\[([A-Z][a-z]?)(\d+)\]/g, '[$1<sub>$2</sub>]');
+  s = s.replace(/\[NH3\]/g, '[NH<sub>3</sub>]');
+  s = s.replace(/\[CO2\]/g, '[CO<sub>2</sub>]');
+  s = s.replace(/\[H2O\]/g, '[H<sub>2</sub>O]');
+  s = s.replace(/\[SO2\]/g, '[SO<sub>2</sub>]');
+  s = s.replace(/\[SO3\]/g, '[SO<sub>3</sub>]');
+  s = s.replace(/\[NO2\]/g, '[NO<sub>2</sub>]');
+  s = s.replace(/\[N2O4\]/g, '[N<sub>2</sub>O<sub>4</sub>]');
+
+  // 12. Chuẩn hóa ký hiệu hằng số cân bằng Kc
+  s = s.replace(/\(K[Cc]\)/g, '(K<sub>c</sub>)');
+  s = s.replace(/\(K<sub>[Cc]<\/sub>\)/g, '(K<sub>c</sub>)');
+  s = s.replace(/\bK[Cc]\b(?!\s*<sub>)/g, 'K<sub>c</sub>');
+  s = s.replace(/K<sub>C<\/sub>/g, 'K<sub>c</sub>');
+
+  // 13. Chuẩn hóa ký hiệu biến thiên Enthalpy chuẩn theo SGK mới:
   s = s.replace(/Δ\s*<sub>\s*r\s*<\/sub>\s*H\s*<sub>\s*298\s*<\/sub>\s*<sup>\s*[°o0]\s*<\/sup>/gi, 'Δ<sub>r</sub>H°<sub>298</sub>');
   s = s.replace(/Δ\s*<sub>\s*r\s*<\/sub>\s*H\s*<sup>\s*[°o0]\s*<\/sup>\s*<sub>\s*298\s*<\/sub>/gi, 'Δ<sub>r</sub>H°<sub>298</sub>');
   s = s.replace(/Δ\s*<sub>\s*r\s*<\/sub>\s*H\s*<sup>\s*[°o0]\s*<\/sup>/gi, 'Δ<sub>r</sub>H°<sub>298</sub>');
@@ -79,24 +147,29 @@ export function formatChemicalText(raw: string | undefined | null): string {
   s = s.replace(/Δ\s*<sub>\s*f\s*<\/sub>\s*H\s*<sup>\s*[°o0]\s*<\/sup>\s*<sub>\s*298\s*<\/sub>/gi, 'Δ<sub>f</sub>H°<sub>298</sub>');
   s = s.replace(/Δ\s*<sub>\s*f\s*<\/sub>\s*H\s*<sup>\s*[°o0]\s*<\/sup>/gi, 'Δ<sub>f</sub>H°<sub>298</sub>');
 
-  // 12. Sửa lỗi Enthalpy bị lỗi font scanner docx: r298H0°D> -> ΔrH°298 > 0
+  // 14. Sửa lỗi Enthalpy bị lỗi font scanner docx: r298H0°D> -> ΔrH°298 > 0
   s = s.replace(/r298H0°D\s*>/g, 'Δ<sub>r</sub>H°<sub>298</sub> > 0');
   s = s.replace(/r298H0°D\s*</g, 'Δ<sub>r</sub>H°<sub>298</sub> < 0');
   s = s.replace(/r298H°D\s*=\s*–?/g, 'Δ<sub>r</sub>H°<sub>298</sub> = –');
 
-  // 13. Sửa lỗi phép nhân bị biến dạng ký tự như · ⇌ (t°) 10^-1 -> · 10^-1
+  // 15. Sửa lỗi phép nhân bị biến dạng ký tự như · ⇌ (t°) 10^-1 -> · 10^-1
   s = s.replace(/·\s*⇌\s*\(t°\)/g, '·');
 
-  // 14. Dọn sạch các gạch chéo ngược đơn lẻ còn sót lại trước chữ cái
+  // 16. Dọn sạch các gạch chéo ngược đơn lẻ còn sót lại trước chữ cái
   s = s.replace(/\\([a-zA-Z]+)/g, '$1');
 
-  // 15. Khoảng cách chuẩn cho mũi tên và dấu bằng
+  // 17. Khoảng cách chuẩn cho mũi tên và dấu bằng
   s = s.replace(/\s*⇌\s*/g, ' ⇌ ');
   s = s.replace(/\s*→\s*/g, ' → ');
   s = s.replace(/\s*←\s*/g, ' ← ');
 
-  // 16. Khoảng cách trước ký hiệu Enthalpy
+  // 18. Khoảng cách trước ký hiệu Enthalpy
   s = s.replace(/([^\s>])\s*(Δ<sub>[rf]<\/sub>H°<sub>298<\/sub>)/g, '$1 &nbsp; $2');
+
+  // 19. Phân số Kc = (tử) / (mẫu) hiển thị dạng phân số phân tầng chuẩn sư phạm
+  if (s.includes('/') && (s.includes('K<sub>c</sub>') || s.includes('['))) {
+    s = formatFractionSlash(s);
+  }
 
   return s;
 }
