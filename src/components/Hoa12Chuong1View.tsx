@@ -762,11 +762,8 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   backgroundPosition: "center right",
                 }}
               >
-                {/* Lớp phủ chuyển màu Gradient đen - tím hổ phách giúp text rõ nét 100% */}
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-purple-950/40 backdrop-blur-[1px] z-0" />
-                
-                {/* Hiệu ứng ánh sáng hữu cơ trang trí góc */}
-                <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+                {/* Lớp phủ chuyển màu mượt mà: Bên phải sáng tươi rực rỡ, bên trái mờ dịu để chữ đọc sắc nét */}
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/50 to-transparent z-0" />
 
                 <div className="relative z-10 max-w-3xl">
                   <span className="px-3.5 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-300 border border-amber-400/30 backdrop-blur-md uppercase tracking-wider mb-4 inline-flex items-center gap-1.5 shadow-sm">
