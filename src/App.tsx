@@ -88,8 +88,20 @@ function ProtectedRoute({ children, adminOnly = false }: ProtectedRouteProps) {
   return <>{children}</>
 }
 
+function RootRouteWrapper() {
+  const { user } = useAuthStore()
+  if (user) {
+    return (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    )
+  }
+  return <PublicPortalHub />
+}
+
 export default function App() {
-  const { init, loading } = useAuthStore()
+  const { user, init, loading } = useAuthStore()
 
   useEffect(() => {
     void init()
@@ -154,7 +166,7 @@ export default function App() {
         <Route path="/course-viewer/:courseId/:studentId"   element={<StudentCourseViewer />} />
 
         {/* 3. HỆ THỐNG QUẢN TRỊ & CỔNG HỌC LIỆU CHÍNH */}
-        <Route path="/" element={user ? <ProtectedRoute><Layout /></ProtectedRoute> : <PublicPortalHub />}>
+        <Route path="/" element={<RootRouteWrapper />}>
 
           {/* --- Nhóm Quản lý Đào tạo --- */}
           <Route index element={<Dashboard />} />
