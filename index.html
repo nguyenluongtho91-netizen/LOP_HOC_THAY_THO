@@ -30,19 +30,42 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
+      // Tự động kiểm tra và xử lý lỗi nạp CSS / JS Module do cache cũ
       window.addEventListener('error', function(e) {
+        var target = e.target;
+        var isCssError = target && target.tagName === 'LINK' && target.rel === 'stylesheet';
         var msg = (e && e.message) ? e.message : '';
-        if (msg.indexOf('dynamically imported module') !== -1 ||
-            msg.indexOf('Expected a JavaScript module') !== -1 ||
-            msg.indexOf('Loading chunk') !== -1) {
+        var isJsError = msg.indexOf('dynamically imported module') !== -1 ||
+                        msg.indexOf('Expected a JavaScript module') !== -1 ||
+                        msg.indexOf('Loading chunk') !== -1;
+        if (isCssError || isJsError) {
           var key = '__app_reload_guard__';
           var last = parseInt(sessionStorage.getItem(key) || '0', 10);
-          if (Date.now() - last > 5000) {
+          if (Date.now() - last > 3000) {
             sessionStorage.setItem(key, Date.now().toString());
-            window.location.reload();
+            window.location.href = window.location.pathname + '?v=' + Date.now();
           }
         }
       }, true);
+
+      // Tự động phát hiện trang bị mất CSS và tự làm mới ngay lập tức
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var testEl = document.createElement('div');
+          testEl.className = 'text-gray-800';
+          document.body.appendChild(testEl);
+          var color = window.getComputedStyle(testEl).color;
+          document.body.removeChild(testEl);
+          if (!color || color === '' || color === 'rgb(0, 0, 0)') {
+            var key = '__css_auto_heal__';
+            var last = parseInt(sessionStorage.getItem(key) || '0', 10);
+            if (Date.now() - last > 4000) {
+              sessionStorage.setItem(key, Date.now().toString());
+              window.location.href = window.location.pathname + '?v=' + Date.now();
+            }
+          }
+        }, 1000);
+      });
     </script>
   </head>
   <body>
