@@ -1238,33 +1238,31 @@ export default function StudentPortal() {
       </header>
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8 animate-fade-in">
-        {/* BANNER CHÀO MỪNG HỌC SINH & TỔNG QUAN TIẾN ĐỘ */}
-        <div className="bg-gradient-to-br from-slate-900 via-teal-950 to-emerald-950 rounded-3xl p-6 sm:p-8 text-white shadow-2xl border border-teal-500/20 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            {/* Cột trái: Thông tin học sinh & Lời chúc Thầy Thọ */}
-            <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-emerald-300 text-xs font-black uppercase tracking-wider border border-white/15 shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>Không gian học tập & thi trực tuyến</span>
+        {/* BANNER CHÀO MỪNG HỌC SINH (PHONG CÁCH TỐI GIẢN, HIỆN ĐẠI & THOÁNG MẮT) */}
+        <div className="bg-gradient-to-r from-teal-50/90 via-emerald-50/50 to-white rounded-3xl p-6 sm:p-8 border border-teal-200/70 shadow-xs relative overflow-hidden">
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2.5 max-w-2xl text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-100 text-teal-800 text-xs font-black uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-teal-600" />
+                <span>Cổng Thi & Học Tập Trực Tuyến · Lớp Học Thầy Thọ</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
-                Xin chào, <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-emerald-200 to-teal-200">{student.full_name}</span>! 👋
+              
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                Xin chào, <span className="text-teal-700">{student.full_name}</span>! 👋
               </h2>
-              <p className="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
-                Thầy Thọ chúc em luôn giữ vững tinh thần tự giác, hoàn thành xuất sắc các bài tập và bứt phá điểm số cao nhất nhé!
+              
+              <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
+                Thầy Thọ chúc em luôn giữ vững tinh thần tự giác, hoàn thành xuất sắc các bài tập và đạt điểm số cao nhất nhé!
               </p>
 
-              {/* Huy hiệu lớp & thông tin tài khoản */}
+              {/* Nhãn lớp và mã học sinh gọn gàng */}
               <div className="flex items-center gap-2 flex-wrap pt-1">
-                <span className="text-xs font-bold px-3 py-1 rounded-xl bg-white/10 backdrop-blur-md text-white border border-white/20 flex items-center gap-1.5 shadow-2xs">
-                  <GraduationCap className="w-3.5 h-3.5 text-amber-300" />
+                <span className="text-xs font-bold px-3 py-1 rounded-xl bg-white text-slate-800 border border-slate-200 shadow-2xs flex items-center gap-1.5">
+                  <GraduationCap className="w-3.5 h-3.5 text-teal-600" />
                   <span>Lớp: {student.grade || 'Khối 12'}</span>
                 </span>
-                <span className="text-xs font-mono font-bold px-3 py-1 rounded-xl bg-white/10 backdrop-blur-md text-teal-200 border border-white/20 flex items-center gap-1.5 shadow-2xs">
-                  <span>Mã HS: #{student.student_code}</span>
+                <span className="text-xs font-mono font-bold px-3 py-1 rounded-xl bg-teal-50 text-teal-800 border border-teal-200 shadow-2xs">
+                  Mã HS: #{student.student_code}
                 </span>
                 {enrolledClasses.length > 0 && enrolledClasses.map((cls, idx) => {
                   const isPrac = isPracticeClassName(cls.class_name);
@@ -1273,8 +1271,8 @@ export default function StudentPortal() {
                       key={idx}
                       className={`text-xs font-bold px-3 py-1 rounded-xl border shadow-2xs flex items-center gap-1 ${
                         isPrac
-                          ? 'bg-emerald-500/25 text-emerald-200 border-emerald-400/30'
-                          : 'bg-white/10 text-slate-200 border-white/15'
+                          ? 'bg-emerald-500/15 text-emerald-800 border-emerald-300'
+                          : 'bg-white text-slate-700 border-slate-200'
                       }`}
                     >
                       {isPrac ? '🎯 ' : '📚 '}{cls.class_name}
@@ -1284,36 +1282,14 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* Cột phải: Bảng chỉ số KPI tiến độ học sinh */}
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/15 shadow-inner flex flex-col justify-between gap-3 shrink-0 lg:w-72">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
-                <span className="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                  <Trophy className="w-3.5 h-3.5 text-amber-300" />
-                  Tổng quan tiến độ
-                </span>
-                <span className="text-xs font-extrabold text-amber-300">
-                  {homeworkRooms.length > 0 ? Math.round((homeworkCompleted.length / homeworkRooms.length) * 100) : 100}%
-                </span>
+            {/* Huy hiệu thông tin học sinh góc phải thanh lịch */}
+            <div className="hidden md:flex items-center gap-3 bg-white p-4 rounded-2xl border border-teal-100 shadow-sm shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-teal-600 text-white font-black text-lg flex items-center justify-center shadow-md shadow-teal-600/20">
+                {student.full_name ? student.full_name.charAt(0).toUpperCase() : 'H'}
               </div>
-              <div className="grid grid-cols-2 gap-2.5 text-center">
-                <div className="bg-white/10 rounded-xl p-2.5 border border-white/10">
-                  <span className="text-[10px] font-bold text-slate-300 block uppercase">Bài tập về nhà</span>
-                  <span className="text-base sm:text-lg font-black text-white mt-0.5 block">
-                    {homeworkCompleted.length}/{homeworkRooms.length}
-                  </span>
-                  <span className={`text-[10px] font-bold block ${homeworkPending.length > 0 ? 'text-rose-300' : 'text-emerald-300'}`}>
-                    {homeworkPending.length > 0 ? `Nợ ${homeworkPending.length} bài` : 'Hoàn tất ✅'}
-                  </span>
-                </div>
-                <div className="bg-white/10 rounded-xl p-2.5 border border-white/10">
-                  <span className="text-[10px] font-bold text-slate-300 block uppercase">Kho Đề Mở</span>
-                  <span className="text-base sm:text-lg font-black text-amber-300 mt-0.5 block">
-                    {practiceRooms.length + chapterRooms.length + (isGrade12 ? 11 : 0)}
-                  </span>
-                  <span className="text-[10px] font-bold text-teal-200 block">
-                    C1 & C5 Hóa 12
-                  </span>
-                </div>
+              <div className="text-left">
+                <div className="text-xs font-black text-slate-900 uppercase">{student.full_name}</div>
+                <div className="text-[11px] text-teal-700 font-bold mt-0.5">Học viên chính thức 🌟</div>
               </div>
             </div>
           </div>
