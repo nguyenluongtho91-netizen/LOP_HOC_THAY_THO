@@ -302,18 +302,21 @@ export async function revokeAllStudentsAccess(): Promise<GranularAccessConfig> {
 export function isChapterLocked(
   chapterKey: string,
   isTeacher: boolean,
-  config: GranularAccessConfig = memoryConfig
+  config?: GranularAccessConfig | null
 ): boolean {
   if (isTeacher) return false; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
 
+  const cfg = config || memoryConfig || DEFAULT_ACCESS_CONFIG;
+  if (!cfg) return false;
+
   // Kiểm tra cờ hệ thống chung
-  if (config.is_locked) return true;
+  if (cfg.is_locked) return true;
 
   // Kiểm tra cờ khối
   const k = String(chapterKey).toLowerCase();
-  if ((k.includes('12') || k === 'c1' || k === 'c2' || k === 'c5') && config.grades?.grade_12) return true;
-  if (k.includes('11') && config.grades?.grade_11) return true;
-  if (k.includes('10') && config.grades?.grade_10) return true;
+  if ((k.includes('12') || k === 'c1' || k === 'c2' || k === 'c5') && cfg.grades?.grade_12) return true;
+  if (k.includes('11') && cfg.grades?.grade_11) return true;
+  if (k.includes('10') && cfg.grades?.grade_10) return true;
 
   // Kiểm tra cờ từng chương với ánh xạ 2 chiều
   const aliasMap: Record<string, string[]> = {
@@ -330,7 +333,7 @@ export function isChapterLocked(
   };
   const aliases = aliasMap[chapterKey] || [chapterKey];
   for (const a of aliases) {
-    if (config.chapters?.[a] !== undefined && Boolean(config.chapters[a])) {
+    if (cfg.chapters?.[a] !== undefined && Boolean(cfg.chapters[a])) {
       return true;
     }
   }
@@ -345,14 +348,17 @@ export function isChapterLocked(
 export function isExamLocked(
   examIdOrCode: string,
   isTeacher: boolean,
-  config: GranularAccessConfig = memoryConfig
+  config?: GranularAccessConfig | null
 ): boolean {
   if (isTeacher) return false; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
 
-  if (config.is_locked) return true;
+  const cfg = config || memoryConfig || DEFAULT_ACCESS_CONFIG;
+  if (!cfg) return false;
 
-  if (config.exams && config.exams[examIdOrCode] !== undefined) {
-    return Boolean(config.exams[examIdOrCode]);
+  if (cfg.is_locked) return true;
+
+  if (cfg.exams && cfg.exams[examIdOrCode] !== undefined) {
+    return Boolean(cfg.exams[examIdOrCode]);
   }
   return false;
 }
@@ -363,13 +369,16 @@ export function isExamLocked(
 export function isGradeLocked(
   gradeStr: string,
   isTeacher: boolean,
-  config: GranularAccessConfig = memoryConfig
+  config?: GranularAccessConfig | null
 ): boolean {
   if (isTeacher) return false;
+  const cfg = config || memoryConfig || DEFAULT_ACCESS_CONFIG;
+  if (!cfg) return false;
+
   const g = String(gradeStr || '').toLowerCase();
-  if (g.includes('12')) return Boolean(config.grades?.grade_12);
-  if (g.includes('11')) return Boolean(config.grades?.grade_11);
-  if (g.includes('10')) return Boolean(config.grades?.grade_10);
+  if (g.includes('12')) return Boolean(cfg.grades?.grade_12);
+  if (g.includes('11')) return Boolean(cfg.grades?.grade_11);
+  if (g.includes('10')) return Boolean(cfg.grades?.grade_10);
   return false;
 }
 
@@ -379,10 +388,13 @@ export function isGradeLocked(
 export function isCategoryLocked(
   catKey: 'homework' | 'practice' | 'survey',
   isTeacher: boolean,
-  config: GranularAccessConfig = memoryConfig
+  config?: GranularAccessConfig | null
 ): boolean {
   if (isTeacher) return false;
-  return Boolean(config.categories?.[catKey]);
+  const cfg = config || memoryConfig || DEFAULT_ACCESS_CONFIG;
+  if (!cfg) return false;
+
+  return Boolean(cfg.categories?.[catKey]);
 }
 
 /**
@@ -445,27 +457,29 @@ export async function toggleCourseAccess(
 export function isCourseLocked(
   course: any,
   isTeacher: boolean,
-  config: GranularAccessConfig = memoryConfig
+  config?: GranularAccessConfig | null
 ): boolean {
   if (isTeacher) return false; // Thầy giáo luôn thấy
+  const cfg = config || memoryConfig || DEFAULT_ACCESS_CONFIG;
+  if (!cfg) return false;
 
   // 1. Kiểm tra khóa tổng toàn hệ thống
-  if (config.is_locked) return true;
+  if (cfg.is_locked) return true;
 
   if (!course) return false;
 
   const cId = course.id || '';
-  if (cId && config.courses && config.courses[cId] !== undefined) {
-    return Boolean(config.courses[cId]);
+  if (cId && cfg.courses && cfg.courses[cId] !== undefined) {
+    return Boolean(cfg.courses[cId]);
   }
 
   // 2. Kiểm tra theo khối lớp trong tiêu đề hoặc thuộc tính
   const title = String(course.title || '').toLowerCase();
   const gradeStr = String(course.grade || '').toLowerCase();
 
-  if ((title.includes('12') || gradeStr.includes('12')) && config.grades?.grade_12) return true;
-  if ((title.includes('11') || gradeStr.includes('11')) && config.grades?.grade_11) return true;
-  if ((title.includes('10') || gradeStr.includes('10')) && config.grades?.grade_10) return true;
+  if ((title.includes('12') || gradeStr.includes('12')) && cfg.grades?.grade_12) return true;
+  if ((title.includes('11') || gradeStr.includes('11')) && cfg.grades?.grade_11) return true;
+  if ((title.includes('10') || gradeStr.includes('10')) && cfg.grades?.grade_10) return true;
 
   return false;
 }

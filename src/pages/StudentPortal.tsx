@@ -121,6 +121,15 @@ export default function StudentPortal() {
     return false;
   }, [student, enrolledClasses])
 
+  // Xác định Thầy giáo hoặc Thí Sinh Tự Do (Đặc quyền không bị khóa)
+  const isFreeCandidate = useMemo(() => {
+    if (!student) return false;
+    const code = String(student.student_code || '').toUpperCase().trim();
+    const name = String(student.full_name || '').toLowerCase();
+    const role = String(student.role || '').toUpperCase();
+    return code === 'THAYTHO' || code === 'TUDO' || name.includes('thọ') || role === 'ADMIN' || role === 'TEACHER' || student.grade === 'Thí Sinh Tự Do';
+  }, [student])
+
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
     if (sessionStr) {
