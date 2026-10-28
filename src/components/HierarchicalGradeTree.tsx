@@ -17,6 +17,8 @@ export default function HierarchicalGradeTree() {
     'thpt_12': true,
     'thpt_12_c1': false,
     'thpt_12_c2': false,
+    'thpt_12_c3': false,
+    'thpt_12_c4': false,
     'thpt_12_c5': false,
     'thcs': false,
   })
@@ -338,22 +340,59 @@ export default function HierarchicalGradeTree() {
                   </div>
 
                   {/* Chương 3: Hợp chất chứa Nitrogen */}
-                  <Link
-                    to="/hoa12"
-                    className="flex items-center gap-1.5 px-1.5 py-1 rounded text-red-100 hover:bg-red-700/60 hover:text-white transition-colors"
-                  >
-                    <Bookmark className="w-3 h-3 text-cyan-300" />
-                    <span>Chương 3: Nitrogen (Amine, Protein)</span>
-                  </Link>
+                  <div className="rounded-lg bg-sky-950/40 p-1.5 border border-sky-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_12_c3', e)}
+                      className="flex items-center justify-between font-bold text-sky-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa12-chuong3" className="hover:underline flex items-center gap-1">
+                        <span>🧬 Chương 3: Hợp chất chứa Nitrogen</span>
+                      </Link>
+                      {expanded['thpt_12_c3'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                    </div>
+                    {expanded['thpt_12_c3'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-sky-100/80">
+                        <Link to="/hoa12-chuong3" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 1: Amine (Bài 8)
+                        </Link>
+                        <Link to="/hoa12-chuong3" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 2: Amino Acid & Peptide (Bài 9)
+                        </Link>
+                        <Link to="/hoa12-chuong3" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 3: Protein & Enzyme (Bài 10)
+                        </Link>
+                        <Link to="/hoa12-chuong3" className="block py-0.5 text-amber-300 font-bold hover:text-white hover:underline">
+                          • Phần 4: Luyện 4 Đề Chuẩn Điểm 10
+                        </Link>
+                      </div>
+                    )}
+                  </div>
 
-                  {/* Chương 4: Polymer */}
-                  <Link
-                    to="/hoa12"
-                    className="flex items-center gap-1.5 px-1.5 py-1 rounded text-red-100 hover:bg-red-700/60 hover:text-white transition-colors"
-                  >
-                    <Bookmark className="w-3 h-3 text-purple-300" />
-                    <span>Chương 4: Polymer & Vật liệu</span>
-                  </Link>
+                  {/* Chương 4: Polymer & Vật Liệu */}
+                  <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-indigo-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_12_c4', e)}
+                      className="flex items-center justify-between font-bold text-indigo-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa12-chuong4" className="hover:underline flex items-center gap-1">
+                        <span>🧶 Chương 4: Polymer & Vật liệu</span>
+                      </Link>
+                      {expanded['thpt_12_c4'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                    </div>
+                    {expanded['thpt_12_c4'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-indigo-100/80">
+                        <Link to="/hoa12-chuong4" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 1: Đại cương Polymer (Bài 12)
+                        </Link>
+                        <Link to="/hoa12-chuong4" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 2: Vật liệu Polymer (Bài 13)
+                        </Link>
+                        <Link to="/hoa12-chuong4" className="block py-0.5 text-amber-300 font-bold hover:text-white hover:underline">
+                          • Phần 3: Luyện 4 Đề Chuẩn Điểm 10
+                        </Link>
+                      </div>
+                    )}
+                  </div>
 
                   {/* Chương 5: Pin & Điện Phân */}
                   <div className="rounded-lg bg-amber-950/40 p-1.5 border border-amber-500/30">
