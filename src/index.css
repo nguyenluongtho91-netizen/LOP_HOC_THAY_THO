@@ -1,3 +1,4 @@
+/* Build Cache-Bust v2.1.0 - 1793158666 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,7 +7,7 @@
   * { box-sizing: border-box; }
   body {
     @apply font-sans text-gray-800 antialiased;
-    background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%);
+    background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead5 100%);
     min-height: 100vh;
   }
   ::-webkit-scrollbar { width: 6px; height: 6px; }
