@@ -3,7 +3,8 @@ import {
   Users, BookOpen, CalendarCheck, ChevronLeft, ChevronRight, Clock, 
   MapPin, Search, Eye, EyeOff, DollarSign, GraduationCap, CheckCircle2, 
   ArrowRight, Sparkles, Layers, Calendar, ClipboardCheck, CreditCard,
-  Edit3, Save, Plus, Filter, Check, X, RefreshCw
+  Edit3, Save, Plus, Filter, Check, X, RefreshCw,
+  Lock, Unlock, ShieldAlert, ShieldCheck
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useDataStore } from '@/store/dataStore'
@@ -14,6 +15,8 @@ import type { LucideIcon } from 'lucide-react'
 import Modal from '@/components/Modal'
 import StudentScorecardModal from '@/components/StudentScorecardModal'
 import toast from 'react-hot-toast'
+import { fetchHoa12AccessConfig, grantAllStudentsAccess, revokeAllStudentsAccess, type Hoa12AccessConfig } from '@/services/hoa12AccessControlService'
+
 
 type Color = 'teal' | 'green' | 'amber' | 'blue' | 'purple'
 
@@ -114,6 +117,41 @@ export default function Dashboard() {
   const [sessionTime, setSessionTime] = useState<string>('17:45 - 19:15')
   const [sessionRoom, setSessionRoom] = useState<string>('Phòng Chuyên Toán')
   const [savingSchedule, setSavingSchedule] = useState(false)
+  // ── MASTER ACCESS CONTROL (QUYỀN HỌC & THI - ĐỘC QUYỀN THẦY THỌ TẠI TRANG CHỦ) ──
+  const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig | null>(null)
+  const [isUpdatingAccess, setIsUpdatingAccess] = useState(false)
+
+  useEffect(() => {
+    fetchHoa12AccessConfig().then((cfg) => setAccessConfig(cfg))
+  }, [])
+
+  const handleGrantAccess = async () => {
+    try {
+      setIsUpdatingAccess(true)
+      const updated = await grantAllStudentsAccess()
+      setAccessConfig(updated)
+      toast.success('ĐÃ CẤP QUYỀN! Học sinh toàn bộ hệ thống đã được mở tự do học và thi.', { icon: '🟢', duration: 4000 })
+    } catch (e) {
+      toast.error('Lỗi khi cấp quyền cho học sinh!')
+    } finally {
+      setIsUpdatingAccess(false)
+    }
+  }
+
+  const handleRevokeAccess = async () => {
+    if (!window.confirm('Thầy có chắc chắn muốn CẤM QUYỀN TOÀN BỘ HỌC SINH ngay lập tức không? Tất cả học sinh sẽ bị khóa bài thi & bài học.')) return;
+    try {
+      setIsUpdatingAccess(true)
+      const updated = await revokeAllStudentsAccess()
+      setAccessConfig(updated)
+      toast.success('ĐÃ CẤM QUYỀN TOÀN BỘ HỌC SINH! Toàn hệ thống đã khóa bảo vệ thành công.', { icon: '🛑', duration: 4000 })
+    } catch (e) {
+      toast.error('Lỗi khi cấm quyền học sinh!')
+    } finally {
+      setIsUpdatingAccess(false)
+    }
+  }
+
 
   // Preset Times
   const PRESET_TIMES = [
@@ -450,6 +488,83 @@ export default function Dashboard() {
           </button>
         </div>
       </div>
+
+      {/* ── BẢNG ĐIỀU KHIỂN CẤP QUYỀN TRANG CHỦ (ĐỘC QUYỀN THẦY THỌ) ── */}
+      <div className={`p-4 sm:p-5 rounded-2xl border transition-all shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 ${
+        accessConfig?.is_locked 
+          ? 'bg-gradient-to-r from-rose-50 via-red-50 to-amber-50 border-rose-200' 
+          : 'bg-gradient-to-r from-teal-50 via-emerald-50 to-cyan-50 border-teal-200'
+      }`}>
+        <div className="flex items-start sm:items-center gap-3.5">
+          <div className={`w-11 h-11 rounded-2xl flex items-center justify-center text-xl shrink-0 shadow-sm ${
+            accessConfig?.is_locked 
+              ? 'bg-rose-600 text-white' 
+              : 'bg-teal-600 text-white'
+          }`}>
+            {accessConfig?.is_locked ? <Lock className="w-5 h-5" /> : <Unlock className="w-5 h-5" />}
+          </div>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800">
+                TRUNG TÂM CẤP QUYỀN HỌC & THI (CHỈ TRANG CHỦ MỚI CÓ QUYỀN)
+              </span>
+              <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 ${
+                accessConfig?.is_locked
+                  ? 'bg-rose-100 text-rose-800 border border-rose-300 animate-pulse'
+                  : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+              }`}>
+                <span className={`w-1.5 h-1.5 rounded-full ${accessConfig?.is_locked ? 'bg-rose-600' : 'bg-emerald-600'}`} />
+                {accessConfig?.is_locked ? 'Đang Cấm Quyền Học Sinh (Khóa)' : 'Đã Cấp Quyền Cho Học Sinh (Mở Tự Do)'}
+              </span>
+            </div>
+            <p className="text-xs text-slate-600 font-medium mt-1">
+              {accessConfig?.is_locked
+                ? 'Học sinh đang bị chặn vào các bài kiểm tra & học liệu. Chỉ Thầy Thọ mới có quyền cấp quyền tại Trang Chủ.'
+                : 'Học sinh toàn hệ thống đang được phép vào học và làm bài thi bình thường.'}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2.5 shrink-0">
+          {accessConfig?.is_locked ? (
+            <button
+              type="button"
+              disabled={isUpdatingAccess}
+              onClick={handleGrantAccess}
+              className="px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-black shadow-md shadow-emerald-600/20 flex items-center gap-2 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer disabled:opacity-50"
+            >
+              <Unlock className="w-4 h-4 text-emerald-200" />
+              <span>🟢 BẬT CẤP QUYỀN HỌC SINH (MỞ TẤT CẢ)</span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              disabled={isUpdatingAccess}
+              onClick={handleRevokeAccess}
+              className="px-4 py-2.5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white rounded-xl text-xs font-black shadow-md shadow-rose-600/20 flex items-center gap-2 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer disabled:opacity-50"
+            >
+              <Lock className="w-4 h-4 text-rose-200" />
+              <span>🛑 CẤM QUYỀN TOÀN BỘ HỌC SINH (KHÓA TỨC THÌ)</span>
+            </button>
+          )}
+
+          <button
+            type="button"
+            disabled={isUpdatingAccess}
+            onClick={() => {
+              fetchHoa12AccessConfig().then((cfg) => {
+                setAccessConfig(cfg);
+                toast.success('Đã đồng bộ trạng thái cấp quyền mới nhất từ Cloud!');
+              });
+            }}
+            title="Đồng bộ lại từ Cloud"
+            className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-slate-600 hover:text-slate-900 transition-all shadow-2xs cursor-pointer"
+          >
+            <RefreshCw className={`w-4 h-4 ${isUpdatingAccess ? 'animate-spin' : ''}`} />
+          </button>
+        </div>
+      </div>
+
 
       {/* ── 4 KPI Stats Cards ──────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

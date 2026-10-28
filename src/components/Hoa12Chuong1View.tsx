@@ -546,51 +546,39 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
               </p>
             </div>
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const res = tryAuthorizeStudentWithPasscode(passcodeInput, accessConfig);
-                if (res.success) {
-                  setIsUnlocked(true);
-                  try { sfx.playComplete(); } catch (err) {}
-                  toast.success(res.message, { icon: '🎉', duration: 4000 });
-                } else {
-                  toast.error(res.message);
-                }
-              }}
-              className="space-y-4 text-left"
-            >
-              <div>
-                <label className="block text-xs font-black text-slate-700 uppercase tracking-wider mb-2">
-                  Mã cấp quyền mở khóa (do Thầy Thọ cấp):
-                </label>
-                <input
-                  type="text"
-                  value={passcodeInput}
-                  onChange={(e) => setPasscodeInput(e.target.value.toUpperCase())}
-                  placeholder="VD: THAYTHO2026"
-                  className="w-full px-4 py-3.5 rounded-2xl border-2 border-slate-300 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 text-center text-lg font-mono font-black uppercase tracking-widest bg-slate-50 transition-all outline-none"
-                  autoFocus
-                />
+            {/* Thông báo bảo vệ: Chỉ Trang Chủ mới được cấp quyền */}
+            <div className="bg-amber-50/90 border border-amber-200 rounded-2xl p-4 sm:p-5 text-left space-y-2.5">
+              <div className="text-xs font-black text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-amber-600" />
+                <span>CHẾ ĐỘ BẢO VỆ · CHỈ TRANG CHỦ MỚI CẤP QUYỀN</span>
               </div>
+              <p className="text-xs text-amber-900 leading-relaxed font-medium">
+                Theo quy định của Thầy Thọ, học sinh <strong>không thể tự mở khóa hoặc nhập mã tại trang này</strong>. Quyền vào học và làm bài thi chỉ được cấp tập trung bởi Thầy Thọ từ <strong>Trang Chủ Quản Trị Hệ Thống</strong>.
+              </p>
+              <p className="text-xs text-slate-700 font-bold">
+                👉 Em vui lòng liên hệ <strong>Thầy Thọ</strong> để Thầy kích hoạt cấp quyền từ Trang chủ nhé!
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <button
+                type="button"
+                onClick={onClose || (() => window.history.back())}
+                className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-slate-900 to-indigo-950 hover:from-slate-800 hover:to-indigo-900 text-white font-extrabold text-sm shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>QUAY VỀ CỔNG THI HỌC SINH</span>
+              </button>
 
               <button
-                type="submit"
-                className="w-full py-3.5 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                type="button"
+                onClick={() => setShowTeacherPinModal(true)}
+                className="w-full py-2.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <Unlock className="w-5 h-5" />
-                XÁC NHẬN MỞ KHÓA BÀI HỌC
+                <ShieldCheck className="w-4 h-4 text-amber-600" />
+                <span>👑 Tôi là Thầy Thọ (Đăng nhập Quản Trị)</span>
               </button>
-            {/* Dành riêng cho Thầy Thọ đăng nhập quản trị an toàn */}
-            <button
-              type="button"
-              onClick={() => setShowTeacherPinModal(true)}
-              className="w-full py-2.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300 transition-all flex items-center justify-center gap-2 cursor-pointer"
-            >
-              <ShieldCheck className="w-4 h-4 text-amber-600" />
-              <span>👑 Tôi là Thầy Thọ (Đăng nhập Quản Trị)</span>
-            </button>
-            </form>
+            </div>
 
             <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-500">
               <span>Dành cho Thầy giáo:</span>

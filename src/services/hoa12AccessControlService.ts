@@ -108,6 +108,25 @@ export async function saveHoa12AccessConfig(
 /**
  * 4. ĐẶC QUYỀN THẦY GIÁO: CẤM QUYỀN TOÀN BỘ HỌC SINH (Khóa tức thì trên toàn bộ thiết bị)
  */
+
+/**
+ * 4b. ĐẶC QUYỀN THẦY GIÁO: CẤP QUYỀN TOÀN BỘ HỌC SINH (Mở toàn hệ thống học & thi)
+ */
+export async function grantAllStudentsAccess(): Promise<Hoa12AccessConfig> {
+  const newVersion = Date.now();
+  const updated = await saveHoa12AccessConfig({
+    is_locked: false,
+    auth_version: newVersion,
+  });
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('hoa12_student_authorized', 'true');
+    localStorage.setItem('hoa12_student_auth_version', String(newVersion));
+  }
+
+  return updated;
+}
+
 export async function revokeAllStudentsAccess(): Promise<Hoa12AccessConfig> {
   const newVersion = Date.now();
   const updated = await saveHoa12AccessConfig({
