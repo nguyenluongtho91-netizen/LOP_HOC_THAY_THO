@@ -766,16 +766,21 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/50 to-transparent z-0" />
 
                 <div className="relative z-10 max-w-3xl">
-                  <span className="px-3.5 py-1 rounded-full text-xs font-black bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 backdrop-blur-md uppercase tracking-wider mb-4 inline-flex items-center gap-1.5 shadow-sm">
+                  <span className="px-3.5 py-1 rounded-full text-xs font-black bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 backdrop-blur-md uppercase tracking-wider mb-3 inline-flex items-center gap-1.5 shadow-sm">
                     <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-                    ⚡ HỆ THỐNG HỌC TẬP TOÀN DIỆN CHƯƠNG 5 (THI 2025)
+                    ⚡ CHƯƠNG TRÌNH MỚI 2025 · LỘ TRÌNH ĐỘT PHÁ CÙNG THẦY THỌ
                   </span>
-                  <h2 className="text-2xl md:text-4xl font-black mb-3 leading-tight tracking-tight text-white drop-shadow-md">
-                    Chương 5: Pin Điện Hoá & Điện Phân
+                  <h2 className="text-2xl md:text-4xl font-black mb-2 leading-tight tracking-tight text-white drop-shadow-md">
+                    Chương 5: Pin Điện Hoá & Điện Phân – Năng Lượng Tương Lai
                   </h2>
-                  <p className="text-slate-200 text-sm md:text-base leading-relaxed mb-6 font-medium drop-shadow-sm">
-                    Hệ thống hóa toàn bộ kiến thức theo chuẩn chương trình mới. 
-                    <b className="text-cyan-300"> Đặc biệt:</b> Toàn bộ câu hỏi được chia nhỏ thành các bộ đề <b className="text-cyan-300">12–15 câu vừa sức</b>, giúp học sinh làm bài tập trung 15 phút, nộp bài nhận điểm ngay và <b className="text-emerald-300">hoàn toàn không bị mỏi mắt</b>.
+                  <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
+                    <span>⚡</span> “Từ phản ứng oxi hóa – khử kinh điển đến công nghệ năng lượng xanh của thời đại mới.”
+                  </p>
+                  <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
+                    Làm chủ bản chất thế điện cực chuẩn, định luật Faraday và bài toán điện phân thực nghiệm. 
+                    Lộ trình chia nhỏ <b className="text-cyan-300 font-bold">12–15 câu linh hoạt</b> rèn phản xạ tức thì, 
+                    kèm hệ thống <b className="text-cyan-300 font-bold">4 Đề kiểm tra chuẩn ma trận Bộ GD&ĐT 2025</b>, 
+                    giúp các em tự tin bứt phá phổ điểm 9–10 và làm chủ hoàn toàn kỳ thi quan trọng.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
