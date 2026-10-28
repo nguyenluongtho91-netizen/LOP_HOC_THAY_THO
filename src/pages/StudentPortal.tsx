@@ -95,6 +95,7 @@ export default function StudentPortal() {
     hasSub?: boolean;
   } | null>(null)
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
+  const [enrolledCourses, setEnrolledCourses] = useState<any[]>([])
 
   // Xác định học sinh Khối 12 hoặc Thầy giáo (Tài liệu lớp nào chỉ hiện cho lớp đó)
   const isGrade12 = useMemo(() => {
@@ -282,6 +283,34 @@ export default function StudentPortal() {
       // Đã loại bỏ logic tự động nộp bài (0 điểm) khi quay về portal để hỗ trợ làm tiếp
       setExamsList(eligibleRooms)
       setSubmissionsList(subs || [])
+
+      // Lấy danh sách Khóa học & Bài giảng Video mà học sinh được cấp quyền
+      try {
+        const { data: rawCourses } = await supabase
+          .from("courses")
+          .select("*, chapters(*, lessons(*))")
+          .order("created_at", { ascending: false });
+
+        const st = latestStudent || student;
+        const isThay = st?.student_code?.toUpperCase() === "THAYTHO" || st?.role === "ADMIN" || st?.role === "TEACHER";
+        const sGradeNum = (st?.grade || "").match(/\d+/)?.[0];
+
+        const validCourses = (rawCourses || []).filter((c: any) => {
+          if (isThay) return true;
+          if (!c.is_published) return false;
+          const assigned: string[] = Array.isArray(c.assigned_class_ids) ? c.assigned_class_ids : [];
+          if (assigned.includes("ALL")) return true;
+          if (sGradeNum && assigned.includes(`GRADE_${sGradeNum}`)) return true;
+          if (myClassIds.some((cid: string) => assigned.includes(cid))) return true;
+          if (assigned.includes(studentId)) return true;
+          if (c.title?.toLowerCase().includes("lấy gốc") && sGradeNum && ["6","7","8","9"].includes(sGradeNum)) return true;
+          return false;
+        });
+
+        setEnrolledCourses(validCourses);
+      } catch (cErr) {
+        console.warn("Lỗi tải khóa học học sinh:", cErr);
+      }
     } catch (error) {
       console.error('Lỗi tải dữ liệu:', error)
       toast.error('Không thể tải danh sách bài thi.')
@@ -1370,6 +1399,67 @@ export default function StudentPortal() {
             <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-black/20 border border-white/20 whitespace-nowrap">
               Chỉ Trang Chủ Mới Cấp Quyền
             </span>
+          </div>
+        )}
+
+        {/* 📚 KHÓA HỌC & BÀI GIẢNG VIDEO ĐƯỢC CẤP QUYỀN */}
+        {enrolledCourses.length > 0 && (
+          <div className="space-y-3 animate-fade-in">
+            <div className="flex items-center justify-between gap-2">
+              <h3 className="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-800 flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-teal-600" />
+                <span>Khóa Học & Video Bài Giảng Của Em ({enrolledCourses.length}):</span>
+              </h3>
+              <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                Thầy Thọ Cấp Quyền 🌟
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {enrolledCourses.map((c: any) => {
+                const totalLessons = (c.chapters || []).reduce((acc: number, ch: any) => acc + (ch.lessons?.length || 0), 0);
+                const isLayGoc = c.title?.toLowerCase().includes("lấy gốc");
+
+                return (
+                  <div
+                    key={c.id}
+                    onClick={() => navigate(`/course-viewer/${c.id}/${student.id}`)}
+                    className={`p-5 rounded-2xl border-2 transition-all cursor-pointer relative overflow-hidden flex flex-col justify-between gap-3 shadow-xs hover:shadow-md hover:-translate-y-0.5 ${
+                      isLayGoc
+                        ? "bg-gradient-to-br from-amber-500/10 via-yellow-500/5 to-white border-amber-400 ring-2 ring-amber-400/20"
+                        : "bg-white hover:bg-teal-50/20 border-slate-200/90 hover:border-teal-400"
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${
+                          isLayGoc ? "bg-amber-500 text-white" : "bg-teal-600 text-white"
+                        }`}>
+                          {isLayGoc ? "⚡ Lấy Gốc Đặc Biệt" : "Khóa Học Chính Thức"}
+                        </span>
+                        <span className="text-[11px] font-bold text-slate-400">
+                          {c.chapters?.length || 0} chương · {totalLessons} bài
+                        </span>
+                      </div>
+
+                      <h4 className="text-sm sm:text-base font-black text-slate-900 line-clamp-2 leading-snug">
+                        {c.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 mt-1 line-clamp-2 font-medium leading-relaxed">
+                        {c.description || "Khóa học kèm video bài giảng, tài liệu PDF và bài tập tự luyện."}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-xs font-black text-teal-700 flex items-center gap-1">
+                        ▶️ Vào học ngay
+                      </span>
+                      <span className="text-xs text-slate-400 font-bold">➔</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
 
