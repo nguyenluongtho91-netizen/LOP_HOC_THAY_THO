@@ -1,3 +1,5 @@
+import AdminExamViewerModal from '@/components/AdminExamViewerModal'
+import { getExamByIdForAdmin } from '@/services/allExamsAdminService'
 // @ts-nocheck
 import React, { useState, useMemo, useEffect } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
@@ -159,6 +161,7 @@ export default function ThptManagementHub() {
     }
   ];
 
+    const [previewExam, setPreviewExam] = useState<any | null>(null);
   const [expandedChapter, setExpandedChapter] = useState<string | null>("h11_c1");
 
   const handleToggleChapter = async (chapKey: string, fallbackKey?: string) => {
@@ -531,17 +534,35 @@ export default function ThptManagementHub() {
                                 </h4>
                               </div>
 
-                              <button
-                                type="button"
-                                onClick={() => handleToggleExam(ex.id)}
+                              <div className="flex items-center gap-1.5 pt-1">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const fullExam = getExamByIdForAdmin(ex.id);
+                                    if (fullExam) {
+                                      setPreviewExam(fullExam);
+                                    } else {
+                                      navigate(`${mg.link}?exam=${ex.id}&teacher=1`);
+                                    }
+                                  }}
+                                  className="flex-1 py-1.5 px-2 rounded-xl text-[11px] font-black bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition-all flex items-center justify-center gap-1 cursor-pointer"
+                                  title="Xem toàn bộ 28 câu hỏi và đáp án chi tiết"
+                                >
+                                  <Eye className="w-3.5 h-3.5" />
+                                  <span>Xem Đề & Đáp Án</span>
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleToggleExam(ex.id)}
                                 className={`w-full py-1.5 px-2 rounded-xl text-[11px] font-black border transition-all cursor-pointer ${
                                   isExLocked
                                     ? "bg-rose-100 hover:bg-rose-200 text-rose-800 border-rose-300"
                                     : "bg-emerald-100 hover:bg-emerald-200 text-emerald-800 border-emerald-300"
                                 }`}
                               >
-                                {isExLocked ? "🔓 Mở Đề Này Cho HS" : "🔒 Khóa Đề Này Với HS"}
+                                {isExLocked ? "🔓 Mở Đề Cho HS" : "🔒 Khóa Với HS"}
                               </button>
+                            </div>
                             </div>
                           );
                         })}
@@ -690,6 +711,19 @@ export default function ThptManagementHub() {
           </div>
         )}
       </div>
+          {/* Modal Xem Toàn Bộ Đề & Đáp Án Dành Riêng Cho Quản Trị Viên */}
+      {previewExam && (
+        <AdminExamViewerModal
+          exam={previewExam}
+          accessConfig={accessConfig}
+          onClose={() => setPreviewExam(null)}
+          onConfigChange={(newCfg) => setAccessConfig({ ...newCfg })}
+          onEnterExam={(eid) => {
+            setPreviewExam(null);
+            navigate(`/thpt?grade=${selectedGrade}&subject=hoa`);
+          }}
+        />
+      )}
     </div>
   )
 }
