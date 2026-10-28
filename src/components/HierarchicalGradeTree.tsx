@@ -16,6 +16,7 @@ export default function HierarchicalGradeTree() {
     'thpt': true,
     'thpt_12': true,
     'thpt_12_c1': false,
+    'thpt_12_c2': false,
     'thpt_12_c5': false,
     'thcs': false,
   })
@@ -201,13 +202,15 @@ export default function HierarchicalGradeTree() {
               </div>
               {expanded['thpt_10'] && (
                 <div className="pl-3 py-1 space-y-1 text-[11px] text-red-100/90">
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 1: Cấu tạo nguyên tử
+                  <Link to="/hoa10-chuong1" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>🔬 Chương 1: Cấu tạo nguyên tử</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 2: Bảng tuần hoàn các NTHH
+                  <Link to="/hoa10-chuong2" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>📊 Chương 2: Bảng tuần hoàn NTHH</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
+                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300 opacity-60">
                     • Chương 3: Liên kết hóa học
                   </Link>
                   <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
@@ -240,13 +243,15 @@ export default function HierarchicalGradeTree() {
               </div>
               {expanded['thpt_11'] && (
                 <div className="pl-3 py-1 space-y-1 text-[11px] text-red-100/90">
-                  <Link to="/thpt?grade=11&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 1: Cân bằng hóa học
+                  <Link to="/hoa11-chuong1" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>⚖️ Chương 1: Cân bằng hóa học</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=11&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 2: Nitrogen – Sulfur
+                  <Link to="/hoa11-chuong2" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>🌱 Chương 2: Nitrogen – Sulfur</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=11&subject=hoa" className="block py-0.5 hover:text-cyan-300">
+                  <Link to="/thpt?grade=11&subject=hoa" className="block py-0.5 hover:text-cyan-300 opacity-60">
                     • Chương 3: Đại cương hóa học hữu cơ
                   </Link>
                   <Link to="/thpt?grade=11&subject=hoa" className="block py-0.5 hover:text-cyan-300">
@@ -304,13 +309,33 @@ export default function HierarchicalGradeTree() {
                   </div>
 
                   {/* Chương 2: Carbohydrate */}
-                  <Link
-                    to="/hoa12"
-                    className="flex items-center gap-1.5 px-1.5 py-1 rounded text-red-100 hover:bg-red-700/60 hover:text-white transition-colors"
-                  >
-                    <Bookmark className="w-3 h-3 text-emerald-300" />
-                    <span>Chương 2: Carbohydrate</span>
-                  </Link>
+                  <div className="rounded-lg bg-emerald-950/40 p-1.5 border border-emerald-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_12_c2', e)}
+                      className="flex items-center justify-between font-bold text-emerald-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa12-chuong2" className="hover:underline flex items-center gap-1">
+                        <span>🍇 Chương 2: Carbohydrate</span>
+                      </Link>
+                      {expanded['thpt_12_c2'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                    </div>
+                    {expanded['thpt_12_c2'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-emerald-100/80">
+                        <Link to="/hoa12-chuong2" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 1: Glucose & Fructose (Bài 4)
+                        </Link>
+                        <Link to="/hoa12-chuong2" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 2: Saccharose & Maltose (Bài 5)
+                        </Link>
+                        <Link to="/hoa12-chuong2" className="block py-0.5 hover:text-white hover:underline">
+                          • Phần 3: Tinh bột & Cellulose (Bài 6)
+                        </Link>
+                        <Link to="/hoa12-chuong2" className="block py-0.5 text-amber-300 font-bold hover:text-white hover:underline">
+                          • Phần 4: Luyện 4 Đề Chuẩn Điểm 10
+                        </Link>
+                      </div>
+                    )}
+                  </div>
 
                   {/* Chương 3: Hợp chất chứa Nitrogen */}
                   <Link

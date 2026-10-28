@@ -4,14 +4,30 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import {
   GraduationCap, BookOpen, Users, Atom, Plus,
   CalendarCheck, ClipboardList, MonitorPlay, Search, Filter,
-  ArrowRight, Sparkles, CheckCircle2, ChevronRight, Zap, Shield, KeyRound
+  ArrowRight, Sparkles, CheckCircle2, ChevronRight, Zap, Shield, KeyRound,
+  FlaskConical, Layers, Scale, Dna, TestTube2
 } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort } from '@/lib/helpers'
 import { fetchHoa12AccessConfig, getHoa12AccessConfigSync, type GranularAccessConfig } from '@/services/hoa12AccessControlService'
 
+interface ThptModuleCard {
+  id: string
+  grade: '10' | '11' | '12'
+  badge: string
+  title: string
+  desc: string
+  link: string
+  gradient: string
+  borderClass: string
+  accentColor: string
+  badgeBg: string
+  isLocked: boolean
+}
+
 export default function ThptManagementHub() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const { classes, students } = useDataStore()
   const [accessConfig, setAccessConfig] = useState<GranularAccessConfig>(() => getHoa12AccessConfigSync())
 
@@ -19,8 +35,30 @@ export default function ThptManagementHub() {
     fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }))
   }, [])
 
-  const [selectedGrade, setSelectedGrade] = useState<'all' | '10' | '11' | '12'>('all')
+  const gradeParam = searchParams.get('grade')
+  const [selectedGrade, setSelectedGrade] = useState<'all' | '10' | '11' | '12'>(() => {
+    if (gradeParam === '10' || gradeParam === '11' || gradeParam === '12') return gradeParam
+    return 'all'
+  })
   const [searchQuery, setSearchQuery] = useState('')
+
+  useEffect(() => {
+    const g = searchParams.get('grade')
+    if (g === '10' || g === '11' || g === '12') {
+      setSelectedGrade(g)
+    } else if (!g) {
+      setSelectedGrade('all')
+    }
+  }, [searchParams])
+
+  const handleSelectGrade = (gr: 'all' | '10' | '11' | '12') => {
+    setSelectedGrade(gr)
+    if (gr === 'all') {
+      navigate('/thpt?subject=hoa')
+    } else {
+      navigate(`/thpt?grade=${gr}&subject=hoa`)
+    }
+  }
 
   // Khối THPT chỉ có Môn Hóa
   const thptClasses = useMemo(() => {
@@ -39,23 +77,114 @@ export default function ThptManagementHub() {
     })
   }, [classes, selectedGrade])
 
-  // Lọc học sinh thuộc khối THPT
-  const thptStudents = useMemo(() => {
-    return students.filter(s => {
-      const g = String(s.grade || '').trim()
-      const isThpt = ['10', '11', '12'].some(k => g.includes(k) || g === k)
-      if (!isThpt) return false
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase()
-        return (s.name || '').toLowerCase().includes(q) || (s.phone || '').includes(q) || (s.student_code || '').toLowerCase().includes(q)
-      }
-      return true
-    })
-  }, [students, searchQuery])
+  const c10Count = useMemo(() => classes.filter(c => String(c.grade).includes('10')).length, [classes])
+  const c11Count = useMemo(() => classes.filter(c => String(c.grade).includes('11')).length, [classes])
+  const c12Count = useMemo(() => classes.filter(c => String(c.grade).includes('12')).length, [classes])
 
-  const c10Count = useMemo(() => thptClasses.filter(c => String(c.grade).includes('10')).length, [thptClasses])
-  const c11Count = useMemo(() => thptClasses.filter(c => String(c.grade).includes('11')).length, [thptClasses])
-  const c12Count = useMemo(() => thptClasses.filter(c => String(c.grade).includes('12')).length, [thptClasses])
+  // Danh mục tất cả các chuyên đề Hóa THPT đang mở
+  const allModules: ThptModuleCard[] = [
+    // ── HÓA 12 ──
+    {
+      id: 'h12-c1',
+      grade: '12',
+      badge: 'Hóa 12 • Chuyên đề 1',
+      title: '🧪 Chương 1: Ester – Lipid',
+      desc: 'Este, Lipit, chất béo, xà phòng hóa, tính chất và câu hỏi thực hành thí nghiệm. Kèm 7 đề luyện thi chuẩn thang 10.',
+      link: '/hoa12-chuong1',
+      gradient: 'from-amber-950/95 via-slate-900/90 to-purple-950/50',
+      borderClass: 'border-amber-500/40 hover:border-amber-400',
+      accentColor: 'text-amber-300',
+      badgeBg: 'bg-amber-500/20 text-amber-200 border border-amber-400/30',
+      isLocked: Boolean(accessConfig.chapters?.c1)
+    },
+    {
+      id: 'h12-c2',
+      grade: '12',
+      badge: 'Hóa 12 • Chuyên đề 2',
+      title: '🍇 Chương 2: Carbohydrate',
+      desc: 'Glucose, Fructose, Saccharose, Maltose, Tinh bột & Cellulose. Kèm hệ thống 4 đề luyện thi chuẩn GDPT 2018 (28 câu, thang 10).',
+      link: '/hoa12-chuong2',
+      gradient: 'from-emerald-950/95 via-teal-950/90 to-slate-900/90',
+      borderClass: 'border-emerald-500/40 hover:border-emerald-400',
+      accentColor: 'text-emerald-300',
+      badgeBg: 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h12-c5',
+      grade: '12',
+      badge: 'Hóa 12 • Chuyên đề 5',
+      title: '⚡ Chương 5: Pin Điện & Điện Phân',
+      desc: 'Thế điện cực chuẩn, ăn mòn kim loại, pin Galvani và bài toán định luật Faraday điện phân nóng chảy/dung dịch kèm 4 đề.',
+      link: '/hoa12-chuong5',
+      gradient: 'from-slate-950/95 via-indigo-950/90 to-cyan-950/60',
+      borderClass: 'border-cyan-500/40 hover:border-cyan-400',
+      accentColor: 'text-cyan-300',
+      badgeBg: 'bg-cyan-500/20 text-cyan-200 border border-cyan-400/30',
+      isLocked: Boolean(accessConfig.chapters?.c5)
+    },
+
+    // ── HÓA 11 ──
+    {
+      id: 'h11-c1',
+      grade: '11',
+      badge: 'Hóa 11 • Chuyên đề 1',
+      title: '⚖️ Chương 1: Cân Bằng Hóa Học',
+      desc: 'Khái niệm phản ứng thuận nghịch, hằng số Kc, chuyển dịch cân bằng Le Chatelier, pH và cân bằng acid-base trong dung dịch nước (Bài 1, 2).',
+      link: '/hoa11-chuong1',
+      gradient: 'from-sky-950/95 via-slate-900/90 to-blue-950/60',
+      borderClass: 'border-sky-500/40 hover:border-sky-400',
+      accentColor: 'text-sky-300',
+      badgeBg: 'bg-sky-500/20 text-sky-200 border border-sky-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h11-c2',
+      grade: '11',
+      badge: 'Hóa 11 • Chuyên đề 2',
+      title: '🌱 Chương 2: Nitrogen – Sulfur',
+      desc: 'Đơn chất Nitrogen, ammonia, muối ammonium, sulfur, SO2, sulfuric acid & muối sulfate. Kèm 2 đề kiểm tra chuẩn 28 câu (Bài 4, 5, 6, 7, 8).',
+      link: '/hoa11-chuong2',
+      gradient: 'from-teal-950/95 via-slate-900/90 to-emerald-950/60',
+      borderClass: 'border-teal-500/40 hover:border-teal-400',
+      accentColor: 'text-teal-300',
+      badgeBg: 'bg-teal-500/20 text-teal-200 border border-teal-400/30',
+      isLocked: false
+    },
+
+    // ── HÓA 10 ──
+    {
+      id: 'h10-c1',
+      grade: '10',
+      badge: 'Hóa 10 • Chuyên đề 1',
+      title: '🔬 Chương 1: Cấu Tạo Nguyên Tử',
+      desc: 'Thành phần nguyên tử, hạt nhân, khối lượng nguyên tử, đồng vị và cấu trúc lớp vỏ electron nguyên tử (Bài 1, 2, 3 chuẩn SGK GDPT).',
+      link: '/hoa10-chuong1',
+      gradient: 'from-indigo-950/95 via-slate-900/90 to-purple-950/60',
+      borderClass: 'border-indigo-500/40 hover:border-indigo-400',
+      accentColor: 'text-indigo-300',
+      badgeBg: 'bg-indigo-500/20 text-indigo-200 border border-indigo-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h10-c2',
+      grade: '10',
+      badge: 'Hóa 10 • Chuyên đề 2',
+      title: '📊 Chương 2: Bảng Tuần Hoàn NTHH',
+      desc: 'Cấu tạo bảng tuần hoàn, quy luật biến đổi tuần hoàn bán kính, độ âm điện, tính acid-base và định luật tuần hoàn kèm 2 đề thi (Bài 5, 6, 7, 8).',
+      link: '/hoa10-chuong2',
+      gradient: 'from-violet-950/95 via-slate-900/90 to-rose-950/60',
+      borderClass: 'border-violet-500/40 hover:border-violet-400',
+      accentColor: 'text-violet-300',
+      badgeBg: 'bg-violet-500/20 text-violet-200 border border-violet-400/30',
+      isLocked: false
+    }
+  ]
+
+  const filteredModules = useMemo(() => {
+    if (selectedGrade === 'all') return allModules
+    return allModules.filter(m => m.grade === selectedGrade)
+  }, [selectedGrade, accessConfig])
 
   return (
     <div className="space-y-6">
@@ -71,7 +200,7 @@ export default function ThptManagementHub() {
             Quản Lý Chuyên Hóa Cấp 3 (Lớp 10 – 11 – 12)
           </h1>
           <p className="text-cyan-100/90 text-xs sm:text-sm max-w-2xl font-medium leading-relaxed">
-            Hệ thống điều phối chuyên sâu môn Hóa Học THPT: Lớp 10, Lớp 11 và Lớp 12 luyện thi Tốt nghiệp THPT & Đại học.
+            Hệ thống bài giảng, luyện tập theo bài và phòng thi thử trực tuyến chuẩn cấu trúc GDPT 2018 (3 phần: Trắc nghiệm 4 chọn, Đúng/Sai, Trả lời ngắn).
           </p>
 
           {/* Quick Metrics */}
@@ -96,99 +225,81 @@ export default function ThptManagementHub() {
         </div>
       </div>
 
-      {/* ── LỐI VÀO CHUYÊN ĐỀ TRỌNG ĐIỂM HÓA 12 ── */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Card Hóa 12 Chương 1 */}
-        <Link
-          to="/hoa12-chuong1"
-          className="p-6 rounded-3xl text-white shadow-lg hover:shadow-2xl transition-all group relative overflow-hidden border border-amber-500/30"
-          style={{
-            backgroundImage: "url('/assets/banners/hoa12_chuong1_banner.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-purple-950/40 z-0" />
-          <div className="relative z-10">
-          <div className="flex items-center justify-between mb-3">
-            <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-black tracking-wider uppercase backdrop-blur-sm">
-              Hóa 12 • Chuyên đề 1
-            </span>
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black ${
-              accessConfig.chapters?.c1 ? 'bg-red-500/80 text-white' : 'bg-emerald-300 text-emerald-900'
-            }`}>
-              {accessConfig.chapters?.c1 ? '🔒 ĐANG KHÓA' : '🟢 ĐANG MỞ'}
-            </span>
-          </div>
-          <h3 className="text-xl font-black tracking-tight mb-1 group-hover:translate-x-0.5 transition-transform">
-            🧪 Chương 1: Ester – Lipid
-          </h3>
-          <p className="text-xs text-emerald-100/90 mb-4 leading-relaxed">
-            Trọng tâm Este, Lipit, xà phòng hóa, tính chất và câu hỏi thực hành thí nghiệm. Kèm 7 đề luyện thi chuẩn thang 10.
-          </p>
-          <div className="flex items-center gap-1.5 text-xs font-bold text-amber-200">
-            <span>Vào luyện đề ngay</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </div>
-          </div>
-        </Link>
-
-        {/* Card Hóa 12 Chương 5 */}
-        <Link
-          to="/hoa12-chuong5"
-          className="p-6 rounded-3xl text-white shadow-lg hover:shadow-2xl transition-all group relative overflow-hidden border border-cyan-500/30"
-          style={{
-            backgroundImage: "url('/assets/banners/hoa12_chuong5_banner.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-indigo-950/40 z-0" />
-          <div className="relative z-10">
-          <div className="flex items-center justify-between mb-3">
-            <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-black tracking-wider uppercase backdrop-blur-sm">
-              Hóa 12 • Chuyên đề 5
-            </span>
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black ${
-              accessConfig.chapters?.c5 ? 'bg-red-500/80 text-white' : 'bg-amber-100 text-amber-900'
-            }`}>
-              {accessConfig.chapters?.c5 ? '🔒 ĐANG KHÓA' : '🟢 ĐANG MỞ'}
-            </span>
-          </div>
-          <h3 className="text-xl font-black tracking-tight mb-1 group-hover:translate-x-0.5 transition-transform">
-            ⚡ Chương 5: Pin Điện & Điện Phân
-          </h3>
-          <p className="text-xs text-amber-100/90 mb-4 leading-relaxed">
-            Thế điện cực chuẩn, ăn mòn kim loại, pin Galvani và bài toán định luật Faraday điện phân nóng chảy/dung dịch.
-          </p>
-          <div className="flex items-center gap-1.5 text-xs font-bold text-white">
-            <span>Vào luyện đề ngay</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-          </div>
-          </div>
-        </Link>
-      </div>
-
       {/* ── Bộ lọc khối lớp Hóa THPT ── */}
       <div className="bg-white rounded-2xl p-4 border border-teal-100 shadow-sm flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-2">
           <Atom className="w-5 h-5 text-teal-600" />
-          <span className="text-sm font-black text-gray-800">Chọn khối lớp Hóa THPT:</span>
+          <span className="text-sm font-black text-gray-800">Bộ lọc khối lớp Hóa:</span>
         </div>
 
         <div className="flex items-center gap-1.5 flex-wrap">
           {(['all', '10', '11', '12'] as const).map(gr => (
             <button
               key={gr}
-              onClick={() => setSelectedGrade(gr)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              onClick={() => handleSelectGrade(gr)}
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all ${
                 selectedGrade === gr
-                  ? 'bg-teal-700 text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-teal-700 to-cyan-800 text-white shadow-md shadow-teal-900/20 scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {gr === 'all' ? 'Tất cả các lớp' : `Hóa Lớp ${gr}`}
+              {gr === 'all' ? '✨ Tất cả khối lớp (10 - 11 - 12)' : `🧪 Hóa Lớp ${gr}`}
             </button>
+          ))}
+        </div>
+      </div>
+
+      {/* ── LỐI VÀO CHUYÊN ĐỀ TRỌNG ĐIỂM HÓA THPT ── */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <FlaskConical className="w-5 h-5 text-teal-700" />
+            <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight">
+              {selectedGrade === 'all'
+                ? 'Các Chuyên Đề & Đề Thi Chuẩn Hóa Học Cấp 3'
+                : `Chuyên Đề Trọng Điểm & Đề Thi Hóa Lớp ${selectedGrade}`}
+            </h2>
+          </div>
+          <span className="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-lg border border-teal-200">
+            {filteredModules.length} chuyên đề sẵn sàng
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filteredModules.map((m) => (
+            <Link
+              key={m.id}
+              to={m.link}
+              className={`p-5 rounded-2xl text-white shadow-md hover:shadow-xl transition-all duration-300 group relative overflow-hidden border ${m.borderClass} flex flex-col justify-between`}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${m.gradient} z-0`} />
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-2.5 gap-2">
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider backdrop-blur-sm ${m.badgeBg}`}>
+                      {m.badge}
+                    </span>
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+                      m.isLocked ? 'bg-red-500/80 text-white' : 'bg-emerald-400 text-emerald-950 font-extrabold'
+                    }`}>
+                      {m.isLocked ? '🔒 ĐANG KHÓA' : '🟢 ĐANG MỞ'}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-black tracking-tight mb-1.5 text-white group-hover:translate-x-0.5 transition-transform leading-snug">
+                    {m.title}
+                  </h3>
+                  <p className="text-xs text-slate-200/90 mb-4 leading-relaxed font-normal">
+                    {m.desc}
+                  </p>
+                </div>
+
+                <div className={`flex items-center gap-1.5 text-xs font-black ${m.accentColor} pt-2 border-t border-white/10`}>
+                  <span>Vào học & luyện đề ngay</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
