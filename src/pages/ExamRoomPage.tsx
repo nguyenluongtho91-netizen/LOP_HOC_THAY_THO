@@ -8,6 +8,7 @@ import ExamRoom from '@/components/ExamRoom'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import { normalizeExamData } from '@/services/examNormalizer'
 import toast from 'react-hot-toast'
+import { fetchHoa12AccessConfig } from '@/services/hoa12AccessControlService'
 
 // ─── Đồng hồ đếm ngược chờ đến giờ mở đề ──────────────────────────────────────
 function WaitingScreen({ opensAt, onTimeReached, onExit }: { opensAt: string; onTimeReached: () => void; onExit: () => void }) {
@@ -50,6 +51,35 @@ function WaitingScreen({ opensAt, onTimeReached, onExit }: { opensAt: string; on
 
         <button onClick={onExit} className="w-full py-3 text-sm font-bold text-gray-600 hover:bg-gray-100 rounded-2xl transition">
           Quay lại cổng thi
+        </button>
+      </div>
+    </div>
+  );
+}
+
+
+// ─── Màn hình phòng thi bị khóa bởi Thầy Thọ từ Trang Chủ ─────────────────────
+function MasterLockedScreen({ onExit }: { onExit: () => void }) {
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-900 via-rose-950 to-slate-900 font-sans">
+      <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl text-center border border-rose-100 space-y-4 animate-fade-in">
+        <div className="w-16 h-16 bg-rose-100 text-rose-700 rounded-2xl flex items-center justify-center mx-auto text-3xl shadow-sm">
+          🔒
+        </div>
+        <h2 className="text-xl font-black text-gray-800 tracking-tight">HỆ THỐNG ĐANG TẠM KHÓA</h2>
+        <div className="bg-rose-50 border border-rose-200 rounded-2xl p-4 text-left space-y-2">
+          <div className="text-xs font-black text-rose-900 uppercase tracking-wider flex items-center gap-1.5">
+            <span>🛡️ CHƯA ĐƯỢC CẤP QUYỀN TỪ TRANG CHỦ</span>
+          </div>
+          <p className="text-xs text-rose-900 leading-relaxed font-medium">
+            Phòng thi này đang ở chế độ bảo vệ. <strong>Chỉ Thầy Thọ mới có quyền cấp quyền truy cập từ Trang Chủ Quản Trị Hệ Thống</strong>.
+          </p>
+          <p className="text-xs text-slate-700 font-bold">
+            👉 Em vui lòng liên hệ Thầy Thọ hoặc đợi Thầy kích hoạt cấp quyền từ Trang chủ nhé!
+          </p>
+        </div>
+        <button onClick={onExit} className="w-full py-3.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-2xl transition shadow-md cursor-pointer">
+          Quay lại Cổng Thi
         </button>
       </div>
     </div>
@@ -169,6 +199,20 @@ export default function ExamRoomPage() {
         const isFreeCandidate = currentStudent?.student_code?.toUpperCase() === 'THAYTHO' || 
                                 currentStudent?.grade === 'Thí Sinh Tự Do' ||
                                 currentStudent?.student_code?.toUpperCase() === 'TUDO';
+        // 0. Kiểm tra Quyền Tổng Cấp từ Trang Chủ (Độc quyền Thầy Thọ)
+        const accessConfig = await fetchHoa12AccessConfig();
+        const isTeacher = isFreeCandidate || 
+                          localStorage.getItem('is_teacher_mode') === 'true' || 
+                          localStorage.getItem('hoa12_teacher_authenticated') === 'true' ||
+                          localStorage.getItem('role') === 'teacher' ||
+                          localStorage.getItem('role') === 'admin';
+        
+        if (accessConfig.is_locked && !isTeacher) {
+          setTimeStatus('master_locked');
+          setLoading(false);
+          return;
+        }
+
 
         if (isFreeCandidate) {
           setTimeStatus('open');
@@ -350,6 +394,10 @@ export default function ExamRoomPage() {
   }
 
   // ✅ 2. KIỂM SOÁT THỜI GIAN MỞ / ĐÓNG ĐỀ THI
+  if (timeStatus === 'master_locked') {
+    return <MasterLockedScreen onExit={handleExit} />;
+  }
+
   if (timeStatus === 'waiting' && gateOpensAt) {
     return <WaitingScreen opensAt={gateOpensAt} onTimeReached={() => setTimeStatus('open')} onExit={handleExit} />;
   }

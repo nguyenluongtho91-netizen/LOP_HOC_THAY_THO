@@ -146,22 +146,16 @@ export async function revokeAllStudentsAccess(): Promise<Hoa12AccessConfig> {
  * 5. Kiểm tra học sinh có được phép vào bài học hay không
  */
 export function checkIsStudentAuthorized(isTeacher: boolean, config: Hoa12AccessConfig = memoryConfig): boolean {
-  if (isTeacher) return true; // Thầy giáo luôn được phép
+  if (isTeacher) return true; // Thầy giáo luôn luôn được phép
 
-  // Nếu Thầy chọn chế độ MỞ TỰ DO
-  if (!config.is_locked) return true;
-
-  if (typeof window === 'undefined') return false;
-
-  // Nếu đang khóa, học sinh phải có cờ ủy quyền VÀ phiên bản cấp quyền phải >= phiên bản của Thầy
-  const isAuthorized = localStorage.getItem('hoa12_student_authorized') === 'true';
-  const myVersion = Number(localStorage.getItem('hoa12_student_auth_version') || 0);
-
-  if (isAuthorized && myVersion >= (config.auth_version || 1)) {
-    return true;
+  // NGUYÊN TẮC BẢO MẬT TUYỆT ĐỐI (THEO LỆNH THẦY THỌ):
+  // Nếu Thầy chưa cấp quyền (is_locked === true) -> 100% HỌC SINH BỊ CHẶN HOÀN TOÀN!
+  if (config.is_locked) {
+    return false;
   }
 
-  return false;
+  // Khi Thầy đã bật cấp quyền từ Trang Chủ (is_locked === false) -> Học sinh được vào tự do
+  return true;
 }
 
 /**
