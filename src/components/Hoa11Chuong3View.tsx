@@ -15,7 +15,7 @@ import toast from 'react-hot-toast';
 import { MotivationModal } from './MotivationModal';
 import {
   HOA11_CHUONG3_LESSONS,
-  HOA11_CHUONG3_7_EXAMS,
+  HOA11_CHUONG3_EXAMS,
   HOA11_CHUONG3_HANDBOOK,
   calculateChuong3ExamScore,
   getChuong3UserProgress,
@@ -30,7 +30,7 @@ import {
   Chuong3ExamAttempt
 } from '../services/hoa11Chuong3Service';
 
-interface Hoa12Chuong3ViewProps {
+interface Hoa11Chuong3ViewProps {
   studentName?: string;
   studentGrade?: string;
   onClose?: () => void;
@@ -134,7 +134,7 @@ import {
   Hoa12AccessConfig
 } from '../services/hoa12AccessControlService';
 
-export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
+export const Hoa11Chuong3View: React.FC<Hoa11Chuong3ViewProps> = ({
   studentName = 'Học sinh',
   studentGrade = 'Lớp 11',
   onClose,
@@ -149,7 +149,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
   ));
   // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
   const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h12_c3", isEffectiveTeacher, getHoa12AccessConfigSync()));
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h11_c3", isEffectiveTeacher, getHoa12AccessConfigSync()));
   const [passcodeInput, setPasscodeInput] = useState('');
   const [showTeacherPinModal, setShowTeacherPinModal] = useState(false);
   const [teacherPinInput, setTeacherPinInput] = useState('');
@@ -166,7 +166,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
       setAccessConfig(cfg);
       setNewPasscodeForm(cfg.passcode || 'THAYTHO2026');
       setTempLockEnabled(cfg.is_locked);
-      const auth = !isChapterLocked("h12_c3", isEffectiveTeacher, cfg);
+      const auth = !isChapterLocked("h11_c3", isEffectiveTeacher, cfg);
       setIsUnlocked(auth);
     });
     return () => { isMounted = false; };
@@ -194,7 +194,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
   const [examHistory, setExamHistory] = useState<Chuong3ExamAttempt[]>([]);
   const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
   const [filterResultType, setFilterResultType] = useState<'all' | 'wrong' | 'correct'>('all');
-  const [selectedLessonId, setSelectedLessonId] = useState<'bai1' | 'bai2' | 'bai3'>('bai1');
+  const [selectedLessonId, setSelectedLessonId] = useState<string>('bai1');
   const [practicePart, setPracticePart] = useState<1 | 2 | 3>(1);
 
   // Sub-topic & Level filtering
@@ -305,7 +305,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
     if (examSessionExam && examSessionExam.id === selectedExamId) {
       return examSessionExam;
     }
-    return HOA11_CHUONG3_7_EXAMS.find(e => e.id === selectedExamId) || HOA11_CHUONG3_7_EXAMS[0];
+    return HOA11_CHUONG3_EXAMS.find(e => e.id === selectedExamId) || HOA11_CHUONG3_EXAMS[0];
   }, [selectedExamId, examSessionExam]);
 
   // Timer for Exam (Tối ưu: chỉ chạy khi isExamActive, không re-bind mỗi giây)
@@ -335,7 +335,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
 
   const handleStartExam = (examId: string, shouldShuffle: boolean = isShuffleEnabled) => {
     setSelectedExamId(examId);
-    const baseExam = HOA11_CHUONG3_7_EXAMS.find(e => e.id === examId) || HOA11_CHUONG3_7_EXAMS[0];
+    const baseExam = HOA11_CHUONG3_EXAMS.find(e => e.id === examId) || HOA11_CHUONG3_EXAMS[0];
     const sessionExam = shouldShuffle ? shuffleChuong3Exam(baseExam) : baseExam;
 
     setExamSessionExam(sessionExam);
@@ -414,8 +414,8 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
     } catch (e) {}
 
     // Bật Modal Động viên & Vinh danh cho Đề thi
-    const currentExamIndex = HOA11_CHUONG3_7_EXAMS.findIndex(e => e.id === currentExam.id);
-    const hasNextExam = currentExamIndex < HOA11_CHUONG3_7_EXAMS.length - 1;
+    const currentExamIndex = HOA11_CHUONG3_EXAMS.findIndex(e => e.id === currentExam.id);
+    const hasNextExam = currentExamIndex < HOA11_CHUONG3_EXAMS.length - 1;
 
     setMotivationModal({
       isOpen: true,
@@ -427,7 +427,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
       hasNextSet: hasNextExam,
       onNextSet: () => {
         if (hasNextExam) {
-          handleStartExam(HOA11_CHUONG3_7_EXAMS[currentExamIndex + 1].id);
+          handleStartExam(HOA11_CHUONG3_EXAMS[currentExamIndex + 1].id);
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       },
@@ -464,7 +464,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
 
   // Practice Questions with Sub-topic & Level filtering (Tối ưu memoization)
   const allPracticeQuestions: Chuong3Question[] = useMemo(() => {
-    const practice = activeLesson?.practice || (activeLesson as any)?.practiceBank || {};
+    const practice = activeLesson?.practice || activeLesson?.practiceQuestions || (activeLesson as any)?.practiceBank || {};
     if (practicePart === 1) return practice.part1 || [];
     if (practicePart === 2) return practice.part2 || [];
     return practice.part3 || [];
@@ -666,9 +666,9 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
     return { stem: 'text-base', opt: 'text-sm', lead: 'leading-relaxed' };
   }, [fontSizeLevel]);
 
-  // Danh sách đề thi hiển thị: Nếu Thầy khóa thì BÊN HỌC SINH ẨN HOÀN TOÀN
+  // Lọc danh sách đề thi hiển thị: Khóa nghĩa là bên học sinh ẨN HẲN
   const visibleExams = useMemo(() => {
-    return HOA11_CHUONG3_7_EXAMS.filter(e => isEffectiveTeacher || !Boolean(accessConfig.exams?.[e.id]));
+    return HOA11_CHUONG3_EXAMS.filter(e => isEffectiveTeacher || !Boolean(accessConfig.exams?.[e.id]));
   }, [isEffectiveTeacher, accessConfig.exams]);
 
   // Main Background based on Eye Comfort Mode
@@ -700,7 +700,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
             )}
             <div className="flex items-center gap-2">
               <span className="text-xl">🧪</span>
-              <span className="font-extrabold text-base tracking-tight">HÓA HỌC 12 - CHƯƠNG 1</span>
+              <span className="font-extrabold text-base tracking-tight">HÓA HỌC 11 - CHƯƠNG 1</span>
             </div>
           </div>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">
@@ -797,14 +797,14 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-sm sm:text-base md:text-lg font-black tracking-tight text-slate-900 truncate">
-                  Hóa Học 12: Chương 1 – Ester, Lipid & Xà Phòng
+                  Hóa Học 11: Chương 3 – Đại Cương Hóa Học Hữu Cơ
                 </h1>
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-indigo-500 to-blue-600 text-white uppercase tracking-wider shadow-2xs">
                   BỘ ĐỀ 2025
                 </span>
               </div>
               <p className="text-xs text-slate-500 truncate hidden sm:block">
-                Hệ thống ôn luyện chuyên sâu: 495 câu hỏi phân loại • 7 đề chuẩn Bộ GD&ĐT • Cẩm nang dạng toán
+                Hệ thống ôn luyện chuyên sâu: 495 câu hỏi phân loại • 4 đề chuẩn Bộ GD&ĐT • Cẩm nang dạng toán
               </p>
             </div>
           </div>
@@ -931,11 +931,11 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
           {/* ================= TAB 1: OVERVIEW ================= */}
           {activeTab === 'overview' && (
             <div className="space-y-6">
-              {/* Hero Banner có hình ảnh nền chuyên biệt Chương 1: Ester – Lipid, Xà Phòng */}
+              {/* Hero Banner */}
               <div 
                 className="rounded-3xl p-6 md:p-10 text-white shadow-2xl relative overflow-hidden border border-amber-500/30 group transition-all"
                 style={{
-                  backgroundImage: `url("/assets/banners/hoa12_chuong3_banner.jpg")`,
+                  backgroundImage: `url("/assets/banners/hoa11_chuong3_banner.jpg")`,
                   backgroundSize: "cover",
                   backgroundPosition: "center right",
                 }}
@@ -949,7 +949,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                     ✨ CHƯƠNG TRÌNH MỚI 2025 · LỘ TRÌNH ĐỘT PHÁ CÙNG THẦY THỌ
                   </span>
                   <h2 className="text-2xl md:text-4xl font-black mb-2 leading-tight tracking-tight text-white drop-shadow-md">
-                    Chương 1: Ester – Lipid. Xà Phòng & Chất Giặt Rửa
+                    Chương 3: Đại Cương Hóa Học Hữu Cơ
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
                     <span>💡</span> “Hóa học không phải công thức khô khan – Hóa học là hơi thở sống động của cuộc sống.”
@@ -962,7 +962,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
-                      onClick={() => { setSelectedLessonId('bai1'); setActiveTab('practice'); }}
+                      onClick={() => { setSelectedLessonId('bai10'); setActiveTab('practice'); }}
                       className="px-5 py-2.5 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/25 transition-all flex items-center gap-2 text-sm hover:scale-[1.02] cursor-pointer"
                     >
                       <Play className="w-4 h-4 fill-slate-950" />
@@ -1080,7 +1080,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {HOA11_CHUONG3_LESSONS.slice(0, 2).map((l) => (
+                  {HOA11_CHUONG3_LESSONS.map((l) => (
                     <button
                       key={l.id}
                       onClick={() => setSelectedLessonId(l.id)}
@@ -1100,49 +1100,10 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                     Lý thuyết trọng tâm: {activeLesson.title}
                   </h3>
                   <div className={`${fontClasses.opt} ${fontClasses.lead} space-y-4`}>
-                    {selectedLessonId === 'bai1' ? (
-                      <>
-                        <div className="bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
-                          <h4 className="font-bold text-indigo-900 mb-1">1. Phản ứng Ester hóa (Thuận nghịch 2 chiều)</h4>
-                          <p className="text-slate-700">
-                            RCOOH + R&apos;OH &hArr; [H<sub>2</sub>SO<sub>4</sub> đặc, t&deg;] RCOOR&apos; + H<sub>2</sub>O
-                            <br />H<sub>2</sub>SO<sub>4</sub> đặc vừa làm xúc tác vừa hút nước để cân bằng chuyển dịch theo chiều thuận tạo nhiều ester hơn.
-                          </p>
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                          <h4 className="font-bold text-slate-900 mb-1">2. So sánh nhiệt độ sôi & độ tan</h4>
-                          <p className="text-slate-700">
-                            Ester không có liên kết hydrogen liên phân tử như alcohol và acid nên nhiệt độ sôi thấp hơn nhiều:
-                            <br /><b>Nhiệt độ sôi: Ester &lt; Alcohol &lt; Carboxylic acid</b>
-                          </p>
-                        </div>
-                        <div className="bg-amber-50/60 p-4 rounded-2xl border border-amber-200">
-                          <h4 className="font-bold text-amber-900 mb-1">3. Chất béo & Acid béo Omega</h4>
-                          <p className="text-slate-700">
-                            • Triacylglycerol là triester của glycerol với các acid béo.
-                            <br />• Acid béo no (palmitic C<sub>15</sub>H<sub>31</sub>COOH, stearic C<sub>17</sub>H<sub>35</sub>COOH) tạo chất béo rắn (mỡ động vật).
-                            <br />• Acid béo không no (oleic C<sub>17</sub>H<sub>33</sub>COOH) tạo chất béo lỏng (dầu thực vật).
-                            <br />• <b>Omega-3 và Omega-6</b> có nối đôi đầu tiên ở C số 3 và C số 6 tính từ đầu methyl &minus;CH<sub>3</sub>.
-                          </p>
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <div className="bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
-                          <h4 className="font-bold text-indigo-900 mb-1">1. Phản ứng lưỡng cực & Hạt Micelle</h4>
-                          <p className="text-slate-700">
-                            Xà phòng và chất giặt rửa gồm đầu ưa nước (&minus;COONa hoặc &minus;SO<sub>3</sub>Na) và đuôi kị nước (mạch alkyl dài). Khi vò giặt, các phân tử bao bọc hạt dầu mỡ tạo hạt keo <b>micelle</b> phân tán vào nước để rửa trôi.
-                          </p>
-                        </div>
-                        <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                          <h4 className="font-bold text-slate-900 mb-1">2. Hoạt động trong nước cứng</h4>
-                          <p className="text-slate-700">
-                            • Xà phòng tạo kết tủa với Ca<sup>2+</sup>, Mg<sup>2+</sup> trong nước cứng làm giảm tác dụng giặt rửa.
-                            <br />• Chất giặt rửa tổng hợp không bị kết tủa trong nước cứng. Mạch hydrocarbon không phân nhánh dễ bị vi sinh vật phân hủy hơn mạch phân nhánh.
-                          </p>
-                        </div>
-                      </>
-                    )}
+                    <div 
+  className="prose max-w-none text-slate-700 leading-relaxed space-y-4"
+  dangerouslySetInnerHTML={{ __html: activeLesson.theory || `<p>${activeLesson.description || activeLesson.title}</p>` }}
+/>
                   </div>
                 </div>
 
@@ -1216,7 +1177,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
               <div className={`${cardTheme} p-5 sm:p-6 rounded-3xl space-y-4 shadow-sm border border-slate-200/90`}>
                 {/* TẦNG 1: CHỌN BÀI HỌC (SEGMENTED TABS) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {HOA11_CHUONG3_LESSONS.slice(0, 2).map((l) => {
+                  {HOA11_CHUONG3_LESSONS.map((l) => {
                     const isSel = selectedLessonId === l.id;
                     return (
                       <button
@@ -1288,35 +1249,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
 
                   {/* Nhóm 2: Bộ lọc Mức độ & Chủ đề con (ẨN NÚT 0 CÂU) */}
                   <div className="flex items-center gap-2 flex-wrap">
-                    {/* Subtopics for Bai 1 */}
-                    {selectedLessonId === 'bai1' && (
-                      <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
-                        <button
-                          onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
-                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                            selectedSubTopic === 'all' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
-                          }`}
-                        >
-                          Tất cả
-                        </button>
-                        <button
-                          onClick={() => { setSelectedSubTopic('ester'); setSelectedSetIndex(0); }}
-                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                            selectedSubTopic === 'ester' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
-                          }`}
-                        >
-                          🔬 Ester
-                        </button>
-                        <button
-                          onClick={() => { setSelectedSubTopic('lipid'); setSelectedSetIndex(0); }}
-                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                            selectedSubTopic === 'lipid' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
-                          }`}
-                        >
-                          🥑 Lipid
-                        </button>
-                      </div>
-                    )}
+                    
 
                     {/* Levels: CHỈ HIỂN THỊ MỨC ĐỘ NÀO CÓ SỐ CÂU > 0 */}
                     <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
@@ -1802,7 +1735,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                           </span>
                         </div>
                         <h2 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
-                          Phòng Luyện Thi Thực Chiến: Chương 1 (Ester – Lipid)
+                          Phòng Luyện Thi Thực Chiến: Chương 1 (Cân Bằng Hóa Học)
                         </h2>
                         <p className="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed">
                           Hệ thống 7 đề thi định kỳ chuẩn xác theo cấu trúc 3 phần mới nhất: 
@@ -1997,7 +1930,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                             ) : (
                               <button
                                 onClick={() => {
-                                  const prevBadge = HOA11_CHUONG3_7_EXAMS[idx - 1]?.badge || `Đề ${idx}`;
+                                  const prevBadge = HOA11_CHUONG3_EXAMS[idx - 1]?.badge || `Đề ${idx}`;
                                   toast.error(`🔒 Hãy hoàn thành ${prevBadge} trước để mở khóa đề này nhé! Cùng Thầy Thọ chinh phục từng đề nào!`, {
                                     icon: '⏳',
                                     duration: 4000
@@ -2844,4 +2777,4 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
   );
 };
 
-export default Hoa12Chuong3View;
+export default Hoa11Chuong3View;
