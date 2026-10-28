@@ -107,6 +107,8 @@ export const Hoa11View: React.FC<Hoa11ViewProps> = ({
   const [activeChapter, setActiveChapter] = useState<number>(initialChapter);
   const [activeTab, setActiveTab] = useState<'practice' | 'exams' | 'theory' | 'handbook'>('exams');
   const [selectedLessonId, setSelectedLessonId] = useState<string>('');
+  const c1ExamsCount = useMemo(() => HOA11_EXAMS.filter(e => e.chapter === 1).length, []);
+  const c2ExamsCount = useMemo(() => HOA11_EXAMS.filter(e => e.chapter === 2).length, []);
 
   const currentLessons = useMemo(() => {
     return HOA11_LESSONS.filter(l => l.chapter === activeChapter);
@@ -227,7 +229,7 @@ export const Hoa11View: React.FC<Hoa11ViewProps> = ({
               }`}
             >
               <span>🧪</span>
-              <span>Chương 1: Cân Bằng (2 Đề)</span>
+              <span>Chương 1: Cân Bằng Hóa Học ({c1ExamsCount} Đề)</span>
             </button>
             <button
               type="button"
@@ -239,7 +241,7 @@ export const Hoa11View: React.FC<Hoa11ViewProps> = ({
               }`}
             >
               <span>⚡</span>
-              <span>Chương 2: N & S (2 Đề)</span>
+              <span>Chương 2: Nitrogen – Sulfur ({c2ExamsCount} Đề)</span>
             </button>
           </div>
         </div>
