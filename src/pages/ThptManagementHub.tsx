@@ -101,8 +101,15 @@ export default function ThptManagementHub() {
         {/* Card Hóa 12 Chương 1 */}
         <Link
           to="/hoa12-chuong1"
-          className="p-6 rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white shadow-lg hover:shadow-xl transition-all group relative overflow-hidden"
+          className="p-6 rounded-3xl text-white shadow-lg hover:shadow-2xl transition-all group relative overflow-hidden border border-amber-500/30"
+          style={{
+            backgroundImage: "url('/assets/banners/hoa12_chuong1_banner.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-purple-950/40 z-0" />
+          <div className="relative z-10">
           <div className="flex items-center justify-between mb-3">
             <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-black tracking-wider uppercase backdrop-blur-sm">
               Hóa 12 • Chuyên đề 1
@@ -123,13 +130,21 @@ export default function ThptManagementHub() {
             <span>Vào luyện đề ngay</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </div>
+          </div>
         </Link>
 
         {/* Card Hóa 12 Chương 5 */}
         <Link
           to="/hoa12-chuong5"
-          className="p-6 rounded-3xl bg-gradient-to-br from-amber-600 to-orange-700 text-white shadow-lg hover:shadow-xl transition-all group relative overflow-hidden"
+          className="p-6 rounded-3xl text-white shadow-lg hover:shadow-2xl transition-all group relative overflow-hidden border border-cyan-500/30"
+          style={{
+            backgroundImage: "url('/assets/banners/hoa12_chuong5_banner.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-indigo-950/40 z-0" />
+          <div className="relative z-10">
           <div className="flex items-center justify-between mb-3">
             <span className="px-3 py-1 rounded-full bg-white/20 text-xs font-black tracking-wider uppercase backdrop-blur-sm">
               Hóa 12 • Chuyên đề 5
@@ -149,6 +164,7 @@ export default function ThptManagementHub() {
           <div className="flex items-center gap-1.5 text-xs font-bold text-white">
             <span>Vào luyện đề ngay</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </div>
           </div>
         </Link>
       </div>

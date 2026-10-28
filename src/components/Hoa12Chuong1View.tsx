@@ -753,37 +753,51 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           {/* ================= TAB 1: OVERVIEW ================= */}
           {activeTab === 'overview' && (
             <div className="space-y-6">
-              {/* Hero Banner */}
-              <div className="bg-gradient-to-r from-indigo-700 via-indigo-600 to-blue-600 rounded-3xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden">
+              {/* Hero Banner có hình ảnh nền chuyên biệt Chương 1: Ester – Lipid, Xà Phòng */}
+              <div 
+                className="rounded-3xl p-6 md:p-10 text-white shadow-2xl relative overflow-hidden border border-amber-500/30 group transition-all"
+                style={{
+                  backgroundImage: `url("/assets/banners/hoa12_chuong1_banner.jpg")`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center right",
+                }}
+              >
+                {/* Lớp phủ chuyển màu Gradient đen - tím hổ phách giúp text rõ nét 100% */}
+                <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-purple-950/40 backdrop-blur-[1px] z-0" />
+                
+                {/* Hiệu ứng ánh sáng hữu cơ trang trí góc */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
                 <div className="relative z-10 max-w-3xl">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-md uppercase tracking-wider mb-4 inline-block">
-                    HỆ THỐNG HỌC TẬP TOÀN DIỆN CHƯƠNG 1 (THI 2025)
+                  <span className="px-3.5 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-300 border border-amber-400/30 backdrop-blur-md uppercase tracking-wider mb-4 inline-flex items-center gap-1.5 shadow-sm">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+                    🧪 HỆ THỐNG HỌC TẬP TOÀN DIỆN CHƯƠNG 1 (THI 2025)
                   </span>
-                  <h2 className="text-2xl md:text-4xl font-black mb-3 leading-tight">
+                  <h2 className="text-2xl md:text-4xl font-black mb-3 leading-tight tracking-tight text-white drop-shadow-md">
                     Chương 1: Ester – Lipid. Xà Phòng & Chất Giặt Rửa
                   </h2>
-                  <p className="text-indigo-100 text-sm md:text-base leading-relaxed mb-6">
+                  <p className="text-slate-200 text-sm md:text-base leading-relaxed mb-6 font-medium drop-shadow-sm">
                     Hệ thống hóa toàn bộ kiến thức theo chuẩn chương trình mới. 
-                    <b> Đặc biệt:</b> Toàn bộ câu hỏi được chia nhỏ thành các bộ đề <b>12–15 câu vừa sức</b>, giúp học sinh làm bài tập trung 15 phút, nộp bài nhận điểm ngay và <b>hoàn toàn không bị mỏi mắt</b>.
+                    <b className="text-amber-300"> Đặc biệt:</b> Toàn bộ câu hỏi được chia nhỏ thành các bộ đề <b className="text-amber-300">12–15 câu vừa sức</b>, giúp học sinh làm bài tập trung 15 phút, nộp bài nhận điểm ngay và <b className="text-emerald-300">hoàn toàn không bị mỏi mắt</b>.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
                       onClick={() => { setSelectedLessonId('bai1'); setActiveTab('practice'); }}
-                      className="px-5 py-2.5 bg-white text-indigo-700 hover:bg-indigo-50 font-bold rounded-xl shadow-md transition-all flex items-center gap-2 text-sm"
+                      className="px-5 py-2.5 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/25 transition-all flex items-center gap-2 text-sm hover:scale-[1.02] cursor-pointer"
                     >
-                      <Play className="w-4 h-4 fill-indigo-700" />
+                      <Play className="w-4 h-4 fill-slate-950" />
                       Luyện Bộ Đề Nhỏ (15 câu)
                     </button>
                     <button
                       onClick={() => { handleStartExam('de1'); }}
-                      className="px-5 py-2.5 bg-indigo-900/60 hover:bg-indigo-900/80 text-white font-bold rounded-xl border border-white/20 transition-all flex items-center gap-2 text-sm"
+                      className="px-5 py-2.5 bg-slate-900/80 hover:bg-slate-900 text-white font-bold rounded-xl border border-white/20 transition-all flex items-center gap-2 text-sm shadow-md hover:scale-[1.02] cursor-pointer"
                     >
                       <Trophy className="w-4 h-4 text-amber-300" />
                       Thi thử 7 Đề chuẩn Bộ
                     </button>
                     <button
                       onClick={() => setActiveTab('handbook')}
-                      className="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all flex items-center gap-2 text-sm"
+                      className="px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl border border-white/15 backdrop-blur-md transition-all flex items-center gap-2 text-sm hover:scale-[1.02] cursor-pointer"
                     >
                       <BookOpen className="w-4 h-4" />
                       Cẩm nang lý thuyết & dạng toán
