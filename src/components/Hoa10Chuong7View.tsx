@@ -701,6 +701,8 @@ export const Hoa10Chuong7View: React.FC<Hoa10Chuong7ViewProps> = ({
     return HOA10_CHUONG7_EXAMS.filter(e => isEffectiveTeacher || !Boolean(accessConfig.exams?.[e.id]));
   }, [isEffectiveTeacher, accessConfig.exams]);
 
+  const availableExams = visibleExams;
+
   // Main Background based on Eye Comfort Mode
   const bgTheme = eyeComfortMode 
     ? 'bg-[#FAF7EE] text-stone-900' // Kem ấm dịu mắt chống ánh sáng xanh
