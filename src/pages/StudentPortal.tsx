@@ -39,7 +39,7 @@ import {
   ExamCategory 
 } from '@/utils/practiceExamHelper'
 import toast from 'react-hot-toast'
-import { fetchHoa12AccessConfig, type Hoa12AccessConfig } from '@/services/hoa12AccessControlService'
+import { fetchHoa12AccessConfig, grantAllStudentsAccess, revokeAllStudentsAccess, type Hoa12AccessConfig } from '@/services/hoa12AccessControlService'
 import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import { normalizeExamData } from '@/services/examNormalizer'
@@ -1297,7 +1297,60 @@ export default function StudentPortal() {
           </div>
         </div>
 
-                {/* BANNER CẢNH BÁO: HỆ THỐNG ĐANG TẠM KHÓA · CHƯA ĐƯỢC THẦY THỌ CẤP QUYỀN */}
+                        {/* BẢNG ĐIỀU KHIỂN CẤP QUYỀN TRỰC TIẾP DÀNH CHO THẦY THỌ NGAY TRÊN CỔNG THI */}
+        {(student?.student_code?.toUpperCase() === 'THAYTHO' || student?.grade === 'Thí Sinh Tự Do') && (
+          <div className="p-4 sm:p-5 rounded-3xl bg-slate-900 border-2 border-teal-500 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-teal-500 text-white flex items-center justify-center text-xl shrink-0">
+                👑
+              </div>
+              <div>
+                <div className="text-xs font-black uppercase tracking-wider text-teal-400 flex items-center gap-2">
+                  <span>BẢNG ĐIỀU KHIỂN CỦA THẦY THỌ</span>
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full uppercase ${accessConfig?.is_locked ? 'bg-rose-500 text-white' : 'bg-emerald-500 text-white'}`}>
+                    {accessConfig?.is_locked ? 'Đang Khóa Học Sinh' : 'Đang Mở Cho Học Sinh'}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300 mt-0.5">
+                  Thầy có thể bật cấp quyền hoặc cấm quyền học sinh ngay tại đây mà không cần đổi trang.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={async () => {
+                  const updated = await grantAllStudentsAccess();
+                  setAccessConfig({ ...updated });
+                  toast.success('ĐÃ CẤP QUYỀN! Học sinh được vào học & thi tự do.', { icon: '🟢' });
+                }}
+                className={`px-4 py-2.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                  !accessConfig?.is_locked ? 'bg-emerald-600 text-white ring-2 ring-emerald-400' : 'bg-slate-800 text-emerald-400 border border-emerald-500/50 hover:bg-slate-700'
+                }`}
+              >
+                <span>🟢 MỞ CẤP QUYỀN HỌC SINH</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={async () => {
+                  const updated = await revokeAllStudentsAccess();
+                  setAccessConfig({ ...updated });
+                  toast.success('ĐÃ CẤM QUYỀN! Toàn bộ học sinh đã bị khóa.', { icon: '🛑' });
+                }}
+                className={`px-4 py-2.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                  accessConfig?.is_locked ? 'bg-rose-600 text-white ring-2 ring-rose-400' : 'bg-slate-800 text-rose-400 border border-rose-500/50 hover:bg-slate-700'
+                }`}
+              >
+                <span>🛑 CẤM QUYỀN (KHÓA TỨC THÌ)</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+
+        {/* BANNER CẢNH BÁO: HỆ THỐNG ĐANG TẠM KHÓA · CHƯA ĐƯỢC THẦY THỌ CẤP QUYỀN */}
         {accessConfig?.is_locked && (
           <div className="bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 rounded-3xl p-5 sm:p-6 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-rose-400 animate-fade-in">
             <div className="flex items-center gap-4">
@@ -1655,97 +1708,6 @@ export default function StudentPortal() {
             </button>
           </div>
         )}
-
-        {/* 6. KHÔNG GIAN ĐẶC BIỆT: HÓA HỌC 12 CHUẨN BỘ GD&ĐT 2025 */}
-        {isGrade12 && (
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 animate-pulse" />
-              <h3 className="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-800">
-                Kho Học Liệu Ôn Thi Chuyên Sâu Hóa 12 (Chuẩn Bộ 2025):
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Thẻ Chương 1 */}
-              <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-5 sm:p-6 text-white border-2 border-indigo-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden group hover:border-indigo-400/70 transition-all">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-                <div className="relative z-10 flex items-start gap-3.5">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg shadow-indigo-600/30">
-                    🧪
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
-                        CHƯƠNG 1
-                      </span>
-                      <span className="text-xs text-indigo-200 font-bold">
-                        ESTER – LIPID & XÀ PHÒNG
-                      </span>
-                    </div>
-                    <h4 className="text-base font-black text-white">
-                      Bộ 7 Đề Chuẩn Cấu Trúc Mới & Cẩm Nang
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                      495 câu hỏi phân loại 3 phần · Thang điểm 10 chuẩn · Giám sát chống chuyển tab
-                    </p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setExamRuleModalTarget({
-                    type: 'hoa12_c1',
-                    title: 'Hóa Học 12: Chương 1 – Ester, Lipid & Xà Phòng (7 Đề Chuẩn Bộ 2025)'
-                  })}
-                  className="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
-                >
-                  <span>🚀 VÀO CHƯƠNG 1 (ESTER – LIPID)</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* Thẻ Chương 5 */}
-              <div className="bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 rounded-3xl p-5 sm:p-6 text-white border-2 border-teal-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden group hover:border-teal-400/70 transition-all">
-                <div className="absolute top-0 right-0 w-48 h-48 bg-teal-500/10 rounded-full blur-2xl pointer-events-none" />
-                <div className="relative z-10 flex items-start gap-3.5">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg shadow-teal-500/30">
-                    ⚡
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="bg-emerald-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">
-                        CHƯƠNG 5
-                      </span>
-                      <span className="text-xs text-teal-200 font-bold">
-                        PIN ĐIỆN HÓA & ĐIỆN PHÂN
-                      </span>
-                    </div>
-                    <h4 className="text-base font-black text-white">
-                      Bộ 4 Đề Kiểm Tra & Lý Thuyết Toàn Diện
-                    </h4>
-                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                      Bài 15 & 16 SGK mới · Bài toán Faraday · Thang điểm 10 chuẩn Bộ GD&ĐT
-                    </p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setExamRuleModalTarget({
-                    type: 'hoa12_c5',
-                    title: 'Hóa Học 12: Chương 5 – Pin Điện Hóa & Điện Phân (4 Đề Kiểm Tra Nâng Cao)'
-                  })}
-                  className="w-full py-3 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 hover:to-indigo-500 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
-                >
-                  <span>⚡ VÀO CHƯƠNG 5 (PIN & ĐIỆN PHÂN)</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-
-
 
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {/* ── PHẦN 1: BÀI TẬP VỀ NHÀ (CÓ GIÁM SÁT CHUYỂN TAB) ─────────────── */}

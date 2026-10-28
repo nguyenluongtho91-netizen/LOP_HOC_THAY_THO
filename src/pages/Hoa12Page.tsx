@@ -113,22 +113,29 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
     if (raw) studentSession = JSON.parse(raw);
   } catch (e) {}
 
-  const isTeacherByAuth = Boolean(auth?.user && (auth.isAdmin?.() || auth.isTeacher?.() || auth.user?.email));
-  const isTeacherByStudentCode = Boolean(
-    studentSession && (
-      ["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code || "").toUpperCase().trim()) ||
-      String(studentSession.full_name || "").toLowerCase().includes("thọ") ||
-      String(studentSession.role || "").toUpperCase() === "ADMIN" ||
-      String(studentSession.role || "").toUpperCase() === "TEACHER" ||
-      String(studentSession.grade || "").toLowerCase().includes("giáo viên")
-    )
+  // PHÂN BIỆT RÕ RÀNG GIỮA HỌC SINH VÀ THẦY GIÁO (TRÁNH LẪN LỘN QUYỀN):
+  const isRealStudent = Boolean(
+    studentSession &&
+    studentSession.student_code &&
+    !["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code).toUpperCase().trim())
   );
-  // CHUẨN HÓA PHÂN QUYỀN: Học sinh mở khóa bằng mã chỉ được học, TUYỆT ĐỐI không biến thành Thầy giáo!
-  const isTeacherByLocalFlag = (localStorage.getItem("is_teacher_mode") === "true" && localStorage.getItem("hoa12_teacher_authenticated") === "true") ||
-                               localStorage.getItem("role") === "teacher" ||
-                               localStorage.getItem("role") === "admin";
 
-  const isTeacher = isTeacherByAuth || isTeacherByStudentCode || isTeacherByLocalFlag;
+  let isTeacher = false;
+  if (!isRealStudent) {
+    const isTeacherByAuth = Boolean(auth?.user && (auth.isAdmin?.() || auth.isTeacher?.() || auth.user?.email));
+    const isTeacherByStudentCode = Boolean(
+      studentSession && (
+        ["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code || "").toUpperCase().trim()) ||
+        String(studentSession.role || "").toUpperCase() === "ADMIN" ||
+        String(studentSession.role || "").toUpperCase() === "TEACHER" ||
+        String(studentSession.grade || "").toLowerCase().includes("giáo viên")
+      )
+    );
+    const isTeacherByLocalFlag = (localStorage.getItem("is_teacher_mode") === "true" && localStorage.getItem("hoa12_teacher_authenticated") === "true") ||
+                                 localStorage.getItem("role") === "teacher" ||
+                                 localStorage.getItem("role") === "admin";
+    isTeacher = isTeacherByAuth || isTeacherByStudentCode || isTeacherByLocalFlag;
+  }
 
   let studentName = isTeacher ? "Thầy Thọ" : (studentSession?.full_name || studentSession?.name || "Học sinh");
   let studentGrade = isTeacher ? "Khối 12" : (studentSession?.grade || "Khối 12");
