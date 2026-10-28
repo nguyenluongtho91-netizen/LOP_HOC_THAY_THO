@@ -162,10 +162,10 @@ export default function PublicPortalHub() {
           <div className="space-y-6 animate-fade-in">
             <div className="text-center sm:text-left">
               <div className="text-xs font-black uppercase text-teal-400 tracking-wider">🌟 HÓA HỌC 12 – KỲ THI THPT QUỐC GIA 2025</div>
-              <h3 className="text-xl sm:text-2xl font-black text-white mt-1">Trọn Bộ Chương 1 & Chương 5 Đã Hoàn Thiện Xuất Sắc</h3>
+              <h3 className="text-xl sm:text-2xl font-black text-white mt-1">Trọn Bộ Chương 1, Chương 2 & Chương 5 Đã Hoàn Thiện Xuất Sắc</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* C1 Card */}
               <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
@@ -198,6 +198,42 @@ export default function PublicPortalHub() {
                   className="w-full py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
                 >
                   <span>Mở Học Liệu & Thi Thử Chương 1</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+
+                            {/* C2 Card */}
+              <div className="bg-slate-900 border border-slate-800 hover:border-emerald-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 text-emerald-400 font-black text-xs rounded-xl font-mono">
+                      CHƯƠNG 2
+                    </span>
+                    <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                      <Check className="w-3.5 h-3.5" /> 4 Đề Chuẩn Bộ 2025
+                    </span>
+                  </div>
+
+                  <h4 className="text-xl font-black text-white group-hover:text-emerald-400 transition-colors">
+                    Chương 2: Carbohydrate
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    Trọng tâm: Glucose, Fructose, Saccharose, Maltose, Tinh bột & Cellulose. Tính chất tráng bạc, thủy phân, phản ứng lên men và bài toán thực tế.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🍇 Bài 4, 5, 6 Lý thuyết</span>
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">⚡ 4 Đề thi bấm giờ 50p</span>
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🧪 Sổ tay Carbohydrate</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa12-chuong2')}
+                  className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <span>Mở Học Liệu & Thi Thử Chương 2</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -249,7 +285,7 @@ export default function PublicPortalHub() {
               <h3 className="text-xl sm:text-2xl font-black text-white mt-1">Chương 1: Cân Bằng Hóa Học & Chương 2: Nitrogen – Sulfur</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* K11 C1 */}
               <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
@@ -333,7 +369,7 @@ export default function PublicPortalHub() {
               <h3 className="text-xl sm:text-2xl font-black text-white mt-1">Chương 1: Cấu Tạo Nguyên Tử & Chương 2: Bảng Tuần Hoàn</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* K10 C1 */}
               <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">

@@ -594,7 +594,7 @@ export default function Dashboard() {
                 <span>🧪</span>
                 <span>Hóa Học 12 (Từng Chương)</span>
               </span>
-              <span className="text-[10px] text-slate-400 font-bold">2 Chương chuẩn</span>
+              <span className="text-[10px] text-slate-400 font-bold">3 Chương chuẩn</span>
             </div>
 
             <div className="space-y-2">
@@ -615,6 +615,26 @@ export default function Dashboard() {
                   }`}
                 >
                   {!accessConfig.chapters?.c1 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+                            {/* CHƯƠNG 2 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div className="min-w-0 pr-2">
+                  <div className="text-xs font-black text-slate-900 truncate">Chương 2: Carbohydrate</div>
+                  <div className="text-[10px] text-slate-400 font-medium">4 Đề cấu trúc mới (28 câu)</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleChapter('c2', 'Chương 2 (Carbohydrate)')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.chapters?.c2
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.chapters?.c2 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
                 </button>
               </div>
 

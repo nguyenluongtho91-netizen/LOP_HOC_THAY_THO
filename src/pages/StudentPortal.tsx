@@ -792,21 +792,29 @@ export default function StudentPortal() {
 
               {/* Nút truy cập nhanh Hóa 12 không cần đăng nhập */}
               <div className="pt-2 border-t border-slate-100 space-y-2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   <button
                     type="button"
                     onClick={() => navigate('/hoa12-chuong1')}
-                    className="w-full py-2.5 px-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                    className="w-full py-2.5 px-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
                   >
-                    <span>🧪 Hóa 12: Chương 1 (7 Đề)</span>
+                    <span>🧪 Chương 1 (7 Đề)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa12-chuong2')}
+                    className="w-full py-2.5 px-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
+                  >
+                    <span>🍇 Chương 2 (4 Đề)</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                   <button
                     type="button"
                     onClick={() => navigate('/hoa12-chuong5')}
-                    className="w-full py-2.5 px-3 bg-gradient-to-r from-teal-600 to-indigo-700 hover:from-teal-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                    className="w-full py-2.5 px-2 bg-gradient-to-r from-teal-600 to-indigo-700 hover:from-teal-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
                   >
-                    <span>⚡ Hóa 12: Chương 5 (4 Đề)</span>
+                    <span>⚡ Chương 5 (4 Đề)</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -1951,6 +1959,50 @@ export default function StudentPortal() {
                   </button>
                 </div>
 
+                                {/* Thẻ Chương 2 */}
+                <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-emerald-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
+                  <div className="flex items-center gap-3.5 relative z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                      🍇
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                        <span className="bg-emerald-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                          CHƯƠNG 2 MỚI
+                        </span>
+                        <span className="text-xs text-emerald-300 font-bold">350+ Câu · 4 Đề Chuẩn</span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                          accessConfig && isChapterLocked('c2', isFreeCandidate, accessConfig)
+                            ? 'bg-rose-500 text-white'
+                            : 'bg-emerald-500 text-white'
+                        }`}>
+                          {accessConfig && isChapterLocked('c2', isFreeCandidate, accessConfig) ? '🔒 Đang Khóa' : '🟢 Đang Mở'}
+                        </span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        CARBOHYDRATE
+                      </h3>
+                      <p className="text-xs text-slate-300 mt-0.5 line-clamp-2">
+                        Glucose, Fructose, Saccharose, Tinh bột, Cellulose • Tráng bạc & Thủy phân • 4 Đề chuẩn GDPT thang 10
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (accessConfig && isChapterLocked('c2', isFreeCandidate, accessConfig)) {
+                        toast.error('Chương 2 đang tạm khóa bởi Thầy Thọ! Thầy chưa cấp quyền cho chương này.', { icon: '🔒' });
+                        return;
+                      }
+                      navigate('/hoa12-chuong2');
+                    }}
+                    className="w-full py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+                  >
+                    <span>🍇 VÀO CHƯƠNG 2 (CARBOHYDRATE)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+
                 {/* Thẻ Chương 5 */}
                 <div className="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-teal-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
                   <div className="flex items-center gap-3.5 relative z-10">
@@ -2531,6 +2583,8 @@ export default function StudentPortal() {
                     navigate(`/exam-room/${target.id}`);
                   } else if (target.type === 'hoa12_c1') {
                     navigate('/hoa12-chuong1');
+                  } else if (target.type === 'hoa12_c2') {
+                    navigate('/hoa12-chuong2');
                   } else if (target.type === 'hoa12_c5') {
                     navigate('/hoa12-chuong5');
                   }

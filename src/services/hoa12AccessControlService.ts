@@ -41,7 +41,7 @@ const DEFAULT_CONFIG: GranularAccessConfig = {
   },
   chapters: {
     c1: false,
-    c2: true,
+    c2: false,
     c3: true,
     c4: true,
     c5: false,
@@ -227,7 +227,7 @@ export async function revokeAllStudentsAccess(): Promise<GranularAccessConfig> {
   return await saveHoa12AccessConfig({
     is_locked: true,
     grades: { grade_12: true, grade_11: true, grade_10: true },
-    chapters: { c1: true, c2: true, c3: true, c4: true, c5: true },
+    chapters: { c1: true, c2: false, c3: true, c4: true, c5: true },
     categories: { homework: true, practice: true, survey: true },
     auth_version: Date.now(),
   });
