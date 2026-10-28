@@ -300,6 +300,11 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
     return HOA12_CHUONG5_LESSONS.find(l => l.id === selectedLessonId) || HOA12_CHUONG5_LESSONS[0];
   }, [selectedLessonId]);
 
+  // Lọc danh sách đề thi hiển thị: Khóa nghĩa là bên học sinh ẨN HẲN
+  const visibleExams = useMemo(() => {
+    return HOA12_CHUONG5_EXAMS.filter(e => isEffectiveTeacher || !Boolean(accessConfig?.exams?.[e.id]));
+  }, [isEffectiveTeacher, accessConfig?.exams]);
+
   // Active Exam
   const activeExam: Chuong5Exam = useMemo(() => {
     if (examSessionExam && examSessionExam.id === selectedExamId) {
@@ -665,11 +670,6 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
     if (fontSizeLevel === 'xlarge') return { stem: 'text-xl', opt: 'text-lg', lead: 'leading-loose' };
     return { stem: 'text-base', opt: 'text-sm', lead: 'leading-relaxed' };
   }, [fontSizeLevel]);
-
-  // Lọc danh sách đề thi hiển thị: Khóa nghĩa là bên học sinh ẨN HẲN
-  const visibleExams = useMemo(() => {
-    return HOA12_CHUONG5_EXAMS.filter(e => isEffectiveTeacher || !Boolean(accessConfig.exams?.[e.id]));
-  }, [isEffectiveTeacher, accessConfig.exams]);
 
   // Main Background based on Eye Comfort Mode
   const bgTheme = eyeComfortMode 
