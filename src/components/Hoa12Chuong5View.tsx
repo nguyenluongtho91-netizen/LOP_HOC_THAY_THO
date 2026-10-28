@@ -896,9 +896,9 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Bộ Đề Luyện Nhỏ (15 câu)</span>
+            <span>Luyện Tập Vi Mô (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
-              13 Đề
+              8 Chặng
             </span>
           </button>
           <button
@@ -1212,27 +1212,13 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
           {/* ================= TAB 3: PRACTICE BANK (BỘ ĐỀ NHỎ 15 CÂU - CHỐNG MỎI MẮT) ================= */}
           {activeTab === 'practice' && (
             <div className="space-y-6">
-              {/* Filter & Mini-set Control Card */}
-              <div className={`${cardTheme} p-6 rounded-3xl space-y-5`}>
-                {/* Row 1: Lesson & Topic */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-200/70">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">
-                        {activeLesson.badge}
-                      </span>
-                      <h2 className="text-xl font-extrabold tracking-tight">
-                        {activeLesson.title}
-                      </h2>
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Tổng số câu trong phần này: <b>{filteredQuestions.length}</b> câu • Đã chia thành <b>{questionSets.length} bộ đề nhỏ</b> (mỗi bộ {setSize} câu)
-                    </p>
-                  </div>
-
-                  {/* Lesson Switcher */}
-                  <div className="flex items-center gap-2">
-                    {HOA12_CHUONG5_LESSONS.slice(0, 2).map((l) => (
+              {/* Filter & Mini-set Control Card (EdTech Pro Style) */}
+              <div className={`${cardTheme} p-5 sm:p-6 rounded-3xl space-y-4 shadow-sm border border-slate-200/90`}>
+                {/* TẦNG 1: CHỌN BÀI HỌC (SEGMENTED TABS) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {HOA12_CHUONG5_LESSONS.slice(0, 2).map((l) => {
+                    const isSel = selectedLessonId === l.id;
+                    return (
                       <button
                         key={l.id}
                         onClick={() => {
@@ -1241,132 +1227,189 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                           setSelectedLevel('all');
                           setSelectedSetIndex(0);
                         }}
-                        className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${selectedLessonId === l.id ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                        className={`p-3.5 rounded-2xl text-left transition-all border flex items-center justify-between gap-3 cursor-pointer ${
+                          isSel
+                            ? 'bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-400 shadow-xs ring-1 ring-indigo-300'
+                            : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+                        }`}
                       >
-                        {l.badge}
+                        <div className="flex items-center gap-3">
+                          <span className={`w-8 h-8 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
+                            isSel ? 'bg-indigo-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700'
+                          }`}>
+                            {l.lessonNumber}
+                          </span>
+                          <div>
+                            <h3 className={`text-sm font-bold leading-tight ${isSel ? 'text-indigo-950 font-black' : 'text-slate-800'}`}>
+                              {l.title}
+                            </h3>
+                            <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                              {l.description}
+                            </p>
+                          </div>
+                        </div>
+                        {isSel && (
+                          <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 shrink-0" />
+                        )}
                       </button>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
 
-                {/* Row 2: Sub-topics & Format Tabs */}
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  {/* Format tabs */}
-                  <div className="flex items-center gap-2">
+                {/* TẦNG 2: THANH LỌC ĐỊNH DẠNG & MỨC ĐỘ GỌN GÀNG (1 DÒNG DUY NHẤT) */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pt-3 border-t border-slate-200/70">
+                  {/* Nhóm 1: Định dạng câu hỏi (Pill Switcher) */}
+                  <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
                     <button
                       onClick={() => { setPracticePart(1); setSelectedSetIndex(0); }}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 1 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        practicePart === 1 ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                      }`}
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5" />
                       Phần I: 4 Lựa chọn ({activePractice.part1?.length || 0})
                     </button>
                     <button
                       onClick={() => { setPracticePart(2); setSelectedSetIndex(0); }}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 2 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        practicePart === 2 ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                      }`}
                     >
-                      <CheckSquare className="w-3.5 h-3.5" />
                       Phần II: Đúng / Sai ({activePractice.part2?.length || 0})
                     </button>
                     <button
                       onClick={() => { setPracticePart(3); setSelectedSetIndex(0); }}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 3 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        practicePart === 3 ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                      }`}
                     >
-                      <Edit3 className="w-3.5 h-3.5" />
                       Phần III: Trả lời ngắn ({activePractice.part3?.length || 0})
                     </button>
                   </div>
 
-                  {/* Sub-topics for Bai 15 & Bai 16 */}
-                  {selectedLessonId === 'bai15' && (
-                    <div className="flex items-center gap-1.5 bg-slate-200/50 p-1 rounded-xl">
-                      <button
-                        onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'all' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        Tất cả
-                      </button>
-                      <button
-                        onClick={() => { setSelectedSubTopic('the_dien_cuc'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'the_dien_cuc' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        ⚖️ Thế điện cực chuẩn
-                      </button>
-                      <button
-                        onClick={() => { setSelectedSubTopic('pin_dien'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'pin_dien' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        🔋 Pin điện & Nguồn điện
-                      </button>
-                    </div>
-                  )}
-                  {selectedLessonId === 'bai16' && (
-                    <div className="flex items-center gap-1.5 bg-slate-200/50 p-1 rounded-xl">
-                      <button
-                        onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'all' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        Tất cả
-                      </button>
-                      <button
-                        onClick={() => { setSelectedSubTopic('dp_nong_chay'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'dp_nong_chay' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        🔥 ĐP nóng chảy
-                      </button>
-                      <button
-                        onClick={() => { setSelectedSubTopic('dp_dung_dich'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'dp_dung_dich' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        💧 ĐP dung dịch
-                      </button>
-                      <button
-                        onClick={() => { setSelectedSubTopic('ung_dung'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'ung_dung' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        🏭 Ứng dụng & Mạ điện
-                      </button>
-                    </div>
-                  )}
+                  {/* Nhóm 2: Bộ lọc Mức độ & Chủ đề con (ẨN NÚT 0 CÂU) */}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {/* Subtopics for Bai 15 */}
+                    {selectedLessonId === 'bai15' && (
+                      <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                        <button
+                          onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'all' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Tất cả
+                        </button>
+                        <button
+                          onClick={() => { setSelectedSubTopic('the_dien_cuc'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'the_dien_cuc' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Thế điện cực
+                        </button>
+                        <button
+                          onClick={() => { setSelectedSubTopic('pin_dien'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'pin_dien' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Pin & Nguồn điện
+                        </button>
+                      </div>
+                    )}
 
-                  {/* Level Filter */}
-                  <div className="flex items-center gap-1 bg-slate-200/50 p-1 rounded-xl">
-                    <button
-                      onClick={() => { setSelectedLevel('all'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'all' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600'}`}
-                    >
-                      Tất cả
-                    </button>
-                    <button
-                      onClick={() => { setSelectedLevel('NB'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'NB' ? 'bg-emerald-600 text-white shadow-sm' : 'text-emerald-800'}`}
-                    >
-                      🟢 NB ({levelStats.NB})
-                    </button>
-                    <button
-                      onClick={() => { setSelectedLevel('TH'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'TH' ? 'bg-sky-600 text-white shadow-sm' : 'text-sky-800'}`}
-                    >
-                      🔵 TH ({levelStats.TH})
-                    </button>
-                    <button
-                      onClick={() => { setSelectedLevel('VD'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'VD' ? 'bg-amber-600 text-white shadow-sm' : 'text-amber-800'}`}
-                    >
-                      🟡 VD ({levelStats.VD})
-                    </button>
+                    {/* Subtopics for Bai 16 */}
+                    {selectedLessonId === 'bai16' && (
+                      <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                        <button
+                          onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'all' ? 'bg-white text-teal-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Tất cả
+                        </button>
+                        <button
+                          onClick={() => { setSelectedSubTopic('dp_nong_chay'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'dp_nong_chay' ? 'bg-white text-teal-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          ĐP nóng chảy
+                        </button>
+                        <button
+                          onClick={() => { setSelectedSubTopic('dp_dung_dich'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'dp_dung_dich' ? 'bg-white text-teal-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          ĐP dung dịch
+                        </button>
+                        <button
+                          onClick={() => { setSelectedSubTopic('ung_dung'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'ung_dung' ? 'bg-white text-teal-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Ứng dụng
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Levels: CHỈ HIỂN THỊ MỨC ĐỘ NÀO CÓ SỐ CÂU > 0 */}
+                    <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                      <button
+                        onClick={() => { setSelectedLevel('all'); setSelectedSetIndex(0); }}
+                        className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                          selectedLevel === 'all' ? 'bg-white text-slate-900 shadow-xs font-black' : 'text-slate-500 hover:text-slate-800'
+                        }`}
+                      >
+                        Tất cả ({filteredQuestions.length})
+                      </button>
+                      {levelStats.NB > 0 && (
+                        <button
+                          onClick={() => { setSelectedLevel('NB'); setSelectedSetIndex(0); }}
+                          className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedLevel === 'NB' ? 'bg-emerald-600 text-white shadow-xs font-black' : 'text-emerald-700 hover:bg-emerald-50'
+                          }`}
+                        >
+                          🟢 NB ({levelStats.NB})
+                        </button>
+                      )}
+                      {levelStats.TH > 0 && (
+                        <button
+                          onClick={() => { setSelectedLevel('TH'); setSelectedSetIndex(0); }}
+                          className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedLevel === 'TH' ? 'bg-sky-600 text-white shadow-xs font-black' : 'text-sky-700 hover:bg-sky-50'
+                          }`}
+                        >
+                          🔵 TH ({levelStats.TH})
+                        </button>
+                      )}
+                      {levelStats.VD > 0 && (
+                        <button
+                          onClick={() => { setSelectedLevel('VD'); setSelectedSetIndex(0); }}
+                          className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedLevel === 'VD' ? 'bg-amber-600 text-white shadow-xs font-black' : 'text-amber-700 hover:bg-amber-50'
+                          }`}
+                        >
+                          🟡 VD ({levelStats.VD})
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                {/* Row 3: BỘ ĐỀ NHỎ (MINI-SETS) SELECTOR - LỘ TRÌNH MỞ KHÓA BẬC THANG */}
+                {/* TẦNG 3: LỘ TRÌNH CHẶNG HỌC (MILESTONE STEPS) */}
                 <div className="pt-3 border-t border-slate-200/70">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs font-black text-cyan-800 flex items-center gap-1.5 uppercase tracking-wider">
-                        <Sparkles className="w-4 h-4 text-cyan-600" />
-                        Lộ trình mở khóa từng bộ đề (Mỗi bộ {setSize} câu ~ 15 phút):
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
+                        <Sparkles className="w-4 h-4 text-amber-500" />
+                        Lộ trình chặng luyện tập (Mỗi chặng {setSize} câu ~ 15 phút):
                       </span>
-                      <span className="text-[11px] font-medium text-slate-500 hidden sm:inline">
-                        (Hoàn thành Bộ 1 để mở khóa Bộ 2)
+                      <span className="text-[11px] text-slate-400 hidden sm:inline">
+                        Hoàn thành lần lượt để mở chặng tiếp theo
                       </span>
                     </div>
 
@@ -1375,30 +1418,27 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                         <button
                           onClick={() => {
                             setTeacherBypassLock(!teacherBypassLock);
-                            toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả bộ đề!' : 'Đã khôi phục chế độ khóa theo lộ trình học sinh', { icon: '👑' });
+                            toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả chặng!' : 'Đã khôi phục chế độ khóa lộ trình', { icon: '👑' });
                           }}
-                          className={`px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
-                            teacherBypassLock
-                              ? 'bg-cyan-600 text-white border-cyan-700 shadow-xs'
-                              : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
+                          className={`px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1 border cursor-pointer ${
+                            teacherBypassLock ? 'bg-amber-500 text-white border-amber-600' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
                           }`}
-                          title="Chế độ Thầy giáo: Bỏ qua khóa đề để duyệt bài nhanh"
                         >
-                          {teacherBypassLock ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5 text-cyan-600" />}
-                          <span>{teacherBypassLock ? 'Mở khóa tất cả (Thầy)' : 'Mở khóa hết (Thầy)'}</span>
+                          {teacherBypassLock ? <Unlock className="w-3 h-3" /> : <Lock className="w-3 h-3 text-amber-600" />}
+                          <span>{teacherBypassLock ? 'Mở khóa tất cả (Thầy)' : 'Mở khóa (Thầy)'}</span>
                         </button>
                       )}
                       <button
                         onClick={() => setSelectedSetIndex(selectedSetIndex === -1 ? 0 : -1)}
-                        className="text-xs font-bold text-slate-500 hover:text-cyan-700 underline cursor-pointer"
+                        className="text-xs font-bold text-slate-500 hover:text-indigo-600 underline cursor-pointer"
                       >
-                        {selectedSetIndex === -1 ? 'Thu gọn thành từng bộ 15 câu' : 'Xem danh sách toàn bộ'}
+                        {selectedSetIndex === -1 ? 'Thu gọn thành 15 câu' : 'Xem toàn bộ'}
                       </button>
                     </div>
                   </div>
 
-                  {/* Mini-set Buttons Grid */}
-                  <div className="flex flex-wrap items-center gap-2">
+                  {/* Milestone Grid: Compact & Balanced */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">
                     {questionSets.map((s, idx) => {
                       const isSelected = selectedSetIndex === idx;
                       const startQ = idx * setSize + 1;
@@ -1413,51 +1453,42 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                           key={idx}
                           onClick={() => {
                             if (!isUnlocked) {
-                              toast.error(`🔒 Hãy hoàn thành Bộ đề số ${idx} trước để mở khóa Bộ đề số ${idx + 1} nhé! Cùng Thầy Thọ vượt ải từng bước nào!`, {
-                                icon: '⏳',
-                                duration: 4000
-                              });
+                              toast.error(`🔒 Hãy hoàn thành Chặng ${idx} trước để mở khóa Chặng ${idx + 1} nhé!`, { icon: '⏳' });
                               return;
                             }
                             setSelectedSetIndex(idx);
-                            window.scrollTo({ top: 350, behavior: 'smooth' });
                           }}
-                          className={`px-3.5 py-2 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
+                          className={`p-2.5 rounded-2xl text-center transition-all flex flex-col items-center justify-between gap-1.5 border cursor-pointer relative ${
                             !isUnlocked
-                              ? 'bg-slate-100/80 text-slate-400 border-dashed border-slate-300 hover:bg-slate-100 cursor-not-allowed opacity-75'
+                              ? 'bg-slate-50 border-slate-200/80 text-slate-400 opacity-60 cursor-not-allowed'
                               : isSelected
-                              ? 'bg-cyan-600 text-white border-cyan-600 shadow-md transform -translate-y-0.5'
+                              ? 'bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-200 -translate-y-0.5'
                               : isDone
-                              ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-2xs'
-                              : 'bg-white border-slate-300 text-slate-700 hover:border-cyan-500 shadow-2xs'
+                              ? 'bg-emerald-50 text-emerald-900 border-emerald-300 hover:bg-emerald-100 shadow-2xs'
+                              : 'bg-white border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-slate-50 shadow-2xs'
                           }`}
                         >
-                          {!isUnlocked && <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />}
-                          <span>Bộ {idx + 1}</span>
-                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-black ${
-                            !isUnlocked 
-                              ? 'bg-slate-200/60 text-slate-400' 
-                              : isSelected 
-                              ? 'bg-white/20 text-white' 
-                              : 'bg-slate-100 text-slate-600'
-                          }`}>
+                          <div className="flex items-center gap-1">
+                            {!isUnlocked && <Lock className="w-3 h-3 text-slate-400 shrink-0" />}
+                            <span className="text-xs font-black">Chặng {idx + 1}</span>
+                          </div>
+                          <span className={`text-[10px] font-semibold ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
                             Câu {startQ}–{endQ}
                           </span>
-                          {isDone && (
-                            <span className="flex items-center gap-1 text-[10px] font-black text-emerald-700 bg-emerald-100/90 px-1.5 py-0.5 rounded-md">
-                              <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
-                              {setResult?.score !== undefined ? `${setResult.score.toFixed(1)}đ` : 'Xong'}
+                          {isDone ? (
+                            <span className={`text-[10px] font-black px-1.5 py-0.2 rounded-full ${
+                              isSelected ? 'bg-white/20 text-white' : 'bg-emerald-200 text-emerald-900'
+                            }`}>
+                              {setResult?.score !== undefined ? `${setResult.score.toFixed(1)}đ` : '✓ Xong'}
+                            </span>
+                          ) : (
+                            <span className={`text-[9px] font-bold ${isSelected ? 'text-indigo-200' : 'text-slate-400'}`}>
+                              15 phút
                             </span>
                           )}
                         </button>
                       );
                     })}
-
-                    {selectedSetIndex === -1 && (
-                      <span className="px-3 py-1.5 rounded-xl text-xs font-black bg-indigo-100 text-indigo-800 border border-indigo-200">
-                        Đang xem toàn bộ {filteredQuestions.length} câu
-                      </span>
-                    )}
                   </div>
                 </div>
               </div>

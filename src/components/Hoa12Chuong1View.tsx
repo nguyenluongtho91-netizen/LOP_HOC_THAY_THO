@@ -896,9 +896,9 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Bộ Đề Luyện Nhỏ (15 câu)</span>
+            <span>Luyện Tập Vi Mô (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
-              13 Đề
+              Lộ trình chặng
             </span>
           </button>
           <button
@@ -1202,27 +1202,13 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           {/* ================= TAB 3: PRACTICE BANK (BỘ ĐỀ NHỎ 15 CÂU - CHỐNG MỎI MẮT) ================= */}
           {activeTab === 'practice' && (
             <div className="space-y-6">
-              {/* Filter & Mini-set Control Card */}
-              <div className={`${cardTheme} p-6 rounded-3xl space-y-5`}>
-                {/* Row 1: Lesson & Topic */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-200/70">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">
-                        {activeLesson.badge}
-                      </span>
-                      <h2 className="text-xl font-extrabold tracking-tight">
-                        {activeLesson.title}
-                      </h2>
-                    </div>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Tổng số câu trong phần này: <b>{filteredQuestions.length}</b> câu • Đã chia thành <b>{questionSets.length} bộ đề nhỏ</b> (mỗi bộ {setSize} câu)
-                    </p>
-                  </div>
-
-                  {/* Lesson Switcher */}
-                  <div className="flex items-center gap-2">
-                    {HOA12_CHUONG1_LESSONS.slice(0, 2).map((l) => (
+              {/* Filter & Mini-set Control Card (EdTech Pro Style) */}
+              <div className={`${cardTheme} p-5 sm:p-6 rounded-3xl space-y-4 shadow-sm border border-slate-200/90`}>
+                {/* TẦNG 1: CHỌN BÀI HỌC (SEGMENTED TABS) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {HOA12_CHUONG1_LESSONS.slice(0, 2).map((l) => {
+                    const isSel = selectedLessonId === l.id;
+                    return (
                       <button
                         key={l.id}
                         onClick={() => {
@@ -1231,104 +1217,151 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                           setSelectedLevel('all');
                           setSelectedSetIndex(0);
                         }}
-                        className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${selectedLessonId === l.id ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                        className={`p-3.5 rounded-2xl text-left transition-all border flex items-center justify-between gap-3 cursor-pointer ${
+                          isSel
+                            ? 'bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-400 shadow-xs ring-1 ring-indigo-300'
+                            : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+                        }`}
                       >
-                        {l.badge}
+                        <div className="flex items-center gap-3">
+                          <span className={`w-8 h-8 rounded-xl font-black text-xs flex items-center justify-center shrink-0 ${
+                            isSel ? 'bg-indigo-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700'
+                          }`}>
+                            {l.lessonNumber}
+                          </span>
+                          <div>
+                            <h3 className={`text-sm font-bold leading-tight ${isSel ? 'text-indigo-950 font-black' : 'text-slate-800'}`}>
+                              {l.title}
+                            </h3>
+                            <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-1">
+                              {l.description}
+                            </p>
+                          </div>
+                        </div>
+                        {isSel && (
+                          <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 shrink-0" />
+                        )}
                       </button>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
 
-                {/* Row 2: Sub-topics & Format Tabs */}
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  {/* Format tabs */}
-                  <div className="flex items-center gap-2">
+                {/* TẦNG 2: THANH LỌC ĐỊNH DẠNG & MỨC ĐỘ GỌN GÀNG (1 DÒNG DUY NHẤT) */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pt-3 border-t border-slate-200/70">
+                  {/* Nhóm 1: Định dạng câu hỏi (Pill Switcher) */}
+                  <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
                     <button
                       onClick={() => { setPracticePart(1); setSelectedSetIndex(0); }}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 1 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        practicePart === 1 ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                      }`}
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5" />
                       Phần I: 4 Lựa chọn ({activePractice.part1?.length || 0})
                     </button>
                     <button
                       onClick={() => { setPracticePart(2); setSelectedSetIndex(0); }}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 2 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        practicePart === 2 ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                      }`}
                     >
-                      <CheckSquare className="w-3.5 h-3.5" />
                       Phần II: Đúng / Sai ({activePractice.part2?.length || 0})
                     </button>
                     <button
                       onClick={() => { setPracticePart(3); setSelectedSetIndex(0); }}
-                      className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${practicePart === 3 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-slate-200/60 text-slate-700 hover:bg-slate-300'}`}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        practicePart === 3 ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                      }`}
                     >
-                      <Edit3 className="w-3.5 h-3.5" />
                       Phần III: Trả lời ngắn ({activePractice.part3?.length || 0})
                     </button>
                   </div>
 
-                  {/* Sub-topics for Bai 1 */}
-                  {selectedLessonId === 'bai1' && (
-                    <div className="flex items-center gap-1.5 bg-slate-200/50 p-1 rounded-xl">
-                      <button
-                        onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'all' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        Tất cả
-                      </button>
-                      <button
-                        onClick={() => { setSelectedSubTopic('ester'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'ester' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        🔬 Ester
-                      </button>
-                      <button
-                        onClick={() => { setSelectedSubTopic('lipid'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'lipid' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                      >
-                        🥑 Lipid & Chất béo
-                      </button>
-                    </div>
-                  )}
+                  {/* Nhóm 2: Bộ lọc Mức độ & Chủ đề con (ẨN NÚT 0 CÂU) */}
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {/* Subtopics for Bai 1 */}
+                    {selectedLessonId === 'bai1' && (
+                      <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                        <button
+                          onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'all' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          Tất cả
+                        </button>
+                        <button
+                          onClick={() => { setSelectedSubTopic('ester'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'ester' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          🔬 Ester
+                        </button>
+                        <button
+                          onClick={() => { setSelectedSubTopic('lipid'); setSelectedSetIndex(0); }}
+                          className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedSubTopic === 'lipid' ? 'bg-white text-indigo-700 shadow-xs font-black' : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          🥑 Lipid
+                        </button>
+                      </div>
+                    )}
 
-                  {/* Level Filter */}
-                  <div className="flex items-center gap-1 bg-slate-200/50 p-1 rounded-xl">
-                    <button
-                      onClick={() => { setSelectedLevel('all'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'all' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600'}`}
-                    >
-                      Tất cả
-                    </button>
-                    <button
-                      onClick={() => { setSelectedLevel('NB'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'NB' ? 'bg-emerald-600 text-white shadow-sm' : 'text-emerald-800'}`}
-                    >
-                      🟢 NB ({levelStats.NB})
-                    </button>
-                    <button
-                      onClick={() => { setSelectedLevel('TH'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'TH' ? 'bg-sky-600 text-white shadow-sm' : 'text-sky-800'}`}
-                    >
-                      🔵 TH ({levelStats.TH})
-                    </button>
-                    <button
-                      onClick={() => { setSelectedLevel('VD'); setSelectedSetIndex(0); }}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${selectedLevel === 'VD' ? 'bg-amber-600 text-white shadow-sm' : 'text-amber-800'}`}
-                    >
-                      🟡 VD ({levelStats.VD})
-                    </button>
+                    {/* Levels: CHỈ HIỂN THỊ MỨC ĐỘ NÀO CÓ SỐ CÂU > 0 */}
+                    <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl text-xs">
+                      <button
+                        onClick={() => { setSelectedLevel('all'); setSelectedSetIndex(0); }}
+                        className={`px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                          selectedLevel === 'all' ? 'bg-white text-slate-900 shadow-xs font-black' : 'text-slate-500 hover:text-slate-800'
+                        }`}
+                      >
+                        Tất cả ({filteredQuestions.length})
+                      </button>
+                      {levelStats.NB > 0 && (
+                        <button
+                          onClick={() => { setSelectedLevel('NB'); setSelectedSetIndex(0); }}
+                          className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedLevel === 'NB' ? 'bg-emerald-600 text-white shadow-xs font-black' : 'text-emerald-700 hover:bg-emerald-50'
+                          }`}
+                        >
+                          🟢 NB ({levelStats.NB})
+                        </button>
+                      )}
+                      {levelStats.TH > 0 && (
+                        <button
+                          onClick={() => { setSelectedLevel('TH'); setSelectedSetIndex(0); }}
+                          className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedLevel === 'TH' ? 'bg-sky-600 text-white shadow-xs font-black' : 'text-sky-700 hover:bg-sky-50'
+                          }`}
+                        >
+                          🔵 TH ({levelStats.TH})
+                        </button>
+                      )}
+                      {levelStats.VD > 0 && (
+                        <button
+                          onClick={() => { setSelectedLevel('VD'); setSelectedSetIndex(0); }}
+                          className={`px-2 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                            selectedLevel === 'VD' ? 'bg-amber-600 text-white shadow-xs font-black' : 'text-amber-700 hover:bg-amber-50'
+                          }`}
+                        >
+                          🟡 VD ({levelStats.VD})
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                {/* Row 3: BỘ ĐỀ NHỎ (MINI-SETS) SELECTOR - LỘ TRÌNH MỞ KHÓA BẬC THANG */}
+                {/* TẦNG 3: LỘ TRÌNH CHẶNG HỌC (MILESTONE STEPS) */}
                 <div className="pt-3 border-t border-slate-200/70">
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-xs font-black text-indigo-700 flex items-center gap-1.5 uppercase tracking-wider">
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-black text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
                         <Sparkles className="w-4 h-4 text-amber-500" />
-                        Lộ trình mở khóa từng bộ đề (Mỗi bộ {setSize} câu ~ 15 phút):
+                        Lộ trình chặng luyện tập (Mỗi chặng {setSize} câu ~ 15 phút):
                       </span>
-                      <span className="text-[11px] font-medium text-slate-500 hidden sm:inline">
-                        (Hoàn thành Bộ 1 để mở khóa Bộ 2)
+                      <span className="text-[11px] text-slate-400 hidden sm:inline">
+                        Hoàn thành lần lượt để mở chặng tiếp theo
                       </span>
                     </div>
 
@@ -1337,30 +1370,27 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                         <button
                           onClick={() => {
                             setTeacherBypassLock(!teacherBypassLock);
-                            toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả bộ đề!' : 'Đã khôi phục chế độ khóa theo lộ trình học sinh', { icon: '👑' });
+                            toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả chặng!' : 'Đã khôi phục chế độ khóa lộ trình', { icon: '👑' });
                           }}
-                          className={`px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
-                            teacherBypassLock
-                              ? 'bg-amber-500 text-white border-amber-600 shadow-xs'
-                              : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
+                          className={`px-2.5 py-1 rounded-xl text-[11px] font-bold transition-all flex items-center gap-1 border cursor-pointer ${
+                            teacherBypassLock ? 'bg-amber-500 text-white border-amber-600' : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
                           }`}
-                          title="Chế độ Thầy giáo: Bỏ qua khóa đề để duyệt bài nhanh"
                         >
-                          {teacherBypassLock ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5 text-amber-600" />}
-                          <span>{teacherBypassLock ? 'Mở khóa tất cả (Thầy)' : 'Mở khóa hết (Thầy)'}</span>
+                          {teacherBypassLock ? <Unlock className="w-3 h-3" /> : <Lock className="w-3 h-3 text-amber-600" />}
+                          <span>{teacherBypassLock ? 'Mở khóa tất cả (Thầy)' : 'Mở khóa (Thầy)'}</span>
                         </button>
                       )}
                       <button
                         onClick={() => setSelectedSetIndex(selectedSetIndex === -1 ? 0 : -1)}
                         className="text-xs font-bold text-slate-500 hover:text-indigo-600 underline cursor-pointer"
                       >
-                        {selectedSetIndex === -1 ? 'Thu gọn thành từng bộ 15 câu' : 'Xem danh sách toàn bộ'}
+                        {selectedSetIndex === -1 ? 'Thu gọn thành 15 câu' : 'Xem toàn bộ'}
                       </button>
                     </div>
                   </div>
 
-                  {/* Mini-set Buttons Grid */}
-                  <div className="flex flex-wrap items-center gap-2">
+                  {/* Milestone Grid: Compact & Balanced */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5">
                     {questionSets.map((s, idx) => {
                       const isSelected = selectedSetIndex === idx;
                       const startQ = idx * setSize + 1;
@@ -1375,51 +1405,42 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                           key={idx}
                           onClick={() => {
                             if (!isUnlocked) {
-                              toast.error(`🔒 Hãy hoàn thành Bộ đề số ${idx} trước để mở khóa Bộ đề số ${idx + 1} nhé! Cùng Thầy Thọ vượt ải từng bước nào!`, {
-                                icon: '⏳',
-                                duration: 4000
-                              });
+                              toast.error(`🔒 Hãy hoàn thành Chặng ${idx} trước để mở khóa Chặng ${idx + 1} nhé!`, { icon: '⏳' });
                               return;
                             }
                             setSelectedSetIndex(idx);
-                            window.scrollTo({ top: 350, behavior: 'smooth' });
                           }}
-                          className={`px-3.5 py-2 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
+                          className={`p-2.5 rounded-2xl text-center transition-all flex flex-col items-center justify-between gap-1.5 border cursor-pointer relative ${
                             !isUnlocked
-                              ? 'bg-slate-100/80 text-slate-400 border-dashed border-slate-300 hover:bg-slate-100 cursor-not-allowed opacity-75'
+                              ? 'bg-slate-50 border-slate-200/80 text-slate-400 opacity-60 cursor-not-allowed'
                               : isSelected
-                              ? 'bg-indigo-600 text-white border-indigo-600 shadow-md transform -translate-y-0.5'
+                              ? 'bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-200 -translate-y-0.5'
                               : isDone
-                              ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100 shadow-2xs'
-                              : 'bg-white border-slate-300 text-slate-700 hover:border-indigo-400 shadow-2xs'
+                              ? 'bg-emerald-50 text-emerald-900 border-emerald-300 hover:bg-emerald-100 shadow-2xs'
+                              : 'bg-white border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-slate-50 shadow-2xs'
                           }`}
                         >
-                          {!isUnlocked && <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />}
-                          <span>Bộ {idx + 1}</span>
-                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-black ${
-                            !isUnlocked 
-                              ? 'bg-slate-200/60 text-slate-400' 
-                              : isSelected 
-                              ? 'bg-white/20 text-white' 
-                              : 'bg-slate-100 text-slate-600'
-                          }`}>
+                          <div className="flex items-center gap-1">
+                            {!isUnlocked && <Lock className="w-3 h-3 text-slate-400 shrink-0" />}
+                            <span className="text-xs font-black">Chặng {idx + 1}</span>
+                          </div>
+                          <span className={`text-[10px] font-semibold ${isSelected ? 'text-indigo-100' : 'text-slate-400'}`}>
                             Câu {startQ}–{endQ}
                           </span>
-                          {isDone && (
-                            <span className="flex items-center gap-1 text-[10px] font-black text-emerald-700 bg-emerald-100/90 px-1.5 py-0.5 rounded-md">
-                              <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
-                              {setResult?.score !== undefined ? `${setResult.score.toFixed(1)}đ` : 'Xong'}
+                          {isDone ? (
+                            <span className={`text-[10px] font-black px-1.5 py-0.2 rounded-full ${
+                              isSelected ? 'bg-white/20 text-white' : 'bg-emerald-200 text-emerald-900'
+                            }`}>
+                              {setResult?.score !== undefined ? `${setResult.score.toFixed(1)}đ` : '✓ Xong'}
+                            </span>
+                          ) : (
+                            <span className={`text-[9px] font-bold ${isSelected ? 'text-indigo-200' : 'text-slate-400'}`}>
+                              15 phút
                             </span>
                           )}
                         </button>
                       );
                     })}
-
-                    {selectedSetIndex === -1 && (
-                      <span className="px-3 py-1.5 rounded-xl text-xs font-black bg-indigo-100 text-indigo-800 border border-indigo-200">
-                        Đang xem toàn bộ {filteredQuestions.length} câu
-                      </span>
-                    )}
                   </div>
                 </div>
               </div>
@@ -1755,175 +1776,259 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
           {/* ================= TAB 4: 7 STANDARDIZED EXAMS ================= */}
           {activeTab === 'exam' && (
             <div className="space-y-6">
-              {/* Exam Header */}
-              <div className={`${cardTheme} p-6 rounded-3xl flex flex-col lg:flex-row lg:items-center justify-between gap-4 shadow-sm`}>
-                <div>
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="px-3 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-900 border border-amber-300 shadow-2xs">
-                      7 ĐỀ KIỂM TRA CHUẨN BỘ 2025
-                    </span>
-                    <h2 className="text-xl font-extrabold tracking-tight">
-                      {activeExam.title}
-                    </h2>
-                  </div>
-                  <p className="text-xs text-slate-500 mt-1">
-                    50 phút • 28 câu (18 câu P1 + 4 câu P2 + 6 câu P3) • Tự động chấm điểm chuẩn xác
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2.5 flex-wrap">
-                  {/* Status Pills during Exam */}
-                  {isExamActive && (
-                    <>
-                      <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-xl text-indigo-900 font-mono font-black text-base shadow-2xs">
-                        <Clock className="w-4 h-4 text-indigo-600 animate-pulse" />
-                        {formatTimer(examTimeLeft)}
+              {!isExamActive ? (
+                /* ================= SẢNH PHÒNG THI 7 ĐỀ (EXAM LOBBY) ================= */
+                <div className="space-y-6 animate-fade-in">
+                  {/* Lobby Hero Banner */}
+                  <div className={`${cardTheme} p-6 sm:p-8 rounded-3xl border border-slate-200/90 shadow-sm relative overflow-hidden`}>
+                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 relative z-10">
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-xs">
+                            ⚡ CHUẨN MA TRẬN BỘ GD&ĐT 2025
+                          </span>
+                          <span className="text-xs font-bold text-slate-500">
+                            7 Đề Tổng Hợp · 50 phút / Đề · 28 câu (40 lệnh hỏi)
+                          </span>
+                        </div>
+                        <h2 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                          Phòng Luyện Thi Thực Chiến: Chương 1 (Ester – Lipid)
+                        </h2>
+                        <p className="text-xs sm:text-sm text-slate-600 max-w-3xl leading-relaxed">
+                          Hệ thống 7 đề thi định kỳ chuẩn xác theo cấu trúc 3 phần mới nhất: 
+                          <b className="text-indigo-600"> 18 câu Trắc nghiệm 4 lựa chọn (4,5đ)</b>, 
+                          <b className="text-indigo-600"> 4 câu Đúng/Sai (4,0đ)</b> và 
+                          <b className="text-indigo-600"> 6 câu Trả lời ngắn (1,5đ)</b>. 
+                          Hệ thống tự động chấm điểm, phân tích ma trận kiến thức và cung cấp lời giải chi tiết từng bước.
+                        </p>
                       </div>
 
-                      {/* Proctoring Shield Pill */}
-                      <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs border shadow-2xs ${tabSwitchViolations === 0 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-rose-50 text-rose-800 border-rose-300 animate-pulse'}`}>
-                        {tabSwitchViolations === 0 ? (
-                          <>
-                            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                            <span>Giám sát: 0 vi phạm</span>
-                          </>
-                        ) : (
-                          <>
-                            <AlertCircle className="w-4 h-4 text-rose-600" />
-                            <span>Vi phạm: {tabSwitchViolations}/3</span>
-                          </>
+                      {/* Quick Settings & Actions */}
+                      <div className="flex items-center gap-2.5 flex-wrap shrink-0">
+                        <label className="flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-bold text-slate-700 cursor-pointer select-none transition-colors">
+                          <input
+                            type="checkbox"
+                            checked={isShuffleEnabled}
+                            onChange={(e) => setIsShuffleEnabled(e.target.checked)}
+                            className="w-4 h-4 text-indigo-600 rounded"
+                          />
+                          <Shuffle className="w-4 h-4 text-indigo-600" />
+                          <span>Đảo câu & đáp án</span>
+                        </label>
+
+                        <button
+                          onClick={() => {
+                            setExamHistory(getChuong1ExamHistory(selectedExamId));
+                            setShowHistoryModal(true);
+                          }}
+                          className="px-3.5 py-2.5 rounded-2xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-bold text-slate-700 flex items-center gap-1.5 cursor-pointer transition-colors shadow-2xs"
+                          title="Xem lịch sử các lần thi trước"
+                        >
+                          <Clock className="w-4 h-4 text-slate-600" />
+                          <span>Lịch sử bài thi</span>
+                        </button>
+
+                        {isTeacher && (
+                          <button
+                            onClick={() => {
+                              setTeacherBypassLock(!teacherBypassLock);
+                              toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả đề thi!' : 'Đã khôi phục chế độ khóa theo lộ trình học sinh', { icon: '👑' });
+                            }}
+                            className={`px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
+                              teacherBypassLock
+                                ? 'bg-amber-500 text-white border-amber-600 shadow-2xs'
+                                : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
+                            }`}
+                          >
+                            {teacherBypassLock ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5 text-amber-600" />}
+                            <span>{teacherBypassLock ? 'Mở khóa tất cả đề (Thầy)' : 'Mở khóa hết (Thầy)'}</span>
+                          </button>
                         )}
                       </div>
+                    </div>
+                  </div>
 
-                      <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs font-semibold">
-                        <Shuffle className="w-3.5 h-3.5 text-indigo-600" />
-                        <span>Đã đảo câu & đáp án</span>
+                  {/* 7 Exam Cards Grid - LƯỚI 7 ĐỀ THI HIỆN ĐẠI & SANG TRỌNG */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {HOA12_CHUONG1_7_EXAMS.map((e, idx) => {
+                      const isUnlocked = isExamUnlocked(idx);
+                      const history = getChuong1ExamHistory(e.id);
+                      const bestScore = history && history.length > 0
+                        ? Math.max(...history.map(h => h.score))
+                        : (completedExams[e.id]?.score);
+                      const isCompleted = bestScore !== undefined;
+
+                      return (
+                        <div
+                          key={e.id}
+                          className={`${cardTheme} rounded-3xl p-6 border transition-all flex flex-col justify-between gap-5 relative overflow-hidden ${
+                            !isUnlocked
+                              ? 'border-dashed border-slate-300 bg-slate-50/70 opacity-80'
+                              : 'border-slate-200/90 hover:border-indigo-400 hover:shadow-xl shadow-sm'
+                          }`}
+                        >
+                          <div>
+                            {/* Card Top: Badge & Status */}
+                            <div className="flex items-center justify-between gap-2 mb-3">
+                              <div className="flex items-center gap-2">
+                                <span className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white font-black text-xs flex items-center justify-center shadow-xs">
+                                  {idx + 1}
+                                </span>
+                                <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-black bg-indigo-50 text-indigo-700 border border-indigo-200 uppercase">
+                                  {e.badge}
+                                </span>
+                              </div>
+
+                              {isCompleted ? (
+                                <span className="px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 flex items-center gap-1 border border-emerald-200">
+                                  <Trophy className="w-3.5 h-3.5 text-emerald-600" />
+                                  {bestScore.toFixed(1)} điểm
+                                </span>
+                              ) : !isUnlocked ? (
+                                <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-500 flex items-center gap-1">
+                                  <Lock className="w-3.5 h-3.5" />
+                                  Khóa lộ trình
+                                </span>
+                              ) : (
+                                <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                  Sẵn sàng thi
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Title & Topic */}
+                            <h3 className="text-base font-extrabold text-slate-900 leading-snug mb-1 line-clamp-2">
+                              {e.title}
+                            </h3>
+                            <p className="text-xs text-indigo-600 font-semibold mb-3">
+                              🎯 {e.topic}
+                            </p>
+
+                            {/* Details Specs Box */}
+                            <div className="space-y-1.5 text-xs text-slate-600 bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100">
+                              <div className="flex items-center justify-between">
+                                <span className="text-slate-500">Thời gian làm bài:</span>
+                                <span className="font-bold text-slate-800 flex items-center gap-1">
+                                  <Clock className="w-3.5 h-3.5 text-indigo-500" /> 50 phút
+                                </span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-slate-500">Quy mô câu hỏi:</span>
+                                <span className="font-bold text-slate-800">28 câu (40 lệnh hỏi)</span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-slate-500">Cấu trúc 3 phần:</span>
+                                <span className="font-bold text-indigo-700">18 TN · 4 Đ/S · 6 Ngắn</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Action Button */}
+                          <div className="pt-2 flex items-center gap-2">
+                            {isUnlocked ? (
+                              <>
+                                <button
+                                  onClick={() => handleStartExam(e.id, isShuffleEnabled)}
+                                  className="flex-1 py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md shadow-indigo-200 flex items-center justify-center gap-2 transition-all active:scale-95 cursor-pointer"
+                                >
+                                  <Play className="w-4 h-4 fill-white" />
+                                  <span>{isCompleted ? 'Thi Lại Đề Này' : 'Vào Thi (50 phút)'}</span>
+                                </button>
+
+                                {isCompleted && (
+                                  <button
+                                    onClick={() => {
+                                      setSelectedExamId(e.id);
+                                      setExamHistory(getChuong1ExamHistory(e.id));
+                                      setShowHistoryModal(true);
+                                    }}
+                                    className="p-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-bold transition-colors cursor-pointer"
+                                    title="Xem lịch sử làm bài"
+                                  >
+                                    <Clock className="w-4 h-4" />
+                                  </button>
+                                )}
+                              </>
+                            ) : (
+                              <button
+                                onClick={() => {
+                                  const prevBadge = HOA12_CHUONG1_7_EXAMS[idx - 1]?.badge || `Đề ${idx}`;
+                                  toast.error(`🔒 Hãy hoàn thành ${prevBadge} trước để mở khóa đề này nhé! Cùng Thầy Thọ chinh phục từng đề nào!`, {
+                                    icon: '⏳',
+                                    duration: 4000
+                                  });
+                                }}
+                                className="w-full py-3 px-4 bg-slate-100 text-slate-400 font-bold text-xs rounded-xl border border-dashed border-slate-300 flex items-center justify-center gap-2 cursor-not-allowed"
+                              >
+                                <Lock className="w-4 h-4" />
+                                <span>Hoàn thành Đề {idx} để mở khóa</span>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : (
+                /* ================= PHÒNG THI TẬP TRUNG (ACTIVE EXAM WORKSPACE) ================= */
+                <div className="space-y-6 animate-fade-in">
+                  {/* Sticky Active Exam Header */}
+                  <div className={`${cardTheme} p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md border-2 border-indigo-200 sticky top-2 z-30`}>
+                    <div className="flex items-center gap-3">
+                      <span className="px-3 py-1.5 rounded-xl text-xs font-black bg-indigo-600 text-white shadow-xs">
+                        {activeExam.badge}
+                      </span>
+                      <div>
+                        <h2 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
+                          {activeExam.title}
+                        </h2>
+                        <span className="text-xs text-slate-500">
+                          Đã làm: <b className="text-indigo-600 font-black">{Object.keys(examAnswers).length}</b> / {activeExam.questions.length} câu
+                        </span>
                       </div>
-                    </>
-                  )}
+                    </div>
 
-                  {!isExamActive ? (
-                    <div className="flex items-center gap-2 flex-wrap">
-                      {/* Shuffle Toggle Option */}
-                      <label className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-bold text-slate-700 cursor-pointer select-none">
-                        <input
-                          type="checkbox"
-                          checked={isShuffleEnabled}
-                          onChange={(e) => setIsShuffleEnabled(e.target.checked)}
-                          className="w-4 h-4 text-indigo-600 rounded"
-                        />
-                        <Shuffle className="w-3.5 h-3.5 text-indigo-600" />
-                        <span>Đảo câu & đáp án</span>
-                      </label>
+                    <div className="flex items-center gap-2.5 flex-wrap">
+                      {/* Timer */}
+                      <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-300 px-4 py-2 rounded-xl text-indigo-950 font-mono font-black text-lg shadow-2xs">
+                        <Clock className="w-5 h-5 text-indigo-600 animate-pulse" />
+                        <span>{formatTimer(examTimeLeft)}</span>
+                      </div>
 
-                      {/* History Button */}
+                      {/* Proctoring */}
+                      <div className={`flex items-center gap-1.5 px-3 py-2 rounded-xl font-bold text-xs border ${
+                        tabSwitchViolations === 0 ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-rose-50 text-rose-800 border-rose-300 animate-pulse'
+                      }`}>
+                        <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                        <span>Giám sát: {tabSwitchViolations === 0 ? 'Tốt' : `${tabSwitchViolations}/3`}</span>
+                      </div>
+
+                      {/* Submit Button */}
                       <button
-                        onClick={() => {
-                          setExamHistory(getChuong1ExamHistory(selectedExamId));
-                          setShowHistoryModal(true);
-                        }}
-                        className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-xs font-bold text-slate-700 flex items-center gap-1.5 cursor-pointer shadow-2xs"
-                        title="Xem lịch sử tất cả các lần làm bài"
+                        onClick={() => handleSubmitExam(false)}
+                        className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black rounded-xl shadow-md text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
                       >
-                        <Clock className="w-3.5 h-3.5 text-slate-600" />
-                        <span>Lịch sử làm bài</span>
+                        <Check className="w-4 h-4 stroke-[3]" />
+                        <span>Nộp bài & Chấm điểm</span>
                       </button>
 
-                      {/* Start Exam Button */}
+                      {/* Exit Exam Button */}
                       <button
-                        onClick={() => handleStartExam(selectedExamId, isShuffleEnabled)}
-                        className="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-extrabold rounded-2xl shadow-md shadow-indigo-200 text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
+                        onClick={() => {
+                          if (window.confirm('Em có chắc muốn rời phòng thi? Bài làm hiện tại sẽ bị hủy và thời gian thi sẽ dừng lại.')) {
+                            setIsExamActive(false);
+                            setExamAnswers({});
+                          }
+                        }}
+                        className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-xl text-xs transition-colors"
                       >
-                        <Play className="w-4 h-4 fill-white" />
-                        Bắt đầu tính giờ thi (50 phút)
+                        Rời phòng thi
                       </button>
                     </div>
-                  ) : (
-                    <button
-                      onClick={() => handleSubmitExam(false)}
-                      className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black rounded-2xl shadow-md text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
-                    >
-                      <Check className="w-4 h-4 stroke-[3]" />
-                      Nộp bài & Chấm điểm
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              {/* Exam Picker - LỘ TRÌNH MỞ KHÓA ĐỀ THI BẬC THANG */}
-              <div className={`flex flex-wrap items-center justify-between gap-2 ${cardTheme} p-3 rounded-2xl`}>
-                <div className="flex flex-wrap items-center gap-2">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-slate-600 px-2">
-                    <Trophy className="w-4 h-4 text-amber-500" />
-                    <span>Lộ trình đề thi:</span>
-                    <span className="text-[11px] text-slate-400 font-normal hidden sm:inline">(Hoàn thành Đề 1 để mở khóa Đề 2)</span>
                   </div>
-                  {HOA12_CHUONG1_7_EXAMS.map((e, idx) => {
-                    const isUnlocked = isExamUnlocked(idx);
-                    const isSelected = selectedExamId === e.id;
-                    const history = getChuong1ExamHistory(e.id);
-                    const bestScore = history && history.length > 0 
-                      ? Math.max(...history.map(h => h.score)) 
-                      : (completedExams[e.id]?.score);
 
-                    return (
-                      <button
-                        key={e.id}
-                        onClick={() => {
-                          if (!isUnlocked) {
-                            const prevBadge = HOA12_CHUONG1_7_EXAMS[idx - 1]?.badge || `Đề ${idx}`;
-                            toast.error(`🔒 Hãy hoàn thành ${prevBadge} trước để mở khóa đề này nhé! Cùng Thầy Thọ chinh phục từng đề nào!`, {
-                              icon: '⏳',
-                              duration: 4000
-                            });
-                            return;
-                          }
-                          if (isExamActive && !window.confirm('Bạn đang làm bài, bạn có chắc muốn đổi sang đề khác?')) {
-                            return;
-                          }
-                          setSelectedExamId(e.id);
-                          setIsExamActive(false);
-                          setExamAnswers({});
-                        }}
-                        className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
-                          !isUnlocked
-                            ? 'bg-slate-100 text-slate-400 border-dashed border-slate-300 cursor-not-allowed opacity-75'
-                            : isSelected
-                            ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
-                            : 'bg-slate-200/60 border-transparent text-slate-700 hover:bg-slate-300'
-                        }`}
-                      >
-                        {!isUnlocked && <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />}
-                        <span>{e.badge}</span>
-                        {bestScore !== undefined && (
-                          <span className={`text-[10px] font-black px-1.5 py-0.2 rounded ml-0.5 ${isSelected ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-900'}`}>
-                            {bestScore.toFixed(1)}đ
-                          </span>
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {isTeacher && (
-                  <button
-                    onClick={() => {
-                      setTeacherBypassLock(!teacherBypassLock);
-                      toast.success(!teacherBypassLock ? 'Thầy đã mở khóa tất cả đề thi!' : 'Đã khôi phục chế độ khóa theo lộ trình học sinh', { icon: '👑' });
-                    }}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border cursor-pointer ${
-                      teacherBypassLock
-                        ? 'bg-amber-500 text-white border-amber-600 shadow-2xs'
-                        : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-300'
-                    }`}
-                  >
-                    {teacherBypassLock ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5 text-amber-600" />}
-                    <span>{teacherBypassLock ? 'Mở khóa tất cả đề (Thầy)' : 'Mở khóa hết đề (Thầy)'}</span>
-                  </button>
-                )}
-              </div>
-
-              {/* Exam Questions Container */}
+                  {/* Exam Questions Container */}
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <div className="lg:col-span-3 space-y-6">
                   {activeExam.questions.map((q, idx) => {
@@ -2119,10 +2224,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                   </div>
                 </div>
               </div>
+                </div>
+              )}
             </div>
           )}
 
-          {/* ================= TAB 5: EXAM SCORE REPORT & FULL HISTORY ================= */}
           {activeTab === 'results' && lastExamResult && (
             <div className="max-w-4xl mx-auto space-y-6 animate-fade-in pb-12">
               {/* Scorecard Hero */}
