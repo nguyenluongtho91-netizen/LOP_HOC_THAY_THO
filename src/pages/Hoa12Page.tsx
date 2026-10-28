@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import Hoa12Chuong1View from "@/components/Hoa12Chuong1View";
 import Hoa12Chuong2View from "@/components/Hoa12Chuong2View";
+import Hoa12Chuong3View from "@/components/Hoa12Chuong3View";
+import Hoa12Chuong4View from "@/components/Hoa12Chuong4View";
 import Hoa12Chuong5View from "@/components/Hoa12Chuong5View";
 import { useAuthStore } from "@/store/authStore";
 
@@ -86,14 +88,15 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
 
   // Khởi tạo chương học (1 hoặc 5)
   const resolveChapter = (): number => {
-    if (defaultChapter === 1 || defaultChapter === 2 || defaultChapter === 5) return defaultChapter;
+    if ([1, 2, 3, 4, 5].includes(defaultChapter)) return defaultChapter;
     const urlC = searchParams.get("c") || searchParams.get("chuong");
     if (urlC === "5" || location.pathname.includes("chuong5") || location.pathname.includes("chuong-5")) return 5;
+    if (urlC === "4" || location.pathname.includes("chuong4") || location.pathname.includes("chuong-4")) return 4;
+    if (urlC === "3" || location.pathname.includes("chuong3") || location.pathname.includes("chuong-3")) return 3;
     if (urlC === "2" || location.pathname.includes("chuong2") || location.pathname.includes("chuong-2")) return 2;
     if (urlC === "1" || location.pathname.includes("chuong1") || location.pathname.includes("chuong-1")) return 1;
     const saved = localStorage.getItem("hoa12_active_chapter");
-    if (saved === "5") return 5;
-    if (saved === "2") return 2;
+    if (saved && ["1", "2", "3", "4", "5"].includes(saved)) return Number(saved);
     return 1;
   };
 
@@ -152,7 +155,15 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
             Học Liệu Ôn Thi Hóa 12 Chuẩn Bộ 2025:
           </span>
           <span className="font-bold text-amber-400">
-            {activeChapter === 2 ? "🍇 Đang mở: Chương 2 – Carbohydrate" : activeChapter === 5 ? "⚡ Đang mở: Chương 5 – Pin & Điện Phân" : "🧪 Đang mở: Chương 1 – Ester – Lipid"}
+            {activeChapter === 2
+              ? "🍇 Đang mở: Chương 2 – Carbohydrate"
+              : activeChapter === 3
+              ? "🧬 Đang mở: Chương 3 – Hợp Chất Chứa Nitrogen"
+              : activeChapter === 4
+              ? "🧶 Đang mở: Chương 4 – Polymer & Vật Liệu"
+              : activeChapter === 5
+              ? "⚡ Đang mở: Chương 5 – Pin & Điện Phân"
+              : "🧪 Đang mở: Chương 1 – Ester – Lipid"}
           </span>
         </div>
 
@@ -183,6 +194,30 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
           </button>
           <button
             type="button"
+            onClick={() => handleSelectChapter(3)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 3
+                ? "bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🧬</span>
+            <span>Chương 3: Hợp Chất Chứa Nitrogen (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(4)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 4
+                ? "bg-gradient-to-r from-amber-600 to-rose-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🧶</span>
+            <span>Chương 4: Polymer (4 Đề)</span>
+          </button>
+          <button
+            type="button"
             onClick={() => handleSelectChapter(5)}
             className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
               activeChapter === 5
@@ -198,6 +233,20 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
 
       {activeChapter === 2 ? (
         <Hoa12Chuong2View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate(-1)}
+        />
+      ) : activeChapter === 3 ? (
+        <Hoa12Chuong3View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate(-1)}
+        />
+      ) : activeChapter === 4 ? (
+        <Hoa12Chuong4View
           studentName={studentName}
           studentGrade={studentGrade}
           isTeacher={isTeacher}

@@ -40,6 +40,8 @@ export default function PublicPortalHub() {
   // Trạng thái khóa từng chuyên đề đối với học sinh
   const isH12C1Locked = !isEffectiveTeacher && (isChapterLocked('h12_c1', false, accessConfig) || isChapterLocked('c1', false, accessConfig));
   const isH12C2Locked = !isEffectiveTeacher && (isChapterLocked('h12_c2', false, accessConfig) || isChapterLocked('c2', false, accessConfig));
+  const isH12C3Locked = !isEffectiveTeacher && (isChapterLocked('h12_c3', false, accessConfig) || isChapterLocked('c3', false, accessConfig));
+  const isH12C4Locked = !isEffectiveTeacher && (isChapterLocked('h12_c4', false, accessConfig) || isChapterLocked('c4', false, accessConfig));
   const isH12C5Locked = !isEffectiveTeacher && (isChapterLocked('h12_c5', false, accessConfig) || isChapterLocked('c5', false, accessConfig));
   const isH11C1Locked = !isEffectiveTeacher && isChapterLocked('h11_c1', false, accessConfig);
   const isH11C2Locked = !isEffectiveTeacher && isChapterLocked('h11_c2', false, accessConfig);
@@ -215,7 +217,7 @@ export default function PublicPortalHub() {
           <div className="space-y-6 animate-fade-in">
             <div className="text-center sm:text-left">
               <div className="text-xs font-black uppercase text-teal-400 tracking-wider">🌟 HÓA HỌC 12 – KỲ THI THPT QUỐC GIA 2025</div>
-              <h3 className="text-xl sm:text-2xl font-black text-white mt-1">Trọn Bộ Chương 1, Chương 2 & Chương 5 Đã Hoàn Thiện Xuất Sắc</h3>
+              <h3 className="text-xl sm:text-2xl font-black text-white mt-1">Trọn Bộ Chương 1, Chương 2, Chương 3, Chương 4 & Chương 5 Đã Sẵn Sàng</h3>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -290,6 +292,82 @@ export default function PublicPortalHub() {
                   className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
                 >
                   <span>Mở Học Liệu & Thi Thử Chương 2</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+              )}
+
+              {/* C3 Card */}
+              {!isH12C3Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-sky-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="px-3 py-1 bg-sky-500/20 border border-sky-400/30 text-sky-400 font-black text-xs rounded-xl font-mono">
+                      CHƯƠNG 3
+                    </span>
+                    <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                      <Check className="w-3.5 h-3.5" /> 4 Đề Chuẩn Bộ 2025
+                    </span>
+                  </div>
+
+                  <h4 className="text-xl font-black text-white group-hover:text-sky-400 transition-colors">
+                    Chương 3: Hợp Chất Chứa Nitrogen
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    Trọng tâm: Amine (bậc amine, so sánh tính base), Amino Acid, Peptide, Protein & Enzyme. Phản ứng màu biuret, tính chất lưỡng tính và bài toán thủy phân.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🧬 Bài 8, 9, 10 Lý thuyết</span>
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">⚡ 4 Đề thi bấm giờ 50p</span>
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🧪 Sổ tay Amino Acid</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa12-chuong3')}
+                  className="w-full py-3.5 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <span>Mở Học Liệu & Thi Thử Chương 3</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+              )}
+
+              {/* C4 Card */}
+              {!isH12C4Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="px-3 py-1 bg-amber-500/20 border border-amber-400/30 text-amber-400 font-black text-xs rounded-xl font-mono">
+                      CHƯƠNG 4
+                    </span>
+                    <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                      <Check className="w-3.5 h-3.5" /> 4 Đề Chuẩn Bộ 2025
+                    </span>
+                  </div>
+
+                  <h4 className="text-xl font-black text-white group-hover:text-amber-400 transition-colors">
+                    Chương 4: Polymer & Vật Liệu Polymer
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    Trọng tâm: Đại cương polymer, cấu trúc mạch, phân loại tơ (tổng hợp, bán tổng hợp, thiên nhiên), cao su, keo dán, phản ứng trùng hợp & trùng ngưng.
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🧶 Bài 12, 13 Lý thuyết</span>
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">⚡ 4 Đề thi bấm giờ 50p</span>
+                    <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🔬 Sổ tay Phân Loại Tơ</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa12-chuong4')}
+                  className="w-full py-3.5 bg-gradient-to-r from-amber-600 to-rose-600 hover:from-amber-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <span>Mở Học Liệu & Thi Thử Chương 4</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

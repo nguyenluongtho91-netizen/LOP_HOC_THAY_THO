@@ -29,7 +29,7 @@ export interface GranularAccessConfig {
 
 export type Hoa12AccessConfig = GranularAccessConfig;
 
-const DEFAULT_CONFIG: GranularAccessConfig = {
+export const DEFAULT_ACCESS_CONFIG: GranularAccessConfig = {
   is_locked: true, // MẶC ĐỊNH LÀ ẨN / KHÓA VỚI HỌC SINH (LÚC NÀO THẦY MỞ THÌ MỚI THẤY)
   grades: {
     grade_12: true,
@@ -44,6 +44,8 @@ const DEFAULT_CONFIG: GranularAccessConfig = {
     c5: true,
     h12_c1: true,
     h12_c2: true,
+    h12_c3: true,
+    h12_c4: true,
     h12_c5: true,
     h11_c1: true,
     h11_c2: true,
@@ -61,6 +63,8 @@ const DEFAULT_CONFIG: GranularAccessConfig = {
   auth_version: 1,
   updated_at: new Date().toISOString(),
 };
+
+const DEFAULT_CONFIG = DEFAULT_ACCESS_CONFIG;
 
 let memoryConfig: GranularAccessConfig = { ...DEFAULT_CONFIG };
 
@@ -179,6 +183,10 @@ export async function toggleChapterAccess(
     h12_c1: ['c1', 'h12_c1'],
     c2: ['c2', 'h12_c2'],
     h12_c2: ['c2', 'h12_c2'],
+    c3: ['c3', 'h12_c3'],
+    h12_c3: ['c3', 'h12_c3'],
+    c4: ['c4', 'h12_c4'],
+    h12_c4: ['c4', 'h12_c4'],
     c5: ['c5', 'h12_c5'],
     h12_c5: ['c5', 'h12_c5'],
     h11_c1: ['h11_c1'],
@@ -284,7 +292,7 @@ export async function grantAllStudentsAccess(): Promise<GranularAccessConfig> {
     grades: { grade_12: false, grade_11: false, grade_10: false },
     chapters: {
       c1: false, c2: false, c3: false, c4: false, c5: false,
-      h12_c1: false, h12_c2: false, h12_c5: false,
+      h12_c1: false, h12_c2: false, h12_c3: false, h12_c4: false, h12_c5: false,
       h11_c1: false, h11_c2: false,
       h10_c1: false, h10_c2: false
     },
@@ -309,7 +317,7 @@ export async function revokeAllStudentsAccess(): Promise<GranularAccessConfig> {
     grades: { grade_12: true, grade_11: true, grade_10: true },
     chapters: {
       c1: true, c2: true, c3: true, c4: true, c5: true,
-      h12_c1: true, h12_c2: true, h12_c5: true,
+      h12_c1: true, h12_c2: true, h12_c3: true, h12_c4: true, h12_c5: true,
       h11_c1: true, h11_c2: true,
       h10_c1: true, h10_c2: true
     },
@@ -339,6 +347,10 @@ export function isChapterLocked(
     h12_c1: ['c1', 'h12_c1'],
     c2: ['c2', 'h12_c2'],
     h12_c2: ['c2', 'h12_c2'],
+    c3: ['c3', 'h12_c3'],
+    h12_c3: ['c3', 'h12_c3'],
+    c4: ['c4', 'h12_c4'],
+    h12_c4: ['c4', 'h12_c4'],
     c5: ['c5', 'h12_c5'],
     h12_c5: ['c5', 'h12_c5'],
     h11_c1: ['h11_c1'],

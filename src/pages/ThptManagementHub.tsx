@@ -124,6 +124,32 @@ export default function ThptManagementHub() {
       ]
     },
     {
+      chapterKey: "h12_c3",
+      fallbackKey: "c3",
+      grade: "12",
+      chapterTitle: "🧬 Hóa 12 • Chương 3: Hợp Chất Chứa Nitrogen",
+      link: "/hoa12-chuong3?teacher=1",
+      exams: [
+        { id: "c3_de_031", code: "031", title: "Đề 1: Hợp Chất Chứa Nitrogen (Đề 031)" },
+        { id: "c3_de_032", code: "032", title: "Đề 2: Cấu Trúc & Tính Chất Lưỡng Tính (Đề 032)" },
+        { id: "c3_de_033", code: "033", title: "Đề 3: Bài Toán Peptide & Thủy Phân (Đề 033)" },
+        { id: "c3_de_034", code: "034", title: "Đề 4: Tổng Hợp Trọn Vẹn Chương 3 (Đề 034)" },
+      ]
+    },
+    {
+      chapterKey: "h12_c4",
+      fallbackKey: "c4",
+      grade: "12",
+      chapterTitle: "🧶 Hóa 12 • Chương 4: Polymer & Vật Liệu",
+      link: "/hoa12-chuong4?teacher=1",
+      exams: [
+        { id: "c4_de_041", code: "041", title: "Đề 1: Đại Cương & Tổng Hợp Polymer (Đề 041)" },
+        { id: "c4_de_042", code: "042", title: "Đề 2: Vật Liệu Polymer & Tơ Sợi (Đề 042)" },
+        { id: "c4_de_043", code: "043", title: "Đề 3: Phản Ứng Trùng Hợp & Trùng Ngưng (Đề 043)" },
+        { id: "c4_de_044", code: "044", title: "Đề 4: Tổng Hợp Trọn Vẹn Chương 4 (Đề 044)" },
+      ]
+    },
+    {
       chapterKey: "h12_c5",
       fallbackKey: "c5",
       grade: "12",

@@ -2073,6 +2073,98 @@ export default function StudentPortal() {
                 </div>
                 )}
 
+                {/* Thẻ Chương 3 */}
+                {(!isChapterLocked("h12_c3", isTeacherUser, accessConfig) || isTeacherUser) && (
+                <div className="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-sky-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
+                  <div className="flex items-center gap-3.5 relative z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                      🧬
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                        <span className="bg-sky-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                          CHƯƠNG 3 MỚI
+                        </span>
+                        <span className="text-xs text-sky-300 font-bold">580+ Câu · 4 Đề Chuẩn</span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                          accessConfig && isChapterLocked('c3', isFreeCandidate, accessConfig)
+                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                            : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                        }`}>
+                          {accessConfig && isChapterLocked('c3', isFreeCandidate, accessConfig) ? '🔒 Đang khóa' : '🔓 Đã mở'}
+                        </span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        HỢP CHẤT CHỨA NITROGEN
+                      </h3>
+                      <p className="text-xs text-slate-300 mt-0.5 line-clamp-2">
+                        Amine, Amino Acid, Peptide, Protein & Enzyme • Phản ứng màu Biuret & Thủy phân • 4 Đề chuẩn GDPT thang 10
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (accessConfig && isChapterLocked('c3', isFreeCandidate, accessConfig)) {
+                        toast.error('Chương 3 đang tạm khóa bởi Thầy Thọ! Thầy chưa cấp quyền cho chương này.', { icon: '🔒' });
+                        return;
+                      }
+                      navigate('/hoa12-chuong3');
+                    }}
+                    className="w-full py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+                  >
+                    <span>🧬 VÀO CHƯƠNG 3 (NITROGEN)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+                )}
+
+                {/* Thẻ Chương 4 */}
+                {(!isChapterLocked("h12_c4", isTeacherUser, accessConfig) || isTeacherUser) && (
+                <div className="bg-gradient-to-r from-slate-900 via-amber-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-amber-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
+                  <div className="flex items-center gap-3.5 relative z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                      🧶
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
+                        <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                          CHƯƠNG 4 MỚI
+                        </span>
+                        <span className="text-xs text-amber-300 font-bold">400+ Câu · 4 Đề Chuẩn</span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                          accessConfig && isChapterLocked('c4', isFreeCandidate, accessConfig)
+                            ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                            : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                        }`}>
+                          {accessConfig && isChapterLocked('c4', isFreeCandidate, accessConfig) ? '🔒 Đang khóa' : '🔓 Đã mở'}
+                        </span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        POLYMER & VẬT LIỆU
+                      </h3>
+                      <p className="text-xs text-slate-300 mt-0.5 line-clamp-2">
+                        Đại cương Polymer, Chất dẻo, Tơ, Cao su, Keo dán • Trùng hợp & Trùng ngưng • 4 Đề chuẩn GDPT thang 10
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (accessConfig && isChapterLocked('c4', isFreeCandidate, accessConfig)) {
+                        toast.error('Chương 4 đang tạm khóa bởi Thầy Thọ! Thầy chưa cấp quyền cho chương này.', { icon: '🔒' });
+                        return;
+                      }
+                      navigate('/hoa12-chuong4');
+                    }}
+                    className="w-full py-3 bg-gradient-to-r from-amber-500 to-rose-600 hover:from-amber-600 hover:to-rose-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+                  >
+                    <span>🧶 VÀO CHƯƠNG 4 (POLYMER)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+                )}
+
                 {/* Thẻ Chương 5 */}
                 {(!isChapterLocked("h12_c5", isTeacherUser, accessConfig) || isTeacherUser) && (
                 <div className="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-teal-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
