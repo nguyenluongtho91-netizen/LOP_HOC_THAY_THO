@@ -307,6 +307,27 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
           isTeacher={isTeacher}
           onClose={() => navigate(-1)}
         />
+      ) : activeChapter === 6 ? (
+        <Hoa12Chuong6View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate(-1)}
+        />
+      ) : activeChapter === 7 ? (
+        <Hoa12Chuong7View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate(-1)}
+        />
+      ) : activeChapter === 8 ? (
+        <Hoa12Chuong8View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate(-1)}
+        />
       ) : (
         <Hoa12Chuong1View
           studentName={studentName}
