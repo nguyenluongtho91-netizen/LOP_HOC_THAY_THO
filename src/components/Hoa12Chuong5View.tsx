@@ -181,11 +181,11 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
   const [examHistory, setExamHistory] = useState<Chuong5ExamAttempt[]>([]);
   const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
   const [filterResultType, setFilterResultType] = useState<'all' | 'wrong' | 'correct'>('all');
-  const [selectedLessonId, setSelectedLessonId] = useState<'bai1' | 'bai2' | 'bai3'>('bai1');
+  const [selectedLessonId, setSelectedLessonId] = useState<'bai15' | 'bai16' | 'bai17'>('bai15');
   const [practicePart, setPracticePart] = useState<1 | 2 | 3>(1);
 
   // Sub-topic & Level filtering
-  const [selectedSubTopic, setSelectedSubTopic] = useState<'all' | 'ester' | 'lipid' | 'soap'>('all');
+  const [selectedSubTopic, setSelectedSubTopic] = useState<string>('all');
   const [selectedLevel, setSelectedLevel] = useState<'all' | 'NB' | 'TH' | 'VD' | 'VDC'>('all');
 
   // Mini-set pagination (Chia nhỏ đề thành 10-15 câu để học sinh không mỏi mắt)
@@ -197,7 +197,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
   const [fontSizeLevel, setFontSizeLevel] = useState<'normal' | 'large' | 'xlarge'>('normal');
 
   // Exam
-  const [selectedExamId, setSelectedExamId] = useState<string>('de1');
+  const [selectedExamId, setSelectedExamId] = useState<string>('c5_de_051');
   const [examTimeLeft, setExamTimeLeft] = useState<number>(50 * 60);
   const [isExamActive, setIsExamActive] = useState<boolean>(false);
   const [examAnswers, setExamAnswers] = useState<Record<string, any>>({});
@@ -636,14 +636,14 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <h1 className="text-sm sm:text-base md:text-lg font-black tracking-tight text-slate-900 truncate">
-                  Hóa Học 12: Chương 5 – Ester, Lipid & Xà Phòng
+                  Hóa Học 12: Chương 5 – Pin Điện Hoá và Điện Phân
                 </h1>
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-gradient-to-r from-indigo-500 to-blue-600 text-white uppercase tracking-wider shadow-2xs">
                   BỘ ĐỀ 2025
                 </span>
               </div>
               <p className="text-xs text-slate-500 truncate hidden sm:block">
-                Hệ thống ôn luyện chuyên sâu: 495 câu hỏi phân loại • 7 đề chuẩn Bộ GD&ĐT • Cẩm nang dạng toán
+                Hệ thống ôn luyện chuyên sâu: Hơn 440 câu hỏi phân loại • 4 đề chuẩn Bộ GD&ĐT 2025 • Cẩm nang thế điện cực & điện phân
               </p>
             </div>
           </div>
@@ -755,7 +755,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'exam' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Clock className="w-4 h-4" />
-            <span>7 Đề Thi Chuẩn (50 phút)</span>
+            <span>4 Đề Kiểm Tra Chuẩn Bộ 2025 (50 phút)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'exam' ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-800'}`}>
               HOT
             </span>
@@ -777,7 +777,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                     HỆ THỐNG HỌC TẬP TOÀN DIỆN CHƯƠNG 5 (THI 2025)
                   </span>
                   <h2 className="text-2xl md:text-4xl font-black mb-3 leading-tight">
-                    Chương 5: Ester – Lipid. Xà Phòng & Chất Giặt Rửa
+                    Chương 5: Pin Điện Hoá & Điện Phân
                   </h2>
                   <p className="text-indigo-100 text-sm md:text-base leading-relaxed mb-6">
                     Hệ thống hóa toàn bộ kiến thức theo chuẩn chương trình mới. 
@@ -785,18 +785,18 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
-                      onClick={() => { setSelectedLessonId('bai1'); setActiveTab('practice'); }}
+                      onClick={() => { setSelectedLessonId('bai15'); setActiveTab('practice'); }}
                       className="px-5 py-2.5 bg-white text-indigo-700 hover:bg-indigo-50 font-bold rounded-xl shadow-md transition-all flex items-center gap-2 text-sm"
                     >
                       <Play className="w-4 h-4 fill-indigo-700" />
                       Luyện Bộ Đề Nhỏ (15 câu)
                     </button>
                     <button
-                      onClick={() => { handleStartExam('de1'); }}
+                      onClick={() => { handleStartExam('c5_de_051'); }}
                       className="px-5 py-2.5 bg-indigo-900/60 hover:bg-indigo-900/80 text-white font-bold rounded-xl border border-white/20 transition-all flex items-center gap-2 text-sm"
                     >
                       <Trophy className="w-4 h-4 text-amber-300" />
-                      Thi thử 7 Đề chuẩn Bộ
+                      Thi thử 4 Đề chuẩn Bộ 2025
                     </button>
                     <button
                       onClick={() => setActiveTab('handbook')}
@@ -827,7 +827,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                             {l.badge}
                           </span>
                           <span className="text-xs font-bold text-slate-500">
-                            {l.lessonNumber === 3 ? '7 Đề thi 50 phút' : `${setCount} Bộ đề nhỏ vừa sức`}
+                            {l.lessonNumber === 17 ? '4 Đề thi chuẩn 50 phút' : `${setCount} Bộ đề nhỏ vừa sức`}
                           </span>
                         </div>
                         <h3 className="text-lg font-bold mb-2">
@@ -855,7 +855,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                           {l.exams && (
                             <div className="flex items-center gap-2 text-xs text-slate-600 bg-slate-50 p-2.5 rounded-xl border border-slate-100">
                               <Award className="w-4 h-4 text-amber-600 shrink-0" />
-                              <span>7 đề kiểm tra định kỳ 50 phút chuẩn ma trận Bộ</span>
+                              <span>4 đề kiểm tra định kỳ 50 phút chuẩn ma trận Bộ GD&ĐT 2025</span>
                             </div>
                           )}
                         </div>
@@ -865,12 +865,12 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                         <button
                           onClick={() => {
                             setSelectedLessonId(l.id);
-                            if (l.id === 'bai3') setActiveTab('exam');
+                            if (l.id === 'bai17' || l.lessonNumber === 17) setActiveTab('exam');
                             else setActiveTab('practice');
                           }}
                           className="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm transition-all text-center"
                         >
-                          {l.id === 'bai3' ? 'Vào phòng thi 7 Đề' : 'Vào luyện bộ đề nhỏ'}
+                          {l.id === 'bai17' ? 'Vào phòng thi 4 Đề chuẩn Bộ' : 'Vào luyện bộ đề nhỏ'}
                         </button>
                         <button
                           onClick={() => {
@@ -923,45 +923,55 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                     Lý thuyết trọng tâm: {activeLesson.title}
                   </h3>
                   <div className={`${fontClasses.opt} ${fontClasses.lead} space-y-4`}>
-                    {selectedLessonId === 'bai1' ? (
+                    {selectedLessonId === 'bai15' ? (
                       <>
                         <div className="bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
-                          <h4 className="font-bold text-indigo-900 mb-1">1. Phản ứng Ester hóa (Thuận nghịch 2 chiều)</h4>
+                          <h4 className="font-bold text-indigo-900 mb-1">1. Cặp oxi hoá – khử & Thế điện cực chuẩn</h4>
                           <p className="text-slate-700">
-                            RCOOH + R&apos;OH &hArr; [H<sub>2</sub>SO<sub>4</sub> đặc, t&deg;] RCOOR&apos; + H<sub>2</sub>O
-                            <br />H<sub>2</sub>SO<sub>4</sub> đặc vừa làm xúc tác vừa hút nước để cân bằng chuyển dịch theo chiều thuận tạo nhiều ester hơn.
+                            • Dạng oxi hoá (M<sup>n+</sup>) và dạng khử (M) của cùng một kim loại tạo nên cặp oxi hoá – khử M<sup>n+</sup>/M: M<sup>n+</sup> + ne ⇌ M.
+                            <br />• Quy ước: E&deg;<sub>2H<sup>+</sup>/H<sub>2</sub></sub> = 0,00 V ở điều kiện chuẩn (1 bar, 25&deg;C, nồng độ ion 1 M).
+                            <br />• <b>Quy luật:</b> E&deg; càng nhỏ thì dạng khử càng mạnh, dạng oxi hoá càng yếu; E&deg; càng lớn thì dạng oxi hoá càng mạnh, dạng khử càng yếu.
                           </p>
                         </div>
-                        <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                          <h4 className="font-bold text-slate-900 mb-1">2. So sánh nhiệt độ sôi & độ tan</h4>
+                        <div className="bg-teal-50/60 p-4 rounded-2xl border border-teal-200">
+                          <h4 className="font-bold text-teal-900 mb-1">2. Quy tắc Alpha (&alpha;) & Dự đoán chiều phản ứng</h4>
                           <p className="text-slate-700">
-                            Ester không có liên kết hydrogen liên phân tử như alcohol và acid nên nhiệt độ sôi thấp hơn nhiều:
-                            <br /><b>Nhiệt độ sôi: Ester &lt; Alcohol &lt; Carboxylic acid</b>
+                            Chất khử của cặp có E&deg; nhỏ hơn sẽ tác dụng với chất oxi hoá của cặp có E&deg; lớn hơn:
+                            <br /><b>Chất khử mạnh + Chất oxi hoá mạnh &rarr; Chất oxi hoá yếu + Chất khử yếu</b>
+                            <br />Ví dụ: Fe + Cu<sup>2+</sup> &rarr; Fe<sup>2+</sup> + Cu (vì E&deg;<sub>Fe<sup>2+</sup>/Fe</sub> = -0,44 V &lt; E&deg;<sub>Cu<sup>2+</sup>/Cu</sub> = +0,34 V).
                           </p>
                         </div>
                         <div className="bg-amber-50/60 p-4 rounded-2xl border border-amber-200">
-                          <h4 className="font-bold text-amber-900 mb-1">3. Chất béo & Acid béo Omega</h4>
+                          <h4 className="font-bold text-amber-900 mb-1">3. Pin Galvani & Suất điện động chuẩn</h4>
                           <p className="text-slate-700">
-                            • Triacylglycerol là triester của glycerol với các acid béo.
-                            <br />• Acid béo no (palmitic C<sub>15</sub>H<sub>31</sub>COOH, stearic C<sub>17</sub>H<sub>35</sub>COOH) tạo chất béo rắn (mỡ động vật).
-                            <br />• Acid béo không no (oleic C<sub>17</sub>H<sub>33</sub>COOH) tạo chất béo lỏng (dầu thực vật).
-                            <br />• <b>Omega-3 và Omega-6</b> có nối đôi đầu tiên ở C số 3 và C số 6 tính từ đầu methyl &minus;CH<sub>3</sub>.
+                            • <b>Anode (cực âm):</b> Kim loại có E&deg; nhỏ hơn (khử mạnh hơn), xảy ra quá trình oxi hoá: Zn &rarr; Zn<sup>2+</sup> + 2e.
+                            <br />• <b>Cathode (cực dương):</b> Ion có E&deg; lớn hơn (oxi hoá mạnh hơn), xảy ra quá trình khử: Cu<sup>2+</sup> + 2e &rarr; Cu.
+                            <br />• <b>Suất điện động:</b> E&deg;<sub>pin</sub> = E&deg;<sub>cathode</sub> &minus; E&deg;<sub>anode</sub> = 0,34 &minus; (&minus;0,76) = <b>1,10 V</b> &gt; 0.
                           </p>
                         </div>
                       </>
                     ) : (
                       <>
                         <div className="bg-indigo-50/60 p-4 rounded-2xl border border-indigo-100">
-                          <h4 className="font-bold text-indigo-900 mb-1">1. Phản ứng lưỡng cực & Hạt Micelle</h4>
+                          <h4 className="font-bold text-indigo-900 mb-1">1. Hiện tượng & Bản chất của Điện phân</h4>
                           <p className="text-slate-700">
-                            Xà phòng và chất giặt rửa gồm đầu ưa nước (&minus;COONa hoặc &minus;SO<sub>3</sub>Na) và đuôi kị nước (mạch alkyl dài). Khi vò giặt, các phân tử bao bọc hạt dầu mỡ tạo hạt keo <b>micelle</b> phân tán vào nước để rửa trôi.
+                            Điện phân là quá trình oxi hoá – khử cưỡng bức dưới tác dụng của dòng điện một chiều đi qua chất điện li.
+                            <br />• <b>Cathode (cực âm):</b> Nối cực âm nguồn điện, hút cation, xảy ra <b>quá trình khử</b>: M<sup>n+</sup> + ne &rarr; M.
+                            <br />• <b>Anode (cực dương):</b> Nối cực dương nguồn điện, hút anion, xảy ra <b>quá trình oxi hoá</b>: 2Cl<sup>-</sup> &rarr; Cl<sub>2</sub> + 2e.
+                          </p>
+                        </div>
+                        <div className="bg-teal-50/60 p-4 rounded-2xl border border-teal-200">
+                          <h4 className="font-bold text-teal-900 mb-1">2. Thứ tự điện phân & Vai trò của Nước</h4>
+                          <p className="text-slate-700">
+                            • Ở Cathode: Cation có tính oxi hoá mạnh khử trước (Ag<sup>+</sup> &gt; Fe<sup>3+</sup> &gt; Cu<sup>2+</sup> &gt; H<sup>+</sup> &gt; Fe<sup>2+</sup> &gt; H<sub>2</sub>O). Cation Al<sup>3+</sup>, Mg<sup>2+</sup>, Na<sup>+</sup>, K<sup>+</sup> không bị khử; nước bị khử: 2H<sub>2</sub>O + 2e &rarr; H<sub>2</sub> + 2OH<sup>-</sup>.
+                            <br />• Ở Anode: Anion khử mạnh oxi hoá trước (S<sup>2-</sup> &gt; I<sup>-</sup> &gt; Br<sup>-</sup> &gt; Cl<sup>-</sup> &gt; H<sub>2</sub>O). Gốc SO<sub>4</sub><sup>2-</sup>, NO<sub>3</sub><sup>-</sup> không bị oxi hoá; nước bị oxi hoá: 2H<sub>2</sub>O &rarr; O<sub>2</sub> + 4H<sup>+</sup> + 4e.
                           </p>
                         </div>
                         <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                          <h4 className="font-bold text-slate-900 mb-1">2. Hoạt động trong nước cứng</h4>
+                          <h4 className="font-bold text-slate-900 mb-1">3. Định luật Faraday & Ứng dụng</h4>
                           <p className="text-slate-700">
-                            • Xà phòng tạo kết tủa với Ca<sup>2+</sup>, Mg<sup>2+</sup> trong nước cứng làm giảm tác dụng giặt rửa.
-                            <br />• Chất giặt rửa tổng hợp không bị kết tủa trong nước cứng. Mạch hydrocarbon không phân nhánh dễ bị vi sinh vật phân hủy hơn mạch phân nhánh.
+                            • <b>Công thức Faraday:</b> n<sub>e</sub> = (I . t) / F &nbsp;|&nbsp; m = (A . I . t) / (n . F) với F = 96500 C/mol.
+                            <br />• <b>Ứng dụng:</b> Sản xuất nhôm (2Al<sub>2</sub>O<sub>3</sub> &rarr; 4Al + 3O<sub>2</sub>), sản xuất NaOH và Cl<sub>2</sub>, tinh luyện đồng anode tan, mạ điện bảo vệ kim loại.
                           </p>
                         </div>
                       </>
@@ -1099,8 +1109,8 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                     </button>
                   </div>
 
-                  {/* Sub-topics for Bai 1 */}
-                  {selectedLessonId === 'bai1' && (
+                  {/* Sub-topics for Bai 15 & Bai 16 */}
+                  {selectedLessonId === 'bai15' && (
                     <div className="flex items-center gap-1.5 bg-slate-200/50 p-1 rounded-xl">
                       <button
                         onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
@@ -1109,16 +1119,44 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                         Tất cả
                       </button>
                       <button
-                        onClick={() => { setSelectedSubTopic('ester'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'ester' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+                        onClick={() => { setSelectedSubTopic('the_dien_cuc'); setSelectedSetIndex(0); }}
+                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'the_dien_cuc' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
                       >
-                        🔬 Ester
+                        ⚖️ Thế điện cực chuẩn
                       </button>
                       <button
-                        onClick={() => { setSelectedSubTopic('lipid'); setSelectedSetIndex(0); }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'lipid' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+                        onClick={() => { setSelectedSubTopic('pin_dien'); setSelectedSetIndex(0); }}
+                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'pin_dien' ? 'bg-white text-indigo-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
                       >
-                        🥑 Lipid & Chất béo
+                        🔋 Pin điện & Nguồn điện
+                      </button>
+                    </div>
+                  )}
+                  {selectedLessonId === 'bai16' && (
+                    <div className="flex items-center gap-1.5 bg-slate-200/50 p-1 rounded-xl">
+                      <button
+                        onClick={() => { setSelectedSubTopic('all'); setSelectedSetIndex(0); }}
+                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'all' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+                      >
+                        Tất cả
+                      </button>
+                      <button
+                        onClick={() => { setSelectedSubTopic('dp_nong_chay'); setSelectedSetIndex(0); }}
+                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'dp_nong_chay' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+                      >
+                        🔥 ĐP nóng chảy
+                      </button>
+                      <button
+                        onClick={() => { setSelectedSubTopic('dp_dung_dich'); setSelectedSetIndex(0); }}
+                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'dp_dung_dich' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+                      >
+                        💧 ĐP dung dịch
+                      </button>
+                      <button
+                        onClick={() => { setSelectedSubTopic('ung_dung'); setSelectedSetIndex(0); }}
+                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${selectedSubTopic === 'ung_dung' ? 'bg-white text-teal-700 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
+                      >
+                        🏭 Ứng dụng & Mạ điện
                       </button>
                     </div>
                   )}

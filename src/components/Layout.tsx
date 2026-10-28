@@ -38,7 +38,8 @@ export default function Layout() {
       title: 'Học liệu & Thi cử',
       items: [
         { path: '/lay-goc-toan',      icon: Zap,            label: '⚡ Lấy Gốc Toán' },
-        { path: '/hoa12',              icon: Atom,           label: '🧪 Hóa 12 - Chương 1' },
+        { path: '/hoa12-chuong1',     icon: Atom,           label: '🧪 Hóa 12: Chương 1 (Ester)' },
+        { path: '/hoa12-chuong5',     icon: Zap,            label: '⚡ Hóa 12: Chương 5 (Pin & ĐP)' },
         { path: '/homework',          icon: ClipboardCheck, label: 'Giao bài tập' },
         { path: '/courses',           icon: PlaySquare,     label: 'Khóa học & Bài giảng' },
         { path: '/exams',             icon: FileText,       label: 'Ngân hàng đề thi' },

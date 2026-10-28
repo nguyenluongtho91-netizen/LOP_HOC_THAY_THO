@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import Hoa12Chuong1View from "@/components/Hoa12Chuong1View";
 import Hoa12Chuong5View from "@/components/Hoa12Chuong5View";
@@ -84,8 +84,8 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
   const auth = useAuthStore() as any;
 
   // Khởi tạo chương học (1 hoặc 5)
-  const initialChapter = () => {
-    if (defaultChapter) return defaultChapter;
+  const resolveChapter = (): number => {
+    if (defaultChapter === 1 || defaultChapter === 5) return defaultChapter;
     const urlC = searchParams.get("c") || searchParams.get("chuong");
     if (urlC === "5" || location.pathname.includes("chuong5") || location.pathname.includes("chuong-5")) return 5;
     if (urlC === "1" || location.pathname.includes("chuong1") || location.pathname.includes("chuong-1")) return 1;
@@ -93,7 +93,12 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
     return saved === "5" ? 5 : 1;
   };
 
-  const [activeChapter, setActiveChapter] = useState<number>(initialChapter);
+  const [activeChapter, setActiveChapter] = useState<number>(resolveChapter);
+
+  useEffect(() => {
+    const target = resolveChapter();
+    setActiveChapter(target);
+  }, [defaultChapter, searchParams, location.pathname]);
 
   const handleSelectChapter = (ch: number) => {
     setActiveChapter(ch);
@@ -130,32 +135,44 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
 
   return (
     <Hoa12ErrorBoundary>
-      {/* Nút chuyển đổi nhanh giữa Chương 1 & Chương 5 */}
-      <div className="fixed top-3 right-4 z-50 flex items-center bg-slate-900/90 backdrop-blur-md p-1 rounded-2xl border border-slate-700/80 shadow-2xl">
-        <button
-          onClick={() => handleSelectChapter(1)}
-          className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
-            activeChapter === 1
-              ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
-              : "text-slate-400 hover:text-white"
-          }`}
-          title="Chương 1: Ester – Lipid – Xà phòng"
-        >
-          <span>🧪</span>
-          <span className="hidden sm:inline">Chương 1:</span> Ester – Lipid
-        </button>
-        <button
-          onClick={() => handleSelectChapter(5)}
-          className={`px-3 py-1.5 rounded-xl font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
-            activeChapter === 5
-              ? "bg-gradient-to-r from-teal-500 to-indigo-600 text-white shadow-md"
-              : "text-slate-400 hover:text-white"
-          }`}
-          title="Chương 5: Pin điện hoá và Điện phân"
-        >
-          <span>⚡</span>
-          <span className="hidden sm:inline">Chương 5:</span> Pin & Điện Phân
-        </button>
+      {/* Thanh điều hướng chương học chuyên biệt trên cùng, không che khuất bất kỳ nút nào */}
+      <div className="bg-slate-950 text-white px-3 sm:px-6 py-2 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2 shadow-md relative z-40 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="font-extrabold uppercase tracking-wide text-slate-300 hidden md:inline">
+            Học Liệu Ôn Thi Hóa 12 Chuẩn Bộ 2025:
+          </span>
+          <span className="font-bold text-amber-400">
+            {activeChapter === 5 ? "⚡ Đang mở: Chương 5 – Pin & Điện Phân" : "🧪 Đang mở: Chương 1 – Ester – Lipid"}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-700/80">
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(1)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 1
+                ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🧪</span>
+            <span>Chương 1: Ester – Lipid (7 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(5)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 5
+                ? "bg-gradient-to-r from-teal-500 to-indigo-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>⚡</span>
+            <span>Chương 5: Pin & Điện Phân (4 Đề)</span>
+          </button>
+        </div>
       </div>
 
       {activeChapter === 5 ? (

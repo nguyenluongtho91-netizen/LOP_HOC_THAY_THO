@@ -596,21 +596,27 @@ export default function StudentPortal() {
         style={{ background: 'linear-gradient(135deg, #ccfbf1 0%, #5eead4 50%, #0d9488 100%)' }}
       >
         {/* THẺ LỐI TẮT VÀO HÓA 12 SIÊU TỐC TRÊN CÙNG CHO THẦY VÀ HỌC SINH */}
-        <div className="mb-4 w-full max-w-md bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-4 rounded-2xl border-2 border-indigo-400/60 shadow-xl text-white flex items-center justify-between gap-3 relative z-10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-xl shrink-0 shadow-md">🧪</div>
-            <div>
-              <div className="text-[10px] font-black uppercase text-amber-400 tracking-wider">ĐẶC BIỆT KHỐI 12</div>
-              <div className="text-xs sm:text-sm font-black text-white">CHƯƠNG 1 (7 ĐỀ & 495 CÂU)</div>
-            </div>
+        <div className="mb-4 w-full max-w-md bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-4 rounded-2xl border-2 border-indigo-400/60 shadow-xl text-white flex flex-col gap-2.5 relative z-10">
+          <div className="flex items-center justify-between">
+            <div className="text-[10px] font-black uppercase text-amber-400 tracking-wider">🌟 ĐẶC BIỆT KHỐI 12 - HÓA HỌC 2025</div>
+            <span className="text-[10px] text-slate-300 font-bold">Cả 2 Chương Mới</span>
           </div>
-          <button
-            type="button"
-            onClick={() => navigate('/hoa12')}
-            className="px-3.5 py-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black text-xs rounded-xl shadow-md cursor-pointer shrink-0 active:scale-95 transition-all"
-          >
-            VÀO NGAY ➔
-          </button>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              type="button"
+              onClick={() => navigate('/hoa12-chuong1')}
+              className="px-3 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 text-white font-black text-xs rounded-xl shadow-md cursor-pointer active:scale-95 transition-all text-center"
+            >
+              🧪 Chương 1 (7 Đề) ➔
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/hoa12-chuong5')}
+              className="px-3 py-2 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 text-white font-black text-xs rounded-xl shadow-md cursor-pointer active:scale-95 transition-all text-center"
+            >
+              ⚡ Chương 5 (4 Đề) ➔
+            </button>
+          </div>
         </div>
 
         <div className="relative w-full max-w-md z-10">
@@ -705,14 +711,24 @@ export default function StudentPortal() {
 
               {/* Nút truy cập nhanh Hóa 12 không cần đăng nhập */}
               <div className="pt-2 border-t border-slate-100 space-y-2">
-                <button
-                  type="button"
-                  onClick={() => navigate('/hoa12')}
-                  className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
-                >
-                  <span>🧪 VÀO HỌC LIỆU & 7 ĐỀ HÓA 12 (TRUY CẬP NGAY)</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa12-chuong1')}
+                    className="w-full py-2.5 px-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                  >
+                    <span>🧪 Hóa 12: Chương 1 (7 Đề)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa12-chuong5')}
+                    className="w-full py-2.5 px-3 bg-gradient-to-r from-teal-600 to-indigo-700 hover:from-teal-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1.5 transition-all cursor-pointer active:scale-95"
+                  >
+                    <span>⚡ Hóa 12: Chương 5 (4 Đề)</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
 
                 <button
                   type="button"
@@ -1681,38 +1697,68 @@ export default function StudentPortal() {
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
             {/* 🌟 THẺ ĐẶC BIỆT KHO HỌC LIỆU HÓA 12 (TỐI ƯU SIÊU TỐC, CHỈ DÀNH CHO KHỐI 12) */}
             {isGrade12 && (
-              <div id="hoa12-chuong1-section" className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-7 rounded-3xl border-2 border-indigo-500/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-5 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="flex items-center gap-4 relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-blue-600 text-white flex items-center justify-center text-3xl shrink-0 shadow-lg shadow-indigo-600/30">
-                    🧪
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1 flex-wrap">
-                      <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
-                        ĐẶC QUYỀN KHỐI 12
-                      </span>
-                      <span className="text-xs text-indigo-300 font-bold">
-                        HÓA HỌC 12 · CHƯƠNG 1 (ESTER - LIPID)
-                      </span>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* Thẻ Chương 1 */}
+                <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-indigo-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
+                  <div className="flex items-center gap-3.5 relative z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                      🧪
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black text-white">
-                      KHO HỌC LIỆU & 7 ĐỀ THI TỔNG HỢP 2025
-                    </h3>
-                    <p className="text-xs text-slate-300 mt-0.5 max-w-xl">
-                      Chia nhỏ bộ đề 15 câu chống mỏi mắt • Chế độ tông ấm dịu mắt • Tự động chấm điểm & lời giải chi tiết
-                    </p>
+                    <div>
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                          CHƯƠNG 1
+                        </span>
+                        <span className="text-xs text-indigo-300 font-bold">495 Câu · 7 Đề</span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        ESTER – LIPID – XÀ PHÒNG
+                      </h3>
+                      <p className="text-xs text-slate-300 mt-0.5 line-clamp-2">
+                        Hệ thống bộ đề 15 câu chống mỏi mắt • 7 Đề chuẩn Bộ GD&ĐT 50 phút • Lời giải chi tiết
+                      </p>
+                    </div>
                   </div>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa12-chuong1')}
+                    className="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+                  >
+                    <span>🚀 VÀO CHƯƠNG 1 (ESTER - LIPID)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => navigate('/hoa12')}
-                  className="w-full md:w-auto px-6 py-3.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-sm rounded-2xl shadow-xl flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
-                >
-                  <span>🚀 VÀO ÔN LUYỆN HÓA 12</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
+                {/* Thẻ Chương 5 */}
+                <div className="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-teal-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
+                  <div className="flex items-center gap-3.5 relative z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
+                      ⚡
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <span className="bg-teal-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
+                          CHƯƠNG 5 MỚI
+                        </span>
+                        <span className="text-xs text-teal-300 font-bold">440+ Câu · 4 Đề Chuẩn</span>
+                      </div>
+                      <h3 className="text-base sm:text-lg font-black text-white">
+                        PIN ĐIỆN HOÁ VÀ ĐIỆN PHÂN
+                      </h3>
+                      <p className="text-xs text-slate-300 mt-0.5 line-clamp-2">
+                        Cặp oxi hoá khử, thế điện cực chuẩn, Pin Galvani • Điện phân nóng chảy & dung dịch • 4 Đề chuẩn 2025
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa12-chuong5')}
+                    className="w-full py-3 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-600 hover:to-indigo-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+                  >
+                    <span>⚡ VÀO CHƯƠNG 5 (PIN & ĐIỆN PHÂN)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             )}
 
