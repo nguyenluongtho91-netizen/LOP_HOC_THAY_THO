@@ -261,11 +261,13 @@ export default function HierarchicalGradeTree() {
                     <span>⛽ Chương 4: Hydrocarbon</span>
                     <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=11&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 5: Dẫn xuất Halogen – Alcohol – Phenol
+                  <Link to="/hoa11-chuong5" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>🍶 Chương 5: Dẫn xuất Halogen – Alcohol – Phenol</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=11&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 6: Hợp chất Carbonyl – Carboxylic Acid
+                  <Link to="/hoa11-chuong6" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>⚡ Chương 6: Hợp chất Carbonyl – Carboxylic Acid</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
                 </div>
               )}

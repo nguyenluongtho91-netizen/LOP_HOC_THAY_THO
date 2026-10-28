@@ -5,6 +5,8 @@ import Hoa11Chuong1View from "@/components/Hoa11Chuong1View";
 import Hoa11Chuong2View from "@/components/Hoa11Chuong2View";
 import Hoa11Chuong3View from "@/components/Hoa11Chuong3View";
 import Hoa11Chuong4View from "@/components/Hoa11Chuong4View";
+import Hoa11Chuong5View from "@/components/Hoa11Chuong5View";
+import Hoa11Chuong6View from "@/components/Hoa11Chuong6View";
 import { useAuthStore } from "@/store/authStore";
 
 export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: number }) {
@@ -14,13 +16,15 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
   const auth = useAuthStore() as any;
 
   const resolveChapter = (): number => {
-    if ([1, 2, 3, 4].includes(defaultChapter)) return defaultChapter;
+    if ([1, 2, 3, 4, 5, 6].includes(defaultChapter)) return defaultChapter;
     const urlC = searchParams.get("c") || searchParams.get("chuong");
     if (urlC === "2" || location.pathname.includes("chuong2") || location.pathname.includes("chuong-2")) return 2;
     if (urlC === "3" || location.pathname.includes("chuong3") || location.pathname.includes("chuong-3")) return 3;
     if (urlC === "4" || location.pathname.includes("chuong4") || location.pathname.includes("chuong-4")) return 4;
+    if (urlC === "5" || location.pathname.includes("chuong5") || location.pathname.includes("chuong-5")) return 5;
+    if (urlC === "6" || location.pathname.includes("chuong6") || location.pathname.includes("chuong-6")) return 6;
     const saved = localStorage.getItem("hoa11_active_chapter");
-    if (saved && ["1", "2", "3", "4"].includes(saved)) return Number(saved);
+    if (saved && ["1", "2", "3", "4", "5", "6"].includes(saved)) return Number(saved);
     return 1;
   };
 
@@ -82,58 +86,86 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
               ? "🧪 Đang mở: Chương 3 – Đại Cương Hóa Học Hữu Cơ"
               : activeChapter === 4
               ? "⛽ Đang mở: Chương 4 – Hydrocarbon"
+              : activeChapter === 5
+              ? "🍶 Đang mở: Chương 5 – Dẫn Xuất Halogen, Alcohol & Phenol"
+              : activeChapter === 6
+              ? "⚡ Đang mở: Chương 6 – Hợp Chất Carbonyl & Carboxylic Acid"
               : "⚖️ Đang mở: Chương 1 – Cân Bằng Hóa Học"}
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-700/80">
+        <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-700/80 overflow-x-auto max-w-full">
           <button
             type="button"
             onClick={() => handleSelectChapter(1)}
-            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
               activeChapter === 1
                 ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md font-extrabold"
                 : "text-slate-400 hover:text-white hover:bg-slate-800"
             }`}
           >
             <span>⚖️</span>
-            <span>Chương 1: Cân Bằng Hóa Học (2 Đề)</span>
+            <span>C1: Cân Bằng (2 Đề)</span>
           </button>
           <button
             type="button"
             onClick={() => handleSelectChapter(2)}
-            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
               activeChapter === 2
                 ? "bg-gradient-to-r from-teal-500 to-indigo-600 text-white shadow-md font-extrabold"
                 : "text-slate-400 hover:text-white hover:bg-slate-800"
             }`}
           >
             <span>💨</span>
-            <span>Chương 2: Nitrogen & Sulfur (2 Đề)</span>
+            <span>C2: N & S (2 Đề)</span>
           </button>
           <button
             type="button"
             onClick={() => handleSelectChapter(3)}
-            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
               activeChapter === 3
                 ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md font-extrabold"
                 : "text-slate-400 hover:text-white hover:bg-slate-800"
             }`}
           >
             <span>🧪</span>
-            <span>Chương 3: Đại Cương Hóa Hữu Cơ (4 Đề)</span>
+            <span>C3: Hữu Cơ (4 Đề)</span>
           </button>
           <button
             type="button"
             onClick={() => handleSelectChapter(4)}
-            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
               activeChapter === 4
                 ? "bg-gradient-to-r from-amber-600 to-rose-600 text-white shadow-md font-extrabold"
                 : "text-slate-400 hover:text-white hover:bg-slate-800"
             }`}
           >
             <span>⛽</span>
-            <span>Chương 4: Hydrocarbon (4 Đề)</span>
+            <span>C4: Hydrocarbon (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(5)}
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
+              activeChapter === 5
+                ? "bg-gradient-to-r from-sky-600 to-blue-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🍶</span>
+            <span>C5: Alcohol - Phenol (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(6)}
+            className={`px-2.5 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1 whitespace-nowrap cursor-pointer ${
+              activeChapter === 6
+                ? "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>⚡</span>
+            <span>C6: Carbonyl - Acid (4 Đề)</span>
           </button>
         </div>
       </div>
@@ -154,6 +186,20 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
         />
       ) : activeChapter === 4 ? (
         <Hoa11Chuong4View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate("/")}
+        />
+      ) : activeChapter === 5 ? (
+        <Hoa11Chuong5View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate("/")}
+        />
+      ) : activeChapter === 6 ? (
+        <Hoa11Chuong6View
           studentName={studentName}
           studentGrade={studentGrade}
           isTeacher={isTeacher}
