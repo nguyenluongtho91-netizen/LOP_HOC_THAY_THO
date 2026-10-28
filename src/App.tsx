@@ -9,6 +9,9 @@ import Login from '@/pages/Login'
 import StudentPortal from '@/pages/StudentPortal'
 import ExamRoomPage from '@/pages/ExamRoomPage'
 import Hoa12Page from '@/pages/Hoa12Page'
+const PublicPortalHub = lazy(() => import('@/pages/PublicPortalHub'))
+const Hoa10Page = lazy(() => import('@/pages/Hoa10Page'))
+const Hoa11Page = lazy(() => import('@/pages/Hoa11Page'))
 
 // Lazy Load các Pages Quản lý (CRM), Công cụ nặng, Chấm thi AI giúp tối ưu tải trang siêu tốc
 const Dashboard = lazy(() => import('@/pages/Dashboard'))
@@ -97,13 +100,30 @@ export default function App() {
   return (
     <Suspense fallback={<Spinner />}>
       <Routes>
-        {/* 1. CỔNG CÔNG KHAI DÀNH CHO HỌC SINH VÀ ĐĂNG NHẬP */}
+        {/* 1. CỔNG CÔNG KHAI DÀNH CHO HỌC SINH VÀ HỌC LIỆU TOÀN DIỆN */}
+        <Route path="/portal"   element={<PublicPortalHub />} />
+        <Route path="/hub"      element={<PublicPortalHub />} />
+        <Route path="/trang-chu" element={<PublicPortalHub />} />
         <Route path="/login"    element={<Login />} />
         <Route path="/thi"      element={<StudentPortal />} />
         <Route path="/lay-goc"  element={<LayGocToanPage isPublic={true} />} />
+
+        {/* HỌC LIỆU HÓA HỌC KHỐI 10 */}
+        <Route path="/hoa10"    element={<Hoa10Page />} />
+        <Route path="/hoa-10"   element={<Hoa10Page />} />
+        <Route path="/hoa10-chuong1" element={<Hoa10Page defaultChapter={1} />} />
+        <Route path="/hoa10-chuong2" element={<Hoa10Page defaultChapter={2} />} />
+
+        {/* HỌC LIỆU HÓA HỌC KHỐI 11 */}
+        <Route path="/hoa11"    element={<Hoa11Page />} />
+        <Route path="/hoa-11"   element={<Hoa11Page />} />
+        <Route path="/hoa11-chuong1" element={<Hoa11Page defaultChapter={1} />} />
+        <Route path="/hoa11-chuong2" element={<Hoa11Page defaultChapter={2} />} />
+
+        {/* HỌC LIỆU HÓA HỌC KHỐI 12 */}
         <Route path="/hoa12"    element={<Hoa12Page />} />
         <Route path="/hoa-12"   element={<Hoa12Page />} />
-        <Route path="/chuong-1" element={<Hoa12Page />} />
+        <Route path="/chuong-1" element={<Hoa12Page defaultChapter={1} />} />
         <Route path="/hoa12-chuong1" element={<Hoa12Page defaultChapter={1} />} />
         <Route path="/hoa12-chuong5" element={<Hoa12Page defaultChapter={5} />} />
         <Route path="/chuong-5" element={<Hoa12Page defaultChapter={5} />} />
@@ -133,8 +153,8 @@ export default function App() {
         <Route path="/exam-room/:roomId"                    element={<ExamRoomPage />} />
         <Route path="/course-viewer/:courseId/:studentId"   element={<StudentCourseViewer />} />
 
-        {/* 3. HỆ THỐNG QUẢN TRỊ (Phải đăng nhập) */}
-        <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+        {/* 3. HỆ THỐNG QUẢN TRỊ & CỔNG HỌC LIỆU CHÍNH */}
+        <Route path="/" element={user ? <ProtectedRoute><Layout /></ProtectedRoute> : <PublicPortalHub />}>
 
           {/* --- Nhóm Quản lý Đào tạo --- */}
           <Route index element={<Dashboard />} />
@@ -185,6 +205,7 @@ export default function App() {
 
         </Route>
 
+        <Route path="/admin" element={<ProtectedRoute><Layout><Dashboard /></Layout></ProtectedRoute>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>

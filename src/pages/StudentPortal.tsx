@@ -635,27 +635,68 @@ export default function StudentPortal() {
         className="min-h-screen py-8 px-4 flex flex-col items-center justify-center relative overflow-y-auto"
         style={{ background: 'linear-gradient(135deg, #ccfbf1 0%, #5eead4 50%, #0d9488 100%)' }}
       >
-        {/* THẺ LỐI TẮT VÀO HÓA 12 SIÊU TỐC TRÊN CÙNG CHO THẦY VÀ HỌC SINH */}
-        <div className="mb-4 w-full max-w-md bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-4 rounded-2xl border-2 border-indigo-400/60 shadow-xl text-white flex flex-col gap-2.5 relative z-10">
-          <div className="flex items-center justify-between">
-            <div className="text-[10px] font-black uppercase text-amber-400 tracking-wider">🌟 ĐẶC BIỆT KHỐI 12 - HÓA HỌC 2025</div>
-            <span className="text-[10px] text-slate-300 font-bold">Cả 2 Chương Mới</span>
+        {/* THẺ LỐI TẮT HỌC LIỆU VÀ PHÒNG THI KHỐI 10, 11, 12 */}
+        <div className="mb-4 w-full max-w-md bg-slate-900/95 backdrop-blur-md p-4 rounded-3xl border-2 border-teal-400/60 shadow-2xl text-white flex flex-col gap-3 relative z-10">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+            <div className="text-[11px] font-black uppercase text-amber-400 tracking-wider">🌟 HỌC LIỆU & PHÒNG THI CHUẨN BỘ 2025</div>
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="text-[11px] text-teal-400 hover:text-white font-bold flex items-center gap-1"
+            >
+              Xem tất cả ➔
+            </button>
           </div>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => navigate('/hoa12-chuong1')}
-              className="px-3 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 text-white font-black text-xs rounded-xl shadow-md cursor-pointer active:scale-95 transition-all text-center"
-            >
-              🧪 Chương 1 (7 Đề) ➔
-            </button>
-            <button
-              type="button"
-              onClick={() => navigate('/hoa12-chuong5')}
-              className="px-3 py-2 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 text-white font-black text-xs rounded-xl shadow-md cursor-pointer active:scale-95 transition-all text-center"
-            >
-              ⚡ Chương 5 (4 Đề) ➔
-            </button>
+          
+          <div className="space-y-2">
+            {/* Khối 12 */}
+            <div className="p-2.5 bg-slate-950/80 rounded-2xl border border-slate-800">
+              <div className="flex items-center justify-between text-[11px] font-bold text-slate-300 mb-1.5">
+                <span className="text-amber-400 font-extrabold">👑 KHỐI 12 (2k7)</span>
+                <span className="text-[10px] text-emerald-400 font-mono">11 Đề Chuẩn Bộ</span>
+              </div>
+              <div className="grid grid-cols-2 gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa12-chuong1')}
+                  className="px-2 py-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 text-white font-black text-xs rounded-xl shadow transition-all text-center"
+                >
+                  🧪 Chương 1 (7 Đề)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa12-chuong5')}
+                  className="px-2 py-1.5 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 text-white font-black text-xs rounded-xl shadow transition-all text-center"
+                >
+                  ⚡ Chương 5 (4 Đề)
+                </button>
+              </div>
+            </div>
+
+            {/* Khối 11 & Khối 10 */}
+            <div className="grid grid-cols-2 gap-2">
+              <div className="p-2 bg-slate-950/80 rounded-2xl border border-slate-800 text-center space-y-1.5">
+                <span className="text-[11px] font-bold text-teal-400 block">⚖️ KHỐI 11 (2k8)</span>
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa11-chuong1')}
+                  className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-[11px] rounded-xl border border-slate-700"
+                >
+                  Chương 1 & 2 ➔
+                </button>
+              </div>
+
+              <div className="p-2 bg-slate-950/80 rounded-2xl border border-slate-800 text-center space-y-1.5">
+                <span className="text-[11px] font-bold text-purple-400 block">⚛️ KHỐI 10 (2k9)</span>
+                <button
+                  type="button"
+                  onClick={() => navigate('/hoa10-chuong1')}
+                  className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-[11px] rounded-xl border border-slate-700"
+                >
+                  Chương 1 & 2 ➔
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 

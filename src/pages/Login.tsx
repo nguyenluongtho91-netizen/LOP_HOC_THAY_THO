@@ -40,6 +40,41 @@ export default function Login() {
       </div>
 
       <div className="relative w-full max-w-md animate-fade-in">
+        {/* BANNER DÀNH CHO HỌC SINH VÀO ÔN THI TRỰC TIẾP KHÔNG CẦN TÀI KHOẢN GIÁO VIÊN */}
+        <div className="mb-4 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border-2 border-teal-400/50 shadow-xl text-white text-center space-y-2">
+          <div className="text-[11px] font-black uppercase text-amber-400 tracking-wider">🌟 DÀNH CHO HỌC SINH ÔN THI HÓA 10, 11, 12</div>
+          <p className="text-xs text-slate-300">Không cần tài khoản quản trị! Bạn có thể vào học ngay:</p>
+          <div className="grid grid-cols-3 gap-1.5 pt-1">
+            <button
+              type="button"
+              onClick={() => navigate('/hoa12-chuong1')}
+              className="px-2 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 rounded-xl font-black text-xs text-white shadow-md active:scale-95 transition-all"
+            >
+              👑 Hóa 12
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/hoa11-chuong1')}
+              className="px-2 py-2 bg-gradient-to-r from-teal-600 to-indigo-600 hover:from-teal-500 rounded-xl font-black text-xs text-white shadow-md active:scale-95 transition-all"
+            >
+              ⚖️ Hóa 11
+            </button>
+            <button
+              type="button"
+              onClick={() => navigate('/hoa10-chuong1')}
+              className="px-2 py-2 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-400 rounded-xl font-black text-xs text-white shadow-md active:scale-95 transition-all"
+            >
+              ⚛️ Hóa 10
+            </button>
+          </div>
+          <button
+            type="button"
+            onClick={() => navigate('/')}
+            className="w-full mt-2 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-xs font-bold text-teal-300 border border-slate-700 transition-all flex items-center justify-center gap-1.5"
+          >
+            <span>🏠 Về Cổng Học Tập & Thi Trực Tuyến</span>
+          </button>
+        </div>
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl border-2 border-teal-200 overflow-hidden">
           {/* Top banner */}
           <div
