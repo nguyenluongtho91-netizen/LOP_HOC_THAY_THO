@@ -9,7 +9,17 @@ import {
 } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort } from '@/lib/helpers'
-import { fetchHoa12AccessConfig, getHoa12AccessConfigSync, type GranularAccessConfig } from '@/services/hoa12AccessControlService'
+import {
+  fetchHoa12AccessConfig,
+  getHoa12AccessConfigSync,
+  toggleChapterAccess,
+  toggleExamAccess,
+  grantAllStudentsAccess,
+  revokeAllStudentsAccess,
+  isChapterLocked,
+  isExamLocked,
+  type GranularAccessConfig
+} from '@/services/hoa12AccessControlService'
 
 interface ThptModuleCard {
   id: string
@@ -26,6 +36,16 @@ interface ThptModuleCard {
 }
 
 export default function ThptManagementHub() {
+  // Tự động kích hoạt quyền Giáo viên / Quản trị khi truy cập Cổng THPT
+  useEffect(() => {
+    try {
+      localStorage.setItem('is_teacher_mode', 'true');
+      localStorage.setItem('hoa12_teacher_authenticated', 'true');
+      localStorage.setItem('hoa11_teacher_authenticated', 'true');
+      localStorage.setItem('hoa10_teacher_authenticated', 'true');
+      localStorage.setItem('role', 'teacher');
+    } catch (e) {}
+  }, []);
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const { classes, students } = useDataStore()
@@ -41,6 +61,130 @@ export default function ThptManagementHub() {
     return 'all'
   })
   const [searchQuery, setSearchQuery] = useState('')
+
+  // Danh sach toan bo cac de thi theo tung moc chuyen de de Thay quan ly dong / mo
+  const milestoneExams = [
+    {
+      chapterKey: "h12_c1",
+      fallbackKey: "c1",
+      grade: "12",
+      chapterTitle: "🧪 Hóa 12 • Chương 1: Ester – Lipid",
+      link: "/hoa12-chuong1",
+      exams: [
+        { id: "c1_de_011", code: "011", title: "Đề 1: Chuyên Đề Ester" },
+        { id: "c1_de_012", code: "012", title: "Đề 2: Ester & Lipid Cơ Bản" },
+        { id: "c1_de_013", code: "013", title: "Đề 3: Ester & Lipid Nâng Cao" },
+        { id: "c1_de_014", code: "014", title: "Đề 4: Tổng Hợp Chương 1" },
+        { id: "c1_de_015", code: "015", title: "Đề 5: Tổng Hợp Chương 1" },
+        { id: "c1_de_016", code: "016", title: "Đề 6: Tổng Hợp Chương 1" },
+        { id: "c1_de_017", code: "017", title: "Đề 7: Tổng Hợp Chương 1" },
+      ]
+    },
+    {
+      chapterKey: "h12_c2",
+      fallbackKey: "c2",
+      grade: "12",
+      chapterTitle: "🍇 Hóa 12 • Chương 2: Carbohydrate",
+      link: "/hoa12-chuong2",
+      exams: [
+        { id: "c2_de_021", code: "021", title: "Đề 1: Carbohydrate Trọng Tâm" },
+        { id: "c2_de_022", code: "022", title: "Đề 2: Disaccharide & Thủy Phân" },
+        { id: "c2_de_023", code: "023", title: "Đề 3: Polysaccharide & Phản Ứng Màu" },
+        { id: "c2_de_024", code: "024", title: "Đề 4: Tổng Hợp Vận Dụng Cao" },
+      ]
+    },
+    {
+      chapterKey: "h12_c5",
+      fallbackKey: "c5",
+      grade: "12",
+      chapterTitle: "⚡ Hóa 12 • Chương 5: Pin Điện & Điện Phân",
+      link: "/hoa12-chuong5",
+      exams: [
+        { id: "c5_de_051", code: "051", title: "Đề 1: Pin Điện Hóa" },
+        { id: "c5_de_052", code: "052", title: "Đề 2: Ăn Mòn Kim Loại" },
+        { id: "c5_de_053", code: "053", title: "Đề 3: Điện Phân Nóng Chảy & Dung Dịch" },
+        { id: "c5_de_054", code: "054", title: "Đề 4: Tổng Hợp Chương 5" },
+      ]
+    },
+    {
+      chapterKey: "h11_c1",
+      fallbackKey: "h11_c1",
+      grade: "11",
+      chapterTitle: "⚖️ Hóa 11 • Chương 1: Cân Bằng Hóa Học",
+      link: "/hoa11-chuong1",
+      exams: [
+        { id: "h11_c1_de1", code: "111", title: "Đề 1: Cân Bằng Hóa Học & Kc" },
+        { id: "h11_c1_de2", code: "112", title: "Đề 2: Cân Bằng Trong Dung Dịch & pH" },
+        { id: "h11_c1_de3", code: "113", title: "Đề 3: Tổng Hợp Cân Bằng Hóa Học" },
+      ]
+    },
+    {
+      chapterKey: "h11_c2",
+      fallbackKey: "h11_c2",
+      grade: "11",
+      chapterTitle: "🌱 Hóa 11 • Chương 2: Nitrogen – Sulfur",
+      link: "/hoa11-chuong2",
+      exams: [
+        { id: "h11_c2_de1", code: "114", title: "Đề 1: Đơn Chất Nitrogen & Ammonia" },
+        { id: "h11_c2_de2", code: "115", title: "Đề 2: Sulfur & SO2" },
+        { id: "h11_c2_de3", code: "116", title: "Đề 3: Sulfuric Acid & Muối Sulfate" },
+        { id: "h11_c2_de4", code: "117", title: "Đề 4: Tổng Hợp Nitrogen & Sulfur" },
+      ]
+    },
+    {
+      chapterKey: "h10_c1",
+      fallbackKey: "h10_c1",
+      grade: "10",
+      chapterTitle: "🔬 Hóa 10 • Chương 1: Cấu Tạo Nguyên Tử",
+      link: "/hoa10-chuong1",
+      exams: [
+        { id: "h10_c1_de1", code: "101", title: "Đề 1: Thành Phần Nguyên Tử" },
+        { id: "h10_c1_de2", code: "102", title: "Đề 2: Hạt Nhân & Đồng Vị" },
+        { id: "h10_c1_de3", code: "103", title: "Đề 3: Cấu Trúc Lớp Vỏ Electron" },
+        { id: "h10_c1_de4", code: "104", title: "Đề 4: Tổng Hợp Chương 1" },
+      ]
+    },
+    {
+      chapterKey: "h10_c2",
+      fallbackKey: "h10_c2",
+      grade: "10",
+      chapterTitle: "📊 Hóa 10 • Chương 2: Bảng Tuần Hoàn NTHH",
+      link: "/hoa10-chuong2",
+      exams: [
+        { id: "h10_c2_de1", code: "105", title: "Đề 1: Cấu Tạo Bảng Tuần Hoàn" },
+        { id: "h10_c2_de2", code: "106", title: "Đề 2: Quy Luật Biến Đổi Tuần Hoàn" },
+        { id: "h10_c2_de3", code: "107", title: "Đề 3: Định Luật Tuần Hoàn" },
+        { id: "h10_c2_de4", code: "108", title: "Đề 4: Tổng Hợp Bảng Tuần Hoàn" },
+      ]
+    }
+  ];
+
+  const [expandedChapter, setExpandedChapter] = useState<string | null>("h11_c1");
+
+  const handleToggleChapter = async (chapKey: string, fallbackKey?: string) => {
+    const isLockedNow = Boolean(accessConfig.chapters?.[chapKey] ?? accessConfig.chapters?.[fallbackKey || ""]);
+    const newCfg = await toggleChapterAccess(chapKey, !isLockedNow);
+    if (fallbackKey && fallbackKey !== chapKey) {
+      await toggleChapterAccess(fallbackKey, !isLockedNow);
+    }
+    setAccessConfig({ ...newCfg });
+  };
+
+  const handleToggleExam = async (examId: string) => {
+    const isLockedNow = Boolean(accessConfig.exams?.[examId]);
+    const newCfg = await toggleExamAccess(examId, !isLockedNow);
+    setAccessConfig({ ...newCfg });
+  };
+
+  const handleOpenAll = async () => {
+    const newCfg = await grantAllStudentsAccess();
+    setAccessConfig({ ...newCfg });
+  };
+
+  const handleCloseAll = async () => {
+    const newCfg = await revokeAllStudentsAccess();
+    setAccessConfig({ ...newCfg });
+  };
 
   useEffect(() => {
     const g = searchParams.get('grade')
@@ -246,6 +390,167 @@ export default function ThptManagementHub() {
               {gr === 'all' ? '✨ Tất cả khối lớp (10 - 11 - 12)' : `🧪 Hóa Lớp ${gr}`}
             </button>
           ))}
+        </div>
+      </div>
+
+      
+      {/* ── BẢNG ĐIỀU KHIỂN QUẢN TRỊ: MỞ / ĐÓNG ĐỀ THI & CHUYÊN ĐỀ ── */}
+      <div className="bg-white rounded-3xl p-6 sm:p-7 border-2 border-indigo-100 shadow-lg shadow-indigo-950/5 space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-gray-100">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-black mb-2 border border-indigo-100">
+              <Shield className="w-4 h-4 text-indigo-600" />
+              QUYỀN QUẢN TRỊ GIÁO VIÊN
+            </div>
+            <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight flex items-center gap-2.5">
+              <span>Bảng Điều Khiển Mở / Đóng Đề Thi Theo Mốc</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 font-medium mt-1">
+              Thầy có toàn quyền bật/tắt quyền làm bài của học sinh. <strong>Phía Giáo viên luôn được mở tự do không bị khóa</strong>.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 flex-wrap">
+            <button
+              type="button"
+              onClick={handleOpenAll}
+              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shadow-sm shadow-emerald-600/30 flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
+            >
+              <CheckCircle2 className="w-4 h-4" />
+              🟢 Mở Tất Cả Cho Học Sinh
+            </button>
+            <button
+              type="button"
+              onClick={handleCloseAll}
+              className="px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-xs shadow-sm shadow-rose-600/30 flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
+            >
+              <Shield className="w-4 h-4" />
+              🔒 Khóa Tất Cả Với Học Sinh
+            </button>
+          </div>
+        </div>
+
+        {/* Danh sách các Mốc & Đề thi */}
+        <div className="grid grid-cols-1 gap-4">
+          {milestoneExams
+            .filter(mg => selectedGrade === "all" || mg.grade === selectedGrade)
+            .map(mg => {
+              const isChapLocked = Boolean(accessConfig.chapters?.[mg.chapterKey] ?? accessConfig.chapters?.[mg.fallbackKey || ""]);
+              const isExpanded = expandedChapter === mg.chapterKey;
+
+              return (
+                <div
+                  key={mg.chapterKey}
+                  className={`rounded-2xl border transition-all overflow-hidden ${
+                    isChapLocked
+                      ? "border-rose-200 bg-rose-50/20"
+                      : "border-slate-200 bg-slate-50/40 hover:border-indigo-300"
+                  }`}
+                >
+                  {/* Header mốc */}
+                  <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white border-b border-gray-100">
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setExpandedChapter(isExpanded ? null : mg.chapterKey)}
+                        className="w-8 h-8 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-xs transition-colors cursor-pointer"
+                      >
+                        {isExpanded ? "▼" : "▶"}
+                      </button>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-black text-sm sm:text-base text-gray-900">
+                            {mg.chapterTitle}
+                          </span>
+                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+                            isChapLocked ? "bg-rose-100 text-rose-800 border border-rose-200" : "bg-emerald-100 text-emerald-800 border border-emerald-200"
+                          }`}>
+                            {isChapLocked ? "🔒 ĐANG KHÓA VỚI HS" : "🟢 ĐANG MỞ CHO HS"}
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500 mt-0.5">
+                          Gồm {mg.exams.length} đề thi chuẩn cấu trúc Bộ GD&ĐT 2025
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => handleToggleChapter(mg.chapterKey, mg.fallbackKey)}
+                        className={`px-3 py-1.5 rounded-xl text-xs font-black border transition-all cursor-pointer ${
+                          isChapLocked
+                            ? "bg-rose-100 text-rose-800 border-rose-300 hover:bg-rose-200"
+                            : "bg-emerald-100 text-emerald-800 border-emerald-300 hover:bg-emerald-200"
+                        }`}
+                      >
+                        {isChapLocked ? "Bấm để Mở Chuyên Đề" : "Bấm để Khóa Chuyên Đề"}
+                      </button>
+                      <Link
+                        to={mg.link + "?teacher=1"}
+                        className="px-3 py-1.5 rounded-xl text-xs font-black bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition-all flex items-center gap-1"
+                      >
+                        Vào Chuyên Đề
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Danh sách đề thi chi tiết (Expandable) */}
+                  {isExpanded && (
+                    <div className="p-4 sm:p-5 bg-white/70 space-y-2.5">
+                      <div className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">
+                        Quản lý trạng thái từng Đề Thi ({mg.exams.length} đề):
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        {mg.exams.map(ex => {
+                          const isExLocked = Boolean(accessConfig.exams?.[ex.id]);
+
+                          return (
+                            <div
+                              key={ex.id}
+                              className={`p-3.5 rounded-2xl border transition-all flex flex-col justify-between gap-3 ${
+                                isExLocked
+                                  ? "bg-rose-50/70 border-rose-200"
+                                  : "bg-white border-slate-200 hover:border-indigo-300 shadow-2xs"
+                              }`}
+                            >
+                              <div>
+                                <div className="flex items-center justify-between gap-1 mb-1.5">
+                                  <span className="px-2 py-0.5 rounded-md text-[10px] font-black bg-slate-100 text-slate-700 border border-slate-200">
+                                    Mã {ex.code}
+                                  </span>
+                                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
+                                    isExLocked ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"
+                                  }`}>
+                                    {isExLocked ? "🔒 Đã Khóa HS" : "🟢 Đang Mở"}
+                                  </span>
+                                </div>
+                                <h4 className="text-xs font-black text-gray-800 leading-snug line-clamp-2">
+                                  {ex.title}
+                                </h4>
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={() => handleToggleExam(ex.id)}
+                                className={`w-full py-1.5 px-2 rounded-xl text-[11px] font-black border transition-all cursor-pointer ${
+                                  isExLocked
+                                    ? "bg-rose-100 hover:bg-rose-200 text-rose-800 border-rose-300"
+                                    : "bg-emerald-100 hover:bg-emerald-200 text-emerald-800 border-emerald-300"
+                                }`}
+                              >
+                                {isExLocked ? "🔓 Mở Đề Này Cho HS" : "🔒 Khóa Đề Này Với HS"}
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
         </div>
       </div>
 

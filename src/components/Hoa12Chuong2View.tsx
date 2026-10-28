@@ -128,7 +128,7 @@ import {
   fetchHoa12AccessConfig,
   saveHoa12AccessConfig,
   revokeAllStudentsAccess,
-  isChapterLocked, checkIsStudentAuthorized,
+  isChapterLocked, isExamLocked, toggleExamAccess, checkIsStudentAuthorized,
   tryAuthorizeStudentWithPasscode,
   verifyTeacherAdminPin,
   Hoa12AccessConfig
@@ -226,7 +226,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
   });
 
   // Teacher unlock bypass toggle
-  const [teacherBypassLock, setTeacherBypassLock] = useState<boolean>(false);
+  const [teacherBypassLock, setTeacherBypassLock] = useState<boolean>(true);
 
   // Motivational emotional feedback modal state
   const [motivationModal, setMotivationModal] = useState<{
@@ -258,7 +258,8 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
   };
 
   // Sequential Unlocking Logic: Đề kiểm tra 1 luôn mở. Đề N mở khi Đề N-1 đã hoàn thành
-  const isExamUnlocked = (idx: number) => {
+  const isExamUnlocked = (idx: number, examId?: string) => {
+    if (isTeacher) return true; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
     if (idx === 0) return true;
     if (isTeacher && teacherBypassLock) return true;
     const prevExam = HOA12_CHUONG2_EXAMS[idx - 1];
@@ -2732,6 +2733,11 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
                 type="button"
                 onClick={() => {
                   if (verifyTeacherAdminPin(teacherPinInput)) {
+                    localStorage.setItem('is_teacher_mode', 'true');
+                    localStorage.setItem('hoa12_teacher_authenticated', 'true');
+                    localStorage.setItem('hoa11_teacher_authenticated', 'true');
+                    localStorage.setItem('hoa10_teacher_authenticated', 'true');
+                    localStorage.setItem('role', 'teacher');
                     toast.success('Xác thực Thầy Thọ thành công! Đang tải lại...', { icon: '👑' });
                     setShowTeacherPinModal(false);
                     setTimeout(() => { window.location.reload(); }, 600);

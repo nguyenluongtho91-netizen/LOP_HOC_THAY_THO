@@ -1,5 +1,6 @@
 // src/services/hoa12AccessControlService.ts
-// Quản lý quyền truy cập phân lập: CẤP QUYỀN TỪNG CHƯƠNG, TỪNG KHỐI, TỪNG DANH MỤC THI (ĐỘC QUYỀN THẦY THỌ)
+// Quản lý quyền truy cập phân lập: CẤP QUYỀN TỪNG CHƯƠNG, TỪNG ĐỀ THI, TỪNG MỐC, TỪNG KHỐI
+// QUY TẮC CỐT LÕI: KHÓA CHỈ KHÓA BÊN HỌC SINH - PHÍA QUẢN TRỊ / GIÁO VIÊN KHÔNG BAO GIỜ BỊ KHÓA!
 
 import { supabase } from '@/lib/supabase';
 
@@ -9,17 +10,12 @@ const LOCAL_STORAGE_KEY = 'hoa12_cloud_access_config_v2';
 export interface GranularAccessConfig {
   is_locked?: boolean;
   grades: {
-    grade_12: boolean; // true = locked, false = open
+    grade_12: boolean; // true = locked với học sinh, false = mở
     grade_11: boolean;
     grade_10: boolean;
   };
-  chapters: {
-    c1: boolean; // true = locked, false = open
-    c2: boolean;
-    c3: boolean;
-    c4: boolean;
-    c5: boolean;
-  };
+  chapters: Record<string, boolean>; // 'c1', 'c2', 'c5', 'h12_c1', 'h12_c2', 'h11_c1', 'h11_c2', 'h10_c1', 'h10_c2', ...
+  exams?: Record<string, boolean>; // key: examId hoặc code (vd 'h11_c1_de1', '111', '021'), value: true (khóa với HS) | false (mở)
   categories: {
     homework: boolean;
     practice: boolean;
@@ -42,10 +38,18 @@ const DEFAULT_CONFIG: GranularAccessConfig = {
   chapters: {
     c1: false,
     c2: false,
-    c3: true,
-    c4: true,
+    c3: false,
+    c4: false,
     c5: false,
+    h12_c1: false,
+    h12_c2: false,
+    h12_c5: false,
+    h11_c1: false,
+    h11_c2: false,
+    h10_c1: false,
+    h10_c2: false,
   },
+  exams: {},
   categories: {
     homework: false,
     practice: false,
@@ -63,7 +67,15 @@ try {
   if (typeof window !== 'undefined') {
     const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
     if (raw) {
-      memoryConfig = { ...DEFAULT_CONFIG, ...JSON.parse(raw) };
+      const parsed = JSON.parse(raw);
+      memoryConfig = {
+        ...DEFAULT_CONFIG,
+        ...parsed,
+        grades: { ...DEFAULT_CONFIG.grades, ...(parsed.grades || {}) },
+        chapters: { ...DEFAULT_CONFIG.chapters, ...(parsed.chapters || {}) },
+        exams: { ...(parsed.exams || {}) },
+        categories: { ...DEFAULT_CONFIG.categories, ...(parsed.categories || {}) },
+      };
     }
   }
 } catch (e) {
@@ -95,6 +107,7 @@ export async function fetchHoa12AccessConfig(): Promise<GranularAccessConfig> {
         ...incoming,
         grades: { ...DEFAULT_CONFIG.grades, ...(incoming.grades || {}) },
         chapters: { ...DEFAULT_CONFIG.chapters, ...(incoming.chapters || {}) },
+        exams: { ...(memoryConfig.exams || {}), ...(incoming.exams || {}) },
         categories: { ...DEFAULT_CONFIG.categories, ...(incoming.categories || {}) },
       };
 
@@ -117,6 +130,8 @@ export async function saveHoa12AccessConfig(
   memoryConfig = {
     ...memoryConfig,
     ...updates,
+    chapters: { ...(memoryConfig.chapters || {}), ...(updates.chapters || {}) },
+    exams: { ...(memoryConfig.exams || {}), ...(updates.exams || {}) },
     updated_at: new Date().toISOString(),
   };
 
@@ -144,22 +159,22 @@ export async function saveHoa12AccessConfig(
       if (insErr) console.error('Lỗi insert config lên Cloud:', insErr);
     }
   } catch (err) {
-    console.error('Lỗi lưu cấu hình quyền Hóa 12 lên Cloud:', err);
+    console.error('Lỗi lưu cấu hình quyền Hóa lên Cloud:', err);
   }
 
   return memoryConfig;
 }
 
 /**
- * 4. ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG CHƯƠNG (c1, c2, c3, c4, c5)
+ * 4. ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG CHƯƠNG / MỐC
  */
 export async function toggleChapterAccess(
-  chapterKey: 'c1' | 'c2' | 'c3' | 'c4' | 'c5',
+  chapterKey: string,
   forceLocked?: boolean
 ): Promise<GranularAccessConfig> {
-  const current = memoryConfig.chapters[chapterKey];
+  const current = Boolean(memoryConfig.chapters?.[chapterKey]);
   const nextState = forceLocked !== undefined ? forceLocked : !current;
-  
+
   return await saveHoa12AccessConfig({
     chapters: {
       ...memoryConfig.chapters,
@@ -170,26 +185,30 @@ export async function toggleChapterAccess(
 }
 
 /**
- * 5. ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG KHỐI LỚP (grade_12, grade_11, grade_10)
+ * 5. ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG ĐỀ THI
  */
-export async function toggleGradeAccess(
-  gradeKey: 'grade_12' | 'grade_11' | 'grade_10',
+export async function toggleExamAccess(
+  examIdOrCode: string,
   forceLocked?: boolean
 ): Promise<GranularAccessConfig> {
-  const current = memoryConfig.grades[gradeKey];
+  const current = Boolean(memoryConfig.exams?.[examIdOrCode]);
   const nextState = forceLocked !== undefined ? forceLocked : !current;
 
   return await saveHoa12AccessConfig({
-    grades: {
-      ...memoryConfig.grades,
-      [gradeKey]: nextState,
+    exams: {
+      ...(memoryConfig.exams || {}),
+      [examIdOrCode]: nextState,
     },
     auth_version: Date.now(),
   });
 }
 
 /**
- * 6. ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG DANH MỤC PHÒNG THI (homework, practice, survey)
+ * 6. ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG KHỐI LỚP
+ */
+
+/**
+ * ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG DANH MỤC PHÒNG THI (homework, practice, survey)
  */
 export async function toggleCategoryAccess(
   catKey: 'homework' | 'practice' | 'survey',
@@ -207,49 +226,112 @@ export async function toggleCategoryAccess(
   });
 }
 
+export async function toggleGradeAccess(
+  gradeKey: 'grade_12' | 'grade_11' | 'grade_10',
+  forceLocked?: boolean
+): Promise<GranularAccessConfig> {
+  const current = memoryConfig.grades[gradeKey];
+  const nextState = forceLocked !== undefined ? forceLocked : !current;
+
+  return await saveHoa12AccessConfig({
+    grades: {
+      ...memoryConfig.grades,
+      [gradeKey]: nextState,
+    },
+    auth_version: Date.now(),
+  });
+}
+
 /**
- * 7. CẤP QUYỀN TOÀN BỘ (Mở tất cả)
+ * 7. CẤP QUYỀN TOÀN BỘ (Mở tất cả cho học sinh)
  */
 export async function grantAllStudentsAccess(): Promise<GranularAccessConfig> {
   return await saveHoa12AccessConfig({
     is_locked: false,
     grades: { grade_12: false, grade_11: false, grade_10: false },
-    chapters: { c1: false, c2: false, c3: false, c4: false, c5: false },
+    chapters: {
+      c1: false, c2: false, c3: false, c4: false, c5: false,
+      h12_c1: false, h12_c2: false, h12_c5: false,
+      h11_c1: false, h11_c2: false,
+      h10_c1: false, h10_c2: false
+    },
+    exams: {},
     categories: { homework: false, practice: false, survey: false },
     auth_version: Date.now(),
   });
 }
 
 /**
- * 8. CẤM QUYỀN TOÀN BỘ (Khóa tất cả)
+ * 8. KHÓA TẤT CẢ VỚI HỌC SINH (Phía quản trị vẫn vào bình thường)
  */
 export async function revokeAllStudentsAccess(): Promise<GranularAccessConfig> {
   return await saveHoa12AccessConfig({
     is_locked: true,
     grades: { grade_12: true, grade_11: true, grade_10: true },
-    chapters: { c1: true, c2: false, c3: true, c4: true, c5: true },
+    chapters: {
+      c1: true, c2: true, c3: true, c4: true, c5: true,
+      h12_c1: true, h12_c2: true, h12_c5: true,
+      h11_c1: true, h11_c2: true,
+      h10_c1: true, h10_c2: true
+    },
     categories: { homework: true, practice: true, survey: true },
     auth_version: Date.now(),
   });
 }
 
 /**
- * 9. KIỂM TRA CHƯƠNG CÓ BỊ KHÓA KHÔNG
+ * 9. KIỂM TRA CHƯƠNG / MỐC CÓ BỊ KHÓA KHÔNG
+ * QUAN TRỌNG: NẾU LÀ GIÁO VIÊN / QUẢN TRỊ -> LUÔN LUÔN TRẢ VỀ FALSE (KHÔNG KHÓA)!
  */
 export function isChapterLocked(
-  chapterKey: 'c1' | 'c2' | 'c3' | 'c4' | 'c5',
+  chapterKey: string,
   isTeacher: boolean,
   config: GranularAccessConfig = memoryConfig
 ): boolean {
-  if (isTeacher) return false;
-  // Kiểm tra cờ khối 12 trước
-  if (config.grades?.grade_12) return true;
+  if (isTeacher) return false; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
+
+  // Kiểm tra cờ hệ thống chung
+  if (config.is_locked) return true;
+
+  // Kiểm tra cờ khối
+  const k = String(chapterKey).toLowerCase();
+  if (k.includes('12') && config.grades?.grade_12) return true;
+  if (k.includes('11') && config.grades?.grade_11) return true;
+  if (k.includes('10') && config.grades?.grade_10) return true;
+
   // Kiểm tra cờ từng chương
-  return Boolean(config.chapters?.[chapterKey]);
+  if (config.chapters?.[chapterKey] !== undefined) {
+    return Boolean(config.chapters[chapterKey]);
+  }
+  // Fallback map
+  if (chapterKey === 'h12_c1' && config.chapters?.c1 !== undefined) return Boolean(config.chapters.c1);
+  if (chapterKey === 'h12_c2' && config.chapters?.c2 !== undefined) return Boolean(config.chapters.c2);
+  if (chapterKey === 'h12_c5' && config.chapters?.c5 !== undefined) return Boolean(config.chapters.c5);
+
+  return false;
 }
 
 /**
- * 10. KIỂM TRA KHỐI CÓ BỊ KHÓA KHÔNG
+ * 10. KIỂM TRA ĐỀ THI CÓ BỊ KHÓA KHÔNG
+ * QUAN TRỌNG: NẾU LÀ GIÁO VIÊN / QUẢN TRỊ -> LUÔN LUÔN TRẢ VỀ FALSE (KHÔNG KHÓA)!
+ */
+export function isExamLocked(
+  examIdOrCode: string,
+  isTeacher: boolean,
+  config: GranularAccessConfig = memoryConfig
+): boolean {
+  if (isTeacher) return false; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
+
+  if (config.is_locked) return true;
+
+  if (config.exams && config.exams[examIdOrCode] !== undefined) {
+    return Boolean(config.exams[examIdOrCode]);
+  }
+  return false;
+}
+
+/**
+ * 11. KIỂM TRA KHỐI CÓ BỊ KHÓA KHÔNG
  */
 export function isGradeLocked(
   gradeStr: string,
@@ -265,7 +347,7 @@ export function isGradeLocked(
 }
 
 /**
- * 11. KIỂM TRA DANH MỤC THI CÓ BỊ KHÓA KHÔNG
+ * 12. KIỂM TRA DANH MỤC THI CÓ BỊ KHÓA KHÔNG
  */
 export function isCategoryLocked(
   catKey: 'homework' | 'practice' | 'survey',
@@ -277,22 +359,36 @@ export function isCategoryLocked(
 }
 
 /**
- * 12. Hàm tương thích cũ
+ * 13. Xác thực học sinh bằng mật mã tạm thời
  */
-export function checkIsStudentAuthorized(
-  isTeacher: boolean,
+export function tryAuthorizeStudentWithPasscode(
+  inputPass: string,
   config: GranularAccessConfig = memoryConfig
 ): boolean {
-  if (isTeacher) return true;
-  return !Boolean(config.is_locked);
+  if (!inputPass) return false;
+  const clean = inputPass.trim().toUpperCase();
+  const currentPass = (config.passcode || 'THAYTHO2026').trim().toUpperCase();
+  const fallbackPasses = ['THAYTHO2026', '2026', 'THAYTHO', 'HOAHOC2026'];
+  return clean === currentPass || fallbackPasses.includes(clean);
 }
 
 /**
- * 13. Xác thực mã PIN Quản trị Thầy giáo
+ * 14. Xác thực mã PIN Quản trị Thầy giáo
+ * Tự động ghi nhớ phiên Giáo viên vào LocalStorage
  */
 export function verifyTeacherAdminPin(pinInput: string): boolean {
   if (!pinInput) return false;
   const clean = pinInput.trim().toUpperCase();
-  const validPins = ['THAYTHO', 'THAYTHO2026', 'ADMIN2026', '2026', 'THAYTHOVIP'];
-  return validPins.includes(clean);
+  const validPins = ['THAYTHO', 'THAYTHO2026', 'ADMIN2026', '2026', 'THAYTHOVIP', 'GIAOVIEN'];
+  const isValid = validPins.includes(clean);
+  if (isValid && typeof window !== 'undefined') {
+    try {
+      localStorage.setItem('is_teacher_mode', 'true');
+      localStorage.setItem('hoa12_teacher_authenticated', 'true');
+      localStorage.setItem('hoa11_teacher_authenticated', 'true');
+      localStorage.setItem('hoa10_teacher_authenticated', 'true');
+      localStorage.setItem('role', 'teacher');
+    } catch (e) {}
+  }
+  return isValid;
 }

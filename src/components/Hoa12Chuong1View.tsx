@@ -128,7 +128,7 @@ import {
   fetchHoa12AccessConfig,
   saveHoa12AccessConfig,
   revokeAllStudentsAccess,
-  isChapterLocked, checkIsStudentAuthorized,
+  isChapterLocked, isExamLocked, toggleExamAccess, checkIsStudentAuthorized,
   tryAuthorizeStudentWithPasscode,
   verifyTeacherAdminPin,
   Hoa12AccessConfig
@@ -226,7 +226,7 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   });
 
   // Teacher unlock bypass toggle
-  const [teacherBypassLock, setTeacherBypassLock] = useState<boolean>(false);
+  const [teacherBypassLock, setTeacherBypassLock] = useState<boolean>(true);
 
   // Motivational emotional feedback modal state
   const [motivationModal, setMotivationModal] = useState<{
@@ -258,7 +258,8 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
   };
 
   // Sequential Unlocking Logic: Đề kiểm tra 1 luôn mở. Đề N mở khi Đề N-1 đã hoàn thành
-  const isExamUnlocked = (idx: number) => {
+  const isExamUnlocked = (idx: number, examId?: string) => {
+    if (isTeacher) return true; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
     if (idx === 0) return true;
     if (isTeacher && teacherBypassLock) return true;
     const prevExam = HOA12_CHUONG1_7_EXAMS[idx - 1];
@@ -1923,9 +1924,38 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                             </div>
                           </div>
 
+                          {/* Nút phân quyền Quản trị: Mở / Khóa đề thi cho học sinh */}
+                          {isTeacher && (
+                            <div className="pt-2">
+                              <button
+                                type="button"
+                                onClick={(ev) => {
+                                  ev.stopPropagation();
+                                  toggleExamAccess(e.id).then((newCfg) => {
+                                    setAccessConfig({ ...newCfg });
+                                    const nowLocked = Boolean(newCfg.exams?.[e.id]);
+                                    toast.success(nowLocked ? `🔒 Đã KHÓA ${e.title} với học sinh!` : `🟢 Đã MỞ ${e.title} cho học sinh!`, { icon: nowLocked ? '🔒' : '🟢' });
+                                  });
+                                }}
+                                className={`w-full py-1.5 px-3 rounded-xl text-xs font-black border transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-xs ${
+                                  Boolean(accessConfig.exams?.[e.id])
+                                    ? 'bg-rose-50 text-rose-700 border-rose-300 hover:bg-rose-100'
+                                    : 'bg-emerald-50 text-emerald-700 border-emerald-300 hover:bg-emerald-100'
+                                }`}
+                              >
+                                {Boolean(accessConfig.exams?.[e.id]) ? '🔒 Đang Khóa Với Học Sinh (Bấm để Mở)' : '🟢 Đang Mở Cho Học Sinh (Bấm để Khóa)'}
+                              </button>
+                            </div>
+                          )}
+
                           {/* Action Button */}
                           <div className="pt-2 flex items-center gap-2">
-                            {isUnlocked ? (
+                            {!isTeacher && Boolean(accessConfig.exams?.[e.id]) ? (
+                              <div className="w-full py-3 px-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold text-center flex items-center justify-center gap-1.5">
+                                <Lock className="w-4 h-4 text-rose-600" />
+                                <span>Đề thi này đang được Thầy giáo tạm đóng</span>
+                              </div>
+                            ) : isUnlocked ? (
                               <>
                                 <button
                                   onClick={() => handleStartExam(e.id, isShuffleEnabled)}
@@ -2769,6 +2799,11 @@ export const Hoa12Chuong1View: React.FC<Hoa12Chuong1ViewProps> = ({
                 type="button"
                 onClick={() => {
                   if (verifyTeacherAdminPin(teacherPinInput)) {
+                    localStorage.setItem('is_teacher_mode', 'true');
+                    localStorage.setItem('hoa12_teacher_authenticated', 'true');
+                    localStorage.setItem('hoa11_teacher_authenticated', 'true');
+                    localStorage.setItem('hoa10_teacher_authenticated', 'true');
+                    localStorage.setItem('role', 'teacher');
                     toast.success('Xác thực Thầy Thọ thành công! Đang tải lại...', { icon: '👑' });
                     setShowTeacherPinModal(false);
                     setTimeout(() => { window.location.reload(); }, 600);
