@@ -39,7 +39,7 @@ import {
   ExamCategory 
 } from '@/utils/practiceExamHelper'
 import toast from 'react-hot-toast'
-import { fetchHoa12AccessConfig, grantAllStudentsAccess, revokeAllStudentsAccess, isChapterLocked, isGradeLocked, isCategoryLocked, type GranularAccessConfig } from '@/services/hoa12AccessControlService'
+import { fetchHoa12AccessConfig, getHoa12AccessConfigSync, grantAllStudentsAccess, revokeAllStudentsAccess, isChapterLocked, isGradeLocked, isCategoryLocked, isCourseLocked, type GranularAccessConfig } from '@/services/hoa12AccessControlService'
 import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import { normalizeExamData } from '@/services/examNormalizer'
@@ -86,7 +86,7 @@ export default function StudentPortal() {
 
   // Quản lý Tab hiển thị: 'homework' (1. BÀI TẬP VỀ NHÀ) | 'chapter' (2. LUYỆN ĐỀ THEO CHƯƠNG) | 'practice' (3. LUYỆN ĐỀ THI) | 'survey' (4. KHẢO SÁT CHẤT LƯỢNG) | 'all' (Tất cả)
   const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'survey' | 'all'>('homework')
-  const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig | null>(null)
+  const [accessConfig, setAccessConfig] = useState<GranularAccessConfig>(() => getHoa12AccessConfigSync())
   // Modal Cảnh Báo Quy Chế (Chỉ hiện khi học sinh bấm vào bài thi)
   const [examRuleModalTarget, setExamRuleModalTarget] = useState<{
     type: 'room' | 'hoa12_c1' | 'hoa12_c5';
@@ -96,6 +96,11 @@ export default function StudentPortal() {
   } | null>(null)
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
   const [enrolledCourses, setEnrolledCourses] = useState<any[]>([])
+  // Tự động đồng bộ quyền truy cập và trạng thái khóa/mở từ Supabase Cloud
+  useEffect(() => {
+    fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }));
+  }, []);
+
 
   // Xác định học sinh Khối 12 hoặc Thầy giáo (Tài liệu lớp nào chỉ hiện cho lớp đó)
   const isGrade12 = useMemo(() => {
@@ -295,9 +300,15 @@ export default function StudentPortal() {
         const isThay = st?.student_code?.toUpperCase() === "THAYTHO" || st?.role === "ADMIN" || st?.role === "TEACHER";
         const sGradeNum = (st?.grade || "").match(/\d+/)?.[0];
 
+        const cfg = await fetchHoa12AccessConfig();
+        setAccessConfig(cfg);
+
         const validCourses = (rawCourses || []).filter((c: any) => {
           if (isThay) return true;
           if (!c.is_published) return false;
+          // QUAN TRỌNG: NẾU THẦY KHÓA THÌ ẨN HẲN KHỎI HỌC SINH
+          if (isCourseLocked(c, isThay, cfg)) return false;
+
           const assigned: string[] = Array.isArray(c.assigned_class_ids) ? c.assigned_class_ids : [];
           if (assigned.includes("ALL")) return true;
           if (sGradeNum && assigned.includes(`GRADE_${sGradeNum}`)) return true;
@@ -1916,6 +1927,7 @@ export default function StudentPortal() {
             {isGrade12 && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Thẻ Chương 1 */}
+                {(!isChapterLocked("h12_c1", isFreeCandidate, accessConfig) || isFreeCandidate) && (
                 <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-indigo-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
                   <div className="flex items-center gap-3.5 relative z-10">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
@@ -1958,8 +1970,10 @@ export default function StudentPortal() {
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
+                )}
 
                                 {/* Thẻ Chương 2 */}
+                {(!isChapterLocked("h12_c2", isFreeCandidate, accessConfig) || isFreeCandidate) && (
                 <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-emerald-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
                   <div className="flex items-center gap-3.5 relative z-10">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
@@ -2002,8 +2016,10 @@ export default function StudentPortal() {
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
+                )}
 
                 {/* Thẻ Chương 5 */}
+                {(!isChapterLocked("h12_c5", isFreeCandidate, accessConfig) || isFreeCandidate) && (
                 <div className="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-teal-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
                   <div className="flex items-center gap-3.5 relative z-10">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
@@ -2046,6 +2062,7 @@ export default function StudentPortal() {
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
+                )}
               </div>
             )}
 

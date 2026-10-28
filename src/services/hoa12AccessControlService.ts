@@ -15,7 +15,8 @@ export interface GranularAccessConfig {
     grade_10: boolean;
   };
   chapters: Record<string, boolean>; // 'c1', 'c2', 'c5', 'h12_c1', 'h12_c2', 'h11_c1', 'h11_c2', 'h10_c1', 'h10_c2', ...
-  exams?: Record<string, boolean>; // key: examId hoặc code (vd 'h11_c1_de1', '111', '021'), value: true (khóa với HS) | false (mở)
+  exams?: Record<string, boolean>;
+  courses?: Record<string, boolean>; // key: examId hoặc code (vd 'h11_c1_de1', '111', '021'), value: true (khóa với HS) | false (mở)
   categories: {
     homework: boolean;
     practice: boolean;
@@ -417,4 +418,54 @@ export function verifyTeacherAdminPin(pinInput: string): boolean {
     } catch (e) {}
   }
   return isValid;
+}
+
+/**
+ * ĐỔI TRẠNG THÁI KHÓA/MỞ TỪNG KHÓA HỌC TRỰC TUYẾN
+ */
+export async function toggleCourseAccess(
+  courseId: string,
+  forceLocked?: boolean
+): Promise<GranularAccessConfig> {
+  const current = Boolean(memoryConfig.courses?.[courseId]);
+  const nextState = forceLocked !== undefined ? forceLocked : !current;
+
+  return await saveHoa12AccessConfig({
+    courses: {
+      ...(memoryConfig.courses || {}),
+      [courseId]: nextState,
+    },
+    auth_version: Date.now(),
+  });
+}
+
+/**
+ * KIỂM TRA KHÓA HỌC CÓ BỊ KHÓA / ẨN ĐỐI VỚI HỌC SINH KHÔNG
+ */
+export function isCourseLocked(
+  course: any,
+  isTeacher: boolean,
+  config: GranularAccessConfig = memoryConfig
+): boolean {
+  if (isTeacher) return false; // Thầy giáo luôn thấy
+
+  // 1. Kiểm tra khóa tổng toàn hệ thống
+  if (config.is_locked) return true;
+
+  if (!course) return false;
+
+  const cId = course.id || '';
+  if (cId && config.courses && config.courses[cId] !== undefined) {
+    return Boolean(config.courses[cId]);
+  }
+
+  // 2. Kiểm tra theo khối lớp trong tiêu đề hoặc thuộc tính
+  const title = String(course.title || '').toLowerCase();
+  const gradeStr = String(course.grade || '').toLowerCase();
+
+  if ((title.includes('12') || gradeStr.includes('12')) && config.grades?.grade_12) return true;
+  if ((title.includes('11') || gradeStr.includes('11')) && config.grades?.grade_11) return true;
+  if ((title.includes('10') || gradeStr.includes('10')) && config.grades?.grade_10) return true;
+
+  return false;
 }

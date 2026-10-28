@@ -16,6 +16,8 @@ import {
   getHoa12AccessConfigSync,
   toggleChapterAccess,
   toggleExamAccess,
+  toggleCourseAccess,
+  isCourseLocked,
   grantAllStudentsAccess,
   revokeAllStudentsAccess,
   isChapterLocked,
@@ -56,6 +58,32 @@ export default function ThptManagementHub() {
   useEffect(() => {
     fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }))
   }, [])
+
+    const [onlineCourses, setOnlineCourses] = useState<any[]>([]);
+
+  useEffect(() => {
+    import('@/lib/supabase').then(({ supabase }) => {
+      supabase
+        .from('courses')
+        .select('id, title, description, is_published, assigned_class_ids')
+        .order('created_at', { ascending: false })
+        .then(({ data }) => {
+          if (data) setOnlineCourses(data);
+        });
+    });
+  }, []);
+
+  const handleToggleCourse = async (courseId: string, currentStatus: boolean) => {
+    const newStatus = !currentStatus;
+    const { supabase } = await import('@/lib/supabase');
+    await supabase.from('courses').update({ is_published: newStatus }).eq('id', courseId);
+    const newCfg = await toggleCourseAccess(courseId, !newStatus);
+    setAccessConfig({ ...newCfg });
+    setOnlineCourses(prev => prev.map(c => c.id === courseId ? { ...c, is_published: newStatus } : c));
+    toast.success(newStatus ? '🟢 Đã MỞ khóa học (Hiện cho học sinh)!' : '🔒 ĐÃ KHÓA (Ẩn hoàn toàn khỏi học sinh)!', {
+      icon: newStatus ? '🟢' : '🔒'
+    });
+  };
 
   const gradeParam = searchParams.get('grade')
   const [selectedGrade, setSelectedGrade] = useState<'all' | '10' | '11' | '12'>(() => {
@@ -182,11 +210,19 @@ export default function ThptManagementHub() {
   const handleOpenAll = async () => {
     const newCfg = await grantAllStudentsAccess();
     setAccessConfig({ ...newCfg });
+    const { supabase } = await import('@/lib/supabase');
+    await supabase.from('courses').update({ is_published: true }).neq('id', 'none');
+    setOnlineCourses(prev => prev.map(c => ({ ...c, is_published: true })));
+    toast.success('🟢 Đã MỞ TẤT CẢ các khóa học & đề thi cho học sinh!', { icon: '🟢' });
   };
 
   const handleCloseAll = async () => {
     const newCfg = await revokeAllStudentsAccess();
     setAccessConfig({ ...newCfg });
+    const { supabase } = await import('@/lib/supabase');
+    await supabase.from('courses').update({ is_published: false }).neq('id', 'none');
+    setOnlineCourses(prev => prev.map(c => ({ ...c, is_published: false })));
+    toast.success('🔒 Đã KHÓA TẤT CẢ các khóa học & đề thi với học sinh!', { icon: '🔒' });
   };
 
   useEffect(() => {
@@ -572,6 +608,80 @@ export default function ThptManagementHub() {
                 </div>
               );
             })}
+        </div>
+      </div>
+
+            {/* ── QUẢN LÝ CÁC KHÓA HỌC CHÍNH THỨC & LẤY GỐC (ẨN/HIỆN KHỎI HỌC SINH) ── */}
+      <div className="bg-white rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-xs space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-100">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xl">📚</span>
+              <h3 className="text-base sm:text-lg font-black text-gray-900">
+                Khóa Học & Video Bài Giảng Của Em (Hiển Thị Trên Cổng Thi Học Sinh)
+              </h3>
+            </div>
+            <p className="text-xs text-gray-500 mt-1">
+              Khóa nào Thầy bấm <strong>Khóa (Ẩn HS)</strong> thì học sinh khi đăng nhập vào Cổng thi sẽ <strong>KHÔNG THẤY</strong> khóa học đó nữa.
+            </p>
+          </div>
+          <span className="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-xl border border-indigo-200 self-start sm:self-center">
+            {onlineCourses.length} Khóa Học Trong Hệ Thống
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          {onlineCourses.map((c: any) => {
+            const isLocked = isCourseLocked(c, false, accessConfig) || !c.is_published;
+            const isLayGoc = c.title?.toLowerCase().includes("lấy gốc");
+
+            return (
+              <div
+                key={c.id}
+                className={`p-4 rounded-2xl border-2 transition-all flex flex-col justify-between gap-3 ${
+                  isLocked
+                    ? "bg-rose-50/60 border-rose-200"
+                    : "bg-white border-slate-200 hover:border-teal-400 shadow-2xs"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${
+                      isLayGoc ? "bg-amber-500 text-white" : "bg-teal-600 text-white"
+                    }`}>
+                      {isLayGoc ? "⚡ Lấy Gốc Đặc Biệt" : "Khóa Học Chính Thức"}
+                    </span>
+                    <span className={`text-[10px] font-black px-2 py-0.5 rounded-full ${
+                      isLocked ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"
+                    }`}>
+                      {isLocked ? "🔒 ĐÃ ẨN KHỎI HỌC SINH" : "🟢 ĐANG HIỆN CHO HS"}
+                    </span>
+                  </div>
+
+                  <h4 className="text-sm font-black text-slate-900 leading-snug line-clamp-2">
+                    {c.title}
+                  </h4>
+                  <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+                    {c.description || "Khóa học trực tuyến kèm bài giảng và bài tập."}
+                  </p>
+                </div>
+
+                <div className="pt-2 border-t border-slate-100 flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleToggleCourse(c.id, !isLocked)}
+                    className={`w-full py-2 px-3 rounded-xl text-xs font-black border transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-2xs ${
+                      isLocked
+                        ? "bg-emerald-600 hover:bg-emerald-700 text-white border-emerald-600 shadow-emerald-600/20"
+                        : "bg-rose-600 hover:bg-rose-700 text-white border-rose-600 shadow-rose-600/20"
+                    }`}
+                  >
+                    {isLocked ? "🟢 Bấm để Mở (Hiện cho HS)" : "🔒 Bấm để Khóa (Ẩn hẳn khỏi HS)"}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
