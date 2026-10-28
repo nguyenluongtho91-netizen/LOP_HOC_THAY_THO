@@ -17,15 +17,16 @@ export default function Hoa10Page({ defaultChapter = 1 }: { defaultChapter?: num
   const auth = useAuthStore() as any;
 
   const resolveChapter = (): number => {
-    if ([1, 2, 3, 4, 5, 6, 7].includes(defaultChapter)) return defaultChapter;
     const urlC = searchParams.get("c") || searchParams.get("chuong");
-    if (urlC === "7" || location.pathname.includes("chuong7") || location.pathname.includes("chuong-7")) return 7;
-    if (urlC === "6" || location.pathname.includes("chuong6") || location.pathname.includes("chuong-6")) return 6;
-    if (urlC === "5" || location.pathname.includes("chuong5") || location.pathname.includes("chuong-5")) return 5;
-    if (urlC === "4" || location.pathname.includes("chuong4") || location.pathname.includes("chuong-4")) return 4;
-    if (urlC === "3" || location.pathname.includes("chuong3") || location.pathname.includes("chuong-3")) return 3;
-    if (urlC === "2" || location.pathname.includes("chuong2") || location.pathname.includes("chuong-2")) return 2;
-    if (urlC === "1" || location.pathname.includes("chuong1") || location.pathname.includes("chuong-1")) return 1;
+    if (urlC && [1, 2, 3, 4, 5, 6, 7].includes(Number(urlC))) return Number(urlC);
+    if (location.pathname.includes("chuong7") || location.pathname.includes("chuong-7")) return 7;
+    if (location.pathname.includes("chuong6") || location.pathname.includes("chuong-6")) return 6;
+    if (location.pathname.includes("chuong5") || location.pathname.includes("chuong-5")) return 5;
+    if (location.pathname.includes("chuong4") || location.pathname.includes("chuong-4")) return 4;
+    if (location.pathname.includes("chuong3") || location.pathname.includes("chuong-3")) return 3;
+    if (location.pathname.includes("chuong2") || location.pathname.includes("chuong-2")) return 2;
+    if (location.pathname.includes("chuong1") || location.pathname.includes("chuong-1")) return 1;
+    if (defaultChapter && [1, 2, 3, 4, 5, 6, 7].includes(defaultChapter)) return defaultChapter;
     const saved = localStorage.getItem("hoa10_active_chapter");
     if (saved && ["1", "2", "3", "4", "5", "6", "7"].includes(saved)) return Number(saved);
     return 1;

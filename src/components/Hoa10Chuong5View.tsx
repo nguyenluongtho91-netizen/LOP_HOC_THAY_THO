@@ -295,10 +295,40 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
     setSelectedSetIndex(0);
   }, [selectedLessonId, practicePart, selectedSubTopic, selectedLevel]);
 
-  // Active Lesson
+    // Practice Lessons (Chỉ những bài có ngân hàng câu hỏi)
+  const practiceLessons = useMemo(() => {
+    return HOA10_CHUONG5_LESSONS.filter(l => {
+      const p = l.practice || (l as any).practiceBank;
+      return Boolean(p && ((p.part1?.length || 0) + (p.part2?.length || 0) + (p.part3?.length || 0) > 0));
+    });
+  }, []);
+
+  const totalPracticeQuestionsCount = useMemo(() => {
+    return HOA10_CHUONG5_LESSONS.reduce((acc, l) => {
+      const p = l.practice || (l as any).practiceBank || {};
+      return acc + (p.part1?.length || 0) + (p.part2?.length || 0) + (p.part3?.length || 0);
+    }, 0);
+  }, []);
+
+  // Active Lesson (Tự động fallback về bài học có câu hỏi hợp lệ)
   const activeLesson: Chuong5Lesson = useMemo(() => {
-    return HOA10_CHUONG5_LESSONS.find(l => l.id === selectedLessonId) || HOA10_CHUONG5_LESSONS[0];
+    const found = HOA10_CHUONG5_LESSONS.find(l => l.id === selectedLessonId);
+    const p = found?.practice || (found as any)?.practiceBank;
+    const hasP = Boolean(p && ((p.part1?.length || 0) + (p.part2?.length || 0) + (p.part3?.length || 0) > 0));
+    if (found && hasP) return found;
+
+    const firstWithP = HOA10_CHUONG5_LESSONS.find(l => {
+      const p2 = l.practice || (l as any).practiceBank;
+      return Boolean(p2 && ((p2.part1?.length || 0) + (p2.part2?.length || 0) + (p2.part3?.length || 0) > 0));
+    });
+    return firstWithP || HOA10_CHUONG5_LESSONS[0];
   }, [selectedLessonId]);
+
+  useEffect(() => {
+    if (activeLesson && activeLesson.id !== selectedLessonId) {
+      setSelectedLessonId(activeLesson.id);
+    }
+  }, [activeLesson]);
 
   // Active Exam
   const activeExam: Chuong5Exam = useMemo(() => {
@@ -804,7 +834,7 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
                 </span>
               </div>
               <p className="text-xs text-slate-500 truncate hidden sm:block">
-                Hệ thống ôn luyện chuyên sâu: 495 câu hỏi phân loại • 7 đề chuẩn Bộ GD&ĐT • Cẩm nang dạng toán
+                Hệ thống ôn luyện chuyên sâu: {totalPracticeQuestionsCount} câu hỏi phân loại • {availableExams.length} đề chuẩn Bộ GD&ĐT • Cẩm nang dạng toán
               </p>
             </div>
           </div>
@@ -916,7 +946,7 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'exam' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Clock className="w-4 h-4" />
-            <span>2 Đề Thi Chuẩn (50 phút)</span>
+            <span>{availableExams.length} Đề Thi Chuẩn (50 phút)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'exam' ? 'bg-white/20 text-white' : 'bg-amber-100 text-amber-800'}`}>
               HOT
             </span>
@@ -962,7 +992,7 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
-                      onClick={() => { setSelectedLessonId('bai17'); setActiveTab('practice'); }}
+                      onClick={() => { setSelectedLessonId("bai17"); setActiveTab("practice"); }}
                       className="px-5 py-2.5 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-slate-950 font-black rounded-xl shadow-lg shadow-amber-500/25 transition-all flex items-center gap-2 text-sm hover:scale-[1.02] cursor-pointer"
                     >
                       <Play className="w-4 h-4 fill-slate-950" />
@@ -1041,13 +1071,18 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
                       <div className="flex items-center gap-2 pt-4 border-t border-slate-100">
                         <button
                           onClick={() => {
-                            setSelectedLessonId(l.id);
-                            if (l.id === 'bai3') setActiveTab('exam');
-                            else setActiveTab('practice');
+                            const p = l.practice || (l as any).practiceBank || {};
+                            const hasP = Boolean((p.part1?.length || 0) + (p.part2?.length || 0) + (p.part3?.length || 0) > 0);
+                            if (!hasP) {
+                              setActiveTab('exam');
+                            } else {
+                              setSelectedLessonId(l.id);
+                              setActiveTab('practice');
+                            }
                           }}
-                          className="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm transition-all text-center"
+                          className="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm transition-all text-center cursor-pointer"
                         >
-                          {l.id === 'bai3' ? 'Vào phòng thi 7 Đề' : 'Vào luyện bộ đề nhỏ'}
+                          {(l.practice?.part1?.length || 0) === 0 ? `Vào phòng thi ${availableExams.length} Đề` : 'Vào luyện bộ đề nhỏ'}
                         </button>
                         <button
                           onClick={() => {
@@ -1080,7 +1115,7 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  {HOA10_CHUONG5_LESSONS.slice(0, 2).map((l) => (
+                  {HOA10_CHUONG5_LESSONS.map((l) => (
                     <button
                       key={l.id}
                       onClick={() => setSelectedLessonId(l.id)}
@@ -1176,8 +1211,8 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
               {/* Filter & Mini-set Control Card (EdTech Pro Style) */}
               <div className={`${cardTheme} p-5 sm:p-6 rounded-3xl space-y-4 shadow-sm border border-slate-200/90`}>
                 {/* TẦNG 1: CHỌN BÀI HỌC (SEGMENTED TABS) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {HOA10_CHUONG5_LESSONS.slice(0, 2).map((l) => {
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {practiceLessons.map((l) => {
                     const isSel = selectedLessonId === l.id;
                     return (
                       <button
