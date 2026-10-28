@@ -1,13 +1,14 @@
 // @ts-nocheck
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
-import Hoa10View from "@/components/Hoa10View";
+import Hoa10Chuong1View from "@/components/Hoa10Chuong1View";
+import Hoa10Chuong2View from "@/components/Hoa10Chuong2View";
 import { useAuthStore } from "@/store/authStore";
 
 export default function Hoa10Page({ defaultChapter = 1 }: { defaultChapter?: number }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const auth = useAuthStore() as any;
 
   const resolveChapter = (): number => {
@@ -23,23 +24,101 @@ export default function Hoa10Page({ defaultChapter = 1 }: { defaultChapter?: num
     setActiveChapter(resolveChapter());
   }, [defaultChapter, searchParams, location.pathname]);
 
+  const handleSelectChapter = (ch: number) => {
+    setActiveChapter(ch);
+    localStorage.setItem("hoa10_active_chapter", String(ch));
+    setSearchParams({ c: String(ch) });
+  };
+
   let studentSession: any = null;
   try {
     const raw = localStorage.getItem("current_student");
     if (raw) studentSession = JSON.parse(raw);
   } catch (e) {}
 
-  const isTeacher = Boolean(auth?.user || localStorage.getItem("is_teacher_mode") === "true");
-  const studentName = isTeacher ? "Thầy Thọ" : (studentSession?.full_name || studentSession?.name || "Học sinh 2k9");
-  const studentGrade = isTeacher ? "Giáo viên" : (studentSession?.grade || "Khối 10");
+  const isRealStudent = Boolean(
+    studentSession &&
+    studentSession.student_code &&
+    !["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code).toUpperCase().trim())
+  );
+
+  let isTeacher = false;
+  if (!isRealStudent) {
+    const isTeacherByAuth = Boolean(auth?.user && (auth.isAdmin?.() || auth.isTeacher?.() || auth.user?.email));
+    const isTeacherByStudentCode = Boolean(
+      studentSession && (
+        ["THAYTHO", "TUDO", "ADMIN", "TEACHER"].includes(String(studentSession.student_code || "").toUpperCase().trim()) ||
+        String(studentSession.role || "").toUpperCase() === "ADMIN" ||
+        String(studentSession.role || "").toUpperCase() === "TEACHER" ||
+        String(studentSession.grade || "").toLowerCase().includes("giáo viên")
+      )
+    );
+    const isTeacherByLocalFlag = (localStorage.getItem("is_teacher_mode") === "true" && localStorage.getItem("hoa10_teacher_authenticated") === "true") ||
+                                 localStorage.getItem("role") === "teacher" ||
+                                 localStorage.getItem("role") === "admin";
+    isTeacher = isTeacherByAuth || isTeacherByStudentCode || isTeacherByLocalFlag;
+  }
+
+  let studentName = isTeacher ? "Thầy Thọ" : (studentSession?.full_name || studentSession?.name || "Học sinh 2k9");
+  let studentGrade = isTeacher ? "Khối 10" : (studentSession?.grade || "Khối 10");
 
   return (
-    <Hoa10View
-      studentName={studentName}
-      studentGrade={studentGrade}
-      isTeacher={isTeacher}
-      initialChapter={activeChapter}
-      onClose={() => navigate("/")}
-    />
+    <div>
+      {/* Top Chapter Switcher Bar */}
+      <div className="bg-slate-950 text-white px-3 sm:px-6 py-2 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2 shadow-md relative z-40 text-xs">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="font-extrabold uppercase tracking-wide text-slate-300 hidden md:inline">
+            Học Liệu Ôn Thi Hóa 10 Chuẩn Bộ 2025:
+          </span>
+          <span className="font-bold text-amber-400">
+            {activeChapter === 2 ? "📊 Đang mở: Chương 2 – Bảng Tuần Hoàn" : "🔬 Đang mở: Chương 1 – Cấu Tạo Nguyên Tử"}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-700/80">
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(1)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 1
+                ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>🔬</span>
+            <span>Chương 1: Nguyên Tử (4 Đề)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleSelectChapter(2)}
+            className={`px-3 py-1.5 rounded-lg font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeChapter === 2
+                ? "bg-gradient-to-r from-teal-500 to-indigo-600 text-white shadow-md font-extrabold"
+                : "text-slate-400 hover:text-white hover:bg-slate-800"
+            }`}
+          >
+            <span>📊</span>
+            <span>Chương 2: Bảng Tuần Hoàn (4 Đề)</span>
+          </button>
+        </div>
+      </div>
+
+      {activeChapter === 2 ? (
+        <Hoa10Chuong2View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate("/")}
+        />
+      ) : (
+        <Hoa10Chuong1View
+          studentName={studentName}
+          studentGrade={studentGrade}
+          isTeacher={isTeacher}
+          onClose={() => navigate("/")}
+        />
+      )}
+    </div>
   );
 }
