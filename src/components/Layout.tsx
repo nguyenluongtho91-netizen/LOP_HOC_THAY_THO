@@ -35,11 +35,25 @@ export default function Layout() {
       ],
     },
     {
+      title: 'Khối THCS (Cấp 2)',
+      items: [
+        { path: '/thcs',       icon: GraduationCap,   label: '🏫 Hub Quản Lý THCS' },
+        { path: '/thcs/toan',  icon: Calculator,      label: '📐 Toán THCS (Lớp 6-9)' },
+        { path: '/thcs/hoa',   icon: Atom,            label: '🧪 Hóa & KHTN THCS' },
+      ],
+    },
+    {
+      title: 'Khối THPT (Cấp 3)',
+      items: [
+        { path: '/thpt',          icon: GraduationCap, label: '🏛️ Hub Quản Lý THPT' },
+        { path: '/lay-goc-toan',  icon: Zap,           label: '⚡ Lấy Gốc Toán' },
+        { path: '/hoa12-chuong1', icon: Atom,          label: '🧪 Hóa 12: Chương 1 (Ester)' },
+        { path: '/hoa12-chuong5', icon: Zap,           label: '⚡ Hóa 12: Chương 5 (Pin & ĐP)' },
+      ],
+    },
+    {
       title: 'Học liệu & Thi cử',
       items: [
-        { path: '/lay-goc-toan',      icon: Zap,            label: '⚡ Lấy Gốc Toán' },
-        { path: '/hoa12-chuong1',     icon: Atom,           label: '🧪 Hóa 12: Chương 1 (Ester)' },
-        { path: '/hoa12-chuong5',     icon: Zap,            label: '⚡ Hóa 12: Chương 5 (Pin & ĐP)' },
         { path: '/homework',          icon: ClipboardCheck, label: 'Giao bài tập' },
         { path: '/courses',           icon: PlaySquare,     label: 'Khóa học & Bài giảng' },
         { path: '/exams',             icon: FileText,       label: 'Ngân hàng đề thi' },

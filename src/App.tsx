@@ -12,6 +12,8 @@ import Hoa12Page from '@/pages/Hoa12Page'
 
 // Lazy Load các Pages Quản lý (CRM), Công cụ nặng, Chấm thi AI giúp tối ưu tải trang siêu tốc
 const Dashboard = lazy(() => import('@/pages/Dashboard'))
+const ThcsManagementHub = lazy(() => import('@/pages/ThcsManagementHub'))
+const ThptManagementHub = lazy(() => import('@/pages/ThptManagementHub'))
 const Classes = lazy(() => import('@/pages/Classes'))
 const Students = lazy(() => import('@/pages/Students'))
 const Attendance = lazy(() => import('@/pages/Attendance'))
@@ -139,6 +141,15 @@ export default function App() {
           <Route path="classes"    element={<Classes />} />
           <Route path="students"   element={<Students />} />
           <Route path="attendance" element={<Attendance />} />
+
+          {/* --- Nhóm Quản lý Phân Khối THCS & THPT --- */}
+          <Route path="thcs"            element={<ThcsManagementHub />} />
+          <Route path="thcs/toan"       element={<ThcsManagementHub defaultSubject="Toán" />} />
+          <Route path="thcs/hoa"        element={<ThcsManagementHub defaultSubject="Hóa" />} />
+
+          <Route path="thpt"            element={<ThptManagementHub />} />
+          <Route path="thpt/toan"       element={<ThptManagementHub defaultSubject="Toán" />} />
+          <Route path="thpt/hoa"        element={<ThptManagementHub defaultSubject="Hóa" />} />
 
           {/* --- Nhóm Học liệu & Thi cử --- */}
           <Route path="courses"              element={<CourseMgmt />} />
