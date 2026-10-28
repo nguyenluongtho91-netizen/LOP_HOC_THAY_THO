@@ -211,7 +211,7 @@ export default function ThptManagementHub() {
     const newCfg = await grantAllStudentsAccess();
     setAccessConfig({ ...newCfg });
     const { supabase } = await import('@/lib/supabase');
-    await supabase.from('courses').update({ is_published: true }).neq('id', 'none');
+    await supabase.from('courses').update({ is_published: true }).neq('id', '00000000-0000-0000-0000-000000000000');
     setOnlineCourses(prev => prev.map(c => ({ ...c, is_published: true })));
     toast.success('🟢 Đã MỞ TẤT CẢ các khóa học & đề thi cho học sinh!', { icon: '🟢' });
   };
@@ -220,7 +220,7 @@ export default function ThptManagementHub() {
     const newCfg = await revokeAllStudentsAccess();
     setAccessConfig({ ...newCfg });
     const { supabase } = await import('@/lib/supabase');
-    await supabase.from('courses').update({ is_published: false }).neq('id', 'none');
+    await supabase.from('courses').update({ is_published: false }).neq('id', '00000000-0000-0000-0000-000000000000');
     setOnlineCourses(prev => prev.map(c => ({ ...c, is_published: false })));
     toast.success('🔒 Đã KHÓA TẤT CẢ các khóa học & đề thi với học sinh!', { icon: '🔒' });
   };

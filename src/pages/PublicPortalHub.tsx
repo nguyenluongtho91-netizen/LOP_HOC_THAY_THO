@@ -136,14 +136,16 @@ export default function PublicPortalHub() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            <button
-              type="button"
-              onClick={() => navigate('/hoa12-chuong1')}
-              className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-teal-600 via-indigo-600 to-purple-600 hover:from-teal-500 text-white font-black text-sm shadow-xl shadow-indigo-600/25 transition-all flex items-center gap-2 cursor-pointer active:scale-95"
-            >
-              <span>Vào Học Hóa 12 Ngay</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            {(!isH12C1Locked || isEffectiveTeacher) && (
+              <button
+                type="button"
+                onClick={() => navigate('/hoa12-chuong1')}
+                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-teal-600 via-indigo-600 to-purple-600 hover:from-teal-500 text-white font-black text-sm shadow-xl shadow-indigo-600/25 transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+              >
+                <span>Vào Học Hóa 12 Ngay</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )}
             <button
               type="button"
               onClick={() => navigate('/thi')}
@@ -330,17 +332,7 @@ export default function PublicPortalHub() {
                 </button>
               </div>
               )}
-              {isH12C1Locked && isH12C2Locked && isH12C5Locked && (
-                <div className="col-span-full py-16 px-6 text-center bg-slate-900/60 border border-slate-800 rounded-3xl space-y-3">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-2xl">
-                    🔒
-                  </div>
-                  <h4 className="text-lg font-bold text-white">Chuyên đề Khối 12 hiện đang tạm ẩn</h4>
-                  <p className="text-sm text-slate-400 max-w-md mx-auto">
-                    Các bài học và đề thi của Khối 12 đang được Thầy giáo tạm thời ẩn với học sinh theo lịch giảng dạy.
-                  </p>
-                </div>
-              )}</div>
+</div>
           </div>
         )}
 
@@ -428,17 +420,7 @@ export default function PublicPortalHub() {
                 </button>
               </div>
               )}
-              {isH11C1Locked && isH11C2Locked && (
-                <div className="col-span-full py-16 px-6 text-center bg-slate-900/60 border border-slate-800 rounded-3xl space-y-3">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-2xl">
-                    🔒
-                  </div>
-                  <h4 className="text-lg font-bold text-white">Chuyên đề Khối 11 hiện đang tạm ẩn</h4>
-                  <p className="text-sm text-slate-400 max-w-md mx-auto">
-                    Các bài học và đề thi của Khối 11 đang được Thầy giáo tạm thời ẩn với học sinh theo lịch giảng dạy.
-                  </p>
-                </div>
-              )}</div>
+</div>
           </div>
         )}
 
@@ -526,17 +508,7 @@ export default function PublicPortalHub() {
                 </button>
               </div>
               )}
-              {isH10C1Locked && isH10C2Locked && (
-                <div className="col-span-full py-16 px-6 text-center bg-slate-900/60 border border-slate-800 rounded-3xl space-y-3">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-2xl">
-                    🔒
-                  </div>
-                  <h4 className="text-lg font-bold text-white">Chuyên đề Khối 10 hiện đang tạm ẩn</h4>
-                  <p className="text-sm text-slate-400 max-w-md mx-auto">
-                    Các bài học và đề thi của Khối 10 đang được Thầy giáo tạm thời ẩn với học sinh theo lịch giảng dạy.
-                  </p>
-                </div>
-              )}</div>
+</div>
           </div>
         )}
       </section>

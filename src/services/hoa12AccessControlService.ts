@@ -30,31 +30,32 @@ export interface GranularAccessConfig {
 export type Hoa12AccessConfig = GranularAccessConfig;
 
 const DEFAULT_CONFIG: GranularAccessConfig = {
-  is_locked: false,
+  is_locked: true, // MẶC ĐỊNH LÀ ẨN / KHÓA VỚI HỌC SINH (LÚC NÀO THẦY MỞ THÌ MỚI THẤY)
   grades: {
-    grade_12: false,
-    grade_11: false,
-    grade_10: false,
+    grade_12: true,
+    grade_11: true,
+    grade_10: true,
   },
   chapters: {
-    c1: false,
-    c2: false,
-    c3: false,
-    c4: false,
-    c5: false,
-    h12_c1: false,
-    h12_c2: false,
-    h12_c5: false,
-    h11_c1: false,
-    h11_c2: false,
-    h10_c1: false,
-    h10_c2: false,
+    c1: true,
+    c2: true,
+    c3: true,
+    c4: true,
+    c5: true,
+    h12_c1: true,
+    h12_c2: true,
+    h12_c5: true,
+    h11_c1: true,
+    h11_c2: true,
+    h10_c1: true,
+    h10_c2: true,
   },
   exams: {},
+  courses: {},
   categories: {
-    homework: false,
-    practice: false,
-    survey: false,
+    homework: true,
+    practice: true,
+    survey: true,
   },
   passcode: 'THAYTHO2026',
   auth_version: 1,
@@ -194,7 +195,17 @@ export async function toggleChapterAccess(
     updatedChapters[a] = nextState;
   });
 
+  // Nếu Thầy bấm MỞ (nextState === false) -> gỡ is_locked và gỡ grade lock để chương này hiện cho HS
+  const updatedGrades = { ...memoryConfig.grades };
+  if (nextState === false) {
+    if (chapterKey.includes('12') || chapterKey === 'c1' || chapterKey === 'c2' || chapterKey === 'c5') updatedGrades.grade_12 = false;
+    if (chapterKey.includes('11')) updatedGrades.grade_11 = false;
+    if (chapterKey.includes('10')) updatedGrades.grade_10 = false;
+  }
+
   return await saveHoa12AccessConfig({
+    is_locked: nextState === false ? false : memoryConfig.is_locked,
+    grades: updatedGrades,
     chapters: updatedChapters,
     auth_version: Date.now(),
   });
@@ -211,6 +222,7 @@ export async function toggleExamAccess(
   const nextState = forceLocked !== undefined ? forceLocked : !current;
 
   return await saveHoa12AccessConfig({
+    is_locked: nextState === false ? false : memoryConfig.is_locked,
     exams: {
       ...(memoryConfig.exams || {}),
       [examIdOrCode]: nextState,
@@ -262,6 +274,11 @@ export async function toggleGradeAccess(
  * 7. CẤP QUYỀN TOÀN BỘ (Mở tất cả cho học sinh)
  */
 export async function grantAllStudentsAccess(): Promise<GranularAccessConfig> {
+  const allCoursesOpen: Record<string, boolean> = {};
+  Object.keys(memoryConfig.courses || {}).forEach(k => {
+    allCoursesOpen[k] = false;
+  });
+
   return await saveHoa12AccessConfig({
     is_locked: false,
     grades: { grade_12: false, grade_11: false, grade_10: false },
@@ -272,6 +289,7 @@ export async function grantAllStudentsAccess(): Promise<GranularAccessConfig> {
       h10_c1: false, h10_c2: false
     },
     exams: {},
+    courses: allCoursesOpen,
     categories: { homework: false, practice: false, survey: false },
     auth_version: Date.now(),
   });
@@ -281,6 +299,11 @@ export async function grantAllStudentsAccess(): Promise<GranularAccessConfig> {
  * 8. KHÓA TẤT CẢ VỚI HỌC SINH (Phía quản trị vẫn vào bình thường)
  */
 export async function revokeAllStudentsAccess(): Promise<GranularAccessConfig> {
+  const allCoursesLocked: Record<string, boolean> = {};
+  Object.keys(memoryConfig.courses || {}).forEach(k => {
+    allCoursesLocked[k] = true;
+  });
+
   return await saveHoa12AccessConfig({
     is_locked: true,
     grades: { grade_12: true, grade_11: true, grade_10: true },
@@ -290,6 +313,7 @@ export async function revokeAllStudentsAccess(): Promise<GranularAccessConfig> {
       h11_c1: true, h11_c2: true,
       h10_c1: true, h10_c2: true
     },
+    courses: allCoursesLocked,
     categories: { homework: true, practice: true, survey: true },
     auth_version: Date.now(),
   });
@@ -307,18 +331,9 @@ export function isChapterLocked(
   if (isTeacher) return false; // QUẢN TRỊ VIÊN KHÔNG BAO GIỜ BỊ KHÓA
 
   const cfg = config || memoryConfig || DEFAULT_ACCESS_CONFIG;
-  if (!cfg) return false;
+  if (!cfg) return true; // MẶC ĐỊNH KHÓA NẾU CHƯA CÓ CẤU HÌNH
 
-  // Kiểm tra cờ hệ thống chung
-  if (cfg.is_locked) return true;
-
-  // Kiểm tra cờ khối
-  const k = String(chapterKey).toLowerCase();
-  if ((k.includes('12') || k === 'c1' || k === 'c2' || k === 'c5') && cfg.grades?.grade_12) return true;
-  if (k.includes('11') && cfg.grades?.grade_11) return true;
-  if (k.includes('10') && cfg.grades?.grade_10) return true;
-
-  // Kiểm tra cờ từng chương với ánh xạ 2 chiều
+  // Ánh xạ 2 chiều
   const aliasMap: Record<string, string[]> = {
     c1: ['c1', 'h12_c1'],
     h12_c1: ['c1', 'h12_c1'],
@@ -332,13 +347,32 @@ export function isChapterLocked(
     h10_c2: ['h10_c2'],
   };
   const aliases = aliasMap[chapterKey] || [chapterKey];
+
+  // 1. Nếu Thầy ĐÃ BẤM MỞ (giá trị === false) -> CHO PHÉP HỌC SINH THẤY
   for (const a of aliases) {
-    if (cfg.chapters?.[a] !== undefined && Boolean(cfg.chapters[a])) {
+    if (cfg.chapters?.[a] === false) {
+      return false;
+    }
+  }
+
+  // 2. Nếu Thầy ĐÃ BẤM KHÓA (giá trị === true) -> ẨN HẲN KHỎI HỌC SINH
+  for (const a of aliases) {
+    if (cfg.chapters?.[a] === true) {
       return true;
     }
   }
 
-  return false;
+  // 3. Nếu khóa tổng hệ thống đang BẬT -> Ẩn khỏi học sinh
+  if (cfg.is_locked) return true;
+
+  // 4. Kiểm tra cờ khối
+  const k = String(chapterKey).toLowerCase();
+  if ((k.includes('12') || k === 'c1' || k === 'c2' || k === 'c5') && cfg.grades?.grade_12) return true;
+  if (k.includes('11') && cfg.grades?.grade_11) return true;
+  if (k.includes('10') && cfg.grades?.grade_10) return true;
+
+  // 5. MẶC ĐỊNH THEO Ý THẦY: ẨN CHO ĐẾN KHI THẦY MỞ!
+  return true;
 }
 
 /**
@@ -439,10 +473,13 @@ export async function toggleCourseAccess(
   courseId: string,
   forceLocked?: boolean
 ): Promise<GranularAccessConfig> {
-  const current = Boolean(memoryConfig.courses?.[courseId]);
+  const current = memoryConfig.courses?.[courseId] !== undefined 
+    ? Boolean(memoryConfig.courses[courseId]) 
+    : true; // Mặc định là khóa (true)
   const nextState = forceLocked !== undefined ? forceLocked : !current;
 
   return await saveHoa12AccessConfig({
+    is_locked: nextState === false ? false : memoryConfig.is_locked,
     courses: {
       ...(memoryConfig.courses || {}),
       [courseId]: nextState,
@@ -453,27 +490,38 @@ export async function toggleCourseAccess(
 
 /**
  * KIỂM TRA KHÓA HỌC CÓ BỊ KHÓA / ẨN ĐỐI VỚI HỌC SINH KHÔNG
+ * QUY TẮC CỦA THẦY: MẶC ĐỊNH ẨN VỚI HỌC SINH, LÚC NÀO THẦY MỞ THÌ MỚI THẤY!
  */
 export function isCourseLocked(
   course: any,
   isTeacher: boolean,
   config?: GranularAccessConfig | null
 ): boolean {
-  if (isTeacher) return false; // Thầy giáo luôn thấy
+  if (isTeacher) return false; // Thầy giáo luôn thấy 100%
+  if (!course) return true;
+
+  // Nếu khóa học chưa xuất bản trong CSDL -> Khóa / Ẩn khỏi học sinh
+  if (course.is_published === false) return true;
+
   const cfg = config || memoryConfig || DEFAULT_ACCESS_CONFIG;
-  if (!cfg) return false;
-
-  // 1. Kiểm tra khóa tổng toàn hệ thống
-  if (cfg.is_locked) return true;
-
-  if (!course) return false;
+  if (!cfg) return true; // Mặc định ẩn
 
   const cId = course.id || '';
-  if (cId && cfg.courses && cfg.courses[cId] !== undefined) {
-    return Boolean(cfg.courses[cId]);
+
+  // 1. Nếu Thầy đã bấm MỞ khóa học này cụ thể (giá trị === false) -> CHO PHÉP HỌC SINH THẤY
+  if (cId && cfg.courses && cfg.courses[cId] === false) {
+    return false;
   }
 
-  // 2. Kiểm tra theo khối lớp trong tiêu đề hoặc thuộc tính
+  // 2. Nếu Thầy đã bấm KHÓA khóa học này cụ thể (giá trị === true) -> ẨN HẲN KHỎI HỌC SINH
+  if (cId && cfg.courses && cfg.courses[cId] === true) {
+    return true;
+  }
+
+  // 3. Nếu khóa tổng hệ thống đang BẬT -> Ẩn khỏi học sinh
+  if (cfg.is_locked) return true;
+
+  // 4. Kiểm tra theo khối lớp trong tiêu đề hoặc thuộc tính
   const title = String(course.title || '').toLowerCase();
   const gradeStr = String(course.grade || '').toLowerCase();
 
@@ -481,5 +529,6 @@ export function isCourseLocked(
   if ((title.includes('11') || gradeStr.includes('11')) && cfg.grades?.grade_11) return true;
   if ((title.includes('10') || gradeStr.includes('10')) && cfg.grades?.grade_10) return true;
 
-  return false;
+  // 5. MẶC ĐỊNH THEO Ý THẦY: ẨN CHO ĐẾN KHI THẦY MỞ!
+  return true;
 }

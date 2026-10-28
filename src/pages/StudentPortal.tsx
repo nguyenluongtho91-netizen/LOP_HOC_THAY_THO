@@ -96,6 +96,15 @@ export default function StudentPortal() {
   } | null>(null)
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
   const [enrolledCourses, setEnrolledCourses] = useState<any[]>([])
+
+  // Lọc danh sách khóa học thực sự hiển thị cho học sinh (Mặc định ẩn, chỉ hiện khi Thầy mở)
+  const visibleCourses = useMemo(() => {
+    return (enrolledCourses || []).filter((c: any) => {
+      if (isTeacherUser) return true;
+      if (!c.is_published) return false;
+      return !isCourseLocked(c, false, accessConfig);
+    });
+  }, [enrolledCourses, accessConfig, isTeacherUser]);
   // Tự động đồng bộ quyền truy cập và trạng thái khóa/mở từ Supabase Cloud
   useEffect(() => {
     fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }));
@@ -121,14 +130,22 @@ export default function StudentPortal() {
     return false;
   }, [student, enrolledClasses])
 
-  // Xác định Thầy giáo hoặc Thí Sinh Tự Do (Đặc quyền không bị khóa)
-  const isFreeCandidate = useMemo(() => {
+  // Xác định rõ ràng quyền Thầy giáo / Quản trị viên
+  const isTeacherUser = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem('is_teacher_mode') === 'true' || 
+          localStorage.getItem('role') === 'teacher' || 
+          localStorage.getItem('role') === 'admin') {
+        return true;
+      }
+    }
     if (!student) return false;
     const code = String(student.student_code || '').toUpperCase().trim();
-    const name = String(student.full_name || '').toLowerCase();
     const role = String(student.role || '').toUpperCase();
-    return code === 'THAYTHO' || code === 'TUDO' || name.includes('thọ') || role === 'ADMIN' || role === 'TEACHER' || student.grade === 'Thí Sinh Tự Do';
-  }, [student])
+    return code === 'THAYTHO' || role === 'ADMIN' || role === 'TEACHER';
+  }, [student]);
+
+  const isFreeCandidate = isTeacherUser;
 
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
@@ -249,8 +266,15 @@ export default function StudentPortal() {
                               latestStudent?.student_code?.toUpperCase() === 'TUDO';
 
       const eligibleRooms = (rooms || []).filter((room: any) => {
-        // NẾU LÀ THÍ SINH TỰ DO (THẦY THỌ) -> ĐẶC QUYỀN LÀM ĐƯỢC 100% TẤT CẢ PHÒNG THI!
-        if (isFreeCandidate) return true;
+        // NẾU LÀ THẦY THỌ / QUẢN TRỊ -> ĐẶC QUYỀN LÀM ĐƯỢC 100% TẤT CẢ PHÒNG THI
+        if (isTeacherUser) return true;
+
+        // KIỂM TRA KHÓA HỆ THỐNG / ĐỀ THI: NẾU THẦY KHÓA THÌ ẨN HẲN KHỎI HỌC SINH
+        if (accessConfig?.is_locked) return false;
+        if (isExamLocked(room.id, false, accessConfig)) return false;
+        if (room.exam_id && isExamLocked(room.exam_id, false, accessConfig)) return false;
+        const cat = getExamCategory(room);
+        if (isCategoryLocked(cat, false, accessConfig)) return false;
 
         // 1. Kiểm tra nếu phòng thi có chỉ định danh sách học sinh cụ thể
         const assignedIds = room.settings?.assigned_student_ids
@@ -668,56 +692,70 @@ export default function StudentPortal() {
             </button>
           </div>
           
+          {(!isChapterLocked('c1', false, accessConfig) || !isChapterLocked('c5', false, accessConfig) || !isChapterLocked('h11_c1', false, accessConfig) || !isChapterLocked('h10_c1', false, accessConfig)) && (
           <div className="space-y-2">
             {/* Khối 12 */}
-            <div className="p-2.5 bg-slate-950/80 rounded-2xl border border-slate-800">
-              <div className="flex items-center justify-between text-[11px] font-bold text-slate-300 mb-1.5">
-                <span className="text-amber-400 font-extrabold">👑 KHỐI 12 (2k7)</span>
-                <span className="text-[10px] text-emerald-400 font-mono">11 Đề Chuẩn Bộ</span>
+            {(!isChapterLocked('c1', false, accessConfig) || !isChapterLocked('c5', false, accessConfig)) && (
+              <div className="p-2.5 bg-slate-950/80 rounded-2xl border border-slate-800">
+                <div className="flex items-center justify-between text-[11px] font-bold text-slate-300 mb-1.5">
+                  <span className="text-amber-400 font-extrabold">👑 KHỐI 12 (2k7)</span>
+                  <span className="text-[10px] text-emerald-400 font-mono">Đã Mở</span>
+                </div>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {!isChapterLocked('c1', false, accessConfig) && (
+                    <button
+                      type="button"
+                      onClick={() => navigate('/hoa12-chuong1')}
+                      className="px-2 py-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 text-white font-black text-xs rounded-xl shadow transition-all text-center"
+                    >
+                      🧪 Chương 1
+                    </button>
+                  )}
+                  {!isChapterLocked('c5', false, accessConfig) && (
+                    <button
+                      type="button"
+                      onClick={() => navigate('/hoa12-chuong5')}
+                      className="px-2 py-1.5 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 text-white font-black text-xs rounded-xl shadow transition-all text-center"
+                    >
+                      ⚡ Chương 5
+                    </button>
+                  )}
+                </div>
               </div>
-              <div className="grid grid-cols-2 gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => navigate('/hoa12-chuong1')}
-                  className="px-2 py-1.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 text-white font-black text-xs rounded-xl shadow transition-all text-center"
-                >
-                  🧪 Chương 1 (7 Đề)
-                </button>
-                <button
-                  type="button"
-                  onClick={() => navigate('/hoa12-chuong5')}
-                  className="px-2 py-1.5 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 text-white font-black text-xs rounded-xl shadow transition-all text-center"
-                >
-                  ⚡ Chương 5 (4 Đề)
-                </button>
-              </div>
-            </div>
+            )}
 
             {/* Khối 11 & Khối 10 */}
-            <div className="grid grid-cols-2 gap-2">
-              <div className="p-2 bg-slate-950/80 rounded-2xl border border-slate-800 text-center space-y-1.5">
-                <span className="text-[11px] font-bold text-teal-400 block">⚖️ KHỐI 11 (2k8)</span>
-                <button
-                  type="button"
-                  onClick={() => navigate('/hoa11-chuong1')}
-                  className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-[11px] rounded-xl border border-slate-700"
-                >
-                  Chương 1 & 2 ➔
-                </button>
-              </div>
+            {(!isChapterLocked('h11_c1', false, accessConfig) || !isChapterLocked('h10_c1', false, accessConfig)) && (
+              <div className="grid grid-cols-2 gap-2">
+                {!isChapterLocked('h11_c1', false, accessConfig) && (
+                  <div className="p-2 bg-slate-950/80 rounded-2xl border border-slate-800 text-center space-y-1.5">
+                    <span className="text-[11px] font-bold text-teal-400 block">⚖️ KHỐI 11 (2k8)</span>
+                    <button
+                      type="button"
+                      onClick={() => navigate('/hoa11-chuong1')}
+                      className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-[11px] rounded-xl border border-slate-700"
+                    >
+                      Chương 1 & 2 ➔
+                    </button>
+                  </div>
+                )}
 
-              <div className="p-2 bg-slate-950/80 rounded-2xl border border-slate-800 text-center space-y-1.5">
-                <span className="text-[11px] font-bold text-purple-400 block">⚛️ KHỐI 10 (2k9)</span>
-                <button
-                  type="button"
-                  onClick={() => navigate('/hoa10-chuong1')}
-                  className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-[11px] rounded-xl border border-slate-700"
-                >
-                  Chương 1 & 2 ➔
-                </button>
+                {!isChapterLocked('h10_c1', false, accessConfig) && (
+                  <div className="p-2 bg-slate-950/80 rounded-2xl border border-slate-800 text-center space-y-1.5">
+                    <span className="text-[11px] font-bold text-purple-400 block">⚛️ KHỐI 10 (2k9)</span>
+                    <button
+                      type="button"
+                      onClick={() => navigate('/hoa10-chuong1')}
+                      className="w-full py-1.5 bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-[11px] rounded-xl border border-slate-700"
+                    >
+                      Chương 1 & 2 ➔
+                    </button>
+                  </div>
+                )}
               </div>
-            </div>
+            )}
           </div>
+          )}
         </div>
 
         <div className="relative w-full max-w-md z-10">
@@ -810,34 +848,42 @@ export default function StudentPortal() {
                 </button>
               </div>
 
-              {/* Nút truy cập nhanh Hóa 12 không cần đăng nhập */}
               <div className="pt-2 border-t border-slate-100 space-y-2">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => navigate('/hoa12-chuong1')}
-                    className="w-full py-2.5 px-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
-                  >
-                    <span>🧪 Chương 1 (7 Đề)</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => navigate('/hoa12-chuong2')}
-                    className="w-full py-2.5 px-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
-                  >
-                    <span>🍇 Chương 2 (4 Đề)</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => navigate('/hoa12-chuong5')}
-                    className="w-full py-2.5 px-2 bg-gradient-to-r from-teal-600 to-indigo-700 hover:from-teal-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
-                  >
-                    <span>⚡ Chương 5 (4 Đề)</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
+                {/* Nút truy cập nhanh Hóa 12 không cần đăng nhập (Chỉ hiện khi Thầy đã mở) */}
+                {(!isChapterLocked('c1', false, accessConfig) || !isChapterLocked('c2', false, accessConfig) || !isChapterLocked('c5', false, accessConfig)) && (
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    {!isChapterLocked('c1', false, accessConfig) && (
+                      <button
+                        type="button"
+                        onClick={() => navigate('/hoa12-chuong1')}
+                        className="w-full py-2.5 px-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
+                      >
+                        <span>🧪 Chương 1 (7 Đề)</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                    {!isChapterLocked('c2', false, accessConfig) && (
+                      <button
+                        type="button"
+                        onClick={() => navigate('/hoa12-chuong2')}
+                        className="w-full py-2.5 px-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
+                      >
+                        <span>🍇 Chương 2 (4 Đề)</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                    {!isChapterLocked('c5', false, accessConfig) && (
+                      <button
+                        type="button"
+                        onClick={() => navigate('/hoa12-chuong5')}
+                        className="w-full py-2.5 px-2 bg-gradient-to-r from-teal-600 to-indigo-700 hover:from-teal-700 text-white font-black text-xs rounded-xl shadow-md flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95"
+                      >
+                        <span>⚡ Chương 5 (4 Đề)</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+                )}
 
                 <button
                   type="button"
@@ -1472,12 +1518,12 @@ export default function StudentPortal() {
         )}
 
         {/* 📚 KHÓA HỌC & BÀI GIẢNG VIDEO ĐƯỢC CẤP QUYỀN */}
-        {enrolledCourses.length > 0 && (
+        {visibleCourses.length > 0 && (
           <div className="space-y-3 animate-fade-in">
             <div className="flex items-center justify-between gap-2">
               <h3 className="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-800 flex items-center gap-2">
                 <BookOpen className="w-4 h-4 text-teal-600" />
-                <span>Khóa Học & Video Bài Giảng Của Em ({enrolledCourses.length}):</span>
+                <span>Khóa Học & Video Bài Giảng Của Em ({visibleCourses.length}):</span>
               </h3>
               <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
                 Thầy Thọ Cấp Quyền 🌟
@@ -1485,7 +1531,7 @@ export default function StudentPortal() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
-              {enrolledCourses.map((c: any) => {
+              {visibleCourses.map((c: any) => {
                 const totalLessons = (c.chapters || []).reduce((acc: number, ch: any) => acc + (ch.lessons?.length || 0), 0);
                 const isLayGoc = c.title?.toLowerCase().includes("lấy gốc");
 
@@ -1936,7 +1982,7 @@ export default function StudentPortal() {
             {isGrade12 && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Thẻ Chương 1 */}
-                {(!isChapterLocked("h12_c1", isFreeCandidate, accessConfig) || isFreeCandidate) && (
+                {(!isChapterLocked("h12_c1", isTeacherUser, accessConfig) || isTeacherUser) && (
                 <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-indigo-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
                   <div className="flex items-center gap-3.5 relative z-10">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
@@ -1982,7 +2028,7 @@ export default function StudentPortal() {
                 )}
 
                                 {/* Thẻ Chương 2 */}
-                {(!isChapterLocked("h12_c2", isFreeCandidate, accessConfig) || isFreeCandidate) && (
+                {(!isChapterLocked("h12_c2", isTeacherUser, accessConfig) || isTeacherUser) && (
                 <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-emerald-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
                   <div className="flex items-center gap-3.5 relative z-10">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
@@ -2028,7 +2074,7 @@ export default function StudentPortal() {
                 )}
 
                 {/* Thẻ Chương 5 */}
-                {(!isChapterLocked("h12_c5", isFreeCandidate, accessConfig) || isFreeCandidate) && (
+                {(!isChapterLocked("h12_c5", isTeacherUser, accessConfig) || isTeacherUser) && (
                 <div className="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 text-white p-6 rounded-3xl border-2 border-teal-500/40 shadow-xl flex flex-col justify-between gap-4 relative overflow-hidden">
                   <div className="flex items-center gap-3.5 relative z-10">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-teal-500 to-indigo-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-lg">
