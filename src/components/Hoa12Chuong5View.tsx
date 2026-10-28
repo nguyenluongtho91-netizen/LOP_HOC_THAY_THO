@@ -149,7 +149,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
   ));
   // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
   const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("c5", isTeacher, getHoa12AccessConfigSync()));
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h12_c5", isEffectiveTeacher, getHoa12AccessConfigSync()));
   const [passcodeInput, setPasscodeInput] = useState('');
   const [showTeacherPinModal, setShowTeacherPinModal] = useState(false);
   const [teacherPinInput, setTeacherPinInput] = useState('');
@@ -166,11 +166,11 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
       setAccessConfig(cfg);
       setNewPasscodeForm(cfg.passcode || 'THAYTHO2026');
       setTempLockEnabled(cfg.is_locked);
-      const auth = !isChapterLocked("c5", isTeacher, cfg);
+      const auth = !isChapterLocked("h12_c5", isEffectiveTeacher, cfg);
       setIsUnlocked(auth);
     });
     return () => { isMounted = false; };
-  }, [isTeacher]);
+  }, [isTeacher, isEffectiveTeacher]);
 
   // ── Phân lập khối lớp: Chỉ Khối 12 hoặc Thầy giáo mới được truy cập ─────────
   const isTargetGrade = useMemo(() => {
@@ -305,7 +305,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
     if (examSessionExam && examSessionExam.id === selectedExamId) {
       return examSessionExam;
     }
-    return HOA12_CHUONG5_EXAMS.find(e => e.id === selectedExamId) || HOA12_CHUONG5_EXAMS[0];
+    return visibleExams.find(e => e.id === selectedExamId) || visibleExams[0] || HOA12_CHUONG5_EXAMS[0];
   }, [selectedExamId, examSessionExam]);
 
   // Timer for Exam (Tối ưu: chỉ chạy khi isExamActive, không re-bind mỗi giây)
@@ -665,6 +665,11 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
     if (fontSizeLevel === 'xlarge') return { stem: 'text-xl', opt: 'text-lg', lead: 'leading-loose' };
     return { stem: 'text-base', opt: 'text-sm', lead: 'leading-relaxed' };
   }, [fontSizeLevel]);
+
+  // Lọc danh sách đề thi hiển thị: Khóa nghĩa là bên học sinh ẨN HẲN
+  const visibleExams = useMemo(() => {
+    return HOA12_CHUONG5_EXAMS.filter(e => isEffectiveTeacher || !Boolean(accessConfig.exams?.[e.id]));
+  }, [isEffectiveTeacher, accessConfig.exams]);
 
   // Main Background based on Eye Comfort Mode
   const bgTheme = eyeComfortMode 
@@ -1932,7 +1937,12 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                     <span>Lộ trình đề thi:</span>
                     <span className="text-[11px] text-slate-400 font-normal hidden sm:inline">(Hoàn thành Đề 1 để mở khóa Đề 2)</span>
                   </div>
-                  {HOA12_CHUONG5_EXAMS.map((e, idx) => {
+                  {visibleExams.length === 0 ? (
+                    <div className="py-2 px-4 text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-xl">
+                      🔒 Các đề thi đang tạm ẩn với học sinh
+                    </div>
+                  ) : (
+                    visibleExams.map((e, idx) => {
                     const isUnlocked = isExamUnlocked(idx);
                     const isSelected = selectedExamId === e.id;
                     const history = getChuong5ExamHistory(e.id);
@@ -1976,7 +1986,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                         )}
                       </button>
                     );
-                  })}
+                  }))}
                 </div>
 
                 {isEffectiveTeacher && (

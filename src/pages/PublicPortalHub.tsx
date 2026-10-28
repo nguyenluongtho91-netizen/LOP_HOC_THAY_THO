@@ -7,11 +7,45 @@ import {
   Compass, Users, Check, Flame, ChevronRight, LogIn, ExternalLink
 } from 'lucide-react';
 import { useAuthStore } from '@/store/authStore';
+import {
+  fetchHoa12AccessConfig,
+  getHoa12AccessConfigSync,
+  isChapterLocked,
+  isGradeLocked,
+  type GranularAccessConfig
+} from '@/services/hoa12AccessControlService';
+
 
 export default function PublicPortalHub() {
   const navigate = useNavigate();
   const { user, isAdmin } = useAuthStore();
   const [selectedGrade, setSelectedGrade] = useState<'12' | '11' | '10'>('12');
+  const [accessConfig, setAccessConfig] = React.useState<GranularAccessConfig>(() => getHoa12AccessConfigSync());
+
+  React.useEffect(() => {
+    fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }));
+  }, []);
+
+  const isEffectiveTeacher = Boolean(
+    (user && (user.role === 'teacher' || user.role === 'admin')) ||
+    (typeof window !== 'undefined' && (
+      window.location.search.includes('teacher=1') ||
+      window.location.search.includes('admin=1') ||
+      localStorage.getItem('is_teacher_mode') === 'true' ||
+      localStorage.getItem('role') === 'teacher' ||
+      localStorage.getItem('role') === 'admin'
+    ))
+  );
+
+  // Trạng thái khóa từng chuyên đề đối với học sinh
+  const isH12C1Locked = !isEffectiveTeacher && (isChapterLocked('h12_c1', false, accessConfig) || isChapterLocked('c1', false, accessConfig));
+  const isH12C2Locked = !isEffectiveTeacher && (isChapterLocked('h12_c2', false, accessConfig) || isChapterLocked('c2', false, accessConfig));
+  const isH12C5Locked = !isEffectiveTeacher && (isChapterLocked('h12_c5', false, accessConfig) || isChapterLocked('c5', false, accessConfig));
+  const isH11C1Locked = !isEffectiveTeacher && isChapterLocked('h11_c1', false, accessConfig);
+  const isH11C2Locked = !isEffectiveTeacher && isChapterLocked('h11_c2', false, accessConfig);
+  const isH10C1Locked = !isEffectiveTeacher && isChapterLocked('h10_c1', false, accessConfig);
+  const isH10C2Locked = !isEffectiveTeacher && isChapterLocked('h10_c2', false, accessConfig);
+
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-teal-500 selection:text-white">
@@ -184,7 +218,8 @@ export default function PublicPortalHub() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* C1 Card */}
-              <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+              {!isH12C1Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 bg-indigo-500/20 border border-indigo-400/30 text-indigo-400 font-black text-xs rounded-xl font-mono">
@@ -218,9 +253,11 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
+              )}
 
-                            {/* C2 Card */}
-              <div className="bg-slate-900 border border-slate-800 hover:border-emerald-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+              {/* C2 Card */}
+              {!isH12C2Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-emerald-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 text-emerald-400 font-black text-xs rounded-xl font-mono">
@@ -254,9 +291,11 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
+              )}
 
               {/* C5 Card */}
-              <div className="bg-slate-900 border border-slate-800 hover:border-teal-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+              {!isH12C5Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-teal-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 bg-teal-500/20 border border-teal-400/30 text-teal-400 font-black text-xs rounded-xl font-mono">
@@ -290,7 +329,18 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-            </div>
+              )}
+              {isH12C1Locked && isH12C2Locked && isH12C5Locked && (
+                <div className="col-span-full py-16 px-6 text-center bg-slate-900/60 border border-slate-800 rounded-3xl space-y-3">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-2xl">
+                    🔒
+                  </div>
+                  <h4 className="text-lg font-bold text-white">Chuyên đề Khối 12 hiện đang tạm ẩn</h4>
+                  <p className="text-sm text-slate-400 max-w-md mx-auto">
+                    Các bài học và đề thi của Khối 12 đang được Thầy giáo tạm thời ẩn với học sinh theo lịch giảng dạy.
+                  </p>
+                </div>
+              )}</div>
           </div>
         )}
 
@@ -304,7 +354,8 @@ export default function PublicPortalHub() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* K11 C1 */}
-              <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+              {!isH11C1Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 bg-indigo-500/20 border border-indigo-400/30 text-indigo-400 font-black text-xs rounded-xl font-mono">
@@ -338,9 +389,11 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
+              )}
 
               {/* K11 C2 */}
-              <div className="bg-slate-900 border border-slate-800 hover:border-teal-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+              {!isH11C2Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-teal-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 bg-teal-500/20 border border-teal-400/30 text-teal-400 font-black text-xs rounded-xl font-mono">
@@ -374,7 +427,18 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-            </div>
+              )}
+              {isH11C1Locked && isH11C2Locked && (
+                <div className="col-span-full py-16 px-6 text-center bg-slate-900/60 border border-slate-800 rounded-3xl space-y-3">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-2xl">
+                    🔒
+                  </div>
+                  <h4 className="text-lg font-bold text-white">Chuyên đề Khối 11 hiện đang tạm ẩn</h4>
+                  <p className="text-sm text-slate-400 max-w-md mx-auto">
+                    Các bài học và đề thi của Khối 11 đang được Thầy giáo tạm thời ẩn với học sinh theo lịch giảng dạy.
+                  </p>
+                </div>
+              )}</div>
           </div>
         )}
 
@@ -388,7 +452,8 @@ export default function PublicPortalHub() {
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* K10 C1 */}
-              <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+              {!isH10C1Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-indigo-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 bg-indigo-500/20 border border-indigo-400/30 text-indigo-400 font-black text-xs rounded-xl font-mono">
@@ -422,9 +487,11 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
+              )}
 
               {/* K10 C2 */}
-              <div className="bg-slate-900 border border-slate-800 hover:border-teal-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+              {!isH10C2Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-teal-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 bg-teal-500/20 border border-teal-400/30 text-teal-400 font-black text-xs rounded-xl font-mono">
@@ -458,7 +525,18 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
-            </div>
+              )}
+              {isH10C1Locked && isH10C2Locked && (
+                <div className="col-span-full py-16 px-6 text-center bg-slate-900/60 border border-slate-800 rounded-3xl space-y-3">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-2xl">
+                    🔒
+                  </div>
+                  <h4 className="text-lg font-bold text-white">Chuyên đề Khối 10 hiện đang tạm ẩn</h4>
+                  <p className="text-sm text-slate-400 max-w-md mx-auto">
+                    Các bài học và đề thi của Khối 10 đang được Thầy giáo tạm thời ẩn với học sinh theo lịch giảng dạy.
+                  </p>
+                </div>
+              )}</div>
           </div>
         )}
       </section>

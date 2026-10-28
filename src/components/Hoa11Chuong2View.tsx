@@ -149,7 +149,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
   ));
   // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
   const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h11_c2", isTeacher, getHoa12AccessConfigSync()));
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h11_c2", isEffectiveTeacher, getHoa12AccessConfigSync()));
   const [passcodeInput, setPasscodeInput] = useState('');
   const [showTeacherPinModal, setShowTeacherPinModal] = useState(false);
   const [teacherPinInput, setTeacherPinInput] = useState('');
@@ -166,11 +166,11 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
       setAccessConfig(cfg);
       setNewPasscodeForm(cfg.passcode || 'THAYTHO2026');
       setTempLockEnabled(cfg.is_locked);
-      const auth = !isChapterLocked("h11_c2", isTeacher, cfg);
+      const auth = !isChapterLocked("h11_c2", isEffectiveTeacher, cfg);
       setIsUnlocked(auth);
     });
     return () => { isMounted = false; };
-  }, [isTeacher]);
+  }, [isTeacher, isEffectiveTeacher]);
 
   // ── Phân lập khối lớp: Chỉ Khối 11 hoặc Thầy giáo mới được truy cập ─────────
   const isTargetGrade = useMemo(() => {
@@ -665,6 +665,11 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
     if (fontSizeLevel === 'xlarge') return { stem: 'text-xl', opt: 'text-lg', lead: 'leading-loose' };
     return { stem: 'text-base', opt: 'text-sm', lead: 'leading-relaxed' };
   }, [fontSizeLevel]);
+
+  // Lọc danh sách đề thi hiển thị: Khóa nghĩa là bên học sinh ẨN HẲN
+  const visibleExams = useMemo(() => {
+    return HOA11_CHUONG2_EXAMS.filter(e => isEffectiveTeacher || !Boolean(accessConfig.exams?.[e.id]));
+  }, [isEffectiveTeacher, accessConfig.exams]);
 
   // Main Background based on Eye Comfort Mode
   const bgTheme = eyeComfortMode 
@@ -1788,7 +1793,18 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
 
                   {/* 7 Exam Cards Grid - LƯỚI 7 ĐỀ THI HIỆN ĐẠI & SANG TRỌNG */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {HOA11_CHUONG2_EXAMS.map((e, idx) => {
+                    {visibleExams.length === 0 ? (
+                      <div className="col-span-full py-16 px-6 text-center bg-slate-50 border border-slate-200 rounded-3xl space-y-3">
+                        <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center mx-auto text-xl font-bold">
+                          🔒
+                        </div>
+                        <h4 className="text-base font-bold text-slate-800">Các đề thi hiện đang tạm ẩn</h4>
+                        <p className="text-xs text-slate-500 max-w-md mx-auto">
+                          Thầy giáo hiện đang tạm thời ẩn danh sách đề thi của chuyên đề này đối với học sinh. Vui lòng quay lại sau!
+                        </p>
+                      </div>
+                    ) : (
+                      visibleExams.map((e, idx) => {
                       const isUnlocked = isExamUnlocked(idx);
                       const history = getChuong2ExamHistory(e.id);
                       const bestScore = history && history.length > 0
@@ -1887,12 +1903,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
 
                           {/* Action Button */}
                           <div className="pt-2 flex items-center gap-2">
-                            {!isEffectiveTeacher && Boolean(accessConfig.exams?.[e.id]) ? (
-                              <div className="w-full py-3 px-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold text-center flex items-center justify-center gap-1.5">
-                                <Lock className="w-4 h-4 text-rose-600" />
-                                <span>Đề thi này đang được Thầy giáo tạm đóng</span>
-                              </div>
-                            ) : isUnlocked ? (
+                            {isUnlocked ? (
                               <>
                                 <button
                                   onClick={() => handleStartExam(e.id, isShuffleEnabled)}
@@ -1934,7 +1945,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
                           </div>
                         </div>
                       );
-                    })}
+                    }))}
                   </div>
                 </div>
               ) : (

@@ -468,7 +468,7 @@ export default function ThptManagementHub() {
                           <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
                             isChapLocked ? "bg-rose-100 text-rose-800 border border-rose-200" : "bg-emerald-100 text-emerald-800 border border-emerald-200"
                           }`}>
-                            {isChapLocked ? "🔒 ĐANG KHÓA VỚI HS" : "🟢 ĐANG MỞ CHO HS"}
+                            {isChapLocked ? "🔒 ĐÃ ẨN KHỎI HỌC SINH" : "🟢 ĐANG HIỆN CHO HỌC SINH"}
                           </span>
                         </div>
                         <p className="text-xs text-gray-500 mt-0.5">
@@ -487,7 +487,7 @@ export default function ThptManagementHub() {
                             : "bg-emerald-100 text-emerald-800 border-emerald-300 hover:bg-emerald-200"
                         }`}
                       >
-                        {isChapLocked ? "Bấm để Mở Chuyên Đề" : "Bấm để Khóa Chuyên Đề"}
+                        {isChapLocked ? "Bấm để Mở (Hiện HS)" : "Bấm để Khóa (Ẩn HS)"}
                       </button>
                       <Link
                         to={mg.link + "?teacher=1"}
@@ -526,7 +526,7 @@ export default function ThptManagementHub() {
                                   <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
                                     isExLocked ? "bg-rose-100 text-rose-800" : "bg-emerald-100 text-emerald-800"
                                   }`}>
-                                    {isExLocked ? "🔒 Đã Khóa HS" : "🟢 Đang Mở"}
+                                    {isExLocked ? "🔒 Đã Ẩn HS" : "🟢 Đang Mở"}
                                   </span>
                                 </div>
                                 <h4 className="text-xs font-black text-gray-800 leading-snug line-clamp-2">

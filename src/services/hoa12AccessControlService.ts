@@ -172,14 +172,29 @@ export async function toggleChapterAccess(
   chapterKey: string,
   forceLocked?: boolean
 ): Promise<GranularAccessConfig> {
-  const current = Boolean(memoryConfig.chapters?.[chapterKey]);
+  const aliasMap: Record<string, string[]> = {
+    c1: ['c1', 'h12_c1'],
+    h12_c1: ['c1', 'h12_c1'],
+    c2: ['c2', 'h12_c2'],
+    h12_c2: ['c2', 'h12_c2'],
+    c5: ['c5', 'h12_c5'],
+    h12_c5: ['c5', 'h12_c5'],
+    h11_c1: ['h11_c1'],
+    h11_c2: ['h11_c2'],
+    h10_c1: ['h10_c1'],
+    h10_c2: ['h10_c2'],
+  };
+  const aliases = aliasMap[chapterKey] || [chapterKey];
+  const current = aliases.some(a => Boolean(memoryConfig.chapters?.[a]));
   const nextState = forceLocked !== undefined ? forceLocked : !current;
 
+  const updatedChapters = { ...memoryConfig.chapters };
+  aliases.forEach(a => {
+    updatedChapters[a] = nextState;
+  });
+
   return await saveHoa12AccessConfig({
-    chapters: {
-      ...memoryConfig.chapters,
-      [chapterKey]: nextState,
-    },
+    chapters: updatedChapters,
     auth_version: Date.now(),
   });
 }
@@ -295,18 +310,29 @@ export function isChapterLocked(
 
   // Kiểm tra cờ khối
   const k = String(chapterKey).toLowerCase();
-  if (k.includes('12') && config.grades?.grade_12) return true;
+  if ((k.includes('12') || k === 'c1' || k === 'c2' || k === 'c5') && config.grades?.grade_12) return true;
   if (k.includes('11') && config.grades?.grade_11) return true;
   if (k.includes('10') && config.grades?.grade_10) return true;
 
-  // Kiểm tra cờ từng chương
-  if (config.chapters?.[chapterKey] !== undefined) {
-    return Boolean(config.chapters[chapterKey]);
+  // Kiểm tra cờ từng chương với ánh xạ 2 chiều
+  const aliasMap: Record<string, string[]> = {
+    c1: ['c1', 'h12_c1'],
+    h12_c1: ['c1', 'h12_c1'],
+    c2: ['c2', 'h12_c2'],
+    h12_c2: ['c2', 'h12_c2'],
+    c5: ['c5', 'h12_c5'],
+    h12_c5: ['c5', 'h12_c5'],
+    h11_c1: ['h11_c1'],
+    h11_c2: ['h11_c2'],
+    h10_c1: ['h10_c1'],
+    h10_c2: ['h10_c2'],
+  };
+  const aliases = aliasMap[chapterKey] || [chapterKey];
+  for (const a of aliases) {
+    if (config.chapters?.[a] !== undefined && Boolean(config.chapters[a])) {
+      return true;
+    }
   }
-  // Fallback map
-  if (chapterKey === 'h12_c1' && config.chapters?.c1 !== undefined) return Boolean(config.chapters.c1);
-  if (chapterKey === 'h12_c2' && config.chapters?.c2 !== undefined) return Boolean(config.chapters.c2);
-  if (chapterKey === 'h12_c5' && config.chapters?.c5 !== undefined) return Boolean(config.chapters.c5);
 
   return false;
 }
