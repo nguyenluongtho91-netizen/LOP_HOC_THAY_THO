@@ -39,7 +39,7 @@ import {
   ExamCategory 
 } from '@/utils/practiceExamHelper'
 import toast from 'react-hot-toast'
-import { fetchHoa12AccessConfig, grantAllStudentsAccess, revokeAllStudentsAccess, type Hoa12AccessConfig } from '@/services/hoa12AccessControlService'
+import { fetchHoa12AccessConfig, grantAllStudentsAccess, revokeAllStudentsAccess, isChapterLocked, isGradeLocked, isCategoryLocked, type GranularAccessConfig } from '@/services/hoa12AccessControlService'
 import { format } from 'date-fns'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import { normalizeExamData } from '@/services/examNormalizer'
@@ -1783,11 +1783,18 @@ export default function StudentPortal() {
                       🧪
                     </div>
                     <div>
-                      <div className="flex items-center gap-1.5 mb-1">
+                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
                         <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
                           CHƯƠNG 1
                         </span>
                         <span className="text-xs text-indigo-300 font-bold">495 Câu · 7 Đề</span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                          accessConfig && isChapterLocked('c1', isFreeCandidate, accessConfig)
+                            ? 'bg-rose-500 text-white'
+                            : 'bg-emerald-500 text-white'
+                        }`}>
+                          {accessConfig && isChapterLocked('c1', isFreeCandidate, accessConfig) ? '🔒 Đang Khóa' : '🟢 Đang Mở'}
+                        </span>
                       </div>
                       <h3 className="text-base sm:text-lg font-black text-white">
                         ESTER – LIPID – XÀ PHÒNG
@@ -1799,7 +1806,13 @@ export default function StudentPortal() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => navigate('/hoa12-chuong1')}
+                    onClick={() => {
+                      if (accessConfig && isChapterLocked('c1', isFreeCandidate, accessConfig)) {
+                        toast.error('Chương 1 đang tạm khóa bởi Thầy Thọ! Thầy chưa cấp quyền cho chương này.', { icon: '🔒' });
+                        return;
+                      }
+                      navigate('/hoa12-chuong1');
+                    }}
                     className="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
                   >
                     <span>🚀 VÀO CHƯƠNG 1 (ESTER - LIPID)</span>
@@ -1814,11 +1827,18 @@ export default function StudentPortal() {
                       ⚡
                     </div>
                     <div>
-                      <div className="flex items-center gap-1.5 mb-1">
+                      <div className="flex items-center gap-1.5 mb-1 flex-wrap">
                         <span className="bg-teal-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full uppercase">
                           CHƯƠNG 5 MỚI
                         </span>
                         <span className="text-xs text-teal-300 font-bold">440+ Câu · 4 Đề Chuẩn</span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded-full uppercase ${
+                          accessConfig && isChapterLocked('c5', isFreeCandidate, accessConfig)
+                            ? 'bg-rose-500 text-white'
+                            : 'bg-emerald-500 text-white'
+                        }`}>
+                          {accessConfig && isChapterLocked('c5', isFreeCandidate, accessConfig) ? '🔒 Đang Khóa' : '🟢 Đang Mở'}
+                        </span>
                       </div>
                       <h3 className="text-base sm:text-lg font-black text-white">
                         PIN ĐIỆN HOÁ VÀ ĐIỆN PHÂN
@@ -1830,8 +1850,14 @@ export default function StudentPortal() {
                   </div>
                   <button
                     type="button"
-                    onClick={() => navigate('/hoa12-chuong5')}
-                    className="w-full py-3 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-600 hover:to-indigo-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
+                    onClick={() => {
+                      if (accessConfig && isChapterLocked('c5', isFreeCandidate, accessConfig)) {
+                        toast.error('Chương 5 đang tạm khóa bởi Thầy Thọ! Thầy chưa cấp quyền cho chương này.', { icon: '🔒' });
+                        return;
+                      }
+                      navigate('/hoa12-chuong5');
+                    }}
+                    className="w-full py-3 bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95 shrink-0 relative z-10"
                   >
                     <span>⚡ VÀO CHƯƠNG 5 (PIN & ĐIỆN PHÂN)</span>
                     <ArrowRight className="w-4 h-4" />

@@ -8,7 +8,7 @@ import ExamRoom from '@/components/ExamRoom'
 import { shuffleExamForStudent } from '@/services/mergeExamsService'
 import { normalizeExamData } from '@/services/examNormalizer'
 import toast from 'react-hot-toast'
-import { fetchHoa12AccessConfig } from '@/services/hoa12AccessControlService'
+import { fetchHoa12AccessConfig, isGradeLocked } from '@/services/hoa12AccessControlService'
 
 // ─── Đồng hồ đếm ngược chờ đến giờ mở đề ──────────────────────────────────────
 function WaitingScreen({ opensAt, onTimeReached, onExit }: { opensAt: string; onTimeReached: () => void; onExit: () => void }) {
@@ -207,7 +207,8 @@ export default function ExamRoomPage() {
                           localStorage.getItem('role') === 'teacher' ||
                           localStorage.getItem('role') === 'admin';
         
-        if (accessConfig.is_locked && !isTeacher) {
+        const isGradeBlocked = isGradeLocked(currentStudent?.grade || roomData?.classes?.class_name || '', isTeacher, accessConfig);
+        if ((accessConfig.is_locked || isGradeBlocked) && !isTeacher) {
           setTimeStatus('master_locked');
           setLoading(false);
           return;

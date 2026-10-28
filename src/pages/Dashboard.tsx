@@ -15,7 +15,7 @@ import type { LucideIcon } from 'lucide-react'
 import Modal from '@/components/Modal'
 import StudentScorecardModal from '@/components/StudentScorecardModal'
 import toast from 'react-hot-toast'
-import { fetchHoa12AccessConfig, getHoa12AccessConfigSync, grantAllStudentsAccess, revokeAllStudentsAccess, type Hoa12AccessConfig } from '@/services/hoa12AccessControlService'
+import { fetchHoa12AccessConfig, getHoa12AccessConfigSync, grantAllStudentsAccess, revokeAllStudentsAccess, toggleChapterAccess, toggleGradeAccess, toggleCategoryAccess, type GranularAccessConfig } from '@/services/hoa12AccessControlService'
 
 
 type Color = 'teal' | 'green' | 'amber' | 'blue' | 'purple'
@@ -117,37 +117,77 @@ export default function Dashboard() {
   const [sessionTime, setSessionTime] = useState<string>('17:45 - 19:15')
   const [sessionRoom, setSessionRoom] = useState<string>('Phòng Chuyên Toán')
   const [savingSchedule, setSavingSchedule] = useState(false)
-  // ── MASTER ACCESS CONTROL (QUYỀN HỌC & THI - ĐỘC QUYỀN THẦY THỌ TẠI TRANG CHỦ) ──
-  const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync())
+  // ── MASTER ACCESS CONTROL PHÂN LẬP TỪNG CHƯƠNG & TỪNG KHỐI (ĐỘC QUYỀN THẦY THỌ) ──
+  const [accessConfig, setAccessConfig] = useState<GranularAccessConfig>(() => getHoa12AccessConfigSync())
   const [isUpdatingAccess, setIsUpdatingAccess] = useState(false)
 
   useEffect(() => {
     fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }))
   }, [])
 
-  const handleGrantAccess = async () => {
+  const handleToggleChapter = async (ch: 'c1' | 'c2' | 'c3' | 'c4' | 'c5', name: string) => {
     try {
       setIsUpdatingAccess(true)
-      const updated = await grantAllStudentsAccess()
+      const updated = await toggleChapterAccess(ch)
       setAccessConfig({ ...updated })
-      toast.success('ĐÃ CẤP QUYỀN! Học sinh toàn bộ hệ thống đã được mở tự do học và thi.', { icon: '🟢', duration: 4000 })
+      const isLocked = updated.chapters[ch]
+      toast.success(`${isLocked ? '🔒 ĐÃ KHÓA' : '🟢 ĐÃ MỞ CẤP QUYỀN'}: ${name}!`, { duration: 3500 })
     } catch (e) {
-      console.error(e)
-      toast.error('Lỗi khi cấp quyền cho học sinh!')
+      toast.error('Lỗi khi cập nhật quyền chương!')
     } finally {
       setIsUpdatingAccess(false)
     }
   }
 
-  const handleRevokeAccess = async () => {
+  const handleToggleGrade = async (gradeKey: 'grade_12' | 'grade_11' | 'grade_10', name: string) => {
+    try {
+      setIsUpdatingAccess(true)
+      const updated = await toggleGradeAccess(gradeKey)
+      setAccessConfig({ ...updated })
+      const isLocked = updated.grades[gradeKey]
+      toast.success(`${isLocked ? '🔒 ĐÃ KHÓA' : '🟢 ĐÃ MỞ CẤP QUYỀN'}: ${name}!`, { duration: 3500 })
+    } catch (e) {
+      toast.error('Lỗi khi cập nhật quyền khối!')
+    } finally {
+      setIsUpdatingAccess(false)
+    }
+  }
+
+  const handleToggleCategory = async (catKey: 'homework' | 'practice' | 'survey', name: string) => {
+    try {
+      setIsUpdatingAccess(true)
+      const updated = await toggleCategoryAccess(catKey)
+      setAccessConfig({ ...updated })
+      const isLocked = updated.categories[catKey]
+      toast.success(`${isLocked ? '🔒 ĐÃ KHÓA' : '🟢 ĐÃ MỞ CẤP QUYỀN'}: ${name}!`, { duration: 3500 })
+    } catch (e) {
+      toast.error('Lỗi khi cập nhật danh mục!')
+    } finally {
+      setIsUpdatingAccess(false)
+    }
+  }
+
+  const handleGrantAll = async () => {
+    try {
+      setIsUpdatingAccess(true)
+      const updated = await grantAllStudentsAccess()
+      setAccessConfig({ ...updated })
+      toast.success('🟢 ĐÃ MỞ TẤT CẢ: Cấp quyền học sinh toàn bộ các chương và khối!', { duration: 4000 })
+    } catch (e) {
+      toast.error('Lỗi khi mở toàn bộ!')
+    } finally {
+      setIsUpdatingAccess(false)
+    }
+  }
+
+  const handleRevokeAll = async () => {
     try {
       setIsUpdatingAccess(true)
       const updated = await revokeAllStudentsAccess()
       setAccessConfig({ ...updated })
-      toast.success('ĐÃ CẤM QUYỀN TOÀN BỘ HỌC SINH! Toàn hệ thống đã khóa bảo vệ thành công.', { icon: '🛑', duration: 4000 })
+      toast.success('🛑 ĐÃ KHÓA TOÀN BỘ: Cấm quyền tất cả các chương và khối!', { duration: 4000 })
     } catch (e) {
-      console.error(e)
-      toast.error('Lỗi khi cấm quyền học sinh!')
+      toast.error('Lỗi khi khóa toàn bộ!')
     } finally {
       setIsUpdatingAccess(false)
     }
@@ -490,100 +530,261 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* ── BẢNG ĐIỀU KHIỂN CẤP QUYỀN TRANG CHỦ (ĐỘC QUYỀN THẦY THỌ) ── */}
-      <div className={`p-4 sm:p-5 rounded-2xl border transition-all shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4 ${
-        accessConfig?.is_locked 
-          ? 'bg-gradient-to-r from-rose-50 via-red-50 to-amber-50 border-rose-200' 
-          : 'bg-gradient-to-r from-teal-50 via-emerald-50 to-cyan-50 border-teal-200'
-      }`}>
-        <div className="flex items-start sm:items-center gap-3.5">
-          <div className={`w-11 h-11 rounded-2xl flex items-center justify-center text-xl shrink-0 shadow-sm ${
-            accessConfig?.is_locked 
-              ? 'bg-rose-600 text-white' 
-              : 'bg-teal-600 text-white'
-          }`}>
-            {accessConfig?.is_locked ? <Lock className="w-5 h-5" /> : <Unlock className="w-5 h-5" />}
-          </div>
-          <div>
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-black uppercase tracking-wider text-slate-800">
-                TRUNG TÂM CẤP QUYỀN HỌC & THI (CHỈ TRANG CHỦ MỚI CÓ QUYỀN)
-              </span>
-              <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1 ${
-                accessConfig?.is_locked
-                  ? 'bg-rose-100 text-rose-800 border border-rose-300 animate-pulse'
-                  : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-              }`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${accessConfig?.is_locked ? 'bg-rose-600' : 'bg-emerald-600'}`} />
-                {accessConfig?.is_locked ? 'Đang Cấm Quyền Học Sinh (Khóa)' : 'Đã Cấp Quyền Cho Học Sinh (Mở Tự Do)'}
-              </span>
+      {/* ── BẢNG ĐIỀU KHIỂN CẤP QUYỀN PHÂN LẬP TỪNG CHƯƠNG & TỪNG KHỐI (ĐỘC QUYỀN THẦY THỌ) ── */}
+      <div className="p-5 sm:p-6 rounded-3xl bg-white border-2 border-slate-200 shadow-md space-y-5">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl shadow-md shadow-indigo-600/20">
+              🎛️
             </div>
-            <p className="text-xs text-slate-600 font-medium mt-1">
-              {accessConfig?.is_locked
-                ? 'Học sinh đang bị chặn vào các bài kiểm tra & học liệu. Chỉ Thầy Thọ mới có quyền cấp quyền tại Trang Chủ.'
-                : 'Học sinh toàn hệ thống đang được phép vào học và làm bài thi bình thường.'}
-            </p>
+            <div>
+              <h3 className="text-sm sm:text-base font-black text-slate-900 uppercase tracking-tight flex items-center gap-2">
+                <span>TRUNG TÂM CẤP QUYỀN PHÂN LẬP (TỪNG CHƯƠNG · TỪNG KHỐI)</span>
+                <span className="text-[10px] bg-indigo-100 text-indigo-800 font-extrabold px-2 py-0.5 rounded-full uppercase">
+                  Độc Quyền Thầy Thọ
+                </span>
+              </h3>
+              <p className="text-xs text-slate-500 font-medium mt-0.5">
+                Bấm trực tiếp vào từng mục để Mở (màu xanh) hoặc Khóa (màu đỏ) độc lập cho từng chương hoặc từng khối.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              disabled={isUpdatingAccess}
+              onClick={handleGrantAll}
+              className="px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+            >
+              <span>🟢 Mở Tất Cả</span>
+            </button>
+            <button
+              type="button"
+              disabled={isUpdatingAccess}
+              onClick={handleRevokeAll}
+              className="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-300 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
+            >
+              <span>🛑 Khóa Tất Cả</span>
+            </button>
+            <button
+              type="button"
+              disabled={isUpdatingAccess}
+              onClick={() => {
+                setIsUpdatingAccess(true);
+                fetchHoa12AccessConfig().then((cfg) => {
+                  setAccessConfig({ ...cfg });
+                  setIsUpdatingAccess(false);
+                  toast.success('Đã đồng bộ trạng thái mới nhất từ Cloud!');
+                });
+              }}
+              title="Làm mới từ Cloud"
+              className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-all cursor-pointer"
+            >
+              <RefreshCw className={`w-4 h-4 ${isUpdatingAccess ? 'animate-spin' : ''}`} />
+            </button>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5 shrink-0">
-          {/* NÚT 1: CẤP QUYỀN CHO HỌC SINH */}
-          <button
-            type="button"
-            disabled={isUpdatingAccess}
-            onClick={handleGrantAccess}
-            className={`px-4 py-2.5 rounded-xl text-xs font-black shadow-sm flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 ${
-              !accessConfig?.is_locked
-                ? 'bg-emerald-600 text-white ring-2 ring-emerald-400 ring-offset-2 shadow-emerald-600/30'
-                : 'bg-white hover:bg-emerald-50 text-emerald-800 border-2 border-emerald-500 hover:scale-[1.02] active:scale-95'
-            }`}
-          >
-            <Unlock className="w-4 h-4" />
-            <span>🟢 CẤP QUYỀN (MỞ CHO HỌC SINH)</span>
-            {!accessConfig?.is_locked && (
-              <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full uppercase tracking-wider font-extrabold">
-                Đang mở
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* CỘT 1: HÓA HỌC 12 (TỪNG CHƯƠNG) */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                <span>🧪</span>
+                <span>Hóa Học 12 (Từng Chương)</span>
               </span>
-            )}
-          </button>
+              <span className="text-[10px] text-slate-400 font-bold">2 Chương chuẩn</span>
+            </div>
 
-          {/* NÚT 2: CẤM QUYỀN HỌC SINH */}
-          <button
-            type="button"
-            disabled={isUpdatingAccess}
-            onClick={handleRevokeAccess}
-            className={`px-4 py-2.5 rounded-xl text-xs font-black shadow-sm flex items-center gap-2 transition-all cursor-pointer disabled:opacity-50 ${
-              accessConfig?.is_locked
-                ? 'bg-rose-600 text-white ring-2 ring-rose-400 ring-offset-2 shadow-rose-600/30 animate-pulse'
-                : 'bg-white hover:bg-rose-50 text-rose-800 border-2 border-rose-500 hover:scale-[1.02] active:scale-95'
-            }`}
-          >
-            <Lock className="w-4 h-4" />
-            <span>🛑 CẤM QUYỀN (KHÓA TỨC THÌ)</span>
-            {accessConfig?.is_locked && (
-              <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full uppercase tracking-wider font-extrabold">
-                Đang khóa
+            <div className="space-y-2">
+              {/* CHƯƠNG 1 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div className="min-w-0 pr-2">
+                  <div className="text-xs font-black text-slate-900 truncate">Chương 1: Ester – Lipid</div>
+                  <div className="text-[10px] text-slate-400 font-medium">7 Đề cấu trúc mới</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleChapter('c1', 'Chương 1 (Ester - Lipid)')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.chapters?.c1
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.chapters?.c1 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* CHƯƠNG 5 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div className="min-w-0 pr-2">
+                  <div className="text-xs font-black text-slate-900 truncate">Chương 5: Pin & Điện Phân</div>
+                  <div className="text-[10px] text-slate-400 font-medium">4 Đề kiểm tra nâng cao</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleChapter('c5', 'Chương 5 (Pin & Điện Phân)')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.chapters?.c5
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.chapters?.c5 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* CỘT 2: PHÂN LẬP THEO KHỐI LỚP */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                <span>📚</span>
+                <span>Phân Lập Khối Lớp</span>
               </span>
-            )}
-          </button>
+              <span className="text-[10px] text-slate-400 font-bold">K10 · K11 · K12</span>
+            </div>
 
-          {/* NÚT 3: ĐỒNG BỘ LẠI TỪ CLOUD */}
-          <button
-            type="button"
-            disabled={isUpdatingAccess}
-            onClick={() => {
-              setIsUpdatingAccess(true);
-              fetchHoa12AccessConfig().then((cfg) => {
-                setAccessConfig({ ...cfg });
-                setIsUpdatingAccess(false);
-                toast.success('Đã đồng bộ trạng thái cấp quyền mới nhất từ Cloud!');
-              });
-            }}
-            title="Đồng bộ lại từ Cloud"
-            className="p-2.5 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-slate-600 hover:text-slate-900 transition-all shadow-2xs cursor-pointer"
-          >
-            <RefreshCw className={`w-4 h-4 ${isUpdatingAccess ? 'animate-spin' : ''}`} />
-          </button>
+            <div className="space-y-2">
+              {/* KHỐI 12 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khối 12 (Toàn bộ đề thi K12)</div>
+                  <div className="text-[10px] text-slate-400 font-medium">BTVN & Phòng thi K12</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleGrade('grade_12', 'Khối 12')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.grades?.grade_12
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.grades?.grade_12 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* KHỐI 11 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khối 11</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Học sinh Lớp 11</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleGrade('grade_11', 'Khối 11')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.grades?.grade_11
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.grades?.grade_11 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* KHỐI 10 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khối 10</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Học sinh Lớp 10</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleGrade('grade_10', 'Khối 10')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.grades?.grade_10
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.grades?.grade_10 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* CỘT 3: CÁC KHU VỰC PHÒNG THI */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                <span>🎯</span>
+                <span>Khu Vực Phòng Thi</span>
+              </span>
+              <span className="text-[10px] text-slate-400 font-bold">BTVN · Đề Thi · Khảo Sát</span>
+            </div>
+
+            <div className="space-y-2">
+              {/* BTVN */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Bài Tập Về Nhà</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Đề giao nộp định kỳ</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleCategory('homework', 'Bài Tập Về Nhà')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.categories?.homework
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.categories?.homework ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* LUYỆN ĐỀ THI */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Luyện Đề Thi</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Đề ôn tập thi thử</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleCategory('practice', 'Luyện Đề Thi')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.categories?.practice
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.categories?.practice ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* KHẢO SÁT CHẤT LƯỢNG */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khảo Sát Chất Lượng</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Bài thi kiểm tra chung</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleCategory('survey', 'Khảo Sát Chất Lượng')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.categories?.survey
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.categories?.survey ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -127,7 +127,7 @@ import {
   fetchHoa12AccessConfig,
   saveHoa12AccessConfig,
   revokeAllStudentsAccess,
-  checkIsStudentAuthorized,
+  isChapterLocked, checkIsStudentAuthorized,
   tryAuthorizeStudentWithPasscode,
   verifyTeacherAdminPin,
   Hoa12AccessConfig
@@ -141,7 +141,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
 }) => {
   // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
   const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => checkIsStudentAuthorized(isTeacher, getHoa12AccessConfigSync()));
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("c5", isTeacher, getHoa12AccessConfigSync()));
   const [passcodeInput, setPasscodeInput] = useState('');
   const [showTeacherPinModal, setShowTeacherPinModal] = useState(false);
   const [teacherPinInput, setTeacherPinInput] = useState('');
@@ -158,7 +158,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
       setAccessConfig(cfg);
       setNewPasscodeForm(cfg.passcode || 'THAYTHO2026');
       setTempLockEnabled(cfg.is_locked);
-      const auth = checkIsStudentAuthorized(isTeacher, cfg);
+      const auth = !isChapterLocked("c5", isTeacher, cfg);
       setIsUnlocked(auth);
     });
     return () => { isMounted = false; };
