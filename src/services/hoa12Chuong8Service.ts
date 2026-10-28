@@ -304,6 +304,9 @@ export function getChuong8RankTitle(xp: number): string {
   return '📚 Tân Binh Khối 12';
 }
 
+
+export const getRankTitle = getChuong8RankTitle;
+
 export class Hoa12Chuong8Service {
   static getLessons() { return HOA12_CHUONG8_LESSONS; }
   static getExams() { return HOA12_CHUONG8_EXAMS; }

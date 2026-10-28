@@ -194,7 +194,7 @@ export const Hoa11Chuong5View: React.FC<Hoa11Chuong5ViewProps> = ({
   const [examHistory, setExamHistory] = useState<Chuong5ExamAttempt[]>([]);
   const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
   const [filterResultType, setFilterResultType] = useState<'all' | 'wrong' | 'correct'>('all');
-  const [selectedLessonId, setSelectedLessonId] = useState<string>('bai1');
+  const [selectedLessonId, setSelectedLessonId] = useState<string>('bai19');
   const [practicePart, setPracticePart] = useState<1 | 2 | 3>(1);
 
   // Sub-topic & Level filtering

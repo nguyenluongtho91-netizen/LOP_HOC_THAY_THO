@@ -430,7 +430,7 @@ export default function HierarchicalGradeTree() {
                       onClick={(e) => toggle('thpt_12_c6', e)}
                       className="flex items-center justify-between font-bold text-blue-200 hover:text-white cursor-pointer"
                     >
-                      <Link to="/hoa12-chuong6" className="hover:underline flex items-center gap-1">
+                      <Link to="/hoa12-chuong6" className="flex items-center gap-1.5 flex-1 hover:text-white">
                         <span>⚙️ Chương 6: Đại Cương Kim Loại</span>
                       </Link>
                       {expanded['thpt_12_c6'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
@@ -456,7 +456,7 @@ export default function HierarchicalGradeTree() {
                       onClick={(e) => toggle('thpt_12_c7', e)}
                       className="flex items-center justify-between font-bold text-orange-200 hover:text-white cursor-pointer"
                     >
-                      <Link to="/hoa12-chuong7" className="hover:underline flex items-center gap-1">
+                      <Link to="/hoa12-chuong7" className="flex items-center gap-1.5 flex-1 hover:text-white">
                         <span>🔥 Chương 7: Nhóm IA & IIA</span>
                       </Link>
                       {expanded['thpt_12_c7'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
@@ -482,7 +482,7 @@ export default function HierarchicalGradeTree() {
                       onClick={(e) => toggle('thpt_12_c8', e)}
                       className="flex items-center justify-between font-bold text-purple-200 hover:text-white cursor-pointer"
                     >
-                      <Link to="/hoa12-chuong8" className="hover:underline flex items-center gap-1">
+                      <Link to="/hoa12-chuong8" className="flex items-center gap-1.5 flex-1 hover:text-white">
                         <span>🔮 Chương 8: Chuyển Tiếp & Phức Chất</span>
                       </Link>
                       {expanded['thpt_12_c8'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}

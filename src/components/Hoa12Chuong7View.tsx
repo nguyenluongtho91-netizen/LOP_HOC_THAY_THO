@@ -149,7 +149,7 @@ export const Hoa12Chuong7View: React.FC<Hoa12Chuong7ViewProps> = ({
   ));
   // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
   const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h11_c7", isEffectiveTeacher, getHoa12AccessConfigSync()));
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => !isChapterLocked("h12_c7", isEffectiveTeacher, getHoa12AccessConfigSync()));
   const [passcodeInput, setPasscodeInput] = useState('');
   const [showTeacherPinModal, setShowTeacherPinModal] = useState(false);
   const [teacherPinInput, setTeacherPinInput] = useState('');
@@ -166,7 +166,7 @@ export const Hoa12Chuong7View: React.FC<Hoa12Chuong7ViewProps> = ({
       setAccessConfig(cfg);
       setNewPasscodeForm(cfg.passcode || 'THAYTHO2026');
       setTempLockEnabled(cfg.is_locked);
-      const auth = !isChapterLocked("h11_c7", isEffectiveTeacher, cfg);
+      const auth = !isChapterLocked("h12_c7", isEffectiveTeacher, cfg);
       setIsUnlocked(auth);
     });
     return () => { isMounted = false; };
@@ -194,7 +194,7 @@ export const Hoa12Chuong7View: React.FC<Hoa12Chuong7ViewProps> = ({
   const [examHistory, setExamHistory] = useState<Chuong7ExamAttempt[]>([]);
   const [showHistoryModal, setShowHistoryModal] = useState<boolean>(false);
   const [filterResultType, setFilterResultType] = useState<'all' | 'wrong' | 'correct'>('all');
-  const [selectedLessonId, setSelectedLessonId] = useState<string>('bai1');
+  const [selectedLessonId, setSelectedLessonId] = useState<string>('bai24');
   const [practicePart, setPracticePart] = useState<1 | 2 | 3>(1);
 
   // Sub-topic & Level filtering
