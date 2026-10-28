@@ -94,10 +94,24 @@ export async function saveHoa12AccessConfig(
   }
 
   try {
-    await supabase.from('exams').upsert({
-      title: STORE_TITLE,
-      data: memoryConfig,
-    }, { onConflict: 'title' });
+    const { data: existing, error: selErr } = await supabase
+      .from('exams')
+      .select('id')
+      .eq('title', STORE_TITLE)
+      .maybeSingle();
+
+    if (existing?.id) {
+      const { error: updErr } = await supabase
+        .from('exams')
+        .update({ data: memoryConfig })
+        .eq('id', existing.id);
+      if (updErr) console.error('Lỗi update config lên Cloud:', updErr);
+    } else {
+      const { error: insErr } = await supabase
+        .from('exams')
+        .insert({ title: STORE_TITLE, data: memoryConfig });
+      if (insErr) console.error('Lỗi insert config lên Cloud:', insErr);
+    }
   } catch (err) {
     console.error('Lỗi lưu cấu hình quyền Hóa 12 lên Cloud:', err);
   }
