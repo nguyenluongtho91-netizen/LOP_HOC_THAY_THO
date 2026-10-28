@@ -122,42 +122,47 @@ class ChemistrySoundFX {
 
 const sfx = new ChemistrySoundFX();
 
+import {
+  getHoa12AccessConfigSync,
+  fetchHoa12AccessConfig,
+  saveHoa12AccessConfig,
+  revokeAllStudentsAccess,
+  checkIsStudentAuthorized,
+  tryAuthorizeStudentWithPasscode,
+  verifyTeacherAdminPin,
+  Hoa12AccessConfig
+} from '../services/hoa12AccessControlService';
+
 export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
   studentName = 'Học sinh',
   studentGrade = 'Lớp 12',
   onClose,
   isTeacher = false
 }) => {
-  // ── Access Control & Security Lock ──────────────────────────────────
-  const [currentPasscode, setCurrentPasscode] = useState<string>(() => {
-    try {
-      return localStorage.getItem('hoa12_c5_passcode') || 'THAYTHO2026';
-    } catch (e) {
-      return 'THAYTHO2026';
-    }
-  });
-  const [isLockEnabled, setIsLockEnabled] = useState<boolean>(() => {
-    try {
-      const val = localStorage.getItem('hoa12_c5_lock_status');
-      return val === 'locked';
-    } catch (e) {
-      return false;
-    }
-  });
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
-    if (isTeacher) return true;
-    try {
-      const val = localStorage.getItem('hoa12_c5_lock_status');
-      if (val === 'locked') {
-        return localStorage.getItem('hoa12_student_authorized') === 'true';
-      }
-    } catch (e) {}
-    return true;
-  });
+  // ── Access Control & Security Lock (Đồng bộ Cloud & LocalStorage) ──
+  const [accessConfig, setAccessConfig] = useState<Hoa12AccessConfig>(() => getHoa12AccessConfigSync());
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => checkIsStudentAuthorized(isTeacher, getHoa12AccessConfigSync()));
   const [passcodeInput, setPasscodeInput] = useState('');
+  const [showTeacherPinModal, setShowTeacherPinModal] = useState(false);
+  const [teacherPinInput, setTeacherPinInput] = useState('');
   const [isTeacherModalOpen, setIsTeacherModalOpen] = useState(false);
-  const [newPasscodeForm, setNewPasscodeForm] = useState(currentPasscode);
-  const [tempLockEnabled, setTempLockEnabled] = useState(isLockEnabled);
+  const [newPasscodeForm, setNewPasscodeForm] = useState(() => getHoa12AccessConfigSync().passcode || 'THAYTHO2026');
+  const [tempLockEnabled, setTempLockEnabled] = useState(() => getHoa12AccessConfigSync().is_locked);
+  const [isRevoking, setIsRevoking] = useState(false);
+
+  // Tự động kiểm tra và đồng bộ trạng thái khóa từ Supabase Cloud
+  useEffect(() => {
+    let isMounted = true;
+    fetchHoa12AccessConfig().then((cfg) => {
+      if (!isMounted) return;
+      setAccessConfig(cfg);
+      setNewPasscodeForm(cfg.passcode || 'THAYTHO2026');
+      setTempLockEnabled(cfg.is_locked);
+      const auth = checkIsStudentAuthorized(isTeacher, cfg);
+      setIsUnlocked(auth);
+    });
+    return () => { isMounted = false; };
+  }, [isTeacher]);
 
   // ── Phân lập khối lớp: Chỉ Khối 12 hoặc Thầy giáo mới được truy cập ─────────
   const isTargetGrade = useMemo(() => {
@@ -544,19 +549,13 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                if (!passcodeInput.trim()) {
-                  toast.error('Vui lòng nhập mã cấp quyền do Thầy cấp!');
-                  return;
-                }
-                const entered = passcodeInput.trim().toUpperCase();
-                const validCode = (localStorage.getItem('hoa12_c5_passcode') || 'THAYTHO2026').trim().toUpperCase();
-                if (entered === validCode) {
-                  localStorage.setItem('hoa12_student_authorized', 'true');
+                const res = tryAuthorizeStudentWithPasscode(passcodeInput, accessConfig);
+                if (res.success) {
                   setIsUnlocked(true);
-                  sfx.playComplete();
-                  toast.success('Mở khóa thành công! Chúc em học tập thật tốt.', { icon: '🎉', duration: 4000 });
+                  try { sfx.playComplete(); } catch (err) {}
+                  toast.success(res.message, { icon: '🎉', duration: 4000 });
                 } else {
-                  toast.error('Mã cấp quyền không chính xác. Em vui lòng liên hệ Thầy Thọ để nhận mã nhé!');
+                  toast.error(res.message);
                 }
               }}
               className="space-y-4 text-left"
@@ -582,18 +581,14 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                 <Unlock className="w-5 h-5" />
                 XÁC NHẬN MỞ KHÓA BÀI HỌC
               </button>
-                        {/* Nút vào xem nhanh dành cho Thầy Thọ */}
+            {/* Dành riêng cho Thầy Thọ đăng nhập quản trị an toàn */}
             <button
               type="button"
-              onClick={() => {
-                localStorage.setItem('hoa12_student_authorized', 'true');
-                localStorage.setItem('is_teacher_mode', 'true');
-                setIsUnlocked(true);
-                toast.success('Xin chào Thầy Thọ! Chúc Thầy kiểm tra đề hiệu quả.', { icon: '👋' });
-              }}
-              className="w-full py-3 px-4 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-900 font-black text-xs border border-amber-300 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+              onClick={() => setShowTeacherPinModal(true)}
+              className="w-full py-2.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-300 transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <span>⚡ Tôi là Thầy Thọ (Vào xem ngay không cần mã)</span>
+              <ShieldCheck className="w-4 h-4 text-amber-600" />
+              <span>👑 Tôi là Thầy Thọ (Đăng nhập Quản Trị)</span>
             </button>
             </form>
 
@@ -2337,6 +2332,36 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
               </button>
             </div>
 
+            {/* KHU VỰC ĐẶC QUYỀN: CẤM QUYỀN TOÀN BỘ HỌC SINH TỨC THÌ */}
+            <div className="p-4 rounded-2xl bg-rose-50 border-2 border-rose-300 space-y-2.5 text-left">
+              <div className="flex items-center gap-2 text-rose-800 font-black text-xs uppercase tracking-wider">
+                <AlertCircle className="w-4 h-4" />
+                Đặc quyền Cấm quyền & Thu hồi của Thầy:
+              </div>
+              <p className="text-xs text-rose-700 leading-relaxed font-medium">
+                Bấm nút dưới đây để <strong>CẤM QUYỀN VÀ KHÓA TOÀN BỘ HỌC SINH TỨC THÌ</strong> trên toàn hệ thống. Mọi thiết bị học sinh đang học hoặc đã từng mở khóa sẽ bị khóa lập tức!
+              </p>
+              <button
+                type="button"
+                disabled={isRevoking}
+                onClick={async () => {
+                  if (!window.confirm("Thầy có chắc chắn muốn CẤM QUYỀN và KHÓA TOÀN BỘ học sinh ngay lập tức không?")) return;
+                  setIsRevoking(true);
+                  try {
+                    const updated = await revokeAllStudentsAccess();
+                    setAccessConfig(updated);
+                    setTempLockEnabled(true);
+                    toast.success("ĐÃ CẤM QUYỀN VÀ KHÓA TOÀN BỘ HỌC SINH THÀNH CÔNG!", { duration: 5000, icon: '🛑' });
+                  } finally {
+                    setIsRevoking(false);
+                  }
+                }}
+                className="w-full py-3 px-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md shadow-rose-600/30 transition-all cursor-pointer disabled:opacity-50"
+              >
+                <span>🛑 CẤM QUYỀN TOÀN BỘ HỌC SINH (KHÓA TỨC THÌ)</span>
+              </button>
+            </div>
+
             <div className="flex items-center justify-end gap-3 pt-4 border-t">
               <button
                 type="button"
@@ -2347,14 +2372,15 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => {
+                onClick={async () => {
                   const cleanedCode = newPasscodeForm.trim().toUpperCase() || 'THAYTHO2026';
-                  localStorage.setItem('hoa12_c5_passcode', cleanedCode);
-                  localStorage.setItem('hoa12_c5_lock_status', tempLockEnabled ? 'locked' : 'open');
-                  setCurrentPasscode(cleanedCode);
-                  setIsLockEnabled(tempLockEnabled);
+                  const updated = await saveHoa12AccessConfig({
+                    is_locked: tempLockEnabled,
+                    passcode: cleanedCode,
+                  });
+                  setAccessConfig(updated);
                   setIsTeacherModalOpen(false);
-                  toast.success('Đã lưu cấu hình cấp quyền thành công!', { icon: '✅' });
+                  toast.success('Đã lưu và đồng bộ cấu hình cấp quyền lên Cloud thành công!', { icon: '✅' });
                 }}
                 className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs shadow-md transition-all cursor-pointer"
               >
@@ -2364,7 +2390,62 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
           </div>
         </div>
       )}
-    </div>
+          {/* MODAL NHẬP MÃ PIN QUẢN TRỊ DÀNH CHO THẦY THỌ */}
+      {showTeacherPinModal && (
+        <div className="fixed inset-0 z-[99999999] bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl border border-slate-200 text-slate-900 text-left">
+            <div className="flex items-center justify-between border-b pb-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">👑</span>
+                <h3 className="text-base font-black text-slate-900">Xác Thực Thầy Thọ</h3>
+              </div>
+              <button
+                onClick={() => setShowTeacherPinModal(false)}
+                className="p-1 text-slate-400 hover:text-slate-700 font-bold"
+              >
+                ✕
+              </button>
+            </div>
+            <p className="text-xs text-slate-600 font-medium leading-relaxed">
+              Nhập mã PIN Quản trị của Thầy để kích hoạt quyền Thầy giáo và vào xem đề:
+            </p>
+            <input
+              type="password"
+              value={teacherPinInput}
+              onChange={(e) => setTeacherPinInput(e.target.value)}
+              placeholder="Nhập mã PIN Thầy (VD: THAYTHO)"
+              className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 font-bold text-center tracking-widest text-base focus:border-indigo-600 outline-none"
+              autoFocus
+            />
+            <div className="flex gap-2 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowTeacherPinModal(false)}
+                className="flex-1 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs"
+              >
+                Hủy
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  if (verifyTeacherAdminPin(teacherPinInput)) {
+                    toast.success('Xác thực Thầy Thọ thành công! Đang tải lại...', { icon: '👑' });
+                    setShowTeacherPinModal(false);
+                    setTimeout(() => { window.location.reload(); }, 600);
+                  } else {
+                    toast.error('Mã PIN không chính xác!');
+                  }
+                }}
+                className="flex-1 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs shadow-md"
+              >
+                Xác nhận
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+</div>
   );
 };
 

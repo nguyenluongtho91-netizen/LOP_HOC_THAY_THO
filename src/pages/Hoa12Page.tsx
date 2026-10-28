@@ -123,8 +123,8 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
       String(studentSession.grade || "").toLowerCase().includes("giáo viên")
     )
   );
-  const isTeacherByLocalFlag = localStorage.getItem("is_teacher_mode") === "true" ||
-                               localStorage.getItem("hoa12_student_authorized") === "true" ||
+  // CHUẨN HÓA PHÂN QUYỀN: Học sinh mở khóa bằng mã chỉ được học, TUYỆT ĐỐI không biến thành Thầy giáo!
+  const isTeacherByLocalFlag = (localStorage.getItem("is_teacher_mode") === "true" && localStorage.getItem("hoa12_teacher_authenticated") === "true") ||
                                localStorage.getItem("role") === "teacher" ||
                                localStorage.getItem("role") === "admin";
 
