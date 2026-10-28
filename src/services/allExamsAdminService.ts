@@ -18,6 +18,11 @@ import { HOA11_CHUONG5_EXAMS } from './hoa11Chuong5Service';
 import { HOA11_CHUONG6_EXAMS } from './hoa11Chuong6Service';
 import { HOA10_CHUONG1_EXAMS } from './hoa10Chuong1Service';
 import { HOA10_CHUONG2_EXAMS } from './hoa10Chuong2Service';
+import { HOA10_CHUONG3_EXAMS } from './hoa10Chuong3Service';
+import { HOA10_CHUONG4_EXAMS } from './hoa10Chuong4Service';
+import { HOA10_CHUONG5_EXAMS } from './hoa10Chuong5Service';
+import { HOA10_CHUONG6_EXAMS } from './hoa10Chuong6Service';
+import { HOA10_CHUONG7_EXAMS } from './hoa10Chuong7Service';
 
 export function getAllStandardExamsList() {
   return [
@@ -37,6 +42,11 @@ export function getAllStandardExamsList() {
     ...HOA11_CHUONG6_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Chương 6: Carbonyl - Acid' })),
     ...HOA10_CHUONG1_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 1: Cấu Tạo Nguyên Tử' })),
     ...HOA10_CHUONG2_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 2: Bảng Tuần Hoàn NTHH' })),
+    ...HOA10_CHUONG3_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 3: Liên Kết Hóa Học' })),
+    ...HOA10_CHUONG4_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 4: Phản Ứng Oxi Hóa - Khử' })),
+    ...HOA10_CHUONG5_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 5: Năng Lượng Hóa Học' })),
+    ...HOA10_CHUONG6_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 6: Tốc Độ Phản Ứng' })),
+    ...HOA10_CHUONG7_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 7: Nhóm Halogen' })),
   ];
 }
 

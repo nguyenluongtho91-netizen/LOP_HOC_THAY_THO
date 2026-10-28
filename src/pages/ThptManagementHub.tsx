@@ -212,6 +212,71 @@ export default function ThptManagementHub() {
         { id: "h10_c2_de3", code: "107", title: "Đề 3: Định Luật Tuần Hoàn" },
         { id: "h10_c2_de4", code: "108", title: "Đề 4: Tổng Hợp Bảng Tuần Hoàn" },
       ]
+    },
+    {
+      chapterKey: "h10_c3",
+      fallbackKey: "h10_c3",
+      grade: "10",
+      chapterTitle: "🔗 Hóa 10 • Chương 3: Liên Kết Hóa Học",
+      link: "/hoa10-chuong3?teacher=1",
+      exams: [
+        { id: "hoa10_c3_de1", code: "301", title: "Đề 1: Quy Tắc Octet & Liên Kết Ion" },
+        { id: "hoa10_c3_de2", code: "302", title: "Đề 2: Liên Kết Cộng Hóa Trị" },
+        { id: "hoa10_c3_de3", code: "303", title: "Đề 3: Liên Kết Hydrogen & Van Der Waals" },
+        { id: "hoa10_c3_de4", code: "304", title: "Đề 4: Tổng Hợp Liên Kết Hóa Học" },
+      ]
+    },
+    {
+      chapterKey: "h10_c4",
+      fallbackKey: "h10_c4",
+      grade: "10",
+      chapterTitle: "⚡ Hóa 10 • Chương 4: Phản Ứng Oxi Hóa – Khử",
+      link: "/hoa10-chuong4?teacher=1",
+      exams: [
+        { id: "hoa10_c4_de1", code: "401", title: "Đề 1: Số Oxi Hóa & Khái Niệm Phản Ứng Oxi Hóa - Khử" },
+        { id: "hoa10_c4_de2", code: "402", title: "Đề 2: Cân Bằng Phản Ứng Thăng Bằng Electron" },
+        { id: "hoa10_c4_de3", code: "403", title: "Đề 3: Ý Nghĩa & Thực Tiễn Của Phản Ứng Oxi Hóa - Khử" },
+        { id: "hoa10_c4_de4", code: "404", title: "Đề 4: Tổng Hợp Phản Ứng Oxi Hóa – Khử" },
+      ]
+    },
+    {
+      chapterKey: "h10_c5",
+      fallbackKey: "h10_c5",
+      grade: "10",
+      chapterTitle: "🔥 Hóa 10 • Chương 5: Năng Lượng Hóa Học",
+      link: "/hoa10-chuong5?teacher=1",
+      exams: [
+        { id: "hoa10_c5_de1", code: "501", title: "Đề 1: Phản Ứng Tỏa Nhiệt & Thu Nhiệt, Biến Thiên Enthalpy" },
+        { id: "hoa10_c5_de2", code: "502", title: "Đề 2: Tính Biến Thiên Enthalpy Chuẩn Theo Nhiệt Tạo Thành" },
+        { id: "hoa10_c5_de3", code: "503", title: "Đề 3: Tính Biến Thiên Enthalpy Theo Năng Lượng Liên Kết" },
+        { id: "hoa10_c5_de4", code: "504", title: "Đề 4: Tổng Hợp Năng Lượng Hóa Học" },
+      ]
+    },
+    {
+      chapterKey: "h10_c6",
+      fallbackKey: "h10_c6",
+      grade: "10",
+      chapterTitle: "⏱️ Hóa 10 • Chương 6: Tốc Độ Phản Ứng Hóa Học",
+      link: "/hoa10-chuong6?teacher=1",
+      exams: [
+        { id: "hoa10_c6_de1", code: "601", title: "Đề 1: Khái Niệm Tốc Độ Phản Ứng & Biểu Thức Tốc Độ" },
+        { id: "hoa10_c6_de2", code: "602", title: "Đề 2: Các Yếu Tố Ảnh Hưởng Đến Tốc Độ Phản Ứng" },
+        { id: "hoa10_c6_de3", code: "603", title: "Đề 3: Hệ Số Nhiệt Độ Van't Hoff & Xúc Tác" },
+        { id: "hoa10_c6_de4", code: "604", title: "Đề 4: Tổng Hợp Tốc Độ Phản Ứng Hóa Học" },
+      ]
+    },
+    {
+      chapterKey: "h10_c7",
+      fallbackKey: "h10_c7",
+      grade: "10",
+      chapterTitle: "🧂 Hóa 10 • Chương 7: Nhóm Nguyên Tố Halogen",
+      link: "/hoa10-chuong7?teacher=1",
+      exams: [
+        { id: "hoa10_c7_de1", code: "701", title: "Đề 1: Đơn Chất Halogen (F2, Cl2, Br2, I2)" },
+        { id: "hoa10_c7_de2", code: "702", title: "Đề 2: Hydrogen Halide & Hydrohalic Acid" },
+        { id: "hoa10_c7_de3", code: "703", title: "Đề 3: Muối Halide & Nhận Biết Ion Halide" },
+        { id: "hoa10_c7_de4", code: "704", title: "Đề 4: Tổng Hợp Nhóm Halogen" },
+      ]
     }
   ];
 
@@ -386,6 +451,71 @@ export default function ThptManagementHub() {
       borderClass: 'border-violet-500/40 hover:border-violet-400',
       accentColor: 'text-violet-300',
       badgeBg: 'bg-violet-500/20 text-violet-200 border border-violet-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h10-c3',
+      grade: '10',
+      badge: 'Hóa 10 • Chuyên đề 3',
+      title: '🔗 Chương 3: Liên Kết Hóa Học',
+      desc: 'Quy tắc octet, liên kết ion, liên kết cộng hóa trị, liên kết hydrogen và tương tác van der Waals kèm 4 đề kiểm tra 50 phút chuẩn GDPT (Bài 10, 11, 12, 13).',
+      link: '/hoa10-chuong3?teacher=1',
+      gradient: 'from-blue-950/95 via-slate-900/90 to-cyan-950/60',
+      borderClass: 'border-blue-500/40 hover:border-blue-400',
+      accentColor: 'text-blue-300',
+      badgeBg: 'bg-blue-500/20 text-blue-200 border border-blue-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h10-c4',
+      grade: '10',
+      badge: 'Hóa 10 • Chuyên đề 4',
+      title: '⚡ Chương 4: Phản Ứng Oxi Hóa – Khử',
+      desc: 'Số oxi hóa, chất khử, chất oxi hóa, quá trình oxi hóa khử, phương pháp thăng bằng electron và ý nghĩa thực tiễn kèm 4 đề chuẩn ma trận (Bài 15).',
+      link: '/hoa10-chuong4?teacher=1',
+      gradient: 'from-amber-950/95 via-slate-900/90 to-orange-950/60',
+      borderClass: 'border-amber-500/40 hover:border-amber-400',
+      accentColor: 'text-amber-300',
+      badgeBg: 'bg-amber-500/20 text-amber-200 border border-amber-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h10-c5',
+      grade: '10',
+      badge: 'Hóa 10 • Chuyên đề 5',
+      title: '🔥 Chương 5: Năng Lượng Hóa Học',
+      desc: 'Phản ứng tỏa nhiệt, thu nhiệt, biến thiên enthalpy chuẩn, tính biến thiên nhiệt theo nhiệt tạo thành và năng lượng liên kết kèm 4 đề kiểm tra (Bài 17).',
+      link: '/hoa10-chuong5?teacher=1',
+      gradient: 'from-red-950/95 via-slate-900/90 to-rose-950/60',
+      borderClass: 'border-red-500/40 hover:border-red-400',
+      accentColor: 'text-red-300',
+      badgeBg: 'bg-red-500/20 text-red-200 border border-red-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h10-c6',
+      grade: '10',
+      badge: 'Hóa 10 • Chuyên đề 6',
+      title: '⏱️ Chương 6: Tốc Độ Phản Ứng Hóa Học',
+      desc: 'Tốc độ trung bình, định luật tác dụng khối lượng, hệ số van\'t Hoff, ảnh hưởng của nồng độ, áp suất, nhiệt độ, diện tích bề mặt, chất xúc tác (Bài 19).',
+      link: '/hoa10-chuong6?teacher=1',
+      gradient: 'from-emerald-950/95 via-slate-900/90 to-teal-950/60',
+      borderClass: 'border-emerald-500/40 hover:border-emerald-400',
+      accentColor: 'text-emerald-300',
+      badgeBg: 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/30',
+      isLocked: false
+    },
+    {
+      id: 'h10-c7',
+      grade: '10',
+      badge: 'Hóa 10 • Chuyên đề 7',
+      title: '🧂 Chương 7: Nhóm Nguyên Tố Halogen',
+      desc: 'Tính chất vật lý, hóa học của các đơn chất halogen F2, Cl2, Br2, I2, hydrogen halide, hydrohalic acid và muối halide kèm 4 đề kiểm tra (Bài 21, 22).',
+      link: '/hoa10-chuong7?teacher=1',
+      gradient: 'from-teal-950/95 via-slate-900/90 to-cyan-950/60',
+      borderClass: 'border-teal-500/40 hover:border-teal-400',
+      accentColor: 'text-teal-300',
+      badgeBg: 'bg-teal-500/20 text-teal-200 border border-teal-400/30',
       isLocked: false
     }
   ]

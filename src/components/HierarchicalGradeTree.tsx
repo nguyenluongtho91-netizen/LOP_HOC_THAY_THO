@@ -212,20 +212,25 @@ export default function HierarchicalGradeTree() {
                     <span>📊 Chương 2: Bảng tuần hoàn NTHH</span>
                     <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300 opacity-60">
-                    • Chương 3: Liên kết hóa học
+                  <Link to="/hoa10-chuong3" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>🔗 Chương 3: Liên kết hóa học</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 4: Phản ứng Oxi hóa – Khử
+                  <Link to="/hoa10-chuong4" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>⚡ Chương 4: Phản ứng Oxi hóa – Khử</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 5: Năng lượng hóa học
+                  <Link to="/hoa10-chuong5" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>🔥 Chương 5: Năng lượng hóa học</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 6: Tốc độ phản ứng hóa học
+                  <Link to="/hoa10-chuong6" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>⏱️ Chương 6: Tốc độ phản ứng hóa học</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
-                  <Link to="/thpt?grade=10&subject=hoa" className="block py-0.5 hover:text-cyan-300">
-                    • Chương 7: Nhóm nguyên tố Halogen
+                  <Link to="/hoa10-chuong7" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
+                    <span>🧂 Chương 7: Nhóm nguyên tố Halogen</span>
+                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
                   </Link>
                 </div>
               )}

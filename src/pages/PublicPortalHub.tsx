@@ -47,6 +47,11 @@ export default function PublicPortalHub() {
   const isH11C2Locked = !isEffectiveTeacher && isChapterLocked('h11_c2', false, accessConfig);
   const isH10C1Locked = !isEffectiveTeacher && isChapterLocked('h10_c1', false, accessConfig);
   const isH10C2Locked = !isEffectiveTeacher && isChapterLocked('h10_c2', false, accessConfig);
+  const isH10C3Locked = !isEffectiveTeacher && isChapterLocked('h10_c3', false, accessConfig);
+  const isH10C4Locked = !isEffectiveTeacher && isChapterLocked('h10_c4', false, accessConfig);
+  const isH10C5Locked = !isEffectiveTeacher && isChapterLocked('h10_c5', false, accessConfig);
+  const isH10C6Locked = !isEffectiveTeacher && isChapterLocked('h10_c6', false, accessConfig);
+  const isH10C7Locked = !isEffectiveTeacher && isChapterLocked('h10_c7', false, accessConfig);
 
 
   return (
@@ -585,6 +590,196 @@ export default function PublicPortalHub() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
+              )}
+
+              {/* K10 C3 */}
+              {!isH10C3Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-blue-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 bg-blue-500/20 border border-blue-400/30 text-blue-400 font-black text-xs rounded-xl font-mono">
+                        CHƯƠNG 3
+                      </span>
+                      <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5" /> 4 Đề Kiểm Tra + 5 Bài Học
+                      </span>
+                    </div>
+
+                    <h4 className="text-xl font-black text-white group-hover:text-blue-400 transition-colors">
+                      Chương 3: Liên Kết Hóa Học
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      Quy tắc octet, liên kết ion, liên kết cộng hóa trị phân cực/không cực, liên kết cho nhận, liên kết hydrogen và tương tác van der Waals.
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">⚛️ Quy tắc octet & LK Ion</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🔗 LK Cộng hóa trị</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🌊 LK Hydrogen & Van der Waals</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa10-chuong3')}
+                    className="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Mở Học Liệu & Thi Thử Hóa 10 (Chương 3)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+
+              {/* K10 C4 */}
+              {!isH10C4Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-amber-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 bg-amber-500/20 border border-amber-400/30 text-amber-400 font-black text-xs rounded-xl font-mono">
+                        CHƯƠNG 4
+                      </span>
+                      <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5" /> 4 Đề Kiểm Tra + 2 Bài Học
+                      </span>
+                    </div>
+
+                    <h4 className="text-xl font-black text-white group-hover:text-amber-400 transition-colors">
+                      Chương 4: Phản Ứng Oxi Hóa – Khử
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      Xác định số oxi hóa, chất khử, chất oxi hóa, quá trình khử, quá trình oxi hóa và phương pháp thăng bằng electron cân bằng phản ứng oxi hóa khử.
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">⚡ Số oxi hóa & Khái niệm</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">⚖️ Cân bằng e nhanh</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">📝 4 Đề kiểm tra chuẩn</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa10-chuong4')}
+                    className="w-full py-3.5 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Mở Học Liệu & Thi Thử Hóa 10 (Chương 4)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+
+              {/* K10 C5 */}
+              {!isH10C5Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-red-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 bg-red-500/20 border border-red-400/30 text-red-400 font-black text-xs rounded-xl font-mono">
+                        CHƯƠNG 5
+                      </span>
+                      <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5" /> 4 Đề Kiểm Tra + 2 Bài Học
+                      </span>
+                    </div>
+
+                    <h4 className="text-xl font-black text-white group-hover:text-red-400 transition-colors">
+                      Chương 5: Năng Lượng Hóa Học
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      Phản ứng tỏa nhiệt (∆rH &lt; 0), phản ứng thu nhiệt (∆rH &gt; 0), tính biến thiên enthalpy chuẩn theo nhiệt tạo thành chuẩn và theo năng lượng liên kết Eb.
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🔥 Tỏa nhiệt & Thu nhiệt</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">📐 Tính ∆rH theo ∆fH° & Eb</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">📝 4 Đề thi chuẩn 50 phút</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa10-chuong5')}
+                    className="w-full py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Mở Học Liệu & Thi Thử Hóa 10 (Chương 5)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+
+              {/* K10 C6 */}
+              {!isH10C6Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-emerald-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 text-emerald-400 font-black text-xs rounded-xl font-mono">
+                        CHƯƠNG 6
+                      </span>
+                      <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5" /> 4 Đề Kiểm Tra + 2 Bài Học
+                      </span>
+                    </div>
+
+                    <h4 className="text-xl font-black text-white group-hover:text-emerald-400 transition-colors">
+                      Chương 6: Tốc Độ Phản Ứng Hóa Học
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      Tốc độ phản ứng trung bình, định luật tác dụng khối lượng, biểu thức tốc độ, các yếu tố ảnh hưởng (nồng độ, áp suất, nhiệt độ, diện tích tiếp xúc, chất xúc tác).
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">⏱️ Biểu thức tốc độ phản ứng</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">📈 Hệ số nhiệt độ Van't Hoff</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">📝 4 Đề kiểm tra chuẩn</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa10-chuong6')}
+                    className="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Mở Học Liệu & Thi Thử Hóa 10 (Chương 6)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+
+              {/* K10 C7 */}
+              {!isH10C7Locked && (
+                <div className="bg-slate-900 border border-slate-800 hover:border-teal-500/60 transition-all rounded-3xl p-6 sm:p-7 flex flex-col justify-between gap-6 shadow-2xl relative overflow-hidden group">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="px-3 py-1 bg-teal-500/20 border border-teal-400/30 text-teal-400 font-black text-xs rounded-xl font-mono">
+                        CHƯƠNG 7
+                      </span>
+                      <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 font-bold text-xs rounded-xl flex items-center gap-1">
+                        <Check className="w-3.5 h-3.5" /> 4 Đề Kiểm Tra + 3 Bài Học
+                      </span>
+                    </div>
+
+                    <h4 className="text-xl font-black text-white group-hover:text-teal-400 transition-colors">
+                      Chương 7: Nhóm Nguyên Tố Halogen
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      Tính chất đơn chất nhóm halogen (F2, Cl2, Br2, I2), phản ứng thế halogen, hợp chất hydrogen halide, hydrohalic acid và phản ứng nhận biết ion halide với AgNO3.
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 pt-2 text-xs text-slate-300 font-medium">
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🧂 Đơn chất Halogen & Tính oxi hóa</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">🧪 Hydrohalic Acid & Muối Halide</span>
+                      <span className="px-2.5 py-1 bg-slate-950 rounded-lg border border-slate-800">📝 4 Đề kiểm tra chuẩn</span>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate('/hoa10-chuong7')}
+                    className="w-full py-3.5 bg-gradient-to-r from-teal-500 to-indigo-600 hover:from-teal-400 text-white font-black text-xs sm:text-sm rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <span>Mở Học Liệu & Thi Thử Hóa 10 (Chương 7)</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
               )}
 </div>
           </div>
