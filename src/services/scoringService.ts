@@ -325,6 +325,22 @@ export function calculateScore(
     }
   });
 
+  // 🌟 CHUẨN HÓA TOÀN BỘ BÀI THI SANG THANG ĐIỂM 10 THEO YÊU CẦU THẦY THỌ
+  const maxPossibleScore = mcPoints + tfPoints + saPoints;
+
+  // Nếu tổng điểm thô khác 10 (ví dụ đề 20 câu trắc nghiệm bị tính 5 điểm, hoặc bất kỳ thang điểm nào khác):
+  if (maxPossibleScore > 0 && Math.abs(maxPossibleScore - 10) > 0.01) {
+    const scaleFactor = 10 / maxPossibleScore;
+    breakdown.multipleChoice.points = parseFloat((breakdown.multipleChoice.points * scaleFactor).toFixed(4));
+    mcPoints = parseFloat((mcPoints * scaleFactor).toFixed(4));
+    
+    breakdown.trueFalse.points = parseFloat((breakdown.trueFalse.points * scaleFactor).toFixed(4));
+    tfPoints = parseFloat((tfPoints * scaleFactor).toFixed(4));
+    
+    breakdown.shortAnswer.points = parseFloat((breakdown.shortAnswer.points * scaleFactor).toFixed(4));
+    saPoints = parseFloat((saPoints * scaleFactor).toFixed(4));
+  }
+
   breakdown.multipleChoice.pointsPerQuestion = mcCount > 0 ? mcPoints / mcCount : 0;
   breakdown.trueFalse.pointsPerQuestion = tfCount > 0 ? tfPoints / tfCount : 0;
   breakdown.shortAnswer.pointsPerQuestion = saCount > 0 ? saPoints / saCount : 0;
@@ -334,10 +350,10 @@ export function calculateScore(
     breakdown.trueFalse.points +
     breakdown.shortAnswer.points;
 
-  breakdown.totalScore = parseFloat(total.toFixed(4));
+  breakdown.totalScore = parseFloat(Math.min(10, total).toFixed(2));
 
-  const maxScore = config?.maxScore || 10;
-  const pct = Math.round((breakdown.totalScore / maxScore) * 100);
+  // Luôn tính % trên thang điểm 10 chuẩn
+  const pct = Math.round((breakdown.totalScore / 10) * 100);
   breakdown.percentage = Math.max(0, Math.min(100, pct));
 
   return breakdown;
