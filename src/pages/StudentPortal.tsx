@@ -992,7 +992,7 @@ export default function StudentPortal() {
           </div>
           <h4 className="text-base sm:text-lg font-black text-slate-800">
             {category === 'homework' 
-              ? '🎉 Tuyệt vời! Em đã hoàn thành tất cả bài tập về nhà.'
+              ? '🎉 Tuyệt vời! Em đã hoàn thành tất cả đề thi và bài tập.'
               : category === 'chapter'
               ? '📘 Hiện tại chưa có bài luyện đề chương nào đang chờ.'
               : category === 'practice'
@@ -1402,7 +1402,7 @@ export default function StudentPortal() {
               </h2>
               
               <p className="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
-                Thầy Thọ chúc em luôn giữ vững tinh thần tự giác, hoàn thành xuất sắc các bài tập và đạt điểm số cao nhất nhé!
+                Thầy Thọ chúc em luôn giữ vững tinh thần tự giác, hoàn thành xuất sắc các đề thi, bài tập và đạt điểm số cao nhất nhé!
               </p>
 
               {/* Nhãn lớp và mã học sinh */}
@@ -1432,7 +1432,7 @@ export default function StudentPortal() {
               {/* Chỉ số 1: Tiến độ BTVN */}
               <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/15 transition-all border border-white/15 backdrop-blur-md text-center flex flex-col justify-between min-w-0">
                 <span className="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider block truncate">
-                  Tiến Độ BTVN
+                  Tiến Độ Hoàn Thành
                 </span>
                 <div className="text-base sm:text-2xl font-black text-white my-1 truncate">
                   {homeworkCompleted.length} <span className="text-xs font-normal text-slate-400">/ {homeworkRooms.length}</span>
@@ -1709,10 +1709,10 @@ export default function StudentPortal() {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
                   <BookOpen className="w-3.5 h-3.5 text-teal-600" />
-                  <span>DANH SÁCH BÀI TẬP VỀ NHÀ</span>
+                  <span>DANH SÁCH ĐỀ THI & BÀI TẬP</span>
                 </div>
                 <h2 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2.5 flex-wrap">
-                  <span>BÀI TẬP VỀ NHÀ CỦA EM</span>
+                  <span>ĐỀ THI & BÀI TẬP CỦA EM</span>
                   {homeworkPending.length > 0 ? (
                     <span className="text-xs font-black bg-amber-500 text-white px-3 py-0.5 rounded-full">
                       Còn {homeworkPending.length} bài
@@ -1746,7 +1746,7 @@ export default function StudentPortal() {
             {/* A. Danh sách BTVN Cần Nộp */}
             <div className="space-y-3">
               <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📝 Đề BTVN Cần Nộp Cho Thầy</span>
+                <span>📝 Đề Thi & Bài Tập Cần Nộp Cho Thầy</span>
                 <span className="text-xs font-bold text-slate-500">({homeworkPending.length} bài chờ)</span>
               </h3>
               {renderPendingGrid(homeworkPending, 'homework')}
@@ -1755,7 +1755,7 @@ export default function StudentPortal() {
             {/* B. Bảng Điểm & Bài Giải BTVN Đã Nộp */}
             <div className="space-y-3 pt-4 border-t border-slate-100">
               <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📊 Bảng Điểm & Lịch Sử BTVN Đã Nộp</span>
+                <span>📊 Bảng Điểm & Lịch Sử Đã Nộp</span>
                 <span className="text-xs font-bold text-slate-500">({homeworkCompleted.length} bài)</span>
               </h3>
               {renderCompletedTable(homeworkCompleted, 'homework')}

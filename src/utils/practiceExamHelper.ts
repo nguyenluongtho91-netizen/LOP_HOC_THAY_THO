@@ -132,14 +132,14 @@ export function getCategoryMeta(category: ExamCategory) {
   switch (category) {
     case 'homework':
       return {
-        label: 'BÀI TẬP VỀ NHÀ',
-        shortLabel: 'BTVN',
+        label: 'ĐỀ THI & BÀI TẬP',
+        shortLabel: 'ĐỀ THI & BÀI TẬP',
         icon: '🔴',
         tagBg: 'bg-rose-50 text-rose-700 border-rose-200',
         badgeBg: 'bg-rose-600 text-white',
         border: 'border-rose-200',
         accentColor: 'rose',
-        antiCheatNotice: '🛡️ BÀI TẬP VỀ NHÀ · CÓ GIÁM SÁT CHUYỂN TAB'
+        antiCheatNotice: '🛡️ ĐỀ THI & BÀI TẬP'
       }
     case 'chapter':
       return {
