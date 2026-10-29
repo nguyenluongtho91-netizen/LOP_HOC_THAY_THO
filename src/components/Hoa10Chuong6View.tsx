@@ -938,7 +938,7 @@ export const Hoa10Chuong6View: React.FC<Hoa10Chuong6ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -984,10 +984,10 @@ export const Hoa10Chuong6View: React.FC<Hoa10Chuong6ViewProps> = ({
                     Chương 6: Tốc Độ Phản Ứng Hóa Học
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Kiểm soát tốc độ là chìa khóa vàng vận hành công nghiệp và bảo quản sự sống.”
+                    <span>💡</span> “Biết cách điều chỉnh nhiệt độ và nồng độ là làm chủ tốc độ của phản ứng.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Khám phá 5 yếu tố cốt lõi: nồng độ, nhiệt độ, áp suất, diện tích tiếp xúc và chất xúc tác chi phối tốc độ phản ứng. Xử lý thành thạo các câu hỏi đồ thị và vận dụng thực tế bảo quản thực phẩm mà không áp lực.
+                    Hiểu ngay vì sao thức ăn để tủ lạnh lâu hỏng hay ngọn lửa cháy bùng khi thổi thêm khí oxi. Mỗi ngày luyện <b className="text-amber-300 font-bold">15 phút</b> giải nhanh các câu hỏi đồ thị và ứng dụng thực tế một cách dễ dàng.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

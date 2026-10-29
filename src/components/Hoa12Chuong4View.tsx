@@ -907,7 +907,7 @@ export const Hoa12Chuong4View: React.FC<Hoa12Chuong4ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               8 Chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa12Chuong4View: React.FC<Hoa12Chuong4ViewProps> = ({
                     Chương 4: Polymer & Vật Liệu Polymer
                   </h2>
                   <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>⚡</span> “Nghệ thuật liên kết hàng triệu mắt xích nhỏ bé kiến tạo nên kỷ nguyên vật liệu mới.”
+                    <span>⚡</span> “Áo quần sợi vải, đồ nhựa gia dụng và lốp cao su xe cộ đều là các polymer.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Phân biệt sắc bén phản ứng trùng hợp và trùng ngưng chế tạo tơ nilon, cao su và chất dẻo thế hệ mới. Đề vi mô 15 câu giúp nhớ dai tên thương phẩm, tính chất cơ lý và vật liệu composite mà không bao giờ nhầm lẫn.
+                    Phân biệt rành mạch các loại tơ sợi nilon, cao su đàn hồi và đồ nhựa dùng hằng ngày. Dành <b className="text-cyan-300 font-bold">15 phút</b> ôn luyện giúp nhớ lâu tên gọi, cách điều chế và ứng dụng thực tiễn mà không bị nhầm lẫn.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

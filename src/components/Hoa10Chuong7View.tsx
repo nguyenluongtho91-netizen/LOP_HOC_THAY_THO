@@ -938,7 +938,7 @@ export const Hoa10Chuong7View: React.FC<Hoa10Chuong7ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -984,10 +984,10 @@ export const Hoa10Chuong7View: React.FC<Hoa10Chuong7ViewProps> = ({
                     Chương 7: Nguyên Tố Nhóm Halogen
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Những phi kim sắc sảo kiến tạo muối biển và sức mạnh diệt khuẩn bảo vệ đời sống.”
+                    <span>💡</span> “Từ muối ăn hằng ngày đến nước Javel diệt khuẩn đều mang dấu ấn của nhóm Halogen.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Chinh phục tính oxi hóa giảm dần từ Fluorine đến Iodine cùng các hợp chất Hydrohalic acid. Bộ đề phân loại giúp phân biệt ion halide, giải thích cơ chế tẩy màu của nước Javel và làm chủ các câu hỏi thí nghiệm.
+                    Nắm chắc tính chất của Fluorine, Chlorine, Bromine và Iodine cùng các acid quen thuộc. Bộ đề nhỏ <b className="text-amber-300 font-bold">12–15 câu vừa sức</b> mỗi ngày giúp nhận biết chính xác các ion muối và hiểu rõ cơ chế tẩy rửa thực tế.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

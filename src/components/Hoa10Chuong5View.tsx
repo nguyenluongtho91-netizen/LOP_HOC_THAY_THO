@@ -938,7 +938,7 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -984,10 +984,10 @@ export const Hoa10Chuong5View: React.FC<Hoa10Chuong5ViewProps> = ({
                     Chương 5: Năng Lượng Hóa Học
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Hóa học không chỉ biến đổi chất, đó là dòng chảy giải phóng và hấp thu năng lượng.”
+                    <span>💡</span> “Phản ứng hóa học luôn đi kèm sự tỏa nhiệt hay thu nhiệt quen thuộc trong đời sống.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Hiểu tường minh Enthalpy tạo thành chuẩn và biến thiên Enthalpy phản ứng tỏa nhiệt – thu nhiệt. Luyện tập tính toán nhiệt lượng từ năng lượng liên kết Eb, nắm trọn câu hỏi tính toán nhiệt động học trong đề thi mới.
+                    Phân biệt rõ ràng phản ứng tỏa nhiệt và thu nhiệt qua những hiện tượng gần gũi như đốt than hay làm lạnh. Luyện tập <b className="text-amber-300 font-bold">15 phút</b> mỗi ngày để tính toán thành thạo nhiệt lượng phản ứng từ năng lượng liên kết.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

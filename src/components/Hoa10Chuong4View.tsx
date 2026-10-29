@@ -938,7 +938,7 @@ export const Hoa10Chuong4View: React.FC<Hoa10Chuong4ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -984,10 +984,10 @@ export const Hoa10Chuong4View: React.FC<Hoa10Chuong4ViewProps> = ({
                     Chương 4: Phản Ứng Oxi Hóa – Khử
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Cho đi là khử, nhận về là oxi hóa – Bản hòa ca kỳ thú của các electron.”
+                    <span>💡</span> “Chất khử cho đi, chất oxi hóa nhận về – Cốt lõi của mọi phản ứng hóa học.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Nắm vững phương pháp thăng bằng electron nhanh và chính xác tuyệt đối trong mọi môi trường phản ứng. Bộ đề vi mô 15 câu giúp các em thuần thục định luật bảo toàn e để bứt phá nhẹ nhàng các bài toán thực tiễn.
+                    Tuyệt chiêu thăng bằng electron nhanh và không bao giờ sót hạt tử. Mỗi ngày rèn luyện <b className="text-amber-300 font-bold">15 phút</b> với bộ đề <b className="text-amber-300 font-bold">12–15 câu vừa sức</b>, giúp các em dùng thành thạo định luật bảo toàn e để giải nhanh mọi bài toán.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

@@ -939,7 +939,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -985,10 +985,10 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
                     Chương 2: Bảng Tuần Hoàn Các Nguyên Tố Hóa Học
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Bảng tuần hoàn là chiếc la bàn kỳ diệu mở lối dự đoán tính chất mọi nguyên tố.”
+                    <span>💡</span> “Nhìn vào Bảng tuần hoàn là thấy ngay tính chất của mọi nguyên tố.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Làm chủ quy luật biến thiên bán kính, độ âm điện và tính kim loại – phi kim qua từng chu kỳ, nhóm A. Rèn luyện phản xạ so sánh tính chất và xác định vị trí nguyên tố nhanh gọn, tự tin ẵm trọn điểm tối đa mọi đề thi.
+                    Mỗi ngày rèn luyện <b className="text-amber-300 font-bold">15 phút</b> với bộ đề <b className="text-amber-300 font-bold">12–15 câu ngắn gọn</b>. Nắm vững quy luật biến đổi bán kính, độ âm điện và tính kim loại – phi kim, nhìn vào vị trí là biết ngay tính chất mà không cần học vẹt.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

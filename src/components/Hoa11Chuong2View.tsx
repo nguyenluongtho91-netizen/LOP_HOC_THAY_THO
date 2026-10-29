@@ -908,7 +908,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -954,10 +954,10 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
                     Chương 2: Nitrogen và Sulfur
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Từ tia sét mang đạm cho mùa màng đến acid sulfuric – xương sống của nền công nghiệp.”
+                    <span>💡</span> “Từ đạm bón cho cây xanh tốt đến acid công nghiệp đều bắt đầu từ Nitrogen và Sulfur.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Khám phá chu trình kỳ diệu của nitrogen, tính oxi hóa mãnh liệt của HNO3 và H2SO4 đặc nóng. Luyện tập phân tích ứng dụng thực tế phân bón hóa học, hiện tượng phú dưỡng và giải pháp ngăn chặn mưa acid.
+                    Giải mã hiện tượng sấm sét tạo phân đạm tự nhiên và tính chất oxi hóa mạnh của acid HNO3, H2SO4. Luyện tập hằng ngày <b className="text-amber-300 font-bold">15 phút</b> để hiểu sâu ứng dụng phân bón, hiện tượng phú dưỡng và cách chống mưa acid.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

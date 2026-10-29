@@ -939,7 +939,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -985,10 +985,10 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                     Chương 1: Cấu Tạo Nguyên Tử
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Mọi vật chất vĩ đại trong vũ trụ đều khởi nguồn từ những nguyên tử nhỏ bé.”
+                    <span>💡</span> “Hiểu rõ từng hạt nguyên tử nhỏ bé để tự tin làm chủ môn Hóa học.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Khởi đầu Hóa học 10 cùng phương pháp <b className="text-amber-300 font-bold">Luyện tập vi mô (Micro-learning)</b>: Mỗi ngày chỉ <b>15 phút</b> với bộ đề <b className="text-amber-300 font-bold">12–15 câu vừa sức</b>. Giúp các em hiểu sâu từ cấu trúc hạt electron, proton, neutron đến quy luật orbital và cấu hình e, tạo nền móng vững chắc chinh phục điểm 10.
+                    Học nhẹ nhàng, nhớ thật lâu: Mỗi ngày chỉ dành <b className="text-amber-300 font-bold">15 phút</b> làm bộ đề <b className="text-amber-300 font-bold">12–15 câu vừa sức</b>. Thầy giúp các em nắm chắc cấu tạo hạt electron, proton, neutron đến cách viết cấu hình e, xây gốc vững vàng để bứt phá điểm số.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

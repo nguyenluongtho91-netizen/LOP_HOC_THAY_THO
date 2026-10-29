@@ -906,7 +906,7 @@ export const Hoa12Chuong8View: React.FC<Hoa12Chuong8ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -952,10 +952,10 @@ export const Hoa12Chuong8View: React.FC<Hoa12Chuong8ViewProps> = ({
                     Chương 8: Kim Loại Chuyển Tiếp Dãy Thứ Nhất & Phức Chất
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Thế giới đa sắc của ion kim loại chuyển tiếp và sự kỳ diệu của liên kết phối trí phức chất.”
+                    <span>💡</span> “Màu xanh thẫm đẹp mắt của dung dịch đồng và sắc đỏ của máu đều đến từ phức chất.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Tự tin chinh phục nội dung mới nhất của chương trình 2025: nguyên tử trung tâm, phối tử và danh pháp phức chất. Luyện nhanh các câu hỏi dạng đúng/sai và ghép nối thực tế về xúc tác hữu cơ, sắc tố hemoglobin.
+                    Tiếp cận chuyên đề mới 2025 một cách tự nhiên và hào hứng: từ hemoglobin trong máu đến các dung dịch tạo màu rực rỡ. Luyện đề nhanh hằng ngày giúp các em tự tin xử lý dạng câu hỏi đúng/sai hiện đại.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

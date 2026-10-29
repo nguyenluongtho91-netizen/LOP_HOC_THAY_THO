@@ -907,7 +907,7 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               8 Chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                     Chương 3: Hợp Chất Chứa Nitrogen
                   </h2>
                   <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>⚡</span> “Từ những acid amin kỳ diệu dựng xây nên sự sống, cơ bắp và trí tuệ con người.”
+                    <span>⚡</span> “Các amino acid kết nối lại dựng nên cơ bắp và sự sống của con người.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Nắm chắc tính lưỡng tính của amino acid, điểm đẳng điện và phản ứng màu biuret đặc trưng của chuỗi peptide. Bộ đề vi mô giúp phân tích chính xác số liên kết peptide, sản phẩm thủy phân và cấu trúc bậc protein.
+                    Nắm chắc tính chất của bột ngọt mì chính, lòng trắng trứng và chuỗi peptide dinh dưỡng. Bộ đề <b className="text-cyan-300 font-bold">12–15 câu ngắn gọn</b> mỗi ngày giúp giải nhanh bài toán đếm mắt xích và phản ứng màu biuret.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

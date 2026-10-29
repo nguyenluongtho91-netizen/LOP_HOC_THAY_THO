@@ -907,7 +907,7 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               8 Chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa12Chuong2View: React.FC<Hoa12Chuong2ViewProps> = ({
                     Chương 2: Carbohydrate
                   </h2>
                   <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>⚡</span> “Nguồn năng lượng ngọt ngào của thiên nhiên nuôi dưỡng sự sống muôn loài.”
+                    <span>⚡</span> “Đường ăn ngọt ngào, hạt cơm chắc dẻo nuôi dưỡng cơ thể mỗi ngày.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Hệ thống hóa cấu trúc mạch vòng của Glucose, Fructose, Saccharose và mạch đại phân tử Tinh bột, Cellulose. Rèn phản xạ xử lý câu hỏi thí nghiệm nhận biết với thuốc thử Tollens và dung dịch I2 chỉ trong 3 giây mỗi câu.
+                    Hệ thống hóa dễ hiểu về đường Glucose, đường mía Saccharose đến Tinh bột và sợi bông Cellulose. Rèn phản xạ xử lý câu hỏi thí nghiệm nhận biết bằng thuốc thử tráng bạc và cồn iod chỉ trong tích tắc.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

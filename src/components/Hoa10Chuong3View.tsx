@@ -938,7 +938,7 @@ export const Hoa10Chuong3View: React.FC<Hoa10Chuong3ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -984,10 +984,10 @@ export const Hoa10Chuong3View: React.FC<Hoa10Chuong3ViewProps> = ({
                     Chương 3: Liên Kết Hóa Học
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Liên kết hóa học là cách các nguyên tử tìm kiếm sự bền vững giữa thế giới tự nhiên.”
+                    <span>💡</span> “Các nguyên tử gắn kết với nhau tạo nên mọi chất quen thuộc quanh ta.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Giải mã bản chất liên kết ion, liên kết cộng hóa trị và liên kết hydrogen kiến tạo sự sống. <b>15 phút</b> luyện tập vi mô mỗi ngày giúp các em viết chuẩn công thức Lewis, xác định dạng hình học phân tử chỉ trong chớp mắt.
+                    Hiểu rõ bản chất liên kết ion, liên kết cộng hóa trị và liên kết hydrogen trong nước. Chỉ <b className="text-amber-300 font-bold">15 phút</b> luyện bài mỗi ngày giúp các em viết đúng công thức Lewis và xác định dạng hình học phân tử nhanh gọn.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

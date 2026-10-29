@@ -907,7 +907,7 @@ export const Hoa11Chuong6View: React.FC<Hoa11Chuong6ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa11Chuong6View: React.FC<Hoa11Chuong6ViewProps> = ({
                     Chương 6: Hợp Chất Carbonyl & Carboxylic Acid
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Từ hương cay ấm của quế đến vị chua thanh của giấm đều mang dấu ấn nhóm Carbonyl.”
+                    <span>💡</span> “Mùi thơm ấm của quế hay vị chua của giấm ăn chính là các hợp chất Carbonyl.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Chinh phục phản ứng tráng bạc trứ danh của aldehyde và tính acid đặc trưng của carboxylic acid. Rèn kỹ năng giải mã tín hiệu phổ IR (C=O, -OH) và viết đúng cơ chế phản ứng este hóa một cách tự tin, chuẩn xác.
+                    Nắm chắc phản ứng tráng bạc sáng loáng của aldehyde và tính chua của giấm ăn carboxylic acid. Rèn luyện mỗi ngày <b className="text-amber-300 font-bold">15 phút</b> giúp viết chuẩn phản ứng tạo este thơm và biện luận chất tự tin.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

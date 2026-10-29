@@ -908,7 +908,7 @@ export const Hoa11Chuong1View: React.FC<Hoa11Chuong1ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -954,10 +954,10 @@ export const Hoa11Chuong1View: React.FC<Hoa11Chuong1ViewProps> = ({
                     Chương 1: Cân Bằng Hóa Học & pH
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Cân bằng động là trạng thái hoàn hảo khi tốc độ tạo thành bằng tốc độ phân ly.”
+                    <span>💡</span> “Hiểu đúng chuyển dịch cân bằng và độ pH để điều chỉnh phản ứng như ý muốn.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Làm chủ nguyên lý chuyển dịch cân bằng Le Chatelier, thuyết acid-base Brønsted–Lowry và thang pH dung dịch. <b>15 phút</b> vi mô mỗi ngày quét sạch bẫy lý thuyết đồ thị nồng độ và các phản ứng trao đổi ion trong dung dịch.
+                    Làm chủ nguyên lý chuyển dịch cân bằng Le Chatelier và cách đo độ chua - kiềm bằng thang pH. Dành <b className="text-amber-300 font-bold">15 phút</b> mỗi ngày luyện đề ngắn giúp các em quét sạch bẫy lý thuyết đồ thị và bài toán dung dịch.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

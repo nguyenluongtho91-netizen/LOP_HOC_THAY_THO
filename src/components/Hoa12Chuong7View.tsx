@@ -906,7 +906,7 @@ export const Hoa12Chuong7View: React.FC<Hoa12Chuong7ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -952,10 +952,10 @@ export const Hoa12Chuong7View: React.FC<Hoa12Chuong7ViewProps> = ({
                     Chương 7: Nguyên Tố Nhóm IA và Nhóm IIA
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Những kim loại kiềm – kiềm thổ hoạt động mãnh liệt, linh hồn rực rỡ của những màn pháo hoa.”
+                    <span>💡</span> “Ngọn lửa pháo hoa rực rỡ sắc màu được thắp sáng từ muối của kim loại kiềm.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Ghi nhớ sâu sắc màu ngọn lửa đặc trưng (Na+ vàng, K+ tím, Ca2+ đỏ cam) và quy luật biến thiên độ tan. Làm chủ tuyệt đối phương pháp làm mềm nước cứng và ứng dụng thực tiễn của thạch cao, vôi sống.
+                    Ghi nhớ màu ngọn lửa đặc trưng (vàng của muối ăn, đỏ cam của vôi) và cách xử lý nước cứng trong gia đình. Bộ đề ngắn <b className="text-cyan-300 font-bold">12–15 câu</b> giúp các em tự tin ghi trọn điểm lý thuyết thực tế.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

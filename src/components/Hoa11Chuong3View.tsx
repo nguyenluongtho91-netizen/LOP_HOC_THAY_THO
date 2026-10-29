@@ -907,7 +907,7 @@ export const Hoa11Chuong3View: React.FC<Hoa11Chuong3ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa11Chuong3View: React.FC<Hoa11Chuong3ViewProps> = ({
                     Chương 3: Đại Cương Hóa Học Hữu Cơ
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Hóa hữu cơ – bản giao hưởng vĩ đại của Carbon kiến tạo nên toàn bộ thế giới sống.”
+                    <span>💡</span> “Hóa hữu cơ mở ra cánh cửa giải thích toàn bộ các chất tạo nên cơ thể sống.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Nắm chắc phương pháp lập công thức phân tử từ phổ khối lượng MS và nhận diện nhóm chức qua phổ hồng ngoại IR. Luyện phản xạ phân loại đồng phân và gọi tên danh pháp IUPAC chuẩn xác theo chương trình mới 2025.
+                    Học cách đọc phổ hồng ngoại IR và phổ khối lượng MS đơn giản, dễ nhớ theo sách mới. Mỗi ngày <b className="text-amber-300 font-bold">15 phút</b> rèn phản xạ nhận biết nhóm chức, viết công thức cấu tạo và gọi tên chất chuẩn xác.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

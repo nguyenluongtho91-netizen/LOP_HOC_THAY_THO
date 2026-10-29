@@ -907,7 +907,7 @@ export const Hoa11Chuong4View: React.FC<Hoa11Chuong4ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa11Chuong4View: React.FC<Hoa11Chuong4ViewProps> = ({
                     Chương 4: Hydrocarbon
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Nguồn năng lượng vận hành văn minh nhân loại ẩn mình trong từng liên kết Carbon.”
+                    <span>💡</span> “Khí gas đun nấu, xăng xe đi lại hằng ngày đều là những Hydrocarbon quen thuộc.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Phân hóa rạch ròi phản ứng thế của alkane, cộng electrophile của alkene, alkyne và tính thơm của benzene. Bộ câu hỏi tinh gọn giúp phân biệt nhanh hydrocarbon bằng dung dịch bromine và thuốc tím KMnO4.
+                    Phân biệt rõ ràng phản ứng cháy, phản ứng thế và phản ứng làm mất màu nước bromine của alkane, alkene, alkyne. Bộ đề ngắn <b className="text-amber-300 font-bold">12–15 câu</b> giúp các em ghi nhớ tính chất sâu sắc mà không sợ nhầm lẫn.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

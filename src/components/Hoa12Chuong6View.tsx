@@ -906,7 +906,7 @@ export const Hoa12Chuong6View: React.FC<Hoa12Chuong6ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -952,10 +952,10 @@ export const Hoa12Chuong6View: React.FC<Hoa12Chuong6ViewProps> = ({
                     Chương 6: Đại Cương Về Kim Loại
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Ánh kim lấp lánh và tính dẻo dai kiên cường tạo nên bộ khung vững chắc cho nền văn minh.”
+                    <span>💡</span> “Ánh kim lấp lánh và độ dẻo dai giúp kim loại xây dựng nên mọi máy móc quanh ta.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Giải thích nguồn gốc tính dẫn điện, dẫn nhiệt và tính dẻo qua biển electron tự do. Trang bị trọn gói phương pháp chống ăn mòn điện hóa và các quy trình thủy luyện, nhiệt luyện, điện luyện kim loại.
+                    Giải thích dễ hiểu vì sao kim loại dẫn điện, dẫn nhiệt tốt và cách bảo vệ sắt thép không bị gỉ sét. Ôn luyện <b className="text-cyan-300 font-bold">15 phút</b> mỗi ngày để làm chủ các phương pháp luyện kim và bài tập dãy điện hóa.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

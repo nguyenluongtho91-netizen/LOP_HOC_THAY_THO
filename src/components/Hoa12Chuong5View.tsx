@@ -907,7 +907,7 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               8 Chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                     Chương 5: Pin Điện & Điện Phân
                   </h2>
                   <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>⚡</span> “Chuyển hóa hóa năng thành điện năng – trái tim công nghệ xe điện và tương lai xanh.”
+                    <span>⚡</span> “Từ viên pin điện thoại đến bình ắc quy xe điện đều vận hành nhờ phản ứng hóa học.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Chinh phục thế điện cực chuẩn E°, cơ chế hoạt động của pin Galvani và quy tắc điện phân ở cực Anode – Cathode. Tối ưu kỹ năng tính toán khối lượng bám và điện lượng q = I·t theo phương pháp hiện đại nhất.
+                    Hiểu rõ cơ chế sinh ra dòng điện trong pin và nguyên lý mạ kim loại bóng sáng bằng dòng điện. Luyện đề nhỏ mỗi ngày giúp các em nắm chắc cách tính khối lượng kim loại bám và xử lý mượt mà đề thi mới.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

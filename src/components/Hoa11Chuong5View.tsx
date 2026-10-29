@@ -907,7 +907,7 @@ export const Hoa11Chuong5View: React.FC<Hoa11Chuong5ViewProps> = ({
             className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 shrink-0 ${activeTab === 'practice' ? 'bg-indigo-600 text-white shadow-md shadow-indigo-200' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/60'}`}
           >
             <Target className="w-4 h-4" />
-            <span>Luyện Tập Vi Mô (15 câu)</span>
+            <span>Luyện Đề Nhanh (15 câu)</span>
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${activeTab === 'practice' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'}`}>
               Lộ trình chặng
             </span>
@@ -953,10 +953,10 @@ export const Hoa11Chuong5View: React.FC<Hoa11Chuong5ViewProps> = ({
                     Chương 5: Dẫn Xuất Halogen – Alcohol – Phenol
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Thêm một nhóm chức – mở ra một chân trời tính chất hóa sinh kỳ diệu.”
+                    <span>💡</span> “Từ cồn y tế sát khuẩn đến lá trà xanh đều chứa nhóm -OH đặc trưng.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    So sánh sâu sắc ảnh hưởng qua lại giữa gốc hydrocarbon và nhóm chức -OH của alcohol và phenol. Luyện tập thành thạo phản ứng tách nước, phản ứng thế nguyên tử H linh động và thí nghiệm nhận biết bằng nước bromine.
+                    Hiểu sâu sự khác nhau giữa rượu (alcohol) và phenol qua nhóm chức -OH và vòng benzene. Dành <b className="text-amber-300 font-bold">15 phút</b> mỗi ngày làm quen các dạng bài tách nước, phản ứng với kim loại kiềm và thí nghiệm nhận biết.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
