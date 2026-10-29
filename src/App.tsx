@@ -9,6 +9,7 @@ import Login from '@/pages/Login'
 import StudentPortal from '@/pages/StudentPortal'
 import ExamRoomPage from '@/pages/ExamRoomPage'
 import Hoa12Page from '@/pages/Hoa12Page'
+import MidtermExamsPage from '@/pages/MidtermExamsPage'
 const PublicPortalHub = lazy(() => import('@/pages/PublicPortalHub'))
 const Hoa10Page = lazy(() => import('@/pages/Hoa10Page'))
 const Hoa11Page = lazy(() => import('@/pages/Hoa11Page'))
