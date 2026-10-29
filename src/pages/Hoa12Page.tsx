@@ -187,6 +187,13 @@ export default function Hoa12Page({ defaultChapter }: Hoa12PageProps) {
             <span>🎯</span>
             <span>BỘ 10 ĐỀ GIỮA KÌ 1</span>
           </Link>
+          <Link
+            to="/hoa12-cuoiki1"
+            className="px-3 py-1.5 rounded-lg font-black text-xs transition-all flex items-center gap-1.5 whitespace-nowrap bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 shadow-md shadow-emerald-500/20 hover:scale-[1.03] cursor-pointer mr-1"
+          >
+            <span>🏆</span>
+            <span>BỘ 10 ĐỀ CUỐI KÌ 1</span>
+          </Link>
           
           <button
             type="button"

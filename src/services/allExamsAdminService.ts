@@ -1,3 +1,6 @@
+import { HOA10_FINAL_EXAMS } from './hoa10FinalExamService';
+import { HOA11_FINAL_EXAMS } from './hoa11FinalExamService';
+import { HOA12_FINAL_EXAMS } from './hoa12FinalExamService';
 // @ts-nocheck
 // src/services/allExamsAdminService.ts
 // Dịch vụ tải nhanh dữ liệu toàn bộ đề thi để Quản trị viên / Giáo viên xem và duyệt đề tự do
@@ -31,6 +34,11 @@ import { HOA10_MIDTERM_EXAMS } from './hoa10MidtermExamService';
 
 export function getAllStandardExamsList() {
   return [
+    // ĐỀ CUỐI KÌ 1 CÁC KHỐI
+    ...HOA12_FINAL_EXAMS.map(e => ({ ...e, grade: '12', chapter: 'Đề Cuối Kì 1 Hóa 12' })),
+    ...HOA11_FINAL_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Đề Cuối Kì 1 Hóa 11' })),
+    ...HOA10_FINAL_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Đề Cuối Kì 1 Hóa 10' })),
+
     // ĐỀ GIỮA KÌ 1 CÁC KHỐI
     ...HOA12_MIDTERM_EXAMS.map(e => ({ ...e, grade: '12', chapter: 'Đề Giữa Kì 1 Hóa 12' })),
     ...HOA11_MIDTERM_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Đề Giữa Kì 1 Hóa 11' })),

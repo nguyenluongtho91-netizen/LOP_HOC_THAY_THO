@@ -10,6 +10,7 @@ import StudentPortal from '@/pages/StudentPortal'
 import ExamRoomPage from '@/pages/ExamRoomPage'
 import Hoa12Page from '@/pages/Hoa12Page'
 import MidtermExamsPage from '@/pages/MidtermExamsPage'
+import FinalExamsPage from '@/pages/FinalExamsPage'
 const PublicPortalHub = lazy(() => import('@/pages/PublicPortalHub'))
 const Hoa10Page = lazy(() => import('@/pages/Hoa10Page'))
 const Hoa11Page = lazy(() => import('@/pages/Hoa11Page'))
@@ -130,6 +131,13 @@ export default function App() {
         <Route path="/hoa10-giuaki1"  element={<MidtermExamsPage initialGrade="10" />} />
         <Route path="/hoa11-giuaki1"  element={<MidtermExamsPage initialGrade="11" />} />
         <Route path="/hoa12-giuaki1"  element={<MidtermExamsPage initialGrade="12" />} />
+
+        {/* BỘ ĐỀ THI CUỐI HỌC KÌ 1 (HÓA 10, 11, 12) */}
+        <Route path="/de-thi-cuoi-ki"   element={<FinalExamsPage />} />
+        <Route path="/de-thi-cuoi-ki-1" element={<FinalExamsPage />} />
+        <Route path="/hoa10-cuoiki1"    element={<FinalExamsPage initialGrade="10" />} />
+        <Route path="/hoa11-cuoiki1"    element={<FinalExamsPage initialGrade="11" />} />
+        <Route path="/hoa12-cuoiki1"    element={<FinalExamsPage initialGrade="12" />} />
 
         {/* HỌC LIỆU HÓA HỌC KHỐI 10 */}
         <Route path="/hoa10"    element={<Hoa10Page />} />

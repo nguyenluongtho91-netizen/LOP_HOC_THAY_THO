@@ -1,3 +1,6 @@
+import { HOA10_FINAL_EXAMS } from '@/services/hoa10FinalExamService';
+import { HOA11_FINAL_EXAMS } from '@/services/hoa11FinalExamService';
+import { HOA12_FINAL_EXAMS } from '@/services/hoa12FinalExamService';
 import { HOA10_MIDTERM_EXAMS } from '@/services/hoa10MidtermExamService';
 import { HOA11_MIDTERM_EXAMS } from '@/services/hoa11MidtermExamService';
 import { HOA12_MIDTERM_EXAMS } from '@/services/hoa12MidtermExamService';
@@ -98,6 +101,30 @@ export default function ThptManagementHub() {
   // Danh sach toan bo cac de thi theo tung moc chuyen de de Thay quan ly dong / mo
   const milestoneExams = [
     // 🎯 BỘ ĐỀ THI GIỮA HỌC KÌ 1 CÁC KHỐI (CHUẨN BỘ 2025)
+    {
+      chapterKey: "h12_ck1",
+      fallbackKey: "h12_ck1",
+      grade: "12",
+      chapterTitle: "🏆 Hóa 12 • Bộ 10 Đề Thi Cuối Học Kì 1 (Chuẩn 2025)",
+      link: "/hoa12-cuoiki1",
+      exams: HOA12_FINAL_EXAMS.map(e => ({ id: e.id, code: e.code, title: e.title }))
+    },
+    {
+      chapterKey: "h11_ck1",
+      fallbackKey: "h11_ck1",
+      grade: "11",
+      chapterTitle: "🏆 Hóa 11 • Bộ 10 Đề Thi Cuối Học Kì 1 (Chuẩn 2025)",
+      link: "/hoa11-cuoiki1",
+      exams: HOA11_FINAL_EXAMS.map(e => ({ id: e.id, code: e.code, title: e.title }))
+    },
+    {
+      chapterKey: "h10_ck1",
+      fallbackKey: "h10_ck1",
+      grade: "10",
+      chapterTitle: "🏆 Hóa 10 • Bộ 10 Đề Thi Cuối Học Kì 1 (Chuẩn 2025)",
+      link: "/hoa10-cuoiki1",
+      exams: HOA10_FINAL_EXAMS.map(e => ({ id: e.id, code: e.code, title: e.title }))
+    },
     {
       chapterKey: "h12_gk1",
       fallbackKey: "h12_gk1",
@@ -385,6 +412,48 @@ export default function ThptManagementHub() {
 
   // Danh mục tất cả các chuyên đề Hóa THPT đang mở
   const allModules: ThptModuleCard[] = [
+    // 🏆 ĐỀ CUỐI KÌ 1 HÓA 12
+    {
+      id: 'h12-ck1',
+      grade: '12',
+      badge: 'Hóa 12 • Trọng tâm Cuối Kì 1',
+      title: '🏆 Bộ 10 Đề Thi Cuối Học Kì 1 (Hóa 12)',
+      desc: 'Bộ 10 đề thi tổng hợp cuối kì 1 (Trắc nghiệm, Đúng/Sai, Trả lời ngắn & Tự luận). Trọn bộ đáp án, thang điểm chi tiết.',
+      link: '/hoa12-cuoiki1',
+      gradient: 'from-emerald-950/95 via-teal-950/90 to-purple-950/70',
+      borderClass: 'border-emerald-400/50 hover:border-emerald-300',
+      accentColor: 'text-emerald-300',
+      badgeBg: 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/40',
+      isLocked: Boolean(accessConfig.chapters?.h12_ck1)
+    },
+    // 🏆 ĐỀ CUỐI KÌ 1 HÓA 11
+    {
+      id: 'h11-ck1',
+      grade: '11',
+      badge: 'Hóa 11 • Trọng tâm Cuối Kì 1',
+      title: '🏆 Bộ 10 Đề Thi Cuối Học Kì 1 (Hóa 11)',
+      desc: 'Bộ 10 đề thi tổng hợp cuối kì 1 Hóa 11 (28 câu, thang 10). Đầy đủ lời giải chi tiết và thi thử trực tuyến 50 phút.',
+      link: '/hoa11-cuoiki1',
+      gradient: 'from-teal-950/95 via-cyan-950/90 to-blue-950/70',
+      borderClass: 'border-teal-400/50 hover:border-teal-300',
+      accentColor: 'text-teal-300',
+      badgeBg: 'bg-teal-500/20 text-teal-200 border border-teal-400/40',
+      isLocked: Boolean(accessConfig.chapters?.h11_ck1)
+    },
+    // 🏆 ĐỀ CUỐI KÌ 1 HÓA 10
+    {
+      id: 'h10-ck1',
+      grade: '10',
+      badge: 'Hóa 10 • Trọng tâm Cuối Kì 1',
+      title: '🏆 Bộ 10 Đề Thi Cuối Học Kì 1 (Hóa 10)',
+      desc: 'Bộ 10 đề thi tổng hợp cuối kì 1 Hóa 10 (28 câu, thang 10). Toàn diện các chủ đề học kì 1 có chấm điểm tự động.',
+      link: '/hoa10-cuoiki1',
+      gradient: 'from-emerald-950/95 via-green-950/90 to-slate-900/90',
+      borderClass: 'border-emerald-400/50 hover:border-emerald-300',
+      accentColor: 'text-emerald-300',
+      badgeBg: 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/40',
+      isLocked: Boolean(accessConfig.chapters?.h10_ck1)
+    },
     // 🎯 ĐỀ GIỮA KÌ 1 HÓA 12
     {
       id: 'h12-gk1',

@@ -45,6 +45,7 @@ export default function AdminExamViewerModal({
   const part1Questions = questions.filter(q => q.part === 1 || q.type === 'multiple_choice');
   const part2Questions = questions.filter(q => q.part === 2 || q.type === 'true_false');
   const part3Questions = questions.filter(q => q.part === 3 || q.type === 'short_answer');
+  const part4Questions = questions.filter(q => q.part === 4 || q.type === 'essay');
 
   // Countdown timer in test mode
   useEffect(() => {
@@ -200,7 +201,7 @@ export default function AdminExamViewerModal({
 
   const displayedQuestions = activePartTab === 'all'
     ? questions
-    : questions.filter(q => q.part === activePartTab || (activePartTab === 1 && q.type === 'multiple_choice') || (activePartTab === 2 && q.type === 'true_false') || (activePartTab === 3 && q.type === 'short_answer'));
+    : questions.filter(q => q.part === activePartTab || (activePartTab === 1 && q.type === 'multiple_choice') || (activePartTab === 2 && q.type === 'true_false') || (activePartTab === 3 && q.type === 'short_answer') || (activePartTab === 4 && (q.part === 4 || q.type === 'essay')));
 
   return (
     <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto animate-fade-in font-sans">
@@ -693,6 +694,29 @@ export default function AdminExamViewerModal({
                               Câu trả lời của bạn: <strong className="text-indigo-800">{userP3 || '(chưa điền)'}</strong>
                             </div>
                           )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* ── PART 4: ESSAY ── */}
+                  {(partNum === 4 || q.type === 'essay') && (
+                    <div className="mt-3 pt-2 border-t border-slate-100 space-y-2">
+                      {isTestMode && !isSubmitted ? (
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-bold text-slate-600 block">Ghi chú / Nháp lời giải tự luận:</label>
+                          <textarea
+                            rows={3}
+                            value={userP3 || ''}
+                            onChange={(e) => handleInputP3(q.id, e.target.value)}
+                            placeholder="Học sinh có thể nháp hoặc gõ câu trả lời vắn tắt tại đây..."
+                            className="w-full p-2.5 rounded-xl border border-slate-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-xs sm:text-sm text-slate-900"
+                          />
+                        </div>
+                      ) : (
+                        <div className="p-3 rounded-xl bg-purple-50 border border-purple-200 text-xs font-semibold text-purple-900 flex items-center justify-between gap-2">
+                          <span>📝 Câu hỏi tự luận: Học sinh đối chiếu lời giải chi tiết bên dưới.</span>
+                          <span className="text-[11px] font-bold text-purple-700 bg-white px-2 py-0.5 rounded border border-purple-200">1,0 điểm</span>
                         </div>
                       )}
                     </div>

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import {
   ChevronDown, ChevronRight, GraduationCap, Calculator, Atom,
   BookOpen, Folder, FolderOpen, Zap, Sparkles, CheckCircle2,
-  Bookmark, Layers, FileText, Award
+  Bookmark, Layers, FileText, Award, Trophy
 } from 'lucide-react'
 
 export default function HierarchicalGradeTree() {
@@ -214,6 +214,13 @@ export default function HierarchicalGradeTree() {
                     </span>
                     <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-amber-400 text-slate-950 font-black animate-pulse">MỞ</span>
                   </Link>
+                  <Link to="/hoa10-cuoiki1" className="flex items-center justify-between py-1.5 px-2 rounded-lg bg-gradient-to-r from-emerald-500/25 via-teal-500/20 to-cyan-500/25 hover:from-emerald-500/40 hover:to-cyan-500/40 text-emerald-300 font-extrabold border border-emerald-400/50 shadow-xs mb-1.5 transition-all">
+                    <span className="flex items-center gap-1.5">
+                      <Trophy className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>🏆 Bộ 10 Đề Thi Cuối Kì 1</span>
+                    </span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-400 text-slate-950 font-black animate-pulse">MỚI</span>
+                  </Link>
                                     {/* Chương 1: Cấu tạo nguyên tử */}
                   <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-cyan-500/30">
                     <div
@@ -312,6 +319,13 @@ export default function HierarchicalGradeTree() {
                     </span>
                     <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-amber-400 text-slate-950 font-black animate-pulse">MỞ</span>
                   </Link>
+                  <Link to="/hoa11-cuoiki1" className="flex items-center justify-between py-1.5 px-2 rounded-lg bg-gradient-to-r from-emerald-500/25 via-teal-500/20 to-cyan-500/25 hover:from-emerald-500/40 hover:to-cyan-500/40 text-emerald-300 font-extrabold border border-emerald-400/50 shadow-xs mb-1.5 transition-all">
+                    <span className="flex items-center gap-1.5">
+                      <Trophy className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>🏆 Bộ 10 Đề Thi Cuối Kì 1</span>
+                    </span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-400 text-slate-950 font-black animate-pulse">MỚI</span>
+                  </Link>
                                     {/* Chương 1: Cân bằng hóa học */}
                   <div className="rounded-lg bg-sky-950/40 p-1.5 border border-cyan-500/30">
                     <div
@@ -406,6 +420,13 @@ export default function HierarchicalGradeTree() {
                       <span>🎯 Bộ 10 Đề Thi Giữa Kì 1</span>
                     </span>
                     <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-amber-400 text-slate-950 font-black animate-pulse">MỞ</span>
+                  </Link>
+                  <Link to="/hoa12-cuoiki1" className="flex items-center justify-between py-1.5 px-2 rounded-lg bg-gradient-to-r from-emerald-500/25 via-teal-500/20 to-cyan-500/25 hover:from-emerald-500/40 hover:to-cyan-500/40 text-emerald-300 font-extrabold border border-emerald-400/50 shadow-xs mb-1.5 transition-all">
+                    <span className="flex items-center gap-1.5">
+                      <Trophy className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>🏆 Bộ 10 Đề Thi Cuối Kì 1</span>
+                    </span>
+                    <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-emerald-400 text-slate-950 font-black animate-pulse">MỚI</span>
                   </Link>
                   {/* Chương 1: Ester - Lipid */}
                   <div className="rounded-lg bg-teal-950/40 p-1.5 border border-teal-500/30">
