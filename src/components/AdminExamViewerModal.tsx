@@ -1,5 +1,7 @@
 // @ts-nocheck
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ensureStandardExamInDatabase } from '@/services/standardExamRoomBridge';
 import { 
   X, CheckCircle2, Lock, Unlock, Eye, BookOpen, Clock, Award, 
   ShieldCheck, Printer, Play, RotateCcw, AlertCircle, Check, 
@@ -39,6 +41,31 @@ export default function AdminExamViewerModal({
     correctCount: number;
     total: number;
   } | null>(null);
+
+  const navigate = useNavigate();
+  const [creatingRoom, setCreatingRoom] = useState(false);
+
+  const handleCreateRoom = async () => {
+    try {
+      setCreatingRoom(true);
+      toast.loading('Đang nạp đề vào phòng thi...', { id: 'create-room-modal' });
+      const dbId = await ensureStandardExamInDatabase(exam);
+      toast.success(`Đã chuẩn bị xong đề: ${exam.title}`, { id: 'create-room-modal' });
+      onClose();
+      navigate('/exam-rooms', {
+        state: {
+          preselectExamId: dbId,
+          preselectExamTitle: exam.title,
+          preselectGrade: exam.grade,
+          preselectDuration: exam.duration || 50
+        }
+      });
+    } catch (err: any) {
+      toast.error('Lỗi khi mở phòng thi: ' + (err?.message || err), { id: 'create-room-modal' });
+    } finally {
+      setCreatingRoom(false);
+    }
+  };
 
   const isLocked = Boolean(accessConfig?.exams?.[exam.id]);
   const questions = exam.questions || [];
@@ -264,6 +291,17 @@ export default function AdminExamViewerModal({
             >
               {isLocked ? <Unlock className="w-3.5 h-3.5" /> : <Lock className="w-3.5 h-3.5" />}
               <span className="hidden sm:inline">{isLocked ? 'Mở HS' : 'Khóa HS'}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleCreateRoom}
+              disabled={creatingRoom}
+              className="px-3 py-1.5 rounded-xl text-xs font-black bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 shadow-md shadow-teal-500/20 transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+              title="Tạo phòng thi cho học sinh làm đề này"
+            >
+              <Zap className="w-3.5 h-3.5 fill-current" />
+              <span>{creatingRoom ? 'Đang nạp...' : 'Tạo Phòng Thi'}</span>
             </button>
 
             <button

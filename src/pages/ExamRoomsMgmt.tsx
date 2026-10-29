@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useMemo } from 'react'
 import { MonitorPlay, Plus, Trash2, KeyRound, BarChart3, RefreshCw, Settings, FileSpreadsheet, Users, CheckCircle2 } from 'lucide-react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useExamRoomStore } from '@/store/examRoomStore'
@@ -9,6 +9,7 @@ import { exportExamRoomToExcel } from '@/services/examExportService'
 import Modal from '@/components/Modal'
 import toast from 'react-hot-toast'
 import { isPracticeClassName, getExamCategory, getCategoryMeta, ExamCategory } from '@/utils/practiceExamHelper'
+import { getStandardExamsForGrade, ensureStandardExamInDatabase } from '@/services/standardExamRoomBridge'
 
 const getExamSessionNumber = (title: string) => {
   const match = title.toLowerCase().match(/buổi\s*(\d+)|buoi\s*(\d+)/)
@@ -42,33 +43,37 @@ export default function ExamRoomsMgmt() {
 
   // Tự động mở modal tạo phòng thi khi Thầy bấm nút "Giao bài" từ ngân hàng đề thi
   useEffect(() => {
-    if (location.state?.preselectExamId && exams.length > 0) {
-      const ex = exams.find(e => e.id === location.state.preselectExamId)
-      if (ex) {
-        const title = (ex.title || '').toLowerCase()
-        let g: number | '' = ''
-        if (title.includes('12')) g = 12
-        else if (title.includes('11')) g = 11
-        else if (title.includes('10')) g = 10
-        else if (title.includes('9')) g = 9
-        else if (title.includes('8')) g = 8
-        else if (title.includes('7')) g = 7
-        else if (title.includes('6')) g = 6
-        
-        if (g) setModalGrade(g)
-        const autoCat = getExamCategory({ exams: ex, settings: {} })
-        setForm(prev => ({
-          ...prev,
-          exam_id: ex.id,
-          settings: {
-            ...prev.settings,
-            category: autoCat,
-            antiCheat: true
-          }
-        }))
-        setModalOpen(true)
-        window.history.replaceState({}, document.title)
-      }
+    if (location.state?.preselectExamId) {
+      const exId = location.state.preselectExamId
+      const exTitle = location.state.preselectExamTitle || ''
+      const ex = exams.find(e => e.id === exId)
+      const title = (ex?.title || exTitle).toLowerCase()
+
+      let g: number | '' = ''
+      if (location.state.preselectGrade) {
+        g = Number(location.state.preselectGrade)
+      } else if (title.includes('12')) g = 12
+      else if (title.includes('11')) g = 11
+      else if (title.includes('10')) g = 10
+      else if (title.includes('9')) g = 9
+      else if (title.includes('8')) g = 8
+      else if (title.includes('7')) g = 7
+      else if (title.includes('6')) g = 6
+
+      if (g) setModalGrade(g)
+      const autoCat = ex ? getExamCategory({ exams: ex, settings: {} }) : 'exam_practice'
+      setForm(prev => ({
+        ...prev,
+        exam_id: exId,
+        time_limit: location.state.preselectDuration || prev.time_limit || 45,
+        settings: {
+          ...prev.settings,
+          category: autoCat,
+          antiCheat: true
+        }
+      }))
+      setModalOpen(true)
+      window.history.replaceState({}, document.title)
     }
   }, [location.state, exams])
   
@@ -277,7 +282,12 @@ export default function ExamRoomsMgmt() {
     return grade === null || !displayGrades.includes(grade)
   })
 
-  const isFirstRender = useRef(true)
+    const standardExamsForGrade = useMemo(() => {
+    if (!modalGrade || modalGrade === 'all') return []
+    return getStandardExamsForGrade(modalGrade)
+  }, [modalGrade])
+
+const isFirstRender = useRef(true)
 
   const [activeGrade, setActiveGrade] = useState<number | 'others'>(() => {
     const saved = sessionStorage.getItem('exam_rooms_active_grade')
@@ -638,9 +648,33 @@ export default function ExamRoomsMgmt() {
                     >
                       {/* Left: Code & Title & Class */}
                       <div className="flex flex-col md:flex-row md:items-center gap-4 flex-1 min-w-0">
-                        <span className="font-mono text-sm font-extrabold text-teal-700 bg-teal-50 px-3 py-1.5 rounded-xl border border-teal-200 shadow-sm flex items-center gap-1.5 shrink-0 self-start md:self-auto">
-                          <KeyRound className="w-4 h-4 opacity-60" /> {room.code}
-                        </span>
+                        <div className="flex flex-col gap-1.5 shrink-0 self-start md:self-auto">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              navigator.clipboard.writeText(room.code)
+                              toast.success(`Đã sao chép mã phòng: ${room.code}`)
+                            }}
+                            className="font-mono text-sm font-extrabold text-teal-700 bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-xl border border-teal-200 shadow-xs flex items-center gap-1.5 transition-all cursor-pointer group"
+                            title="Bấm để sao chép mã phòng thi"
+                          >
+                            <KeyRound className="w-4 h-4 opacity-60 group-hover:scale-110 transition-transform" />
+                            <span>{room.code}</span>
+                            <span className="text-[10px] text-teal-600 font-sans ml-1 underline decoration-dotted">Chép mã</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const link = `${window.location.origin}/exam-room/${room.id}`
+                              navigator.clipboard.writeText(link)
+                              toast.success('Đã sao chép link làm bài của học sinh!')
+                            }}
+                            className="text-[10px] font-bold text-slate-600 hover:text-teal-700 hover:bg-slate-100 px-2 py-0.5 rounded-lg transition-colors flex items-center gap-1 justify-center border border-slate-200 cursor-pointer"
+                            title="Sao chép link trực tiếp gửi học sinh"
+                          >
+                            🔗 Chép Link thi
+                          </button>
+                        </div>
                         
                         <div className="min-w-0 flex-1">
                           <h4 className="font-bold text-gray-800 text-base leading-snug truncate" title={room.exams?.title}>
@@ -886,13 +920,45 @@ export default function ExamRoomsMgmt() {
             <label className="label font-bold text-gray-800">1. Chọn đề thi từ thư viện *</label>
             <select 
               value={form.exam_id} 
-              onChange={e => {
+              onChange={async (e) => {
                 const exId = e.target.value
+                if (!exId) {
+                  setForm(prev => ({ ...prev, exam_id: '' }))
+                  return
+                }
+
+                if (exId.startsWith('std:')) {
+                  const realStdId = exId.replace('std:', '')
+                  const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
+                  if (stdEx) {
+                    toast.loading('Đang chuẩn bị đề thi chuẩn...', { id: 'sync-exam' })
+                    try {
+                      const dbId = await ensureStandardExamInDatabase(stdEx)
+                      toast.success(`Đã chọn: ${stdEx.title}`, { id: 'sync-exam' })
+                      await loadExams()
+                      setForm(prev => ({
+                        ...prev,
+                        exam_id: dbId,
+                        time_limit: stdEx.duration || 50,
+                        settings: {
+                          ...prev.settings,
+                          category: 'exam_practice',
+                          antiCheat: true
+                        }
+                      }))
+                    } catch (err: any) {
+                      toast.error('Lỗi khi nạp đề: ' + (err?.message || err), { id: 'sync-exam' })
+                    }
+                  }
+                  return
+                }
+
                 const selectedEx = exams.find(ex => ex.id === exId)
                 const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : 'homework'
                 setForm(prev => ({
                   ...prev, 
                   exam_id: exId,
+                  time_limit: selectedEx?.data?.duration || prev.time_limit || 45,
                   settings: {
                     ...prev.settings,
                     category: autoCat,
@@ -904,9 +970,26 @@ export default function ExamRoomsMgmt() {
               disabled={!!editingRoomId || !modalGrade}
             >
               <option value="">{modalGrade ? '-- Chọn đề thi --' : '-- Vui lòng chọn khối lớp trước --'}</option>
-              {filteredExams.map(ex => (
-                <option key={ex.id} value={ex.id}>{ex.title}</option>
-              ))}
+              {standardExamsForGrade.length > 0 && (
+                <optgroup label={`🌟 NGÂN HÀNG ĐỀ CHUẨN BỘ - HÓA ${modalGrade} (${standardExamsForGrade.length} đề)`}>
+                  {standardExamsForGrade.map(ex => {
+                    const synced = exams.find(e => e.title === ex.title)
+                    const val = synced ? synced.id : `std:${ex.id}`
+                    return (
+                      <option key={ex.id} value={val}>
+                        ⭐ {ex.title} ({ex.questions?.length || 28} câu - {ex.duration || 50} phút)
+                      </option>
+                    )
+                  })}
+                </optgroup>
+              )}
+              {filteredExams.length > 0 && (
+                <optgroup label={`📁 ĐỀ THẦY TỰ TẢI LÊN (${filteredExams.length} đề)`}>
+                  {filteredExams.map(ex => (
+                    <option key={ex.id} value={ex.id}>{ex.title}</option>
+                  ))}
+                </optgroup>
+              )}
             </select>
           </div>
 

@@ -10,6 +10,8 @@ import { HOA10_FINAL_EXAMS } from '@/services/hoa10FinalExamService';
 import { HOA11_FINAL_EXAMS } from '@/services/hoa11FinalExamService';
 import { HOA12_FINAL_EXAMS } from '@/services/hoa12FinalExamService';
 import AdminExamViewerModal from '@/components/AdminExamViewerModal';
+import { ensureStandardExamInDatabase } from '@/services/standardExamRoomBridge';
+import toast from 'react-hot-toast';
 import { getHoa12AccessConfigSync, GranularAccessConfig } from '@/services/hoa12AccessControlService';
 
 interface FinalExamsPageProps {

@@ -231,6 +231,33 @@ export default function Final2ExamsPage({ initialGrade }: Final2ExamsPageProps) 
                     <span>Vào Thi Thử (50p)</span>
                   </button>
                 </div>
+
+                <button
+                  type="button"
+                  onClick={async (e) => {
+                    e.stopPropagation();
+                    try {
+                      toast.loading('Đang chuẩn bị phòng thi...', { id: 'card-room-' + exam.id });
+                      const dbId = await ensureStandardExamInDatabase(exam);
+                      toast.success(`Đã nạp: ${exam.title}`, { id: 'card-room-' + exam.id });
+                      navigate('/exam-rooms', {
+                        state: {
+                          preselectExamId: dbId,
+                          preselectExamTitle: exam.title,
+                          preselectGrade: selectedGrade,
+                          preselectDuration: exam.duration || 50
+                        }
+                      });
+                    } catch (err: any) {
+                      toast.error('Lỗi khi nạp đề: ' + (err?.message || err), { id: 'card-room-' + exam.id });
+                    }
+                  }}
+                  className="w-full mt-2.5 py-2 px-3 rounded-xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-300 hover:text-teal-200 border border-teal-500/30 hover:border-teal-500/50 text-xs font-black flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs"
+                  title="Tạo phòng thi cho học sinh làm đề này"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+                  <span>🚀 Tạo Phòng Thi Cho HS</span>
+                </button>
               </div>
             );
           })}
