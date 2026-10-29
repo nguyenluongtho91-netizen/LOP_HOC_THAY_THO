@@ -6864,8 +6864,8 @@ export const HOA10_FINAL_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "O = S ®  O",
-            "isCorrect": false
+            "text": "O = S → O",
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -6876,12 +6876,18 @@ export const HOA10_FINAL_EXAMS: Chuong1Exam[] = [
           {
             "id": "c",
             "letter": "C",
-            "text": "O – S ®  OD. O = S = O.",
-            "isCorrect": true
+            "text": "O – S → O",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "O = S = O",
+            "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
-        "explanation": "",
+        "correctAnswer": "A",
+        "explanation": "Theo quy tắc octet, trong SO₂, nguyên tử S tạo 1 liên kết đôi với 1 nguyên tử O và 1 liên kết phối trí với nguyên tử O còn lại (O = S → O), xung quanh S có đủ 8 electron. Phương án đúng là A.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -9012,18 +9018,12 @@ export const HOA10_FINAL_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "S là nguyên tố nhóm A, Se là nguyên tố nhóm",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "S là nguyên tố nhóm A, Se là nguyên tố nhóm B.",
             "isCorrect": false
           }
         ],
         "correctAnswer": "C",
-        "explanation": "",
+        "explanation": "S có 3 lớp electron (chu kì 3), Se có 4 lớp electron (chu kì 4), cả hai đều có 6 electron lớp ngoài cùng (nhóm VIA). Vậy S và Se nằm ở 2 chu kì kế tiếp nhau. Phương án đúng là C.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 10

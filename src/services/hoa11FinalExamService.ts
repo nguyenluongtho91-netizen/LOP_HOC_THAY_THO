@@ -7494,12 +7494,12 @@ export const HOA11_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Quá trình pha loãng acid tỏa nhiều nhiệt.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "Nồng độ phần trăm của dung dịch H<sub>2</sub>SO<sub>4</sub> sau khi pha loãng là 25,6%.",
+            "text": "Nồng độ phần trăm của dung dịch H₂SO₄ sau khi pha loãng là 25,6%.",
             "isCorrect": false
           },
           {
@@ -7507,33 +7507,9 @@ export const HOA11_FINAL_EXAMS: Chuong1Exam[] = [
             "letter": "D",
             "text": "Sulfuric acid đặc dễ gây bỏng khi rơi vào da, nguyên nhân chủ yếu là do nó có tính acid mạnh.",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "Sai. Phải rót từ từ acid đặc vào H<sub>2</sub>O vì quá trình pha loãng tỏa nhiều nhiệt, làm ngược lại nước sẽ sôi lên và bắn ra ngoài.",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "Đúng.",
-            "isCorrect": false
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "Sai. m<sub>dd sau pha loãng</sub> = 10.1,84 + 60.1 = 78,4g và  HSO24m  = 10.1,84.98% = 18,032g",
-            "isCorrect": false
-          },
-          {
-            "id": "d",
-            "letter": "D",
-            "text": "Sai. Sulfuric acid đặc dễ gây bỏng khi rơi vào da, nguyên nhân chủ yếu là do nó có tính oxi hóa mạnh và háo nước mạnh.",
-            "isCorrect": false
           }
         ],
-        "explanation": "",
+        "explanation": "Đáp án:<br/>a. Sai. Phải rót từ từ acid vào nước.<br/>b. Đúng. Pha loãng H₂SO₄ đặc tỏa rất nhiều nhiệt.<br/>c. Sai. m_dd = 10.1,84 + 60 = 78,4 g; m_H2SO4 = 18,032 g ⇒ C% = 23,0%.<br/>d. Sai. Nguyên nhân gây bỏng chủ yếu do tính háo nước mãnh liệt và tính oxi hóa mạnh.",
         "explanationImages": [],
         "points": 1.0,
         "displayNumber": 20
@@ -8929,13 +8905,7 @@ export const HOA11_FINAL_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "Tinh dầu nằm ở phần A do A tan hoàn toàn trong",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "Tinh dầu nằm ở phần A do A tan hoàn toàn trong nước.",
             "isCorrect": false
           }
         ],
@@ -9309,24 +9279,30 @@ export const HOA11_FINAL_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "Nồng độB. Nhiệt độ",
+            "text": "Nồng độ",
             "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt độ",
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "Áp suất",
+            "text": "Áp suất",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "Chất xúc tác.",
+            "text": "Chất xúc tác",
             "isCorrect": false
           }
         ],
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "Hằng số cân bằng KC của một phản ứng xác định chỉ phụ thuộc vào nhiệt độ. Phương án đúng là B.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 17

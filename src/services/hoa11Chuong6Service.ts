@@ -78,7 +78,3822 @@ export const HOA11_CHUONG6_MASTER: Record<string, Chuong6Lesson> = {"bai23":{"id
 
 export const HOA11_CHUONG6_LESSONS: Chuong6Lesson[] = Object.values(HOA11_CHUONG6_MASTER);
 
-export const HOA11_CHUONG6_EXAMS: Chuong6Exam[] = [{"id":"hoa11_c6_de1","code":"ĐỀ 601","title":"Đề kiểm tra Chương 6: Hợp chất carbonyl - Carboxylic acid (Đề số 1)","topic":"Hợp chất carbonyl: Danh pháp, phản ứng tráng bạc Tollens & phản ứng iodoform","badge":"Chương 6 - Đề 1","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c6_de1_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Ketone là hợp chất hữu cơ có","images":[],"options":[{"id":"a","letter":"A","text":"nhóm -CHO liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen","isCorrect":false},{"id":"b","letter":"B","text":"nhóm -CHO chỉ liên kết trực tiếp với nguyên tử carbon","isCorrect":false},{"id":"c","letter":"C","text":"nhóm -CO liên kết với hai gốc hydrocarbon","isCorrect":true},{"id":"d","letter":"D","text":"nhóm -CO chỉ liên kết với một gốc hydrocarbon","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c6_de1_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Ở nhiệt độ thường, aldehyde nào sau đây ở trạng thái khí?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>6</sub>H<sub>13</sub>CHO","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>7</sub>H<sub>15</sub>CHO","isCorrect":false},{"id":"c","letter":"C","text":"HCHO","isCorrect":true},{"id":"d","letter":"D","text":"C<sub>8</sub>H<sub>17</sub>CHO","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c6_de1_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Công thức tổng quát của aldehyde no, mạch hở, đơn chức là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>n</sub>H<sub>2n</sub>O (n ≥ 1)","isCorrect":true},{"id":"b","letter":"B","text":"C<sub>n</sub>H<sub>2n-2</sub>O (n ≥ 2)","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>n</sub>H<sub>2n-4</sub>O (n ≥ 2)","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>n</sub>H<sub>2n+2</sub>O (n > 0)","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c6_de1_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Ở điều kiện thường, các aldehyde nào sau đây tan tốt trong nước?","images":[],"options":[{"id":"a","letter":"A","text":"HCHO, C<sub>6</sub>H<sub>13</sub>CHO","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>3</sub>CHO, C<sub>7</sub>H<sub>15</sub>CHO","isCorrect":false},{"id":"c","letter":"C","text":"HCHO, CH<sub>3</sub>CHO","isCorrect":true},{"id":"d","letter":"D","text":"C<sub>6</sub>H<sub>13</sub>CHO, C<sub>7</sub>H<sub>15</sub>CHO","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c6_de1_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Khử hợp chất hữu cơ X bằng LiAlH<sub>4</sub> thu được (CH<sub>3</sub>)<sub>2</sub>CH-CH<sub>2</sub>-CH<sub>2</sub>OH. Chất X có tên là","images":[],"options":[{"id":"a","letter":"A","text":"3-methylbutanal","isCorrect":true},{"id":"b","letter":"B","text":"2-methylbutan-3-al","isCorrect":false},{"id":"c","letter":"C","text":"2-methylbutanal","isCorrect":false},{"id":"d","letter":"D","text":"3-methylbutan-3-al","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c6_de1_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Có bao nhiêu aldehyde tương ứng với công thức phân tử C<sub>4</sub>H<sub>8</sub>O?","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":true},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c6_de1_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Khi cho ethanal phản ứng với Cu(OH)<sub>2</sub> trong môi trường kiềm ở nhiệt độ thích hợp, hiện tượng nào sau đây sẽ xảy ra?","images":[],"options":[{"id":"a","letter":"A","text":"Cu(OH)<sub>2</sub> bị tan ra, tạo dung dịch màu xanh","isCorrect":false},{"id":"b","letter":"B","text":"Có mùi chua của giấm, do phản ứng sinh ra acetic acid","isCorrect":false},{"id":"c","letter":"C","text":"Tạo kết tủa đỏ gạch do phản ứng sinh ra Cu<sub>2</sub>O","isCorrect":true},{"id":"d","letter":"D","text":"Sinh ra CuO màu đen","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c6_de1_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Benzoic acid được sử dụng như một chất bảo quản thực phẩm (kí hiệu là E-210) cho xúc xích, nước sốt cà chua, mù tạt, bơ thực vật … Nó ức chế sự phát triển của nấm mốc, nấm men và một số vi khuẩn. Công thức phân tử benzoic acid là","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>3</sub>COOH","isCorrect":false},{"id":"b","letter":"B","text":"HCOOH","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>6</sub>H<sub>5</sub>COOH","isCorrect":true},{"id":"d","letter":"D","text":"(COOH)<sub>2</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c6_de1_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây là sai?","images":[],"options":[{"id":"a","letter":"A","text":"Aldehyde bị khử tạo thành alcohol bậc I","isCorrect":false},{"id":"b","letter":"B","text":"Ketone bị khử tạo thành alcohol bậc II","isCorrect":false},{"id":"c","letter":"C","text":"Aldehyde phản ứng với thuốc thử Tollens tạo lớp sáng bạc","isCorrect":false},{"id":"d","letter":"D","text":"Ketone phản ứng với Cu(OH)<sub>2</sub> đun nóng tạo kết tủa màu đỏ gạch","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c6_de1_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Chất nào sau đây có nhiệt độ sôi cao nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Formic acid","isCorrect":false},{"id":"b","letter":"B","text":"Ethyl alcohol","isCorrect":false},{"id":"c","letter":"C","text":"Acetic acid","isCorrect":true},{"id":"d","letter":"D","text":"Ethane","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c6_de1_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Aldehyde và ketone có nhiều ứng dụng trong cuộc sống.<br/>(a) Formaldehyde dùng để sản xuất vật liệu nhựa, keo dán, sơn.<br/>(b) Formaldehyde dùng để sản xuất chất nổ và bảo quản mẫu sinh vật.<br/>(c) Acetaldehyde dùng để sản xuất dung môi, bisphenol–A và chloroform.<br/>(d) Acetone dùng để sản xuất acetic acid, acetic anhydride và một số hóa chất khác.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":true},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c6_de1_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Một thí nghiệm được mô tả như hình sau đây:<br/>Chất lỏng thu được ở ống nghiệm B có mùi táo. Công thức cấu tạo của chất lỏng đó là","images":["/assets/hoa11/c6/hoa11_c6_de1_image1.jpeg"],"options":[{"id":"a","letter":"A","text":"HCOOC<sub>2</sub>H<sub>5</sub>","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>2</sub>H<sub>5</sub>COOCH<sub>3</sub>","isCorrect":true},{"id":"c","letter":"C","text":"CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>","isCorrect":false},{"id":"d","letter":"D","text":"HCOOC<sub>3</sub>H<sub>7</sub>","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c6_de1_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Cho 1,97 gam dung dịch formalin tác dụng với lượng dư dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> thu được 10,8 gam Ag. Nồng độ % của formaldehyde trong fomalin là","images":[],"options":[{"id":"a","letter":"A","text":"49,5%","isCorrect":false},{"id":"b","letter":"B","text":"40,0%","isCorrect":false},{"id":"c","letter":"C","text":"50,0%","isCorrect":false},{"id":"d","letter":"D","text":"38,1%","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c6_de1_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Dung dịch acetic acid phản ứng được với tất cả các chất trong dãy nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Cu, NaOH, NaCl","isCorrect":false},{"id":"b","letter":"B","text":"Zn, CuO, NaCl","isCorrect":false},{"id":"c","letter":"C","text":"Zn, CuO, HCl","isCorrect":false},{"id":"d","letter":"D","text":"Zn, NaOH, CaCO<sub>3</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c6_de1_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Để loại bỏ lớp cặn màu trắng trong ấm đun nước, người ta có thể dùng dung dịch nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Giấm ăn","isCorrect":true},{"id":"b","letter":"B","text":"Nước","isCorrect":false},{"id":"c","letter":"C","text":"Muối ăn","isCorrect":false},{"id":"d","letter":"D","text":"Cồn 70<sup>o</sup>","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c6_de1_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Sữa chua được lên men từ sữa bột, sữa bò, sữa dê,... Sữa chua tốt cho hệ tiêu hoá. Vị chua trong sữa chua tạo bởi acid nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Formic acid","isCorrect":false},{"id":"b","letter":"B","text":"Acetic acid","isCorrect":false},{"id":"c","letter":"C","text":"Lactic acid","isCorrect":true},{"id":"d","letter":"D","text":"Benzoic acid","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c6_de1_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Thứ tự các thuốc thử để phân biệt 3 dung dịch riêng biệt: acetic acid, acrylic acid, formic acid là","images":[],"options":[{"id":"a","letter":"A","text":"quỳ tím, dung dịch Br<sub>2</sub> trong CCl<sub>4</sub>","isCorrect":false},{"id":"b","letter":"B","text":"dung dịch Br<sub>2</sub>, dung dịch Na<sub>2</sub>CO<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"dung dịch Na<sub>2</sub>CO<sub>3</sub>, quỳ tím","isCorrect":false},{"id":"d","letter":"D","text":"dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> dư, dung dịch Br<sub>2</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c6_de1_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Để trung hòa 6,72 gam một carboxylic acid Y (no, đơn chức), cần dùng 200 gam dung dịch NaOH 2,24%. Công thức của Y là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>2</sub>H<sub>5</sub>COOH","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>3</sub>COOH","isCorrect":true},{"id":"c","letter":"C","text":"C<sub>3</sub>H<sub>7</sub>COOH","isCorrect":false},{"id":"d","letter":"D","text":"HCOOH","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c6_de1_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Carboxylic acid có nhiệt độ sôi cao hơn so với hydrocarbon, alcohol, hợp chất carbonyl có phân tử khối tương đương do tạo được liên kết hydrogen bền vứng hơn","images":["/assets/hoa11/c6/hoa11_c6_de1_image2.png"],"options":[{"id":"a","letter":"A","text":"Hình (a) là liên kết hydrogen dạng liên phân tử và hình (b) là liên kết hydrogen dạng dimer","isCorrect":false},{"id":"b","letter":"B","text":"Phân tử carboxylic acid chứa nhóm carboxyl phân cực mạnh nên tạo được liên kết hydrogen bền vừng","isCorrect":true},{"id":"c","letter":"C","text":"Ngoài hai dạng liên kết hydrogen trên còn có liên kết giữa carboxylic acid và nước","isCorrect":true},{"id":"d","letter":"D","text":"Các hợp chất hydrocarbon, alcohol và hợp chất carbonyl không tạo được liên kết hydrogen liên phân tử","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Hình (b) là liên kết hydrogen dạng liên phân tử và hình (a) là liên kết hydrogen dạng dimer.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Alcohol có tạo liên kết hydrogen liên phân tử","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa11_c6_de1_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho 2 - 3 mL dung dịch AgNO<sub>3</sub> 2% vào ống nghiệm đã rửa sạch. Thêm từ từ dung dịch NH<sub>3</sub> 3% vào và lắc đều cho tới khi kết tủa tan vừa hết. Thêm khoảng 1 mL dung dịch acetaldehyde 10% vào ống nghiệm, lắc đều.<br/>Bước 2: Đặt ống nghiệm vào cốc nước nóng (khoảng 60℃) rồi để yên. Sau vài phút lấy ống nghiệm ra khỏi cốc","images":[],"options":[{"id":"a","letter":"A","text":"Sau bước 2, lớp bạc sinh ra sáng bám trên thành ống nghiệm","isCorrect":true},{"id":"b","letter":"B","text":"Có thể thay dung dịch acetaldehyde bằng dung dịch acetone thì kết quả thí nghiệm vẫn không thay đổi","isCorrect":false},{"id":"c","letter":"C","text":"Trong thí nghiệm trên, acetaldehyde đóng vai trò là chất khử","isCorrect":true},{"id":"d","letter":"D","text":"Ở bước 2, có thể đun sôi hỗn hợp chất phản ứng trong ống nghiệm để phản ứng xảy ra nhanh hơn","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. Dung dịch acetone không phản ứng với thuốc thử Tollens.<br/>c. Đúng.<br/>d. Sai. Trong phản ứng tráng bạc, người ta không đun sôi hỗn hợp phản ứng để cho bạc bám đều lên thành ống nghiệm (hoặc vật cần tráng bạc)","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c6_de1_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho ba chất hữu cơ A, B, C có cùng công thức phân tử là C<sub>3</sub>H<sub>6</sub>O. Chất A có mạch carbon và có phản ứng tráng bạc; chất B không có phản ứng tráng bạc nhưng có phản ứng iodoform; chất C làm mất màu nước bromine. Khi hydrogen hóa C rồi oxi hóa sản phẩm thì được A. Xác định công thức cấu tạo và gọi tên A, B, C theo danh pháp thay thế","images":[],"options":[{"id":"a","letter":"A","text":"Chất A có tên thay thế là propanal","isCorrect":true},{"id":"b","letter":"B","text":"Chất B có tên thay thế là propanone","isCorrect":true},{"id":"c","letter":"C","text":"Chất C có tên thay thế là propan – 2 – ol","isCorrect":false},{"id":"d","letter":"D","text":"A, B, C là ba chất đồng phân của nhau","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Chất C có tên thay thế là prop-2-en-1-ol.<br/>d. Đúng.<br/>- Chất A có mạch carbon và có phản ứng tráng bạc nên A là CH<sub>3</sub>CH<sub>2</sub>CHO (propanal).<br/>- Chất B không có phản ứng tráng bạc nhưng có phản ứng iodoform nên B là CH<sub>3</sub>COCH<sub>3</sub> (propanone).<br/>- Chất C làm mất màu nước bromine. Khi hydrogen hóa C rồi oxi hóa sản phẩm thì được A nên C là CH<sub>2</sub>=CH-CH<sub>2</sub><sup>-</sup>OH (prop-2-en-1-ol)","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c6_de1_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Chanh là một loài thực vật cho quả nhỏ, thuộc chi Cam chanh (Citrus), khi chín có màu xanh hoặc vàng, thịt quả có vị chua. Quả chanh được sử dụng làm thực phẩm trên khắp thế giới – chủ yếu dùng nước ép của nó, thế nhưng phần cơm (các múi của chanh) và vỏ cũng được sử dụng, chủ yếu là trong nấu ăn và nướng bánh. Nước ép chanh chứa khoảng 5% (khoảng 0,3 mol/lít) citric acid, điều này giúp chanh có vị chua, và độ pH của chanh từ 2-3. Citric acid có công thức cấu tạo là","images":["/assets/hoa11/c6/hoa11_c6_de1_image3.png"],"options":[{"id":"a","letter":"A","text":"Citric acid tác dụng tối đa với NaHCO<sub>3</sub> theo tỉ lệ mol 1 : 3","isCorrect":true},{"id":"b","letter":"B","text":"Citric acid thuộc loại hợp chất đa chức","isCorrect":false},{"id":"c","letter":"C","text":"Công thức phân tử của citric acid là C<sub>6</sub>H<sub>6</sub>O<sub>7</sub>","isCorrect":false},{"id":"d","letter":"D","text":"Citric acid tác dụng với NaOH theo tỉ lệ mol 1 : 4","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng. HOC<sub>3</sub>H<sub>4</sub>(COOH)<sub>3</sub> + 3NaHCO<sub>3</sub>HO<sub>C</sub>3H<sub>4</sub>(COONa)<sub>3</sub> + 3CO<sub>2</sub> + 3H<sub>2</sub>O.<br/>b. Sai. Citric acid thuộc loại hợp chất tạp chức (chức carboxylic và chức alcohol).<br/>c. Sai. Citric acid là HOC<sub>3</sub>H<sub>4</sub>(COOH)<sub>3</sub> (C<sub>6</sub>H<sub>8</sub>O<sub>7</sub>).<br/>d. Sai. HOC<sub>3</sub>H<sub>4</sub>(COOH)<sub>3</sub> + 3NaOH  HOC<sub>3</sub>H<sub>4</sub>(COONa)<sub>3</sub> + 3H<sub>2</sub>O","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c6_de1_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Từ phổ khối lượng (MS) của acetic acid ở hình dưới đây:<br/>Phân tử khối của acetic acid bằng bao nhiêu?","images":["/assets/hoa11/c6/hoa11_c6_de1_image4.png"],"correctAnswer":"60","explanation":"Đáp án: 60","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa11_c6_de1_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các chất: acetic aldehyde, acetylene, ethanol, propanal, acetone. Có bao nhiêu chất có khả năng phản ứng với dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub>?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa11_c6_de1_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Số đồng phân có cùng công thức phân tử C<sub>5</sub>H<sub>10</sub>Ocó khả năng tham gia phản ứng iodoform là bao nhiêu?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2.<br/>Bao gồm: CH<sub>3</sub> – CO – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub>, CH<sub>3</sub> – CO – CH(CH<sub>3</sub>)<sub>2</sub>","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c6_de1_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Giấm được sử dụng khá phổ biến để chế biến thức ăn. Bạn Mai muốn xác định nồng độ acetic acid có trong giấm ăn bằng cách sử dụng dung dịch sodium hydroxyde 0,1M để chuẩn độ. Bạn lấy mẫu giấm ăn đó để làm thí nghiệm và kết quả chuẩn độ 3 lần như bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Thí nghiệm</td><td class='border border-slate-300 px-2 py-1 text-xs'>Thể tích giấm (mL)</td><td class='border border-slate-300 px-2 py-1 text-xs'>Thể tích dung dịch NaOH 0,1 M cần dùng  (mL)</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>1</td><td class='border border-slate-300 px-2 py-1 text-xs'>5,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>25,0</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>2</td><td class='border border-slate-300 px-2 py-1 text-xs'>5,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>25,0</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>3</td><td class='border border-slate-300 px-2 py-1 text-xs'>5,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>24,9</td></tr></table><br/>Hãy giúp bạn Mai xác định nồng độ mol của acetic acid trong giấm","images":[],"correctAnswer":"0,5","explanation":"Đáp án: 0,5.<br/>Thể tích trung bình của dung dịch NaOH cần dùng:  ++==NaOH252524,9V24,97mL3 .<br/>Nồng độ acetic acid có trong giấm ăn là:  ==3M(CHCOOH)24,79.0,1C0,5M.5","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c6_de1_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Cho các phản ứng sau ở điều kiện thích hợp:<br/>(1) Lên men giấm ethyl alcohol.<br/>(2) Oxi hóa không hoàn toàn acetaldehyde.<br/>(3) Oxi hóa không hoàn toàn butane.<br/>(4) Cho methanol tác dụng với carbon monoxide.<br/>Có bao nhiêu phản ứng có sự tạo thành sản phẩm acetic acid?<br/>Hãy gán số thứ tự các phản ứng trên có thể tạo thành acetic acid theo số thứ tự tăng dần (ví dụ: 12, 234, …)<br/>Đáp số 1234.<br/>(1) C<sub>2</sub>H<sub>5</sub>OH + O<sub>2</sub>  mengiÊm¾¾¾¾®  CH<sub>3</sub>COOH + H<sub>2</sub>O<br/>(2) CH<sub>3</sub>CHO + Br<sub>2</sub> + H<sub>2</sub>O → CH<sub>3</sub>COOH + 2HBr<br/>(3) CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub> + 5/2O<sub>2</sub>  oxt,t¾¾¾®  2CH<sub>3</sub>COOH + H<sub>2</sub>O<br/>(4) CH<sub>3</sub>OH + CO  oxt,t¾¾¾®  CH<sub>3</sub>COOH","images":[],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa11_c6_de1_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Bisphenol A là hợp chất được dùng nhiều trong công nghiệp để điều chế nhựa epoxy. Bisphenol A được điều chế từ phenol và acetone theo sơ đồ:<br/>Từ 145 kg acetone và 282 kg phenol hãy tính lượng bisphenol A thu được (theo kg), biết hiệu suất của phản ứng tổng hợp bisphenol A đạt 80% (Làm tròn kết quả đến hàng đơn vị)","images":["/assets/hoa11/c6/hoa11_c6_de1_image5.png"],"correctAnswer":"274","explanation":"Đáp án: 274.<br/>Số mol của CH<sub>3</sub>COCH<sub>3</sub> là 2,5 kmol và C<sub>6</sub>H<sub>5</sub>OH là 3 kmol  tính theo mol phenol<br/>Công thức Bisphenol A là C<sub>15</sub>H<sub>16</sub>O<sub>2</sub><br/>m<sub>bisphenol</sub><sub>A</sub> =  32  . 228..80% = 273,6 kg.<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa11_c6_de2","code":"ĐỀ 602","title":"Đề kiểm tra Chương 6: Hợp chất carbonyl - Carboxylic acid (Đề số 2)","topic":"Carboxylic acid: Tính acid, phản ứng với kim loại, oxide base, muối & phản ứng ester hóa","badge":"Chương 6 - Đề 2","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c6_de2_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Công thức tổng quát của carboxylic acid no, đơn chức, mạch hở là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub> (n ≥ 1)","isCorrect":true},{"id":"b","letter":"B","text":"C<sub>n</sub>H<sub>2n+2</sub>O<sub>2</sub> (n ≥ 1)","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>n</sub>H<sub>2n-1</sub>COOH (n ≥ 1)","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub> (n ≥ 2)","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c6_de2_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Số đồng phân carbonyl có công thức phân tử C<sub>4</sub>H<sub>8</sub>O là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":true},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"5","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c6_de2_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Tên thông thường của CH<sub>3</sub>-CH<sub>2</sub>-CHO là","images":[],"options":[{"id":"a","letter":"A","text":"acetic aldehyde","isCorrect":false},{"id":"b","letter":"B","text":"acrylic aldehyde","isCorrect":false},{"id":"c","letter":"C","text":"benzoic aldehyde","isCorrect":false},{"id":"d","letter":"D","text":"propionic aldehyde","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c6_de2_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Formalin có tác dụng diệt khuẩn nên được dùng để bảo quản mẫu sinh vật, tẩy uế, khử trùng, … Formalin là","images":[],"options":[{"id":"a","letter":"A","text":"dung dịch rất loãng của aldehyde formic","isCorrect":false},{"id":"b","letter":"B","text":"dung dịch aldehyde fomic 37 - 40%","isCorrect":true},{"id":"c","letter":"C","text":"aldehyde fomic nguyên chất","isCorrect":false},{"id":"d","letter":"D","text":"tên gọi khác của aldehyde formic","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c6_de2_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Liên kết O-H trong carboxylic acid phân cực hơn so với alcohol, phenol do","images":[],"options":[{"id":"a","letter":"A","text":"nhóm -C=O là nhóm đẩy electron","isCorrect":false},{"id":"b","letter":"B","text":"nhóm -C=O là nhóm hút electron","isCorrect":true},{"id":"c","letter":"C","text":"nhóm -OH là nhóm hút electron","isCorrect":false},{"id":"d","letter":"D","text":"nhóm -OH là nhóm đẩy electron","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c6_de2_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Để phân biệt ba hợp chất HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, một học sinh tiến hành thí nghiệm thu được kết quả sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>ChấtThuốc thử</td><td class='border border-slate-300 px-2 py-1 text-xs'>1</td><td class='border border-slate-300 px-2 py-1 text-xs'>2</td><td class='border border-slate-300 px-2 py-1 text-xs'>3</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Tollens</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>I<sub>2</sub>/ NaOH</td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr></table><br/>Ghi chú: X: Không phản ứng; : Có phản ứng<br/>Ba chất (1), (2), (3) lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>3</sub>CHO, HCHO, CH<sub>3</sub>COCH<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"HCHO,CH<sub>3</sub>COCH<sub>3</sub>, CH<sub>3</sub>CHO","isCorrect":true},{"id":"d","letter":"D","text":"CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, HCHO","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c6_de2_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Cho ba hợp chất hữu cơ có phân tử khối tương đương: (1) C<sub>3</sub>H<sub>8</sub>; (2) C<sub>2</sub>H<sub>5</sub>OH; (3) CH<sub>3</sub>CHO. Thứ tự giảm dần nhiệt độ sôi là","images":[],"options":[{"id":"a","letter":"A","text":"(2) > (3) > (1)","isCorrect":true},{"id":"b","letter":"B","text":"(1) > (2) > (3)","isCorrect":false},{"id":"c","letter":"C","text":"(3) > (2) > (1)","isCorrect":false},{"id":"d","letter":"D","text":"(2) > (1) > (3)","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c6_de2_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Cho lá zinc mỏng vào ống nghiệm đựng 2 mL dung dịch chất X, thấy lá kẽm tan dần và có khí thoát ra. Chất X là","images":[],"options":[{"id":"a","letter":"A","text":"glycerol","isCorrect":false},{"id":"b","letter":"B","text":"ethyl alcohol","isCorrect":false},{"id":"c","letter":"C","text":"saccarozơ","isCorrect":false},{"id":"d","letter":"D","text":"acetic acid","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c6_de2_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Giấm ăn được dùng phổ biến trong chế biến thực phẩm, giấm ăn có chứa acetic acid với nồng độ từ 2% đến 5%. Một chai giấm thể tích 500 mL (D = 1,045 g/mL) có nồng độ acetic acid là 4%, số gam acetic acid có trong chai giấm đó là","images":[],"options":[{"id":"a","letter":"A","text":"41,8 g","isCorrect":false},{"id":"b","letter":"B","text":"20,9 g","isCorrect":true},{"id":"c","letter":"C","text":"4,18 g","isCorrect":false},{"id":"d","letter":"D","text":"2,09 g","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c6_de2_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Có ba ống nghiệm chứa các dung dịch trong suốt: ống (1) chứa ethyl alcohol, ống (2) chứa acetic acid và ống (3) chứa acetaldehyde. Nếu cho Cu(OH)<sub>2</sub>/OH<sup>-</sup>lần lượt vào các dung dịch trên và đun nóng thì:","images":[],"options":[{"id":"a","letter":"A","text":"Cả ba ống đều có phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Ống (1) và ống (3) có phản ứng, còn ống (2) thì không","isCorrect":false},{"id":"c","letter":"C","text":"Ống (2) và ống (3) có phản ứng, còn ống (1) thì không","isCorrect":true},{"id":"d","letter":"D","text":"Ống (1) có phản ứng, còn ống (2) và ống (3) thì không","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c6_de2_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Một số carboxylic acid như oxalic acid, tartaric acid,... gây ra vị chua cho quả sấu xanh. Trong quá trình làm sấu ngâm đường, người ta sử dụng dung dịch nào sau đây để làm giảm vị chua của quả sấu?","images":[],"options":[{"id":"a","letter":"A","text":"Nước vôi trong","isCorrect":true},{"id":"b","letter":"B","text":"Giấm ăn","isCorrect":false},{"id":"c","letter":"C","text":"Phèn chua","isCorrect":false},{"id":"d","letter":"D","text":"Muối ăn","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c6_de2_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Cho dãy các chất sau: HCHO, CH<sub>3</sub>COOH, CH<sub>3</sub>CHO, HCOOH, C<sub>2</sub>H<sub>5</sub>OH. Số chất trong dãy có thể tham gia phản ứng tráng bạc là","images":[],"options":[{"id":"a","letter":"A","text":"3","isCorrect":true},{"id":"b","letter":"B","text":"6","isCorrect":false},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"5","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c6_de2_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Hai chất X và Y có cùng công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Cho X tác dụng với CaCO<sub>3</sub> thấy có bọt khí thoát ra, còn Y có thể tham gia phản ứng tráng bạc. Công thức của X và Y lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>2</sub>=CHCOOH, OHC-CH<sub>2</sub>-CHO","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>2</sub>=CH-COOH, CHC-O-CH<sub>2</sub>OH","isCorrect":false},{"id":"c","letter":"C","text":"HCOO-CH=CH<sub>2</sub>, OHC-CH<sub>2</sub>-CHO","isCorrect":false},{"id":"d","letter":"D","text":"HCOO-CH=CH<sub>2</sub>, CHC-O-CH<sub>2</sub>OH","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c6_de2_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Oxi hóa alcohol đơn chức (X) bằng CuO (đun nóng), sinh ra một sản phẩm hữu cơ duy nhất là ketone (Y) (tỉ khối hơi của (Y) so với khí hydrogen bằng 29). Công thức cấu tạo của (X) là","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>3</sub>-CH(OH)-CH<sub>3</sub>","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>3</sub>-CH(OH)-CH<sub>2</sub>-CH<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>3</sub>-CH<sub>2</sub>-OH","isCorrect":false},{"id":"d","letter":"D","text":"CH<sub>3</sub>-CH<sub>2</sub>-CH<sub>2</sub>-OH","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c6_de2_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Đặc điểm nào sau đây là của phản ứng ester hóa?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng thuận nghịch, cần đun nóng và không cần xúc tác","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng thuận nghịch, cần đun nóng và cần xúc tác","isCorrect":true},{"id":"c","letter":"C","text":"Phản ứng hoàn toàn, cần đun nóng và cần xúc tác","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng hoàn toàn, cần đun nóng và không cần xúc tác","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c6_de2_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Tên gọi của CH<sub>3</sub>CH(CH<sub>3</sub>)CH<sub>2</sub>COOH là","images":[],"options":[{"id":"a","letter":"A","text":"2-methylpropanoic acid","isCorrect":false},{"id":"b","letter":"B","text":"2-methylbutanoic acid","isCorrect":false},{"id":"c","letter":"C","text":"3-methylbutanoic acid","isCorrect":true},{"id":"d","letter":"D","text":"3-methylpropanoic acid","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c6_de2_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Acetone được điều chế bằng cách oxi hóa cumene nhờ oxygen, sau đó thủy phân trong dung dịch H<sub>2</sub>SO<sub>4</sub> loãng. Để thu được 87 gam acetone thì lượng cumene cần dùng (giả sử hiệu suất quá trình điều chế đạt 80%) là","images":[],"options":[{"id":"a","letter":"A","text":"144 gam","isCorrect":false},{"id":"b","letter":"B","text":"180 gam","isCorrect":true},{"id":"c","letter":"C","text":"225 gam","isCorrect":false},{"id":"d","letter":"D","text":"216 gam","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c6_de2_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(a) Aldehyde acetic được sản xuất chủ yếu từ acetylene.<br/>(b) Acetone được sản xuất chủ yếu bằng cách oxi hóa propan-2-ol.<br/>(c) Fomaldehyde thường được bán dưới dạng khí hóa lỏng.<br/>(d) Người ta lau sạch sơn màu trên móng tay bằng acetone.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"1","isCorrect":true},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c6_de2_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mỗi phát biểu nào sau đây là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Aldehyde phản ứng được với nước bromine","isCorrect":true},{"id":"b","letter":"B","text":"Ketone không phản ứng được với Cu(OH)<sub>2</sub>/OH<sup>-</sup>","isCorrect":true},{"id":"c","letter":"C","text":"Aldehyde tác dụng với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub> tạo ra bạc","isCorrect":true},{"id":"d","letter":"D","text":"Trong các hợp chất carbonyl, chỉ aldehyde bị khử bởi NaBH<sub>4</sub>","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. ldehyde và ketone đều bị khử bởi NaBH<sub>4</sub>","explanationImages":["/assets/hoa11/c6/hoa11_c6_de2_image1.png"],"points":1,"displayNumber":19},{"id":"hoa11_c6_de2_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Các carboxylic acid có khả năng tạo liên kết hydrogen với nước nên có khả năng tan tốt trong nước. Các carboxylic acid có phân tử khối thấp như formic acid, acetic acid, propionic acid, butyric acid tan vô hạn trong nước","images":[],"options":[{"id":"a","letter":"A","text":"Các carboxylic acid có phân tử khối thấp tan tốt trong nước nguyên nhân chính là do kích thước phân tử lớn hơn kích thước phân tử của nước","isCorrect":false},{"id":"b","letter":"B","text":"Khi số nguyên tử carbon trong phân tử tăng thì độ tan giảm dần","isCorrect":true},{"id":"c","letter":"C","text":"Khi carboxylic tan vào trong nước thì có liên kết hydrogen tạo từ O (của nhóm C=O) với H của nước","isCorrect":true},{"id":"d","letter":"D","text":"Phần R (R là gốc hydrocarbon) trong R-COOH là phần kị nước, phần này càng lớn thì độ tan trong nước càng lớn","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Do tạo được liên kết hydrogen.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Phần R càng lớn thì độ tan trong nước càng giảm","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c6_de2_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"X là một hợp chất hữu cơ dùng để làm sạch dụng cụ trong phòng thí nghiệm, tẩy rửa sơn móng tay và là chất đầu của quá trình tổng hợp hữu cơ. Kết quả phân tích nguyên tố của X cho kết quả, trong X có: 62,07% C, 27,59% O về khối lượng, còn lại là hydrogen. Phân tử khối của X được xác định thông qua phổ khối lượng với peak ion phân tử có giá trị m/z lớn nhất","images":["/assets/hoa11/c6/hoa11_c6_de2_image2.png"],"options":[{"id":"a","letter":"A","text":"Phân tử khối của X là 58","isCorrect":true},{"id":"b","letter":"B","text":"Công thức phân tử của X là C<sub>3</sub>H<sub>8</sub>O","isCorrect":false},{"id":"c","letter":"C","text":"X có phản ứng tạo iodoform","isCorrect":true},{"id":"d","letter":"D","text":"Trong công nghiệp, X được điều chế từ phản ứng oxi hóa ethylene","isCorrect":false}],"explanation":"Đáp án:<br/>Gọi công thức tổng quát của X là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub><br/>Dựa vào phổ khối lượng nguyên tử, có M<sub>X</sub> = 58<br/>%m<sub>H</sub> = 100 – 62,07 – 27,59 =  10,34 %.<br/>Ta có:  62,0710,3427,59x:y:z::5,17:10,34:1,723:6:112116===  Þ  CTĐGN của X là C<sub>3</sub>H<sub>6</sub>O<br/>CTPT của X có dạng: (C<sub>3</sub>H<sub>6</sub>O)<sub>n</sub>  Þ  M<sub>x</sub> = 58n = 58  Þ  n = 1  Þ  CTPT của X là C<sub>3</sub>H<sub>6</sub>O<br/>CTCT của X là CH<sub>3</sub>COCH<sub>3</sub>.<br/>a. Đúng.<br/>b. Sai. CTPT là C<sub>3</sub>H<sub>6</sub>O.<br/>c. Đúng. CH<sub>3</sub>COCH<sub>3</sub> + 3I<sub>2</sub> + 4NaOH → CH<sub>3</sub>COONa + CHI<sub>3</sub>↓ + 3NaI + 3H<sub>2</sub>O<br/>d. Sai. X được sản xuất từ cumene","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c6_de2_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Cho X, Y, Z, T là các chất khác nhau trong số 4 chất: CH<sub>3</sub>COOH, C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>CHO, HCOOH và các tính chất được ghi trong bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Chất</td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'>Y</td><td class='border border-slate-300 px-2 py-1 text-xs'>Z</td><td class='border border-slate-300 px-2 py-1 text-xs'>T</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>t° sôi (°C)</td><td class='border border-slate-300 px-2 py-1 text-xs'>78,3</td><td class='border border-slate-300 px-2 py-1 text-xs'>100,8</td><td class='border border-slate-300 px-2 py-1 text-xs'>21,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>118,0</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>pH (0,001M)</td><td class='border border-slate-300 px-2 py-1 text-xs'>7,00</td><td class='border border-slate-300 px-2 py-1 text-xs'>3,47</td><td class='border border-slate-300 px-2 py-1 text-xs'>7,00</td><td class='border border-slate-300 px-2 py-1 text-xs'>3,88</td></tr></table>","images":[],"options":[{"id":"a","letter":"A","text":"Từ chất X có thể điều chế trực tiếp được chất T","isCorrect":true},{"id":"b","letter":"B","text":"Trong dung dịch nước, chất Z không tạo được liên kết hydrogen với nước","isCorrect":false},{"id":"c","letter":"C","text":"Chỉ dùng quỳ tím và thuốc thử Tollens phân biệt được bốn dung dịch của bốn chất trên","isCorrect":true},{"id":"d","letter":"D","text":"Lực acid của Y lớn hơn lực acid của T hay K<sub>a</sub>(Y) lớn hơn K<sub>a</sub>(T)","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng: C<sub>2</sub>H<sub>5</sub>OH + O<sub>2</sub> (lên men giấm)  CH<sub>3</sub>COOH + H<sub>2</sub>O.<br/>b. Sai. CH<sub>3</sub>CHO chứa nguyên tử O có độ âm điện lớn nên có tạo được liên kết hydrogen với nước.<br/>c. Đúng.<br/>+ Quỳ không đổi màu, không tráng bạc: C<sub>2</sub>H<sub>5</sub>OH<br/>+ Quỳ không đổi màu, có tráng bạc: CH<sub>3</sub>CHO<br/>+ Quỳ đổi màu đỏ, không tráng bạc: CH<sub>3</sub>COOH<br/>+ Quỳ đổi màu đỏ, có tráng bạc: HCOOH<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c6_de2_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Quế có vị cay, mùi thơm nồng, được sử dụng phổ biến làm gia vị, vị thuốc trong Đông y. Hợp chất hữu cơ cinnamaldehyde tạo mùi đặc trưng của quế. Trong phân tử cinnamaldehyde chứa vòng benzene có một nhóm thế. Cinnamaldehyde bị oxi hóa bởi thuốc thử Tollens và có đồng phân hình học dạng trans. Công thức cấu tạo của cinnamaldehyde là<br/>Phân tử khối của cinnamaldehyde là bao nhiêu?","images":["/assets/hoa11/c6/hoa11_c6_de2_image3.jpeg"],"correctAnswer":"132","explanation":"Đáp án: 132","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa11_c6_de2_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các phản ứng sau:<br/>(1) CH<sub>3</sub>CHO + H<sub>2</sub> oNi, t¾¾¾®  CH<sub>3</sub>CH<sub>2</sub>OH.<br/>(2) 2CH<sub>3</sub>CHO + 5O<sub>2</sub>  ot¾¾®  4CO<sub>2</sub> + 4H<sub>2</sub>O.<br/>(3) CH<sub>3</sub>CHO + Br<sub>2</sub> + H<sub>2</sub>O  ¾¾®  CH<sub>3</sub>COOH + 2HBr.<br/>(4) CH<sub>3</sub>CHO + 2[Ag(NH<sub>3</sub>)<sub>2</sub>]OH  ¾¾®  CH<sub>3</sub>COONH<sub>4</sub> + 3NH<sub>3</sub> + 2Ag + H<sub>2</sub>O.<br/>Liệt kê các phản ứng mà acetaldehyde thể hiện tính khử thành dãy số theo thứ tự tăng dần (Ví dụ: 1234, 24,…)","images":[],"correctAnswer":"234","explanation":"Đáp án: 234","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa11_c6_de2_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Số công thức cấu tạo chứa nhóm carboxylic acid có cùng công thức C<sub>5</sub>H<sub>10</sub>O<sub>2</sub>là bao nhiêu?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4.<br/>CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>2</sub> – COOH, (CH<sub>3</sub>)<sub>2</sub>CH – CH<sub>2</sub> – COOH<br/>CH<sub>3</sub> – CH<sub>2</sub> – CH(CH<sub>3</sub>) – COOH, (CH<sub>3</sub>)<sub>3</sub>C – COOH","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c6_de2_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho các chất sau: H<sub>2</sub>O (1), C<sub>2</sub>H<sub>5</sub>OH (2), C<sub>6</sub>H<sub>5</sub>OH (3), CH<sub>3</sub>COOH (4). Hãy sắp xếp các chất trên theo độ linh động của nguyên tử hydrogen trong nhóm – OH tăng dần bằng cách gán số thứ tự theo bộ bốn chữ số (ví dụ: 1234, 2341, …)","images":[],"correctAnswer":"2134","explanation":"Đáp án: 2134","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c6_de2_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Ethyl propionate có mùi thơm của dứa chín. Khi đun nóng hỗn hợp 18,5 g propionic acid và 13,8 g ethyl alcohol với xúc tác H<sub>2</sub>SO<sub>4</sub> đặc, thu được 15,3 g ethyl propionate. Tính hiệu suất của phản ứng điều chế ester?","images":[],"correctAnswer":"60","explanation":"Đáp án: 60.<br/>25252525CHCOOHCHOHCHCOOCHn0,25mol;n0,3mol;n0,15mol===<br/>PTHH: C<sub>2</sub>H<sub>5</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH  o24HSO®Æc,t  C<sub>2</sub>H<sub>5</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O<br/>0,25           <    0,3 → 0,25 mol<br/>0,15H.10060%0,25==","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa11_c6_de2_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Tiến hành thí nghiệm phản ứng tráng bạc bằng cách lấy 50 mL dung dịch CH<sub>3</sub>CHO 1M phản ứng với thuốc thử Tollens dư. Sau khi kết thúc phản ứng, bình phản ứng có một lớp bạc sáng bóng bám vào thành bình. Loại bỏ hóa chất trong bình rồi tráng bằng nước cất, sấy khô, khối lượng bình tăng m gam so với ban đầu. Tính m biết hiệu suất tráng bạc là 75% vào chỉ 60% lượng bạc tạo thành bám vào thành bình, phần còn lại ở dạng kết tủa bột màu đen","images":[],"correctAnswer":"4,86","explanation":"Đáp án: 4,86.<br/>CH<sub>3</sub>CHO + 2[Ag(NH<sub>3</sub>)<sub>2</sub>]OH  ¾¾® CH<sub>3</sub>COONH<sub>4</sub> +2Ag + 3NH<sub>3</sub> + H<sub>2</sub>O<br/>3CHCHOn  = 50 . 10<sup>-3</sup> = 0,05 mol<br/>Agn  = 0,05 . 2 = 0,1  Þ  Agm  = 108 . 0,1 = 10,8 (g)  Þ  m = 10,8 . 75% . 60% = 4,86 (g).<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa11_c6_de3","code":"ĐỀ 603","title":"Đề kiểm tra Chương 6: Hợp chất carbonyl - Carboxylic acid (Đề số 3)","topic":"Bài toán phản ứng tráng gương của aldehyde & bài toán chuẩn độ trung hòa acid","badge":"Chương 6 - Đề 3","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c6_de3_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Hợp chất chứa nhóm C=O liên kết với nguyên tử carbon hoặc nguyên tử hydrogen được gọi là","images":[],"options":[{"id":"a","letter":"A","text":"hợp chất alcohol","isCorrect":false},{"id":"b","letter":"B","text":"dẫn xuất halogen","isCorrect":false},{"id":"c","letter":"C","text":"các hợp chất phenol","isCorrect":false},{"id":"d","letter":"D","text":"hợp chất carbonyl","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c6_de3_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Cho hợp chất carbonyl có công thức cấu tạo sau<br/>Tên theo danh pháp thay thế của hợp chất carbonyl đó là","images":["/assets/hoa11/c6/hoa11_c6_de3_image1.png"],"options":[{"id":"a","letter":"A","text":"2-methylbutan -3-one","isCorrect":false},{"id":"b","letter":"B","text":"3-methylbutan-2-one","isCorrect":true},{"id":"c","letter":"C","text":"3-methylbutan-2-ol","isCorrect":false},{"id":"d","letter":"D","text":"1,1-dimethypropan-2-one","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c6_de3_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Trong các hợp chất sau, hợp chất nào tham gia phản ứng idoform?","images":[],"options":[{"id":"a","letter":"A","text":"HCHO","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>3</sub>CHO","isCorrect":true},{"id":"c","letter":"C","text":"CH<sub>3</sub>COCH<sub>3</sub>","isCorrect":false},{"id":"d","letter":"D","text":"Cả B và C","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c6_de3_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Trước đây người ta thường cho formol vào bánh phở, bún đề làm trắng và tạo độ dai, tuy nhiên do formol có tác hại với sức khỏe con người nên hiện nay đã bị cấm sử dụng trong thực phẩm. Formol là chất nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Methanol","isCorrect":false},{"id":"b","letter":"B","text":"Phenol","isCorrect":false},{"id":"c","letter":"C","text":"Formaldehyde","isCorrect":true},{"id":"d","letter":"D","text":"Acetone","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c6_de3_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Trong các hợp chất cho dưới đây, hợp chất nào có nhiệt độ sôi cao nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Propan-2-one","isCorrect":false},{"id":"b","letter":"B","text":"Butan-2-one","isCorrect":false},{"id":"c","letter":"C","text":"Pentan-2-one","isCorrect":false},{"id":"d","letter":"D","text":"Hexan-2-one","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c6_de3_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Cho phản ứng sau: (CH<sub>3</sub>)<sub>2</sub>CHCOCH<sub>3</sub> + 2[H]  4LiAlH¾¾¾® ?<br</span><span class=\"px-1 pt-0.5\">>Sản phẩm phản ứng là chất nào sau đây?</span></span></span>","images":[],"options":[{"id":"a","letter":"A","text":"2-metylbutan-3-ol","isCorrect":false},{"id":"b","letter":"B","text":"3-metylbutan-2-ol","isCorrect":true},{"id":"c","letter":"C","text":"1,1-dimethylpropan-2-ol","isCorrect":false},{"id":"d","letter":"D","text":"3,3-dimethylpropan-2-ol","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c6_de3_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Số đồng phân có cùng công thức phân tử C<sub>4</sub>H<sub>8</sub>O, có khả năng tham gia phản ứng tráng bạc là:","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":true},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"1","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c6_de3_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Trong các chất sau: (1) CH<sub>3</sub>CH<sub>2</sub>CHO, (2) CH<sub>3</sub>CH(OH)CH<sub>3</sub>, (3) (CH<sub>3</sub>)<sub>2</sub>CHCHO, (4) CH<sub>2</sub>=CHCH<sub>2</sub>OH, những chất nào phản ứng với H<sub>2</sub> (Ni, t<sup>o</sup>) hoặc NaBH<sub>4</sub> sinh ra cùng một sản phẩm?","images":[],"options":[{"id":"a","letter":"A","text":"(1) và (3)","isCorrect":true},{"id":"b","letter":"B","text":"(2) và (4)","isCorrect":false},{"id":"c","letter":"C","text":"(1) và (2)","isCorrect":false},{"id":"d","letter":"D","text":"(3) và (4)","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c6_de3_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(a) Formaldehyde dùng làm nguyên liệu sản xuất nhựa phenol formaldehyde.<br/>(b) Có thể điều chế aldehyde trực tiếp từ bất kỳ alcohol nào.<br/>(c) Formalin hay formon là dung dịch của methanal trong nước.<br/>(d) Acetaldehyde được dùng để sản xuất acetic acid.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":true},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"1","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c6_de3_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Carboxylic acid là những hợp chất hữu cơ trong phân tử có","images":[],"options":[{"id":"a","letter":"A","text":"nhóm –OH liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen","isCorrect":false},{"id":"b","letter":"B","text":"nhóm C=O liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen","isCorrect":false},{"id":"c","letter":"C","text":"nhóm –COOH liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen","isCorrect":true},{"id":"d","letter":"D","text":"nhóm –CHO liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c6_de3_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Đồ thị hình bên mô tả sự phụ thuộc giá trị nhiệt độ sôi vào số nguyên tử carbon của bốn loại hợp chất alkane, alcohol, aldehyde và carboxylic acid. Đồ thị A, B, C, D lần lượt tương ứng với các loại hợp chất là","images":[],"options":[{"id":"a","letter":"A","text":"Alkane, alcohol, aldehyde, carboxylic acid","isCorrect":false},{"id":"b","letter":"B","text":"Alcohol, carboxylic acid, aldehyde, alkane","isCorrect":false},{"id":"c","letter":"C","text":"Carboxylic acid, aldehyde, alcohol, alkane","isCorrect":false},{"id":"d","letter":"D","text":"Carboxylic acid, alcohol, aldehyde, alkane","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c6_de3_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Khi hòa tan vào nước, acetic acid","images":[],"options":[{"id":"a","letter":"A","text":"phân li hoàn toàn","isCorrect":false},{"id":"b","letter":"B","text":"phân li một phần","isCorrect":true},{"id":"c","letter":"C","text":"không phân li","isCorrect":false},{"id":"d","letter":"D","text":"không tan trong nước","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c6_de3_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Chất nào sau đây không phản ứng được với dung dịch acetic acid?","images":[],"options":[{"id":"a","letter":"A","text":"NaOH","isCorrect":false},{"id":"b","letter":"B","text":"Cu","isCorrect":true},{"id":"c","letter":"C","text":"Zn","isCorrect":false},{"id":"d","letter":"D","text":"CaCO<sub>3</sub>","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c6_de3_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Carboxylic acid X có cấu tạo mạch hở, công thức tổng quát C<sub>n</sub>H<sub>2n-2</sub>O<sub>4</sub>. Carboxylic acid X thuộc loại","images":[],"options":[{"id":"a","letter":"A","text":"no, đơn chức","isCorrect":false},{"id":"b","letter":"B","text":"không no, đơn chức","isCorrect":false},{"id":"c","letter":"C","text":"no và có 2 chức acid","isCorrect":true},{"id":"d","letter":"D","text":"không no và có 2 chức acid","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c6_de3_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Nhận định nào sau đây không đúng khi nói về tính chất hóa học cùa acetic acid?","images":[],"options":[{"id":"a","letter":"A","text":"Acetic acid là acid yếu, làm đổi màu quỳ tím","isCorrect":false},{"id":"b","letter":"B","text":"Acetic acid có đầy đủ các tính chất của một acid thông thường","isCorrect":false},{"id":"c","letter":"C","text":"Acetic acid phản ứng được với ethanol tạo ester","isCorrect":false},{"id":"d","letter":"D","text":"Acetic acid là acid yếu nên không phản ứng được với đá vôi","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c6_de3_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Formic acid (HCOOH) có trong nọc kiến, nọc ong, sâu róm. Nếu không may bị ong đốt thì nên bôi vào vết ong đốt loại chất nào sau đây là tốt nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Kem đánh răng","isCorrect":false},{"id":"b","letter":"B","text":"Xà phòng","isCorrect":false},{"id":"c","letter":"C","text":"Vôi","isCorrect":true},{"id":"d","letter":"D","text":"Giấm","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c6_de3_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho một dung dịch chứa 5,76 gam một carboxylic acid X đơn chức, mạch hở tác dụng hết với CaCO<sub>3</sub> thu được 7,28 gam muối carboxylate. Công thức cấu tạo của X là","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>2</sub>=CHCOOH","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>3</sub>COOH","isCorrect":false},{"id":"c","letter":"C","text":"HC≡CCOOH","isCorrect":false},{"id":"d","letter":"D","text":"CH<sub>3</sub>CH<sub>2</sub>COOH","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c6_de3_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Thực hiện phản ứng oxi hóa 4,958 L C<sub>2</sub>H<sub>4</sub> (đkc) bằng O<sub>2</sub> (xúc tác PdCl<sub>2</sub>, CuCl<sub>2</sub>) thu được chất (X) đơn chức. Cho toàn bộ lượng chất (X) tác dụng với hydrogen cyanide (HCN) dư, thu được 7,1 gam CH<sub>3</sub>CH(CN)OH (cyanohydrin). Hiệu suất quá trình tạo CH<sub>3</sub>CH(CN)OH từ C<sub>2</sub>H<sub>4</sub> là","images":[],"options":[{"id":"a","letter":"A","text":"70%","isCorrect":false},{"id":"b","letter":"B","text":"50%","isCorrect":true},{"id":"c","letter":"C","text":"60%","isCorrect":false},{"id":"d","letter":"D","text":"80%","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c6_de3_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Cho hợp chất hữu cơ X có công thức cấu tạo là CH<sub>3</sub>COOH","images":[],"options":[{"id":"a","letter":"A","text":"X là carboxylic acid no, đơn chức, mạch hở","isCorrect":true},{"id":"b","letter":"B","text":"Tên thông thường của X là ethanoic acid","isCorrect":false},{"id":"c","letter":"C","text":"Người ta thường dung dung dịch X để loại bỏ cặn màu trắng (thành phần chính là CaCO<sub>3</sub>) bám ở đáy ấm đun nước","isCorrect":true},{"id":"d","letter":"D","text":"Dung dịch chất X làm quỳ tím chuyển màu đỏ","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. Tên thông thường là acetic acid.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa11_c6_de3_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Ở điều kiện thường, các carboxylic acid đều ở thể lỏng hoặc rắn. Nhiệt độ sôi của các carboxylic acid no, đơn chức, mạch hở đều tăng dần theo chiều tăng dần của phân tử khối. Nhiệt độ sôi của các carboxylic acid cao hơn của các alcohol có cùng số nguyên tử carbon. Nguyên nhân là do liên kết O-H trong nhóm carboxyl phân cực hơn liên kết O-H trong alcohol, dẫn đến liên kết hydrogen giữa các phân tử carboxylic acid bền vững hơn so với liên kết hydrogen hình thành giữa các phân tử alcohol. Liên kết hydrogen giữa các phân tử carboxylic tồn tại ở dạng polymer hoặc dimer vòng","images":["/assets/hoa11/c6/hoa11_c6_de3_image4.png"],"options":[{"id":"a","letter":"A","text":"Formic acid là chất lỏng ở điều kiện thường","isCorrect":true},{"id":"b","letter":"B","text":"Acetic acid có nhiệt độ sôi thấp hơn ethyl alcohol","isCorrect":false},{"id":"c","letter":"C","text":"Do có kích thước phân tử và khối lượng phân tử nhỏ hơn nên acetic acid có nhiệt độ sôi thấp hơn propionic acid","isCorrect":true},{"id":"d","letter":"D","text":"Nhóm C=O hút electron làm cho liên kết O-H trong nhóm carboxyl kém phân cực hơn liên kết O-H trong alcohol","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. CH<sub>3</sub>COOH có nhiệt độ sôi cao hơn C<sub>2</sub>H<sub>5</sub>OH.<br/>c. Đúng.<br/>d. Sai. Liên kết OH của carboxylic acid phân cực hơn liên kết OH của alcohol","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c6_de3_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Một học sinh tiến hành thí nghiệm theo các bước (như hình dưới đây):<br/>Bước 1: Dây đồng được cuốn thành hình lò xo rồi đun nóng trên ngọn lửa đèn cồn, phần dây đồng được nung nóng có màu đen (Hình A).<br/>Bước 2: Nhúng dây đồng đang nóng vào ống nghiệm chứa ethanol, dây đồng chuyển màu vàng đỏ kim loại (Hình B). Lặp lại thí nghiệm vài lần.<br/>Bước 3: Chia chất lòng trong ống nghiệm B thành 2 phần, phần 1 cho phản ứng với thuốc thử Tollens và đun nóng (Hình C); phần 2 thực hiện phản ứng idoform","images":["/assets/hoa11/c6/hoa11_c6_de3_image5.png"],"options":[{"id":"a","letter":"A","text":"Sau bước 3, ở hình C quan sát thấy có lớp bạc sáng bám ở ống nghiệm","isCorrect":true},{"id":"b","letter":"B","text":"Sau bước 3, ở hình D quan sát thấy có kết tủa màu vàng","isCorrect":true},{"id":"c","letter":"C","text":"Ở bước 1, phần dây đồng được nung nóng có màu đen là do đồng bị oxi hóa thành CuO","isCorrect":true},{"id":"d","letter":"D","text":"Ở bước 2, ethanol bị oxi hóa hoàn toàn tạo thành ethanal (CH<sub>3</sub>CHO)","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Ethanol bị oxi hóa không hoàn toàn bởi CuO tạo thành CH<sub>3</sub>CHO","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c6_de3_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Hợp chất Cinnamaldehyde (gọi là hợp chất A) có nhiều trong vỏ  cây quế và có mùi thơm của quế chín. Kết quả phân tích nguyên tố hợp chất A cho biết %C = 81,82%; %H = 6,061%; còn lại là O. Khi chụp phổ khối lượng MS, biết peak ion phân tử [M<sup>+</sup>] của A là m</span><span class=\"px-1 pt-0.5\">z = 132. Biết rằng chất A có chứa vòng benzene và có một nhóm thế; cấu trúc ở dạng trans và có phản ứng tráng bạc</span></span></span>","images":[],"options":[{"id":"a","letter":"A","text":"Công thức phân tử của chất A là C<sub>9</sub>H<sub>8</sub>O<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Chất A có phản ứng iodoform","isCorrect":false},{"id":"c","letter":"C","text":"Chất A phản ứng H<sub>2</sub> dư (xúc tác Ni, t°, áp suất cao) theo tỉ lệ mol tối đa là 1 : 5","isCorrect":true},{"id":"d","letter":"D","text":"Vỏ quế để lâu trong không khí sẽ bị mất mùi thơm, nguyên nhân chính là cho chất A bị oxi hóa bởi oxygen trong không khí","isCorrect":true}],"explanation":"Đáp án:<br/>a. Sai. M<sub>A</sub> = 132.<br/>Số C =  132.81,82%912=  ; Số H =  132.6,061%81=   A là C<sub>9</sub>H<sub>8</sub>O<br/>b. Sai. A không có phản ứng iodoform.<br/>Cấu tạo của A (chứa vòng benzene và có một nhóm thế; cấu trúc ở dạng trans và có phản ứng tráng bạc):<br/>c. Đúng. A + 5H<sub>2</sub>C<sub>6</sub>H<sub>11</sub>-CH<sub>2</sub>-CH<sub>2</sub>-CH<sub>2</sub>OH.<br/>d. Đúng. Chất A có thể bị oxi hóa ở nhánh (C=C và -CHO)","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c6_de3_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Cho các chất sau: CH<sub>3</sub>-COOH, CH<sub>3</sub>-CO-CH<sub>3</sub>, HOOC-CH<sub>2</sub>-COOH, C<sub>6</sub>H<sub>5</sub>-COOH, CH<sub>3</sub>-CHO. Có bao nhiêu carboxylic acid trong số các chất?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa11_c6_de3_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"X là hợp chất no, mạch hở, chỉ chứa nhóm aldehyde và có công thức phân tử là C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Cho 1 mol X phản ứng với thuốc thử Tollens thì thu được tối đa số mol Ag kim loại là bao nhiêu?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4.<br/>Công thức cấu tạo của X là CH<sub>2</sub>(CHO)<sub>2</sub> ⇒ 2 nhóm CHO tạo 4 Ag","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa11_c6_de3_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho các phản ứng sau:<br/>(1) CH<sub>3</sub>CH<sub>2</sub>OH + CuO  ot¾¾¾®<br/>(2) (CH<sub>3</sub>)<sub>2</sub>CHOH + CuO  ot¾¾¾®<br/>(3) (CH<sub>3</sub>)<sub>3</sub>COH + CuO  ot¾¾¾®<br/>(4) HC≡CH + H<sub>2</sub>O  4o24HgSOHSO,t¾¾¾¾®<br/>Liệt kê các phản ứng có sự tạo thành aldehyde thành dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…)","images":[],"correctAnswer":"14","explanation":"Đáp án: 14","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c6_de3_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Cho các hóa chất sau: dung dịch HCN, dung dịch Br<sub>2</sub>, dung dịch NaOH, dung dịch [Ag(NH<sub>3</sub>)<sub>2</sub>](OH), LiAlH<sub>4</sub>, Cu(OH)<sub>2</sub></span><span class=\"px-1 pt-0.5\">NaOH, I<sub>2</sub>/NaOH. Có bao nhiêu chất phản ứng được với acetone ở điều kiện nhiệt độ thích hợp?</span></span></span>","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c6_de3_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Methyl salicylate là hợp chất thuộc loại ester dùng làm cao dán giảm đau, kháng viêm ngoài da. Methyl salicylate được tổng hợp từ salicylic acid và methanol. Phương trình hóa học của phản ứng tổng hợp methyl salicylate:<br/>Phần trăm khối lượng của nguyên tố oxygen trong phân tử methyl salicylate là bao nhiêu (Làm tròn kết quả đến hàng phần mười)?","images":[],"correctAnswer":"31,6","explanation":"Đáp án: 31,6.<br/>Công thức phân tử của methyl salicylate là C<sub>8</sub>H<sub>8</sub>O<sub>3</sub>  %O = 31,6%","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa11_c6_de3_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Giấm ăn được điều chế bằng cách lên men dung dịch ethanol loãng. Tính khối lượng giấm ăn 5% thu được (theo đơn vị kg) khi lên men 100 L ethanol 4°. Biết hiệu suất quá trình lên men là 80%, khối lượng riêng của ethanol nguyên chất là 0,79 g/mL. (Làm tròn kết quả đến hàng phần mười)","images":[],"correctAnswer":"66,0","explanation":"Đáp án: 66,0.<br/>ethanolethanol4100V4(L)4000(mL)m0,7940003160(g)100´===Þ=´=<br/>Phản ứng lên men:<br/>mengiÊm25232CHOHOCHCOOHHO45gam60gam3160gamxgam+¾¾¾¾®+<br/>Theo phản ứng:  giÊm¨n(LT)316060n4121,74(g)46´=»<br/>Với hiệu suất 80% thì khối lượng thực tế thu được: giÊm¨n(TT)H80%m4121,7480%3297,39(g)=Þ´=<br/>Khối lượng giấm ăn 5%:  ddgiÊm¨n5%3297,39m65947,83(g)65,98(kg)5%===<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa11_c6_de4","code":"ĐỀ 604","title":"Đề kiểm tra Ôn tập Toàn diện Chương 6 (Đề số 4)","topic":"Đề thi chuẩn cấu trúc Bộ GD&ĐT 2025 bao quát toàn bộ Hợp chất Carbonyl & Carboxylic Acid","badge":"Chương 6 - Đề 4","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c6_de4_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Trong các hợp chất hữu cơ có công thức phân tử sau đây, chất nào không thể là aldehyde?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>3</sub>H<sub>6</sub>O","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>4</sub>H<sub>6</sub>O","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>4</sub>H<sub>8</sub>O","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>4</sub>H<sub>10</sub>O","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c6_de4_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Số đồng phân carboxylic acid có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":true},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"5","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c6_de4_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Cho hợp chất carbonyl có công thức cấu tạo sau<br/>Tên theo danh pháp thay thế của hợp chất carbonyl đó là","images":["/assets/hoa11/c6/hoa11_c6_de4_image22.png"],"options":[{"id":"a","letter":"A","text":"2-methylbutan -3-one","isCorrect":false},{"id":"b","letter":"B","text":"3-methylbutan-2-one","isCorrect":true},{"id":"c","letter":"C","text":"3-methylbutan-2-ol","isCorrect":false},{"id":"d","letter":"D","text":"1,1-dimethypropan-2-one","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c6_de4_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Dung dịch chất nào sau đây làm quỳ tím chuyển thành màu đỏ?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>2</sub>H<sub>5</sub>OH","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>3</sub>COOH","isCorrect":true},{"id":"d","letter":"D","text":"CH<sub>3</sub>CHO","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c6_de4_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Cho lá zinc mỏng vào ống nghiệm đựng 2 mL dung dịch chất X, thấy lá kẽm tan dần và có khí thoát ra. Chất X là","images":[],"options":[{"id":"a","letter":"A","text":"glycerol","isCorrect":false},{"id":"b","letter":"B","text":"ethyl alcohol","isCorrect":false},{"id":"c","letter":"C","text":"saccarozơ","isCorrect":false},{"id":"d","letter":"D","text":"acetic acid","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c6_de4_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Để phân biệt ba hợp chất HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, một học sinh tiến hành thí nghiệm thu được kết quả sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>ChấtThuốc thử</td><td class='border border-slate-300 px-2 py-1 text-xs'>1</td><td class='border border-slate-300 px-2 py-1 text-xs'>2</td><td class='border border-slate-300 px-2 py-1 text-xs'>3</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Tollens</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>I<sub>2</sub>/ NaOH</td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr></table><br/>Ghi chú: X: Không phản ứng; : Có phản ứng<br/>Ba chất (1), (2), (3) lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>3</sub>CHO, HCHO, CH<sub>3</sub>COCH<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"HCHO,CH<sub>3</sub>COCH<sub>3</sub>, CH<sub>3</sub>CHO","isCorrect":true},{"id":"d","letter":"D","text":"CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, HCHO","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c6_de4_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây về tính chất của hợp chất carbonyl là không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Aldehyde phản ứng được với nước bromine","isCorrect":false},{"id":"b","letter":"B","text":"Ketone không phản ứng được với Cu(OH)<sub>2</sub>/OH<sup>-</sup>","isCorrect":false},{"id":"c","letter":"C","text":"Aldehyde tác dụng với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub> tạo ra bạc","isCorrect":false},{"id":"d","letter":"D","text":"Trong các hợp chất carbonyl, chỉ aldehyde bị khử bởi NaBH<sub>4</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c6_de4_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Để trung hòa 40 mL giấm ăn cần 25 mL dung dịch NaOH 1M. Biết khối lượng riêng của giấm ăn xấp xỉ 1 g.mL<sup>-1</sup>. Mẫu giấm ăn này có nồng độ là","images":[],"options":[{"id":"a","letter":"A","text":"3,50%","isCorrect":false},{"id":"b","letter":"B","text":"3,75%","isCorrect":true},{"id":"c","letter":"C","text":"4,00%","isCorrect":false},{"id":"d","letter":"D","text":"5,00%","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c6_de4_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Formalin (còn gọi là formol) được dung để ngâm xác động, thực vật, thuộc da, tẩy uế, diệt trùng, … Formalin là","images":[],"options":[{"id":"a","letter":"A","text":"dung dịch rất loãng của formaldehyde","isCorrect":false},{"id":"b","letter":"B","text":"dung dịch trong nước, chứa khoảng 37 - 40% acetaldehyde","isCorrect":false},{"id":"c","letter":"C","text":"dung dịch trong nước, chứa khoảng 37 - 40% formaldehyde","isCorrect":true},{"id":"d","letter":"D","text":"tên gọi khác của HCH=O","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c6_de4_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Acetone được điều chế bằng cách oxi hóa cumene nhờ oxygen, sau đó thủy phân trong dung dịch H<sub>2</sub>SO<sub>4</sub> loãng. Để thu được 87 gam acetone thì lượng cumene cần dùng (giả sử hiệu suất quá trình điều chế đạt 80%) là","images":[],"options":[{"id":"a","letter":"A","text":"144 gam","isCorrect":false},{"id":"b","letter":"B","text":"180 gam","isCorrect":true},{"id":"c","letter":"C","text":"225 gam","isCorrect":false},{"id":"d","letter":"D","text":"216 gam","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c6_de4_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Hai chất X và Y có cùng công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Cho X tác dụng với CaCO<sub>3</sub> thấy có bọt khí thoát ra, còn Y có thể tham gia phản ứng tráng bạc. Công thức của X và Y lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>2</sub>=CHCOOH, OHC-CH<sub>2</sub>-CHO","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>2</sub>=CH-COOH, CHC-O-CH<sub>2</sub>OH","isCorrect":false},{"id":"c","letter":"C","text":"HCOO-CH=CH<sub>2</sub>, OHC-CH<sub>2</sub>-CHO","isCorrect":false},{"id":"d","letter":"D","text":"HCOO-CH=CH<sub>2</sub>, CHC-O-CH<sub>2</sub>OH","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c6_de4_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Khi cho ethanal phản ứng với Cu(OH)<sub>2</sub> trong môi trường kiềm ở nhiệt độ thích hợp, hiện tượng nào sau đây sẽ xảy ra?","images":[],"options":[{"id":"a","letter":"A","text":"Cu(OH)<sub>2</sub> bị tan ra, tạo dung dịch màu xanh","isCorrect":false},{"id":"b","letter":"B","text":"Có mùi chua của giấm, do phản ứng sinh ra acetic acid","isCorrect":false},{"id":"c","letter":"C","text":"Tạo kết tủa đỏ gạch do phản ứng sinh ra Cu<sub>2</sub>O","isCorrect":true},{"id":"d","letter":"D","text":"Sinh ra CuO màu đen","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c6_de4_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Trong các chất sau đây, chất nào có nhiệt độ sôi cao nhất?","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>3</sub>CH<sub>2</sub>OH","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>3</sub>COOH","isCorrect":true},{"id":"c","letter":"C","text":"CH<sub>3</sub>CHO","isCorrect":false},{"id":"d","letter":"D","text":"CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c6_de4_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Acetic acid được điều chế bằng phương pháp lên men giấm từ dung dịch chất nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>2</sub>H<sub>5</sub>OH","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>3</sub>OH","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>3</sub>CHO","isCorrect":false},{"id":"d","letter":"D","text":"HCOOH","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c6_de4_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Phổ hồng ngoại (IR) của hợp chất hữu cơ (Y) có công thức phân tử là C<sub>2</sub>H<sub>4</sub>O<sub>2</sub> như hình bên dưới. Chất (Y) này được sử dụng trong nhiều ngành công nghiệp khác nhau như tạo ra polymer trong công nghiệp sản xuất sơn, chất kết dính, là dung môi hoà tan các chất hoá học, sản xuất và bảo quản thực phẩm, đặc biệt dùng để sản xuất giấm. Dựa vào phổ hồng ngoại, peak nào có thể chứng minh hợp chất Y chứa nhóm chức –COOH","images":["/assets/hoa11/c6/hoa11_c6_de4_image23.png"],"options":[{"id":"a","letter":"A","text":"A và","isCorrect":true},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"b","letter":"B","text":"B và","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false},{"id":"c","letter":"C","text":"G và E","isCorrect":false},{"id":"d","letter":"D","text":"D và","isCorrect":false},{"id":"a","letter":"A","text":"","isCorrect":true}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c6_de4_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Khẳng định nào sau đây không đúng khi nói về đặc điểm của phản ứng ester hóa?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng ester hóa là phản ứng thuận nghịch","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng ester hóa là phản ứng một chiều","isCorrect":true},{"id":"c","letter":"C","text":"Phản ứng ester hóa luôn có hiệu suất nhỏ hơn 100%","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng ester hóa giữa acid và alcohol thường dùng xúc tác là H<sub>2</sub>SO<sub>4</sub> đặc","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c6_de4_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(a) Aldehyde acetic được sản xuất chủ yếu từ acetylene.<br/>(b) Acetone được sản xuất chủ yếu bằng cách oxi hóa propan-2-ol.<br/>(c) Fomaldehyde thường được bán dưới dạng khí hóa lỏng.<br/>(d) Người ta lau sạch sơn màu trên móng tay bằng acetone.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"1","isCorrect":true},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c6_de4_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Nhận xét nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Formaldehyde tan tốt trong nước là do tạo được liên kết hydrogen với nước","isCorrect":true},{"id":"b","letter":"B","text":"Acetone tan tốt trong nước là do acetone phản ứng được với nước","isCorrect":false},{"id":"c","letter":"C","text":"Methyl chloride tan trong nước tốt hơn formaldehyde","isCorrect":false},{"id":"d","letter":"D","text":"Acetaldehyde tan trong nước tốt hơn ethanol","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c6_de4_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Menthone có mùi thơm bạc hà sử dụng làm hương liệu mĩ phẩm, nước hoa, được sản xuất từ menthol theo sơ đồ sau:","images":["/assets/hoa11/c6/hoa11_c6_de4_image24.png"],"options":[{"id":"a","letter":"A","text":"Trong phản ứng trên, menthol bị oxi hóa thành menthone","isCorrect":true},{"id":"b","letter":"B","text":"Menthol chứa nhóm chức phenol, menthone chứa nhóm chức carboxyl","isCorrect":false},{"id":"c","letter":"C","text":"Công thức đơn giản nhất của menthone là C<sub>10</sub>H<sub>18</sub>O","isCorrect":true},{"id":"d","letter":"D","text":"Có thể chuyển hóa menthone thành menthol bằng tác nhân khử LiAlH<sub>4</sub>","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. Menthol chứa nhóm chức alcohol, menthone chứa nhóm chức carbonyl.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa11_c6_de4_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Carboxylic acid có nhiệt độ sôi cao hơn so với hydrocarbon, alcohol, hợp chất carbonyl có phân tử khối tương đương do tạo được liên kết hydrogen bền vững hơn","images":["/assets/hoa11/c6/hoa11_c6_de4_image25.png"],"options":[{"id":"a","letter":"A","text":"Hình (a) là liên kết hydrogen dạng liên phân tử và hình (b) là liên kết hydrogen dạng dimer","isCorrect":false},{"id":"b","letter":"B","text":"Phân tử carboxylic acid chứa nhóm carboxyl phân cực mạnh nên tạo được liên kết hydrogen bền vừng","isCorrect":true},{"id":"c","letter":"C","text":"Ngoài hai dạng liên kết hydrogen trên còn có liên kết hydrogen giữa carboxylic acid và nước","isCorrect":true},{"id":"d","letter":"D","text":"Các hợp chất hydrocarbon, alcohol, carbonyl không tạo được liên kết hydrogen","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Ngược lại.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Alcohol có tạo được liên kết hydrogen","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c6_de4_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho bảng nhiệt độ sôi và độ tan trong nước của các chất như sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Loại hợp chất</td><td class='border border-slate-300 px-2 py-1 text-xs'>Alkane</td><td class='border border-slate-300 px-2 py-1 text-xs'>Aldehyde</td><td class='border border-slate-300 px-2 py-1 text-xs'>Alcohol</td><td class='border border-slate-300 px-2 py-1 text-xs'>Carboxylic acid</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Công thức cấu tạo</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3CH2CH2CH3</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3CH2CHO</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3CH2CH2OH</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3COOH</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>M</td><td class='border border-slate-300 px-2 py-1 text-xs'>58</td><td class='border border-slate-300 px-2 py-1 text-xs'>58</td><td class='border border-slate-300 px-2 py-1 text-xs'>60</td><td class='border border-slate-300 px-2 py-1 text-xs'>60</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>ts(0C)</td><td class='border border-slate-300 px-2 py-1 text-xs'>–0,5</td><td class='border border-slate-300 px-2 py-1 text-xs'>49</td><td class='border border-slate-300 px-2 py-1 text-xs'>97,2</td><td class='border border-slate-300 px-2 py-1 text-xs'>118</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Độ tan trong nước(g/100g nước)</td><td class='border border-slate-300 px-2 py-1 text-xs'>không tan</td><td class='border border-slate-300 px-2 py-1 text-xs'>20</td><td class='border border-slate-300 px-2 py-1 text-xs'>vô hạn</td><td class='border border-slate-300 px-2 py-1 text-xs'>vô hạn</td></tr></table>","images":[],"options":[{"id":"a","letter":"A","text":"Carboxylic acid có nhiệt độ sôi cao nhất vì có nhóm carboxylic acid phân cực và tạo được nhiều liên kết hydrogen giữa các phân tử","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH có nhiệt độ sôi lớn hơn CH<sub>3</sub>CH<sub>2</sub>CHO vì có khối lượng phân tử lớn hơn","isCorrect":false},{"id":"c","letter":"C","text":"Phân tử aldehyde có nhiệt độ sôi cao hơn alkane do giữa các phân tử aldehyde tạo được liên kết hydrogen với nhau","isCorrect":false},{"id":"d","letter":"D","text":"Phân tử alcohol và carboxylic acid tan vô hạn trong nước nhờ phân tử có nhóm OH phân cực","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. Alcohol tạo được liên kết hydrogen với nhau nên có nhiệt độ sôi cao hơn aldehyde.<br/>c. Sai. Giữa các phân tử aldehyde và alkane không tồn tại liên kết hydrogen.<br/>d. Sai. Nhờ tạo được liên kết hydrogen với nước","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c6_de4_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Mỗi phát biểu sau đây là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Có ba đồng phân bền ứng với công thức phân tử C<sub>4</sub>H<sub>8</sub>O phản ứng được với thuốc thử Tollens","isCorrect":false},{"id":"b","letter":"B","text":"Tính acid của HCOOH mạnh hơn tính acid của CH<sub>3</sub>COOH. Biết hằng số phân li acid của HCOOH và CH<sub>3</sub>COOH lần lượt là 1,8.10<sup>–4</sup> và 1,8.10<sup>–5</sup>","isCorrect":true},{"id":"c","letter":"C","text":"Acetone tan tốt trong nước là nhờ tạo được liên kết hydrogen với nước","isCorrect":false},{"id":"d","letter":"D","text":"Khi có cặn màu trắng (thành phần chính là CaCO<sub>3</sub>) bám ở đáy ấm đun nước, vòi nước, thiết bị vệ sinh,... có thể dùng cồn 70<sup>o</sup> để loại bỏ các vết cặn này","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Có 2 đồng phân: CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CHO và (CH<sub>3</sub>)<sub>2</sub>CHCHO.<br/>b. Đúng. K<sub>a</sub> càng lớn thì tính acid càng mạnh.<br/>c. Sai. Acetone tan ít trong nước do không tạo được liên kết hydrogen với nước.<br/>d. Sai. Dùng dung dịch giấm ăn (chứa CH<sub>3</sub>COOH) có thể loại bỏ cặn (CaCO<sub>3</sub>)","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c6_de4_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Citric acid được tìm thấy trong quả chanh có công thức cấu tạo như sau:<br/>Thể tích của dung dịch sodium hydroxide (NaOH) 0,4 mol/L cần dùng để trung hòa 0,005 mol citric acid là bao nhiêu ml?","images":[],"correctAnswer":"37,5","explanation":"Đáp án: 37,5.<br/>Citric acid có 3 nhóm –COOH. nNaOH = 0,005.3 = 0,015  V = 37,5 mL","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa11_c6_de4_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Trong các chất sau: (1) CH<sub>3</sub>CH<sub>2</sub>CHO, (2) CH<sub>3</sub>COCH<sub>3</sub>, (3) (CH<sub>3</sub>)<sub>2</sub>CHCHO, (4) CH<sub>2</sub>=CHCH<sub>2</sub>OH. Liệt kê đáp án thành một dãy số gồm những chất nào phản ứng với NaBH<sub>4</sub> sinh ra cùng một sản phẩm (Ví dụ: 1234, 24,…)","images":[],"correctAnswer":"123","explanation":"Đáp án: 123","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa11_c6_de4_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho dãy các chất sau: HCHO, CH<sub>3</sub>COOH, CH<sub>3</sub>CHO, HCOOH, C<sub>2</sub>H<sub>5</sub>OH. Có bao nhiêu chất trong dãy có thể tham gia phản ứng tráng bạc?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c6_de4_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho các phản ứng sau:<br/>(a) CH<sub>3</sub>CH<sub>2</sub>OH + CuO  ot¾¾®  (b) (CH<sub>3</sub>)<sub>2</sub>CHOH + CuO  ot¾¾®<br/>Có bao nhiêu phản ứng tạo thành sản phẩm aldehyde?","images":["/assets/hoa11/c6/hoa11_c6_de4_image28.png","/assets/hoa11/c6/hoa11_c6_de4_image29.png"],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c6_de4_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Tiến hành thí nghiệm phản ứng tráng bạc bằng cách lấy 50 mL dung dịch CH<sub>3</sub>CHO 1M phản ứng với thuốc thử Tollens dư. Sau khi kết thúc phản ứng, bình phản ứng có một lớp bạc sáng bóng bám vào thành bình. Loại bỏ hóa chất trong bình rồi tráng bằng nước cất, sấy khô, khối lượng bình tăng m gam so với ban đầu. Tính m biết hiệu suất tráng bạc là 75% vào chỉ 60% lượng bạc tạo thành bám vào thành bình, phần còn lại ở dạng kết tủa bột màu đen","images":[],"correctAnswer":"4,86","explanation":"Đáp án: 4,86.<br/>3CHCHOn  = 50 . 10<sup>-3</sup> = 0,05 mol<br/>Agn  = 0,05 . 2 = 0,1  Þ  Agm  = 108 . 0,1 = 10,8 (g)  Þ  m = 10,8 . 75% . 60% = 4,86 (g)","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa11_c6_de4_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Trộn 20 mL ethanol với 20 mL acetic acid, thêm 10 mL H<sub>2</sub>SO<sub>4</sub> đặc rồi tiến hành phản ứng ester hóa. Sau một thời gian, thu được 17,6 g ester. Tính hiệu suất phản ứng ester, biết khối lượng riêng của ethanol và acetic acid lần lượt là 0,789 g/mL và 1,05 g/mL (Làm tròn kết quả đến hàng phần mười)","images":[],"correctAnswer":"58,3","explanation":"Đáp án: 58,3.<br/>CH<sub>3</sub>COOH   +  CH<sub>3</sub>CH<sub>2</sub>OH    024HSOñaëc,t   CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>   +   H<sub>2</sub>O<br/>2532007892010503430354660CHOHCHCOOH.,.,n,(mol)n,(mol)==<==<br/>Hiệu suất tính theo số mol alcohol.<br/>n<sub>ester lí thuyết</sub> =  25CHOHn = 0,343 (mol); n<sub>ester thực tế</sub> =  1760288,,(mol)=<br/>Hiệu suất phản ứng ester hóa là: H% =  021005830343,.%,%,=<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]}];
+export const HOA11_CHUONG6_EXAMS: Chuong6Exam[] = [
+  {
+    "id": "hoa11_c6_de1",
+    "code": "ĐỀ 601",
+    "title": "Đề kiểm tra Chương 6: Hợp chất carbonyl - Carboxylic acid (Đề số 1)",
+    "topic": "Hợp chất carbonyl: Danh pháp, phản ứng tráng bạc Tollens & phản ứng iodoform",
+    "badge": "Chương 6 - Đề 1",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c6_de1_p1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ketone là hợp chất hữu cơ có",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nhóm -CHO liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nhóm -CHO chỉ liên kết trực tiếp với nguyên tử carbon",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nhóm -CO liên kết với hai gốc hydrocarbon",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nhóm -CO chỉ liên kết với một gốc hydrocarbon",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở nhiệt độ thường, aldehyde nào sau đây ở trạng thái khí?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>6</sub>H<sub>13</sub>CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>7</sub>H<sub>15</sub>CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCHO",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>8</sub>H<sub>17</sub>CHO",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức tổng quát của aldehyde no, mạch hở, đơn chức là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>n</sub>H<sub>2n</sub>O (n ≥ 1)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>n</sub>H<sub>2n-2</sub>O (n ≥ 2)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>n</sub>H<sub>2n-4</sub>O (n ≥ 2)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>n</sub>H<sub>2n+2</sub>O (n > 0)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở điều kiện thường, các aldehyde nào sau đây tan tốt trong nước?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCHO, C<sub>6</sub>H<sub>13</sub>CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CHO, C<sub>7</sub>H<sub>15</sub>CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCHO, CH<sub>3</sub>CHO",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>6</sub>H<sub>13</sub>CHO, C<sub>7</sub>H<sub>15</sub>CHO",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khử hợp chất hữu cơ X bằng LiAlH<sub>4</sub> thu được (CH<sub>3</sub>)<sub>2</sub>CH-CH<sub>2</sub>-CH<sub>2</sub>OH. Chất X có tên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3-methylbutanal",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2-methylbutan-3-al",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2-methylbutanal",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3-methylbutan-3-al",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Có bao nhiêu aldehyde tương ứng với công thức phân tử C<sub>4</sub>H<sub>8</sub>O?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi cho ethanal phản ứng với Cu(OH)<sub>2</sub> trong môi trường kiềm ở nhiệt độ thích hợp, hiện tượng nào sau đây sẽ xảy ra?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cu(OH)<sub>2</sub> bị tan ra, tạo dung dịch màu xanh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Có mùi chua của giấm, do phản ứng sinh ra acetic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tạo kết tủa đỏ gạch do phản ứng sinh ra Cu<sub>2</sub>O",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sinh ra CuO màu đen",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Benzoic acid được sử dụng như một chất bảo quản thực phẩm (kí hiệu là E-210) cho xúc xích, nước sốt cà chua, mù tạt, bơ thực vật … Nó ức chế sự phát triển của nấm mốc, nấm men và một số vi khuẩn. Công thức phân tử benzoic acid là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "HCOOH",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>6</sub>H<sub>5</sub>COOH",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(COOH)<sub>2</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây là sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Aldehyde bị khử tạo thành alcohol bậc I",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ketone bị khử tạo thành alcohol bậc II",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Aldehyde phản ứng với thuốc thử Tollens tạo lớp sáng bạc",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ketone phản ứng với Cu(OH)<sub>2</sub> đun nóng tạo kết tủa màu đỏ gạch",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây có nhiệt độ sôi cao nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Formic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ethyl alcohol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Acetic acid",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ethane",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Aldehyde và ketone có nhiều ứng dụng trong cuộc sống.<br/>(a) Formaldehyde dùng để sản xuất vật liệu nhựa, keo dán, sơn.<br/>(b) Formaldehyde dùng để sản xuất chất nổ và bảo quản mẫu sinh vật.<br/>(c) Acetaldehyde dùng để sản xuất dung môi, bisphenol–A và chloroform.<br/>(d) Acetone dùng để sản xuất acetic acid, acetic anhydride và một số hóa chất khác.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một thí nghiệm được mô tả như hình sau đây:<br/>Chất lỏng thu được ở ống nghiệm B có mùi táo. Công thức cấu tạo của chất lỏng đó là",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de1_image1.jpeg"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCOOC<sub>2</sub>H<sub>5</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>5</sub>COOCH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HCOOC<sub>3</sub>H<sub>7</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho 1,97 gam dung dịch formalin tác dụng với lượng dư dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> thu được 10,8 gam Ag. Nồng độ % của formaldehyde trong fomalin là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "49,5%",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "40,0%",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "50,0%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "38,1%",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dung dịch acetic acid phản ứng được với tất cả các chất trong dãy nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cu, NaOH, NaCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Zn, CuO, NaCl",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Zn, CuO, HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Zn, NaOH, CaCO<sub>3</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để loại bỏ lớp cặn màu trắng trong ấm đun nước, người ta có thể dùng dung dịch nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Giấm ăn",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nước",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Muối ăn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cồn 70<sup>o</sup>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sữa chua được lên men từ sữa bột, sữa bò, sữa dê,... Sữa chua tốt cho hệ tiêu hoá. Vị chua trong sữa chua tạo bởi acid nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Formic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Acetic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Lactic acid",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Benzoic acid",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thứ tự các thuốc thử để phân biệt 3 dung dịch riêng biệt: acetic acid, acrylic acid, formic acid là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "quỳ tím, dung dịch Br<sub>2</sub> trong CCl<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "dung dịch Br<sub>2</sub>, dung dịch Na<sub>2</sub>CO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "dung dịch Na<sub>2</sub>CO<sub>3</sub>, quỳ tím",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> dư, dung dịch Br<sub>2</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c6_de1_p1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để trung hòa 6,72 gam một carboxylic acid Y (no, đơn chức), cần dùng 200 gam dung dịch NaOH 2,24%. Công thức của Y là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>2</sub>H<sub>5</sub>COOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>3</sub>H<sub>7</sub>COOH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HCOOH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c6_de1_p2_p2_q1",
+        "number": 19,
+        "part": 2,
+        "type": "true_false",
+        "text": "Carboxylic acid có nhiệt độ sôi cao hơn so với hydrocarbon, alcohol, hợp chất carbonyl có phân tử khối tương đương do tạo được liên kết hydrogen bền vứng hơn",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de1_image2.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hình (a) là liên kết hydrogen dạng liên phân tử và hình (b) là liên kết hydrogen dạng dimer",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phân tử carboxylic acid chứa nhóm carboxyl phân cực mạnh nên tạo được liên kết hydrogen bền vừng",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ngoài hai dạng liên kết hydrogen trên còn có liên kết giữa carboxylic acid và nước",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các hợp chất hydrocarbon, alcohol và hợp chất carbonyl không tạo được liên kết hydrogen liên phân tử",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Hình (b) là liên kết hydrogen dạng liên phân tử và hình (a) là liên kết hydrogen dạng dimer.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Alcohol có tạo liên kết hydrogen liên phân tử",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "hoa11_c6_de1_p2_p2_q2",
+        "number": 20,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho 2 - 3 mL dung dịch AgNO<sub>3</sub> 2% vào ống nghiệm đã rửa sạch. Thêm từ từ dung dịch NH<sub>3</sub> 3% vào và lắc đều cho tới khi kết tủa tan vừa hết. Thêm khoảng 1 mL dung dịch acetaldehyde 10% vào ống nghiệm, lắc đều.<br/>Bước 2: Đặt ống nghiệm vào cốc nước nóng (khoảng 60℃) rồi để yên. Sau vài phút lấy ống nghiệm ra khỏi cốc",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sau bước 2, lớp bạc sinh ra sáng bám trên thành ống nghiệm",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Có thể thay dung dịch acetaldehyde bằng dung dịch acetone thì kết quả thí nghiệm vẫn không thay đổi",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong thí nghiệm trên, acetaldehyde đóng vai trò là chất khử",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở bước 2, có thể đun sôi hỗn hợp chất phản ứng trong ống nghiệm để phản ứng xảy ra nhanh hơn",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Dung dịch acetone không phản ứng với thuốc thử Tollens.<br/>c. Đúng.<br/>d. Sai. Trong phản ứng tráng bạc, người ta không đun sôi hỗn hợp phản ứng để cho bạc bám đều lên thành ống nghiệm (hoặc vật cần tráng bạc)",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "hoa11_c6_de1_p2_p2_q3",
+        "number": 21,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho ba chất hữu cơ A, B, C có cùng công thức phân tử là C<sub>3</sub>H<sub>6</sub>O. Chất A có mạch carbon và có phản ứng tráng bạc; chất B không có phản ứng tráng bạc nhưng có phản ứng iodoform; chất C làm mất màu nước bromine. Khi hydrogen hóa C rồi oxi hóa sản phẩm thì được A. Xác định công thức cấu tạo và gọi tên A, B, C theo danh pháp thay thế",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chất A có tên thay thế là propanal",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chất B có tên thay thế là propanone",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chất C có tên thay thế là propan – 2 – ol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "A, B, C là ba chất đồng phân của nhau",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Chất C có tên thay thế là prop-2-en-1-ol.<br/>d. Đúng.<br/>- Chất A có mạch carbon và có phản ứng tráng bạc nên A là CH<sub>3</sub>CH<sub>2</sub>CHO (propanal).<br/>- Chất B không có phản ứng tráng bạc nhưng có phản ứng iodoform nên B là CH<sub>3</sub>COCH<sub>3</sub> (propanone).<br/>- Chất C làm mất màu nước bromine. Khi hydrogen hóa C rồi oxi hóa sản phẩm thì được A nên C là CH<sub>2</sub>=CH-CH<sub>2</sub><sup>-</sup>OH (prop-2-en-1-ol)",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "hoa11_c6_de1_p2_p2_q4",
+        "number": 22,
+        "part": 2,
+        "type": "true_false",
+        "text": "Chanh là một loài thực vật cho quả nhỏ, thuộc chi Cam chanh (Citrus), khi chín có màu xanh hoặc vàng, thịt quả có vị chua. Quả chanh được sử dụng làm thực phẩm trên khắp thế giới – chủ yếu dùng nước ép của nó, thế nhưng phần cơm (các múi của chanh) và vỏ cũng được sử dụng, chủ yếu là trong nấu ăn và nướng bánh. Nước ép chanh chứa khoảng 5% (khoảng 0,3 mol/lít) citric acid, điều này giúp chanh có vị chua, và độ pH của chanh từ 2-3. Citric acid có công thức cấu tạo là",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de1_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Citric acid tác dụng tối đa với NaHCO<sub>3</sub> theo tỉ lệ mol 1 : 3",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Citric acid thuộc loại hợp chất đa chức",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Công thức phân tử của citric acid là C<sub>6</sub>H<sub>6</sub>O<sub>7</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Citric acid tác dụng với NaOH theo tỉ lệ mol 1 : 4",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng. HOC<sub>3</sub>H<sub>4</sub>(COOH)<sub>3</sub> + 3NaHCO<sub>3</sub>HO<sub>C</sub>3H<sub>4</sub>(COONa)<sub>3</sub> + 3CO<sub>2</sub> + 3H<sub>2</sub>O.<br/>b. Sai. Citric acid thuộc loại hợp chất tạp chức (chức carboxylic và chức alcohol).<br/>c. Sai. Citric acid là HOC<sub>3</sub>H<sub>4</sub>(COOH)<sub>3</sub> (C<sub>6</sub>H<sub>8</sub>O<sub>7</sub>).<br/>d. Sai. HOC<sub>3</sub>H<sub>4</sub>(COOH)<sub>3</sub> + 3NaOH  HOC<sub>3</sub>H<sub>4</sub>(COONa)<sub>3</sub> + 3H<sub>2</sub>O",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "hoa11_c6_de1_p3_p3_q1",
+        "number": 23,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Từ phổ khối lượng (MS) của acetic acid ở hình dưới đây:<br/>Phân tử khối của acetic acid bằng bao nhiêu?",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de1_image4.png"
+        ],
+        "correctAnswer": "60",
+        "explanation": "Đáp án: 60",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 23
+      },
+      {
+        "id": "hoa11_c6_de1_p3_p3_q2",
+        "number": 24,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất: acetic aldehyde, acetylene, ethanol, propanal, acetone. Có bao nhiêu chất có khả năng phản ứng với dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub>?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 24
+      },
+      {
+        "id": "hoa11_c6_de1_p3_p3_q3",
+        "number": 25,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Số đồng phân có cùng công thức phân tử C<sub>5</sub>H<sub>10</sub>Ocó khả năng tham gia phản ứng iodoform là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.<br/>Bao gồm: CH<sub>3</sub> – CO – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub>, CH<sub>3</sub> – CO – CH(CH<sub>3</sub>)<sub>2</sub>",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 25
+      },
+      {
+        "id": "hoa11_c6_de1_p3_p3_q4",
+        "number": 26,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Giấm được sử dụng khá phổ biến để chế biến thức ăn. Bạn Mai muốn xác định nồng độ acetic acid có trong giấm ăn bằng cách sử dụng dung dịch sodium hydroxyde 0,1M để chuẩn độ. Bạn lấy mẫu giấm ăn đó để làm thí nghiệm và kết quả chuẩn độ 3 lần như bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Thí nghiệm</td><td class='border border-slate-300 px-2 py-1 text-xs'>Thể tích giấm (mL)</td><td class='border border-slate-300 px-2 py-1 text-xs'>Thể tích dung dịch NaOH 0,1 M cần dùng  (mL)</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>1</td><td class='border border-slate-300 px-2 py-1 text-xs'>5,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>25,0</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>2</td><td class='border border-slate-300 px-2 py-1 text-xs'>5,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>25,0</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>3</td><td class='border border-slate-300 px-2 py-1 text-xs'>5,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>24,9</td></tr></table><br/>Hãy giúp bạn Mai xác định nồng độ mol của acetic acid trong giấm",
+        "images": [],
+        "correctAnswer": "0,5",
+        "explanation": "Đáp án: 0,5.<br/>Thể tích trung bình của dung dịch NaOH cần dùng:  ++==NaOH252524,9V24,97mL3 .<br/>Nồng độ acetic acid có trong giấm ăn là:  ==3M(CHCOOH)24,79.0,1C0,5M.5",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 26
+      },
+      {
+        "id": "hoa11_c6_de1_p3_p3_q5",
+        "number": 27,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các phản ứng sau ở điều kiện thích hợp:<br/>(1) Lên men giấm ethyl alcohol.<br/>(2) Oxi hóa không hoàn toàn acetaldehyde.<br/>(3) Oxi hóa không hoàn toàn butane.<br/>(4) Cho methanol tác dụng với carbon monoxide.<br/>Có bao nhiêu phản ứng có sự tạo thành sản phẩm acetic acid?<br/>Hãy gán số thứ tự các phản ứng trên có thể tạo thành acetic acid theo số thứ tự tăng dần (ví dụ: 12, 234, …)<br/>Đáp số 1234.<br/>(1) C<sub>2</sub>H<sub>5</sub>OH + O<sub>2</sub>  mengiÊm¾¾¾¾®  CH<sub>3</sub>COOH + H<sub>2</sub>O<br/>(2) CH<sub>3</sub>CHO + Br<sub>2</sub> + H<sub>2</sub>O → CH<sub>3</sub>COOH + 2HBr<br/>(3) CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub> + 5/2O<sub>2</sub>  oxt,t¾¾¾®  2CH<sub>3</sub>COOH + H<sub>2</sub>O<br/>(4) CH<sub>3</sub>OH + CO  oxt,t¾¾¾®  CH<sub>3</sub>COOH",
+        "images": [],
+        "correctAnswer": "1234",
+        "explanation": "Cả 4 phản ứng đều tạo acetic acid: (1) Men giấm C₂H₅OH; (2) Oxi hóa CH₃CHO; (3) Oxi hóa butane; (4) CH₃OH + CO. Gán số theo thứ tự tăng dần là 1234.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 27,
+        "acceptedAnswers": [
+          "1234",
+          "1, 2, 3, 4",
+          "1;2;3;4"
+        ]
+      },
+      {
+        "id": "hoa11_c6_de1_p3_p3_q6",
+        "number": 28,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Bisphenol A là hợp chất được dùng nhiều trong công nghiệp để điều chế nhựa epoxy. Bisphenol A được điều chế từ phenol và acetone theo sơ đồ:<br/>Từ 145 kg acetone và 282 kg phenol hãy tính lượng bisphenol A thu được (theo kg), biết hiệu suất của phản ứng tổng hợp bisphenol A đạt 80% (Làm tròn kết quả đến hàng đơn vị)",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de1_image5.png"
+        ],
+        "correctAnswer": "274",
+        "explanation": "Đáp án: 274.<br/>Số mol của CH<sub>3</sub>COCH<sub>3</sub> là 2,5 kmol và C<sub>6</sub>H<sub>5</sub>OH là 3 kmol  tính theo mol phenol<br/>Công thức Bisphenol A là C<sub>15</sub>H<sub>16</sub>O<sub>2</sub><br/>m<sub>bisphenol</sub><sub>A</sub> =  32  . 228..80% = 273,6 kg.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c6_de2",
+    "code": "ĐỀ 602",
+    "title": "Đề kiểm tra Chương 6: Hợp chất carbonyl - Carboxylic acid (Đề số 2)",
+    "topic": "Carboxylic acid: Tính acid, phản ứng với kim loại, oxide base, muối & phản ứng ester hóa",
+    "badge": "Chương 6 - Đề 2",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c6_de2_p1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức tổng quát của carboxylic acid no, đơn chức, mạch hở là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub> (n ≥ 1)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>n</sub>H<sub>2n+2</sub>O<sub>2</sub> (n ≥ 1)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>n</sub>H<sub>2n-1</sub>COOH (n ≥ 1)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>n</sub>H<sub>2n</sub>O<sub>2</sub> (n ≥ 2)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số đồng phân carbonyl có công thức phân tử C<sub>4</sub>H<sub>8</sub>O là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tên thông thường của CH<sub>3</sub>-CH<sub>2</sub>-CHO là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "acetic aldehyde",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "acrylic aldehyde",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "benzoic aldehyde",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "propionic aldehyde",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Formalin có tác dụng diệt khuẩn nên được dùng để bảo quản mẫu sinh vật, tẩy uế, khử trùng, … Formalin là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "dung dịch rất loãng của aldehyde formic",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "dung dịch aldehyde fomic 37 - 40%",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "aldehyde fomic nguyên chất",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tên gọi khác của aldehyde formic",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Liên kết O-H trong carboxylic acid phân cực hơn so với alcohol, phenol do",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nhóm -C=O là nhóm đẩy electron",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nhóm -C=O là nhóm hút electron",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nhóm -OH là nhóm hút electron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nhóm -OH là nhóm đẩy electron",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để phân biệt ba hợp chất HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, một học sinh tiến hành thí nghiệm thu được kết quả sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>ChấtThuốc thử</td><td class='border border-slate-300 px-2 py-1 text-xs'>1</td><td class='border border-slate-300 px-2 py-1 text-xs'>2</td><td class='border border-slate-300 px-2 py-1 text-xs'>3</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Tollens</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>I<sub>2</sub>/ NaOH</td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr></table><br/>Ghi chú: X: Không phản ứng; : Có phản ứng<br/>Ba chất (1), (2), (3) lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CHO, HCHO, CH<sub>3</sub>COCH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCHO,CH<sub>3</sub>COCH<sub>3</sub>, CH<sub>3</sub>CHO",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, HCHO",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho ba hợp chất hữu cơ có phân tử khối tương đương: (1) C<sub>3</sub>H<sub>8</sub>; (2) C<sub>2</sub>H<sub>5</sub>OH; (3) CH<sub>3</sub>CHO. Thứ tự giảm dần nhiệt độ sôi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(2) > (3) > (1)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1) > (2) > (3)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(3) > (2) > (1)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(2) > (1) > (3)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho lá zinc mỏng vào ống nghiệm đựng 2 mL dung dịch chất X, thấy lá kẽm tan dần và có khí thoát ra. Chất X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "glycerol",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "ethyl alcohol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "saccarozơ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "acetic acid",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Giấm ăn được dùng phổ biến trong chế biến thực phẩm, giấm ăn có chứa acetic acid với nồng độ từ 2% đến 5%. Một chai giấm thể tích 500 mL (D = 1,045 g/mL) có nồng độ acetic acid là 4%, số gam acetic acid có trong chai giấm đó là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "41,8 g",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "20,9 g",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4,18 g",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2,09 g",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Có ba ống nghiệm chứa các dung dịch trong suốt: ống (1) chứa ethyl alcohol, ống (2) chứa acetic acid và ống (3) chứa acetaldehyde. Nếu cho Cu(OH)<sub>2</sub>/OH<sup>-</sup>lần lượt vào các dung dịch trên và đun nóng thì:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cả ba ống đều có phản ứng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ống (1) và ống (3) có phản ứng, còn ống (2) thì không",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ống (2) và ống (3) có phản ứng, còn ống (1) thì không",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ống (1) có phản ứng, còn ống (2) và ống (3) thì không",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một số carboxylic acid như oxalic acid, tartaric acid,... gây ra vị chua cho quả sấu xanh. Trong quá trình làm sấu ngâm đường, người ta sử dụng dung dịch nào sau đây để làm giảm vị chua của quả sấu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nước vôi trong",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Giấm ăn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phèn chua",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Muối ăn",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho dãy các chất sau: HCHO, CH<sub>3</sub>COOH, CH<sub>3</sub>CHO, HCOOH, C<sub>2</sub>H<sub>5</sub>OH. Số chất trong dãy có thể tham gia phản ứng tráng bạc là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hai chất X và Y có cùng công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Cho X tác dụng với CaCO<sub>3</sub> thấy có bọt khí thoát ra, còn Y có thể tham gia phản ứng tráng bạc. Công thức của X và Y lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>2</sub>=CHCOOH, OHC-CH<sub>2</sub>-CHO",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>2</sub>=CH-COOH, CHC-O-CH<sub>2</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCOO-CH=CH<sub>2</sub>, OHC-CH<sub>2</sub>-CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HCOO-CH=CH<sub>2</sub>, CHC-O-CH<sub>2</sub>OH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Oxi hóa alcohol đơn chức (X) bằng CuO (đun nóng), sinh ra một sản phẩm hữu cơ duy nhất là ketone (Y) (tỉ khối hơi của (Y) so với khí hydrogen bằng 29). Công thức cấu tạo của (X) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>-CH(OH)-CH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>-CH(OH)-CH<sub>2</sub>-CH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>-CH<sub>2</sub>-OH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>-CH<sub>2</sub>-CH<sub>2</sub>-OH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đặc điểm nào sau đây là của phản ứng ester hóa?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng thuận nghịch, cần đun nóng và không cần xúc tác",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng thuận nghịch, cần đun nóng và cần xúc tác",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng hoàn toàn, cần đun nóng và cần xúc tác",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng hoàn toàn, cần đun nóng và không cần xúc tác",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tên gọi của CH<sub>3</sub>CH(CH<sub>3</sub>)CH<sub>2</sub>COOH là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2-methylpropanoic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2-methylbutanoic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3-methylbutanoic acid",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3-methylpropanoic acid",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Acetone được điều chế bằng cách oxi hóa cumene nhờ oxygen, sau đó thủy phân trong dung dịch H<sub>2</sub>SO<sub>4</sub> loãng. Để thu được 87 gam acetone thì lượng cumene cần dùng (giả sử hiệu suất quá trình điều chế đạt 80%) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "144 gam",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "180 gam",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "225 gam",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "216 gam",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c6_de2_p1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(a) Aldehyde acetic được sản xuất chủ yếu từ acetylene.<br/>(b) Acetone được sản xuất chủ yếu bằng cách oxi hóa propan-2-ol.<br/>(c) Fomaldehyde thường được bán dưới dạng khí hóa lỏng.<br/>(d) Người ta lau sạch sơn màu trên móng tay bằng acetone.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c6_de2_p2_p2_q1",
+        "number": 19,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu nào sau đây là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Aldehyde phản ứng được với nước bromine",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ketone không phản ứng được với Cu(OH)<sub>2</sub>/OH<sup>-</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Aldehyde tác dụng với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub> tạo ra bạc",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong các hợp chất carbonyl, chỉ aldehyde bị khử bởi NaBH<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. ldehyde và ketone đều bị khử bởi NaBH<sub>4</sub>",
+        "explanationImages": [
+          "/assets/hoa11/c6/hoa11_c6_de2_image1.png"
+        ],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "hoa11_c6_de2_p2_p2_q2",
+        "number": 20,
+        "part": 2,
+        "type": "true_false",
+        "text": "Các carboxylic acid có khả năng tạo liên kết hydrogen với nước nên có khả năng tan tốt trong nước. Các carboxylic acid có phân tử khối thấp như formic acid, acetic acid, propionic acid, butyric acid tan vô hạn trong nước",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các carboxylic acid có phân tử khối thấp tan tốt trong nước nguyên nhân chính là do kích thước phân tử lớn hơn kích thước phân tử của nước",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi số nguyên tử carbon trong phân tử tăng thì độ tan giảm dần",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi carboxylic tan vào trong nước thì có liên kết hydrogen tạo từ O (của nhóm C=O) với H của nước",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phần R (R là gốc hydrocarbon) trong R-COOH là phần kị nước, phần này càng lớn thì độ tan trong nước càng lớn",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Do tạo được liên kết hydrogen.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Phần R càng lớn thì độ tan trong nước càng giảm",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "hoa11_c6_de2_p2_p2_q3",
+        "number": 21,
+        "part": 2,
+        "type": "true_false",
+        "text": "X là một hợp chất hữu cơ dùng để làm sạch dụng cụ trong phòng thí nghiệm, tẩy rửa sơn móng tay và là chất đầu của quá trình tổng hợp hữu cơ. Kết quả phân tích nguyên tố của X cho kết quả, trong X có: 62,07% C, 27,59% O về khối lượng, còn lại là hydrogen. Phân tử khối của X được xác định thông qua phổ khối lượng với peak ion phân tử có giá trị m/z lớn nhất",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de2_image2.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân tử khối của X là 58",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Công thức phân tử của X là C<sub>3</sub>H<sub>8</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X có phản ứng tạo iodoform",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong công nghiệp, X được điều chế từ phản ứng oxi hóa ethylene",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>Gọi công thức tổng quát của X là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub><br/>Dựa vào phổ khối lượng nguyên tử, có M<sub>X</sub> = 58<br/>%m<sub>H</sub> = 100 – 62,07 – 27,59 =  10,34 %.<br/>Ta có:  62,0710,3427,59x:y:z::5,17:10,34:1,723:6:112116===  Þ  CTĐGN của X là C<sub>3</sub>H<sub>6</sub>O<br/>CTPT của X có dạng: (C<sub>3</sub>H<sub>6</sub>O)<sub>n</sub>  Þ  M<sub>x</sub> = 58n = 58  Þ  n = 1  Þ  CTPT của X là C<sub>3</sub>H<sub>6</sub>O<br/>CTCT của X là CH<sub>3</sub>COCH<sub>3</sub>.<br/>a. Đúng.<br/>b. Sai. CTPT là C<sub>3</sub>H<sub>6</sub>O.<br/>c. Đúng. CH<sub>3</sub>COCH<sub>3</sub> + 3I<sub>2</sub> + 4NaOH → CH<sub>3</sub>COONa + CHI<sub>3</sub>↓ + 3NaI + 3H<sub>2</sub>O<br/>d. Sai. X được sản xuất từ cumene",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "hoa11_c6_de2_p2_p2_q4",
+        "number": 22,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho X, Y, Z, T là các chất khác nhau trong số 4 chất: CH<sub>3</sub>COOH, C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>CHO, HCOOH và các tính chất được ghi trong bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Chất</td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'>Y</td><td class='border border-slate-300 px-2 py-1 text-xs'>Z</td><td class='border border-slate-300 px-2 py-1 text-xs'>T</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>t° sôi (°C)</td><td class='border border-slate-300 px-2 py-1 text-xs'>78,3</td><td class='border border-slate-300 px-2 py-1 text-xs'>100,8</td><td class='border border-slate-300 px-2 py-1 text-xs'>21,0</td><td class='border border-slate-300 px-2 py-1 text-xs'>118,0</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>pH (0,001M)</td><td class='border border-slate-300 px-2 py-1 text-xs'>7,00</td><td class='border border-slate-300 px-2 py-1 text-xs'>3,47</td><td class='border border-slate-300 px-2 py-1 text-xs'>7,00</td><td class='border border-slate-300 px-2 py-1 text-xs'>3,88</td></tr></table>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Từ chất X có thể điều chế trực tiếp được chất T",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong dung dịch nước, chất Z không tạo được liên kết hydrogen với nước",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chỉ dùng quỳ tím và thuốc thử Tollens phân biệt được bốn dung dịch của bốn chất trên",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Lực acid của Y lớn hơn lực acid của T hay K<sub>a</sub>(Y) lớn hơn K<sub>a</sub>(T)",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng: C<sub>2</sub>H<sub>5</sub>OH + O<sub>2</sub> (lên men giấm)  CH<sub>3</sub>COOH + H<sub>2</sub>O.<br/>b. Sai. CH<sub>3</sub>CHO chứa nguyên tử O có độ âm điện lớn nên có tạo được liên kết hydrogen với nước.<br/>c. Đúng.<br/>+ Quỳ không đổi màu, không tráng bạc: C<sub>2</sub>H<sub>5</sub>OH<br/>+ Quỳ không đổi màu, có tráng bạc: CH<sub>3</sub>CHO<br/>+ Quỳ đổi màu đỏ, không tráng bạc: CH<sub>3</sub>COOH<br/>+ Quỳ đổi màu đỏ, có tráng bạc: HCOOH<br/>d. Đúng",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "hoa11_c6_de2_p3_p3_q1",
+        "number": 23,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Quế có vị cay, mùi thơm nồng, được sử dụng phổ biến làm gia vị, vị thuốc trong Đông y. Hợp chất hữu cơ cinnamaldehyde tạo mùi đặc trưng của quế. Trong phân tử cinnamaldehyde chứa vòng benzene có một nhóm thế. Cinnamaldehyde bị oxi hóa bởi thuốc thử Tollens và có đồng phân hình học dạng trans. Công thức cấu tạo của cinnamaldehyde là<br/>Phân tử khối của cinnamaldehyde là bao nhiêu?",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de2_image3.jpeg"
+        ],
+        "correctAnswer": "132",
+        "explanation": "Đáp án: 132",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 23
+      },
+      {
+        "id": "hoa11_c6_de2_p3_p3_q2",
+        "number": 24,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các phản ứng sau:<br/>(1) CH<sub>3</sub>CHO + H<sub>2</sub> oNi, t¾¾¾®  CH<sub>3</sub>CH<sub>2</sub>OH.<br/>(2) 2CH<sub>3</sub>CHO + 5O<sub>2</sub>  ot¾¾®  4CO<sub>2</sub> + 4H<sub>2</sub>O.<br/>(3) CH<sub>3</sub>CHO + Br<sub>2</sub> + H<sub>2</sub>O  ¾¾®  CH<sub>3</sub>COOH + 2HBr.<br/>(4) CH<sub>3</sub>CHO + 2[Ag(NH<sub>3</sub>)<sub>2</sub>]OH  ¾¾®  CH<sub>3</sub>COONH<sub>4</sub> + 3NH<sub>3</sub> + 2Ag + H<sub>2</sub>O.<br/>Liệt kê các phản ứng mà acetaldehyde thể hiện tính khử thành dãy số theo thứ tự tăng dần (Ví dụ: 1234, 24,…)",
+        "images": [],
+        "correctAnswer": "234",
+        "explanation": "Đáp án: 234",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 24
+      },
+      {
+        "id": "hoa11_c6_de2_p3_p3_q3",
+        "number": 25,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Số công thức cấu tạo chứa nhóm carboxylic acid có cùng công thức C<sub>5</sub>H<sub>10</sub>O<sub>2</sub>là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.<br/>CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>2</sub> – COOH, (CH<sub>3</sub>)<sub>2</sub>CH – CH<sub>2</sub> – COOH<br/>CH<sub>3</sub> – CH<sub>2</sub> – CH(CH<sub>3</sub>) – COOH, (CH<sub>3</sub>)<sub>3</sub>C – COOH",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 25
+      },
+      {
+        "id": "hoa11_c6_de2_p3_p3_q4",
+        "number": 26,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: H<sub>2</sub>O (1), C<sub>2</sub>H<sub>5</sub>OH (2), C<sub>6</sub>H<sub>5</sub>OH (3), CH<sub>3</sub>COOH (4). Hãy sắp xếp các chất trên theo độ linh động của nguyên tử hydrogen trong nhóm – OH tăng dần bằng cách gán số thứ tự theo bộ bốn chữ số (ví dụ: 1234, 2341, …)",
+        "images": [],
+        "correctAnswer": "2134",
+        "explanation": "Đáp án: 2134",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 26
+      },
+      {
+        "id": "hoa11_c6_de2_p3_p3_q5",
+        "number": 27,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Ethyl propionate có mùi thơm của dứa chín. Khi đun nóng hỗn hợp 18,5 g propionic acid và 13,8 g ethyl alcohol với xúc tác H<sub>2</sub>SO<sub>4</sub> đặc, thu được 15,3 g ethyl propionate. Tính hiệu suất của phản ứng điều chế ester?",
+        "images": [],
+        "correctAnswer": "60",
+        "explanation": "Đáp án: 60.<br/>25252525CHCOOHCHOHCHCOOCHn0,25mol;n0,3mol;n0,15mol===<br/>PTHH: C<sub>2</sub>H<sub>5</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH  o24HSO®Æc,t  C<sub>2</sub>H<sub>5</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O<br/>0,25           <    0,3 → 0,25 mol<br/>0,15H.10060%0,25==",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 27
+      },
+      {
+        "id": "hoa11_c6_de2_p3_p3_q6",
+        "number": 28,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tiến hành thí nghiệm phản ứng tráng bạc bằng cách lấy 50 mL dung dịch CH<sub>3</sub>CHO 1M phản ứng với thuốc thử Tollens dư. Sau khi kết thúc phản ứng, bình phản ứng có một lớp bạc sáng bóng bám vào thành bình. Loại bỏ hóa chất trong bình rồi tráng bằng nước cất, sấy khô, khối lượng bình tăng m gam so với ban đầu. Tính m biết hiệu suất tráng bạc là 75% vào chỉ 60% lượng bạc tạo thành bám vào thành bình, phần còn lại ở dạng kết tủa bột màu đen",
+        "images": [],
+        "correctAnswer": "4,86",
+        "explanation": "Đáp án: 4,86.<br/>CH<sub>3</sub>CHO + 2[Ag(NH<sub>3</sub>)<sub>2</sub>]OH  ¾¾® CH<sub>3</sub>COONH<sub>4</sub> +2Ag + 3NH<sub>3</sub> + H<sub>2</sub>O<br/>3CHCHOn  = 50 . 10<sup>-3</sup> = 0,05 mol<br/>Agn  = 0,05 . 2 = 0,1  Þ  Agm  = 108 . 0,1 = 10,8 (g)  Þ  m = 10,8 . 75% . 60% = 4,86 (g).<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c6_de3",
+    "code": "ĐỀ 603",
+    "title": "Đề kiểm tra Chương 6: Hợp chất carbonyl - Carboxylic acid (Đề số 3)",
+    "topic": "Bài toán phản ứng tráng gương của aldehyde & bài toán chuẩn độ trung hòa acid",
+    "badge": "Chương 6 - Đề 3",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c6_de3_p1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hợp chất chứa nhóm C=O liên kết với nguyên tử carbon hoặc nguyên tử hydrogen được gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "hợp chất alcohol",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "dẫn xuất halogen",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "các hợp chất phenol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "hợp chất carbonyl",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho hợp chất carbonyl có công thức cấu tạo sau<br/>Tên theo danh pháp thay thế của hợp chất carbonyl đó là",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de3_image1.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2-methylbutan -3-one",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3-methylbutan-2-one",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3-methylbutan-2-ol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1,1-dimethypropan-2-one",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các hợp chất sau, hợp chất nào tham gia phản ứng idoform?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCHO",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CHO",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>COCH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cả B và C",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trước đây người ta thường cho formol vào bánh phở, bún đề làm trắng và tạo độ dai, tuy nhiên do formol có tác hại với sức khỏe con người nên hiện nay đã bị cấm sử dụng trong thực phẩm. Formol là chất nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Methanol",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phenol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Formaldehyde",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Acetone",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các hợp chất cho dưới đây, hợp chất nào có nhiệt độ sôi cao nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Propan-2-one",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Butan-2-one",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Pentan-2-one",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hexan-2-one",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Cho phản ứng sau: (CH<sub>3</sub>)<sub>2</sub>CHCOCH<sub>3</sub> + 2[H]  4LiAlH¾¾¾® ?<br</span><span class=\"px-1 pt-0.5\">>Sản phẩm phản ứng là chất nào sau đây?</span></span></span>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2-metylbutan-3-ol",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3-metylbutan-2-ol",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1,1-dimethylpropan-2-ol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3,3-dimethylpropan-2-ol",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số đồng phân có cùng công thức phân tử C<sub>4</sub>H<sub>8</sub>O, có khả năng tham gia phản ứng tráng bạc là:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các chất sau: (1) CH<sub>3</sub>CH<sub>2</sub>CHO, (2) CH<sub>3</sub>CH(OH)CH<sub>3</sub>, (3) (CH<sub>3</sub>)<sub>2</sub>CHCHO, (4) CH<sub>2</sub>=CHCH<sub>2</sub>OH, những chất nào phản ứng với H<sub>2</sub> (Ni, t<sup>o</sup>) hoặc NaBH<sub>4</sub> sinh ra cùng một sản phẩm?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1) và (3)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(2) và (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(1) và (2)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(3) và (4)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(a) Formaldehyde dùng làm nguyên liệu sản xuất nhựa phenol formaldehyde.<br/>(b) Có thể điều chế aldehyde trực tiếp từ bất kỳ alcohol nào.<br/>(c) Formalin hay formon là dung dịch của methanal trong nước.<br/>(d) Acetaldehyde được dùng để sản xuất acetic acid.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Carboxylic acid là những hợp chất hữu cơ trong phân tử có",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nhóm –OH liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nhóm C=O liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nhóm –COOH liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nhóm –CHO liên kết trực tiếp với nguyên tử carbon hoặc nguyên tử hydrogen",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đồ thị hình bên mô tả sự phụ thuộc giá trị nhiệt độ sôi vào số nguyên tử carbon của bốn loại hợp chất alkane, alcohol, aldehyde và carboxylic acid. Đồ thị A, B, C, D lần lượt tương ứng với các loại hợp chất là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Alkane, alcohol, aldehyde, carboxylic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Alcohol, carboxylic acid, aldehyde, alkane",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Carboxylic acid, aldehyde, alcohol, alkane",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Carboxylic acid, alcohol, aldehyde, alkane",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi hòa tan vào nước, acetic acid",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "phân li hoàn toàn",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "phân li một phần",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "không phân li",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "không tan trong nước",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây không phản ứng được với dung dịch acetic acid?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cu",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Zn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CaCO<sub>3</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Carboxylic acid X có cấu tạo mạch hở, công thức tổng quát C<sub>n</sub>H<sub>2n-2</sub>O<sub>4</sub>. Carboxylic acid X thuộc loại",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "no, đơn chức",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "không no, đơn chức",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "no và có 2 chức acid",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "không no và có 2 chức acid",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận định nào sau đây không đúng khi nói về tính chất hóa học cùa acetic acid?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Acetic acid là acid yếu, làm đổi màu quỳ tím",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Acetic acid có đầy đủ các tính chất của một acid thông thường",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Acetic acid phản ứng được với ethanol tạo ester",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Acetic acid là acid yếu nên không phản ứng được với đá vôi",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Formic acid (HCOOH) có trong nọc kiến, nọc ong, sâu róm. Nếu không may bị ong đốt thì nên bôi vào vết ong đốt loại chất nào sau đây là tốt nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kem đánh răng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Xà phòng",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vôi",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Giấm",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho một dung dịch chứa 5,76 gam một carboxylic acid X đơn chức, mạch hở tác dụng hết với CaCO<sub>3</sub> thu được 7,28 gam muối carboxylate. Công thức cấu tạo của X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>2</sub>=CHCOOH",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HC≡CCOOH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>COOH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c6_de3_p1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thực hiện phản ứng oxi hóa 4,958 L C<sub>2</sub>H<sub>4</sub> (đkc) bằng O<sub>2</sub> (xúc tác PdCl<sub>2</sub>, CuCl<sub>2</sub>) thu được chất (X) đơn chức. Cho toàn bộ lượng chất (X) tác dụng với hydrogen cyanide (HCN) dư, thu được 7,1 gam CH<sub>3</sub>CH(CN)OH (cyanohydrin). Hiệu suất quá trình tạo CH<sub>3</sub>CH(CN)OH từ C<sub>2</sub>H<sub>4</sub> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "70%",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "50%",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "60%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "80%",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c6_de3_p2_p2_q1",
+        "number": 19,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho hợp chất hữu cơ X có công thức cấu tạo là CH<sub>3</sub>COOH",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "X là carboxylic acid no, đơn chức, mạch hở",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tên thông thường của X là ethanoic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Người ta thường dung dung dịch X để loại bỏ cặn màu trắng (thành phần chính là CaCO<sub>3</sub>) bám ở đáy ấm đun nước",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dung dịch chất X làm quỳ tím chuyển màu đỏ",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Tên thông thường là acetic acid.<br/>c. Đúng.<br/>d. Đúng",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "hoa11_c6_de3_p2_p2_q2",
+        "number": 20,
+        "part": 2,
+        "type": "true_false",
+        "text": "Ở điều kiện thường, các carboxylic acid đều ở thể lỏng hoặc rắn. Nhiệt độ sôi của các carboxylic acid no, đơn chức, mạch hở đều tăng dần theo chiều tăng dần của phân tử khối. Nhiệt độ sôi của các carboxylic acid cao hơn của các alcohol có cùng số nguyên tử carbon. Nguyên nhân là do liên kết O-H trong nhóm carboxyl phân cực hơn liên kết O-H trong alcohol, dẫn đến liên kết hydrogen giữa các phân tử carboxylic acid bền vững hơn so với liên kết hydrogen hình thành giữa các phân tử alcohol. Liên kết hydrogen giữa các phân tử carboxylic tồn tại ở dạng polymer hoặc dimer vòng",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de3_image4.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Formic acid là chất lỏng ở điều kiện thường",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Acetic acid có nhiệt độ sôi thấp hơn ethyl alcohol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Do có kích thước phân tử và khối lượng phân tử nhỏ hơn nên acetic acid có nhiệt độ sôi thấp hơn propionic acid",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nhóm C=O hút electron làm cho liên kết O-H trong nhóm carboxyl kém phân cực hơn liên kết O-H trong alcohol",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. CH<sub>3</sub>COOH có nhiệt độ sôi cao hơn C<sub>2</sub>H<sub>5</sub>OH.<br/>c. Đúng.<br/>d. Sai. Liên kết OH của carboxylic acid phân cực hơn liên kết OH của alcohol",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "hoa11_c6_de3_p2_p2_q3",
+        "number": 21,
+        "part": 2,
+        "type": "true_false",
+        "text": "Một học sinh tiến hành thí nghiệm theo các bước (như hình dưới đây):<br/>Bước 1: Dây đồng được cuốn thành hình lò xo rồi đun nóng trên ngọn lửa đèn cồn, phần dây đồng được nung nóng có màu đen (Hình A).<br/>Bước 2: Nhúng dây đồng đang nóng vào ống nghiệm chứa ethanol, dây đồng chuyển màu vàng đỏ kim loại (Hình B). Lặp lại thí nghiệm vài lần.<br/>Bước 3: Chia chất lòng trong ống nghiệm B thành 2 phần, phần 1 cho phản ứng với thuốc thử Tollens và đun nóng (Hình C); phần 2 thực hiện phản ứng idoform",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de3_image5.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sau bước 3, ở hình C quan sát thấy có lớp bạc sáng bám ở ống nghiệm",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sau bước 3, ở hình D quan sát thấy có kết tủa màu vàng",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở bước 1, phần dây đồng được nung nóng có màu đen là do đồng bị oxi hóa thành CuO",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở bước 2, ethanol bị oxi hóa hoàn toàn tạo thành ethanal (CH<sub>3</sub>CHO)",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Ethanol bị oxi hóa không hoàn toàn bởi CuO tạo thành CH<sub>3</sub>CHO",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "hoa11_c6_de3_p2_p2_q4",
+        "number": 22,
+        "part": 2,
+        "type": "true_false",
+        "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Hợp chất Cinnamaldehyde (gọi là hợp chất A) có nhiều trong vỏ  cây quế và có mùi thơm của quế chín. Kết quả phân tích nguyên tố hợp chất A cho biết %C = 81,82%; %H = 6,061%; còn lại là O. Khi chụp phổ khối lượng MS, biết peak ion phân tử [M<sup>+</sup>] của A là m</span><span class=\"px-1 pt-0.5\">z = 132. Biết rằng chất A có chứa vòng benzene và có một nhóm thế; cấu trúc ở dạng trans và có phản ứng tráng bạc</span></span></span>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Công thức phân tử của chất A là C<sub>9</sub>H<sub>8</sub>O<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chất A có phản ứng iodoform",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chất A phản ứng H<sub>2</sub> dư (xúc tác Ni, t°, áp suất cao) theo tỉ lệ mol tối đa là 1 : 5",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Vỏ quế để lâu trong không khí sẽ bị mất mùi thơm, nguyên nhân chính là cho chất A bị oxi hóa bởi oxygen trong không khí",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. M<sub>A</sub> = 132.<br/>Số C =  132.81,82%912=  ; Số H =  132.6,061%81=   A là C<sub>9</sub>H<sub>8</sub>O<br/>b. Sai. A không có phản ứng iodoform.<br/>Cấu tạo của A (chứa vòng benzene và có một nhóm thế; cấu trúc ở dạng trans và có phản ứng tráng bạc):<br/>c. Đúng. A + 5H<sub>2</sub>C<sub>6</sub>H<sub>11</sub>-CH<sub>2</sub>-CH<sub>2</sub>-CH<sub>2</sub>OH.<br/>d. Đúng. Chất A có thể bị oxi hóa ở nhánh (C=C và -CHO)",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "hoa11_c6_de3_p3_p3_q1",
+        "number": 23,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: CH<sub>3</sub>-COOH, CH<sub>3</sub>-CO-CH<sub>3</sub>, HOOC-CH<sub>2</sub>-COOH, C<sub>6</sub>H<sub>5</sub>-COOH, CH<sub>3</sub>-CHO. Có bao nhiêu carboxylic acid trong số các chất?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 23
+      },
+      {
+        "id": "hoa11_c6_de3_p3_p3_q2",
+        "number": 24,
+        "part": 3,
+        "type": "short_answer",
+        "text": "X là hợp chất no, mạch hở, chỉ chứa nhóm aldehyde và có công thức phân tử là C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Cho 1 mol X phản ứng với thuốc thử Tollens thì thu được tối đa số mol Ag kim loại là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.<br/>Công thức cấu tạo của X là CH<sub>2</sub>(CHO)<sub>2</sub> ⇒ 2 nhóm CHO tạo 4 Ag",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 24
+      },
+      {
+        "id": "hoa11_c6_de3_p3_p3_q3",
+        "number": 25,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các phản ứng sau:<br/>(1) CH<sub>3</sub>CH<sub>2</sub>OH + CuO  ot¾¾¾®<br/>(2) (CH<sub>3</sub>)<sub>2</sub>CHOH + CuO  ot¾¾¾®<br/>(3) (CH<sub>3</sub>)<sub>3</sub>COH + CuO  ot¾¾¾®<br/>(4) HC≡CH + H<sub>2</sub>O  4o24HgSOHSO,t¾¾¾¾®<br/>Liệt kê các phản ứng có sự tạo thành aldehyde thành dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…)",
+        "images": [],
+        "correctAnswer": "14",
+        "explanation": "Đáp án: 14",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 25
+      },
+      {
+        "id": "hoa11_c6_de3_p3_p3_q4",
+        "number": 26,
+        "part": 3,
+        "type": "short_answer",
+        "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Cho các hóa chất sau: dung dịch HCN, dung dịch Br<sub>2</sub>, dung dịch NaOH, dung dịch [Ag(NH<sub>3</sub>)<sub>2</sub>](OH), LiAlH<sub>4</sub>, Cu(OH)<sub>2</sub></span><span class=\"px-1 pt-0.5\">NaOH, I<sub>2</sub>/NaOH. Có bao nhiêu chất phản ứng được với acetone ở điều kiện nhiệt độ thích hợp?</span></span></span>",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 26
+      },
+      {
+        "id": "hoa11_c6_de3_p3_p3_q5",
+        "number": 27,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Methyl salicylate là hợp chất thuộc loại ester dùng làm cao dán giảm đau, kháng viêm ngoài da. Methyl salicylate được tổng hợp từ salicylic acid và methanol. Phương trình hóa học của phản ứng tổng hợp methyl salicylate:<br/>Phần trăm khối lượng của nguyên tố oxygen trong phân tử methyl salicylate là bao nhiêu (Làm tròn kết quả đến hàng phần mười)?",
+        "images": [],
+        "correctAnswer": "31,6",
+        "explanation": "Đáp án: 31,6.<br/>Công thức phân tử của methyl salicylate là C<sub>8</sub>H<sub>8</sub>O<sub>3</sub>  %O = 31,6%",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 27
+      },
+      {
+        "id": "hoa11_c6_de3_p3_p3_q6",
+        "number": 28,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Giấm ăn được điều chế bằng cách lên men dung dịch ethanol loãng. Tính khối lượng giấm ăn 5% thu được (theo đơn vị kg) khi lên men 100 L ethanol 4°. Biết hiệu suất quá trình lên men là 80%, khối lượng riêng của ethanol nguyên chất là 0,79 g/mL. (Làm tròn kết quả đến hàng phần mười)",
+        "images": [],
+        "correctAnswer": "66,0",
+        "explanation": "Đáp án: 66,0.<br/>ethanolethanol4100V4(L)4000(mL)m0,7940003160(g)100´===Þ=´=<br/>Phản ứng lên men:<br/>mengiÊm25232CHOHOCHCOOHHO45gam60gam3160gamxgam+¾¾¾¾®+<br/>Theo phản ứng:  giÊm¨n(LT)316060n4121,74(g)46´=»<br/>Với hiệu suất 80% thì khối lượng thực tế thu được: giÊm¨n(TT)H80%m4121,7480%3297,39(g)=Þ´=<br/>Khối lượng giấm ăn 5%:  ddgiÊm¨n5%3297,39m65947,83(g)65,98(kg)5%===<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c6_de4",
+    "code": "ĐỀ 604",
+    "title": "Đề kiểm tra Ôn tập Toàn diện Chương 6 (Đề số 4)",
+    "topic": "Đề thi chuẩn cấu trúc Bộ GD&ĐT 2025 bao quát toàn bộ Hợp chất Carbonyl & Carboxylic Acid",
+    "badge": "Chương 6 - Đề 4",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c6_de4_p1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các hợp chất hữu cơ có công thức phân tử sau đây, chất nào không thể là aldehyde?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>3</sub>H<sub>6</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>4</sub>H<sub>6</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>4</sub>H<sub>8</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>4</sub>H<sub>10</sub>O",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số đồng phân carboxylic acid có công thức phân tử C<sub>4</sub>H<sub>8</sub>O<sub>2</sub> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho hợp chất carbonyl có công thức cấu tạo sau<br/>Tên theo danh pháp thay thế của hợp chất carbonyl đó là",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de4_image22.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2-methylbutan -3-one",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3-methylbutan-2-one",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3-methylbutan-2-ol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1,1-dimethypropan-2-one",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dung dịch chất nào sau đây làm quỳ tím chuyển thành màu đỏ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>CHO",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho lá zinc mỏng vào ống nghiệm đựng 2 mL dung dịch chất X, thấy lá kẽm tan dần và có khí thoát ra. Chất X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "glycerol",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "ethyl alcohol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "saccarozơ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "acetic acid",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để phân biệt ba hợp chất HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, một học sinh tiến hành thí nghiệm thu được kết quả sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>ChấtThuốc thử</td><td class='border border-slate-300 px-2 py-1 text-xs'>1</td><td class='border border-slate-300 px-2 py-1 text-xs'>2</td><td class='border border-slate-300 px-2 py-1 text-xs'>3</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Tollens</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>I<sub>2</sub>/ NaOH</td><td class='border border-slate-300 px-2 py-1 text-xs'>X</td><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'></td></tr></table><br/>Ghi chú: X: Không phản ứng; : Có phản ứng<br/>Ba chất (1), (2), (3) lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCHO, CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CHO, HCHO, CH<sub>3</sub>COCH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCHO,CH<sub>3</sub>COCH<sub>3</sub>, CH<sub>3</sub>CHO",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>CHO, CH<sub>3</sub>COCH<sub>3</sub>, HCHO",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây về tính chất của hợp chất carbonyl là không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Aldehyde phản ứng được với nước bromine",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ketone không phản ứng được với Cu(OH)<sub>2</sub>/OH<sup>-</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Aldehyde tác dụng với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub> tạo ra bạc",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong các hợp chất carbonyl, chỉ aldehyde bị khử bởi NaBH<sub>4</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để trung hòa 40 mL giấm ăn cần 25 mL dung dịch NaOH 1M. Biết khối lượng riêng của giấm ăn xấp xỉ 1 g.mL<sup>-1</sup>. Mẫu giấm ăn này có nồng độ là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3,50%",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3,75%",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4,00%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5,00%",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Formalin (còn gọi là formol) được dung để ngâm xác động, thực vật, thuộc da, tẩy uế, diệt trùng, … Formalin là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "dung dịch rất loãng của formaldehyde",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "dung dịch trong nước, chứa khoảng 37 - 40% acetaldehyde",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "dung dịch trong nước, chứa khoảng 37 - 40% formaldehyde",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tên gọi khác của HCH=O",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Acetone được điều chế bằng cách oxi hóa cumene nhờ oxygen, sau đó thủy phân trong dung dịch H<sub>2</sub>SO<sub>4</sub> loãng. Để thu được 87 gam acetone thì lượng cumene cần dùng (giả sử hiệu suất quá trình điều chế đạt 80%) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "144 gam",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "180 gam",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "225 gam",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "216 gam",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hai chất X và Y có cùng công thức phân tử C<sub>3</sub>H<sub>4</sub>O<sub>2</sub>. Cho X tác dụng với CaCO<sub>3</sub> thấy có bọt khí thoát ra, còn Y có thể tham gia phản ứng tráng bạc. Công thức của X và Y lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>2</sub>=CHCOOH, OHC-CH<sub>2</sub>-CHO",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>2</sub>=CH-COOH, CHC-O-CH<sub>2</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCOO-CH=CH<sub>2</sub>, OHC-CH<sub>2</sub>-CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HCOO-CH=CH<sub>2</sub>, CHC-O-CH<sub>2</sub>OH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi cho ethanal phản ứng với Cu(OH)<sub>2</sub> trong môi trường kiềm ở nhiệt độ thích hợp, hiện tượng nào sau đây sẽ xảy ra?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cu(OH)<sub>2</sub> bị tan ra, tạo dung dịch màu xanh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Có mùi chua của giấm, do phản ứng sinh ra acetic acid",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tạo kết tủa đỏ gạch do phản ứng sinh ra Cu<sub>2</sub>O",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sinh ra CuO màu đen",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các chất sau đây, chất nào có nhiệt độ sôi cao nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Acetic acid được điều chế bằng phương pháp lên men giấm từ dung dịch chất nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>CHO",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HCOOH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phổ hồng ngoại (IR) của hợp chất hữu cơ (Y) có công thức phân tử là C<sub>2</sub>H<sub>4</sub>O<sub>2</sub> như hình bên dưới. Chất (Y) này được sử dụng trong nhiều ngành công nghiệp khác nhau như tạo ra polymer trong công nghiệp sản xuất sơn, chất kết dính, là dung môi hoà tan các chất hoá học, sản xuất và bảo quản thực phẩm, đặc biệt dùng để sản xuất giấm. Dựa vào phổ hồng ngoại, peak nào có thể chứng minh hợp chất Y chứa nhóm chức –COOH",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de4_image23.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "A và B",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "B và D",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "G và E",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "D và A",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "Nhóm –COOH của acetic acid có 2 tín hiệu đặc trưng trên phổ IR: peak hấp thụ rộng của liên kết O–H (vùng 2500 – 3300 cm⁻¹) và peak hấp thụ mạnh của liên kết C=O (vùng ~1715 cm⁻¹). Phương án đúng là A.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khẳng định nào sau đây không đúng khi nói về đặc điểm của phản ứng ester hóa?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng ester hóa là phản ứng thuận nghịch",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng ester hóa là phản ứng một chiều",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng ester hóa luôn có hiệu suất nhỏ hơn 100%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng ester hóa giữa acid và alcohol thường dùng xúc tác là H<sub>2</sub>SO<sub>4</sub> đặc",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(a) Aldehyde acetic được sản xuất chủ yếu từ acetylene.<br/>(b) Acetone được sản xuất chủ yếu bằng cách oxi hóa propan-2-ol.<br/>(c) Fomaldehyde thường được bán dưới dạng khí hóa lỏng.<br/>(d) Người ta lau sạch sơn màu trên móng tay bằng acetone.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c6_de4_p1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận xét nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Formaldehyde tan tốt trong nước là do tạo được liên kết hydrogen với nước",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Acetone tan tốt trong nước là do acetone phản ứng được với nước",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Methyl chloride tan trong nước tốt hơn formaldehyde",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Acetaldehyde tan trong nước tốt hơn ethanol",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c6_de4_p2_p2_q1",
+        "number": 19,
+        "part": 2,
+        "type": "true_false",
+        "text": "Menthone có mùi thơm bạc hà sử dụng làm hương liệu mĩ phẩm, nước hoa, được sản xuất từ menthol theo sơ đồ sau:",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de4_image24.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong phản ứng trên, menthol bị oxi hóa thành menthone",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Menthol chứa nhóm chức phenol, menthone chứa nhóm chức carboxyl",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Công thức đơn giản nhất của menthone là C<sub>10</sub>H<sub>18</sub>O",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Có thể chuyển hóa menthone thành menthol bằng tác nhân khử LiAlH<sub>4</sub>",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Menthol chứa nhóm chức alcohol, menthone chứa nhóm chức carbonyl.<br/>c. Đúng.<br/>d. Đúng",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "hoa11_c6_de4_p2_p2_q2",
+        "number": 20,
+        "part": 2,
+        "type": "true_false",
+        "text": "Carboxylic acid có nhiệt độ sôi cao hơn so với hydrocarbon, alcohol, hợp chất carbonyl có phân tử khối tương đương do tạo được liên kết hydrogen bền vững hơn",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de4_image25.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hình (a) là liên kết hydrogen dạng liên phân tử và hình (b) là liên kết hydrogen dạng dimer",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phân tử carboxylic acid chứa nhóm carboxyl phân cực mạnh nên tạo được liên kết hydrogen bền vừng",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ngoài hai dạng liên kết hydrogen trên còn có liên kết hydrogen giữa carboxylic acid và nước",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các hợp chất hydrocarbon, alcohol, carbonyl không tạo được liên kết hydrogen",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Ngược lại.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Alcohol có tạo được liên kết hydrogen",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "hoa11_c6_de4_p2_p2_q3",
+        "number": 21,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho bảng nhiệt độ sôi và độ tan trong nước của các chất như sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Loại hợp chất</td><td class='border border-slate-300 px-2 py-1 text-xs'>Alkane</td><td class='border border-slate-300 px-2 py-1 text-xs'>Aldehyde</td><td class='border border-slate-300 px-2 py-1 text-xs'>Alcohol</td><td class='border border-slate-300 px-2 py-1 text-xs'>Carboxylic acid</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Công thức cấu tạo</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3CH2CH2CH3</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3CH2CHO</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3CH2CH2OH</td><td class='border border-slate-300 px-2 py-1 text-xs'>CH3COOH</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>M</td><td class='border border-slate-300 px-2 py-1 text-xs'>58</td><td class='border border-slate-300 px-2 py-1 text-xs'>58</td><td class='border border-slate-300 px-2 py-1 text-xs'>60</td><td class='border border-slate-300 px-2 py-1 text-xs'>60</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>ts(0C)</td><td class='border border-slate-300 px-2 py-1 text-xs'>–0,5</td><td class='border border-slate-300 px-2 py-1 text-xs'>49</td><td class='border border-slate-300 px-2 py-1 text-xs'>97,2</td><td class='border border-slate-300 px-2 py-1 text-xs'>118</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Độ tan trong nước(g/100g nước)</td><td class='border border-slate-300 px-2 py-1 text-xs'>không tan</td><td class='border border-slate-300 px-2 py-1 text-xs'>20</td><td class='border border-slate-300 px-2 py-1 text-xs'>vô hạn</td><td class='border border-slate-300 px-2 py-1 text-xs'>vô hạn</td></tr></table>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Carboxylic acid có nhiệt độ sôi cao nhất vì có nhóm carboxylic acid phân cực và tạo được nhiều liên kết hydrogen giữa các phân tử",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH có nhiệt độ sôi lớn hơn CH<sub>3</sub>CH<sub>2</sub>CHO vì có khối lượng phân tử lớn hơn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phân tử aldehyde có nhiệt độ sôi cao hơn alkane do giữa các phân tử aldehyde tạo được liên kết hydrogen với nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phân tử alcohol và carboxylic acid tan vô hạn trong nước nhờ phân tử có nhóm OH phân cực",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Alcohol tạo được liên kết hydrogen với nhau nên có nhiệt độ sôi cao hơn aldehyde.<br/>c. Sai. Giữa các phân tử aldehyde và alkane không tồn tại liên kết hydrogen.<br/>d. Sai. Nhờ tạo được liên kết hydrogen với nước",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "hoa11_c6_de4_p2_p2_q4",
+        "number": 22,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu sau đây là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có ba đồng phân bền ứng với công thức phân tử C<sub>4</sub>H<sub>8</sub>O phản ứng được với thuốc thử Tollens",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tính acid của HCOOH mạnh hơn tính acid của CH<sub>3</sub>COOH. Biết hằng số phân li acid của HCOOH và CH<sub>3</sub>COOH lần lượt là 1,8.10<sup>–4</sup> và 1,8.10<sup>–5</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Acetone tan tốt trong nước là nhờ tạo được liên kết hydrogen với nước",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi có cặn màu trắng (thành phần chính là CaCO<sub>3</sub>) bám ở đáy ấm đun nước, vòi nước, thiết bị vệ sinh,... có thể dùng cồn 70<sup>o</sup> để loại bỏ các vết cặn này",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Có 2 đồng phân: CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CHO và (CH<sub>3</sub>)<sub>2</sub>CHCHO.<br/>b. Đúng. K<sub>a</sub> càng lớn thì tính acid càng mạnh.<br/>c. Sai. Acetone tan ít trong nước do không tạo được liên kết hydrogen với nước.<br/>d. Sai. Dùng dung dịch giấm ăn (chứa CH<sub>3</sub>COOH) có thể loại bỏ cặn (CaCO<sub>3</sub>)",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "hoa11_c6_de4_p3_p3_q1",
+        "number": 23,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Citric acid được tìm thấy trong quả chanh có công thức cấu tạo như sau:<br/>Thể tích của dung dịch sodium hydroxide (NaOH) 0,4 mol/L cần dùng để trung hòa 0,005 mol citric acid là bao nhiêu ml?",
+        "images": [],
+        "correctAnswer": "37,5",
+        "explanation": "Đáp án: 37,5.<br/>Citric acid có 3 nhóm –COOH. nNaOH = 0,005.3 = 0,015  V = 37,5 mL",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 23
+      },
+      {
+        "id": "hoa11_c6_de4_p3_p3_q2",
+        "number": 24,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong các chất sau: (1) CH<sub>3</sub>CH<sub>2</sub>CHO, (2) CH<sub>3</sub>COCH<sub>3</sub>, (3) (CH<sub>3</sub>)<sub>2</sub>CHCHO, (4) CH<sub>2</sub>=CHCH<sub>2</sub>OH. Liệt kê đáp án thành một dãy số gồm những chất nào phản ứng với NaBH<sub>4</sub> sinh ra cùng một sản phẩm (Ví dụ: 1234, 24,…)",
+        "images": [],
+        "correctAnswer": "123",
+        "explanation": "Đáp án: 123",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 24
+      },
+      {
+        "id": "hoa11_c6_de4_p3_p3_q3",
+        "number": 25,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho dãy các chất sau: HCHO, CH<sub>3</sub>COOH, CH<sub>3</sub>CHO, HCOOH, C<sub>2</sub>H<sub>5</sub>OH. Có bao nhiêu chất trong dãy có thể tham gia phản ứng tráng bạc?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 25
+      },
+      {
+        "id": "hoa11_c6_de4_p3_p3_q4",
+        "number": 26,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các phản ứng sau:<br/>(a) CH<sub>3</sub>CH<sub>2</sub>OH + CuO  ot¾¾®  (b) (CH<sub>3</sub>)<sub>2</sub>CHOH + CuO  ot¾¾®<br/>Có bao nhiêu phản ứng tạo thành sản phẩm aldehyde?",
+        "images": [
+          "/assets/hoa11/c6/hoa11_c6_de4_image28.png",
+          "/assets/hoa11/c6/hoa11_c6_de4_image29.png"
+        ],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 26
+      },
+      {
+        "id": "hoa11_c6_de4_p3_p3_q5",
+        "number": 27,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tiến hành thí nghiệm phản ứng tráng bạc bằng cách lấy 50 mL dung dịch CH<sub>3</sub>CHO 1M phản ứng với thuốc thử Tollens dư. Sau khi kết thúc phản ứng, bình phản ứng có một lớp bạc sáng bóng bám vào thành bình. Loại bỏ hóa chất trong bình rồi tráng bằng nước cất, sấy khô, khối lượng bình tăng m gam so với ban đầu. Tính m biết hiệu suất tráng bạc là 75% vào chỉ 60% lượng bạc tạo thành bám vào thành bình, phần còn lại ở dạng kết tủa bột màu đen",
+        "images": [],
+        "correctAnswer": "4,86",
+        "explanation": "Đáp án: 4,86.<br/>3CHCHOn  = 50 . 10<sup>-3</sup> = 0,05 mol<br/>Agn  = 0,05 . 2 = 0,1  Þ  Agm  = 108 . 0,1 = 10,8 (g)  Þ  m = 10,8 . 75% . 60% = 4,86 (g)",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 27
+      },
+      {
+        "id": "hoa11_c6_de4_p3_p3_q6",
+        "number": 28,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trộn 20 mL ethanol với 20 mL acetic acid, thêm 10 mL H<sub>2</sub>SO<sub>4</sub> đặc rồi tiến hành phản ứng ester hóa. Sau một thời gian, thu được 17,6 g ester. Tính hiệu suất phản ứng ester, biết khối lượng riêng của ethanol và acetic acid lần lượt là 0,789 g/mL và 1,05 g/mL (Làm tròn kết quả đến hàng phần mười)",
+        "images": [],
+        "correctAnswer": "58,3",
+        "explanation": "Đáp án: 58,3.<br/>CH<sub>3</sub>COOH   +  CH<sub>3</sub>CH<sub>2</sub>OH    024HSOñaëc,t   CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>   +   H<sub>2</sub>O<br/>2532007892010503430354660CHOHCHCOOH.,.,n,(mol)n,(mol)==<==<br/>Hiệu suất tính theo số mol alcohol.<br/>n<sub>ester lí thuyết</sub> =  25CHOHn = 0,343 (mol); n<sub>ester thực tế</sub> =  1760288,,(mol)=<br/>Hiệu suất phản ứng ester hóa là: H% =  021005830343,.%,%,=<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 28
+      }
+    ]
+  }
+];
 
 export const HOA11_CHUONG6_7_EXAMS: Chuong6Exam[] = HOA11_CHUONG6_EXAMS;
 

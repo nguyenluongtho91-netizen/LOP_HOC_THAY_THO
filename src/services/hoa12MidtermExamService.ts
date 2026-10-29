@@ -6106,7 +6106,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "N-methylethanamine",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -6115,8 +6115,8 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
-        "explanation": "",
+        "correctAnswer": "C",
+        "explanation": "Tên thay thế của amine bậc hai CH₃-CH₂-NH-CH₃ gồm mạch chính ethanamine và nhóm thế N-methyl: N-methylethanamine. Phương án đúng là C.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 9

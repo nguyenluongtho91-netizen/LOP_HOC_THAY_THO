@@ -90,7 +90,3827 @@ export const HOA10_CHUONG1_MASTER: Record<string, Chuong1Lesson> = {"bai1":{"id"
 
 export const HOA10_CHUONG1_LESSONS: Chuong1Lesson[] = Object.values(HOA10_CHUONG1_MASTER);
 
-export const HOA10_CHUONG1_EXAMS: Chuong1Exam[] = [{"id":"h10_c1_de1","code":"101","title":"Đề Kiểm Tra Định Kỳ Số 1 - Nguyên Tử (Mã 101)","topic":"Thành phần nguyên tử, Khối lượng & Kích thước","badge":"Mã 101","chapter":1,"duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"h10_c1_de1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Trong hạt nhân nguyên tử, hạt mang điện dương là","images":[],"options":[{"id":"a","letter":"A","text":"proton","isCorrect":true},{"id":"b","letter":"B","text":"neutron","isCorrect":false},{"id":"c","letter":"C","text":"proton và neutron","isCorrect":false},{"id":"d","letter":"D","text":"electron","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h10_c1_de1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Cho mô hình nguyên tử theo Rutherford-Bohr như sau:<br/>Số electron trên lớp M là","images":["/assets/hoa12/c5/h10_c1_de1_image3.png"],"options":[{"id":"a","letter":"A","text":"2","isCorrect":true},{"id":"b","letter":"B","text":"8","isCorrect":false},{"id":"c","letter":"C","text":"6","isCorrect":false},{"id":"d","letter":"D","text":"12","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h10_c1_de1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Cấu hình electron nào sau đây là của fluorine (Z = 9)?","images":[],"options":[{"id":"a","letter":"A","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>","isCorrect":false},{"id":"b","letter":"B","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup>","isCorrect":false},{"id":"c","letter":"C","text":"1s<sup>2</sup>2s<sup>3</sup>2p<sup>4</sup>","isCorrect":false},{"id":"d","letter":"D","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>5</sup>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h10_c1_de1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Khối lượng của nguyên tử magnesium là 39,827.10<sup>–</sup><sup>27</sup> kg. Khối lượng của magnesium theo amu là (biết 1amu = 1,661 &times; 10<sup>-27</sup> kg)","images":[],"options":[{"id":"a","letter":"A","text":"23,978","isCorrect":true},{"id":"b","letter":"B","text":"66,133 &times; 10<sup>-51</sup>","isCorrect":false},{"id":"c","letter":"C","text":"24,000","isCorrect":false},{"id":"d","letter":"D","text":"23,985 &times; 10<sup>-3</sup>","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h10_c1_de1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Có những phát biểu sau đây về các đồng vị của một nguyên tố hóa học:<br/>(1) Các đồng vị có tính chất hóa học giống nhau.<br/>(2) Các đồng vị có tính chất vật lí khác nhau.<br/>(3) Các đồng vị có cùng số electron ở vỏ nguyên tử.<br/>(4) Các đồng vị có cùng số proton nhưng khác nhau về số khối.<br/>Trong các phát biểu trên, số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h10_c1_de1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Hình vẽ dưới đây mô tả thí nghiệm tìm ra loại hạt nào cấu tạo nên nguyên tử?","images":["/assets/hoa12/c5/h10_c1_de1_image4.png"],"options":[{"id":"a","letter":"A","text":"Electron","isCorrect":true},{"id":"b","letter":"B","text":"Neutron","isCorrect":false},{"id":"c","letter":"C","text":"Proton","isCorrect":false},{"id":"d","letter":"D","text":"Hạt nhân","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h10_c1_de1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Nguyên tử nguyên tố potassium (K) có 19 proton, 19 electron và 20 neutron. Điện tích hạt nhân nguyên tử K là","images":[],"options":[{"id":"a","letter":"A","text":"+19","isCorrect":true},{"id":"b","letter":"B","text":"–9","isCorrect":false},{"id":"c","letter":"C","text":"–20","isCorrect":false},{"id":"d","letter":"D","text":"+20","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h10_c1_de1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Nguyên tố hóa học là những nguyên tử có cùng","images":[],"options":[{"id":"a","letter":"A","text":"số khối","isCorrect":false},{"id":"b","letter":"B","text":"số neutron","isCorrect":false},{"id":"c","letter":"C","text":"số proton","isCorrect":true},{"id":"d","letter":"D","text":"số neutron và số proton","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h10_c1_de1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Kí hiệu nguyên tử nào sau đây được viết đúng?","images":[],"options":[{"id":"a","letter":"A","text":"<sup>15</sup><sub>7</sub>N","isCorrect":true},{"id":"b","letter":"B","text":"16O","isCorrect":false},{"id":"c","letter":"C","text":"16S","isCorrect":false},{"id":"d","letter":"D","text":"<sup>24</sup><sub>12</sub>Mg","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h10_c1_de1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Nguyên tử của nguyên tố X có tổng số hạt cơ bản là 34, trong đó số hạt mang điện gấp 1,8333 lần số hạt không mang điện. Nguyên tố X là","images":[],"options":[{"id":"a","letter":"A","text":"Na (Z = 11)","isCorrect":true},{"id":"b","letter":"B","text":"Mg (Z = 12)","isCorrect":false},{"id":"c","letter":"C","text":"Al (Z = 13)","isCorrect":false},{"id":"d","letter":"D","text":"Cl (Z =17)","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h10_c1_de1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Kí hiệu phân lớp electron nào sau đây sai?","images":[],"options":[{"id":"a","letter":"A","text":"3s","isCorrect":false},{"id":"b","letter":"B","text":"3p","isCorrect":false},{"id":"c","letter":"C","text":"3d","isCorrect":false},{"id":"d","letter":"D","text":"3f","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h10_c1_de1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Thông tin nào sau đây không đúng về  20682Pb ?","images":[],"options":[{"id":"a","letter":"A","text":"Số đơn vị điện tích hạt nhân là 82","isCorrect":false},{"id":"b","letter":"B","text":"Số proton và neutron là 82","isCorrect":true},{"id":"c","letter":"C","text":"Số neutron là 124","isCorrect":false},{"id":"d","letter":"D","text":"Số khối là 206","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h10_c1_de1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Orbital s có dạng","images":[],"options":[{"id":"a","letter":"A","text":"hình tròn","isCorrect":false},{"id":"b","letter":"B","text":"hình số 8 nổi","isCorrect":false},{"id":"c","letter":"C","text":"hình cầu","isCorrect":true},{"id":"d","letter":"D","text":"hình bầu dục","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h10_c1_de1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Lớp K là lớp xa hạt nhân nhất","isCorrect":false},{"id":"b","letter":"B","text":"Các electron trong cùng một lớp có mức năng lượng bằng nhau","isCorrect":false},{"id":"c","letter":"C","text":"Các electron trên cùng một phân lớp có mức năng lượng bằng nhau","isCorrect":true},{"id":"d","letter":"D","text":"Lớp N có 4 orbital","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h10_c1_de1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Trong tự nhiên, nguyên tố copper (Cu) có hai đồng vị là  63652929CuvàCu . Nguyên tử khối trung bình của copper là 63,54. Thành phần phần trăm số nguyên tử của đồng vị  6329Cu  là","images":[],"options":[{"id":"a","letter":"A","text":"27%","isCorrect":false},{"id":"b","letter":"B","text":"50%","isCorrect":false},{"id":"c","letter":"C","text":"54%","isCorrect":false},{"id":"d","letter":"D","text":"73%","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h10_c1_de1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Lớp M có số electron tối đa bằng","images":[],"options":[{"id":"a","letter":"A","text":"3","isCorrect":false},{"id":"b","letter":"B","text":"4","isCorrect":false},{"id":"c","letter":"C","text":"9","isCorrect":false},{"id":"d","letter":"D","text":"18","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h10_c1_de1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cấu hình electron của nguyên tử phosphorus (P) là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup>. Nhận xét nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Nguyên tử P có 15 electron","isCorrect":false},{"id":"b","letter":"B","text":"Số hiệu nguyên tử của nguyên tố P là 15","isCorrect":false},{"id":"c","letter":"C","text":"Nguyên tử P có 3 lớp electron","isCorrect":false},{"id":"d","letter":"D","text":"P là nguyên tố kim loại","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h10_c1_de1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Nguyên tử M có cấu hình electron 1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup>. Phân bố electron trên các orbital lớp ngoài cùng (phân lớp 2p) nào sau đây đúng theo quy tắc Hund?","images":[],"options":[{"id":"a","letter":"A","text":"↑↓ | ↑↓ |  (1 ô trống, 2 ô đầy e)","isCorrect":false},{"id":"b","letter":"B","text":"↑ | ↑ | ↑↑ (1 ô 2e cùng chiều spin)","isCorrect":false},{"id":"c","letter":"C","text":"↑↓ | ↑ | ↓ (2 electron độc thân khác chiều spin)","isCorrect":false},{"id":"d","letter":"D","text":"↑↓ | ↑ | ↑ (1 ô ghép đôi, 2 ô chứa electron độc thân cùng chiều spin)","isCorrect":true}],"correctAnswer":"D","explanation":"Đáp án: D.<br/>Theo quy tắc Hund, phân lớp 2p có 4 electron sẽ phân bố: 1 ô 2e ghép đôi (↑↓) và 2 ô mỗi ô 1e độc thân cùng chiều (↑ | ↑).","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"h10_c1_de1_p2_q1","number":1,"part":2,"type":"true_false","text":"Mô hình Rutherford – Bohr đã giải thích được rất nhiều các vấn đề trong khoa học nói chung và hóa học nói riêng, đặc biệt là sự chuyển động của electron xung quanh hạt nhân","images":[],"options":[{"id":"a","letter":"A","text":"Theo mô hình nguyên tử Rutherford – Bohr, khối lượng nguyên tử tập trung chủ yếu ở lớp vỏ","isCorrect":false},{"id":"b","letter":"B","text":"Electron quay xung quanh hạt nhân theo những quỹ đạo giống như các hành tinh quay xung quanh mặt trời","isCorrect":true},{"id":"c","letter":"C","text":"Năng lượng của electron phụ thuộc vào khoảng cách từ electron đó tới hạt nhân nguyên tử","isCorrect":true},{"id":"d","letter":"D","text":"Electron ở càng xa hạt nhân thì năng lượng càng nhỏ","isCorrect":false}],"explanation":"Đáp án:<br/>a. S. khối lượng nguyên tử tập trung chủ yếu ở hạt nhân.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Electron ở càng xa hạt nhân thì năng lượng càng lớn","explanationImages":[],"points":1,"displayNumber":19},{"id":"h10_c1_de1_p2_q2","number":2,"part":2,"type":"true_false","text":"Theo dự đoán của các nhà khoa học, việc khai thác được hàng triệu tấn  <sup>3</sup><sub>2</sub>He  trong đất của mặt trăng sẽ góp phần quan trọng trong việc phát triển các lò phản ứng tổng hợp hạt nhân không tạo ra chất thải nguy hại. Thực tế trên Trái đất, helium tồn tại chủ yếu ở dạng  <sup>4</sup><sub>2</sub>He","images":[],"options":[{"id":"a","letter":"A","text":"Kí hiệu  <sup>4</sup><sub>2</sub>He cho biết nguyên tử helium có kí hiệu He, số hiệu nguyên tử bằng 2 và số khối bằng 4","isCorrect":true},{"id":"b","letter":"B","text":"Hạt nhân nguyên tử của  <sup>3</sup><sub>2</sub>He chứa 2 proton và 3 neutron","isCorrect":false},{"id":"c","letter":"C","text":"<sup>3</sup><sub>2</sub>He và  <sup>4</sup><sub>2</sub>He là đồng vị của nhau","isCorrect":true},{"id":"d","letter":"D","text":"Helium là nguyên tố kim loại vì có 2 electron ở lớp ngoài cùng","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. S.  <sup>3</sup><sub>2</sub>He có 2 proton và 1 neutron.<br/>c. Đ.<br/>d. S. Helium là khí hiếm","explanationImages":[],"points":1,"displayNumber":20},{"id":"h10_c1_de1_p2_q3","number":3,"part":2,"type":"true_false","text":"Cho các phát biểu sau về nguyên tử:","images":[],"options":[{"id":"a","letter":"A","text":"Các nguyên tử đều thỏa tính chất trung hòa về điện tích","isCorrect":true},{"id":"b","letter":"B","text":"Khối lượng nguyên tử tập trung ở hạt nhân nên hạt nhân có kích thước tương đương kích thước nguyên tử","isCorrect":false},{"id":"c","letter":"C","text":"Nguyên tử có cấu tạo đặc khít, hạt nhân ở trung tâm và các electron chuyển động xung quanh hạt nhân","isCorrect":false},{"id":"d","letter":"D","text":"Số electron của nguyên tử luôn bằng số neutron có trong hạt nhân","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. S. Kích thước hạt nhân nguyên tử nhỏ hơn rất nhiều so với kích thước nguyên tử.<br/>c. S. Nguyên tử có cấu trúc rỗng.<br/>d. S. Số e luôn bằng số p","explanationImages":[],"points":1,"displayNumber":21},{"id":"h10_c1_de1_p2_q4","number":4,"part":2,"type":"true_false","text":"Nguyên tử của nguyên tố X có electron ở mức năng lượng cao nhất là 3p. Nguyên tử của nguyên tố Y cũng có electron ở mức năng lượng 3p và có một electron ở lớp ngoài cùng. Nguyên tử X và Y có số electron hơn kém nhau là 2","images":[],"options":[{"id":"a","letter":"A","text":"X và Y đều là nguyên tố p","isCorrect":false},{"id":"b","letter":"B","text":"X là nguyên tố phi kim, Y là nguyên tố kim loại","isCorrect":true},{"id":"c","letter":"C","text":"Nguyên tử nitrogen (Z = 7) có cùng số electron lớp ngoài cùng với nguyên tử X","isCorrect":false},{"id":"d","letter":"D","text":"Tổng số electron ở lớp ngoài cùng của hai nguyên tử X và Y bằng 8","isCorrect":true}],"explanation":"Đáp án:<br/>Y có electron ở mức năng lượng 3p và có một electron ở lớp ngoài cùng.<br/>Cấu hình electron của Y là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup> → Y là kim loại.<br/>X có electron ở mức năng lượng cao nhất là 3p và X kém Y 2 electron.<br/>Cấu hình electron của X là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup> → X là phi kim.<br/>a. S. X là nguyên tố p, Y là nguyên tố s.<br/>b. Đ.<br/>c. S. Cấu hình của N là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup> có 5e ở lớp ngoài cùng còn X có 7e ở lớp ngoài cùng.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":22},{"id":"h10_c1_de1_p3_q1","number":1,"part":3,"type":"short_answer","text":"Nguyên tử aluminium có 13 electron, oxygen có 8 electron. Tổng số electron có trong phân tử Al<sub>2</sub>O<sub>3</sub> là bao nhiêu?","images":[],"correctAnswer":"50","explanation":"Đáp án: 50.<br/>13.2 + 8.3 = 50","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h10_c1_de1_p3_q2","number":2,"part":3,"type":"short_answer","text":"Cho các nguyên tử sau:  <sup>19</sup><sub>9</sub>A, <sup>14</sup><sub>7</sub>B, <sup>12</sup><sub>6</sub>C, <sup>23</sup><sub>11</sub>D, <sup>16</sup><sub>8</sub>E, <sup>13</sup><sub>6</sub>F.  Có bao nhiêu nguyên tử có cùng số neutron?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2.<br/>B và F","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h10_c1_de1_p3_q3","number":3,"part":3,"type":"short_answer","text":"Oxygen có ba đồng vị  <sup>16</sup><sub>8</sub>O ,  <sup>17</sup><sub>8</sub>O  và  <sup>18</sup><sub>8</sub>O , carbon có hai đồng vị  <sup>12</sup><sub>6</sub>C  và  <sup>13</sup><sub>6</sub>C . Có bao nhiêu loại phân tử CO<sub>2</sub> có thể được tạo thành từ các đồng vị trên?","images":[],"correctAnswer":"12","explanation":"Đáp án: 12.<br/>Chọn 2O: có 6 cách chọn là <sup>16</sup>O<sup>16</sup>O, <sup>17</sup>O<sup>17</sup>O, <sup>18</sup>O<sup>18</sup>O, <sup>16</sup>O<sup>17</sup>O, <sup>16</sup>O<sup>18</sup>O, <sup>17</sup>O<sup>18</sup>O.<br/>Chọn 1C: có 2 cách chọn là <sup>12</sup>C, <sup>13</sup>C.<br/>Vậy số phân tử CO<sub>2</sub> được tạo thành là 6.2 = 12","explanationImages":[],"points":0.25,"displayNumber":25},{"id":"h10_c1_de1_p3_q4","number":4,"part":3,"type":"short_answer","text":"Từ phổ khối lượng MS của magnesium (Mg) ở hình dưới đây:<br/>Hãy cho biết giá trị nguyên tử khối trung bình của magnesium là bao nhiêu? Biết z = 1. (Kết quả làm tròn kết quả đến hàng phần mười)","images":["/assets/hoa12/c5/h10_c1_de1_image20.png"],"correctAnswer":"24,3","explanation":"Đáp án: 24,3.<br/>A<sub>tb</sub> = (79 &times; 24 + 10 &times; 25 + 11 &times; 26) / 100 = 24,32","explanationImages":[],"points":0.25,"displayNumber":26},{"id":"h10_c1_de1_p3_q5","number":5,"part":3,"type":"short_answer","text":"Tổng số các hạt proton, neutron và electron trong nguyên tử của nguyên tố X là 10. Số khối của nguyên tử nguyên tố X là bao nhiêu?","images":[],"correctAnswer":"7","explanation":"Đáp án: 7.<br/>P + E + N = 10 hay 2Z + N = 10 ⇒ N = 10 - 2Z (*)<br/>Ta có:  1 &le; N/Z &le; 1,52  ⇔ Z ≤ 10−2Z ≤ 1,52Z ⇔ 2,84 ≤ Z ≤ 3,33<br/>Vậy Z = 3, N = 4  A = Z + N = 3 + 4 = 7","explanationImages":[],"points":0.25,"displayNumber":27},{"id":"h10_c1_de1_p3_q6","number":6,"part":3,"type":"short_answer","text":"Trong số các nguyên tố có Z = 1 đến Z = 20. Có bao nhiêu nguyên tố mà nguyên tử có 2 electron độc thân?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4.<br/>Để có 2e độc thân thì nguyên tử nguyên tố đó phải có phân lớp p và có dạng p<sup>2</sup> hoặc p<sup>4</sup>.<br/>Z = 6, 8, 14, 16.<br/>","explanationImages":[],"points":0.25,"displayNumber":28}]},{"id":"h10_c1_de2","code":"102","title":"Đề Kiểm Tra Định Kỳ Số 2 - Hạt Nhân & Đồng Vị (Mã 102)","topic":"Điện tích hạt nhân, Số khối & Nguyên tử khối trung bình","badge":"Mã 102","chapter":1,"duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"h10_c1_de2_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Hạt nhân của hầu hết các nguyên tử đều tạo bởi hạt nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Electron và neutron","isCorrect":false},{"id":"b","letter":"B","text":"Electron và proton","isCorrect":false},{"id":"c","letter":"C","text":"Neutron và proton","isCorrect":true},{"id":"d","letter":"D","text":"Neutron, proton và electron","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h10_c1_de2_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Mô tả nào sau đây là đúng đối với neutron?","images":[],"options":[{"id":"a","letter":"A","text":"Neutron mang điện âm và được tìm thấy trong hạt nhân","isCorrect":false},{"id":"b","letter":"B","text":"Neutron mang điện dương và được tìm thấy ở ngoài hạt nhân","isCorrect":false},{"id":"c","letter":"C","text":"Neutron không mang điện tích và được tìm thấy bên ngoài hạt nhân","isCorrect":false},{"id":"d","letter":"D","text":"Neutron không mang điện tích và được tìm thấy trong hạt nhân","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h10_c1_de2_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Nguyên tử của một nguyên tố có 4 lớp electron, theo thứ tự từ phía gần hạt nhân là: K, L, M, N. Electron thuộc lớp nào liên kết chặt chẽ với hạt nhân nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Lớp K","isCorrect":true},{"id":"b","letter":"B","text":"Lớp L","isCorrect":false},{"id":"c","letter":"C","text":"Lớp M","isCorrect":false},{"id":"d","letter":"D","text":"Lớp N","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h10_c1_de2_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Mô hình cấu tạo của nguyên tử sodium được biểu diễn tại hình dưới đây:<br/>Số hạt proton trong hạt nhân nguyên tử Na là","images":["/assets/hoa12/c5/h10_c1_de2_image3.png"],"options":[{"id":"a","letter":"A","text":"10","isCorrect":false},{"id":"b","letter":"B","text":"11","isCorrect":true},{"id":"c","letter":"C","text":"12","isCorrect":false},{"id":"d","letter":"D","text":"13","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h10_c1_de2_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Trái Đất có bán kính khoảng 6 371 km, được coi như gồm x nguyên tử hình cầu sắp xếp chặt khít cạnh nhau. Bán kính của Trái Đất là bao nhiêu nếu giả thiết chỉ còn x hạt nhân nguyên tử sắp xếp chặt khít cạnh nhau trong một khối cầu? Coi kích thước hạt nhân bằng 10<sup>–5</sup> lần kích thước nguyên tử","images":[],"options":[{"id":"a","letter":"A","text":"0,06731 m","isCorrect":false},{"id":"b","letter":"B","text":"63,71 m","isCorrect":true},{"id":"c","letter":"C","text":"6,371 m","isCorrect":false},{"id":"d","letter":"D","text":"0,06731 m","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h10_c1_de2_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Nguyên tử Y có 12 electron, 12 neutron, kí hiệu nguyên tử của nguyên tố A là","images":[],"options":[{"id":"a","letter":"A","text":"1225Y","isCorrect":false},{"id":"b","letter":"B","text":"2512Y","isCorrect":false},{"id":"c","letter":"C","text":"1224Y","isCorrect":false},{"id":"d","letter":"D","text":"2412Y","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h10_c1_de2_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Hình ảnh mô hình nguyên tử các đồng vị của nguyên tử hydrogen được cho dưới đây:<br/>Các đồng vị này khác nhau về","images":["/assets/hoa12/c5/h10_c1_de2_image8.png"],"options":[{"id":"a","letter":"A","text":"số proton","isCorrect":false},{"id":"b","letter":"B","text":"số neutron","isCorrect":true},{"id":"c","letter":"C","text":"số electron","isCorrect":false},{"id":"d","letter":"D","text":"số hiệu nguyên tử","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h10_c1_de2_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Cho các nguyên tử sau: <sup>14</sup><sub>7</sub>A, <sup>16</sup><sub>8</sub>B, <sup>20</sup><sub>10</sub>C, <sup>15</sup><sub>7</sub>D, <sup>18</sup><sub>8</sub>E, <sup>23</sup><sub>11</sub>F. Các cặp nguyên tử nào thuộc cùng một nguyên tố hóa học (đồng vị của nhau)?","images":[],"options":[{"id":"a","letter":"A","text":"A và D (cùng Z = 7); B và E (cùng Z = 8)","isCorrect":true},{"id":"b","letter":"B","text":"A và B (cùng A = 16); C và D","isCorrect":false},{"id":"c","letter":"C","text":"B và E; C và F","isCorrect":false},{"id":"d","letter":"D","text":"A và D; B và E","isCorrect":false}],"correctAnswer":"A","explanation":"Đáp án: A.<br/>Các nguyên tử có cùng số proton Z thuộc cùng một nguyên tố hóa học: A và D (Z = 7), B và E (Z = 8).","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h10_c1_de2_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây là không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Orbital p có hình dạng số tám nổi","isCorrect":false},{"id":"b","letter":"B","text":"Các electron trên cùng một lớp có mức năng lượng bằng nhau","isCorrect":true},{"id":"c","letter":"C","text":"Nguyên tử có đường kính khoảng 1 angstrom (hay 10<sup>–10</sup> m)","isCorrect":false},{"id":"d","letter":"D","text":"Trong các lớp electron trong, với 4 lớp đầu thì số phân lớp bằng với số thứ tự của lớp","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h10_c1_de2_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Khối lượng của nguyên tử coi như bằng khối lượng","images":[],"options":[{"id":"a","letter":"A","text":"hạt nhân","isCorrect":true},{"id":"b","letter":"B","text":"electron","isCorrect":false},{"id":"c","letter":"C","text":"proton","isCorrect":false},{"id":"d","letter":"D","text":"neutron","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h10_c1_de2_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Kí hiệu và số electron tối đa có trên lớp electron ứng với giá trị n = 2 tương ứng là","images":[],"options":[{"id":"a","letter":"A","text":"Lớp L và 2e","isCorrect":false},{"id":"b","letter":"B","text":"Lớp L và 8e","isCorrect":true},{"id":"c","letter":"C","text":"Lớp K và 8e","isCorrect":false},{"id":"d","letter":"D","text":"Lớp K và 6e","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h10_c1_de2_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Sự phân bố electron vào các orbital và lớp electron dựa vào","images":[],"options":[{"id":"a","letter":"A","text":"nguyên lý vững bền và nguyên lý Pauli","isCorrect":false},{"id":"b","letter":"B","text":"nguyên lý vững bền và qui tắc Hund","isCorrect":false},{"id":"c","letter":"C","text":"nguyên lý vững bền, qui tắc Hund và nguyên lý Pauli","isCorrect":true},{"id":"d","letter":"D","text":"nguyên lý Pauli và qui tắc Hund","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h10_c1_de2_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Orbital nguyên tử là","images":[],"options":[{"id":"a","letter":"A","text":"đám mây chứa electron có dạng hình cầu","isCorrect":false},{"id":"b","letter":"B","text":"đám mây chứa electron có dạng hình số 8 nổi","isCorrect":false},{"id":"c","letter":"C","text":"khu vực không gian xung quanh hạt nhân mà tại đó xác suất có mặt electron lớn nhất","isCorrect":true},{"id":"d","letter":"D","text":"quỹ đạo chuyển động của electron quay quanh hạt nhân có kích thước và năng lượng xác định","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h10_c1_de2_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Cho các kí hiệu nguyên tử sau:  3919X  và  4019Y . Nhận xét nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"X và Y là 2 nguyên tử đồng vị","isCorrect":false},{"id":"b","letter":"B","text":"X và Y đều có 19 neutron","isCorrect":true},{"id":"c","letter":"C","text":"X và Y có cùng số electron","isCorrect":false},{"id":"d","letter":"D","text":"X và Y có số khối khác nhau","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h10_c1_de2_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Fluorine và hợp chất của nó được sử dụng làm chất chống sâu răng, chất cách điện, chất làm lạnh, vật liệu chống dính, … Nguyên tử fluorine chứa 9 electron và có số khối là 19. Tổng số hạt proton, electron và neutron trong nguyên tử fluorine là","images":[],"options":[{"id":"a","letter":"A","text":"19","isCorrect":false},{"id":"b","letter":"B","text":"28","isCorrect":true},{"id":"c","letter":"C","text":"30","isCorrect":false},{"id":"d","letter":"D","text":"32","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h10_c1_de2_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Cho phổ khối của nguyên tố A được biểu diễn tại hình dưới đây:<br/>Nguyên tử khối trung bình của nguyên tố A là","images":["/assets/hoa12/c5/h10_c1_de2_image12.png"],"options":[{"id":"a","letter":"A","text":"91,32","isCorrect":true},{"id":"b","letter":"B","text":"91,40","isCorrect":false},{"id":"c","letter":"C","text":"90,00","isCorrect":false},{"id":"d","letter":"D","text":"94,23","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h10_c1_de2_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cấu hình electron nguyên tử nguyên tố X là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>. Số electron lớp ngoài cùng và tính chất của A là","images":[],"options":[{"id":"a","letter":"A","text":"1 electron, A là nguyên tố phi kim","isCorrect":true},{"id":"b","letter":"B","text":"3 electron, A là nguyên tố kim loại","isCorrect":false},{"id":"c","letter":"C","text":"1 electron, A là nguyên tố kim loại","isCorrect":false},{"id":"d","letter":"D","text":"3 electron, A là nguyên tố phi kim","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h10_c1_de2_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho bảng thông tin dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Loại hạt</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Khối lượng (amu)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Điện tích (e0)</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">neutron</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">1</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">electron</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,00055</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">-1</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">proton</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">1</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">+1</td></tr></table></div><br/>Nguyên tử helium có 2 proton, 2 neutron, 2 electron. Khối lượng của các electron chiếm bao nhiêu % khối lượng nguyên tử helium?","images":[],"options":[{"id":"a","letter":"A","text":"2,72%","isCorrect":false},{"id":"b","letter":"B","text":"0,272%","isCorrect":false},{"id":"c","letter":"C","text":"0,0272%","isCorrect":true},{"id":"d","letter":"D","text":"0,0227%","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"h10_c1_de2_p2_q1","number":1,"part":2,"type":"true_false","text":"Kí hiệu nguyên tử nguyên tố chlorine:","images":["/assets/hoa12/c5/h10_c1_de2_image13.png"],"options":[{"id":"a","letter":"A","text":"Điện tích hạt nhân của nguyên tử chlorine là +17","isCorrect":true},{"id":"b","letter":"B","text":"Chlorine là một nguyên tử phi kim","isCorrect":true},{"id":"c","letter":"C","text":"Cấu hình electron của nguyên tử chlorine là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>","isCorrect":true},{"id":"d","letter":"D","text":"Trong nguyên tử chlorine tổng số hạt cấu tạo nên nguyên tử là 35","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Tổng số hạt là p + n + e = 2p + n = 52","explanationImages":[],"points":1,"displayNumber":19},{"id":"h10_c1_de2_p2_q2","number":2,"part":2,"type":"true_false","text":"Trong lịch sử các thuyết về mô hình nguyên tử có mô hình hành tinh nguyên tử (mô hình Rutherford - Bohr) và mô hình hiện đại của nguyên tử","images":["/assets/hoa12/c5/h10_c1_de2_image14.png"],"options":[{"id":"a","letter":"A","text":"Với nguyên tử hydrogen, mô hình (1) là mô hình hiện đại, mô hình (2) là mô hình hành tinh nguyên tử","isCorrect":false},{"id":"b","letter":"B","text":"Khái niệm về xác suất tìm thấy electron xuất phát từ mô hình hành tinh nguyên tử","isCorrect":false},{"id":"c","letter":"C","text":"Theo mô hình (1), electron chuyển động trên quỹ đạo xác định xung quanh hạt nhân","isCorrect":true},{"id":"d","letter":"D","text":"Khái niệm về orbital nguyên tử xuất phát từ mô hình hiện đại của nguyên tử","isCorrect":true}],"explanation":"Đáp án:<br/>a. S. (1) là mô hình hành tinh nguyên tử, (2) là mô hình hiện đại.<br/>b. S. Khái niệm về xác suất tìm thấy electron xuất phát từ mô hình hiện đại.<br/>c. Đ.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":20},{"id":"h10_c1_de2_p2_q3","number":3,"part":2,"type":"true_false","text":"Cho 3 nguyên tử:  121314666X,X,X","images":[],"options":[{"id":"a","letter":"A","text":"Các nguyên tử trên thuộc cùng một nguyên tố hóa học","isCorrect":true},{"id":"b","letter":"B","text":"Các giá trị 12, 13, 14 là số khối của các nguyên tử","isCorrect":true},{"id":"c","letter":"C","text":"Giá trị 6 trong các kí hiệu nguyên tử gọi là điện tích hạt nhân nguyên tử","isCorrect":true},{"id":"d","letter":"D","text":"Các nguyên tử trên có cùng số neutron","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Chúng là đồng vị của nhau nên có cùng số p khác số n","explanationImages":[],"points":1,"displayNumber":21},{"id":"h10_c1_de2_p2_q4","number":4,"part":2,"type":"true_false","text":"Ở trạng thái cơ bản: Nguyên tử của nguyên tố X có tổng số electron trong các phân lớp p là 7. Nguyên tử của nguyên tố Y có số hạt mang điện nhiều hơn số hạt mang điện của X là 8. Nguyên tử của nguyên tố Z có sự phân bố các electron thuộc các lớp là (2, 8)","images":[],"options":[{"id":"a","letter":"A","text":"Cấu hình electron của ion Y<sup>–</sup> là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>","isCorrect":false},{"id":"b","letter":"B","text":"Trong hợp chất XY<sub>3</sub>, có tổng số hạt electron là 61","isCorrect":false},{"id":"c","letter":"C","text":"X là kim loại, Y là phi kim và Z là khí hiếm","isCorrect":true},{"id":"d","letter":"D","text":"Ở trạng thái cơ bản, nguyên tử nguyên tố X và Y đều có 1 electron độc thân","isCorrect":true}],"explanation":"Đáp án:<br/>Cấu hình của X: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup> (có 13e)<br/>Y: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup> (có 17e, thỏa mãn điều kiện 2p<sub>Y</sub> – 2p<sub>X</sub> = 8)<br/>Z: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup><br/>a. S. Cấu hình electron của ion Y<sup>–</sup>: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>.<br/>b. S. p<sub>X</sub> + 3p<sub>Y</sub> = 64.<br/>c. Đ.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":22},{"id":"h10_c1_de2_p3_q1","number":1,"part":3,"type":"short_answer","text":"Nguyên tử của nguyên tố phosphorus có 15 proton, 15 electron và 16 neutron. Tổng số hạt mang điện trong nguyên tử phosphorus là bao nhiêu?","images":[],"correctAnswer":"30","explanation":"Đáp án: 30","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h10_c1_de2_p3_q2","number":2,"part":3,"type":"short_answer","text":"Ở trạng thái cơ bản, nguyên tử của nguyên tố chrominium (Z = 24) có bao nhiêu electron độc thân?","images":[],"correctAnswer":"6","explanation":"Đáp án: 6","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h10_c1_de2_p3_q3","number":3,"part":3,"type":"short_answer","text":"Các đám mây gây hiện tượng sấm sét tạo nên bởi những hạt nước nhỏ li ti mang điện tích. Một phép đo thực nghiệm cho thấy, một giọt nước có đường kính 50  ìm , mang một lượng điện tích âm là  173,33.10C-- . Hãy cho biết điện tích âm của giọt nước trên tương đương với điện tích của bao nhiêu electron? Biết điện tích của electron là  1,602.1019-- C. (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"208","explanation":"Đáp án: 208.<br/>Số electron tương đương bằng  17193,33.102081,602.10---»-","explanationImages":[],"points":0.25,"displayNumber":25},{"id":"h10_c1_de2_p3_q4","number":4,"part":3,"type":"short_answer","text":"Cho 6 nguyên tố có số hiệu nguyên tử lần lượt là 1, 6, 9, 11, 20 và 35. Trong số các nguyên tố trên có bao nhiêu nguyên tố phi kim?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.25,"displayNumber":26},{"id":"h10_c1_de2_p3_q5","number":5,"part":3,"type":"short_answer","text":"Trong tự nhiên, oxygen có 3 đồng vị <sup>16</sup>O, <sup>17</sup>O, <sup>18</sup>O. Có bao nhiêu loại phân tử O<sub>2</sub> được tạo thành từ các đồng vị trên?","images":[],"correctAnswer":"6","explanation":"Đáp án: 6.<br/>Có 6 loại phân tử O<sub>2</sub> là: <sup>16</sup>O – <sup>16</sup>O; <sup>16</sup>O – <sup>17</sup>O; <sup>16</sup>O – <sup>18</sup>O; <sup>17</sup>O – <sup>17</sup>O; <sup>17</sup>O – <sup>18</sup>O; <sup>18</sup>O – <sup>18</sup>O","explanationImages":[],"points":0.25,"displayNumber":27},{"id":"h10_c1_de2_p3_q6","number":6,"part":3,"type":"short_answer","text":"Trong tự nhiên chlorine có hai đồng vị bền là  <sup>37</sup><sub>17</sub>Cl và <sup>35</sup><sub>17</sub>Cl . Nguyên tử khối trung bình của chlorine là 35,48. Phần trăm khối lượng của  <sup>37</sup><sub>17</sub>Cl  trong KClO<sub>3</sub> (cho biết nguyên tử khối K = 39; O = 16) là bao nhiêu %? (Kết quả làm tròn đến hàng phần trăm)","images":[],"correctAnswer":"7,25","explanation":"Đáp án: 7,25.<br/>Gọi % số nguyên tử của  <sup>37</sup><sub>17</sub>Cl  là x% thì  <sup>35</sup><sub>17</sub>Cl  là (100 – x)%<br/>37.x35.(100x)35,48x24%100+-=Þ=<br/>3717Cl37.0,24%m.100%7,25%.3935,4816.3==++ .<br/>","explanationImages":[],"points":0.25,"displayNumber":28}]},{"id":"h10_c1_de3","code":"103","title":"Đề Kiểm Tra Định Kỳ Số 3 - Vỏ Electron (Mã 103)","topic":"Obitan nguyên tử (AO) & Cấu hình electron lớp vỏ","badge":"Mã 103","chapter":1,"duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"h10_c1_de3_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Các hạt cấu tạo nên hầu hết các nguyên tử là","images":[],"options":[{"id":"a","letter":"A","text":"electron và proton","isCorrect":false},{"id":"b","letter":"B","text":"neutron và electron","isCorrect":false},{"id":"c","letter":"C","text":"proton và neutron","isCorrect":false},{"id":"d","letter":"D","text":"electron, proton và neutron","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h10_c1_de3_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Thông tin nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Proton mang điện tích dương, nằm trong hạt nhân, khối lượng gần bằng 1 amu","isCorrect":false},{"id":"b","letter":"B","text":"Electron mang điện tích âm, nằm trong hạt nhân, khối lượng gần bằng 0 amu","isCorrect":true},{"id":"c","letter":"C","text":"Neutron không mang điện, khối lượng gần bằng 1 amu","isCorrect":false},{"id":"d","letter":"D","text":"Nguyên tử trung hòa điện, có kích thước lớn hơn nhiều so với hạt nhân, nhưng có khối lượng gần bằng khối lượng hạt nhân","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h10_c1_de3_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Các electron được điền vào orbital theo thứ tự nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"1s 2s 2p 3s 3p 3d 4s","isCorrect":false},{"id":"b","letter":"B","text":"1s 2s 2p 3s 4s 3p 3d","isCorrect":false},{"id":"c","letter":"C","text":"1s 2s 2p 3s 3p 4s 3d","isCorrect":true},{"id":"d","letter":"D","text":"1s 2s 3s 4s 2p 3p 3d","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h10_c1_de3_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Khẳng định nào sau đây là đúng khi so sánh kích thước của hạt nhân so với kích thước của nguyên tử?","images":[],"options":[{"id":"a","letter":"A","text":"Kích thước hạt nhân rất nhỏ so với nguyên tử","isCorrect":true},{"id":"b","letter":"B","text":"Hạt nhân có kích thước bằng một nửa nguyên tử","isCorrect":false},{"id":"c","letter":"C","text":"Hạt nhân chiếm gần như toàn bộ kích thước nguyên tử","isCorrect":false},{"id":"d","letter":"D","text":"Hạt nhân có kích thước bằng 2/3 kích thước nguyên tử","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h10_c1_de3_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Lớp vỏ nguyên tử của nguyên tố R có 56 electron và số khối là 137. Kí hiệu nguyên tử nguyên tố R là","images":[],"options":[{"id":"a","letter":"A","text":"13756 R","isCorrect":true},{"id":"b","letter":"B","text":"13781 R","isCorrect":false},{"id":"c","letter":"C","text":"8156 R","isCorrect":false},{"id":"d","letter":"D","text":"5681 R","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h10_c1_de3_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Một loại nguyên tử hydrogen có cấu tạo đơn giản nhất, chỉ tạo nên từ 1 electron và 1 proton. Cho biết  pnemm1amu,m0,00055amu=»» . Nhận định nào sau đây là sai?","images":[],"options":[{"id":"a","letter":"A","text":"Nuyên tử hydrogen là nguyên tử nhẹ nhất trong số các nguyên tử được biết cho đến nay","isCorrect":false},{"id":"b","letter":"B","text":"Khối lượng nguyên tử xấp xỉ 2 amu","isCorrect":true},{"id":"c","letter":"C","text":"Hạt nhân nguyên tử có khối lượng lớn gấp khoảng 1818 lần khối lượng lớp vỏ","isCorrect":false},{"id":"d","letter":"D","text":"Nguyên tử hydrogen không có hạt neutron","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h10_c1_de3_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Nguyên tử R có điện tích lớp vỏ nguyên tử là –41,6 &times; 10<sup>-19</sup> C. Điều khẳng định nào sau đây là không chính xác? Biết điện tích của hạt electron là –1,609 &times; 10<sup>-19</sup> C","images":[],"options":[{"id":"a","letter":"A","text":"Lớp vỏ nguyên tử R có 26 electron","isCorrect":false},{"id":"b","letter":"B","text":"Hạt nhân nguyên tử R có 26 proton","isCorrect":false},{"id":"c","letter":"C","text":"Hạt nhân nguyên tử R có 26 neutron","isCorrect":true},{"id":"d","letter":"D","text":"Nguyên tử R trung hòa về điện","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h10_c1_de3_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Mỗi orbital nguyên tử chứa tối đa","images":[],"options":[{"id":"a","letter":"A","text":"1 electron","isCorrect":false},{"id":"b","letter":"B","text":"2 electron","isCorrect":true},{"id":"c","letter":"C","text":"3 electron","isCorrect":false},{"id":"d","letter":"D","text":"4 electron","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h10_c1_de3_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Thông tin về các nguyên tử Q, R, S, T được cho trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Nguyên tử</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Số proton</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Số neutron</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Số eletcron</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Q</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">R</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">S</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">T</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td></tr></table></div><br/>Hai nguyên tử là đồng vị của nhau là","images":[],"options":[{"id":"a","letter":"A","text":"Q và S","isCorrect":true},{"id":"b","letter":"B","text":"Q và T","isCorrect":false},{"id":"c","letter":"C","text":"R và T","isCorrect":false},{"id":"d","letter":"D","text":"R và S","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h10_c1_de3_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Nguyên tố boron (B) có nguyên tử khối trung bình là 10,81. Trong tự nhiên, boron có hai đồng vị là  105B  và  115B . Phần trăm số nguyên tử của đồng vị  105B  là","images":[],"options":[{"id":"a","letter":"A","text":"81%","isCorrect":false},{"id":"b","letter":"B","text":"19%","isCorrect":true},{"id":"c","letter":"C","text":"0,19%","isCorrect":false},{"id":"d","letter":"D","text":"0,81%","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h10_c1_de3_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Hình sau biểu diễn hình dạng orbital nguyên tử (AO) nào sau đây?","images":["/assets/hoa12/c5/h10_c1_de3_image11.png"],"options":[{"id":"a","letter":"A","text":"s","isCorrect":true},{"id":"b","letter":"B","text":"p<sub>x</sub>","isCorrect":false},{"id":"c","letter":"C","text":"p<sub>y</sub>","isCorrect":false},{"id":"d","letter":"D","text":"p<sub>z</sub>","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h10_c1_de3_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Nitrogen có hai đồng vị bền là  <sup>14</sup><sub>7</sub>N  và  <sup>15</sup><sub>7</sub>N . Oxygen có ba đồng vị bền là  <sup>16</sup><sub>8</sub>O ,  <sup>17</sup><sub>8</sub>O ,  <sup>18</sup><sub>8</sub>O . Số hợp chất NO<sub>2</sub> tạo bởi các đồng vị trên là","images":[],"options":[{"id":"a","letter":"A","text":"3","isCorrect":false},{"id":"b","letter":"B","text":"6","isCorrect":false},{"id":"c","letter":"C","text":"9","isCorrect":false},{"id":"d","letter":"D","text":"12","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h10_c1_de3_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Có các phát biểu sau:<br/>(a) Trong một nguyên tử luôn luôn có số proton bằng số electron và bằng số đơn vị điện tích hạt nhân.<br/>(b) Tổng số proton và số electron trong một hạt nhân được gọi là số khối.<br/>(c) Số khối (A) là khối lượng tuyệt đối của nguyên tử.<br/>(d) Nguyên tử khối của một nguyên tố là nguyên tử khối trung bình của hỗn hợp các đồng vị của nguyên tố đó.<br/>Số phát biểu không đúng là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":true},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h10_c1_de3_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Lớp M có 9 phân lớp","isCorrect":true},{"id":"b","letter":"B","text":"Lớp L có 4 orbital","isCorrect":false},{"id":"c","letter":"C","text":"Phân lớp p có 3 orbital","isCorrect":false},{"id":"d","letter":"D","text":"Năng lượng electron trên lớp K là thấp nhất","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h10_c1_de3_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Trong nguyên tử Chlorine (Z = 17), số electron ở phân mức năng lượng cao nhất là","images":[],"options":[{"id":"a","letter":"A","text":"7","isCorrect":false},{"id":"b","letter":"B","text":"5","isCorrect":true},{"id":"c","letter":"C","text":"9","isCorrect":false},{"id":"d","letter":"D","text":"2","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h10_c1_de3_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Sự chuyển động của electron theo quan điểm hiện đại được mô tả như thế nào?","images":[],"options":[{"id":"a","letter":"A","text":"Electron chuyển động rất nhanh xung quanh hạt nhân không theo một quỹ đạo xác định tạo thành vỏ nguyên tử","isCorrect":true},{"id":"b","letter":"B","text":"Chuyển động của electron trong nguyên tử theo một quỹ đạo nhất định hình tròn hay hình bầu dục","isCorrect":false},{"id":"c","letter":"C","text":"Electron chuyển động cạnh hạt nhân theo một quỹ đạo xác định tạo thành vỏ nguyên tử","isCorrect":false},{"id":"d","letter":"D","text":"Electron chuyển động rất chậm gần hạt nhân theo một quỹ đạo xác định tạo thành vỏ nguyên tử","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h10_c1_de3_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Nguyên tố Q có số hiệu nguyên tử bằng 14. Electron cuối cùng của nguyên tử nguyên tố Q điền vào lớp, phân lớp nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"K, s","isCorrect":false},{"id":"b","letter":"B","text":"L, p","isCorrect":false},{"id":"c","letter":"C","text":"M, p","isCorrect":true},{"id":"d","letter":"D","text":"N, d","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h10_c1_de3_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Nguyên tử X, ion Y<sup>2+</sup>và ion Z<sup>-</sup> đều có cấu hình electron là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>. X, Y, Z là kim loại, phi kim hay khí hiếm?","images":[],"options":[{"id":"a","letter":"A","text":"X: Phi kim ; Y: Khí hiếm ; Z: Kim loại","isCorrect":false},{"id":"b","letter":"B","text":"X: Khí hiếm ; Y: Phi kim ; Z: Kim loại","isCorrect":false},{"id":"c","letter":"C","text":"X: Khí hiếm ; Y: Kim loại ; Z: Phi kim","isCorrect":true},{"id":"d","letter":"D","text":"X: Khí hiếm ; Y: Phi kim ; Z: Kim loại","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"h10_c1_de3_p2_q1","number":1,"part":2,"type":"true_false","text":"Năm 1911, E. Rutherford và các cộng sự đã dùng các hạt α bắn phá lá vàng mỏng và dùng màn huỳnh quang đặt sau lá vàng để theo dõi đường đi của các hạt α (mô tả qua hình dưới đây).<br/>Kết quả thí nghiệm đã rút ra các kết luận về nguyên tử như sau:","images":["/assets/hoa12/c5/h10_c1_de3_image17.png"],"options":[{"id":"a","letter":"A","text":"Nguyên tử có cấu tạo rỗng","isCorrect":true},{"id":"b","letter":"B","text":"Hạt nhân nguyên tử có kích thước rất nhỏ so với kích thước nguyên tử","isCorrect":true},{"id":"c","letter":"C","text":"Hạt nhân nguyên tử mang điện tích âm","isCorrect":false},{"id":"d","letter":"D","text":"Xung quanh nguyên tử là các electron chuyển động tạo nên lớp vỏ nguyên tử","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Hạt nhân nguyên tử mang điện tích dương.<br/>d. S. Xung quanh hạt nhân là các electron chuyển động tạo nên lớp vỏ nguyên tử","explanationImages":[],"points":1,"displayNumber":19},{"id":"h10_c1_de3_p2_q2","number":2,"part":2,"type":"true_false","text":"Một nguyên tử của nguyên tố sulfur (S) có 16 proton và 16 neutron trong hạt nhân","images":[],"options":[{"id":"a","letter":"A","text":"Kí hiệu của nguyên tử sulfur là  1616S","isCorrect":false},{"id":"b","letter":"B","text":"Ở trạng thái cơ bản, lớp ngoài cùng của nguyên tử sulfur có 4 electron","isCorrect":false},{"id":"c","letter":"C","text":"Sulfur là nguyên tố phi kim","isCorrect":true},{"id":"d","letter":"D","text":"Tất cả các nguyên tử thuộc nguyên tố sulfur đều có số khối là 32","isCorrect":false}],"explanation":"Đáp án:<br/>Câu hình e: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>.<br/>a. S.  <sup>32</sup><sub>16</sub>S.<br/>b. S. Có 6e ở lớp ngoài cùng.<br/>c. Đ.<br/>d. S. Sulfur có nhiều đồng vị ví dụ như đồng vị <sup>34</sup>S có số khối là 34","explanationImages":[],"points":1,"displayNumber":20},{"id":"h10_c1_de3_p2_q3","number":3,"part":2,"type":"true_false","text":"Trong nguyên tử, các electron sắp xếp thành từng lớp và phân lớp theo các mức năng lượng từ thấp đến cao","images":[],"options":[{"id":"a","letter":"A","text":"Các electron ở lớp L có mức năng lượng gần bằng nhau","isCorrect":true},{"id":"b","letter":"B","text":"Các electron ở lớp M (n = 3) liên kết chặt chẽ với hạt nhân hơn các electron ở lớp K (n = 1)","isCorrect":false},{"id":"c","letter":"C","text":"Các electron ở lớp M có mức năng lượng cao hơn các electron ở lớp K","isCorrect":true},{"id":"d","letter":"D","text":"Các electron ở phân lớp 3s có mức năng lượng thấp hơn các electron ở phân lớp 2p","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. S. Lớp K gần hạt nhân hơn nên liên kết chặt chẽ hơn.<br/>c. Đ. Electron thuộc lớp nào càng xa hạt nhân thì mức năng lượng lớn hơn.<br/>d. S. Electron ở phân lớp 3s có mức năng lượng lớn hơn 2p","explanationImages":[],"points":1,"displayNumber":21},{"id":"h10_c1_de3_p2_q4","number":4,"part":2,"type":"true_false","text":"Magnesium (Mg) là một trong những nguyên tố vi lượng đóng vai trò quan trọng của cơ thể, giúp xương chắc khỏe, tim khỏe mạnh và lượng đường trong máu bình thường. Tỉ lệ phần trăm số nguyên tử các đồng vị của magnesium được xác định theo phổ khối lượng như hình dưới đây (biết rằng điện tích z của các ion đồng vị của magnesium đều bằng +2):","images":["/assets/hoa12/c5/h10_c1_de3_image19.png"],"options":[{"id":"a","letter":"A","text":"Magnesium có 3 đồng vị bền","isCorrect":true},{"id":"b","letter":"B","text":"Nguyên tử khối trung bình của magnesium là 24,53","isCorrect":false},{"id":"c","letter":"C","text":"Đồng vị chiếm tỉ lệ phần trăm số nguyên tử lớn nhất là <sup>24</sup>Mg","isCorrect":true},{"id":"d","letter":"D","text":"Phần trăm khối lượng của đồng vị <sup>26</sup>Mg trong tinh thể MgSO<sub>4</sub>.7H<sub>2</sub>O là 1,32% (cho nguyên tử khối của S = 32; O = 16; H = 1)","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. S.  Mg24.78,9925.1026.11,01A24,32100++== .<br/>c. Đ.<br/>d. S.  2611,0126.100%Mg.1001,16%24,323216.47.(1.216)==++++","explanationImages":[],"points":1,"displayNumber":22},{"id":"h10_c1_de3_p3_q1","number":1,"part":3,"type":"short_answer","text":"Silicon (Z = 14) là nguyên tố được sử dụng để chế tạo vật liệu bán dẫn, có vai trò quan trọng trong sản xuất công nghiệp. Trong tự nhiên, nguyên tố này có 3 đồng vị trong đó một đồng vị có số khối là 30. Số hạt neutron trong đồng vị này là bao nhiêu?","images":[],"correctAnswer":"16","explanation":"Đáp án: 16.<br/>N = A – Z = 30 – 14 = 16","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h10_c1_de3_p3_q2","number":2,"part":3,"type":"short_answer","text":"Nguyên tử của nguyên tố X có cấu hình electron đã xây dựng đến phân lớp 3d<sup>2</sup>. Tổng số electron của nguyên tử nguyên tố X là bao nhiêu?","images":[],"correctAnswer":"22","explanation":"Đáp án: 22.<br/>1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>2</sup>4s<sup>2</sup>","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h10_c1_de3_p3_q3","number":3,"part":3,"type":"short_answer","text":"Nguyên tử của nguyên tố potassium có 19 electron. Ở trạng thái cơ bản, potassium có bao nhiêu orbital chứa electron?","images":[],"correctAnswer":"10","explanation":"Đáp án: 10.<br/>Cấu hình electron: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup><br/>Ở trạng thái cơ bản, potassium có số orbital chứa = 1 + 1 + 3 + 1 + 3 + 1 = 10","explanationImages":["/assets/hoa12/c5/h10_c1_de3_image26.png"],"points":0.25,"displayNumber":25},{"id":"h10_c1_de3_p3_q4","number":4,"part":3,"type":"short_answer","text":"Nguyên tố Y ở dạng YO<sub>4</sub><sup>3</sup><sup>–</sup>, đóng vai trò quan trọng trong các phân tử sinh học như DNA và RNA. Các tế bào sống sử dụng YO<sub>4</sub><sup>3</sup><sup>–</sup>,để vận chuyển năng lượng. Nguyên tử của nguyên tố Y có cấu hình electron kết thúc ở phân lớp 3p<sup>3</sup>. Tổng số hạt mang điện trong ion YO<sub>4</sub><sup>3</sup><sup>–</sup> là bao nhiêu? Biết số hiệu nguyên tử của O bằng 8","images":[],"correctAnswer":"97","explanation":"Đáp án: 97.<br/>Y: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup> ⇒ Y có 15e.<br/>Tổng số hạt mang điện trong phân tử YO<sub>4</sub><sup>3-</sup> = 15.2 + 8.2.4 + 3 =  97","explanationImages":[],"points":0.25,"displayNumber":26},{"id":"h10_c1_de3_p3_q5","number":5,"part":3,"type":"short_answer","text":"Cho 7 nguyên tố có số hiệu nguyên tử lần lượt là 6, 13, 16, 18, 19, 20 và 24. Trong số các nguyên tố trên có bao nhiêu nguyên tố kim loại?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.25,"displayNumber":27},{"id":"h10_c1_de3_p3_q6","number":6,"part":3,"type":"short_answer","text":"Calcium (Ca) là một loại khoáng chất có vai trò rất quan trọng trong cơ thể người. Trong cơ thể, calcium chiếm 1,5 – 2% trọng lượng, 99% lượng calcium tồn tại trong xương, răng, móng và 1% trong máu. Calcium kết hợp với phosphorus là thành phần cấu tạo cơ bản của xương và răng, làm cho xương và răng chắc khỏe. Cấu trúc của kim loại calcium được phát hiện như hình sau:<br/>Khối lượng riêng của calcium kim loại là 1,55 g/cm<sup>3</sup>. Giả thiết rằng, trong tinh thể calcium, các nguyên tử là những hình cầu chiếm 74% thể tích tinh thể, phần còn lại là khe rỗng. Xác định bán kính nguyên tử calcium (theo đơn vị angstrom biết  10110Åm-= ). Cho nguyên tử khối của calcium là 40 và công thức tính thể tích hình cầu là  34Vr3=p , trong đó r là bán kính hình cầu. (Kết quả làm tròn đến hàng phần trăm)","images":["/assets/hoa12/c5/h10_c1_de3_image20.png"],"correctAnswer":"1,96","explanation":"Đáp án: 1,96.<br/>Cho 1 mol Ca  m<sub>Ca</sub> = 40 g<br/>Ta có: m = D.V  V<sub>Ca</sub> = 40 : 1,55 = 25,8 (cm<sup>3</sup>)<br/>V<sub>Ca (tinh thể)</sub> = 25,8.74% = 19,092 (cm<sup>3</sup>)<br/>V<sub>1 nguyên tử Ca</sub> = 19,092 : 6,022.10<sup>23</sup> = 31,7.10<sup>−24</sup> (cm<sup>3</sup>)<br/>Bán kính nguyên tử Calcium là<br/>Đổi đơn vị ra angstrom thì r = 1,96 Å.<br/>","explanationImages":["/assets/hoa12/c5/h10_c1_de3_image27.png"],"points":0.25,"displayNumber":28}]},{"id":"h10_c1_de4","code":"104","title":"Đề Kiểm Tra Tổng Hợp Chương 1 (Mã 104)","topic":"Tổng hợp toàn bộ kiến thức Cấu tạo nguyên tử","badge":"Mã 104","chapter":1,"duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"h10_c1_de4_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Trong nguyên tử, hạt chuyển động ngoài vỏ là","images":[],"options":[{"id":"a","letter":"A","text":"proton","isCorrect":false},{"id":"b","letter":"B","text":"neutron","isCorrect":false},{"id":"c","letter":"C","text":"proton và neutron","isCorrect":false},{"id":"d","letter":"D","text":"electron","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h10_c1_de4_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trường hợp nào sau đây có sự tương ứng giữa hạt cơ bản với khối lượng và điện tích của chúng?","images":[],"options":[{"id":"a","letter":"A","text":"Proton, m  0,00055 amu, q = +1","isCorrect":false},{"id":"b","letter":"B","text":"Neutron, m  1 amu, q = 0","isCorrect":true},{"id":"c","letter":"C","text":"Electron, m  1 amu, q = -1","isCorrect":false},{"id":"d","letter":"D","text":"Proton, m  1 amu, q = -1","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h10_c1_de4_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Cấu hình electron nào sau đây viết sai?","images":[],"options":[{"id":"a","letter":"A","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>","isCorrect":false},{"id":"b","letter":"B","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup>","isCorrect":false},{"id":"c","letter":"C","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup>4p<sup>5</sup>","isCorrect":true},{"id":"d","letter":"D","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>3</sup>4s<sup>2</sup>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h10_c1_de4_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Quan sát hình vẽ sau mô tả thí nghiệm tìm ra hạt nhân nguyên tử vào năm 1911 của nhà vật lý người New Zealand là E. Rutherford. Hãy cho biết phát biểu đúng?","images":["/assets/hoa12/c5/h10_c1_de4_image1.png"],"options":[{"id":"a","letter":"A","text":"Nguyên tử có cấu tạo rỗng nên các hạt α bật ngược trở lại","isCorrect":false},{"id":"b","letter":"B","text":"Hạt nhân nguyên tử mang điện tích âm nên hầu hết các hạt α xuyên qua lá vàng","isCorrect":false},{"id":"c","letter":"C","text":"Hạt nhân nguyên tử có kích thước rất lớn hơn với kích thước nguyên tử","isCorrect":false},{"id":"d","letter":"D","text":"Nguyên tử có cấu tạo rỗng nên hầu hết các hạt α xuyên qua lá vàng","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h10_c1_de4_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Số hiệu nguyên tử cho biết thông tin nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Số proton","isCorrect":true},{"id":"b","letter":"B","text":"Số neutron","isCorrect":false},{"id":"c","letter":"C","text":"Số khối","isCorrect":false},{"id":"d","letter":"D","text":"Nguyên tử khối","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h10_c1_de4_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Một nguyên tử Y có cấu tạo hạt nhân gồm 8 proton và 8 neutron, lớp vỏ có 8 electron.<br/><div class=\"inline-block my-2 p-2.5 rounded-xl border border-indigo-200 bg-indigo-50/70 text-slate-800 text-xs font-medium\">Hạt nhân: 8p, 8n &bull; Vỏ: 8e (K: 2e, L: 6e)</div><br/>Kí hiệu nguyên tử của nguyên tố Y trên là","images":[],"options":[{"id":"a","letter":"A","text":"<sup>15</sup><sub>7</sub>Y","isCorrect":false},{"id":"b","letter":"B","text":"<sup>16</sup><sub>8</sub>Y","isCorrect":true},{"id":"c","letter":"C","text":"<sup>8</sup><sub>4</sub>Y","isCorrect":false},{"id":"d","letter":"D","text":"<sup>8</sup><sub>8</sub>Y","isCorrect":false}],"correctAnswer":"B","explanation":"Đáp án: B.<br/>Số hiệu Z = p = 8; Số khối A = p + n = 8 + 8 = 16 &rArr; Kí hiệu: <sup>16</sup><sub>8</sub>Y.","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h10_c1_de4_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Nguyên tử của nguyên tố X có tổng số hạt proton, neutron và electron là 40. Tổng số hạt mang điện nhiều hơn tổng số hạt không mang điện là 12 hạt. Nguyên tố X có số khối là","images":[],"options":[{"id":"a","letter":"A","text":"26","isCorrect":false},{"id":"b","letter":"B","text":"27","isCorrect":true},{"id":"c","letter":"C","text":"28","isCorrect":false},{"id":"d","letter":"D","text":"23","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h10_c1_de4_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Các đồng vị của cùng một nguyên tố hóa học là những nguyên tử có","images":[],"options":[{"id":"a","letter":"A","text":"cùng số proton nhưng khác nhau về số neutron","isCorrect":true},{"id":"b","letter":"B","text":"cùng số neutron nhưng khác nhau về số proton","isCorrect":false},{"id":"c","letter":"C","text":"cùng tổng số proton và neutron nhưng khác nhau về số electron","isCorrect":false},{"id":"d","letter":"D","text":"cùng số electron nhưng khác nhau về tổng số proton và neutron","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h10_c1_de4_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Cho các nguyên tử có kí hiệu hóa học sau đây:  121414676X,Y,Z . Những nguyên tử nào cùng thuộc một nguyên tố hóa học?","images":[],"options":[{"id":"a","letter":"A","text":"X và Y","isCorrect":false},{"id":"b","letter":"B","text":"Y và Z","isCorrect":false},{"id":"c","letter":"C","text":"X và Z","isCorrect":true},{"id":"d","letter":"D","text":"X, Y và Z","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h10_c1_de4_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Cho biết: chlorine có 2 đồng vị là  <sup>35</sup><sub>17</sub>Cl ,  <sup>35</sup><sub>17</sub>Cl , hydrogen có 3 đồng vị là  123111H,H,H . Số loại phân tử HCl được tạo ra bởi các đồng vị trên là","images":[],"options":[{"id":"a","letter":"A","text":"8","isCorrect":false},{"id":"b","letter":"B","text":"6","isCorrect":true},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"5","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h10_c1_de4_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Đồng có hai đồng vị bền trong tự nhiên là <sup>63</sup>Cu và <sup>65</sup>Cu. Nguyên tử khối trung bình của đồng là 63,55. Tỉ lệ phần trăm số nguyên tử tương ứng của hai đồng vị <sup>63</sup>Cu và <sup>65</sup>Cu lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"72,5% và 27,5%","isCorrect":true},{"id":"b","letter":"B","text":"27,5% và 72,5%","isCorrect":false},{"id":"c","letter":"C","text":"50,0% và 50,0%","isCorrect":false},{"id":"d","letter":"D","text":"63,0% và 37,0%","isCorrect":false}],"correctAnswer":"A","explanation":"Đáp án: A.<br/>Ā = [63x + 65(100 - x)] / 100 = 63,55 &rArr; x = 72,5% (<sup>63</sup>Cu) và 27,5% (<sup>65</sup>Cu).","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h10_c1_de4_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Số proton, neutron và electron của  <sup>39</sup><sub>19</sub>K  lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"19, 20, 39","isCorrect":false},{"id":"b","letter":"B","text":"20, 19, 39","isCorrect":false},{"id":"c","letter":"C","text":"19, 20, 19","isCorrect":true},{"id":"d","letter":"D","text":"19, 19, 20","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h10_c1_de4_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Phân lớp 3d có số electron tối đa là","images":[],"options":[{"id":"a","letter":"A","text":"6","isCorrect":false},{"id":"b","letter":"B","text":"18","isCorrect":false},{"id":"c","letter":"C","text":"14","isCorrect":false},{"id":"d","letter":"D","text":"10","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h10_c1_de4_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phân lớp 4s có mức năng lượng cao hơn phân lớp 3d","isCorrect":false},{"id":"b","letter":"B","text":"Lớp thứ 4 có tối đa 18 eletron","isCorrect":false},{"id":"c","letter":"C","text":"Lớp electron thứ 3 (lớp M) có 3 phân lớp","isCorrect":true},{"id":"d","letter":"D","text":"Số electron tối đa trong phân lớp 3d là 18","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h10_c1_de4_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Electron càng ở xa hạt nhân thì có năng lượng càng thấp","isCorrect":true},{"id":"b","letter":"B","text":"Số lượng electron tối đa trong một phân lớp luôn là một số chẵn","isCorrect":false},{"id":"c","letter":"C","text":"Phân lớp p có nhiều orbital hơn phân lớp s","isCorrect":false},{"id":"d","letter":"D","text":"Số electron tối đa trên phân lớp p gấp ba lần số electron tối đa trên phân lớp s","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h10_c1_de4_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Số phân lớp bão hòa trong các phân lớp: 1s<sup>2</sup>; 2s<sup>2</sup>; 2p<sup>3</sup>; 3d<sup>10</sup>; 3p<sup>4</sup> là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":true},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h10_c1_de4_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Sự phân bố electron theo các ô orbital nào dưới đây là đúng với nguyên tử Carbon (Z = 6)?","images":[],"options":[{"id":"a","letter":"A","text":"1s(↑↓) 2s(↑↓) 2p(↑↓ |  | )","isCorrect":false},{"id":"b","letter":"B","text":"1s(↑↓) 2s(↑↓) 2p(↑ | ↑ | )","isCorrect":true},{"id":"c","letter":"C","text":"1s(↑↓) 2s(↑) 2p(↑ | ↑ | ↑)","isCorrect":false},{"id":"d","letter":"D","text":"1s(↑↓) 2s(↑↓) 2p(↑ | ↓ | )","isCorrect":false}],"correctAnswer":"B","explanation":"Đáp án: B.<br/>Cấu hình e của Carbon: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>2</sup>. Theo quy tắc Hund, 2 electron độc thân ở phân lớp 2p phân bố vào 2 ô orbital khác nhau và có spin cùng chiều: 2p(↑ | ↑ | ).","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h10_c1_de4_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Nguyên tố X được sử dụng rộng rãi để chống đóng băng và khử băng như một chất bảo quản. Nguyên tố Y là nguyên tố thiết yếu cho các cơ thể sống, đồng thời nó được sử dụng nhiều trong công việc sản xuất phân bón. Nguyên tử của nguyên tố X có electron ở mức năng lượng cao nhất là 3p. Nguyên tử của nguyên tố Y có một electron ở lớp ngoài cùng 4s. Nguyên tử X và Y có số electron hơn kém nhau là 3. Nguyên tử X, Y lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"khí hiếm và kim loại","isCorrect":false},{"id":"b","letter":"B","text":"kim loại và khí hiếm","isCorrect":false},{"id":"c","letter":"C","text":"kim loại và kim loại","isCorrect":false},{"id":"d","letter":"D","text":"phi kim và kim loại","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"h10_c1_de4_p2_q1","number":1,"part":2,"type":"true_false","text":"Electron được tìm ra vào năm 1897 bởi nhà bác học J.J. Thomson (Tôm-xơn, người Anh). Từ khi được phát hiện đến nay electron đã đóng vai trò t&deg; lớn trong nhiều lĩnh vực của cuộc sống như: năng lượng, truyền thông và thông tin","images":[],"options":[{"id":"a","letter":"A","text":"Electron là hạt mang điện tích âm","isCorrect":true},{"id":"b","letter":"B","text":"Electron chỉ thoát ra khỏi nguyên tử trong những điều kiện đặc biệt","isCorrect":true},{"id":"c","letter":"C","text":"Electron có khối lượng 9,109 &times; 10<sup>-28</sup> gam","isCorrect":true},{"id":"d","letter":"D","text":"Electron chiếm phần lớn khối lượng nguyên tử","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Electron chiếm phần lớn ở lớp vỏ nguyên tử","explanationImages":[],"points":1,"displayNumber":19},{"id":"h10_c1_de4_p2_q2","number":2,"part":2,"type":"true_false","text":"Trong lịch sử các thuyết về mô hình nguyên tử có mô hình hành tinh nguyên tử (mô hình Rutherford - Bohr) và mô hình hiện đại của nguyên tử","images":["/assets/hoa12/c5/h10_c1_de4_image18.png"],"options":[{"id":"a","letter":"A","text":"Với nguyên tử hydrogen, mô hình (1) là mô hình hiện đại, mô hình (2) là mô hình hành tinh nguyên tử","isCorrect":false},{"id":"b","letter":"B","text":"Khái niệm về xác suất tìm thấy electron xuất phát từ mô hình hành tinh nguyên tử","isCorrect":false},{"id":"c","letter":"C","text":"Theo mô hình (1), electron chuyển động trên quỹ đạo xác định xung quanh hạt nhân","isCorrect":false},{"id":"d","letter":"D","text":"Khái niệm về orbital nguyên tử xuất phát từ mô hình hiện đại của nguyên tử","isCorrect":false},{"id":"a","letter":"A","text":"S. (1) là mô hình hành tinh nguyên tử, (2) là mô hình hiện đại","isCorrect":false},{"id":"b","letter":"B","text":"S. Khái niệm về xác suất tìm thấy electron xuất phát từ mô hình hiện đại","isCorrect":false},{"id":"c","letter":"C","text":"Đ","isCorrect":false},{"id":"d","letter":"D","text":"Đ","isCorrect":false}],"explanation":"","explanationImages":[],"points":1,"displayNumber":20},{"id":"h10_c1_de4_p2_q3","number":3,"part":2,"type":"true_false","text":"Nguyên tử X có 16 proton và 16 neutron. Nguyên tử Y có số đơn vị điện tích hạt nhân là 16 và số khối bằng 34","images":[],"options":[{"id":"a","letter":"A","text":"Kí hiệu hóa học của nguyên tử X, Y lần lượt là  1632X  và  1634Y","isCorrect":false},{"id":"b","letter":"B","text":"X và Y không là đồng vị của cùng một nguyên tố hóa học","isCorrect":false},{"id":"c","letter":"C","text":"X và Y có tính chất hóa học giống nhau","isCorrect":true},{"id":"d","letter":"D","text":"Số neutron của Y nhiều hơn số neutron của X là 2","isCorrect":true}],"explanation":"Đáp án:<br/>a. S.  3216X  và  3416Y .<br/>b. S. X và Y là đồng vị của nhau vì có cùng số proton.<br/>c. Đ.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":21},{"id":"h10_c1_de4_p2_q4","number":4,"part":2,"type":"true_false","text":"Aluminum được sử dụng phổ biến trong đời sống (chế tạo dụng cụ nhà bếp, cửa,…) cũng như trong công nghiệp (chế tạo một số bộ phân của máy bay). Nguyên tử của nguyên tố Aluminum có 13 electron","images":[],"options":[{"id":"a","letter":"A","text":"Aluminum có 3 lớp electron, lớp ngoài cùng có 3 electron","isCorrect":true},{"id":"b","letter":"B","text":"Cấu hình electron của ion Al<sup>3+</sup> trùng với cấu hình electron của nguyên tử Ne (Z = 10)","isCorrect":true},{"id":"c","letter":"C","text":"Ở trạng thái cơ bản, aluminium có 3 electron độc thân","isCorrect":false},{"id":"d","letter":"D","text":"Aluminum là nguyên tố p","isCorrect":true}],"explanation":"Đáp án:<br/>Nguyên tử Al (Z = 13) có cấu hình electron: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>.<br/>Biểu diễn dưới dạng ô orbital:<br/>a. Đ.<br/>b. Đ. Nguyên tử Al nhường đi 3 electron từ các orbital 3p, 3s để tạo thành ion Al<sup>3+</sup> có cấu hình electron: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>.<br/>c. S. Có 1 electron độc thân.<br/>d. Đ","explanationImages":["/assets/hoa12/c5/h10_c1_de4_image25.png"],"points":1,"displayNumber":22},{"id":"h10_c1_de4_p3_q1","number":1,"part":3,"type":"short_answer","text":"Tính đến năm 2016, con người đã tìm ra bao nhiêu nguyên tố hóa học?","images":[],"correctAnswer":"118","explanation":"Đáp án: 118","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h10_c1_de4_p3_q2","number":2,"part":3,"type":"short_answer","text":"Hình ảnh bên mô tả AO p<sub>x</sub> với hai thùy.<br/>Xác suất tìm thấy electron ở mỗi thùy là khoảng nhiêu phần trăm?","images":["/assets/hoa12/c5/h10_c1_de4_image21.png"],"correctAnswer":"45","explanation":"Đáp án: 45","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h10_c1_de4_p3_q3","number":3,"part":3,"type":"short_answer","text":"Cho 7 nguyên tố có số hiệu nguyên tử lần lượt là 6, 13, 16, 18, 19, 20 và 24. Trong số các nguyên tố trên có bao nhiêu nguyên tố kim loại?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.25,"displayNumber":25},{"id":"h10_c1_de4_p3_q4","number":4,"part":3,"type":"short_answer","text":"Nếu đường kính của nguyên tử khoảng 100 pm thì đường kính của hạt nhân khoảng bao nhiêu pm?","images":[],"correctAnswer":"0,01","explanation":"Đáp án: 0,01.<br/>Đường kính nguyên tử lớn gấp khoảng 10000 lần so với đường kính hạt nhân<br/>đường kính của hạt nhân =  00,011000001=","explanationImages":[],"points":0.25,"displayNumber":26},{"id":"h10_c1_de4_p3_q5","number":5,"part":3,"type":"short_answer","text":"Một nguyên tử X bền có tổng số hạt (proton, neutron, electron) là 13. Số hạt mang điện nhiều hơn số hạt không mang điện trong nguyên tử X là bao nhiêu?","images":[],"correctAnswer":"3","acceptedAnswers":["3"],"explanation":"Đáp án: 3.<br/>Ta có: 2p + n = 13 ⇒ n = 13 – 2p.<br/>Vì X là nguyên tử bền: p ≤ n ≤ 1,5p ⇒ p = 4; n = 5.<br/>Số hạt mang điện nhiều hơn số hạt không mang điện: 2p – n = 2 × 4 – 5 = 3.","explanationImages":[],"points":0.25,"displayNumber":27},{"id":"h10_c1_de4_p3_q6","number":6,"part":3,"type":"short_answer","text":"Muối Epsom có tên gọi khác là muối magnesium sulfate, thường được hòa tan vào nước để tắm, có tác dụng làm giảm sưng, viêm, cải thiện lưu thông máu, tốt cho sự phát triển của khớp, làm dịu vết muỗi đốt,… Magnesium trong tự nhiên có ba đồng vị bền là <sup>24</sup>Mg chiếm 78,99%, <sup>25</sup>Mg chiếm 10,00% và <sup>26</sup>Mg chiếm 11,01% số nguyên tử. Phần trăm khối lượng của nguyên tố magnesium trong tinh thể muối MgSO<sub>4</sub>.7H<sub>2</sub>O (Muối Epsom dạng ngậm nước) là bao nhiêu %? Biết nguyên tử khối của H = 1, O = 16, S = 32. (Kết quả làm tròn đến hàng phần mười)","images":[],"correctAnswer":"9,87","explanation":"Đáp án: 9,87.<br/>Mg78,99124.25.26.11,01A24,321000++==<br/>24,32%Mg.1009,87%24,323216.47.18==+++<br/>","explanationImages":[],"points":0.25,"displayNumber":28}]}];
+export const HOA10_CHUONG1_EXAMS: Chuong1Exam[] = [
+  {
+    "id": "h10_c1_de1",
+    "code": "101",
+    "title": "Đề Kiểm Tra Định Kỳ Số 1 - Nguyên Tử (Mã 101)",
+    "topic": "Thành phần nguyên tử, Khối lượng & Kích thước",
+    "badge": "Mã 101",
+    "chapter": 1,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h10_c1_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong hạt nhân nguyên tử, hạt mang điện dương là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "proton",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "proton và neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "electron",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h10_c1_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho mô hình nguyên tử theo Rutherford-Bohr như sau:<br/>Số electron trên lớp M là",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de1_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "8",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "12",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h10_c1_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cấu hình electron nào sau đây là của fluorine (Z = 9)?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1s<sup>2</sup>2s<sup>3</sup>2p<sup>4</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>5</sup>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h10_c1_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khối lượng của nguyên tử magnesium là 39,827.10<sup>–</sup><sup>27</sup> kg. Khối lượng của magnesium theo amu là (biết 1amu = 1,661 &times; 10<sup>-27</sup> kg)",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "23,978",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "66,133 &times; 10<sup>-51</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "24,000",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "23,985 &times; 10<sup>-3</sup>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h10_c1_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Có những phát biểu sau đây về các đồng vị của một nguyên tố hóa học:<br/>(1) Các đồng vị có tính chất hóa học giống nhau.<br/>(2) Các đồng vị có tính chất vật lí khác nhau.<br/>(3) Các đồng vị có cùng số electron ở vỏ nguyên tử.<br/>(4) Các đồng vị có cùng số proton nhưng khác nhau về số khối.<br/>Trong các phát biểu trên, số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h10_c1_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình vẽ dưới đây mô tả thí nghiệm tìm ra loại hạt nào cấu tạo nên nguyên tử?",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de1_image4.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Electron",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Proton",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hạt nhân",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h10_c1_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử nguyên tố potassium (K) có 19 proton, 19 electron và 20 neutron. Điện tích hạt nhân nguyên tử K là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "+19",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–9",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "–20",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "+20",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h10_c1_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tố hóa học là những nguyên tử có cùng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "số khối",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "số neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "số proton",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "số neutron và số proton",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h10_c1_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kí hiệu nguyên tử nào sau đây được viết đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "<sup>15</sup><sub>7</sub>N",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "16O",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "16S",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "<sup>24</sup><sub>12</sub>Mg",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h10_c1_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử của nguyên tố X có tổng số hạt cơ bản là 34, trong đó số hạt mang điện gấp 1,8333 lần số hạt không mang điện. Nguyên tố X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Na (Z = 11)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Mg (Z = 12)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Al (Z = 13)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cl (Z =17)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h10_c1_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kí hiệu phân lớp electron nào sau đây sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3s",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3p",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3d",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3f",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h10_c1_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thông tin nào sau đây không đúng về  20682Pb ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Số đơn vị điện tích hạt nhân là 82",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Số proton và neutron là 82",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Số neutron là 124",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Số khối là 206",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h10_c1_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Orbital s có dạng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "hình tròn",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "hình số 8 nổi",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "hình cầu",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "hình bầu dục",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h10_c1_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Lớp K là lớp xa hạt nhân nhất",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các electron trong cùng một lớp có mức năng lượng bằng nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các electron trên cùng một phân lớp có mức năng lượng bằng nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Lớp N có 4 orbital",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h10_c1_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong tự nhiên, nguyên tố copper (Cu) có hai đồng vị là  63652929CuvàCu . Nguyên tử khối trung bình của copper là 63,54. Thành phần phần trăm số nguyên tử của đồng vị  6329Cu  là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "27%",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "50%",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "54%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "73%",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h10_c1_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Lớp M có số electron tối đa bằng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "9",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "18",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h10_c1_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cấu hình electron của nguyên tử phosphorus (P) là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup>. Nhận xét nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nguyên tử P có 15 electron",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Số hiệu nguyên tử của nguyên tố P là 15",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nguyên tử P có 3 lớp electron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "P là nguyên tố kim loại",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h10_c1_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử M có cấu hình electron 1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup>. Phân bố electron trên các orbital lớp ngoài cùng (phân lớp 2p) nào sau đây đúng theo quy tắc Hund?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "↑↓ | ↑↓ |  (1 ô trống, 2 ô đầy e)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "↑ | ↑ | ↑↑ (1 ô 2e cùng chiều spin)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "↑↓ | ↑ | ↓ (2 electron độc thân khác chiều spin)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "↑↓ | ↑ | ↑ (1 ô ghép đôi, 2 ô chứa electron độc thân cùng chiều spin)",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "Đáp án: D.<br/>Theo quy tắc Hund, phân lớp 2p có 4 electron sẽ phân bố: 1 ô 2e ghép đôi (↑↓) và 2 ô mỗi ô 1e độc thân cùng chiều (↑ | ↑).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h10_c1_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mô hình Rutherford – Bohr đã giải thích được rất nhiều các vấn đề trong khoa học nói chung và hóa học nói riêng, đặc biệt là sự chuyển động của electron xung quanh hạt nhân",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Theo mô hình nguyên tử Rutherford – Bohr, khối lượng nguyên tử tập trung chủ yếu ở lớp vỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Electron quay xung quanh hạt nhân theo những quỹ đạo giống như các hành tinh quay xung quanh mặt trời",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Năng lượng của electron phụ thuộc vào khoảng cách từ electron đó tới hạt nhân nguyên tử",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Electron ở càng xa hạt nhân thì năng lượng càng nhỏ",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. khối lượng nguyên tử tập trung chủ yếu ở hạt nhân.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Electron ở càng xa hạt nhân thì năng lượng càng lớn",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h10_c1_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Theo dự đoán của các nhà khoa học, việc khai thác được hàng triệu tấn  <sup>3</sup><sub>2</sub>He  trong đất của mặt trăng sẽ góp phần quan trọng trong việc phát triển các lò phản ứng tổng hợp hạt nhân không tạo ra chất thải nguy hại. Thực tế trên Trái đất, helium tồn tại chủ yếu ở dạng  <sup>4</sup><sub>2</sub>He",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kí hiệu  <sup>4</sup><sub>2</sub>He cho biết nguyên tử helium có kí hiệu He, số hiệu nguyên tử bằng 2 và số khối bằng 4",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hạt nhân nguyên tử của  <sup>3</sup><sub>2</sub>He chứa 2 proton và 3 neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "<sup>3</sup><sub>2</sub>He và  <sup>4</sup><sub>2</sub>He là đồng vị của nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Helium là nguyên tố kim loại vì có 2 electron ở lớp ngoài cùng",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. S.  <sup>3</sup><sub>2</sub>He có 2 proton và 1 neutron.<br/>c. Đ.<br/>d. S. Helium là khí hiếm",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h10_c1_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các phát biểu sau về nguyên tử:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các nguyên tử đều thỏa tính chất trung hòa về điện tích",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khối lượng nguyên tử tập trung ở hạt nhân nên hạt nhân có kích thước tương đương kích thước nguyên tử",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nguyên tử có cấu tạo đặc khít, hạt nhân ở trung tâm và các electron chuyển động xung quanh hạt nhân",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Số electron của nguyên tử luôn bằng số neutron có trong hạt nhân",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. S. Kích thước hạt nhân nguyên tử nhỏ hơn rất nhiều so với kích thước nguyên tử.<br/>c. S. Nguyên tử có cấu trúc rỗng.<br/>d. S. Số e luôn bằng số p",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h10_c1_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Nguyên tử của nguyên tố X có electron ở mức năng lượng cao nhất là 3p. Nguyên tử của nguyên tố Y cũng có electron ở mức năng lượng 3p và có một electron ở lớp ngoài cùng. Nguyên tử X và Y có số electron hơn kém nhau là 2",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "X và Y đều là nguyên tố p",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "X là nguyên tố phi kim, Y là nguyên tố kim loại",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nguyên tử nitrogen (Z = 7) có cùng số electron lớp ngoài cùng với nguyên tử X",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tổng số electron ở lớp ngoài cùng của hai nguyên tử X và Y bằng 8",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>Y có electron ở mức năng lượng 3p và có một electron ở lớp ngoài cùng.<br/>Cấu hình electron của Y là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup> → Y là kim loại.<br/>X có electron ở mức năng lượng cao nhất là 3p và X kém Y 2 electron.<br/>Cấu hình electron của X là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup> → X là phi kim.<br/>a. S. X là nguyên tố p, Y là nguyên tố s.<br/>b. Đ.<br/>c. S. Cấu hình của N là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup> có 5e ở lớp ngoài cùng còn X có 7e ở lớp ngoài cùng.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h10_c1_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nguyên tử aluminium có 13 electron, oxygen có 8 electron. Tổng số electron có trong phân tử Al<sub>2</sub>O<sub>3</sub> là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "50",
+        "explanation": "Đáp án: 50.<br/>13.2 + 8.3 = 50",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h10_c1_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các nguyên tử sau:  <sup>19</sup><sub>9</sub>A, <sup>14</sup><sub>7</sub>B, <sup>12</sup><sub>6</sub>C, <sup>23</sup><sub>11</sub>D, <sup>16</sup><sub>8</sub>E, <sup>13</sup><sub>6</sub>F.  Có bao nhiêu nguyên tử có cùng số neutron?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.<br/>B và F",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h10_c1_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Oxygen có ba đồng vị  <sup>16</sup><sub>8</sub>O ,  <sup>17</sup><sub>8</sub>O  và  <sup>18</sup><sub>8</sub>O , carbon có hai đồng vị  <sup>12</sup><sub>6</sub>C  và  <sup>13</sup><sub>6</sub>C . Có bao nhiêu loại phân tử CO<sub>2</sub> có thể được tạo thành từ các đồng vị trên?",
+        "images": [],
+        "correctAnswer": "12",
+        "explanation": "Đáp án: 12.<br/>Chọn 2O: có 6 cách chọn là <sup>16</sup>O<sup>16</sup>O, <sup>17</sup>O<sup>17</sup>O, <sup>18</sup>O<sup>18</sup>O, <sup>16</sup>O<sup>17</sup>O, <sup>16</sup>O<sup>18</sup>O, <sup>17</sup>O<sup>18</sup>O.<br/>Chọn 1C: có 2 cách chọn là <sup>12</sup>C, <sup>13</sup>C.<br/>Vậy số phân tử CO<sub>2</sub> được tạo thành là 6.2 = 12",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h10_c1_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Từ phổ khối lượng MS của magnesium (Mg) ở hình dưới đây:<br/>Hãy cho biết giá trị nguyên tử khối trung bình của magnesium là bao nhiêu? Biết z = 1. (Kết quả làm tròn kết quả đến hàng phần mười)",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de1_image20.png"
+        ],
+        "correctAnswer": "24,3",
+        "explanation": "Đáp án: 24,3.<br/>A<sub>tb</sub> = (79 &times; 24 + 10 &times; 25 + 11 &times; 26) / 100 = 24,32",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h10_c1_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tổng số các hạt proton, neutron và electron trong nguyên tử của nguyên tố X là 10. Số khối của nguyên tử nguyên tố X là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "7",
+        "explanation": "Đáp án: 7.<br/>P + E + N = 10 hay 2Z + N = 10 ⇒ N = 10 - 2Z (*)<br/>Ta có:  1 &le; N/Z &le; 1,52  ⇔ Z ≤ 10−2Z ≤ 1,52Z ⇔ 2,84 ≤ Z ≤ 3,33<br/>Vậy Z = 3, N = 4  A = Z + N = 3 + 4 = 7",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27
+      },
+      {
+        "id": "h10_c1_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong số các nguyên tố có Z = 1 đến Z = 20. Có bao nhiêu nguyên tố mà nguyên tử có 2 electron độc thân?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.<br/>Để có 2e độc thân thì nguyên tử nguyên tố đó phải có phân lớp p và có dạng p<sup>2</sup> hoặc p<sup>4</sup>.<br/>Z = 6, 8, 14, 16.<br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "h10_c1_de2",
+    "code": "102",
+    "title": "Đề Kiểm Tra Định Kỳ Số 2 - Hạt Nhân & Đồng Vị (Mã 102)",
+    "topic": "Điện tích hạt nhân, Số khối & Nguyên tử khối trung bình",
+    "badge": "Mã 102",
+    "chapter": 1,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h10_c1_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hạt nhân của hầu hết các nguyên tử đều tạo bởi hạt nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Electron và neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Electron và proton",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Neutron và proton",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Neutron, proton và electron",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h10_c1_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Mô tả nào sau đây là đúng đối với neutron?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Neutron mang điện âm và được tìm thấy trong hạt nhân",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Neutron mang điện dương và được tìm thấy ở ngoài hạt nhân",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Neutron không mang điện tích và được tìm thấy bên ngoài hạt nhân",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Neutron không mang điện tích và được tìm thấy trong hạt nhân",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h10_c1_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử của một nguyên tố có 4 lớp electron, theo thứ tự từ phía gần hạt nhân là: K, L, M, N. Electron thuộc lớp nào liên kết chặt chẽ với hạt nhân nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Lớp K",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Lớp L",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Lớp M",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Lớp N",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h10_c1_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Mô hình cấu tạo của nguyên tử sodium được biểu diễn tại hình dưới đây:<br/>Số hạt proton trong hạt nhân nguyên tử Na là",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de2_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "10",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "11",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "12",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "13",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h10_c1_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trái Đất có bán kính khoảng 6 371 km, được coi như gồm x nguyên tử hình cầu sắp xếp chặt khít cạnh nhau. Bán kính của Trái Đất là bao nhiêu nếu giả thiết chỉ còn x hạt nhân nguyên tử sắp xếp chặt khít cạnh nhau trong một khối cầu? Coi kích thước hạt nhân bằng 10<sup>–5</sup> lần kích thước nguyên tử",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "0,06731 m",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "63,71 m",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "6,371 m",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,06731 m",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h10_c1_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử Y có 12 electron, 12 neutron, kí hiệu nguyên tử của nguyên tố A là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1225Y",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2512Y",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1224Y",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2412Y",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h10_c1_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình ảnh mô hình nguyên tử các đồng vị của nguyên tử hydrogen được cho dưới đây:<br/>Các đồng vị này khác nhau về",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de2_image8.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "số proton",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "số neutron",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "số electron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "số hiệu nguyên tử",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h10_c1_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các nguyên tử sau: <sup>14</sup><sub>7</sub>A, <sup>16</sup><sub>8</sub>B, <sup>20</sup><sub>10</sub>C, <sup>15</sup><sub>7</sub>D, <sup>18</sup><sub>8</sub>E, <sup>23</sup><sub>11</sub>F. Các cặp nguyên tử nào thuộc cùng một nguyên tố hóa học (đồng vị của nhau)?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "A và D (cùng Z = 7); B và E (cùng Z = 8)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "A và B (cùng A = 16); C và D",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "B và E; C và F",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "A và D; B và E",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "Đáp án: A.<br/>Các nguyên tử có cùng số proton Z thuộc cùng một nguyên tố hóa học: A và D (Z = 7), B và E (Z = 8).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h10_c1_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây là không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Orbital p có hình dạng số tám nổi",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các electron trên cùng một lớp có mức năng lượng bằng nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nguyên tử có đường kính khoảng 1 angstrom (hay 10<sup>–10</sup> m)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong các lớp electron trong, với 4 lớp đầu thì số phân lớp bằng với số thứ tự của lớp",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h10_c1_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khối lượng của nguyên tử coi như bằng khối lượng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "hạt nhân",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "electron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "proton",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "neutron",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h10_c1_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kí hiệu và số electron tối đa có trên lớp electron ứng với giá trị n = 2 tương ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Lớp L và 2e",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Lớp L và 8e",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Lớp K và 8e",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Lớp K và 6e",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h10_c1_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sự phân bố electron vào các orbital và lớp electron dựa vào",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nguyên lý vững bền và nguyên lý Pauli",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nguyên lý vững bền và qui tắc Hund",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nguyên lý vững bền, qui tắc Hund và nguyên lý Pauli",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nguyên lý Pauli và qui tắc Hund",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h10_c1_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Orbital nguyên tử là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "đám mây chứa electron có dạng hình cầu",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "đám mây chứa electron có dạng hình số 8 nổi",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "khu vực không gian xung quanh hạt nhân mà tại đó xác suất có mặt electron lớn nhất",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "quỹ đạo chuyển động của electron quay quanh hạt nhân có kích thước và năng lượng xác định",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h10_c1_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các kí hiệu nguyên tử sau:  3919X  và  4019Y . Nhận xét nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "X và Y là 2 nguyên tử đồng vị",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "X và Y đều có 19 neutron",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X và Y có cùng số electron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "X và Y có số khối khác nhau",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h10_c1_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Fluorine và hợp chất của nó được sử dụng làm chất chống sâu răng, chất cách điện, chất làm lạnh, vật liệu chống dính, … Nguyên tử fluorine chứa 9 electron và có số khối là 19. Tổng số hạt proton, electron và neutron trong nguyên tử fluorine là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "19",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "28",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "30",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "32",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h10_c1_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phổ khối của nguyên tố A được biểu diễn tại hình dưới đây:<br/>Nguyên tử khối trung bình của nguyên tố A là",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de2_image12.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "91,32",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "91,40",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "90,00",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "94,23",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h10_c1_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cấu hình electron nguyên tử nguyên tố X là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>. Số electron lớp ngoài cùng và tính chất của A là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1 electron, A là nguyên tố phi kim",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3 electron, A là nguyên tố kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1 electron, A là nguyên tố kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3 electron, A là nguyên tố phi kim",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h10_c1_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho bảng thông tin dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Loại hạt</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Khối lượng (amu)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Điện tích (e0)</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">neutron</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">1</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">electron</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,00055</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">-1</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">proton</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">1</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">+1</td></tr></table></div><br/>Nguyên tử helium có 2 proton, 2 neutron, 2 electron. Khối lượng của các electron chiếm bao nhiêu % khối lượng nguyên tử helium?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2,72%",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "0,272%",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0,0272%",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,0227%",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h10_c1_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Kí hiệu nguyên tử nguyên tố chlorine:",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de2_image13.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Điện tích hạt nhân của nguyên tử chlorine là +17",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chlorine là một nguyên tử phi kim",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cấu hình electron của nguyên tử chlorine là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong nguyên tử chlorine tổng số hạt cấu tạo nên nguyên tử là 35",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Tổng số hạt là p + n + e = 2p + n = 52",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h10_c1_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong lịch sử các thuyết về mô hình nguyên tử có mô hình hành tinh nguyên tử (mô hình Rutherford - Bohr) và mô hình hiện đại của nguyên tử",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de2_image14.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Với nguyên tử hydrogen, mô hình (1) là mô hình hiện đại, mô hình (2) là mô hình hành tinh nguyên tử",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khái niệm về xác suất tìm thấy electron xuất phát từ mô hình hành tinh nguyên tử",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Theo mô hình (1), electron chuyển động trên quỹ đạo xác định xung quanh hạt nhân",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khái niệm về orbital nguyên tử xuất phát từ mô hình hiện đại của nguyên tử",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. (1) là mô hình hành tinh nguyên tử, (2) là mô hình hiện đại.<br/>b. S. Khái niệm về xác suất tìm thấy electron xuất phát từ mô hình hiện đại.<br/>c. Đ.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h10_c1_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho 3 nguyên tử:  121314666X,X,X",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các nguyên tử trên thuộc cùng một nguyên tố hóa học",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các giá trị 12, 13, 14 là số khối của các nguyên tử",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Giá trị 6 trong các kí hiệu nguyên tử gọi là điện tích hạt nhân nguyên tử",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các nguyên tử trên có cùng số neutron",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Chúng là đồng vị của nhau nên có cùng số p khác số n",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h10_c1_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Ở trạng thái cơ bản: Nguyên tử của nguyên tố X có tổng số electron trong các phân lớp p là 7. Nguyên tử của nguyên tố Y có số hạt mang điện nhiều hơn số hạt mang điện của X là 8. Nguyên tử của nguyên tố Z có sự phân bố các electron thuộc các lớp là (2, 8)",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cấu hình electron của ion Y<sup>–</sup> là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong hợp chất XY<sub>3</sub>, có tổng số hạt electron là 61",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X là kim loại, Y là phi kim và Z là khí hiếm",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở trạng thái cơ bản, nguyên tử nguyên tố X và Y đều có 1 electron độc thân",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>Cấu hình của X: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup> (có 13e)<br/>Y: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup> (có 17e, thỏa mãn điều kiện 2p<sub>Y</sub> – 2p<sub>X</sub> = 8)<br/>Z: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup><br/>a. S. Cấu hình electron của ion Y<sup>–</sup>: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>.<br/>b. S. p<sub>X</sub> + 3p<sub>Y</sub> = 64.<br/>c. Đ.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h10_c1_de2_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nguyên tử của nguyên tố phosphorus có 15 proton, 15 electron và 16 neutron. Tổng số hạt mang điện trong nguyên tử phosphorus là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "30",
+        "explanation": "Đáp án: 30",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h10_c1_de2_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Ở trạng thái cơ bản, nguyên tử của nguyên tố chrominium (Z = 24) có bao nhiêu electron độc thân?",
+        "images": [],
+        "correctAnswer": "6",
+        "explanation": "Đáp án: 6",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h10_c1_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Các đám mây gây hiện tượng sấm sét tạo nên bởi những hạt nước nhỏ li ti mang điện tích. Một phép đo thực nghiệm cho thấy, một giọt nước có đường kính 50  ìm , mang một lượng điện tích âm là  173,33.10C-- . Hãy cho biết điện tích âm của giọt nước trên tương đương với điện tích của bao nhiêu electron? Biết điện tích của electron là  1,602.1019-- C. (Kết quả làm tròn đến hàng đơn vị)",
+        "images": [],
+        "correctAnswer": "208",
+        "explanation": "Đáp án: 208.<br/>Số electron tương đương bằng  17193,33.102081,602.10---»-",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h10_c1_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho 6 nguyên tố có số hiệu nguyên tử lần lượt là 1, 6, 9, 11, 20 và 35. Trong số các nguyên tố trên có bao nhiêu nguyên tố phi kim?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h10_c1_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong tự nhiên, oxygen có 3 đồng vị <sup>16</sup>O, <sup>17</sup>O, <sup>18</sup>O. Có bao nhiêu loại phân tử O<sub>2</sub> được tạo thành từ các đồng vị trên?",
+        "images": [],
+        "correctAnswer": "6",
+        "explanation": "Đáp án: 6.<br/>Có 6 loại phân tử O<sub>2</sub> là: <sup>16</sup>O – <sup>16</sup>O; <sup>16</sup>O – <sup>17</sup>O; <sup>16</sup>O – <sup>18</sup>O; <sup>17</sup>O – <sup>17</sup>O; <sup>17</sup>O – <sup>18</sup>O; <sup>18</sup>O – <sup>18</sup>O",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27
+      },
+      {
+        "id": "h10_c1_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong tự nhiên chlorine có hai đồng vị bền là  <sup>37</sup><sub>17</sub>Cl và <sup>35</sup><sub>17</sub>Cl . Nguyên tử khối trung bình của chlorine là 35,48. Phần trăm khối lượng của  <sup>37</sup><sub>17</sub>Cl  trong KClO<sub>3</sub> (cho biết nguyên tử khối K = 39; O = 16) là bao nhiêu %? (Kết quả làm tròn đến hàng phần trăm)",
+        "images": [],
+        "correctAnswer": "7,25",
+        "explanation": "Đáp án: 7,25.<br/>Gọi % số nguyên tử của  <sup>37</sup><sub>17</sub>Cl  là x% thì  <sup>35</sup><sub>17</sub>Cl  là (100 – x)%<br/>37.x35.(100x)35,48x24%100+-=Þ=<br/>3717Cl37.0,24%m.100%7,25%.3935,4816.3==++ .<br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "h10_c1_de3",
+    "code": "103",
+    "title": "Đề Kiểm Tra Định Kỳ Số 3 - Vỏ Electron (Mã 103)",
+    "topic": "Obitan nguyên tử (AO) & Cấu hình electron lớp vỏ",
+    "badge": "Mã 103",
+    "chapter": 1,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h10_c1_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các hạt cấu tạo nên hầu hết các nguyên tử là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "electron và proton",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "neutron và electron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "proton và neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "electron, proton và neutron",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h10_c1_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thông tin nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Proton mang điện tích dương, nằm trong hạt nhân, khối lượng gần bằng 1 amu",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Electron mang điện tích âm, nằm trong hạt nhân, khối lượng gần bằng 0 amu",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Neutron không mang điện, khối lượng gần bằng 1 amu",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nguyên tử trung hòa điện, có kích thước lớn hơn nhiều so với hạt nhân, nhưng có khối lượng gần bằng khối lượng hạt nhân",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h10_c1_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các electron được điền vào orbital theo thứ tự nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1s 2s 2p 3s 3p 3d 4s",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1s 2s 2p 3s 4s 3p 3d",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1s 2s 2p 3s 3p 4s 3d",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1s 2s 3s 4s 2p 3p 3d",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h10_c1_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khẳng định nào sau đây là đúng khi so sánh kích thước của hạt nhân so với kích thước của nguyên tử?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kích thước hạt nhân rất nhỏ so với nguyên tử",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hạt nhân có kích thước bằng một nửa nguyên tử",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hạt nhân chiếm gần như toàn bộ kích thước nguyên tử",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hạt nhân có kích thước bằng 2/3 kích thước nguyên tử",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h10_c1_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Lớp vỏ nguyên tử của nguyên tố R có 56 electron và số khối là 137. Kí hiệu nguyên tử nguyên tố R là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "13756 R",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "13781 R",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "8156 R",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5681 R",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h10_c1_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một loại nguyên tử hydrogen có cấu tạo đơn giản nhất, chỉ tạo nên từ 1 electron và 1 proton. Cho biết  pnemm1amu,m0,00055amu=»» . Nhận định nào sau đây là sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nuyên tử hydrogen là nguyên tử nhẹ nhất trong số các nguyên tử được biết cho đến nay",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khối lượng nguyên tử xấp xỉ 2 amu",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hạt nhân nguyên tử có khối lượng lớn gấp khoảng 1818 lần khối lượng lớp vỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nguyên tử hydrogen không có hạt neutron",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h10_c1_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử R có điện tích lớp vỏ nguyên tử là –41,6 &times; 10<sup>-19</sup> C. Điều khẳng định nào sau đây là không chính xác? Biết điện tích của hạt electron là –1,609 &times; 10<sup>-19</sup> C",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Lớp vỏ nguyên tử R có 26 electron",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hạt nhân nguyên tử R có 26 proton",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hạt nhân nguyên tử R có 26 neutron",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nguyên tử R trung hòa về điện",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h10_c1_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Mỗi orbital nguyên tử chứa tối đa",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1 electron",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2 electron",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3 electron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4 electron",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h10_c1_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thông tin về các nguyên tử Q, R, S, T được cho trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Nguyên tử</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Số proton</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Số neutron</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Số eletcron</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Q</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">R</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">S</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">6</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">T</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8</td></tr></table></div><br/>Hai nguyên tử là đồng vị của nhau là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Q và S",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Q và T",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "R và T",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "R và S",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h10_c1_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tố boron (B) có nguyên tử khối trung bình là 10,81. Trong tự nhiên, boron có hai đồng vị là  105B  và  115B . Phần trăm số nguyên tử của đồng vị  105B  là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "81%",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "19%",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0,19%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,81%",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h10_c1_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình sau biểu diễn hình dạng orbital nguyên tử (AO) nào sau đây?",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de3_image11.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "s",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "p<sub>x</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "p<sub>y</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "p<sub>z</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h10_c1_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nitrogen có hai đồng vị bền là  <sup>14</sup><sub>7</sub>N  và  <sup>15</sup><sub>7</sub>N . Oxygen có ba đồng vị bền là  <sup>16</sup><sub>8</sub>O ,  <sup>17</sup><sub>8</sub>O ,  <sup>18</sup><sub>8</sub>O . Số hợp chất NO<sub>2</sub> tạo bởi các đồng vị trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "9",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "12",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h10_c1_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Có các phát biểu sau:<br/>(a) Trong một nguyên tử luôn luôn có số proton bằng số electron và bằng số đơn vị điện tích hạt nhân.<br/>(b) Tổng số proton và số electron trong một hạt nhân được gọi là số khối.<br/>(c) Số khối (A) là khối lượng tuyệt đối của nguyên tử.<br/>(d) Nguyên tử khối của một nguyên tố là nguyên tử khối trung bình của hỗn hợp các đồng vị của nguyên tố đó.<br/>Số phát biểu không đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h10_c1_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Lớp M có 9 phân lớp",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Lớp L có 4 orbital",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phân lớp p có 3 orbital",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Năng lượng electron trên lớp K là thấp nhất",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h10_c1_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong nguyên tử Chlorine (Z = 17), số electron ở phân mức năng lượng cao nhất là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "7",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "5",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "9",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h10_c1_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sự chuyển động của electron theo quan điểm hiện đại được mô tả như thế nào?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Electron chuyển động rất nhanh xung quanh hạt nhân không theo một quỹ đạo xác định tạo thành vỏ nguyên tử",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chuyển động của electron trong nguyên tử theo một quỹ đạo nhất định hình tròn hay hình bầu dục",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Electron chuyển động cạnh hạt nhân theo một quỹ đạo xác định tạo thành vỏ nguyên tử",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Electron chuyển động rất chậm gần hạt nhân theo một quỹ đạo xác định tạo thành vỏ nguyên tử",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h10_c1_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tố Q có số hiệu nguyên tử bằng 14. Electron cuối cùng của nguyên tử nguyên tố Q điền vào lớp, phân lớp nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "K, s",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "L, p",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "M, p",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N, d",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h10_c1_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử X, ion Y<sup>2+</sup>và ion Z<sup>-</sup> đều có cấu hình electron là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>. X, Y, Z là kim loại, phi kim hay khí hiếm?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "X: Phi kim ; Y: Khí hiếm ; Z: Kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "X: Khí hiếm ; Y: Phi kim ; Z: Kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X: Khí hiếm ; Y: Kim loại ; Z: Phi kim",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "X: Khí hiếm ; Y: Phi kim ; Z: Kim loại",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h10_c1_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Năm 1911, E. Rutherford và các cộng sự đã dùng các hạt α bắn phá lá vàng mỏng và dùng màn huỳnh quang đặt sau lá vàng để theo dõi đường đi của các hạt α (mô tả qua hình dưới đây).<br/>Kết quả thí nghiệm đã rút ra các kết luận về nguyên tử như sau:",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de3_image17.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nguyên tử có cấu tạo rỗng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hạt nhân nguyên tử có kích thước rất nhỏ so với kích thước nguyên tử",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hạt nhân nguyên tử mang điện tích âm",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Xung quanh nguyên tử là các electron chuyển động tạo nên lớp vỏ nguyên tử",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Hạt nhân nguyên tử mang điện tích dương.<br/>d. S. Xung quanh hạt nhân là các electron chuyển động tạo nên lớp vỏ nguyên tử",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h10_c1_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Một nguyên tử của nguyên tố sulfur (S) có 16 proton và 16 neutron trong hạt nhân",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kí hiệu của nguyên tử sulfur là  1616S",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở trạng thái cơ bản, lớp ngoài cùng của nguyên tử sulfur có 4 electron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sulfur là nguyên tố phi kim",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tất cả các nguyên tử thuộc nguyên tố sulfur đều có số khối là 32",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>Câu hình e: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>.<br/>a. S.  <sup>32</sup><sub>16</sub>S.<br/>b. S. Có 6e ở lớp ngoài cùng.<br/>c. Đ.<br/>d. S. Sulfur có nhiều đồng vị ví dụ như đồng vị <sup>34</sup>S có số khối là 34",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h10_c1_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong nguyên tử, các electron sắp xếp thành từng lớp và phân lớp theo các mức năng lượng từ thấp đến cao",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các electron ở lớp L có mức năng lượng gần bằng nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các electron ở lớp M (n = 3) liên kết chặt chẽ với hạt nhân hơn các electron ở lớp K (n = 1)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các electron ở lớp M có mức năng lượng cao hơn các electron ở lớp K",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các electron ở phân lớp 3s có mức năng lượng thấp hơn các electron ở phân lớp 2p",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. S. Lớp K gần hạt nhân hơn nên liên kết chặt chẽ hơn.<br/>c. Đ. Electron thuộc lớp nào càng xa hạt nhân thì mức năng lượng lớn hơn.<br/>d. S. Electron ở phân lớp 3s có mức năng lượng lớn hơn 2p",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h10_c1_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Magnesium (Mg) là một trong những nguyên tố vi lượng đóng vai trò quan trọng của cơ thể, giúp xương chắc khỏe, tim khỏe mạnh và lượng đường trong máu bình thường. Tỉ lệ phần trăm số nguyên tử các đồng vị của magnesium được xác định theo phổ khối lượng như hình dưới đây (biết rằng điện tích z của các ion đồng vị của magnesium đều bằng +2):",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de3_image19.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Magnesium có 3 đồng vị bền",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nguyên tử khối trung bình của magnesium là 24,53",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đồng vị chiếm tỉ lệ phần trăm số nguyên tử lớn nhất là <sup>24</sup>Mg",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phần trăm khối lượng của đồng vị <sup>26</sup>Mg trong tinh thể MgSO<sub>4</sub>.7H<sub>2</sub>O là 1,32% (cho nguyên tử khối của S = 32; O = 16; H = 1)",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. S.  Mg24.78,9925.1026.11,01A24,32100++== .<br/>c. Đ.<br/>d. S.  2611,0126.100%Mg.1001,16%24,323216.47.(1.216)==++++",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h10_c1_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Silicon (Z = 14) là nguyên tố được sử dụng để chế tạo vật liệu bán dẫn, có vai trò quan trọng trong sản xuất công nghiệp. Trong tự nhiên, nguyên tố này có 3 đồng vị trong đó một đồng vị có số khối là 30. Số hạt neutron trong đồng vị này là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "16",
+        "explanation": "Đáp án: 16.<br/>N = A – Z = 30 – 14 = 16",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h10_c1_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nguyên tử của nguyên tố X có cấu hình electron đã xây dựng đến phân lớp 3d<sup>2</sup>. Tổng số electron của nguyên tử nguyên tố X là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "22",
+        "explanation": "Đáp án: 22.<br/>1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>2</sup>4s<sup>2</sup>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h10_c1_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nguyên tử của nguyên tố potassium có 19 electron. Ở trạng thái cơ bản, potassium có bao nhiêu orbital chứa electron?",
+        "images": [],
+        "correctAnswer": "10",
+        "explanation": "Đáp án: 10.<br/>Cấu hình electron: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup><br/>Ở trạng thái cơ bản, potassium có số orbital chứa = 1 + 1 + 3 + 1 + 3 + 1 = 10",
+        "explanationImages": [
+          "/assets/hoa12/c5/h10_c1_de3_image26.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h10_c1_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nguyên tố Y ở dạng YO<sub>4</sub><sup>3</sup><sup>–</sup>, đóng vai trò quan trọng trong các phân tử sinh học như DNA và RNA. Các tế bào sống sử dụng YO<sub>4</sub><sup>3</sup><sup>–</sup>,để vận chuyển năng lượng. Nguyên tử của nguyên tố Y có cấu hình electron kết thúc ở phân lớp 3p<sup>3</sup>. Tổng số hạt mang điện trong ion YO<sub>4</sub><sup>3</sup><sup>–</sup> là bao nhiêu? Biết số hiệu nguyên tử của O bằng 8",
+        "images": [],
+        "correctAnswer": "97",
+        "explanation": "Đáp án: 97.<br/>Y: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup> ⇒ Y có 15e.<br/>Tổng số hạt mang điện trong phân tử YO<sub>4</sub><sup>3-</sup> = 15.2 + 8.2.4 + 3 =  97",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h10_c1_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho 7 nguyên tố có số hiệu nguyên tử lần lượt là 6, 13, 16, 18, 19, 20 và 24. Trong số các nguyên tố trên có bao nhiêu nguyên tố kim loại?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27
+      },
+      {
+        "id": "h10_c1_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Calcium (Ca) là một loại khoáng chất có vai trò rất quan trọng trong cơ thể người. Trong cơ thể, calcium chiếm 1,5 – 2% trọng lượng, 99% lượng calcium tồn tại trong xương, răng, móng và 1% trong máu. Calcium kết hợp với phosphorus là thành phần cấu tạo cơ bản của xương và răng, làm cho xương và răng chắc khỏe. Cấu trúc của kim loại calcium được phát hiện như hình sau:<br/>Khối lượng riêng của calcium kim loại là 1,55 g/cm<sup>3</sup>. Giả thiết rằng, trong tinh thể calcium, các nguyên tử là những hình cầu chiếm 74% thể tích tinh thể, phần còn lại là khe rỗng. Xác định bán kính nguyên tử calcium (theo đơn vị angstrom biết  10110Åm-= ). Cho nguyên tử khối của calcium là 40 và công thức tính thể tích hình cầu là  34Vr3=p , trong đó r là bán kính hình cầu. (Kết quả làm tròn đến hàng phần trăm)",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de3_image20.png"
+        ],
+        "correctAnswer": "1,96",
+        "explanation": "Đáp án: 1,96.<br/>Cho 1 mol Ca  m<sub>Ca</sub> = 40 g<br/>Ta có: m = D.V  V<sub>Ca</sub> = 40 : 1,55 = 25,8 (cm<sup>3</sup>)<br/>V<sub>Ca (tinh thể)</sub> = 25,8.74% = 19,092 (cm<sup>3</sup>)<br/>V<sub>1 nguyên tử Ca</sub> = 19,092 : 6,022.10<sup>23</sup> = 31,7.10<sup>−24</sup> (cm<sup>3</sup>)<br/>Bán kính nguyên tử Calcium là<br/>Đổi đơn vị ra angstrom thì r = 1,96 Å.<br/>",
+        "explanationImages": [
+          "/assets/hoa12/c5/h10_c1_de3_image27.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "h10_c1_de4",
+    "code": "104",
+    "title": "Đề Kiểm Tra Tổng Hợp Chương 1 (Mã 104)",
+    "topic": "Tổng hợp toàn bộ kiến thức Cấu tạo nguyên tử",
+    "badge": "Mã 104",
+    "chapter": 1,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h10_c1_de4_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong nguyên tử, hạt chuyển động ngoài vỏ là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "proton",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "proton và neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "electron",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h10_c1_de4_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trường hợp nào sau đây có sự tương ứng giữa hạt cơ bản với khối lượng và điện tích của chúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Proton, m  0,00055 amu, q = +1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Neutron, m  1 amu, q = 0",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Electron, m  1 amu, q = -1",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Proton, m  1 amu, q = -1",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h10_c1_de4_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cấu hình electron nào sau đây viết sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup>4p<sup>5</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>3</sup>4s<sup>2</sup>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h10_c1_de4_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Quan sát hình vẽ sau mô tả thí nghiệm tìm ra hạt nhân nguyên tử vào năm 1911 của nhà vật lý người New Zealand là E. Rutherford. Hãy cho biết phát biểu đúng?",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de4_image1.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nguyên tử có cấu tạo rỗng nên các hạt α bật ngược trở lại",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hạt nhân nguyên tử mang điện tích âm nên hầu hết các hạt α xuyên qua lá vàng",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hạt nhân nguyên tử có kích thước rất lớn hơn với kích thước nguyên tử",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nguyên tử có cấu tạo rỗng nên hầu hết các hạt α xuyên qua lá vàng",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h10_c1_de4_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số hiệu nguyên tử cho biết thông tin nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Số proton",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Số neutron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Số khối",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nguyên tử khối",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h10_c1_de4_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một nguyên tử Y có cấu tạo hạt nhân gồm 8 proton và 8 neutron, lớp vỏ có 8 electron.<br/><div class=\"inline-block my-2 p-2.5 rounded-xl border border-indigo-200 bg-indigo-50/70 text-slate-800 text-xs font-medium\">Hạt nhân: 8p, 8n &bull; Vỏ: 8e (K: 2e, L: 6e)</div><br/>Kí hiệu nguyên tử của nguyên tố Y trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "<sup>15</sup><sub>7</sub>Y",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "<sup>16</sup><sub>8</sub>Y",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "<sup>8</sup><sub>4</sub>Y",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "<sup>8</sup><sub>8</sub>Y",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "Đáp án: B.<br/>Số hiệu Z = p = 8; Số khối A = p + n = 8 + 8 = 16 &rArr; Kí hiệu: <sup>16</sup><sub>8</sub>Y.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h10_c1_de4_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tử của nguyên tố X có tổng số hạt proton, neutron và electron là 40. Tổng số hạt mang điện nhiều hơn tổng số hạt không mang điện là 12 hạt. Nguyên tố X có số khối là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "26",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "27",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "28",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "23",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h10_c1_de4_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các đồng vị của cùng một nguyên tố hóa học là những nguyên tử có",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "cùng số proton nhưng khác nhau về số neutron",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "cùng số neutron nhưng khác nhau về số proton",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "cùng tổng số proton và neutron nhưng khác nhau về số electron",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "cùng số electron nhưng khác nhau về tổng số proton và neutron",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h10_c1_de4_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các nguyên tử có kí hiệu hóa học sau đây:  121414676X,Y,Z . Những nguyên tử nào cùng thuộc một nguyên tố hóa học?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "X và Y",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Y và Z",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X và Z",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "X, Y và Z",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h10_c1_de4_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho biết: chlorine có 2 đồng vị là  <sup>35</sup><sub>17</sub>Cl ,  <sup>35</sup><sub>17</sub>Cl , hydrogen có 3 đồng vị là  123111H,H,H . Số loại phân tử HCl được tạo ra bởi các đồng vị trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "8",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "6",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h10_c1_de4_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đồng có hai đồng vị bền trong tự nhiên là <sup>63</sup>Cu và <sup>65</sup>Cu. Nguyên tử khối trung bình của đồng là 63,55. Tỉ lệ phần trăm số nguyên tử tương ứng của hai đồng vị <sup>63</sup>Cu và <sup>65</sup>Cu lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "72,5% và 27,5%",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "27,5% và 72,5%",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "50,0% và 50,0%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "63,0% và 37,0%",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "Đáp án: A.<br/>Ā = [63x + 65(100 - x)] / 100 = 63,55 &rArr; x = 72,5% (<sup>63</sup>Cu) và 27,5% (<sup>65</sup>Cu).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h10_c1_de4_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số proton, neutron và electron của  <sup>39</sup><sub>19</sub>K  lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "19, 20, 39",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "20, 19, 39",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "19, 20, 19",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "19, 19, 20",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h10_c1_de4_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phân lớp 3d có số electron tối đa là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "18",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "14",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "10",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h10_c1_de4_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân lớp 4s có mức năng lượng cao hơn phân lớp 3d",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Lớp thứ 4 có tối đa 18 eletron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Lớp electron thứ 3 (lớp M) có 3 phân lớp",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Số electron tối đa trong phân lớp 3d là 18",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h10_c1_de4_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Electron càng ở xa hạt nhân thì có năng lượng càng thấp",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Số lượng electron tối đa trong một phân lớp luôn là một số chẵn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phân lớp p có nhiều orbital hơn phân lớp s",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Số electron tối đa trên phân lớp p gấp ba lần số electron tối đa trên phân lớp s",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h10_c1_de4_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số phân lớp bão hòa trong các phân lớp: 1s<sup>2</sup>; 2s<sup>2</sup>; 2p<sup>3</sup>; 3d<sup>10</sup>; 3p<sup>4</sup> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h10_c1_de4_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sự phân bố electron theo các ô orbital nào dưới đây là đúng với nguyên tử Carbon (Z = 6)?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1s(↑↓) 2s(↑↓) 2p(↑↓ |  | )",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1s(↑↓) 2s(↑↓) 2p(↑ | ↑ | )",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1s(↑↓) 2s(↑) 2p(↑ | ↑ | ↑)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1s(↑↓) 2s(↑↓) 2p(↑ | ↓ | )",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "Đáp án: B.<br/>Cấu hình e của Carbon: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>2</sup>. Theo quy tắc Hund, 2 electron độc thân ở phân lớp 2p phân bố vào 2 ô orbital khác nhau và có spin cùng chiều: 2p(↑ | ↑ | ).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h10_c1_de4_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tố X được sử dụng rộng rãi để chống đóng băng và khử băng như một chất bảo quản. Nguyên tố Y là nguyên tố thiết yếu cho các cơ thể sống, đồng thời nó được sử dụng nhiều trong công việc sản xuất phân bón. Nguyên tử của nguyên tố X có electron ở mức năng lượng cao nhất là 3p. Nguyên tử của nguyên tố Y có một electron ở lớp ngoài cùng 4s. Nguyên tử X và Y có số electron hơn kém nhau là 3. Nguyên tử X, Y lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "khí hiếm và kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "kim loại và khí hiếm",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "kim loại và kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "phi kim và kim loại",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h10_c1_de4_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Electron được tìm ra vào năm 1897 bởi nhà bác học J.J. Thomson (Tôm-xơn, người Anh). Từ khi được phát hiện đến nay electron đã đóng vai trò t&deg; lớn trong nhiều lĩnh vực của cuộc sống như: năng lượng, truyền thông và thông tin",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Electron là hạt mang điện tích âm",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Electron chỉ thoát ra khỏi nguyên tử trong những điều kiện đặc biệt",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Electron có khối lượng 9,109 &times; 10<sup>-28</sup> gam",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Electron chiếm phần lớn khối lượng nguyên tử",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Electron chiếm phần lớn ở lớp vỏ nguyên tử",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h10_c1_de4_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong lịch sử các thuyết về mô hình nguyên tử có mô hình hành tinh nguyên tử (mô hình Rutherford - Bohr) và mô hình hiện đại của nguyên tử",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de4_image18.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Với nguyên tử hydrogen, mô hình (1) là mô hình hiện đại, mô hình (2) là mô hình hành tinh nguyên tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khái niệm về xác suất tìm thấy electron xuất phát từ mô hình hành tinh nguyên tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Theo mô hình (1), electron chuyển động trên quỹ đạo xác định xung quanh hạt nhân.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khái niệm về orbital nguyên tử xuất phát từ mô hình hiện đại của nguyên tử.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án: a. Sai ((1) là mô hình hành tinh nguyên tử, (2) là mô hình hiện đại); b. Sai (Khái niệm xác suất tìm thấy electron xuất phát từ mô hình hiện đại); c. Đúng; d. Đúng.",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h10_c1_de4_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Nguyên tử X có 16 proton và 16 neutron. Nguyên tử Y có số đơn vị điện tích hạt nhân là 16 và số khối bằng 34",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kí hiệu hóa học của nguyên tử X, Y lần lượt là  1632X  và  1634Y",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "X và Y không là đồng vị của cùng một nguyên tố hóa học",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X và Y có tính chất hóa học giống nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Số neutron của Y nhiều hơn số neutron của X là 2",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S.  3216X  và  3416Y .<br/>b. S. X và Y là đồng vị của nhau vì có cùng số proton.<br/>c. Đ.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h10_c1_de4_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Aluminum được sử dụng phổ biến trong đời sống (chế tạo dụng cụ nhà bếp, cửa,…) cũng như trong công nghiệp (chế tạo một số bộ phân của máy bay). Nguyên tử của nguyên tố Aluminum có 13 electron",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Aluminum có 3 lớp electron, lớp ngoài cùng có 3 electron",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cấu hình electron của ion Al<sup>3+</sup> trùng với cấu hình electron của nguyên tử Ne (Z = 10)",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở trạng thái cơ bản, aluminium có 3 electron độc thân",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Aluminum là nguyên tố p",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>Nguyên tử Al (Z = 13) có cấu hình electron: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>.<br/>Biểu diễn dưới dạng ô orbital:<br/>a. Đ.<br/>b. Đ. Nguyên tử Al nhường đi 3 electron từ các orbital 3p, 3s để tạo thành ion Al<sup>3+</sup> có cấu hình electron: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>.<br/>c. S. Có 1 electron độc thân.<br/>d. Đ",
+        "explanationImages": [
+          "/assets/hoa12/c5/h10_c1_de4_image25.png"
+        ],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h10_c1_de4_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tính đến năm 2016, con người đã tìm ra bao nhiêu nguyên tố hóa học?",
+        "images": [],
+        "correctAnswer": "118",
+        "explanation": "Đáp án: 118",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h10_c1_de4_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Hình ảnh bên mô tả AO p<sub>x</sub> với hai thùy.<br/>Xác suất tìm thấy electron ở mỗi thùy là khoảng nhiêu phần trăm?",
+        "images": [
+          "/assets/hoa12/c5/h10_c1_de4_image21.png"
+        ],
+        "correctAnswer": "45",
+        "explanation": "Đáp án: 45",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h10_c1_de4_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho 7 nguyên tố có số hiệu nguyên tử lần lượt là 6, 13, 16, 18, 19, 20 và 24. Trong số các nguyên tố trên có bao nhiêu nguyên tố kim loại?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h10_c1_de4_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nếu đường kính của nguyên tử khoảng 100 pm thì đường kính của hạt nhân khoảng bao nhiêu pm?",
+        "images": [],
+        "correctAnswer": "0,01",
+        "explanation": "Đáp án: 0,01.<br/>Đường kính nguyên tử lớn gấp khoảng 10000 lần so với đường kính hạt nhân<br/>đường kính của hạt nhân =  00,011000001=",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h10_c1_de4_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Một nguyên tử X bền có tổng số hạt (proton, neutron, electron) là 13. Số hạt mang điện nhiều hơn số hạt không mang điện trong nguyên tử X là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "3",
+        "acceptedAnswers": [
+          "3"
+        ],
+        "explanation": "Đáp án: 3.<br/>Ta có: 2p + n = 13 ⇒ n = 13 – 2p.<br/>Vì X là nguyên tử bền: p ≤ n ≤ 1,5p ⇒ p = 4; n = 5.<br/>Số hạt mang điện nhiều hơn số hạt không mang điện: 2p – n = 2 × 4 – 5 = 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27
+      },
+      {
+        "id": "h10_c1_de4_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Muối Epsom có tên gọi khác là muối magnesium sulfate, thường được hòa tan vào nước để tắm, có tác dụng làm giảm sưng, viêm, cải thiện lưu thông máu, tốt cho sự phát triển của khớp, làm dịu vết muỗi đốt,… Magnesium trong tự nhiên có ba đồng vị bền là <sup>24</sup>Mg chiếm 78,99%, <sup>25</sup>Mg chiếm 10,00% và <sup>26</sup>Mg chiếm 11,01% số nguyên tử. Phần trăm khối lượng của nguyên tố magnesium trong tinh thể muối MgSO<sub>4</sub>.7H<sub>2</sub>O (Muối Epsom dạng ngậm nước) là bao nhiêu %? Biết nguyên tử khối của H = 1, O = 16, S = 32. (Kết quả làm tròn đến hàng phần mười)",
+        "images": [],
+        "correctAnswer": "9,87",
+        "explanation": "Đáp án: 9,87.<br/>Mg78,99124.25.26.11,01A24,321000++==<br/>24,32%Mg.1009,87%24,323216.47.18==+++<br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28
+      }
+    ]
+  }
+];
 
 export const HOA10_CHUONG1_7_EXAMS: Chuong1Exam[] = HOA10_CHUONG1_EXAMS;
 

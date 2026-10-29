@@ -82,7 +82,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>11</sub>C<sub>6</sub>H<sub>4</sub>SOзNa",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -91,7 +91,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -115,13 +115,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "acid béo.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "xà phòng.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -130,7 +130,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -160,16 +160,16 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Maltose",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
             "text": "Saccharose.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -187,7 +187,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "tinh bột và glucose",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -208,7 +208,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -232,7 +232,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "aminoacetic acid.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -247,7 +247,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -265,7 +265,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "\\mathrm{HCOOCH}_3",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -286,7 +286,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -310,7 +310,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "2",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -325,7 +325,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -351,7 +351,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "CH<sub>2</sub>=CH<sub>2</sub>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -366,7 +366,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -396,7 +396,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Vật liệu composite được tổng hợp từ hai hay nhiều vật liệu khác nhau tạo nên vật liệu mới có tính vượt trội so với các vật liệu thành phần.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -405,7 +405,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -423,7 +423,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Nylon-6,6",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -444,7 +444,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -501,7 +501,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "cao hơn và thấp hơn.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -522,7 +522,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -552,13 +552,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Kết quả thí nghiệm chứng tỏ lòng trắng trứng (polypeptide) có nhiều liên kết peptide.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
             "text": "Phản ứng này có thể dùng để phân biệt lòng trắng trứng với các dipeptide.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Đúng.<br/>b) Sai. Xảy ra phản ứng màu biuret tạo dung dịch màu tím.<br/>c) Đúng.<br/>d) Đúng. Lòng trắng trứng có phản ứng trên còn dipeptide thì không.",
@@ -590,13 +590,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Sức điện động chuẩn của pin được tính bằng công thức  2+2+ooopinCu/CuZn/ZnEEE.=-",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
             "text": "Sức điện động chuẩn của pin là 1,34V. Sử dụng pin này để thắp sáng một bóng đèn nhỏ với cường độ dòng điện chạy qua là I = 0,02A. Cho biết  Q = n.F = I.t,  trong đó: Q là điện lượng, n là số mol electron đi qua dây dẫn,  I  là cường độ dòng điện (A), t là thời gian (giây), F là hằng số Faraday (F = 96500 C.mol<sup>-1</sup>). Nếu điện cực kẽm hao mòn 0,1 mol do pin phóng điện thì thời gian tối đa mà pin thắp sáng được bóng đèn là 268 giờ. (Kết quả làm tròn đến hàng đơn vị).",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Đúng. Trong pin điện, cathode là cực dương.<br/>b) Sai. Khi pin hoạt động, khối lượng điện cực đồng tăng do có đồng bám vào.<br/>c) Đúng.  2+2+ooooopinCathodeAnodeCu/CuZn/ZnEEEEE.=-=-<br/>d) Đúng.  nF0,1.2.96500t965000s268h.I0,02====",
@@ -615,7 +615,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.<br/>CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>;  CH<sub>3</sub>CH<sub>2</sub>CH(NH<sub>2</sub>)CH<sub>3</sub>;<br/>3223CHCHCHNH;CH---  2333NHCHCCH.CH--",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "4"
+        ]
       },
       {
         "id": "hoa12_ck1_de01_p3_q2",
@@ -628,7 +631,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 53.<br/>10.000.20% = m.37,7  m = 53 g.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "53"
+        ]
       },
       {
         "id": "hoa12_ck1_de01_p3_q3",
@@ -641,7 +647,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2341.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "2341"
+        ]
       },
       {
         "id": "hoa12_ck1_de01_p3_q4",
@@ -654,7 +663,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3600.<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>  2C<sub>2</sub>H<sub>5</sub>OH + 2CO<sub>2</sub><br/>Số mol ethanol trong 2 triệu chai rượu vang  25CHOH13,8.750.0,82n3,646.100==  tấn mol<br/>6126CHOn = 1,8 tấn mol   6126CHOm  = 324 tấn  m<sub>nho</sub> =  324360015%.60%=  tấn.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "3600"
+        ]
       },
       {
         "id": "hoa12_ck1_de01_p4_q1",
@@ -735,7 +747,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "methylamine",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -744,7 +756,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -762,7 +774,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "sodium palmitate",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -774,7 +786,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "sodium stearate",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -783,7 +795,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -846,7 +858,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "2",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -861,7 +873,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -879,7 +891,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -900,7 +912,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -924,13 +936,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "195,0.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "292,5.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -939,7 +951,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -963,13 +975,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "6",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "7",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -978,7 +990,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -996,7 +1008,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Cắt mạch polymer",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -1017,7 +1029,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1049,7 +1061,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "CH<sub>2</sub>=CH–CH<sub>3</sub>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -1058,7 +1070,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1121,13 +1133,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Al<sup>3+</sup>/Al",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "2Cl<sup>-</sup>/Cl<sub>2</sub>",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -1136,7 +1148,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1172,10 +1184,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "1,56.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1199,13 +1211,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Khi trộn thịt, cá tươi với muối thì thịt cá đang mềm bị đông cứng lại.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Khi nấu canh thịt, nếu thêm giấm ăn hoặc quả chua vào thì thịt sẽ nhanh nhừ hơn.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -1239,7 +1251,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Kim loại đồng đóng vai trò là cực dương (cathode) của pin. Kẽm đóng vai trò là cực âm (anode) của pin vì thế điện cực chuẩn của Zn nhỏ hơn.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -1251,7 +1263,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Pin Gavalni gồm điện cực kẽm và điện cực đồng ngăn cách bằng màng bán thấm.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Đứng. Eo pin = 0,34 – (–0,76) = 1,1 V.<br/>b) Đúng.<br/>c) Sai. Tính khử của Zn mạnh hơn Cu.<br/>d) Đúng.",
@@ -1270,7 +1282,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "3"
+        ]
       },
       {
         "id": "hoa12_ck1_de02_p3_q2",
@@ -1283,7 +1298,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "2"
+        ]
       },
       {
         "id": "hoa12_ck1_de02_p3_q3",
@@ -1296,7 +1314,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2,8.<br/>()()6723nx3x12.(62x)%C.10049,785x2,8.7C(HO11159x13OCOCHOHx)-+éùÞ==Þ=ëû++-",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "2,8",
+          "2.8"
+        ]
       },
       {
         "id": "hoa12_ck1_de02_p3_q4",
@@ -1309,7 +1331,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 238.<br/>()26105nC3OCHO324.80%n1,6kmolV1,6.6.24,79238m162==Þ==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "238"
+        ]
       },
       {
         "id": "hoa12_ck1_de02_p4_q1",
@@ -1390,7 +1415,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "3.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -1399,7 +1424,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1423,13 +1448,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Tinh bột",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Cellulose",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -1438,7 +1463,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1458,7 +1483,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "\\mathrm{C}_{12} \\mathrm{H}_{20} \\mathrm{O}_2",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -1470,7 +1495,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "\\mathrm{C}_{12} \\mathrm{H}_{18} \\mathrm{O}_2",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -1479,7 +1504,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1509,7 +1534,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "triester của glycerol với các acid béo",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -1518,7 +1543,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1542,13 +1567,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "2H<sup>+</sup>/H<sub>2</sub>.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Al<sup>3+</sup>/Al.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -1557,7 +1582,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1587,7 +1612,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Saccharose, glucose",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -1596,7 +1621,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1614,7 +1639,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Ag.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -1635,7 +1660,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1665,7 +1690,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "dimethylamine",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -1674,7 +1699,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1710,10 +1735,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "CH<sub>3</sub>-[CH<sub>2</sub>]<sub>11</sub>-C<sub>6</sub>H<sub>4</sub>-SO<sub>3</sub>Na.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1749,10 +1774,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Polymer bị nóng chảy khi đun nóng gọi là polymer nhiệt dẻo.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1788,10 +1813,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "vật liệu nền và vật liệu cốt.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1817,7 +1842,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "(3), (4)",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -1832,7 +1857,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -1856,13 +1881,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Lysine và cadaverine đều có hai nhóm amine trong phân tử.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Lysine thuộc loại α-amino acid, còn cadaverine không phải amino acid",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -1925,7 +1950,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: -0,25.<br/>ENi/ Nio2+ = 0,34 – 0,59 = –0,25V.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "-0,25",
+          "-0.25"
+        ]
       },
       {
         "id": "hoa12_ck1_de03_p3_q2",
@@ -1938,7 +1967,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "2"
+        ]
       },
       {
         "id": "hoa12_ck1_de03_p3_q3",
@@ -1951,7 +1983,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.<br/>Lys là amino acid có 2-NH<sub>2</sub> và 1-COOH → Enzyme tripsine chỉ phân cắt liên kết peptide ngay sau Lys.<br/>→ Có thể thu được 3 tripeptide: Ala-Gly-Lys, Gly-Val-Lys, Gly-Lys-Val.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "3"
+        ]
       },
       {
         "id": "hoa12_ck1_de03_p3_q4",
@@ -1964,7 +1999,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 340.<br/>m<sub>glycerol</sub> = 4,6.10<sup>6</sup>.5 = 23.10<sup>6</sup> gam = 23 tấn.<br/>(C<sub>17</sub>H<sub>33</sub>COO)<sub>3</sub>C<sub>3</sub>H<sub>5</sub> + 3NaOH  3C<sub>17</sub>H<sub>33</sub>COONa + C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub><br/>()353CHOH230,25.884n0,25x3409265%==Þ==  tấn.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "340"
+        ]
       },
       {
         "id": "hoa12_ck1_de03_p4_q1",
@@ -2055,10 +2093,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "C<sub>2</sub>H<sub>5</sub>COOC<sub>2</sub>H<sub>5</sub>.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2076,7 +2114,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Chlorine hoá cao su thiên nhiên.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "b",
@@ -2097,7 +2135,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2127,16 +2165,16 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Benzylamine",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
             "text": "Aniline.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2154,13 +2192,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Khối lượng cực dương giảm dần",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
             "text": "Nồng độ H<sub>2</sub>SO<sub>4</sub> trong dung dịch giảm dần.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -2175,7 +2213,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2238,13 +2276,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Sự đông tụ protein bởi nhiệt độ.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Sự thuỷ phân protein bởi nhiệt độ.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -2253,7 +2291,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2291,10 +2329,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Maltose không có khả năng phản ứng với thuốc thử Tollens.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2320,7 +2358,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Cao su buna-S",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -2335,7 +2373,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2365,7 +2403,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Carbon số 6",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -2374,7 +2412,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2398,7 +2436,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "propylamine",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -2413,7 +2451,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2437,7 +2475,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Vật liệu composite có thành phần chính là polymer.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -2452,7 +2490,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2482,7 +2520,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "2H<sup>+</sup>/H<sub>2</sub>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -2491,7 +2529,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2521,13 +2559,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Sức điện động chuẩn lớn nhất của pin Galvani thiết lập từ hai cặp oxi hóa – khử trong số các cặp trên là 1,56 V.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
             "text": "Dựa vào bảng trên ta có thể dự đoán chiều hướng xảy ra phản ứng giữa hai cặp oxi hoá - khử",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Sai.<br/>b) Sai. Có 4 ion kim loại có tính oxi hóa yếu hơn Ag<sup>+</sup>.<br/>c) Đúng. Pin Zn-Ag có sức điện động lớn nhất là 1,56 V.<br/>d) Đúng.",
@@ -2556,7 +2594,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Nếu dung dịch X có pH = 8 thì glycine và aspartic acid di chuyển về anode của điện trường.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -2568,7 +2606,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Vị trí (3) tương ứng với chất lysine.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Đúng. pH > pI thì amino acid đó tồn tại chủ yếu ở dạng anion  di chuyển về cực dương.<br/>b) Đúng. pH > pI thì amino acid đó tồn tại chủ yếu ở dạng anion  di chuyển về cực dương.<br/>c) Sai. Giá trị pH thích hợp để tách các chất trên ra khỏi hỗn hợp là 6.<br/>d) Đúng. pH < pI thì amino acid đó tồn tại chủ yếu ở dạng cation  di chuyển về cực âm.",
@@ -2587,7 +2625,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "4"
+        ]
       },
       {
         "id": "hoa12_ck1_de04_p3_q2",
@@ -2600,7 +2641,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 432.<br/>Disaccharide  acid, tHOo2¾¾¾®+  2Monosaccharide  32oAg(NH)OH+¾¾¾¾¾¾®[]t  4Ag.<br/>Agm1.4.108432g.==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "432"
+        ]
       },
       {
         "id": "hoa12_ck1_de04_p3_q3",
@@ -2613,7 +2657,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 350.<br/>1 mắt xích nylon-7: -HN(CH<sub>2</sub>)<sub>6</sub>CO-   44450n350.127==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "350"
+        ]
       },
       {
         "id": "hoa12_ck1_de04_p3_q4",
@@ -2626,7 +2673,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 42.<br/>r2982298Ä(2())571,6HÄH==-oofHOlkJ<br/>Với 2 mol H<sub>2</sub>   r298ÄHo =  571,6kJ<br/>22HH36001n.2.21molm42g571,660%==Þ=",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "42"
+        ]
       },
       {
         "id": "hoa12_ck1_de04_p4_q1",
@@ -2699,7 +2749,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "sodium hoặc potassium của các acid béo.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -2714,7 +2764,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2744,7 +2794,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Chất nền (Matrix).",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -2753,7 +2803,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2822,7 +2872,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Fe có tính khử yếu hơn Mg",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -2831,7 +2881,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2861,7 +2911,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -2870,7 +2920,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2888,7 +2938,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Ở điều kiện thường, aniline là chất lỏng.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -2909,7 +2959,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2939,7 +2989,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "2H<sup>+</sup>+ 2e     H<sub>2</sub>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -2948,7 +2998,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -2978,7 +3028,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "cathode, ở đây chúng bị khử",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -2987,7 +3037,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3017,7 +3067,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Cung cấp năng lượng cho cơ thể.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -3026,7 +3076,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3050,7 +3100,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "ethanol tuyệt đối, acetic acid kết tinh, dung dịch H<sub>2</sub>SO<sub>4</sub>đặc.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -3065,7 +3115,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3089,7 +3139,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "(1) kết tủa vàng; (2) đông tụ.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -3104,7 +3154,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3140,10 +3190,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "57,00.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3173,7 +3223,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Polyisoprene có thể phản ứng cộng với Cl<sub>2</sub>, HCl...",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -3213,13 +3263,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Có thể thay điện cực Ni bằng điện cực trơ như graphite.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
             "text": "Dung dịch  2ZnCl  phù hợp làm dung dịch điện li ở ngăn anode.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>Anode: Zn  Zn<sup>2+</sup> + 2e<br/>Cathode: Ni<sup>2+</sup> + 2e  Ni<br/>a) Đúng.<br/>b) Sai. Điện cực Zn xảy ra quá trình oxi hóa, điện cực Ni xảy ra quá trình khử.<br/>c) Đúng.<br/>d) Đúng.",
@@ -3238,7 +3288,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "4"
+        ]
       },
       {
         "id": "hoa12_ck1_de05_p3_q2",
@@ -3251,7 +3304,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "3"
+        ]
       },
       {
         "id": "hoa12_ck1_de05_p3_q3",
@@ -3264,7 +3320,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 79,2.<br/>n<sub>NaOH</sub> = n<sub>KOH</sub> =  560.1981980mmol1,98mol56==<br/>m<sub>NaOH</sub> = 1,98.40 = 79,2 g.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "79,2",
+          "79.2"
+        ]
       },
       {
         "id": "hoa12_ck1_de05_p3_q4",
@@ -3277,7 +3337,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 231.<br/>m = 1,1.60.100/28,6 = 230,8 g.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "231"
+        ]
       },
       {
         "id": "hoa12_ck1_de05_p4_q1",
@@ -3346,7 +3409,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "một đầu phân cực và một đầu không phân cực.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -3367,7 +3430,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3385,7 +3448,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "HCOOC<sub>2</sub>H<sub>5</sub>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -3397,7 +3460,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "HCOOCH<sub>3</sub>.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -3406,7 +3469,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3430,13 +3493,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Monosaccharide",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Oligosaccharide",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -3445,7 +3508,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3475,7 +3538,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Nước bromine và dung dịch kiềm",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -3484,7 +3547,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3502,7 +3565,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Tinh bột và cellulose được tạo thành từ quá trình quang hợp của cây xanh.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -3523,7 +3586,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3541,7 +3604,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "CH<sub>3</sub>-NH<sub>2</sub>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -3562,7 +3625,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3586,7 +3649,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "2-amino-4-methylpentanoic acid.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -3601,7 +3664,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3625,7 +3688,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "chất rắn, không bay hơi, không tan trong nước.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -3640,7 +3703,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3676,10 +3739,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "(1) epoxy; (2) amine.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3709,7 +3772,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "2-methylbuta-1,3-diene",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -3718,7 +3781,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3748,7 +3811,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Na<sup>+</sup>/Na",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -3757,7 +3820,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3787,7 +3850,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Sự oxi hóa xảy ra ở anode",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -3796,7 +3859,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -3832,7 +3895,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Phân tử khối của X là 203.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Đúng.<br/>b) Sai. X có 2 liên kết peptide.<br/>c) Sai. Dung dịch có màu tím.<br/>d) Đúng.",
@@ -3860,13 +3923,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Để tiết kiệm năng lượng đồng thời tạo ra chất lỏng vừa có tính dẫn điện tốt, vừa nổi lên trên Al lỏng để ngăn cách Al lỏng với không khí người ta trộn Al<sub>2</sub>O<sub>3</sub> với cryolite (Na<sub>3</sub>AlF<sub>6</sub>).",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Trong quá trình điện phân phải hạ thấp dần các điện cực anode làm bằng than chì vào thùng điện phân.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -3891,7 +3954,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 124.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "124"
+        ]
       },
       {
         "id": "hoa12_ck1_de06_p3_q2",
@@ -3904,7 +3970,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 1006.<br/>¾¾®¾¾®+6105n6126252(CHO)CHO2CHOH2CO<br/>10011..46235%   10046<br/>TB100111m...162.1006,2kg46235%50%Þ==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "1006"
+        ]
       },
       {
         "id": "hoa12_ck1_de06_p3_q3",
@@ -3919,7 +3988,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.<br/>Có hai phản ứng c), d).",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "2"
+        ]
       },
       {
         "id": "hoa12_ck1_de06_p3_q4",
@@ -3932,7 +4004,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 0,75.<br/>Cathode: Cu<sup>2+</sup> + 2e → Cu                                   Anode: 2Cl<sup>-</sup> → Cl<sub>2</sub> + 2e<br/>Số mol CuCl<sub>2</sub> đã điện phân là: 0,075 mol<br/>Dung dịch X có CuCl<sub>2</sub> dư, H<sub>2</sub>O.<br/>Fe   +  CuCl<sub>2</sub>→ FeCl<sub>2</sub> + Cu<br/>0,225  0,225<br/>0,075+0,225V =  = 0,75 lít0,4",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "0,75",
+          "0.75"
+        ]
       },
       {
         "id": "hoa12_ck1_de06_p4_q1",
@@ -3999,7 +4075,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "CH<sub>2</sub>=CH-CN",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -4020,7 +4096,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4038,13 +4114,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "H<sub>2</sub>N-CH<sub>2</sub>-CH<sub>2</sub>-CO-NH-CH<sub>2</sub>-CO-NH-CH<sub>2</sub>-COOH.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
             "text": "H<sub>2</sub>N-CH(CH<sub>3</sub>)-CO-NH-CH<sub>2</sub>-COOH.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -4059,7 +4135,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4077,7 +4153,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Cellulose",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -4098,7 +4174,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4116,7 +4192,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "nhóm sulfonate",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "b",
@@ -4128,7 +4204,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "gốc hydrocarbon dài.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -4137,7 +4213,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4155,7 +4231,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Glutamic acid",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -4167,7 +4243,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Lysine",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -4176,7 +4252,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4206,7 +4282,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Acid béo omega – 3 và omega – 6 là các acid béo không no với liên kết đôi đầu tiên ở vị trí số 3 và số 6 khi đánh số từ nhóm COOH.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -4215,7 +4291,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4253,10 +4329,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Nhựa PS thuộc loại polymer bán tổng hợp.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4280,7 +4356,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Fe<sup>3+</sup>/Fe<sup>2+</sup>",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -4295,7 +4371,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4319,7 +4395,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Ag<sup>+</sup>, Cu<sup>2</sup><sup>+</sup>, H<sub>2</sub>O",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -4334,7 +4410,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4364,7 +4440,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Tạo kết tủa đỏ gạch Cu<sub>2</sub>O",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -4373,7 +4449,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4393,7 +4469,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Chất (1)",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -4414,7 +4490,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4432,7 +4508,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Sức điện động chuẩn của pin Galvani có thể mang giá trị âm.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -4453,7 +4529,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4517,13 +4593,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Giá trị của m<sub>1</sub> lớn hơn 2,55.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Ở cực dương xảy ra quá trình oxi hóa.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -4548,7 +4624,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: -0,8.<br/>z – y = 0,183  y = -0,44<br/>y – x = 0,322  x = -0,762.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "-0,8",
+          "-0.8"
+        ]
       },
       {
         "id": "hoa12_ck1_de07_p3_q2",
@@ -4563,7 +4643,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 1.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "1"
+        ]
       },
       {
         "id": "hoa12_ck1_de07_p3_q3",
@@ -4576,7 +4659,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 200.<br/>C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>  2C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>  4Ag<br/>m<sub>Ag</sub> =  259,52.2.2.108.80%.80%209,8g342=<br/>m<sub>Ag (</sub><sub>tráng</sub><sub>1</sub><sub>chiếc</sub><sub>gương)</sub> = 10<sup>4</sup>.10<sup>-5</sup>.10,49 = 1,049 gam<br/>Số chiếc gương = 209,8/1,049 = 200.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "200"
+        ]
       },
       {
         "id": "hoa12_ck1_de07_p3_q4",
@@ -4589,7 +4675,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 83,3.<br/>2332332CHC(CH)COOHCHOHCHC(CH)COOCHHO86100(kg)25,8m(kg)=-+=-+®®<br/>methyl methacrylate(lt)25,8100m30kg86´Þ==   25100H%83,3%30´Þ==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "83,3",
+          "83.3"
+        ]
       },
       {
         "id": "hoa12_ck1_de07_p4_q1",
@@ -4670,7 +4760,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Có tính chất hoạt động bề mặt gồm một phần kị nước và một phần ưa nước.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -4679,7 +4769,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4696,17 +4786,29 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "B.",
-            "isCorrect": true
+            "text": "muối chloride",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "alcohol đơn chức",
+            "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "D.",
+            "text": "xà phòng",
             "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "acid béo",
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4769,7 +4871,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "N-methylpropan-1-amine.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -4784,7 +4886,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4808,7 +4910,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "PVC.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -4823,7 +4925,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4853,7 +4955,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Nhựa PE",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -4862,7 +4964,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4900,10 +5002,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "(a), (b).",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4939,10 +5041,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "công nghệ chưa phổ biến và giá thành cao.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -4966,7 +5068,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "HCOOH và CH<sub>3</sub>OH.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -4981,7 +5083,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5011,7 +5113,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Na<sup>+</sup>/Na",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -5020,7 +5122,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5038,7 +5140,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "22,8.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -5059,7 +5161,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5083,7 +5185,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Protein phức tạp",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -5098,7 +5200,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5134,7 +5236,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Có thể điều chế 4 dipeptide mạch hở khác nhau từ Gly và Val.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Sai. Có 4 nguyên tử O.<br/>b) Sai. Tên của hai chất khác nhau.<br/>c) Sai. Có 3 liên kết peptide.<br/>d) Đúng.",
@@ -5172,7 +5274,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Số mol khí Cl<sub>2</sub> thoát ra ở anode bằng số mol H<sub>2</sub> thoát ra ở cathode.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>Tại anode:<br/>Tại cathode:<br/>2222NaCl(aq) + 2HO(l)H(g) + Cl(g) + 2NaOH(aq).®<br/>a) Đúng.<br/>b) Sai.<br/>c) Sai.<br/>d) Đúng.  2222ClHClHBTe:n.2n.2nn=Þ= .",
@@ -5194,7 +5296,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 13.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "13"
+        ]
       },
       {
         "id": "hoa12_ck1_de08_p3_q2",
@@ -5207,7 +5312,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 832.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "832"
+        ]
       },
       {
         "id": "hoa12_ck1_de08_p3_q3",
@@ -5220,7 +5328,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 1,92.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "1,92",
+          "1.92"
+        ]
       },
       {
         "id": "hoa12_ck1_de08_p3_q4",
@@ -5229,11 +5341,14 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "type": "short_answer",
         "text": "Ethanol được điều chế từ tinh bột bằng phương pháp lên men với hiệu suất toàn bộ quá trình là 90%. Hấp thụ toàn bộ lượng CO<sub>2</sub> sinh ra khi lên men m g tinh bột vào nước vôi trong, thu được 330 g kết tủa và dung dịch X. Biết khối lượng X giảm đi so với khối lượng nước vôi trong ban đầu là 132 g. Giá trị của m là bao nhiêu?",
         "images": [],
-        "correctAnswer": "405",
+        "correctAnswer": "805",
         "explanation": "Đáp án: 405.<br/>C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> → C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → 2C<sub>2</sub>H<sub>5</sub>OH + 2CO<sub>2</sub><br/>m <sub>dd giảm</sub>=  3CaCOm  –  2COm  →  2COm =  3CaCOm  – m<sub>dd giảm</sub> = 330 – 132 = 198 g<br/>2COn  = 198 : 44 = 4,5 mol → m = 4,5:2.162.100:90 = 405 g",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "805"
+        ]
       },
       {
         "id": "hoa12_ck1_de08_p4_q1",
@@ -5304,7 +5419,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "CH<sub>3</sub>[CH<sub>2</sub>]<sub>11</sub>-C<sub>6</sub>H<sub>4</sub>-SO<sub>3</sub>Na",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -5325,7 +5440,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5382,7 +5497,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "(C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub>.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -5394,7 +5509,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>.",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -5403,7 +5518,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5421,7 +5536,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Dimethylamine",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "b",
@@ -5433,7 +5548,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Aniline",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -5442,7 +5557,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5462,7 +5577,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Tái chế và tái sử dụng đồ nhựa đã dùng.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -5483,7 +5598,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5501,7 +5616,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "được tổ hợp từ hai hay nhiều loại vật liệu thành phần khác nhau gồm vật liệu cốt và vật liệu nền.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -5522,7 +5637,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5546,7 +5661,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "polyisoprene.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -5561,7 +5676,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5591,7 +5706,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "(1) mạnh hơn, (2) mạnh hơn.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -5600,7 +5715,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5636,10 +5751,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Dầu, mỡ không tan trong nước và nổi lên trên mặt nước.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5657,7 +5772,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Z > Y > X",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -5678,7 +5793,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5708,7 +5823,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "3",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -5717,7 +5832,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5747,7 +5862,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "(a), (b), (c)",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -5756,7 +5871,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -5782,13 +5897,13 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Do papain có nhiều trong quả đu đủ có tác dụng phân giải protein có trong thịt nên khiến cho thịt khi nấu cùng đu đủ xanh sẽ nhanh mềm hơn.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Từ quả đu đủ xanh có thể chiết xuất được Papain.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -5822,19 +5937,19 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Đối với cả hai nhóm đều có kim loại đồng bám vào cathode.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "Ở nhóm thứ nhất, pH của dung dịch điện phân giảm dần.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
             "text": "Giả thuyết đúng với nhóm thứ nhất và sai với nhóm thứ hai.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Đúng. Nhóm hai thì anode (cực dương) là Cu xảy quá trình oxi hóa: Cu  Cu<sup>2+</sup> + 2e.<br/>b) Đúng. Dung dịch điện phân CuSO<sub>4</sub> nên tại cathode thì Cu<sup>2+</sup> + 2e  Cu.<br/>c) Đúng. Điện phân sinh ra môi trường acid (H<sub>2</sub>SO<sub>4</sub>) nên pH giảm.<br/>d) Đúng. Cực âm để đồng tan ra và bám vào cực dương nên chỉ có nhóm 1 đúng.",
@@ -5853,7 +5968,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "2"
+        ]
       },
       {
         "id": "hoa12_ck1_de09_p3_q2",
@@ -5866,7 +5984,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 124.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "124"
+        ]
       },
       {
         "id": "hoa12_ck1_de09_p3_q3",
@@ -5879,7 +6000,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 1,24.<br/>Sức điện động chuẩn lớn nhất của pin M – Ag ứng với thế điện cực chuẩn M<sup>n+</sup>/M là nhỏ nhất. Vậy, M là Fe.<br/>2oooooPin(FeAg)CathodeAnodeAg/AgFe/FeEEEEE(0,799)(0,44)1,24 V++-=-=-=+--»",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "1,24",
+          "1.24"
+        ]
       },
       {
         "id": "hoa12_ck1_de09_p3_q4",
@@ -5892,7 +6017,11 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 23,0.<br/>C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> → C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>  → 2C<sub>2</sub>H<sub>5</sub>OH<br/>162                                            92<br/>4,05.40%                                  m<br/>0,92 tấn<br/>25CHOHV =    = 1,15 m<sup>3</sup>   V<sub>xăng</sub> =   = 23 m<sup>3</sup>.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "23,0",
+          "23.0"
+        ]
       },
       {
         "id": "hoa12_ck1_de09_p4_q1",
@@ -5967,7 +6096,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "253CHCOOCH",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -5982,7 +6111,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6002,7 +6131,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "-OH (pic A)",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -6014,7 +6143,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "-OH (pic B)",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "d",
@@ -6023,7 +6152,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6059,10 +6188,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Glucose phản ứng với methyl alcohol (có mặt khí HCl) tạo nhóm -OH hemiketal.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6080,7 +6209,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "4",
-            "isCorrect": true
+            "isCorrect": false
           },
           {
             "id": "b",
@@ -6098,10 +6227,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "2.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "A",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6125,7 +6254,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "tăng mạch polymer.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -6140,7 +6269,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6176,10 +6305,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Khi tạo ra vật liệu composite từ các vật liệu ban đầu đã xảy ra phản ứng trùng hợp hoặc trùng ngưng.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6209,7 +6338,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Trùng hợp methyl methacrylate.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -6218,7 +6347,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6242,7 +6371,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Mạ điện",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -6257,7 +6386,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "B",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6287,7 +6416,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Nước quả bồ kết",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -6296,7 +6425,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6332,10 +6461,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "1 bar và 1 M.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6365,7 +6494,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "c",
             "letter": "C",
             "text": "Glucose được dùng trong công nghiệp sản xuất saccharose.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "d",
@@ -6374,7 +6503,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "C",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6392,7 +6521,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "Trong môi trường acid, protein ở thịt, cá bị thủy phân thành các chuỗi polypeptide nhỏ hơn giúp thịt, cá mềm nhanh hơn.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "b",
@@ -6413,7 +6542,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "correctAnswer": "",
+        "correctAnswer": "A",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -6437,7 +6566,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Dung dịch X không làm đổi màu quỳ tím.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -6449,7 +6578,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Ở điều kiện thường, X tồn tại ở thể rắn và dễ tan trong nước.",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>Gọi công thức tổng quát của X là C<sub>n</sub>H<sub>2n + 1</sub>NO<sub>2</sub> (vì là α-amino acid: có 1 N, 2 O).’<br/>25212n%C.10032n2:CHNO12n2n11416.2==Þ=++++<br/>a) Đúng.<br/>b) Đúng.<br/>c) Sai. X tồn tại chủ yếu ở dạng ion lưỡng cực: ⁺H₃N–CH<sub>2</sub>–COO⁻. Điện tích tổng = 0<br/>→ Không bị hút về cực nào trong điện trường.<br/>d) Đúng.",
@@ -6475,7 +6604,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "b",
             "letter": "B",
             "text": "Ở anode xảy ra quá trình oxi hoá Cu, ở cathode xảy ra quá trình khử Ag<sup>+</sup>.",
-            "isCorrect": false
+            "isCorrect": true
           },
           {
             "id": "c",
@@ -6487,7 +6616,7 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
             "id": "d",
             "letter": "D",
             "text": "Phản ứng hoá học xảy ra trong pin: Cu(s) + 2Ag<sup>+</sup>(aq)  ¾¾®  Cu<sup>2+</sup>(aq) + 2Ag(s).",
-            "isCorrect": false
+            "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a) Đúng.  oPin(CuAg)E0,7990,3400,459 V-=-=<br/>b) Đúng.<br/>c) Sai. Điện cực Cu giảm, Ag tăng.<br/>d) Đúng.",
@@ -6506,7 +6635,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 15
+        "displayNumber": 15,
+        "acceptedAnswers": [
+          "4"
+        ]
       },
       {
         "id": "hoa12_ck1_de10_p3_q2",
@@ -6519,7 +6651,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 925.<br/>Khối lượng saccharose trong 7000 tấn mía là 680.13%.90%.7000 = 556920 kg = 556,92 tấn<br/>Số tiền trị giá của đường thành phẩm là 556,92.18 = 10024,56 triệu<br/>Số tiền mua mía nguyên liệu là 7000.1,3 = 9100 triệu<br/>Số tiền trị giá của đường thành phẩm nhiều hơn số tiền mua mía nguyên liệu là 10024,56 – 9100 = 924,56 triệu đồng.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 16
+        "displayNumber": 16,
+        "acceptedAnswers": [
+          "925"
+        ]
       },
       {
         "id": "hoa12_ck1_de10_p3_q3",
@@ -6532,7 +6667,10 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 1.<br/>Cu + 2Ag<sup>+</sup>   Cu<sup>2+</sup>(màu xanh) + 2Ag",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 17
+        "displayNumber": 17,
+        "acceptedAnswers": [
+          "1"
+        ]
       },
       {
         "id": "hoa12_ck1_de10_p3_q4",
@@ -6541,11 +6679,15 @@ export const HOA12_FINAL_EXAMS: Chuong1Exam[] = [
         "type": "short_answer",
         "text": "Chỉ số acid là một chỉ số quan trọng trong phân tích chất lượng của chất béo, dầu thực vật,... Chỉ số acid của chất béo được định nghĩa là số miligam KOH cần thiết để trung hoà các acid béo tự do có trong 1 gam chất béo.<br/>Dầu thực vật sử dụng làm thực phẩm có chỉ số acid không quá 2. Nếu chỉ số acid trên 2 thì dầu có thể đã bị ôi hoặc bị phân huỷ đáng kể và không còn phù hợp để sử dụng trong thực phẩm.<br/>Trong phòng thí nghiệm, một học sinh tiến hành thí nghiệm xác định chỉ số acid của một loại dầu ăn đã qua sử dụng theo các bước sau:<br/>Bước 1: Hoà tan 2,00 gam dầu ăn vào 20 mL hỗn hợp dung môi ethanol - ether, thêm vài giọt chỉ thị phenolphthalein.<br/>Bước 2: Tiến hành chuẩn độ acid béo bằng dung dịch NaOH  0,05M  đến khi dung dịch có màu hồng bền thì dừng. Thể tích trung bình của dung dịch NaOH sau ba lần chuẩn độ là  4,50 mL .<br/>Chỉ số acid của dầu ăn trên bằng bao nhiêu? (Làm tròn kết quả đến hàng phần mười.)<br/>Đáp số: 6,3.<br/>n<sub>KOH</sub> = n<sub>NaOH</sub> = 4,5.0,05 = 0,225 mmol<br/>Chỉ số acid  KOHm(mg)56.0,2256,3.22===",
         "images": [],
-        "correctAnswer": "",
+        "correctAnswer": "6,3",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 18
+        "displayNumber": 18,
+        "acceptedAnswers": [
+          "6,3",
+          "6.3"
+        ]
       },
       {
         "id": "hoa12_ck1_de10_p4_q1",

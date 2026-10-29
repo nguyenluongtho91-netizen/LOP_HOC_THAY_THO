@@ -90,7 +90,3811 @@ export const HOA11_CHUONG2_MASTER: Record<string, Chuong2Lesson> = {"bai4":{"id"
 
 export const HOA11_CHUONG2_LESSONS: Chuong2Lesson[] = Object.values(HOA11_CHUONG2_MASTER);
 
-export const HOA11_CHUONG2_EXAMS: Chuong2Exam[] = [{"id":"h11_c2_de1","code":"114","title":"Đề Kiểm Tra Số 1 - Đơn Chất Nitrogen & Ammonia (Mã 114)","topic":"Tính chất N2, NH3, muối ammonium & mưa acid","badge":"Mã 114","chapter":2,"duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"h11_c2_de1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Phân tử nitrogen có cấu tạo là","images":[],"options":[{"id":"a","letter":"A","text":"N = N","isCorrect":false},{"id":"b","letter":"B","text":"N  º N","isCorrect":true},{"id":"c","letter":"C","text":"N – N","isCorrect":false},{"id":"d","letter":"D","text":"N  ® N","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h11_c2_de1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trong những nhận xét dưới đây, nhận xét nào là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Nitrogen không duy trì sự cháy, sự hô hấp và là một khí độc","isCorrect":false},{"id":"b","letter":"B","text":"Ở điều kiện thường, nitrogen trơ về mặt hóa học do phân tử có một liên kết ba bền vững","isCorrect":true},{"id":"c","letter":"C","text":"Trong các phản ứng hóa học, nitrogen chỉ thể hiện tính khử","isCorrect":false},{"id":"d","letter":"D","text":"Số oxi hóa của nitrogen trong các ion và hợp chất NH<sub>4</sub><sup>+</sup>, NO<sub>3</sub><sup>-</sup>, N<sub>2</sub>O lần lượt là -3,+5,+4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h11_c2_de1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Tã lót trẻ em sau khi giặt vẫn giữ lại một lượng nhỏ ammonia. Để khử sạch ammonia nên dùng chất gì sau đây cho vào nước xả cuối cùng để giặt?","images":[],"options":[{"id":"a","letter":"A","text":"Phèn chua","isCorrect":false},{"id":"b","letter":"B","text":"Giấm ăn","isCorrect":true},{"id":"c","letter":"C","text":"Muối ăn","isCorrect":false},{"id":"d","letter":"D","text":"Gừng tươi","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h11_c2_de1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Công thức phân tử của ammonia là","images":[],"options":[{"id":"a","letter":"A","text":"HNO<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"N<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"NH<sub>3</sub>","isCorrect":true},{"id":"d","letter":"D","text":"N<sub>2</sub>H<sub>4</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h11_c2_de1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Ammonia đóng vai trò chất khử khi tác dụng với chất nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"H<sub>2</sub>O","isCorrect":false},{"id":"b","letter":"B","text":"HCl","isCorrect":false},{"id":"c","letter":"C","text":"H<sub>3</sub>PO<sub>4</sub>","isCorrect":false},{"id":"d","letter":"D","text":"O<sub>2</sub> (Pt, t<sup>o</sup>)","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h11_c2_de1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Khi so sánh phân tử ammonia với ion ammonium, nhận định nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Đều chứa liên kết ion","isCorrect":false},{"id":"b","letter":"B","text":"Đều có tính acid yếu trong nước","isCorrect":false},{"id":"c","letter":"C","text":"Đều có tính base yếu trong nước","isCorrect":false},{"id":"d","letter":"D","text":"Đều chứa nguyên tử N có số oxi hoá là -3","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h11_c2_de1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Có thể nhận biết muối ammonium bằng cách cho muối tác dụng với dung dịch kiềm thấy thoát ra một chất khí. Chất khí đó là","images":[],"options":[{"id":"a","letter":"A","text":"NH<sub>3</sub>","isCorrect":true},{"id":"b","letter":"B","text":"H<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"NO<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"NO","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h11_c2_de1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Kim loại nào sau đây không tác dụng với HNO<sub>3</sub> đặc, nóng?","images":[],"options":[{"id":"a","letter":"A","text":"Fe","isCorrect":false},{"id":"b","letter":"B","text":"Cu","isCorrect":false},{"id":"c","letter":"C","text":"Ag","isCorrect":false},{"id":"d","letter":"D","text":"Pt","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h11_c2_de1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Kim loại nào sau đây tác dụng với sulfur ở nhiệt độ thường?","images":[],"options":[{"id":"a","letter":"A","text":"Al","isCorrect":false},{"id":"b","letter":"B","text":"Fe","isCorrect":false},{"id":"c","letter":"C","text":"Hg","isCorrect":true},{"id":"d","letter":"D","text":"Cu","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h11_c2_de1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Nhỏ dung dịch H<sub>2</sub>SO<sub>4</sub> 98% vào cốc đựng đường saccarose khiến đường hóa đen gọi là hiện tượng gì?","images":[],"options":[{"id":"a","letter":"A","text":"Hiện tượng bốc hơi","isCorrect":false},{"id":"b","letter":"B","text":"Hiện tượng than hóa","isCorrect":true},{"id":"c","letter":"C","text":"Hiện tượng đông tụ","isCorrect":false},{"id":"d","letter":"D","text":"Hiện tượng vón cục","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h11_c2_de1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Cho các ứng dụng sau:<br/>(1) sản xuất sulfuric acid;(2) tẩy trắng bột giấy;<br/>(3) diệt nấm mốc, thuốc đông y;(4) diệt trùng nước sinh hoạt.<br/>Số ứng dụng của khí sulfur dioxide trong đời sống, sản suất là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":true},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h11_c2_de1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Oxide của nitrogen được tạo thành khi nguyên tố nitrogen trong nhiên liệu hoặc sinh khối kết hợp với oxygen dư thừa trong không khí được gọi là","images":[],"options":[{"id":"a","letter":"A","text":"NO<sub>x</sub> tức thời","isCorrect":false},{"id":"b","letter":"B","text":"NO<sub>x</sub> nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"NO<sub>x</sub> nhiên liệu","isCorrect":true},{"id":"d","letter":"D","text":"NO<sub>x</sub> tự nhiên","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h11_c2_de1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Phú dưỡng là hiện tượng xảy ra do sự gia tăng hàm lượng của hai nguyên tố nào trong nước?","images":[],"options":[{"id":"a","letter":"A","text":"Fe, Mn","isCorrect":false},{"id":"b","letter":"B","text":"N, P","isCorrect":true},{"id":"c","letter":"C","text":"Ca, Mg","isCorrect":false},{"id":"d","letter":"D","text":"Cl, F","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h11_c2_de1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Sulfur được dân gian sử dụng để pha chế vào thuốc trị các bệnh ngoài da. Tên gọi dân gian của sulfur là","images":[],"options":[{"id":"a","letter":"A","text":"diêm sinh","isCorrect":true},{"id":"b","letter":"B","text":"đá vôi","isCorrect":false},{"id":"c","letter":"C","text":"phèn chua","isCorrect":false},{"id":"d","letter":"D","text":"giấm ăn","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h11_c2_de1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Một nhà máy luyện kim, ở giai đoạn đầu của quá trình sản xuất Zn từ quặng blend thu được sản phẩm phụ là SO<sub>2</sub> theo sơ đồ phản ứng: 2ZnS + 3O<sub>2</sub> &rarr; 2ZnO + 2SO<sub>2</sub><br/>Đốt cháy 1 tấn quặng blend (chứa 77,6% khối lượng ZnS) bằng không khí, thu được tối đa V m<sup>3</sup> khí SO<sub>2</sub> (đkc). Giá trị của V là","images":[],"options":[{"id":"a","letter":"A","text":"99,2","isCorrect":false},{"id":"b","letter":"B","text":"198,3","isCorrect":true},{"id":"c","letter":"C","text":"297,5","isCorrect":false},{"id":"d","letter":"D","text":"396,6","isCorrect":false}],"correctAnswer":"B","explanation":"Đáp án: B.<br/>2ZnS + 3O<sub>2</sub> &rarr; 2ZnO + 2SO<sub>2</sub><br/>m<sub>ZnS</sub> = 1000 &times; 77,6% = 776 kg.<br/>n<sub>ZnS</sub> = 776 / 97 = 8 kmol &rArr; n<sub>SO<sub>2</sub></sub> = 8 kmol.<br/>V<sub>SO<sub>2</sub></sub> = 8 &times; 24,79 = 198,32 m<sup>3</sup> (làm tròn 198,3 m<sup>3</sup>).","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h11_c2_de1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Chất nào sau đây không bay hơi ở điều kiện thường do nhiệt độ sôi rất cao (337 <sup>o</sup>C)?","images":[],"options":[{"id":"a","letter":"A","text":"H<sub>2</sub>O","isCorrect":false},{"id":"b","letter":"B","text":"3HNO","isCorrect":false},{"id":"c","letter":"C","text":"NH<sub>3</sub>","isCorrect":false},{"id":"d","letter":"D","text":"24HSO","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h11_c2_de1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho vài giọt dung dịch BaCl<sub>2</sub> vào dung dịch nào sau đây sẽ tạo kết tủa trắng?","images":[],"options":[{"id":"a","letter":"A","text":"NaCl","isCorrect":false},{"id":"b","letter":"B","text":"Na<sub>2</sub>SO<sub>4</sub>","isCorrect":true},{"id":"c","letter":"C","text":"NaNO<sub>3</sub>","isCorrect":false},{"id":"d","letter":"D","text":"NaOH","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h11_c2_de1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Sulfur dioxide và các oxide của nitrogen trong khí quyển hòa tan trong nước tạo thành mưa acid. Khẳng định nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Nước mưa có pH > 5,6 được xem là mưa acid","isCorrect":false},{"id":"b","letter":"B","text":"Thành phần chính của mưa acid là H<sub>2</sub>SO<sub>3</sub> và HNO<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Công thức hóa học của NO<sub>x</sub> trong khí thải ô tô luôn là NO<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"Thu hồi sulfur từ các khí thải như H<sub>2</sub>S, SO<sub>2</sub>….có thể làm giảm sự hình thành mưa acid","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"h11_c2_de1_p2_q1","number":1,"part":2,"type":"true_false","text":"Cho các phát biểu sau về tính chất vật lí của sulfuric acid:","images":[],"options":[{"id":"a","letter":"A","text":"Ở điều kiện thường, sulfuric acid là chất lỏng, không màu và dễ bay hơi","isCorrect":false},{"id":"b","letter":"B","text":"Khi pha loãng sulfuric acid đặc cần phải cho từ từ nước vào acid đặc","isCorrect":false},{"id":"c","letter":"C","text":"Sulfuric acid được sử dụng làm chất hút ẩm trong các bình hút ẩm để làm khô nhiều chất","isCorrect":true},{"id":"d","letter":"D","text":"Sulfuric acid tan vô hạn trong nước là do tạo được liên kết hydrogen với nước","isCorrect":true}],"explanation":"Đáp án:<br/>a. S. Sulfuric acid không bay hơi.<br/>b. S. Khi pha loãng sulfuric acid đặc cần phải cho từ từ acid đặc vào nước.<br/>c. Đ.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":19},{"id":"h11_c2_de1_p2_q2","number":2,"part":2,"type":"true_false","text":"Thực hiện thí nghiệm như hình vẽ sau:","images":["/assets/hoa12/c5/h11_c2_de1_image6.png"],"options":[{"id":"a","letter":"A","text":"Hiện tượng quan sát được là nước phun vào bình thành tia, dung dịch phenolphthalein chuyển sang màu hồng","isCorrect":true},{"id":"b","letter":"B","text":"Thí nghiệm trên chứng minh dung dịch NH<sub>3</sub> có tính acid","isCorrect":false},{"id":"c","letter":"C","text":"Nếu thay khí ammonia bằng khí hydrogen chloride thì hiện tượng thí nghiệm vẫn không thay đổi","isCorrect":false},{"id":"d","letter":"D","text":"Khí ammonia tan nhiều trong nước làm áp suất trong bình tăng dẫn đến nước bị hút vào bình","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. S. NH<sub>3</sub> có tính base.<br/>c. S. Khí HCl không làm đổi màu dung dịch phenolphtalein.<br/>d. S. Áp suất trong bình giảm","explanationImages":[],"points":1,"displayNumber":20},{"id":"h11_c2_de1_p2_q3","number":3,"part":2,"type":"true_false","text":"Thí nghiệm: Sulfur tác dụng với oxygen.<br/>Chuẩn bị: bột sulfur, bình khí oxygen; muôi sắt, đèn cồn, nút cao su.<br/>Tiến hành:<br/>- Lấy một ít bột sulfur vào muôi sắt (đã cắm xuyên qua nút cao su).<br/>- Hơ nóng muôi sắt trên ngọn lửa đèn cồn đến khi sulfur nóng chảy và cháy một phần trong không khí.<br/>- Đưa nhanh muôi sắt vào bình khí oxygen","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng chứng minh sulfur bị khử bởi oxygen","isCorrect":false},{"id":"b","letter":"B","text":"Sulfur tác dụng với oxygen tạo thành acidic oxide","isCorrect":true},{"id":"c","letter":"C","text":"Sulfur cháy trong không khí với ngọn lửa nhỏ, màu xanh nhạt","isCorrect":true},{"id":"d","letter":"D","text":"Nếu đốt cháy hoàn toàn 6,4 gam sulfur trong khí oxygen dư thì thể tích khí SO<sub>2</sub> ở đkc thu được là 4,958 L","isCorrect":true}],"explanation":"Đáp án:<br/>ot22SOSO+ → <br/>a. S. Sulfur thể hiện tính khử bị oxi hóa bởi oxygen.<br/>b. Đ.<br/>c. Đ.<br/>d. Đ. V = 0,2.24,79 = 4,958 L","explanationImages":[],"points":1,"displayNumber":21},{"id":"h11_c2_de1_p2_q4","number":4,"part":2,"type":"true_false","text":"Trong những cơ mưa dông kèm sấm sét, sự chuyển hoá của nitrogen đơn chất xảy ra theo sơ đồ sau:<br/>N<sub>2</sub> &rarr; NO &rarr; NO<sub>2</sub> &rarr; HNO<sub>3</sub> &rarr; H<sup>+</sup> + NO<sub>3</sub><sup>-</sup>","images":[],"options":[{"id":"a","letter":"A","text":"Trong sơ đồ trên, có ba chất khí gây ô nhiễm môi trường","isCorrect":false},{"id":"b","letter":"B","text":"Các phản ứng trong sơ đồ trên đều xảy ra quá trình oxi hóa khử","isCorrect":false},{"id":"c","letter":"C","text":"Ion nitrate  3(NO)-  tạo thành ở quá trình (4) là một dạng đạm cây trồng hấp thụ được để sinh trưởng, phát triển","isCorrect":true},{"id":"d","letter":"D","text":"Sơ đồ cũng áp dụng để giải thích sự tạo thành HNO<sub>3</sub> từ hoạt động đốt cháy nhiên liệu bằng không khí của phương tiện giao thông vận tải","isCorrect":true}],"explanation":"Đáp án:<br/>a. S. Có 2 chất khí gây ô nhiễm môi trường là NO, NO<sub>2</sub>.<br/>b. S. (4) không phải là phản ứng oxi hóa khử.<br/>c. Đ.<br/>d. Đ. Quá trình đốt cháy nhiên liệu ở nhiệt độ cao bằng không khí cũng phát thải các oxide của nitrogen vào khí quyển","explanationImages":[],"points":1,"displayNumber":22},{"id":"h11_c2_de1_p3_q1","number":1,"part":3,"type":"short_answer","text":"Phương pháp điều chế H<sub>2</sub>SO<sub>4</sub> từ quặng pyrite sắt (FeS<sub>2</sub>) trong công nghiệp trải qua mấy giai đoạn?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h11_c2_de1_p3_q2","number":2,"part":3,"type":"short_answer","text":"Cho các chất khí sau: H<sub>2</sub>S, NO, NO<sub>2</sub>, SO<sub>2</sub> và N<sub>2</sub>. Có bao nhiêu chất khí gây ô nhiễm môi trường khi phát thải vào không khí?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h11_c2_de1_p3_q3","number":3,"part":3,"type":"short_answer","text":"Tiến hành thí nghiệm trộn từng cặp dung dịch sau: (a) NH<sub>3</sub> và AlCl<sub>3</sub>; (b) (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> và Ba(OH)<sub>2</sub>; (c) NH<sub>4</sub>Cl và AgNO<sub>3</sub>; (d) Na<sub>2</sub>SO<sub>4</sub> và MgCl<sub>2</sub>. Sau khi phản ứng kết thúc, có bao nhiêu thí nghiệm thu được kết tủa?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.25,"displayNumber":25},{"id":"h11_c2_de1_p3_q4","number":4,"part":3,"type":"short_answer","text":"Trong điều kiện thích hợp, xảy ra các phản ứng sau:<br/>(a) 2H<sub>2</sub>SO<sub>4</sub> + C → 2SO<sub>2</sub> + CO<sub>2</sub> + 2H<sub>2</sub>O.<br/>(b) H<sub>2</sub>SO<sub>4</sub> + Fe(OH)<sub>2</sub> → FeSO<sub>4</sub> + 2H<sub>2</sub>O.<br/>(c) 4H<sub>2</sub>SO<sub>4</sub> + 2FeO → Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> + SO<sub>2</sub> + 4H<sub>2</sub>O.<br/>(d) 2H<sub>2</sub>SO<sub>4</sub> + Cu → CuSO<sub>4</sub> + SO<sub>2</sub> + 2H<sub>2</sub>O.<br/>(e)  2244CaF  HSO CaSO  2HF+ → +<br/>Trong các phản ứng trên, có bao nhiêu phản ứng xảy ra với dung dịch H<sub>2</sub>SO<sub>4</sub> loãng?","images":[],"correctAnswer":"1","explanation":"Đáp án: 1","explanationImages":[],"points":0.25,"displayNumber":26},{"id":"h11_c2_de1_p3_q5","number":5,"part":3,"type":"short_answer","text":"Một phương pháp được đề xuất để loại bỏ SO<sub>2</sub> khỏi khí thải của nhà máy điện bằng cách dẫn khí thải qua dung dịch H<sub>2</sub>S. Cần tối đa bao nhiêu m<sup>3</sup> H<sub>2</sub>S (ở đkc) để loại bỏ SO<sub>2</sub> sinh ra khi đốt cháy 2,0 tấn than chứa sulfur chiếm 3% theo khối lượng? (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"93","explanation":"Đáp án: 93.<br/>S + O<sub>2</sub>SO<sub>2</sub><br/>2H<sub>2</sub>S + SO<sub>2</sub>  3S + 2H<sub>2</sub>O<br/>2SHS2000.3%n1,875kmoln1,875.2 = 3,75kmol32==Þ=<br/>V = 3,75.24,79 = 92,9625 m<sup>3</sup>","explanationImages":[],"points":0.25,"displayNumber":27},{"id":"h11_c2_de1_p3_q6","number":6,"part":3,"type":"short_answer","text":"Trong công nghiệp, người ta sản xuất nitric acid (HNO<sub>3</sub>) từ ammonia theo sơ đồ chuyển hoá sau:<br/>NH<sub>3</sub> &rarr; NO &rarr; NO<sub>2</sub> &rarr; HNO<sub>3</sub> <br/>Để điều chế 2000 tấn nitric acid có nồng độ 60% cần dùng bao nhiêu tấn ammonia? Biết rằng hiệu suất của quá trình sản xuất nitric acid theo sơ đồ trên là 92%. (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"352","explanation":"Đáp án: 352.<br/>Khối lượng HNO<sub>3</sub> nguyên chất là: 2000.0,6 = 1200 tấn<br/>Sơ đồ phản ứng điều chế HNO<sub>3</sub> từ NH<sub>3</sub><br/>NH<sub>3</sub> → NO → NO<sub>2</sub> → HNO<sub>3</sub><br/>17g                                    63g<br/>x tấn                                  1200 tấn<br/>3NH1200.171m.3526392%== tấn<br/>","explanationImages":[],"points":0.25,"displayNumber":28}]},{"id":"h11_c2_de2","code":"115","title":"Đề Kiểm Tra Số 2 - Sulfur & SO2 (Mã 115)","topic":"Tính oxi hóa - khử của sulfur, sulfur dioxide & ô nhiễm khí thải","badge":"Mã 115","chapter":2,"duration":50,"totalQuestions":27,"totalPoints":10,"questions":[{"id":"h11_c2_de2_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Công thức hóa học của diêm tiêu Chile là","images":[],"options":[{"id":"a","letter":"A","text":"Ca(NO<sub>3</sub>)<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"NH<sub>4</sub>NO<sub>3.</sub>","isCorrect":false},{"id":"c","letter":"C","text":"NH<sub>4</sub>Cl","isCorrect":false},{"id":"d","letter":"D","text":"NaNO<sub>3</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h11_c2_de2_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Nhận định nào sau đây về phân tử nitrogen là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Có ba liên kết đơn bền vững","isCorrect":false},{"id":"b","letter":"B","text":"Chứa nguyên tử nitrogen có số oxi hóa là -3","isCorrect":false},{"id":"c","letter":"C","text":"Có liên kết cộng hóa trị có cực","isCorrect":false},{"id":"d","letter":"D","text":"Thể hiện cả tính oxi hóa và tính khử","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h11_c2_de2_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Khi tác dụng với nước và hydrochloric acid, ammonia đóng vai trò là","images":[],"options":[{"id":"a","letter":"A","text":"acid","isCorrect":false},{"id":"b","letter":"B","text":"base","isCorrect":true},{"id":"c","letter":"C","text":"chất oxi hóa","isCorrect":false},{"id":"d","letter":"D","text":"chất khử","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h11_c2_de2_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Trong công nghiệp, phần lớn sulfur đơn chất sau khi khai thác ở các mỏ được dùng làm nguyên liệu để","images":[],"options":[{"id":"a","letter":"A","text":"lưu hóa cao su tự nhiên","isCorrect":false},{"id":"b","letter":"B","text":"sản xuất sulfuric acid","isCorrect":true},{"id":"c","letter":"C","text":"điều chế thuốc bảo vệ thực vật","isCorrect":false},{"id":"d","letter":"D","text":"bào chế thuốc đông y","isCorrect":false}],"correctAnswer":"B","explanation":"Khoảng 90% lượng sulfur sản xuất trên thế giới được dùng để sản xuất sulfuric acid.","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h11_c2_de2_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Nhiệt phân hoàn toàn muối nào sau đây thu được sản phẩm chỉ gồm khí và hơi?","images":[],"options":[{"id":"a","letter":"A","text":"NaCl","isCorrect":false},{"id":"b","letter":"B","text":"CaCO<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"KClO<sub>3</sub>","isCorrect":false},{"id":"d","letter":"D","text":"NH<sub>4</sub>HCO<sub>3</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"NH<sub>4</sub>HCO<sub>3</sub> (t<sup>o</sup>) &rarr; NH<sub>3</sub>(k) + CO<sub>2</sub>(k) + H<sub>2</sub>O(hơi). Sản phẩm 100% gồm khí và hơi.","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h11_c2_de2_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Nguyên tố sulfur có số hiệu nguyên tử là 16. Vị trí của sulfur trong bảng tuần hoàn các nguyên tố hóa học là","images":[],"options":[{"id": "a", "letter": "A", "text": "chu kì 3, nhóm VI", "isCorrect": true}, {"id": "b", "letter": "B", "text": "chu kì 5, nhóm VI", "isCorrect": false}, {"id": "c", "letter": "C", "text": "chu kì 3, nhóm IV", "isCorrect": false}, {"id": "d", "letter": "D", "text": "chu kì 5, nhóm IV", "isCorrect": false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h11_c2_de2_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Thuốc thử duy nhất để nhận biết 4 dung dịch đựng trong 4 lọ mất nhãn là KOH, NH<sub>4</sub>Cl K<sub>2</sub>SO<sub>4</sub>, (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> là","images":[],"options":[{"id":"a","letter":"A","text":"dung dịch AgNO<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"dung dịch BaCl<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"dung dịch NaOH","isCorrect":false},{"id":"d","letter":"D","text":"dung dịch Ba(OH)<sub>2</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h11_c2_de2_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Hoạt động nào sau đây góp phần gây nên hiện tượng phú dưỡng?","images":[],"options":[{"id":"a","letter":"A","text":"Sự quang hợp của cây xanh","isCorrect":false},{"id":"b","letter":"B","text":"Nước thải sinh hoạt thải trực tiếp vào nguồn nước chưa qua xử lí","isCorrect":true},{"id":"c","letter":"C","text":"Ao hồ thả quá nhiều tôm, cá","isCorrect":false},{"id":"d","letter":"D","text":"Khử trùng ao hồ sau khi tát cạn bằng vôi sống (CaO)","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h11_c2_de2_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Nitric acid dễ bị phân hủy bởi ánh sáng hoặc nhiệt độ tạo thành các sản phẩm là","images":[],"options":[{"id":"a","letter":"A","text":"NO<sub>2</sub>, H<sub>2</sub>O","isCorrect":false},{"id":"b","letter":"B","text":"NO<sub>2</sub>, O<sub>2</sub>, H<sub>2</sub>O","isCorrect":true},{"id":"c","letter":"C","text":"N<sub>2</sub>, O<sub>2</sub>, H<sub>2</sub>O","isCorrect":false},{"id":"d","letter":"D","text":"N<sub>2</sub>. H<sub>2</sub>O","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h11_c2_de2_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Các chất khí được thu vào bình theo đúng nguyên tắc bằng cách đẩy không khí (X, Y, Z) và đẩy nước (T) như sau:<br/>Nhận xét nào sau đây không đúng?","images":["/assets/hoa12/c5/h11_c2_de2_image1.png"],"options":[{"id":"a","letter":"A","text":"X là sulfur dioxide","isCorrect":false},{"id":"b","letter":"B","text":"Y là ammonia","isCorrect":false},{"id":"c","letter":"C","text":"Z là hydrogen","isCorrect":true},{"id":"d","letter":"D","text":"T là nitrogen","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h11_c2_de2_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Ở điều kiện thường, sulfur tồn tại ở dạng tinh thể, được tạo nên từ các phân tử sulfur. Số nguyên tử trong mỗi phân tử sulfur là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"4","isCorrect":false},{"id":"c","letter":"C","text":"6","isCorrect":false},{"id":"d","letter":"D","text":"8","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h11_c2_de2_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Chất khí (X) tan trong nước tạo ra dung dịch làm quỳ tím hoá đỏ và khí (X) có thể được dùng làm chất tẩy màu. Khi (X) là","images":[],"options":[{"id":"a","letter":"A","text":"NH<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CO<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"SO<sub>2</sub>","isCorrect":true},{"id":"d","letter":"D","text":"O<sub>3</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h11_c2_de2_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Thạch cao sống là một dạng tồn tại phổ biến của sulfur trong tự nhiên, được sử dụng làm nguyên liệu để sản xuất xi măng, phấn viết bảng, … Công thức của thạch cao sống là","images":[],"options":[{"id":"a","letter":"A","text":"BaSO<sub>4</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CaSO<sub>4</sub>.2H<sub>2</sub>O","isCorrect":true},{"id":"c","letter":"C","text":"MgSO<sub>4</sub>","isCorrect":false},{"id":"d","letter":"D","text":"CuSO<sub>4</sub>.5H<sub>2</sub>O","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h11_c2_de2_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Tính chất nào sau đây không phải tính chất vật lí của sulfur?","images":[],"options":[{"id":"a","letter":"A","text":"Màu vàng ở điều kiện thường","isCorrect":false},{"id":"b","letter":"B","text":"Thể rắn ở điều kiện thường","isCorrect":false},{"id":"c","letter":"C","text":"Không tan trong benzene","isCorrect":true},{"id":"d","letter":"D","text":"Không tan trong nước","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h11_c2_de2_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Xét phản ứng tổng hợp ammonia theo phương trình hoá học:<br/>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ (xt, t°, p) 2NH<sub>3</sub>(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -92 kJ<br/>Cho các yếu tố sau: (a) tăng nhiệt độ, (b) tách ammonia ra khỏi hỗn hợp phản ứng, (c) giảm thể tích của hệ phản ứng, (d) thêm H<sub>2</sub>. Có bao nhiêu yếu tố làm tăng hiệu suất tổng hợp NH<sub>3</sub>?","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":true},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h11_c2_de2_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(a) Sulfuric acid tan tốt trong nước, quá trình hòa tan tỏa nhiệt mạnh.<br/>(b) Dung dịch sulfuric acid đặc hòa tan được tất cả các kim loại.<br/>(c) Dung dịch sulfuric acid đặc có tính háo nước và tính oxi hóa mạnh.<br/>(d) Nhiều muối sulfate tan tốt trong nước nhưng một số muối như CaSO<sub>4</sub>, BaSO<sub>4</sub> rất ít tan trong nước.<br/>(e) Khi bị bỏng sulfuric acid đặc, điều đầu tiên cần làm là xả nhanh chỗ bỏng với nước lạnh.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"5","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h11_c2_de2_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho các phản ứng sau:<br/>(a) S + O<sub>2</sub> → (t°) SO<sub>2</sub> (b) Hg + S → HgS<br/>(c) S + 6HNO<sub>3</sub> → H<sub>2</sub>SO<sub>4</sub>+ 6NO<sub>2</sub> + 2H<sub>2</sub>O (d) Fe + S → (t°) FeS<br/>Có bao nhiêu phản ứng trong đó sulfur đóng vai trò là chất khử?","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":true},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h11_c2_de2_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Hòa tan hết m gam oxide của kim loại M (hóa trị II) vào dung dịch H<sub>2</sub>SO<sub>4</sub> loãng, thu được 3m gam muối sulfate. Công thức của oxide kim loại là","images":[],"options":[{"id":"a","letter":"A","text":"ZnO","isCorrect":false},{"id":"b","letter":"B","text":"CuO","isCorrect":false},{"id":"c","letter":"C","text":"CaO","isCorrect":false},{"id":"d","letter":"D","text":"MgO","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h11_c2_de2_p2_q1","number":1,"part":2,"type":"true_false","text":"Mỗi năm có hàng triệu tấn nitrogen được sản xuất toàn cầu; trong đó nitrogen dạng khí chiếm khoảng hai phần ba, còn lại là nitrogen lỏng","images":[],"options":[{"id":"a","letter":"A","text":"Trong chữa cháy, nitrogen dùng để dập tắt các đám cháy do hóa chất, chập điện","isCorrect":true},{"id":"b","letter":"B","text":"Trong công nghiệp thực phẩm, nitrogen lỏng được sử dụng làm lạnh nhanh, bảo quản thực phẩm","isCorrect":true},{"id":"c","letter":"C","text":"Trong công nghệ đóng gói thực phẩm, khí nitrogen được bơm vào túi để loại bỏ khí oxygen và làm phồng bao","isCorrect":true},{"id":"d","letter":"D","text":"Trong lĩnh vực sinh học và y học, các mẫu vật sinh học được bảo quản trong bình nitrogen lỏng","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":18},{"id":"h11_c2_de2_p2_q2","number":2,"part":2,"type":"true_false","text":"Cho các nhận định sau về cấu tạo phân tử ammonia:","images":[],"options":[{"id":"a","letter":"A","text":"Phân tử có dạng hình chóp tam giác","isCorrect":true},{"id":"c","letter":"C","text":"Xung quanh nguyên tử N có 3 cặp electron hoá trị","isCorrect":false},{"id":"d","letter":"D","text":"Phân tử ammonia là phân tử cực","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. S. Liên kết N-H tương đối bền.<br/>c. S. Xung quanh nguyên tử N có 1 cặp electron hoá trị.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":19},{"id":"h11_c2_de2_p2_q3","number":3,"part":2,"type":"true_false","text":"Hình ảnh dưới đây mô tả về quá trình hình thành mưa acid:","images":["/assets/hoa12/c5/h11_c2_de2_image6.png"],"options":[{"id":"a","letter":"A","text":"Nước mưa có độ pH nhỏ hơn 5,6 được gọi là hiện tượng mưa acid","isCorrect":true},{"id":"b","letter":"B","text":"Tác nhân chính gây mưa acid là hỗn hợp khí SO<sub>2</sub> và NO<sub>x</sub>","isCorrect":true},{"id":"c","letter":"C","text":"Hoạt động của núi lửa, cháy rừng, sấm sét hoặc do con người tiêu thụ các nhiên liệu như than đá, dầu mỏ … làm phát sinh ra nhiều khí SO<sub>2</sub>, NO<sub>x</sub>","isCorrect":true},{"id":"d","letter":"D","text":"Dưới xúc tác của của ánh sáng mặt trời SO<sub>2</sub>, NO<sub>x</sub> bị oxi hoá, sau đó hoà tan trong nước mưa rơi xuống mặt đất, ao hồ … tạo thành hiện tượng mưa acid","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Dưới xúc tác của các ion kim loại trong khói bụi SO<sub>2</sub>, NO<sub>x</sub> bị oxi hoá","explanationImages":[],"points":1,"displayNumber":20},{"id":"h11_c2_de2_p2_q4","number":4,"part":2,"type":"true_false","text":"Cho sơ đồ điều chế sulfuric acid từ quặng pyrite theo 3 giai đoạn như sau:<br/>(1)(2)(3)22324FeSSOSOHSO →  →  →","images":[],"options":[{"id":"a","letter":"A","text":"Có 3 phản úng oxi hoá khử trong sơ đồ điều chế trên","isCorrect":false},{"id":"b","letter":"B","text":"Sản xuất sulfuric acid theo quy trình trên gọi là phương pháp tiếp xúc","isCorrect":true},{"id":"c","letter":"C","text":"Ở giai đoạn 3 người ta dùng dung dịch H<sub>2</sub>SO<sub>4</sub> đặc 98% để hấp thụ SO<sub>3</sub>, sản phẩm thu được gọi là oleum","isCorrect":true},{"id":"d","letter":"D","text":"Một loại quặng pyrite chứa 96% FeS<sub>2</sub>. Nếu mỗi ngày nhà máy sản xuất 100 tấn sulfuric acid 98% thì cần 70,46 tấn quặng pyrite với hiệu suất của cả quá trình sản xuất là 90%","isCorrect":false}],"explanation":"Đáp án:<br/>a. S. Có 2 phản ứng oxi hóa khử gồm có giai đoạn 1, 2.<br/>b. Đ.<br/>c. Đ. nSO<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> → H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub><br/>d. S. FeS<sub>2</sub>  2H<sub>2</sub>SO<sub>4</sub><br/>HSO24m100.98%98==  tấn   HSOFeSFeS24220,5.120n1n0,5m90%=Þ=Þ=<br/>Vậy mquặng =  FeS2m69,4496%=  tấn","explanationImages":[],"points":1,"displayNumber":21},{"id":"h11_c2_de2_p3_q1","number":1,"part":3,"type":"short_answer","text":"Có bao nhiêu liên kết cộng hóa trị trong ion muối ammonium?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.25,"displayNumber":22},{"id":"h11_c2_de2_p3_q2","number":2,"part":3,"type":"short_answer","text":"Cho dung dịch HNO<sub>3</sub> tác dụng với các chất sau: NH<sub>3</sub>, Cu, CaCO<sub>3</sub>, Fe<sub>3</sub>O<sub>4</sub> và NaOH. Có bao nhiêu phản ứng trong đó HNO<sub>3</sub> đóng vai trò acid theo Bronsted?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h11_c2_de2_p3_q3","number":3,"part":3,"type":"short_answer","text":"Bột đá vôi cỏ thể được sử dụng để xử lí khí thải chứa sulfur dioxide từ các nhà máy điện đốt than và dầu mỏ. Phương trình hoá học của phản ứng là: CaCO<sub>3</sub>(s) + SO<sub>2</sub>(g) → CaSO<sub>3</sub>(s) + CO<sub>2</sub>(g)<br/>Tính giá trị biến thiên enthalpy chuẩn của phản ứng trên (đơn vị kJ) theo số liệu giá trị enthalpy tạo thành chuẩn của các hợp chất trong bảng sau đây.<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Hợp chất</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">CaCO3 (s)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">SO<sub>2</sub> (g)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">CaSO3 (s)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">CO<sub>2</sub> (g)</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">(kJ/mol)</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–1207,6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–296,8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–1634,9</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–393,5</td></tr></table></div>","images":[],"correctAnswer":"−524","explanation":"Đáp án: −524.<br/>CaCO<sub>3</sub>(s) + SO<sub>2</sub>(g) → CaSO<sub>3</sub>(s) + CO<sub>2</sub>(g)<br/>= [−1634,9 + (−393,5)] – [−1207,6 + (−296,8)] = −524 kJ","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h11_c2_de2_p3_q4","number":4,"part":3,"type":"short_answer","text":"Cho các loại khoáng vật sau: blend (ZnS), chalcopyrite (CuFeS<sub>2</sub>), thạch cao (CaSO<sub>4</sub>), pyrite (FeS<sub>2</sub>). Có bao nhiêu khoáng vật có thành phần chính chứa muối sulfide?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.25,"displayNumber":25},{"id":"h11_c2_de2_p3_q5","number":5,"part":3,"type":"short_answer","text":"Khí sulfur dioxide có khả năng tẩy trắng và sát trùng nên được dùng làm chất chống mốc cho các sản phẩm mây tre đan tại nhiều làng nghề. Trong 1 ngày, một làng nghề đốt cháy 12,8 kg sulfur để tạo thành V m<sup>3</sup> khí sulfur dioxide với hiệu suất là 80%. Vậy trong 30 ngày lượng thể tích khí sulfur dioxide tạo thành là bao nhiêu m<sup>3</sup>? (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"238","explanation":"Đáp án: 238.<br/>S + O<sub>2</sub> → (t°)  SO<sub>2</sub><br/>0,4 kmol<br/>23SOV0,4.24,79.80%.30238m==","explanationImages":[],"points":0.25,"displayNumber":26},{"id":"h11_c2_de2_p3_q6","number":6,"part":3,"type":"short_answer","text":"Hỗn hợp X gồm N<sub>2</sub> và H<sub>2</sub> có tỉ lệ mol tương ứng là 1 : 3. Nung nóng X trong bình kín (450℃, xúc tác Fe) một thời gian, thu được hỗn hợp khí có số mol giảm 5% so với ban đầu. Hiệu suất của phản ứng tổng hợp NH<sub>3</sub> là bao nhiêu phần trăm?","images":[],"correctAnswer":"10","explanation":"Đáp án: 10.<br/>Chọn  22NHn1moln3mol=Þ=   Tổng số mol khí ban đầu là 4 mol  Þ  n<sub>khí giảm</sub> = 4.5% = 0,2 mol<br/>32223N(g)       H(g)NH(g)Ban ñaàu:      1                   3(mol)Phaûn öùng:    x                   3x+ ⇌ 2x            (mol)Caân baèng:  1-x                3-3x2x            (mol)<br/>Tổng số mol khí sau khi phản ứng là 1 – x + 3 – 3x + 2x = 4 – 2x (mol)<br/>Số mol khí giảm so với ban đầu là 2x  Þ  2x = 0,2  Þ  x = 0,1  Þ  H% =  0,1.100%10%.1=<br/>","explanationImages":[],"points":0.25,"displayNumber":27}]},{"id":"h11_c2_de3","code":"116","title":"Đề Kiểm Tra Số 3 - H2SO4 & Muối Sulfate (Mã 116)","topic":"Tính acid mạnh, tính oxi hóa mạnh của H2SO4 đặc & Nhận biết ion Ba2+","badge":"Mã 116","chapter":2,"duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"h11_c2_de3_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Vị trí (chu kì, nhóm) của nguyên tố nitrogen trong bảng tuần hoàn là","images":[],"options":[{"id": "a", "letter": "A", "text": "Chu kì 2, nhóm V", "isCorrect": true}, {"id": "b", "letter": "B", "text": "chu kì 3, nhóm V", "isCorrect": false}, {"id": "c", "letter": "C", "text": "chu kì 2, nhóm VI", "isCorrect": false}, {"id": "d", "letter": "D", "text": "chu kì 3, nhóm IV", "isCorrect": false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h11_c2_de3_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trong nghiên cứu, khí nitrogen thường được dùng để tạo bầu khí quyển trơ dựa trên cơ sở nào?","images":[],"options":[{"id":"a","letter":"A","text":"Nitrogen có tính oxi hóa mạnh","isCorrect":false},{"id":"b","letter":"B","text":"Nitrogen rất bền với nhiệt","isCorrect":true},{"id":"c","letter":"C","text":"Nitrogen khó hóa lỏng","isCorrect":false},{"id":"d","letter":"D","text":"Nitrogen không có cực","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h11_c2_de3_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Trong các phát biểu sau, phát biểu nào không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Ở điều kiện thường, NH<sub>3</sub> là chất khí không màu","isCorrect":false},{"id":"b","letter":"B","text":"Khí NH<sub>3</sub> nặng hơn không khí","isCorrect":true},{"id":"c","letter":"C","text":"Khí NH<sub>3</sub> dễ hoá lỏng, tan nhiều trong nước","isCorrect":false},{"id":"d","letter":"D","text":"Khí NH<sub>3</sub> có mùi khai, xốc","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h11_c2_de3_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Cho dung dịch NH<sub>3</sub>vào dung dịch chất nào sau đây thu được kết tủa trắng?","images":[],"options":[{"id":"a","letter":"A","text":"HCl","isCorrect":false},{"id":"b","letter":"B","text":"H<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"c","letter":"C","text":"H<sub>3</sub>PO<sub>4</sub>","isCorrect":false},{"id":"d","letter":"D","text":"AlCl<sub>3</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h11_c2_de3_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Trong quá trình tổng hợp ammonia theo quy trình Haber (Haber – Bosch), sau khi đã hóa lỏng ammonia, hydrogen và nitrogen sẽ:","images":[],"options":[{"id":"a","letter":"A","text":"qua ống dẫn khí thải và được loại bỏ","isCorrect":false},{"id":"b","letter":"B","text":"đưa trở lại buồng phản ứng để tái sử dụng","isCorrect":true},{"id":"c","letter":"C","text":"tiếp tục qua lò phản ứng số 2 để tăng hiệu suất tổng hợp","isCorrect":false},{"id":"d","letter":"D","text":"hydrogen được tái sử dụng, còn nitrogen loại bỏ dựa vào tỉ trọng","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h11_c2_de3_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Muối ammonium tan kém trong nước","isCorrect":false},{"id":"b","letter":"B","text":"Muối ammonium là chất điện li yếu","isCorrect":false},{"id":"c","letter":"C","text":"Muối ammonium kém bền với nhiệt","isCorrect":true},{"id":"d","letter":"D","text":"Dung dịch muối ammonium có tính chất base","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h11_c2_de3_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Một nhà máy phân bón tổng hợp ammonia với công suất 34 tấn/giờ. Trong một giờ, khối lượng nitrogen và hydrogen đã phản ứng lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"28 tấn và 2 tấn","isCorrect":false},{"id":"b","letter":"B","text":"14 tấn và 2 tấn","isCorrect":false},{"id":"c","letter":"C","text":"28 tấn và 6 tấn","isCorrect":true},{"id":"d","letter":"D","text":"28 tấn và 4 tấn","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h11_c2_de3_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Oxide của nitrogen được tạo thành ở nhiệt độ cao, khi nitrogen có trong không khí bị oxi hóa được gọi là","images":[],"options":[{"id":"a","letter":"A","text":"NO<sub>x</sub> tức thời","isCorrect":false},{"id":"b","letter":"B","text":"NO<sub>x</sub> nhiệt","isCorrect":true},{"id":"c","letter":"C","text":"NO<sub>x</sub>nhiên liệu","isCorrect":false},{"id":"d","letter":"D","text":"NO<sub>x</sub> tự nhiên","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h11_c2_de3_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Xét phản ứng hóa học thường xảy ra cùng với quá trình đốt cháy nhiên liệu trong buồn đốt động cơ:  ()()()22rNg  Og2NOg,H180,6kJD=+ ⇌ <br/>Nhận xét nào sau đây về phản ứng là không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Nitrogen là chất oxi hóa","isCorrect":true},{"id":"b","letter":"B","text":"Phản ứng thuận thu nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"Hiệu suất phản ứng rất thấp","isCorrect":false},{"id":"d","letter":"D","text":"Nitrogen là chất khử","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h11_c2_de3_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Đặc điểm nào sau đây là đúng để giải thích tính kém bền nhiệt của HNO<sub>3</sub>?","images":[],"options":[{"id":"a","letter":"A","text":"Liên kết O – H phân cực mạnh về phía O","isCorrect":false},{"id":"b","letter":"B","text":"Liên kết N  O là liên kết cho nhận kém bền","isCorrect":true},{"id":"c","letter":"C","text":"Nguyên tử N có số oxi hóa +5 là số oxi hóa cao nhất của N","isCorrect":false},{"id":"d","letter":"D","text":"HNO<sub>3</sub> có khả năng nhường proton cho nước","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h11_c2_de3_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Trong công nghiệp, quá trình sản xuất Ca(NO<sub>3</sub>)<sub>2</sub> cùng làm phân bón được thực hiện bằng phản ứng giữa dung dịch HNO<sub>3</sub> với hợp chất phổ biến, giá rẻ nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"CaO","isCorrect":false},{"id":"b","letter":"B","text":"Ca(OH)<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CaCO<sub>3</sub>","isCorrect":true},{"id":"d","letter":"D","text":"CaSO<sub>4</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h11_c2_de3_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Các hình ảnh dưới đây mô tả cách pha loãng H<sub>2</sub>SO<sub>4</sub> đặc:<br/>Hình ảnh mô tả đúng cách pha loãng acid đảm bảo an toàn là","images":["/assets/hoa12/c5/h11_c2_de3_image2.png"],"options":[{"id":"a","letter":"A","text":"Hình 1","isCorrect":false},{"id":"b","letter":"B","text":"Hình 2","isCorrect":true},{"id":"c","letter":"C","text":"Hình 3","isCorrect":false},{"id":"d","letter":"D","text":"Hình 4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h11_c2_de3_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Một trong những nguồn nguyên liệu sản xuất sulfuric acid hiện nay là quặng pyrite. Thành phần chính có trong quặng pyrite là","images":[],"options":[{"id":"a","letter":"A","text":"FeS<sub>2</sub>","isCorrect":true},{"id":"b","letter":"B","text":"CuFeS<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CaSO<sub>4</sub>.H<sub>2</sub>O","isCorrect":false},{"id":"d","letter":"D","text":"HgS","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h11_c2_de3_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phân tử nào sau đây không phân cực?","images":[],"options":[{"id":"a","letter":"A","text":"H<sub>2</sub>S","isCorrect":false},{"id":"b","letter":"B","text":"SO<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"S<sub>8</sub>","isCorrect":true},{"id":"d","letter":"D","text":"H<sub>2</sub>SO<sub>4</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h11_c2_de3_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Cho dung dịch NaOH vào 100 ml dung dịch NH<sub>4</sub>NO<sub>3</sub> 1M, đun nóng thu được V lít khí ở đkc. Giá trị của V là","images":[],"options":[{"id":"a","letter":"A","text":"2,4790","isCorrect":true},{"id":"b","letter":"B","text":"4,9580","isCorrect":false},{"id":"c","letter":"C","text":"7,4370","isCorrect":false},{"id":"d","letter":"D","text":"1,2395","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h11_c2_de3_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Một bạn học sinh thu khí SO<sub>2</sub> vào bình tam giác và đậy miệng bình bằng bông tẩm dung dịch E (để giữ không cho khí SO<sub>2</sub> bay ra) theo sơ đồ bên. Theo em, để hiệu quả nhất, bạn học sinh cần sử dụng dung dịch E là dung dịch nào sau đây?","images":["/assets/hoa12/c5/h11_c2_de3_image3.png"],"options":[{"id":"a","letter":"A","text":"Giấm ăn","isCorrect":false},{"id":"b","letter":"B","text":"Muối ăn","isCorrect":false},{"id":"c","letter":"C","text":"Nước vôi","isCorrect":true},{"id":"d","letter":"D","text":"Nước máy","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h11_c2_de3_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Phản ứng hóa học nào sau đây đóng vai trò chính chuyển hóa sulfur dioxide trong không khí ô nhiễm gây mưa acid?","images":[],"options":[{"id":"a","letter":"A","text":"SO<sub>2</sub> + NaOH → NaHSO<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"SO<sub>2</sub> + 2H<sub>2</sub>S → 3S + 2H<sub>2</sub>O","isCorrect":false},{"id":"c","letter":"C","text":"SO<sub>2</sub> + H<sub>2</sub>O + Br<sub>2</sub> → 2HBr + H<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"d","letter":"D","text":"SO<sub>2</sub> + NO<sub>2</sub> → SO<sub>3</sub> + NO","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h11_c2_de3_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Muối X không tan trong nước và các dung môi hữu cơ. Trong y học, X thường được dùng làm chất cản quang xét nghiệm X-quang đường tiêu hóa. Công thức của X là","images":[],"options":[{"id":"a","letter":"A","text":"BaSO<sub>4</sub>","isCorrect":true},{"id":"b","letter":"B","text":"Na<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"c","letter":"C","text":"K<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"d","letter":"D","text":"MgSO<sub>4</sub>","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"h11_c2_de3_p2_q1","number":1,"part":2,"type":"true_false","text":"Nitric acid có công thức Lewis và công thức cấu tạo như hình dưới đây:","images":["/assets/hoa12/c5/h11_c2_de3_image5.png","/assets/hoa12/c5/h11_c2_de3_image6.png"],"options":[{"id":"a","letter":"A","text":"Trong phân tử nitric acid, nguyên tử N có hóa trị là V","isCorrect":false},{"id":"b","letter":"B","text":"Trong phân tử nitric acid, nguyên tử N có số oxi hóa là +4","isCorrect":false},{"id":"c","letter":"C","text":"Liên kết O – H phân cực mạnh về phía nguyên tử oxygen","isCorrect":true},{"id":"d","letter":"D","text":"Liên kết N  O là liên kết cho – nhận","isCorrect":true}],"explanation":"Đáp án:<br/>a. S. Nguyên tử N có hóa trị là IV.<br/>b. S. Nguyên tử N có số oxi hóa là +5.<br/>c. Đ.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":19},{"id":"h11_c2_de3_p2_q2","number":2,"part":2,"type":"true_false","text":"Nguyên nhân của hiện tượng phú dưỡng là do sự dư thừa chất dinh dưỡng đã cung cấp nguồn thức ăn dồi dào cho sinh vật phù du phát triển mạnh","images":[],"options":[{"id":"a","letter":"A","text":"Thông thường, khi hàm lượng nitrogen trong nước đạt 300  g/Lm  và clorine đạt 20  g/Lm sẽ gây ra hiện tượng phú dưỡng","isCorrect":false},{"id":"b","letter":"B","text":"Hiện tượng phú dưỡng làm giảm hàm lượng oxygen trong nước, gây ảnh hưởng xấu cho các loài sinh vật khác trong ao hồ","isCorrect":true},{"id":"c","letter":"C","text":"Nguồn dinh dưỡng từ ao hồ thường có nguồn gốc từ nước thải nông nghiệp, công nghiệp và sinh hoạt thông qua các cống dẫn nước cố định","isCorrect":true},{"id":"d","letter":"D","text":"Khử trùng ao hồ sau khi tát cạn bằng vôi sống (CaO) cũng góp phần ra hiện tượng phú dưỡng","isCorrect":false}],"explanation":"Đáp án:<br/>a. S. Hàm lượng nitrogen và phosphorus.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Không ảnh hưởng","explanationImages":[],"points":1,"displayNumber":20},{"id":"h11_c2_de3_p2_q3","number":3,"part":2,"type":"true_false","text":"Sulfuric acid là hóa chất hàng đầu được dùng trong nhiều ngành sản xuất","images":[],"options":[{"id":"a","letter":"A","text":"Sulfuric acid được sử dụng rộng rãi trong sản xuất phân bón hóa học","isCorrect":true},{"id":"b","letter":"B","text":"Sulfuric acid được sử dụng trong sản xuất chất tẩy rửa, sơn, phẩm màu, thuốc trừ sâu, giấy, chế biến dầu mỏ,","isCorrect":true},{"id":"c","letter":"C","text":"Nguyên liệu chính để sản xuất sulfuric acid trong công nghiệp là các muối sulfate","isCorrect":false},{"id":"d","letter":"D","text":"Trong công nghiệp, sulfuric acid chủ yếu được sản xuất bằng phương pháp sulfate","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Nguyên liệu chính để sản xuất sulfuric acid trong công nghiệp là S, FeS<sub>2</sub>.<br/>d. S. Sulfuric acid chủ yếu được sản xuất bằng phương pháp tiếp xúc","explanationImages":[],"points":1,"displayNumber":21},{"id":"h11_c2_de3_p2_q4","number":4,"part":2,"type":"true_false","text":"Khí SO<sub>2</sub> do các nhà máy thải ra là nguyên nhân chính trong việc gây ô nhiễm môi trường. Theo quy chuẩn kĩ thuật quốc gia về chất lượng không khí xung quanh (QCVN 05:2013/BTNMT) thì nếu lượng SO<sub>2</sub> vượt quá 350  ì g/m<sup>3</sup> không khí đo trong 1 giờ ở thành phố thì coi như không khí bị ô nhiễm","images":[],"options":[{"id":"a","letter":"A","text":"Số oxi hóa của sulfur trong phân tử SO<sub>2</sub> là +2","isCorrect":false},{"id":"b","letter":"B","text":"SO<sub>2</sub> là nguyên nhân chính gây ra hiện tượng mưa acid","isCorrect":true},{"id":"c","letter":"C","text":"Nồng độ SO<sub>2</sub> cao gây viêm và kích ứng hệ hô hấp","isCorrect":true},{"id":"d","letter":"D","text":"Nếu lấy 50 lít không khí trong 1 giờ ở một thành phố và phân tích thấy có 0,012 mg SO<sub>2</sub> thì có thể kết luận rằng không khí ở thành phố đó bị ô nhiễm","isCorrect":false}],"explanation":"Đáp án:<br/>a. S. Số oxi hóa của S trong SO<sub>2</sub> là +4.<br/>b. Đ.<br/>c. Đ.<br/>d. S.<br/>50 lít = 0,05 m<sup>3</sup> không khí có 0,012 mg = 12  ì g SO<sub>2</sub><br/>1 m<sup>3</sup> không khí có 1.12/0,05 = 240 mg SO<sub>2</sub> < 350  ì g  không khí ở thành phố đó chưa bị ô nhiễm","explanationImages":[],"points":1,"displayNumber":22},{"id":"h11_c2_de3_p3_q1","number":1,"part":3,"type":"short_answer","text":"Cho các nguyên liệu sau: sulfur, quặng pyrite (FeS<sub>2</sub>), không khí, nước, vanadium (V) oxide (V<sub>2</sub>O<sub>5</sub>). Có bao nhiêu nguyên liệu được sử dụng trong công nghiệp sản xuất sulfuric acid?","images":[],"correctAnswer":"5","explanation":"Đáp án: 5","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h11_c2_de3_p3_q2","number":2,"part":3,"type":"short_answer","text":"Cho các chất sau: S<sub>8</sub>, H<sub>2</sub>S, N<sub>2</sub>, NH<sub>3</sub>, SO<sub>2</sub> và H<sub>2</sub>SO<sub>4</sub>, Có bao nhiêu chất trong dãy chất trên vừa có tính khử vừa có tính oxi hóa?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h11_c2_de3_p3_q3","number":3,"part":3,"type":"short_answer","text":"Sự phụ thuộc của độ tan khí ammonia trong nước vào nhiệt độ được mô tả ở hình dưới đây:<br/>Nồng độ phần trăm (%) của dung dịch ammonia bão hòa ở 30<sup>o</sup>C là bao nhiêu? (Kết quả làm tròn đến hàng phần mười)","images":["/assets/hoa12/c5/h11_c2_de3_image9.png"],"correctAnswer":"28,6","explanation":"Đáp án: 28,6.<br/>Nồng độ phần trăm của ammonia bão hòa:  C% = [40 / (40 + 100)] &times; 100% = 28,57%","explanationImages":[],"points":0.25,"displayNumber":25},{"id":"h11_c2_de3_p3_q4","number":4,"part":3,"type":"short_answer","text":"Cho 0,008 mol một loại hợp chất oleum (có công thức H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub>) vào nước thu được dung dịch X. Để trung hoà dung dịch X cần dùng vừa đủ 48 gam dung dịch NaOH 4%. Tìm giá trị của n?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":["/assets/hoa12/c5/h11_c2_de3_image13.png"],"points":0.25,"displayNumber":26},{"id":"h11_c2_de3_p3_q5","number":5,"part":3,"type":"short_answer","text":"Phản ứng chuyển hóa hydrogen sulfide trong khí thiên nhiên thành sulfur được thực hiện theo sơ đồ phản ứng: H<sub>2</sub>S + SO<sub>2</sub> → S + H<sub>2</sub>O.<br/>Khối lượng sulfur tối đa tạo ra khi chuyển hóa 1 000 m<sup>3</sup> khí thiên nhiên (đkc) (chứa 5 mg H<sub>2</sub>S/m<sup>3</sup>) là bao nhiêu gam?","images":[],"correctAnswer":"7,06","explanation":"Đáp án: 7,06.<br/>2H<sub>2</sub>S + SO<sub>2</sub> &rarr; 3S + 2H<sub>2</sub>O<br/>m<sub>H<sub>2</sub>S</sub> = 1000 &times; 5 mg = 5000 mg = 5 g &rArr; n<sub>H<sub>2</sub>S</sub> = 5 / 34 mol.<br/>Theo PTHH: n<sub>S</sub> = 3/2 &times; n<sub>H<sub>2</sub>S</sub> = (3/2) &times; (5/34) &approx; 0,2206 mol.<br/>&rArr; m<sub>S</sub> = 0,2206 &times; 32 &approx; 7,06 g.","explanationImages":[],"points":0.25,"displayNumber":27},{"id":"h11_c2_de3_p3_q6","number":6,"part":3,"type":"short_answer","text":"Trong tự nhiên, phản ứng giữa nitrogen và oxygen xảy ra trong những cơn mưa dông sấm sét, khởi đầu cho quá trình chuyển hóa từ nitrogen thành nitric acid. Nitric acid tan trong nước mưa và phân li ra ion nitrate ( 3NO- ) là một dạng phân đạm mà cây trong hấp thụ được để sinh trưởng và phát triển. Quá trình chuyển hóa từ nitrogen thành nitric acid qua mấy giai đoạn?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3.<br/>N<sub>2</sub> &rarr; NO &rarr; NO<sub>2</sub> &rarr; HNO<sub>3</sub> <br/>","explanationImages":[],"points":0.25,"displayNumber":28}]},{"id":"h11_c2_de4","code":"117","title":"Đề Kiểm Tra Tổng Hợp Chương 2 (Mã 117)","topic":"Tổng hợp toàn diện kiến thức Nitrogen và Sulfur","badge":"Mã 117","chapter":2,"duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"h11_c2_de4_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Trong không khí, chất nào sau đây chiếm phần trăm thể tích lớn nhất?","images":[],"options":[{"id":"a","letter":"A","text":"O<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"NO","isCorrect":false},{"id":"c","letter":"C","text":"CO<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"N<sub>2</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"h11_c2_de4_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Khí nitrogen trơ về mặt hoá học ở điều kiện thường là do","images":[],"options":[{"id":"a","letter":"A","text":"Phân tử có liên kết ba, năng lượng liên kết nhỏ","isCorrect":false},{"id":"b","letter":"B","text":"Phân tử có liên kết ba, năng lượng liên kết lớn","isCorrect":true},{"id":"c","letter":"C","text":"Phân tử có liên kết đôi, năng lượng liên kết lớn","isCorrect":false},{"id":"d","letter":"D","text":"Phân tử có liên kết đôi, năng lượng liên kết nhỏ","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"h11_c2_de4_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Các loại bim bim (snack) là món yêu thích của nhiều người, nhất là các bạn trẻ. Lượng bim bim trong các gói thường chỉ chiếm một nửa thể tích, phần còn lại là khí nitrogen. Lí do khí nitrogen được bơm vào gói bim bim là","images":[],"options":[{"id":"a","letter":"A","text":"diệt khuẩn để bảo quản bim bim lâu hơn","isCorrect":false},{"id":"b","letter":"B","text":"tăng tính thẩm mĩ của gói bim bim","isCorrect":false},{"id":"c","letter":"C","text":"tăng khối lượng cho gói bim bim","isCorrect":false},{"id":"d","letter":"D","text":"tạo môi trường trơ bảo quản bim bim","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"h11_c2_de4_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Phân tử ammonia có dạng hình học nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Chóp tam giác","isCorrect":true},{"id":"b","letter":"B","text":"Chữ T","isCorrect":false},{"id":"c","letter":"C","text":"Chóp tứ giác","isCorrect":false},{"id":"d","letter":"D","text":"Tam giác đều","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"h11_c2_de4_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Cho thí nghiệm như hình vẽ, bên trong bình có chứa khí ammonia, trong chậu thủy tinh chứa nước có nhỏ vài giọt phenolphthalein.<br/>Hiện tượng xảy ra trong thí nghiệm là","images":["/assets/hoa12/c5/h11_c2_de4_image8.png"],"options":[{"id":"a","letter":"A","text":"nước phun vào bình và chuyển thành màu hồng","isCorrect":true},{"id":"b","letter":"B","text":"nước phun vào bình và chuyển thành màu tím","isCorrect":false},{"id":"c","letter":"C","text":"nước phun vào bình và không có màu","isCorrect":false},{"id":"d","letter":"D","text":"nước phun vào bình và chuyển thành màu xanh","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"h11_c2_de4_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Cho cân bằng hóa học sau: N<sub>2</sub> (g) + 3H<sub>2</sub> (g) ⇌ 2NH<sub>3</sub>(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> < 0. Tổng số mol của hỗn hợp khí khi hệ đạt cân bằng ở nhiệt độ 400<sup>o</sup>C và 500<sup>o</sup>C là lượt là x và y. Mối quan hệ giữa x và y là","images":[],"options":[{"id":"a","letter":"A","text":"x > y","isCorrect":false},{"id":"b","letter":"B","text":"x = y","isCorrect":false},{"id":"c","letter":"C","text":"x < y","isCorrect":true},{"id":"d","letter":"D","text":"5x = 4y","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"h11_c2_de4_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Phân biệt được dung dịch NH<sub>4</sub>Cl và NaCl bằng thuốc thử là dung dịch","images":[],"options":[{"id":"a","letter":"A","text":"KCl","isCorrect":false},{"id":"b","letter":"B","text":"KNO<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"KOH","isCorrect":true},{"id":"d","letter":"D","text":"K<sub>2</sub>SO<sub>4</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"h11_c2_de4_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Khi so sánh phân tử ammonia với ion ammonium, nhận định nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Đều chứa liên kết ion","isCorrect":false},{"id":"b","letter":"B","text":"Đều có tính acid yếu trong nước","isCorrect":false},{"id":"c","letter":"C","text":"Đều có tính base yếu trong nước","isCorrect":false},{"id":"d","letter":"D","text":"Đều chứa nguyên tử N có số oxi hoá là -3","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"h11_c2_de4_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Cho các phản ứng sau:<br/>(a) S + O<sub>2</sub> → (t°) SO<sub>2</sub> (b) Hg + S → HgS<br/>(c) H<sub>2</sub> +  18 S<sub>8</sub> → H<sub>2</sub>S.(d) Fe + S → (t°) FeS<br/>Có bao nhiêu phản ứng trong đó sulfur đóng vai trò là chất khử?","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":true},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"h11_c2_de4_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Khi nhiệt kế thủy ngân vỡ, rắc chất bột nào sau đây lên thủy ngân rơi vãi sẽ chuyển hóa chúng thành hợp chất bền, ít độc hại?","images":[],"options":[{"id":"a","letter":"A","text":"Than đá","isCorrect":false},{"id":"b","letter":"B","text":"Đá vôi","isCorrect":false},{"id":"c","letter":"C","text":"Muối ăn","isCorrect":false},{"id":"d","letter":"D","text":"Sulfur","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"h11_c2_de4_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Sulfur dioxide đóng vai trò chất khử khi tác dụng với chất nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"H<sub>2</sub>S","isCorrect":false},{"id":"b","letter":"B","text":"NO<sub>2</sub>","isCorrect":true},{"id":"c","letter":"C","text":"Mg","isCorrect":false},{"id":"d","letter":"D","text":"KOH","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"h11_c2_de4_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Nitrogen monoxide được tạo thành khi mưa dông kèm theo sấm sét do phản ứng giữa nitrogen và oxygen trong không khí được gọi là","images":[],"options":[{"id":"a","letter":"A","text":"NO<sub>x</sub> tức thời","isCorrect":false},{"id":"b","letter":"B","text":"NO<sub>x</sub> nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"NO<sub>x</sub>nhiên liệu","isCorrect":false},{"id":"d","letter":"D","text":"NO<sub>x</sub> tự nhiên","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"h11_c2_de4_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Hiện tượng phú dưỡng là một biểu hiện của môi trường ao, hồ bị ô nhiễm do dư thừa các chất dinh dưỡng, Sự dư thừa dinh dưỡng chủ yếu do hàm lượng các ion nào sau đây vượt quá mức cho phép?","images":[],"options":[{"id":"a","letter":"A","text":"Sodium, potassium","isCorrect":false},{"id":"b","letter":"B","text":"Calcium, magnesium","isCorrect":false},{"id":"c","letter":"C","text":"Nitrate, phosphate","isCorrect":true},{"id":"d","letter":"D","text":"Chloride, sulfate","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"h11_c2_de4_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Một phương pháp được đề xuất để loại bỏ SO<sub>2</sub> khỏi khí thải của nhà máy điện bằng cách dẫn khí thải qua dung dịch H<sub>2</sub>S. Cần tối đa bao nhiêu m<sup>3</sup> H<sub>2</sub>S (ở đkc) để loại bỏ SO<sub>2</sub> sinh ra khi đốt cháy 2,0 tấn than chứa sulfur chiếm 3% theo khối lượng?","images":[],"options":[{"id":"a","letter":"A","text":"23,24 m<sup>3</sup>","isCorrect":false},{"id":"b","letter":"B","text":"92,96 m<sup>3</sup>","isCorrect":true},{"id":"c","letter":"C","text":"46,48 m<sup>3</sup>","isCorrect":false},{"id":"d","letter":"D","text":"34,86 m<sup>3</sup>","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"h11_c2_de4_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Cho các nhận định sau về cấu tạo phân tử nitric acid:<br/>(a) Liên kết O – H phân cực về oxygen.(b) Nguyên tử N có số oxi hóa là +5.<br/>(c) Nguyên tử N có hóa trị bằng IV.(d) Liên kết cho – nhận N → O kém bền.<br/>Số nhận định đúng là","images":["/assets/hoa12/c5/h11_c2_de4_image15.png"],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"h11_c2_de4_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Cách pha loãng dung dịch sulfuric acid đặc nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Rót nhanh acid vào nước và khuấy đều","isCorrect":false},{"id":"b","letter":"B","text":"Rót nhanh nước vào acid và khuấy đều","isCorrect":false},{"id":"c","letter":"C","text":"Rót từ từ nước vào acid và khuấy đều","isCorrect":false},{"id":"d","letter":"D","text":"Rót từ từ acid vào nước và khuấy đều","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"h11_c2_de4_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Muối X không tan trong nước và các dung môi hữu cơ. Trong y học, X thường được dùng làm chất cản quang xét nghiệm X-quang đường tiêu hóa. Công thức của X là","images":[],"options":[{"id":"a","letter":"A","text":"BaSO<sub>4</sub>","isCorrect":true},{"id":"b","letter":"B","text":"Na<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"c","letter":"C","text":"K<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"d","letter":"D","text":"MgSO<sub>4</sub>","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"h11_c2_de4_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Sulfuric acid là một trong những hoá chất quan trọng nhất được sử dụng trong công nghiệp; được sản xuất hàng trăm triệu tấn mỗi năm, chiếm nhiều nhất trong ngành công nghiệp hoá chất. Phương pháp sản xuất sulfuric acid phổ biến nhất là phương pháp tiếp xúc, theo đó acid có thể được điều chế qua các giai đoạn sau:<br/>(1) FeS<sub>2</sub>(s) + O<sub>2</sub>(g) → (t°)  Fe<sub>2</sub>O<sub>3</sub>(s) + SO<sub>2</sub>(g)<br/>(2) SO<sub>2</sub>(g) + O<sub>2</sub>(s)  o25450 C, ⇌ (V<sub>2</sub>O<sub>5</sub>, t°) SO<sub>3</sub>(g) ; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -196 kJ<br/>(3) H<sub>2</sub>SO<sub>4</sub>(aq) + SO<sub>3</sub>(g) → H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub>(l)<br/>(4) H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub>(l) + H<sub>2</sub>O(l) → H<sub>2</sub>SO<sub>4</sub>(aq)<br/>Người ta dùng sulfuric acid đặc H<sub>2</sub>SO<sub>4</sub>(aq) hấp thụ SO<sub>3</sub>(g) trong phản ứng (3), quá trình này được thực hiện trong tháp tiếp xúc. Cách thực hiện nào sau đây sẽ đạt hiệu quả tiếp xúc tốt nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Cho SO<sub>3</sub>(g) lội qua dung dịch H<sub>2</sub>SO<sub>4</sub>(aq)","isCorrect":false},{"id":"b","letter":"B","text":"SO<sub>3</sub>(g) được phun vào từ phía trên tháp, H<sub>2</sub>SO<sub>4</sub>(aq) được bơm từ dưới lên","isCorrect":false},{"id":"c","letter":"C","text":"SO<sub>3</sub>(g) được xả vào từ phía dưới tháp, H<sub>2</sub>SO<sub>4</sub>(aq) được phun từ trên xuống","isCorrect":true},{"id":"d","letter":"D","text":"SO<sub>3</sub>(g) lội qua H<sub>2</sub>SO<sub>4</sub>(aq) được khuấy liên tục với tốc độ cao","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"h11_c2_de4_p2_q1","number":1,"part":2,"type":"true_false","text":"Hiện tượng phú dưỡng là một biểu hiện của môi trường ao, hồ bị ô nhiễm do dư thừa các chất dinh dưỡng","images":[],"options":[{"id":"a","letter":"A","text":"Chất thải công nghiệp, chất thải sinh hoạt, … khi không được xử lí theo quy chuẩn, nếu thải vào sông, hồ cũng gây ra hiện tượng phú dưỡng","isCorrect":true},{"id":"b","letter":"B","text":"Hiện tượng phú dưỡng gây cản trở hấp thụ ánh sáng mặt trời vào nước, làm giảm sự quang hợp của thực vật thủy sinh","isCorrect":true},{"id":"c","letter":"C","text":"Có thể quan sát được hiện tượng phú dưỡng thông qua sự xuất hiện dày đặc của tảo xanh trong nước","isCorrect":true},{"id":"d","letter":"D","text":"Thông thường, khi hàm lượng calcium trong nước đạt 300 μg/L và hàm lượng magnesium đạt 20 μg/L sẽ gây hiện tượng phú dưỡng","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Dư thừa nitrogen và phosphorus trong nước","explanationImages":[],"points":1,"displayNumber":19},{"id":"h11_c2_de4_p2_q2","number":2,"part":2,"type":"true_false","text":"Phương trình hoá học của phản ứng tổng họp ammonia từ nitrogen và hydrogen bằng quá trình Haber như sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  o400600C, 200 bar, Fe- ⇌ 2NH<sub>3</sub>(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -92 kJ","images":[],"options":[{"id":"a","letter":"A","text":"Tại thời điểm cân bằng, hỗn hợp trong buồng phản ứng gồm ammonia, nitrogen và hydrogen","isCorrect":true},{"id":"b","letter":"B","text":"Ammonia dễ hoá lỏng hơn nên khi làm lạnh hỗn hợp sẽ tách được ammonia lỏng ra khỏi hỗn hợp khí","isCorrect":true},{"id":"c","letter":"C","text":"Nếu không sử dụng chất xúc tác thì không thể tạo thành ammonia","isCorrect":false},{"id":"d","letter":"D","text":"Nếu giảm áp suất của hệ thì cân bằng sẽ chuyển dịch theo chiều thuận","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Chất xúc tác làm tăng tốc độ phản ứng còn sản phẩm ammonia vẫn được tạo thành trong quá trình phản ứng kể cả không có xúc tác.<br/>d. S. Giảm áp suất làm cân bằng chuyển dịch theo chiều nghịch","explanationImages":[],"points":1,"displayNumber":20},{"id":"h11_c2_de4_p2_q3","number":3,"part":2,"type":"true_false","text":"Cho các phát biểu sau về sulfuric acid và muối sulfate:","images":[],"options":[{"id":"a","letter":"A","text":"Sulfuric acid đặc có tính háo nước, gây bỏng nặng khi tiếp xúc với da tay","isCorrect":true},{"id":"b","letter":"B","text":"Khi bị bỏng sulfuric acid đặc, điều đầu tiên cần làm là xả nhanh chỗ bỏng với nước lạnh","isCorrect":true},{"id":"c","letter":"C","text":"Sulfuric acid loãng có tính oxi hóa mạnh, khi tác dụng với kim loại không sinh ra khí hydrogen","isCorrect":false},{"id":"d","letter":"D","text":"Thuốc thử nhận biết sulfuric acid và muối sulfate là ion Ba<sup>2+</sup> trong các dung dịch BaCl<sub>2</sub>, Ba(OH)<sub>2</sub>, Ba(NO<sub>3</sub>)<sub>2</sub>","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Sulfuric acid loãng có tính acid mạnh.<br/>d. Đ","explanationImages":[],"points":1,"displayNumber":21},{"id":"h11_c2_de4_p2_q4","number":4,"part":2,"type":"true_false","text":"Sau mỗi trận mưa giông, một lượng nitrogen trong không khí được chuyển hóa thành ion nitrate và hòa tan vào nước mưa theo sơ đồ chuyển hóa dưới đây:<br/>(1)(2)(3)(4)2233NNONOHNOHNO+- →  →  →  → +","images":[],"options":[{"id":"a","letter":"A","text":"Cả bốn phản ứng mà nguyên tố nitrogen đóng vai trò là chất khử","isCorrect":false},{"id":"b","letter":"B","text":"Sản phẩm của phản ứng (4) có thể dùng làm phân bón","isCorrect":true},{"id":"c","letter":"C","text":"Trong thực tế, phản ứng (1) xảy ra ở nhiệt độ thường","isCorrect":false},{"id":"d","letter":"D","text":"Để tạo ra được 124 kg ion nitrate cần dùng ở điều kiện chuẩn là 991,6 m<sup>3</sup> khí N<sub>2</sub>. Biết hiệu suất của toàn bộ quá trình là 5%","isCorrect":false}],"explanation":"Đáp án:<br/>a. S. Phản ứng (4) không phải là phản ứng oxi hóa khử.<br/>b. Đ.<br/>c. S. Ở nhiệt độ cao trên 3000°C hoặc có tia lửa điện, nitrogen kết hợp với oxygen, tạo ra nitrogen monoxide (NO).<br/>d. S.  22233NNNNO1241n2nn.kmolV495,8m62.25%-=Þ=Þ=","explanationImages":[],"points":1,"displayNumber":22},{"id":"h11_c2_de4_p3_q1","number":1,"part":3,"type":"short_answer","text":"Phân tử sulfur trong trạng thái rắn tồn tại ở dạng vòng gồm có bao nhiêu nguyên tử sulfur?","images":[],"correctAnswer":"8","explanation":"Đáp án: 8","explanationImages":[],"points":0.25,"displayNumber":23},{"id":"h11_c2_de4_p3_q2","number":2,"part":3,"type":"short_answer","text":"Cho các chất khí: NO, NO<sub>2</sub>, SO<sub>2</sub>, N<sub>2</sub>O và N<sub>2</sub>. Có bao nhiêu chất khí là nguyên nhân góp phần gây ra hiện tượng mưa acid?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.25,"displayNumber":24},{"id":"h11_c2_de4_p3_q3","number":3,"part":3,"type":"short_answer","text":"Cho dung dịch (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> tác dụng lần lượt với các dung dịch NaOH, Ba(OH)<sub>2</sub>, MgCl<sub>2</sub>, Ba(NO<sub>3</sub>)<sub>2</sub> và NaNO<sub>3</sub>. Sau khi các phản ứng xảy trên ra hoàn toàn, có bao nhiêu phản ứng thu được kết tủa?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.25,"displayNumber":25},{"id":"h11_c2_de4_p3_q4","number":4,"part":3,"type":"short_answer","text":"Khi cho sulfuric acid đặc, nóng lần lượt tiếp xúc với các chất sau: đường saccharose (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>), bột lưu huỳnh, thanh platinum, bột kẽm, thuốc tím (KMnO<sub>4</sub>), muối ăn (NaCl). Có bao nhiêu chất bị sulfuric acid đặc, nóng oxi hoá?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.25,"displayNumber":26},{"id":"h11_c2_de4_p3_q5","number":5,"part":3,"type":"short_answer","text":"Hỗn hợp X gồm N<sub>2</sub> và H<sub>2</sub> có tỉ khối đối với H<sub>2</sub> bằng 3,6. Nung nóng X trong bình kín ở nhiệt độ khoảng 450<sup>0</sup>C có bột Fe xúc tác, thu được hỗn hợp khí Y có số mol giảm 8% so với ban đầu. Hiệu suất của phản ứng tổng hợp NH<sub>3</sub> là bao nhiêu phần trăm?","images":[],"correctAnswer":"20","explanation":"Đáp án: 20.<br/>M<sub>X</sub> = 3,6.2 = 7,2<br/>Giả sử có 1 mol N<sub>2</sub> và 4 mol H<sub>2</sub>. Vậy số mol ban đầu là 5 mol.<br/>Phương trình hoá học:  N<sub>2</sub>           +        3H<sub>2</sub> ⇌ 2NH<sub>3</sub><br/>Ban đầu:                   1                   4                     0                   mol<br/>Phản ứng:                    x                   3x                        2x                 mol<br/>Sau phản ứng:        (1 – x)    (4 – 3x)                2x                 mol<br/>Tổng số mol khí sau phản ứng: n<sub>sau</sub> = (1 – x) + (4 – 3x) + 2x = 5 – 2x (mol)<br/>Số mol Y giảm 8% so với ban đầu  5 – 2x = (100% – 8%).5  x = 0,2<br/>Hiệu suất phản ứng tính theo N<sub>2</sub> (do 1/1 < 4/3)<br/>Ta có:  0,2H .100% 20%1==","explanationImages":["/assets/hoa12/c5/h11_c2_de4_image25.png"],"points":0.25,"displayNumber":27},{"id":"h11_c2_de4_p3_q6","number":6,"part":3,"type":"short_answer","text":"Sulfuric acid có thể được điều chế từ quặng pyrite theo sơ đồ:<br/>FeS<sub>2</sub> <span class='inline-block mx-1 text-slate-800'>→</span> SO<sub>2</sub> <span class='inline-block mx-1 text-slate-800'>→</span> SO<sub>3</sub> <span class='inline-block mx-1 text-slate-800'>→</span> H<sub>2</sub>SO<sub>4</sub><br/>Thể tích (L) của dung dịch H<sub>2</sub>SO<sub>4</sub> 98% (D = 1,82 g/mL) thu được từ 1 tấn quặng pyrite (chứa 80% FeS<sub>2</sub>). Biết hiệu suất của cả quá trình là 90%, các tạp chất trong quặng không chứa sulfur. (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"659","explanation":"Đáp án: 659.<br/>2FeSm1.80%0,8== tấn = 800 kg<br/>Ta có sơ đồ:  FeS<sub>2</sub> &rarr; 2SO<sub>2</sub> &rarr; 2SO<sub>3</sub> &rarr; 2H<sub>2</sub>SO<sub>4</sub> <br/>kmol: 800120   800120 .2.90% = 12<br/>24HSOm12.981176kg==    24ddHSO1176mkg98%=  Þ  =»24ddHSO1176V659L.98%.1,82<br/>","explanationImages":[],"points":0.25,"displayNumber":28}]}];
+export const HOA11_CHUONG2_EXAMS: Chuong2Exam[] = [
+  {
+    "id": "h11_c2_de1",
+    "code": "114",
+    "title": "Đề Kiểm Tra Số 1 - Đơn Chất Nitrogen & Ammonia (Mã 114)",
+    "topic": "Tính chất N2, NH3, muối ammonium & mưa acid",
+    "badge": "Mã 114",
+    "chapter": 2,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h11_c2_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phân tử nitrogen có cấu tạo là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "N = N",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "N  º N",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "N – N",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N  ® N",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h11_c2_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong những nhận xét dưới đây, nhận xét nào là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nitrogen không duy trì sự cháy, sự hô hấp và là một khí độc",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở điều kiện thường, nitrogen trơ về mặt hóa học do phân tử có một liên kết ba bền vững",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong các phản ứng hóa học, nitrogen chỉ thể hiện tính khử",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Số oxi hóa của nitrogen trong các ion và hợp chất NH<sub>4</sub><sup>+</sup>, NO<sub>3</sub><sup>-</sup>, N<sub>2</sub>O lần lượt là -3,+5,+4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h11_c2_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tã lót trẻ em sau khi giặt vẫn giữ lại một lượng nhỏ ammonia. Để khử sạch ammonia nên dùng chất gì sau đây cho vào nước xả cuối cùng để giặt?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phèn chua",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Giấm ăn",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Muối ăn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Gừng tươi",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h11_c2_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức phân tử của ammonia là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "N<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N<sub>2</sub>H<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h11_c2_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ammonia đóng vai trò chất khử khi tác dụng với chất nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "H<sub>3</sub>PO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "O<sub>2</sub> (Pt, t<sup>o</sup>)",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c2_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi so sánh phân tử ammonia với ion ammonium, nhận định nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đều chứa liên kết ion",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đều có tính acid yếu trong nước",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đều có tính base yếu trong nước",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Đều chứa nguyên tử N có số oxi hoá là -3",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h11_c2_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Có thể nhận biết muối ammonium bằng cách cho muối tác dụng với dung dịch kiềm thấy thoát ra một chất khí. Chất khí đó là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "H<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NO",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h11_c2_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại nào sau đây không tác dụng với HNO<sub>3</sub> đặc, nóng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cu",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ag",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Pt",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h11_c2_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại nào sau đây tác dụng với sulfur ở nhiệt độ thường?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Al",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hg",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cu",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h11_c2_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhỏ dung dịch H<sub>2</sub>SO<sub>4</sub> 98% vào cốc đựng đường saccarose khiến đường hóa đen gọi là hiện tượng gì?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hiện tượng bốc hơi",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hiện tượng than hóa",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hiện tượng đông tụ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hiện tượng vón cục",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h11_c2_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các ứng dụng sau:<br/>(1) sản xuất sulfuric acid;(2) tẩy trắng bột giấy;<br/>(3) diệt nấm mốc, thuốc đông y;(4) diệt trùng nước sinh hoạt.<br/>Số ứng dụng của khí sulfur dioxide trong đời sống, sản suất là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h11_c2_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Oxide của nitrogen được tạo thành khi nguyên tố nitrogen trong nhiên liệu hoặc sinh khối kết hợp với oxygen dư thừa trong không khí được gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NO<sub>x</sub> tức thời",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NO<sub>x</sub> nhiệt",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NO<sub>x</sub> nhiên liệu",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NO<sub>x</sub> tự nhiên",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h11_c2_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phú dưỡng là hiện tượng xảy ra do sự gia tăng hàm lượng của hai nguyên tố nào trong nước?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Fe, Mn",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "N, P",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ca, Mg",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cl, F",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h11_c2_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sulfur được dân gian sử dụng để pha chế vào thuốc trị các bệnh ngoài da. Tên gọi dân gian của sulfur là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "diêm sinh",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "đá vôi",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "phèn chua",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "giấm ăn",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h11_c2_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một nhà máy luyện kim, ở giai đoạn đầu của quá trình sản xuất Zn từ quặng blend thu được sản phẩm phụ là SO<sub>2</sub> theo sơ đồ phản ứng: 2ZnS + 3O<sub>2</sub> &rarr; 2ZnO + 2SO<sub>2</sub><br/>Đốt cháy 1 tấn quặng blend (chứa 77,6% khối lượng ZnS) bằng không khí, thu được tối đa V m<sup>3</sup> khí SO<sub>2</sub> (đkc). Giá trị của V là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "99,2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "198,3",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "297,5",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "396,6",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "Đáp án: B.<br/>2ZnS + 3O<sub>2</sub> &rarr; 2ZnO + 2SO<sub>2</sub><br/>m<sub>ZnS</sub> = 1000 &times; 77,6% = 776 kg.<br/>n<sub>ZnS</sub> = 776 / 97 = 8 kmol &rArr; n<sub>SO<sub>2</sub></sub> = 8 kmol.<br/>V<sub>SO<sub>2</sub></sub> = 8 &times; 24,79 = 198,32 m<sup>3</sup> (làm tròn 198,3 m<sup>3</sup>).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h11_c2_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây không bay hơi ở điều kiện thường do nhiệt độ sôi rất cao (337 <sup>o</sup>C)?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3HNO",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "24HSO",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h11_c2_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho vài giọt dung dịch BaCl<sub>2</sub> vào dung dịch nào sau đây sẽ tạo kết tủa trắng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NaNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NaOH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h11_c2_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sulfur dioxide và các oxide của nitrogen trong khí quyển hòa tan trong nước tạo thành mưa acid. Khẳng định nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nước mưa có pH > 5,6 được xem là mưa acid",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thành phần chính của mưa acid là H<sub>2</sub>SO<sub>3</sub> và HNO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Công thức hóa học của NO<sub>x</sub> trong khí thải ô tô luôn là NO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thu hồi sulfur từ các khí thải như H<sub>2</sub>S, SO<sub>2</sub>….có thể làm giảm sự hình thành mưa acid",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h11_c2_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các phát biểu sau về tính chất vật lí của sulfuric acid:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở điều kiện thường, sulfuric acid là chất lỏng, không màu và dễ bay hơi",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi pha loãng sulfuric acid đặc cần phải cho từ từ nước vào acid đặc",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sulfuric acid được sử dụng làm chất hút ẩm trong các bình hút ẩm để làm khô nhiều chất",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sulfuric acid tan vô hạn trong nước là do tạo được liên kết hydrogen với nước",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. Sulfuric acid không bay hơi.<br/>b. S. Khi pha loãng sulfuric acid đặc cần phải cho từ từ acid đặc vào nước.<br/>c. Đ.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h11_c2_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Thực hiện thí nghiệm như hình vẽ sau:",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de1_image6.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hiện tượng quan sát được là nước phun vào bình thành tia, dung dịch phenolphthalein chuyển sang màu hồng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thí nghiệm trên chứng minh dung dịch NH<sub>3</sub> có tính acid",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nếu thay khí ammonia bằng khí hydrogen chloride thì hiện tượng thí nghiệm vẫn không thay đổi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khí ammonia tan nhiều trong nước làm áp suất trong bình tăng dẫn đến nước bị hút vào bình",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. S. NH<sub>3</sub> có tính base.<br/>c. S. Khí HCl không làm đổi màu dung dịch phenolphtalein.<br/>d. S. Áp suất trong bình giảm",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h11_c2_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Thí nghiệm: Sulfur tác dụng với oxygen.<br/>Chuẩn bị: bột sulfur, bình khí oxygen; muôi sắt, đèn cồn, nút cao su.<br/>Tiến hành:<br/>- Lấy một ít bột sulfur vào muôi sắt (đã cắm xuyên qua nút cao su).<br/>- Hơ nóng muôi sắt trên ngọn lửa đèn cồn đến khi sulfur nóng chảy và cháy một phần trong không khí.<br/>- Đưa nhanh muôi sắt vào bình khí oxygen",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng chứng minh sulfur bị khử bởi oxygen",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sulfur tác dụng với oxygen tạo thành acidic oxide",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sulfur cháy trong không khí với ngọn lửa nhỏ, màu xanh nhạt",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu đốt cháy hoàn toàn 6,4 gam sulfur trong khí oxygen dư thì thể tích khí SO<sub>2</sub> ở đkc thu được là 4,958 L",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>ot22SOSO+ → <br/>a. S. Sulfur thể hiện tính khử bị oxi hóa bởi oxygen.<br/>b. Đ.<br/>c. Đ.<br/>d. Đ. V = 0,2.24,79 = 4,958 L",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h11_c2_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong những cơ mưa dông kèm sấm sét, sự chuyển hoá của nitrogen đơn chất xảy ra theo sơ đồ sau:<br/>N<sub>2</sub> &rarr; NO &rarr; NO<sub>2</sub> &rarr; HNO<sub>3</sub> &rarr; H<sup>+</sup> + NO<sub>3</sub><sup>-</sup>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong sơ đồ trên, có ba chất khí gây ô nhiễm môi trường",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các phản ứng trong sơ đồ trên đều xảy ra quá trình oxi hóa khử",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ion nitrate  3(NO)-  tạo thành ở quá trình (4) là một dạng đạm cây trồng hấp thụ được để sinh trưởng, phát triển",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sơ đồ cũng áp dụng để giải thích sự tạo thành HNO<sub>3</sub> từ hoạt động đốt cháy nhiên liệu bằng không khí của phương tiện giao thông vận tải",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. Có 2 chất khí gây ô nhiễm môi trường là NO, NO<sub>2</sub>.<br/>b. S. (4) không phải là phản ứng oxi hóa khử.<br/>c. Đ.<br/>d. Đ. Quá trình đốt cháy nhiên liệu ở nhiệt độ cao bằng không khí cũng phát thải các oxide của nitrogen vào khí quyển",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h11_c2_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phương pháp điều chế H<sub>2</sub>SO<sub>4</sub> từ quặng pyrite sắt (FeS<sub>2</sub>) trong công nghiệp trải qua mấy giai đoạn?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h11_c2_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất khí sau: H<sub>2</sub>S, NO, NO<sub>2</sub>, SO<sub>2</sub> và N<sub>2</sub>. Có bao nhiêu chất khí gây ô nhiễm môi trường khi phát thải vào không khí?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h11_c2_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tiến hành thí nghiệm trộn từng cặp dung dịch sau: (a) NH<sub>3</sub> và AlCl<sub>3</sub>; (b) (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> và Ba(OH)<sub>2</sub>; (c) NH<sub>4</sub>Cl và AgNO<sub>3</sub>; (d) Na<sub>2</sub>SO<sub>4</sub> và MgCl<sub>2</sub>. Sau khi phản ứng kết thúc, có bao nhiêu thí nghiệm thu được kết tủa?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h11_c2_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong điều kiện thích hợp, xảy ra các phản ứng sau:<br/>(a) 2H<sub>2</sub>SO<sub>4</sub> + C → 2SO<sub>2</sub> + CO<sub>2</sub> + 2H<sub>2</sub>O.<br/>(b) H<sub>2</sub>SO<sub>4</sub> + Fe(OH)<sub>2</sub> → FeSO<sub>4</sub> + 2H<sub>2</sub>O.<br/>(c) 4H<sub>2</sub>SO<sub>4</sub> + 2FeO → Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub> + SO<sub>2</sub> + 4H<sub>2</sub>O.<br/>(d) 2H<sub>2</sub>SO<sub>4</sub> + Cu → CuSO<sub>4</sub> + SO<sub>2</sub> + 2H<sub>2</sub>O.<br/>(e)  2244CaF  HSO CaSO  2HF+ → +<br/>Trong các phản ứng trên, có bao nhiêu phản ứng xảy ra với dung dịch H<sub>2</sub>SO<sub>4</sub> loãng?",
+        "images": [],
+        "correctAnswer": "1",
+        "explanation": "Đáp án: 1",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h11_c2_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Một phương pháp được đề xuất để loại bỏ SO<sub>2</sub> khỏi khí thải của nhà máy điện bằng cách dẫn khí thải qua dung dịch H<sub>2</sub>S. Cần tối đa bao nhiêu m<sup>3</sup> H<sub>2</sub>S (ở đkc) để loại bỏ SO<sub>2</sub> sinh ra khi đốt cháy 2,0 tấn than chứa sulfur chiếm 3% theo khối lượng? (Kết quả làm tròn đến hàng đơn vị)",
+        "images": [],
+        "correctAnswer": "93",
+        "explanation": "Đáp án: 93.<br/>S + O<sub>2</sub>SO<sub>2</sub><br/>2H<sub>2</sub>S + SO<sub>2</sub>  3S + 2H<sub>2</sub>O<br/>2SHS2000.3%n1,875kmoln1,875.2 = 3,75kmol32==Þ=<br/>V = 3,75.24,79 = 92,9625 m<sup>3</sup>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27
+      },
+      {
+        "id": "h11_c2_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong công nghiệp, người ta sản xuất nitric acid (HNO<sub>3</sub>) từ ammonia theo sơ đồ chuyển hoá sau:<br/>NH<sub>3</sub> &rarr; NO &rarr; NO<sub>2</sub> &rarr; HNO<sub>3</sub> <br/>Để điều chế 2000 tấn nitric acid có nồng độ 60% cần dùng bao nhiêu tấn ammonia? Biết rằng hiệu suất của quá trình sản xuất nitric acid theo sơ đồ trên là 92%. (Kết quả làm tròn đến hàng đơn vị)",
+        "images": [],
+        "correctAnswer": "352",
+        "explanation": "Đáp án: 352.<br/>Khối lượng HNO<sub>3</sub> nguyên chất là: 2000.0,6 = 1200 tấn<br/>Sơ đồ phản ứng điều chế HNO<sub>3</sub> từ NH<sub>3</sub><br/>NH<sub>3</sub> → NO → NO<sub>2</sub> → HNO<sub>3</sub><br/>17g                                    63g<br/>x tấn                                  1200 tấn<br/>3NH1200.171m.3526392%== tấn<br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "h11_c2_de2",
+    "code": "115",
+    "title": "Đề Kiểm Tra Số 2 - Sulfur & SO2 (Mã 115)",
+    "topic": "Tính oxi hóa - khử của sulfur, sulfur dioxide & ô nhiễm khí thải",
+    "badge": "Mã 115",
+    "chapter": 2,
+    "duration": 50,
+    "totalQuestions": 27,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h11_c2_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức hóa học của diêm tiêu Chile là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ca(NO<sub>3</sub>)<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NH<sub>4</sub>NO<sub>3.</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NH<sub>4</sub>Cl",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NaNO<sub>3</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h11_c2_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận định nào sau đây về phân tử nitrogen là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có ba liên kết đơn bền vững",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chứa nguyên tử nitrogen có số oxi hóa là -3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Có liên kết cộng hóa trị có cực",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thể hiện cả tính oxi hóa và tính khử",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h11_c2_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi tác dụng với nước và hydrochloric acid, ammonia đóng vai trò là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "acid",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "base",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chất oxi hóa",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chất khử",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h11_c2_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong công nghiệp, phần lớn sulfur đơn chất sau khi khai thác ở các mỏ được dùng làm nguyên liệu để",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "lưu hóa cao su tự nhiên",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "sản xuất sulfuric acid",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "điều chế thuốc bảo vệ thực vật",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "bào chế thuốc đông y",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "Khoảng 90% lượng sulfur sản xuất trên thế giới được dùng để sản xuất sulfuric acid.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h11_c2_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhiệt phân hoàn toàn muối nào sau đây thu được sản phẩm chỉ gồm khí và hơi?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CaCO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "KClO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NH<sub>4</sub>HCO<sub>3</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "NH<sub>4</sub>HCO<sub>3</sub> (t<sup>o</sup>) &rarr; NH<sub>3</sub>(k) + CO<sub>2</sub>(k) + H<sub>2</sub>O(hơi). Sản phẩm 100% gồm khí và hơi.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c2_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tố sulfur có số hiệu nguyên tử là 16. Vị trí của sulfur trong bảng tuần hoàn các nguyên tố hóa học là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "chu kì 3, nhóm VI",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "chu kì 5, nhóm VI",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chu kì 3, nhóm IV",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chu kì 5, nhóm IV",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c2_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thuốc thử duy nhất để nhận biết 4 dung dịch đựng trong 4 lọ mất nhãn là KOH, NH<sub>4</sub>Cl K<sub>2</sub>SO<sub>4</sub>, (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "dung dịch AgNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "dung dịch BaCl<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "dung dịch NaOH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "dung dịch Ba(OH)<sub>2</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h11_c2_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hoạt động nào sau đây góp phần gây nên hiện tượng phú dưỡng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sự quang hợp của cây xanh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nước thải sinh hoạt thải trực tiếp vào nguồn nước chưa qua xử lí",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ao hồ thả quá nhiều tôm, cá",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khử trùng ao hồ sau khi tát cạn bằng vôi sống (CaO)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h11_c2_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nitric acid dễ bị phân hủy bởi ánh sáng hoặc nhiệt độ tạo thành các sản phẩm là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NO<sub>2</sub>, H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NO<sub>2</sub>, O<sub>2</sub>, H<sub>2</sub>O",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "N<sub>2</sub>, O<sub>2</sub>, H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N<sub>2</sub>. H<sub>2</sub>O",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h11_c2_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các chất khí được thu vào bình theo đúng nguyên tắc bằng cách đẩy không khí (X, Y, Z) và đẩy nước (T) như sau:<br/>Nhận xét nào sau đây không đúng?",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de2_image1.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "X là sulfur dioxide",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Y là ammonia",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Z là hydrogen",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "T là nitrogen",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h11_c2_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở điều kiện thường, sulfur tồn tại ở dạng tinh thể, được tạo nên từ các phân tử sulfur. Số nguyên tử trong mỗi phân tử sulfur là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "8",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h11_c2_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất khí (X) tan trong nước tạo ra dung dịch làm quỳ tím hoá đỏ và khí (X) có thể được dùng làm chất tẩy màu. Khi (X) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "SO<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "O<sub>3</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h11_c2_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thạch cao sống là một dạng tồn tại phổ biến của sulfur trong tự nhiên, được sử dụng làm nguyên liệu để sản xuất xi măng, phấn viết bảng, … Công thức của thạch cao sống là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "BaSO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CaSO<sub>4</sub>.2H<sub>2</sub>O",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "MgSO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CuSO<sub>4</sub>.5H<sub>2</sub>O",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h11_c2_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tính chất nào sau đây không phải tính chất vật lí của sulfur?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Màu vàng ở điều kiện thường",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thể rắn ở điều kiện thường",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Không tan trong benzene",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Không tan trong nước",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h11_c2_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Xét phản ứng tổng hợp ammonia theo phương trình hoá học:<br/>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ (xt, t°, p) 2NH<sub>3</sub>(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -92 kJ<br/>Cho các yếu tố sau: (a) tăng nhiệt độ, (b) tách ammonia ra khỏi hỗn hợp phản ứng, (c) giảm thể tích của hệ phản ứng, (d) thêm H<sub>2</sub>. Có bao nhiêu yếu tố làm tăng hiệu suất tổng hợp NH<sub>3</sub>?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h11_c2_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(a) Sulfuric acid tan tốt trong nước, quá trình hòa tan tỏa nhiệt mạnh.<br/>(b) Dung dịch sulfuric acid đặc hòa tan được tất cả các kim loại.<br/>(c) Dung dịch sulfuric acid đặc có tính háo nước và tính oxi hóa mạnh.<br/>(d) Nhiều muối sulfate tan tốt trong nước nhưng một số muối như CaSO<sub>4</sub>, BaSO<sub>4</sub> rất ít tan trong nước.<br/>(e) Khi bị bỏng sulfuric acid đặc, điều đầu tiên cần làm là xả nhanh chỗ bỏng với nước lạnh.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "5",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h11_c2_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phản ứng sau:<br/>(a) S + O<sub>2</sub> → (t°) SO<sub>2</sub> (b) Hg + S → HgS<br/>(c) S + 6HNO<sub>3</sub> → H<sub>2</sub>SO<sub>4</sub>+ 6NO<sub>2</sub> + 2H<sub>2</sub>O (d) Fe + S → (t°) FeS<br/>Có bao nhiêu phản ứng trong đó sulfur đóng vai trò là chất khử?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h11_c2_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hòa tan hết m gam oxide của kim loại M (hóa trị II) vào dung dịch H<sub>2</sub>SO<sub>4</sub> loãng, thu được 3m gam muối sulfate. Công thức của oxide kim loại là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "ZnO",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CuO",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CaO",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "MgO",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h11_c2_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi năm có hàng triệu tấn nitrogen được sản xuất toàn cầu; trong đó nitrogen dạng khí chiếm khoảng hai phần ba, còn lại là nitrogen lỏng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong chữa cháy, nitrogen dùng để dập tắt các đám cháy do hóa chất, chập điện",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong công nghiệp thực phẩm, nitrogen lỏng được sử dụng làm lạnh nhanh, bảo quản thực phẩm",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong công nghệ đóng gói thực phẩm, khí nitrogen được bơm vào túi để loại bỏ khí oxygen và làm phồng bao",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong lĩnh vực sinh học và y học, các mẫu vật sinh học được bảo quản trong bình nitrogen lỏng",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 18
+      },
+      {
+        "id": "h11_c2_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các nhận định sau về cấu tạo phân tử ammonia:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân tử có dạng hình chóp tam giác",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Liên kết N-H trong phân tử kém bền",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Xung quanh nguyên tử N có 3 cặp electron hoá trị",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phân tử ammonia là phân tử phân cực",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Liên kết N-H tương đối bền.<br/>c. Sai. Xung quanh nguyên tử N có 4 cặp electron (3 cặp liên kết và 1 cặp tự do).<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h11_c2_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Hình ảnh dưới đây mô tả về quá trình hình thành mưa acid:",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de2_image6.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nước mưa có độ pH nhỏ hơn 5,6 được gọi là hiện tượng mưa acid",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tác nhân chính gây mưa acid là hỗn hợp khí SO<sub>2</sub> và NO<sub>x</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hoạt động của núi lửa, cháy rừng, sấm sét hoặc do con người tiêu thụ các nhiên liệu như than đá, dầu mỏ … làm phát sinh ra nhiều khí SO<sub>2</sub>, NO<sub>x</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dưới xúc tác của của ánh sáng mặt trời SO<sub>2</sub>, NO<sub>x</sub> bị oxi hoá, sau đó hoà tan trong nước mưa rơi xuống mặt đất, ao hồ … tạo thành hiện tượng mưa acid",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Dưới xúc tác của các ion kim loại trong khói bụi SO<sub>2</sub>, NO<sub>x</sub> bị oxi hoá",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h11_c2_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho sơ đồ điều chế sulfuric acid từ quặng pyrite theo 3 giai đoạn như sau:<br/>(1)(2)(3)22324FeSSOSOHSO →  →  →",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có 3 phản úng oxi hoá khử trong sơ đồ điều chế trên",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sản xuất sulfuric acid theo quy trình trên gọi là phương pháp tiếp xúc",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở giai đoạn 3 người ta dùng dung dịch H<sub>2</sub>SO<sub>4</sub> đặc 98% để hấp thụ SO<sub>3</sub>, sản phẩm thu được gọi là oleum",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Một loại quặng pyrite chứa 96% FeS<sub>2</sub>. Nếu mỗi ngày nhà máy sản xuất 100 tấn sulfuric acid 98% thì cần 70,46 tấn quặng pyrite với hiệu suất của cả quá trình sản xuất là 90%",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. Có 2 phản ứng oxi hóa khử gồm có giai đoạn 1, 2.<br/>b. Đ.<br/>c. Đ. nSO<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> → H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub><br/>d. S. FeS<sub>2</sub>  2H<sub>2</sub>SO<sub>4</sub><br/>HSO24m100.98%98==  tấn   HSOFeSFeS24220,5.120n1n0,5m90%=Þ=Þ=<br/>Vậy mquặng =  FeS2m69,4496%=  tấn",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h11_c2_de2_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Có bao nhiêu liên kết cộng hóa trị trong ion muối ammonium?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 22
+      },
+      {
+        "id": "h11_c2_de2_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho dung dịch HNO<sub>3</sub> tác dụng với các chất sau: NH<sub>3</sub>, Cu, CaCO<sub>3</sub>, Fe<sub>3</sub>O<sub>4</sub> và NaOH. Có bao nhiêu phản ứng trong đó HNO<sub>3</sub> đóng vai trò acid theo Bronsted?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h11_c2_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Bột đá vôi cỏ thể được sử dụng để xử lí khí thải chứa sulfur dioxide từ các nhà máy điện đốt than và dầu mỏ. Phương trình hoá học của phản ứng là: CaCO<sub>3</sub>(s) + SO<sub>2</sub>(g) → CaSO<sub>3</sub>(s) + CO<sub>2</sub>(g)<br/>Tính giá trị biến thiên enthalpy chuẩn của phản ứng trên (đơn vị kJ) theo số liệu giá trị enthalpy tạo thành chuẩn của các hợp chất trong bảng sau đây.<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Hợp chất</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">CaCO3 (s)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">SO<sub>2</sub> (g)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">CaSO3 (s)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">CO<sub>2</sub> (g)</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">(kJ/mol)</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–1207,6</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–296,8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–1634,9</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">–393,5</td></tr></table></div>",
+        "images": [],
+        "correctAnswer": "−524",
+        "explanation": "Đáp án: −524.<br/>CaCO<sub>3</sub>(s) + SO<sub>2</sub>(g) → CaSO<sub>3</sub>(s) + CO<sub>2</sub>(g)<br/>= [−1634,9 + (−393,5)] – [−1207,6 + (−296,8)] = −524 kJ",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h11_c2_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các loại khoáng vật sau: blend (ZnS), chalcopyrite (CuFeS<sub>2</sub>), thạch cao (CaSO<sub>4</sub>), pyrite (FeS<sub>2</sub>). Có bao nhiêu khoáng vật có thành phần chính chứa muối sulfide?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h11_c2_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khí sulfur dioxide có khả năng tẩy trắng và sát trùng nên được dùng làm chất chống mốc cho các sản phẩm mây tre đan tại nhiều làng nghề. Trong 1 ngày, một làng nghề đốt cháy 12,8 kg sulfur để tạo thành V m<sup>3</sup> khí sulfur dioxide với hiệu suất là 80%. Vậy trong 30 ngày lượng thể tích khí sulfur dioxide tạo thành là bao nhiêu m<sup>3</sup>? (Kết quả làm tròn đến hàng đơn vị)",
+        "images": [],
+        "correctAnswer": "238",
+        "explanation": "Đáp án: 238.<br/>S + O<sub>2</sub> → (t°)  SO<sub>2</sub><br/>0,4 kmol<br/>23SOV0,4.24,79.80%.30238m==",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h11_c2_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Hỗn hợp X gồm N<sub>2</sub> và H<sub>2</sub> có tỉ lệ mol tương ứng là 1 : 3. Nung nóng X trong bình kín (450℃, xúc tác Fe) một thời gian, thu được hỗn hợp khí có số mol giảm 5% so với ban đầu. Hiệu suất của phản ứng tổng hợp NH<sub>3</sub> là bao nhiêu phần trăm?",
+        "images": [],
+        "correctAnswer": "10",
+        "explanation": "Đáp án: 10.<br/>Chọn  22NHn1moln3mol=Þ=   Tổng số mol khí ban đầu là 4 mol  Þ  n<sub>khí giảm</sub> = 4.5% = 0,2 mol<br/>32223N(g)       H(g)NH(g)Ban ñaàu:      1                   3(mol)Phaûn öùng:    x                   3x+ ⇌ 2x            (mol)Caân baèng:  1-x                3-3x2x            (mol)<br/>Tổng số mol khí sau khi phản ứng là 1 – x + 3 – 3x + 2x = 4 – 2x (mol)<br/>Số mol khí giảm so với ban đầu là 2x  Þ  2x = 0,2  Þ  x = 0,1  Þ  H% =  0,1.100%10%.1=<br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27
+      }
+    ]
+  },
+  {
+    "id": "h11_c2_de3",
+    "code": "116",
+    "title": "Đề Kiểm Tra Số 3 - H2SO4 & Muối Sulfate (Mã 116)",
+    "topic": "Tính acid mạnh, tính oxi hóa mạnh của H2SO4 đặc & Nhận biết ion Ba2+",
+    "badge": "Mã 116",
+    "chapter": 2,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h11_c2_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Vị trí (chu kì, nhóm) của nguyên tố nitrogen trong bảng tuần hoàn là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chu kì 2, nhóm V",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "chu kì 3, nhóm V",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chu kì 2, nhóm VI",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chu kì 3, nhóm IV",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h11_c2_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong nghiên cứu, khí nitrogen thường được dùng để tạo bầu khí quyển trơ dựa trên cơ sở nào?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nitrogen có tính oxi hóa mạnh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nitrogen rất bền với nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nitrogen khó hóa lỏng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nitrogen không có cực",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h11_c2_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các phát biểu sau, phát biểu nào không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở điều kiện thường, NH<sub>3</sub> là chất khí không màu",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khí NH<sub>3</sub> nặng hơn không khí",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khí NH<sub>3</sub> dễ hoá lỏng, tan nhiều trong nước",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khí NH<sub>3</sub> có mùi khai, xốc",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h11_c2_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho dung dịch NH<sub>3</sub>vào dung dịch chất nào sau đây thu được kết tủa trắng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "H<sub>3</sub>PO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "AlCl<sub>3</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h11_c2_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong quá trình tổng hợp ammonia theo quy trình Haber (Haber – Bosch), sau khi đã hóa lỏng ammonia, hydrogen và nitrogen sẽ:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "qua ống dẫn khí thải và được loại bỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "đưa trở lại buồng phản ứng để tái sử dụng",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tiếp tục qua lò phản ứng số 2 để tăng hiệu suất tổng hợp",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "hydrogen được tái sử dụng, còn nitrogen loại bỏ dựa vào tỉ trọng",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c2_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Muối ammonium tan kém trong nước",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Muối ammonium là chất điện li yếu",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Muối ammonium kém bền với nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dung dịch muối ammonium có tính chất base",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h11_c2_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một nhà máy phân bón tổng hợp ammonia với công suất 34 tấn/giờ. Trong một giờ, khối lượng nitrogen và hydrogen đã phản ứng lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "28 tấn và 2 tấn",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "14 tấn và 2 tấn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "28 tấn và 6 tấn",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "28 tấn và 4 tấn",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h11_c2_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Oxide của nitrogen được tạo thành ở nhiệt độ cao, khi nitrogen có trong không khí bị oxi hóa được gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NO<sub>x</sub> tức thời",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NO<sub>x</sub> nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NO<sub>x</sub>nhiên liệu",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NO<sub>x</sub> tự nhiên",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h11_c2_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Xét phản ứng hóa học thường xảy ra cùng với quá trình đốt cháy nhiên liệu trong buồn đốt động cơ:  ()()()22rNg  Og2NOg,H180,6kJD=+ ⇌ <br/>Nhận xét nào sau đây về phản ứng là không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nitrogen là chất oxi hóa",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng thuận thu nhiệt",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hiệu suất phản ứng rất thấp",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nitrogen là chất khử",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h11_c2_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đặc điểm nào sau đây là đúng để giải thích tính kém bền nhiệt của HNO<sub>3</sub>?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Liên kết O – H phân cực mạnh về phía O",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Liên kết N  O là liên kết cho nhận kém bền",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nguyên tử N có số oxi hóa +5 là số oxi hóa cao nhất của N",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HNO<sub>3</sub> có khả năng nhường proton cho nước",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h11_c2_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong công nghiệp, quá trình sản xuất Ca(NO<sub>3</sub>)<sub>2</sub> cùng làm phân bón được thực hiện bằng phản ứng giữa dung dịch HNO<sub>3</sub> với hợp chất phổ biến, giá rẻ nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CaO",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ca(OH)<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CaCO<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CaSO<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h11_c2_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các hình ảnh dưới đây mô tả cách pha loãng H<sub>2</sub>SO<sub>4</sub> đặc:<br/>Hình ảnh mô tả đúng cách pha loãng acid đảm bảo an toàn là",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de3_image2.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hình 1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hình 2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hình 3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hình 4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h11_c2_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một trong những nguồn nguyên liệu sản xuất sulfuric acid hiện nay là quặng pyrite. Thành phần chính có trong quặng pyrite là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "FeS<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CuFeS<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CaSO<sub>4</sub>.H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HgS",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h11_c2_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phân tử nào sau đây không phân cực?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "H<sub>2</sub>S",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "SO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "S<sub>8</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h11_c2_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho dung dịch NaOH vào 100 ml dung dịch NH<sub>4</sub>NO<sub>3</sub> 1M, đun nóng thu được V lít khí ở đkc. Giá trị của V là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2,4790",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "4,9580",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "7,4370",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1,2395",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h11_c2_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một bạn học sinh thu khí SO<sub>2</sub> vào bình tam giác và đậy miệng bình bằng bông tẩm dung dịch E (để giữ không cho khí SO<sub>2</sub> bay ra) theo sơ đồ bên. Theo em, để hiệu quả nhất, bạn học sinh cần sử dụng dung dịch E là dung dịch nào sau đây?",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de3_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Giấm ăn",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Muối ăn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nước vôi",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nước máy",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h11_c2_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng hóa học nào sau đây đóng vai trò chính chuyển hóa sulfur dioxide trong không khí ô nhiễm gây mưa acid?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "SO<sub>2</sub> + NaOH → NaHSO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "SO<sub>2</sub> + 2H<sub>2</sub>S → 3S + 2H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "SO<sub>2</sub> + H<sub>2</sub>O + Br<sub>2</sub> → 2HBr + H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "SO<sub>2</sub> + NO<sub>2</sub> → SO<sub>3</sub> + NO",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h11_c2_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Muối X không tan trong nước và các dung môi hữu cơ. Trong y học, X thường được dùng làm chất cản quang xét nghiệm X-quang đường tiêu hóa. Công thức của X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "BaSO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "K<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "MgSO<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h11_c2_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Nitric acid có công thức Lewis và công thức cấu tạo như hình dưới đây:",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de3_image5.png",
+          "/assets/hoa12/c5/h11_c2_de3_image6.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong phân tử nitric acid, nguyên tử N có hóa trị là V",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong phân tử nitric acid, nguyên tử N có số oxi hóa là +4",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Liên kết O – H phân cực mạnh về phía nguyên tử oxygen",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Liên kết N  O là liên kết cho – nhận",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. Nguyên tử N có hóa trị là IV.<br/>b. S. Nguyên tử N có số oxi hóa là +5.<br/>c. Đ.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h11_c2_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Nguyên nhân của hiện tượng phú dưỡng là do sự dư thừa chất dinh dưỡng đã cung cấp nguồn thức ăn dồi dào cho sinh vật phù du phát triển mạnh",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thông thường, khi hàm lượng nitrogen trong nước đạt 300  g/Lm  và clorine đạt 20  g/Lm sẽ gây ra hiện tượng phú dưỡng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hiện tượng phú dưỡng làm giảm hàm lượng oxygen trong nước, gây ảnh hưởng xấu cho các loài sinh vật khác trong ao hồ",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nguồn dinh dưỡng từ ao hồ thường có nguồn gốc từ nước thải nông nghiệp, công nghiệp và sinh hoạt thông qua các cống dẫn nước cố định",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khử trùng ao hồ sau khi tát cạn bằng vôi sống (CaO) cũng góp phần ra hiện tượng phú dưỡng",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. Hàm lượng nitrogen và phosphorus.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Không ảnh hưởng",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h11_c2_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Sulfuric acid là hóa chất hàng đầu được dùng trong nhiều ngành sản xuất",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sulfuric acid được sử dụng rộng rãi trong sản xuất phân bón hóa học",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sulfuric acid được sử dụng trong sản xuất chất tẩy rửa, sơn, phẩm màu, thuốc trừ sâu, giấy, chế biến dầu mỏ,",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nguyên liệu chính để sản xuất sulfuric acid trong công nghiệp là các muối sulfate",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong công nghiệp, sulfuric acid chủ yếu được sản xuất bằng phương pháp sulfate",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Nguyên liệu chính để sản xuất sulfuric acid trong công nghiệp là S, FeS<sub>2</sub>.<br/>d. S. Sulfuric acid chủ yếu được sản xuất bằng phương pháp tiếp xúc",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h11_c2_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Khí SO<sub>2</sub> do các nhà máy thải ra là nguyên nhân chính trong việc gây ô nhiễm môi trường. Theo quy chuẩn kĩ thuật quốc gia về chất lượng không khí xung quanh (QCVN 05:2013/BTNMT) thì nếu lượng SO<sub>2</sub> vượt quá 350  ì g/m<sup>3</sup> không khí đo trong 1 giờ ở thành phố thì coi như không khí bị ô nhiễm",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Số oxi hóa của sulfur trong phân tử SO<sub>2</sub> là +2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "SO<sub>2</sub> là nguyên nhân chính gây ra hiện tượng mưa acid",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ SO<sub>2</sub> cao gây viêm và kích ứng hệ hô hấp",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu lấy 50 lít không khí trong 1 giờ ở một thành phố và phân tích thấy có 0,012 mg SO<sub>2</sub> thì có thể kết luận rằng không khí ở thành phố đó bị ô nhiễm",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. Số oxi hóa của S trong SO<sub>2</sub> là +4.<br/>b. Đ.<br/>c. Đ.<br/>d. S.<br/>50 lít = 0,05 m<sup>3</sup> không khí có 0,012 mg = 12  ì g SO<sub>2</sub><br/>1 m<sup>3</sup> không khí có 1.12/0,05 = 240 mg SO<sub>2</sub> < 350  ì g  không khí ở thành phố đó chưa bị ô nhiễm",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h11_c2_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các nguyên liệu sau: sulfur, quặng pyrite (FeS<sub>2</sub>), không khí, nước, vanadium (V) oxide (V<sub>2</sub>O<sub>5</sub>). Có bao nhiêu nguyên liệu được sử dụng trong công nghiệp sản xuất sulfuric acid?",
+        "images": [],
+        "correctAnswer": "5",
+        "explanation": "Đáp án: 5",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h11_c2_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: S<sub>8</sub>, H<sub>2</sub>S, N<sub>2</sub>, NH<sub>3</sub>, SO<sub>2</sub> và H<sub>2</sub>SO<sub>4</sub>, Có bao nhiêu chất trong dãy chất trên vừa có tính khử vừa có tính oxi hóa?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h11_c2_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Sự phụ thuộc của độ tan khí ammonia trong nước vào nhiệt độ được mô tả ở hình dưới đây:<br/>Nồng độ phần trăm (%) của dung dịch ammonia bão hòa ở 30<sup>o</sup>C là bao nhiêu? (Kết quả làm tròn đến hàng phần mười)",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de3_image9.png"
+        ],
+        "correctAnswer": "28,6",
+        "explanation": "Đáp án: 28,6.<br/>Nồng độ phần trăm của ammonia bão hòa:  C% = [40 / (40 + 100)] &times; 100% = 28,57%",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h11_c2_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho 0,008 mol một loại hợp chất oleum (có công thức H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub>) vào nước thu được dung dịch X. Để trung hoà dung dịch X cần dùng vừa đủ 48 gam dung dịch NaOH 4%. Tìm giá trị của n?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2",
+        "explanationImages": [
+          "/assets/hoa12/c5/h11_c2_de3_image13.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h11_c2_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phản ứng chuyển hóa hydrogen sulfide trong khí thiên nhiên thành sulfur được thực hiện theo sơ đồ phản ứng: H<sub>2</sub>S + SO<sub>2</sub> → S + H<sub>2</sub>O.<br/>Khối lượng sulfur tối đa tạo ra khi chuyển hóa 1 000 m<sup>3</sup> khí thiên nhiên (đkc) (chứa 5 mg H<sub>2</sub>S/m<sup>3</sup>) là bao nhiêu gam?",
+        "images": [],
+        "correctAnswer": "7,06",
+        "explanation": "Đáp án: 7,06.<br/>2H<sub>2</sub>S + SO<sub>2</sub> &rarr; 3S + 2H<sub>2</sub>O<br/>m<sub>H<sub>2</sub>S</sub> = 1000 &times; 5 mg = 5000 mg = 5 g &rArr; n<sub>H<sub>2</sub>S</sub> = 5 / 34 mol.<br/>Theo PTHH: n<sub>S</sub> = 3/2 &times; n<sub>H<sub>2</sub>S</sub> = (3/2) &times; (5/34) &approx; 0,2206 mol.<br/>&rArr; m<sub>S</sub> = 0,2206 &times; 32 &approx; 7,06 g.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27
+      },
+      {
+        "id": "h11_c2_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong tự nhiên, phản ứng giữa nitrogen và oxygen xảy ra trong những cơn mưa dông sấm sét, khởi đầu cho quá trình chuyển hóa từ nitrogen thành nitric acid. Nitric acid tan trong nước mưa và phân li ra ion nitrate ( 3NO- ) là một dạng phân đạm mà cây trong hấp thụ được để sinh trưởng và phát triển. Quá trình chuyển hóa từ nitrogen thành nitric acid qua mấy giai đoạn?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>N<sub>2</sub> &rarr; NO &rarr; NO<sub>2</sub> &rarr; HNO<sub>3</sub> <br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28
+      }
+    ]
+  },
+  {
+    "id": "h11_c2_de4",
+    "code": "117",
+    "title": "Đề Kiểm Tra Tổng Hợp Chương 2 (Mã 117)",
+    "topic": "Tổng hợp toàn diện kiến thức Nitrogen và Sulfur",
+    "badge": "Mã 117",
+    "chapter": 2,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h11_c2_de4_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong không khí, chất nào sau đây chiếm phần trăm thể tích lớn nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "O<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NO",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N<sub>2</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h11_c2_de4_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khí nitrogen trơ về mặt hoá học ở điều kiện thường là do",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân tử có liên kết ba, năng lượng liên kết nhỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phân tử có liên kết ba, năng lượng liên kết lớn",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phân tử có liên kết đôi, năng lượng liên kết lớn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phân tử có liên kết đôi, năng lượng liên kết nhỏ",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h11_c2_de4_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các loại bim bim (snack) là món yêu thích của nhiều người, nhất là các bạn trẻ. Lượng bim bim trong các gói thường chỉ chiếm một nửa thể tích, phần còn lại là khí nitrogen. Lí do khí nitrogen được bơm vào gói bim bim là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "diệt khuẩn để bảo quản bim bim lâu hơn",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tăng tính thẩm mĩ của gói bim bim",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tăng khối lượng cho gói bim bim",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tạo môi trường trơ bảo quản bim bim",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h11_c2_de4_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phân tử ammonia có dạng hình học nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chóp tam giác",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chữ T",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chóp tứ giác",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tam giác đều",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h11_c2_de4_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho thí nghiệm như hình vẽ, bên trong bình có chứa khí ammonia, trong chậu thủy tinh chứa nước có nhỏ vài giọt phenolphthalein.<br/>Hiện tượng xảy ra trong thí nghiệm là",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de4_image8.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nước phun vào bình và chuyển thành màu hồng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nước phun vào bình và chuyển thành màu tím",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nước phun vào bình và không có màu",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nước phun vào bình và chuyển thành màu xanh",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c2_de4_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho cân bằng hóa học sau: N<sub>2</sub> (g) + 3H<sub>2</sub> (g) ⇌ 2NH<sub>3</sub>(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> < 0. Tổng số mol của hỗn hợp khí khi hệ đạt cân bằng ở nhiệt độ 400<sup>o</sup>C và 500<sup>o</sup>C là lượt là x và y. Mối quan hệ giữa x và y là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "x > y",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "x = y",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "x < y",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5x = 4y",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h11_c2_de4_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phân biệt được dung dịch NH<sub>4</sub>Cl và NaCl bằng thuốc thử là dung dịch",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "KCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "KNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "KOH",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "K<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h11_c2_de4_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi so sánh phân tử ammonia với ion ammonium, nhận định nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đều chứa liên kết ion",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đều có tính acid yếu trong nước",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đều có tính base yếu trong nước",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Đều chứa nguyên tử N có số oxi hoá là -3",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h11_c2_de4_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phản ứng sau:<br/>(a) S + O<sub>2</sub> → (t°) SO<sub>2</sub> (b) Hg + S → HgS<br/>(c) H<sub>2</sub> +  18 S<sub>8</sub> → H<sub>2</sub>S.(d) Fe + S → (t°) FeS<br/>Có bao nhiêu phản ứng trong đó sulfur đóng vai trò là chất khử?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h11_c2_de4_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi nhiệt kế thủy ngân vỡ, rắc chất bột nào sau đây lên thủy ngân rơi vãi sẽ chuyển hóa chúng thành hợp chất bền, ít độc hại?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Than đá",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đá vôi",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Muối ăn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sulfur",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h11_c2_de4_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sulfur dioxide đóng vai trò chất khử khi tác dụng với chất nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "H<sub>2</sub>S",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NO<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Mg",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "KOH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h11_c2_de4_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nitrogen monoxide được tạo thành khi mưa dông kèm theo sấm sét do phản ứng giữa nitrogen và oxygen trong không khí được gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NO<sub>x</sub> tức thời",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NO<sub>x</sub> nhiệt",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NO<sub>x</sub>nhiên liệu",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NO<sub>x</sub> tự nhiên",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h11_c2_de4_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hiện tượng phú dưỡng là một biểu hiện của môi trường ao, hồ bị ô nhiễm do dư thừa các chất dinh dưỡng, Sự dư thừa dinh dưỡng chủ yếu do hàm lượng các ion nào sau đây vượt quá mức cho phép?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sodium, potassium",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Calcium, magnesium",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nitrate, phosphate",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chloride, sulfate",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h11_c2_de4_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một phương pháp được đề xuất để loại bỏ SO<sub>2</sub> khỏi khí thải của nhà máy điện bằng cách dẫn khí thải qua dung dịch H<sub>2</sub>S. Cần tối đa bao nhiêu m<sup>3</sup> H<sub>2</sub>S (ở đkc) để loại bỏ SO<sub>2</sub> sinh ra khi đốt cháy 2,0 tấn than chứa sulfur chiếm 3% theo khối lượng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "23,24 m<sup>3</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "92,96 m<sup>3</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "46,48 m<sup>3</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "34,86 m<sup>3</sup>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h11_c2_de4_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các nhận định sau về cấu tạo phân tử nitric acid:<br/>(a) Liên kết O – H phân cực về oxygen.(b) Nguyên tử N có số oxi hóa là +5.<br/>(c) Nguyên tử N có hóa trị bằng IV.(d) Liên kết cho – nhận N → O kém bền.<br/>Số nhận định đúng là",
+        "images": [
+          "/assets/hoa12/c5/h11_c2_de4_image15.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h11_c2_de4_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cách pha loãng dung dịch sulfuric acid đặc nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Rót nhanh acid vào nước và khuấy đều",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Rót nhanh nước vào acid và khuấy đều",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Rót từ từ nước vào acid và khuấy đều",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Rót từ từ acid vào nước và khuấy đều",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h11_c2_de4_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Muối X không tan trong nước và các dung môi hữu cơ. Trong y học, X thường được dùng làm chất cản quang xét nghiệm X-quang đường tiêu hóa. Công thức của X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "BaSO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "K<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "MgSO<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h11_c2_de4_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sulfuric acid là một trong những hoá chất quan trọng nhất được sử dụng trong công nghiệp; được sản xuất hàng trăm triệu tấn mỗi năm, chiếm nhiều nhất trong ngành công nghiệp hoá chất. Phương pháp sản xuất sulfuric acid phổ biến nhất là phương pháp tiếp xúc, theo đó acid có thể được điều chế qua các giai đoạn sau:<br/>(1) FeS<sub>2</sub>(s) + O<sub>2</sub>(g) → (t°)  Fe<sub>2</sub>O<sub>3</sub>(s) + SO<sub>2</sub>(g)<br/>(2) SO<sub>2</sub>(g) + O<sub>2</sub>(s)  o25450 C, ⇌ (V<sub>2</sub>O<sub>5</sub>, t°) SO<sub>3</sub>(g) ; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -196 kJ<br/>(3) H<sub>2</sub>SO<sub>4</sub>(aq) + SO<sub>3</sub>(g) → H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub>(l)<br/>(4) H<sub>2</sub>SO<sub>4</sub>.nSO<sub>3</sub>(l) + H<sub>2</sub>O(l) → H<sub>2</sub>SO<sub>4</sub>(aq)<br/>Người ta dùng sulfuric acid đặc H<sub>2</sub>SO<sub>4</sub>(aq) hấp thụ SO<sub>3</sub>(g) trong phản ứng (3), quá trình này được thực hiện trong tháp tiếp xúc. Cách thực hiện nào sau đây sẽ đạt hiệu quả tiếp xúc tốt nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cho SO<sub>3</sub>(g) lội qua dung dịch H<sub>2</sub>SO<sub>4</sub>(aq)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "SO<sub>3</sub>(g) được phun vào từ phía trên tháp, H<sub>2</sub>SO<sub>4</sub>(aq) được bơm từ dưới lên",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "SO<sub>3</sub>(g) được xả vào từ phía dưới tháp, H<sub>2</sub>SO<sub>4</sub>(aq) được phun từ trên xuống",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "SO<sub>3</sub>(g) lội qua H<sub>2</sub>SO<sub>4</sub>(aq) được khuấy liên tục với tốc độ cao",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h11_c2_de4_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Hiện tượng phú dưỡng là một biểu hiện của môi trường ao, hồ bị ô nhiễm do dư thừa các chất dinh dưỡng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chất thải công nghiệp, chất thải sinh hoạt, … khi không được xử lí theo quy chuẩn, nếu thải vào sông, hồ cũng gây ra hiện tượng phú dưỡng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hiện tượng phú dưỡng gây cản trở hấp thụ ánh sáng mặt trời vào nước, làm giảm sự quang hợp của thực vật thủy sinh",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Có thể quan sát được hiện tượng phú dưỡng thông qua sự xuất hiện dày đặc của tảo xanh trong nước",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thông thường, khi hàm lượng calcium trong nước đạt 300 μg/L và hàm lượng magnesium đạt 20 μg/L sẽ gây hiện tượng phú dưỡng",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Dư thừa nitrogen và phosphorus trong nước",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h11_c2_de4_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Phương trình hoá học của phản ứng tổng họp ammonia từ nitrogen và hydrogen bằng quá trình Haber như sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  o400600C, 200 bar, Fe- ⇌ 2NH<sub>3</sub>(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -92 kJ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tại thời điểm cân bằng, hỗn hợp trong buồng phản ứng gồm ammonia, nitrogen và hydrogen",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ammonia dễ hoá lỏng hơn nên khi làm lạnh hỗn hợp sẽ tách được ammonia lỏng ra khỏi hỗn hợp khí",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nếu không sử dụng chất xúc tác thì không thể tạo thành ammonia",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu giảm áp suất của hệ thì cân bằng sẽ chuyển dịch theo chiều thuận",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Chất xúc tác làm tăng tốc độ phản ứng còn sản phẩm ammonia vẫn được tạo thành trong quá trình phản ứng kể cả không có xúc tác.<br/>d. S. Giảm áp suất làm cân bằng chuyển dịch theo chiều nghịch",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h11_c2_de4_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các phát biểu sau về sulfuric acid và muối sulfate:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sulfuric acid đặc có tính háo nước, gây bỏng nặng khi tiếp xúc với da tay",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi bị bỏng sulfuric acid đặc, điều đầu tiên cần làm là xả nhanh chỗ bỏng với nước lạnh",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sulfuric acid loãng có tính oxi hóa mạnh, khi tác dụng với kim loại không sinh ra khí hydrogen",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thuốc thử nhận biết sulfuric acid và muối sulfate là ion Ba<sup>2+</sup> trong các dung dịch BaCl<sub>2</sub>, Ba(OH)<sub>2</sub>, Ba(NO<sub>3</sub>)<sub>2</sub>",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. S. Sulfuric acid loãng có tính acid mạnh.<br/>d. Đ",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h11_c2_de4_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Sau mỗi trận mưa giông, một lượng nitrogen trong không khí được chuyển hóa thành ion nitrate và hòa tan vào nước mưa theo sơ đồ chuyển hóa dưới đây:<br/>(1)(2)(3)(4)2233NNONOHNOHNO+- →  →  →  → +",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cả bốn phản ứng mà nguyên tố nitrogen đóng vai trò là chất khử",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sản phẩm của phản ứng (4) có thể dùng làm phân bón",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong thực tế, phản ứng (1) xảy ra ở nhiệt độ thường",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để tạo ra được 124 kg ion nitrate cần dùng ở điều kiện chuẩn là 991,6 m<sup>3</sup> khí N<sub>2</sub>. Biết hiệu suất của toàn bộ quá trình là 5%",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. S. Phản ứng (4) không phải là phản ứng oxi hóa khử.<br/>b. Đ.<br/>c. S. Ở nhiệt độ cao trên 3000°C hoặc có tia lửa điện, nitrogen kết hợp với oxygen, tạo ra nitrogen monoxide (NO).<br/>d. S.  22233NNNNO1241n2nn.kmolV495,8m62.25%-=Þ=Þ=",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h11_c2_de4_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phân tử sulfur trong trạng thái rắn tồn tại ở dạng vòng gồm có bao nhiêu nguyên tử sulfur?",
+        "images": [],
+        "correctAnswer": "8",
+        "explanation": "Đáp án: 8",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23
+      },
+      {
+        "id": "h11_c2_de4_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất khí: NO, NO<sub>2</sub>, SO<sub>2</sub>, N<sub>2</sub>O và N<sub>2</sub>. Có bao nhiêu chất khí là nguyên nhân góp phần gây ra hiện tượng mưa acid?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24
+      },
+      {
+        "id": "h11_c2_de4_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho dung dịch (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> tác dụng lần lượt với các dung dịch NaOH, Ba(OH)<sub>2</sub>, MgCl<sub>2</sub>, Ba(NO<sub>3</sub>)<sub>2</sub> và NaNO<sub>3</sub>. Sau khi các phản ứng xảy trên ra hoàn toàn, có bao nhiêu phản ứng thu được kết tủa?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25
+      },
+      {
+        "id": "h11_c2_de4_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khi cho sulfuric acid đặc, nóng lần lượt tiếp xúc với các chất sau: đường saccharose (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>), bột lưu huỳnh, thanh platinum, bột kẽm, thuốc tím (KMnO<sub>4</sub>), muối ăn (NaCl). Có bao nhiêu chất bị sulfuric acid đặc, nóng oxi hoá?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26
+      },
+      {
+        "id": "h11_c2_de4_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Hỗn hợp X gồm N<sub>2</sub> và H<sub>2</sub> có tỉ khối đối với H<sub>2</sub> bằng 3,6. Nung nóng X trong bình kín ở nhiệt độ khoảng 450<sup>0</sup>C có bột Fe xúc tác, thu được hỗn hợp khí Y có số mol giảm 8% so với ban đầu. Hiệu suất của phản ứng tổng hợp NH<sub>3</sub> là bao nhiêu phần trăm?",
+        "images": [],
+        "correctAnswer": "20",
+        "explanation": "Đáp án: 20.<br/>M<sub>X</sub> = 3,6.2 = 7,2<br/>Giả sử có 1 mol N<sub>2</sub> và 4 mol H<sub>2</sub>. Vậy số mol ban đầu là 5 mol.<br/>Phương trình hoá học:  N<sub>2</sub>           +        3H<sub>2</sub> ⇌ 2NH<sub>3</sub><br/>Ban đầu:                   1                   4                     0                   mol<br/>Phản ứng:                    x                   3x                        2x                 mol<br/>Sau phản ứng:        (1 – x)    (4 – 3x)                2x                 mol<br/>Tổng số mol khí sau phản ứng: n<sub>sau</sub> = (1 – x) + (4 – 3x) + 2x = 5 – 2x (mol)<br/>Số mol Y giảm 8% so với ban đầu  5 – 2x = (100% – 8%).5  x = 0,2<br/>Hiệu suất phản ứng tính theo N<sub>2</sub> (do 1/1 < 4/3)<br/>Ta có:  0,2H .100% 20%1==",
+        "explanationImages": [
+          "/assets/hoa12/c5/h11_c2_de4_image25.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 27
+      },
+      {
+        "id": "h11_c2_de4_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Sulfuric acid có thể được điều chế từ quặng pyrite theo sơ đồ:<br/>FeS<sub>2</sub> <span class='inline-block mx-1 text-slate-800'>→</span> SO<sub>2</sub> <span class='inline-block mx-1 text-slate-800'>→</span> SO<sub>3</sub> <span class='inline-block mx-1 text-slate-800'>→</span> H<sub>2</sub>SO<sub>4</sub><br/>Thể tích (L) của dung dịch H<sub>2</sub>SO<sub>4</sub> 98% (D = 1,82 g/mL) thu được từ 1 tấn quặng pyrite (chứa 80% FeS<sub>2</sub>). Biết hiệu suất của cả quá trình là 90%, các tạp chất trong quặng không chứa sulfur. (Kết quả làm tròn đến hàng đơn vị)",
+        "images": [],
+        "correctAnswer": "659",
+        "explanation": "Đáp án: 659.<br/>2FeSm1.80%0,8== tấn = 800 kg<br/>Ta có sơ đồ:  FeS<sub>2</sub> &rarr; 2SO<sub>2</sub> &rarr; 2SO<sub>3</sub> &rarr; 2H<sub>2</sub>SO<sub>4</sub> <br/>kmol: 800120   800120 .2.90% = 12<br/>24HSOm12.981176kg==    24ddHSO1176mkg98%=  Þ  =»24ddHSO1176V659L.98%.1,82<br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28
+      }
+    ]
+  }
+];
 
 export const HOA11_CHUONG2_7_EXAMS: Chuong2Exam[] = HOA11_CHUONG2_EXAMS;
 

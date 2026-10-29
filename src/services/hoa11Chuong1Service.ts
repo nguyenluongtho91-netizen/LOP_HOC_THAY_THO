@@ -90,7 +90,2926 @@ export const HOA11_CHUONG1_MASTER: Record<string, Chuong1Lesson> = {"bai1":{"id"
 
 export const HOA11_CHUONG1_LESSONS: Chuong1Lesson[] = Object.values(HOA11_CHUONG1_MASTER);
 
-export const HOA11_CHUONG1_EXAMS: Chuong1Exam[] = [{"id": "h11_c1_de1", "code": "111", "title": "Đề Kiểm Tra Số 1 - Cân Bằng Hóa Học (Mã 111)", "topic": "Phản ứng thuận nghịch, Hằng số cân bằng K<sub>c</sub> & Nguyên lí Le Chatelier", "badge": "Mã 111", "chapter": 1, "duration": 50, "totalQuestions": 28, "totalPoints": 10, "questions": [{"id": "h11_c1_de1_p1_q1", "number": 1, "part": 1, "type": "multiple_choice", "text": "Chất nào sau đây là chất điện li yếu?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Ba(OH)<sub>2</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "H<sub>2</sub>SO<sub>4</sub>", "isCorrect": true}, {"id": "c", "letter": "C", "text": "H<sub>2</sub>O", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 1}, {"id": "h11_c1_de1_p1_q2", "number": 2, "part": 1, "type": "multiple_choice", "text": "Tiến hành thí nghiệm để kiểm chứng tính dẫn điện của các chất như hình vẽ thấy bóng đèn thứ 3 phát sáng, bóng đèn 1 và 2 không sáng.<br/>Dung dịch đựng trong bình thứ 3 không thể là", "images": ["/assets/hoa12/c5/h11_c1_de1_image3.png"], "options": [{"id": "a", "letter": "A", "text": "NaCl", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>2</sub>H<sub>5</sub>OH (ethanol)", "isCorrect": true}, {"id": "c", "letter": "C", "text": "HCl", "isCorrect": false}, {"id": "d", "letter": "D", "text": "CH<sub>3</sub>COOH", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 2}, {"id": "h11_c1_de1_p1_q3", "number": 3, "part": 1, "type": "multiple_choice", "text": "Phản ứng tổng hợp ammonia xảy ra như sau:  N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g) <br/>Biểu thức biểu diễn hằng số cân bằng K<sub>c</sub> là", "images": [], "options": [{"id": "a", "letter": "A", "text": "[][][]23C322NHK=H.N", "isCorrect": true}, {"id": "b", "letter": "B", "text": "[][][]3C22NHK=H.N", "isCorrect": false}, {"id": "c", "letter": "C", "text": "[][][]322C23H.NKNH=", "isCorrect": false}, {"id": "d", "letter": "D", "text": "[][][]22C3H.NK=NH", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 3}, {"id": "h11_c1_de1_p1_q4", "number": 4, "part": 1, "type": "multiple_choice", "text": "Chất nào sau đây thuộc loại điện li mạnh?", "images": [], "options": [{"id": "a", "letter": "A", "text": "CH<sub>3</sub>COOH", "isCorrect": false}, {"id": "b", "letter": "B", "text": "NaCl", "isCorrect": true}, {"id": "c", "letter": "C", "text": "C<sub>2</sub>H<sub>5</sub>OH", "isCorrect": false}, {"id": "d", "letter": "D", "text": "H<sub>2</sub>O", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 4}, {"id": "h11_c1_de1_p1_q5", "number": 5, "part": 1, "type": "multiple_choice", "text": "Phản ứng thuận nghịch là phản ứng", "images": [], "options": [{"id": "a", "letter": "A", "text": "phản ứng xảy ra theo hai chiều ngược nhau trong cùng điều kiện", "isCorrect": false}, {"id": "b", "letter": "B", "text": "có phương trình hoá học được biểu diễn bằng mũi tên một chiều", "isCorrect": false}, {"id": "c", "letter": "C", "text": "chỉ xảy ra theo một chiều nhất định", "isCorrect": true}, {"id": "d", "letter": "D", "text": "xảy ra giữa hai chất khí", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 5}, {"id": "h11_c1_de1_p1_q6", "number": 6, "part": 1, "type": "multiple_choice", "text": "Hình dưới đây mô tả sự phân li của HCl trong nước:<br/>Chất nhận H<sup>+</sup> trong phương trình trên là", "images": ["/assets/hoa12/c5/h11_c1_de1_image9.png"], "options": [{"id": "a", "letter": "A", "text": "HCl", "isCorrect": true}, {"id": "b", "letter": "B", "text": "H<sub>2</sub>O", "isCorrect": false}, {"id": "c", "letter": "C", "text": "H<sub>3</sub>O<sup>+</sup>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Cl<sup>-</sup>", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 6}, {"id": "h11_c1_de1_p1_q7", "number": 7, "part": 1, "type": "multiple_choice", "text": "Cân bằng nào dưới đây không có sự chuyển dịch khi tăng hay giảm áp suất của hệ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g)", "isCorrect": false}, {"id": "b", "letter": "B", "text": "PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)", "isCorrect": false}, {"id": "c", "letter": "C", "text": "H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g)", "isCorrect": true}, {"id": "d", "letter": "D", "text": "N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g)", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 7}, {"id": "h11_c1_de1_p1_q8", "number": 8, "part": 1, "type": "multiple_choice", "text": "Hằng số K<sub>c</sub> của một phản ứng phụ thuộc vào yếu tố nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Nồng độ", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Nhiệt độ", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Áp suất", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Chất xúc tác", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 8}, {"id": "h11_c1_de1_p1_q9", "number": 9, "part": 1, "type": "multiple_choice", "text": "Hình dưới đây mô tả sự phân li của NH<sub>3</sub> trong nước:<br/>Trong phản ứng nghịch, chất đóng vai trò base là", "images": ["/assets/hoa12/c5/h11_c1_de1_image13.png"], "options": [{"id": "a", "letter": "A", "text": "OH<sup>−</sup>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "H<sub>2</sub>O", "isCorrect": false}, {"id": "c", "letter": "C", "text": "NH<sub>3</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "4NH+", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 9}, {"id": "h11_c1_de1_p1_q10", "number": 10, "part": 1, "type": "multiple_choice", "text": "Để trung hòa 30 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 0,25 M cần 20 mL dung dịch NaOH nồng độ x mol/L. Giá trị của x là", "images": [], "options": [{"id": "a", "letter": "A", "text": "0,100", "isCorrect": false}, {"id": "b", "letter": "B", "text": "0,750", "isCorrect": false}, {"id": "c", "letter": "C", "text": "0,500", "isCorrect": false}, {"id": "d", "letter": "D", "text": "0,375", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 10}, {"id": "h11_c1_de1_p1_q11", "number": 11, "part": 1, "type": "multiple_choice", "text": "Ester là hợp chất hữu cơ có mùi thơm nên một số ester được sử dụng làm bánh, thực phẩm. Phản ứng điều chế ester ethyl acetate như sau: 3253252CHCOOH()CHOH()CHCOOCH() + HO()lllg+ ⇌ <br/>Cân bằng trên dịch chuyển theo chiều nào nếu tăng nồng độ của  25CHOH ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Cân bằng chuyển dịch theo chiều nghịch", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Cân bằng không chuyển dịch", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Cân bằng chuyển dịch theo chiều thuận", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Cân bằng chuyển dịch theo chiều làm tăng nồng độ C<sub>2</sub>H<sub>5</sub>OH", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 11}, {"id": "h11_c1_de1_p1_q12", "number": 12, "part": 1, "type": "multiple_choice", "text": "Cho cân bằng hoá học sau:  ()()()22HgI  2HIgg+ ⇌ &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -9,6 kJ<br/>Nhận xét nào sau đây không đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Khi tăng nhiệt độ, cân bằng trên chuyển dịch theo chiều nghịch", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Ở nhiệt độ không đổi, khi tăng áp suất thì cân bằng không bị chuyển dịch", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Ở nhiệt độ không đổi, khi tăng nồng độ H<sub>2</sub>, hoặc I<sub>2</sub> thì giá trị hằng số cân bằng tăng", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 12}, {"id": "h11_c1_de1_p1_q13", "number": 13, "part": 1, "type": "multiple_choice", "text": "Dung dịch nào sau đây có pH > 7?", "images": [], "options": [{"id": "a", "letter": "A", "text": "HCl", "isCorrect": false}, {"id": "b", "letter": "B", "text": "NaCl", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Ca(OH)<sub>2</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "H<sub>2</sub>SO<sub>4</sub>", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 13}, {"id": "h11_c1_de1_p1_q14", "number": 14, "part": 1, "type": "multiple_choice", "text": "Trong số các dung dịch có cùng nồng độ 0,1 M dưới đây, dung dịch chất nào có giá trị pH nhỏ nhất?", "images": [], "options": [{"id": "a", "letter": "A", "text": "NaOH", "isCorrect": false}, {"id": "b", "letter": "B", "text": "HCl", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Ba(OH)<sub>2</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "H<sub>2</sub>SO<sub>4</sub>", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 14}, {"id": "h11_c1_de1_p1_q15", "number": 15, "part": 1, "type": "multiple_choice", "text": "Giá trị pH của dung dịch HCl 0,01M là", "images": [], "options": [{"id": "a", "letter": "A", "text": "2", "isCorrect": false}, {"id": "b", "letter": "B", "text": "12", "isCorrect": false}, {"id": "c", "letter": "C", "text": "10", "isCorrect": false}, {"id": "d", "letter": "D", "text": "4", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 15}, {"id": "h11_c1_de1_p1_q16", "number": 16, "part": 1, "type": "multiple_choice", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Ammonia  3(NH)  được điều chế bằng phản ứng:  N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g) . Ở t <sup>o</sup>C, nồng độ các chất ở trạng thái cân bằng như sau:  [] · [] · []223N=0,9M, H=0,28M, NH=1,24M .<br</span><span class=\"px-1 pt-0.5\">>Hằng số cân bằng  CK  của phản ứng trên tại t <sup>o</sup>C là</span></span></span>", "images": [], "options": [{"id": "a", "letter": "A", "text": "77,82", "isCorrect": true}, {"id": "b", "letter": "B", "text": "31,35", "isCorrect": false}, {"id": "c", "letter": "C", "text": "49,22", "isCorrect": false}, {"id": "d", "letter": "D", "text": "18,90", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 16}, {"id": "h11_c1_de1_p1_q17", "number": 17, "part": 1, "type": "multiple_choice", "text": "Mục đích chính của chuẩn độ acid - base là", "images": [], "options": [{"id": "a", "letter": "A", "text": "xác định xem phản ứng hóa học có xảy ra hay không", "isCorrect": false}, {"id": "b", "letter": "B", "text": "xác định nồng độ của một chất bằng dung dịch chuẩn đã biết nồng độ", "isCorrect": false}, {"id": "c", "letter": "C", "text": "kiểm tra lại nồng độ của dung dịch đã biết", "isCorrect": false}, {"id": "d", "letter": "D", "text": "để kiểm tra chất lượng của chất phản ứng", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 17}, {"id": "h11_c1_de1_p1_q18", "number": 18, "part": 1, "type": "multiple_choice", "text": "Một dung dịch có chứa các ion: Mg<sup>2+</sup> (0,05 mol), K<sup>+</sup> (0,15 mol), NO<sub>3</sub><sup>-</sup> (0,1 mol), và SO<sub>4</sub><sup>2-</sup> (x mol). Giá trị của x là", "images": [], "options": [{"id": "a", "letter": "A", "text": "0,05", "isCorrect": false}, {"id": "b", "letter": "B", "text": "0,075", "isCorrect": false}, {"id": "c", "letter": "C", "text": "0,1", "isCorrect": true}, {"id": "d", "letter": "D", "text": "0,15", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 18}, {"id": "h11_c1_de1_p2_q1", "number": 1, "part": 2, "type": "true_false", "text": "Cho phản ứng: 2NaHCO<sub>3</sub>(s) ⇌ Na<sub>2</sub>CO<sub>3</sub>(s) + CO<sub>2</sub>(g) + H<sub>2</sub>O(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = 129kJ. Xét hỗn hợp phản ứng đang ở trạng thái cân bằng", "images": [], "options": [{"id": "a", "letter": "A", "text": "Tăng nhiệt độ bình phản ứng thì cân bằng chuyển dịch sang chiều thuận", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Lấy CO<sub>2</sub> ra khỏi hệ thì cân bằng chuyển dịch theo chiều thuận", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Tăng áp suất chung của hệ, không làm chuyển dịch cân bằng", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Phản ứng trên là phản ứng tỏa nhiệt", "isCorrect": false}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 19}, {"id": "h11_c1_de1_p2_q2", "number": 2, "part": 2, "type": "true_false", "text": "Cho hai phản ứng thuận nghịch sau:<br/>232333223HCOHOHOCO(1)HCOHOOHHCO(2)-+---++++ ⇌", "images": [], "options": [{"id": "a", "letter": "A", "text": "Trong phản ứng thuận (1),   3HCO-  đóng vai trò là acid", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Trong phản ứng nghịch (1), ion 23CO- là base", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Trong phản ứng thuận (2),  3HCO- nhường H<sup>+</sup> cho H<sub>₂</sub>O,  3HCO- là acid, H<sub>2</sub>O là base", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Thông qua hai phản ứng thuận nghịch thấy rằng 3HCO- , H<sub>2</sub>O có tính chất lưỡng tính", "isCorrect": true}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 20}, {"id": "h11_c1_de1_p2_q3", "number": 3, "part": 2, "type": "true_false", "text": "Dung dịch một chất tẩy rửa đa năng có pH = 10", "images": [], "options": [{"id": "a", "letter": "A", "text": "Chất tẩy rửa có môi trường acid", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Dung dịch có [H<sup>+</sup>] = 10<sup>-10</sup> Μ", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Nếu nhúng một mẫu giấy quỳ tím vào dung dịch, giấy quỳ chuyển sang màu đỏ", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Nhỏ vào dung dịch một vài giọt dung dịch phenolphtalein, dung dịch chuyển sang màu hồng", "isCorrect": false}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 21}, {"id": "h11_c1_de1_p2_q4", "number": 4, "part": 2, "type": "true_false", "text": "Cân bằng hóa học là trạng thái của cân bằng thuận nghịch", "images": [], "options": [{"id": "a", "letter": "A", "text": "Cân bằng hóa học là một cân bằng tĩnh", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Ở trạng thái cân bằng, các chất không phản ứng với nhau", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Ở trạng thái cân bằng, nồng độ các chất sản phẩm luôn lớn hơn nồng độ các chất đầu", "isCorrect": false}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 22}, {"id": "h11_c1_de1_p3_q1", "number": 1, "part": 3, "type": "short_answer", "text": "Cho các cân bằng sau:<br/>(a)  2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g) (b)  CO(g) + H<sub>2</sub>O(g) ⇌ H<sub>2</sub>(g) + CO<sub>2</sub>(g) <br/>(c)  PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g) (d)  H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g) <br/>Nếu tăng áp suất và giữ nguyên nhiệt độ thì có bao nhiêu cân bằng bị chuyển dịch?<br/>", "images": [], "correctAnswer": "8,64", "explanation": "Đáp án: 8,64.<br/>Nồng độ của HI ở trạng thái cân bằng là 8,64 mol/L.", "explanationImages": [], "points": 0.25, "displayNumber": 23, "acceptedAnswers": ["8,64", "8.64"]}, {"id": "h11_c1_de1_p3_q2", "number": 2, "part": 3, "type": "short_answer", "text": "Cho các chất: NaCl, CH<sub>4</sub>, KOH, CH<sub>3</sub>COOH, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (glucose), CuO. Có bao nhiêu chất điện li trong các chất trên?<br/>", "images": [], "correctAnswer": "2", "explanation": "Đáp án: 2.<br/>Có 2 cân bằng không chuyển dịch khi thay đổi áp suất: (b) và (d).", "explanationImages": [], "points": 0.25, "displayNumber": 24, "acceptedAnswers": ["2"]}, {"id": "h11_c1_de1_p3_q3", "number": 3, "part": 3, "type": "short_answer", "text": "Cho các dung dịch muối sau đây: NaHCO<sub>3</sub>; K<sub>2</sub>S; CuSO<sub>4</sub>; FeCl<sub>3</sub>; Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>; KCl. Có bao nhiêu dung dịch làm quỳ tím chuyển màu đỏ?<br/>", "images": [], "correctAnswer": "4", "explanation": "Đáp án: 4.<br/>Có 4 chất điện li: NaCl, CH3COOH, KAl(SO4)2.12H2O, Ca(OH)2.", "explanationImages": [], "points": 0.25, "displayNumber": 25, "acceptedAnswers": ["4"]}, {"id": "h11_c1_de1_p3_q4", "number": 4, "part": 3, "type": "short_answer", "text": "Dung dịch HCl có pH = 1 (dung dịch A), dung dịch NaOH có pH = 13 (dung dịch B). pH của dung dịch sau khi trộn 5 mL dung dịch A và 10 mL dung dịch B là bao nhiêu? (Kết quả làm tròn đến phần mười).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>", "images": [], "correctAnswer": "0,1", "explanation": "Đáp án: 0,1.<br/>m(NaOH) = 0,25 × 10^-2 × 40 = 0,1 gam.", "explanationImages": [], "points": 0.25, "displayNumber": 26, "acceptedAnswers": ["0,1", "0.1"]}, {"id": "h11_c1_de1_p3_q5", "number": 5, "part": 3, "type": "short_answer", "text": "Trong công nghiệp, hydrogen được sản xuất từ phản ứng: CH<sub>4</sub>(g) + H<sub>2</sub>O(g) ⇌ 3H<sub>2</sub>(g) + CO(g).<br/>Ở 760 <sup>o</sup>C, giả sử ban đầu chỉ có CH<sub>4</sub> và H<sub>2</sub>O có nồng độ bằng nhau và bằng x M. Xác định x, biết nồng độ của H<sub>2</sub> ở trạng thái cân bằng là 0,6 M, hằng số cân bằng K<sub>c</sub> là 6,28 (làm tròn kết quả đến phần trăm).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>", "images": [], "correctAnswer": "0,85", "explanation": "Đáp án: 0,85.<br/>Tỉ lệ nồng độ tương ứng là 0,85.", "explanationImages": [], "points": 0.25, "displayNumber": 27, "acceptedAnswers": ["0,85", "0.85"]}, {"id": "h11_c1_de1_p3_q6", "number": 6, "part": 3, "type": "short_answer", "text": "Hydrochloric acid được tiết ra khi thức ăn đi vào dạ dày do ăn quá nhiều hoặc nhiều lý do khiến lượng HCl (hydrochloric acid) dư thừa được giải phóng. Sự dư thừa HCl trong dạ dày gây khó tiêu, đau và kích ứng. Các thuốc kháng acid thông thường được sử dụng để chữa chứng khó tiêu do tính acid là sữa magnesium (Mg(OH)<sub>2</sub>) hoặc baking Soda (sodium hydrogen carbonate – NaHCO<sub>3</sub>). Cần bao nhiêu gam Mg(OH)<sub>2</sub> để trung hòa 100 mL dịch vị dạ dày có pH = 2. (làm tròn kết quả đến phần trăm).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>", "images": ["/assets/hoa12/c5/h11_c1_de1_image30.png"], "correctAnswer": "0,12", "explanation": "Đáp án: 0,12.<br/>Khối lượng thuốc cần uống đưa pH về 3 là 0,12 gam.", "explanationImages": [], "points": 0.25, "displayNumber": 28, "acceptedAnswers": ["0,12", "0.12"]}]}, {"id": "h11_c1_de2", "code": "112", "title": "Đề Kiểm Tra Số 2 - Dung Dịch & pH (Mã 112)", "topic": "Sự điện li, Thuyết Brønsted – Lowry, Thang pH & Chuẩn độ", "badge": "Mã 112", "chapter": 1, "duration": 50, "totalQuestions": 28, "totalPoints": 10, "questions": [{"id": "h11_c1_de2_p1_q1", "number": 1, "part": 1, "type": "multiple_choice", "text": "Biểu thức nào sau đây là biểu thức hằng số cân bằng (K<sub>c</sub>) của phản ứng:<br/>C<sub>(</sub><sub>s)</sub>+  2H<sub>2(g)</sub> ⇌ CH<sub>4</sub>(g)", "images": [], "options": [{"id": "a", "letter": "A", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[H<sub>2</sub>]</span></span></span>", "isCorrect": true}, {"id": "b", "letter": "B", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[C] · [H<sub>2</sub>]<sup>2</sup></span></span></span>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[C] · [H<sub>2</sub>]</span></span></span>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[H<sub>2</sub>]<sup>2</sup></span></span></span>", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 1}, {"id": "h11_c1_de2_p1_q2", "number": 2, "part": 1, "type": "multiple_choice", "text": "Phản ứng thuận nghịch là phản ứng", "images": [], "options": [{"id": "a", "letter": "A", "text": "phản ứng xảy ra theo hai chiều ngược nhau trong cùng điều kiện", "isCorrect": true}, {"id": "b", "letter": "B", "text": "có phương trình hoá học được biểu diễn bằng mũi tên một chiều", "isCorrect": false}, {"id": "c", "letter": "C", "text": "chỉ xảy ra theo một chiều nhất định", "isCorrect": false}, {"id": "d", "letter": "D", "text": "xảy ra giữa hai chất khí", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 2}, {"id": "h11_c1_de2_p1_q3", "number": 3, "part": 1, "type": "multiple_choice", "text": "Sự phá vỡ cân bằng cũ để chuyển sang một cân bằng mới do các yếu tố bên ngoài tác động được gọi là", "images": [], "options": [{"id": "a", "letter": "A", "text": "sự biến đổi chất", "isCorrect": false}, {"id": "b", "letter": "B", "text": "sự dịch chuyển cân bằng", "isCorrect": true}, {"id": "c", "letter": "C", "text": "sự chuyển đổi vận tốc phản ứng", "isCorrect": false}, {"id": "d", "letter": "D", "text": "sự biến đổi hằng số cân bằng", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 3}, {"id": "h11_c1_de2_p1_q4", "number": 4, "part": 1, "type": "multiple_choice", "text": "Theo thuyết điện li, khi hòa tan muối Mohr ((NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>.FeSO<sub>4</sub>.6H<sub>2</sub>O) vào nước, tỉ lệ nồng độ mol giữa ion Fe<sup>2+</sup> và SO<sub>4</sub><sup>2–</sup> tương ứng là", "images": [], "options": [{"id": "a", "letter": "A", "text": "1 : 2", "isCorrect": false}, {"id": "b", "letter": "B", "text": "2 : 3", "isCorrect": true}, {"id": "c", "letter": "C", "text": "1 : 1", "isCorrect": false}, {"id": "d", "letter": "D", "text": "1 : 3", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 4}, {"id": "h11_c1_de2_p1_q5", "number": 5, "part": 1, "type": "multiple_choice", "text": "Cho cân bằng hoá học sau: 4NH<sub>3</sub>(g) + 5O<sub>2</sub> ⇌ 4NO(g) + 6H<sub>2</sub>O(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -905 kJ.<br/>Yếu tố nào sau đây không làm cân bằng bị chuyển dịch?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Giảm nhiệt độ", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Tăng áp suất", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Giảm nồng độ của O<sub>2</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Thêm xúc tác Pt", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 5}, {"id": "h11_c1_de2_p1_q6", "number": 6, "part": 1, "type": "multiple_choice", "text": "Vì sao dung dịch của các muối, acid, base dẫn điện?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Do có sự di chuyển của electron tạo thành dòng elctron", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Do phân tử của chúng dẫn được điện", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Do các ion hợp phần có khả năng dẫn điện", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Do muối, acid, base có khả năng phân li ra ion trong dung dịch", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 6}, {"id": "h11_c1_de2_p1_q7", "number": 7, "part": 1, "type": "multiple_choice", "text": "Dung dịch của một base ở 25<sup>o</sup>C có", "images": [], "options": [{"id": "a", "letter": "A", "text": "[H<sup>+</sup>] = 1,0 &times; 10<sup>-7</sup>M", "isCorrect": false}, {"id": "b", "letter": "B", "text": "[H<sup>+</sup>] < 1,0 &times; 10<sup>-7</sup>M", "isCorrect": true}, {"id": "c", "letter": "C", "text": "[H<sup>+</sup>] > 1,0 &times; 10<sup>-7</sup>M", "isCorrect": false}, {"id": "d", "letter": "D", "text": "[H<sup>+</sup>][OH<sup>-</sup>] > 1,0 &times; 10<sup>-14</sup>M", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 7}, {"id": "h11_c1_de2_p1_q8", "number": 8, "part": 1, "type": "multiple_choice", "text": "Chất nào sau đây thuộc loại chất điện li yếu?", "images": [], "options": [{"id": "a", "letter": "A", "text": "KCl", "isCorrect": false}, {"id": "b", "letter": "B", "text": "HF", "isCorrect": true}, {"id": "c", "letter": "C", "text": "HNO<sub>3</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "NH<sub>4</sub>Cl", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 8}, {"id": "h11_c1_de2_p1_q9", "number": 9, "part": 1, "type": "multiple_choice", "text": "Dung dịch chất nào sau đây có pH < 7?", "images": [], "options": [{"id": "a", "letter": "A", "text": "NaI", "isCorrect": false}, {"id": "b", "letter": "B", "text": "NaNO<sub>2</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "NaNO<sub>3</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "FeBr<sub>2</sub>", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 9}, {"id": "h11_c1_de2_p1_q10", "number": 10, "part": 1, "type": "multiple_choice", "text": "Tại khu vực bị ô nhiễm, pH của nước mưa đo được là 4,5 còn pH của nước mưa tại khu vực không bị ô nhiễm là 5,7. Nhận xét nào sau đây không đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Nồng độ ion H<sup>+</sup>trong dung dịch nước mưa bị ô nhiễm là 10<sup>-4,5</sup>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Nồng độ ion H<sup>+</sup>trong dung dịch nước mưa không bị ô nhiễm là 10<sup>-5,7</sup>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Nồng độ ion H<sup>+</sup>trong nước mưa bị ô nhiễm thấp hơn so với trong nước mưa không bị ô nhiễm", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Nồng độ ion OH<sup>-</sup> trong nước mưa bị ô nhiễm thấp hơn so với trong nước mưa không bị ô nhiễm", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 10}, {"id": "h11_c1_de2_p1_q11", "number": 11, "part": 1, "type": "multiple_choice", "text": "Quan sát hình dưới đây và chọn phát biểu đúng:", "images": ["/assets/hoa12/c5/h11_c1_de2_image10.png"], "options": [{"id": "a", "letter": "A", "text": "Cả hai đồ thị đều mô tả phản ứng đã đạt đến trạng thái cân bằng", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Cả hai đồ thị đều không mô tả phản ứng đã đạt đến trạng thái cân bằng", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Chỉ đồ thị (a) mô tả phản ứng đã đạt đến trạng thái cân bằng", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Chỉ đồ thị (b) mô tả phản ứng đã đạt đến trạng thái cân bằng", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 11}, {"id": "h11_c1_de2_p1_q12", "number": 12, "part": 1, "type": "multiple_choice", "text": "Trong phản ứng sau đây: Cho phương trình: NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup>. Chất nào đóng vai trò là base theo thuyết Bronsted – lowry?", "images": [], "options": [{"id": "a", "letter": "A", "text": "NH<sub>3</sub> và NH<sub>4</sub><sup>+</sup>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "NH<sub>3</sub> và OH<sup>–</sup>", "isCorrect": true}, {"id": "c", "letter": "C", "text": "H<sub>2</sub>O và NH<sub>4</sub><sup>+</sup>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "H<sub>2</sub>O và OH<sup>–</sup>", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 12}, {"id": "h11_c1_de2_p1_q13", "number": 13, "part": 1, "type": "multiple_choice", "text": "Số mL dung dịch HCl 0,3M cần để trung hòa 0,3 L dung dịch NaOH 0,1M là", "images": [], "options": [{"id": "a", "letter": "A", "text": "1000", "isCorrect": false}, {"id": "b", "letter": "B", "text": "10", "isCorrect": false}, {"id": "c", "letter": "C", "text": "15", "isCorrect": false}, {"id": "d", "letter": "D", "text": "100.", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 13}, {"id": "h11_c1_de2_p1_q14", "number": 14, "part": 1, "type": "multiple_choice", "text": "Cho các phản ứng sau:<br/>1) H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g), &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> > 0<br/>2) 2NO(g) + O<sub>2</sub>(g) ⇌ 2NO<sub>2</sub>(g), &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> < 0<br/>3) CO(g) + Cl<sub>2</sub>(g) ⇌ COCl<sub>2</sub>(g), &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> < 0<br/>4)  CaCO<sub>3</sub>(s) ⇌ CaO(s)+CO<sub>2</sub>(g) , &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> > 0<br/>Khi giảm nhiệt độ hoặc tăng áp suất những cân bằng nào trên đây đều chuyển dịch theo chiều thuận?", "images": [], "options": [{"id": "a", "letter": "A", "text": "1, 2", "isCorrect": false}, {"id": "b", "letter": "B", "text": "1, 3, 4", "isCorrect": false}, {"id": "c", "letter": "C", "text": "2, 3", "isCorrect": false}, {"id": "d", "letter": "D", "text": "1, 3.", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 14}, {"id": "h11_c1_de2_p1_q15", "number": 15, "part": 1, "type": "multiple_choice", "text": "Thêm nước vào 10 mL dung dịch NaOH 1,0 mol/L, thu được 1000 mL dung dịch A. Dung dịch A có pH thay đổi như thế nào so với dung dịch ban đầu?", "images": [], "options": [{"id": "a", "letter": "A", "text": "pH giảm đi 2 đơn vị", "isCorrect": true}, {"id": "b", "letter": "B", "text": "pH giảm đi 1 đơn vị", "isCorrect": false}, {"id": "c", "letter": "C", "text": "pH tăng 2 đơn vị", "isCorrect": false}, {"id": "d", "letter": "D", "text": "pH tăng gấp đôi", "isCorrect": false}], "correctAnswer": "A", "explanation": "Dung dịch ban đầu: [OH-] = 1M ⇒ pOH = 0 ⇒ pH = 14.<br/>Sau khi pha loãng 100 lần: [OH-] = 0,01M ⇒ pOH = 2 ⇒ pH = 12.<br/>Vậy pH giảm đi 2 đơn vị (từ 14 xuống 12).", "explanationImages": [], "points": 0.25, "displayNumber": 15}, {"id": "h11_c1_de2_p1_q16", "number": 16, "part": 1, "type": "multiple_choice", "text": "Cho các chất: NaOH, HCl, HNO<sub>3</sub>, NaNO<sub>3</sub>, saccharose (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>), ethanol (C<sub>2</sub>H<sub>5</sub>OH), glycerol (C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>), KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O. Trong các chất trên, có bao nhiêu chất tạo được dung dịch dẫn điện?", "images": [], "options": [{"id": "a", "letter": "A", "text": "5", "isCorrect": true}, {"id": "b", "letter": "B", "text": "3", "isCorrect": false}, {"id": "c", "letter": "C", "text": "6", "isCorrect": false}, {"id": "d", "letter": "D", "text": "2", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 16}, {"id": "h11_c1_de2_p1_q17", "number": 17, "part": 1, "type": "multiple_choice", "text": "Cho phản ứng: 2NOCl(g) ⇌ 2NO(g) + Cl<sub>2</sub>(g). Ở nhiệt độ không đổi, hằng số cân bằng của phản ứng trên là K<sub>c</sub> = 2,4 &times; 10<sup>-7</sup>. Hằng số cân bằng K<sub>c</sub>’ của phản ứng: NO(g) +  12 Cl<sub>2</sub>(g) ⇌ NOCl(g) là bao nhiêu?", "images": [], "options": [{"id": "a", "letter": "A", "text": "K<sub>c</sub>’ = 2,4 &times; 10<sup>-7</sup>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "K<sub>c</sub>’ = 1,2 &times; 10<sup>-7</sup>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "K<sub>c</sub>’ = –1,2 &times; 10<sup>-7</sup>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "K<sub>c</sub>’ = 2041,2. .. .. ..", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 17}, {"id": "h11_c1_de2_p1_q18", "number": 18, "part": 1, "type": "multiple_choice", "text": "Cặp chất nào sau đây không cùng tồn tại trong một dung dịch?", "images": [], "options": [{"id": "a", "letter": "A", "text": "NaOH và Na<sub>2</sub>CO<sub>3</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Cu(NO<sub>3</sub>)<sub>2</sub> và H<sub>2</sub>SO<sub>4</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "CuSO<sub>4</sub> và NaOH", "isCorrect": true}, {"id": "d", "letter": "D", "text": "FeCl<sub>3</sub> và NaNO<sub>3</sub>", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 18}, {"id": "h11_c1_de2_p2_q1", "number": 1, "part": 2, "type": "true_false", "text": "Cho dòng điện chạy qua dung dịch nước của một chất X", "images": [], "options": [{"id": "a", "letter": "A", "text": "Chất X là chất điện li", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Trong dung dịch chất X có các ion dương (cation) và ion âm (anion)", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Chất X ở dạng rắn khan cũng dẫn được điện", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Trong dung dịch chất X có electron tự do", "isCorrect": false}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 19}, {"id": "h11_c1_de2_p2_q2", "number": 2, "part": 2, "type": "true_false", "text": "Cho cân bằng hóa học của phản ứng sau :<br/>2NO<sub>2</sub>(g) (màu nâu đỏ) ⇌ N<sub>2</sub>O<sub>4</sub>(g) (không màu); &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -58 kJ", "images": [], "options": [{"id": "a", "letter": "A", "text": "Trong phản ứng trên, chiều thuận là chiều của quá trình tỏa nhiệt", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Khi hệ đạt trạng thái cân bằng, nếu ngâm vào cốc nước nóng sẽ làm màu hỗn hợp đậm dần lên", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Khi hệ đạt trạng thái cân bằng, nếu ngâm vào cốc nước đá cân bằng dịch chuyển theo chiều nghịch", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Tại trạng thái cân bằng, số mol của NO<sub>2</sub> bằng số mol N<sub>2</sub>O<sub>4</sub>", "isCorrect": false}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 20}, {"id": "h11_c1_de2_p2_q3", "number": 3, "part": 2, "type": "true_false", "text": "Một học sinh làm thí nghiệm xác định độ pH của mẫu đất như sau: Lấy một lượng đất cho vào nước rồi lọc lấy phần dung dịch. Dùng máy đo pH đo được giá trị pH là 2,5", "images": [], "options": [{"id": "a", "letter": "A", "text": "Môi trường của mẫu đất nhiễm phèn là môi trường base", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Nồng độ ion H<sup>+</sup> có trong dung dịch là 10<sup>–</sup><sup>2,5</sup> mol/L", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Loại đất trên được gọi là đất nhiễm phèn", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Để cải tạo loại đất này người nông dân có thể bón vào đất vôi bột (CaO)", "isCorrect": true}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 21}, {"id": "h11_c1_de2_p2_q4", "number": 4, "part": 2, "type": "true_false", "text": "Chuẩn độ acid- base là phương pháp được sử dụng để xác định nồng độ acid hoặc base chưa biết nồng độ bằng dung dịch acid hoặc dung dịch base đã biết chính xác nồng độ. Khi đó dung dịch đã biết chính xác nồng độ gọi là dung dịch chuẩn.<br/>Khi chuẩn độ, người ta thêm từ từ dung dịch đựng trong burette vào dung dịch đựng trong bình tam giác. Tại điểm mà hai chất tác dụng vừa đủ với nhau gọi là điểm tương đồng", "images": ["/assets/hoa12/c5/h11_c1_de2_image19.png"], "options": [{"id": "a", "letter": "A", "text": "Để chuẩn độ acid- base không cần dùng dụng cụ ống nghiệm có nhánh", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Trong chuẩn độ xác định nồng độ của dung dịch NaOH bằng dung dịch acid HCl đã biết nồng độ thì thời điểm kết thúc chuẩn độ được xác định bằng giọt dung dịch HCl cuối cùng được nhỏ xuống từ burette làm dung dịch phenolphtalein trong bình tam giác chuyển từ không màu sang màu hồng nhạt bền trong khoảng 10 giây", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Khi chuẩn độ, người ta dùng burette để lấy dung dịch cho vào trong bình tam giác", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Để nhận biết điểm tương đương, người ta thường dùng những chất chỉ thị acid – base có sự đổi màu ở khoảng pH gần với điểm tương đương", "isCorrect": true}], "explanation": "", "explanationImages": [], "points": 1, "displayNumber": 22}, {"id": "h11_c1_de2_p3_q1", "number": 1, "part": 3, "type": "short_answer", "text": "Cho các yếu tố sau: (1) nồng dộ, (2) nhiệt độ, (3) áp suất, (4) chất xúc tác, (5) diện tích bề mặt tiếp xúc. Có bao nhiêu yếu tố trong dãy trên làm ảnh hưởng đến cân bằng hoá học chuyển dịch?<br/>", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.<br/>Có 3 yếu tố ảnh hưởng đến chuyển dịch cân bằng: nồng độ, nhiệt độ, áp suất.", "explanationImages": [], "points": 0.25, "displayNumber": 23, "acceptedAnswers": ["3"]}, {"id": "h11_c1_de2_p3_q2", "number": 2, "part": 3, "type": "short_answer", "text": "Cho các ion sau: Na<sup>+</sup>, Cl<sup>–</sup>, S<sup>2–</sup>, CO<sub>3</sub><sup>2–</sup>, HCO<sub>3</sub><sup>–</sup>, CH<sub>3</sub>COO<sup>–</sup>, NH<sub>4</sub><sup>+</sup>. Theo Bronsted–Lowry, có bao nhiêu ion trong các ion trên là base?<br/>", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.<br/>Có 3 ion là base theo Bronsted: S2-, CO3 2-, CH3COO-.", "explanationImages": [], "points": 0.25, "displayNumber": 24, "acceptedAnswers": ["3"]}, {"id": "h11_c1_de2_p3_q3", "number": 3, "part": 3, "type": "short_answer", "text": "Khoảng pH chuyển từ không màu đến màu hồng của phenolphthalein từ 8 - 10. Cho các dung dịch và pH qua bảng dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Dung dịch</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">pH</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Dung dịch</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">pH</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Nước mưa</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">5,8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Huyết tương</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7,38</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Giấm ăn</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">2,8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Nước xà phòng</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">10,3</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Nước tiểu</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">9,75</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Baking soda</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8,3</td></tr></table></div><br/>Có bao nhiêu dung dịch làm phenolphthalein chuyển sang màu hồng?<br/>", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.<br/>Có 3 dung dịch có pH > 8: Nước xà phòng (10,3), Nước tiểu (9,75), Baking soda (8,3).", "explanationImages": [], "points": 0.25, "displayNumber": 25, "acceptedAnswers": ["3"]}, {"id": "h11_c1_de2_p3_q4", "number": 4, "part": 3, "type": "short_answer", "text": "Bromine chloride phân hủy tạo thành bromine và chlorine theo phương trình hóa học sau:<br/>2BrCl(g) ⇌ Br<sub>2</sub>(g) + Cl<sub>2</sub>(g)<br/>Ở nhiệt độ xác định, hằng số cân bằng của phản ứng trên có giá trị là 11,1. Giả sử BrCl được cho vào vào bình kín có dung tích 1 L. Kết quả phân tích cho biết hỗn hợp phản ứng ở trạng thái cân bằng có 4 mol Cl<sub>2</sub>. Nồng độ mol của BrCl ở trang thái cân bằng là bao nhiêu? (Kết quả làm tròn đến hàng phần mười).<br/>..<br/>..<br/>..<br/>..<br/>", "images": [], "correctAnswer": "1,2", "explanation": "Đáp án: 1,2.<br/>Kc = [Br2].[Cl2] / [BrCl]^2 = 16 / [BrCl]^2 = 11,1 ⇒ [BrCl] ≈ 1,2 M.", "explanationImages": [], "points": 0.25, "displayNumber": 26, "acceptedAnswers": ["1,2", "1.2"]}, {"id": "h11_c1_de2_p3_q5", "number": 5, "part": 3, "type": "short_answer", "text": "Trộn lẫn V mL dung dịch NaOH 0,01 M với V mL dung dịch HCl 0,03 M được 2V mL dung dịch Y. Dung dịch Y có pH bằng bao nhiêu?<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>", "images": [], "correctAnswer": "2", "explanation": "Đáp án: 2.<br/>[H+] dư = 0,01 M = 10^-2 M ⇒ pH = 2.", "explanationImages": [], "points": 0.25, "displayNumber": 27, "acceptedAnswers": ["2", "2.0"]}, {"id": "h11_c1_de2_p3_q6", "number": 6, "part": 3, "type": "short_answer", "text": "Vỏ trứng có chứa calcium ở dạng CaCO<sub>3</sub>. Để xác định hàm lượng CaCO<sub>3</sub> trong vỏ trứng, trong phòng thí nghiệm người ta có thể làm như sau: Lấy 1,0 g vỏ trứng khô, đã được làm sạch, hoà tan hoàn toàn trong 50 mL dung dịch HCl 0,4 M. Lọc dung dịch sau phản ứng thu được 50 mL dung dịch a. Lấy 10,0 mL dung dịch  A chuẩn độ với dung dịch NaOH 0,1 M thấy hết 5,6 mL. Xác định hàm lượng (%) calcium trong vỏ trứng (giả thiết các tạp chất khác trong vỏ trứng không phản ứng với HCl).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>", "images": [], "correctAnswer": "34,4", "explanation": "Đáp án: 34,4.<br/>n(HCl phản ứng) = 0,02 - 0,0028 = 0,0172 mol ⇒ n(Ca) = 0,0086 mol ⇒ m(Ca) = 0,344 g ⇒ %Ca = 34,4% (Hàm lượng CaCO3 là 86%).", "explanationImages": [], "points": 0.25, "displayNumber": 28, "acceptedAnswers": ["34,4", "34.4", "86", "86%"]}]}, {"id": "h11_c1_de3", "code": "113", "title": "Đề Kiểm Tra Tổng Hợp Chương 1 (Mã 113)", "topic": "Đánh giá toàn diện kiến thức Cân bằng trong dung dịch nước", "badge": "Mã 113", "chapter": 1, "duration": 50, "totalQuestions": 28, "totalPoints": 10, "questions": [{"id": "h11_c1_de3_p1_q1", "number": 1, "part": 1, "type": "multiple_choice", "text": "Cho phản ứng hoá học sau: H<sub>2</sub>(g) + Br<sub>2</sub>(g) ⇌ 2HBr(g). Biểu thức hằng số cân bằng (K<sub>c</sub>) của phản ứng trên là", "images": [], "options": [{"id": "a", "letter": "A", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">2[HBr]</span><span class=\"px-1 pt-0.5\">[Br<sub>2</sub>] · [H<sub>2</sub>]</span></span></span>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[HBr]<sup>2</sup></span><span class=\"px-1 pt-0.5\">[H<sub>2</sub>] · [Br<sub>2</sub>]</span></span></span>", "isCorrect": true}, {"id": "c", "letter": "C", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[H<sub>2</sub>] · [Br<sub>2</sub>]</span><span class=\"px-1 pt-0.5\">[HBr]<sup>2</sup></span></span></span>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[H<sub>2</sub>] · [Br<sub>2</sub>]</span><span class=\"px-1 pt-0.5\">2[HBr]</span></span></span>", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 1}, {"id": "h11_c1_de3_p1_q2", "number": 2, "part": 1, "type": "multiple_choice", "text": "Phản ứng nào sau đây là phản ứng thuận nghịch?", "images": [], "options": [{"id": "a", "letter": "A", "text": "2KClO<sub>3</sub> → (t°)  2KCl + 3O<sub>2</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2NO(g)", "isCorrect": true}, {"id": "c", "letter": "C", "text": "CH<sub>4</sub> + 2O<sub>2</sub> → (t°)  CO<sub>2</sub> + 2H<sub>2</sub>O", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Fe + 2HCl → FeCl<sub>2</sub> + H<sub>2</sub>", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 2}, {"id": "h11_c1_de3_p1_q3", "number": 3, "part": 1, "type": "multiple_choice", "text": "Cân bằng hoá học là cân bằng động, do khi ở trạng thái cân bằng", "images": [], "options": [{"id": "a", "letter": "A", "text": "phản ứng thuận và phản ứng nghịch vẫn xảy ra với tốc độ bằng nhau", "isCorrect": true}, {"id": "b", "letter": "B", "text": "phản ứng nghịch dừng lại nhưng phản ứng thuận vẫn xảy ra", "isCorrect": false}, {"id": "c", "letter": "C", "text": "phản ứng thuận và phản ứng nghịch đều dừng lại", "isCorrect": false}, {"id": "d", "letter": "D", "text": "phản ứng thuận dừng lại nhưng phản ứng nghịch vẫn xảy ra", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 3}, {"id": "h11_c1_de3_p1_q4", "number": 4, "part": 1, "type": "multiple_choice", "text": "Hằng số cân bằng K<sub>c</sub> của một phản ứng thuận nghịch phụ thuộc vào yếu tố nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Nồng độ", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Nhiệt độ", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Áp suất", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Chất xúc tác", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 4}, {"id": "h11_c1_de3_p1_q5", "number": 5, "part": 1, "type": "multiple_choice", "text": "Cho cân bằng hoá học: PCl<sub>5</sub> (g) ⇌ PCl<sub>3</sub> (g) + Cl<sub>2</sub> (g); &nbsp; Δ<sub>r</sub>H°<sub>298</sub> > 0.<br/>Cân bằng chuyển dịch theo chiều thuận khi", "images": [], "options": [{"id": "a", "letter": "A", "text": "thêm PCl<sub>3</sub> vào hệ phản ứng", "isCorrect": false}, {"id": "b", "letter": "B", "text": "tăng áp suất của hệ phản ứng", "isCorrect": false}, {"id": "c", "letter": "C", "text": "tăng nhiệt độ của hệ phản ứng", "isCorrect": true}, {"id": "d", "letter": "D", "text": "thêm Cl<sub>2</sub> vào hệ phản ứng", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 5}, {"id": "h11_c1_de3_p1_q6", "number": 6, "part": 1, "type": "multiple_choice", "text": "Phát biểu nào sau đây đúng khi nói về sự điện li?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Sự điện li là quá trình phân li một chất trong nước thành ion", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Sự điện li quá trình hoà tan một chất vào nước tạo thành dung dịch", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Sự điện li là quá trình phân li một chất dưới tác dụng của dòng điện", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Sự điện li thực chất là quá trình oxi hoá - khử", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 6}, {"id": "h11_c1_de3_p1_q7", "number": 7, "part": 1, "type": "multiple_choice", "text": "Thang pH được dùng để", "images": [], "options": [{"id": "a", "letter": "A", "text": "biểu thị độ acid của dung dịch", "isCorrect": false}, {"id": "b", "letter": "B", "text": "biểu thị độ base của dung dịch", "isCorrect": false}, {"id": "c", "letter": "C", "text": "biểu thị độ acid, base của dung dịch", "isCorrect": true}, {"id": "d", "letter": "D", "text": "biểu thị độ mặn của dung dịch", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 7}, {"id": "h11_c1_de3_p1_q8", "number": 8, "part": 1, "type": "multiple_choice", "text": "Các chất trong dãy nào sau đây là những chất điện li mạnh?", "images": [], "options": [{"id": "a", "letter": "A", "text": "HCl, NaOH, CH<sub>3</sub>COOH", "isCorrect": false}, {"id": "b", "letter": "B", "text": "KOH, NaCI, H<sub>3</sub>PO<sub>4</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "HCl, CuSO<sub>4</sub>, Ba(OH)<sub>2</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "NaNO<sub>3</sub>, NaNO<sub>2</sub>, NH<sub>3</sub>", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 8}, {"id": "h11_c1_de3_p1_q9", "number": 9, "part": 1, "type": "multiple_choice", "text": "Trong dung dịch nước, cation kim loại mạnh, gốc acid mạnh không bị thủy phân, còn cation kim loại trung bình và yếu bị thủy phân tạo môi trường acid, gốc acid yếu bị thủy phân tạo môi trường base. Trong dung dịch nào sau đây có pH > 7?", "images": [], "options": [{"id": "a", "letter": "A", "text": "KNO<sub>3</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "K<sub>2</sub>SO<sub>4</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Na<sub>2</sub>CO<sub>3</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "NaCl", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 9}, {"id": "h11_c1_de3_p1_q10", "number": 10, "part": 1, "type": "multiple_choice", "text": "", "images": [], "options": [{"id": "a", "letter": "A", "text": "Dung dịch mới thu được có pH thay đổi như thế nào so với dung dịch ban đầu?", "isCorrect": false}, {"id": "a", "letter": "A", "text": "pH giảm đi 2 đơn vị", "isCorrect": false}, {"id": "b", "letter": "B", "text": "pH giảm đi 0,5 đơn vị", "isCorrect": false}, {"id": "c", "letter": "C", "text": "pH tăng gấp đôi", "isCorrect": false}, {"id": "d", "letter": "D", "text": "pH tăng 2 đơn vị", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 10}, {"id": "h11_c1_de3_p1_q11", "number": 11, "part": 1, "type": "multiple_choice", "text": "Cho cân bằng hoá học sau: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g); &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -9,6 kJ<br/>Nhận xét nào sau đây không đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Khi tăng nhiệt độ, cân bằng trên chuyển dịch theo chiều nghịch", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Ở nhiệt độ không đổi, khi tăng áp suất thì cân bằng không bị chuyển dịch", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Ở nhiệt độ không đổi, khi tăng nồng độ H<sub>2</sub> hoặc I<sub>2</sub> thì giá trị hằng số cân bằng tăng", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 11}, {"id": "h11_c1_de3_p1_q12", "number": 12, "part": 1, "type": "multiple_choice", "text": "Trong phản ứng sau đây: H<sub>2</sub>S(aq) + H<sub>2</sub>O ⇌ HS<sup>-</sup>(aq) + H<sub>3</sub>O<sup>+</sup>(aq). Chất nào đóng vai trò là acid theo thuyết Bronsted – lowry?", "images": [], "options": [{"id": "a", "letter": "A", "text": "H<sub>2</sub>S và H<sub>2</sub>O", "isCorrect": false}, {"id": "b", "letter": "B", "text": "H<sub>2</sub>S và H<sub>3</sub>O<sup>+</sup>", "isCorrect": true}, {"id": "c", "letter": "C", "text": "H<sub>2</sub>S và HS<sup>–</sup>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "H<sub>2</sub>O và H<sub>3</sub>O<sup>+</sup>", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 12}, {"id": "h11_c1_de3_p1_q13", "number": 13, "part": 1, "type": "multiple_choice", "text": "Cho các nhận xét sau:<br/>a) Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch.<br/>b) Ở trạng thái cân bằng, các chất không phản ứng với nhau.<br/>c) Ở trạng thái cân bằng, nồng độ các chất sản phẩm luôn lớn hơn nồng độ các chất đầu.<br/>d) Ở trạng thái cân bằng, nồng độ các chất không thay đổi.<br/>Các nhận xét đúng là", "images": [], "options": [{"id": "a", "letter": "A", "text": "(a) và (b)", "isCorrect": false}, {"id": "b", "letter": "B", "text": "(b) và (c)", "isCorrect": false}, {"id": "c", "letter": "C", "text": "(a) và (c)", "isCorrect": false}, {"id": "d", "letter": "D", "text": "(a) và (d)", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 13}, {"id": "h11_c1_de3_p1_q14", "number": 14, "part": 1, "type": "multiple_choice", "text": "Lắp bộ dụng cụ gồm 2 ống nghiệm có nhánh (a) và (b), được nối với nhau bằng một ống nhựa mềm, có khóa K như hình:<br/>Cho cân bằng sau trong bình kín: 2NO<sub>2</sub>(g) (màu nâu đỏ) ⇌ N<sub>2</sub>O<sub>4</sub>(g) (không màu).<br/>Biết khi ngâm ống nghiệm (a) vào cốc nước đá thì màu của ống nghiệm (a) nhạt dần. Phản ứng thuận có", "images": ["/assets/hoa12/c5/h11_c1_de3_image30.png"], "options": [{"id": "a", "letter": "A", "text": "Δ<sub>r</sub>H°<sub>298</sub> > 0, phản ứng tỏa nhiệt", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Δ<sub>r</sub>H°<sub>298</sub> < 0, phản ứng tỏa nhiệt", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Δ<sub>r</sub>H°<sub>298</sub> > 0, phản ứng thu nhiệt", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Δ<sub>r</sub>H°<sub>298</sub> < 0, phản ứng thu nhiệt", "isCorrect": false}], "correctAnswer": "B", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 14}, {"id": "h11_c1_de3_p1_q15", "number": 15, "part": 1, "type": "multiple_choice", "text": "Chất nào sau đây không phải chất điện li?", "images": [], "options": [{"id": "a", "letter": "A", "text": "KOH", "isCorrect": false}, {"id": "b", "letter": "B", "text": "K<sub>2</sub>SO<sub>4</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "HCl", "isCorrect": false}, {"id": "d", "letter": "D", "text": "C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 15}, {"id": "h11_c1_de3_p1_q16", "number": 16, "part": 1, "type": "multiple_choice", "text": "Dung dịch chất nào sau đây làm quỳ tím hóa đỏ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "H<sub>2</sub>SO<sub>4</sub>", "isCorrect": true}, {"id": "b", "letter": "B", "text": "K<sub>2</sub>SO<sub>4</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "KOH", "isCorrect": false}, {"id": "d", "letter": "D", "text": "NaCl", "isCorrect": false}], "correctAnswer": "A", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 16}, {"id": "h11_c1_de3_p1_q17", "number": 17, "part": 1, "type": "multiple_choice", "text": "Nhiệt độ thùng vôi mới tôi lên tới 150<sup>o</sup>C và có giá trị pH = 13,1. Vì vậy nếu chẳng may bị ngã vào thùng vôi mới tôi thì người đó vừa bị bỏng do nhiệt ướt, vừa bị bỏng do kiềm. Bỏng vôi mới tôi sẽ để lại những vết sẹo lồi, lõm hoặc loang lổ trông rất xấu. Nhưng nếu được sơ cứu kịp thời thì hậu quả để lại sẽ được giảm đi nhiều. Hãy lựa chọn một phương án sơ cứu mà em cho là có hiệu quả nhất trong các phương án dưới đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Dội nước lạnh liên tục vào cho sạch vôi rồi dùng nước mắm rửa vết bỏng", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Dội nước lạnh liên tục vào cho sạch vôi rồi phủ lên một lớp kem đánh răng lên vết bỏng", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Chỉ dội nước lạnh liên tục vào vết bỏng cho sạch vôi", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Dội nước lạnh liên tục vào cho sạch rồi dùng giấm ăn rửa vết bỏng", "isCorrect": true}], "correctAnswer": "D", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 17}, {"id": "h11_c1_de3_p1_q18", "number": 18, "part": 1, "type": "multiple_choice", "text": "Để xác định nồng độ dung dịch HCl bằng phương pháp chuẩn độ acid-base, cho dung dịch HCl (sử dụng chỉ thị phenolphthalein) phản ứng vừa đủ với", "images": [], "options": [{"id": "a", "letter": "A", "text": "dung dịch NaClO đã biết nồng độ", "isCorrect": false}, {"id": "b", "letter": "B", "text": "chất rắn Fe(OH)<sub>3</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "dung dịch NaOH đã biết nồng độ", "isCorrect": true}, {"id": "d", "letter": "D", "text": "chất rắn CaCO<sub>3</sub>", "isCorrect": false}], "correctAnswer": "C", "explanation": "", "explanationImages": [], "points": 0.25, "displayNumber": 18}, {"id": "h11_c1_de3_p2_q1", "number": 1, "part": 2, "type": "true_false", "text": "Xét hệ cân bằng: 2NO<sub>2</sub>(g) ⇌ N<sub>2</sub>O<sub>4</sub>(g). Dữ liệu thực nghiệm về nồng độ các khí trước và sau khi hệ đạt trạng thái cân bằng ở 25<sup>o</sup>C được ghi lại ở bảng dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Thí nghiệm</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Nồng độ ban đầu (mol/L)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Nồng độ ở trạng thái cân bằng (mol/L)</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\"></td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\"></td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\"></td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">[NO<sub>2</sub>]</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">[N<sub>2</sub>O<sub>4</sub>]</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">1</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0000</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,6700</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0547</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,6430</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">2</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0500</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,4460</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0457</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,4480</td></tr></table></div>", "images": [], "options": [{"id": "a", "letter": "A", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Giá trị của biểu thức  [N<sub>2</sub>O<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[NO<sub>2</sub>]<sup>2</sup>  gọi là hằng số cân bằng của K<sub>c</sub> của phản ứng</span></span></span>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Hằng số cân bằng K<sub>c</sub> của hai thí nghiệm có giá trị xấp xỉ nhau", "isCorrect": true}, {"id": "c", "letter": "C", "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Nếu thực hiện phản ứng này ở nhiệt độ 70<sup>o</sup>C thì giá trị của biểu thức  [N<sub>2</sub>O<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[NO<sub>2</sub>]<sup>2</sup>  không thay đổi</span></span></span>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Thực nghiệm cho thấy hằng số cân bằng K<sub>c</sub> của một phản ứng thuận nghịch phụ thuộc vào nồng độ của các chất", "isCorrect": false}], "explanation": "Đáp án:<br/>Hằng số cân bằng K<sub>c</sub> của phản ứng trên là  K<sub>c</sub> = [N<sub>2</sub>O<sub>4</sub>] / [NO<sub>2</sub>]<sup>2</sup>.<br/>a. Sai (ở mẫu là [NO<sub>2</sub>]<sup>2</sup>).<br/>b. Đúng: K<sub>C(1)</sub> ≈ 214,9; K<sub>C(2)</sub> ≈ 214,5.<br/>c. Sai: Phản ứng thuận tỏa nhiệt, khi tăng nhiệt độ cân bằng chuyển dịch theo chiều nghịch nên K<sub>c</sub> giảm.<br/>d. Sai: Hằng số cân bằng K<sub>c</sub> chỉ phụ thuộc vào nhiệt độ và bản chất của phản ứng", "explanationImages": [], "points": 1, "displayNumber": 19}, {"id": "h11_c1_de3_p2_q2", "number": 2, "part": 2, "type": "true_false", "text": "Một học sinh làm thí nghiệm xác định độ pH của mẫu đất nhiễm phèn như sau: Lấy một lượng đất cho vào nước rồi lọc lấy phần dung dịch. Dùng máy đo pH đo được giá trị pH là 4,5", "images": [], "options": [{"id": "a", "letter": "A", "text": "Môi trường của mẫu đất nhiễm phèn là môi trường acid", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Nồng độ ion H<sup>+</sup> có trong dung dịch là 0,45 mol/L", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Loại đất trên được gọi là đất chua", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Để cải tạo loại đất này người nông dân có thể bón vào đất vôi bột (CaO)", "isCorrect": true}], "explanation": "Đáp án:<br/>a. Đ. pH < 7: môi trường acid.<br/>b. S.  4,5[H]10+-=  mol/L.<br/>c. Đ.<br/>d. Đ. Vôi bột tan trong nước tạo thành base, sẽ trung hoà bớt acid trong đất nhiễm phèn, làm tăng pH của đất", "explanationImages": [], "points": 1, "displayNumber": 20}, {"id": "h11_c1_de3_p2_q3", "number": 3, "part": 2, "type": "true_false", "text": "Trong quy trình sản xuất sulfuric acid (H<sub>2</sub>SO<sub>4</sub>) có giai đoạn dùng dung dịch H<sub>2</sub>SO<sub>4</sub> 98% hấp thụ sulfur trioxide (SO<sub>3</sub>) thu được oleum (H<sub>2</sub>SO<sub>4</sub>.SO<sub>3</sub>). Sulfur trioxide được tạo thành bằng cách oxi hóa sulfur dioxide bằng oxygen hoặc lượng dư không khí ở nhiệt độ 450<sup>0</sup>C – 500<sup>0</sup>C, chất xúc tác vanadium(V) oxide (V<sub>2</sub>O<sub>5</sub> ) theo phương trình hóa học:<br/>0025VO,450C500C0223r2982SO(g)O(g)2SO(g)H198,4kJ-¾¾¾ → +=-¬¾¾¾¾¾¾V", "images": [], "options": [{"id": "a", "letter": "A", "text": "Khi tăng nhiệt độ của hệ phản ứng thì cân bằng chuyển dịch theo chiều nghịch", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Khi giảm nồng độ của khí SO<sub>2</sub> thì cân bằng chuyển dịch theo chiều thuận", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Khi tăng áp suất chung của hệ thì cân bằng chuyển dịch theo chiều thuận", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Khi dùng dung dịch H<sub>2</sub>SO<sub>4</sub> 98% hấp thụ SO<sub>3</sub> sinh ra thì cân bằng chuyển dịch theo chiều nghịch", "isCorrect": false}], "explanation": "Đáp án:<br/>Phản ứng trên là phản ứng tỏa nhiệt (giảm nhiệt độ cân bằng chuyển dịch theo chiều thuận).<br/>a. Khi tăng nhiệt độ của hệ phản ứng thì cân bằng chuyển dịch theo chiều làm giảm nhiệt độ  Þ  chiều thu nhiệt  Þ  Chiều nghịch.<br/>b. Khi giảm nồng độ của SO<sub>2</sub> thì cân bằng chuyển dịch theo chiều làm tăng nồng độ của SO<sub>2</sub>  Þ  Chiều nghịch.<br/>c. Khi tăng áp suất của hệ thì cân bằng chuyển dịch theo chiều làm giảm số mol khí  Þ Chiều thuận.<br/>d. Khi dùng dung dịch H<sub>2</sub>SO<sub>4</sub> 98% hấp thụ SO<sub>3</sub> sinh ra tức là làm giảm nồng độ của SO<sub>3</sub> thì cân bằng chuyển dịch theo chiều làm tăng nồng độ của SO<sub>3</sub>  Þ  Chiều thuận", "explanationImages": [], "points": 1, "displayNumber": 21}, {"id": "h11_c1_de3_p2_q4", "number": 4, "part": 2, "type": "true_false", "text": "Tiến hành chuẩn độ dung dịch HCl x (M) theo các bước sau:<br/>- Dùng pipette lấy 10 mL dung dịch HCl cho vào bình tam giác (loại 100 mL), nhỏ thêm 1 đến 2 giọt phenolphthalein vào, lắc đều.<br/>- Lấy dung dịch NaOH 0,10 M vào burette (loại 25 mL) và điều chỉnh dung dịch trong burette ở mức 0.<br/>- Mở khoá burette, nhỏ từ từ dung dịch NaOH vào bình tam giác (lắc đều bình trong quá trình chuẩn độ), đến khi dung dịch xuất hiện màu hồng nhạt (thời điểm t) thì dừng lại, thể tích dung dịch NaOH 0,10 M trong burette đã dùng là 12,8 mL", "images": [], "options": [{"id": "a", "letter": "A", "text": "Tại thời điểm t, dung dịch còn lượng nhỏ HCl", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Tại thời điểm t, xuất hiện màu hồng do dung dịch có môi trường kiềm", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Lắc đều bình tam giác để cho các chất trong dung dịch phản ứng hoàn toàn", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Theo kết quả quá trình chuẩn độ, giá trị thực nghiệm của x là 0,32M", "isCorrect": false}], "explanation": "Đáp án:<br/>Phản ứng hoá học xảy ra là: HCl + NaOH → NaCl + H<sub>2</sub>O.<br/>a. S. Tại thời điểm t, không còn HCl.<br/>b. Đ. Phần nhỏ NaOH khi được thêm tiếp sẽ làm phenolphtalein chuyển sang màu hồng.<br/>c. Đ.<br/>d. S. Ta có: n<sub>HCl</sub> = n<sub>NaOH</sub>  10.x = 12,8.0,1  x = 0,128", "explanationImages": [], "points": 1, "displayNumber": 22}, {"id": "h11_c1_de3_p3_q1", "number": 1, "part": 3, "type": "short_answer", "text": "Cho 5 mol H<sub>2</sub> và 5 mol I<sub>2</sub> vào bình kín dung tích 1 lít và nung nóng đến  227<sup>°</sup> C . Đồ thị biểu diễn sự thay đổi nồng độ các chất theo thời gian được cho trong hình sau:<br/>Nồng độ của HI ở trạng thái cân bằng là bao nhiêu mol/L?", "images": ["/assets/hoa12/c5/h11_c1_de3_image38.png"], "correctAnswer": "8,64", "explanation": "Đáp án: 8,64", "explanationImages": [], "points": 0.25, "displayNumber": 23, "acceptedAnswers": ["8.64", "8,64"]}, {"id": "h11_c1_de3_p3_q2", "number": 2, "part": 3, "type": "short_answer", "text": "Cho các cân bằng sau:<br/>(1) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ (xt, t°) 2SO<sub>3</sub>(g)(3) CO<sub>2</sub>(g) + H<sub>2</sub>(g) ⇌ (t°) CO(g) + H<sub>2</sub>O(g)<br/>(2) N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ (xt, t°) 2NH<sub>3</sub>(g)(4) 2HI(g) ⇌ (t°) H<sub>2</sub>(g) + I<sub>2</sub>(g)<br/>Khi thay đổi áp suất, có bao nhiêu cân bằng hoá học không bị chuyển dịch?", "images": [], "correctAnswer": "2", "explanation": "Đáp án: 2", "explanationImages": [], "points": 0.25, "displayNumber": 24, "acceptedAnswers": ["2"]}, {"id": "h11_c1_de3_p3_q3", "number": 3, "part": 3, "type": "short_answer", "text": "Trong số các chất sau: NaCl (nóng chảy), CH<sub>3</sub>COOH, KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O, C<sub>2</sub>H<sub>5</sub>OH, N<sub>2</sub>, Ca(OH)<sub>2</sub>, C<sub>6</sub>H<sub>6</sub> (benzene). Có bao nhiêu chất trong dãy thuộc loại chất điện li?", "images": [], "correctAnswer": "4", "explanation": "Đáp án: 4", "explanationImages": [], "points": 0.25, "displayNumber": 25, "acceptedAnswers": ["4"]}, {"id": "h11_c1_de3_p3_q4", "number": 4, "part": 3, "type": "short_answer", "text": "Cần bao nhiêu gam NaOH để pha chế 250 mL dung dịch có pH = 12", "images": [], "correctAnswer": "0,1", "explanation": "Đáp án: 0,1.<br/>pOH = 2  [OH<sup>-</sup>] = 10<sup>-2</sup> M  m<sub>NaOH</sub> = 0,25 &times; 10<sup>-2</sup>.40 = 0,1g", "explanationImages": [], "points": 0.25, "displayNumber": 26, "acceptedAnswers": ["0,1", "0.1"]}, {"id": "h11_c1_de3_p3_q5", "number": 5, "part": 3, "type": "short_answer", "text": "Carbon monoxide thay thế oxygen trong hemogolobin đã bị oxi hóa theo phản ứng:<br/>22HbO(aq)CO(g)HbCO(aq) + O(aq)+ ⇌ <br/>Tại nhiệt độ trung bình trong cơ thể, hằng số cân bằng của phản ứng trên là K<sub>c</sub>= 170.<br/>Giả sử một hỗn hợp không khí bị ô nhiễm carbon monoxide ở mức 0,1% (theo thể tích). Coi không khí chứa 20,0% oxygen về thể tích, tỉ lệ oxygen và carbon monoxide hòa tan trong máu giống tỉ lệ của chúng trong không khí. Cho biết tỉ lệ HbCO so với HbO<sub>2</sub> trong máu là bao nhiêu?", "images": [], "correctAnswer": "0,85", "explanation": "Đáp án: 0,85.<br/>2CC222[HbCO][O][HbCO][CO]0,10K==K.170.0,85.[HbO][CO][HbO][O]20,0Þ==", "explanationImages": [], "points": 0.25, "displayNumber": 27, "acceptedAnswers": ["0,85", "0.85"]}, {"id": "h11_c1_de3_p3_q6", "number": 6, "part": 3, "type": "short_answer", "text": "Hydrochloric acid (HCl) là một chất được phát hiện trong dịch vị dạ dày có nồng độ 10<sup>–4</sup> – 10<sup>–</sup><sup>3</sup> mol/L và độ pH duy trì ở mức 3 – 4 đối với người bình thường. Nếu thiếu acid trong dạ dày thì thức ăn không chuyển hóa được lâu dần gây suy nhược cơ thể, nếu dư acid lâu ngày thì nó sẽ phá hủy đường ruột gây viêm loét dạ dày. Khi cơ thể dư acid HCl, người bệnh có thể sử dụng thuốc giảm đau dạ dày có tên gọi là Nabica (thành phần chính là NaHCO<sub>3</sub>), được dùng để trung hòa bớt lượng acid dư trong dạ dày.<br/>Giả sử dịch vị dạ dày người bệnh chứa 1,5 lít dung dịch hỗn hợp thức ăn lỏng, trong đó chứa 0,09125 gam HCl. Nếu khả năng tiêu thụ NaHCO<sub>3</sub> của cơ thể người bệnh là 70% thì khối lượng NaHCO<sub>3</sub> người đó cần đưa vào cơ thể để duy trì độ pH trong dạ dày ở mức 3 là bao nhiêu?", "images": [], "correctAnswer": "0,12", "explanation": "Đáp án: 0,12.<br/>n<sub>HCl</sub> trong dạ dày khi chưa uống thuốc =  0,0912536,5  = 0,0025 mol<br/>pH = 3 → [H<sup>+</sup>] = 0,001M   Hn+   mong muốn = 0,0015 mol<br/>n<sub>HCl</sub> cần được loại bỏ bởi thuốc = 0,0025 – 0,0015 = 0,001 mol<br/>322+®++NaHCOHClNaClCOHO<br/>3NaHCOn  phản ứng = 0,001 mol<br/>3NaHCOm  cần uống =  0,001.8470%  = 0,12 gam.<br/>", "explanationImages": [], "points": 0.25, "displayNumber": 28, "acceptedAnswers": ["0,12", "0.12"]}]}];
+export const HOA11_CHUONG1_EXAMS: Chuong1Exam[] = [
+  {
+    "id": "h11_c1_de1",
+    "code": "111",
+    "title": "Đề Kiểm Tra Số 1 - Cân Bằng Hóa Học (Mã 111)",
+    "topic": "Phản ứng thuận nghịch, Hằng số cân bằng K<sub>c</sub> & Nguyên lí Le Chatelier",
+    "badge": "Mã 111",
+    "chapter": 1,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h11_c1_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây là chất điện li yếu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ba(OH)<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h11_c1_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tiến hành thí nghiệm để kiểm chứng tính dẫn điện của các chất như hình vẽ thấy bóng đèn thứ 3 phát sáng, bóng đèn 1 và 2 không sáng.<br/>Dung dịch đựng trong bình thứ 3 không thể là",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de1_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH (ethanol)",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h11_c1_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng tổng hợp ammonia xảy ra như sau:  N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g) <br/>Biểu thức biểu diễn hằng số cân bằng K<sub>c</sub> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "[][][]23C322NHK=H.N",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "[][][]3C22NHK=H.N",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "[][][]322C23H.NKNH=",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "[][][]22C3H.NK=NH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h11_c1_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây thuộc loại điện li mạnh?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NaCl",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "H<sub>2</sub>O",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h11_c1_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng thuận nghịch là phản ứng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "phản ứng xảy ra theo hai chiều ngược nhau trong cùng điều kiện",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "có phương trình hoá học được biểu diễn bằng mũi tên một chiều",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chỉ xảy ra theo một chiều nhất định",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "xảy ra giữa hai chất khí",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c1_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình dưới đây mô tả sự phân li của HCl trong nước:<br/>Chất nhận H<sup>+</sup> trong phương trình trên là",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de1_image9.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCl",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "H<sub>3</sub>O<sup>+</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cl<sup>-</sup>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h11_c1_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cân bằng nào dưới đây không có sự chuyển dịch khi tăng hay giảm áp suất của hệ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h11_c1_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hằng số K<sub>c</sub> của một phản ứng phụ thuộc vào yếu tố nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt độ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Áp suất",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chất xúc tác",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h11_c1_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình dưới đây mô tả sự phân li của NH<sub>3</sub> trong nước:<br/>Trong phản ứng nghịch, chất đóng vai trò base là",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de1_image13.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "OH<sup>−</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4NH+",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h11_c1_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để trung hòa 30 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 0,25 M cần 20 mL dung dịch NaOH nồng độ x mol/L. Giá trị của x là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "0,100",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "0,750",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0,500",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,375",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h11_c1_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ester là hợp chất hữu cơ có mùi thơm nên một số ester được sử dụng làm bánh, thực phẩm. Phản ứng điều chế ester ethyl acetate như sau: 3253252CHCOOH()CHOH()CHCOOCH() + HO()lllg+ ⇌ <br/>Cân bằng trên dịch chuyển theo chiều nào nếu tăng nồng độ của  25CHOH ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cân bằng chuyển dịch theo chiều nghịch",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cân bằng không chuyển dịch",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cân bằng chuyển dịch theo chiều thuận",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cân bằng chuyển dịch theo chiều làm tăng nồng độ C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h11_c1_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho cân bằng hoá học sau:  ()()()22HgI  2HIgg+ ⇌ &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -9,6 kJ<br/>Nhận xét nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi tăng nhiệt độ, cân bằng trên chuyển dịch theo chiều nghịch",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở nhiệt độ không đổi, khi tăng áp suất thì cân bằng không bị chuyển dịch",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở nhiệt độ không đổi, khi tăng nồng độ H<sub>2</sub>, hoặc I<sub>2</sub> thì giá trị hằng số cân bằng tăng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h11_c1_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dung dịch nào sau đây có pH > 7?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NaCl",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ca(OH)<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h11_c1_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong số các dung dịch có cùng nồng độ 0,1 M dưới đây, dung dịch chất nào có giá trị pH nhỏ nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "HCl",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ba(OH)<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h11_c1_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Giá trị pH của dung dịch HCl 0,01M là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "12",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "10",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h11_c1_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Ammonia  3(NH)  được điều chế bằng phản ứng:  N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g) . Ở t <sup>o</sup>C, nồng độ các chất ở trạng thái cân bằng như sau:  [] · [] · []223N=0,9M, H=0,28M, NH=1,24M .<br</span><span class=\"px-1 pt-0.5\">>Hằng số cân bằng  CK  của phản ứng trên tại t <sup>o</sup>C là</span></span></span>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "77,82",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "31,35",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "49,22",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "18,90",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h11_c1_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Mục đích chính của chuẩn độ acid - base là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "xác định xem phản ứng hóa học có xảy ra hay không",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "xác định nồng độ của một chất bằng dung dịch chuẩn đã biết nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "kiểm tra lại nồng độ của dung dịch đã biết",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "để kiểm tra chất lượng của chất phản ứng",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h11_c1_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một dung dịch có chứa các ion: Mg<sup>2+</sup> (0,05 mol), K<sup>+</sup> (0,15 mol), NO<sub>3</sub><sup>-</sup> (0,1 mol), và SO<sub>4</sub><sup>2-</sup> (x mol). Giá trị của x là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "0,05",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "0,075",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0,1",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,15",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h11_c1_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng: 2NaHCO<sub>3</sub>(s) ⇌ Na<sub>2</sub>CO<sub>3</sub>(s) + CO<sub>2</sub>(g) + H<sub>2</sub>O(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = 129kJ. Xét hỗn hợp phản ứng đang ở trạng thái cân bằng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tăng nhiệt độ bình phản ứng thì cân bằng chuyển dịch sang chiều thuận",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Lấy CO<sub>2</sub> ra khỏi hệ thì cân bằng chuyển dịch theo chiều thuận",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tăng áp suất chung của hệ, không làm chuyển dịch cân bằng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng trên là phản ứng tỏa nhiệt",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h11_c1_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho hai phản ứng thuận nghịch sau:<br/>232333223HCOHOHOCO(1)HCOHOOHHCO(2)-+---++++ ⇌",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong phản ứng thuận (1),   3HCO-  đóng vai trò là acid",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong phản ứng nghịch (1), ion 23CO- là base",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong phản ứng thuận (2),  3HCO- nhường H<sup>+</sup> cho H<sub>₂</sub>O,  3HCO- là acid, H<sub>2</sub>O là base",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thông qua hai phản ứng thuận nghịch thấy rằng 3HCO- , H<sub>2</sub>O có tính chất lưỡng tính",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h11_c1_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Dung dịch một chất tẩy rửa đa năng có pH = 10",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chất tẩy rửa có môi trường acid",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Dung dịch có [H<sup>+</sup>] = 10<sup>-10</sup> Μ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nếu nhúng một mẫu giấy quỳ tím vào dung dịch, giấy quỳ chuyển sang màu đỏ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nhỏ vào dung dịch một vài giọt dung dịch phenolphtalein, dung dịch chuyển sang màu hồng",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h11_c1_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cân bằng hóa học là trạng thái của cân bằng thuận nghịch",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cân bằng hóa học là một cân bằng tĩnh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở trạng thái cân bằng, các chất không phản ứng với nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở trạng thái cân bằng, nồng độ các chất sản phẩm luôn lớn hơn nồng độ các chất đầu",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h11_c1_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các cân bằng sau:<br/>(a)  2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g) (b)  CO(g) + H<sub>2</sub>O(g) ⇌ H<sub>2</sub>(g) + CO<sub>2</sub>(g) <br/>(c)  PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g) (d)  H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g) <br/>Nếu tăng áp suất và giữ nguyên nhiệt độ thì có bao nhiêu cân bằng bị chuyển dịch?<br/>",
+        "images": [],
+        "correctAnswer": "8,64",
+        "explanation": "Đáp án: 8,64.<br/>Nồng độ của HI ở trạng thái cân bằng là 8,64 mol/L.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23,
+        "acceptedAnswers": [
+          "8,64",
+          "8.64"
+        ]
+      },
+      {
+        "id": "h11_c1_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất: NaCl, CH<sub>4</sub>, KOH, CH<sub>3</sub>COOH, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (glucose), CuO. Có bao nhiêu chất điện li trong các chất trên?<br/>",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.<br/>Có 2 cân bằng không chuyển dịch khi thay đổi áp suất: (b) và (d).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24,
+        "acceptedAnswers": [
+          "2"
+        ]
+      },
+      {
+        "id": "h11_c1_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các dung dịch muối sau đây: NaHCO<sub>3</sub>; K<sub>2</sub>S; CuSO<sub>4</sub>; FeCl<sub>3</sub>; Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>; KCl. Có bao nhiêu dung dịch làm quỳ tím chuyển màu đỏ?<br/>",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.<br/>Có 4 chất điện li: NaCl, CH3COOH, KAl(SO4)2.12H2O, Ca(OH)2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25,
+        "acceptedAnswers": [
+          "4"
+        ]
+      },
+      {
+        "id": "h11_c1_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Dung dịch HCl có pH = 1 (dung dịch A), dung dịch NaOH có pH = 13 (dung dịch B). pH của dung dịch sau khi trộn 5 mL dung dịch A và 10 mL dung dịch B là bao nhiêu? (Kết quả làm tròn đến phần mười).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>",
+        "images": [],
+        "correctAnswer": "0,1",
+        "explanation": "Đáp án: 0,1.<br/>m(NaOH) = 0,25 × 10^-2 × 40 = 0,1 gam.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26,
+        "acceptedAnswers": [
+          "0,1",
+          "0.1"
+        ]
+      },
+      {
+        "id": "h11_c1_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong công nghiệp, hydrogen được sản xuất từ phản ứng: CH<sub>4</sub>(g) + H<sub>2</sub>O(g) ⇌ 3H<sub>2</sub>(g) + CO(g).<br/>Ở 760 <sup>o</sup>C, giả sử ban đầu chỉ có CH<sub>4</sub> và H<sub>2</sub>O có nồng độ bằng nhau và bằng x M. Xác định x, biết nồng độ của H<sub>2</sub> ở trạng thái cân bằng là 0,6 M, hằng số cân bằng K<sub>c</sub> là 6,28 (làm tròn kết quả đến phần trăm).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>",
+        "images": [],
+        "correctAnswer": "0,85",
+        "explanation": "Đáp án: 0,85.<br/>Tỉ lệ nồng độ tương ứng là 0,85.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27,
+        "acceptedAnswers": [
+          "0,85",
+          "0.85"
+        ]
+      },
+      {
+        "id": "h11_c1_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Hydrochloric acid được tiết ra khi thức ăn đi vào dạ dày do ăn quá nhiều hoặc nhiều lý do khiến lượng HCl (hydrochloric acid) dư thừa được giải phóng. Sự dư thừa HCl trong dạ dày gây khó tiêu, đau và kích ứng. Các thuốc kháng acid thông thường được sử dụng để chữa chứng khó tiêu do tính acid là sữa magnesium (Mg(OH)<sub>2</sub>) hoặc baking Soda (sodium hydrogen carbonate – NaHCO<sub>3</sub>). Cần bao nhiêu gam Mg(OH)<sub>2</sub> để trung hòa 100 mL dịch vị dạ dày có pH = 2. (làm tròn kết quả đến phần trăm).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de1_image30.png"
+        ],
+        "correctAnswer": "0,12",
+        "explanation": "Đáp án: 0,12.<br/>Khối lượng thuốc cần uống đưa pH về 3 là 0,12 gam.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28,
+        "acceptedAnswers": [
+          "0,12",
+          "0.12"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "h11_c1_de2",
+    "code": "112",
+    "title": "Đề Kiểm Tra Số 2 - Dung Dịch & pH (Mã 112)",
+    "topic": "Sự điện li, Thuyết Brønsted – Lowry, Thang pH & Chuẩn độ",
+    "badge": "Mã 112",
+    "chapter": 1,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h11_c1_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biểu thức nào sau đây là biểu thức hằng số cân bằng (K<sub>c</sub>) của phản ứng:<br/>C<sub>(</sub><sub>s)</sub>+  2H<sub>2(g)</sub> ⇌ CH<sub>4</sub>(g)",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[H<sub>2</sub>]</span></span></span>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[C] · [H<sub>2</sub>]<sup>2</sup></span></span></span>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[C] · [H<sub>2</sub>]</span></span></span>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[CH<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[H<sub>2</sub>]<sup>2</sup></span></span></span>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h11_c1_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng thuận nghịch là phản ứng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "phản ứng xảy ra theo hai chiều ngược nhau trong cùng điều kiện",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "có phương trình hoá học được biểu diễn bằng mũi tên một chiều",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chỉ xảy ra theo một chiều nhất định",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "xảy ra giữa hai chất khí",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h11_c1_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sự phá vỡ cân bằng cũ để chuyển sang một cân bằng mới do các yếu tố bên ngoài tác động được gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "sự biến đổi chất",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "sự dịch chuyển cân bằng",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "sự chuyển đổi vận tốc phản ứng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "sự biến đổi hằng số cân bằng",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h11_c1_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Theo thuyết điện li, khi hòa tan muối Mohr ((NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>.FeSO<sub>4</sub>.6H<sub>2</sub>O) vào nước, tỉ lệ nồng độ mol giữa ion Fe<sup>2+</sup> và SO<sub>4</sub><sup>2–</sup> tương ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1 : 2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2 : 3",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1 : 1",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1 : 3",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h11_c1_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho cân bằng hoá học sau: 4NH<sub>3</sub>(g) + 5O<sub>2</sub> ⇌ 4NO(g) + 6H<sub>2</sub>O(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -905 kJ.<br/>Yếu tố nào sau đây không làm cân bằng bị chuyển dịch?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Giảm nhiệt độ",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tăng áp suất",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Giảm nồng độ của O<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thêm xúc tác Pt",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c1_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Vì sao dung dịch của các muối, acid, base dẫn điện?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Do có sự di chuyển của electron tạo thành dòng elctron",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Do phân tử của chúng dẫn được điện",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Do các ion hợp phần có khả năng dẫn điện",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Do muối, acid, base có khả năng phân li ra ion trong dung dịch",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h11_c1_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dung dịch của một base ở 25<sup>o</sup>C có",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "[H<sup>+</sup>] = 1,0 &times; 10<sup>-7</sup>M",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "[H<sup>+</sup>] < 1,0 &times; 10<sup>-7</sup>M",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "[H<sup>+</sup>] > 1,0 &times; 10<sup>-7</sup>M",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "[H<sup>+</sup>][OH<sup>-</sup>] > 1,0 &times; 10<sup>-14</sup>M",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h11_c1_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây thuộc loại chất điện li yếu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "KCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "HF",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NH<sub>4</sub>Cl",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h11_c1_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dung dịch chất nào sau đây có pH < 7?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaI",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NaNO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NaNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "FeBr<sub>2</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h11_c1_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tại khu vực bị ô nhiễm, pH của nước mưa đo được là 4,5 còn pH của nước mưa tại khu vực không bị ô nhiễm là 5,7. Nhận xét nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nồng độ ion H<sup>+</sup>trong dung dịch nước mưa bị ô nhiễm là 10<sup>-4,5</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nồng độ ion H<sup>+</sup>trong dung dịch nước mưa không bị ô nhiễm là 10<sup>-5,7</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ ion H<sup>+</sup>trong nước mưa bị ô nhiễm thấp hơn so với trong nước mưa không bị ô nhiễm",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nồng độ ion OH<sup>-</sup> trong nước mưa bị ô nhiễm thấp hơn so với trong nước mưa không bị ô nhiễm",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h11_c1_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Quan sát hình dưới đây và chọn phát biểu đúng:",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de2_image10.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cả hai đồ thị đều mô tả phản ứng đã đạt đến trạng thái cân bằng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cả hai đồ thị đều không mô tả phản ứng đã đạt đến trạng thái cân bằng",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chỉ đồ thị (a) mô tả phản ứng đã đạt đến trạng thái cân bằng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chỉ đồ thị (b) mô tả phản ứng đã đạt đến trạng thái cân bằng",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h11_c1_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong phản ứng sau đây: Cho phương trình: NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup>. Chất nào đóng vai trò là base theo thuyết Bronsted – lowry?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NH<sub>3</sub> và NH<sub>4</sub><sup>+</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "NH<sub>3</sub> và OH<sup>–</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "H<sub>2</sub>O và NH<sub>4</sub><sup>+</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "H<sub>2</sub>O và OH<sup>–</sup>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h11_c1_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số mL dung dịch HCl 0,3M cần để trung hòa 0,3 L dung dịch NaOH 0,1M là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1000",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "10",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "15",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "100.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h11_c1_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phản ứng sau:<br/>1) H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g), &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> > 0<br/>2) 2NO(g) + O<sub>2</sub>(g) ⇌ 2NO<sub>2</sub>(g), &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> < 0<br/>3) CO(g) + Cl<sub>2</sub>(g) ⇌ COCl<sub>2</sub>(g), &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> < 0<br/>4)  CaCO<sub>3</sub>(s) ⇌ CaO(s)+CO<sub>2</sub>(g) , &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> > 0<br/>Khi giảm nhiệt độ hoặc tăng áp suất những cân bằng nào trên đây đều chuyển dịch theo chiều thuận?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1, 2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1, 3, 4",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2, 3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1, 3.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h11_c1_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thêm nước vào 10 mL dung dịch NaOH 1,0 mol/L, thu được 1000 mL dung dịch A. Dung dịch A có pH thay đổi như thế nào so với dung dịch ban đầu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "pH giảm đi 2 đơn vị",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "pH giảm đi 1 đơn vị",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "pH tăng 2 đơn vị",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "pH tăng gấp đôi",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "Dung dịch ban đầu: [OH-] = 1M ⇒ pOH = 0 ⇒ pH = 14.<br/>Sau khi pha loãng 100 lần: [OH-] = 0,01M ⇒ pOH = 2 ⇒ pH = 12.<br/>Vậy pH giảm đi 2 đơn vị (từ 14 xuống 12).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h11_c1_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các chất: NaOH, HCl, HNO<sub>3</sub>, NaNO<sub>3</sub>, saccharose (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>), ethanol (C<sub>2</sub>H<sub>5</sub>OH), glycerol (C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>), KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O. Trong các chất trên, có bao nhiêu chất tạo được dung dịch dẫn điện?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "5",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "6",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h11_c1_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng: 2NOCl(g) ⇌ 2NO(g) + Cl<sub>2</sub>(g). Ở nhiệt độ không đổi, hằng số cân bằng của phản ứng trên là K<sub>c</sub> = 2,4 &times; 10<sup>-7</sup>. Hằng số cân bằng K<sub>c</sub>’ của phản ứng: NO(g) +  12 Cl<sub>2</sub>(g) ⇌ NOCl(g) là bao nhiêu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "K<sub>c</sub>’ = 2,4 &times; 10<sup>-7</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "K<sub>c</sub>’ = 1,2 &times; 10<sup>-7</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "K<sub>c</sub>’ = –1,2 &times; 10<sup>-7</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "K<sub>c</sub>’ = 2041,2. .. .. ..",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h11_c1_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cặp chất nào sau đây không cùng tồn tại trong một dung dịch?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaOH và Na<sub>2</sub>CO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cu(NO<sub>3</sub>)<sub>2</sub> và H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CuSO<sub>4</sub> và NaOH",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "FeCl<sub>3</sub> và NaNO<sub>3</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h11_c1_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho dòng điện chạy qua dung dịch nước của một chất X",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chất X là chất điện li",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong dung dịch chất X có các ion dương (cation) và ion âm (anion)",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chất X ở dạng rắn khan cũng dẫn được điện",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong dung dịch chất X có electron tự do",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h11_c1_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho cân bằng hóa học của phản ứng sau :<br/>2NO<sub>2</sub>(g) (màu nâu đỏ) ⇌ N<sub>2</sub>O<sub>4</sub>(g) (không màu); &nbsp; &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -58 kJ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong phản ứng trên, chiều thuận là chiều của quá trình tỏa nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi hệ đạt trạng thái cân bằng, nếu ngâm vào cốc nước nóng sẽ làm màu hỗn hợp đậm dần lên",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi hệ đạt trạng thái cân bằng, nếu ngâm vào cốc nước đá cân bằng dịch chuyển theo chiều nghịch",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tại trạng thái cân bằng, số mol của NO<sub>2</sub> bằng số mol N<sub>2</sub>O<sub>4</sub>",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h11_c1_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Một học sinh làm thí nghiệm xác định độ pH của mẫu đất như sau: Lấy một lượng đất cho vào nước rồi lọc lấy phần dung dịch. Dùng máy đo pH đo được giá trị pH là 2,5",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Môi trường của mẫu đất nhiễm phèn là môi trường base",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nồng độ ion H<sup>+</sup> có trong dung dịch là 10<sup>–</sup><sup>2,5</sup> mol/L",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Loại đất trên được gọi là đất nhiễm phèn",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để cải tạo loại đất này người nông dân có thể bón vào đất vôi bột (CaO)",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h11_c1_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Chuẩn độ acid- base là phương pháp được sử dụng để xác định nồng độ acid hoặc base chưa biết nồng độ bằng dung dịch acid hoặc dung dịch base đã biết chính xác nồng độ. Khi đó dung dịch đã biết chính xác nồng độ gọi là dung dịch chuẩn.<br/>Khi chuẩn độ, người ta thêm từ từ dung dịch đựng trong burette vào dung dịch đựng trong bình tam giác. Tại điểm mà hai chất tác dụng vừa đủ với nhau gọi là điểm tương đồng",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de2_image19.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Để chuẩn độ acid- base không cần dùng dụng cụ ống nghiệm có nhánh",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong chuẩn độ xác định nồng độ của dung dịch NaOH bằng dung dịch acid HCl đã biết nồng độ thì thời điểm kết thúc chuẩn độ được xác định bằng giọt dung dịch HCl cuối cùng được nhỏ xuống từ burette làm dung dịch phenolphtalein trong bình tam giác chuyển từ không màu sang màu hồng nhạt bền trong khoảng 10 giây",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi chuẩn độ, người ta dùng burette để lấy dung dịch cho vào trong bình tam giác",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để nhận biết điểm tương đương, người ta thường dùng những chất chỉ thị acid – base có sự đổi màu ở khoảng pH gần với điểm tương đương",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h11_c1_de2_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các yếu tố sau: (1) nồng dộ, (2) nhiệt độ, (3) áp suất, (4) chất xúc tác, (5) diện tích bề mặt tiếp xúc. Có bao nhiêu yếu tố trong dãy trên làm ảnh hưởng đến cân bằng hoá học chuyển dịch?<br/>",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>Có 3 yếu tố ảnh hưởng đến chuyển dịch cân bằng: nồng độ, nhiệt độ, áp suất.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23,
+        "acceptedAnswers": [
+          "3"
+        ]
+      },
+      {
+        "id": "h11_c1_de2_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các ion sau: Na<sup>+</sup>, Cl<sup>–</sup>, S<sup>2–</sup>, CO<sub>3</sub><sup>2–</sup>, HCO<sub>3</sub><sup>–</sup>, CH<sub>3</sub>COO<sup>–</sup>, NH<sub>4</sub><sup>+</sup>. Theo Bronsted–Lowry, có bao nhiêu ion trong các ion trên là base?<br/>",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>Có 3 ion là base theo Bronsted: S2-, CO3 2-, CH3COO-.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24,
+        "acceptedAnswers": [
+          "3"
+        ]
+      },
+      {
+        "id": "h11_c1_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khoảng pH chuyển từ không màu đến màu hồng của phenolphthalein từ 8 - 10. Cho các dung dịch và pH qua bảng dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Dung dịch</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">pH</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Dung dịch</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">pH</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Nước mưa</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">5,8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Huyết tương</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">7,38</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Giấm ăn</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">2,8</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Nước xà phòng</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">10,3</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Nước tiểu</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">9,75</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">Baking soda</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">8,3</td></tr></table></div><br/>Có bao nhiêu dung dịch làm phenolphthalein chuyển sang màu hồng?<br/>",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>Có 3 dung dịch có pH > 8: Nước xà phòng (10,3), Nước tiểu (9,75), Baking soda (8,3).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25,
+        "acceptedAnswers": [
+          "3"
+        ]
+      },
+      {
+        "id": "h11_c1_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Bromine chloride phân hủy tạo thành bromine và chlorine theo phương trình hóa học sau:<br/>2BrCl(g) ⇌ Br<sub>2</sub>(g) + Cl<sub>2</sub>(g)<br/>Ở nhiệt độ xác định, hằng số cân bằng của phản ứng trên có giá trị là 11,1. Giả sử BrCl được cho vào vào bình kín có dung tích 1 L. Kết quả phân tích cho biết hỗn hợp phản ứng ở trạng thái cân bằng có 4 mol Cl<sub>2</sub>. Nồng độ mol của BrCl ở trang thái cân bằng là bao nhiêu? (Kết quả làm tròn đến hàng phần mười).<br/>..<br/>..<br/>..<br/>..<br/>",
+        "images": [],
+        "correctAnswer": "1,2",
+        "explanation": "Đáp án: 1,2.<br/>Kc = [Br2].[Cl2] / [BrCl]^2 = 16 / [BrCl]^2 = 11,1 ⇒ [BrCl] ≈ 1,2 M.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26,
+        "acceptedAnswers": [
+          "1,2",
+          "1.2"
+        ]
+      },
+      {
+        "id": "h11_c1_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trộn lẫn V mL dung dịch NaOH 0,01 M với V mL dung dịch HCl 0,03 M được 2V mL dung dịch Y. Dung dịch Y có pH bằng bao nhiêu?<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.<br/>[H+] dư = 0,01 M = 10^-2 M ⇒ pH = 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27,
+        "acceptedAnswers": [
+          "2",
+          "2.0"
+        ]
+      },
+      {
+        "id": "h11_c1_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Vỏ trứng có chứa calcium ở dạng CaCO<sub>3</sub>. Để xác định hàm lượng CaCO<sub>3</sub> trong vỏ trứng, trong phòng thí nghiệm người ta có thể làm như sau: Lấy 1,0 g vỏ trứng khô, đã được làm sạch, hoà tan hoàn toàn trong 50 mL dung dịch HCl 0,4 M. Lọc dung dịch sau phản ứng thu được 50 mL dung dịch a. Lấy 10,0 mL dung dịch  A chuẩn độ với dung dịch NaOH 0,1 M thấy hết 5,6 mL. Xác định hàm lượng (%) calcium trong vỏ trứng (giả thiết các tạp chất khác trong vỏ trứng không phản ứng với HCl).<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>..<br/>",
+        "images": [],
+        "correctAnswer": "34,4",
+        "explanation": "Đáp án: 34,4.<br/>n(HCl phản ứng) = 0,02 - 0,0028 = 0,0172 mol ⇒ n(Ca) = 0,0086 mol ⇒ m(Ca) = 0,344 g ⇒ %Ca = 34,4% (Hàm lượng CaCO3 là 86%).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28,
+        "acceptedAnswers": [
+          "34,4",
+          "34.4",
+          "86",
+          "86%"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "h11_c1_de3",
+    "code": "113",
+    "title": "Đề Kiểm Tra Tổng Hợp Chương 1 (Mã 113)",
+    "topic": "Đánh giá toàn diện kiến thức Cân bằng trong dung dịch nước",
+    "badge": "Mã 113",
+    "chapter": 1,
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "h11_c1_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng hoá học sau: H<sub>2</sub>(g) + Br<sub>2</sub>(g) ⇌ 2HBr(g). Biểu thức hằng số cân bằng (K<sub>c</sub>) của phản ứng trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">2[HBr]</span><span class=\"px-1 pt-0.5\">[Br<sub>2</sub>] · [H<sub>2</sub>]</span></span></span>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[HBr]<sup>2</sup></span><span class=\"px-1 pt-0.5\">[H<sub>2</sub>] · [Br<sub>2</sub>]</span></span></span>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[H<sub>2</sub>] · [Br<sub>2</sub>]</span><span class=\"px-1 pt-0.5\">[HBr]<sup>2</sup></span></span></span>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span>K<sub>c</sub> = </span><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">[H<sub>2</sub>] · [Br<sub>2</sub>]</span><span class=\"px-1 pt-0.5\">2[HBr]</span></span></span>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "h11_c1_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào sau đây là phản ứng thuận nghịch?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2KClO<sub>3</sub> → (t°)  2KCl + 3O<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2NO(g)",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>4</sub> + 2O<sub>2</sub> → (t°)  CO<sub>2</sub> + 2H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Fe + 2HCl → FeCl<sub>2</sub> + H<sub>2</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "h11_c1_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cân bằng hoá học là cân bằng động, do khi ở trạng thái cân bằng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "phản ứng thuận và phản ứng nghịch vẫn xảy ra với tốc độ bằng nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "phản ứng nghịch dừng lại nhưng phản ứng thuận vẫn xảy ra",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "phản ứng thuận và phản ứng nghịch đều dừng lại",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "phản ứng thuận dừng lại nhưng phản ứng nghịch vẫn xảy ra",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "h11_c1_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hằng số cân bằng K<sub>c</sub> của một phản ứng thuận nghịch phụ thuộc vào yếu tố nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt độ",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Áp suất",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chất xúc tác",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "h11_c1_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho cân bằng hoá học: PCl<sub>5</sub> (g) ⇌ PCl<sub>3</sub> (g) + Cl<sub>2</sub> (g); &nbsp; Δ<sub>r</sub>H°<sub>298</sub> > 0.<br/>Cân bằng chuyển dịch theo chiều thuận khi",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "thêm PCl<sub>3</sub> vào hệ phản ứng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tăng áp suất của hệ phản ứng",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tăng nhiệt độ của hệ phản ứng",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "thêm Cl<sub>2</sub> vào hệ phản ứng",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "h11_c1_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây đúng khi nói về sự điện li?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sự điện li là quá trình phân li một chất trong nước thành ion",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sự điện li quá trình hoà tan một chất vào nước tạo thành dung dịch",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sự điện li là quá trình phân li một chất dưới tác dụng của dòng điện",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sự điện li thực chất là quá trình oxi hoá - khử",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "h11_c1_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thang pH được dùng để",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "biểu thị độ acid của dung dịch",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "biểu thị độ base của dung dịch",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "biểu thị độ acid, base của dung dịch",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "biểu thị độ mặn của dung dịch",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "h11_c1_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các chất trong dãy nào sau đây là những chất điện li mạnh?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCl, NaOH, CH<sub>3</sub>COOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "KOH, NaCI, H<sub>3</sub>PO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCl, CuSO<sub>4</sub>, Ba(OH)<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NaNO<sub>3</sub>, NaNO<sub>2</sub>, NH<sub>3</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "h11_c1_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong dung dịch nước, cation kim loại mạnh, gốc acid mạnh không bị thủy phân, còn cation kim loại trung bình và yếu bị thủy phân tạo môi trường acid, gốc acid yếu bị thủy phân tạo môi trường base. Trong dung dịch nào sau đây có pH > 7?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "KNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "K<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Na<sub>2</sub>CO<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NaCl",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "h11_c1_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thêm nước vào 10 mL dung dịch HCl 1,0 mol/L để được 1000 mL dung dịch A. Dung dịch mới thu được có pH thay đổi như thế nào so với dung dịch ban đầu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "pH giảm đi 2 đơn vị",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "pH giảm đi 0,5 đơn vị",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "pH tăng gấp đôi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "pH tăng 2 đơn vị",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "Dung dịch ban đầu có [H⁺] = 1,0 M ⇒ pH = 0. Sau khi pha loãng: [H⁺] = (10 . 1,0) / 1000 = 0,01 M = 10⁻² M ⇒ pH = 2. Vậy pH tăng 2 đơn vị. Phương án đúng là D.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "h11_c1_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho cân bằng hoá học sau: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g); &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -9,6 kJ<br/>Nhận xét nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi tăng nhiệt độ, cân bằng trên chuyển dịch theo chiều nghịch",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở nhiệt độ không đổi, khi tăng áp suất thì cân bằng không bị chuyển dịch",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở nhiệt độ không đổi, khi tăng nồng độ H<sub>2</sub> hoặc I<sub>2</sub> thì giá trị hằng số cân bằng tăng",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "h11_c1_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong phản ứng sau đây: H<sub>2</sub>S(aq) + H<sub>2</sub>O ⇌ HS<sup>-</sup>(aq) + H<sub>3</sub>O<sup>+</sup>(aq). Chất nào đóng vai trò là acid theo thuyết Bronsted – lowry?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "H<sub>2</sub>S và H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "H<sub>2</sub>S và H<sub>3</sub>O<sup>+</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "H<sub>2</sub>S và HS<sup>–</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "H<sub>2</sub>O và H<sub>3</sub>O<sup>+</sup>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "h11_c1_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các nhận xét sau:<br/>a) Ở trạng thái cân bằng, tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch.<br/>b) Ở trạng thái cân bằng, các chất không phản ứng với nhau.<br/>c) Ở trạng thái cân bằng, nồng độ các chất sản phẩm luôn lớn hơn nồng độ các chất đầu.<br/>d) Ở trạng thái cân bằng, nồng độ các chất không thay đổi.<br/>Các nhận xét đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(a) và (b)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(b) và (c)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(a) và (c)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(a) và (d)",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "h11_c1_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Lắp bộ dụng cụ gồm 2 ống nghiệm có nhánh (a) và (b), được nối với nhau bằng một ống nhựa mềm, có khóa K như hình:<br/>Cho cân bằng sau trong bình kín: 2NO<sub>2</sub>(g) (màu nâu đỏ) ⇌ N<sub>2</sub>O<sub>4</sub>(g) (không màu).<br/>Biết khi ngâm ống nghiệm (a) vào cốc nước đá thì màu của ống nghiệm (a) nhạt dần. Phản ứng thuận có",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de3_image30.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> > 0, phản ứng tỏa nhiệt",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> < 0, phản ứng tỏa nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> > 0, phản ứng thu nhiệt",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> < 0, phản ứng thu nhiệt",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "h11_c1_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây không phải chất điện li?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "KOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "K<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "h11_c1_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dung dịch chất nào sau đây làm quỳ tím hóa đỏ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "K<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "KOH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NaCl",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "h11_c1_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhiệt độ thùng vôi mới tôi lên tới 150<sup>o</sup>C và có giá trị pH = 13,1. Vì vậy nếu chẳng may bị ngã vào thùng vôi mới tôi thì người đó vừa bị bỏng do nhiệt ướt, vừa bị bỏng do kiềm. Bỏng vôi mới tôi sẽ để lại những vết sẹo lồi, lõm hoặc loang lổ trông rất xấu. Nhưng nếu được sơ cứu kịp thời thì hậu quả để lại sẽ được giảm đi nhiều. Hãy lựa chọn một phương án sơ cứu mà em cho là có hiệu quả nhất trong các phương án dưới đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Dội nước lạnh liên tục vào cho sạch vôi rồi dùng nước mắm rửa vết bỏng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Dội nước lạnh liên tục vào cho sạch vôi rồi phủ lên một lớp kem đánh răng lên vết bỏng",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chỉ dội nước lạnh liên tục vào vết bỏng cho sạch vôi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dội nước lạnh liên tục vào cho sạch rồi dùng giấm ăn rửa vết bỏng",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "h11_c1_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để xác định nồng độ dung dịch HCl bằng phương pháp chuẩn độ acid-base, cho dung dịch HCl (sử dụng chỉ thị phenolphthalein) phản ứng vừa đủ với",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "dung dịch NaClO đã biết nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "chất rắn Fe(OH)<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "dung dịch NaOH đã biết nồng độ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chất rắn CaCO<sub>3</sub>",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "h11_c1_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Xét hệ cân bằng: 2NO<sub>2</sub>(g) ⇌ N<sub>2</sub>O<sub>4</sub>(g). Dữ liệu thực nghiệm về nồng độ các khí trước và sau khi hệ đạt trạng thái cân bằng ở 25<sup>o</sup>C được ghi lại ở bảng dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Thí nghiệm</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Nồng độ ban đầu (mol/L)</th><th class=\"px-3 py-2 text-center font-bold bg-indigo-100/70 text-slate-800 border border-slate-300\">Nồng độ ở trạng thái cân bằng (mol/L)</th></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\"></td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\"></td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\"></td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">[NO<sub>2</sub>]</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">[N<sub>2</sub>O<sub>4</sub>]</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">1</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0000</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,6700</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0547</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,6430</td></tr><tr><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">2</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0500</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,4460</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,0457</td><td class=\"px-3 py-2 text-center border border-slate-300 font-medium text-slate-700\">0,4480</td></tr></table></div>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Giá trị của biểu thức  [N<sub>2</sub>O<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[NO<sub>2</sub>]<sup>2</sup>  gọi là hằng số cân bằng của K<sub>c</sub> của phản ứng</span></span></span>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hằng số cân bằng K<sub>c</sub> của hai thí nghiệm có giá trị xấp xỉ nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "<span class=\"inline-flex items-center gap-1.5 align-middle font-medium\"><span class=\"inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight\"><span class=\"border-b border-current px-1 pb-0.5\">Nếu thực hiện phản ứng này ở nhiệt độ 70<sup>o</sup>C thì giá trị của biểu thức  [N<sub>2</sub>O<sub>4</sub>]</span><span class=\"px-1 pt-0.5\">[NO<sub>2</sub>]<sup>2</sup>  không thay đổi</span></span></span>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thực nghiệm cho thấy hằng số cân bằng K<sub>c</sub> của một phản ứng thuận nghịch phụ thuộc vào nồng độ của các chất",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>Hằng số cân bằng K<sub>c</sub> của phản ứng trên là  K<sub>c</sub> = [N<sub>2</sub>O<sub>4</sub>] / [NO<sub>2</sub>]<sup>2</sup>.<br/>a. Sai (ở mẫu là [NO<sub>2</sub>]<sup>2</sup>).<br/>b. Đúng: K<sub>C(1)</sub> ≈ 214,9; K<sub>C(2)</sub> ≈ 214,5.<br/>c. Sai: Phản ứng thuận tỏa nhiệt, khi tăng nhiệt độ cân bằng chuyển dịch theo chiều nghịch nên K<sub>c</sub> giảm.<br/>d. Sai: Hằng số cân bằng K<sub>c</sub> chỉ phụ thuộc vào nhiệt độ và bản chất của phản ứng",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 19
+      },
+      {
+        "id": "h11_c1_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Một học sinh làm thí nghiệm xác định độ pH của mẫu đất nhiễm phèn như sau: Lấy một lượng đất cho vào nước rồi lọc lấy phần dung dịch. Dùng máy đo pH đo được giá trị pH là 4,5",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Môi trường của mẫu đất nhiễm phèn là môi trường acid",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nồng độ ion H<sup>+</sup> có trong dung dịch là 0,45 mol/L",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Loại đất trên được gọi là đất chua",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để cải tạo loại đất này người nông dân có thể bón vào đất vôi bột (CaO)",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ. pH < 7: môi trường acid.<br/>b. S.  4,5[H]10+-=  mol/L.<br/>c. Đ.<br/>d. Đ. Vôi bột tan trong nước tạo thành base, sẽ trung hoà bớt acid trong đất nhiễm phèn, làm tăng pH của đất",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 20
+      },
+      {
+        "id": "h11_c1_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong quy trình sản xuất sulfuric acid (H<sub>2</sub>SO<sub>4</sub>) có giai đoạn dùng dung dịch H<sub>2</sub>SO<sub>4</sub> 98% hấp thụ sulfur trioxide (SO<sub>3</sub>) thu được oleum (H<sub>2</sub>SO<sub>4</sub>.SO<sub>3</sub>). Sulfur trioxide được tạo thành bằng cách oxi hóa sulfur dioxide bằng oxygen hoặc lượng dư không khí ở nhiệt độ 450<sup>0</sup>C – 500<sup>0</sup>C, chất xúc tác vanadium(V) oxide (V<sub>2</sub>O<sub>5</sub> ) theo phương trình hóa học:<br/>0025VO,450C500C0223r2982SO(g)O(g)2SO(g)H198,4kJ-¾¾¾ → +=-¬¾¾¾¾¾¾V",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi tăng nhiệt độ của hệ phản ứng thì cân bằng chuyển dịch theo chiều nghịch",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi giảm nồng độ của khí SO<sub>2</sub> thì cân bằng chuyển dịch theo chiều thuận",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi tăng áp suất chung của hệ thì cân bằng chuyển dịch theo chiều thuận",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi dùng dung dịch H<sub>2</sub>SO<sub>4</sub> 98% hấp thụ SO<sub>3</sub> sinh ra thì cân bằng chuyển dịch theo chiều nghịch",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>Phản ứng trên là phản ứng tỏa nhiệt (giảm nhiệt độ cân bằng chuyển dịch theo chiều thuận).<br/>a. Khi tăng nhiệt độ của hệ phản ứng thì cân bằng chuyển dịch theo chiều làm giảm nhiệt độ  Þ  chiều thu nhiệt  Þ  Chiều nghịch.<br/>b. Khi giảm nồng độ của SO<sub>2</sub> thì cân bằng chuyển dịch theo chiều làm tăng nồng độ của SO<sub>2</sub>  Þ  Chiều nghịch.<br/>c. Khi tăng áp suất của hệ thì cân bằng chuyển dịch theo chiều làm giảm số mol khí  Þ Chiều thuận.<br/>d. Khi dùng dung dịch H<sub>2</sub>SO<sub>4</sub> 98% hấp thụ SO<sub>3</sub> sinh ra tức là làm giảm nồng độ của SO<sub>3</sub> thì cân bằng chuyển dịch theo chiều làm tăng nồng độ của SO<sub>3</sub>  Þ  Chiều thuận",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 21
+      },
+      {
+        "id": "h11_c1_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tiến hành chuẩn độ dung dịch HCl x (M) theo các bước sau:<br/>- Dùng pipette lấy 10 mL dung dịch HCl cho vào bình tam giác (loại 100 mL), nhỏ thêm 1 đến 2 giọt phenolphthalein vào, lắc đều.<br/>- Lấy dung dịch NaOH 0,10 M vào burette (loại 25 mL) và điều chỉnh dung dịch trong burette ở mức 0.<br/>- Mở khoá burette, nhỏ từ từ dung dịch NaOH vào bình tam giác (lắc đều bình trong quá trình chuẩn độ), đến khi dung dịch xuất hiện màu hồng nhạt (thời điểm t) thì dừng lại, thể tích dung dịch NaOH 0,10 M trong burette đã dùng là 12,8 mL",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tại thời điểm t, dung dịch còn lượng nhỏ HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tại thời điểm t, xuất hiện màu hồng do dung dịch có môi trường kiềm",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Lắc đều bình tam giác để cho các chất trong dung dịch phản ứng hoàn toàn",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Theo kết quả quá trình chuẩn độ, giá trị thực nghiệm của x là 0,32M",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>Phản ứng hoá học xảy ra là: HCl + NaOH → NaCl + H<sub>2</sub>O.<br/>a. S. Tại thời điểm t, không còn HCl.<br/>b. Đ. Phần nhỏ NaOH khi được thêm tiếp sẽ làm phenolphtalein chuyển sang màu hồng.<br/>c. Đ.<br/>d. S. Ta có: n<sub>HCl</sub> = n<sub>NaOH</sub>  10.x = 12,8.0,1  x = 0,128",
+        "explanationImages": [],
+        "points": 1,
+        "displayNumber": 22
+      },
+      {
+        "id": "h11_c1_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho 5 mol H<sub>2</sub> và 5 mol I<sub>2</sub> vào bình kín dung tích 1 lít và nung nóng đến  227<sup>°</sup> C . Đồ thị biểu diễn sự thay đổi nồng độ các chất theo thời gian được cho trong hình sau:<br/>Nồng độ của HI ở trạng thái cân bằng là bao nhiêu mol/L?",
+        "images": [
+          "/assets/hoa12/c5/h11_c1_de3_image38.png"
+        ],
+        "correctAnswer": "8,64",
+        "explanation": "Đáp án: 8,64",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 23,
+        "acceptedAnswers": [
+          "8.64",
+          "8,64"
+        ]
+      },
+      {
+        "id": "h11_c1_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các cân bằng sau:<br/>(1) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ (xt, t°) 2SO<sub>3</sub>(g)(3) CO<sub>2</sub>(g) + H<sub>2</sub>(g) ⇌ (t°) CO(g) + H<sub>2</sub>O(g)<br/>(2) N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ (xt, t°) 2NH<sub>3</sub>(g)(4) 2HI(g) ⇌ (t°) H<sub>2</sub>(g) + I<sub>2</sub>(g)<br/>Khi thay đổi áp suất, có bao nhiêu cân bằng hoá học không bị chuyển dịch?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 24,
+        "acceptedAnswers": [
+          "2"
+        ]
+      },
+      {
+        "id": "h11_c1_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong số các chất sau: NaCl (nóng chảy), CH<sub>3</sub>COOH, KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O, C<sub>2</sub>H<sub>5</sub>OH, N<sub>2</sub>, Ca(OH)<sub>2</sub>, C<sub>6</sub>H<sub>6</sub> (benzene). Có bao nhiêu chất trong dãy thuộc loại chất điện li?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 25,
+        "acceptedAnswers": [
+          "4"
+        ]
+      },
+      {
+        "id": "h11_c1_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cần bao nhiêu gam NaOH để pha chế 250 mL dung dịch có pH = 12",
+        "images": [],
+        "correctAnswer": "0,1",
+        "explanation": "Đáp án: 0,1.<br/>pOH = 2  [OH<sup>-</sup>] = 10<sup>-2</sup> M  m<sub>NaOH</sub> = 0,25 &times; 10<sup>-2</sup>.40 = 0,1g",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 26,
+        "acceptedAnswers": [
+          "0,1",
+          "0.1"
+        ]
+      },
+      {
+        "id": "h11_c1_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Carbon monoxide thay thế oxygen trong hemogolobin đã bị oxi hóa theo phản ứng:<br/>22HbO(aq)CO(g)HbCO(aq) + O(aq)+ ⇌ <br/>Tại nhiệt độ trung bình trong cơ thể, hằng số cân bằng của phản ứng trên là K<sub>c</sub>= 170.<br/>Giả sử một hỗn hợp không khí bị ô nhiễm carbon monoxide ở mức 0,1% (theo thể tích). Coi không khí chứa 20,0% oxygen về thể tích, tỉ lệ oxygen và carbon monoxide hòa tan trong máu giống tỉ lệ của chúng trong không khí. Cho biết tỉ lệ HbCO so với HbO<sub>2</sub> trong máu là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "0,85",
+        "explanation": "Đáp án: 0,85.<br/>2CC222[HbCO][O][HbCO][CO]0,10K==K.170.0,85.[HbO][CO][HbO][O]20,0Þ==",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 27,
+        "acceptedAnswers": [
+          "0,85",
+          "0.85"
+        ]
+      },
+      {
+        "id": "h11_c1_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Hydrochloric acid (HCl) là một chất được phát hiện trong dịch vị dạ dày có nồng độ 10<sup>–4</sup> – 10<sup>–</sup><sup>3</sup> mol/L và độ pH duy trì ở mức 3 – 4 đối với người bình thường. Nếu thiếu acid trong dạ dày thì thức ăn không chuyển hóa được lâu dần gây suy nhược cơ thể, nếu dư acid lâu ngày thì nó sẽ phá hủy đường ruột gây viêm loét dạ dày. Khi cơ thể dư acid HCl, người bệnh có thể sử dụng thuốc giảm đau dạ dày có tên gọi là Nabica (thành phần chính là NaHCO<sub>3</sub>), được dùng để trung hòa bớt lượng acid dư trong dạ dày.<br/>Giả sử dịch vị dạ dày người bệnh chứa 1,5 lít dung dịch hỗn hợp thức ăn lỏng, trong đó chứa 0,09125 gam HCl. Nếu khả năng tiêu thụ NaHCO<sub>3</sub> của cơ thể người bệnh là 70% thì khối lượng NaHCO<sub>3</sub> người đó cần đưa vào cơ thể để duy trì độ pH trong dạ dày ở mức 3 là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "0,12",
+        "explanation": "Đáp án: 0,12.<br/>n<sub>HCl</sub> trong dạ dày khi chưa uống thuốc =  0,0912536,5  = 0,0025 mol<br/>pH = 3 → [H<sup>+</sup>] = 0,001M   Hn+   mong muốn = 0,0015 mol<br/>n<sub>HCl</sub> cần được loại bỏ bởi thuốc = 0,0025 – 0,0015 = 0,001 mol<br/>322+®++NaHCOHClNaClCOHO<br/>3NaHCOn  phản ứng = 0,001 mol<br/>3NaHCOm  cần uống =  0,001.8470%  = 0,12 gam.<br/>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 28,
+        "acceptedAnswers": [
+          "0,12",
+          "0.12"
+        ]
+      }
+    ]
+  }
+];
 
 export const HOA11_CHUONG1_7_EXAMS: Chuong1Exam[] = HOA11_CHUONG1_EXAMS;
 
