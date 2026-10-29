@@ -950,16 +950,13 @@ export const Hoa12Chuong4View: React.FC<Hoa12Chuong4ViewProps> = ({
                     ⚡ CHƯƠNG TRÌNH MỚI 2025 · LỘ TRÌNH ĐỘT PHÁ CÙNG THẦY THỌ
                   </span>
                   <h2 className="text-2xl md:text-4xl font-black mb-2 leading-tight tracking-tight text-white drop-shadow-md">
-                    Chương 4: Polymer & Vật Liệu Polymer – Thế Giới Vật Liệu Hiện Đại
+                    Chương 4: Polymer & Vật Liệu Polymer
                   </h2>
                   <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>⚡</span> “Từ phản ứng oxi hóa – khử kinh điển đến công nghệ năng lượng xanh của thời đại mới.”
+                    <span>⚡</span> “Nghệ thuật liên kết hàng triệu mắt xích nhỏ bé kiến tạo nên kỷ nguyên vật liệu mới.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Làm chủ bản chất thế điện cực chuẩn, định luật Faraday và bài toán điện phân thực nghiệm. 
-                    Lộ trình chia nhỏ <b className="text-cyan-300 font-bold">12–15 câu linh hoạt</b> rèn phản xạ tức thì, 
-                    kèm hệ thống <b className="text-cyan-300 font-bold">4 Đề kiểm tra chuẩn ma trận Bộ GD&ĐT 2025</b>, 
-                    giúp các em tự tin bứt phá phổ điểm 9–10 và làm chủ hoàn toàn kỳ thi quan trọng.
+                    Phân biệt sắc bén phản ứng trùng hợp và trùng ngưng chế tạo tơ nilon, cao su và chất dẻo thế hệ mới. Đề vi mô 15 câu giúp nhớ dai tên thương phẩm, tính chất cơ lý và vật liệu composite mà không bao giờ nhầm lẫn.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

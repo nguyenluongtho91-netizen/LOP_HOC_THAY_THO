@@ -950,16 +950,13 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                     ⚡ CHƯƠNG TRÌNH MỚI 2025 · LỘ TRÌNH ĐỘT PHÁ CÙNG THẦY THỌ
                   </span>
                   <h2 className="text-2xl md:text-4xl font-black mb-2 leading-tight tracking-tight text-white drop-shadow-md">
-                    Chương 3: Hợp Chất Chứa Nitrogen – Nền Tảng Cấu Trúc Sự Sống
+                    Chương 3: Hợp Chất Chứa Nitrogen
                   </h2>
                   <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>⚡</span> “Từ phản ứng oxi hóa – khử kinh điển đến công nghệ năng lượng xanh của thời đại mới.”
+                    <span>⚡</span> “Từ những acid amin kỳ diệu dựng xây nên sự sống, cơ bắp và trí tuệ con người.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Làm chủ bản chất thế điện cực chuẩn, định luật Faraday và bài toán điện phân thực nghiệm. 
-                    Lộ trình chia nhỏ <b className="text-cyan-300 font-bold">12–15 câu linh hoạt</b> rèn phản xạ tức thì, 
-                    kèm hệ thống <b className="text-cyan-300 font-bold">4 Đề kiểm tra chuẩn ma trận Bộ GD&ĐT 2025</b>, 
-                    giúp các em tự tin bứt phá phổ điểm 9–10 và làm chủ hoàn toàn kỳ thi quan trọng.
+                    Nắm chắc tính lưỡng tính của amino acid, điểm đẳng điện và phản ứng màu biuret đặc trưng của chuỗi peptide. Bộ đề vi mô giúp phân tích chính xác số liên kết peptide, sản phẩm thủy phân và cấu trúc bậc protein.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

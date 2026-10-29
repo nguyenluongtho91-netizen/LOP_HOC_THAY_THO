@@ -949,16 +949,13 @@ export const Hoa12Chuong8View: React.FC<Hoa12Chuong8ViewProps> = ({
                     ✨ CHƯƠNG TRÌNH MỚI 2025 · LỘ TRÌNH ĐỘT PHÁ CÙNG THẦY THỌ
                   </span>
                   <h2 className="text-2xl md:text-4xl font-black mb-2 leading-tight tracking-tight text-white drop-shadow-md">
-                    Chương 8: Kim Loại Chuyển Tiếp Dãy Thứ Nhất Và Phức Chất
+                    Chương 8: Kim Loại Chuyển Tiếp Dãy Thứ Nhất & Phức Chất
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Hóa học không phải công thức khô khan – Hóa học là hơi thở sống động của cuộc sống.”
+                    <span>💡</span> “Thế giới đa sắc của ion kim loại chuyển tiếp và sự kỳ diệu của liên kết phối trí phức chất.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Khởi đầu Hóa học 12 nhẹ nhàng cùng phương pháp <b className="text-amber-300 font-bold">Luyện tập vi mô (Micro-learning)</b>: 
-                    Mỗi ngày chỉ <b>15 phút</b> với bộ đề <b className="text-amber-300 font-bold">12–15 câu vừa sức</b>, 
-                    nộp bài nhận ngay phân tích lời giải chi tiết. Giúp các em hiểu sâu từ cấu trúc hương thơm este đến phản ứng xà phòng hoá thực tế, 
-                    học không áp lực và tự tin ẵm trọn điểm 10 kỳ thi tốt nghiệp THPT 2025.
+                    Tự tin chinh phục nội dung mới nhất của chương trình 2025: nguyên tử trung tâm, phối tử và danh pháp phức chất. Luyện nhanh các câu hỏi dạng đúng/sai và ghép nối thực tế về xúc tác hữu cơ, sắc tố hemoglobin.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

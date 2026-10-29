@@ -950,16 +950,13 @@ export const Hoa12Chuong5View: React.FC<Hoa12Chuong5ViewProps> = ({
                     ⚡ CHƯƠNG TRÌNH MỚI 2025 · LỘ TRÌNH ĐỘT PHÁ CÙNG THẦY THỌ
                   </span>
                   <h2 className="text-2xl md:text-4xl font-black mb-2 leading-tight tracking-tight text-white drop-shadow-md">
-                    Chương 5: Pin Điện Hoá & Điện Phân – Năng Lượng Tương Lai
+                    Chương 5: Pin Điện & Điện Phân
                   </h2>
                   <p className="text-cyan-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>⚡</span> “Từ phản ứng oxi hóa – khử kinh điển đến công nghệ năng lượng xanh của thời đại mới.”
+                    <span>⚡</span> “Chuyển hóa hóa năng thành điện năng – trái tim công nghệ xe điện và tương lai xanh.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Làm chủ bản chất thế điện cực chuẩn, định luật Faraday và bài toán điện phân thực nghiệm. 
-                    Lộ trình chia nhỏ <b className="text-cyan-300 font-bold">12–15 câu linh hoạt</b> rèn phản xạ tức thì, 
-                    kèm hệ thống <b className="text-cyan-300 font-bold">4 Đề kiểm tra chuẩn ma trận Bộ GD&ĐT 2025</b>, 
-                    giúp các em tự tin bứt phá phổ điểm 9–10 và làm chủ hoàn toàn kỳ thi quan trọng.
+                    Chinh phục thế điện cực chuẩn E°, cơ chế hoạt động của pin Galvani và quy tắc điện phân ở cực Anode – Cathode. Tối ưu kỹ năng tính toán khối lượng bám và điện lượng q = I·t theo phương pháp hiện đại nhất.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

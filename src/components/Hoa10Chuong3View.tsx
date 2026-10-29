@@ -984,13 +984,10 @@ export const Hoa10Chuong3View: React.FC<Hoa10Chuong3ViewProps> = ({
                     Chương 3: Liên Kết Hóa Học
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Hóa học không phải công thức khô khan – Hóa học là hơi thở sống động của cuộc sống.”
+                    <span>💡</span> “Liên kết hóa học là cách các nguyên tử tìm kiếm sự bền vững giữa thế giới tự nhiên.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Khởi đầu Hóa học 12 nhẹ nhàng cùng phương pháp <b className="text-amber-300 font-bold">Luyện tập vi mô (Micro-learning)</b>: 
-                    Mỗi ngày chỉ <b>15 phút</b> với bộ đề <b className="text-amber-300 font-bold">12–15 câu vừa sức</b>, 
-                    nộp bài nhận ngay phân tích lời giải chi tiết. Giúp các em hiểu sâu từ cấu trúc hương thơm este đến phản ứng xà phòng hoá thực tế, 
-                    học không áp lực và tự tin ẵm trọn điểm 10 kỳ thi tốt nghiệp THPT 2025.
+                    Giải mã bản chất liên kết ion, liên kết cộng hóa trị và liên kết hydrogen kiến tạo sự sống. <b>15 phút</b> luyện tập vi mô mỗi ngày giúp các em viết chuẩn công thức Lewis, xác định dạng hình học phân tử chỉ trong chớp mắt.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button

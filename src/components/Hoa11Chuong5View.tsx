@@ -953,13 +953,10 @@ export const Hoa11Chuong5View: React.FC<Hoa11Chuong5ViewProps> = ({
                     Chương 5: Dẫn Xuất Halogen – Alcohol – Phenol
                   </h2>
                   <p className="text-amber-200/95 text-xs sm:text-sm md:text-base font-semibold italic mb-3 drop-shadow-sm flex items-center gap-2">
-                    <span>💡</span> “Hóa học không phải công thức khô khan – Hóa học là hơi thở sống động của cuộc sống.”
+                    <span>💡</span> “Thêm một nhóm chức – mở ra một chân trời tính chất hóa sinh kỳ diệu.”
                   </p>
                   <p className="text-slate-100 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-normal drop-shadow-sm max-w-2xl">
-                    Khởi đầu Hóa học 12 nhẹ nhàng cùng phương pháp <b className="text-amber-300 font-bold">Luyện tập vi mô (Micro-learning)</b>: 
-                    Mỗi ngày chỉ <b>15 phút</b> với bộ đề <b className="text-amber-300 font-bold">12–15 câu vừa sức</b>, 
-                    nộp bài nhận ngay phân tích lời giải chi tiết. Giúp các em hiểu sâu từ cấu trúc hương thơm este đến phản ứng xà phòng hoá thực tế, 
-                    học không áp lực và tự tin ẵm trọn điểm 10 kỳ thi tốt nghiệp THPT 2025.
+                    So sánh sâu sắc ảnh hưởng qua lại giữa gốc hydrocarbon và nhóm chức -OH của alcohol và phenol. Luyện tập thành thạo phản ứng tách nước, phản ứng thế nguyên tử H linh động và thí nghiệm nhận biết bằng nước bromine.
                   </p>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
