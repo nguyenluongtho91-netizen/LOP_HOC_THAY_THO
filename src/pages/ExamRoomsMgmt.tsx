@@ -27,6 +27,8 @@ const getExamNo = (title: string) => {
   return 999
 }
 
+const getClassName = (cls: any) => cls?.class_name || cls?.name || 'Chưa rõ'
+
 export default function ExamRoomsMgmt() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -408,7 +410,6 @@ const isFirstRender = useRef(true)
       })
     : []
 
-  const getClassName = (cls: any) => cls?.class_name || cls?.name || 'Chưa rõ'
 
   const getRoomGrades = (room: any): number[] => {
     if (room.settings?.targetGrade) {
