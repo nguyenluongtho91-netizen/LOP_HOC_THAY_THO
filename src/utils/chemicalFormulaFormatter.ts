@@ -1,8 +1,16 @@
 function renderChemArrow(condition: string, isEquilibrium = false): string {
   const cond = (condition || '').trim();
-  const arrowChar = isEquilibrium ? '⇌' : '⟶';
-  if (!cond) return ` &nbsp;${arrowChar}&nbsp; `;
-  return `<span class="inline-flex flex-col items-center align-middle mx-1.5 leading-none -translate-y-0.5 select-none"><span class="text-[10px] font-bold text-slate-500 mb-0.5 tracking-tight">${cond}</span><span class="text-base leading-none text-slate-800">${arrowChar}</span></span>`;
+  if (!cond) {
+    return isEquilibrium 
+      ? '<span class="inline-block mx-2 text-slate-800 font-semibold align-middle">⇌</span>' 
+      : '<span class="inline-block mx-2 text-slate-800 font-semibold align-middle">→</span>';
+  }
+  
+  if (isEquilibrium) {
+    return `<span class="inline-flex flex-col items-center align-middle mx-2 select-none" style="vertical-align: middle;"><span class="font-semibold text-slate-600 whitespace-nowrap" style="font-size: 10px; line-height: 1; margin-bottom: 2px;">${cond}</span><svg class="w-9 h-3 text-slate-800 stroke-current" viewBox="0 0 36 12" fill="none"><path d="M1 4h32m-5-3l5 3M35 8H3m5 3l-5-3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>`;
+  }
+
+  return `<span class="inline-flex flex-col items-center align-middle mx-2 select-none" style="vertical-align: middle;"><span class="font-semibold text-slate-600 whitespace-nowrap" style="font-size: 10px; line-height: 1; margin-bottom: 2px;">${cond}</span><svg class="w-9 h-3 text-slate-800 stroke-current" viewBox="0 0 36 12" fill="none"><path d="M1 6h32m-5-4l5 4-5 4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>`;
 }
 
 /**
@@ -35,8 +43,11 @@ function cleanTerm(t: string): string {
 }
 
 function formatFractionSlash(text: string): string {
-  // Tìm dấu gạch chéo chia (không phải thẻ đóng HTML </...>)
-  const slashIdx = text.search(/(?<!<)\//);
+  if (!text.includes('K<sub>c</sub> =') && !text.includes('K<sub>C</sub> =') && !/\bK[Cc]\s*=/i.test(text)) {
+    return text;
+  }
+  // Tìm dấu gạch chéo chia (không phải trong thẻ đóng HTML </...> hay thuộc tính HTML)
+  const slashIdx = text.search(/(?<![<"'=\/\w])\/(?![>"'=\/\w])/);
   if (slashIdx === -1) return text;
 
   let contentBefore = text.substring(0, slashIdx).trim();
@@ -248,7 +259,7 @@ export function formatChemicalText(raw: string | undefined | null): string {
   s = s.replace(/([^\s>])\s*(Δ<sub>[rf]<\/sub>H°<sub>298<\/sub>)/g, '$1 &nbsp; $2');
 
   // 19. Phân số Kc = (tử) / (mẫu) hiển thị dạng phân số phân tầng chuẩn sư phạm
-  if (s.includes('/') && (s.includes('K<sub>c</sub>') || s.includes('['))) {
+  if (s.includes('/') && (s.includes('K<sub>c</sub> =') || s.includes('K<sub>C</sub> =') || /\bK[Cc]\s*=/i.test(s))) {
     s = formatFractionSlash(s);
   }
 
