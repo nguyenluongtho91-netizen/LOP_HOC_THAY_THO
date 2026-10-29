@@ -1728,6 +1728,13 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                                   {renderLevelBadge(q.level, q.levelName)}
                                 </div>
                                 <div dangerouslySetInnerHTML={{ __html: formatChemicalText(q.explanation) }} />
+                              {q.explanationImages && q.explanationImages.length > 0 && (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {q.explanationImages.map((img: string, i: number) => (
+                                    <img key={i} src={img} alt="Hình giải thích" className="max-h-60 rounded border border-indigo-200" />
+                                  ))}
+                                </div>
+                              )}
                               </div>
                             )}
                           </div>
@@ -2443,6 +2450,13 @@ export const Hoa12Chuong3View: React.FC<Hoa12Chuong3ViewProps> = ({
                               <span>Phương pháp & Lời giải chi tiết:</span>
                             </div>
                             <div dangerouslySetInnerHTML={{ __html: formatChemicalText(q.explanation) }} />
+                              {q.explanationImages && q.explanationImages.length > 0 && (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {q.explanationImages.map((img: string, i: number) => (
+                                    <img key={i} src={img} alt="Hình giải thích" className="max-h-60 rounded border border-indigo-200" />
+                                  ))}
+                                </div>
+                              )}
                           </div>
                         )}
                       </div>
