@@ -2525,12 +2525,12 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Docosahexaenoic acid (DHA) thuộc loại acid béo omega–n, là thành phần quan trọng của não người, vỏ não, da và võng mạc. Docosahexaenoic acid có công thức cấu tạo như sau:<br/>Giá trị của n là bao nhiêu?<br/>Đáp số: 3.",
+        "text": "Docosahexaenoic acid (DHA) thuộc loại acid béo omega–n, là thành phần quan trọng của não người, vỏ não, da và võng mạc. Docosahexaenoic acid có công thức cấu tạo như sau:<br/>Giá trị của n là bao nhiêu?",
         "images": [
           "/assets/hoa12/midterm/h12_gk1_de4_image12.png"
         ],
-        "correctAnswer": "",
-        "explanation": "",
+        "correctAnswer": "3",
+        "explanation": "DHA là một acid béo không no omega-3 (vị trí liên kết đôi đầu tiên ở C-3 tính từ đầu methyl ω) ⟹ n = 3.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 15
@@ -3385,24 +3385,28 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "",
+            "image": "/assets/hoa12/midterm/h12_gk1_de6_image2.png",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
             "text": "",
+            "image": "/assets/hoa12/midterm/h12_gk1_de6_image3.png",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
             "text": "",
+            "image": "/assets/hoa12/midterm/h12_gk1_de6_image4.png",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
             "text": "",
+            "image": "/assets/hoa12/midterm/h12_gk1_de6_image5.png",
             "isCorrect": false
           }
         ],
@@ -4760,8 +4764,14 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "4. Β. 3",
+            "text": "4",
             "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
           },
           {
             "id": "c",

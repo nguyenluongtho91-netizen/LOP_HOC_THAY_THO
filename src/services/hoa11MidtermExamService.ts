@@ -3942,50 +3942,26 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "V",
-            "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "VA",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "III",
+            "text": "IIIA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "I",
+            "text": "IA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "VIII",
+            "text": "VIIIA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           }
         ],
         "correctAnswer": "A",
@@ -8037,25 +8013,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "",
+            "text": "H : N(..) : H (ở dưới có 1 nguyên tử H, nguyên tử N có 1 cặp electron tự do)",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
+            "text": "H : N : H (ở dưới có 1 nguyên tử H, nguyên tử N không có cặp electron tự do)",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "H : N(..) : H (ở dưới có 2 nguyên tử H)",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "",
+            "text": "H - N = H (nguyên tử N có 2 cặp electron tự do)",
             "isCorrect": false
           }
         ],

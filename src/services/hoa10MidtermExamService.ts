@@ -499,49 +499,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "chu kì 2, nhóm VI",
-            "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 2, nhóm VIA",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "chu kì 3, nhóm VI",
+            "text": "chu kì 3, nhóm VIA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "chu kì 2, nhóm IV",
+            "text": "chu kì 2, nhóm IVA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "chu kì 2, nhóm VI",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "chu kì 3, nhóm IVA",
             "isCorrect": false
           }
         ],
@@ -712,19 +688,13 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 17,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Ion  2XY-  có tổng số hạt mang điện âm là 30. Trong đó số hạt mang điện của X nhiều hơn của Y là 10. Phát biểu nào sau đây đúng?",
+        "text": "Ion XY<sub>2</sub><sup>-</sup> có tổng số hạt mang điện âm là 30. Trong đó số hạt mang điện của X nhiều hơn của Y là 10. Phát biểu nào sau đây đúng?",
         "images": [],
         "options": [
           {
             "id": "a",
             "letter": "A",
-            "text": "X thuộc nhóm IIIA và Y thuộc nhóm V",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "X thuộc nhóm IIIA và Y thuộc nhóm VA",
             "isCorrect": false
           },
           {
@@ -742,12 +712,12 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "Tổng số proton của X và Y là 28. Đáp án: Có Z<sub>X</sub> + 2Z<sub>Y</sub> + 1 = 30 và 2Z<sub>X</sub> – 2Z<sub>Y</sub> = 10 ⟹ Z<sub>X</sub> = 13, Z<sub>Y</sub> = 8. Cấu hình electron của X là: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup> ⟹ X thuộc nhóm IIIA, chu kì 3, là kim loại. Cấu hình electron của Y là: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup> ⟹ Y thuộc nhóm VIA, chu kì 2, là phi kim",
+            "text": "Tổng số proton của X và Y là 28",
             "isCorrect": false
           }
         ],
         "correctAnswer": "C",
-        "explanation": "",
+        "explanation": "Có Z<sub>X</sub> + 2Z<sub>Y</sub> + 1 = 30 và 2Z<sub>X</sub> – 2Z<sub>Y</sub> = 10 ⟹ Z<sub>X</sub> = 13, Z<sub>Y</sub> = 8.<br/>Cấu hình electron của X: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup> ⟹ X thuộc nhóm IIIA, chu kì 3, là kim loại.<br/>Cấu hình electron của Y: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>4</sup> ⟹ Y thuộc nhóm VIA, chu kì 2, là phi kim.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 17
@@ -1093,7 +1063,13 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "b",
             "letter": "B",
-            "text": "proton và electron. C  neutron",
+            "text": "proton và electron",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "neutron",
             "isCorrect": false
           },
           {
@@ -1549,49 +1525,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "ô 12, chu kì 3, nhóm II",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 3, nhóm IA",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "ô 14, chu kì 3, nhóm II",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": false
+            "text": "chu kì 3, nhóm IIIA",
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "ô 12, chu kì 3, nhóm IV",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 4, nhóm IA",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "ô 14, chu kì 3, nhóm IV",
-            "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 4, nhóm IIIA",
             "isCorrect": false
           }
         ],
@@ -1708,12 +1660,12 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "4,725. Đáp án: Nguyên tử khối trung bình của Cu:  = 63,5 Khối lượng CuCl<sub>2</sub> =  = 13,45 gam Số mol Cu trong CuCl<sub>2</sub>=   = 0,1 mol Số mol  <sup>63</sup>Cu = 0,1.  =  0,075 mol Khối lượng <sup>63</sup>Cu = 0,075. 63 = 4,725 gam",
+            "text": "4,725",
             "isCorrect": true
           }
         ],
         "correctAnswer": "D",
-        "explanation": "",
+        "explanation": "Nguyên tử khối trung bình của Cu: Ā = 63,5.<br/>Khối lượng CuCl<sub>2</sub> = 13,45 gam ⟹ n<sub>CuCl2</sub> = 0,1 mol.<br/>Số mol <sup>63</sup>Cu = 0,1 × 75% = 0,075 mol.<br/>Khối lượng <sup>63</sup>Cu = 0,075 × 63 = 4,725 gam.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 17
@@ -1747,12 +1699,12 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "2815X. Đáp án: Lập hệ gồm 2 phương trình:  2Z + N = 40 và 2Z – N = 12 → Z = 13 và N =14 A = 13 + 14 = 27",
+            "text": "<sup>28</sup><sub>15</sub>X",
             "isCorrect": false
           }
         ],
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "Lập hệ gồm 2 phương trình: 2Z + N = 40 và 2Z – N = 12 ⟹ Z = 13 và N = 14.<br/>Số khối A = 13 + 14 = 27 (Nguyên tố Al: <sup>27</sup><sub>13</sub>Al).",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 18
@@ -2408,49 +2360,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "-1,9224.10<sup>-18</sup>",
-            "isCorrect": true
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "",
+            "text": "1,602.10<sup>-19</sup> C",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "-12",
-            "isCorrect": false
+            "text": "-1,602.10<sup>-19</sup> C",
+            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
-            "isCorrect": false
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "+1,9224.10<sup>-18</sup>",
-            "isCorrect": false
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "",
+            "text": "1,602.10<sup>-27</sup> C",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "-3,8448.10<sup>-18</sup>",
-            "isCorrect": false
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "",
+            "text": "-1,602.10<sup>-27</sup> C",
             "isCorrect": false
           }
         ],
@@ -2668,49 +2596,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "chu kì 2, nhóm III",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 2, nhóm IIIA",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "chu kì 2, nhóm III",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "chu kì 2, nhóm IIIB",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "chu kì 2, nhóm V",
+            "text": "chu kì 2, nhóm VA",
             "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "chu kì 2, nhóm V",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "chu kì 2, nhóm VB",
             "isCorrect": false
           }
         ],
@@ -2749,13 +2653,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "X thuộc nhóm VI",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "X thuộc nhóm VIA",
             "isCorrect": false
           }
         ],
@@ -3190,49 +3088,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "Vị trí",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "Vị trí A",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "Vị trí",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "Vị trí B",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "Vị trí",
-            "isCorrect": true
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "",
+            "text": "Vị trí C",
             "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "Vị trí",
-            "isCorrect": false
-          },
-          {
-            "id": "d",
-            "letter": "D",
-            "text": "",
+            "text": "Vị trí D",
             "isCorrect": false
           }
         ],
@@ -3489,50 +3363,26 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "chu kì 3, nhóm VI",
-            "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 3, nhóm VIA",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "chu kì 4, nhóm III",
+            "text": "chu kì 4, nhóm IIIA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "chu kì 3, nhóm IV",
+            "text": "chu kì 3, nhóm IVA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "chu kì 4, nhóm II",
+            "text": "chu kì 4, nhóm IIA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           }
         ],
         "correctAnswer": "A",
@@ -3765,13 +3615,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "X thuộc nhóm VII",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "X thuộc nhóm VIIA",
             "isCorrect": false
           }
         ],
@@ -3890,33 +3734,9 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "letter": "D",
             "text": "Theo mô hình hiện đại, orbital p có hình số tám nổi, với hai phần (còn gọi là hai thùy) giống hệt nhau. Xác suất tìm thấy electron ở mỗi thùy khoảng 90%.",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "Đúng.",
-            "isCorrect": true
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "Sai. Chuyển động trong vùng không gian.",
-            "isCorrect": false
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "Sai. Kích thước nguyên tử lớn hơn kích thước hạt nhân.",
-            "isCorrect": false
-          },
-          {
-            "id": "d",
-            "letter": "D",
-            "text": "Sai. Xác suất tìm thấy electron ở mỗi thùy khoảng 45%.",
-            "isCorrect": false
           }
         ],
-        "explanation": "",
+        "explanation": "a) Đúng.<br/>b) Sai. Electron chuyển động trong vùng không gian xác suất 90%, không cố định trên mặt cầu.<br/>c) Sai. Kích thước nguyên tử lớn hơn rất nhiều so với kích thước hạt nhân (khoảng 10.000 lần).<br/>d) Sai. Xác suất tìm thấy electron ở cả 2 thùy là 90%, do đó ở mỗi thùy khoảng 45%.",
         "explanationImages": [],
         "points": 1.0,
         "displayNumber": 21
@@ -4031,10 +3851,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 6,
         "part": 3,
         "type": "short_answer",
-        "text": "Đồng vị phóng xạ colbat (Co-60) phát ra tia γ có khả năng đâm xuyên mạnh, dùng điều trị các khối u ở sâu trong cơ thể. Cobalt có ba đồng vị:  5927Co  (chiếm 98%),  5827Co  và  6027Co ; nguyên tử khối trung bình là 58,982. Xác định hàm lượng % của đồng vị phóng xạ Co-60.<br/>Đáp án : 0,1.<br/>Co59.9860x58(2x)A58,982x0,1%100++-==Þ=<br/>------------------------- HẾT -------------------------",
+        "text": "Đồng vị phóng xạ cobalt (Co-60) phát ra tia γ có khả năng đâm xuyên mạnh, dùng điều trị các khối u ở sâu trong cơ thể. Cobalt có ba đồng vị: <sup>59</sup><sub>27</sub>Co (chiếm 98%), <sup>58</sup><sub>27</sub>Co và <sup>60</sup><sub>27</sub>Co; nguyên tử khối trung bình là 58,982. Xác định hàm lượng % của đồng vị phóng xạ Co-60.",
         "images": [],
-        "correctAnswer": "",
-        "explanation": "",
+        "correctAnswer": "0,1",
+        "explanation": "Gọi % của Co-60 là x% ⟹ % của Co-58 là (2 - x)%.<br/>Nguyên tử khối trung bình: Ā = [59 × 98 + 60 × x + 58 × (2 - x)] / 100 = 58,982 ⟹ x = 0,1%.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 28
@@ -4103,49 +3923,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "8 nhóm A và 8 nhóm",
+            "text": "8 nhóm A và 8 nhóm B",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "8 nhóm A và 10 nhóm",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "8 nhóm A và 10 nhóm B",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "10 nhóm A và 8 nhóm",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "10 nhóm A và 8 nhóm B",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "10 nhóm A và 10 nhóm",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "10 nhóm A và 10 nhóm B",
             "isCorrect": false
           }
         ],
@@ -4166,49 +3962,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "chu kì 2 và nhóm V",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 2 và nhóm VA",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "chu kì 2 và nhóm VIII",
+            "text": "chu kì 2 và nhóm VIIIA",
             "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "chu kì 3 và nhóm  VII",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 3 và nhóm VIIA",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "chu kì 3 và nhóm V",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 3 và nhóm VA",
             "isCorrect": false
           }
         ],
@@ -4425,24 +4197,28 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de5_image9.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de5_image10.png",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de5_image11.png",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de5_image12.png",
             "isCorrect": false
           }
         ],
@@ -5379,24 +5155,28 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de6_image7.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de6_image8.png",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de6_image9.png",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de6_image10.png",
             "isCorrect": false
           }
         ],
@@ -6604,49 +6384,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "ô số 26, chu kì 3, nhóm VIII",
+            "text": "ô số 26, chu kì 3, nhóm VIIIB",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
-            "isCorrect": true
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "ô số 26, chu kì 3, nhóm VIII",
-            "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "ô số 26, chu kì 3, nhóm VIIIA",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "ô số 28, chu kì 4, nhóm VIII",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "ô số 28, chu kì 4, nhóm VIIIA",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "ô số 28, chu kì 4, nhóm VIII",
-            "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "ô số 28, chu kì 4, nhóm VIIIB",
             "isCorrect": true
           }
         ],
@@ -6706,13 +6462,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "R thuộc chu kì 3, nhóm III",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "R thuộc chu kì 3, nhóm IIIA",
             "isCorrect": false
           },
           {
@@ -7590,50 +7340,26 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "chu kì 4, nhóm I",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 4, nhóm IA",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "chu kì 4, nhóm I",
-            "isCorrect": true
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
+            "text": "chu kì 4, nhóm IB",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "chu kì 4, nhóm VIII",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 4, nhóm VIIIA",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "chu kì 4, nhóm VIII",
+            "text": "chu kì 4, nhóm VIIIB",
             "isCorrect": false
-          },
-          {
-            "id": "b",
-            "letter": "B",
-            "text": "",
-            "isCorrect": true
           }
         ],
         "correctAnswer": "B",
@@ -8054,24 +7780,28 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de9_image2.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de9_image3.png",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de9_image4.png",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de9_image5.png",
             "isCorrect": false
           }
         ],
@@ -8131,53 +7861,29 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "–1,77.10<sup>-18</sup>",
+            "text": "–1,77.10<sup>-18</sup> C",
             "isCorrect": false
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "–1,83.10<sup>-18</sup>",
+            "text": "–1,83.10<sup>-18</sup> C",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
-            "isCorrect": true
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "+1,83.10<sup>-18</sup>",
-            "isCorrect": true
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "",
-            "isCorrect": true
+            "text": "+1,83.10<sup>-18</sup> C",
+            "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "+1,77.10<sup>-18</sup>",
-            "isCorrect": false
-          },
-          {
-            "id": "c",
-            "letter": "C",
-            "text": "",
+            "text": "+1,77.10<sup>-18</sup> C",
             "isCorrect": true
           }
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "D",
         "explanation": "",
         "explanationImages": [],
         "points": 0.25,
@@ -8311,50 +8017,26 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "ô 14, chu kì 3, nhóm IV",
-            "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "ô 14, chu kì 3, nhóm IVA",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "ô 14, chu kì 4, nhóm IV",
+            "text": "ô 14, chu kì 4, nhóm IVA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "ô 14, chu kì 4, nhóm III",
+            "text": "ô 14, chu kì 4, nhóm IIIA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "ô 14, chu kì 3, nhóm III",
+            "text": "ô 14, chu kì 3, nhóm IIIA",
             "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": true
           }
         ],
         "correctAnswer": "A",
@@ -9129,31 +8811,32 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "type": "multiple_choice",
         "text": "Cho mô hình cấu tạo nguyên tử dưới đây:<br/>Ô nguyên tố nào dưới đây phù hợp với thông tin trong hình trên là",
         "images": [
-          "/assets/hoa10/midterm/h10_gk1_de10_image11.png"
+          "/assets/hoa10/midterm/h10_gk1_de10_image11.png",
+          "/assets/hoa10/midterm/h10_gk1_de10_image12.png"
         ],
         "options": [
           {
             "id": "a",
             "letter": "A",
-            "text": "",
+            "text": "Ô nguyên tố A",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "",
+            "text": "Ô nguyên tố B",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "",
+            "text": "Ô nguyên tố C",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "",
+            "text": "Ô nguyên tố D",
             "isCorrect": false
           }
         ],
@@ -9447,50 +9130,26 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "chu kì 3, nhóm I",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 3, nhóm IA",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "chu kì 3, nhóm II",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 3, nhóm IIA",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "chu kì 4, nhóm II",
-            "isCorrect": false
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
+            "text": "chu kì 4, nhóm IIA",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "chu kì 4, nhóm I",
+            "text": "chu kì 4, nhóm IA",
             "isCorrect": true
-          },
-          {
-            "id": "a",
-            "letter": "A",
-            "text": "",
-            "isCorrect": false
           }
         ],
         "correctAnswer": "D",
@@ -9550,24 +9209,28 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "id": "a",
             "letter": "A",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de10_image19.png",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de10_image20.png",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de10_image21.png",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
             "text": "",
+            "image": "/assets/hoa10/midterm/h10_gk1_de10_image22.png",
             "isCorrect": false
           }
         ],
