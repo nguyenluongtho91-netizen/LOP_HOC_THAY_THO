@@ -124,6 +124,12 @@ export default function App() {
         <Route path="/thi"      element={<StudentPortal />} />
         <Route path="/lay-goc"  element={<LayGocToanPage isPublic={true} />} />
 
+        {/* BỘ ĐỀ THI GIỮA HỌC KÌ 1 (HÓA 10, 11, 12) */}
+        <Route path="/de-thi-giua-ki" element={<MidtermExamsPage />} />
+        <Route path="/hoa10-giuaki1"  element={<MidtermExamsPage initialGrade="10" />} />
+        <Route path="/hoa11-giuaki1"  element={<MidtermExamsPage initialGrade="11" />} />
+        <Route path="/hoa12-giuaki1"  element={<MidtermExamsPage initialGrade="12" />} />
+
         {/* HỌC LIỆU HÓA HỌC KHỐI 10 */}
         <Route path="/hoa10"    element={<Hoa10Page />} />
         <Route path="/hoa-10"   element={<Hoa10Page />} />

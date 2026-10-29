@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState, useEffect } from "react";
-import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
+import { Link, useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import Hoa11Chuong1View from "@/components/Hoa11Chuong1View";
 import Hoa11Chuong2View from "@/components/Hoa11Chuong2View";
 import Hoa11Chuong3View from "@/components/Hoa11Chuong3View";
@@ -95,6 +95,14 @@ export default function Hoa11Page({ defaultChapter = 1 }: { defaultChapter?: num
         </div>
 
         <div className="flex items-center gap-1.5 bg-slate-900 p-1 rounded-xl border border-slate-700/80 overflow-x-auto max-w-full">
+          <Link
+            to="/hoa11-giuaki1"
+            className="px-3 py-1.5 rounded-lg font-black text-xs transition-all flex items-center gap-1.5 whitespace-nowrap bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-amber-500/20 hover:scale-[1.03] cursor-pointer mr-1"
+          >
+            <span>🎯</span>
+            <span>BỘ 10 ĐỀ GIỮA KÌ 1</span>
+          </Link>
+          
           <button
             type="button"
             onClick={() => handleSelectChapter(1)}
