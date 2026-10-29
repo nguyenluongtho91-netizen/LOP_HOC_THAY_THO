@@ -42,6 +42,37 @@ export default function ExamRoomsMgmt() {
   const [modalClassGradeTab, setModalClassGradeTab] = useState<string>('all')
   const [editingRoomId, setEditingRoomId] = useState<string | null>(null)
   const [exportingRoomId, setExportingRoomId] = useState<string | null>(null)
+  const [selectedStandardExam, setSelectedStandardExam] = useState<any | null>(null)
+  const [selectedParts, setSelectedParts] = useState<number[]>([1, 2, 3])
+
+  const handlePartsChanged = async (parts: number[]) => {
+    let autoTime = 50
+    if (parts.length === 1) autoTime = parts[0] === 1 ? 25 : 15
+    else if (parts.length === 2) autoTime = 40
+    else autoTime = 50
+
+    if (selectedStandardExam) {
+      toast.loading('Đang áp dụng phần thi...', { id: 'parts-sync' })
+      try {
+        const dbId = await ensureStandardExamInDatabase(selectedStandardExam, parts)
+        await loadExams()
+        setForm(prev => ({
+          ...prev,
+          exam_id: dbId,
+          time_limit: autoTime,
+          settings: {
+            ...prev.settings,
+            selected_parts: parts
+          }
+        }))
+        toast.success('Đã chọn phần thi!', { id: 'parts-sync' })
+      } catch (err) {
+        toast.error('Lỗi khi lọc phần thi', { id: 'parts-sync' })
+      }
+    } else {
+      setForm(prev => ({ ...prev, time_limit: autoTime }))
+    }
+  }
 
   // Tự động mở modal tạo phòng thi khi Thầy bấm nút "Giao bài" từ ngân hàng đề thi
   useEffect(() => {
@@ -518,10 +549,18 @@ const isFirstRender = useRef(true)
         <button 
           onClick={() => {
             setEditingRoomId(null)
-            setModalGrade(typeof activeGrade === 'number' ? activeGrade : '')
+            const initialG = [10, 11, 12].includes(Number(activeGrade)) ? Number(activeGrade) : 12;
+            setModalGrade(initialG)
+            setModalClassGradeTab(String(initialG))
+            setSelectedStandardExam(null)
+            setSelectedParts([1, 2, 3])
             setForm({ 
-              exam_id: '', class_id: '', time_limit: 45, status: 'active', 
+              exam_id: '', class_id: '', time_limit: 50, status: 'active', 
               settings: {
+                category: 'exam_practice',
+                targetScope: 'classes',
+                targetGrade: initialG,
+                assigned_class_ids: [],
                 shuffle: true,
                 allowRetry: false,
                 showCorrectAnswers: false,
@@ -529,7 +568,9 @@ const isFirstRender = useRef(true)
                 passcode: '',
                 antiCheat: true,
                 opens_at: '',
-                closes_at: ''
+                closes_at: '',
+                assigned_student_ids: [],
+                selected_parts: [1, 2, 3]
               } 
             })
             setModalOpen(true)
@@ -932,19 +973,24 @@ const isFirstRender = useRef(true)
                   const realStdId = exId.replace('std:', '')
                   const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
                   if (stdEx) {
+                    setSelectedStandardExam(stdEx)
                     toast.loading('Đang chuẩn bị đề thi chuẩn...', { id: 'sync-exam' })
                     try {
-                      const dbId = await ensureStandardExamInDatabase(stdEx)
+                      const dbId = await ensureStandardExamInDatabase(stdEx, selectedParts)
                       toast.success(`Đã chọn: ${stdEx.title}`, { id: 'sync-exam' })
                       await loadExams()
+                      let autoTime = stdEx.duration || 50
+                      if (selectedParts.length === 1) autoTime = selectedParts[0] === 1 ? 25 : 15
+                      else if (selectedParts.length === 2) autoTime = 40
                       setForm(prev => ({
                         ...prev,
                         exam_id: dbId,
-                        time_limit: stdEx.duration || 50,
+                        time_limit: autoTime,
                         settings: {
                           ...prev.settings,
                           category: 'exam_practice',
-                          antiCheat: true
+                          antiCheat: true,
+                          selected_parts: selectedParts
                         }
                       }))
                     } catch (err: any) {
@@ -952,6 +998,8 @@ const isFirstRender = useRef(true)
                     }
                   }
                   return
+                } else {
+                  setSelectedStandardExam(null)
                 }
 
                 const selectedEx = exams.find(ex => ex.id === exId)
@@ -992,6 +1040,65 @@ const isFirstRender = useRef(true)
                 </optgroup>
               )}
             </select>
+
+            {/* ✂️ BỘ CHỌN PHẦN THI LẺ (KIỂM TRA 15P - 25P) */}
+            <div className="mt-3 bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-black text-gray-700 uppercase tracking-wider flex items-center gap-1.5">
+                  <span>✂️ PHẠM VI LÀM BÀI (TÙY CHỌN BÀI NGẮN / 15P):</span>
+                </label>
+                <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-lg border border-teal-200">
+                  {selectedParts.length === 3 ? 'Trọn vẹn 3 Phần (50p)' : selectedParts.length === 1 ? (selectedParts[0] === 1 ? 'Chỉ Phần I (25p)' : selectedParts[0] === 2 ? 'Chỉ Phần II (15p)' : 'Chỉ Phần III (15p)') : 'Ghép 2 Phần (40p)'}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                <label className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-bold cursor-pointer transition-all ${selectedParts.includes(1) ? 'bg-teal-500/10 border-teal-500 text-teal-900 shadow-xs' : 'bg-white border-slate-200 text-slate-500'}`}>
+                  <input
+                    type="checkbox"
+                    checked={selectedParts.includes(1)}
+                    onChange={async (e) => {
+                      const newParts = e.target.checked ? [...selectedParts, 1].sort() : selectedParts.filter(p => p !== 1)
+                      if (newParts.length === 0) return toast.error('Vui lòng chọn ít nhất 1 phần thi!')
+                      setSelectedParts(newParts)
+                      await handlePartsChanged(newParts)
+                    }}
+                    className="rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
+                  />
+                  <span>Phần I: 18 câu Trắc nghiệm</span>
+                </label>
+
+                <label className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-bold cursor-pointer transition-all ${selectedParts.includes(2) ? 'bg-teal-500/10 border-teal-500 text-teal-900 shadow-xs' : 'bg-white border-slate-200 text-slate-500'}`}>
+                  <input
+                    type="checkbox"
+                    checked={selectedParts.includes(2)}
+                    onChange={async (e) => {
+                      const newParts = e.target.checked ? [...selectedParts, 2].sort() : selectedParts.filter(p => p !== 2)
+                      if (newParts.length === 0) return toast.error('Vui lòng chọn ít nhất 1 phần thi!')
+                      setSelectedParts(newParts)
+                      await handlePartsChanged(newParts)
+                    }}
+                    className="rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
+                  />
+                  <span>Phần II: 4 câu Đúng/Sai</span>
+                </label>
+
+                <label className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-bold cursor-pointer transition-all ${selectedParts.includes(3) ? 'bg-teal-500/10 border-teal-500 text-teal-900 shadow-xs' : 'bg-white border-slate-200 text-slate-500'}`}>
+                  <input
+                    type="checkbox"
+                    checked={selectedParts.includes(3)}
+                    onChange={async (e) => {
+                      const newParts = e.target.checked ? [...selectedParts, 3].sort() : selectedParts.filter(p => p !== 3)
+                      if (newParts.length === 0) return toast.error('Vui lòng chọn ít nhất 1 phần thi!')
+                      setSelectedParts(newParts)
+                      await handlePartsChanged(newParts)
+                    }}
+                    className="rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
+                  />
+                  <span>Phần III: 6 câu Trả lời ngắn</span>
+                </label>
+              </div>
+            </div>
           </div>
 
           {/* 🎯 ĐỐI TƯỢNG GIAO BÀI (HỖ TRỢ CHỌN NHIỀU LỚP) */}
