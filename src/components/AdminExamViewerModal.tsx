@@ -498,26 +498,21 @@ export default function AdminExamViewerModal({
                   id={`question-${q.id}`}
                   className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs space-y-3 scroll-mt-28 transition-all hover:border-indigo-200"
                 >
-                  {/* Question Header */}
-                  <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-100">
-                    <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs shadow-xs tracking-tight">
+                  {/* Question Header: Question number & text on top */}
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex-1 flex items-start gap-2.5 min-w-0">
+                      <span className="shrink-0 px-2.5 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs shadow-xs tracking-tight mt-0.5">
                         Câu {q.number || q.displayNumber || (qIndex + 1)}
                       </span>
-                      <span className="text-xs font-bold text-indigo-900 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-200/70 uppercase tracking-wider">
-                        {partNum === 1 ? 'Phần I • 4 Lựa chọn' : partNum === 2 ? 'Phần II • Đúng / Sai' : 'Phần III • Trả lời ngắn'}
-                      </span>
+                      <div
+                        className="text-sm font-semibold text-slate-900 leading-relaxed pt-0.5"
+                        dangerouslySetInnerHTML={{ __html: formatChemicalText(q.text) }}
+                      />
                     </div>
-                    <span className="px-2.5 py-1 rounded-lg text-xs font-black bg-slate-100 text-slate-700 border border-slate-200">
+                    <span className="shrink-0 px-2.5 py-1 rounded-lg text-xs font-black bg-slate-100 text-slate-700 border border-slate-200">
                       {partNum === 2 ? '1,0 điểm' : '0,25 điểm'}
                     </span>
                   </div>
-
-                  {/* Question Text */}
-                  <div
-                    className="text-sm font-semibold text-slate-900 leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: formatChemicalText(q.text) }}
-                  />
 
                   {/* Question Images */}
                   {q.images && q.images.length > 0 && (
