@@ -7,6 +7,7 @@ import { getAllStandardExamsList, getExamByIdForAdmin } from './allExamsAdminSer
  */
 export function getStandardExamsForGrade(grade: number | string) {
   const all = getAllStandardExamsList();
+  if (!grade || grade === 'all') return all;
   const gStr = String(grade);
   return all.filter(e => String(e.grade) === gStr);
 }

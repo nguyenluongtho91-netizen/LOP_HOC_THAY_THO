@@ -285,7 +285,7 @@ export default function ExamRoomsMgmt() {
   })
 
     const standardExamsForGrade = useMemo(() => {
-    if (!modalGrade || modalGrade === 'all') return []
+    if (!modalGrade) return []
     return getStandardExamsForGrade(modalGrade)
   }, [modalGrade])
 
@@ -911,9 +911,9 @@ const isFirstRender = useRef(true)
               <option value="7">Khối 7</option>
               <option value="8">Khối 8</option>
               <option value="9">Khối 9</option>
-              <option value="10">Khối 10</option>
-              <option value="11">Khối 11</option>
-              <option value="12">Khối 12</option>
+              <option value="10">Khối 10 (🌟 40+ đề chuẩn: Giữa kì, Cuối kì, Chương 1-7)</option>
+              <option value="11">Khối 11 (🌟 40+ đề chuẩn: Giữa kì, Cuối kì, Chương 1-6)</option>
+              <option value="12">Khối 12 (🌟 60+ đề chuẩn: Giữa kì, Cuối kì, Chương 1-8)</option>
             </select>
           </div>
 
@@ -972,7 +972,7 @@ const isFirstRender = useRef(true)
             >
               <option value="">{modalGrade ? '-- Chọn đề thi --' : '-- Vui lòng chọn khối lớp trước --'}</option>
               {standardExamsForGrade.length > 0 && (
-                <optgroup label={`🌟 NGÂN HÀNG ĐỀ CHUẨN BỘ - HÓA ${modalGrade} (${standardExamsForGrade.length} đề)`}>
+                <optgroup label={modalGrade === 'all' ? `🌟 TOÀN BỘ NGÂN HÀNG ĐỀ CHUẨN (${standardExamsForGrade.length} đề Hóa 10, 11, 12)` : `🌟 NGÂN HÀNG ĐỀ CHUẨN BỘ - HÓA ${modalGrade} (${standardExamsForGrade.length} đề)`}>
                   {standardExamsForGrade.map(ex => {
                     const synced = exams.find(e => e.title === ex.title)
                     const val = synced ? synced.id : `std:${ex.id}`
