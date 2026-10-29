@@ -3792,10 +3792,11 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 3,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho sơ đồ phản ứng sau:<br/>0o22220+ O+ O+ HO + O+ Cu , tt323322xt,tNHNONOHNOCu(NO)NO¾ → ¾ → → → → → → <br/>Mỗi mũi tên là một phản ứng hóa học. Có bao nhiêu phản ứng mà nitrogen đóng vai trò chất khử?",
+        "text": "Cho sơ đồ phản ứng sau:<div class='my-3 py-2.5 px-4 bg-slate-50/90 rounded-xl border border-slate-200 text-slate-800 text-center font-medium overflow-x-auto flex items-center justify-center gap-2 flex-wrap text-sm sm:text-base'><span class='font-bold text-indigo-700'>NH<sub>3</sub></span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub>, xt, t°</span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>NO</span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub></span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>NO<sub>2</sub></span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub>, +H<sub>2</sub>O</span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>HNO<sub>3</sub></span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+Cu, t°</span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>Cu(NO<sub>3</sub>)<sub>2</sub> + NO</span></div>Mỗi mũi tên là một phản ứng hóa học. Có bao nhiêu phản ứng mà nitrogen đóng vai trò là chất khử?",
         "images": [],
         "correctAnswer": "3",
-        "explanation": "Đáp án: 3.",
+        "acceptedAnswers": ["3"],
+        "explanation": "Đáp án: 3.<br/>Các phản ứng mà nguyên tố nitrogen đóng vai trò là chất khử (số oxi hóa tăng):<br/>(1) 4NH<sub>3</sub> + 5O<sub>2</sub> ⟶ 4NO + 6H<sub>2</sub>O: N<sup>-3</sup> ⟶ N<sup>+2</sup> (chất khử).<br/>(2) 2NO + O<sub>2</sub> ⟶ 2NO<sub>2</sub>: N<sup>+2</sup> ⟶ N<sup>+4</sup> (chất khử).<br/>(3) 4NO<sub>2</sub> + O<sub>2</sub> + 2H<sub>2</sub>O ⟶ 4HNO<sub>3</sub>: N<sup>+4</sup> ⟶ N<sup>+5</sup> (chất khử).<br/>(4) 3Cu + 8HNO<sub>3</sub> ⟶ 3Cu(NO<sub>3</sub>)<sub>2</sub> + 2NO + 4H<sub>2</sub>O: N<sup>+5</sup> ⟶ N<sup>+2</sup> (chất oxi hóa).<br/>⟹ Có <strong>3</strong> phản ứng nitrogen đóng vai trò là chất khử.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 3
@@ -4755,10 +4756,11 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 4,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho Sulfur trioxide được tạo thành bằng cách oxi hóa sulfur dioxide bằng oxygen hoặc lượng dư không khí ở nhiệt độ 450<sup>0</sup>C – 500<sup>0</sup>C, chất xúc tác V<sub>2</sub>O<sub>5</sub> theo phương trình hóa học:<br/>0025VO,450C500C0223r2982SO(g)O(g)2SO(g)H198,4kJ- → → +=-¬ → V<br/>Nồng độ ban đầu của SO<sub>2</sub> và O<sub>2</sub> tương ứng là 4 M và 2 M. Tính hằng số cân bằng của phản ứng, biết rằng khi đạt trạng thái cân bằng đã có 80% SO<sub>2</sub> đã phản ứng.",
+        "text": "Sulfur trioxide được tạo thành bằng cách oxi hóa sulfur dioxide bằng oxygen ở nhiệt độ 450°C – 500°C với chất xúc tác V<sub>2</sub>O<sub>5</sub> theo phương trình hóa học:<div class='my-2 py-2 px-3 bg-slate-50 rounded-xl border border-slate-200 text-center font-medium text-sm sm:text-base'>2SO<sub>2</sub>(g) + O<sub>2</sub>(g) <span class='inline-flex flex-col items-center mx-2'><span class='text-[10px] font-bold text-slate-500'>V<sub>2</sub>O<sub>5</sub>, 450 – 500°C</span><span class='text-base text-slate-700'>⇌</span></span> 2SO<sub>3</sub>(g) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = –198,4 kJ</div>Nồng độ ban đầu của SO<sub>2</sub> và O<sub>2</sub> tương ứng là 4 M và 2 M. Tính hằng số cân bằng K<sub>c</sub> của phản ứng, biết rằng khi đạt trạng thái cân bằng đã có 80% SO<sub>2</sub> đã phản ứng.",
         "images": [],
         "correctAnswer": "40",
-        "explanation": "Đáp án: 40.<br/>oo25VO, 450C - 500C2232SO(g) + O(g) 2SO(g) ⇌ <br/>Bđ: 42<br/>Pư: 3,2 1,6 3,2<br/>Cb 0,8 0,43,2<br/>2C23,2K=400,4.0,8= .",
+        "acceptedAnswers": ["40"],
+        "explanation": "Đáp án: 40.<br/>Phương trình hóa học: 2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g)<br/>• Nồng độ ban đầu: [SO<sub>2</sub>] = 4 M; [O<sub>2</sub>] = 2 M.<br/>• Lượng phản ứng (80% SO<sub>2</sub>):<br/>  [SO<sub>2</sub>]<sub>pư</sub> = 4 · 80% = 3,2 M;<br/>  [O<sub>2</sub>]<sub>pư</sub> = 3,2 / 2 = 1,6 M;<br/>  [SO<sub>3</sub>]<sub>sinh ra</sub> = 3,2 M.<br/>• Nồng độ tại trạng thái cân bằng:<br/>  [SO<sub>2</sub>]<sub>cb</sub> = 4 – 3,2 = 0,8 M;<br/>  [O<sub>2</sub>]<sub>cb</sub> = 2 – 1,6 = 0,4 M;<br/>  [SO<sub>3</sub>]<sub>cb</sub> = 3,2 M.<br/>• Hằng số cân bằng K<sub>c</sub>:<br/>  K<sub>c</sub> = \frac{[SO_3]^2}{[SO_2]^2 · [O_2]} = \frac{(3,2)^2}{(0,8)^2 · 0,4} = \frac{10,24}{0,64 · 0,4} = 40.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -4768,10 +4770,11 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>Sơ đồ quá trình: N<sub>2</sub> ⎯⎯(+O<sub>2</sub>)→ NO ⎯⎯(+O<sub>2</sub>)→ NO<sub>2</sub> ⎯⎯(+O<sub>2</sub>, +H<sub>2</sub>O)→ HNO<sub>3</sub> → H<sup>+</sup> + NO<sub>3</sub><sup>-</sup><br/>Tính lượng nitrate (NO<sub>3</sub><sup>-</sup>) mà đất được cung cấp từ 1 lít không khí (đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 80% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
+        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<div class='my-3 py-2.5 px-4 bg-slate-50/90 rounded-xl border border-slate-200 text-slate-800 text-center font-medium overflow-x-auto flex items-center justify-center gap-2 flex-wrap text-sm sm:text-base'><span class='font-bold text-indigo-700'>N<sub>2</sub></span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub>, tia lửa điện</span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>NO</span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub></span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>NO<sub>2</sub></span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub>, +H<sub>2</sub>O</span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>HNO<sub>3</sub></span><span class='mx-1 text-slate-700 font-bold'>⟶</span><span class='font-bold text-indigo-700'>H<sup>+</sup> + NO<sub>3</sub><sup>-</sup></span></div>Tính lượng nitrate (NO<sub>3</sub><sup>-</sup>) mà đất có thể được cung cấp theo lý thuyết (gam) từ 1 lít không khí (đkc) nếu nitrogen chiếm khoảng 80% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "4",
-        "explanation": "Đáp án: 4.<br/>Trong 1000 m³ không khí: V<sub>N2</sub> = 1000 · 80% = 800 m³.<br/>Số mol N<sub>2</sub>: n<sub>N2</sub> = \\frac{800}{24,79} ≈ 32,271 kmol.<br/>Bảo toàn nguyên tố N (với hiệu suất toàn quá trình 40%):<br/>n<sub>NO3-</sub> = 2 · n<sub>N2</sub> · 40% = 2 · 32,271 · 0,4 = 25,817 kmol.<br/>Khối lượng nitrate: m<sub>NO3-</sub> = 25,817 · 62 ≈ 1600,6 kg (tương ứng khoảng 4 kg/m³ quy đổi).",
+        "acceptedAnswers": ["4", "1.6", "1,6", "2", "1600"],
+        "explanation": "Đáp án: 4 (hoặc 1,6 nếu tính theo hiệu suất thực tế 40%).<br/>• Trong 1 lít không khí: V<sub>N2</sub> = 1 · 80% = 0,8 lít (đkc).<br/>• Số mol N<sub>2</sub>: n<sub>N2</sub> = \frac{0,8}{24,79} ≈ 0,03227 mol.<br/>• Theo chuỗi phản ứng bảo toàn nguyên tố N: N<sub>2</sub> ⟶ 2NO<sub>3</sub><sup>-</sup><br/>  ⟹ n<sub>NO3- (lý thuyết)</sub> = 2 · n<sub>N2</sub> = 2 · 0,03227 ≈ 0,06454 mol.<br/>• Khối lượng nitrate thu được theo lý thuyết (H = 100%):<br/>  m<sub>NO3- (lý thuyết)</sub> = 0,06454 · 62 ≈ 4,00 gam (làm tròn hàng đơn vị là <strong>4</strong>).<br/>• Trường hợp tính theo hiệu suất toàn quá trình H = 40%:<br/>  m<sub>NO3- (thực tế)</sub> = 4,00 · 40% = 1,60 gam (làm tròn hàng đơn vị là <strong>2</strong> gam hoặc 1600 mg).",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 5
@@ -7291,7 +7294,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 16,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho sơ đồ phản ứng sau: XY424443(NH)SONHClNHNO → → . Các chất X, Y lần lượt là",
+        "text": "Cho sơ đồ phản ứng sau:<div class='my-2 py-2 px-3 bg-slate-50 rounded-xl border border-slate-200 text-center font-medium text-sm sm:text-base'>(NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> <span class='inline-flex flex-col items-center mx-1.5'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+X</span><span class='text-base text-slate-700'>⟶</span></span> NH<sub>4</sub>Cl <span class='inline-flex flex-col items-center mx-1.5'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+Y</span><span class='text-base text-slate-700'>⟶</span></span> NH<sub>4</sub>NO<sub>3</sub></div>Các chất X, Y lần lượt là:",
         "images": [],
         "options": [
           {
@@ -7320,7 +7323,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           }
         ],
         "correctAnswer": "B",
-        "explanation": "",
+        "explanation": "Đáp án: B.<br/>• (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> + BaCl<sub>2</sub> ⟶ 2NH<sub>4</sub>Cl + BaSO<sub>4</sub>↓ (X là BaCl<sub>2</sub>).<br/>• NH<sub>4</sub>Cl + AgNO<sub>3</sub> ⟶ NH<sub>4</sub>NO<sub>3</sub> + AgCl↓ (Y là AgNO<sub>3</sub>).",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 16
@@ -8575,10 +8578,11 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 6,
         "part": 3,
         "type": "short_answer",
-        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>+++++-¾ → ¾ → → → → +2222OOOHO2233NNONOHNOHNO<br/>Tính lượng ion nitrate (theo gam) mà đất được cung cấp từ 1 L không khí (ở đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 78% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
+        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<div class='my-3 py-2.5 px-4 bg-slate-50/90 rounded-xl border border-slate-200 text-slate-800 text-center font-medium overflow-x-auto flex items-center justify-center gap-2 flex-wrap text-sm sm:text-base'><span class='font-bold text-indigo-700'>N<sub>2</sub></span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub>, tia lửa điện</span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>NO</span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub></span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>NO<sub>2</sub></span><span class='inline-flex flex-col items-center mx-1'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>+O<sub>2</sub>, +H<sub>2</sub>O</span><span class='text-base text-slate-700'>⟶</span></span><span class='font-bold text-indigo-700'>HNO<sub>3</sub></span><span class='mx-1 text-slate-700 font-bold'>⟶</span><span class='font-bold text-indigo-700'>H<sup>+</sup> + NO<sub>3</sub><sup>-</sup></span></div>Tính lượng ion nitrate (theo gam) mà đất được cung cấp từ 1000 lít (1 m³) không khí (ở đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 78% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "1561",
-        "explanation": "Đáp án: 1561.<br/>2KKN1000100078nmoln.mol24,7924,79100=Þ=<br/>Bảo toàn nguyên tố N: 23NNO2n n-= 3NO100078..224,7910m.62.40%156,6g00-==<br/>------------------------- HẾT -------------------------",
+        "acceptedAnswers": ["1561", "1560.6", "1560,6"],
+        "explanation": "Đáp án: 1561.<br/>• Thể tích khí N<sub>2</sub> trong 1000 lít không khí: V<sub>N2</sub> = 1000 · 78% = 780 lít.<br/>• Số mol N<sub>2</sub> (ở đkc): n<sub>N2</sub> = \frac{780}{24,79} ≈ 31,464 mol.<br/>• Bảo toàn nguyên tố N (với hiệu suất toàn quá trình 40%):<br/>  n<sub>NO3-</sub> = 2 · n<sub>N2</sub> · 40% = 2 · 31,464 · 0,4 ≈ 25,171 mol.<br/>• Khối lượng ion nitrate cung cấp cho đất:<br/>  m<sub>NO3-</sub> = 25,171 · 62 ≈ 1560,6 gam (làm tròn hàng đơn vị là <strong>1561</strong>).<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 6

@@ -3039,7 +3039,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Ethyl alcohol được điều chế bằng cách lên men tinh bột theo sơ đồ:<br/>()enzyme enzyme6105612625nCHOCHOCHOH → → → → <br/>Để điều chế 100 lít ethyl alcohol 40<sup>o</sup> cần m kg nguyên liệu (chứa 50% tinh bột, còn lại là tạp chất trợ không bị thủy phân). Biết hiệu suất của cả quá trình là 46% và khối lượng riêng của ethyl alcohol nguyên chất là 0,8 g/mL. Giá trị của m gần nhất với giá trị nào dưới đây?",
+        "text": "Ethyl alcohol được điều chế bằng cách lên men tinh bột theo sơ đồ:<div class='my-2 py-2 px-3 bg-slate-50 rounded-xl border border-slate-200 text-center font-medium text-sm sm:text-base'>(C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub> <span class='inline-flex flex-col items-center mx-1.5'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>enzyme, +H<sub>2</sub>O</span><span class='text-base text-slate-700'>⟶</span></span> C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> <span class='inline-flex flex-col items-center mx-1.5'><span class='text-[10px] font-bold text-slate-500 mb-0.5'>enzyme</span><span class='text-base text-slate-700'>⟶</span></span> 2C<sub>2</sub>H<sub>5</sub>OH + 2CO<sub>2</sub></div>Để điều chế 100 lít ethyl alcohol 40° cần m kg nguyên liệu (chứa 50% tinh bột, còn lại là tạp chất trơ không bị thủy phân). Biết hiệu suất của cả quá trình là 46% và khối lượng riêng của ethyl alcohol nguyên chất là 0,8 g/mL. Giá trị của m gần nhất với giá trị nào dưới đây?",
         "images": [],
         "options": [
           {
@@ -3068,7 +3068,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
           }
         ],
         "correctAnswer": "D",
-        "explanation": "",
+        "explanation": "Đáp án: D.<br/>• Thể tích C<sub>2</sub>H<sub>5</sub>OH nguyên chất: V = 100 · 40% = 40 lít = 40000 mL.<br/>• Khối lượng C<sub>2</sub>H<sub>5</sub>OH: m<sub>ancol</sub> = 40000 · 0,8 = 32000 g = 32 kg.<br/>• Số mol C<sub>2</sub>H<sub>5</sub>OH: n = \frac{32}{46} kmol.<br/>• Theo sơ đồ: 1 C<sub>6</sub>H<sub>10</sub>O<sub>5</sub> (162) ⟶ 2 C<sub>2</sub>H<sub>5</sub>OH.<br/>  Khối lượng tinh bột nguyên chất lý thuyết: m<sub>tb(lt)</sub> = \frac{32}{46} · \frac{162}{2} ≈ 56,35 kg.<br/>• Vì hiệu suất H = 46% và tinh bột chiếm 50% nguyên liệu:<br/>  m<sub>nguyên liệu</sub> = \frac{56,35}{0,46 · 0,5} ≈ 245 kg.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 12

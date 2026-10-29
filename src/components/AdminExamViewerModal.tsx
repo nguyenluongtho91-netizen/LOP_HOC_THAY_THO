@@ -139,6 +139,16 @@ export default function AdminExamViewerModal({
           } else {
             match = (rawU === rawC);
           }
+          if (!match && q.acceptedAnswers && Array.isArray(q.acceptedAnswers)) {
+            match = q.acceptedAnswers.some((acc: any) => {
+              const rawA = String(acc).trim().toLowerCase().replace(',', '.');
+              const numA = parseFloat(rawA);
+              if (!isNaN(numU) && !isNaN(numA)) {
+                return Math.abs(numU - numA) < 0.01;
+              }
+              return rawU === rawA;
+            });
+          }
           if (match) {
             p3 += (q.points || 0.25);
             correct++;
