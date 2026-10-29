@@ -20,6 +20,20 @@ class GlobalErrorBoundary extends React.Component<
 
   componentDidCatch(error: any, info: any) {
     console.error('App ErrorBoundary caught:', error, info)
+    const msg = String(error?.message || error || '')
+    if (
+      msg.includes('before initialization') || 
+      msg.includes('dynamically imported module') || 
+      msg.includes('Loading chunk') ||
+      msg.includes('Failed to fetch')
+    ) {
+      const reloadKey = '__auto_reload_cache_guard__'
+      const last = sessionStorage.getItem(reloadKey)
+      if (!last || Date.now() - Number(last) > 8000) {
+        sessionStorage.setItem(reloadKey, String(Date.now()))
+        setTimeout(() => this.handleHardRefresh(), 250)
+      }
+    }
   }
 
   handleHardRefresh = (targetPath?: string) => {
