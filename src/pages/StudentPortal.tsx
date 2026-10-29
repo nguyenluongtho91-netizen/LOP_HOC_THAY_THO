@@ -97,40 +97,7 @@ export default function StudentPortal() {
   const [enrolledClasses, setEnrolledClasses] = useState<any[]>([])
   const [enrolledCourses, setEnrolledCourses] = useState<any[]>([])
 
-  // Lọc danh sách khóa học thực sự hiển thị cho học sinh (Mặc định ẩn, chỉ hiện khi Thầy mở)
-  const visibleCourses = useMemo(() => {
-    return (enrolledCourses || []).filter((c: any) => {
-      if (isTeacherUser) return true;
-      if (!c.is_published) return false;
-      return !isCourseLocked(c, false, accessConfig);
-    });
-  }, [enrolledCourses, accessConfig, isTeacherUser]);
-  // Tự động đồng bộ quyền truy cập và trạng thái khóa/mở từ Supabase Cloud
-  useEffect(() => {
-    fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }));
-  }, []);
-
-
-  // Xác định học sinh Khối 12 hoặc Thầy giáo (Tài liệu lớp nào chỉ hiện cho lớp đó)
-  const isGrade12 = useMemo(() => {
-    if (!student) return true; // Khách / chưa đăng nhập cho phép xem lối tắt
-    const code = String(student.student_code || '').toUpperCase().trim();
-    const name = String(student.full_name || '').toLowerCase();
-    const role = String(student.role || '').toUpperCase();
-    if (code === 'THAYTHO' || code === 'TUDO' || name.includes('thọ') || role === 'ADMIN' || role === 'TEACHER') {
-      return true; // Thầy giáo luôn thấy học liệu Hóa 12
-    }
-    const g = String(student.grade || '').toLowerCase().trim();
-    if (g.includes('12') || g.includes('khối 12') || g.includes('lớp 12')) {
-      return true;
-    }
-    if (Array.isArray(enrolledClasses) && enrolledClasses.some(c => String(c?.class_name || '').includes('12'))) {
-      return true;
-    }
-    return false;
-  }, [student, enrolledClasses])
-
-  // Xác định rõ ràng quyền Thầy giáo / Quản trị viên
+  // Xác định rõ ràng quyền Thầy giáo / Quản trị viên (Khởi tạo trước để tránh lỗi TDZ)
   const isTeacherUser = useMemo(() => {
     if (typeof window !== 'undefined') {
       if (localStorage.getItem('is_teacher_mode') === 'true' || 
@@ -147,6 +114,39 @@ export default function StudentPortal() {
 
   const isFreeCandidate = isTeacherUser;
 
+  // Xác định học sinh Khối 12 hoặc Thầy giáo (Tài liệu lớp nào chỉ hiện cho lớp đó)
+  const isGrade12 = useMemo(() => {
+    if (!student) return true; // Khách / chưa đăng nhập
+    const code = String(student.student_code || '').toUpperCase().trim();
+    const name = String(student.full_name || '').toLowerCase();
+    const role = String(student.role || '').toUpperCase();
+    if (code === 'THAYTHO' || code === 'TUDO' || name.includes('thọ') || role === 'ADMIN' || role === 'TEACHER') {
+      return true;
+    }
+    const g = String(student.grade || '').toLowerCase().trim();
+    if (g.includes('12') || g.includes('khối 12') || g.includes('lớp 12')) {
+      return true;
+    }
+    if (Array.isArray(enrolledClasses) && enrolledClasses.some(c => String(c?.class_name || '').includes('12'))) {
+      return true;
+    }
+    return false;
+  }, [student, enrolledClasses]);
+
+  // Lọc danh sách khóa học thực sự hiển thị cho học sinh (Mặc định ẩn hết, chỉ khi Thầy mở/gán quyền cho HS thì mới thấy)
+  const visibleCourses = useMemo(() => {
+    return (enrolledCourses || []).filter((c: any) => {
+      if (isTeacherUser) return true;
+      if (!c.is_published) return false;
+      return !isCourseLocked(c, false, accessConfig);
+    });
+  }, [enrolledCourses, accessConfig, isTeacherUser]);
+
+  // Tự động đồng bộ quyền truy cập và trạng thái khóa/mở từ Supabase Cloud
+  useEffect(() => {
+    fetchHoa12AccessConfig().then((cfg) => setAccessConfig({ ...cfg }));
+  }, []);
+
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
     if (sessionStr) {
@@ -155,7 +155,7 @@ export default function StudentPortal() {
         setStudent(parsed)
         const g = String(parsed?.grade || '').toLowerCase()
         if (g.includes('12') || g.includes('khối 12')) {
-          setActiveTab('chapter')
+          setActiveTab('homework')
         }
         if (parsed?.id) {
           fetchStudentData(parsed.id)
@@ -433,7 +433,7 @@ export default function StudentPortal() {
       setStudent(studentData)
       const gGrade = String(studentData.grade || '').toLowerCase()
       if (gGrade.includes('12') || gGrade.includes('khối 12')) {
-        setActiveTab('chapter')
+        setActiveTab('homework')
       }
       toast.success(`Xin chào, ${studentData.full_name}! 👋`)
       await fetchStudentData(studentData.id)
@@ -679,7 +679,8 @@ export default function StudentPortal() {
         className="min-h-screen py-8 px-4 flex flex-col items-center justify-center relative overflow-y-auto"
         style={{ background: 'linear-gradient(135deg, #ccfbf1 0%, #5eead4 50%, #0d9488 100%)' }}
       >
-        {/* THẺ LỐI TẮT HỌC LIỆU VÀ PHÒNG THI KHỐI 10, 11, 12 */}
+        {/* THẺ LỐI TẮT HỌC LIỆU VÀ PHÒNG THI (ẨN VỚI HỌC SINH MẶC ĐỊNH THEO YÊU CẦU THẦY THỌ) */}
+        {isTeacherUser && (
         <div className="mb-4 w-full max-w-md bg-slate-900/95 backdrop-blur-md p-4 rounded-3xl border-2 border-teal-400/60 shadow-2xl text-white flex flex-col gap-3 relative z-10">
           <div className="flex items-center justify-between border-b border-slate-800 pb-2">
             <div className="text-[11px] font-black uppercase text-amber-400 tracking-wider">🌟 HỌC LIỆU & PHÒNG THI CHUẨN BỘ 2025</div>
@@ -757,6 +758,7 @@ export default function StudentPortal() {
           </div>
           )}
         </div>
+        )}
 
         <div className="relative w-full max-w-md z-10">
           <div className="bg-white rounded-3xl shadow-2xl border-2 border-teal-200 overflow-hidden">
@@ -1647,7 +1649,7 @@ export default function StudentPortal() {
 
             {/* THẺ 2: 📘 LUYỆN ĐỀ THEO CHƯƠNG */}
             <div
-              onClick={() => setActiveTab('chapter')}
+              onClick={() => setActiveTab('homework')}
               className={`p-4 sm:p-5 rounded-2xl border-2 transition-all cursor-pointer relative overflow-hidden flex flex-col justify-between gap-3 shadow-xs hover:shadow-md hover:-translate-y-0.5 ${
                 activeTab === 'chapter'
                   ? 'bg-gradient-to-br from-blue-50/90 to-indigo-50/60 border-blue-500 ring-2 ring-blue-400/30 shadow-blue-500/10'
