@@ -17,12 +17,27 @@ export default function HierarchicalGradeTree() {
     'thpt_10': true,
     'thpt_10_c1': true,
     'thpt_10_c2': true,
+    'thpt_10_c3': true,
+    'thpt_10_c4': true,
+    'thpt_10_c5': true,
+    'thpt_10_c6': true,
+    'thpt_10_c7': true,
     'thpt_11': true,
     'thpt_11_c1': true,
     'thpt_11_c2': true,
+    'thpt_11_c3': true,
+    'thpt_11_c4': true,
+    'thpt_11_c5': true,
+    'thpt_11_c6': true,
     'thpt_12': true,
     'thpt_12_c1': true,
     'thpt_12_c2': true,
+    'thpt_12_c3': true,
+    'thpt_12_c4': true,
+    'thpt_12_c5': true,
+    'thpt_12_c6': true,
+    'thpt_12_c7': true,
+    'thpt_12_c8': true,
     'thcs': false,
   })
 
@@ -274,26 +289,136 @@ export default function HierarchicalGradeTree() {
                       </div>
                     )}
                   </div>
-                  <Link to="/hoa10-chuong3" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>🔗 Chương 3: Liên kết hóa học</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
-                  <Link to="/hoa10-chuong4" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>⚡ Chương 4: Phản ứng Oxi hóa – Khử</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
-                  <Link to="/hoa10-chuong5" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>🔥 Chương 5: Năng lượng hóa học</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
-                  <Link to="/hoa10-chuong6" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>⏱️ Chương 6: Tốc độ phản ứng hóa học</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
-                  <Link to="/hoa10-chuong7" className="flex items-center justify-between py-1 px-1.5 rounded bg-indigo-950/50 hover:bg-indigo-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>🧂 Chương 7: Nhóm nguyên tố Halogen</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
+                  {/* Chương 3: Liên kết hóa học */}
+                  <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_10_c3', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa10-chuong3" className="hover:underline flex items-center gap-1">
+                        <span>🔗 Chương 3: Liên kết hóa học</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_10_c3'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_10_c3'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa10-chuong3?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa10-chuong3?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa10-chuong3?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chương 4: Phản ứng Oxi hóa – Khử */}
+                  <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_10_c4', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa10-chuong4" className="hover:underline flex items-center gap-1">
+                        <span>⚡ Chương 4: Phản ứng Oxi hóa – Khử</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_10_c4'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_10_c4'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa10-chuong4?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa10-chuong4?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa10-chuong4?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chương 5: Năng lượng hóa học */}
+                  <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_10_c5', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa10-chuong5" className="hover:underline flex items-center gap-1">
+                        <span>🔥 Chương 5: Năng lượng hóa học</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_10_c5'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_10_c5'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa10-chuong5?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa10-chuong5?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa10-chuong5?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chương 6: Tốc độ phản ứng hóa học */}
+                  <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_10_c6', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa10-chuong6" className="hover:underline flex items-center gap-1">
+                        <span>⏱️ Chương 6: Tốc độ phản ứng hóa học</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_10_c6'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_10_c6'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa10-chuong6?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa10-chuong6?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa10-chuong6?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chương 7: Nhóm nguyên tố Halogen */}
+                  <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_10_c7', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa10-chuong7" className="hover:underline flex items-center gap-1">
+                        <span>🧂 Chương 7: Nhóm nguyên tố Halogen</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_10_c7'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_10_c7'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa10-chuong7?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa10-chuong7?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa10-chuong7?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -379,22 +504,110 @@ export default function HierarchicalGradeTree() {
                       </div>
                     )}
                   </div>
-                  <Link to="/hoa11-chuong3" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>🧪 Chương 3: Đại cương hóa học hữu cơ</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
-                  <Link to="/hoa11-chuong4" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>⛽ Chương 4: Hydrocarbon</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
-                  <Link to="/hoa11-chuong5" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>🍶 Chương 5: Dẫn xuất Halogen – Alcohol – Phenol</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
-                  <Link to="/hoa11-chuong6" className="flex items-center justify-between py-1 px-1.5 rounded bg-sky-950/50 hover:bg-sky-900/60 text-cyan-200 font-bold border border-cyan-500/30">
-                    <span>⚡ Chương 6: Hợp chất Carbonyl – Carboxylic Acid</span>
-                    <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-400 text-emerald-950 font-black">MỞ</span>
-                  </Link>
+                  {/* Chương 3: Đại cương hóa học hữu cơ */}
+                  <div className="rounded-lg bg-sky-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_11_c3', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa11-chuong3" className="hover:underline flex items-center gap-1">
+                        <span>🧪 Chương 3: Đại cương hóa học hữu cơ</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_11_c3'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_11_c3'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa11-chuong3?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa11-chuong3?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa11-chuong3?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chương 4: Hydrocarbon */}
+                  <div className="rounded-lg bg-sky-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_11_c4', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa11-chuong4" className="hover:underline flex items-center gap-1">
+                        <span>⛽ Chương 4: Hydrocarbon</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_11_c4'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_11_c4'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa11-chuong4?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa11-chuong4?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa11-chuong4?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chương 5: Dẫn xuất Halogen – Alcohol – Phenol */}
+                  <div className="rounded-lg bg-sky-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_11_c5', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa11-chuong5" className="hover:underline flex items-center gap-1">
+                        <span>🍶 Chương 5: Dẫn xuất Halogen – Alcohol – Phenol</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_11_c5'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_11_c5'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa11-chuong5?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa11-chuong5?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa11-chuong5?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                  {/* Chương 6: Hợp chất Carbonyl – Carboxylic Acid */}
+                  <div className="rounded-lg bg-sky-950/40 p-1.5 border border-cyan-500/30">
+                    <div
+                      onClick={(e) => toggle('thpt_11_c6', e)}
+                      className="flex items-center justify-between font-bold text-cyan-200 hover:text-white cursor-pointer"
+                    >
+                      <Link to="/hoa11-chuong6" className="hover:underline flex items-center gap-1">
+                        <span>⚡ Chương 6: Hợp chất Carbonyl – Carboxylic Acid</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
+                      </Link>
+                      {expanded['thpt_11_c6'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
+                    </div>
+                    {expanded['thpt_11_c6'] && (
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa11-chuong6?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
+                        </Link>
+                        <Link to="/hoa11-chuong6?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
+                        </Link>
+                        <Link to="/hoa11-chuong6?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
+                        </Link>
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
@@ -482,160 +695,158 @@ export default function HierarchicalGradeTree() {
                     )}
                   </div>
 
-                  {/* Chương 3: Hợp chất chứa Nitrogen */}
-                  <div className="rounded-lg bg-sky-950/40 p-1.5 border border-sky-500/30">
+                                    {/* Chương 3: Hợp chất chứa Nitrogen */}
+                  <div className="rounded-lg bg-slate-900/60 p-1.5 border border-amber-500/30">
                     <div
                       onClick={(e) => toggle('thpt_12_c3', e)}
-                      className="flex items-center justify-between font-bold text-sky-200 hover:text-white cursor-pointer"
+                      className="flex items-center justify-between font-bold text-amber-200 hover:text-white cursor-pointer"
                     >
                       <Link to="/hoa12-chuong3" className="hover:underline flex items-center gap-1">
                         <span>🧬 Chương 3: Hợp chất chứa Nitrogen</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
-                      {expanded['thpt_12_c3'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                      {expanded['thpt_12_c3'] ? <ChevronDown className="w-3 h-3 text-amber-300" /> : <ChevronRight className="w-3 h-3 text-amber-300" />}
                     </div>
                     {expanded['thpt_12_c3'] && (
-                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-sky-100/80">
-                        <Link to="/hoa12-chuong3" className="block py-0.5 hover:text-white hover:underline">
-                          • Phần 1: Amine (Bài 8)
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa12-chuong3?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
                         </Link>
-                        <Link to="/hoa12-chuong3" className="block py-0.5 hover:text-white hover:underline">
-                          • Phần 2: Amino Acid & Peptide (Bài 9)
+                        <Link to="/hoa12-chuong3?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
                         </Link>
-                        <Link to="/hoa12-chuong3" className="block py-0.5 hover:text-white hover:underline">
-                          • Phần 3: Protein & Enzyme (Bài 10)
-                        </Link>
-                        <Link to="/hoa12-chuong3" className="block py-0.5 text-amber-300 font-bold hover:text-white hover:underline">
-                          • Phần 4: Luyện 4 Đề Chuẩn Điểm 10
+                        <Link to="/hoa12-chuong3?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
                         </Link>
                       </div>
                     )}
                   </div>
-
-                  {/* Chương 4: Polymer & Vật Liệu */}
-                  <div className="rounded-lg bg-indigo-950/40 p-1.5 border border-indigo-500/30">
+                  {/* Chương 4: Polymer & Vật liệu */}
+                  <div className="rounded-lg bg-slate-900/60 p-1.5 border border-amber-500/30">
                     <div
                       onClick={(e) => toggle('thpt_12_c4', e)}
-                      className="flex items-center justify-between font-bold text-indigo-200 hover:text-white cursor-pointer"
+                      className="flex items-center justify-between font-bold text-amber-200 hover:text-white cursor-pointer"
                     >
                       <Link to="/hoa12-chuong4" className="hover:underline flex items-center gap-1">
                         <span>🧶 Chương 4: Polymer & Vật liệu</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
-                      {expanded['thpt_12_c4'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                      {expanded['thpt_12_c4'] ? <ChevronDown className="w-3 h-3 text-amber-300" /> : <ChevronRight className="w-3 h-3 text-amber-300" />}
                     </div>
                     {expanded['thpt_12_c4'] && (
-                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-indigo-100/80">
-                        <Link to="/hoa12-chuong4" className="block py-0.5 hover:text-white hover:underline">
-                          • Phần 1: Đại cương Polymer (Bài 12)
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa12-chuong4?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
                         </Link>
-                        <Link to="/hoa12-chuong4" className="block py-0.5 hover:text-white hover:underline">
-                          • Phần 2: Vật liệu Polymer (Bài 13)
+                        <Link to="/hoa12-chuong4?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
                         </Link>
-                        <Link to="/hoa12-chuong4" className="block py-0.5 text-amber-300 font-bold hover:text-white hover:underline">
-                          • Phần 3: Luyện 4 Đề Chuẩn Điểm 10
+                        <Link to="/hoa12-chuong4?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
                         </Link>
                       </div>
                     )}
                   </div>
-
                   {/* Chương 5: Pin & Điện Phân */}
-                  <div className="rounded-lg bg-amber-950/40 p-1.5 border border-amber-500/30">
+                  <div className="rounded-lg bg-slate-900/60 p-1.5 border border-amber-500/30">
                     <div
                       onClick={(e) => toggle('thpt_12_c5', e)}
                       className="flex items-center justify-between font-bold text-amber-200 hover:text-white cursor-pointer"
                     >
                       <Link to="/hoa12-chuong5" className="hover:underline flex items-center gap-1">
                         <span>⚡ Chương 5: Pin & Điện Phân</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
-                      {expanded['thpt_12_c5'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                      {expanded['thpt_12_c5'] ? <ChevronDown className="w-3 h-3 text-amber-300" /> : <ChevronRight className="w-3 h-3 text-amber-300" />}
                     </div>
                     {expanded['thpt_12_c5'] && (
-                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-amber-100/80">
-                        <Link to="/hoa12-chuong5" className="block py-0.5 hover:text-white hover:underline">
-                          • Phần 1: Thế điện cực & Pin Galvani
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa12-chuong5?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
                         </Link>
-                        <Link to="/hoa12-chuong5" className="block py-0.5 hover:text-white hover:underline">
-                          • Phần 2: Điện phân nóng chảy & dung dịch
+                        <Link to="/hoa12-chuong5?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
                         </Link>
-                        <Link to="/hoa12-chuong5" className="block py-0.5 text-cyan-300 font-bold hover:text-white hover:underline">
-                          • Phần 3: Ăn mòn kim loại & Luyện đề
+                        <Link to="/hoa12-chuong5?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
                         </Link>
                       </div>
                     )}
                   </div>
-
-                  {/* Chương 6: Đại cương kim loại */}
-                  <div className="rounded-lg bg-blue-950/40 p-1.5 border border-blue-500/30">
+                  {/* Chương 6: Đại Cương Kim Loại */}
+                  <div className="rounded-lg bg-slate-900/60 p-1.5 border border-amber-500/30">
                     <div
                       onClick={(e) => toggle('thpt_12_c6', e)}
-                      className="flex items-center justify-between font-bold text-blue-200 hover:text-white cursor-pointer"
+                      className="flex items-center justify-between font-bold text-amber-200 hover:text-white cursor-pointer"
                     >
-                      <Link to="/hoa12-chuong6" className="flex items-center gap-1.5 flex-1 hover:text-white">
+                      <Link to="/hoa12-chuong6" className="hover:underline flex items-center gap-1">
                         <span>⚙️ Chương 6: Đại Cương Kim Loại</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
-                      {expanded['thpt_12_c6'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                      {expanded['thpt_12_c6'] ? <ChevronDown className="w-3 h-3 text-amber-300" /> : <ChevronRight className="w-3 h-3 text-amber-300" />}
                     </div>
                     {expanded['thpt_12_c6'] && (
-                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-blue-100/80">
-                        <Link to="/hoa12-chuong6" className="block py-0.5 hover:text-white hover:underline">
-                          • Bài 18 - 19: Tinh thể & Tính chất kim loại
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa12-chuong6?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
                         </Link>
-                        <Link to="/hoa12-chuong6" className="block py-0.5 hover:text-white hover:underline">
-                          • Bài 20 - 22: Tách kim loại & Ăn mòn
+                        <Link to="/hoa12-chuong6?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
                         </Link>
-                        <Link to="/hoa12-chuong6" className="block py-0.5 text-cyan-300 font-bold hover:text-white hover:underline">
-                          • Luyện 4 Đề Thi Chuẩn Bộ 2025
+                        <Link to="/hoa12-chuong6?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
                         </Link>
                       </div>
                     )}
                   </div>
-
                   {/* Chương 7: Nhóm IA & IIA */}
-                  <div className="rounded-lg bg-orange-950/40 p-1.5 border border-orange-500/30">
+                  <div className="rounded-lg bg-slate-900/60 p-1.5 border border-amber-500/30">
                     <div
                       onClick={(e) => toggle('thpt_12_c7', e)}
-                      className="flex items-center justify-between font-bold text-orange-200 hover:text-white cursor-pointer"
+                      className="flex items-center justify-between font-bold text-amber-200 hover:text-white cursor-pointer"
                     >
-                      <Link to="/hoa12-chuong7" className="flex items-center gap-1.5 flex-1 hover:text-white">
+                      <Link to="/hoa12-chuong7" className="hover:underline flex items-center gap-1">
                         <span>🔥 Chương 7: Nhóm IA & IIA</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
-                      {expanded['thpt_12_c7'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                      {expanded['thpt_12_c7'] ? <ChevronDown className="w-3 h-3 text-amber-300" /> : <ChevronRight className="w-3 h-3 text-amber-300" />}
                     </div>
                     {expanded['thpt_12_c7'] && (
-                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-orange-100/80">
-                        <Link to="/hoa12-chuong7" className="block py-0.5 hover:text-white hover:underline">
-                          • Bài 24: Kim loại kiềm (Nhóm IA)
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa12-chuong7?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
                         </Link>
-                        <Link to="/hoa12-chuong7" className="block py-0.5 hover:text-white hover:underline">
-                          • Bài 25: Kim loại kiềm thổ & Nước cứng
+                        <Link to="/hoa12-chuong7?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
                         </Link>
-                        <Link to="/hoa12-chuong7" className="block py-0.5 text-amber-300 font-bold hover:text-white hover:underline">
-                          • Luyện 4 Đề Thi Chuẩn Bộ 2025
+                        <Link to="/hoa12-chuong7?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
                         </Link>
                       </div>
                     )}
                   </div>
-
-                  {/* Chương 8: Kim loại chuyển tiếp & Phức chất */}
-                  <div className="rounded-lg bg-purple-950/40 p-1.5 border border-purple-500/30">
+                  {/* Chương 8: Chuyển Tiếp & Phức Chất */}
+                  <div className="rounded-lg bg-slate-900/60 p-1.5 border border-amber-500/30">
                     <div
                       onClick={(e) => toggle('thpt_12_c8', e)}
-                      className="flex items-center justify-between font-bold text-purple-200 hover:text-white cursor-pointer"
+                      className="flex items-center justify-between font-bold text-amber-200 hover:text-white cursor-pointer"
                     >
-                      <Link to="/hoa12-chuong8" className="flex items-center gap-1.5 flex-1 hover:text-white">
+                      <Link to="/hoa12-chuong8" className="hover:underline flex items-center gap-1">
                         <span>🔮 Chương 8: Chuyển Tiếp & Phức Chất</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
-                      {expanded['thpt_12_c8'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                      {expanded['thpt_12_c8'] ? <ChevronDown className="w-3 h-3 text-amber-300" /> : <ChevronRight className="w-3 h-3 text-amber-300" />}
                     </div>
                     {expanded['thpt_12_c8'] && (
-                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-purple-100/80">
-                        <Link to="/hoa12-chuong8" className="block py-0.5 hover:text-white hover:underline">
-                          • Bài 27: Đại cương kim loại chuyển tiếp
+                      <div className="pl-3 pt-1 space-y-0.5 text-[10px] text-cyan-100/90">
+                        <Link to="/hoa12-chuong8?tab=exam" className="block py-0.5 text-amber-300 font-black hover:text-white hover:underline flex items-center gap-1">
+                          <span>🏆 Bộ 4 Đề Thi Chuẩn Bộ (50 phút)</span>
                         </Link>
-                        <Link to="/hoa12-chuong8" className="block py-0.5 hover:text-white hover:underline">
-                          • Bài 28 - 29: Cấu tạo & Ứng dụng phức chất
+                        <Link to="/hoa12-chuong8?tab=practice" className="block py-0.5 text-slate-200 hover:text-white hover:underline">
+                          • Luyện đề nhanh (15 câu vừa sức)
                         </Link>
-                        <Link to="/hoa12-chuong8" className="block py-0.5 text-pink-300 font-bold hover:text-white hover:underline">
-                          • Luyện 4 Đề Thi Chuẩn Bộ 2025
+                        <Link to="/hoa12-chuong8?tab=handbook" className="block py-0.5 text-slate-300 hover:text-white hover:underline">
+                          • Cẩm nang lý thuyết & dạng toán
                         </Link>
                       </div>
                     )}
