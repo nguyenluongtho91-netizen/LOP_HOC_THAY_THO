@@ -98,18 +98,21 @@ export default function StudentPortal() {
   const [enrolledCourses, setEnrolledCourses] = useState<any[]>([])
 
   // Xác định rõ ràng quyền Thầy giáo / Quản trị viên (Khởi tạo trước để tránh lỗi TDZ)
+  // Ưu tiên kiểm tra: Nếu đang đăng nhập bằng tài khoản Học sinh (không phải THAYTHO), tuyệt đối coi là Học sinh!
   const isTeacherUser = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      if (localStorage.getItem('is_teacher_mode') === 'true' || 
-          localStorage.getItem('role') === 'teacher' || 
-          localStorage.getItem('role') === 'admin') {
-        return true;
-      }
+    if (student) {
+      const code = String(student.student_code || '').toUpperCase().trim();
+      const role = String(student.role || '').toUpperCase();
+      const name = String(student.full_name || '').toLowerCase();
+      // Chỉ khi mã là THAYTHO hoặc role là ADMIN/TEACHER thật sự thì mới là Thầy giáo
+      return code === 'THAYTHO' || role === 'ADMIN' || role === 'TEACHER' || name.includes('thọ');
     }
-    if (!student) return false;
-    const code = String(student.student_code || '').toUpperCase().trim();
-    const role = String(student.role || '').toUpperCase();
-    return code === 'THAYTHO' || role === 'ADMIN' || role === 'TEACHER';
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('is_teacher_mode') === 'true' || 
+             localStorage.getItem('role') === 'teacher' || 
+             localStorage.getItem('role') === 'admin';
+    }
+    return false;
   }, [student]);
 
   const isFreeCandidate = isTeacherUser;
