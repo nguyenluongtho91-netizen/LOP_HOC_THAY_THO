@@ -1496,28 +1496,7 @@ export default function StudentPortal() {
         )}
 
 
-        {/* BANNER CẢNH BÁO: HỆ THỐNG ĐANG TẠM KHÓA · CHƯA ĐƯỢC THẦY THỌ CẤP QUYỀN */}
-        {accessConfig?.is_locked && (
-          <div className="bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 rounded-3xl p-5 sm:p-6 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-rose-400 animate-fade-in">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl flex-shrink-0 animate-pulse shadow-inner">
-                🔒
-              </div>
-              <div>
-                <h3 className="font-black text-base sm:text-lg uppercase tracking-wide flex items-center gap-2">
-                  <span>HỆ THỐNG ĐANG TẠM KHÓA · CHƯA CẤP QUYỀN</span>
-                  <span className="text-[10px] bg-white text-rose-700 font-black px-2 py-0.5 rounded-full uppercase">Chờ Thầy Thọ</span>
-                </h3>
-                <p className="text-xs sm:text-sm text-rose-100 font-medium mt-1">
-                  Thầy Thọ chưa mở quyền vào học hay thi từ Trang Chủ. Các phòng thi và bài học đang được bảo vệ.
-                </p>
-              </div>
-            </div>
-            <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-black/20 border border-white/20 whitespace-nowrap">
-              Chỉ Trang Chủ Mới Cấp Quyền
-            </span>
-          </div>
-        )}
+
 
         {/* 📚 KHÓA HỌC & BÀI GIẢNG VIDEO ĐƯỢC CẤP QUYỀN */}
         {visibleCourses.length > 0 && (
