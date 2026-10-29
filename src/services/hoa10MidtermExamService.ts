@@ -790,21 +790,21 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "Kí hiệu nguyên tử X là  3026X .",
+            "text": "Kí hiệu nguyên tử X là <sup>30</sup><sub>26</sub>X .",
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Điện tích hạt nhân của X là +26.<br/>c. Đúng.<br/>d. Sai. Kí hiệu đúng là  5626X .",
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Điện tích hạt nhân của X là +26.<br/>c. Đúng.<br/>d. Sai. Kí hiệu đúng là <sup>56</sup><sub>26</sub>X .",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de01_p2_q2",
         "number": 2,
         "part": 2,
         "type": "true_false",
-        "text": "Cho ba nguyên tử có kí hiệu sau:  2613X ,  5526Y ,  2612Z .",
+        "text": "Cho ba nguyên tử có kí hiệu sau: <sup>26</sup><sub>13</sub>X , <sup>55</sup><sub>26</sub>Y , <sup>26</sup><sub>12</sub>Z .",
         "images": [],
         "options": [
           {
@@ -835,7 +835,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. X, Z có số proton khác nhau.<br/>c. Sai. Số neutron của X là 13 và của Y là 29.<br/>d. Sai. Y, Z có số proton khác nhau.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de01_p2_q3",
@@ -873,7 +873,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. AO p là 3 và AO d là 5.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de01_p2_q4",
@@ -911,7 +911,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Các nguyên tố được sắp xếp theo chiều tăng dần điện tích hạt nhân nguyên tử.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de01_p3_q1",
@@ -924,7 +924,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 18.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de01_p3_q2",
@@ -937,7 +937,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de01_p3_q3",
@@ -950,7 +950,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.<br/>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup>3p<sup>2</sup> và 1s<sup>2</sup>2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup>3p<sup>4</sup>.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de01_p3_q4",
@@ -965,7 +965,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 20,2.<br/>20.9021.122.9A20,19100++==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de01_p3_q5",
@@ -978,7 +978,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de01_p3_q6",
@@ -991,7 +991,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 7 hoặc 11.<br/>- Trường hợp 1: Số thứ tự nhóm của Y nhỏ hơn so với X:<br/>Số proton của X là p thì của Y là p + 7<br/>Ta có: p + p + 7 = 23<br/>⇒ p = 8 ~ <sub>8</sub>O và p + 7 = 15 ~ <sub>15</sub>P (không thỏa mãn đề bài do phosphorus có phản ứng với oxygen).<br/>- Trường hợp 2: Số thứ tự nhóm của Y lớn hơn so với X:<br/>Số proton của X là p thì của Y là p + 9<br/>Ta có: p + p + 9 = 23<br/>⇒ p = 7 ~ <sub>7</sub>N và p + 9 = 16 ~ <sub>16</sub>S<br/>- Trường hợp 3: Số thứ tự nhóm của Y lớn hơn so với X:<br/>Số proton của X là p thì của Y là p + 1<br/>Ta có: p + p + 1 = 23<br/>⇒ p = 11 ~ <sub>11</sub>Na và p + 1 = 12 ~ <sub>12</sub>Mg<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -1291,25 +1291,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "4018X ,  4019Y",
+            "text": "<sup>40</sup><sub>18</sub>X , <sup>40</sup><sub>19</sub>Y",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "2814X ,  2914Y",
+            "text": "<sup>28</sup><sub>14</sub>X , <sup>29</sup><sub>14</sub>Y",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "146X ,  147Y",
+            "text": "<sup>14</sup><sub>6</sub>X , <sup>14</sup><sub>7</sub>Y",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "199X ,  2010Y",
+            "text": "199X , <sup>20</sup><sub>10</sub>Y",
             "isCorrect": false
           }
         ],
@@ -1441,7 +1441,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cấu hình electron nguyên tử của các nguyên tố X, Y, Z, T lần lượt là: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>,  1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup>, 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup>, 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>1</sup>. Dãy gồm các nguyên tố thuộc cùng chu kì là",
+        "text": "Cấu hình electron nguyên tử của các nguyên tố X, Y, Z, T lần lượt là: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>, 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup>, 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup>, 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>1</sup>. Dãy gồm các nguyên tố thuộc cùng chu kì là",
         "images": [],
         "options": [
           {
@@ -1681,19 +1681,19 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "2714X",
+            "text": "<sup>27</sup><sub>14</sub>X",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "2713X",
+            "text": "<sup>27</sup><sub>13</sub>X",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "2814X",
+            "text": "<sup>28</sup><sub>14</sub>X",
             "isCorrect": false
           },
           {
@@ -1747,7 +1747,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>Mô hình trên là là mô hình hành tinh nguyên tử Rutherford – Bohr. Các electron chuyển động xung quanh hạt nhân theo một quỹ đạo tròn hay bầu dục nhất định.<br/>a. Sai.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de02_p2_q2",
@@ -1760,7 +1760,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "Kí hiệu các đồng vị của silicon:  282930141414Si;Si;Si.",
+            "text": "Kí hiệu các đồng vị của silicon: 282930141414Si;Si;Si.",
             "isCorrect": true
           },
           {
@@ -1785,7 +1785,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Các đồng vị có tính chất hóa học tương tự nhau.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de02_p2_q3",
@@ -1823,7 +1823,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Cấu hình electron của nguyên tử Ca là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>34s<sup>2</sup>.<br/>b. Sai. Lớp ngoài cùng có 2 electron.<br/>c. Đúng.<br/>d. Sai. Ion Ca<sup>2+</sup>.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de02_p2_q4",
@@ -1860,10 +1860,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>a. Sai. Hoàn toàn giống nhau dù các vật liệu làm cực âm khác nhau.<br/>b. Đúng.<br/>c. Sai.  Khi đặt điện trường giữa ống tia âm cực, các hạt tạo nên tia âm cực bị lệch phía bản cực tích điện dương.<br/>d. Sai. Hạt tạo nên tia âm cực là hạt electron.",
+        "explanation": "Đáp án:<br/>a. Sai. Hoàn toàn giống nhau dù các vật liệu làm cực âm khác nhau.<br/>b. Đúng.<br/>c. Sai. Khi đặt điện trường giữa ống tia âm cực, các hạt tạo nên tia âm cực bị lệch phía bản cực tích điện dương.<br/>d. Sai. Hạt tạo nên tia âm cực là hạt electron.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de02_p3_q1",
@@ -1876,7 +1876,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.<br/>Electron cuối cùng điền vào phân lớp s.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de02_p3_q2",
@@ -1891,20 +1891,20 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 1.<br/>Có (a).",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de02_p3_q3",
         "number": 3,
         "part": 3,
         "type": "short_answer",
-        "text": "Nguyên tố bromine (Br) có số hiệu nguyên tử là 35. Nguyên tử nguyên tố X có số electron nhỏ hơn số electron của ion  Br-  là 6. X nằm ở ô số mấy trong bảng tuần hoàn các nguyên tố hóa học?",
+        "text": "Nguyên tố bromine (Br) có số hiệu nguyên tử là 35. Nguyên tử nguyên tố X có số electron nhỏ hơn số electron của ion Br- là 6. X nằm ở ô số mấy trong bảng tuần hoàn các nguyên tố hóa học?",
         "images": [],
         "correctAnswer": "30",
         "explanation": "Đáp án: 30.<br/>Nguyên tử Br có số electron = 35 → Ion Br<sup>–</sup> có số electron = 36<br/>Nguyên tử X có số electron = 36 – 6 = 30<br/>Vậy X nằm ô số 30.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de02_p3_q4",
@@ -1917,7 +1917,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 8.<br/>Cấu hình 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>.<br/>Lớp L (lớp 2) có 8e.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de02_p3_q5",
@@ -1927,10 +1927,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Nguyên tố Y có hai đồng vị bền với nguyên tử khối trung bình là 24,4. Đồng vị thứ nhất có số khối bằng 24 và chiếm 60% số nguyên tử. Xem nguyên tử khối có giá trị xấp xỉ số khối. Xác định số khối của đồng vị thứ hai. Số khối của đồng vị thứ hai là bao nhiêu?",
         "images": [],
         "correctAnswer": "25",
-        "explanation": "Đáp án: 25.<br/>Gọi A<sub>2</sub> là số khối của đồng vị thứ 2.<br/>Đồng vị thứ 1 chiếm 60% số nguyên tử nên đồng vị còn lại chiếm 40%<br/>Ta có:  24,4 =   → A<sub>2</sub> = 25<br/>Vậy số khối của đồng vị thứ 2 là 25.",
+        "explanation": "Đáp án: 25.<br/>Gọi A<sub>2</sub> là số khối của đồng vị thứ 2.<br/>Đồng vị thứ 1 chiếm 60% số nguyên tử nên đồng vị còn lại chiếm 40%<br/>Ta có: 24,4 = → A<sub>2</sub> = 25<br/>Vậy số khối của đồng vị thứ 2 là 25.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de02_p3_q6",
@@ -1943,7 +1943,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.<br/>Các nguyên tố có 1, 2, 3 electron lớp ngoài cùng là kim loại (trừ H, He, B).<br/>Có 2 nguyên tố kim loại là R (Z = 11) và M (Z = 26).<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -2237,7 +2237,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 8,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Phát biểu nào sau đây đúng về  73Li ?",
+        "text": "Phát biểu nào sau đây đúng về 73Li ?",
         "images": [],
         "options": [
           {
@@ -2699,7 +2699,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Trên các lớp khác nhau có số electron khác nhau.<br/>b. Sai. Năng lượng electron trên các lớp khác nhau thì khác nhau.<br/>c. Đúng.<br/>d. Sai. Electron ở gần hạt nhân nhất có năng lượng thấp nhất.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de03_p2_q2",
@@ -2737,7 +2737,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>Cấu hình e [Ne] 3s<sup>2</sup>3p<sup>2</sup><br/>a. Đúng.<br/>b. Sai. Z = 14<br/>c. Sai. 3p<sup>6</sup> mới bão hòa<br/>d. Sai. X là nguyên tố phi kim",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de03_p2_q3",
@@ -2775,7 +2775,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Bảng tuần hoàn của Men-đê-lê-ép sắp xếp theo chiều tăng dần khối lượng nguyên tử.<br/>c. Đúng.<br/>d. Sai. Trong một chu kỳ, các nguyên tố được sắp xếp theo chiều điện tích hạt nhân tăng dần.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de03_p2_q4",
@@ -2815,20 +2815,20 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de3_image14.png"
         ],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de03_p3_q1",
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Oxygen có 3 đồng vị là  16O ,  17O  và  18O . Nitrogen có 2 đồng vị là <sup>14</sup>N, <sup>15</sup>N. Có bao nhiêu hợp chất NO khác nhau được tạo thành bởi các đồng vị trên?",
+        "text": "Oxygen có 3 đồng vị là 16O , 17O và 18O . Nitrogen có 2 đồng vị là <sup>14</sup>N, <sup>15</sup>N. Có bao nhiêu hợp chất NO khác nhau được tạo thành bởi các đồng vị trên?",
         "images": [],
         "correctAnswer": "6",
         "explanation": "Đáp án: 6.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de03_p3_q2",
@@ -2841,7 +2841,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 18.<br/>2n<sup>2</sup> = 2.3<sup>2</sup> = 18.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de03_p3_q3",
@@ -2854,14 +2854,14 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 53.<br/>Cấu hình Iodine (I): [Kr]4d<sup>10</sup>5s<sup>2</sup>5p<sup>5</sup> (tổng số e = 36 + 10 + 2 + 5 = 53)",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de03_p3_q4",
         "number": 4,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các cách biểu diễn electron vào orbital của các phân lớp ở trạng thái cơ bản như sau:<br/>a) d)<br/>1s                                                                                                    3d<br/>b) e)<br/>2p                                                                                  2p<br/>c) g)<br/>3p                                                                             3s<br/>Trong các cách biểu diễn trên, có bao nhiêu cách phân bố đúng với từng phân lớp electron?",
+        "text": "Cho các cách biểu diễn electron vào orbital của các phân lớp ở trạng thái cơ bản như sau:<br/>a) d)<br/>1s 3d<br/>b) e)<br/>2p 2p<br/>c) g)<br/>3p 3s<br/>Trong các cách biểu diễn trên, có bao nhiêu cách phân bố đúng với từng phân lớp electron?",
         "images": [
           "/assets/hoa10/midterm/h10_gk1_de3_image8.png",
           "/assets/hoa10/midterm/h10_gk1_de3_image9.png",
@@ -2874,7 +2874,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.<br/>Có 3 cách phân bố đúng là a, d, e.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de03_p3_q5",
@@ -2890,7 +2890,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de3_image16.png"
         ],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de03_p3_q6",
@@ -2900,10 +2900,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "X, Y là hai nguyên tố thuộc cùng nhóm A ở hai chu kì liên tiếp nhau trong bảng tuần hoàn, có tổng số proton trong hai hạt nhân là 32 (Z<sub>X</sub> < Z<sub>Y</sub>). Số hiệu nguyên tử của Y là bao nhiêu?",
         "images": [],
         "correctAnswer": "20",
-        "explanation": "Đáp án: 20.<br/>Ta có: Z<sub>X</sub> + Z<sub>Y</sub> = 32 (1)<br/>Vì X và Y thuộc cùng nhóm A ở hai chu kì kế tiếp nhau nên số proton của chúng khác nhau 8 hoặc 18 đơn vị  Z<sub>Y</sub> – Z<sub>X</sub> = 8 (2) hoặc Z<sub>Y</sub> – Z<sub>X</sub> = 18 (3)<br/>Kết hợp (1) và (2) giải hệ phương trình ta được: Z<sub>X</sub> = 12; Z<sub>Y</sub> = 20 (thỏa)<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 20.<br/>Ta có: Z<sub>X</sub> + Z<sub>Y</sub> = 32 (1)<br/>Vì X và Y thuộc cùng nhóm A ở hai chu kì kế tiếp nhau nên số proton của chúng khác nhau 8 hoặc 18 đơn vị Z<sub>Y</sub> – Z<sub>X</sub> = 8 (2) hoặc Z<sub>Y</sub> – Z<sub>X</sub> = 18 (3)<br/>Kết hợp (1) và (2) giải hệ phương trình ta được: Z<sub>X</sub> = 12; Z<sub>Y</sub> = 20 (thỏa)<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -3002,7 +3002,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 3,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Nguyên tử  6329 Cu có số neutron là",
+        "text": "Nguyên tử 6329 Cu có số neutron là",
         "images": [],
         "options": [
           {
@@ -3121,7 +3121,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 6,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Nguyên tố nitrogen có hai đồng vị tự nhiên là  147N và  157N.  Số loại phân tử N<sub>2</sub> tồn tại bền trong khí quyển trái đất là",
+        "text": "Nguyên tố nitrogen có hai đồng vị tự nhiên là <sup>14</sup><sub>7</sub>N và 157N. Số loại phân tử N<sub>2</sub> tồn tại bền trong khí quyển trái đất là",
         "images": [],
         "options": [
           {
@@ -3661,7 +3661,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. m<sub>e</sub> = 0,00055 amu.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de04_p2_q2",
@@ -3701,7 +3701,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Kí hiệu là V.<br/>c. Sai. Nguyên tử khối trung bình 50,942.<br/>d. Sai. Chu kì 4, nhóm VB.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de04_p2_q3",
@@ -3739,7 +3739,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "a) Đúng.<br/>b) Sai. Electron chuyển động trong vùng không gian xác suất 90%, không cố định trên mặt cầu.<br/>c) Sai. Kích thước nguyên tử lớn hơn rất nhiều so với kích thước hạt nhân (khoảng 10.000 lần).<br/>d) Sai. Xác suất tìm thấy electron ở cả 2 thùy là 90%, do đó ở mỗi thùy khoảng 45%.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de04_p2_q4",
@@ -3777,7 +3777,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>Gọi x, y là số electron lần lượt trên phân lớp 3p và 4s<br/>Theo đề ta có: x + y = 7<br/>+ Nếu y = 1 → x = 6 (loại) vì theo đề X không phải khí hiếm<br/>+ Nếu y = 2 → x = 5<br/>X: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>, Y: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup>.<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de04_p3_q1",
@@ -3790,7 +3790,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 18.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de04_p3_q2",
@@ -3800,10 +3800,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Ở trạng thái cơ bản, nguyên tử M có phân lớp electron điền sau cùng là 3d<sup>6</sup>. Tổng số electron ở các phân lớp s của nguyên tử M là bao nhiêu?",
         "images": [],
         "correctAnswer": "8",
-        "explanation": "Đáp án: 8.<br/>1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup>3d<sup>8</sup>  Có 8 electron phân lớp s.",
+        "explanation": "Đáp án: 8.<br/>1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>2</sup>3d<sup>8</sup> Có 8 electron phân lớp s.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de04_p3_q3",
@@ -3818,7 +3818,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de4_image11.png"
         ],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de04_p3_q4",
@@ -3831,7 +3831,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 132.<br/>1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>10</sup>4s<sup>1</sup> (Z = 29)<br/>Tổng số hạt là 29.2.2 + 8.2 = 132.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de04_p3_q5",
@@ -3844,7 +3844,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de04_p3_q6",
@@ -3857,7 +3857,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Gọi % của Co-60 là x% ⟹ % của Co-58 là (2 - x)%.<br/>Nguyên tử khối trung bình: Ā = [59 × 98 + 60 × x + 58 × (2 - x)] / 100 = 58,982 ⟹ x = 0,1%.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -4079,25 +4079,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "4020Ca ",
+            "text": "<sup>40</sup><sub>20</sub>Ca",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "147N ",
+            "text": "<sup>14</sup><sub>7</sub>N",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "157N ",
+            "text": "157N",
             "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "178O ",
+            "text": "178O",
             "isCorrect": false
           }
         ],
@@ -4311,7 +4311,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các nguyên tử sau:  121414676X,Y,Z . Những nguyên tử nào thuộc cùng một nguyên tố hóa học?",
+        "text": "Cho các nguyên tử sau: 121414676X,Y,Z . Những nguyên tử nào thuộc cùng một nguyên tố hóa học?",
         "images": [],
         "options": [
           {
@@ -4506,7 +4506,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 17,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các cấu hình electron của nguyên tử sau đây:<br/>(a)  2262611s2s2p3s3p4s (b)  226261011s2s2p3s3p3d4s<br/>(c)  2262610251s2s2p3s3p3d4s4p (d)  2262610261s2s2p3s3p3d4s4p<br/>Có bao nhiêu cấu hình electron nguyên tử là kim loại?",
+        "text": "Cho các cấu hình electron của nguyên tử sau đây:<br/>(a) 2262611s2s2p3s3p4s (b) 226261011s2s2p3s3p3d4s<br/>(c) 2262610251s2s2p3s3p3d4s4p (d) 2262610261s2s2p3s3p3d4s4p<br/>Có bao nhiêu cấu hình electron nguyên tử là kim loại?",
         "images": [],
         "options": [
           {
@@ -4545,7 +4545,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 18,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Một cation M<sup>+</sup> và một anion X<sup>-</sup> có cùng cấu hình electron là  2261s2s2p . Phát biểu nào sau đây là đúng?",
+        "text": "Một cation M<sup>+</sup> và một anion X<sup>-</sup> có cùng cấu hình electron là 2261s2s2p . Phát biểu nào sau đây là đúng?",
         "images": [],
         "options": [
           {
@@ -4608,14 +4608,14 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "Nước chỉ tạo nên bởi các đồng vị  11H .",
+            "text": "Nước chỉ tạo nên bởi các đồng vị 11H .",
             "isCorrect": false
           }
         ],
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. H<sub>2</sub>O được tạo nên bởi các đồng vị của hydrogen và các đồng vị của oxygen.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de05_p2_q2",
@@ -4653,7 +4653,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Điền electron vào các orbital theo thứ tự tăng dần mức năng lượng.<br/>b. Sai. Ví dụ 3d điền trước 4p.<br/>c. Sai. Phân lớp p, d, f có nhiều hơn 2e.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de05_p2_q3",
@@ -4691,7 +4691,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>Vì X có 3e độc thân và X nằm ở chu kì 2 nên cấu hình của X là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>.<br/>a. Đúng.<br/>b. Sai.<br/>c. Sai. X là phi kim.<br/>d. Sai. X thuộc nhóm VA.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de05_p2_q4",
@@ -4729,7 +4729,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>X thường có 1, 2, 3e ở lớp ngoài cùng, Y thường có 5, 6, 7e ở lớp ngoài cùng.<br/>a. Sai. X và Y cùng một chu kì nên không thể cùng nhóm.<br/>b. Đúng.<br/>c. Sai. Al có 3e hóa trị, Cl có 7e hóa trị (tổng là 11e).<br/>d. Sai. Zn là nguyên tố nhóm B.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de05_p3_q1",
@@ -4744,7 +4744,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 7.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de05_p3_q2",
@@ -4757,7 +4757,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 12.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de05_p3_q3",
@@ -4770,7 +4770,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 600.<br/>Đường kính nguyên tử: 6.10.000 = 60.000 cm = 600 m.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de05_p3_q4",
@@ -4783,7 +4783,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de05_p3_q5",
@@ -4798,7 +4798,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 63,6.<br/>63.765.3M63,6.10+==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de05_p3_q6",
@@ -4811,7 +4811,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 9.<br/>Số electron trong cation = Số electron trong anion = 20/2 = 10<br/>Có 3 trường hợp, Al<sup>3+</sup>và N<sup>3-</sup>; Mg<sup>2+</sup> và O<sup>2-</sup>; Na<sup>+</sup> và F<sup>-</sup><br/>N<sup>3-</sup> và O<sup>2-</sup> không thỏa mãn mức oxi hóa duy nhất<br/>X là Na ở ô số 11, chu kì 3, nhóm IA và Y là F ở ô số 9, chu kì 2, nhóm VIIA của bảng tuần hoàn.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -4988,7 +4988,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 5,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Số đơn vị điện tích hạt nhân của nguyên tử có kí hiệu  2311Na là",
+        "text": "Số đơn vị điện tích hạt nhân của nguyên tử có kí hiệu <sup>23</sup><sub>11</sub>Na là",
         "images": [],
         "options": [
           {
@@ -5464,7 +5464,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 17,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các cấu hình electron của nguyên tử sau đây:<br/>(a)  22621s2s2p3s (b)  226261s2s2p3s3p<br/>(c)  2262610251s2s2p3s3p3d4s4p (d)  2221s2s2p<br/>Có bao nhiêu cấu hình electron nguyên tử là phi kim?",
+        "text": "Cho các cấu hình electron của nguyên tử sau đây:<br/>(a) 22621s2s2p3s (b) 226261s2s2p3s3p<br/>(c) 2262610251s2s2p3s3p3d4s4p (d) 2221s2s2p<br/>Có bao nhiêu cấu hình electron nguyên tử là phi kim?",
         "images": [],
         "options": [
           {
@@ -5503,7 +5503,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 18,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các phát biểu về nguyên tử  5224X :<br/>(1) X có tổng các hạt mang điện nhiều hơn số hạt không mang điện là 20.<br/>(2) X có số hạt neutron nhiều hơn proton là 4.<br/>(3) X có 4 lớp electron.<br/>(4) Cấu hình electron của X là [Ar]3d<sup>4</sup>4s<sup>2</sup>.<br/>(5) X là kim loại.<br/>Số phát biểu đúng là",
+        "text": "Cho các phát biểu về nguyên tử <sup>52</sup><sub>24</sub>X :<br/>(1) X có tổng các hạt mang điện nhiều hơn số hạt không mang điện là 20.<br/>(2) X có số hạt neutron nhiều hơn proton là 4.<br/>(3) X có 4 lớp electron.<br/>(4) Cấu hình electron của X là [Ar]3d<sup>4</sup>4s<sup>2</sup>.<br/>(5) X là kim loại.<br/>Số phát biểu đúng là",
         "images": [],
         "options": [
           {
@@ -5575,7 +5575,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>Hình (1) thể hiện mô hình hành tinh nguyên tử. Trong mô hình này các electron chuyển động theo quỹ đạo giống như các hành tinh quay xung quanh mặt trời.<br/>Hình (2) thể hiện mô hình hiện đại của nguyên tử. Trong mô hình hiện đại của nguyên tử các electron chuyển động không theo quỹ đạo cố định.<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai.<br/>d. Sai.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de06_p2_q2",
@@ -5613,7 +5613,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. 5 phân lớp e: 1s; 2s; 2p; 3s; 3p.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de06_p2_q3",
@@ -5651,14 +5651,14 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Lấy ví dụ chu kì 4 sẽ hoàn thiện các phân lớp 4s, 4p (tổng số electron tối đa trên các phân lớp này là 8 electron) và cả phân lớp 3d (tối đa 10 electron) nên chu kì 4 có 18 nguyên tố.<br/>b. Đúng.<br/>c. Sai. Trong một chu kì, các nguyên tố có cùng số lớp electron.<br/>d. Sai. Các nguyên tố có phân lớp 3d thì chu kì lớn hơn 3.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de06_p2_q4",
         "number": 4,
         "part": 2,
         "type": "true_false",
-        "text": "Chlorine trong tự nhiên gồm hai đồng vị: 75,76%  35Cl (khối lượng nguyên tử là 34,9688 amu) và 24,24%  37Cl  (khối lượng nguyên tử là 36,9659 amu). Oxygen trong tự nhiên gồm 3 đồng vị: 99,757%  16O  (khối lượng nguyên tử là 15,9949 amu), 0,0038%  17O  (khối lượng nguyên tử là 16,9991 amu), 0,205%  18O  (khối lượng nguyên tử là 17,9991 amu). Các hợp chất dichlorine monoxide Cl<sub>2</sub>O được tạo thành từ hai nguyên tử chlorine và một nguyên tử oxygen liên kết với nhau.",
+        "text": "Chlorine trong tự nhiên gồm hai đồng vị: 75,76% 35Cl (khối lượng nguyên tử là 34,9688 amu) và 24,24% 37Cl (khối lượng nguyên tử là 36,9659 amu). Oxygen trong tự nhiên gồm 3 đồng vị: 99,757% 16O (khối lượng nguyên tử là 15,9949 amu), 0,0038% 17O (khối lượng nguyên tử là 16,9991 amu), 0,205% 18O (khối lượng nguyên tử là 17,9991 amu). Các hợp chất dichlorine monoxide Cl<sub>2</sub>O được tạo thành từ hai nguyên tử chlorine và một nguyên tử oxygen liên kết với nhau.",
         "images": [],
         "options": [
           {
@@ -5686,10 +5686,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>a. Đúng. Có 3 cách chọn đồng vị Cl và 3 cách chọn đồng vị O  3.3 = 9 phân tử Cl<sub>2</sub>O.<br/>b. Sai. Giá trị nguyên tử khối trung bình không phải là số nguyên.<br/>c. Đúng. M =  36,9659.2 + 16,9991 = 90,9309.<br/>d. Đúng. M = 34,9688.2 + 15,9949 = 85,9325.",
+        "explanation": "Đáp án:<br/>a. Đúng. Có 3 cách chọn đồng vị Cl và 3 cách chọn đồng vị O 3.3 = 9 phân tử Cl<sub>2</sub>O.<br/>b. Sai. Giá trị nguyên tử khối trung bình không phải là số nguyên.<br/>c. Đúng. M = 36,9659.2 + 16,9991 = 90,9309.<br/>d. Đúng. M = 34,9688.2 + 15,9949 = 85,9325.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de06_p3_q1",
@@ -5702,7 +5702,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 10.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de06_p3_q2",
@@ -5717,7 +5717,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 5.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de06_p3_q3",
@@ -5730,7 +5730,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de06_p3_q4",
@@ -5743,7 +5743,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 26.<br/>2ZN802Z262ZN202N30+=+=ììÞíí-=+=îî",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de06_p3_q5",
@@ -5756,14 +5756,14 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 20.<br/>Cấu hình electron của nguyên tố này có dạng: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>x</sup>4s<sup>2</sup>.<br/>Vậy tổng số electron s và electron p của nguyên tố là: 2 + 2 + 6 + 2 + 6 + 2 = 20.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de06_p3_q6",
         "number": 6,
         "part": 3,
         "type": "short_answer",
-        "text": "Nguyên tử Fe ở 20<sup>o</sup>C có khối lượng riêng là 7,87 g/cm<sup>3</sup>. Với giả thiết này, tinh thể nguyên tử Fe là những hình cầu chiếm 75% thể tích tinh thể, phần còn lại là những khe rỗng giữa các quả cầu. Cho biết khối lượng nguyên tử của Fe là 55,847. Tính bán kính nguyên tử gần đúng của Fe theo đơn vị angstrom biết  10110Åm-= . (Kết quả làm tròn đến hàng phần trăm).",
+        "text": "Nguyên tử Fe ở 20<sup>o</sup>C có khối lượng riêng là 7,87 g/cm<sup>3</sup>. Với giả thiết này, tinh thể nguyên tử Fe là những hình cầu chiếm 75% thể tích tinh thể, phần còn lại là những khe rỗng giữa các quả cầu. Cho biết khối lượng nguyên tử của Fe là 55,847. Tính bán kính nguyên tử gần đúng của Fe theo đơn vị angstrom biết 10110Åm-= . (Kết quả làm tròn đến hàng phần trăm).",
         "images": [],
         "correctAnswer": "1.28",
         "explanation": "Đáp án: 1,28.<br/>Thể tích của 1 mol Fe là: 55,847 : 7,87 = 7,096 cm<sup>3</sup><br/>Thể tích của một nguyên tử Fe là:<br/><br/>Bán kính gần đúng của nguyên tử Fe là:<br/><br/>------------------------- HẾT -------------------------",
@@ -5772,7 +5772,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de6_image26.png"
         ],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -6027,7 +6027,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 7,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho kí hiệu nguyên tử  168O . Khẳng định nào sau đây sai?",
+        "text": "Cho kí hiệu nguyên tử <sup>16</sup><sub>8</sub>O . Khẳng định nào sau đây sai?",
         "images": [],
         "options": [
           {
@@ -6528,7 +6528,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Chỉ phát hiện ra hạt proton.<br/>c. Đúng.<br/>d. Sai. Hạt nhân mang điện tích dương.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de07_p2_q2",
@@ -6566,7 +6566,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Các electron trên các phân lớp 3s, 3p, 3d có năng lượng gần bằng nhau.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de07_p2_q3",
@@ -6604,7 +6604,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. X là khí hiếm.<br/>b. Sai. X nằm ở nhóm VIIIA.<br/>c. Đúng.<br/>d. Sai. X có các phân lớp 1s, 2s, 2p, 3s, 3p.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de07_p2_q4",
@@ -6619,7 +6619,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "Bromine có 2 đồng vị bền là  79813535Br vàBr .",
+            "text": "Bromine có 2 đồng vị bền là 79813535Br vàBr .",
             "isCorrect": true
           },
           {
@@ -6641,10 +6641,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai.  79.50,6949,31.81A79,9862100+==<br/>c. Đúng.<br/>d. Sai.  Br2n0,2mol=Þ  Số nguyên tử Br = 0,2.2. 6,022.10<sup>23</sup> = 2,41.10<sup>23</sup>.",
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. 79.50,6949,31.81A79,9862100+==<br/>c. Đúng.<br/>d. Sai. Br2n0,2mol=Þ Số nguyên tử Br = 0,2.2. 6,022.10<sup>23</sup> = 2,41.10<sup>23</sup>.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de07_p3_q1",
@@ -6657,7 +6657,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de07_p3_q2",
@@ -6670,7 +6670,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de07_p3_q3",
@@ -6685,20 +6685,20 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 5.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de07_p3_q4",
         "number": 4,
         "part": 3,
         "type": "short_answer",
-        "text": "Copper (Cu) có hai đồng vị   6329 Cu và   6529 Cu. Nguyên tử khối trung bình của copper là 63,54. Phần trăm số nguyên tử của đồng vị  6329 Cu  là a%. Giá trị của a là bao nhiêu %?",
+        "text": "Copper (Cu) có hai đồng vị 6329 Cu và 6529 Cu. Nguyên tử khối trung bình của copper là 63,54. Phần trăm số nguyên tử của đồng vị 6329 Cu là a%. Giá trị của a là bao nhiêu %?",
         "images": [],
         "correctAnswer": "73",
         "explanation": "Đáp án: 73.<br/>63.a65.(100a)A63,54a73100+-==Þ=",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de07_p3_q5",
@@ -6708,10 +6708,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Ở trạng thái cơ bản, lớp N của nguyên tử nguyên tố X có 5 electron. Số thứ tự ô nguyên tố của X trong bảng tuần hoàn là bao nhiêu?",
         "images": [],
         "correctAnswer": "33",
-        "explanation": "Đáp án: 33.<br/>Lớp N là lớp 4  cấu hình của X là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>10</sup>4s<sup>2</sup>4p<sup>3</sup>.",
+        "explanation": "Đáp án: 33.<br/>Lớp N là lớp 4 cấu hình của X là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>10</sup>4s<sup>2</sup>4p<sup>3</sup>.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de07_p3_q6",
@@ -6724,7 +6724,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 8<br/>1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>8</sup>4s<sup>2</sup>.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -6868,25 +6868,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "1225A ",
+            "text": "<sup>25</sup><sub>12</sub>A",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "2512A ",
+            "text": "<sup>25</sup><sub>12</sub>A",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "1224A ",
+            "text": "<sup>24</sup><sub>12</sub>A",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "2412A ",
+            "text": "<sup>24</sup><sub>12</sub>A",
             "isCorrect": true
           }
         ],
@@ -7069,7 +7069,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "b",
             "letter": "B",
-            "text": "1 mol X chứa số lượng nguyên tử bằng số lượng nguyên tử trong  112  mol nguyên tử carbon",
+            "text": "1 mol X chứa số lượng nguyên tử bằng số lượng nguyên tử trong 112 mol nguyên tử carbon",
             "isCorrect": false
           },
           {
@@ -7081,7 +7081,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "1 mol X có khối lượng bằng  12 khối lượng 1 mol carbon",
+            "text": "1 mol X có khối lượng bằng 12 khối lượng 1 mol carbon",
             "isCorrect": false
           }
         ],
@@ -7213,7 +7213,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 13,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các cấu hình electron sau:<br/>(1) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>. (2) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup>.             (3) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>.<br/>(4) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>.  (5) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>5</sup>4s<sup>2</sup>         (6) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>.<br/>Số cấu hình electron của nguyên tố phi kim là",
+        "text": "Cho các cấu hình electron sau:<br/>(1) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>. (2) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup>. (3) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>.<br/>(4) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>. (5) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>5</sup>4s<sup>2</sup> (6) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>.<br/>Số cấu hình electron của nguyên tố phi kim là",
         "images": [],
         "options": [
           {
@@ -7482,7 +7482,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Trong thí nghiệm của Thomson, hạt tạo nên tia âm cực là hạt electron.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de08_p2_q2",
@@ -7520,7 +7520,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>Cấu hình electron: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup> (có 3 electron độc thân ở phân lớp 3p)<br/>a. Sai. Có 5 electron lớp ngoài cùng.<br/>b. Sai. Có 15 proton.<br/>c. Sai. Chu kì 3, nhóm VA.<br/>d. Sai. Nguyên tố phi kim.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de08_p2_q3",
@@ -7558,7 +7558,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Phần lớp 2p có 3 AO px, py, pz. Trong mỗi AO 2px có 2e.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de08_p2_q4",
@@ -7596,7 +7596,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Có 3 chu kì nhỏ và 4 chu kì lớn.<br/>b. Sai. Helium có 2e ở lớp ngoài cùng nhưng xếp vào nhóm VIIIA.<br/>c. Sai. Dựa trên khối lượng nguyên tử.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de08_p3_q1",
@@ -7609,7 +7609,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.<br/>Y có cấu hình: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de08_p3_q2",
@@ -7622,7 +7622,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 9.<br/>Lớp M (lớp 3) có 3s, 3p, 3d ứng với số AO là 1 + 3 + 5 = 9.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de08_p3_q3",
@@ -7632,10 +7632,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Cho các hạt có thành phần như sau:<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\"></th><th class=\"px-2 py-1 border border-slate-300\">Số electron</th><th class=\"px-2 py-1 border border-slate-300\">Số proton</th><th class=\"px-2 py-1 border border-slate-300\">Số neutron</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">A</td><td class=\"px-2 py-1 border border-slate-300\">7</td><td class=\"px-2 py-1 border border-slate-300\">7</td><td class=\"px-2 py-1 border border-slate-300\">7</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">B</td><td class=\"px-2 py-1 border border-slate-300\">10</td><td class=\"px-2 py-1 border border-slate-300\">11</td><td class=\"px-2 py-1 border border-slate-300\">12</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">C</td><td class=\"px-2 py-1 border border-slate-300\">18</td><td class=\"px-2 py-1 border border-slate-300\">17</td><td class=\"px-2 py-1 border border-slate-300\">18</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">D</td><td class=\"px-2 py-1 border border-slate-300\">20</td><td class=\"px-2 py-1 border border-slate-300\">18</td><td class=\"px-2 py-1 border border-slate-300\">20</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">E</td><td class=\"px-2 py-1 border border-slate-300\">13</td><td class=\"px-2 py-1 border border-slate-300\">13</td><td class=\"px-2 py-1 border border-slate-300\">14</td></tr></table></div><br/>Trong các hạt trên, có bao nhiêu hạt là ion?",
         "images": [],
         "correctAnswer": "3",
-        "explanation": "Đáp án: 3.<br/>Ion là các hạt được tạo ra từ nguyên tử nhường hoặc nhận electron nên có số hạt proton và electron khác nhau  B, C, D là các hạt ion.",
+        "explanation": "Đáp án: 3.<br/>Ion là các hạt được tạo ra từ nguyên tử nhường hoặc nhận electron nên có số hạt proton và electron khác nhau B, C, D là các hạt ion.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de08_p3_q4",
@@ -7648,7 +7648,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de08_p3_q5",
@@ -7658,10 +7658,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Nguyên tố A dùng để chế tạo đèn có độ sáng cao. Nguyên tử A có electron ở phân lớp 3d chỉ bằng một nửa phân lớp 4s. Số hiệu nguyên tử của nguyên tố A là bao nhiêu?",
         "images": [],
         "correctAnswer": "21",
-        "explanation": "Đáp án: 21.<br/>Số electron tối đa của phân lớp 4s là 4s<sup>2</sup>  Số electron ở phân lớp 3d là 3d<sup>1</sup>.<br/>Cấu hình của nguyên tử A là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>1</sup>4s<sup>2</sup>  có 21 e.",
+        "explanation": "Đáp án: 21.<br/>Số electron tối đa của phân lớp 4s là 4s<sup>2</sup> Số electron ở phân lớp 3d là 3d<sup>1</sup>.<br/>Cấu hình của nguyên tử A là 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>1</sup>4s<sup>2</sup> có 21 e.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de08_p3_q6",
@@ -7671,10 +7671,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Trong tự nhiên chlorine (Cl) có hai đồng vị bền là <sup>35</sup>Cl và <sup>37</sup>Cl. Biết nguyên tử khối trung bình của Cl là 35,5 và thành phần phần trăm khối lương của đồng vị <sup>37</sup>Cl trong KClO<sub>x</sub> là 6,678%. Cho nguyên tử khối trung bình của K và O lần lượt là 39 và 16, xem nguyêntử khối mỗi đồng vị có giá trị bằng số khối. Tính giá trị của x.",
         "images": [],
         "correctAnswer": "4",
-        "explanation": "Đáp án: 4.<br/>Giả sử ta có  <sup>n</sup>KClO<sub>x</sub> = 1 mol  →  <sup>n</sup>Cl =  <sup>n</sup>KClO<sub>x</sub> =  1 mol<br/>Gọi phần trăm số nguyên tử của đồng vị <sup>37</sup>Cl là x<br/>→ phần trăm số nguyên tử của đồng vị <sup>35</sup>Cl là (100 – x)<br/>Ta có: 35,5 =   x = 25%<br/>Số mol <sup>37</sup>Cl = 0,25 mol  Khối lượng của <sup>37</sup>Cl = 0,25. 37 =  9,25 g<br/>Ta có: 6,678%  = .100%    x = 4.<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 4.<br/>Giả sử ta có <sup>n</sup>KClO<sub>x</sub> = 1 mol → <sup>n</sup>Cl = <sup>n</sup>KClO<sub>x</sub> = 1 mol<br/>Gọi phần trăm số nguyên tử của đồng vị <sup>37</sup>Cl là x<br/>→ phần trăm số nguyên tử của đồng vị <sup>35</sup>Cl là (100 – x)<br/>Ta có: 35,5 = x = 25%<br/>Số mol <sup>37</sup>Cl = 0,25 mol Khối lượng của <sup>37</sup>Cl = 0,25. 37 = 9,25 g<br/>Ta có: 6,678% = .100% x = 4.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -8095,25 +8095,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "P3215 ",
+            "text": "P3215",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "Na2311 ",
+            "text": "Na2311",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "K3919 ",
+            "text": "K3919",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "Fe5426 ",
+            "text": "Fe5426",
             "isCorrect": false
           }
         ],
@@ -8434,7 +8434,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Số của X là 3 + 4 = 7.<br/>b. Sai. Điện tích hạt nhân là +3.<br/>c. Đúng.<br/>d. Sai. X nhưởng e tạo ion dương.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de09_p2_q2",
@@ -8474,7 +8474,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Vì mức năng lượng khác nhau nên không thuộc cùng một lớp.<br/>c. Đúng.<br/>d. Sai. Phân lớp p<sub>y</sub> chỉ có 2 e nên có cùng số e với phân lớp s.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de09_p2_q3",
@@ -8509,10 +8509,10 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>Cấu hình của X 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup> và  Y 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup>.<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai.",
+        "explanation": "Đáp án:<br/>Cấu hình của X 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup> và Y 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup>.<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de09_p2_q4",
@@ -8543,14 +8543,14 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "Nước chỉ tạo nên bởi các đồng vị của  11H.",
+            "text": "Nước chỉ tạo nên bởi các đồng vị của 11H.",
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>a. Sai. Chỉ được tạo ra bởi các hạt proton.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Có các đồng vị của H như  123111H,H,H.",
+        "explanation": "Đáp án:<br/>a. Sai. Chỉ được tạo ra bởi các hạt proton.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Có các đồng vị của H như 123111H,H,H.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de09_p3_q1",
@@ -8563,7 +8563,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.<br/>Lớp L (n = 2) có 4 electron.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de09_p3_q2",
@@ -8576,20 +8576,20 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de09_p3_q3",
         "number": 3,
         "part": 3,
         "type": "short_answer",
-        "text": "Khí carbon dioxide (CO<sub>2</sub>) là nguyên nhân chính gây nên hiệu ứng nhà kính. Carbon có 2 đồng vị  126C ,  136C ; oxygen có 3 đồng vị  168O , 178O , 188O . Có bao nhiêu loại phân tử CO<sub>2</sub> khác nhau tạo thành?",
+        "text": "Khí carbon dioxide (CO<sub>2</sub>) là nguyên nhân chính gây nên hiệu ứng nhà kính. Carbon có 2 đồng vị <sup>12</sup><sub>6</sub>C , 136C ; oxygen có 3 đồng vị <sup>16</sup><sub>8</sub>O , 178O , 188O . Có bao nhiêu loại phân tử CO<sub>2</sub> khác nhau tạo thành?",
         "images": [],
         "correctAnswer": "12",
         "explanation": "Đáp án: 12.<br/><sup>12</sup>C <sup>16</sup>O<sup>16</sup>O ; <sup>12</sup>C <sup>17</sup>O<sup>17</sup>O; <sup>12</sup>C <sup>8</sup>O<sup>18</sup>O; <sup>12</sup>C <sup>16</sup>O<sup>17</sup>O; <sup>12</sup>C <sup>16</sup>O<sup>18</sup>O; <sup>12</sup>C <sup>17</sup>O<sup>18</sup>O<br/><sup>13</sup>C<sup>16</sup>O<sup>16</sup>O ; <sup>13</sup>C<sup>17</sup>O<sup>17</sup>O; <sup>13</sup>C<sup>18</sup>O<sup>18</sup>O; <sup>13</sup>C<sup>16</sup>O<sup>17</sup>O; <sup>13</sup>C<sup>16</sup>O<sup>18</sup>O; <sup>13</sup>C<sup>17</sup>O<sup>18</sup>O",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de09_p3_q4",
@@ -8602,22 +8602,22 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 27.<br/>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 3d<sup>7</sup> 4s<sup>2</sup>.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de09_p3_q5",
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Hình sau đây là một phần phổ khối lượng của chlorine. Phổ này có hai tín hiệu, là hai đường thẳng xuất phát từ tọa độ 35 và 37 trên trục hoành. Nhờ đó, người ta biết được nguyên tố chlorine có hai đồng vị bền là <sup>35</sup>Cl và <sup>37</sup>Cl. Tỉ lệ số nguyên tử của hai đồng vị <sup>35</sup>Cl và <sup>37</sup>Cl cũng là tỉ lệ độ cao h<sub>1</sub> và h<sub>2</sub> (hay tỉ lệ cường độ tương đối) của hai tín hiệu:<br/>Biết nguyên tử khối trung bình của clorine là 35,46. Tính tỉ lệ  12hh  bằng bao nhiêu? (Kết quả làm tròn đến hàng phần mười).",
+        "text": "Hình sau đây là một phần phổ khối lượng của chlorine. Phổ này có hai tín hiệu, là hai đường thẳng xuất phát từ tọa độ 35 và 37 trên trục hoành. Nhờ đó, người ta biết được nguyên tố chlorine có hai đồng vị bền là <sup>35</sup>Cl và <sup>37</sup>Cl. Tỉ lệ số nguyên tử của hai đồng vị <sup>35</sup>Cl và <sup>37</sup>Cl cũng là tỉ lệ độ cao h<sub>1</sub> và h<sub>2</sub> (hay tỉ lệ cường độ tương đối) của hai tín hiệu:<br/>Biết nguyên tử khối trung bình của clorine là 35,46. Tính tỉ lệ 12hh bằng bao nhiêu? (Kết quả làm tròn đến hàng phần mười).",
         "images": [
           "/assets/hoa10/midterm/h10_gk1_de9_image18.png"
         ],
         "correctAnswer": "3.3",
-        "explanation": "Đáp án: 3,3.<br/>35x37.(100x)A35,46x77%100+-==Þ=  . Tỉ lệ  12hx3,3h100x==-",
+        "explanation": "Đáp án: 3,3.<br/>35x37.(100x)A35,46x77%100+-==Þ= . Tỉ lệ 12hx3,3h100x==-",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de09_p3_q6",
@@ -8630,7 +8630,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 9.<br/>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 3d<sup>x</sup> 4s<sup>2</sup>.<br/>Các giá trị của x thỏa mãn là 0, 1, 2, 3, 5, 6, 7, 8, 10.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -8776,25 +8776,25 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "146X ,  147Y ,  168Z ",
+            "text": "<sup>14</sup><sub>6</sub>X , <sup>14</sup><sub>7</sub>Y , <sup>16</sup><sub>8</sub>Z",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "168Z ,  169M ,  167G ",
+            "text": "<sup>16</sup><sub>8</sub>Z , 169M , 167G",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "178Q ,  169M ,  1910E ",
+            "text": "178Q , 169M , 1910E",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "168Z ,  178Q ,  188L ",
+            "text": "<sup>16</sup><sub>8</sub>Z , 178Q , 188L",
             "isCorrect": true
           }
         ],
@@ -8935,13 +8935,13 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "4020Ca",
+            "text": "<sup>40</sup><sub>20</sub>Ca",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "147N",
+            "text": "<sup>14</sup><sub>7</sub>N",
             "isCorrect": false
           },
           {
@@ -9046,7 +9046,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 11,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Trong tự nhiên, bromine có hai đồng vị là  7935Br  và  8135Br  với nguyên tử khối trung bình là 79,92. Số nguyên tử  8135Br  trong 0,1 mol Br<sub>2</sub> là (coi nguyêntử khối mỗi đồng vị có giá trị bằng số khối và số Avogadro có giá trị bằng 6,022.10<sup>23</sup>).",
+        "text": "Trong tự nhiên, bromine có hai đồng vị là <sup>79</sup><sub>35</sub>Br và <sup>81</sup><sub>35</sub>Br với nguyên tử khối trung bình là 79,92. Số nguyên tử <sup>81</sup><sub>35</sub>Br trong 0,1 mol Br<sub>2</sub> là (coi nguyêntử khối mỗi đồng vị có giá trị bằng số khối và số Avogadro có giá trị bằng 6,022.10<sup>23</sup>).",
         "images": [],
         "options": [
           {
@@ -9245,7 +9245,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 16,
         "part": 1,
         "type": "multiple_choice",
-        "text": "6027Co  được sử dụng nhiều trong điều trị ung thư. Phát biểu nào sau đây là đúng khi nói về nguyên tử?",
+        "text": "<sup>60</sup><sub>27</sub>Co được sử dụng nhiều trong điều trị ung thư. Phát biểu nào sau đây là đúng khi nói về nguyên tử?",
         "images": [],
         "options": [
           {
@@ -9388,14 +9388,14 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "Khối lượng lớp vỏ của nguyên tử  73Li  bằng khoảng 0,024% khối lượng của cả nguyên tử  73Li .",
+            "text": "Khối lượng lớp vỏ của nguyên tử 73Li bằng khoảng 0,024% khối lượng của cả nguyên tử 73Li .",
             "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.<br/>Nguyên tử lithium (Li) tạo nên bởi 3p, 4n và 3e<br/>Khối lượng của một nguyên tử Li là: 3.1 + 4.1 = 7 amu<br/>Khối lượng lớp vỏ của Li là: 3.0,00055 = 1,65.10-3 amu<br/>Phần trăm khối lượng lớp vỏ: 1,65.10<sup>-3</sup>.100/7 = 0,024%.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de10_p2_q2",
@@ -9435,7 +9435,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de10_image27.png"
         ],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de10_p2_q3",
@@ -9473,7 +9473,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup><br/>a. Sai. Z = 18.<br/>b. Sai. Tổng e trong các AO p là 12.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de10_p2_q4",
@@ -9511,7 +9511,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Nhóm VIA.<br/>b. Sai. Bằng nhau.<br/>c. Đúng.<br/>d. Sai. Cả hai đều là nhóm A.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de10_p3_q1",
@@ -9524,20 +9524,20 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa10_gk1_de10_p3_q2",
         "number": 2,
         "part": 3,
         "type": "short_answer",
-        "text": "Ion  3H+  là một trong số các ion phổ biến được tìm thấy trong vũ trụ. Tổng số hạt proton, neutron và electron của ion này là bao nhiêu?",
+        "text": "Ion 3H+ là một trong số các ion phổ biến được tìm thấy trong vũ trụ. Tổng số hạt proton, neutron và electron của ion này là bao nhiêu?",
         "images": [],
         "correctAnswer": "5",
-        "explanation": "Đáp án: 5.<br/>H có 1 proton và 1 electron  Tổng số hạt là (1 + 1).3 – 1 = 5.",
+        "explanation": "Đáp án: 5.<br/>H có 1 proton và 1 electron Tổng số hạt là (1 + 1).3 – 1 = 5.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa10_gk1_de10_p3_q3",
@@ -9550,7 +9550,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 1.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa10_gk1_de10_p3_q4",
@@ -9563,7 +9563,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 19.<br/>Cấu hình electron của nguyên tố này có dạng: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>x</sup>4s<sup>1</sup>.<br/>Vậy tổng số electron s và electron p của nguyên tố là: 2 + 2 + 6 + 2 + 6 + 1 = 19.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa10_gk1_de10_p3_q5",
@@ -9579,7 +9579,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de10_image29.png"
         ],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa10_gk1_de10_p3_q6",
@@ -9592,7 +9592,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   }

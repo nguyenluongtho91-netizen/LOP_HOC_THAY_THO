@@ -68,19 +68,19 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "2KClO<sub>3</sub>  ot¾¾®  2KCl + 3O<sub>2</sub>",
+            "text": "2KClO<sub>3</sub> ⎯⎯t°→ 2KCl + 3O<sub>2</sub>",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "N<sub>2</sub>(g) + O<sub>2</sub>(g)    2NO(g)",
+            "text": "N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2NO(g)",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "CH<sub>4</sub> + 2O<sub>2</sub>  ot¾¾®  CO<sub>2</sub> + 2H<sub>2</sub>O",
+            "text": "CH<sub>4</sub> + 2O<sub>2</sub> ⎯⎯t°→ CO<sub>2</sub> + 2H<sub>2</sub>O",
             "isCorrect": false
           },
           {
@@ -491,7 +491,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng sau trong hệ kín:<br/>2NO<sub>2</sub> (g, nâu đỏ)    N<sub>2</sub>O<sub>4</sub> (g, không màu)  0r298H 58 kJD=-<br/>Thực hiện thí nghiệm:<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\"></th><th class=\"px-2 py-1 border border-slate-300\">Ngâm chìm ống vào cốc nước lạnh (nước đá)</th><th class=\"px-2 py-1 border border-slate-300\">Ngâm chìm ống vào cốc nước nóng (khoảng 80 oC)</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">Sự thay đổi màu nâu đỏ trong ống nghiệm</td><td class=\"px-2 py-1 border border-slate-300\">(1)</td><td class=\"px-2 py-1 border border-slate-300\">(2)</td></tr></table></div><br/>Các hiện tượng (1), (2) tương ứng là màu của chất trong ống nghiệm",
+        "text": "Cho cân bằng sau trong hệ kín:<br/>2NO<sub>2</sub> (g, nâu đỏ) ⇌ N<sub>2</sub>O<sub>4</sub> (g, không màu) 0r298H 58 kJD=-<br/>Thực hiện thí nghiệm:<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\"></th><th class=\"px-2 py-1 border border-slate-300\">Ngâm chìm ống vào cốc nước lạnh (nước đá)</th><th class=\"px-2 py-1 border border-slate-300\">Ngâm chìm ống vào cốc nước nóng (khoảng 80 oC)</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">Sự thay đổi màu nâu đỏ trong ống nghiệm</td><td class=\"px-2 py-1 border border-slate-300\">(1)</td><td class=\"px-2 py-1 border border-slate-300\">(2)</td></tr></table></div><br/>Các hiện tượng (1), (2) tương ứng là màu của chất trong ống nghiệm",
         "images": [],
         "options": [
           {
@@ -569,31 +569,31 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 14,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Xét cân bằng hóa học: NH<sub>3</sub> + H<sub>2</sub>O    NH<sub>4</sub><sup>+</sup> + OH<sup>-</sup><sup>.</sup>Hằng số cân bằng (K<sub>C</sub>) của phản ứng được biểu diễn bằng biểu thức nào sau đây?",
+        "text": "Xét cân bằng hóa học: NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>-</sup><sup>.</sup>Hằng số cân bằng (K<sub>C</sub>) của phản ứng được biểu diễn bằng biểu thức nào sau đây?",
         "images": [],
         "options": [
           {
             "id": "a",
             "letter": "A",
-            "text": "4C3[NH].[OH]K[NH]+-= ",
+            "text": "4C3[NH].[OH]K[NH]+-=",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "4C32[NH].[OH]K[NH].[HO]+-= ",
+            "text": "4C32[NH].[OH]K[NH].[HO]+-=",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "4C2[NH].[OH]K[HO]+-= ",
+            "text": "4C2[NH].[OH]K[HO]+-=",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "4C3[NH]K[NH]+= ",
+            "text": "4C3[NH]K[NH]+=",
             "isCorrect": false
           }
         ],
@@ -647,7 +647,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 16,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Ở nhiệt độ cao, khí nitrogen phản ứng với khí hydrogen và khí oxygen theo hai phương trình hoá học sau:<br/>N<sub>2</sub> + 3H<sub>2</sub>    2NH<sub>3</sub> (1)N<sub>2</sub> + O<sub>2</sub>    2NO (2)<br/>Trong các phản ứng (1) và (2), vai trò của N<sub>2</sub> lần lượt là",
+        "text": "Ở nhiệt độ cao, khí nitrogen phản ứng với khí hydrogen và khí oxygen theo hai phương trình hoá học sau:<br/>N<sub>2</sub> + 3H<sub>2</sub> ⇌ 2NH<sub>3</sub> (1)N<sub>2</sub> + O<sub>2</sub> ⇌ 2NO (2)<br/>Trong các phản ứng (1) và (2), vai trò của N<sub>2</sub> lần lượt là",
         "images": [],
         "options": [
           {
@@ -764,7 +764,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Xét các hệ cân bằng sau trong một bình kín:<br/>CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g)  or298H41kJD=-",
+        "text": "Xét các hệ cân bằng sau trong một bình kín:<br/>CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g) or298H41kJD=-",
         "images": [],
         "options": [
           {
@@ -795,7 +795,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Khi thêm khí H<sub>2</sub> vào hệ, cân bằng chuyển dịch theo chiều nghịch.<br/>c. Sai. Tăng áp suất cân bằng không chuyển dịch (số mol khí trước = số mol khí sau).<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de01_p2_q2",
@@ -820,7 +820,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "c",
             "letter": "C",
-            "text": "Nồng độ của ion [ OH<sup>-</sup>  ] của nước chanh nhỏ hơn 10<sup>-7</sup> mol/L.",
+            "text": "Nồng độ của ion [ OH<sup>-</sup> ] của nước chanh nhỏ hơn 10<sup>-7</sup> mol/L.",
             "isCorrect": true
           },
           {
@@ -830,10 +830,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. [ H<sup>+</sup> ] = 10<sup>-2,4</sup> M.<br/>c. Đúng.  14122,410OH2,51.10M10----éù==ëû .<br/>d. Đúng.",
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. [ H<sup>+</sup> ] = 10<sup>-2,4</sup> M.<br/>c. Đúng. 14122,410OH2,51.10M10----éù==ëû .<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de01_p2_q3",
@@ -871,7 +871,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Làm phenolphtalein chuyển màu hồng.<br/>c. Sai. Chỉ có tính khử.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de01_p2_q4",
@@ -909,7 +909,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Nguồn dinh dưỡng ở ao, hồ thường có nguồn gốc từ nước thải sinh hoạt, công nghiệp và nông nghiệp.<br/>c. Sai. Hàm lượng nitrogen trong nước đạt 300 μg/L và phosphorus đạt 20 μg/L.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de01_p3_q1",
@@ -922,7 +922,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de01_p3_q2",
@@ -932,23 +932,23 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Để xác định nồng độ của một dung dịch HCl, người ta tiến hành chuẩn độ bằng dung dịch NaOH 0,1 M. Để chuẩn độ 10 mL dung dịch HCl này cần 20 mL dung dịch NaOH. Nnồng độ của dung dịch HCl trên là bao nhiêu mol/L?",
         "images": [],
         "correctAnswer": "0.2",
-        "explanation": "Đáp án: 0,2.<br/>NaOH + HCl → NaCl + H<sub>2</sub>O<br/>Ta có: V<sub>HCl</sub>. C<sub>HCl</sub> = V<sub>NaOH</sub>. C<sub>NaOH</sub>  C<sub>HCl</sub> = 0,2M.",
+        "explanation": "Đáp án: 0,2.<br/>NaOH + HCl → NaCl + H<sub>2</sub>O<br/>Ta có: V<sub>HCl</sub>. C<sub>HCl</sub> = V<sub>NaOH</sub>. C<sub>NaOH</sub> C<sub>HCl</sub> = 0,2M.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de01_p3_q3",
         "number": 3,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các cân bằng hóa học sau:<br/>(a) 2 \\mathrm{SO}_2(\\mathrm{ g})+\\mathrm{O}_2(\\mathrm{ g}) \\rightleftharpoons 2 \\mathrm{SO}_3(\\mathrm{ g}) .(b)  \\mathrm{C}(\\mathrm{s})+\\mathrm{H}_2 \\mathrm{O}(\\mathrm{g}) \\rightleftharpoons \\mathrm{CO}(\\mathrm{g})+\\mathrm{H}_2(\\mathrm{ g}) .<br/>(c)  \\mathrm{PCl}_3(\\mathrm{ g})+\\mathrm{Cl}_2(\\mathrm{ g}) \\rightleftharpoons \\mathrm{PCl}_5(\\mathrm{ g}) .(d)  3 \\mathrm{Fe}(\\mathrm{s})+4 \\mathrm{H}_2 \\mathrm{O}(\\mathrm{g}) \\rightleftharpoons \\mathrm{Fe}_3 \\mathrm{O}_4(\\mathrm{ s})+4 \\mathrm{H}_2(\\mathrm{ g}) .<br/>(e)  32CaCO( s)CaO( s)CO(g)+ .(g)  222HI( g)H( g)I(g)+<br/>Có bao nhiêu cân bằng hoá học không bị chuyển dịch khi thay đổi áp suất?",
+        "text": "Cho các cân bằng hóa học sau:<br/>(a) 2 \\mathrm{SO}_2(\\mathrm{ g})+\\mathrm{O}_2(\\mathrm{ g}) \\rightleftharpoons 2 \\mathrm{SO}_3(\\mathrm{ g}) .(b) \\mathrm{C}(\\mathrm{s})+\\mathrm{H}_2 \\mathrm{O}(\\mathrm{g}) \\rightleftharpoons \\mathrm{CO}(\\mathrm{g})+\\mathrm{H}_2(\\mathrm{ g}) .<br/>(c) \\mathrm{PCl}_3(\\mathrm{ g})+\\mathrm{Cl}_2(\\mathrm{ g}) \\rightleftharpoons \\mathrm{PCl}_5(\\mathrm{ g}) .(d) 3 \\mathrm{Fe}(\\mathrm{s})+4 \\mathrm{H}_2 \\mathrm{O}(\\mathrm{g}) \\rightleftharpoons \\mathrm{Fe}_3 \\mathrm{O}_4(\\mathrm{ s})+4 \\mathrm{H}_2(\\mathrm{ g}) .<br/>(e) 32CaCO( s)CaO( s)CO(g)+ .(g) 222HI( g)H( g)I(g)+<br/>Có bao nhiêu cân bằng hoá học không bị chuyển dịch khi thay đổi áp suất?",
         "images": [],
         "correctAnswer": "2",
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de01_p3_q4",
@@ -961,7 +961,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de01_p3_q5",
@@ -971,10 +971,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Hỗn hợp X gồm N<sub>2</sub> và H<sub>2</sub> có tỉ lệ mol tương ứng là 1 : 4. Nung nóng X trong bình kín ở nhiệt độ khoảng 450 <sup>o</sup>C có bột Fe xúc tác, thu được hỗn hợp khí Y có tỉ khối so với H<sub>2</sub> bằng 4. Hiệu suất của phản ứng tổng hợp NH<sub>3</sub> là bao nhiêu phần trăm?",
         "images": [],
         "correctAnswer": "25",
-        "explanation": "Đáp án: 25.<br/>Phương trình hoá học:  N<sub>2</sub>           +        3H<sub>2</sub>⇌      2NH<sub>3</sub><br/>Ban đầu:                   1                   4                     0                   mol<br/>Phản ứng:                    x                   3x                        2x                 mol<br/>Sau phản ứng:        (1 – x)    (4 – 3x)                2x                 mol<br/>Bảo toàn khối lượng:  XYXYXXYYYYYXnM58mmn.Mn.Mn4,5molnn7,2M=Û=Þ=Û=Þ=<br/>Mà n<sub>Y</sub> = 5 – 2x = 4,5  x = 0,25<br/>Hiệu suất phản ứng tính theo N<sub>2</sub> (do 1/1 < 4/3)<br/>Ta có:  0,25H .100% 25%1== .",
+        "explanation": "Đáp án: 25.<br/>Phương trình hoá học: N<sub>2</sub> + 3H<sub>2</sub>⇌ 2NH<sub>3</sub><br/>Ban đầu: 1 4 0 mol<br/>Phản ứng: x 3x 2x mol<br/>Sau phản ứng: (1 – x) (4 – 3x) 2x mol<br/>Bảo toàn khối lượng: XYXYXXYYYYYXnM58mmn.Mn.Mn4,5molnn7,2M=Û=Þ=Û=Þ=<br/>Mà n<sub>Y</sub> = 5 – 2x = 4,5 x = 0,25<br/>Hiệu suất phản ứng tính theo N<sub>2</sub> (do 1/1 < 4/3)<br/>Ta có: 0,25H .100% 25%1== .",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de01_p3_q6",
@@ -987,7 +987,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -1437,7 +1437,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng hoá học sau: 4NH<sub>3</sub>(g) + 5O<sub>2</sub>    4NO(g) + 6H<sub>2</sub>O(g)  or298HD = –905 kJ.<br/>Yếu tố nào sau đây cần tác động để cân bằng trên chuyển dịch sang phải?",
+        "text": "Cho cân bằng hoá học sau: 4NH<sub>3</sub>(g) + 5O<sub>2</sub> ⇌ 4NO(g) + 6H<sub>2</sub>O(g) or298HD = –905 kJ.<br/>Yếu tố nào sau đây cần tác động để cân bằng trên chuyển dịch sang phải?",
         "images": [],
         "options": [
           {
@@ -1554,7 +1554,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 15,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho phản ứng: N<sub>2</sub>(g) + O<sub>2</sub>(g)  o3000Choaëctialöûañieän 2NO(g).<br/>Biết năng lượng liên kết được cho trong bảng sau:<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\">Liên kết</th><th class=\"px-2 py-1 border border-slate-300\">N≡N</th><th class=\"px-2 py-1 border border-slate-300\">O=O</th><th class=\"px-2 py-1 border border-slate-300\">N=O</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">Năng lượng liên kết (kJ/mol)</td><td class=\"px-2 py-1 border border-slate-300\">945</td><td class=\"px-2 py-1 border border-slate-300\">498</td><td class=\"px-2 py-1 border border-slate-300\">631</td></tr></table></div><br/>Giá trị nhiệt tạo thành chuẩn của NO(g) theo năng lượng liên kết là",
+        "text": "Cho phản ứng: N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ (3000°C hoặc tia lửa điện) 2NO(g).<br/>Biết năng lượng liên kết được cho trong bảng sau:<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\">Liên kết</th><th class=\"px-2 py-1 border border-slate-300\">N≡N</th><th class=\"px-2 py-1 border border-slate-300\">O=O</th><th class=\"px-2 py-1 border border-slate-300\">N=O</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">Năng lượng liên kết (kJ/mol)</td><td class=\"px-2 py-1 border border-slate-300\">945</td><td class=\"px-2 py-1 border border-slate-300\">498</td><td class=\"px-2 py-1 border border-slate-300\">631</td></tr></table></div><br/>Giá trị nhiệt tạo thành chuẩn của NO(g) theo năng lượng liên kết là",
         "images": [],
         "options": [
           {
@@ -1710,7 +1710,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Hình vẽ bên mô tả sự biến thiên tốc độ phản ứng thuận và phản ứng nghịch theo thời gian của phản ứng: H<sub>2</sub>(g) + I<sub>2</sub>(g)    2HI(g) (*)",
+        "text": "Hình vẽ bên mô tả sự biến thiên tốc độ phản ứng thuận và phản ứng nghịch theo thời gian của phản ứng: H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g) (*)",
         "images": [
           "/assets/hoa11/midterm/h11_gk1_de2_image6.png"
         ],
@@ -1724,7 +1724,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "b",
             "letter": "B",
-            "text": "Hằng số cân bằng của phản ứng (*) là  =C22[HI]K[H].[I] .",
+            "text": "Hằng số cân bằng của phản ứng (*) là =C22[HI]K[H].[I] .",
             "isCorrect": false
           },
           {
@@ -1740,10 +1740,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>a. Sai. Phản ứng đạt trạng thái cân bằng tại thời điểm t.<br/>b. Sai.  =2C22[HI]K[H].[I]<br/>c. Sai. Tại thời điểm t, số mol các chất không thay đổi.<br/>d. Đúng.  ==2C22[HI]K64.[H].[I]",
+        "explanation": "Đáp án:<br/>a. Sai. Phản ứng đạt trạng thái cân bằng tại thời điểm t.<br/>b. Sai. =2C22[HI]K[H].[I]<br/>c. Sai. Tại thời điểm t, số mol các chất không thay đổi.<br/>d. Đúng. ==2C22[HI]K64.[H].[I]",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de02_p2_q2",
@@ -1778,10 +1778,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>a. Sai. Nồng độ H<sup>+</sup> giảm 10<sup>2</sup> = 100 lần.<br/>b. Đúng. [H<sup>+</sup>] = 10<sup>-3</sup> M.<br/>c. Đúng. Khi pH = 5 thì pOH = 9  [OH<sup>-</sup>] = 10<sup>-9</sup>M.<br/>d. Đúng.",
+        "explanation": "Đáp án:<br/>a. Sai. Nồng độ H<sup>+</sup> giảm 10<sup>2</sup> = 100 lần.<br/>b. Đúng. [H<sup>+</sup>] = 10<sup>-3</sup> M.<br/>c. Đúng. Khi pH = 5 thì pOH = 9 [OH<sup>-</sup>] = 10<sup>-9</sup>M.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de02_p2_q3",
@@ -1819,7 +1819,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Tác nhân chính gây mưa acid là SO<sub>2</sub> và NO<sub>x</sub>.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de02_p2_q4",
@@ -1856,10 +1856,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>Ca(OH)<sub>2</sub> + NH<sub>4</sub>Cl  CaCl<sub>2</sub> + NH<sub>3</sub> (X) + H<sub>2</sub>O<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Phải lắp miệng ống hướng xuống, việc lắp dốc xuống đề phòng hóa chất bị ẩm, có hơi nước thoát ra và ngưng tụ ở miệng ống không bị chảy ngược xuống đáy ống gây vỡ ống.<br/>d. Đúng.",
+        "explanation": "Đáp án:<br/>Ca(OH)<sub>2</sub> + NH<sub>4</sub>Cl CaCl<sub>2</sub> + NH<sub>3</sub> (X) + H<sub>2</sub>O<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Phải lắp miệng ống hướng xuống, việc lắp dốc xuống đề phòng hóa chất bị ẩm, có hơi nước thoát ra và ngưng tụ ở miệng ống không bị chảy ngược xuống đáy ống gây vỡ ống.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de02_p3_q1",
@@ -1872,20 +1872,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de02_p3_q2",
         "number": 2,
         "part": 3,
         "type": "short_answer",
-        "text": "Một loại dung dịch nước rửa bát có nồng độ ion  OH-  là  9,510-  mol/L. Giá trị pH của dung dịch bằng bao nhiêu?",
+        "text": "Một loại dung dịch nước rửa bát có nồng độ ion OH- là 9,510- mol/L. Giá trị pH của dung dịch bằng bao nhiêu?",
         "images": [],
         "correctAnswer": "4.5",
         "explanation": "Đáp án: 4,5.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de02_p3_q3",
@@ -1898,7 +1898,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de02_p3_q4",
@@ -1911,7 +1911,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de02_p3_q5",
@@ -1921,10 +1921,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Hỗn hợp X gồm N<sub>2</sub> và H<sub>2</sub> có tỉ lệ mol tương ứng là 1 : 3. Nung nóng X trong bình kín (450℃, xúc tác Fe) một thời gian, thu được hỗn hợp khí có số mol giảm 5% so với ban đầu. Hiệu suất của phản ứng tổng hợp NH<sub>3</sub> là bao nhiêu phần trăm?",
         "images": [],
         "correctAnswer": "10",
-        "explanation": "Đáp án: 10.<br/>Chọn  22NHn1moln3mol=Þ=   Tổng số mol khí ban đầu là 4 mol  Þ  n<sub>khí giảm</sub> = 4.5% = 0,2 mol<br/>32223N(g)       H(g)NH(g)Ban ñaàu:      1                   3(mol)Phaûn öùng:    x                   3x+2x            (mol)Caân baèng:  1-x                3-3x2x            (mol)<br/>Tổng số mol khí sau khi phản ứng là 1 – x + 3 – 3x + 2x = 4 – 2x (mol)<br/>Số mol khí giảm so với ban đầu là 2x  Þ  2x = 0,2  Þ  x = 0,1  Þ  H% =  0,1.100%10%.1=",
+        "explanation": "Đáp án: 10.<br/>Chọn 22NHn1moln3mol=Þ= Tổng số mol khí ban đầu là 4 mol Þ n<sub>khí giảm</sub> = 4.5% = 0,2 mol<br/>32223N(g) H(g)NH(g)Ban ñaàu: 1 3(mol)Phaûn öùng: x 3x+2x (mol)Caân baèng: 1-x 3-3x2x (mol)<br/>Tổng số mol khí sau khi phản ứng là 1 – x + 3 – 3x + 2x = 4 – 2x (mol)<br/>Số mol khí giảm so với ban đầu là 2x Þ 2x = 0,2 Þ x = 0,1 Þ H% = 0,1.100%10%.1=",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de02_p3_q6",
@@ -1937,7 +1937,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 200.<br/>33058871084NaHCO,n.mol-==<br/>32233710710NaHCOHClNaClCOHO..mol--+®++®<br/>3710022000035ddHCl.V,LmL,-Þ===<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -2356,25 +2356,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "NH<sub>3</sub> + HCl  ¾¾®  NH<sub>4</sub>Cl",
+            "text": "NH<sub>3</sub> + HCl → NH<sub>4</sub>Cl",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "NH<sub>3</sub> + H<sub>2</sub>O     +4NH  + OH<sup>–</sup>",
+            "text": "NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup>",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "2NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub>  ¾¾®  (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>",
+            "text": "2NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "4NH<sub>3</sub> + 5O<sub>2</sub>  ¾¾¾®oPt,t  4NO + 6H<sub>2</sub>O",
+            "text": "4NH<sub>3</sub> + 5O<sub>2</sub> ⎯⎯Pt, t°→ 4NO + 6H<sub>2</sub>O",
             "isCorrect": true
           }
         ],
@@ -2389,7 +2389,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng hóa học sau: CaCO<sub>3</sub>(s)    CaO(s) + CO<sub>2</sub>(g)  ;  or298176 kJH=D<br/>Yếu tố nào sau đây làm cho cân bằng dịch chuyển theo chiều thuận?",
+        "text": "Cho cân bằng hóa học sau: CaCO<sub>3</sub>(s) ⇌ CaO(s) + CO<sub>2</sub>(g) ; Δ<sub>r</sub>H°<sub>298</sub> = 176 kJ<br/>Yếu tố nào sau đây làm cho cân bằng dịch chuyển theo chiều thuận?",
         "images": [],
         "options": [
           {
@@ -2467,7 +2467,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 14,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Trong công nghiệp, ammoniac được tổng hợp theo quá trình Haber như hình dưới, theo phương trình hóa học sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  o400600 C, 200 bar, Fe-  2NH<sub>3</sub>(g)   or298HD  = –92 kJ<br/>Tại thời điểm cân bằng, khí thu được tại buồng phản ứng là",
+        "text": "Trong công nghiệp, ammoniac được tổng hợp theo quá trình Haber như hình dưới, theo phương trình hóa học sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g) o400600 C, 200 bar, Fe- ⇌ 2NH<sub>3</sub>(g) or298HD = –92 kJ<br/>Tại thời điểm cân bằng, khí thu được tại buồng phản ứng là",
         "images": [],
         "options": [
           {
@@ -2584,7 +2584,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 17,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cân bằng sau tồn tại trong dung dịch: CH<sub>3</sub>COOH + H<sub>2</sub>O    CH<sub>3</sub>COO<sup>–</sup> + H<sub>3</sub>O<sup>+</sup>. Cân bằng sẽ biến đổi như thế nào khi nhỏ vào vài giọt dung dịch CH<sub>3</sub>COONa?",
+        "text": "Cân bằng sau tồn tại trong dung dịch: CH<sub>3</sub>COOH + H<sub>2</sub>O ⇌ CH<sub>3</sub>COO<sup>–</sup> + H<sub>3</sub>O<sup>+</sup>. Cân bằng sẽ biến đổi như thế nào khi nhỏ vào vài giọt dung dịch CH<sub>3</sub>COONa?",
         "images": [],
         "options": [
           {
@@ -2662,7 +2662,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Cho phản ứng thuận nghịch:  H<sub>2</sub>(g)  +  I<sub>2</sub>(g)    2HI(g) (*).",
+        "text": "Cho phản ứng thuận nghịch: H<sub>2</sub>(g) + I<sub>2</sub>(g)  2HI(g) (*).",
         "images": [],
         "options": [
           {
@@ -2680,7 +2680,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "c",
             "letter": "C",
-            "text": "Biểu thức hằng số cân bằng của phản ứng (*) là:   2C22[HI]K=[H][I]",
+            "text": "Biểu thức hằng số cân bằng của phản ứng (*) là: 2C22[HI]K=[H][I]",
             "isCorrect": true
           },
           {
@@ -2693,7 +2693,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Nồng độ H<sub>2</sub>, I<sub>2</sub> giảm dần theo thời gian cho đến khi đạt trạng thái cân bằng nồng độ của I<sub>2</sub>, H<sub>2</sub> không thay đổi nữa.<br/>c. Đúng.<br/>d. Sai. Phản ứng vẫn tiếp tục xảy ra ở trạng thái cân bằng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de03_p2_q2",
@@ -2731,7 +2731,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Ion ammonium có dạng học học là tứ diện.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de03_p2_q3",
@@ -2769,7 +2769,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Rong, tảo phát triển mạnh làm tăng giảm lượng khí oxygen.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de03_p2_q4",
@@ -2809,7 +2809,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa11/midterm/h11_gk1_de3_image16.png"
         ],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de03_p3_q1",
@@ -2822,7 +2822,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de03_p3_q2",
@@ -2835,7 +2835,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.<br/>(1), (2) làm cân bằng chuyển dịch theo chiều thuận<br/>(2) Tăng áp suất cân bằng chuyển dịch theo chiều làm giảm số mol khí là chiều nghịch.<br/>(3) Carbon là chất rắn nên thêm carbon không làm ảnh hưởng cân bằng chuyển dịch.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de03_p3_q3",
@@ -2845,30 +2845,30 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "pH của dung dịch thu được sau khi trộn 40 mL dung dịch HCl 0,5 M với 60 mL dung dịch NaOH 0,5 M bằng bao nhiêu?",
         "images": [],
         "correctAnswer": "13",
-        "explanation": "Đáp án: 13.<br/>n<sub>HCl</sub> = 0,02 mol; n<sub>NaOH</sub> = 0,03 mol<br/>H<sup>+</sup> + OH<sup>–</sup>  H<sub>2</sub>O<br/>Þ  OHn <sub>dư</sub> = 0,01 mol  Þ [OH<sup>-</sup>] = 0,1 M  Þ pOH = 1  Þ  pH = 13.",
+        "explanation": "Đáp án: 13.<br/>n<sub>HCl</sub> = 0,02 mol; n<sub>NaOH</sub> = 0,03 mol<br/>H<sup>+</sup> + OH<sup>–</sup> H<sub>2</sub>O<br/>Þ OHn <sub>dư</sub> = 0,01 mol Þ [OH<sup>-</sup>] = 0,1 M Þ pOH = 1 Þ pH = 13.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de03_p3_q4",
         "number": 4,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho cân bằng: N<sub>2</sub>O<sub>4</sub>(g)    2NO<sub>2</sub>(g). Ban đầu có 0,02 mol N<sub>2</sub>O<sub>4</sub> trong bình kín có thể tích 500 mL, khi phản ứng đạt trạng thái cân bằng thì nồng độ của N<sub>2</sub>O<sub>4</sub> là 0,0055 M. Giá trị của hằng số cân bằng K<sub>C</sub> là bao nhiêu? (Kết quả làm tròn đến hàng phần trăm).",
+        "text": "Cho cân bằng: N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2NO<sub>2</sub>(g). Ban đầu có 0,02 mol N<sub>2</sub>O<sub>4</sub> trong bình kín có thể tích 500 mL, khi phản ứng đạt trạng thái cân bằng thì nồng độ của N<sub>2</sub>O<sub>4</sub> là 0,0055 M. Giá trị của hằng số cân bằng K<sub>C</sub> là bao nhiêu? (Kết quả làm tròn đến hàng phần trăm).",
         "images": [],
         "correctAnswer": "0.87",
-        "explanation": "Đáp án: 0,87.<br/>Nồng độ N<sub>2</sub>O<sub>4</sub> ban đầu là  0,020,04M.0,5=<br/>PTHH:     N<sub>2</sub>O<sub>4</sub>(g)    2NO<sub>2</sub>(g)<br/>Ban đầu:    0,04<br/>Phản ứng:     x        →        2x<br/>Cân bằng:  0,04 – x            2x<br/>Ta có 0,04 – x = 0,0055  Þ  x = 0,0345 M  Þ  [NO<sub>2</sub>] = 0,069 M<br/>Þ   222C24[NO]0,069K0,866[NO]0,0055==» .",
+        "explanation": "Đáp án: 0,87.<br/>Nồng độ N<sub>2</sub>O<sub>4</sub> ban đầu là 0,020,04M.0,5=<br/>PTHH: N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2NO<sub>2</sub>(g)<br/>Ban đầu: 0,04<br/>Phản ứng: x → 2x<br/>Cân bằng: 0,04 – x 2x<br/>Ta có 0,04 – x = 0,0055 Þ x = 0,0345 M Þ [NO<sub>2</sub>] = 0,069 M<br/>Þ 222C24[NO]0,069K0,866[NO]0,0055==» .",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de03_p3_q5",
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho phản ứng: Fe<sub>3</sub>O<sub>4</sub> + HNO<sub>3</sub>  ¾¾®  Fe(NO<sub>3</sub>)<sub>3</sub> + NO + H<sub>2</sub>O. Sau khi cân bằng, hệ số tỉ lượng của HNO<sub>3</sub> trong phương trình hoá học trên là bao nhiêu?",
+        "text": "Cho phản ứng: Fe<sub>3</sub>O<sub>4</sub> + HNO<sub>3</sub> → Fe(NO<sub>3</sub>)<sub>3</sub> + NO + H<sub>2</sub>O. Sau khi cân bằng, hệ số tỉ lượng của HNO<sub>3</sub> trong phương trình hoá học trên là bao nhiêu?",
         "images": [],
         "correctAnswer": "28",
         "explanation": "Đáp án: 28.<br/>",
@@ -2876,7 +2876,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa11/midterm/h11_gk1_de3_image21.png"
         ],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de03_p3_q6",
@@ -2889,7 +2889,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 25.<br/>2232NH2hhNH3N:x(mol)%V%V25%28x2y17(xy)H:y(mol)M16xy%V50%2x2yNH:xy(mol)ì==ì+++ïïÞ==Þ=Þíí=+ïïî+î<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -3158,13 +3158,13 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "b",
             "letter": "B",
-            "text": "4NH+ ",
+            "text": "4NH+",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "3NO- ",
+            "text": "3NO-",
             "isCorrect": false
           },
           {
@@ -3341,7 +3341,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng sau trong bình kín: 2NO<sub>2</sub>(g)    N<sub>2</sub>O<sub>4</sub>(g).<br/>(màu nâu đỏ)      (không màu)<br/>Biết khi hạ nhiệt độ của bình thì màu nâu đỏ nhạt dần. Phản ứng thuận có",
+        "text": "Cho cân bằng sau trong bình kín: 2NO<sub>2</sub>(g) ⇌ N<sub>2</sub>O<sub>4</sub>(g).<br/>(màu nâu đỏ) (không màu)<br/>Biết khi hạ nhiệt độ của bình thì màu nâu đỏ nhạt dần. Phản ứng thuận có",
         "images": [],
         "options": [
           {
@@ -3353,7 +3353,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "b",
             "letter": "B",
-            "text": "or298HD  < 0, phản ứng tỏa nhiệt",
+            "text": "or298HD < 0, phản ứng tỏa nhiệt",
             "isCorrect": true
           },
           {
@@ -3365,7 +3365,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "or298HD  < 0, phản ứng thu nhiệt",
+            "text": "or298HD < 0, phản ứng thu nhiệt",
             "isCorrect": false
           }
         ],
@@ -3497,7 +3497,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 16,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng hoá học sau: 2CO<sub>2</sub>(g)    2CO(g) + O<sub>2</sub>(g). Ở T <sup>o</sup>C, nồng độ các chất ở trạng thái cân bằng như sau: [CO<sub>2</sub>] = 1,2 M, [CO] = 0,35 M và [O<sub>2</sub>] = 0,15 M. Hằng số cân bằng của phản ứng tại T <sup>o</sup>C là",
+        "text": "Cho cân bằng hoá học sau: 2CO<sub>2</sub>(g) ⇌ 2CO(g) + O<sub>2</sub>(g). Ở T <sup>o</sup>C, nồng độ các chất ở trạng thái cân bằng như sau: [CO<sub>2</sub>] = 1,2 M, [CO] = 0,35 M và [O<sub>2</sub>] = 0,15 M. Hằng số cân bằng của phản ứng tại T <sup>o</sup>C là",
         "images": [],
         "options": [
           {
@@ -3614,7 +3614,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Cho hai phản ứng hóa học:<br/>(1) N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  oxt,t,p 2NH<sub>3</sub>(g)     or298HD  = –92 kJ<br/>(2) N<sub>2</sub>(g) + O<sub>2</sub>(g)  o3000Choaëctialöûañieän 2NO(g)       or298HD = 180kJ",
+        "text": "Cho hai phản ứng hóa học:<br/>(1) N<sub>2</sub>(g) + 3H<sub>2</sub>(g) oxt,t,p ⇌ 2NH<sub>3</sub>(g) or298HD = –92 kJ<br/>(2) N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ (3000°C hoặc tia lửa điện) 2NO(g) or298HD = 180kJ",
         "images": [],
         "options": [
           {
@@ -3645,7 +3645,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. (1) gọi là quá trình Haber – Bosch.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de04_p2_q2",
@@ -3680,17 +3680,17 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>HCl  H<sup>+</sup> + Cl<sup>-</sup> và CH<sub>3</sub>COOH    CH<sub>3</sub>COO<sup>-</sup> + H<sup>+</sup><br/>a. Đúng.<br/>b. Sai. Thiếu CH<sub>3</sub>COOH vì nó là chất điện li yếu.<br/>c. Sai. [H<sup>+</sup>] trong HCl > [H<sup>+</sup>] trong CH<sub>3</sub>COOH.<br/>d. Đúng.",
+        "explanation": "Đáp án:<br/>HCl H<sup>+</sup> + Cl<sup>-</sup> và CH<sub>3</sub>COOH  CH<sub>3</sub>COO<sup>-</sup> + H<sup>+</sup><br/>a. Đúng.<br/>b. Sai. Thiếu CH<sub>3</sub>COOH vì nó là chất điện li yếu.<br/>c. Sai. [H<sup>+</sup>] trong HCl > [H<sup>+</sup>] trong CH<sub>3</sub>COOH.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de04_p2_q3",
         "number": 3,
         "part": 2,
         "type": "true_false",
-        "text": "Trong cơ thể người, hemoglobin (Hb) kết hợp oxygen phản ứng của người được biểu diễn đơn giản như sau:  22HbOHbO+<br/>Ở phổi, nồng độ oxygen lớn nên cân bằng trên chuyển dịch sang phải, hemoglobin kết hợp với oxygen. Khi đến các mô, nồng độ oxygen thấp, cân bằng trên chuyển dịch sang trái, giải phóng oxygen. Nếu thiếu oxygen ở não, con người có thể bị đau đầu, chóng mặt.",
+        "text": "Trong cơ thể người, hemoglobin (Hb) kết hợp oxygen phản ứng của người được biểu diễn đơn giản như sau: 22HbOHbO+ ⇌ <br/>Ở phổi, nồng độ oxygen lớn nên cân bằng trên chuyển dịch sang phải, hemoglobin kết hợp với oxygen. Khi đến các mô, nồng độ oxygen thấp, cân bằng trên chuyển dịch sang trái, giải phóng oxygen. Nếu thiếu oxygen ở não, con người có thể bị đau đầu, chóng mặt.",
         "images": [],
         "options": [
           {
@@ -3718,10 +3718,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>a. Sai. Các cân bằng hóa học đều tuân theo nguyên lí chuyển dịch cân bằng Le Chatelier.<br/>b. Đúng. Khi hàm lượng oxygen hít vào phổi nhiều hơn, cân bằng chuyển dịch sang chiều thuận làm tăng nồng độ HbO<sub>2</sub> ở phổi và ở mô não thì chuyển dịch theo chiều nghịch làm tăng nồng độ oxygen  Þ  cần hít thở sâu, trồng nhiều cây xanh, bảo vệ không khí không bị ô nhiễm để không khí trong lành, nồng độ oxygen trong không khí ổn định.<br/>c. Sai.<br/>d. Sai. Do ở trên núi cao, hàm lượng oxygen loãng, dẫn đến khi ở phổi cân bằng:  22HbOHbO+ chuyển dịch theo chiều nghịch làm lượng HbO<sub>2</sub> tạo thành giảm nên tại các mô như não lượng O<sub>2</sub> giải phóng giảm  Þ  thiếu O<sub>2</sub> lên não nên bị đau đầu, chóng mặt.",
+        "explanation": "Đáp án:<br/>a. Sai. Các cân bằng hóa học đều tuân theo nguyên lí chuyển dịch cân bằng Le Chatelier.<br/>b. Đúng. Khi hàm lượng oxygen hít vào phổi nhiều hơn, cân bằng chuyển dịch sang chiều thuận làm tăng nồng độ HbO<sub>2</sub> ở phổi và ở mô não thì chuyển dịch theo chiều nghịch làm tăng nồng độ oxygen Þ cần hít thở sâu, trồng nhiều cây xanh, bảo vệ không khí không bị ô nhiễm để không khí trong lành, nồng độ oxygen trong không khí ổn định.<br/>c. Sai.<br/>d. Sai. Do ở trên núi cao, hàm lượng oxygen loãng, dẫn đến khi ở phổi cân bằng: 22HbOHbO+ chuyển dịch theo chiều nghịch làm lượng HbO<sub>2</sub> tạo thành giảm nên tại các mô như não lượng O<sub>2</sub> giải phóng giảm Þ thiếu O<sub>2</sub> lên não nên bị đau đầu, chóng mặt.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de04_p2_q4",
@@ -3759,20 +3759,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai vì hiện tượng phú dưỡng làm giảm nguồn oxygen.<br/>c. Sai vì ao hồ có hiện tượng phú dưỡng thường thiếu oxygen nên sức sống kém.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de04_p3_q1",
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Khi tăng nhiệt độ, có bao nhiêu phản ứng chuyển dịch theo chiều thuận?<br/>32CaCO()CaO() + CO()ssg      or298H>0V<br/>2232SO()O()2SO()ggg+  or298H0<V<br/>222CO()HO()H()CO()gggg++   or298H0>V<br/>523PCl(g)Cl(g)+PCl(g)  or298H>0V",
+        "text": "Khi tăng nhiệt độ, có bao nhiêu phản ứng chuyển dịch theo chiều thuận?<br/>32CaCO()CaO() + CO()ssg ⇌ or298H>0V<br/>2232SO()O()2SO()ggg+ ⇌ or298H0<V<br/>222CO()HO()H()CO()gggg++ ⇌ or298H0>V<br/>523PCl(g)Cl(g)+PCl(g) ⇌ or298H>0V",
         "images": [],
         "correctAnswer": "3",
         "explanation": "Đáp án: 3.<br/>Có 3 phản ứng ( or298H>0V ).",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de04_p3_q2",
@@ -3785,20 +3785,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de04_p3_q3",
         "number": 3,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho sơ đồ phản ứng sau:<br/>0o22220+ O+ O+ HO + O+ Cu , tt323322xt,tNHNONOHNOCu(NO)NO¾¾¾®¾¾¾®¾¾¾¾¾®¾¾¾¾®¾¾®<br/>Mỗi mũi tên là một phản ứng hóa học. Có bao nhiêu phản ứng mà nitrogen đóng vai trò chất khử?",
+        "text": "Cho sơ đồ phản ứng sau:<br/>0o22220+ O+ O+ HO + O+ Cu , tt323322xt,tNHNONOHNOCu(NO)NO¾ → ¾ → → → → → → <br/>Mỗi mũi tên là một phản ứng hóa học. Có bao nhiêu phản ứng mà nitrogen đóng vai trò chất khử?",
         "images": [],
         "correctAnswer": "3",
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de04_p3_q4",
@@ -3811,7 +3811,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 55,2.<br/>NO2Cu64x65y17,4Cu:xmolx0,15BTe:2x2yn0,6Zn:ymoly0,120,15.64%m.10055,2%17,4+=ì=ììïÞÞííí+===ïîîîÞ==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de04_p3_q5",
@@ -3821,10 +3821,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Cho 100 mL dung dịch Ba(OH)<sub>2</sub> 0,15M tác dụng với V mL dung dịch HCl 0,0875M, sau phản ứng thu được dung dịch có pH = 2. Giá trị của V là bao nhiêu?",
         "images": [],
         "correctAnswer": "400",
-        "explanation": "Đáp án: 400.<br/>mol OH<sup>-</sup>= 0,03 mol ; mol H<sup>+</sup> = 0,0875 V nol<br/>Dung dịch sau khi trộn pH = 2 → Môi trường axit.<br/>PTHH:    H<sup>+</sup>+OH<sup>-</sup>        H<sub>2</sub>O<br/>0,03     0,03<br/>mol H<sup>+</sup>dư = 0,0875V- 0,03<br/>Hay  (0,0875V-0,03)/(0,1 + V) = 10<sup>-2</sup> → V = 0,4 L = 400 mL.",
+        "explanation": "Đáp án: 400.<br/>mol OH<sup>-</sup>= 0,03 mol ; mol H<sup>+</sup> = 0,0875 V nol<br/>Dung dịch sau khi trộn pH = 2 → Môi trường axit.<br/>PTHH: H<sup>+</sup>+OH<sup>-</sup> H<sub>2</sub>O<br/>0,03 0,03<br/>mol H<sup>+</sup>dư = 0,0875V- 0,03<br/>Hay (0,0875V-0,03)/(0,1 + V) = 10<sup>-2</sup> → V = 0,4 L = 400 mL.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de04_p3_q6",
@@ -3834,10 +3834,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Trong bình kín có chứa 80 mol N<sub>2</sub> và 320 mol H<sub>2</sub>, áp suất của hỗn hợp khí ban đầu là 400 bar, nhiệt độ trong bình được giữ không đổi cho đến khi phản ứng đạt đến trạng thái cân bằng thì lượng N<sub>2</sub> đã phản ứng là 25%. Cho biết áp suất của hỗn hợp khí sau phản ứng là bao nhiêu bar?",
         "images": [],
         "correctAnswer": "360",
-        "explanation": "Đáp án: 360.<br/>Phương trình hoá học:  N<sub>2</sub>           +        3H<sub>2</sub>⇌      2NH<sub>3</sub><br/>Ban đầu:                   80                   320                    0                   mol<br/>Phản ứng:80.25% = 20    60                        40                 mol<br/>Sau phản ứng:        60    260                40                 mol<br/>Ta có:  112222Pn40080320P360barPnP6026040+=Þ=Þ=++<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 360.<br/>Phương trình hoá học: N<sub>2</sub> + 3H<sub>2</sub>⇌ 2NH<sub>3</sub><br/>Ban đầu: 80 320 0 mol<br/>Phản ứng:80.25% = 20 60 40 mol<br/>Sau phản ứng: 60 260 40 mol<br/>Ta có: 112222Pn40080320P360barPnP6026040+=Þ=Þ=++<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -4131,7 +4131,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 8,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho 5 mol H<sub>2</sub> và 5 mol I<sub>2</sub> vào bình kín dung tích 1 lít và nung nóng đến  227^{\\circ} \\mathrm{C} . Đồ thị biểu diễn sự thay đổi nồng độ các chất theo thời gian được cho trong hình sau:<br/>Nồng độ của HI ở trạng thái cân bằng là",
+        "text": "Cho 5 mol H<sub>2</sub> và 5 mol I<sub>2</sub> vào bình kín dung tích 1 lít và nung nóng đến 227^{\\circ} \\mathrm{C} . Đồ thị biểu diễn sự thay đổi nồng độ các chất theo thời gian được cho trong hình sau:<br/>Nồng độ của HI ở trạng thái cân bằng là",
         "images": [
           "/assets/hoa11/midterm/h11_gk1_de5_image3.png"
         ],
@@ -4217,25 +4217,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "Na<sup>+</sup> + Cl<sup>-</sup>  ¾¾®  NaCl",
+            "text": "Na<sup>+</sup> + Cl<sup>-</sup> → NaCl",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "NaOH + H<sup>+</sup>  ¾¾®  Na<sup>+</sup> + H<sub>2</sub>O",
+            "text": "NaOH + H<sup>+</sup> → Na<sup>+</sup> + H<sub>2</sub>O",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "OH<sup>-</sup> + H<sup>+</sup>  ¾¾®  H<sub>2</sub>O",
+            "text": "OH<sup>-</sup> + H<sup>+</sup> → H<sub>2</sub>O",
             "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "NaOH + Cl<sup>-</sup>  ¾¾®  NaCl + OH<sup>-</sup>",
+            "text": "NaOH + Cl<sup>-</sup> → NaCl + OH<sup>-</sup>",
             "isCorrect": false
           }
         ],
@@ -4373,25 +4373,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "ot4333NHNONHHNO.¾¾®+",
+            "text": "ot4333NHNONHHNO. → +",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "ot43NHClNHHCl.¾¾®+",
+            "text": "ot43NHClNHHCl. → +",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "ot423322(NH)CO2NHCOHO.¾¾®++",
+            "text": "ot423322(NH)CO2NHCOHO. → ++",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "ot43322NHHCONHCOHO.¾¾®++",
+            "text": "ot43322NHHCONHCOHO. → ++",
             "isCorrect": false
           }
         ],
@@ -4562,7 +4562,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Thực hiện thí nghiệm ảnh hưởng của nhiệt độ đến sự chuyển dịch cân bằng:<br/>CH<sub>3</sub>COONa + H<sub>2</sub>O     CH<sub>3</sub>COOH + NaOH        or298H 0D>  (*)<br/>Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho khoảng 10 mL dung dịch CH<sub>3</sub>COONa 0,5 M vào cốc thuỷ tinh, thêm 1 - 2 giọt phenolphthalein, khuấy đều.<br/>Bước 2: Chia dung dịch thu được vào 3 ống nghiệm, ống nghiệm (1) để so sánh, ống nghiệm (2) ngâm vào cốc nước đá, ống nghiệm (3) ngâm vào cốc nước nóng.",
+        "text": "Thực hiện thí nghiệm ảnh hưởng của nhiệt độ đến sự chuyển dịch cân bằng:<br/>CH<sub>3</sub>COONa + H<sub>2</sub>O  CH<sub>3</sub>COOH + NaOH or298H 0D> (*)<br/>Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho khoảng 10 mL dung dịch CH<sub>3</sub>COONa 0,5 M vào cốc thuỷ tinh, thêm 1 - 2 giọt phenolphthalein, khuấy đều.<br/>Bước 2: Chia dung dịch thu được vào 3 ống nghiệm, ống nghiệm (1) để so sánh, ống nghiệm (2) ngâm vào cốc nước đá, ống nghiệm (3) ngâm vào cốc nước nóng.",
         "images": [],
         "options": [
           {
@@ -4593,7 +4593,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai, Phản ứng thuận là phản ứng thu nhiệt.<br/>b. Sai. Dung dịch có màu hồng do CH<sub>3</sub>COONa có môi trường base.<br/>c. Đúng. Giảm nhiệt độ cân bằng chuyển dịch theo chiều của phản ứng tỏa nhiệt (chiều thuận) làm màu đậm lên.<br/>d. Đúng. Tăng nhiệt độ cân bằng chuyển dịch theo chiều của phản ứng thu nhiệt (chiều nghịch) làm màu nhạt đi.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de05_p2_q2",
@@ -4628,10 +4628,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>a. Đúng. NH<sub>4</sub><sup>+</sup> + H<sup>+</sup>  NH<sub>4</sub><sup>+</sup>.<br/>b. Đúng.<br/>c. Sai. NH<sub>3</sub> thể hiện tính khử.<br/>d. Đúng. NH<sub>3</sub> + O<sub>2</sub>  ot¾¾®  N<sub>2</sub> + H<sub>2</sub>O.",
+        "explanation": "Đáp án:<br/>a. Đúng. NH<sub>4</sub><sup>+</sup> + H<sup>+</sup> NH<sub>4</sub><sup>+</sup>.<br/>b. Đúng.<br/>c. Sai. NH<sub>3</sub> thể hiện tính khử.<br/>d. Đúng. NH<sub>3</sub> + O<sub>2</sub> ⎯⎯t°→ N<sub>2</sub> + H<sub>2</sub>O.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de05_p2_q3",
@@ -4666,17 +4666,17 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>a. Sai. Cu(OH)<sub>2</sub> + 2HNO<sub>3</sub>  Cu(NO<sub>3</sub>)<sub>2</sub> + 2H<sub>2</sub>O (phản ứng chứng minh tính acid).<br/>b. Đúng.<br/>c. Sai. Do có tính oxi hóa mạnh.<br/>d. Sai. HNO<sub>3</sub> đậm đặc bị bốc khói mạnh trong không khí ẩm nên nồng độ dung dịch giảm.",
+        "explanation": "Đáp án:<br/>a. Sai. Cu(OH)<sub>2</sub> + 2HNO<sub>3</sub> Cu(NO<sub>3</sub>)<sub>2</sub> + 2H<sub>2</sub>O (phản ứng chứng minh tính acid).<br/>b. Đúng.<br/>c. Sai. Do có tính oxi hóa mạnh.<br/>d. Sai. HNO<sub>3</sub> đậm đặc bị bốc khói mạnh trong không khí ẩm nên nồng độ dung dịch giảm.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de05_p2_q4",
         "number": 4,
         "part": 2,
         "type": "true_false",
-        "text": "Ở trạng thái bình thường, dịch vị dạ dày thường có nồng độ [H<sup>+</sup>] là  42.10-  M. Khi tiến hành tiêu hóa thức ăn vào dạ dày làm giải phóng acid HCl và dịch vị dạ dày cũng vì vậy mà có giá trị thay đổi, khi này nồng độ ion [H<sup>+</sup>] là  24,6.10-  M. “Ợ nóng” là cảm giác đau rát ở thực quản gây ra do sự gia tăng nồng độ acid HCl trong dạ dày.",
+        "text": "Ở trạng thái bình thường, dịch vị dạ dày thường có nồng độ [H<sup>+</sup>] là 42.10- M. Khi tiến hành tiêu hóa thức ăn vào dạ dày làm giải phóng acid HCl và dịch vị dạ dày cũng vì vậy mà có giá trị thay đổi, khi này nồng độ ion [H<sup>+</sup>] là 24,6.10- M. “Ợ nóng” là cảm giác đau rát ở thực quản gây ra do sự gia tăng nồng độ acid HCl trong dạ dày.",
         "images": [],
         "options": [
           {
@@ -4707,33 +4707,33 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. pH = 1,34.<br/>c. Đúng. Mg(OH)<sub>2</sub> trung hòa acid thực quản.<br/>d. Sai. Thành phần nước bọt gồm: nước (99%), chất hữu cơ (men amylase, men lysosome, men maltase, chất nhầy), chất vô cơ (K<sup>+</sup>, Na<sup>+</sup>, HCO<sub>3</sub><sup>-</sup>, Cl<sup>-</sup>). Ion HCO<sub>3</sub><sup>-</sup> trung hòa một phần acid trong thực quản.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de05_p3_q1",
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các cân bằng sau:<br/>(1) 2HI (g)    H<sub>2</sub>(g) + I<sub>2</sub>(g); (2) CaCO<sub>3</sub>(s)    CaO (s) + CO<sub>2</sub>(g);<br/>(3) FeO (s) + CO (g)    Fe (s) + CO<sub>2</sub>(g); (4) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g)    2SO<sub>3</sub>(g).<br/>Khi giảm áp suất của hệ, có bao nhiêu cân bằng bị chuyển dịch theo chiều nghịch?",
+        "text": "Cho các cân bằng sau:<br/>(1) 2HI (g) ⇌ H<sub>2</sub>(g) + I<sub>2</sub>(g); (2) CaCO<sub>3</sub>(s) ⇌ CaO (s) + CO<sub>2</sub>(g);<br/>(3) FeO (s) + CO (g) ⇌ Fe (s) + CO<sub>2</sub>(g); (4) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g).<br/>Khi giảm áp suất của hệ, có bao nhiêu cân bằng bị chuyển dịch theo chiều nghịch?",
         "images": [],
         "correctAnswer": "1",
         "explanation": "Đáp án: 1.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de05_p3_q2",
         "number": 2,
         "part": 3,
         "type": "short_answer",
-        "text": "Trong số các chất sau: NaCl (nóng chảy), CH<sub>3</sub>COOH, KMnO<sub>4</sub>, KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> (saccharose),  CH<sub>3</sub>COONH<sub>4</sub>, CO<sub>2</sub> và C<sub>6</sub>H<sub>6</sub> (benzen). Có bao nhiêu chất điện li trong dãy các chất trên?",
+        "text": "Trong số các chất sau: NaCl (nóng chảy), CH<sub>3</sub>COOH, KMnO<sub>4</sub>, KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> (saccharose), CH<sub>3</sub>COONH<sub>4</sub>, CO<sub>2</sub> và C<sub>6</sub>H<sub>6</sub> (benzen). Có bao nhiêu chất điện li trong dãy các chất trên?",
         "images": [],
         "correctAnswer": "5",
         "explanation": "Đáp án: 5.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de05_p3_q3",
@@ -4748,33 +4748,33 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.<br/>Chọn các khí không tan hoặc tan ít trong nước.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de05_p3_q4",
         "number": 4,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho Sulfur trioxide được tạo thành bằng cách oxi hóa sulfur dioxide bằng oxygen hoặc lượng dư không khí ở nhiệt độ 450<sup>0</sup>C – 500<sup>0</sup>C, chất xúc tác V<sub>2</sub>O<sub>5</sub> theo phương trình hóa học:<br/>0025VO,450C500C0223r2982SO(g)O(g)2SO(g)H198,4kJ-¾¾¾¾¾¾®+=-¬¾¾¾¾¾¾V<br/>Nồng độ ban đầu của SO<sub>2</sub> và O<sub>2</sub> tương ứng là 4 M và 2 M. Tính hằng số cân bằng của phản ứng, biết rằng khi đạt trạng thái cân bằng đã có 80% SO<sub>2</sub> đã phản ứng.",
+        "text": "Cho Sulfur trioxide được tạo thành bằng cách oxi hóa sulfur dioxide bằng oxygen hoặc lượng dư không khí ở nhiệt độ 450<sup>0</sup>C – 500<sup>0</sup>C, chất xúc tác V<sub>2</sub>O<sub>5</sub> theo phương trình hóa học:<br/>0025VO,450C500C0223r2982SO(g)O(g)2SO(g)H198,4kJ- → → +=-¬ → V<br/>Nồng độ ban đầu của SO<sub>2</sub> và O<sub>2</sub> tương ứng là 4 M và 2 M. Tính hằng số cân bằng của phản ứng, biết rằng khi đạt trạng thái cân bằng đã có 80% SO<sub>2</sub> đã phản ứng.",
         "images": [],
         "correctAnswer": "40",
-        "explanation": "Đáp án: 40.<br/>oo25VO, 450C - 500C2232SO(g)     +     O(g)          2SO(g)<br/>Bđ:  42<br/>Pư: 3,2                    1,6 3,2<br/>Cb 0,8                   0,43,2<br/>2C23,2K=400,4.0,8= .",
+        "explanation": "Đáp án: 40.<br/>oo25VO, 450C - 500C2232SO(g) + O(g) 2SO(g) ⇌ <br/>Bđ: 42<br/>Pư: 3,2 1,6 3,2<br/>Cb 0,8 0,43,2<br/>2C23,2K=400,4.0,8= .",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de05_p3_q5",
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>+++++-¾¾¾®¾¾¾®¾¾¾¾®¾¾®+2222OOOHO2233(1)(2)(3)NNONOHNOHNO<br/>Tính lượng nitrate (NO<sub>3</sub><sup>-</sup>) mà đất được cung cấp từ 1 lít không khí (đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 80% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
+        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>+++++-¾ → ¾ → → → → +2222OOOHO2233(1)(2)(3)NNONOHNOHNO<br/>Tính lượng nitrate (NO<sub>3</sub><sup>-</sup>) mà đất được cung cấp từ 1 lít không khí (đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 80% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "4",
-        "explanation": "Đáp án: 4.<br/>2KKN1000100080nmoln.32,271mol24,7924,79100=Þ==<br/>Bảo toàn nguyên tố N:  23NNO2n n64,542mol-==<br/>3NOm64,542.624001,6g4kg-===",
+        "explanation": "Đáp án: 4.<br/>2KKN1000100080nmoln.32,271mol24,7924,79100=Þ==<br/>Bảo toàn nguyên tố N: 23NNO2n n64,542mol-==<br/>3NOm64,542.624001,6g4kg-===",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de05_p3_q6",
@@ -4784,10 +4784,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Một cái ao dùng để nuôi thủy sản chứa 5000 m<sup>3</sup> nước có pH = 4,2. Trước khi nuôi, người ta làm tăng độ pH trong ao lên 7,0 bằng cách hòa m kg vôi sống (chứa 80% CaO, còn lại là tạp chất trơ không tác dụng với nước) vào nước trong ao. Giá trị của m là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "11",
-        "explanation": "Đáp án: 11.<br/>Ta có: [H<sup>+</sup>] = 10<sup>-4,2</sup> → n<sub>H</sub><sup>+</sup> = [H<sup>+</sup>] .V = 10<sup>-4,2</sup> . 5000 . 10<sup>3</sup> mol<br/>PTHH: CaO + 2H<sup>+</sup>  → Ca<sup>2+</sup> + H<sub>2</sub>O<br/>Để pH = 7 thì toàn bộ H<sup>+</sup> phản ứng hết với CaO nên n<sub>CaO</sub> =  12 n<sub>H</sub><sup>+</sup> = 157,74 mol<br/>m<sub>CaO</sub> = 157,74 . 56 = 8833,4 g. Vậy m vôi sống = m<sub>CaO</sub>/80% = 11,04 kg.<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 11.<br/>Ta có: [H<sup>+</sup>] = 10<sup>-4,2</sup> → n<sub>H</sub><sup>+</sup> = [H<sup>+</sup>] .V = 10<sup>-4,2</sup> . 5000 . 10<sup>3</sup> mol<br/>PTHH: CaO + 2H<sup>+</sup> → Ca<sup>2+</sup> + H<sub>2</sub>O<br/>Để pH = 7 thì toàn bộ H<sup>+</sup> phản ứng hết với CaO nên n<sub>CaO</sub> = 12 n<sub>H</sub><sup>+</sup> = 157,74 mol<br/>m<sub>CaO</sub> = 157,74 . 56 = 8833,4 g. Vậy m vôi sống = m<sub>CaO</sub>/80% = 11,04 kg.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -4808,31 +4808,31 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Biểu thức nào sau đây là biểu thức tính hằng số cân bằng (K<sub>c</sub>) của phản ứng:<br/>CO(g) + H<sub>2</sub>O(g)    CO<sub>2</sub>(g) + H<sub>2</sub>(g)",
+        "text": "Biểu thức nào sau đây là biểu thức tính hằng số cân bằng (K<sub>c</sub>) của phản ứng:<br/>CO(g) + H<sub>2</sub>O(g) ⇌ CO<sub>2</sub>(g) + H<sub>2</sub>(g)",
         "images": [],
         "options": [
           {
             "id": "a",
             "letter": "A",
-            "text": "2C22[CO].[HO]K[CO].[H]= ",
+            "text": "2C22[CO].[HO]K[CO].[H]=",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "2C22[CO].[H]K[CO].[HO]= ",
+            "text": "2C22[CO].[H]K[CO].[HO]=",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "22C2[CO].[H]K[CO].[HO]= ",
+            "text": "22C2[CO].[H]K[CO].[HO]=",
             "isCorrect": true
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "22C2[CO].[HO]K[CO].[H]= ",
+            "text": "22C2[CO].[HO]K[CO].[H]=",
             "isCorrect": false
           }
         ],
@@ -4970,25 +4970,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "4NH<sub>3</sub> + 5O<sub>2</sub>  oxt,t¾¾¾®  4NO + 6H<sub>2</sub>O",
+            "text": "4NH<sub>3</sub> + 5O<sub>2</sub> oxt,t¾ → 4NO + 6H<sub>2</sub>O",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "NH<sub>3</sub> + HCl  ¾¾®  NH<sub>4</sub>Cl",
+            "text": "NH<sub>3</sub> + HCl → NH<sub>4</sub>Cl",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "8NH<sub>3</sub> + 3Cl<sub>2</sub>  ¾¾®  6NH<sub>4</sub>Cl + N<sub>2.</sub>",
+            "text": "8NH<sub>3</sub> + 3Cl<sub>2</sub> → 6NH<sub>4</sub>Cl + N<sub>2.</sub>",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "2NH<sub>3</sub> + 3CuO  ot¾¾®  3Cu + N<sub>2</sub> + 3H<sub>2</sub>O",
+            "text": "2NH<sub>3</sub> + 3CuO ⎯⎯t°→ 3Cu + N<sub>2</sub> + 3H<sub>2</sub>O",
             "isCorrect": false
           }
         ],
@@ -5081,7 +5081,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 8,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho hai phản ứng sau:<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\">Cặp phản ứng</th><th class=\"px-2 py-1 border border-slate-300\">Phản ứng thứ nhất</th><th class=\"px-2 py-1 border border-slate-300\">Phản ứng thứ hai</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(1)</td><td class=\"px-2 py-1 border border-slate-300\">2H2(g) + O2(g)  2H2O(g)</td><td class=\"px-2 py-1 border border-slate-300\">2H2O(l)  2H2(g) + O2(g)</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(2)</td><td class=\"px-2 py-1 border border-slate-300\">H2 + I2 ⟶ 2HI</td><td class=\"px-2 py-1 border border-slate-300\">2HI ⟶ H2 + I2</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(3)</td><td class=\"px-2 py-1 border border-slate-300\">2Na + Cl2  2NaCl</td><td class=\"px-2 py-1 border border-slate-300\">2NaCl  2Na + Cl2</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(4)</td><td class=\"px-2 py-1 border border-slate-300\">N2 + 3H2 ⟶ 2NH3</td><td class=\"px-2 py-1 border border-slate-300\">2NH3 ⟶ N2 + 3H2</td></tr></table></div><br/>Cặp phản ứng nào sau đây có thể tạo thành một phản ứng thuận nghịch?",
+        "text": "Cho hai phản ứng sau:<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\">Cặp phản ứng</th><th class=\"px-2 py-1 border border-slate-300\">Phản ứng thứ nhất</th><th class=\"px-2 py-1 border border-slate-300\">Phản ứng thứ hai</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(1)</td><td class=\"px-2 py-1 border border-slate-300\">2H2(g) + O2(g) 2H2O(g)</td><td class=\"px-2 py-1 border border-slate-300\">2H2O(l) 2H2(g) + O2(g)</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(2)</td><td class=\"px-2 py-1 border border-slate-300\">H2 + I2 ⟶ 2HI</td><td class=\"px-2 py-1 border border-slate-300\">2HI ⟶ H2 + I2</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(3)</td><td class=\"px-2 py-1 border border-slate-300\">2Na + Cl2 2NaCl</td><td class=\"px-2 py-1 border border-slate-300\">2NaCl 2Na + Cl2</td></tr><tr><td class=\"px-2 py-1 border border-slate-300\">(4)</td><td class=\"px-2 py-1 border border-slate-300\">N2 + 3H2 ⟶ 2NH3</td><td class=\"px-2 py-1 border border-slate-300\">2NH3 ⟶ N2 + 3H2</td></tr></table></div><br/>Cặp phản ứng nào sau đây có thể tạo thành một phản ứng thuận nghịch?",
         "images": [],
         "options": [
           {
@@ -5237,7 +5237,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng hóa học sau: CaCO<sub>3</sub>(s)    CaO(s) + CO<sub>2</sub>(g)   ;  or298H176kJD= . Yếu tố nào sau đây làm cho cân bằng dịch chuyển theo chiều thuận?",
+        "text": "Cho cân bằng hóa học sau: CaCO<sub>3</sub>(s)  CaO(s) + CO<sub>2</sub>(g) ; or298H176kJD= . Yếu tố nào sau đây làm cho cân bằng dịch chuyển theo chiều thuận?",
         "images": [],
         "options": [
           {
@@ -5541,7 +5541,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Cân bằng bị chuyển dịch khi thay đổi nhiệt độ, nồng độ và áp suất.<br/>b. Đúng.<br/>c. Sai. Tốc độ phản ứng thuận bằng tốc độ phản ứng nghịch.<br/>d. Sai. Nồng độ của chất phản ứng và sản phẩm không thay đổi.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de06_p2_q2",
@@ -5581,7 +5581,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Nồng độ chất cần chuẩn độ thực tế phải luôn nhỏ hơn khi tính từ kết quả thí nghiệm.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de06_p2_q3",
@@ -5616,10 +5616,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": false
           }
         ],
-        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai, N<sub>2</sub>  NH<sub>3</sub> số oxi hóa giảm nên N<sub>2</sub> đóng vai trò là chất khử.<br/>d. Sai.  kkkkNOAr2224,79n1molmmmm78%.1.2821%.1.321%.4028,96g24,79==Þ=++=++=",
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai, N<sub>2</sub> NH<sub>3</sub> số oxi hóa giảm nên N<sub>2</sub> đóng vai trò là chất khử.<br/>d. Sai. kkkkNOAr2224,79n1molmmmm78%.1.2821%.1.321%.4028,96g24,79==Þ=++=++=",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de06_p2_q4",
@@ -5657,20 +5657,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. pH < 5,6.<br/>c. Sai. Có ảnh hưởng (tác hại ở câu dẫn).<br/>d. Sai. Có liên quan vì có sinh khí SO<sub>2</sub>, NO<sub>x</sub>.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de06_p3_q1",
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Trong số các cân bằng sau, có bao nhiêu cân bằng sẽ chuyển dịch khi giảm dung tích của bình phản ứng xuống ở nhiệt độ không đổi:<br/>a) CH<sub>4</sub>(g) + H<sub>2</sub>O(g)    CO(g) + 3H<sub>2</sub>(g).<br/>b) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g)    2SO<sub>3</sub>(g).<br/>c) 2HI(g)    H<sub>2</sub>(g) + I<sub>2</sub>(g).<br/>d) N<sub>2</sub>O<sub>4</sub>(g)    2NO<sub>2</sub>(g).",
+        "text": "Trong số các cân bằng sau, có bao nhiêu cân bằng sẽ chuyển dịch khi giảm dung tích của bình phản ứng xuống ở nhiệt độ không đổi:<br/>a) CH<sub>4</sub>(g) + H<sub>2</sub>O(g) ⇌ CO(g) + 3H<sub>2</sub>(g).<br/>b) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g).<br/>c) 2HI(g) ⇌ H<sub>2</sub>(g) + I<sub>2</sub>(g).<br/>d) N<sub>2</sub>O<sub>4</sub>(g) ⇌ 2NO<sub>2</sub>(g).",
         "images": [],
         "correctAnswer": "3",
-        "explanation": "Đáp án: 3.<br/>Giảm thể tích của bình  tăng áp suất, cân bằng chuyển dịch theo chiều làm giảm số mol khí.<br/>Chọn a), b), d).",
+        "explanation": "Đáp án: 3.<br/>Giảm thể tích của bình tăng áp suất, cân bằng chuyển dịch theo chiều làm giảm số mol khí.<br/>Chọn a), b), d).",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de06_p3_q2",
@@ -5683,7 +5683,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de06_p3_q3",
@@ -5693,36 +5693,36 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Người ta dùng muối NH<sub>4</sub>HCO<sub>3</sub> làm bột nở vì khi có tác dụng nhiệt, bột nở phân hủy sinh ra khí NH<sub>3</sub>, CO<sub>2</sub> từ trong chiếc bánh làm chúng nở to ra, tạo các lỗ xốp nên bánh mềm hơn. Để làm ra một chiếc bánh người ta cần dùng hết 0,79 gam NH<sub>4</sub>HCO<sub>3</sub>. Biết phản ứng xảy ra hoàn toàn, khi nướng chiếc bánh trên thì tổng thể tích khí NH<sub>3</sub> và CO<sub>2</sub> ở đkc được tạo thành là bao nhiêu lít? (Kết quả làm tròn đến hàng phần mười).",
         "images": [],
         "correctAnswer": "0.5",
-        "explanation": "Đáp án: 0,5.<br/>NH<sub>4</sub>HCO<sub>3</sub>  NH<sub>3</sub> + CO<sub>2</sub> + H<sub>2</sub>O<br/>0,010,010,01<br/>V = 0,02.24.79 = 0,4968 lít.",
+        "explanation": "Đáp án: 0,5.<br/>NH<sub>4</sub>HCO<sub>3</sub> NH<sub>3</sub> + CO<sub>2</sub> + H<sub>2</sub>O<br/>0,010,010,01<br/>V = 0,02.24.79 = 0,4968 lít.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de06_p3_q4",
         "number": 4,
         "part": 3,
         "type": "short_answer",
-        "text": "Vàng tan trong hỗn hợp gồm dung dịch nitric acid đặc và dung dịch hydrochloric acid đặc (tỉ lệ 1 : 3 về thể tích) tạo ra hợp chất tan của Au<sup>3+</sup> theo phản ứng sau:<br/>Au + HNO<sub>3</sub> + HCl  HAuCl<sub>4</sub> + NO + H<sub>2</sub>O<br/>Tổng hệ số cân bằng (số nguyên tối giản) của các chất có trong phản ứng trên là bao nhiêu?",
+        "text": "Vàng tan trong hỗn hợp gồm dung dịch nitric acid đặc và dung dịch hydrochloric acid đặc (tỉ lệ 1 : 3 về thể tích) tạo ra hợp chất tan của Au<sup>3+</sup> theo phản ứng sau:<br/>Au + HNO<sub>3</sub> + HCl HAuCl<sub>4</sub> + NO + H<sub>2</sub>O<br/>Tổng hệ số cân bằng (số nguyên tối giản) của các chất có trong phản ứng trên là bao nhiêu?",
         "images": [],
         "correctAnswer": "10",
-        "explanation": "Đáp án: 10.<br/>Au + HNO<sub>3</sub> + 4HCl  HAuCl<sub>4</sub> + NO + 2H<sub>2</sub>O",
+        "explanation": "Đáp án: 10.<br/>Au + HNO<sub>3</sub> + 4HCl HAuCl<sub>4</sub> + NO + 2H<sub>2</sub>O",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de06_p3_q5",
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho cân bằng ở 1650℃:  ot22NO2NO+  ; K<sub>C</sub> = 4.10<sup>-4</sup><br/>Thực hiện phản ứng trên trong một bình kín với một hỗn hợp nitrogen và oxygen có tỉ lệ mol tương ứng là 4 : 1. Tính hiệu suất của phản ứng khi hệ cân bằng ở 1650℃. (Kết quả làm tròn đến hàng đơn vị).",
+        "text": "Cho cân bằng ở 1650℃: ot22NO2NO+ ⇌ ; K<sub>C</sub> = 4.10<sup>-4</sup><br/>Thực hiện phản ứng trên trong một bình kín với một hỗn hợp nitrogen và oxygen có tỉ lệ mol tương ứng là 4 : 1. Tính hiệu suất của phản ứng khi hệ cân bằng ở 1650℃. (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "2",
-        "explanation": "Đáp án: 2.<br/>Chọn số mol của N<sub>2</sub> và O<sub>2</sub> lần lượt là 4 mol và 1 mol, bình dung tích 1 lít<br/>Þ   ))4122M(NM(OCM, CM==<br/>-+=ÞÞ¬®422C222N(g)       O(g)2NO(g)    K4.10Ban ®Çu:      4      >       1OhÕt,Nd­TÝnhH%theoOPh¶n øng:    x             x2x              (mol/L)C©nb»ng:  4-x                1-x2x              (mol/L)<br/>-é»Þ==ê===Þê--=-êë2241C2220,02x0,02H.100%2%[NO](2x)K4.101[N].[O](4x)(1x)x0,02(lo¹i)",
+        "explanation": "Đáp án: 2.<br/>Chọn số mol của N<sub>2</sub> và O<sub>2</sub> lần lượt là 4 mol và 1 mol, bình dung tích 1 lít<br/>Þ ))4122M(NM(OCM, CM==<br/>-+=ÞÞ → 422C222N(g) O(g)2NO(g) K4.10Ban ®Çu: 4 > 1OhÕt,Nd­TÝnhH%theoOPh¶n øng: x x2x (mol/L)C©nb»ng: 4-x 1-x2x (mol/L)<br/>-é»Þ==ê===Þê--=-êë2241C2220,02x0,02H.100%2%[NO](2x)K4.101[N].[O](4x)(1x)x0,02(lo¹i)",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de06_p3_q6",
@@ -5735,7 +5735,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 2,8.<br/>Ban đầu pH = 4 nên [H<sup>+</sup>] = 10<sup>-4</sup> M<br/>Xét 1 m<sup>3</sup> nước (hay 1000 lít) thì n<sub>H</sub><sup>+</sup> = [H<sup>+</sup>].V = 10<sup>-4</sup> .1000 = 0,1 mol<br/>Để pH = 7 thì toàn bộ lượng H<sup>+</sup> phải phản ứng hết nên OH<sup>-</sup> + H<sup>+</sup> → H<sub>2</sub>O<br/>OHHCaO OH11n n 0,1 moln .n .0,10,05 mol22-+-==Þ===<br/>m<sub>CaO</sub> = 0,05.56 = 2,8 gam<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -5795,31 +5795,31 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 2,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Xét cân bằng sau: Fe<sub>2</sub>O<sub>3</sub>(s) + 3CO(g)    2Fe(s) + 3CO<sub>2</sub>(g). Biểu thức hằng số cân bằng của hệ là",
+        "text": "Xét cân bằng sau: Fe<sub>2</sub>O<sub>3</sub>(s) + 3CO(g)  2Fe(s) + 3CO<sub>2</sub>(g). Biểu thức hằng số cân bằng của hệ là",
         "images": [],
         "options": [
           {
             "id": "a",
             "letter": "A",
-            "text": "K<sub>C</sub> = [][][][]232323FeCOFeOCO ",
+            "text": "K<sub>C</sub> = [][][][]232323FeCOFeOCO",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "K<sub>C</sub> = [][][][]323232FeOCOFeCO ",
+            "text": "K<sub>C</sub> = [][][][]323232FeOCOFeCO",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "K<sub>C</sub> = [][]332COCO  ",
+            "text": "K<sub>C</sub> = [][]332COCO",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "K<sub>C</sub> = éùëûéùëû323COCO ",
+            "text": "K<sub>C</sub> = éùëûéùëû323COCO",
             "isCorrect": true
           }
         ],
@@ -5957,25 +5957,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "Na<sub>2</sub>CO<sub>3</sub>(s)  2HO¾¾¾® 2Na(aq) + C(aq) + 3O(aq)",
+            "text": "Na<sub>2</sub>CO<sub>3</sub>(s) 2HO¾ → 2Na(aq) + C(aq) + 3O(aq)",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "Na<sub>2</sub>CO<sub>3</sub>(s)  2HO¾¾¾® 2Na<sup>+</sup>(aq) + C<sup>4+</sup>(aq) + 3O<sup>2-</sup>(aq)",
+            "text": "Na<sub>2</sub>CO<sub>3</sub>(s) 2HO¾ → 2Na<sup>+</sup>(aq) + C<sup>4+</sup>(aq) + 3O<sup>2-</sup>(aq)",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "Na<sub>2</sub>CO<sub>3</sub>(s)  2HO¾¾¾® 2Na<sup>+</sup>(aq) +  23CO- (aq)",
+            "text": "Na<sub>2</sub>CO<sub>3</sub>(s) 2HO¾ → 2Na<sup>+</sup>(aq) + 23CO- (aq)",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "Na<sub>2</sub>CO<sub>3</sub>(s)  2HO¾¾¾® 2Na(s) +  23CO- (g)",
+            "text": "Na<sub>2</sub>CO<sub>3</sub>(s) 2HO¾ → 2Na(s) + 23CO- (g)",
             "isCorrect": true
           }
         ],
@@ -6187,7 +6187,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các giá trị hằng số cân bằng của các phản ứng sau<br/>(a) (a) N<sub>2</sub>O<sub>4</sub>(g)  o10C  2NO<sub>2</sub>(g);  K<sub>c</sub>= 0,2<br/>(b) H<sub>2</sub>(g) + l<sub>2</sub>(g)  o450C  2HI(g) ; K<sub>c</sub>= 50<br/>(c) CO<sub>2</sub>(g) + H<sub>2</sub>(g)  o827C CO(g) + H<sub>2</sub>O(g) ; K<sub>c</sub> = 0,659<br/>(d)  450223()3()2()oNgHgNHg+  ; K<sub>c</sub> = 2,25<br/>Hãy cho biết phản ứng nào có hiệu suất cao nhất?",
+        "text": "Cho các giá trị hằng số cân bằng của các phản ứng sau<br/>(a) (a) N<sub>2</sub>O<sub>4</sub>(g) o10C ⇌ 2NO<sub>2</sub>(g); K<sub>c</sub>= 0,2<br/>(b) H<sub>2</sub>(g) + l<sub>2</sub>(g) o450C ⇌ 2HI(g) ; K<sub>c</sub>= 50<br/>(c) CO<sub>2</sub>(g) + H<sub>2</sub>(g) o827C ⇌ CO(g) + H<sub>2</sub>O(g) ; K<sub>c</sub> = 0,659<br/>(d) 450223()3()2()oNgHgNHg+ ⇌ ⇌ ; K<sub>c</sub> = 2,25<br/>Hãy cho biết phản ứng nào có hiệu suất cao nhất?",
         "images": [],
         "options": [
           {
@@ -6265,7 +6265,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 14,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các tính chất của khí nitrogen: (a) hóa lỏng ở nhiệt độ rất thấp (-196<sup>o</sup>C), (b) cấu tạo phân tử nitrogen là  NNº , (c) tan nhiều trong nước, (d) nặng hơn oxygen, (e) kém bền, dễ bị phân hủy thành nitrogen nguyên tử. Những tính chất không phù hợp với khí nitrogen là",
+        "text": "Cho các tính chất của khí nitrogen: (a) hóa lỏng ở nhiệt độ rất thấp (-196<sup>o</sup>C), (b) cấu tạo phân tử nitrogen là NNº , (c) tan nhiều trong nước, (d) nặng hơn oxygen, (e) kém bền, dễ bị phân hủy thành nitrogen nguyên tử. Những tính chất không phù hợp với khí nitrogen là",
         "images": [],
         "options": [
           {
@@ -6421,7 +6421,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 18,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng hóa học: 2SO<sub>2</sub> (g) + O<sub>2</sub> (g) ⇌ 2SO<sub>3</sub> (g);  0r298HD  < 0. Phát biểu nào sau đây đúng?",
+        "text": "Cho cân bằng hóa học: 2SO<sub>2</sub> (g) + O<sub>2</sub> (g) ⇌ 2SO<sub>3</sub> (g); 0r298HD < 0. Phát biểu nào sau đây đúng?",
         "images": [],
         "options": [
           {
@@ -6491,7 +6491,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Không dẫn điện được.<br/>d. Sai. X không tan trong dung môi không phân cực.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de07_p2_q2",
@@ -6522,21 +6522,21 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "Khái niệm acid – base theo thuyết Bronsted – Lowry tổng quát hơn thuyết Arhenius, phân tử không có nhóm OH như NH<sub>3</sub> là một base hoặc ion  23CO-  là một base.",
+            "text": "Khái niệm acid – base theo thuyết Bronsted – Lowry tổng quát hơn thuyết Arhenius, phân tử không có nhóm OH như NH<sub>3</sub> là một base hoặc ion 23CO- là một base.",
             "isCorrect": true
           }
         ],
         "explanation": "Đáp án:<br/>Theo thuyết Bronsted – Lowry, acid là chất cho proton H<sup>+</sup> còn base là chất nhận proton H<sup>+</sup>.<br/>Theo thuyết Arhenius, acid là chất khi tan trong nước phân li ra ion H<sup>+</sup> còn base là chất khi tan trong nước phân li ra ion OH<sup>–</sup>.<br/>a. Sai.<br/>b. Sai.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de07_p2_q3",
         "number": 3,
         "part": 2,
         "type": "true_false",
-        "text": "Phương trình hoá học của phản ứng tổng họp ammonia từ nitrogen và hydrogen bằng quá trình Haber như sau:<br/>N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  o400600C, 200 bar, Fe-  2NH<sub>3</sub>(g)  0r298HD  =-92 kJ (1)",
+        "text": "Phương trình hoá học của phản ứng tổng họp ammonia từ nitrogen và hydrogen bằng quá trình Haber như sau:<br/>N<sub>2</sub>(g) + 3H<sub>2</sub>(g) o400600C, 200 bar, Fe- ⇌ 2NH<sub>3</sub>(g) 0r298HD =-92 kJ (1)",
         "images": [],
         "options": [
           {
@@ -6567,14 +6567,14 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Tăng áp suất và giảm nhiệt độ.<br/>d. Đúng.<br/>NH3NN(LT)2(TT)2V63V3LV12L2225%===Þ== .",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de07_p2_q4",
         "number": 4,
         "part": 2,
         "type": "true_false",
-        "text": "Quá trình đốt cháy nhiên liệu trong ô tô sinh ra nhiều khí như SO<sub>2</sub>, CO<sub>2</sub>, NO. Từ năm 1975, người ta thiết kế “bộ chuyển đổi xúc tác” trong hệ thống xả khí của ô tô (và cả trong máy phát điện) nhằm tạo điều kiện thuận lợi cho phản ứng: 2CO(g) + 2NO(g)  ¾¾®  2CO<sub>2</sub>(g) + N<sub>2</sub>(g) (*)",
+        "text": "Quá trình đốt cháy nhiên liệu trong ô tô sinh ra nhiều khí như SO<sub>2</sub>, CO<sub>2</sub>, NO. Từ năm 1975, người ta thiết kế “bộ chuyển đổi xúc tác” trong hệ thống xả khí của ô tô (và cả trong máy phát điện) nhằm tạo điều kiện thuận lợi cho phản ứng: 2CO(g) + 2NO(g) → 2CO<sub>2</sub>(g) + N<sub>2</sub>(g) (*)",
         "images": [],
         "options": [
           {
@@ -6605,20 +6605,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Số oxi hóa của N trong NO giảm nên NO là chất oxi hóa.<br/>b. Đúng.<br/>c. Sai. Biến thiên enthalpy chuẩn của phản ứng (*) = 2. (-393,5) + 0 – 2.(-110,5) – 2.91,3 = -748,6 (kJ).<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de07_p3_q1",
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho cân bằng hóa học: CH<sub>3</sub>COONa(aq) + H<sub>2</sub>O(l)    CH<sub>3</sub>COOH(aq) + NaOH(aq) ;  DrH  > 0.<br/>Cho các tác động sau: (1) thêm CH<sub>3</sub>COONa, (2) thêm NaOH vào hệ, (3) tăng áp suất của hệ, (4) ngâm hệ vào nước nóng. Có bao nhiêu tác động làm cân bằng chuyển dịch sang chiều thuận?",
+        "text": "Cho cân bằng hóa học: CH<sub>3</sub>COONa(aq) + H<sub>2</sub>O(l)  CH<sub>3</sub>COOH(aq) + NaOH(aq) ; DrH > 0.<br/>Cho các tác động sau: (1) thêm CH<sub>3</sub>COONa, (2) thêm NaOH vào hệ, (3) tăng áp suất của hệ, (4) ngâm hệ vào nước nóng. Có bao nhiêu tác động làm cân bằng chuyển dịch sang chiều thuận?",
         "images": [],
         "correctAnswer": "1",
-        "explanation": "Đáp án: 1.<br/>(1) Tăng nồng độ của CH<sub>3</sub>COONa  cân bằng chuyển dịch theo chiều thuận.<br/>(2) Tăng nồng độ NaOH cân bằng sẽ chuyển dịch theo chiều nghịch.<br/>(3) Áp suất không ảnh hưởng đến cân bằng không có sự tham gia của chất khí.<br/>(4) ∆<sub>r</sub>H<sup>0</sup><sub>298</sub> > 0 là phản ứng thu nhiệt nên tăng nhiệt cân bằng chuyển dịch theo chiều nghịch.",
+        "explanation": "Đáp án: 1.<br/>(1) Tăng nồng độ của CH<sub>3</sub>COONa cân bằng chuyển dịch theo chiều thuận.<br/>(2) Tăng nồng độ NaOH cân bằng sẽ chuyển dịch theo chiều nghịch.<br/>(3) Áp suất không ảnh hưởng đến cân bằng không có sự tham gia của chất khí.<br/>(4) ∆<sub>r</sub>H<sup>0</sup><sub>298</sub> > 0 là phản ứng thu nhiệt nên tăng nhiệt cân bằng chuyển dịch theo chiều nghịch.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de07_p3_q2",
@@ -6631,20 +6631,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de07_p3_q3",
         "number": 3,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các phản ứng sau:<br/>a) NH<sub>3</sub> + CuO  ot¾¾®  b) NH<sub>4</sub>Cl + Ca(OH)<sub>2</sub>  ot¾¾®<br/>c) Cu + HNO<sub>3</sub>  ¾¾® d) (NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub>  ot¾¾®<br/>e) CaCO<sub>3</sub> + HNO<sub>3</sub>  ¾¾® e) NH<sub>3</sub> + HNO<sub>3</sub>  ¾¾®<br/>Trong số các phản ứng trên, có bao nhiêu phản ứng tạo thành chất khí?",
+        "text": "Cho các phản ứng sau:<br/>a) NH<sub>3</sub> + CuO ⎯⎯t°→ b) NH<sub>4</sub>Cl + Ca(OH)<sub>2</sub> ⎯⎯t°→ <br/>c) Cu + HNO<sub>3</sub> → d) (NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub> ⎯⎯t°→ <br/>e) CaCO<sub>3</sub> + HNO<sub>3</sub> → e) NH<sub>3</sub> + HNO<sub>3</sub> → <br/>Trong số các phản ứng trên, có bao nhiêu phản ứng tạo thành chất khí?",
         "images": [],
         "correctAnswer": "5",
         "explanation": "Đáp án: 5.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de07_p3_q4",
@@ -6654,10 +6654,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Dung dịch HCl có pH = 1 (dung dịch A), dung dịch NaOH có pH = 13 (dung dịch B). pH của dung dịch sau khi trộn 5 mL dung dịch A và 10 mL dung dịch B là bao nhiêu? (Kết quả làm tròn đến hàng phần mười).",
         "images": [],
         "correctAnswer": "12.5",
-        "explanation": "Đáp án: 12,5.<br/>Dung dịch A có [H<sup>+</sup>] = 0,1M, dung dịch B có [OH<sup>-</sup>] = 0,1M<br/>(a) 5 mL dung dịch A và 10 mL dung dịch B.<br/>n<sub>H</sub><sup>+</sup> =  5.10<sup>-3</sup>.0,1 = 5.10<sup>-4</sup> (mol), n<sub>OH</sub><sup>-</sup> = 0,01.0,1 = 10<sup>-3</sup> (mol)<br/>H<sup>+</sup>    +    OH<sup>-</sup> → H<sub>2</sub>O<br/>5.10<sup>-4</sup>→ 5.10<sup>-4</sup>                (mol)<br/>4-0,0015.10[OH]=0,0333M0,015--=   Þ  pOH = 1,478  Þ  pH = 14 – 1,478 = 12,522  »  12,5",
+        "explanation": "Đáp án: 12,5.<br/>Dung dịch A có [H<sup>+</sup>] = 0,1M, dung dịch B có [OH<sup>-</sup>] = 0,1M<br/>(a) 5 mL dung dịch A và 10 mL dung dịch B.<br/>n<sub>H</sub><sup>+</sup> = 5.10<sup>-3</sup>.0,1 = 5.10<sup>-4</sup> (mol), n<sub>OH</sub><sup>-</sup> = 0,01.0,1 = 10<sup>-3</sup> (mol)<br/>H<sup>+</sup> + OH<sup>-</sup> → H<sub>2</sub>O<br/>5.10<sup>-4</sup>→ 5.10<sup>-4</sup> (mol)<br/>4-0,0015.10[OH]=0,0333M0,015--= Þ pOH = 1,478 Þ pH = 14 – 1,478 = 12,522 » 12,5",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de07_p3_q5",
@@ -6667,23 +6667,23 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Trong công nghiệp hóa học, nitrogen monoxide là một sản phẩm trung gian quan trọng, tạo thành từ phản ứng oxi hóa ammonia bởi oxygen. Đây là giai đoạn đầu tiên trong quá trình Ostwald để sản xuất nitric acid. Trộn 100 kmol ammonia với không khí (dư 20% so với lượng cần để đốt cháy hoàn toàn) trong một bình kí ở 700K, áp suất 1 bar. Giả sử không khí chiếm 80% N<sub>2</sub>, 20% O<sub>2</sub> về thể tích. Tính số kmol nitrogen ban đầu có trong hệ?",
         "images": [],
         "correctAnswer": "600",
-        "explanation": "Đáp án: 600.<br/>oxt,t3224NH5O4NO6HO+¾¾¾®+<br/>2503  125<br/>Thể tích của N<sub>2</sub> gấp 4 lần thể tích của O<sub>2</sub>  Số mol N<sub>2</sub> là 125.4 = 500 kmol.<br/>Mà không khí dùng dư 20% nên kết quả được tính là 500.120% = 600 kmol",
+        "explanation": "Đáp án: 600.<br/>oxt,t3224NH5O4NO6HO+¾ → +<br/>2503 125<br/>Thể tích của N<sub>2</sub> gấp 4 lần thể tích của O<sub>2</sub> Số mol N<sub>2</sub> là 125.4 = 500 kmol.<br/>Mà không khí dùng dư 20% nên kết quả được tính là 500.120% = 600 kmol",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de07_p3_q6",
         "number": 6,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các cân bằng sau:<br/>X<sub>2</sub>(g) +  12 Y<sub>2</sub>(g)    X<sub>2</sub>Y(g)(1)<br/>2X<sub>2</sub>Y(g)    2X<sub>2</sub>(g) + Y<sub>2</sub>(g)            (2)<br/>Hằng số K<sub>C</sub>của phản ứng (1) có giá trị là 2. Tại cùng nhiệt độ, giá trị của hằng số cân bằng K<sub>C</sub> của phản ứng (2) bằng bao nhiêu?",
+        "text": "Cho các cân bằng sau:<br/>X<sub>2</sub>(g) + 12 Y<sub>2</sub>(g)  X<sub>2</sub>Y(g)(1)<br/>2X<sub>2</sub>Y(g)  2X<sub>2</sub>(g) + Y<sub>2</sub>(g) (2)<br/>Hằng số K<sub>C</sub>của phản ứng (1) có giá trị là 2. Tại cùng nhiệt độ, giá trị của hằng số cân bằng K<sub>C</sub> của phản ứng (2) bằng bao nhiêu?",
         "images": [],
         "correctAnswer": "0.25",
         "explanation": "Đáp án: 0,25.<br/>22222C(1)C(2)C(2)12C(1)2222[XY][X].[Y]1K;KK0,25K[XY][X].[Y]æö==Þ==ç÷ç÷èø<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -7135,7 +7135,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các phản ứng sau :<br/>(1) H<sub>2</sub>(g) + I<sub>2</sub>(g)   2HI(k) HD > 0<br/>(2) 2NO(g) +  O<sub>2</sub>(g)  2NO<sub>2</sub>(g)   HD < 0<br/>(3) CO(g) + Cl<sub>2</sub>(g)  COCl<sub>2</sub>(g)   HD < 0<br/>(4) CaCO<sub>3</sub>(s)   CaO(s)+ CO<sub>2</sub>(g)  HD > 0<br/>Khi giảm nhiệt độ các cân bằng nào trên đây đều chuyển dịch theo chiều thuận?",
+        "text": "Cho các phản ứng sau :<br/>(1) H<sub>2</sub>(g) + I<sub>2</sub>(g) 2HI(k) HD > 0<br/>(2) 2NO(g) + O<sub>2</sub>(g) 2NO<sub>2</sub>(g) HD < 0<br/>(3) CO(g) + Cl<sub>2</sub>(g) COCl<sub>2</sub>(g) HD < 0<br/>(4) CaCO<sub>3</sub>(s) CaO(s)+ CO<sub>2</sub>(g) HD > 0<br/>Khi giảm nhiệt độ các cân bằng nào trên đây đều chuyển dịch theo chiều thuận?",
         "images": [],
         "options": [
           {
@@ -7291,7 +7291,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 16,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho sơ đồ phản ứng sau:  XY424443(NH)SONHClNHNO¾¾®¾¾® . Các chất X, Y lần lượt là",
+        "text": "Cho sơ đồ phản ứng sau: XY424443(NH)SONHClNHNO → → . Các chất X, Y lần lượt là",
         "images": [],
         "options": [
           {
@@ -7369,7 +7369,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 18,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Xét cân bằng hóa học: N<sub>2</sub>(g) + 3H<sub>2</sub>(g)    2NH<sub>3</sub>(g)  rH0D<<br/>Hiệu suất phản ứng khi hệ đạt cân bằng ở áp suất 200 bar và 300 bar lần lượt bằng x % và y %. Mối quan hệ giữa x và y là",
+        "text": "Xét cân bằng hóa học: N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g) rH0D<<br/>Hiệu suất phản ứng khi hệ đạt cân bằng ở áp suất 200 bar và 300 bar lần lượt bằng x % và y %. Mối quan hệ giữa x và y là",
         "images": [],
         "options": [
           {
@@ -7408,7 +7408,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Cho biết acid khi nhường H<sup>+</sup> sẽ tạo ra base tương ứng và base khi nhận H<sup>+</sup> sẽ tạo thành acid tương ứng thì cặp acid – base tương ứng đó được gọi là cặp acid – base liên hợp. Trong dung dịch nước của acetic acid (CH<sub>3</sub>COOH) tồn tại cân bằng sau:<br/>CH<sub>3</sub>COOH + H<sub>2</sub>O   CH<sub>3</sub>COO<sup>-</sup> +  H<sub>3</sub>O<sup>+</sup>",
+        "text": "Cho biết acid khi nhường H<sup>+</sup> sẽ tạo ra base tương ứng và base khi nhận H<sup>+</sup> sẽ tạo thành acid tương ứng thì cặp acid – base tương ứng đó được gọi là cặp acid – base liên hợp. Trong dung dịch nước của acetic acid (CH<sub>3</sub>COOH) tồn tại cân bằng sau:<br/>CH<sub>3</sub>COOH + H<sub>2</sub>O  CH<sub>3</sub>COO<sup>-</sup> + H<sub>3</sub>O<sup>+</sup>",
         "images": [],
         "options": [
           {
@@ -7439,7 +7439,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Nồng độ ion trong dung dịch bé hơn 0,1M.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de08_p2_q2",
@@ -7477,7 +7477,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai vì N<sub>2</sub> hoạt động hóa học kém hơn Cl<sub>2</sub>.<br/>b. Đúng. Vì ở điều kiện thường N<sub>2</sub> trơ về mặt hóa học.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de08_p2_q3",
@@ -7515,7 +7515,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Cân bằng hóa học bị chuyển dịch khi thay đổi nhiệt độ, nồng độ, áp suất.<br/>b. Đúng.<br/>c. Sai. Tốc độ phản ứng thuận và nghịch bằng nhau.<br/>d. Sai. Nồng độ của chất phản ứng và nồng độ chất sản phẩm không đổi.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de08_p2_q4",
@@ -7557,20 +7557,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa11/midterm/h11_gk1_de8_image14.png"
         ],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de08_p3_q1",
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các phản ứng hóa học sau:<br/>(1) NH<sub>3</sub> + H<sub>2</sub>O    NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup><br/>(2) 8NH<sub>3</sub> + 3Cl<sub>2</sub>  ¾¾®  6NH<sub>4</sub>Cl + N<sub>2</sub><br/>(3) 4NH<sub>3</sub> + 5O<sub>2</sub>  oPt,t¾¾¾®  4NO + 6H<sub>2</sub>O<br/>(4) 2NH<sub>3</sub>  + H<sub>2</sub>SO<sub>4</sub>  ¾¾®  (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub><br/>(5) 2NH<sub>3</sub>  + 3CuO  ot¾¾®  N<sub>2</sub> + 3Cu  + 3H<sub>2</sub>O<br/>Có bao nhiêu phản ứng chứng tỏ ammonia là một chất khử?",
+        "text": "Cho các phản ứng hóa học sau:<br/>(1) NH<sub>3</sub> + H<sub>2</sub>O  NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup><br/>(2) 8NH<sub>3</sub> + 3Cl<sub>2</sub> → 6NH<sub>4</sub>Cl + N<sub>2</sub><br/>(3) 4NH<sub>3</sub> + 5O<sub>2</sub> oPt,t¾ → 4NO + 6H<sub>2</sub>O<br/>(4) 2NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub><br/>(5) 2NH<sub>3</sub> + 3CuO ⎯⎯t°→ N<sub>2</sub> + 3Cu + 3H<sub>2</sub>O<br/>Có bao nhiêu phản ứng chứng tỏ ammonia là một chất khử?",
         "images": [],
         "correctAnswer": "3",
         "explanation": "Đáp án: 3.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de08_p3_q2",
@@ -7583,7 +7583,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de08_p3_q3",
@@ -7596,20 +7596,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 10.<br/>Fe + 6HNO<sub>3</sub> → Fe(NO<sub>3</sub>)<sub>3</sub> + 3NO<sub>2</sub> + 3H<sub>2</sub>O",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de08_p3_q4",
         "number": 4,
         "part": 3,
         "type": "short_answer",
-        "text": "Trong công nghiệp, hydrogen được sản xuất từ phản ứng sau tại nhiệt độ thích hợp:<br/>CH<sub>4</sub>(g) + H<sub>2</sub>O(g)    3H<sub>2</sub>(g) + CO(g)<br/>Tính hằng số cân bằng K<sub>C</sub> của phản ứng nhiệt độ này, biết nồng độ mol của CH<sub>4</sub>, H<sub>2</sub>O, H<sub>2</sub> và CO ở trạng thái cân bằng lần lượt là 0,13 M; 0,24 M; 1,15 M và 0,13 M. (Kết quả làm tròn đến hàng phần trăm).",
+        "text": "Trong công nghiệp, hydrogen được sản xuất từ phản ứng sau tại nhiệt độ thích hợp:<br/>CH<sub>4</sub>(g) + H<sub>2</sub>O(g)  3H<sub>2</sub>(g) + CO(g)<br/>Tính hằng số cân bằng K<sub>C</sub> của phản ứng nhiệt độ này, biết nồng độ mol của CH<sub>4</sub>, H<sub>2</sub>O, H<sub>2</sub> và CO ở trạng thái cân bằng lần lượt là 0,13 M; 0,24 M; 1,15 M và 0,13 M. (Kết quả làm tròn đến hàng phần trăm).",
         "images": [],
         "correctAnswer": "6.34",
         "explanation": "Đáp án: 6,34.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de08_p3_q5",
@@ -7619,10 +7619,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Một mẫu dung dịch H<sub>2</sub>SO<sub>4</sub> (gọi là mẫu A) được phân tích bằng cách thêm 50 mL dung dịch NaOH 0,4 M vào 100 mL dung dịch mẫu A rồi lắc đều. Sau khi phản ứng xảy ra, người ta thấy trong hỗn hợp dung dịch còn dư ion OH<sup>–</sup>. Phần ion dư này cần 10 mL HCl 0,2 M để trung hoà. Tính nồng độ mol.L<sup>–1</sup> của mẫu A.",
         "images": [],
         "correctAnswer": "0.09",
-        "explanation": "Đáp án: 0,09.<br/>2NaOH + H<sub>2</sub>SO<sub>4</sub> ⟶ Na<sub>2</sub>SO<sub>4</sub> + 2H<sub>2</sub>O<br/>HCl + NaOH ⟶ NaCl + H<sub>2</sub>O<br/>Số mol NaOH thêm vào 100 mL dung dịch H<sub>2</sub>SO<sub>4</sub> là: 0,05.0,4 = 0,02 mol.<br/>Số mol NaOH được trung hoà bởi HCl là: 0,01.0,2 = 0,002 mol.<br/>Số mol NaOH được trung hoà bởi 100 mL dung dịch H<sub>2</sub>SO<sub>4</sub> là: 0,02 – 0,002 = 0,018 mol.<br/>Vậy nồng độ H<sub>2</sub>SO<sub>4</sub> trong mẫu phân tích là:  0,0180,09M2.0,1=  .",
+        "explanation": "Đáp án: 0,09.<br/>2NaOH + H<sub>2</sub>SO<sub>4</sub> ⟶ Na<sub>2</sub>SO<sub>4</sub> + 2H<sub>2</sub>O<br/>HCl + NaOH ⟶ NaCl + H<sub>2</sub>O<br/>Số mol NaOH thêm vào 100 mL dung dịch H<sub>2</sub>SO<sub>4</sub> là: 0,05.0,4 = 0,02 mol.<br/>Số mol NaOH được trung hoà bởi HCl là: 0,01.0,2 = 0,002 mol.<br/>Số mol NaOH được trung hoà bởi 100 mL dung dịch H<sub>2</sub>SO<sub>4</sub> là: 0,02 – 0,002 = 0,018 mol.<br/>Vậy nồng độ H<sub>2</sub>SO<sub>4</sub> trong mẫu phân tích là: 0,0180,09M2.0,1= .",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de08_p3_q6",
@@ -7635,7 +7635,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 210.<br/>Thể tích nước sau 3 giờ là 3.5 = 15 m<sup>3</sup> = 15.10<sup>3</sup> L<br/>Khối lượng ion nitrate (NO<sub>3</sub><sup>–</sup>) = 15.10<sup>3</sup>.62 = 930000 mg = 930 gam<br/>NNNO3930nn= 15m15.14210g62-==Þ== .<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -7680,7 +7680,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "d",
             "letter": "D",
-            "text": "có 1 liên kết  và 1 liên kết ",
+            "text": "có 1 liên kết và 1 liên kết",
             "isCorrect": false
           }
         ],
@@ -8052,25 +8052,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "Mg + 2HCl  ¾¾®  MgCl<sub>2</sub> + H<sub>2</sub>",
+            "text": "Mg + 2HCl → MgCl<sub>2</sub> + H<sub>2</sub>",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH    CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub>  + H<sub>2</sub>O",
+            "text": "CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH  CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "C<sub>2</sub>H<sub>5</sub>OH + 3O<sub>2</sub>  ¾¾®  2CO<sub>2</sub> + 3H<sub>2</sub>O",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH + 3O<sub>2</sub> → 2CO<sub>2</sub> + 3H<sub>2</sub>O",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "2KClO<sub>3</sub>  ¾¾®  2KCl + 3O<sub>2</sub>",
+            "text": "2KClO<sub>3</sub> → 2KCl + 3O<sub>2</sub>",
             "isCorrect": false
           }
         ],
@@ -8280,7 +8280,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 17,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Trong dung dịch muối AlCl<sub>3</sub> tồn tại các cân bằng hóa học sau:<br/>322Al + HOAl(OH) + H+++  (1)<br/>222Al(OH) + HO Al(OH) + H+++  (2)<br/>223Al(OH) + HOAl(OH) + H++  (3)<br/>Khi thêm hỗn hợp KIO<sub>3</sub> và KI vào dung dịch AlCl<sub>3</sub> thì xảy ra phản ứng:<br/>++¾¾®322KIO + 5KI + 6H 3I + 6K + 3HO (4)<br/>Sự xuất hiện kết tủa keo trắng trong thí nghiệm trên sau khi thêm hỗn hợp KIO<sub>3</sub> và KI vào dung dịch AlCl<sub>3</sub> sẽ thay đổi như thế nào?",
+        "text": "Trong dung dịch muối AlCl<sub>3</sub> tồn tại các cân bằng hóa học sau:<br/>322Al + HOAl(OH) + H+++ (1)<br/>222Al(OH) + HO Al(OH) + H+++ (2)<br/>223Al(OH) + HOAl(OH) + H++ (3)<br/>Khi thêm hỗn hợp KIO<sub>3</sub> và KI vào dung dịch AlCl<sub>3</sub> thì xảy ra phản ứng:<br/>++ → 322KIO + 5KI + 6H 3I + 6K + 3HO (4)<br/>Sự xuất hiện kết tủa keo trắng trong thí nghiệm trên sau khi thêm hỗn hợp KIO<sub>3</sub> và KI vào dung dịch AlCl<sub>3</sub> sẽ thay đổi như thế nào?",
         "images": [],
         "options": [
           {
@@ -8389,14 +8389,14 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng<br/>b. Sai. Một số base rất yếu không làm đổi màu quỳ tím.<br/>c. Sai. Một số acid rất yếu không làm đổi màu quỳ tím.<br/>d. Sai. Muối vẫn có thể làm đổi màu quỳ tím.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de09_p2_q2",
         "number": 2,
         "part": 2,
         "type": "true_false",
-        "text": "Polystyrene là một loại nhựa thông dụng được dùng để làm đường ống nước. Nguyên liệu để sản xuất polystyrene là styrene  \\left(\\mathrm{C}_6 \\mathrm{H}_5 \\mathrm{CH}=\\mathrm{CH}_2\\right) . Styrene được điều chế từ phản ứng sau:<br/>C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>CH<sub>3</sub>(g)    C<sub>6</sub>H<sub>5</sub>CH=CH<sub>2</sub>(g) + H<sub>2</sub>(g) ,  or298H  123 kJD=",
+        "text": "Polystyrene là một loại nhựa thông dụng được dùng để làm đường ống nước. Nguyên liệu để sản xuất polystyrene là styrene \\left(\\mathrm{C}_6 \\mathrm{H}_5 \\mathrm{CH}=\\mathrm{CH}_2\\right) . Styrene được điều chế từ phản ứng sau:<br/>C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>CH<sub>3</sub>(g) ⇌ C<sub>6</sub>H<sub>5</sub>CH=CH<sub>2</sub>(g) + H<sub>2</sub>(g) , or298H 123 kJD=",
         "images": [],
         "options": [
           {
@@ -8414,7 +8414,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "c",
             "letter": "C",
-            "text": "Tăng nồng độ của  \\mathrm{C}_6 \\mathrm{H}_5 \\mathrm{CH}_2 \\mathrm{CH}_3 hoặc tách styrene ra khỏi bình phản ứng, cân bằng chuyển dịch theo chiều nghịch.",
+            "text": "Tăng nồng độ của \\mathrm{C}_6 \\mathrm{H}_5 \\mathrm{CH}_2 \\mathrm{CH}_3 hoặc tách styrene ra khỏi bình phản ứng, cân bằng chuyển dịch theo chiều nghịch.",
             "isCorrect": false
           },
           {
@@ -8427,7 +8427,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng. Tăng áp suất của bình phản ứng: Cân bằng chuyển dịch theo chiều nghịch là chiều làm giảm số mol khí.<br/>b. Đúng. Tăng nhiệt độ của phản ứng: Cân bằng chuyển dịch theo chiều thuận tức chiều phản ứng thu nhiệt.<br/>c. Sai. Tăng nồng độ của C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>CH<sub>3</sub>: Cân bằng chuyển dịch theo chiều thuận, là chiều làm giảm nồng độ của C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>CH<sub>3.</sub><br/>d. Sai. Thêm chất xúc tác: Cân bằng không chuyển dịch.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de09_p2_q3",
@@ -8465,7 +8465,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Áp suất trong bình giảm.<br/>b. Sai. Dung dịch NH<sub>3</sub> có tính base.<br/>c. Sai. HCl tan trong nước tạo môi trường acid nên không làm phenolphtalein chuyển màu.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de09_p2_q4",
@@ -8503,7 +8503,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Sai. Nguyên tử N trong phân tử HNO<sub>3</sub> có hóa trị IV.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de09_p3_q1",
@@ -8516,7 +8516,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de09_p3_q2",
@@ -8529,7 +8529,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de09_p3_q3",
@@ -8542,7 +8542,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 5.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de09_p3_q4",
@@ -8555,33 +8555,33 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 100.<br/>241221H(t)H(s)nnV.10V.10V/V100--++=Þ=Þ=",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de09_p3_q5",
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Xét cân bằng của dung dịch NH<sub>3</sub> 0,1M ở 25<sup>0</sup>C<br/>NH<sub>3</sub>  + H<sub>2</sub>O  4NHOH+-+    ;   K<sub>C</sub> = 1,74.10<sup>-5</sup><br/>Bỏ qua sự phân li của nước, giá trị pH của dung dịch trên là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị).",
+        "text": "Xét cân bằng của dung dịch NH<sub>3</sub> 0,1M ở 25<sup>0</sup>C<br/>NH<sub>3</sub> + H<sub>2</sub>O 4NHOH+-+ ; K<sub>C</sub> = 1,74.10<sup>-5</sup><br/>Bỏ qua sự phân li của nước, giá trị pH của dung dịch trên là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "11",
-        "explanation": "Đáp án: 11.<br/>NH<sub>3</sub>  + H<sub>2</sub>O    NH<sub>4</sub><sup>+</sup> + OH<sup>-</sup><br/>Ban đầu:                  0,1<br/>Phản ứng:                  x                →        x    →   x<br/>Cân bằng:             0,1 - x                         x           x<br/>533Cx.xK1,74.10x1,32.10pOHlg(1,32.10)2,88pH14pOH11,1(0,1x)---==Þ=Þ=-=Þ=-=-",
+        "explanation": "Đáp án: 11.<br/>NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>-</sup><br/>Ban đầu: 0,1<br/>Phản ứng: x → x → x<br/>Cân bằng: 0,1 - x x x<br/>533Cx.xK1,74.10x1,32.10pOHlg(1,32.10)2,88pH14pOH11,1(0,1x)---==Þ=Þ=-=Þ=-=-",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de09_p3_q6",
         "number": 6,
         "part": 3,
         "type": "short_answer",
-        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>+++++-¾¾¾®¾¾¾®¾¾¾¾®¾¾®+2222OOOHO2233NNONOHNOHNO<br/>Tính lượng ion nitrate (theo gam) mà đất được cung cấp từ 1 L không khí (ở đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 78% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
+        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>+++++-¾ → ¾ → → → → +2222OOOHO2233NNONOHNOHNO<br/>Tính lượng ion nitrate (theo gam) mà đất được cung cấp từ 1 L không khí (ở đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 78% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "1561",
-        "explanation": "Đáp án: 1561.<br/>2KKN1000100078nmoln.mol24,7924,79100=Þ=<br/>Bảo toàn nguyên tố N:  23NNO2n n-=    3NO100078..224,7910m.62.40%156,6g00-==<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 1561.<br/>2KKN1000100078nmoln.mol24,7924,79100=Þ=<br/>Bảo toàn nguyên tố N: 23NNO2n n-= 3NO100078..224,7910m.62.40%156,6g00-==<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   },
@@ -8920,25 +8920,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "N<sub>2</sub>(g) + O<sub>2</sub>(g)    2NO(g)",
+            "text": "N<sub>2</sub>(g) + O<sub>2</sub>(g)  2NO(g)",
             "isCorrect": true
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "NO(g) + O<sub>2</sub>(g) → NO<sub>2</sub>(g)  ",
+            "text": "NO(g) + O<sub>2</sub>(g) → NO<sub>2</sub>(g)",
             "isCorrect": false
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "4NH<sub>3</sub>(g) + 5O<sub>2</sub>(g)  4NO(g) + 6H<sub>2</sub>O(g)",
+            "text": "4NH<sub>3</sub>(g) + 5O<sub>2</sub>(g) 4NO(g) + 6H<sub>2</sub>O(g)",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "4NH<sub>3</sub>(g) + 3O<sub>2</sub>(g)  2N<sub>2</sub>(g) + 6H<sub>2</sub>O(g)",
+            "text": "4NH<sub>3</sub>(g) + 3O<sub>2</sub>(g) 2N<sub>2</sub>(g) + 6H<sub>2</sub>O(g)",
             "isCorrect": false
           }
         ],
@@ -9010,7 +9010,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "c",
             "letter": "C",
-            "text": "NH<sub>3</sub> + H<sub>2</sub>O   NH<sub>4</sub><sup>+</sup> +  OH<sup>–</sup>",
+            "text": "NH<sub>3</sub> + H<sub>2</sub>O  NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup>",
             "isCorrect": false
           },
           {
@@ -9031,7 +9031,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng sau trong hệ kín:<br/>2NO<sub>2</sub> (g, nâu đỏ)    N<sub>2</sub>O<sub>4</sub> (g, không màu)  0r298H 58 kJD=-<br/>Thực hiện hệ phản ứng này trong xilanh kín có pit-tông ở nhiệt độ thường và không đổi.<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\"></th><th class=\"px-2 py-1 border border-slate-300\">Tăng áp suất của hệ bằng cách đẩy pit-tông để thể tích giảm</th><th class=\"px-2 py-1 border border-slate-300\">Giảm áp suất của hệ bằng cách kéo pit-tông để thể tích tăng</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">Sự thay đổi màu nâu đỏ trong ống nghiệm</td><td class=\"px-2 py-1 border border-slate-300\">(1)</td><td class=\"px-2 py-1 border border-slate-300\">(2)</td></tr></table></div><br/>Các hiện tượng (1), (2) tương ứng là màu của chất trong ống nghiệm",
+        "text": "Cho cân bằng sau trong hệ kín:<br/>2NO<sub>2</sub> (g, nâu đỏ) ⇌ N<sub>2</sub>O<sub>4</sub> (g, không màu) 0r298H 58 kJD=-<br/>Thực hiện hệ phản ứng này trong xilanh kín có pit-tông ở nhiệt độ thường và không đổi.<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\"></th><th class=\"px-2 py-1 border border-slate-300\">Tăng áp suất của hệ bằng cách đẩy pit-tông để thể tích giảm</th><th class=\"px-2 py-1 border border-slate-300\">Giảm áp suất của hệ bằng cách kéo pit-tông để thể tích tăng</th></tr><tr><td class=\"px-2 py-1 border border-slate-300\">Sự thay đổi màu nâu đỏ trong ống nghiệm</td><td class=\"px-2 py-1 border border-slate-300\">(1)</td><td class=\"px-2 py-1 border border-slate-300\">(2)</td></tr></table></div><br/>Các hiện tượng (1), (2) tương ứng là màu của chất trong ống nghiệm",
         "images": [],
         "options": [
           {
@@ -9148,7 +9148,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 15,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Trong dung dịch NaHCO<sub>3</sub> xảy ra các cân bằng sau:<br/>HCO<sub>3</sub><sup>–</sup> + H<sub>2</sub>O ⇌ H<sub>2</sub>CO<sub>3</sub> + OH<sup>–</sup>   (1)HCO<sub>3</sub><sup>–</sup> + H<sub>2</sub>O ⇌ CO<sub>3</sub><sup>2–</sup> + H<sub>3</sub>O<sup>+</sup>   (2)<br/>Phát biểu nào dưới đây là đúng?",
+        "text": "Trong dung dịch NaHCO<sub>3</sub> xảy ra các cân bằng sau:<br/>HCO<sub>3</sub><sup>–</sup> + H<sub>2</sub>O ⇌ H<sub>2</sub>CO<sub>3</sub> + OH<sup>–</sup> (1)HCO<sub>3</sub><sup>–</sup> + H<sub>2</sub>O ⇌ CO<sub>3</sub><sup>2–</sup> + H<sub>3</sub>O<sup>+</sup> (2)<br/>Phát biểu nào dưới đây là đúng?",
         "images": [],
         "options": [
           {
@@ -9306,13 +9306,13 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Phosphorus pentachloride (PCl<sub>5</sub>) là một hợp chất được ứng dụng trong tổng hợp hóa học. Bên cạnh đó, phosphorus pentachloride kém bền với nhiệt và bị phân hủy khi nung nóng. Tại 300<sup>o</sup>C, phản ứng:<br/>PCl<sub>5</sub>(g)    PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)  có K<sub>C</sub> = 0,24.",
+        "text": "Phosphorus pentachloride (PCl<sub>5</sub>) là một hợp chất được ứng dụng trong tổng hợp hóa học. Bên cạnh đó, phosphorus pentachloride kém bền với nhiệt và bị phân hủy khi nung nóng. Tại 300<sup>o</sup>C, phản ứng:<br/>PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g) có K<sub>C</sub> = 0,24.",
         "images": [],
         "options": [
           {
             "id": "a",
             "letter": "A",
-            "text": "Biểu thức hằng số cân bằng nồng độ của phản ứng là K<sub>C</sub> =  325[PCl][Cl][PCl] .",
+            "text": "Biểu thức hằng số cân bằng nồng độ của phản ứng là K<sub>C</sub> = 325[PCl][Cl][PCl] .",
             "isCorrect": true
           },
           {
@@ -9334,10 +9334,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
             "isCorrect": true
           }
         ],
-        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Chưa khẳng định được.<br/>c. Ta có  C2,5.1,9K0,950,245==¹  nên đây chưa phải là trạng thái cân bằng.<br/>d. Đúng. Giảm áp suất cân bằng chuyển dịch theo chiều làm tăng số mol khí là chiều thuận.",
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Chưa khẳng định được.<br/>c. Ta có C2,5.1,9K0,950,245==¹ nên đây chưa phải là trạng thái cân bằng.<br/>d. Đúng. Giảm áp suất cân bằng chuyển dịch theo chiều làm tăng số mol khí là chiều thuận.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 19
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de10_p2_q2",
@@ -9375,7 +9375,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng. NaHCO<sub>3</sub> trung hòa được HCl.<br/>d. Sai. Không nên sử dụng đồ uống có gas do có CO<sub>2</sub> hòa tan vào trong nước tạo môi trường acid làm giảm pH. Khi sử dụng uống thường xuyên hàng ngày dễ gây ra tích tụ cặn trong thận.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 20
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de10_p2_q3",
@@ -9413,7 +9413,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai Chỉ có 1 liên kết cho – nhận N → O.<br/>d. Đúng.",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 21
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de10_p2_q4",
@@ -9451,7 +9451,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án:<br/>Trong dung dịch ammonia tồn tại cân bằng hoá học sau: NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>-</sup><br/>a. Đúng. Khi đun nóng, màu hồng của dung dịch nhạt dần do khí NH<sub>3</sub> bay lên nên làm cân bằng hoá học chuyển dịch theo chiều nghịch.<br/>b. Sai. Khi cho HCl vào với số mol bằng số mol NH<sub>3</sub> thì dung dịch mất màu hồng vì tạo ra NH<sub>4</sub>Cl có pH < 7.<br/>c. Sai. Khi thêm một vài giọt dung dịch Na<sub>2</sub>CO<sub>3</sub>, dung dịch (A) có màu hồng đậm vì muối Na<sub>2</sub>CO<sub>3</sub> thuỷ phân cho môi trường base:<br/>Na<sub>2</sub>CO<sub>3</sub> → 2Na<sup>+</sup> + CO<sub>3</sub><sup>2-</sup><br/>CO<sub>3</sub><sup>2-</sup> + H<sub>2</sub>O ⇌ HCO<sub>3</sub><sup>-</sup> + OH<sup>-</sup>.<br/>d. Sau. Khi thêm AlCl<sub>3</sub> tới dư xảy ra phản ứng sau:<br/>AlCl<sub>3</sub> + 3NH<sub>3</sub> + 3H<sub>2</sub>O → Al(OH)<sub>3</sub>↓ + 3NH<sub>4</sub>Cl<br/>NH<sub>4</sub>Cl và AlCl<sub>3</sub> dư đều thuỷ phân cho môi trường acid ⇒ màu hồng của dung dịch (A) mất dần.<br/>NH<sub>4</sub><sup>+</sup> + H<sub>2</sub>O ⇌ NH<sub>3</sub> + H<sub>3</sub>O<sup>+</sup><br/>Al<sup>3+</sup> + 3H<sub>2</sub>O ⇌ Al(OH)<sub>3</sub>↓+ 3H<sup>+</sup>",
         "explanationImages": [],
         "points": 1.0,
-        "displayNumber": 22
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de10_p3_q1",
@@ -9464,20 +9464,20 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 4.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 23
+        "displayNumber": 1
       },
       {
         "id": "hoa11_gk1_de10_p3_q2",
         "number": 2,
         "part": 3,
         "type": "short_answer",
-        "text": "Xét phản ứng xảy ra trong lò luyện gang:<br/>()()()()0232FeOs3COg2Fes3COg  ;     H0++D<<br/>Có bao nhiêu tác động làm cân bằng chuyển dịch theo chiều thuận trong số các tác động sau: (1) tăng áp suất; (2) giảm nồng độ CO<sub>2</sub>(g); (3) tăng nhiệt độ; (4) cho thêm Fe<sub>2</sub>O<sub>3</sub>(s); (5) tăng nồng độ CO(g).",
+        "text": "Xét phản ứng xảy ra trong lò luyện gang:<br/>()()()()0232FeOs3COg2Fes3COg ; H0++D<<br/>Có bao nhiêu tác động làm cân bằng chuyển dịch theo chiều thuận trong số các tác động sau: (1) tăng áp suất; (2) giảm nồng độ CO<sub>2</sub>(g); (3) tăng nhiệt độ; (4) cho thêm Fe<sub>2</sub>O<sub>3</sub>(s); (5) tăng nồng độ CO(g).",
         "images": [],
         "correctAnswer": "2",
         "explanation": "Đáp án: 2.<br/>Lưu ý: Đối với hệ cân bằng có chất rắn thì việc thêm hay bớt lượng chất rắn không ảnh hưởng đến cân bằng.",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 24
+        "displayNumber": 2
       },
       {
         "id": "hoa11_gk1_de10_p3_q3",
@@ -9490,7 +9490,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 11,4.<br/>MBa(OH)2[OH]C0,0025MpH14(log0,0025)11,42-==Þ=--=",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 25
+        "displayNumber": 3
       },
       {
         "id": "hoa11_gk1_de10_p3_q4",
@@ -9500,10 +9500,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Bình kín dung tích không đổi chứa hỗn hợp khí X gồm N<sub>2</sub> và H<sub>2</sub> (tỉ lệ mol tương ứng là 3 : 7) có chất xúc tác thích hợp, áp suất trong bình là p atm. Nung nóng bình để thực hiện phản ứng tổng hợp NH<sub>3</sub> rồi làm nguội bình về nhiệt độ ban đầu, thu được hỗn hợp khí Y và áp suất trong bình là 0,902p atm. Tính hiệu suất phản ứng tổng hợp NH<sub>3</sub>.",
         "images": [],
         "correctAnswer": "21",
-        "explanation": "Đáp án: 21.<br/>Phương trình hoá học:  N<sub>2</sub>           +        3H<sub>2</sub>⇌      2NH<sub>3</sub><br/>Ban đầu:                   3                   7                     0<br/>Phản ứng:                    x                   3x                        2x<br/>Sau phản ứng:        (3 – x)    (7 – 3x)                2x<br/>1122pn137x0,49pn0,9023x73x2x+=Þ=Þ=-+-+<br/>3xH.10021%7==",
+        "explanation": "Đáp án: 21.<br/>Phương trình hoá học: N<sub>2</sub> + 3H<sub>2</sub>⇌ 2NH<sub>3</sub><br/>Ban đầu: 3 7 0<br/>Phản ứng: x 3x 2x<br/>Sau phản ứng: (3 – x) (7 – 3x) 2x<br/>1122pn137x0,49pn0,9023x73x2x+=Þ=Þ=-+-+<br/>3xH.10021%7==",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 26
+        "displayNumber": 4
       },
       {
         "id": "hoa11_gk1_de10_p3_q5",
@@ -9516,7 +9516,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "explanation": "Đáp án: 3.<br/>H<sup>+</sup> tác dụng với SO<sub>3</sub><sup>2–</sup>, CH<sub>3</sub>COO<sup>–</sup><br/>Ba<sup>2+</sup> tác dụng với SO<sub>3</sub><sup>2–</sup>",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 27
+        "displayNumber": 5
       },
       {
         "id": "hoa11_gk1_de10_p3_q6",
@@ -9526,10 +9526,10 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Một cái ao dùng để nuôi tôm chứa 1000 m<sup>3</sup> nước có pH = 5. Trước khi nuôi, người ta làm tăng độ pH trong ao lên thành 8,0 bằng cách hòa tan m gam vôi sống (chứa 80% CaO, còn lại là tạp chất trơ không tan) vào nước trong ao. Tính giá trị m.",
         "images": [],
         "correctAnswer": "385",
-        "explanation": "Đáp án: 385.<br/>Khi pH = 5 ta có:  35Hn1000.10.1010mol-+==<br/>Khi pH = 8 ta có:  OHn-  <sub>dư</sub> =  OHn- <sub>(bđ)</sub> –  OHn- <sub>(pư)</sub>  1000.10<sup>3</sup>.10<sup>-6</sup> =  OHn- <sub>(bđ)</sub> – 10<br/>OHn- <sub>(bđ)</sub> = 11 mol<br/>OHCaOCa(OH)CaO2nnn5,5molm308gm385g2-===Þ=Þ=<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 385.<br/>Khi pH = 5 ta có: 35Hn1000.10.1010mol-+==<br/>Khi pH = 8 ta có: OHn- <sub>dư</sub> = OHn- <sub>(bđ)</sub> – OHn- <sub>(pư)</sub> 1000.10<sup>3</sup>.10<sup>-6</sup> = OHn- <sub>(bđ)</sub> – 10<br/>OHn- <sub>(bđ)</sub> = 11 mol<br/>OHCaOCa(OH)CaO2nnn5,5molm308gm385g2-===Þ=Þ=<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
-        "displayNumber": 28
+        "displayNumber": 6
       }
     ]
   }

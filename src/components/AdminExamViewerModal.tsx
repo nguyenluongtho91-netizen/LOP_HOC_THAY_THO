@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { 
   X, CheckCircle2, Lock, Unlock, Eye, BookOpen, Clock, Award, 
   ShieldCheck, Printer, Play, RotateCcw, AlertCircle, Check, 
-  HelpCircle, ChevronRight, Trophy, Zap
+  HelpCircle, ChevronRight, Trophy, Zap, Bookmark
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { formatChemicalText } from '@/utils/chemicalFormulaFormatter';
 import { toggleExamAccess, isExamLocked, GranularAccessConfig } from '@/services/hoa12AccessControlService';
 
 interface AdminExamViewerModalProps {
@@ -166,12 +167,33 @@ export default function AdminExamViewerModal({
     setScoreResult(null);
   };
 
+  const scrollToQuestion = (qId: string) => {
+    const el = document.getElementById(`question-${qId}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  const isQuestionAnswered = (q: any) => {
+    const ans = userAnswers[q.id];
+    if (q.part === 1 || q.type === 'multiple_choice') {
+      return Boolean(ans);
+    }
+    if (q.part === 2 || q.type === 'true_false') {
+      return ans && typeof ans === 'object' && Object.keys(ans).length === 4;
+    }
+    if (q.part === 3 || q.type === 'short_answer') {
+      return ans !== undefined && ans !== null && String(ans).trim() !== '';
+    }
+    return false;
+  };
+
   const displayedQuestions = activePartTab === 'all'
     ? questions
     : questions.filter(q => q.part === activePartTab || (activePartTab === 1 && q.type === 'multiple_choice') || (activePartTab === 2 && q.type === 'true_false') || (activePartTab === 3 && q.type === 'short_answer'));
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto animate-fade-in font-sans">
+    <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto animate-fade-in font-sans">
       <div className="bg-white w-full max-w-5xl max-h-[94vh] rounded-3xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden">
         {/* Header */}
         <div className="p-4 sm:p-5 bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-900 text-white flex items-center justify-between gap-3 border-b border-white/10 shrink-0">
@@ -181,7 +203,7 @@ export default function AdminExamViewerModal({
                 MÃ ĐỀ: {exam.code}
               </span>
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/10 text-slate-300">
-                {exam.grade ? `Hóa ${exam.grade}` : 'THPT'} • {exam.chapter || exam.topic || 'Đề Chuẩn GDPT 2018'}
+                {exam.grade ? `Hóa ${exam.grade}` : 'THPT'} • {exam.chapter || exam.topic || 'Đề Thi Chuẩn Bộ GD&ĐT 2025'}
               </span>
               <span className={`px-2 py-0.5 rounded-full text-[10px] font-black ${
                 isLocked ? 'bg-rose-500/80 text-white' : 'bg-emerald-400 text-slate-950'
@@ -216,7 +238,7 @@ export default function AdminExamViewerModal({
               }`}
             >
               {isTestMode ? <Eye className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current" />}
-              <span>{isTestMode ? 'Xem Lời Giải' : 'Làm Bài Thi Thử'}</span>
+              <span>{isTestMode ? 'Xem Đề & Lời Giải' : 'Vào Thi Thử (50p)'}</span>
             </button>
 
             <button
@@ -295,12 +317,12 @@ export default function AdminExamViewerModal({
                   <span>KẾT QUẢ THI: {scoreResult.score >= 8 ? 'XUẤT SẮC' : scoreResult.score >= 6.5 ? 'ĐẠT YÊU CẦU' : 'CẦN ÔN TẬP THÊM'}</span>
                 </div>
                 <div className="text-xs text-slate-600 mt-0.5">
-                  Đúng <strong>{scoreResult.correctCount}/{scoreResult.total} câu</strong> • P1: <strong>{scoreResult.part1Score}đ</strong> • P2: <strong>{scoreResult.part2Score}đ</strong> • P3: <strong>{scoreResult.part3Score}đ</strong>
+                  Đúng <strong>{scoreResult.correctCount}/{scoreResult.total} câu</strong> • Phần I: <strong>{scoreResult.part1Score}đ</strong> • Phần II: <strong>{scoreResult.part2Score}đ</strong> • Phần III: <strong>{scoreResult.part3Score}đ</strong>
                 </div>
               </div>
             </div>
             <div className="text-xs text-emerald-900 font-semibold bg-white/80 px-3 py-1.5 rounded-xl border border-emerald-200">
-              💡 Thầy/Trò kéo xuống dưới để xem đáp án đúng và lời giải chi tiết từng câu!
+              💡 Thầy/Trò xem đối chiếu đáp án đúng và hướng dẫn giải chi tiết bên dưới!
             </div>
           </div>
         )}
@@ -316,7 +338,7 @@ export default function AdminExamViewerModal({
                   : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
               }`}
             >
-              Tất cả ({questions.length} câu)
+              Toàn bộ đề thi ({questions.length} câu)
             </button>
             <button
               onClick={() => setActivePartTab(1)}
@@ -326,7 +348,7 @@ export default function AdminExamViewerModal({
                   : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
               }`}
             >
-              Phần I: Trắc nghiệm ({part1Questions.length})
+              Phần I: 4 Lựa chọn ({part1Questions.length} câu)
             </button>
             <button
               onClick={() => setActivePartTab(2)}
@@ -336,7 +358,7 @@ export default function AdminExamViewerModal({
                   : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
               }`}
             >
-              Phần II: Đúng / Sai ({part2Questions.length})
+              Phần II: Đúng / Sai ({part2Questions.length} câu)
             </button>
             <button
               onClick={() => setActivePartTab(3)}
@@ -346,12 +368,86 @@ export default function AdminExamViewerModal({
                   : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
               }`}
             >
-              Phần III: Trả lời ngắn ({part3Questions.length})
+              Phần III: Trả lời ngắn ({part3Questions.length} câu)
             </button>
           </div>
 
           <div className="text-xs font-bold text-slate-500">
-            Hiển thị {displayedQuestions.length} câu
+            Hiển thị {displayedQuestions.length} câu hỏi
+          </div>
+        </div>
+
+        {/* Quick Question Jump Navigator */}
+        <div className="px-5 py-2 bg-slate-100/70 border-b border-slate-200 overflow-x-auto shrink-0 flex items-center gap-4 text-xs font-bold">
+          <div className="flex items-center gap-1.5 shrink-0 text-slate-600">
+            <Bookmark className="w-3.5 h-3.5 text-indigo-600" />
+            <span className="text-[11px] uppercase tracking-wider font-extrabold text-slate-500">Chuyển nhanh:</span>
+          </div>
+
+          {/* Part 1 Jump List */}
+          <div className="flex items-center gap-1 shrink-0">
+            <span className="text-[10px] font-black uppercase text-indigo-700 bg-indigo-100/80 px-1.5 py-0.5 rounded mr-0.5">P.I:</span>
+            {part1Questions.map((q) => {
+              const answered = isQuestionAnswered(q);
+              return (
+                <button
+                  key={q.id}
+                  onClick={() => scrollToQuestion(q.id)}
+                  title={`Phần I - Câu ${q.number}`}
+                  className={`w-6 h-6 rounded-md text-[11px] font-black flex items-center justify-center transition-all cursor-pointer ${
+                    isTestMode && answered
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-white hover:bg-indigo-100 text-slate-700 border border-slate-300'
+                  }`}
+                >
+                  {q.number}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Part 2 Jump List */}
+          <div className="flex items-center gap-1 shrink-0 pl-2 border-l border-slate-300">
+            <span className="text-[10px] font-black uppercase text-amber-700 bg-amber-100/80 px-1.5 py-0.5 rounded mr-0.5">P.II:</span>
+            {part2Questions.map((q) => {
+              const answered = isQuestionAnswered(q);
+              return (
+                <button
+                  key={q.id}
+                  onClick={() => scrollToQuestion(q.id)}
+                  title={`Phần II - Câu ${q.number}`}
+                  className={`w-6 h-6 rounded-md text-[11px] font-black flex items-center justify-center transition-all cursor-pointer ${
+                    isTestMode && answered
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-white hover:bg-amber-100 text-slate-700 border border-slate-300'
+                  }`}
+                >
+                  {q.number}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Part 3 Jump List */}
+          <div className="flex items-center gap-1 shrink-0 pl-2 border-l border-slate-300">
+            <span className="text-[10px] font-black uppercase text-teal-700 bg-teal-100/80 px-1.5 py-0.5 rounded mr-0.5">P.III:</span>
+            {part3Questions.map((q) => {
+              const answered = isQuestionAnswered(q);
+              return (
+                <button
+                  key={q.id}
+                  onClick={() => scrollToQuestion(q.id)}
+                  title={`Phần III - Câu ${q.number}`}
+                  className={`w-6 h-6 rounded-md text-[11px] font-black flex items-center justify-center transition-all cursor-pointer ${
+                    isTestMode && answered
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-white hover:bg-teal-100 text-slate-700 border border-slate-300'
+                  }`}
+                >
+                  {q.number}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -363,226 +459,260 @@ export default function AdminExamViewerModal({
             const userP3 = userAnswers[q.id] || '';
             const correctP1 = q.options?.find((o: any) => o.isCorrect)?.letter || q.correctAnswer;
 
+            // Check if this is the start of a new Part
+            const isFirstOfPart = (qIndex === 0) || (displayedQuestions[qIndex - 1]?.part !== q.part);
+            const partNum = q.part || (q.type === 'multiple_choice' ? 1 : q.type === 'true_false' ? 2 : 3);
+
             return (
-              <div
-                key={q.id || qIndex}
-                className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs space-y-3"
-              >
-                {/* Question Header */}
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-800 font-black text-xs flex items-center justify-center">
-                      {q.displayNumber || q.number || qIndex + 1}
-                    </span>
-                    <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-                      {q.type === 'multiple_choice' ? 'Trắc nghiệm nhiều lựa chọn' : q.type === 'true_false' ? 'Trắc nghiệm Đúng / Sai' : 'Yêu cầu trả lời ngắn'}
-                    </span>
+              <React.Fragment key={q.id || qIndex}>
+                {/* ── Official Ministry Part Header Banner ── */}
+                {isFirstOfPart && (
+                  <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white border border-indigo-500/30 shadow-md transition-all">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2.5 border-b border-white/10">
+                      <div className="flex items-center gap-2.5">
+                        <span className="px-3 py-1 rounded-xl bg-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider shadow-sm">
+                          {partNum === 1 ? 'PHẦN I' : partNum === 2 ? 'PHẦN II' : 'PHẦN III'}
+                        </span>
+                        <h3 className="text-sm sm:text-base font-black tracking-tight text-white uppercase">
+                          {partNum === 1 && 'CÂU HỎI TRẮC NGHIỆM NHIỀU PHƯƠNG ÁN LỰA CHỌN'}
+                          {partNum === 2 && 'CÂU HỎI TRẮC NGHIỆM ĐÚNG / SAI'}
+                          {partNum === 3 && 'CÂU HỎI TRẮC NGHIỆM TRẢ LỜI NGẮN'}
+                        </h3>
+                      </div>
+                      <span className="text-[11px] font-bold text-amber-300 bg-amber-400/10 px-3 py-1 rounded-xl border border-amber-400/20 w-fit">
+                        {partNum === 1 && `Thí sinh trả lời từ Câu 1 đến Câu ${part1Questions.length} • 0,25 điểm/câu`}
+                        {partNum === 2 && `Thí sinh trả lời từ Câu 1 đến Câu ${part2Questions.length} • Tối đa 1,0 điểm/câu`}
+                        {partNum === 3 && `Thí sinh trả lời từ Câu 1 đến Câu ${part3Questions.length} • 0,25 điểm/câu`}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-300 mt-2 leading-relaxed font-normal">
+                      {partNum === 1 && 'Thí sinh chỉ chọn một phương án chính xác nhất trong các phương án A, B, C, D cho mỗi câu hỏi.'}
+                      {partNum === 2 && 'Trong mỗi ý a), b), c), d) ở mỗi câu, thí sinh chọn Đúng hoặc Sai. (Thang điểm chuẩn Bộ GD&ĐT: Đúng 1 ý: 0,1đ | Đúng 2 ý: 0,25đ | Đúng 3 ý: 0,5đ | Đúng 4 ý: 1,0đ).'}
+                      {partNum === 3 && 'Thí sinh tính toán và điền kết quả vào ô tương ứng. Đối với số thập phân, có thể dùng dấu phẩy (,) hoặc dấu chấm (.).'}
+                    </p>
                   </div>
-                  <span className="px-2 py-0.5 rounded-md text-[11px] font-black bg-slate-100 text-slate-700 border border-slate-200">
-                    {q.points || 0.25} điểm
-                  </span>
-                </div>
+                )}
 
-                {/* Question Text */}
+                {/* ── Question Card ── */}
                 <div
-                  className="text-sm font-semibold text-slate-900 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: q.text }}
-                />
-
-                {/* Question Images */}
-                {q.images && q.images.length > 0 && (
-                  <div className="flex flex-wrap gap-2 my-2">
-                    {q.images.map((img: string, i: number) => (
-                      <img
-                        key={i}
-                        src={img}
-                        alt="Hình câu hỏi"
-                        className="max-h-56 rounded-xl border border-slate-200 shadow-2xs bg-white"
-                      />
-                    ))}
+                  id={`question-${q.id}`}
+                  className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs space-y-3 scroll-mt-28 transition-all hover:border-indigo-200"
+                >
+                  {/* Question Header */}
+                  <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-100">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 rounded-xl bg-indigo-600 text-white font-black text-xs shadow-xs tracking-tight">
+                        Câu {q.number || q.displayNumber || (qIndex + 1)}
+                      </span>
+                      <span className="text-xs font-bold text-indigo-900 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-200/70 uppercase tracking-wider">
+                        {partNum === 1 ? 'Phần I • 4 Lựa chọn' : partNum === 2 ? 'Phần II • Đúng / Sai' : 'Phần III • Trả lời ngắn'}
+                      </span>
+                    </div>
+                    <span className="px-2.5 py-1 rounded-lg text-xs font-black bg-slate-100 text-slate-700 border border-slate-200">
+                      {partNum === 2 ? '1,0 điểm' : '0,25 điểm'}
+                    </span>
                   </div>
-                )}
 
-                {/* ── PART 1: MULTIPLE CHOICE OPTIONS ── */}
-                {(q.part === 1 || q.type === 'multiple_choice') && q.options && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3 pt-2 border-t border-slate-100">
-                    {q.options.map((opt: any) => {
-                      const isTeacherView = !isTestMode || isSubmitted;
-                      const isCorrect = Boolean(opt.isCorrect || opt.letter === correctP1);
-                      const isSelected = (userP1 === opt.letter);
+                  {/* Question Text */}
+                  <div
+                    className="text-sm font-semibold text-slate-900 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: formatChemicalText(q.text) }}
+                  />
 
-                      let containerClass = "bg-slate-50 border-slate-200 text-slate-700";
-                      let badgeClass = "bg-slate-200 text-slate-700";
+                  {/* Question Images */}
+                  {q.images && q.images.length > 0 && (
+                    <div className="flex flex-wrap gap-2 my-2">
+                      {q.images.map((img: string, i: number) => (
+                        <img
+                          key={i}
+                          src={img}
+                          alt="Hình câu hỏi"
+                          className="max-h-56 rounded-xl border border-slate-200 shadow-2xs bg-white"
+                        />
+                      ))}
+                    </div>
+                  )}
 
-                      if (isTestMode && !isSubmitted) {
-                        if (isSelected) {
-                          containerClass = "bg-indigo-50 border-indigo-400 text-indigo-950 font-bold shadow-xs";
-                          badgeClass = "bg-indigo-600 text-white";
-                        } else {
-                          containerClass = "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-800";
+                  {/* ── PART 1: MULTIPLE CHOICE OPTIONS ── */}
+                  {(partNum === 1 || q.type === 'multiple_choice') && q.options && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mt-3 pt-2 border-t border-slate-100">
+                      {q.options.map((opt: any) => {
+                        const isTeacherView = !isTestMode || isSubmitted;
+                        const isCorrect = Boolean(opt.isCorrect || opt.letter === correctP1);
+                        const isSelected = (userP1 === opt.letter);
+
+                        let containerClass = "bg-slate-50 border-slate-200 text-slate-700";
+                        let badgeClass = "bg-slate-200 text-slate-700";
+
+                        if (isTestMode && !isSubmitted) {
+                          if (isSelected) {
+                            containerClass = "bg-indigo-50 border-indigo-400 text-indigo-950 font-bold shadow-xs";
+                            badgeClass = "bg-indigo-600 text-white";
+                          } else {
+                            containerClass = "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-800";
+                          }
+                        } else if (isTeacherView) {
+                          if (isCorrect) {
+                            containerClass = "bg-emerald-50/90 border-emerald-400 text-emerald-950 font-bold ring-1 ring-emerald-300/60";
+                            badgeClass = "bg-emerald-600 text-white";
+                          } else if (isSelected && !isCorrect) {
+                            containerClass = "bg-rose-50 border-rose-300 text-rose-950 line-through";
+                            badgeClass = "bg-rose-600 text-white";
+                          }
                         }
-                      } else if (isTeacherView) {
-                        if (isCorrect) {
-                          containerClass = "bg-emerald-50/80 border-emerald-300 text-emerald-950 font-bold";
-                          badgeClass = "bg-emerald-600 text-white";
-                        } else if (isSelected && !isCorrect) {
-                          containerClass = "bg-rose-50 border-rose-300 text-rose-950 line-through";
-                          badgeClass = "bg-rose-600 text-white";
-                        }
-                      }
 
-                      return (
-                        <div
-                          key={opt.id || opt.letter}
-                          onClick={() => isTestMode && !isSubmitted && handleSelectP1(q.id, opt.letter)}
-                          className={`p-3 rounded-xl border transition-all flex items-start gap-2.5 ${containerClass} ${isTestMode && !isSubmitted ? 'cursor-pointer hover:shadow-xs' : ''}`}
-                        >
-                          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-black shrink-0 ${badgeClass}`}>
-                            {opt.letter}
-                          </span>
-                          <div className="text-xs sm:text-sm leading-snug flex-1">
-                            {opt.text && <div dangerouslySetInnerHTML={{ __html: opt.text }} />}
-                            {opt.image && (
-                              <img src={opt.image} alt={`Hình ${opt.letter}`} className="max-h-28 rounded-lg mt-1 border border-slate-200 bg-white" />
-                            )}
-                          </div>
-                          {isTeacherView && isCorrect && (
-                            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* ── PART 2: TRUE / FALSE STATEMENTS ── */}
-                {(q.part === 2 || q.type === 'true_false') && q.options && (
-                  <div className="space-y-2 mt-3 pt-2 border-t border-slate-100">
-                    {q.options.map((opt: any) => {
-                      const key = opt.id || opt.letter?.toLowerCase();
-                      const isTeacherView = !isTestMode || isSubmitted;
-                      const isCorrectTrue = Boolean(opt.isCorrect);
-                      const uChoice = userP2[key];
-
-                      return (
-                        <div
-                          key={key}
-                          className="p-3 rounded-xl border border-slate-200 bg-slate-50 flex items-start justify-between gap-3 flex-wrap sm:flex-nowrap"
-                        >
-                          <div className="flex items-start gap-2.5 flex-1">
-                            <span className="w-5 h-5 rounded-md bg-indigo-100 text-indigo-900 flex items-center justify-center text-xs font-black shrink-0">
-                              {opt.letter?.toLowerCase()})
+                        return (
+                          <div
+                            key={opt.id || opt.letter}
+                            onClick={() => isTestMode && !isSubmitted && handleSelectP1(q.id, opt.letter)}
+                            className={`p-3 rounded-xl border transition-all flex items-start gap-2.5 ${containerClass} ${isTestMode && !isSubmitted ? 'cursor-pointer hover:shadow-xs' : ''}`}
+                          >
+                            <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-black shrink-0 ${badgeClass}`}>
+                              {opt.letter}
                             </span>
-                            <div className="text-xs sm:text-sm leading-snug text-slate-800">
-                              {opt.text && <div dangerouslySetInnerHTML={{ __html: opt.text }} />}
+                            <div className="text-xs sm:text-sm leading-snug flex-1 font-medium">
+                              {opt.text && <div dangerouslySetInnerHTML={{ __html: formatChemicalText(opt.text) }} />}
                               {opt.image && (
                                 <img src={opt.image} alt={`Hình ${opt.letter}`} className="max-h-28 rounded-lg mt-1 border border-slate-200 bg-white" />
                               )}
                             </div>
-                          </div>
-
-                          {/* Interactive Buttons / Reveal */}
-                          <div className="flex items-center gap-1.5 shrink-0 ml-auto">
-                            {isTestMode && !isSubmitted ? (
-                              <>
-                                <button
-                                  type="button"
-                                  onClick={() => handleSelectP2(q.id, key, 'true')}
-                                  className={`px-2.5 py-1 rounded-lg text-xs font-black border transition-all cursor-pointer ${
-                                    uChoice === 'true'
-                                      ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
-                                      : 'bg-white text-slate-700 hover:bg-emerald-50 border-slate-300'
-                                  }`}
-                                >
-                                  Đúng
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={() => handleSelectP2(q.id, key, 'false')}
-                                  className={`px-2.5 py-1 rounded-lg text-xs font-black border transition-all cursor-pointer ${
-                                    uChoice === 'false'
-                                      ? 'bg-rose-600 text-white border-rose-600 shadow-xs'
-                                      : 'bg-white text-slate-700 hover:bg-rose-50 border-slate-300'
-                                  }`}
-                                >
-                                  Sai
-                                </button>
-                              </>
-                            ) : (
-                              <div className="flex items-center gap-1.5">
-                                {isSubmitted && uChoice && (
-                                  <span className="text-[11px] text-slate-500">
-                                    Đã chọn: <strong>{uChoice === 'true' ? 'Đúng' : 'Sai'}</strong>
-                                  </span>
-                                )}
-                                <span className={`px-2.5 py-0.5 rounded-md text-xs font-black border ${
-                                  isCorrectTrue
-                                    ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                                    : 'bg-rose-100 text-rose-800 border-rose-300'
-                                }`}>
-                                  {isCorrectTrue ? 'ĐÚNG' : 'SAI'}
-                                </span>
-                              </div>
+                            {isTeacherView && isCorrect && (
+                              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                             )}
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* ── PART 3: SHORT ANSWER ── */}
-                {(q.part === 3 || q.type === 'short_answer') && (
-                  <div className="mt-3 pt-2 border-t border-slate-100 space-y-2">
-                    {isTestMode && !isSubmitted ? (
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-600">Nhập câu trả lời ngắn:</span>
-                        <input
-                          type="text"
-                          value={userP3}
-                          onChange={(e) => handleInputP3(q.id, e.target.value)}
-                          placeholder="Ví dụ: 18 hoặc 2,5..."
-                          className="px-3 py-1.5 rounded-xl border border-indigo-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-sm font-black text-slate-900 w-44"
-                        />
-                      </div>
-                    ) : (
-                      <div className="p-3 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-between gap-2 flex-wrap">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-indigo-700">Đáp án chính xác:</span>
-                          <strong className="text-sm font-black text-indigo-900 bg-white px-2 py-0.5 rounded-lg border border-indigo-200">
-                            {String(q.correctAnswer)}
-                          </strong>
-                        </div>
-                        {isSubmitted && (
-                          <div className="text-xs font-bold text-slate-600">
-                            Câu trả lời của bạn: <strong className="text-indigo-800">{userP3 || '(chưa điền)'}</strong>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* ── EXPLANATION (Revealed in Teacher Mode or After Submission) ── */}
-                {(!isTestMode || isSubmitted) && q.explanation && (
-                  <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/80 text-xs text-amber-950 space-y-1 mt-3">
-                    <div className="font-black text-amber-800 flex items-center gap-1">
-                      💡 Hướng dẫn giải chi tiết:
+                        );
+                      })}
                     </div>
-                    <div
-                      className="leading-relaxed"
-                      dangerouslySetInnerHTML={{ __html: q.explanation }}
-                    />
-                    {q.explanationImages && q.explanationImages.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-2">
-                        {q.explanationImages.map((img: string, i: number) => (
-                          <img key={i} src={img} alt="Hình giải thích" className="max-h-40 rounded-lg border border-amber-200 bg-white" />
-                        ))}
+                  )}
+
+                  {/* ── PART 2: TRUE / FALSE STATEMENTS ── */}
+                  {(partNum === 2 || q.type === 'true_false') && q.options && (
+                    <div className="space-y-2 mt-3 pt-2 border-t border-slate-100">
+                      {q.options.map((opt: any) => {
+                        const key = opt.id || opt.letter?.toLowerCase();
+                        const isCorrectTrue = Boolean(opt.isCorrect);
+                        const uChoice = userP2[key];
+
+                        return (
+                          <div
+                            key={key}
+                            className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start justify-between gap-3"
+                          >
+                            <div className="flex items-start gap-2 flex-1">
+                              <span className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 bg-slate-200 text-slate-700">
+                                {opt.letter?.toLowerCase()})
+                              </span>
+                              <div className="text-xs sm:text-sm leading-snug text-slate-800 font-medium">
+                                {opt.text && <div dangerouslySetInnerHTML={{ __html: formatChemicalText(opt.text) }} />}
+                                {opt.image && (
+                                  <img src={opt.image} alt={`Hình ${opt.letter}`} className="max-h-28 rounded-lg mt-1 border border-slate-200 bg-white" />
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Interactive Buttons / Reveal */}
+                            <div className="flex items-center gap-1.5 shrink-0 ml-auto">
+                              {isTestMode && !isSubmitted ? (
+                                <>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSelectP2(q.id, key, 'true')}
+                                    className={`px-3 py-1 rounded-lg text-xs font-black border transition-all cursor-pointer ${
+                                      uChoice === 'true'
+                                        ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
+                                        : 'bg-white text-slate-700 hover:bg-emerald-50 border-slate-300'
+                                    }`}
+                                  >
+                                    Đúng
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSelectP2(q.id, key, 'false')}
+                                    className={`px-3 py-1 rounded-lg text-xs font-black border transition-all cursor-pointer ${
+                                      uChoice === 'false'
+                                        ? 'bg-rose-600 text-white border-rose-600 shadow-xs'
+                                        : 'bg-white text-slate-700 hover:bg-rose-50 border-slate-300'
+                                    }`}
+                                  >
+                                    Sai
+                                  </button>
+                                </>
+                              ) : (
+                                <div className="flex items-center gap-1.5">
+                                  {isSubmitted && uChoice && (
+                                    <span className="text-[11px] text-slate-500">
+                                      Đã chọn: <strong>{uChoice === 'true' ? 'Đúng' : 'Sai'}</strong>
+                                    </span>
+                                  )}
+                                  <span className={`px-2.5 py-0.5 rounded-md text-xs font-black border ${
+                                    isCorrectTrue
+                                      ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                                      : 'bg-rose-100 text-rose-800 border-rose-300'
+                                  }`}>
+                                    {isCorrectTrue ? 'ĐÚNG' : 'SAI'}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* ── PART 3: SHORT ANSWER ── */}
+                  {(partNum === 3 || q.type === 'short_answer') && (
+                    <div className="mt-3 pt-2 border-t border-slate-100 space-y-2">
+                      {isTestMode && !isSubmitted ? (
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-xs font-bold text-slate-600">Nhập kết quả trả lời ngắn:</span>
+                          <input
+                            type="text"
+                            value={userP3}
+                            onChange={(e) => handleInputP3(q.id, e.target.value)}
+                            placeholder="Ví dụ: 18 hoặc 2,5..."
+                            className="px-3 py-1.5 rounded-xl border border-indigo-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-sm font-black text-slate-900 w-44"
+                          />
+                        </div>
+                      ) : (
+                        <div className="p-3 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center justify-between gap-2 flex-wrap">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-bold text-indigo-700">Đáp án chính xác:</span>
+                            <strong className="text-sm font-black text-indigo-900 bg-white px-2 py-0.5 rounded-lg border border-indigo-200">
+                              {String(q.correctAnswer)}
+                            </strong>
+                          </div>
+                          {isSubmitted && (
+                            <div className="text-xs font-bold text-slate-600">
+                              Câu trả lời của bạn: <strong className="text-indigo-800">{userP3 || '(chưa điền)'}</strong>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* ── EXPLANATION (Revealed in Teacher Mode or After Submission) ── */}
+                  {(!isTestMode || isSubmitted) && q.explanation && (
+                    <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/80 text-xs text-amber-950 space-y-1 mt-3">
+                      <div className="font-black text-amber-800 flex items-center gap-1">
+                        💡 Hướng dẫn giải chi tiết:
                       </div>
-                    )}
-                  </div>
-                )}
-              </div>
+                      <div
+                        className="leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: formatChemicalText(q.explanation) }}
+                      />
+                      {q.explanationImages && q.explanationImages.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {q.explanationImages.map((img: string, i: number) => (
+                            <img key={i} src={img} alt="Hình giải thích" className="max-h-40 rounded-lg border border-amber-200 bg-white" />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </React.Fragment>
             );
           })}
         </div>
@@ -590,7 +720,7 @@ export default function AdminExamViewerModal({
         {/* Footer */}
         <div className="p-4 bg-white border-t border-slate-200 flex items-center justify-between gap-3 shrink-0 flex-wrap">
           <div className="text-xs font-medium text-slate-500">
-            Tổng cộng: <strong className="text-slate-800">{questions.length} câu hỏi chuẩn Bộ GD&ĐT 2025</strong>
+            Tổng cộng: <strong className="text-slate-800">{questions.length} câu hỏi chuẩn cấu trúc Bộ GD&ĐT 2025</strong>
           </div>
 
           <div className="flex items-center gap-2">

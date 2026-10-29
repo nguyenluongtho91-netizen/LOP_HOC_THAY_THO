@@ -61,6 +61,48 @@ export function formatChemicalText(raw: string | undefined | null): string {
   if (!raw || typeof raw !== 'string') return raw || '';
 
   let s = raw;
+  // 0. Word / MathType corrupted symbols & arrows
+  s = s.replace(/ot[¾¾]+®?|ot³\/2\/¼°?|o[¾¾]+®?/g, ' ⎯⎯t°→ ');
+  s = s.replace(/[¾¾]{2,}®?\s*oPt,t|[¾¾]{2,}®?\s*ot/g, ' ⎯⎯t°→ ');
+  s = s.replace(/[¾¾]{2,}®?|¬®/g, ' → ');
+  s = s.replace(/ˆˆ†‡ˆˆ|ˆ+[\s†‡]*ˆ*|[\s]*[]+[\s]*|\s+ƒ\s+/g, ' ⇌ ');
+  s = s.replace(/\+4NH/g, 'NH<sub>4</sub><sup>+</sup>');
+  s = s.replace(/2XY-/g, 'XY<sub>2</sub><sup>-</sup>');
+  
+  // Isotopes like 2613X, 5526Y, 2612Z
+  s = s.replace(/(26)(13)(X)/g, '<sup>26</sup><sub>13</sub>X');
+  s = s.replace(/(55)(26)(Y)/g, '<sup>55</sup><sub>26</sub>Y');
+  s = s.replace(/(26)(12)(Z)/g, '<sup>26</sup><sub>12</sub>Z');
+  s = s.replace(/(56)(26)(X|Fe)/g, '<sup>56</sup><sub>26</sub>');
+  s = s.replace(/(40)(18)(X|Ar)/g, '<sup>40</sup><sub>18</sub>');
+  s = s.replace(/(40)(19)(Y|K)/g, '<sup>40</sup><sub>19</sub>');
+  s = s.replace(/(28)(14)(X|Si)/g, '<sup>28</sup><sub>14</sub>');
+  s = s.replace(/(29)(14)(Y|Si)/g, '<sup>29</sup><sub>14</sub>');
+  s = s.replace(/(27)(13)(X|Al)/g, '<sup>27</sup><sub>13</sub>');
+  s = s.replace(/(28)(15)(X|P)/g, '<sup>28</sup><sub>15</sub>');
+  s = s.replace(/(40)(20)(Ca|X)/g, '<sup>40</sup><sub>20</sub>');
+  s = s.replace(/(23)(11)(Na|X)/g, '<sup>23</sup><sub>11</sub>');
+  s = s.replace(/(60)(27)(Co|X)/g, '<sup>60</sup><sub>27</sub>');
+  s = s.replace(/(59)(27)(Co|X)/g, '<sup>59</sup><sub>27</sub>');
+  s = s.replace(/(58)(27)(Co|X)/g, '<sup>58</sup><sub>27</sub>');
+  s = s.replace(/(79)(35)(Br|X)/g, '<sup>79</sup><sub>35</sub>');
+  s = s.replace(/(81)(35)(Br|Y)/g, '<sup>81</sup><sub>35</sub>');
+  s = s.replace(/(63)(29)(Cu)/g, '<sup>63</sup><sub>29</sub>Cu');
+  s = s.replace(/(65)(29)(Cu)/g, '<sup>65</sup><sub>29</sub>Cu');
+
+  // Common un-subscripted chemical formulas
+  s = s.replace(/2KClO3/g, '2KClO<sub>3</sub>');
+  s = s.replace(/KClO3/g, 'KClO<sub>3</sub>');
+  s = s.replace(/CH4/g, 'CH<sub>4</sub>');
+  s = s.replace(/CO2/g, 'CO<sub>2</sub>');
+  s = s.replace(/H2O/g, 'H<sub>2</sub>O');
+  s = s.replace(/FeCl2/g, 'FeCl<sub>2</sub>');
+  s = s.replace(/N2\((g|l|s|aq)\)/g, 'N<sub>2</sub>()');
+  s = s.replace(/O2\((g|l|s|aq)\)/g, 'O<sub>2</sub>()');
+  s = s.replace(/H2\((g|l|s|aq)\)/g, 'H<sub>2</sub>()');
+  s = s.replace(/2NO\((g|l|s|aq)\)/g, '2NO()');
+  s = s.replace(/N2O4/g, 'N<sub>2</sub>O<sub>4</sub>');
+
 
   // 1. Ký hiệu mũi tên cân bằng hóa học (PHẢI THAY TRƯỚC \left / \right ĐỂ TRÁNH BỊ CẮT TỪ)
   s = s.replace(/\\rightleftharpoons|\\leftrightharpoons|\\b(?:left)?(?:right)?harpoons\\b|leftharpoons|leftharpoons|rightharpoons/gi, ' ⇌ ');
