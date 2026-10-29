@@ -39,6 +39,7 @@ const CreateTexExamPage = lazy(() => import('@/pages/CreateTexExamPage'))
 const CreateWorksheetPage = lazy(() => import('@/pages/CreateWorksheetPage'))
 const WhiteboardPage = lazy(() => import('@/pages/WhiteboardPage'))
 const LayGocToanPage = lazy(() => import('@/pages/LayGocToanPage'))
+const KhoaHocLayGocHoaPage = lazy(() => import('@/pages/KhoaHocLayGocHoaPage'))
 // Hoa12Page loaded eagerly above
 
 // Pages Khóa học
@@ -127,6 +128,8 @@ export default function App() {
         <Route path="/login"    element={<Login />} />
         <Route path="/thi"      element={<StudentPortal />} />
         <Route path="/lay-goc"  element={<LayGocToanPage isPublic={true} />} />
+        <Route path="/khoa-hoc-lay-goc-hoa" element={<KhoaHocLayGocHoaPage />} />
+        <Route path="/lay-goc-hoa" element={<KhoaHocLayGocHoaPage />} />
 
         {/* BỘ ĐỀ THI GIỮA HỌC KÌ 1 (HÓA 10, 11, 12) */}
         <Route path="/de-thi-giua-ki" element={<MidtermExamsPage />} />

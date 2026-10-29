@@ -1402,6 +1402,15 @@ export default function StudentPortal() {
             )}
 
             <button
+              onClick={() => navigate('/khoa-hoc-lay-goc-hoa')}
+              className="h-8 sm:h-9 px-2.5 sm:px-3 bg-gradient-to-r from-blue-700 via-indigo-700 to-amber-600 hover:opacity-95 text-white rounded-xl flex items-center justify-center gap-1.5 transition-all flex-shrink-0 shadow-xs cursor-pointer border border-amber-400/40"
+              title="Khóa Học Lấy Gốc Hóa Học Nền Tảng (9 Đề Toàn Diện)"
+            >
+              <FlaskConical className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
+              <span className="hidden sm:inline text-xs font-black">9 Đề Gốc Hóa</span>
+            </button>
+
+            <button
               onClick={() => setIsChangePasswordOpen(true)}
               className="h-8 w-8 sm:h-9 sm:w-9 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-xl border border-teal-200 flex items-center justify-center transition-all flex-shrink-0 shadow-2xs cursor-pointer"
               title="Đổi mật khẩu"
@@ -1606,7 +1615,13 @@ export default function StudentPortal() {
                 return (
                   <div
                     key={c.id}
-                    onClick={() => navigate(`/course-viewer/${c.id}/${student.id}`)}
+                    onClick={() => {
+                      if (c.title?.toLowerCase().includes("hóa") && isLayGoc) {
+                        navigate('/khoa-hoc-lay-goc-hoa');
+                      } else {
+                        navigate(`/course-viewer/${c.id}/${student.id}`);
+                      }
+                    }}
                     className={`p-5 rounded-2xl border-2 transition-all cursor-pointer relative overflow-hidden flex flex-col justify-between gap-3 shadow-xs hover:shadow-md hover:-translate-y-0.5 ${
                       isLayGoc
                         ? "bg-gradient-to-br from-amber-500/10 via-yellow-500/5 to-white border-amber-400 ring-2 ring-amber-400/20"
@@ -1753,6 +1768,62 @@ export default function StudentPortal() {
             </button>
           </div>
         )}
+
+        {/* BANNER ĐẶC BIỆT: KHÓA HỌC LẤY GỐC HÓA HỌC NỀN TẢNG (9 ĐỀ TOÀN DIỆN) */}
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-950 via-indigo-900 to-amber-900 text-white p-5 sm:p-7 shadow-xl border-2 border-amber-400/50 hover:border-amber-400 transition-all">
+          <div className="absolute -right-8 -bottom-8 opacity-10 text-white pointer-events-none select-none">
+            <FlaskConical className="w-56 h-56" />
+          </div>
+          
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div className="space-y-3 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-[11px] sm:text-xs font-black uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-spin" />
+                <span>KHÓA HỌC ĐẶC BIỆT · 9 ĐỀ THI TOÀN DIỆN CHUẨN ĐỔI MỚI</span>
+              </div>
+              
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight flex items-center gap-2 flex-wrap">
+                <span>🧪 LẤY GỐC HÓA HỌC NỀN TẢNG — 9 ĐỀ TOÀN DIỆN</span>
+                <span className="text-xs font-bold bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded-full">180 CÂU CÓ LỜI GIẢI</span>
+              </h3>
+              
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                Hệ thống 9 chuyên đề trắc nghiệm luyện phản xạ nhanh: <strong>Kí hiệu & Tên</strong>, <strong>Kim loại / Phi kim / Khí hiếm</strong>, <strong>Nguyên tử khối (amu)</strong>, <strong>Phân tử khối</strong>, <strong>Hóa trị</strong>, <strong>Lập CTHH vô cơ</strong>, <strong>Phân loại Oxide/Acid/Base/Muối</strong> (đặc biệt các chất lưỡng tính <code className="text-amber-300">Al₂O₃, ZnO, Cr₂O₃; Al(OH)₃, Zn(OH)₂, Cr(OH)₃</code>) và <strong>Tính tan & Hiện tượng kết tủa</strong>!
+              </p>
+
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {[
+                  '1. Kí hiệu ➔ Tên',
+                  '2. Tên ➔ Kí hiệu',
+                  '3. Kim loại / Khí hiếm',
+                  '4. Nguyên tử khối',
+                  '5. Phân tử khối',
+                  '6. Xác định Hóa trị',
+                  '7. Lập CTHH vô cơ',
+                  '8. Phân loại vô cơ & Lưỡng tính',
+                  '9. Tính tan & Kết tủa'
+                ].map((tag, idx) => (
+                  <span key={idx} className="text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-slate-200 backdrop-blur-xs transition-colors">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-2.5 shrink-0">
+              <button
+                onClick={() => navigate('/khoa-hoc-lay-goc-hoa')}
+                className="px-6 py-3.5 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 text-slate-950 font-black text-sm uppercase tracking-wider rounded-2xl shadow-lg hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+              >
+                <span>Vào Học & Luyện 9 Đề Ngay</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </button>
+              <span className="text-[11px] text-amber-200/80 font-medium text-center lg:text-right">
+                ⚡ Tự chấm điểm /10 · Có lời giải chi tiết · In đề PDF
+              </span>
+            </div>
+          </div>
+        </div>
 
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {/* ── PHẦN 1: BÀI TẬP VỀ NHÀ (CÓ GIÁM SÁT CHUYỂN TAB) ─────────────── */}
