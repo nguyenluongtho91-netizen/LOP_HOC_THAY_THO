@@ -27,7 +27,12 @@ import {
   CheckCircle2,
   ArrowRight,
   Layers,
-  ShieldCheck
+  ShieldCheck,
+  FlaskConical,
+  Calculator,
+  Atom,
+  Flame,
+  Compass
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { 
@@ -1299,7 +1304,40 @@ export default function StudentPortal() {
 
   // ── DASHBOARD (đã đăng nhập) ─────────────────────────────────
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-amber-50/30 via-sky-50/20 to-slate-50 flex flex-col relative overflow-x-hidden">
+      {/* HỌA TIẾT PHÔNG NỀN CHÌM: KÝ HIỆU TOÁN & HÓA HỌC */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none opacity-[0.035] text-blue-900">
+        {/* Phía trên bên phải: Vòng benzen & Bình Erlenmeyer */}
+        <div className="absolute -top-10 -right-10 w-96 h-96">
+          <svg viewBox="0 0 200 200" fill="currentColor">
+            <path d="M100 20 L160 55 L160 125 L100 160 L40 125 L40 55 Z" stroke="currentColor" strokeWidth="6" fill="none"/>
+            <circle cx="100" cy="90" r="38" stroke="currentColor" strokeWidth="5" fill="none"/>
+          </svg>
+        </div>
+        {/* Phía trên bên trái: Tích phân & Sigma */}
+        <div className="absolute top-24 -left-6 text-9xl font-serif">
+          ∫
+        </div>
+        <div className="absolute top-80 left-12 text-7xl font-serif">
+          ∑
+        </div>
+        {/* Giữa trang bên phải: Căn bậc hai & Pi */}
+        <div className="absolute top-1/2 -right-8 text-8xl font-serif">
+          √x
+        </div>
+        <div className="absolute top-[60%] right-24 text-7xl font-serif">
+          π
+        </div>
+        {/* Phía dưới bên trái: Bình phản ứng & Nguyên tử */}
+        <div className="absolute bottom-20 left-8 w-48 h-48">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
+            <ellipse cx="50" cy="50" rx="45" ry="16" transform="rotate(30 50 50)"/>
+            <ellipse cx="50" cy="50" rx="45" ry="16" transform="rotate(-30 50 50)"/>
+            <circle cx="50" cy="50" r="8" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
       {/* Header */}
       <header className="bg-white shadow-xs border-b border-teal-100 sticky top-0 z-20">
         <div className="max-w-5xl mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
@@ -1383,91 +1421,108 @@ export default function StudentPortal() {
       </header>
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 py-8 space-y-8 animate-fade-in">
-        {/* HERO DASHBOARD CAO CẤP DÀNH CHO HỌC SINH (PHONG CÁCH HIỆN ĐẠI, THOÁNG ĐÃNG) */}
-        <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-8 text-white border border-teal-500/20 shadow-xl relative overflow-hidden">
-          {/* Vệt sáng trang trí tinh tế */}
-          <div className="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-teal-500/15 blur-3xl pointer-events-none" />
-          <div className="absolute -left-20 -bottom-20 w-60 h-60 rounded-full bg-indigo-500/15 blur-2xl pointer-events-none" />
+        {/* HERO DASHBOARD CAO CẤP TOÁN & HÓA (HỢP TUỔI TÂN MÙI 1991 - TƯƠI SÁNG & HIỆN ĐẠI) */}
+        <div className="bg-gradient-to-br from-blue-700 via-indigo-700 to-amber-600 rounded-2xl sm:rounded-3xl p-4 sm:p-7 lg:p-8 text-white border-2 border-amber-300/40 shadow-2xl relative overflow-hidden">
+          {/* Hào quang phong thủy 1991: Vàng Hổ Phách (Hỏa sinh Thổ) + Xanh Coban Trí Tuệ */}
+          <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-amber-400/30 blur-3xl pointer-events-none" />
+          <div className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-blue-400/30 blur-3xl pointer-events-none" />
+
+          {/* Họa tiết vector Toán & Hóa chìm trong Card */}
+          <div className="absolute right-4 bottom-2 opacity-15 pointer-events-none select-none flex items-center gap-3 text-amber-200">
+            <span className="text-6xl sm:text-7xl font-serif">∫</span>
+            <span className="text-5xl sm:text-6xl font-serif">∑</span>
+            <span className="text-4xl sm:text-5xl font-mono">⬡</span>
+            <span className="text-4xl sm:text-5xl font-serif">π</span>
+          </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
             {/* Lời chào và thông tin học sinh */}
             <div className="space-y-2.5 sm:space-y-3 max-w-2xl text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 border border-teal-400/40 text-teal-300 text-[11px] sm:text-xs font-black uppercase tracking-wider backdrop-blur-md">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-                <span>Học Viên Chính Thức · Lớp Học Thầy Thọ</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/25 border border-amber-300/45 text-amber-100 text-[11px] sm:text-xs font-black uppercase tracking-wider backdrop-blur-md shadow-xs">
+                  <Flame className="w-3.5 h-3.5 text-amber-300 shrink-0" />
+                  <span>Toán & Hóa Thầy Thọ · Tân Mùi 1991</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 border border-white/30 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+                  <Sparkles className="w-3.5 h-3.5 text-yellow-300 shrink-0" />
+                  <span>Học Viên Chính Thức</span>
+                </div>
               </div>
               
               <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight">
-                Xin chào, <span className="bg-gradient-to-r from-teal-300 via-emerald-200 to-cyan-300 bg-clip-text text-transparent">{student.full_name}</span>! 👋
+                Xin chào, <span className="bg-gradient-to-r from-amber-200 via-yellow-100 to-orange-200 bg-clip-text text-transparent font-black drop-shadow-sm">{student.full_name}</span>! 👋
               </h2>
               
-              <p className="text-slate-300 text-xs sm:text-sm font-medium leading-relaxed">
-                Thầy Thọ chúc em luôn giữ vững tinh thần tự giác, hoàn thành xuất sắc các đề thi, bài tập và đạt điểm số cao nhất nhé!
+              <p className="text-amber-100/90 text-xs sm:text-sm font-medium leading-relaxed">
+                Thầy Thọ chúc em vững vàng tư duy Toán học, thấu hiểu bản chất Hóa học, bứt phá phản xạ và đạt điểm 9-10 xuất sắc nhất!
               </p>
 
               {/* Nhãn lớp và mã học sinh */}
               <div className="flex items-center gap-2 flex-wrap pt-0.5">
-                <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-teal-950/80 text-teal-300 border border-teal-700/60 shadow-sm">
+                <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-white/20 text-amber-200 border border-white/30 shadow-xs backdrop-blur-md">
                   Mã HS: {student.student_code}
                 </span>
                 {enrolledClasses.length > 0 ? (
                   enrolledClasses.map((cls, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800/90 text-slate-200 border border-slate-700 shadow-sm flex items-center gap-1"
+                      className="text-xs font-bold px-3 py-1.5 rounded-xl bg-white/20 text-white border border-white/30 shadow-xs backdrop-blur-md flex items-center gap-1"
                     >
                       📚 {cls.class_name}
                     </span>
                   ))
                 ) : student.grade ? (
-                  <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800/90 text-slate-200 border border-slate-700 shadow-sm flex items-center gap-1">
+                  <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-white/20 text-white border border-white/30 shadow-xs backdrop-blur-md flex items-center gap-1">
                     📚 {student.grade}
                   </span>
                 ) : null}
               </div>
             </div>
 
-            {/* BỘ 3 CARD CHỈ SỐ HỌC TẬP (TIẾN ĐỘ, ĐIỂM TB, CẦN NỘP) */}
+            {/* BỘ 3 CARD CHỈ SỐ HỌC TẬP (TIẾN ĐỘ, ĐIỂM TB, CẦN NỘP) - WHITE GLASSMORPHISM */}
             <div className="grid grid-cols-3 gap-2 sm:gap-3.5 w-full lg:w-auto shrink-0">
-              {/* Chỉ số 1: Tiến độ BTVN */}
-              <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/15 transition-all border border-white/15 backdrop-blur-md text-center flex flex-col justify-between min-w-0">
-                <span className="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider block truncate">
-                  Tiến Độ Hoàn Thành
+              {/* Chỉ số 1: Tiến độ hoàn thành */}
+              <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/15 hover:bg-white/25 transition-all border border-white/25 backdrop-blur-md text-center flex flex-col justify-between min-w-0 shadow-sm">
+                <span className="text-[10px] sm:text-xs font-bold text-amber-100 uppercase tracking-wider block truncate flex items-center justify-center gap-1">
+                  <Calculator className="w-3 h-3 text-amber-300 hidden sm:inline" />
+                  <span>Tiến Độ</span>
                 </span>
                 <div className="text-base sm:text-2xl font-black text-white my-1 truncate">
-                  {homeworkCompleted.length} <span className="text-xs font-normal text-slate-400">/ {homeworkRooms.length}</span>
+                  {homeworkCompleted.length} <span className="text-xs font-normal text-amber-200">/ {homeworkRooms.length}</span>
                 </div>
-                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden mt-1">
+                <div className="w-full bg-black/20 h-1.5 rounded-full overflow-hidden mt-1">
                   <div 
-                    className="bg-gradient-to-r from-teal-400 to-emerald-400 h-full rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-amber-300 via-yellow-200 to-emerald-300 h-full rounded-full transition-all duration-500 shadow-xs"
                     style={{ width: `${Math.round(homeworkRooms.length > 0 ? (homeworkCompleted.length / homeworkRooms.length) * 100 : 0)}%` }}
                   />
                 </div>
               </div>
 
               {/* Chỉ số 2: Điểm trung bình */}
-              <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/15 transition-all border border-white/15 backdrop-blur-md text-center flex flex-col justify-between min-w-0">
-                <span className="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider block truncate">
-                  Điểm TB
+              <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/15 hover:bg-white/25 transition-all border border-white/25 backdrop-blur-md text-center flex flex-col justify-between min-w-0 shadow-sm">
+                <span className="text-[10px] sm:text-xs font-bold text-amber-100 uppercase tracking-wider block truncate flex items-center justify-center gap-1">
+                  <FlaskConical className="w-3 h-3 text-amber-300 hidden sm:inline" />
+                  <span>Điểm TB</span>
                 </span>
-                <div className="text-base sm:text-2xl font-black text-amber-300 my-1 truncate">
+                <div className="text-base sm:text-2xl font-black text-amber-200 my-1 truncate drop-shadow-xs">
                   {homeworkAvgScore !== null ? `${homeworkAvgScore.toFixed(1)}` : '-'}
-                  <span className="text-[10px] text-slate-400 font-bold ml-0.5">/10</span>
+                  <span className="text-[10px] text-amber-100/80 font-bold ml-0.5">/10</span>
                 </div>
-                <span className="text-[9px] sm:text-[11px] font-bold text-emerald-300 uppercase tracking-wider truncate">
+                <span className="text-[9px] sm:text-[11px] font-bold text-yellow-200 uppercase tracking-wider truncate">
                   {homeworkAvgScore !== null && homeworkAvgScore >= 8.0 ? '🌟 Giỏi' : 'Đang học'}
                 </span>
               </div>
 
               {/* Chỉ số 3: Cần nộp */}
-              <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/10 hover:bg-white/15 transition-all border border-white/15 backdrop-blur-md text-center flex flex-col justify-between min-w-0">
-                <span className="text-[10px] sm:text-xs font-bold text-slate-300 uppercase tracking-wider block truncate">
-                  Chờ nộp
+              <div className="p-2.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/15 hover:bg-white/25 transition-all border border-white/25 backdrop-blur-md text-center flex flex-col justify-between min-w-0 shadow-sm">
+                <span className="text-[10px] sm:text-xs font-bold text-amber-100 uppercase tracking-wider block truncate flex items-center justify-center gap-1">
+                  <Atom className="w-3 h-3 text-amber-300 hidden sm:inline" />
+                  <span>Chờ nộp</span>
                 </span>
-                <div className={`text-base sm:text-2xl font-black my-1 truncate ${homeworkPending.length > 0 ? 'text-rose-400 animate-pulse' : 'text-emerald-400'}`}>
+                <div className={`text-base sm:text-2xl font-black my-1 truncate ${homeworkPending.length > 0 ? 'text-yellow-200 animate-pulse' : 'text-emerald-200'}`}>
                   {homeworkPending.length}
                 </div>
-                <span className="text-[9px] sm:text-[11px] font-bold text-slate-300 uppercase tracking-wider truncate">
+                <span className="text-[9px] sm:text-[11px] font-bold text-amber-100/90 uppercase tracking-wider truncate">
                   {homeworkPending.length > 0 ? 'Cần làm' : 'Xong hết ✅'}
                 </span>
               </div>
@@ -1475,7 +1530,7 @@ export default function StudentPortal() {
           </div>
         </div>
 
-                        {/* BẢNG ĐIỀU KHIỂN CẤP QUYỀN TRỰC TIẾP DÀNH CHO THẦY THỌ NGAY TRÊN CỔNG THI */}
+        {/* BẢNG ĐIỀU KHIỂN CẤP QUYỀN TRỰC TIẾP DÀNH CHO THẦY THỌ NGAY TRÊN CỔNG THI */}
         {(student?.student_code?.toUpperCase() === 'THAYTHO' || student?.grade === 'Thí Sinh Tự Do') && (
           <div className="p-4 sm:p-5 rounded-3xl bg-slate-900 border-2 border-teal-500 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -1707,9 +1762,10 @@ export default function StudentPortal() {
             {/* Header Phần 1 */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 sm:border-rose-200 pb-4">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-2">
-                  <BookOpen className="w-3.5 h-3.5 text-teal-600" />
-                  <span>DANH SÁCH ĐỀ THI & BÀI TẬP</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-amber-50 to-blue-50 border border-amber-300/60 text-blue-900 text-[11px] sm:text-xs font-black uppercase tracking-wider mb-2 shadow-2xs">
+                  <Calculator className="w-3.5 h-3.5 text-blue-700" />
+                  <FlaskConical className="w-3.5 h-3.5 text-amber-600" />
+                  <span>TOÁN & HÓA: DANH SÁCH ĐỀ THI & BÀI TẬP</span>
                 </div>
                 <h2 className="text-lg sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2.5 flex-wrap">
                   <span>ĐỀ THI & BÀI TẬP CỦA EM</span>
