@@ -61,6 +61,28 @@ export function formatChemicalText(raw: string | undefined | null): string {
   if (!raw || typeof raw !== 'string') return raw || '';
 
   let s = raw;
+
+  // 0.1 Spacing between electron subshells: 1s22s2 -> 1s2 2s2, 1s²2s² -> 1s² 2s²
+  s = s.replace(/(<sup>\d{1,2}<\/sup>|\b[1-7][spdf]\d{1,2}|[\u00B2\u00B3\u00B9\u2070-\u2079]+)(?=[1-7][spdf])/g, '$1 ');
+
+  // 0.2 Separate stuck numbered items (e.g. 1s²(2) 1s² -> 1s²<br/>(2) 1s²)
+  s = s.replace(/([^\s,;]+)\s*(\([1-9]\d?\))/g, (match, prefix, numTag, offset, fullStr) => {
+    const before = fullStr.slice(Math.max(0, offset - 15), offset).trim();
+    if (/[,;\-–—]|\b(và|hoặc|đến|tới|từ|ở|vào|chất|phản ứng|cân bằng|thí nghiệm)$/i.test(before)) {
+      return match;
+    }
+    if (/<\/sup>|[spdf]\d*|[0-9]|\)|\./i.test(prefix)) {
+      return prefix + '<br/>' + numTag;
+    }
+    return match;
+  });
+
+  // 0.3 Word / MathType corrupted symbols, enthalpy & arrows
+  s = s.replace(/\bor298HD\s*=\s*–?/gi, 'Δ<sub>r</sub>H°<sub>298</sub> = –');
+  s = s.replace(/\bor298HD\s*([><=])/gi, 'Δ<sub>r</sub>H°<sub>298</sub> $1');
+  s = s.replace(/\bor298HD\b/gi, 'Δ<sub>r</sub>H°<sub>298</sub>');
+  s = s.replace(/oxt,t,p\s*⇌/g, '⎯⎯(xt, t°, p)→ ⇌');
+  s = s.replace(/o400600 C, 200 bar, Fe-\s*⇌/g, '⎯⎯(400 - 600°C, 200 bar, Fe)→ ⇌');
   // 0. Word / MathType corrupted symbols & arrows
   s = s.replace(/ot[¾¾]+®?|ot³\/2\/¼°?|o[¾¾]+®?/g, ' ⎯⎯t°→ ');
   s = s.replace(/[¾¾]{2,}®?\s*oPt,t|[¾¾]{2,}®?\s*ot/g, ' ⎯⎯t°→ ');
@@ -211,6 +233,18 @@ export function formatChemicalText(raw: string | undefined | null): string {
   // 19. Phân số Kc = (tử) / (mẫu) hiển thị dạng phân số phân tầng chuẩn sư phạm
   if (s.includes('/') && (s.includes('K<sub>c</sub>') || s.includes('['))) {
     s = formatFractionSlash(s);
+  }
+
+  // 20. Format nicely for lines starting with (1), (2), (3)...
+  if (s.includes('(') && s.includes('<br')) {
+    s = s.split(/<br\s*\/?>/gi).map((line) => {
+      const trimmed = line.trim();
+      const m = trimmed.match(/^(\([1-9]\d?\))\s*(.*)$/);
+      if (m) {
+        return `<span class="inline-block pl-3 py-0.5"><strong class="text-indigo-600 font-bold">${m[1]}</strong> ${m[2]}</span>`;
+      }
+      return line;
+    }).join('<br/>');
   }
 
   return s;

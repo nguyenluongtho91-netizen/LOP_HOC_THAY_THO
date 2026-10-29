@@ -1437,7 +1437,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 12,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho cân bằng hoá học sau: 4NH<sub>3</sub>(g) + 5O<sub>2</sub> ⇌ 4NO(g) + 6H<sub>2</sub>O(g) or298HD = –905 kJ.<br/>Yếu tố nào sau đây cần tác động để cân bằng trên chuyển dịch sang phải?",
+        "text": "Cho cân bằng hoá học sau: 4NH<sub>3</sub>(g) + 5O<sub>2</sub> ⇌ 4NO(g) + 6H<sub>2</sub>O(g) Δ<sub>r</sub>H°<sub>298</sub> = –905 kJ.<br/>Yếu tố nào sau đây cần tác động để cân bằng trên chuyển dịch sang phải?",
         "images": [],
         "options": [
           {
@@ -2467,7 +2467,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 14,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Trong công nghiệp, ammoniac được tổng hợp theo quá trình Haber như hình dưới, theo phương trình hóa học sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g) o400600 C, 200 bar, Fe- ⇌ 2NH<sub>3</sub>(g) or298HD = –92 kJ<br/>Tại thời điểm cân bằng, khí thu được tại buồng phản ứng là",
+        "text": "Trong công nghiệp, ammoniac được tổng hợp theo quá trình Haber như hình dưới, theo phương trình hóa học sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⎯⎯(400 - 600°C, 200 bar, Fe)→ ⇌ 2NH<sub>3</sub>(g) Δ<sub>r</sub>H°<sub>298</sub> = –92 kJ<br/>Tại thời điểm cân bằng, khí thu được tại buồng phản ứng là",
         "images": [],
         "options": [
           {
@@ -3347,25 +3347,25 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
           {
             "id": "a",
             "letter": "A",
-            "text": "or298HD > 0, phản ứng tỏa nhiệt",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> > 0, phản ứng tỏa nhiệt",
             "isCorrect": false
           },
           {
             "id": "b",
             "letter": "B",
-            "text": "or298HD < 0, phản ứng tỏa nhiệt",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> < 0, phản ứng tỏa nhiệt",
             "isCorrect": true
           },
           {
             "id": "c",
             "letter": "C",
-            "text": "or298HD > 0, phản ứng thu nhiệt",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> > 0, phản ứng thu nhiệt",
             "isCorrect": false
           },
           {
             "id": "d",
             "letter": "D",
-            "text": "or298HD < 0, phản ứng thu nhiệt",
+            "text": "Δ<sub>r</sub>H°<sub>298</sub> < 0, phản ứng thu nhiệt",
             "isCorrect": false
           }
         ],
@@ -3614,7 +3614,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 2,
         "type": "true_false",
-        "text": "Cho hai phản ứng hóa học:<br/>(1) N<sub>2</sub>(g) + 3H<sub>2</sub>(g) oxt,t,p ⇌ 2NH<sub>3</sub>(g) or298HD = –92 kJ<br/>(2) N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ (3000°C hoặc tia lửa điện) 2NO(g) or298HD = 180kJ",
+        "text": "Cho hai phản ứng hóa học:<br/>(1) N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⎯⎯(xt, t°, p)→ ⇌ 2NH<sub>3</sub>(g) Δ<sub>r</sub>H°<sub>298</sub> = –92 kJ<br/>(2) N<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ (3000°C hoặc tia lửa điện) 2NO(g) Δ<sub>r</sub>H°<sub>298</sub> = 180 kJ",
         "images": [],
         "options": [
           {
@@ -4768,7 +4768,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>+++++-¾ → ¾ → → → → +2222OOOHO2233(1)(2)(3)NNONOHNOHNO<br/>Tính lượng nitrate (NO<sub>3</sub><sup>-</sup>) mà đất được cung cấp từ 1 lít không khí (đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 80% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
+        "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>Sơ đồ quá trình: N<sub>2</sub> ⎯⎯(+O<sub>2</sub>)→ NO ⎯⎯(+O<sub>2</sub>)→ NO<sub>2</sub> ⎯⎯(+O<sub>2</sub>, +H<sub>2</sub>O)→ HNO<sub>3</sub> → H<sup>+</sup> + NO<sub>3</sub><sup>-</sup><br/>Tính lượng nitrate (NO<sub>3</sub><sup>-</sup>) mà đất được cung cấp từ 1 lít không khí (đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 80% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "4",
         "explanation": "Đáp án: 4.<br/>2KKN1000100080nmoln.32,271mol24,7924,79100=Þ==<br/>Bảo toàn nguyên tố N: 23NNO2n n64,542mol-==<br/>3NOm64,542.624001,6g4kg-===",
@@ -7564,7 +7564,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 1,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các phản ứng hóa học sau:<br/>(1) NH<sub>3</sub> + H<sub>2</sub>O  NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup><br/>(2) 8NH<sub>3</sub> + 3Cl<sub>2</sub> → 6NH<sub>4</sub>Cl + N<sub>2</sub><br/>(3) 4NH<sub>3</sub> + 5O<sub>2</sub> oPt,t¾ → 4NO + 6H<sub>2</sub>O<br/>(4) 2NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub><br/>(5) 2NH<sub>3</sub> + 3CuO ⎯⎯t°→ N<sub>2</sub> + 3Cu + 3H<sub>2</sub>O<br/>Có bao nhiêu phản ứng chứng tỏ ammonia là một chất khử?",
+        "text": "Cho các phản ứng hóa học sau:<br/>(1) NH<sub>3</sub> + H<sub>2</sub>O  NH<sub>4</sub><sup>+</sup> + OH<sup>–</sup><br/>(2) 8NH<sub>3</sub> + 3Cl<sub>2</sub> → 6NH<sub>4</sub>Cl + N<sub>2</sub><br/>(3) 4NH<sub>3</sub> + 5O<sub>2</sub> ⎯⎯(Pt, t°)→ 4NO + 6H<sub>2</sub>O<br/>(4) 2NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub> → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub><br/>(5) 2NH<sub>3</sub> + 3CuO ⎯⎯t°→ N<sub>2</sub> + 3Cu + 3H<sub>2</sub>O<br/>Có bao nhiêu phản ứng chứng tỏ ammonia là một chất khử?",
         "images": [],
         "correctAnswer": "3",
         "explanation": "Đáp án: 3.",

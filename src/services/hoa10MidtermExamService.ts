@@ -931,7 +931,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 2,
         "part": 3,
         "type": "short_answer",
-        "text": "Cho các cấu hình electron của một số nguyên tử nguyên tố như sau:<br/>(1) 1s<sup>2</sup>(2) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>1</sup><br/>(3) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>(4) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup><br/>(5) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>6</sup>4s<sup>2</sup>(6) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>10</sup>4s<sup>2</sup>4p<sup>5</sup><br/>Số lượng các nguyên tố kim loại trong số các nguyên tố ở trên là bao nhiêu?",
+        "text": "Cho các cấu hình electron của một số nguyên tử nguyên tố như sau:<br/>(1) 1s<sup>2</sup><br/>(2) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup><br/>(3) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>4</sup><br/>(4) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>1</sup><br/>(5) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 3d<sup>6</sup> 4s<sup>2</sup><br/>(6) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 3d<sup>10</sup> 4s<sup>2</sup> 4p<sup>5</sup><br/>Số lượng các nguyên tố kim loại trong số các nguyên tố ở trên là bao nhiêu?",
         "images": [],
         "correctAnswer": "3",
         "explanation": "Đáp án: 3.",
@@ -7213,7 +7213,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 13,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Cho các cấu hình electron sau:<br/>(1) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup>. (2) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup>. (3) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>.<br/>(4) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>. (5) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>5</sup>4s<sup>2</sup> (6) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>.<br/>Số cấu hình electron của nguyên tố phi kim là",
+        "text": "Cho các cấu hình electron sau:<br/>(1) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>3</sup><br/>(2) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>1</sup><br/>(3) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>1</sup><br/>(4) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup><br/>(5) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 3d<sup>5</sup> 4s<sup>2</sup><br/>(6) 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup><br/>Số cấu hình electron của nguyên tố phi kim là",
         "images": [],
         "options": [
           {
