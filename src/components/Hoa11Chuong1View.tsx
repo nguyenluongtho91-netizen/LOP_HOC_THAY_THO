@@ -180,7 +180,14 @@ export const Hoa11Chuong1View: React.FC<Hoa11Chuong1ViewProps> = ({
     return /\b12\b/.test(g) || g.includes('12') || g.includes('khối 12') || g.includes('lớp 12');
   }, [studentGrade, isTeacher]);
   // Navigation
-  const [activeTab, setActiveTab] = useState<'overview' | 'handbook' | 'practice' | 'exam' | 'results'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'handbook' | 'practice' | 'exam' | 'results'>(() => {
+    try {
+      const p = new URLSearchParams(window.location.search);
+      const t = p.get('tab');
+      if (t === 'exam' || t === 'practice' || t === 'handbook') return t;
+    } catch {}
+    return 'overview';
+  });
   
   // ── GIÁM SÁT THI & CHỐNG GIAN LẬN (CHUYỂN TAB / RỜI MÀN HÌNH) ──────────
   const [tabSwitchViolations, setTabSwitchViolations] = useState<number>(0);
