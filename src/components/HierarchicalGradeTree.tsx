@@ -222,6 +222,7 @@ export default function HierarchicalGradeTree() {
                     >
                       <Link to="/hoa10-chuong1" className="hover:underline flex items-center gap-1">
                         <span>🔬 Chương 1: Cấu tạo nguyên tử</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
                       {expanded['thpt_10_c1'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
                     </div>
@@ -248,6 +249,7 @@ export default function HierarchicalGradeTree() {
                     >
                       <Link to="/hoa10-chuong2" className="hover:underline flex items-center gap-1">
                         <span>📊 Chương 2: Bảng tuần hoàn NTHH</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
                       {expanded['thpt_10_c2'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
                     </div>
@@ -318,6 +320,7 @@ export default function HierarchicalGradeTree() {
                     >
                       <Link to="/hoa11-chuong1" className="hover:underline flex items-center gap-1">
                         <span>⚖️ Chương 1: Cân bằng hóa học</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">3 ĐỀ THI</span>
                       </Link>
                       {expanded['thpt_11_c1'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
                     </div>
@@ -344,6 +347,7 @@ export default function HierarchicalGradeTree() {
                     >
                       <Link to="/hoa11-chuong2" className="hover:underline flex items-center gap-1">
                         <span>🌱 Chương 2: Nitrogen – Sulfur</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
                       {expanded['thpt_11_c2'] ? <ChevronDown className="w-3 h-3 text-cyan-300" /> : <ChevronRight className="w-3 h-3 text-cyan-300" />}
                     </div>
@@ -411,6 +415,7 @@ export default function HierarchicalGradeTree() {
                     >
                       <Link to="/hoa12-chuong1" className="hover:underline flex items-center gap-1">
                         <span>🧪 Chương 1: Ester – Lipid</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">7 ĐỀ THI</span>
                       </Link>
                       {expanded['thpt_12_c1'] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
                     </div>
@@ -437,6 +442,7 @@ export default function HierarchicalGradeTree() {
                     >
                       <Link to="/hoa12-chuong2" className="hover:underline flex items-center gap-1">
                         <span>🍇 Chương 2: Carbohydrate</span>
+                        <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">4 ĐỀ THI</span>
                       </Link>
                       {expanded['thpt_12_c2'] ? <ChevronDown className="w-3 h-3 text-emerald-300" /> : <ChevronRight className="w-3 h-3 text-emerald-300" />}
                     </div>
