@@ -1,3 +1,10 @@
+function renderChemArrow(condition: string, isEquilibrium = false): string {
+  const cond = (condition || '').trim();
+  const arrowChar = isEquilibrium ? '⇌' : '⟶';
+  if (!cond) return ` &nbsp;${arrowChar}&nbsp; `;
+  return `<span class="inline-flex flex-col items-center align-middle mx-1.5 leading-none -translate-y-0.5 select-none"><span class="text-[10px] font-bold text-slate-500 mb-0.5 tracking-tight">${cond}</span><span class="text-base leading-none text-slate-800">${arrowChar}</span></span>`;
+}
+
 /**
  * TIỆN ÍCH CHUẨN HÓA & HIỂN THỊ CÔNG THỨC HÓA HỌC / TOÁN HỌC (GDPT 2018)
  * 
@@ -83,10 +90,13 @@ export function formatChemicalText(raw: string | undefined | null): string {
   s = s.replace(/\bor298HD\b/gi, 'Δ<sub>r</sub>H°<sub>298</sub>');
   s = s.replace(/oxt,t,p\s*⇌/g, '⎯⎯(xt, t°, p)→ ⇌');
   s = s.replace(/o400600 C, 200 bar, Fe-\s*⇌/g, '⎯⎯(400 - 600°C, 200 bar, Fe)→ ⇌');
-  // 0. Word / MathType corrupted symbols & arrows
-  s = s.replace(/ot[¾¾]+®?|ot³\/2\/¼°?|o[¾¾]+®?/g, ' ⎯⎯t°→ ');
-  s = s.replace(/[¾¾]{2,}®?\s*oPt,t|[¾¾]{2,}®?\s*ot/g, ' ⎯⎯t°→ ');
-  s = s.replace(/[¾¾]{2,}®?|¬®/g, ' → ');
+  // 0. Word / MathType corrupted symbols & arrows with real condition above
+  s = s.replace(/⎯⎯\s*t°\s*→|⎯⎯t°→|ot[¾¾]+®?|ot³\/2\/¼°?|o[¾¾]+®?/g, () => renderChemArrow('t°'));
+  s = s.replace(/[¾¾]{2,}®?\s*oPt,t/g, () => renderChemArrow('Pt, t°'));
+  s = s.replace(/[¾¾]{2,}®?\s*ot/g, () => renderChemArrow('t°'));
+  s = s.replace(/⎯⎯\s*\(([^)]+)\)\s*→/g, (_m, cond) => renderChemArrow(cond));
+  s = s.replace(/⎯⎯\s*\(([^)]+)\)\s*⇌/g, (_m, cond) => renderChemArrow(cond, true));
+  s = s.replace(/[¾¾]{2,}®?|¬®/g, ' &nbsp;→&nbsp; ');
   s = s.replace(/ˆˆ†‡ˆˆ|ˆ+[\s†‡]*ˆ*|[\s]*[]+[\s]*|\s+ƒ\s+/g, ' ⇌ ');
   s = s.replace(/\+4NH/g, 'NH<sub>4</sub><sup>+</sup>');
   s = s.replace(/2XY-/g, 'XY<sub>2</sub><sup>-</sup>');

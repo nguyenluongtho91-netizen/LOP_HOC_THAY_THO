@@ -4034,8 +4034,12 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 5,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Hình vẽ nào sau đây mô tả đúng các đường đi của các hạt electron, neutron hoặc proton dưới tác dụng của điện trường trong chân không?<br/><div class=\"overflow-x-auto my-2\"><table class=\"border-collapse border border-slate-300\"><tr><th class=\"px-2 py-1 border border-slate-300\">(1)</th><th class=\"px-2 py-1 border border-slate-300\">(2)</th><th class=\"px-2 py-1 border border-slate-300\">(3)</th></tr></table></div>",
-        "images": [],
+        "text": "Hình vẽ nào sau đây mô tả đúng các đường đi của các hạt electron, neutron hoặc proton dưới tác dụng của điện trường trong chân không? (Hình 1, 2, 3 lần lượt tương ứng từ trái sang phải)",
+        "images": [
+          "/assets/hoa10/midterm/h10_gk1_de5_image2.png",
+          "/assets/hoa10/midterm/h10_gk1_de5_image3.png",
+          "/assets/hoa10/midterm/h10_gk1_de5_image4.png"
+        ],
         "options": [
           {
             "id": "a",

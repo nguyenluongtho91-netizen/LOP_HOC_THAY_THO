@@ -2467,7 +2467,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 14,
         "part": 1,
         "type": "multiple_choice",
-        "text": "Trong công nghiệp, ammoniac được tổng hợp theo quá trình Haber như hình dưới, theo phương trình hóa học sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⎯⎯(400 - 600°C, 200 bar, Fe)→ ⇌ 2NH<sub>3</sub>(g) Δ<sub>r</sub>H°<sub>298</sub> = –92 kJ<br/>Tại thời điểm cân bằng, khí thu được tại buồng phản ứng là",
+        "text": "Trong công nghiệp, ammoniac được tổng hợp theo quá trình Haber, theo phương trình hóa học sau: N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⎯⎯(400 - 600°C, 200 bar, Fe)→ ⇌ 2NH<sub>3</sub>(g) Δ<sub>r</sub>H°<sub>298</sub> = –92 kJ<br/>Tại thời điểm cân bằng, khí thu được tại buồng phản ứng là",
         "images": [],
         "options": [
           {

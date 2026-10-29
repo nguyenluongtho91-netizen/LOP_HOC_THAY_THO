@@ -572,7 +572,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 2,
         "part": 2,
         "type": "true_false",
-        "text": "Glutamic acid có vai trò quan trọng trong quá trình xây dựng cấu trúc tế bào của con người. Ngoài ra, muối monosodium glutamate còn được dùng chế biến gia vị thức ăn (bột ngọt hay mì chính). Glutamic acid có cấu trúc như hình vẽ bên dưới và có điểm đẳng điện pI = 3,2 (pI là giá trị pH mà khi đó amino acid có nồng độ ion lưỡng cực là cực đại. Khi pH < pI thì amino acid đó tồn tại chủ yếu ở dạng cation, còn khi pH > pI thì amino acid đó tồn tại chủ yếu ở dạng anion).",
+        "text": "Glutamic acid có vai trò quan trọng trong quá trình xây dựng cấu trúc tế bào của con người. Ngoài ra, muối monosodium glutamate còn được dùng chế biến gia vị thức ăn (bột ngọt hay mì chính). Glutamic acid có công thức cấu tạo HOOC-CH<sub>2</sub>-CH<sub>2</sub>-CH(NH<sub>2</sub>)-COOH và có điểm đẳng điện pI = 3,2 (pI là giá trị pH mà khi đó amino acid có nồng độ ion lưỡng cực là cực đại. Khi pH < pI thì amino acid đó tồn tại chủ yếu ở dạng cation, còn khi pH > pI thì amino acid đó tồn tại chủ yếu ở dạng anion).",
         "images": [],
         "options": [
           {
