@@ -96,6 +96,17 @@ export function formatChemicalText(raw: string | undefined | null): string {
   });
 
   // 0.3 Word / MathType corrupted symbols, enthalpy & arrows
+  // Sửa lỗi OCR phương trình khí bị xáo trộn (Chương 1 Lớp 11)
+  s = s.replace(/2232SO\(\)O\(\)2SO\(\)ggg\+\s*⇌/g, '2SO<sub>2</sub>(g) + O<sub>2</sub>(g) ⇌ 2SO<sub>3</sub>(g)');
+  s = s.replace(/222CO\(\)HO\(\)H\(\)CO\(\)gggg\+\+\s*⇌/g, 'CO(g) + H<sub>2</sub>O(g) ⇌ H<sub>2</sub>(g) + CO<sub>2</sub>(g)');
+  s = s.replace(/523PCl\(g\)Cl\(g\)\+PCl\(g\)\s*⇌/g, 'PCl<sub>5</sub>(g) ⇌ PCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)');
+  s = s.replace(/22H\(\)I\(\)2HI\(\)ggg\+\s*⇌/g, 'H<sub>2</sub>(g) + I<sub>2</sub>(g) ⇌ 2HI(g)');
+  s = s.replace(/223N\(\)3H\(\)2NH\(\)ggg\+\s*⇌/g, 'N<sub>2</sub>(g) + 3H<sub>2</sub>(g) ⇌ 2NH<sub>3</sub>(g)');
+  s = s.replace(/\+\+\+\s*→\s*→\s*→\s*oo222O,\s*t\s*O,\s*t\s*HO22324FeSSOSOHSO/g, 'FeS<sub>2</sub> <span class="inline-block mx-1 text-slate-800">→<sup>+O<sub>2</sub>, t°</sup></span> SO<sub>2</sub> <span class="inline-block mx-1 text-slate-800">→<sup>+O<sub>2</sub>, t°, V<sub>2</sub>O<sub>5</sub></sup></span> SO<sub>3</sub> <span class="inline-block mx-1 text-slate-800">→<sup>+H<sub>2</sub>O</sup></span> H<sub>2</sub>SO<sub>4</sub>');
+  s = s.replace(/H95%H70%H100%2324SSOSOHSO===?\s*→\s*→\s*¾\s*→/g, 'S <span class="inline-block mx-1 text-slate-800">→<sup>H=95%</sup></span> SO<sub>2</sub> <span class="inline-block mx-1 text-slate-800">→<sup>H=70%</sup></span> SO<sub>3</sub> <span class="inline-block mx-1 text-slate-800">→<sup>H=100%</sup></span> H<sub>2</sub>SO<sub>4</sub>');
+  s = s.replace(/2222OOOHO2233NNONOHNOHNO\+{3,}-\s*→\s*→\s*¾\s*→\s*→\s*\+/g, 'N<sub>2</sub> <span class="inline-block mx-1 text-slate-800">→<sup>+O<sub>2</sub></sup></span> NO <span class="inline-block mx-1 text-slate-800">→<sup>+O<sub>2</sub></sup></span> NO<sub>2</sub> <span class="inline-block mx-1 text-slate-800">→<sup>+O<sub>2</sub> + H<sub>2</sub>O</sup></span> HNO<sub>3</sub> <span class="inline-block mx-1 text-slate-800">→</span> H<sup>+</sup> + NO<sub>3</sub><sup>–</sup>');
+  s = s.replace(/22324FeSSOSOHSO\s*→\s*→\s*→/g, 'FeS<sub>2</sub> → SO<sub>2</sub> → SO<sub>3</sub> → H<sub>2</sub>SO<sub>4</sub>');
+
   s = s.replace(/\bor298HD\s*=\s*–?/gi, 'Δ<sub>r</sub>H°<sub>298</sub> = –');
   s = s.replace(/\bor298HD\s*([><=])/gi, 'Δ<sub>r</sub>H°<sub>298</sub> $1');
   s = s.replace(/\bor298HD\b/gi, 'Δ<sub>r</sub>H°<sub>298</sub>');

@@ -1,3 +1,4 @@
+import { formatChemicalText } from '../utils/chemicalFormulaFormatter';
 // @ts-nocheck
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 // import { createPortal } from 'react-dom';
@@ -1139,7 +1140,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                   <div className={`${fontClasses.opt} ${fontClasses.lead} space-y-4`}>
                     <div 
   className="prose max-w-none text-slate-700 leading-relaxed space-y-4"
-  dangerouslySetInnerHTML={{ __html: activeLesson.theory || `<p>${activeLesson.description || activeLesson.title}</p>` }}
+  dangerouslySetInnerHTML={{ __html: formatChemicalText(activeLesson.theory || `<p>${activeLesson.description || activeLesson.title}</p>`) }}
 />
                   </div>
                 </div>
@@ -1161,7 +1162,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                             {mf.title}
                           </h4>
                         </div>
-                        <div className={`bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 overflow-x-auto`} dangerouslySetInnerHTML={{ __html: mf.method }} />
+                        <div className={`bg-slate-50/70 p-5 rounded-2xl border border-slate-200/80 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 overflow-x-auto`} dangerouslySetInnerHTML={{ __html: formatChemicalText(mf.method) }} />
 
                         <div className="space-y-4 pt-2">
                           {mf.examples.map((ex) => (
@@ -1193,7 +1194,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                                     <CheckCircle2 className="w-4 h-4" />
                                     <span>Hướng dẫn giải chi tiết & Phương pháp tư duy</span>
                                   </div>
-                                  <div className={`bg-emerald-50/40 p-4 sm:p-5 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 space-y-3`} dangerouslySetInnerHTML={{ __html: ex.solution }} />
+                                  <div className={`bg-emerald-50/40 p-4 sm:p-5 ${fontClasses.opt} ${fontClasses.lead} text-slate-800 space-y-3`} dangerouslySetInnerHTML={{ __html: formatChemicalText(ex.solution) }} />
                                 </div>
                               )}
                             </div>
@@ -1489,7 +1490,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                                 <span className="font-extrabold text-indigo-600 dark:text-indigo-400 mr-2 inline">
                                   Câu {q.number || displayIndex}:
                                 </span>
-                                <span className="inline" dangerouslySetInnerHTML={{ __html: q.text }} />
+                                <span className="inline" dangerouslySetInnerHTML={{ __html: formatChemicalText(q.text) }} />
                                 {isCurrentSetSubmitted && (
                                   <span className="ml-2 inline-block align-middle">
                                     {renderLevelBadge(q.level, q.levelName)}
@@ -1550,7 +1551,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                                         {opt.letter}
                                       </span>
                                       <div className={`flex-1 ${fontClasses.opt} ${fontClasses.lead} pt-1`}>
-                                        {opt.text && <span dangerouslySetInnerHTML={{ __html: opt.text }} />}
+                                        {opt.text && <span dangerouslySetInnerHTML={{ __html: formatChemicalText(opt.text) }} />}
                                         {opt.image && (
                                           <img src={opt.image} alt={opt.letter} className="max-h-28 mt-2 rounded-lg border border-slate-200 bg-white" />
                                         )}
@@ -1580,7 +1581,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                                         <span className="w-7 h-7 rounded-lg bg-white border border-slate-300 text-xs font-black flex items-center justify-center shrink-0 text-slate-700">
                                           {opt.letter.toLowerCase()}
                                         </span>
-                                        <div className={`${fontClasses.opt} leading-relaxed`} dangerouslySetInnerHTML={{ __html: opt.text }} />
+                                        <div className={`${fontClasses.opt} leading-relaxed`} dangerouslySetInnerHTML={{ __html: formatChemicalText(opt.text) }} />
                                       </div>
 
                                       <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
@@ -1648,7 +1649,14 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                                   </div>
                                   {renderLevelBadge(q.level, q.levelName)}
                                 </div>
-                                <div dangerouslySetInnerHTML={{ __html: q.explanation }} />
+                                <div dangerouslySetInnerHTML={{ __html: formatChemicalText(q.explanation) }} />
+                              {q.explanationImages && q.explanationImages.length > 0 && (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {q.explanationImages.map((img: string, i: number) => (
+                                    <img key={i} src={img} alt="Hình giải thích" className="max-h-56 rounded-lg border border-amber-200 bg-white p-1 object-contain" />
+                                  ))}
+                                </div>
+                              )}
                               </div>
                             )}
                           </div>
@@ -2102,7 +2110,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                               <span className="font-extrabold text-base text-indigo-600 dark:text-indigo-400 mr-2 inline">
                                 Câu {idx + 1}:
                               </span>
-                              <span className="inline" dangerouslySetInnerHTML={{ __html: q.text }} />
+                              <span className="inline" dangerouslySetInnerHTML={{ __html: formatChemicalText(q.text) }} />
                             </div>
                           <div className="shrink-0 pt-0.5">
                             <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 border border-slate-200">
@@ -2135,7 +2143,12 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                                   <span className={`w-7 h-7 rounded-xl text-xs font-black flex items-center justify-center shrink-0 ${isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'}`}>
                                     {opt.letter}
                                   </span>
-                                  <div className="flex-1 text-sm pt-0.5" dangerouslySetInnerHTML={{ __html: opt.text }} />
+                                  <div className="flex-1 text-sm pt-0.5">
+                                    <div dangerouslySetInnerHTML={{ __html: formatChemicalText(opt.text) }} />
+                                    {opt.image && (
+                                      <img src={opt.image} alt={opt.letter} className="max-h-28 mt-2 rounded-lg border border-slate-200 bg-white object-contain" />
+                                    )}
+                                  </div>
                                 </button>
                               );
                             })}
@@ -2153,7 +2166,7 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                                     <span className="w-6 h-6 rounded-md bg-white border border-slate-300 text-xs font-black flex items-center justify-center shrink-0 text-slate-700">
                                       {opt.letter.toLowerCase()}
                                     </span>
-                                    <div className="text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: opt.text }} />
+                                    <div className="text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: formatChemicalText(opt.text) }} />
                                   </div>
                                   <div className="flex items-center gap-2 shrink-0">
                                     <button
@@ -2415,7 +2428,16 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                         </div>
 
                         {/* Question Stem */}
-                        <div className="text-sm font-medium text-slate-900 my-2" dangerouslySetInnerHTML={{ __html: q.text }} />
+                        <div className="text-sm font-medium text-slate-900 my-2" dangerouslySetInnerHTML={{ __html: formatChemicalText(q.text) }} />
+                        {q.images && q.images.length > 0 && (
+                          <div className="my-3 flex flex-wrap justify-center items-center gap-3">
+                            {q.images.map((img: string, i: number) => (
+                              <div key={i} className="p-2 bg-white rounded-xl border border-slate-200 shadow-xs max-w-full">
+                                <img src={img} alt="Hình đề thi" className="max-h-56 w-auto object-contain rounded-lg" />
+                              </div>
+                            ))}
+                          </div>
+                        )}
 
                         {/* Part 1 Review */}
                         {q.part === 1 && (
@@ -2478,7 +2500,14 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                               <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600" />
                               <span>Phương pháp & Lời giải chi tiết:</span>
                             </div>
-                            <div dangerouslySetInnerHTML={{ __html: q.explanation }} />
+                            <div dangerouslySetInnerHTML={{ __html: formatChemicalText(q.explanation) }} />
+                              {q.explanationImages && q.explanationImages.length > 0 && (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {q.explanationImages.map((img: string, i: number) => (
+                                    <img key={i} src={img} alt="Hình giải thích" className="max-h-56 rounded-lg border border-amber-200 bg-white p-1 object-contain" />
+                                  ))}
+                                </div>
+                              )}
                           </div>
                         )}
                       </div>
