@@ -78,7 +78,3918 @@ export const HOA12_CHUONG6_MASTER: Record<string, Chuong6Lesson> = {"bai18":{"id
 
 export const HOA12_CHUONG6_LESSONS: Chuong6Lesson[] = Object.values(HOA12_CHUONG6_MASTER);
 
-export const HOA12_CHUONG6_EXAMS: Chuong6Exam[] = [{"id":"hoa12_c6_de1","code":"ĐỀ 601","title":"Đề kiểm tra Chương 6: Đại cương kim loại (Đề số 1)","topic":"Cấu tạo tinh thể, tính chất vật lý chung và phản ứng của kim loại","badge":"Chương 6 - Đề 1","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa12_c6_de1_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Cho biết số hiệu nguyên tử của Mg là 12. Vị trí của Mg trong bảng tuần hoàn là","images":[],"options":[{"id":"a","letter":"A","text":"chu kì 3, nhóm III","isCorrect":false},{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"chu kì 3, nhóm II","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"chu kì 3, nhóm II","isCorrect":false},{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"d","letter":"D","text":"chu kì 2, nhóm II","isCorrect":false},{"id":"a","letter":"A","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa12_c6_de1_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trong nhiều thiết bị có bộ phận tản nhiệt làm bằng nhôm. Vai trò tản nhiệt của nhôm được gây ra bởi tính chất vật lí nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Tính dẫn nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"Tính dẫn điện","isCorrect":false},{"id":"b","letter":"B","text":"Tính dẻo","isCorrect":false},{"id":"d","letter":"D","text":"Ánh kim","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa12_c6_de1_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Tính chất hoá học đặc trưng của kim loại là","images":[],"options":[{"id":"a","letter":"A","text":"tính acid","isCorrect":false},{"id":"b","letter":"B","text":"tính base","isCorrect":false},{"id":"c","letter":"C","text":"tính oxi hoá","isCorrect":false},{"id":"d","letter":"D","text":"tính khử","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa12_c6_de1_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Phương trình hoá học nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"2Na + 2H<sub>2</sub>O  2NaOH + H<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Ca + 2HCl  CaCl<sub>2</sub> + H<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Fe + CuSO<sub>4</sub>FeSO<sub>4</sub> + Cu","isCorrect":false},{"id":"d","letter":"D","text":"Cu + H<sub>2</sub>SO<sub>4</sub>CuSO<sub>4</sub> + H<sub>2</sub>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa12_c6_de1_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Với quá trình tách natri (sodium) bằng phương pháp điện phân sodium chloride nóng chảy, phát biểu nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Tại anode xảy ra quá trình khử ion Na<sup>+</sup>","isCorrect":false},{"id":"b","letter":"B","text":"Tại cathode xảy ra quá trình khử ion Cl<sup>–</sup>","isCorrect":false},{"id":"c","letter":"C","text":"Tại cathode xảy ra quá trình khử ion Na<sup>+</sup>","isCorrect":false},{"id":"d","letter":"D","text":"Tại anode xảy ra quá trình khử ion Cl<sup>–</sup>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa12_c6_de1_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Hợp kim là vật liệu kim loại chứa một kim loại cơ bản với","images":[],"options":[{"id":"a","letter":"A","text":"một số kim loại khác hoặc phi kim","isCorrect":false},{"id":"b","letter":"B","text":"một số oxide của kim loại đó","isCorrect":false},{"id":"c","letter":"C","text":"một số oxide kim loại khác hoặc phi kim","isCorrect":false},{"id":"d","letter":"D","text":"một số phi kim và oxide của phi kim đó","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa12_c6_de1_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Nhúng một thanh Zn vào dung dịch gồm muối X thì có xảy ra sự ăn mòn điện hoá của Zn. Muối nào sau đây phù hợp với X?","images":[],"options":[{"id":"a","letter":"A","text":"CuSO<sub>4</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Na<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>","isCorrect":false},{"id":"d","letter":"D","text":"MgSO<sub>4</sub>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa12_c6_de1_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Để các hợp kim: Fe – Cu; Fe – C; Zn – Fe; Mg – Fe lâu ngày trong không khí ẩm. Số hợp kim mà trong đó Fe bị ăn mòn điện hoá là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa12_c6_de1_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Vàng (Au, tồn tại trong tự nhiên ở dạng đơn chất).. Tuy nhiên, hàm lượng Au trong quặng hoặc trong đất thường rất thấp vì vậy rất khó tách Au bằng phương pháp cơ học. Trong công nghiệp, người ta tách vàng, từ quặng theo sự do sau.<br/>Quặng chứa vàng (Au)  K[AuCN)<sub>2</sub>] (ad)  Au(s)<br/>Phương pháp điều chế kim loại nào đã được sử dụng trong quá trình sản xuất vàng theo sơ đồ trên?","images":[],"options":[{"id":"a","letter":"A","text":"Thủy luyện","isCorrect":false},{"id":"b","letter":"B","text":"Nhiệt luyện","isCorrect":false},{"id":"c","letter":"C","text":"Điện phân","isCorrect":false},{"id":"d","letter":"D","text":"Chiết","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa12_c6_de1_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Cho 2,479 lít khí CO (ở đkc) phản ứng vừa đủ với 10 gam hỗn hợp X gồm CuO và MgO. Phần trăm khối lượng của MgO trong X là","images":[],"options":[{"id":"a","letter":"A","text":"20%","isCorrect":false},{"id":"b","letter":"B","text":"40%","isCorrect":false},{"id":"c","letter":"C","text":"60%","isCorrect":false},{"id":"d","letter":"D","text":"80%","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa12_c6_de1_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Kim loại nào sau đây khi tác dụng với HCl và tác dụng với Cl<sub>2</sub> (được nung nóng) tạo thành cùng một loại sản phẩm muối chloride?","images":[],"options":[{"id":"a","letter":"A","text":"Fe","isCorrect":false},{"id":"b","letter":"B","text":"Ag","isCorrect":false},{"id":"c","letter":"C","text":"Zn","isCorrect":false},{"id":"d","letter":"D","text":"Cu","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa12_c6_de1_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Lực liên kết kim loại gây ra bởi","images":[],"options":[{"id":"a","letter":"A","text":"tương tác tĩnh điện giữa cation kim loại và electron hóa trị tự do trong tinh thể","isCorrect":false},{"id":"b","letter":"B","text":"sự góp chung của các electron hóa trị giữa các nguyên tử kim loại trong tinh thể","isCorrect":false},{"id":"c","letter":"C","text":"tương tác van der Waals giữa các nguyên tử kim loại trong tinh thể","isCorrect":false},{"id":"d","letter":"D","text":"sự hình thành liên kết cho nhận giữa các nguyên tử kim loại trong tinh thể","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa12_c6_de1_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Trong công nghiệp, kim loại nào sau đây được điều chế bằng phương pháp nhiệt luyện?","images":[],"options":[{"id":"a","letter":"A","text":"Mg","isCorrect":false},{"id":"b","letter":"B","text":"Fe","isCorrect":false},{"id":"c","letter":"C","text":"Na","isCorrect":false},{"id":"d","letter":"D","text":"Al","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa12_c6_de1_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Trong nước nguyên chất khi phản ứng xảy ra sẽ có quá trình sau:<br/>H<sub>2</sub>O + 2e → H<sub>2</sub> + 2OH<sup>–</sup> ; = -0,42V<br/>Cho = -2,71V; =+0,34V ; = -2,36V; = -1,68V. Hãy cho biết kim loại nào sau đây không phản ứng được với nước ở điều kiện chuẩn?","images":[],"options":[{"id":"a","letter":"A","text":"Cu","isCorrect":false},{"id":"b","letter":"B","text":"Na","isCorrect":false},{"id":"c","letter":"C","text":"Mg","isCorrect":false},{"id":"d","letter":"D","text":"Al","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa12_c6_de1_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Cho 3,24 gam kim loại M (hóa trị n) tác dụng với 0,03 mol khí O<sub>2</sub>, thu được chất rắn X. Cho toàn bộ X vào dung dịch H<sub>2</sub>SO<sub>4</sub> đặc, nóng, thu được 0,075 mol khí SO<sub>2</sub>. Kim loại M là","images":[],"options":[{"id":"a","letter":"A","text":"Fe","isCorrect":false},{"id":"b","letter":"B","text":"Zn","isCorrect":false},{"id":"c","letter":"C","text":"Mg","isCorrect":false},{"id":"d","letter":"D","text":"Al","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa12_c6_de1_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Quấn sợi dây kim loại X quanh một đinh sắt rồi nhúng vào ống nghiệm đựng dung dịch HCl loãng. Biết rằng thí nghiệm xảy ra sự ăn mòn điện hoá của đinh sắt. Kim loại X là","images":[],"options":[{"id":"a","letter":"A","text":"Mg","isCorrect":false},{"id":"b","letter":"B","text":"Al","isCorrect":false},{"id":"c","letter":"C","text":"Cu","isCorrect":false},{"id":"d","letter":"D","text":"Zn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa12_c6_de1_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Thêm chromium vào thép thì tính chất nào sau đây được tăng cường?","images":[],"options":[{"id":"a","letter":"A","text":"Chống ăn mòn","isCorrect":false},{"id":"b","letter":"B","text":"Tính dẫn điện","isCorrect":false},{"id":"c","letter":"C","text":"Tính chất từ","isCorrect":false},{"id":"d","letter":"D","text":"Tính dễ kéo sợi","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa12_c6_de1_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Hình bên mô tả tinh chất vật lí nào của kim loại (hình tròn to mô tả ion kim loại, hình tròn nhỏ mô tả electron tự do)","images":[],"options":[{"id":"a","letter":"A","text":"Tính dẫn điện","isCorrect":false},{"id":"b","letter":"B","text":"Ánh kim","isCorrect":false},{"id":"c","letter":"C","text":"Tính dẻo","isCorrect":false},{"id":"d","letter":"D","text":"Tính dẫn nhiệt.  PHẦN II. Câu trắc nghiệm đúng sai. Thí sinh trả lời từ câu 1 đến câu 4. Trong mỗi ý a), b), c), d) ở mỗi câu, thí sinh chọn đúng hoặc sai","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa12_c6_de1_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Tùy thuộc vào tính chất vật lí riêng của mỗi kim loại mà chúng được sử dụng vào những mục đích khác nhau","images":[],"options":[{"id":"a","letter":"A","text":"Kim loại chì (Pb) và cadmium (Cd) có nhiệt nóng chảy khá thấp nên được sử dụng làm dây chảy trong cầu chì","isCorrect":true},{"id":"b","letter":"B","text":"Kim loại tungsten (W) có độ bền nhiệt và nhiệt độ nóng chảy rất cao nên được sử dụng làm dây tóc bóng đèn, thiết bị sưởi","isCorrect":true},{"id":"c","letter":"C","text":"Do có tính dẻo và độ cứng phù hợp nên nhôm (Al) thường được gia công làm vật liệu như khung cửa, khung thiết bị","isCorrect":true},{"id":"d","letter":"D","text":"Do kim loại magnesium (Mg) có khối lượng riêng là 1,735 g/cm<sup>3</sup> nên được dùng để chế tạo các hợp kim nặng","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Kim loại nặng có khối lượng riêng ≥ 5 g/cm<sup>3</sup>","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa12_c6_de1_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Thả một đinh sắt nặng m<sub>1</sub> gam đã được đánh sạch bề mặt vào cốc chứa dung dịch copper(II) sulfate màu xanh. Sau một thời gian thấy toàn bộ lượng đồng sinh ra đã bám vào “đinh sắt” (thực chất là phần đinh sắt chưa phản ứng). Lấy “đinh sắt” ra khỏi cốc dung dịch, sấy khô, đem cân được m<sub>2</sub> gam. Mỗi phát biểu sau đây là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng diễn ra là: 2Fe(s) + 3Cu<sup>2+</sup>(aq)  2Fe<sup>3+</sup>(aq) + 3Cu(s)","isCorrect":false},{"id":"b","letter":"B","text":"Màu xanh của dung dịch copper(II) sulfate nhạt dần","isCorrect":true},{"id":"c","letter":"C","text":"So sánh, thu được kết quả m<sub>2</sub> < m<sub>1</sub>","isCorrect":false},{"id":"d","letter":"D","text":"Nếu thay đinh sắt ban đầu bằng thanh kẽm thì màu xanh của dung dịch không thay đổi","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Phản ứng tạo thành họp chất iron(II): Fe(s) + Cu<sup>2+</sup>(aq) → Fe<sup>2+</sup>(aq) + Cu(s).<br/>b. Đúng.<br/>c. Sai.Tỉ lệ mol của Fe và Cu theo phản ứng là 1 : 1. Nếu 1 mol Fe tham gia phản ứng và tan (56 g) sẽ có 1 mol Cu sinh ra và bám vào “đinh sắt”. Vì lượng kim loại tan ra nhỏ hơn lượng bám vào (56 g < 64 g) nên làm cho khối lượng của “đinh sắt” lớn hơn khối lượng của đinh sắt ban đầu.<br/>d. Sai. Xảy ra phản ứng Zn(s) + Cu<sup>2+</sup>(aq)  Zn<sup>2+</sup>(aq) + Cu(s). Khi đó, nồng độ Cu<sup>2+</sup> giảm do bị khử bởi Zn và màu xanh của dung dịch nhạt dần","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa12_c6_de1_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho thế điện cực chuẩn của một số cặp oxi hoá – khử ở bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Cặp oxi hóa – khử</td><td class='border border-slate-300 p-1.5'>Na + /Na</td><td class='border border-slate-300 p-1.5'>Zn 2+ /Zn</td><td class='border border-slate-300 p-1.5'>Fe 2+ /Fe</td><td class='border border-slate-300 p-1.5'>2H + /H 2</td><td class='border border-slate-300 p-1.5'>Cu 2+ /Cu</td><td class='border border-slate-300 p-1.5'>Fe 3+ /Fe 2+</td><td class='border border-slate-300 p-1.5'>Ag + /Ag</td></tr><tr><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'>–2,713</td><td class='border border-slate-300 p-1.5'>–0,763</td><td class='border border-slate-300 p-1.5'>–0,440</td><td class='border border-slate-300 p-1.5'>0,00</td><td class='border border-slate-300 p-1.5'>+0,340</td><td class='border border-slate-300 p-1.5'>+0,771</td><td class='border border-slate-300 p-1.5'>+0,799</td></tr></table>","images":[],"options":[{"id":"a","letter":"A","text":"Các kim loại Na, Fe, Zn đều tan được trong dung dịch HCl 1 M","isCorrect":true},{"id":"b","letter":"B","text":"Kim loại Cu khử được các ion Fe<sup>3+</sup>, Ag<sup>+</sup>, Zn<sup>2+</sup> trong dung dịch thành kim loại","isCorrect":false},{"id":"c","letter":"C","text":"Trong dung dịch, ion Fe<sup>2+</sup> không khử được ion Ag<sup>+</sup>","isCorrect":false},{"id":"d","letter":"D","text":"Ở điều kiện chuẩn, tính khử giảm dần theo thứ tự sau Na, Cu, Ag, Fe<sup>2+</sup>","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. Cu khử Fe<sup>3+</sup> thành Fe<sup>2+</sup>.<br/>c. Sai. Fe<sup>2+</sup> + Ag<sup>+</sup>  Fe<sup>3+</sup> + Ag.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa12_c6_de1_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Tiến hành thí nghiệm theo các bước sau:<br/>- Bước 1. Lấy hai ống nghiệm sạch, cho 3 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1 M vào ống (1), cho 3 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1 M và 2 – 3 giọt dung dịch CuSO<sub>4</sub> vào ống (2).<br/>- Bước 2. Cho đồng thời vào hai ống, mỗi ống một đinh sắt có kích thước như nhau đã được làm sạch bề mặt rồi để yên một thời gian","images":[],"options":[{"id":"a","letter":"A","text":"Ở bước 2, tốc độ thoát khí ở ống (1) và ống (2) là như nhau","isCorrect":false},{"id":"b","letter":"B","text":"Ở bước 2, ống (1) xảy ra ăn mòn hoá học, ống (2) xảy ra ăn mòn điện hoá","isCorrect":true},{"id":"c","letter":"C","text":"Ở bước 2, trong ống (2) có chất rắn màu đỏ cam bám lên bề mặt đinh sắt","isCorrect":true},{"id":"d","letter":"D","text":"Nếu thay dung dịch CuSO<sub>4</sub> bằng MgSO<sub>4</sub> thì khí thoát ra ở ống (2) sẽ nhanh hơn ống (1)","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Tốc độ thoát khí của ống (2) nhanh hơn ống (1) do có xảy ra ăn mòn điện hóa.<br/>b. Đúng.<br/>c. Đúng. Do Cu tạo thành có màu đỏ bám vào bề mặt đinh sắt.<br/>d. Sai. Nếu thay bằng MgSO<sub>4</sub> thì không có phản ứng tạo cặp điện cực nên không xảy ra quá trình ăn mòn điện hóa","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa12_c6_de1_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Đồng (Copper - Cu) được dùng làm lõi dây dẫn điện, que hàn đồng, đúc tượng, nam châm điện từ, các động cơ máy móc,… Cấu hình electron của nguyên tử đồng là [Ar] 3d<sup>10</sup>4s<sup>1</sup>. Hãy cho biết số hiệu nguyên tử của đồng","images":[],"correctAnswer":"29","explanation":"Đáp án: 29","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa12_c6_de1_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Thực hiện các thí nghiệm sau<br/>- Thí nghiệm 1: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một viên Zn sạch.<br/>- Thí nghiệm 2: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một viên Zn sạch, sau đó thêm vài giọt dung dịch CuSO<sub>4</sub>.<br/>- Thí nghiệm 3: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một mẩu dây đồng.<br/>- Thí nghiệm 4: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một viên Zn và một mẩu dây Cu tiếp xúc với nhau.<br/>Liệt kê các thí nghiệm xuất hiện ăn mòn điện hóa theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,...)","images":[],"correctAnswer":"24","explanation":"Đáp án: 24","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa12_c6_de1_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Ngâm một lá kẽm trong 200 mL dung dịch AgNO<sub>3</sub> nồng độ a mol/L cho đến khi kẽm không tan thêm nữa. Lấy lá kẽm ra, rửa nhẹ, làm khô rồi đem cân thì thấy khối lượng lá kẽm tăng thêm 0,604 g. Giá trị của a là bao nhiêu?","images":[],"correctAnswer":"0,04","explanation":"Đáp án: 0,04.<br/>Zn + 2AgNO<sub>3</sub>Zn(NO<sub>3</sub>)<sub>2</sub> + 2Ag<br/>0,1a  0,2a 0,2a<br/>m tăng = m<sub>Ag</sub> – m<sub>Zn tan</sub>  0,604 = 0,2a.108 – 0,1a.65  a = 0,04","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa12_c6_de1_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho thế điện cực chuẩn của một số cặp oxi hoá - khử ở bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Cặp oxi hóa – khử</td><td class='border border-slate-300 p-1.5'>Cu 2+ /Cu</td><td class='border border-slate-300 p-1.5'>Ni 2+ /Ni</td><td class='border border-slate-300 p-1.5'>Zn 2+ /Zn</td><td class='border border-slate-300 p-1.5'>Fe 2+ /Fe</td><td class='border border-slate-300 p-1.5'>Mg 2+ /Mg</td><td class='border border-slate-300 p-1.5'>Fe 3+ /Fe 2+</td><td class='border border-slate-300 p-1.5'>Ag + /Ag</td></tr><tr><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'>+0,340</td><td class='border border-slate-300 p-1.5'>–0,26</td><td class='border border-slate-300 p-1.5'>–0,73</td><td class='border border-slate-300 p-1.5'>–0,440</td><td class='border border-slate-300 p-1.5'>–2,36</td><td class='border border-slate-300 p-1.5'>+0,771</td><td class='border border-slate-300 p-1.5'>+0,799</td></tr></table><br/>Hãy cho biết trong số các kim loại Fe, Cu, Mg, Ag, Zn, Ni, Ag, có bao nhiêu kim loại tác dụng được với dung dịch Fe(NO<sub>3</sub>)<sub>3</sub> ở điều kiện chuẩn?","images":[],"correctAnswer":"5","explanation":"Đáp án: 5","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa12_c6_de1_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Tiến hành các thí nghiệm sau:<br/>(a) Điện phân MgCl<sub>2</sub> nóng chảy.<br/>(b) Cho dung dịch Cu vào dung dịch AgNO<sub>3</sub>.<br/>(c) Nhiệt phân hoàn toàn CaCO<sub>3</sub>.<br/>(d) Cho kim loại Na vào dung dịch CuSO<sub>4</sub> dư.<br/>(e) Dẫn khí H<sub>2</sub> dư đi qua bột CuO, nung nóng.<br/>Sau khi các phản ứng kết thúc, số thí nghiệm thu được kim loại là bao nhiêu?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa12_c6_de1_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Một loại quặng bauxite chứa khoảng 45% Al<sub>2</sub>O<sub>3</sub>, còn lại là các tạp chất khác. Để sản xuất nhôm, người ta phải tinh chế quặng để tạo ra Al<sub>2</sub>O<sub>3</sub> rồi tiến hành điện phân nóng chảy Al<sub>2</sub>O<sub>3</sub> tạo ra Al. Tinh khối lượng (tấn) quặng bauxite cần dùng để sản xuất được 3 tấn nhôm. Giả thiết trong quá trình sản xuất chỉ có 95% lượng nhôm trong quặng chuyển hoá thành kim loại (làm tròn kết quả đến hàng phần mười)","images":[],"correctAnswer":"12,3","explanation":"Đáp án: 12,3.<br/>Al<sub>2</sub>O<sub>3</sub>  2Al<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa12_c6_de2","code":"ĐỀ 602","title":"Đề kiểm tra Chương 6: Đại cương kim loại (Đề số 2)","topic":"Phương pháp tách kim loại, nhiệt luyện, thủy luyện & bài toán ăn mòn","badge":"Chương 6 - Đề 2","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa12_c6_de2_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Liên kết trong mạng tinh thể kim loại là loại liên kết nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Ion","isCorrect":false},{"id":"b","letter":"B","text":"Cộng hoá trị","isCorrect":false},{"id":"c","letter":"C","text":"van der Waals","isCorrect":false},{"id":"d","letter":"D","text":"Kim loại","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa12_c6_de2_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trong mạng tinh thể kim loại chứa các cation kim loại được sắp xếp theo một trật tự nhất định cùng với các electron chuyển động","images":[],"options":[{"id":"a","letter":"A","text":"theo một quỹ đạo xác định","isCorrect":false},{"id":"b","letter":"B","text":"xung quanh một vị trí xác định","isCorrect":false},{"id":"c","letter":"C","text":"tự do trong toàn bộ mạng tinh thể","isCorrect":false},{"id":"d","letter":"D","text":"trong một khu vực không gian nhất định","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa12_c6_de2_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Ăn mòn hóa học là quá trình …(1)…, trong đó ...(2)… của kim loại chuyển trực tiếp đến các chất trong môi trường. Cụm từ thích hợp điền vào (1), (2) là","images":[],"options":[{"id":"a","letter":"A","text":"(1) trao đổi, (2) electron","isCorrect":false},{"id":"b","letter":"B","text":"(1) trao đổi, (2) proton","isCorrect":false},{"id":"c","letter":"C","text":"(1) oxi hóa – khử, (2) electron","isCorrect":false},{"id":"d","letter":"D","text":"(1) oxi hóa – khử, (2) proton","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa12_c6_de2_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Những tính chất vật lí chung của kim loại (dẫn điện, dẫn nhiệt, dẻo, ánh kim) gây nên chủ yếu bởi","images":[],"options":[{"id":"a","letter":"A","text":"các electron tự do trong tinh thể kim loại","isCorrect":false},{"id":"b","letter":"B","text":"kiểu cấu tạo mạng tinh thể của kim loại","isCorrect":false},{"id":"c","letter":"C","text":"khối lượng riêng cửa kim loại","isCorrect":false},{"id":"d","letter":"D","text":"tính chất của kim loại","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa12_c6_de2_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Kim loại nào sau đây thường có ở dạng đơn chất trong tự nhiên?","images":[],"options":[{"id":"a","letter":"A","text":"Đồng","isCorrect":false},{"id":"b","letter":"B","text":"Kẽm","isCorrect":false},{"id":"c","letter":"C","text":"Vàng","isCorrect":false},{"id":"d","letter":"D","text":"Sắt","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa12_c6_de2_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Dây điện cao thế thường được làm bằng nhôm là do nhôm","images":[],"options":[{"id":"a","letter":"A","text":"là kim loại dẫn điện tốt và nhẹ","isCorrect":false},{"id":"b","letter":"B","text":"là kim loại dẫn điện tốt nhất","isCorrect":false},{"id":"c","letter":"C","text":"có giá thành rẻ","isCorrect":false},{"id":"d","letter":"D","text":"có tính trơ về mặt hoá học","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa12_c6_de2_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Kim loại nào sau đây không phản ứng với dung dịch HCl loãng?","images":[],"options":[{"id":"a","letter":"A","text":"Silver","isCorrect":false},{"id":"b","letter":"B","text":"Calcium","isCorrect":false},{"id":"c","letter":"C","text":"Magnesium","isCorrect":false},{"id":"d","letter":"D","text":"Zinc","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa12_c6_de2_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Thí nghiệm nào sau đây không xảy ra ăn mòn điện hoá?","images":[],"options":[{"id":"a","letter":"A","text":"Đốt cháy dây sắt trong không khí khô","isCorrect":false},{"id":"b","letter":"B","text":"Cho hợp kim Fe – Cu vào dung dịch CuSO<sub>4</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Đặt mẫu gang lâu ngày trong không khí ẩm","isCorrect":false},{"id":"d","letter":"D","text":"Cho kim loại Fe vào dung dịch AgNO<sub>3</sub>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa12_c6_de2_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Ở trạng thái cơ bản, nguyên tử của nguyên tố nào sau đây có 3 electron ở lớp ngoài cùng?","images":[],"options":[{"id":"a","letter":"A","text":"<sub>11</sub>Na","isCorrect":false},{"id":"b","letter":"B","text":"<sub>13</sub>Al","isCorrect":false},{"id":"c","letter":"C","text":"<sub>20</sub>Ca","isCorrect":false},{"id":"d","letter":"D","text":"<sub>26</sub>Fe","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa12_c6_de2_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Cho 0,02 mol Na vào 1 L dung dịch chứa CuSO<sub>4</sub> 0,05 M và H<sub>2</sub>SO<sub>4</sub>0,005 M. Hiện tượng của thí nghiệm trên là","images":[],"options":[{"id":"a","letter":"A","text":"có khí bay lên và có kết tủa màu xanh lam","isCorrect":false},{"id":"b","letter":"B","text":"chỉ có khí bay lên","isCorrect":false},{"id":"c","letter":"C","text":"chỉ có kết tủa màu xạnh lam","isCorrect":false},{"id":"d","letter":"D","text":"có khí bay lên và có kết tủa sau đó kết tủa tan","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa12_c6_de2_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Tiến hành 2 thí nghiệm sau:<br/>- Thí nghiêm 1: cho m gam bột Fe (dư) vào V<sub>1</sub> lít dung dịch Cu(NO<sub>3</sub>)<sub>2</sub> 1 M.<br/>- Thí nghiệm 2: cho m gam bột Fe (dư) vào V<sub>2</sub> lít dung dịch AgNO<sub>3</sub> 0,1 M. Sau khi các phản ứng xảy ra hoàn toàn, khối lượng chất rắn thu được ở hai thí nghiệm đều bằng nhau. Giá trị của V<sub>1</sub> so với V<sub>2</sub> là","images":[],"options":[{"id":"a","letter":"A","text":"V<sub>1</sub> = V<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"V<sub>1</sub>= 10V<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"V<sub>1</sub> = 5V<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"V<sub>1</sub> = 2V<sub>2</sub>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa12_c6_de2_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Kim loại nào sau đây thường có ở dạng đơn chất trong tự nhiên?","images":[],"options":[{"id":"a","letter":"A","text":"Đồng","isCorrect":false},{"id":"b","letter":"B","text":"Kẽm","isCorrect":false},{"id":"c","letter":"C","text":"Vàng","isCorrect":false},{"id":"d","letter":"D","text":"Sắt","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa12_c6_de2_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Có thể thu được kim loại nào trong số các kim loại sau: Cu, Na, Ca, Al bằng cả ba phương pháp điều chế kim loại phổ biến?","images":[],"options":[{"id":"a","letter":"A","text":"Na","isCorrect":false},{"id":"b","letter":"B","text":"Ca","isCorrect":false},{"id":"c","letter":"C","text":"Cu","isCorrect":false},{"id":"d","letter":"D","text":"Al","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa12_c6_de2_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Đốt một sợi dây kim loại X trong bình khí chlorine (Cl<sub>2</sub>) thấy tạo ra khói màu nâu đỏ. X là kim loại nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Mg","isCorrect":false},{"id":"b","letter":"B","text":"Al","isCorrect":false},{"id":"c","letter":"C","text":"Fe","isCorrect":false},{"id":"d","letter":"D","text":"Cu","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa12_c6_de2_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Nhôm phế liệu thường lẫn các tạp chất là các chất hữu cơ và vô cơ (có trong nhãn, mác do in hoặc sơn). Khi tái chế, phế liệu được cắt, băm nhỏ rồi cho vào lò nung đến khi chảy lòng. Phần lớn các tạp chất này biến thành xỉ lỏng, nổi lên và được vớt ra khỏi là. Phần còn lại là nhôm tái chế ở trạng thái lòng vì được đưa vào đúc khuôn.<br/>Cho các phát biểu sau:<br/>(1) Việc tái chế nhôm giúp giảm giá thành sản phẩm.<br/>(2) Việc tái chế nhôm giúp giảm chất thải ra môi trường.<br/>(3) Không nên dùng nhôm lại chế để chế tạo dụng cụ nhà bếp và y tế.<br/>(4) Đem cắt, băm nhỏ nhôm phế liệu để quá trình khử Al<sub>2</sub>O<sub>3</sub> xảy ra dễ hơn.<br/>Những phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"(1), (2), (4)","isCorrect":false},{"id":"b","letter":"B","text":"(2), (3), (4)","isCorrect":false},{"id":"c","letter":"C","text":"(1), (2), (3)","isCorrect":false},{"id":"d","letter":"D","text":"(1), (2), (3), (4)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa12_c6_de2_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Nguyên nhân chủ yếu làm cho hợp kim cứng hơn các kim loại thành phần là do","images":[],"options":[{"id":"a","letter":"A","text":"hợp kim chứa các nguyên tử của các nguyên tố khác nhau làm cho các lớp tinh thể kim loại trong hợp kim khó trượt lên nhau","isCorrect":false},{"id":"b","letter":"B","text":"hợp kim chứa các kim loại pha trộn cứng hơn kim loại cơ bản","isCorrect":false},{"id":"c","letter":"C","text":"trong hợp kim, các nguyên tố khác nhau tạo nên hợp chất hoá học","isCorrect":false},{"id":"d","letter":"D","text":"hợp kim được chế tạo ở nhiệt độ cao làm cho họp kim cứng hơn kim loại nguyên chất","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa12_c6_de2_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Tiến hành thí nghiệm như sau: Rót dung dịch NaCl bão hoà vào cốc 1, cốc 2, cốc 3; cho dầu nhờn vào cốc 4. Cho vào cốc 1 và cốc 4 một đinh sắt sạch, cho vào cốc 2 đinh sắt sạch được quấn bởi dây kẽm, cho vào cốc 3 đinh sắt sạch được quấn bởi dây đồng. Để 4 cốc trong không khí khoảng 5 ngày.<br/>Đinh sắt ở cốc nào bị gỉ nhiều nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Cốc 1","isCorrect":false},{"id":"b","letter":"B","text":"Cốc 3","isCorrect":false},{"id":"c","letter":"C","text":"Cốc 2","isCorrect":false},{"id":"d","letter":"D","text":"Cốc 4","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa12_c6_de2_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Đồng thau là hợp kim của đồng và kẽm (các tạp chất khác không đáng kể). Để xác định hàm lượng Cu trong một loại đồng thau, người ta cho 10 gam mảnh đồng thau vào dung dịch H<sub>2</sub>SO<sub>4</sub> (loãng, dư); sau khi các phản ứng xảy ra hoàn toàn, lọc lấy phần chất rắn đem làm khô, cân lại thu được 6,5 gam chất rắn. Hàm lượng đồng trong loại đồng thau trên bằng bao nhiêu?","images":[],"options":[{"id":"a","letter":"A","text":"50","isCorrect":false},{"id":"b","letter":"B","text":"35","isCorrect":false},{"id":"c","letter":"C","text":"60,","isCorrect":false},{"id":"d","letter":"D","text":"65","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa12_c6_de2_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mỗi phát biểu nào sau đây là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Nguyên tử kim loại thường có 1, 2 hoặc 3 electron ở lớp ngoài cùng","isCorrect":true},{"id":"b","letter":"B","text":"Trong bảng tuần hoàn, các nhóm A bao gồm các nguyên tố s và nguyên tố p","isCorrect":true},{"id":"c","letter":"C","text":"Trong một chu kì, kim loại có bán kính nguyên tử nhỏ hơn phi kim","isCorrect":false},{"id":"d","letter":"D","text":"Kim loại có ánh kim do các electron tự do phản xạ ánh sáng nhìn thấy được","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Bán kính của kim loại lớn hơn bán kính của phi kim trong cùng một chu kì.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa12_c6_de2_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Gang và thép là hai hợp kim quan trọng của sắt. Chúng được sử dụng trong nhiều lĩnh vực quan trọng của đời sống, sản xuất ,xây dựng và công nghiệp","images":[],"options":[{"id":"a","letter":"A","text":"Thép và gang đều là hợp kim chứa kim loại cơ bản là sắt","isCorrect":true},{"id":"b","letter":"B","text":"Hàm lượng carbon trong gang cao hơn trong thép","isCorrect":true},{"id":"c","letter":"C","text":"Trong thép và gang chỉ có hai đơn chất là sắt và carbon","isCorrect":false},{"id":"d","letter":"D","text":"Tính chất cơ học của thép có thể thay đổi khi có sự điều chính thành phần","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Ngoài Fe và C còn có các nguyên tố khác như Mn, Si, S,...<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa12_c6_de2_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Kim loại magnesium có khối lượng riêng là 1,74 g/cm<sup>-3</sup>. Kim loại này phản ứng chậm với nước ở nhiệt độ thường tạo ra anion OH<sup>-</sup> và khí H<sub>2</sub>, phản ứng nhanh với sulfuric acid loãng và làm nhạt màu dung dịch copper (II) sulfate","images":[],"options":[{"id":"a","letter":"A","text":"Những hợp kim mà magnesium đóng vai trò kim loại cơ bản là những họp kim nặng","isCorrect":false},{"id":"b","letter":"B","text":"Giá trị thế điện cực chuẩn của Mg<sup>2+</sup>/Mg lớn hơn 0 V","isCorrect":false},{"id":"c","letter":"C","text":"Trong môi trường trung tính, có: 2H<sub>2</sub>O + 2e  H<sub>2</sub> + 2OH<sup>-</sup> với","isCorrect":true},{"id":"d","letter":"D","text":"Giá trị thế điện cực chuẩn của Cu<sup>2+</sup>/Cu lớn hơn giá trị thế điện cực chuẩn của Mg<sup>2+</sup>/Mg","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Mg là kim loại nhẹ.<br/>b. Sai. Nhỏ hơn 0.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa12_c6_de2_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho vào 3 ống nghiệm, mỗi ống 2 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1 M.<br/>Bước 2: Cho 3 lá kim loại có kích thước như nhau gồm lá nhôm (Al) đã làm sạch lớp bề mặt vào ống nghiệm (1), lá sắt (Fe) vào ống nghiệm (2) và lá đồng (Cu) vào ống nghiệm (3).<br/>Biết:","images":[],"options":[{"id":"a","letter":"A","text":"Ở bước 2, cả ba ống nghiệm đều có khí thoát ra","isCorrect":false},{"id":"b","letter":"B","text":"Tốc độ thoát khí xảy ra ở ống (1) nhanh hơn ống (2)","isCorrect":true},{"id":"c","letter":"C","text":"Nếu thay H<sub>2</sub>SO<sub>4</sub> loãng bằng H<sub>2</sub>SO<sub>4</sub> đặc, nguội thì hiện tượng ở bước 2 sẽ không đổi","isCorrect":false},{"id":"d","letter":"D","text":"Ở bước 2, nếu thêm tiếp 2 mL H<sub>2</sub>SO<sub>4</sub> 1M vào cả 3 ống thì tốc độ thoát khí ở cả ba ống sẽ tăng","isCorrect":false}],"explanation":"Đáp án: <br/>a. Sai. Cu không tác dụng với dung dịch H<sub>2</sub>SO<sub>4</sub>.<br/>b. Đúng. Do Al có tính khử mạnh hơn Fe.<br/>c. Sai. Al, Fe bị thụ động hóa bởi H<sub>2</sub>SO<sub>4</sub> đặc, nguội còn Cu phản ứng tạo dung dịch màu xanh và có khí mùi hắc SO<sub>2</sub>.<br/>d. Sai. Thể tích H<sub>2</sub>SO<sub>4</sub> tăng không làm ảnh hưởng đến tốc độ phản ứng","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa12_c6_de2_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Ion Na<sup>+</sup> (Z = 11) là một loại ion thiết yếu trong máu và dung dịch ngoại bào, đóng vai trò quan trọng trong hoạt động enzyme, co cơ, cân bằng nước và truyền dẫn xung điện thần kinh. Tổng số hạt proton và electron của ion Na<sup>+</sup> là bao nhiêu?","images":[],"correctAnswer":"21","explanation":"Đáp án: 21.<br/>Số e = 10 và số p = 11  p + e = 21","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa12_c6_de2_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Phản ứng: 2Al(s) + Fe<sub>2</sub>O<sub>3</sub>(s) Al<sub>2</sub>O<sub>3</sub>(s)  + 2Fe(s) là phản ứng toả nhiệt lớn nên hỗn hợp gồm bột Al và Fe<sub>2</sub>O<sub>3</sub> (hỗn hợp tecmit) được ứng dụng để hàn đường may. Tính biến thiên enthalpy chuẩn () của phản ứng trên.<br/>Bié:  (Al<sub>2</sub>O<sub>3</sub>) = –1676,00 KJ;  (Fe<sub>2</sub>O<sub>3</sub>) = –825,50 kJ (làm tròn kết quả đến hàng đơn vị)","images":[],"correctAnswer":"-851","explanation":"Đáp án: -851","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa12_c6_de2_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho khí CO (dư) đi qua ống sứ nung nóng đựng hỗn hợp X gồm Al<sub>2</sub>O<sub>3</sub>, MgO, Fe<sub>3</sub>O<sub>4</sub> và CuO, thu được chất rắn Y. Cho Y vào dung dịch NaOH dư, khuấy kĩ, thấy còn lại phần không tan Z. Giả sử các phản ứng xảy ra hoàn toàn. Trong phần rắn không tan Z, có bao nhiêu kim loại?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2.<br/>PTHH: Fe<sub>3</sub>O<sub>4</sub> + 4CO 3Fe + 4CO<sub>2</sub><br/>CuO + CO Cu + CO<sub>2</sub><br/>=> Chất rắn Y: Al<sub>2</sub>O<sub>3</sub>, MgO, Fe và Cu tác dụng với NaOH dư.<br/>Al<sub>2</sub>O<sub>3</sub> + 2NaOH → 2NaAlO<sub>2</sub> + H<sub>2</sub>O<br/>=> Chất rắn Z: MgO, Fe và Cu","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa12_c6_de2_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Để bảo vệ vật bằng thép khỏi bị ăn mòn điện hóa, trong thực tế người ta đã thực hiện một số cách sau:<br/>(1) Sơn trên bề mặt cánh cửa làm bằng thép.<br/>(2) Tráng kẽm lên tấm thép mỏng khi sản xuất tôn.<br/>(3) Gắn một số tấm kẽm lên vỏ tàu làm bằng thép.<br/>(4) Cho dầu mỡ lên các ốc vít trên đường ray.<br/>Liệt kê những cách sử dụng phương pháp nào về bề mặt theo số thứ tự tăng dần","images":[],"correctAnswer":"124","explanation":"Đáp án: 124","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa12_c6_de2_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Cho các thí nghiệm sau:<br/>(a) Kim loại đồng nhúng trong dung dịch zinc sulfate.<br/>(b) Kim loại kẽm nhúng trong dung dịch silver nitrate.<br/>(c) Thả một mẩu sodium vào dung dịch copper(II) sulfate.<br/>(d) Rắc bột lưu huỳnh lên phần thuỷ ngân chảy ra từ nhiệt kế bị vỡ.<br/>(e) Thả một mẩu magnesium nóng đỏ vào nước.<br/>Có bao nhiêu phản ứng hóa học xảy ra ở điều kiện chuẩn?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa12_c6_de2_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Quặng sắt là các khoáng vật chứa các hợp chất của sắt mà chủ yếu ở dạng các oxide. Hematite là một loại quặng chứa hàm lượng sắt cao và được dùng để trực tiếp sản xuất gang bằng cách nạp thẳng vào lò cao. Giả thiết 90% sắt trong quặng được chuyển vào gang. Từ 800 tấn quặng hematite (có hàm lượng 68% Fe) có thể sản xuất được bao nhiêu tấn gang loại 96% Fe?","images":[],"correctAnswer":"510","explanation":"Đáp án: 510.<br/>- Khối lượng sắt trong 1 000 tấn quặng: <br/>- Khối lượng sắt chuyển vào gang là: <br/>- Khối lượng gang sản xuất được: <br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa12_c6_de3","code":"ĐỀ 603","title":"Đề kiểm tra Chương 6: Đại cương kim loại (Đề số 3)","topic":"Dạng bài tập ăn mòn điện hóa, hợp kim và điện phân điều chế kim loại","badge":"Chương 6 - Đề 3","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa12_c6_de3_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Cấu hình electron nào sau đây là của nguyên tử kim loại?","images":[],"options":[{"id":"a","letter":"A","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>","isCorrect":false},{"id":"b","letter":"B","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>","isCorrect":false},{"id":"c","letter":"C","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>","isCorrect":false},{"id":"d","letter":"D","text":"1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>1</sup>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa12_c6_de3_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Kim loại có khối lượng riêng nhỏ nhất là","images":[],"options":[{"id":"a","letter":"A","text":"Na","isCorrect":false},{"id":"b","letter":"B","text":"Li","isCorrect":false},{"id":"c","letter":"C","text":"Fe","isCorrect":false},{"id":"d","letter":"D","text":"Al","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa12_c6_de3_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Gang, thép là các vật liệu chứa nguyên tố kim loại cơ bản nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Nhôm","isCorrect":false},{"id":"b","letter":"B","text":"Kẽm","isCorrect":false},{"id":"c","letter":"C","text":"Sắt","isCorrect":false},{"id":"d","letter":"D","text":"Nickel","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa12_c6_de3_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Cầu chì là một phần tử hay thiết bị bảo vệ mạch điện bằng cách làm đứt mạch điện. Câu chì được sử dụng nhằm phòng tránh các hiện tượng quả tải trên đường dây. Dây cầu chi thường được làm kim loại chì (Pb), thiếc trắng (Sn) hoặc cadmium (Cd). Ứng dụng này dựa trên tính chất nào của các kim loại trên?","images":[],"options":[{"id":"a","letter":"A","text":"Có tính dẻo cao","isCorrect":false},{"id":"b","letter":"B","text":"Nhiệt độ nóng chảy tương đối thấp","isCorrect":false},{"id":"c","letter":"C","text":"Có độ dẫn điện cao","isCorrect":false},{"id":"d","letter":"D","text":"Có độ cứng tương đối thấp","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa12_c6_de3_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Trường hợp nào sau đây đã sử dụng phương pháp điện hoá để chống ăn mòn kim loại?","images":[],"options":[{"id":"a","letter":"A","text":"Mạ vàng lên quai đồng hồ","isCorrect":false},{"id":"b","letter":"B","text":"Bôi dầu mỡ lên xích xe đạp","isCorrect":false},{"id":"c","letter":"C","text":"Gắn tấm kẽm lên mặt ngoài vỏ tàu biển","isCorrect":false},{"id":"d","letter":"D","text":"Sơn kín bề mặt khung cửa thép","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa12_c6_de3_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Tiến hành các thí nghiệm sau:<br/>(a) Cho kim loại Cu vào dung dịch FeCl<sub>3</sub> dư.<br/>(b) Điện phân dung dịch AgNO<sub>3</sub> (điện cực trơ).<br/>(c) Nung nóng hỗn hợp bột Al và Fe<sub>2</sub>O<sub>3</sub> (không có không khí).<br/>(d) Cho kim loại Ba vào dung dịch CuSO<sub>4</sub> dư.<br/>(e) Điện phân Al<sub>2</sub>O<sub>3</sub> nóng chảy.<br/>Số thí nghiệm có sự tạo thành kim loại là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"5","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa12_c6_de3_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Dây kim loại nào sau đây đều không tan trong dung dịch HNO<sub>3</sub> đặc, nguội hoặc dung dịch H<sub>2</sub>SO<sub>4</sub> đặc, nguội?","images":[],"options":[{"id":"a","letter":"A","text":"Cu, Mg, Fe","isCorrect":false},{"id":"b","letter":"B","text":"Au, Cu, Ag","isCorrect":false},{"id":"c","letter":"C","text":"Al, Mg, Fe","isCorrect":false},{"id":"d","letter":"D","text":"Fe, Cr, Al","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa12_c6_de3_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Thuỷ ngân (Hg) là chất lỏng ở điều kiện thường, dễ bay hơi và hơi thuỷ ngân rất độc. Khi nhiệt kế thuỷ ngân bị vỡ, để tránh thuỷ ngân phân tán ra môi trường xung quanh, người ta gom thuỷ ngân lại rồi trộn với chất nào sau đây (ở dạng bột)?","images":[],"options":[{"id":"a","letter":"A","text":"Carbon (C)","isCorrect":false},{"id":"b","letter":"B","text":"Magnesium (Mg)","isCorrect":false},{"id":"c","letter":"C","text":"Iron (Fe)","isCorrect":false},{"id":"d","letter":"D","text":"Sulfur (S)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa12_c6_de3_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Các kim loại Au, Ag có thể tồn tại được ở dạng đơn chất trong tự nhiên vì chúng là kim loại","images":[],"options":[{"id":"a","letter":"A","text":"hoạt động hóa học mạnh","isCorrect":false},{"id":"b","letter":"B","text":"hoạt động hóa học trung bình","isCorrect":false},{"id":"c","letter":"C","text":"có khối lượng riêng lớn","isCorrect":false},{"id":"d","letter":"D","text":"rất kém hoạt động hóa học","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa12_c6_de3_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Nhôm (Al) là nguyên tố phổ biến thứ ba (sau oxyen và silicon) và là kim loại phổ biến nhất trong vỏ Trái Đất. Nhôm chiếm khoảng 17% khối lớp rắn của Trái Đất. Trong tự nhiên, quặng chính chứa nhôm là bauxite và quặng này là nguyên liệu chính để sản xuất nhôm trong công nghiệp. Thành phần chính của quặng bauxite là","images":[],"options":[{"id":"a","letter":"A","text":"Na<sub>3</sub>AlF<sub>6</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Al<sub>2</sub>O<sub>3</sub>.2H<sub>2</sub>O","isCorrect":false},{"id":"c","letter":"C","text":"KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O","isCorrect":false},{"id":"d","letter":"D","text":"K<sub>2</sub>O.Al<sub>2</sub>O<sub>3</sub>.6SiO<sub>2</sub>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa12_c6_de3_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Nguyên tắc chung để điều chế kim loại từ hợp chất của chúng là","images":[],"options":[{"id":"a","letter":"A","text":"khử cation kim loại thành kim loại","isCorrect":false},{"id":"b","letter":"B","text":"oxi hoá ion kim loại thành kim loại","isCorrect":false},{"id":"c","letter":"C","text":"oxi hoá kim loại thành ion kim loại","isCorrect":false},{"id":"d","letter":"D","text":"khử kim loại thành ion kim loại","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa12_c6_de3_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Trong công nghiệp, dãy gồm những kim loại nào sau đây đều được sản xuất bằng phương pháp điện phân nóng chảy?","images":[],"options":[{"id":"a","letter":"A","text":"Na, Al, Mg","isCorrect":false},{"id":"b","letter":"B","text":"Na, Al, Fe","isCorrect":false},{"id":"c","letter":"C","text":"Cu, Fe, Au","isCorrect":false},{"id":"d","letter":"D","text":"Ag, Mg, Zn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa12_c6_de3_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Nhúng thanh kim loại M hoá trị II vào 1120 mL dung dịch CuSO<sub>4</sub> 0,2 M. Sau khi phản ứng kết thúc, khối lượng thanh kim loại tăng 1,344 gam và nồng độ CuSO<sub>4</sub> còn lại là 0,05 M. Cho rằng Cu kim loại giải phóng ra bám hết vào thanh kim loại. Kim loại M là","images":[],"options":[{"id":"a","letter":"A","text":"Mg","isCorrect":false},{"id":"b","letter":"B","text":"Al","isCorrect":false},{"id":"c","letter":"C","text":"Fe","isCorrect":false},{"id":"d","letter":"D","text":"Zn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa12_c6_de3_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây sai?","images":[],"options":[{"id":"a","letter":"A","text":"Tính chất vật lí của hợp kim khác nhiều so với của đơn chất thành phần","isCorrect":false},{"id":"b","letter":"B","text":"Tính chất hoá học của hợp kim tương tự tính chất của đơn chất thành phần","isCorrect":false},{"id":"c","letter":"C","text":"Tính chất cơ học của hợp kim phụ thuộc vào thành phần đơn chất của hợp kim","isCorrect":false},{"id":"d","letter":"D","text":"Tính chất cơ học của hợp kim không phụ thuộc vào hàm lượng các đơn chất","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa12_c6_de3_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Trường hợp nào sau đây kim loại bị phá huỷ chủ yếu do ăn mòn hoá học?","images":[],"options":[{"id":"a","letter":"A","text":"Thiết bị làm bằng thép trong lò đốt lâu ngày bị phá huỷ","isCorrect":false},{"id":"b","letter":"B","text":"Thép xây dựng bị gỉ khi để lâu ngày trong không khí ẩm","isCorrect":false},{"id":"c","letter":"C","text":"Ống nước làm bằng gang bị gỉ khi chôn dưới đất lâu ngày","isCorrect":false},{"id":"d","letter":"D","text":"Vỏ tàu biển làm bằng thép bị gỉ sau một thời gian sử dụng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa12_c6_de3_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Hình vẽ nào sau đây có thể được dùng để mô tả cấu trúc tinh thể kim loại?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa12_c6_de3_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Hỗn hợp ammonium perchlorate (NH<sub>4</sub>ClO<sub>4</sub>) và bột nhôm (Al) được dùng làm nhiên liệu rắn của tàu vũ trụ con thoi. Khi nung đến 200 °C sẽ xảy ra phản ứng theo sơ đồ sau:<br/>(1) NH<sub>4</sub>ClO<sub>4</sub>N<sub>2</sub> + Cl<sub>2</sub> + O<sub>2</sub> + H<sub>2</sub>O<br/>(2) Al + O<sub>2</sub>Al<sub>2</sub>O<sub>3</sub><br/>Mỗi một lần phóng tàu con thoi tiêu tốn 775,5 tấn ammonium perchlorate (NH<sub>4</sub>ClO<sub>4</sub>). Giả sử tất cả khí oxygen (O<sub>2</sub>) sinh ra chỉ tác dụng với bột nhôm (Al). Khối lượng bột nhôm đã tham gia phản ứng với oxygen là","images":[],"options":[{"id":"a","letter":"A","text":"237,6 tấn","isCorrect":false},{"id":"b","letter":"B","text":"133,65 tấn","isCorrect":false},{"id":"c","letter":"C","text":"178,2 tấn","isCorrect":false},{"id":"d","letter":"D","text":"448,8 tấn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa12_c6_de3_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho các phát biểu về việc tái chế kim loại:<br/>(1) Tái chế là quá trình xử lý để tái sử dụng rác thải hoặc vật liệu không cần thiết (phế liệu) thành vật liệu mới mang lại lợi ích cho đời sống và sản xuất.<br/>(2) Kim loại là vật liệu có thể được tái chế nhiều lần mà thường không làm thay đổi tính chất cũng như làm giảm chất lượng của chúng.<br/>(3) Nhu cầu sử dụng kim loại đen (gang, thép với thành phần chính là sắt) trong đời sống và sản xuất là cao nhất.<br/>(4) Việc tái chế kim loại là một trong những giải pháp giúp bảo vệ môi trường, tiết kiệm tài nguyên và phục vụ sản xuất.<br/>Những phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"(1), (2), (3)","isCorrect":false},{"id":"b","letter":"B","text":"(1), (2), (4)","isCorrect":false},{"id":"c","letter":"C","text":"(2), (3), (4)","isCorrect":false},{"id":"d","letter":"D","text":"(1), (2), (3), (4)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa12_c6_de3_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Kim loại có nhiều ứng dụng trong thực tế nhờ các tính chất vật lí chung nổi trội của chúng như tính dẻo, tính dẫn điện, tính dẫn nhiệt và ánh kim","images":[],"options":[{"id":"a","letter":"A","text":"Kim loại có ánh kim là do các electron hoá trị tự do trong tỉnh thể kim loại phản xạ hầu hết những ánh sáng mà mắt thường nhìn thấy","isCorrect":true},{"id":"b","letter":"B","text":"Do kim loại đồng dẫn diện tốt nhất trong các kim loại nên dòng thường được dùng để chế tạo dây dẫn điện","isCorrect":false},{"id":"c","letter":"C","text":"Kim loại dẫn nhiệt được là do trong tinh thể kim loại, các cation kim loại chuyển động mang năng lượng từ vùng có nhiệt độ cao tới vùng có nhiệt độ thấp","isCorrect":false},{"id":"d","letter":"D","text":"Kim loại có tính dẻo là do các chuẩn trong tinh thể kim loại có thể trượt lên nhờ lực hút tĩnh điện giữa chúng với các electron hoá trị tự do","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Sai.<br/>c. Sai.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa12_c6_de3_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Cho một ít bột nhôm vào muỗng đốt hoá chất rồi đốt trên ngọn lửa đèn cồn. Khi một phần bột nhôm trong muỗng cháy đỏ thì đưa nhanh muỗng vào bình chứa oxygen dư. Bột nhôm cháy nhanh và phát ra ánh sáng màu trắng rất mạnh, tạo thành hợp chất A","images":[],"options":[{"id":"a","letter":"A","text":"Nhôm bị khử tạo thành hợp chất A là Al<sub>2</sub>O<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Số oxi hoá của nhôm trong hợp chất A là +3","isCorrect":true},{"id":"c","letter":"C","text":"Biến thiên enthalpy chuẩn của phản ứng giữa nhôm và oxygen có giá trị âm","isCorrect":true},{"id":"d","letter":"D","text":"Phản ứng trên liên quan đến 2 cặp oxi hoá - khử là  và","isCorrect":true}],"explanation":"Đáp án:<br/>a. Sai. Nhôm bị oxi hóa thành hợp chất A.<br/>b. Đúng.<br/>c. Đúng<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa12_c6_de3_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Hợp kim duralumin được sử dụng rộng rãi trong ngành công nghiệp chế tạo máy bay","images":[],"options":[{"id":"a","letter":"A","text":"Hợp kim duralumin là hợp kim của nhôm (aluminum)","isCorrect":true},{"id":"b","letter":"B","text":"Hợp kim duralumin có đặc điểm nhẹ, cứng, bền cơ học","isCorrect":true},{"id":"c","letter":"C","text":"Hợp kim duralumin được sản xuất bằng cách nấu chảy quặng bauxite","isCorrect":false},{"id":"d","letter":"D","text":"Hợp kim duralumin bền trong môi trường acid và kiềm","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Hợp kim được điều chế bằng cách nung chảy các thành phần (Al – Cu, Mn, Mg, Si) rồi để nguội.<br/>d. Sai. Al bị hòa tan bởi acid, base","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa12_c6_de3_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1. Cho vào cốc thuỷ tinh 30 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 0,5 M.<br/>Bước 2. Cho một lá nhôm và một lá đồng vào cốc sao cho chúng không tiếp xúc với nhau. Để yên khoảng 1 phút.<br/>Bước 3. Dùng dây dẫn điện nối lá nhôm và lá đồng với một vôn kế.<br/>Biết: ; ;","images":[],"options":[{"id":"a","letter":"A","text":"Ở bước 2, lá nhôm bị ăn mòn hoá học còn lá đồng không bị ăn mòn","isCorrect":true},{"id":"b","letter":"B","text":"Ở bước 3, có sự tạo thành cặp pin điện hoá, trong đó lá nhôm là cathode và lá đồng là anode","isCorrect":false},{"id":"c","letter":"C","text":"Ở bước 3, khí chỉ thoát ra ở bề bặt lá đồng, còn ở lá nhôm không có khí thoát ra","isCorrect":false},{"id":"d","letter":"D","text":"Ở bước 3, kim vôn kế chỉ 1,336 V","isCorrect":false}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Sai. Anode (cực âm/Al); cathode (cực dương/Cu).<br/>c. Sai. Khí thoát ra ở thanh Al và Cu.<br/>d. Sai.","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa12_c6_de3_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Cho thế điện cực chuẩn của các cặp oxi hoá – khử: Fe<sup>2+</sup>/Fe; Na<sup>+</sup>/Na; Ag<sup>+</sup>/Ag; Mg<sup>2+</sup>/Mg; Cu<sup>2+</sup>/Cu lần lượt là –0,44 V; –2,713 V; 0,799 V; –2,353 V; +0,340 V. Trong số các ion kim loại: Na<sup>+</sup>, Ag<sup>+</sup>, Mg<sup>2+</sup>, Cu<sup>2+</sup>; kim loại Fe khử được bao nhiêu ion kim loại ở điều kiện chuẩn?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa12_c6_de3_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Vàng (Au) đơn chất tồn tại trong tự nhiên ở trong quặng vàng thường có hàm lượng vàng thấp. Để thu hồi vàng từ quặng vàng, người ta nghiền quặng, hoà tan chúng vào dung dịch KCN và liên tục sục không khí vào. Vàng bị hoà tan tạo thành phức chất:<br/>4Au(s) + 8KCN(aq) +  O<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  4K[Au(CN)<sub>2</sub>](aq)  +  4KOH(aq) (1)<br/>và sau đó kết tủa vàng bằng kẽm (Zn):<br/>Zn(s) + 2K[Au(CN)<sub>2</sub>](aq) → K<sub>2</sub>[Zn(CN)<sub>4</sub>](aq)  + 2Au(s) (2)<br/>Nếu dùng 13 kg KCN thì có thể tách được bao nhiêu kg vàng từ quặng theo chuỗi phản ứng trên? Giả thiết các chất khác trong quặng không phản ứng với KCN","images":[],"correctAnswer":"19,7","explanation":"Đáp án: 19,7.<br/>","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa12_c6_de3_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho các nhận định sau: (1) Các kim loại thuộc nhóm IA và IIA bao gồm các nguyên tố s. (2) Nguyên tử của hầu hết các kim loại có từ 1 đến 3 electron ở lớp ngoài cùng. (3) Nguyên tử kim loại dễ nhường electron hơn so với các nguyên tử phi kim. (4) Trong mạng tinh thể kim loại, các electron chuyển động tự do theo nhiều hướng. Có bao nhiêu nhận định là đúng?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa12_c6_de3_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho các kim loại: Al, Cu, Na, Au, Ag, Mg. Có bao nhiêu kim loại tan được trong dung dịch HCl","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa12_c6_de3_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Để xảy ra ăn mòn điện hoá học thì cần đủ các yếu tố nào sau đây?<br/>(1) Phải có hai điện cực khác chất nhau (hai kim loại khác nhau hoặc kim loại với phi kim).<br/>(2) Hai điện cực phải tiếp xúc với nhau (trực tiếp hoặc gián tiếp qua dây dẫn).<br/>(3) Hai điện cực phải được nối qua vôn kế hoặc ampe kế.<br/>(4) Hai điện cực phải cùng tiếp xúc với một dung dịch chất điện li.<br/>Liệt kê các yếu tố theo số thứ tự tăng dần (Ví dụ: 1234, 24,…)","images":[],"correctAnswer":"124","explanation":"Đáp án: 124","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa12_c6_de3_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Trong công nghiệp sản xuất gang ở nước ta hiện nay, muốn sản xuất ra 1 tấn gang cần phải sử dụng 1,7 đến 1,8 tấn quặng sắt; 0,6 đến 0,7 tấn đá vôi làm chất trợ dung; 0,6 đến 0,8 tấn than cốc. Giả thiết trong đá vôi CaCO<sub>3</sub> chiếm 97% khối lượng và 90%, than cốc chuyển hoá thành CO<sub>2</sub>. Trong điều kiện sản xuất như trên, khi sán xuất được 1 tấn gang, nhà máy đã thái ra môi trường tối thiểu bao nhiêu m<sup>3</sup> khí CO<sub>2</sub> điều kiện chuẩn? (Làm tròn kết quả đến hàng đơn vị)","images":[],"correctAnswer":"1412","explanation":"Đáp án: 1412.<br/>  tối thiểu = 0,6 tấn = 600 kg<br/>m than cốc tối thiểu = 0,6 tấn = 600 kg<br/> tối thiểu =  <br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa12_c6_de4","code":"ĐỀ 604","title":"Đề kiểm tra Ôn tập Toàn diện Chương 6 (Đề số 4)","topic":"Đề thi chuẩn cấu trúc Bộ GD&ĐT 2025 bao quát toàn bộ Đại Cương Kim Loại","badge":"Chương 6 - Đề 4","duration":50,"totalQuestions":27,"totalPoints":10,"questions":[{"id":"hoa12_c6_de4_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Ở điều kiện thường, kim loại nào sau đây ở trạng thái lỏng?","images":[],"options":[{"id":"a","letter":"A","text":"Au","isCorrect":false},{"id":"b","letter":"B","text":"Cu","isCorrect":false},{"id":"c","letter":"C","text":"Na","isCorrect":false},{"id":"d","letter":"D","text":"Hg","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa12_c6_de4_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trong mạng tinh thể kim loại chứa các cation kim loại được sắp xếp theo một trật tự nhất định cùng với các electron chuyển động","images":[],"options":[{"id":"a","letter":"A","text":"theo một quỹ đạo xác định","isCorrect":false},{"id":"b","letter":"B","text":"xung quanh một vị trí xác định","isCorrect":false},{"id":"c","letter":"C","text":"tự do trong toàn bộ mạng tỉnh thể","isCorrect":false},{"id":"d","letter":"D","text":"trong một khu vực không gian nhất định","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa12_c6_de4_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Trong vỏ Trải Đất, kim loại nào sau đây có thể tồn tại ở dạng đơn chất?","images":[],"options":[{"id":"a","letter":"A","text":"Na, Mg","isCorrect":false},{"id":"b","letter":"B","text":"Al, Fe","isCorrect":false},{"id":"c","letter":"C","text":"Cu, Zn","isCorrect":false},{"id":"d","letter":"D","text":"Ag, Au","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa12_c6_de4_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Cho biết số thứ tự của Al trong bảng tuần hoàn là 13. Số electron lớp ngoài cùng của Al là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa12_c6_de4_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Kim loại nào sau đây không phản ứng hóa học với dung dịch HCl loãng?","images":[],"options":[{"id":"a","letter":"A","text":"Cu","isCorrect":false},{"id":"b","letter":"B","text":"Na","isCorrect":false},{"id":"c","letter":"C","text":"Mg","isCorrect":false},{"id":"d","letter":"D","text":"Zn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa12_c6_de4_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Thép là hợp kim của sắt và carbon, có thể chứa chromium và nickel. Tính chất của thép phụ thuộc vào hàm lượng các nguyên tố pha tạp. Loại thép nào sau đây được sử dụng để làm dụng cụ y tế?","images":[],"options":[{"id":"a","letter":"A","text":"Thép có hàm lượng carbon cao","isCorrect":false},{"id":"b","letter":"B","text":"Thép có hàm lượng carbon thấp","isCorrect":false},{"id":"c","letter":"C","text":"Thép không gỉ","isCorrect":false},{"id":"d","letter":"D","text":"Thép silicon","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa12_c6_de4_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Tính chất hóa học đặc trưng của kim loại là","images":[],"options":[{"id":"a","letter":"A","text":"tính oxi hóa","isCorrect":false},{"id":"b","letter":"B","text":"tính acid","isCorrect":false},{"id":"c","letter":"C","text":"tính base","isCorrect":false},{"id":"d","letter":"D","text":"tính khử","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa12_c6_de4_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Trong các kim loại sau, kim loại nào có tính khử yếu nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Au","isCorrect":false},{"id":"b","letter":"B","text":"Cu","isCorrect":false},{"id":"c","letter":"C","text":"Na","isCorrect":false},{"id":"d","letter":"D","text":"Fe","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa12_c6_de4_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Nguyên tắc tách kim loại là","images":[],"options":[{"id":"a","letter":"A","text":"khử ion kim loại","isCorrect":false},{"id":"b","letter":"B","text":"oxi hóa ion kịm loại thành nguyên tử","isCorrect":false},{"id":"c","letter":"C","text":"khử nguyên tử kim loại thành ion","isCorrect":false},{"id":"d","letter":"D","text":"oxi hóa nguyên tử kim loại thành ion","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa12_c6_de4_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Hình ảnh sau đây minh họa tính chất vật lí nào của kim loại?","images":[],"options":[{"id":"a","letter":"A","text":"Tính dẫn điện","isCorrect":false},{"id":"b","letter":"B","text":"Tính dẫn nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"Tính dẻo","isCorrect":false},{"id":"d","letter":"D","text":"Tính cứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa12_c6_de4_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Ở điều kiện chuẩn, khi nhúng đinh sắt vào dung dịch copper (II) sulfate thì xảy ra phản ứng sau:<br/>Fe(s) + Cu<sup>2+</sup>(aq) → Fe<sup>2+</sup>(aq) + Cu(s)<br/>Phát biểu nào dưới đây về phản ứng trên là không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Sau một thời gian, màu xanh của dung dịch nhạt dần","isCorrect":false},{"id":"b","letter":"B","text":"Ion Cu<sup>2+</sup> có tính oxi hoá mạnh hơn ion Fe<sup>2+</sup>","isCorrect":false},{"id":"c","letter":"C","text":"Kim loại Fe có tính khử mạnh hơn kim loại Cu","isCorrect":false},{"id":"d","letter":"D","text":"Thế điện cực chuẩn của cặp oxi hóa – khử Fe<sup>2+</sup>/Fe lớn hơn thế điện cực chuẩn của cặp oxi hóa – khử Cu<sup>2+</sup>/Cu","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa12_c6_de4_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(1) Các nguyên tử có 1 đến 3 electron ở lớp ngoài cùng đều là kim loại.<br/>(2) Những kim loại có thế điện cực chuẩn nhỏ hơn -0,414 V có thể đẩy được hydrogen ra khỏi nước.<br/>(3) Ở trạng thái rắn, đơn chất kim loại có cấu tạo tinh thể.<br/>(4) Duralumin là hợp kim của nhôm nhẹ, cứng và bền được sử dụng rộng rãi trong ngành công nghiệp chế tạo máy bay.<br/>Các phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"(3), (4)","isCorrect":false},{"id":"b","letter":"B","text":"(1), (2), (3)","isCorrect":false},{"id":"c","letter":"C","text":"(2), (3), (4)","isCorrect":false},{"id":"d","letter":"D","text":"(1), (2), (3), (4)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa12_c6_de4_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Vàng (Au) tồn tại trong tự nhiên ở dạng đơn chất, Tuy nhiên, hàm lượng Au trong quặng hoặc trong đất thường rất thấp vì vậy rất khó tách Au bằng phương pháp cơ học. Trong công nghiệp, người ta tách vàng từ quặng theo sơ đồ sau:<br/>Quặng chứa vàng (Au)  K[Au(CN)<sub>2</sub>](aq)  Au(s)<br/>Phương pháp điều chế kim loại nào đã được sử dụng trong quá tình sản xuất vàng theo sơ đồ trên?","images":[],"options":[{"id":"a","letter":"A","text":"Thủy luyện","isCorrect":false},{"id":"b","letter":"B","text":"Nhiệt luyện","isCorrect":false},{"id":"c","letter":"C","text":"Điện phân","isCorrect":false},{"id":"d","letter":"D","text":"Chiết","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa12_c6_de4_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Hợp kim là vật liệu kim loại chứa một kim loại cơ bản với","images":[],"options":[{"id":"a","letter":"A","text":"một số kim loại khác hoặc phi kim","isCorrect":false},{"id":"b","letter":"B","text":"một số oxide của kim loại đó","isCorrect":false},{"id":"c","letter":"C","text":"một số oxide kim loại khác hoặc phi kim","isCorrect":false},{"id":"d","letter":"D","text":"một số phi kim và oxide của phi kim đó","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa12_c6_de4_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Thí nghiệm nào sau đây Fe chỉ bị ăn mòn hóa học?","images":[],"options":[{"id":"a","letter":"A","text":"Đốt dây sắt trong không khí khô","isCorrect":false},{"id":"b","letter":"B","text":"Cho hợp kim Fe – Cu vào dung dịch CuSO<sub>4</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Để mẩu gang lâu ngày trong không khí ẩm","isCorrect":false},{"id":"d","letter":"D","text":"Cho Fe vào dung dịch AgNO<sub>3</sub>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa12_c6_de4_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Để khử hoàn toàn một lượng oxide kim loại thành kim loại cần vừa đủ V lít khí H<sub>2</sub>. Hoà tan lượng kim loại tạo thành bằng H<sub>2</sub>SO<sub>4</sub> loãng, dư thu được V lít H<sub>2</sub> (các khí đo cùng điều kiện). Oxide kim loại đó là","images":[],"options":[{"id":"a","letter":"A","text":"MgO","isCorrect":false},{"id":"b","letter":"B","text":"Fe<sub>2</sub>O<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"FeO","isCorrect":false},{"id":"d","letter":"D","text":"CuO","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa12_c6_de4_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Trường hợp nào sau đây không xảy ra sự ăn mòn kim loại?","images":[],"options":[{"id":"a","letter":"A","text":"Tàu đánh cá làm bằng thép bị hoen gỉ sau thời gian đi biển về","isCorrect":false},{"id":"b","letter":"B","text":"Trống đồng bị chuyển màu xanh khi để lâu ngày trong không khí ẩm","isCorrect":false},{"id":"c","letter":"C","text":"Vòng tay làm bằng bạc kim loại bị hoá đen khi sử dụng lâu ngày","isCorrect":false},{"id":"d","letter":"D","text":"Nấu chảy vàng để đúc khuôn khi chế tác vàng trang sức","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa12_c6_de4_p2_p2_q1","number":18,"part":2,"type":"true_false","text":"Tùy thuộc vào tính chất vật lí riêng của mỗi kim loại trừ chúng được sử dụng vào những mục dịch khác nhau","images":[],"options":[{"id":"a","letter":"A","text":"Kim loại chi (Pb) và cadmiun (Cd) có nhiệt nóng cháy khá thấp nên dụng sử dụng làm dây chạy trong càu chì","isCorrect":true},{"id":"b","letter":"B","text":"Kim loại tungsten (W) có độ bên nhiệt và nhiệt độ nóng chảy rất cao nên được sử dụng làm dây tóc bóng đèn, thiết bị sưởi","isCorrect":true},{"id":"c","letter":"C","text":"Do có tính dẻo và độ cứng phù hợp nên nhôm (Al) thường được gia công làm vật liệu như khung cửa, khung thiết bị","isCorrect":true},{"id":"d","letter":"D","text":"Do kim loại magnesium (Mg) có khối lượng riêng là 1,735 g/ cm<sup>3</sup> nên được dùng để chế tạo các hợp kim nặng","isCorrect":false}],"explanation":"Đáp án: <br/>a) Đúng.<br/>b) Đúng.<br/>c) Đúng.<br/>d) Sai. Mg là kim loại nhẹ do có D < 5 g/cm<sup>3</sup>","explanationImages":[],"points":1,"displayNumber":18},{"id":"hoa12_c6_de4_p2_p2_q2","number":19,"part":2,"type":"true_false","text":"Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho vào 3 ống nghiệm, mỗi ống 2 ml dung dịch H<sub>2</sub>SO<sub>4</sub> 1M.<br/>Bước 2: Cho 3 lá kim loại có kích thước như nhau gồm lá nhôm đã làm sạch lớp bề mặt vào ống nghiệm (1), lá iron (sắt) vào ống nghiệm (2) và lá Copper (Cu) vào ống nghiệm (3). Biết = -1,676V,  = -0,440V, = +0,340V","images":[],"options":[{"id":"a","letter":"A","text":"Ở bước 2, ở cả ba ống nghiệm đều có khí thoát ra","isCorrect":false},{"id":"b","letter":"B","text":"Tốc độ thoát khí ở ống nghiệm (1) nhanh hơn ống nghiệm (2)","isCorrect":true},{"id":"c","letter":"C","text":"Nếu thay H<sub>2</sub>SO<sub>4</sub> loãng bằng H<sub>2</sub>SO<sub>4</sub> đặc thì hiện tượng ở bước 2 sẽ không thay đổi","isCorrect":false},{"id":"d","letter":"D","text":"Ở bước 2, nếu thêm tiếp 2 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1M vào cả 3 ống nghiệm thì tốc độ thoát khí ở cả ba ống nghiệm sẽ tăng","isCorrect":false}],"explanation":"Đáp án: <br/>a) Sai. Cu không phản ứng với H<sub>2</sub>SO<sub>4</sub> loãng  ống (3) không có khí.<br/>b) Đúng.<br/>c) Sai. Al, Fe thụ động hoá với H<sub>2</sub>SO<sub>4</sub> đặc nguội, Cu tan tạo thành dung dịch có màu xanh và có khí thoát ra)<br/>d) Sai. ống đựng Cu vẫn không thoát khí","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa12_c6_de4_p2_p2_q3","number":20,"part":2,"type":"true_false","text":"Tiến hành thí nghiệm như sau: Rót dung dịch NaCl bão hoà vào cốc 1, cốc 2, cốc 3; cho dầu nhờn vào cốc 4. Cho vào cốc 1 và cốc 4 một đinh sắt sạch, cho vào cốc 2 đinh sắt sạch được quấn bởi dây kẽm, cho vào cốc 3 đinh sắt sạch được quấn bởi dây đồng. Để 4 cốc trong không khí khoảng 5 ngày","images":[],"options":[{"id":"a","letter":"A","text":"Ở cốc 4, đinh sắt không bị ăn mòn","isCorrect":true},{"id":"b","letter":"B","text":"Ở cốc 3, đinh sắt không bị gỉ và đồng bị ăn mòn","isCorrect":false},{"id":"c","letter":"C","text":"Ở cốc 2, đinh sắt bị gỉ và kẽm không bị ăn mòn","isCorrect":false},{"id":"d","letter":"D","text":"Ở cốc 1, đinh sắt bị gỉ và có lớp chất rắn màu nâu đỏ lắng dưới đáy cốc","isCorrect":true}],"explanation":"Đáp án: <br/>a) Đúng.<br/>b) Sai. Đinh sắt bị ăn mòn do có tính khử mạnh hơn đồng.<br/>c) Sai. Kẽm bị ăn mòn  do có tính khử mạnh hơn sắt.<br/>d) Đúng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa12_c6_de4_p2_p2_q4","number":21,"part":2,"type":"true_false","text":"Để tái chế nhôm, người ta sử dụng phế liệu kim loại như các lon, hộp chứa nước giải khát hay thực phẩm. Phế liệu còn lẫn các tạp chất là các chất vô cơ và hữu cơ (có trong nhãn, mác in hoặc sơn trên vỏ lon, hộp). Phế liệu được cắt, băm nhỏ rồi cho vào lò nung tới khi chảy lỏng. Phần xỉ lỏng, nổi lên trên được vớt ra khỏi lò. Phần còn lại trong lò là nhôm tái chế ở trạng thái nóng chảy","images":[],"options":[{"id":"a","letter":"A","text":"Việc tái chế nhôm giúp giảm tác động tiêu cực của việc khai thác mỏ quặng, tiết kiệm tài nguyên thiên nhiên","isCorrect":true},{"id":"b","letter":"B","text":"Việc cắt, băm nhỏ phế liệu giúp giảm thể tích, tránh hao phí năng lượng khi nung","isCorrect":true},{"id":"c","letter":"C","text":"Nhôm tái chế thủ công có thể dùng để chế tạo dụng cụ nhà bếp (xoong, chảo, thau,…) và dụng cụ y tế","isCorrect":false},{"id":"d","letter":"D","text":"Quá trình tái chế nhôm thủ công cho lợi nhuận cao nhưng gây ô nhiễm môi trường trầm trọng nếu không có biện pháp xử lý các chất thải","isCorrect":true}],"explanation":"Đáp án: <br/>a) Đúng.<br/>b) Đúng.<br/>c) Sai. Các sản phẩm xoong nồi sản xuất từ nhôm tái chế có độ tinh khiết thấp, dễ lẫn các tạp chất kim loại nặng khác như chì, arsenic, cadmium… Trong quá trình đun nấu, đựng các đồ ăn mặn, chua dễ bị ăn mòn, điện hóa tạo ra những vết lỗ chỗ, lỗ hổng lớn làm cho ion nhôm bị thôi ra lẫn vào đồ ăn thức uống sẽ rất nguy hiểm.<br/>d) Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa12_c6_de4_p3_p3_q1","number":22,"part":3,"type":"short_answer","text":"Trong phản ứng của kim loại Mg với khí Cl<sub>2</sub>, mỗi nguyên tử Mg nhường bao nhiêu electron?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":22},{"id":"hoa12_c6_de4_p3_p3_q2","number":23,"part":3,"type":"short_answer","text":"Trong các kim loại Cu, Zn; Fe, Na, K và Au, số kim loại điều chế được bằng phương pháp nhiệt luyện là bao nhiêu?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa12_c6_de4_p3_p3_q3","number":24,"part":3,"type":"short_answer","text":"Để xảy ra ăn mòn điện hoá học thì cần đủ các yếu tố nào sau đây?<br/>(1) Phải có hai điện cực khác chất nhau (hai kim loại khác nhau hoặc kim loại với phi kim).<br/>(2) Hai điện cực phải tiếp xúc với nhau (trực tiếp hoặc gián tiếp qua dây dẫn).<br/>(3) Hai điện cực phải được nối qua vôn kế hoặc ampe kế.<br/>(4) Hai điện cực phải cùng tiếp xúc với một dung dịch chất điện li.<br/>Liệt kê các yếu tố theo số thứ tự tăng dần","images":[],"correctAnswer":"124","explanation":"Đáp án: 124","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa12_c6_de4_p3_p3_q4","number":25,"part":3,"type":"short_answer","text":"Ngâm một lá kẽm trong 200 mL dung dịch AgNO<sub>3</sub> nồng độ a mol/L cho đến khi kẽm không tan thêm nữa. Lấy lá kẽm ra, rửa nhẹ, làm khô rồi đem cân thì thấy khối lượng lá kẽm tăng thêm 0,604 g. Giá trị của a là bao nhiêu?","images":[],"correctAnswer":"0,04","explanation":"Đáp án: 0,04.<br/>Zn + 2Ag<sup>+</sup>  Zn<sup>2+</sup> + 2Ag","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa12_c6_de4_p3_p3_q5","number":26,"part":3,"type":"short_answer","text":"Tiến hành các thí nghiệm sau:<br/>(1) Cho Mg vào lượng dư dung dịch FeCl<sub>3</sub>.<br/>(2) Cho Ba vào lượng dư dung dịch CuSO<sub>4</sub>.<br/>(3) Điện phân Al<sub>2</sub>O<sub>3</sub> nóng chảy.<br/>(4) Cho dung dịch Fe(NO<sub>3</sub>)<sub>2</sub> vào dung dịch AgNO<sub>3</sub>.<br/>(5) Nung nóng hỗn hợp rắn gồm ZnO và C trong điều kiện không có không khí.<br/>Có bao nhiêu thí nghiệm thu được kim loại sau phản ứng?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3.<br/>(1) Mg + FeCl<sub>3 dư</sub> → FeCl<sub>2</sub> + MgCl<sub>2</sub> ( không có kim loại).<br/>(2) Ba + 2H<sub>2</sub>O → Ba(OH)<sub>2</sub> + H<sub>2</sub><sub>;</sub>Ba(OH)<sub>2</sub> + CuSO<sub>4</sub> → BaSO<sub>4</sub>↓ + Cu(OH)<sub>2</sub>↓<br/> Không có kim loại<br/>(3) Zn + CuSO<sub>4</sub> → ZnSO<sub>4</sub> + Cu ( tạo Cu).<br/>(4) AgNO<sub>3</sub> + Fe(NO<sub>3</sub>)<sub>2</sub> → Fe(NO<sub>3</sub>)<sub>3</sub> + Ag ↓.<br/>(5) ZnO + C  Zn + CO","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa12_c6_de4_p3_p3_q6","number":27,"part":3,"type":"short_answer","text":"Luyện thép từ gang là quá trình làm giảm hàm lượng carbon và một số nguyên tố khác có trong gang. Một nhà máy luyện thép sử dụng loại gang nguyên liệu trong đó carbon chiếm 4,60% về khối lượng, còn lại là sắt (coi hàm lượng các nguyên tố khác không đáng kể). Khi tiến hành luyện thép, một lượng 2,88 tấn khí oxygen được thổi vào 45,0 tấn gang nguyên liệu nóng chảy để oxi hoá carbon thành CO và CO<sub>2</sub>. Hỗn hợp khí thu được chỉ gồm CO và CO<sub>2</sub> có số mol bằng nhau. Phần trăm khối lượng carbon trong thép thu được là w%, còn lại là sắt. Coi sắt không bị mất đi trong quá trình luyện thép. Giá trị của w là bao nhiêu? (Không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối đến hàng phần trăm)","images":[],"correctAnswer":"1,45","explanation":"Đáp án: 1,45.<br/>45,0 tấn gang nguyên liệu chứa: m<sub>C</sub> = 45.4,6% = 2,07 tấn và m<sub>Fe</sub> = 45 – 2,07 = 42,93 tấn<br/> (triệu mol)<br/>Bảo toàn O: x + 2x = 0,09.2  x = 0,06<br/>m<sub>C còn lại</sub> = 2,07 – 12.2x = 0,63 tấn<br/>%C trong thép =  = 1,45%.<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":27}]}];
+export const HOA12_CHUONG6_EXAMS: Chuong6Exam[] = [
+  {
+    "id": "hoa12_c6_de1",
+    "code": "12-C6-01",
+    "title": "Đề Kiểm Tra Chương 6: Đại Cương Kim Loại (Đề số 1)",
+    "topic": "Cấu tạo nguyên tử kim loại, liên kết kim loại & tính chất vật lí chung/riêng",
+    "badge": "Chương 6 • Đề 1",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa12_c6_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho biết số hiệu nguyên tử của Mg là 12. Vị trí của Mg trong bảng tuần hoàn là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "chu kì 3, nhóm IIIA",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "chu kì 3, nhóm IIB.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chu kì 3, nhóm IIA",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chu kì 2, nhóm IIA.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> chu kì 3, nhóm IIA.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong nhiều thiết bị có bộ phận tản nhiệt làm bằng nhôm. Vai trò tản nhiệt của nhôm được gây ra bởi tính chất vật lí nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tính dẫn nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tính dẻo",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tính dẫn điện",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ánh kim.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Tính dẫn nhiệt.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tính chất hoá học đặc trưng của kim loại là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tính acid",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tính base",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tính oxi hoá",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tính khử.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> tính khử..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương trình hoá học nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2Na + 2H<sub>2</sub>O  ¾¾®  2NaOH + H<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ca + 2HCl  ¾¾®  CaCl<sub>2</sub> + H<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Fe + CuSO<sub>4</sub>  ¾¾®  FeSO<sub>4</sub> + Cu",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cu + H<sub>2</sub>SO<sub>4</sub>  ¾¾®  CuSO<sub>4</sub> + H<sub>2</sub>.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Cu + H<sub>2</sub>SO<sub>4</sub>  ¾¾®  CuSO<sub>4</sub> + H<sub>2</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Với quá trình tách natri (sodium) bằng phương pháp điện phân sodium chloride nóng chảy, phát biểu nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tại anode xảy ra quá trình khử ion Na<sup>+</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tại cathode xảy ra quá trình khử ion Cl<sup>–</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tại cathode xảy ra quá trình khử ion Na<sup>+</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tại anode xảy ra quá trình khử ion Cl<sup>–</sup>.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Tại anode xảy ra quá trình khử ion Cl<sup>–</sup>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hợp kim là vật liệu kim loại chứa một kim loại cơ bản với",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "một số kim loại khác hoặc phi kim",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "một số oxide của kim loại đó.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "một số oxide kim loại khác hoặc phi kim",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "một số phi kim và oxide của phi kim đó.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> một số kim loại khác hoặc phi kim.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhúng một thanh Zn vào dung dịch gồm muối X thì có xảy ra sự ăn mòn điện hoá của Zn. Muối nào sau đây phù hợp với X?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CuSO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "MgSO<sub>4</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> CuSO<sub>4</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để các hợp kim: Fe – Cu; Fe – C; Zn – Fe; Mg – Fe lâu ngày trong không khí ẩm. Số hợp kim mà trong đó Fe bị ăn mòn điện hoá là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Vàng (Au, tồn tại trong tự nhiên ở dạng đơn chất).. Tuy nhiên, hàm lượng Au trong quặng hoặc trong đất thường rất thấp vì vậy rất khó tách Au bằng phương pháp cơ học. Trong công nghiệp, người ta tách vàng, từ quặng theo sự do sau.<br/>Quảng chứa vàng (Au)  22OKCNHO+++¾¾¾¾¾¾®  K[AuCN)<sub>2</sub>] (ad)  Zndu+¾¾¾®  Au(s)<br/>Phương pháp điều chế kim loại nào đã được sử dụng trong quá trình sản xuất vàng theo sơ đồ trên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thủy luyện.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt luyện.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Điện phân.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chiết.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Thủy luyện..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho 2,479 lít khí CO (ở đkc) phản ứng vừa đủ với 10 gam hỗn hợp X gồm CuO và MgO. Phần trăm khối lượng của MgO trong X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "20%",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "40%",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "60%",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "80%.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 20%.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại nào sau đây khi tác dụng với HCl và tác dụng với Cl<sub>2</sub> (được nung nóng) tạo thành cùng một loại sản phẩm muối chloride?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ag",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Zn",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cu.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Zn.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Lực liên kết kim loại gây ra bởi",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tương tác tĩnh điện giữa cation kim loại và electron hóa trị tự do trong tinh thể.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "sự góp chung của các electron hóa trị giữa các nguyên tử kim loại trong tinh thể.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tương tác van der Waals giữa các nguyên tử kim loại trong tinh thể.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "sự hình thành liên kết cho nhận giữa các nguyên tử kim loại trong tinh thể.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> tương tác tĩnh điện giữa cation kim loại và electron hóa trị tự do trong tinh thể..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong công nghiệp, kim loại nào sau đây được điều chế bằng phương pháp nhiệt luyện?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Mg",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Fe",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Na",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Fe.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong nước nguyên chất khi phản ứng xảy ra sẽ có quá trình sau:<br/>H<sub>2</sub>O + 2e → H<sub>2</sub> + 2OH<sup>–</sup> ;  22/HOHOHE-+ = -0,42V<br/>Cho  0/NaNaE+ = -2,71V;  20/CuCuE+ =+0,34V ;  20/MgMgE+ = -2,36V;  30/AlAlE+ = -1,68V. Hãy cho biết kim loại nào sau đây không phản ứng được với nước ở điều kiện chuẩn?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cu.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Mg.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Cu..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho 3,24 gam kim loại M (hóa trị n) tác dụng với 0,03 mol khí O<sub>2</sub>, thu được chất rắn X. Cho toàn bộ X vào dung dịch H<sub>2</sub>SO<sub>4</sub> đặc, nóng, thu được 0,075 mol khí SO<sub>2</sub>. Kim loại M là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Fe.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Zn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Mg.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Mg..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Quấn sợi dây kim loại X quanh một đinh sắt rồi nhúng vào ống nghiệm đựng dung dịch HCl loãng. Biết rằng thí nghiệm xảy ra sự ăn mòn điện hoá của đinh sắt. Kim loại X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Mg.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Al",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cu",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Zn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Cu.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thêm chromium vào thép thì tính chất nào sau đây được tăng cường?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chống ăn mòn",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tính dẫn điện",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tính chất từ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tính dễ kéo sợi.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Chống ăn mòn.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa12_c6_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình bên mô tả tinh chất vật lí nào của kim loại (hình tròn to mô tả ion kim loại, hình tròn nhỏ mô tả electron tự do).",
+        "images": [
+          "/assets/hoa12/c6/hoa12_c6_de1_image9.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tính dẫn điện.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ánh kim.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tính dẻo.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tính dẫn nhiệt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Tính dẫn điện..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa12_c6_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tùy thuộc vào tính chất vật lí riêng của mỗi kim loại mà chúng được sử dụng vào những mục đích khác nhau.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kim loại chì (Pb) và cadmium (Cd) có nhiệt nóng chảy khá thấp nên được sử dụng làm dây chảy trong cầu chì.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Kim loại tungsten (W) có độ bền nhiệt và nhiệt độ nóng chảy rất cao nên được sử dụng làm dây tóc bóng đèn, thiết bị sưởi.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Do có tính dẻo và độ cứng phù hợp nên nhôm (Al) thường được gia công làm vật liệu như khung cửa, khung thiết bị.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Do kim loại magnesium (Mg) có khối lượng riêng là 1,735 g/cm<sup>3</sup> nên được dùng để chế tạo các hợp kim nặng.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Kim loại nặng có khối lượng riêng ≥ 5 g/cm<sup>3</sup>.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Thả một đinh sắt nặng m<sub>1</sub> gam đã được đánh sạch bề mặt vào cốc chứa dung dịch copper(II) sulfate màu xanh. Sau một thời gian thấy toàn bộ lượng đồng sinh ra đã bám vào “đinh sắt” (thực chất là phần đinh sắt chưa phản ứng). Lấy “đinh sắt” ra khỏi cốc dung dịch, sấy khô, đem cân được m<sub>2</sub> gam. Mỗi phát biểu sau đây là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng diễn ra là: 2Fe(s) + 3Cu<sup>2+</sup>(aq)  ¾¾®  2Fe<sup>3+</sup>(aq) + 3Cu(s).",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Màu xanh của dung dịch copper(II) sulfate nhạt dần.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "So sánh, thu được kết quả m<sub>2</sub> < m<sub>1</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu thay đinh sắt ban đầu bằng thanh kẽm thì màu xanh của dung dịch không thay đổi.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Phản ứng tạo thành họp chất iron(II): Fe(s) + Cu<sup>2+</sup>(aq) → Fe<sup>2+</sup>(aq) + Cu(s).<br/>b. Đúng.<br/>c. Sai.Tỉ lệ mol của Fe và Cu theo phản ứng là 1 : 1. Nếu 1 mol Fe tham gia phản ứng và tan (56 g) sẽ có 1 mol Cu sinh ra và bám vào “đinh sắt”. Vì lượng kim loại tan ra nhỏ hơn lượng bám vào (56 g < 64 g) nên làm cho khối lượng của “đinh sắt” lớn hơn khối lượng của đinh sắt ban đầu.<br/>d. Sai. Xảy ra phản ứng Zn(s) + Cu<sup>2+</sup>(aq)  Zn<sup>2+</sup>(aq) + Cu(s). Khi đó, nồng độ Cu<sup>2+</sup> giảm do bị khử bởi Zn và màu xanh của dung dịch nhạt dần.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho thế điện cực chuẩn của một số cặp oxi hoá – khử ở bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cặp oxi hóa – khử</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Na<sup>+</sup>/Na</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Zn<sup>2+</sup>/Zn</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Fe<sup>2+</sup>/Fe</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">2H+/H<sub>2</sub></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cu<sup>2+</sup>/Cu</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Fe<sup>3+</sup>/Fe<sup>2+</sup></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ag<sup>+</sup>/Ag</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">–2,713</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">–0,763</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">–0,440</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,00</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">+0,340</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">+0,771</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">+0,799</td></tr></table></div>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các kim loại Na, Fe, Zn đều tan được trong dung dịch HCl 1 M.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Kim loại Cu khử được các ion Fe<sup>3+</sup>, Ag<sup>+</sup>, Zn<sup>2+</sup> trong dung dịch thành kim loại.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong dung dịch, ion Fe<sup>2+</sup> không khử được ion Ag<sup>+</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở điều kiện chuẩn, tính khử giảm dần theo thứ tự sau Na, Cu, Ag, Fe<sup>2+</sup>.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Cu khử Fe<sup>3+</sup> thành Fe<sup>2+</sup>.<br/>c. Sai. Fe<sup>2+</sup> + Ag<sup>+</sup>  Fe<sup>3+</sup> + Ag.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tiến hành thí nghiệm theo các bước sau:<br/>- Bước 1. Lấy hai ống nghiệm sạch, cho 3 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1 M vào ống (1), cho 3 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1 M và 2 – 3 giọt dung dịch CuSO<sub>4</sub> vào ống (2).<br/>- Bước 2. Cho đồng thời vào hai ống, mỗi ống một đinh sắt có kích thước như nhau đã được làm sạch bề mặt rồi để yên một thời gian.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở bước 2, tốc độ thoát khí ở ống (1) và ống (2) là như nhau.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở bước 2, ống (1) xảy ra ăn mòn hoá học, ống (2) xảy ra ăn mòn điện hoá.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở bước 2, trong ống (2) có chất rắn màu đỏ cam bám lên bề mặt đinh sắt.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu thay dung dịch CuSO<sub>4</sub> bằng MgSO<sub>4</sub> thì khí thoát ra ở ống (2) sẽ nhanh hơn ống (1).",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Tốc độ thoát khí của ống (2) nhanh hơn ống (1) do có xảy ra ăn mòn điện hóa.<br/>b. Đúng.<br/>c. Đúng. Do Cu tạo thành có màu đỏ bám vào bề mặt đinh sắt.<br/>d. Sai. Nếu thay bằng MgSO<sub>4</sub> thì không có phản ứng tạo cặp điện cực nên không xảy ra quá trình ăn mòn điện hóa.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Đồng (Copper - Cu) được dùng làm lõi dây dẫn điện, que hàn đồng, đúc tượng, nam châm điện từ, các động cơ máy móc,… Cấu hình electron của nguyên tử đồng là [Ar] 3d<sup>10</sup>4s<sup>1</sup>. Hãy cho biết số hiệu nguyên tử của đồng.",
+        "images": [],
+        "correctAnswer": "29",
+        "explanation": "Đáp án: 29.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "29",
+          "29",
+          "29"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Thực hiện các thí nghiệm sau<br/>- Thí nghiệm 1: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một viên Zn sạch.<br/>- Thí nghiệm 2: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một viên Zn sạch, sau đó thêm vài giọt dung dịch CuSO<sub>4</sub>.<br/>- Thí nghiệm 3: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một mẩu dây đồng.<br/>- Thí nghiệm 4: Rót khoảng 2 mL dung dịch HCl vào ống nghiệm có một viên Zn và một mẩu dây Cu tiếp xúc với nhau.<br/>Liệt kê các thí nghiệm xuất hiện ăn mòn điện hóa theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,...).",
+        "images": [],
+        "correctAnswer": "24",
+        "explanation": "Đáp án: 24.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "24",
+          "24",
+          "24"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Ngâm một lá kẽm trong 200 mL dung dịch AgNO<sub>3</sub> nồng độ a mol/L cho đến khi kẽm không tan thêm nữa. Lấy lá kẽm ra, rửa nhẹ, làm khô rồi đem cân thì thấy khối lượng lá kẽm tăng thêm 0,604 g. Giá trị của a là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "0,04",
+        "explanation": "Đáp án: 0,04.<br/>Zn + 2AgNO<sub>3</sub>  Zn(NO<sub>3</sub>)<sub>2</sub> + 2Ag<br/>0,1a  0,2a 0,2a<br/>m tăng = m<sub>Ag</sub> – m<sub>Zn tan</sub>  0,604 = 0,2a.108 – 0,1a.65  a = 0,04.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "0,04",
+          "0.04",
+          "0,04"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho thế điện cực chuẩn của một số cặp oxi hoá - khử ở bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cặp oxi hóa – khử</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cu<sup>2+</sup>/Cu</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ni<sup>2+</sup>/Ni</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Zn<sup>2+</sup>/Zn</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Fe<sup>2+</sup>/Fe</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Mg<sup>2+</sup>/Mg</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Fe<sup>3+</sup>/Fe<sup>2+</sup></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ag<sup>+</sup>/Ag</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">+0,340</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">–0,26</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">–0,73</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">–0,440</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">–2,36</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">+0,771</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">+0,799</td></tr></table></div><br/>Hãy cho biết trong số các kim loại Fe, Cu, Mg, Ag, Zn, Ni, Ag, có bao nhiêu kim loại tác dụng được với dung dịch Fe(NO<sub>3</sub>)<sub>3</sub> ở điều kiện chuẩn?",
+        "images": [],
+        "correctAnswer": "5",
+        "explanation": "Đáp án: 5.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "5",
+          "5",
+          "5"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tiến hành các thí nghiệm sau:<br/>(a) Điện phân MgCl<sub>2</sub> nóng chảy.<br/>(b) Cho dung dịch Cu vào dung dịch AgNO<sub>3</sub>.<br/>(c) Nhiệt phân hoàn toàn CaCO<sub>3</sub>.<br/>(d) Cho kim loại Na vào dung dịch CuSO<sub>4</sub> dư.<br/>(e) Dẫn khí H<sub>2</sub> dư đi qua bột CuO, nung nóng.<br/>Sau khi các phản ứng kết thúc, số thí nghiệm thu được kim loại là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Một loại quặng bauxite chứa khoảng 45% Al<sub>2</sub>O<sub>3</sub>, còn lại là các tạp chất khác. Để sản xuất nhôm, người ta phải tinh chế quặng để tạo ra Al<sub>2</sub>O<sub>3</sub> rồi tiến hành điện phân nóng chảy Al<sub>2</sub>O<sub>3</sub> tạo ra Al. Tinh khối lượng (tấn) quặng bauxite cần dùng để sản xuất được 3 tấn nhôm. Giả thiết trong quá trình sản xuất chỉ có 95% lượng nhôm trong quặng chuyển hoá thành kim loại (làm tròn kết quả đến hàng phần mười).",
+        "images": [],
+        "correctAnswer": "12,3",
+        "explanation": "Đáp án: 12,3.<br/>Al<sub>2</sub>O<sub>3</sub>  2Al<br/>2323AlOPTHHAlObauxitem311m...102m12,3(t)27295%45%¾¾¾®=Þ==<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "12,3",
+          "12.3",
+          "12,3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa12_c6_de2",
+    "code": "12-C6-02",
+    "title": "Đề Kiểm Tra Chương 6: Đại Cương Kim Loại (Đề số 2)",
+    "topic": "Tính chất hóa học, dãy điện hóa của kim loại & quy tắc alpha",
+    "badge": "Chương 6 • Đề 2",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa12_c6_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Liên kết trong mạng tinh thể kim loại là loại liên kết nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ion",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cộng hoá trị",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "van der Waals",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Kim loại.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Kim loại..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong mạng tinh thể kim loại chứa các cation kim loại được sắp xếp theo một trật tự nhất định cùng với các electron chuyển động",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "theo một quỹ đạo xác định",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "xung quanh một vị trí xác định.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tự do trong toàn bộ mạng tinh thể",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "trong một khu vực không gian nhất định.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> tự do trong toàn bộ mạng tinh thể.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ăn mòn hóa học là quá trình …(1)…, trong đó ...(2)… của kim loại chuyển trực tiếp đến các chất trong môi trường. Cụm từ thích hợp điền vào (1), (2) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1) trao đổi, (2) electron",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1) trao đổi, (2) proton.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(1) oxi hóa – khử, (2) electron",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(1) oxi hóa – khử, (2) proton.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> (1) oxi hóa – khử, (2) electron.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Những tính chất vật lí chung của kim loại (dẫn điện, dẫn nhiệt, dẻo, ánh kim) gây nên chủ yếu bởi",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "các electron tự do trong tinh thể kim loại.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "kiểu cấu tạo mạng tinh thể của kim loại.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "khối lượng riêng cửa kim loại.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tính chất của kim loại.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> các electron tự do trong tinh thể kim loại..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại nào sau đây thường có ở dạng đơn chất trong tự nhiên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đồng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Kẽm",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vàng",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sắt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Vàng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dây điện cao thế thường được làm bằng nhôm là do nhôm",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "là kim loại dẫn điện tốt và nhẹ",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "là kim loại dẫn điện tốt nhất.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "có giá thành rẻ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "có tính trơ về mặt hoá học.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> là kim loại dẫn điện tốt và nhẹ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại nào sau đây không phản ứng với dung dịch HCl loãng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Silver",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Calcium",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Magnesium",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Zinc.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Silver.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thí nghiệm nào sau đây không xảy ra ăn mòn điện hoá?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đốt cháy dây sắt trong không khí khô",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cho hợp kim Fe – Cu vào dung dịch CuSO<sub>4</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đặt mẫu gang lâu ngày trong không khí ẩm",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cho kim loại Fe vào dung dịch AgNO<sub>3</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Đốt cháy dây sắt trong không khí khô.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở trạng thái cơ bản, nguyên tử của nguyên tố nào sau đây có 3 electron ở lớp ngoài cùng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "<sub>11</sub>Na",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "<sub>13</sub>Al",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "<sub>20</sub>Ca",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "<sub>26</sub>Fe.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> <sub>13</sub>Al.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho 0,02 mol Na vào 1 L dung dịch chứa CuSO<sub>4</sub> 0,05 M và H<sub>2</sub>SO<sub>4</sub>0,005 M. Hiện tượng của thí nghiệm trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "có khí bay lên và có kết tủa màu xanh lam.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "chỉ có khí bay lên.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chỉ có kết tủa màu xạnh lam.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "có khí bay lên và có kết tủa sau đó kết tủa tan.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> có khí bay lên và có kết tủa màu xanh lam..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tiến hành 2 thí nghiệm sau:<br/>- Thí nghiêm 1: cho m gam bột Fe (dư) vào V<sub>1</sub> lít dung dịch Cu(NO<sub>3</sub>)<sub>2</sub> 1 M.<br/>- Thí nghiệm 2: cho m gam bột Fe (dư) vào V<sub>2</sub> lít dung dịch AgNO<sub>3</sub> 0,1 M. Sau khi các phản ứng xảy ra hoàn toàn, khối lượng chất rắn thu được ở hai thí nghiệm đều bằng nhau. Giá trị của V<sub>1</sub> so với V<sub>2</sub> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "V<sub>1</sub> = V<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "V<sub>1</sub>= 10V<sub>2</sub",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "V<sub>1</sub> = 5V<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "V<sub>1</sub> = 2V<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> V<sub>1</sub> = V<sub>2</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại nào sau đây thường có ở dạng đơn chất trong tự nhiên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đồng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Kẽm",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vàng",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sắt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Vàng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Có thể thu được kim loại nào trong số các kim loại sau: Cu, Na, Ca, Al bằng cả ba phương pháp điều chế kim loại phổ biến?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Na",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ca",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cu",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Cu.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đốt một sợi dây kim loại X trong bình khí chlorine (Cl<sub>2</sub>) thấy tạo ra khói màu nâu đỏ. X là kim loại nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Mg",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Al",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Fe",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cu.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Fe.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhôm phế liệu thường lẫn các tạp chất là các chất hữu cơ và vô cơ (có trong nhãn, mác do in hoặc sơn). Khi tái chế, phế liệu được cắt, băm nhỏ rồi cho vào lò nung đến khi chảy lòng. Phần lớn các tạp chất này biến thành xỉ lỏng, nổi lên và được vớt ra khỏi là. Phần còn lại là nhôm tái chế ở trạng thái lòng vì được đưa vào đúc khuôn.<br/>Cho các phát biểu sau:<br/>(1) Việc tái chế nhôm giúp giảm giá thành sản phẩm.<br/>(2) Việc tái chế nhôm giúp giảm chất thải ra môi trường.<br/>(3) Không nên dùng nhôm lại chế để chế tạo dụng cụ nhà bếp và y tế.<br/>(4) Đem cắt, băm nhỏ nhôm phế liệu để quá trình khử Al<sub>2</sub>O<sub>3</sub> xảy ra dễ hơn.<br/>Những phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1), (2), (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(2), (3), (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(1), (2), (3)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(1), (2), (3), (4).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> (1), (2), (3).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên nhân chủ yếu làm cho hợp kim cứng hơn các kim loại thành phần là do",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "hợp kim chứa các nguyên tử của các nguyên tố khác nhau làm cho các lớp tinh thể kim loại trong hợp kim khó trượt lên nhau.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "hợp kim chứa các kim loại pha trộn cứng hơn kim loại cơ bản.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "trong hợp kim, các nguyên tố khác nhau tạo nên hợp chất hoá học.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "hợp kim được chế tạo ở nhiệt độ cao làm cho họp kim cứng hơn kim loại nguyên chất.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> hợp kim chứa các nguyên tử của các nguyên tố khác nhau làm cho các lớp tinh thể kim loại trong hợp kim khó trượt lên nhau..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tiến hành thí nghiệm như sau: Rót dung dịch NaCl bão hoà vào cốc 1, cốc 2, cốc 3; cho dầu nhờn vào cốc 4. Cho vào cốc 1 và cốc 4 một đinh sắt sạch, cho vào cốc 2 đinh sắt sạch được quấn bởi dây kẽm, cho vào cốc 3 đinh sắt sạch được quấn bởi dây đồng. Để 4 cốc trong không khí khoảng 5 ngày.<br/>Đinh sắt ở cốc nào bị gỉ nhiều nhất?",
+        "images": [
+          "/assets/hoa12/c6/hoa12_c6_de2_image1.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cốc 1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cốc 3",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cốc 2",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cốc 4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Cốc 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa12_c6_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đồng thau là hợp kim của đồng và kẽm (các tạp chất khác không đáng kể). Để xác định hàm lượng Cu trong một loại đồng thau, người ta cho 10 gam mảnh đồng thau vào dung dịch H<sub>2</sub>SO<sub>4</sub> (loãng, dư); sau khi các phản ứng xảy ra hoàn toàn, lọc lấy phần chất rắn đem làm khô, cân lại thu được 6,5 gam chất rắn. Hàm lượng đồng trong loại đồng thau trên bằng bao nhiêu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "50",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "35",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "60",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "65.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 65..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa12_c6_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu nào sau đây là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nguyên tử kim loại thường có 1, 2 hoặc 3 electron ở lớp ngoài cùng.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong bảng tuần hoàn, các nhóm A bao gồm các nguyên tố s và nguyên tố p.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong một chu kì, kim loại có bán kính nguyên tử nhỏ hơn phi kim.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Kim loại có ánh kim do các electron tự do phản xạ ánh sáng nhìn thấy được.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Bán kính của kim loại lớn hơn bán kính của phi kim trong cùng một chu kì.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Gang và thép là hai hợp kim quan trọng của sắt. Chúng được sử dụng trong nhiều lĩnh vực quan trọng của đời sống, sản xuất ,xây dựng và công nghiệp.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thép và gang đều là hợp kim chứa kim loại cơ bản là sắt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hàm lượng carbon trong gang cao hơn trong thép.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong thép và gang chỉ có hai đơn chất là sắt và carbon.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tính chất cơ học của thép có thể thay đổi khi có sự điều chính thành phần.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Ngoài Fe và C còn có các nguyên tố khác như Mn, Si, S,...<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Kim loại magnesium có khối lượng riêng là 1,74 g/cm<sup>-3</sup>. Kim loại này phản ứng chậm với nước ở nhiệt độ thường tạo ra anion OH<sup>-</sup> và khí H<sub>2</sub>, phản ứng nhanh với sulfuric acid loãng và làm nhạt màu dung dịch copper (II) sulfate.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Những hợp kim mà magnesium đóng vai trò kim loại cơ bản là những họp kim nặng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Giá trị thế điện cực chuẩn của Mg<sup>2+</sup>/Mg lớn hơn 0 V.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong môi trường trung tính, có: 2H<sub>2</sub>O + 2e  H<sub>2</sub> + 2OH<sup>-</sup> với  222HO/2OHHE0,413V-+=- .",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Giá trị thế điện cực chuẩn của Cu<sup>2+</sup>/Cu lớn hơn giá trị thế điện cực chuẩn của Mg<sup>2+</sup>/Mg.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Mg là kim loại nhẹ.<br/>b. Sai. Nhỏ hơn 0.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho vào 3 ống nghiệm, mỗi ống 2 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1 M.<br/>Bước 2: Cho 3 lá kim loại có kích thước như nhau gồm lá nhôm (Al) đã làm sạch lớp bề mặt vào ống nghiệm (1), lá sắt (Fe) vào ống nghiệm (2) và lá đồng (Cu) vào ống nghiệm (3).<br/>Biết:  3+2+2++20000Al/AlFe/FeCu/Cu2H/HE= -1,676 V; E= - 0,44 V; E= + 0,34 V; E=  0,00 V",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở bước 2, cả ba ống nghiệm đều có khí thoát ra.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ thoát khí xảy ra ở ống (1) nhanh hơn ống (2).",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nếu thay H<sub>2</sub>SO<sub>4</sub> loãng bằng H<sub>2</sub>SO<sub>4</sub> đặc, nguội thì hiện tượng ở bước 2 sẽ không đổi.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở bước 2, nếu thêm tiếp 2 mL H<sub>2</sub>SO<sub>4</sub> 1M vào cả 3 ống thì tốc độ thoát khí ở cả ba ống sẽ tăng.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Cu không tác dụng với dung dịch H<sub>2</sub>SO<sub>4</sub>.<br/>b. Đúng. Do Al có tính khử mạnh hơn Fe.<br/>c. Sai. Al, Fe bị thụ động hóa bởi H<sub>2</sub>SO<sub>4</sub> đặc, nguội còn Cu phản ứng tạo dung dịch màu xanh và có khí mùi hắc SO<sub>2</sub>.<br/>d. Sai. Thể tích H<sub>2</sub>SO<sub>4</sub> tăng không làm ảnh hưởng đến tốc độ phản ứng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de2_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Ion Na<sup>+</sup> (Z = 11) là một loại ion thiết yếu trong máu và dung dịch ngoại bào, đóng vai trò quan trọng trong hoạt động enzyme, co cơ, cân bằng nước và truyền dẫn xung điện thần kinh. Tổng số hạt proton và electron của ion Na<sup>+</sup> là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "21",
+        "explanation": "Đáp án: 21.<br/>Số e = 10 và số p = 11  p + e = 21.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "21",
+          "21",
+          "21"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de2_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phản ứng: 2Al(s) + Fe<sub>2</sub>O<sub>3</sub>(s)  0t¾¾® Al<sub>2</sub>O<sub>3</sub>(s)  + 2Fe(s) là phản ứng toả nhiệt lớn nên hỗn hợp gồm bột Al và Fe<sub>2</sub>O<sub>3</sub> (hỗn hợp tecmit) được ứng dụng để hàn đường may. Tính biến thiên enthalpy chuẩn ( 0298rHD ) của phản ứng trên.<br/>Bié:  0298rHD  (Al<sub>2</sub>O<sub>3</sub>) = –1676,00 KJ;  0298rHD  (Fe<sub>2</sub>O<sub>3</sub>) = –825,50 kJ (làm tròn kết quả đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "-851",
+        "explanation": "Đáp án: -851.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "-851",
+          "-851",
+          "-851"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho khí CO (dư) đi qua ống sứ nung nóng đựng hỗn hợp X gồm Al<sub>2</sub>O<sub>3</sub>, MgO, Fe<sub>3</sub>O<sub>4</sub> và CuO, thu được chất rắn Y. Cho Y vào dung dịch NaOH dư, khuấy kĩ, thấy còn lại phần không tan Z. Giả sử các phản ứng xảy ra hoàn toàn. Trong phần rắn không tan Z, có bao nhiêu kim loại?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.<br/>PTHH: Fe<sub>3</sub>O<sub>4</sub> + 4CO  ot¾¾® 3Fe + 4CO<sub>2</sub><br/>CuO + CO  ot¾¾® Cu + CO<sub>2</sub><br/>=> Chất rắn Y: Al<sub>2</sub>O<sub>3</sub>, MgO, Fe và Cu tác dụng với NaOH dư.<br/>Al<sub>2</sub>O<sub>3</sub> + 2NaOH → 2NaAlO<sub>2</sub> + H<sub>2</sub>O<br/>=> Chất rắn Z: MgO, Fe và Cu.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Để bảo vệ vật bằng thép khỏi bị ăn mòn điện hóa, trong thực tế người ta đã thực hiện một số cách sau:<br/>(1) Sơn trên bề mặt cánh cửa làm bằng thép.<br/>(2) Tráng kẽm lên tấm thép mỏng khi sản xuất tôn.<br/>(3) Gắn một số tấm kẽm lên vỏ tàu làm bằng thép.<br/>(4) Cho dầu mỡ lên các ốc vít trên đường ray.<br/>Liệt kê những cách sử dụng phương pháp nào về bề mặt theo số thứ tự tăng dần.",
+        "images": [],
+        "correctAnswer": "124",
+        "explanation": "Đáp án: 124.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "124",
+          "124",
+          "124"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các thí nghiệm sau:<br/>(a) Kim loại đồng nhúng trong dung dịch zinc sulfate.<br/>(b) Kim loại kẽm nhúng trong dung dịch silver nitrate.<br/>(c) Thả một mẩu sodium vào dung dịch copper(II) sulfate.<br/>(d) Rắc bột lưu huỳnh lên phần thuỷ ngân chảy ra từ nhiệt kế bị vỡ.<br/>(e) Thả một mẩu magnesium nóng đỏ vào nước.<br/>Có bao nhiêu phản ứng hóa học xảy ra ở điều kiện chuẩn?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Quặng sắt là các khoáng vật chứa các hợp chất của sắt mà chủ yếu ở dạng các oxide. Hematite là một loại quặng chứa hàm lượng sắt cao và được dùng để trực tiếp sản xuất gang bằng cách nạp thẳng vào lò cao. Giả thiết 90% sắt trong quặng được chuyển vào gang. Từ 800 tấn quặng hematite (có hàm lượng 68% Fe) có thể sản xuất được bao nhiêu tấn gang loại 96% Fe?",
+        "images": [],
+        "correctAnswer": "510",
+        "explanation": "Đáp án: 510.<br/>- Khối lượng sắt trong 1 000 tấn quặng:  Fe(Q)m800.68% = 544T=<br/>- Khối lượng sắt chuyển vào gang là:  Fe(G)m544.90% = 489,6 T=<br/>- Khối lượng gang sản xuất được:  G489,6.100m = 510 T96=<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "510",
+          "510",
+          "510"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa12_c6_de3",
+    "code": "12-C6-03",
+    "title": "Đề Kiểm Tra Chương 6: Đại Cương Kim Loại (Đề số 3)",
+    "topic": "Tách kim loại, hợp kim & ăn mòn hóa học/ăn mòn điện hóa",
+    "badge": "Chương 6 • Đề 3",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa12_c6_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cấu hình electron nào sau đây là của nguyên tử kim loại?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>1</sup>.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>1</sup>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại có khối lượng riêng nhỏ nhất là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Na",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Li",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Li.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Gang, thép là các vật liệu chứa nguyên tố kim loại cơ bản nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhôm",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Kẽm",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sắt",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nickel.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Sắt.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cầu chì là một phần tử hay thiết bị bảo vệ mạch điện bằng cách làm đứt mạch điện. Câu chì được sử dụng nhằm phòng tránh các hiện tượng quả tải trên đường dây. Dây cầu chi thường được làm kim loại chì (Pb), thiếc trắng (Sn) hoặc cadmium (Cd). Ứng dụng này dựa trên tính chất nào của các kim loại trên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có tính dẻo cao.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt độ nóng chảy tương đối thấp.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Có độ dẫn điện cao.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Có độ cứng tương đối thấp.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Nhiệt độ nóng chảy tương đối thấp..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trường hợp nào sau đây đã sử dụng phương pháp điện hoá để chống ăn mòn kim loại?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Mạ vàng lên quai đồng hồ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Bôi dầu mỡ lên xích xe đạp.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Gắn tấm kẽm lên mặt ngoài vỏ tàu biển",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sơn kín bề mặt khung cửa thép.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Gắn tấm kẽm lên mặt ngoài vỏ tàu biển.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tiến hành các thí nghiệm sau:<br/>(a) Cho kim loại Cu vào dung dịch FeCl<sub>3</sub> dư.<br/>(b) Điện phân dung dịch AgNO<sub>3</sub> (điện cực trơ).<br/>(c) Nung nóng hỗn hợp bột Al và Fe<sub>2</sub>O<sub>3</sub> (không có không khí).<br/>(d) Cho kim loại Ba vào dung dịch CuSO<sub>4</sub> dư.<br/>(e) Điện phân Al<sub>2</sub>O<sub>3</sub> nóng chảy.<br/>Số thí nghiệm có sự tạo thành kim loại là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "5",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dây kim loại nào sau đây đều không tan trong dung dịch HNO<sub>3</sub> đặc, nguội hoặc dung dịch H<sub>2</sub>SO<sub>4</sub> đặc, nguội?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cu, Mg, Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Au, Cu, Ag",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Al, Mg, Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Fe, Cr, Al.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Fe, Cr, Al..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thuỷ ngân (Hg) là chất lỏng ở điều kiện thường, dễ bay hơi và hơi thuỷ ngân rất độc. Khi nhiệt kế thuỷ ngân bị vỡ, để tránh thuỷ ngân phân tán ra môi trường xung quanh, người ta gom thuỷ ngân lại rồi trộn với chất nào sau đây (ở dạng bột)?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Carbon (C)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Magnesium (Mg)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Iron (Fe)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sulfur (S).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Sulfur (S)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các kim loại Au, Ag có thể tồn tại được ở dạng đơn chất trong tự nhiên vì chúng là kim loại",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "hoạt động hóa học mạnh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "hoạt động hóa học trung bình.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "có khối lượng riêng lớn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "rất kém hoạt động hóa học.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> rất kém hoạt động hóa học..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhôm (Al) là nguyên tố phổ biến thứ ba (sau oxyen và silicon) và là kim loại phổ biến nhất trong vỏ Trái Đất. Nhôm chiếm khoảng 17% khối lớp rắn của Trái Đất. Trong tự nhiên, quặng chính chứa nhôm là bauxite và quặng này là nguyên liệu chính để sản xuất nhôm trong công nghiệp. Thành phần chính của quặng bauxite là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Na<sub>3</sub>AlF<sub>6</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Al<sub>2</sub>O<sub>3</sub>.2H<sub>2</sub>O.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "KAl(SO<sub>4</sub>)<sub>2</sub>.12H<sub>2</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "K<sub>2</sub>O.Al<sub>2</sub>O<sub>3</sub>.6SiO<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Al<sub>2</sub>O<sub>3</sub>.2H<sub>2</sub>O..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tắc chung để điều chế kim loại từ hợp chất của chúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "khử cation kim loại thành kim loại",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "oxi hoá ion kim loại thành kim loại.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "oxi hoá kim loại thành ion kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "khử kim loại thành ion kim loại.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> khử cation kim loại thành kim loại.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong công nghiệp, dãy gồm những kim loại nào sau đây đều được sản xuất bằng phương pháp điện phân nóng chảy?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Na, Al, Mg",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na, Al, Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cu, Fe, Au",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ag, Mg, Zn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Na, Al, Mg.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhúng thanh kim loại M hoá trị II vào 1120 mL dung dịch CuSO<sub>4</sub> 0,2 M. Sau khi phản ứng kết thúc, khối lượng thanh kim loại tăng 1,344 gam và nồng độ CuSO<sub>4</sub> còn lại là 0,05 M. Cho rằng Cu kim loại giải phóng ra bám hết vào thanh kim loại. Kim loại M là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Mg",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Al",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Fe",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Zn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Fe.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tính chất vật lí của hợp kim khác nhiều so với của đơn chất thành phần.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tính chất hoá học của hợp kim tương tự tính chất của đơn chất thành phần.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tính chất cơ học của hợp kim phụ thuộc vào thành phần đơn chất của hợp kim.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tính chất cơ học của hợp kim không phụ thuộc vào hàm lượng các đơn chất.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Tính chất vật lí của hợp kim khác nhiều so với của đơn chất thành phần..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trường hợp nào sau đây kim loại bị phá huỷ chủ yếu do ăn mòn hoá học?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thiết bị làm bằng thép trong lò đốt lâu ngày bị phá huỷ.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thép xây dựng bị gỉ khi để lâu ngày trong không khí ẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ống nước làm bằng gang bị gỉ khi chôn dưới đất lâu ngày.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Vỏ tàu biển làm bằng thép bị gỉ sau một thời gian sử dụng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Thiết bị làm bằng thép trong lò đốt lâu ngày bị phá huỷ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình vẽ nào sau đây có thể được dùng để mô tả cấu trúc tinh thể kim loại?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Mô hình A (tinh thể kim loại)",
+            "image": "/assets/hoa12/c6/hoa12_c6_de3_image1.png",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Mô hình B",
+            "image": "/assets/hoa12/c6/hoa12_c6_de3_image2.png",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Mô hình C",
+            "image": "/assets/hoa12/c6/hoa12_c6_de3_image3.png",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Mô hình D",
+            "image": "/assets/hoa12/c6/hoa12_c6_de3_image4.png",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> B..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hỗn hợp ammonium perchlorate (NH<sub>4</sub>ClO<sub>4</sub>) và bột nhôm (Al) được dùng làm nhiên liệu rắn của tàu vũ trụ con thoi. Khi nung đến 200 °C sẽ xảy ra phản ứng theo sơ đồ sau:<br/>(1) NH<sub>4</sub>ClO<sub>4</sub>  ¾¾®  N<sub>2</sub> + Cl<sub>2</sub> + O<sub>2</sub> + H<sub>2</sub>O<br/>(2) Al + O<sub>2</sub>  ¾¾®  Al<sub>2</sub>O<sub>3</sub><br/>Mỗi một lần phóng tàu con thoi tiêu tốn 775,5 tấn ammonium perchlorate (NH<sub>4</sub>ClO<sub>4</sub>). Giả sử tất cả khí oxygen (O<sub>2</sub>) sinh ra chỉ tác dụng với bột nhôm (Al). Khối lượng bột nhôm đã tham gia phản ứng với oxygen là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "237,6 tấn",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "133,65 tấn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "178,2 tấn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "448,8 tấn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 237,6 tấn.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa12_c6_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu về việc tái chế kim loại:<br/>(1) Tái chế là quá trình xử lý để tái sử dụng rác thải hoặc vật liệu không cần thiết (phế liệu) thành vật liệu mới mang lại lợi ích cho đời sống và sản xuất.<br/>(2) Kim loại là vật liệu có thể được tái chế nhiều lần mà thường không làm thay đổi tính chất cũng như làm giảm chất lượng của chúng.<br/>(3) Nhu cầu sử dụng kim loại đen (gang, thép với thành phần chính là sắt) trong đời sống và sản xuất là cao nhất.<br/>(4) Việc tái chế kim loại là một trong những giải pháp giúp bảo vệ môi trường, tiết kiệm tài nguyên và phục vụ sản xuất.<br/>Những phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1), (2), (3)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1), (2), (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(2), (3), (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(1), (2), (3), (4).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> (1), (2), (3), (4)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa12_c6_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Kim loại có nhiều ứng dụng trong thực tế nhờ các tính chất vật lí chung nổi trội của chúng như tính dẻo, tính dẫn điện, tính dẫn nhiệt và ánh kim.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kim loại có ánh kim là do các electron hoá trị tự do trong tỉnh thể kim loại phản xạ hầu hết những ánh sáng mà mắt thường nhìn thấy.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Do kim loại đồng dẫn diện tốt nhất trong các kim loại nên dòng thường được dùng để chế tạo dây dẫn điện.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Kim loại dẫn nhiệt được là do trong tinh thể kim loại, các cation kim loại chuyển động mang năng lượng từ vùng có nhiệt độ cao tới vùng có nhiệt độ thấp.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Kim loại có tính dẻo là do các chuẩn trong tinh thể kim loại có thể trượt lên nhờ lực hút tĩnh điện giữa chúng với các electron hoá trị tự do.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai.<br/>c. Sai.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho một ít bột nhôm vào muỗng đốt hoá chất rồi đốt trên ngọn lửa đèn cồn. Khi một phần bột nhôm trong muỗng cháy đỏ thì đưa nhanh muỗng vào bình chứa oxygen dư. Bột nhôm cháy nhanh và phát ra ánh sáng màu trắng rất mạnh, tạo thành hợp chất A.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhôm bị khử tạo thành hợp chất A là Al<sub>2</sub>O<sub>3</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Số oxi hoá của nhôm trong hợp chất A là +3.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy chuẩn của phản ứng giữa nhôm và oxygen có giá trị âm  \\left(\\Delta_{\\mathrm{r}} \\mathrm{H}_{298}^{\\circ}<0\\right) .",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng trên liên quan đến 2 cặp oxi hoá - khử là  \\mathrm{Al}^{3+} / \\mathrm{Al}  và  \\mathrm{O}_2 / 2 \\mathrm{O}^{2-} .",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Nhôm bị oxi hóa thành hợp chất A.<br/>b. Đúng.<br/>c. Đúng<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Hợp kim duralumin được sử dụng rộng rãi trong ngành công nghiệp chế tạo máy bay.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hợp kim duralumin là hợp kim của nhôm (aluminum).",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hợp kim duralumin có đặc điểm nhẹ, cứng, bền cơ học.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hợp kim duralumin được sản xuất bằng cách nấu chảy quặng bauxite.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hợp kim duralumin bền trong môi trường acid và kiềm.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Hợp kim được điều chế bằng cách nung chảy các thành phần (Al – Cu, Mn, Mg, Si) rồi để nguội.<br/>d. Sai. Al bị hòa tan bởi acid, base.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1. Cho vào cốc thuỷ tinh 30 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 0,5 M.<br/>Bước 2. Cho một lá nhôm và một lá đồng vào cốc sao cho chúng không tiếp xúc với nhau. Để yên khoảng 1 phút.<br/>Bước 3. Dùng dây dẫn điện nối lá nhôm và lá đồng với một vôn kế.<br/>Biết:  3oAl/AlE1,676 V+=- ;  2o2H/HE0 V+= ;  2oCu/CuE0,34 V+=+ .",
+        "images": [
+          "/assets/hoa12/c6/hoa12_c6_de3_image9.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở bước 2, lá nhôm bị ăn mòn hoá học còn lá đồng không bị ăn mòn.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở bước 3, có sự tạo thành cặp pin điện hoá, trong đó lá nhôm là cathode và lá đồng là anode.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở bước 3, khí chỉ thoát ra ở bề bặt lá đồng, còn ở lá nhôm không có khí thoát ra.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở bước 3, kim vôn kế chỉ 1,336 V.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Anode (cực âm/Al); cathode (cực dương/Cu).<br/>c. Sai. Khí thoát ra ở thanh Al và Cu.<br/>d. Sai.  23oooPinCu/CuAl/AlEEE2,016 V++=-= .",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho thế điện cực chuẩn của các cặp oxi hoá – khử: Fe<sup>2+</sup>/Fe; Na<sup>+</sup>/Na; Ag<sup>+</sup>/Ag; Mg<sup>2+</sup>/Mg; Cu<sup>2+</sup>/Cu lần lượt là –0,44 V; –2,713 V; 0,799 V; –2,353 V; +0,340 V. Trong số các ion kim loại: Na<sup>+</sup>, Ag<sup>+</sup>, Mg<sup>2+</sup>, Cu<sup>2+</sup>; kim loại Fe khử được bao nhiêu ion kim loại ở điều kiện chuẩn?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Vàng (Au) đơn chất tồn tại trong tự nhiên ở trong quặng vàng thường có hàm lượng vàng thấp. Để thu hồi vàng từ quặng vàng, người ta nghiền quặng, hoà tan chúng vào dung dịch KCN và liên tục sục không khí vào. Vàng bị hoà tan tạo thành phức chất:<br/>4Au(s) + 8KCN(aq) +  O<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  ®  4K[Au(CN)<sub>2</sub>](aq)  +  4KOH(aq) (1)<br/>và sau đó kết tủa vàng bằng kẽm (Zn):<br/>Zn(s) + 2K[Au(CN)<sub>2</sub>](aq) →  K<sub>2</sub>[Zn(CN)<sub>4</sub>](aq)  + 2Au(s) (2)<br/>Nếu dùng 13 kg KCN thì có thể tách được bao nhiêu kg vàng từ quặng theo chuỗi phản ứng trên? Giả thiết các chất khác trong quặng không phản ứng với KCN.",
+        "images": [],
+        "correctAnswer": "19,7",
+        "explanation": "Đáp án: 19,7.<br/>KCNAuAunn0,1kmolm19,7kg2==Þ= .",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "19,7",
+          "19.7",
+          "19,7"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các nhận định sau: (1) Các kim loại thuộc nhóm IA và IIA bao gồm các nguyên tố s. (2) Nguyên tử của hầu hết các kim loại có từ 1 đến 3 electron ở lớp ngoài cùng. (3) Nguyên tử kim loại dễ nhường electron hơn so với các nguyên tử phi kim. (4) Trong mạng tinh thể kim loại, các electron chuyển động tự do theo nhiều hướng. Có bao nhiêu nhận định là đúng?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các kim loại: Al, Cu, Na, Au, Ag, Mg. Có bao nhiêu kim loại tan được trong dung dịch HCl.",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Để xảy ra ăn mòn điện hoá học thì cần đủ các yếu tố nào sau đây?<br/>(1) Phải có hai điện cực khác chất nhau (hai kim loại khác nhau hoặc kim loại với phi kim).<br/>(2) Hai điện cực phải tiếp xúc với nhau (trực tiếp hoặc gián tiếp qua dây dẫn).<br/>(3) Hai điện cực phải được nối qua vôn kế hoặc ampe kế.<br/>(4) Hai điện cực phải cùng tiếp xúc với một dung dịch chất điện li.<br/>Liệt kê các yếu tố theo số thứ tự tăng dần (Ví dụ: 1234, 24,…).",
+        "images": [],
+        "correctAnswer": "124",
+        "explanation": "Đáp án: 124.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "124",
+          "124",
+          "124"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong công nghiệp sản xuất gang ở nước ta hiện nay, muốn sản xuất ra 1 tấn gang cần phải sử dụng 1,7 đến 1,8 tấn quặng sắt; 0,6 đến 0,7 tấn đá vôi làm chất trợ dung; 0,6 đến 0,8 tấn than cốc. Giả thiết trong đá vôi CaCO<sub>3</sub> chiếm 97% khối lượng và 90%, than cốc chuyển hoá thành CO<sub>2</sub>. Trong điều kiện sản xuất như trên, khi sán xuất được 1 tấn gang, nhà máy đã thái ra môi trường tối thiểu bao nhiêu m<sup>3</sup> khí CO<sub>2</sub> điều kiện chuẩn? (Làm tròn kết quả đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "1412",
+        "explanation": "Đáp án: 1412.<br/>CaCO3m   tối thiểu = 0,6 tấn = 600 kg<br/>m than cốc tối thiểu = 0,6 tấn = 600 kg<br/>CO2V  tối thiểu =  60060024,79.97%.  90%.1412 m³10012æö=÷ø+çè<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "1412",
+          "1412",
+          "1412"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa12_c6_de4",
+    "code": "12-C6-04",
+    "title": "Đề Kiểm Tra Tổng Hợp Toàn Diện Chương 6 (Đề số 4)",
+    "topic": "Đề ôn tập toàn diện Đại cương về Kim loại chuẩn Bộ 2025",
+    "badge": "Chương 6 • Đề 4",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa12_c6_de4_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở điều kiện thường, kim loại nào sau đây ở trạng thái lỏng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Au",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cu",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Na",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hg.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Hg..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong mạng tinh thể kim loại chứa các cation kim loại được sắp xếp theo một trật tự nhất định cùng với các electron chuyển động",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "theo một quỹ đạo xác định",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "xung quanh một vị trí xác định.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tự do trong toàn bộ mạng tỉnh thể",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "trong một khu vực không gian nhất định.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> tự do trong toàn bộ mạng tỉnh thể.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong vỏ Trải Đất, kim loại nào sau đây có thể tồn tại ở dạng đơn chất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Na, Mg",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Al, Fe",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cu, Zn",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ag, Au.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Ag, Au..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho biết số thứ tự của Al trong bảng tuần hoàn là 13. Số electron lớp ngoài cùng của Al là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kim loại nào sau đây không phản ứng hóa học với dung dịch HCl loãng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cu",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Mg",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Zn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Cu.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thép là hợp kim của sắt và carbon, có thể chứa chromium và nickel. Tính chất của thép phụ thuộc vào hàm lượng các nguyên tố pha tạp. Loại thép nào sau đây được sử dụng để làm dụng cụ y tế?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thép có hàm lượng carbon cao",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thép có hàm lượng carbon thấp.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Thép không gỉ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thép silicon.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Thép không gỉ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tính chất hóa học đặc trưng của kim loại là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tính oxi hóa",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tính acid",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tính base",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tính khử.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> tính khử..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các kim loại sau, kim loại nào có tính khử yếu nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Au",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cu",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Na",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Fe.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Au.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nguyên tắc tách kim loại là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "khử ion kim loại",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "oxi hóa ion kịm loại thành nguyên tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "khử nguyên tử kim loại thành ion",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "oxi hóa nguyên tử kim loại thành ion.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> khử ion kim loại.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình ảnh sau đây minh họa tính chất vật lí nào của kim loại?",
+        "images": [
+          "/assets/hoa12/c6/hoa12_c6_de4_image5.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tính dẫn điện",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tính dẫn nhiệt",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tính dẻo",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tính cứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Tính dẻo.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở điều kiện chuẩn, khi nhúng đinh sắt vào dung dịch copper (II) sulfate thì xảy ra phản ứng sau:<br/>Fe(s) + Cu<sup>2+</sup>(aq) → Fe<sup>2+</sup>(aq) + Cu(s)<br/>Phát biểu nào dưới đây về phản ứng trên là không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sau một thời gian, màu xanh của dung dịch nhạt dần.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ion Cu<sup>2+</sup> có tính oxi hoá mạnh hơn ion Fe<sup>2+</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Kim loại Fe có tính khử mạnh hơn kim loại Cu.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thế điện cực chuẩn của cặp oxi hóa – khử Fe<sup>2+</sup>/Fe lớn hơn thế điện cực chuẩn của cặp oxi hóa – khử Cu<sup>2+</sup>/Cu.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Thế điện cực chuẩn của cặp oxi hóa – khử Fe<sup>2+</sup>/Fe lớn hơn thế điện cực chuẩn của cặp oxi hóa – khử Cu<sup>2+</sup>/Cu..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(1) Các nguyên tử có 1 đến 3 electron ở lớp ngoài cùng đều là kim loại.<br/>(2) Những kim loại có thế điện cực chuẩn nhỏ hơn -0,414 V có thể đẩy được hydrogen ra khỏi nước.<br/>(3) Ở trạng thái rắn, đơn chất kim loại có cấu tạo tinh thể.<br/>(4) Duralumin là hợp kim của nhôm nhẹ, cứng và bền được sử dụng rộng rãi trong ngành công nghiệp chế tạo máy bay.<br/>Các phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(3), (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1), (2), (3)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(2), (3), (4)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(1), (2), (3), (4).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> (2), (3), (4).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Vàng (Au) tồn tại trong tự nhiên ở dạng đơn chất, Tuy nhiên, hàm lượng Au trong quặng hoặc trong đất thường rất thấp vì vậy rất khó tách Au bằng phương pháp cơ học. Trong công nghiệp, người ta tách vàng từ quặng theo sơ đồ sau:<br/>Quặng chứa vàng (Au)  22OKCNHO+++¾¾¾¾¾¾®  K[Au(CN)<sub>2</sub>](aq)  Zn+¾¾¾®  Au(s)<br/>Phương pháp điều chế kim loại nào đã được sử dụng trong quá tình sản xuất vàng theo sơ đồ trên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thủy luyện",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt luyện",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Điện phân",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chiết.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Thủy luyện.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hợp kim là vật liệu kim loại chứa một kim loại cơ bản với",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "một số kim loại khác hoặc phi kim",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "một số oxide của kim loại đó.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "một số oxide kim loại khác hoặc phi kim",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "một số phi kim và oxide của phi kim đó.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> một số kim loại khác hoặc phi kim.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thí nghiệm nào sau đây Fe chỉ bị ăn mòn hóa học?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đốt dây sắt trong không khí khô",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cho hợp kim Fe – Cu vào dung dịch CuSO<sub>4</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Để mẩu gang lâu ngày trong không khí ẩm",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cho Fe vào dung dịch AgNO<sub>3</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Đốt dây sắt trong không khí khô.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để khử hoàn toàn một lượng oxide kim loại thành kim loại cần vừa đủ V lít khí H<sub>2</sub>. Hoà tan lượng kim loại tạo thành bằng H<sub>2</sub>SO<sub>4</sub> loãng, dư thu được V lít H<sub>2</sub> (các khí đo cùng điều kiện). Oxide kim loại đó là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "MgO",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Fe<sub>2</sub>O<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "FeO",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CuO.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> FeO.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa12_c6_de4_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trường hợp nào sau đây không xảy ra sự ăn mòn kim loại?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tàu đánh cá làm bằng thép bị hoen gỉ sau thời gian đi biển về.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trống đồng bị chuyển màu xanh khi để lâu ngày trong không khí ẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vòng tay làm bằng bạc kim loại bị hoá đen khi sử dụng lâu ngày.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nấu chảy vàng để đúc khuôn khi chế tác vàng trang sức.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Nấu chảy vàng để đúc khuôn khi chế tác vàng trang sức..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa12_c6_de4_p1_p1_q18",
+        "number": 18,
+        "displayNumber": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để lợp nhà, các tấm tôn (thép mỏng mạ kẽm) được gắn với nhau bởi các đinh thép. Theo thời gian, các tấm tôn bị ăn mòn.<br/>(1) Vị trí đóng đinh thép dễ xảy ra ăn mòn hơn các vị trí khác.<br/>(2) Tấm tôn bị ăn mòn từ trong ra ngoài do thép bị ăn mòn trước kẽm.<br/>(3) Sắt trong tấm tôn không bị ăn mòn theo thời gian.<br/>(4) Lớp tráng kẽm bị ăn mòn trước.<br/>Số nhận định đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Đáp án đúng là B:</b> Có 2 nhận định đúng là (1) và (4).<br/>- (1) Đúng: Vị trí tiếp xúc giữa đinh thép (Fe-C) và tôn kẽm (Zn) dễ tạo cặp pin điện hóa, xảy ra ăn mòn điện hóa nhanh hơn.<br/>- (2) Sai: Kẽm có tính khử mạnh hơn sắt nên Zn bị ăn mòn trước để bảo vệ Fe.<br/>- (3) Sai: Sau khi lớp mạ Zn bị ăn mòn hết, Fe sẽ tiếp tục bị ăn mòn.<br/>- (4) Đúng: Zn có tính khử mạnh hơn Fe nên đóng vai trò cực âm (anode) bị ăn mòn trước.",
+        "explanationImages": [],
+        "points": 0.25
+      },
+      {
+        "id": "hoa12_c6_de4_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tùy thuộc vào tính chất vật lí riêng của mỗi kim loại trừ chúng được sử dụng vào những mục dịch khác nhau.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Kim loại chi (Pb) và cadmiun (Cd) có nhiệt nóng cháy khá thấp nên dụng sử dụng làm dây chạy trong càu chì.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Kim loại tungsten (W) có độ bên nhiệt và nhiệt độ nóng chảy rất cao nên được sử dụng làm dây tóc bóng đèn, thiết bị sưởi.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Do có tính dẻo và độ cứng phù hợp nên nhôm (Al) thường được gia công làm vật liệu như khung cửa, khung thiết bị.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Do kim loại magnesium (Mg) có khối lượng riêng là 1,735 g/ cm<sup>3</sup> nên được dùng để chế tạo các hợp kim nặng.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a) Đúng.<br/>b) Đúng.<br/>c) Đúng.<br/>d) Sai. Mg là kim loại nhẹ do có D < 5 g/cm<sup>3</sup>.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa12_c6_de4_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tiến hành thí nghiệm theo các bước sau:<br/>Bước 1: Cho vào 3 ống nghiệm, mỗi ống 2 ml dung dịch H<sub>2</sub>SO<sub>4</sub> 1M.<br/>Bước 2: Cho 3 lá kim loại có kích thước như nhau gồm lá nhôm đã làm sạch lớp bề mặt vào ống nghiệm (1), lá iron (sắt) vào ống nghiệm (2) và lá Copper (Cu) vào ống nghiệm (3). Biết  30Al/AlE+ = -1,676V,  20Fe/FeE+  = -0,440V,  20Cu/CuE+ = +0,340V",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở bước 2, ở cả ba ống nghiệm đều có khí thoát ra.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ thoát khí ở ống nghiệm (1) nhanh hơn ống nghiệm (2).",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nếu thay H<sub>2</sub>SO<sub>4</sub> loãng bằng H<sub>2</sub>SO<sub>4</sub> đặc thì hiện tượng ở bước 2 sẽ không thay đổi.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở bước 2, nếu thêm tiếp 2 mL dung dịch H<sub>2</sub>SO<sub>4</sub> 1M vào cả 3 ống nghiệm thì tốc độ thoát khí ở cả ba ống nghiệm sẽ tăng.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a) Sai. Cu không phản ứng với H<sub>2</sub>SO<sub>4</sub> loãng  ống (3) không có khí.<br/>b) Đúng.<br/>c) Sai. Al, Fe thụ động hoá với H<sub>2</sub>SO<sub>4</sub> đặc nguội, Cu tan tạo thành dung dịch có màu xanh và có khí thoát ra)<br/>d) Sai. ống đựng Cu vẫn không thoát khí.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa12_c6_de4_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Tiến hành thí nghiệm như sau: Rót dung dịch NaCl bão hoà vào cốc 1, cốc 2, cốc 3; cho dầu nhờn vào cốc 4. Cho vào cốc 1 và cốc 4 một đinh sắt sạch, cho vào cốc 2 đinh sắt sạch được quấn bởi dây kẽm, cho vào cốc 3 đinh sắt sạch được quấn bởi dây đồng. Để 4 cốc trong không khí khoảng 5 ngày.",
+        "images": [
+          "/assets/hoa12/c6/hoa12_c6_de4_image11.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở cốc 4, đinh sắt không bị ăn mòn.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở cốc 3, đinh sắt không bị gỉ và đồng bị ăn mòn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở cốc 2, đinh sắt bị gỉ và kẽm không bị ăn mòn.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở cốc 1, đinh sắt bị gỉ và có lớp chất rắn màu nâu đỏ lắng dưới đáy cốc.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a) Đúng.<br/>b) Sai. Đinh sắt bị ăn mòn do có tính khử mạnh hơn đồng.<br/>c) Sai. Kẽm bị ăn mòn  do có tính khử mạnh hơn sắt.<br/>d) Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa12_c6_de4_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Để tái chế nhôm, người ta sử dụng phế liệu kim loại như các lon, hộp chứa nước giải khát hay thực phẩm. Phế liệu còn lẫn các tạp chất là các chất vô cơ và hữu cơ (có trong nhãn, mác in hoặc sơn trên vỏ lon, hộp). Phế liệu được cắt, băm nhỏ rồi cho vào lò nung tới khi chảy lỏng. Phần xỉ lỏng, nổi lên trên được vớt ra khỏi lò. Phần còn lại trong lò là nhôm tái chế ở trạng thái nóng chảy.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Việc tái chế nhôm giúp giảm tác động tiêu cực của việc khai thác mỏ quặng, tiết kiệm tài nguyên thiên nhiên.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Việc cắt, băm nhỏ phế liệu giúp giảm thể tích, tránh hao phí năng lượng khi nung.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nhôm tái chế thủ công có thể dùng để chế tạo dụng cụ nhà bếp (xoong, chảo, thau,…) và dụng cụ y tế.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Quá trình tái chế nhôm thủ công cho lợi nhuận cao nhưng gây ô nhiễm môi trường trầm trọng nếu không có biện pháp xử lý các chất thải.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a) Đúng.<br/>b) Đúng.<br/>c) Sai. Các sản phẩm xoong nồi sản xuất từ nhôm tái chế có độ tinh khiết thấp, dễ lẫn các tạp chất kim loại nặng khác như chì, arsenic, cadmium… Trong quá trình đun nấu, đựng các đồ ăn mặn, chua dễ bị ăn mòn, điện hóa tạo ra những vết lỗ chỗ, lỗ hổng lớn làm cho ion nhôm bị thôi ra lẫn vào đồ ăn thức uống sẽ rất nguy hiểm.<br/>d) Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa12_c6_de4_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong phản ứng của kim loại Mg với khí Cl<sub>2</sub>, mỗi nguyên tử Mg nhường bao nhiêu electron?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de4_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong các kim loại Cu, Zn; Fe, Na, K và Au, số kim loại điều chế được bằng phương pháp nhiệt luyện là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de4_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Để xảy ra ăn mòn điện hoá học thì cần đủ các yếu tố nào sau đây?<br/>(1) Phải có hai điện cực khác chất nhau (hai kim loại khác nhau hoặc kim loại với phi kim).<br/>(2) Hai điện cực phải tiếp xúc với nhau (trực tiếp hoặc gián tiếp qua dây dẫn).<br/>(3) Hai điện cực phải được nối qua vôn kế hoặc ampe kế.<br/>(4) Hai điện cực phải cùng tiếp xúc với một dung dịch chất điện li.<br/>Liệt kê các yếu tố theo số thứ tự tăng dần.",
+        "images": [],
+        "correctAnswer": "124",
+        "explanation": "Đáp án: 124.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "124",
+          "124",
+          "124"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de4_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Ngâm một lá kẽm trong 200 mL dung dịch AgNO<sub>3</sub> nồng độ a mol/L cho đến khi kẽm không tan thêm nữa. Lấy lá kẽm ra, rửa nhẹ, làm khô rồi đem cân thì thấy khối lượng lá kẽm tăng thêm 0,604 g. Giá trị của a là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "0,04",
+        "explanation": "Đáp án: 0,04.<br/>Zn + 2Ag<sup>+</sup>  ¾¾®  Zn<sup>2+</sup> + 2Ag<br/>108.2x65x0,604  x = 0,004 mol-=Þ<br/>PTHHAgM(Ag)n0,008 mol  a = C0,04 M++¾¾¾®=Þ=",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "0,04",
+          "0.04",
+          "0,04"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de4_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tiến hành các thí nghiệm sau:<br/>(1) Cho Mg vào lượng dư dung dịch FeCl<sub>3</sub>.<br/>(2) Cho Ba vào lượng dư dung dịch CuSO<sub>4</sub>.<br/>(3) Điện phân Al<sub>2</sub>O<sub>3</sub> nóng chảy.<br/>(4) Cho dung dịch Fe(NO<sub>3</sub>)<sub>2</sub> vào dung dịch AgNO<sub>3</sub>.<br/>(5) Nung nóng hỗn hợp rắn gồm ZnO và C trong điều kiện không có không khí.<br/>Có bao nhiêu thí nghiệm thu được kim loại sau phản ứng?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>(1) Mg + FeCl<sub>3 dư</sub> → FeCl<sub>2</sub> + MgCl<sub>2</sub> ( không có kim loại).<br/>(2) Ba + 2H<sub>2</sub>O → Ba(OH)<sub>2</sub> + H<sub>2</sub><sub>;</sub>Ba(OH)<sub>2</sub> + CuSO<sub>4</sub> → BaSO<sub>4</sub>↓ + Cu(OH)<sub>2</sub>↓<br/>Þ  Không có kim loại<br/>(3) Zn + CuSO<sub>4</sub> → ZnSO<sub>4</sub> + Cu ( tạo Cu).<br/>(4) AgNO<sub>3</sub> + Fe(NO<sub>3</sub>)<sub>2</sub> → Fe(NO<sub>3</sub>)<sub>3</sub> + Ag ↓.<br/>(5) ZnO + C  ot¾¾®  Zn + CO.",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa12_c6_de4_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Luyện thép từ gang là quá trình làm giảm hàm lượng carbon và một số nguyên tố khác có trong gang. Một nhà máy luyện thép sử dụng loại gang nguyên liệu trong đó carbon chiếm 4,60% về khối lượng, còn lại là sắt (coi hàm lượng các nguyên tố khác không đáng kể). Khi tiến hành luyện thép, một lượng 2,88 tấn khí oxygen được thổi vào 45,0 tấn gang nguyên liệu nóng chảy để oxi hoá carbon thành CO và CO<sub>2</sub>. Hỗn hợp khí thu được chỉ gồm CO và CO<sub>2</sub> có số mol bằng nhau. Phần trăm khối lượng carbon trong thép thu được là w%, còn lại là sắt. Coi sắt không bị mất đi trong quá trình luyện thép. Giá trị của w là bao nhiêu? (Không làm tròn kết quả các phép tính trung gian, chỉ làm tròn kết quả cuối đến hàng phần trăm).",
+        "images": [],
+        "correctAnswer": "1,45",
+        "explanation": "Đáp án: 1,45.<br/>45,0 tấn gang nguyên liệu chứa: m<sub>C</sub> = 45.4,6% = 2,07 tấn và m<sub>Fe</sub> = 45 – 2,07 = 42,93 tấn<br/>22CO COO2,88nnxmol; n0,09mol32====  (triệu mol)<br/>Bảo toàn O: x + 2x = 0,09.2  x = 0,06<br/>m<sub>C còn lại</sub> = 2,07 – 12.2x = 0,63 tấn<br/>%C trong thép =  0,63.10042,93  0,63+  = 1,45%.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.5,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "1,45",
+          "1.45",
+          "1,45"
+        ]
+      }
+    ]
+  }
+];
 
 export const HOA12_CHUONG6_7_EXAMS: Chuong6Exam[] = HOA12_CHUONG6_EXAMS;
 

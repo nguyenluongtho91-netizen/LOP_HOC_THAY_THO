@@ -78,7 +78,3922 @@ export const HOA10_CHUONG5_MASTER: Record<string, Chuong5Lesson> = {"bai17":{"id
 
 export const HOA10_CHUONG5_LESSONS: Chuong5Lesson[] = Object.values(HOA10_CHUONG5_MASTER);
 
-export const HOA10_CHUONG5_EXAMS: Chuong5Exam[] = [{"id":"hoa10_c5_de1","code":"ĐỀ 501","title":"Đề kiểm tra Chương 5: Năng lượng hóa học (Đề số 1)","topic":"Nhận biết phản ứng tỏa nhiệt và phản ứng thu nhiệt theo ∆rHo298","badge":"Chương 5 - Đề 1","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c5_de1_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Quy ước về dấu của nhiệt phản ứng () nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng thu nhiệt có < 0","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng thu nhiệt có > 0","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng tỏa nhiệt có > 0","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng thu nhiệt có = 0","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c5_de1_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Điều kiện chuẩn đối với chất khí là","images":[],"options":[{"id":"a","letter":"A","text":"áp suất 1 bar và nhiệt độ 25 <sup>o</sup>C hay 298K","isCorrect":false},{"id":"b","letter":"B","text":"áp suất 1 bar và nhiệt độ 298K hay 25K","isCorrect":false},{"id":"c","letter":"C","text":"áp suất 1 bar và nhiệt độ 25 <sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"áp suất 1 bar và nhiệt độ 25K","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c5_de1_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Nhiệt tạo thành chuẩn của một chất là nhiệt lượng tạo thành x mol chất đó từ các đơn chất bền vững nhât ở điều kiện chuẩn. Giá trị của x là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"1","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"0","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c5_de1_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Kí hiệu enthalpy tạo thành (nhiệt tạo thành) của phản ứng ở điều kiện chuẩn là","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c5_de1_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Nhiệt lượng tỏa ra hay thu vào của một phản ứng ở một điều kiện xác định được gọi là","images":[],"options":[{"id":"a","letter":"A","text":"nhiệt lượng tỏa ra","isCorrect":false},{"id":"b","letter":"B","text":"nhiệt lượng thu vào","isCorrect":false},{"id":"c","letter":"C","text":"biến thiên enthalpy","isCorrect":false},{"id":"d","letter":"D","text":"biến thiên năng lượng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c5_de1_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Năng lượng hóa học của một số phản ứng được ghi ở các sơ đồ dưới, sơ đồ nào biểu thị phản ứng H < 0?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c5_de1_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Enthalpy tạo thành chuẩn của các đơn chất bền bằng","images":[],"options":[{"id":"a","letter":"A","text":"+1 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"b","letter":"B","text":"-1 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"c","letter":"C","text":"+2 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"d","letter":"D","text":"0 kJ.mol<sup>-1</sup>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c5_de1_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Ở điều kiện chuẩn, phản ứng của 2 mol Na (thể rắn) với 1/2 mol O<sub>2</sub> (thể khí) thu được 1 mol Na<sub>2</sub>O (thể rắn) giải phóng 417,98 kJ mol<sup>-1</sup>. Phản ứng trên được biểu diễn như sau:","images":[],"options":[{"id":"a","letter":"A","text":"2Na<sub>(s)</sub> + O<sub>2(g)</sub> → Na<sub>2</sub>O<sub>(s)</sub> = 417,98 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"b","letter":"B","text":"2Na<sub>(s)</sub> + O<sub>2(g)</sub> → Na<sub>2</sub>O<sub>(s)</sub> = –417,98 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"c","letter":"C","text":"4Na<sub>(s)</sub> + O<sub>2(g)</sub> → 2Na<sub>2</sub>O<sub>(s)</sub> = –417,98 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"d","letter":"D","text":"4Na<sub>(s)</sub> + O<sub>2(g)</sub> → 2Na<sub>2</sub>O<sub>(s)</sub> = 417,98 kJ.mol<sup>-1</sup>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c5_de1_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Nung nóng hai ống nghiệm chứa CaCO<sub>3</sub> và P, xảy ra các phản ứng sau:<br/>4P(s) + 5O<sub>2</sub>(g)  2P<sub>2</sub>O<sub>5</sub>(s)(1)<br/>CaCO<sub>3(s)</sub> → CaO<sub>(s)</sub> + CO<sub>2(s)</sub> (2)<br/>Khi ngừng đun nóng, phản ứng (2) dừng lại còn phản ứng (1) tiếp tục xảy ra, chứng tỏ","images":[],"options":[{"id":"a","letter":"A","text":"phản ứng (1) toả nhiệt, phản ứng (2) thu nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"phản ứng (1) thu nhiệt, phản ứng (2) toả nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"cả 2 phản ứng đều toả nhiệt","isCorrect":false},{"id":"d","letter":"D","text":"cả 2 phản ứng đều thu nhiệt","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c5_de1_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Cho phương trình nhiệt hóa học sau: 2H<sub>2</sub> (g) + O<sub>2</sub> (g) ⟶ 2H<sub>2</sub>O (g)      = − 483,64 kJ<br/>So sánh đúng là","images":[],"options":[{"id":"a","letter":"A","text":"∑ (cđ) > ∑ (sp)","isCorrect":false},{"id":"b","letter":"B","text":"∑ (cđ) = ∑ (sp)","isCorrect":false},{"id":"c","letter":"C","text":"∑ (cđ) < ∑ (sp)","isCorrect":false},{"id":"d","letter":"D","text":"∑ (cđ) ≤ ∑ (sp)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c5_de1_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Cho phản ứng: . Biết enthalpy tạo thành chuẩn của NH<sub>3</sub> là –45,9 kJ.mol<sup>-1</sup>. Để thu được 2 mol NH<sub>3</sub> ở cùng điều kiện phản ứng thì lượng nhiệt","images":[],"options":[{"id":"a","letter":"A","text":"tỏa ra là –45,9 kJ","isCorrect":false},{"id":"b","letter":"B","text":"thu vào là 45,9 kJ","isCorrect":false},{"id":"c","letter":"C","text":"tỏa ra là 91,8 kJ","isCorrect":false},{"id":"d","letter":"D","text":"thu vào là 91,8 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c5_de1_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Trong các đêm trại Hè, thường có hoạt động đốt lửa trại kết hợp giao lưu văn nghệ. Càng lại gần đám lửa ta càng thấy nóng hơn vì","images":[],"options":[{"id":"a","letter":"A","text":"quá trình củi cháy là tỏa nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"quá trình củi cháy thu nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"đi lại nhiều nên thấy nóng","isCorrect":false},{"id":"d","letter":"D","text":"nhiệt độ cơ thể cao hơn nhiệt độ ngoài trời","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c5_de1_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Cho phản ứng: H<sub>2</sub>(g) + Cl<sub>2</sub>(g) → 2HCl(g). Ở điều kiện chuẩn, cứ 1 mol H<sub>2</sub> phản ứng hết sẽ tỏa ra -184,6 kJ. Enthalpy tạo thành chuẩn của HCl(g) là","images":[],"options":[{"id":"a","letter":"A","text":"92,3 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"b","letter":"B","text":"–92,3 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"c","letter":"C","text":"184,6 kJ.mol<sup>-1</sup>","isCorrect":false},{"id":"d","letter":"D","text":"–184,6 kJ.mol<sup>-1</sup>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c5_de1_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phản ứng đốt cháy methane (CH<sub>4</sub>) như sau:<br/>CH<sub>4</sub>(g) + 2O<sub>2</sub>(g)  CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  = -890,36 kJ<br/>Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng tỏa rất nhiều nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Ở điều kiện chuẩn, khi đốt cháy hoàn toàn 1 mol CH<sub>4</sub>, sản phẩm là CO<sub>2(g)</sub> và H<sub>2</sub>O<sub>(l)</sub> thì sẽ giải phóng một nhiệt lượng là 890,36 kJ","isCorrect":false},{"id":"c","letter":"C","text":"Cũng phản ứng này, nếu nước ở thể hơi thì giá trị  không thay đổi","isCorrect":false},{"id":"d","letter":"D","text":"chính là nhiệt tỏa ra kèm theo phản ứng đốt cháy methane ở điều kiện chuẩn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c5_de1_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Phản ứng giữa bột nhôm (aluminium) với oxygen có phương trình nhiệt hóa học như sau:<br/>4Al(s) + 3O<sub>2</sub>(g) → 2Al<sub>2</sub>O<sub>3</sub>(s) ∆<sub>r</sub>H<sup>0</sup><sub>298</sub> = -3352 kJ<br/>Nhiệt lượng thoát ra khi đốt cháy 24,3 gam bột nhôm là","images":[],"options":[{"id":"a","letter":"A","text":"–3016,8 kJ","isCorrect":false},{"id":"b","letter":"B","text":"–754,2 kJ","isCorrect":false},{"id":"c","letter":"C","text":"–1508,4 kJ","isCorrect":false},{"id":"d","letter":"D","text":"–3724,4 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c5_de1_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Cho phương trình nhiệt hóa học đốt cháy acetylene (C<sub>2</sub>H<sub>2</sub>), methane (CH<sub>4</sub>) và C(graphite, s):<br/>2C<sub>2</sub>H<sub>2</sub>(g) + 5O<sub>2</sub>(g) → 4CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)<br/>CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g)       = - 668 kJ<br/>C(graphite, s) + O<sub>2</sub>(g)  CO<sub>2</sub>(g)  = -393,51 kJ<br/>Từ 3 phương trình trên ta nên chọn nhiên liệu nào để có thể ứng dụng hàn xì kim loại?","images":[],"options":[{"id":"a","letter":"A","text":"Acetylene (C<sub>2</sub>H<sub>2</sub>)","isCorrect":false},{"id":"b","letter":"B","text":"Methane (CH<sub>4</sub>)","isCorrect":false},{"id":"c","letter":"C","text":"C(graphite, s)","isCorrect":false},{"id":"d","letter":"D","text":"Cả ba phương trình","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c5_de1_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho phản ứng: 4HCl (g) + O<sub>2</sub> (g)  2Cl<sub>2</sub> (g) + 2H<sub>2</sub>O (g)<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Chất</td><td class='border border-slate-300 p-1.5'>H-Cl</td><td class='border border-slate-300 p-1.5'>O=O</td><td class='border border-slate-300 p-1.5'>Cl<sup>-</sup>Cl</td><td class='border border-slate-300 p-1.5'>O-H</td></tr><tr><td class='border border-slate-300 p-1.5'>E b  (kJ/mol)</td><td class='border border-slate-300 p-1.5'>427</td><td class='border border-slate-300 p-1.5'>498</td><td class='border border-slate-300 p-1.5'>243</td><td class='border border-slate-300 p-1.5'>467</td></tr></table><br/>Biến thiên enthalpy chuẩn của phản ứng trên tính theo năng lượng liên kết là bao nhiêu? Phản ứng tỏa nhiệt hay thu nhiệt?","images":[],"options":[{"id":"a","letter":"A","text":"= −148 kJ, phản ứng tỏa nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"= −148 kJ, phản ứng thu nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"= 215 kJ, phản ứng tỏa nhiệt","isCorrect":false},{"id":"d","letter":"D","text":"= 215 kJ, phản ứng thu nhiệt","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c5_de1_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Nhiệt tạo thành chuẩn tính theo kJ/mol của C<sub>2</sub>H<sub>5</sub>OH(l), CO<sub>2</sub>(g) và H<sub>2</sub>O(l) lần lượt là –267, –393,5 và –285,8. Cần đốt cháy bao nhiêu gam cồn để đun 100 gam nước từ 25<sup>o</sup>C đến 100<sup>o</sup>C (biết nhiệt dung của nước là 4,2 J/g.K)? Giả thiết, cồn là C<sub>2</sub>H<sub>5</sub>OH nguyên chất và có 40% nhiệt lượng thất thoát ra môi trường","images":[],"options":[{"id":"a","letter":"A","text":"4,375","isCorrect":false},{"id":"b","letter":"B","text":"1,748","isCorrect":true},{"id":"c","letter":"C","text":"2,182","isCorrect":false},{"id":"d","letter":"D","text":"0,875","isCorrect":false}],"correctAnswer":"B","explanation":"Đáp án: B.<br/> <br/>QH<sub>2</sub>O thu = m.c.Δt = 100.4,2.(100−25) = 31500J = 31,5kJ<br/>Nhiệt lượng hấp thụ là 100% − 40% = 60%<br/>QC<sub>2</sub>H<sub>5</sub>OH toả = 31,5 : 60% = 52,5kJ <br/> <br/>","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c5_de1_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Khi các phản ứng hóa học xảy ra thường có sự trao đổi nhiệt với môi trường, làm thay đổi nhiệt độ của môi trường","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng tỏa nhiệt là phản ứng giải phóng năng lượng dưới dạng nhiệt","isCorrect":true},{"id":"b","letter":"B","text":"Phản ứng thu nhiệt là phản ứng hấp thụ năng lượng dưới dạng nhiệt","isCorrect":true},{"id":"c","letter":"C","text":"Khi than, củi cháy không khí xung quanh ấm hơn do phản ứng tỏa nhiệt","isCorrect":true},{"id":"d","letter":"D","text":"Pha viên C sủi vitamin C vào nước, khi viên C sủi tan thấy cốc nước mát hơn là do phản ứng thu nhiệt","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c5_de1_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Phản ứng phân hủy 1 mol H<sub>2</sub>O (g) ở điều kiện chuẩn:<br/>H<sub>2</sub>O<sub>(</sub><sub>g</sub><sub>)</sub> → H<sub>2</sub><sub>(</sub><sub>g</sub><sub>)</sub>+ O<sub>2</sub><sub>(</sub><sub>g</sub><sub>)</sub>(1) cần cung cấp một nhiệt lượng là 241,8 kJ","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng (1) là phản ứng tỏa nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Nhiệt tạo thành chuẩn của H<sub>2</sub>O (g) là -241,8 kJ mol-1","isCorrect":true},{"id":"c","letter":"C","text":"Biến thiên enthalpy chuẩn của phản ứng 2H<sub>2(g)</sub> + O<sub>2(g)</sub> → 2H<sub>2</sub>O<sub>(g)</sub> là -483,6 kJ","isCorrect":true},{"id":"d","letter":"D","text":"Biến thiên enthalpy chuẩn của phản ứng (1) là 124,05 kJ","isCorrect":false}],"explanation":"Đáp án: <br/>a. Sai. Phản ứng thu nhiệt.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Biến thiên enthalpy chuẩn của phản ứng (1) là -124,05 kJ","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c5_de1_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho hai phản ứng cùng xảy ra ở điều kiện chuẩn:","images":[],"options":[{"id":"a","letter":"A","text":"Enthalpy tạo thành chuẩn của NO là","isCorrect":true},{"id":"b","letter":"B","text":"Enthalpy tạo thành chuẩn của NO<sub>2</sub> là","isCorrect":false},{"id":"c","letter":"C","text":"Biến thiên enthalpy chuẩn của phản ứng giữa 1 mol N<sub>2</sub> với 1 mol O<sub>2</sub> tạo thành 2 mol NO là","isCorrect":false},{"id":"d","letter":"D","text":"Biến thiên enthalpy chuẩn của phản ứng giữa 1 mol khí NO với 0,5 mol khí  tạo thành 1 mol khí NO<sub>2</sub> là","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai vì phản ứng (2) không phải tạo thành từ các đơn chất.<br/>c. Sai vì biến thiên enthalpy chuẩn của phản ứng giữa 1 mol  với 1 mol  tạo thành 2 mol NO là <br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c5_de1_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Sulfur dioxide là một chất có nhiều ứng dụng trong công nghiệp (dùng để sản xuất sulfuric acid, tẩy trắng bột giấy trong công nghiệp giấy, tẩy trắng dung dịch đường trong sản xuất đường tinh luyện..) và giúp ngăn cản sự phát triển của một số vi khuẩn và nấm gây hại cho thực phẩm. Ở áp suất 1 bar và nhiệt độ 25°C, phản ứng giữa sulfur với oxygen xảy ra theo phương trình<br/>“ S (s) + O<sub>2</sub>(g) → SO<sub>2</sub>(g)” và tỏa ra một lượng nhiệt là 296,9kJ","images":[],"options":[{"id":"a","letter":"A","text":"Biến thiên enthalpy chuẩn của phản ứng là 296,9 kJ mol<sup>-1</sup>","isCorrect":false},{"id":"b","letter":"B","text":"Enthalpy tạo thành chuẩn của sulfur dioxide bằng -296,9 kJ","isCorrect":true},{"id":"c","letter":"C","text":"Sulfur dioxide vừa có thể là chất khử vừa có thể là chất oxi hóa, tùy thuộc vào phản ứng mà nó tham gia","isCorrect":true},{"id":"d","letter":"D","text":"0,5 mol sulfur tác dụng hết với oxygen giải phóng 148,45kJ năng lượng dưới dạng nhiệt","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Biến thiên enthalpy chuẩn của phản ứng là -196,9kJ.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c5_de1_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Cho các quá trình sau:<br/>(a) Đốt một ngọn nến.<br/>(b) Nước đóng băng.<br/>(c) Hòa tan một ít bột giặt trong tay với nước thấy tay ấm.<br/>(d) Muối kết tinh từ nước biển ở các ruộng muối.<br/>(e) Đổ mồ hôi sau khi chạy bộ.<br/>Trong các quá trình trên, có bao nhiêu quá trình thu nhiệt?","images":[],"correctAnswer":"1","explanation":"Đáp án: 1","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c5_de1_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho phương trình nhiệt hóa học của phản ứng: CO<sub>2</sub>(g) → CO(g) + O<sub>2</sub>(g) . Giá trị  của phản ứng: 2CO<sub>2</sub>(g) → 2CO(g) + O<sub>2</sub>(g) là bao nhiêu kJ?","images":[],"correctAnswer":"560","explanation":"Đáp án: 560.<br/>= 2x280 = 560 kJ","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c5_de1_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Liệt kê các phản ứng có thể tự xảy ra (sau giai đoạn khơi mào ban đầu) theo dãy số thứ tự tăng dần (Ví dụ: 234, 14,...).<br/>(1) 3Fe(s) + 4H<sub>2</sub>O(l)  Fe<sub>3</sub>O<sub>4</sub>(s) + 4H<sub>2</sub>(g) = +26,32 kJ<br/>(2) N<sub>2</sub>(g) + O<sub>2</sub>(g)  2NO(g) = +179,20 kJ<br/>(3) C<sub>2</sub>H<sub>5</sub>OH(l) + 3O<sub>2</sub>(g)  2CO<sub>2</sub>(g) + 3H<sub>2</sub>O(l)= -1370,70 kJ<br/>(4) C(graphite, s) + O<sub>2</sub>(g)  CO<sub>2</sub>(g)  = -393,51 kJ","images":[],"correctAnswer":"34","explanation":"Đáp án: 34","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c5_de1_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Giá trị trung bình của các năng lượng liên kết ở điều kiện chuẩn:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Liên kết</td><td class='border border-slate-300 p-1.5'>C-H</td><td class='border border-slate-300 p-1.5'>C-C</td><td class='border border-slate-300 p-1.5'>C=C</td></tr><tr><td class='border border-slate-300 p-1.5'>E b  (kJ/mol)</td><td class='border border-slate-300 p-1.5'>418</td><td class='border border-slate-300 p-1.5'>346</td><td class='border border-slate-300 p-1.5'>612</td></tr></table><br/>Biến thiên enthalpy của phản ứng C<sub>3</sub>H<sub>8</sub> (g)  CH<sub>4</sub> (g) + C<sub>2</sub>H<sub>4</sub> (g) có giá trị là bao nhiêu kJ?","images":[],"correctAnswer":"80","explanation":"Đáp án: 80","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c5_de1_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Nhiệt tỏa ra khi đốt cháy 1 gam một mẫu than là 23,0 kJ. Giả thiết rằng toàn bộ lượng nhiệt của quá trình đốt than tỏa ra đều dùng để làm nóng nước, không có sự thất thoát nhiệt, hãy tính khối lượng than (gam) cần phải đốt để làm nóng 500 gam nước từ  tới  Biết để làm nóng 1 mol nước thêm  cần một nhiệt lượng là 75,4 J. (Kết quả làm tròn đến hàng phần mười)","images":[],"correctAnswer":"6,4","explanation":"Đáp án: 6,4.<br/>Lượng nhiệt cần dùng để đun nóng 500 gam nước từ lên  là<br/>Vậy lượng than đá cần dùng là:","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c5_de1_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Cho các phản ứng sau xảy ra ở điều kiện chuẩn:<br/>CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  = –890,36 kJ<br/>CaCO<sub>3</sub>(s) → CaO(s) + CO<sub>2</sub>(s) = 178,29 kJ<br/>Ở điều kiện tiêu chuẩn, cần phải đốt cháy hoàn toàn bao nhiêu gam CH<sub>4</sub>(g) để cung cấp nhiệt cho phản ứng tạo 2 mol CaO bằng cách nung CaCO<sub>3</sub>. Giả thiết hiệu suất các quá trình đều là 100% (Làm tròn kết quả đến hàng phần mười)","images":[],"correctAnswer":"6,4","explanation":"Đáp án: 6,4.<br/>2 mol CaO tạo thành cần cung cấp một nhiệt lượng là 356,58 kJ<br/>Nhiệt lượng của phản ứng nung vôi bằng lượng nhiệt khi đốt x mol khí CH<sub>4</sub>(g)<br/>Theo đề 1 mol khí CH<sub>4</sub> khi đốt tỏa ra một nhiệt lượng 890,36 kJ<br/>x mol 356,58 kJ<br/> x = 0,4 mol  m = 6,4g.<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa10_c5_de2","code":"ĐỀ 502","title":"Đề kiểm tra Chương 5: Năng lượng hóa học (Đề số 2)","topic":"Tính biến thiên enthalpy phản ứng theo nhiệt tạo thành chuẩn ∆fHo298","badge":"Chương 5 - Đề 2","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c5_de2_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Các phản ứng phân hủy thường là phản ứng thu nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng càng tỏa ra nhiều nhiệt càng dễ tự xảy ra","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng oxi hóa chất béo cung cấp nhiệt cho cơ thể","isCorrect":false},{"id":"d","letter":"D","text":"Các phản ứng khi đun nóng đều dễ xảy ra hơn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c5_de2_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Nhiệt tạo thành chuẩn (∆<sub>f</sub>) của các đơn chất ở dạng bền vững nhất là","images":[],"options":[{"id":"a","letter":"A","text":"0 kJ/mol","isCorrect":false},{"id":"b","letter":"B","text":"2 kJ/mol","isCorrect":false},{"id":"c","letter":"C","text":"3 kJ/mol","isCorrect":false},{"id":"d","letter":"D","text":"1 kJ/mol","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c5_de2_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Quy ước về dấu của nhiệt phản ứng () nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng thu nhiệt có < 0","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng tỏa nhiệt có > 0","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng thu nhiệt có = 0","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng tỏa nhiệt có < 0","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c5_de2_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Cho phương trình nhiệt hóa học của phản ứng trung hòa sau :<br/>HCl(aq)  + NaOH(aq)    NaCl(aq)  +  H<sub>2</sub>O(l)      = -57,3 kJ<br/>Phát biểu nào sau đây không đúng ?","images":[],"options":[{"id":"a","letter":"A","text":"Cho 1 mol HCl tác dụng với 1 mol NaOH tỏa nhiệt lượng là 57,3kJ","isCorrect":false},{"id":"b","letter":"B","text":"Cho 2 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3kJ","isCorrect":false},{"id":"c","letter":"C","text":"Cho 1 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3kJ","isCorrect":false},{"id":"d","letter":"D","text":"Cho HCl dư tác dụng với 1 mol NaOH thu nhiệt lượng là 57,3kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c5_de2_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Cho phản ứng nhiệt phân CaCO<sub>3</sub>: CaCO<sub>3</sub>(s)  CaO(s) + CO<sub>2</sub>(g). Ở điều kiện chuẩn, để thu được 1 mol CaO(s) từ CaCO<sub>3</sub>(s) cần phải cung cấp 179,2 kJ nhiệt lượng. Phát biểu nào sau đây đúng khi nói về phản ứng trên?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng tỏa nhiệt, ∆<sub>r</sub>= +179,2 kJ","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng thu nhiệt, ∆<sub>r</sub>= –179,2 kJ","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng tỏa nhiệt, ∆<sub>r</sub>= –179,2 kJ","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng thu nhiệt, ∆<sub>r</sub>= +179,2 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c5_de2_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Phương trình nhiệt hoá học nào sau đây ứng với sơ đồ biểu diễn biến thiên enthalpy của phản ứng sau:","images":[],"options":[{"id":"a","letter":"A","text":"2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) → 2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) ∆<sub>r</sub> = +1450 kJ","isCorrect":false},{"id":"b","letter":"B","text":"2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) → 2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) ∆<sub>r</sub> = +1450 kJ","isCorrect":false},{"id":"c","letter":"C","text":"2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) → 2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) ∆<sub>r</sub> = -1450 kJ","isCorrect":false},{"id":"d","letter":"D","text":"2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) → 2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) ∆<sub>r</sub> = -1450 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c5_de2_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Phản ứng nào sau đây là phản ứng thu nhiệt?","images":[],"options":[{"id":"a","letter":"A","text":"NaOH(aq) + HCl(aq)  NaCl(aq) + H<sub>2</sub>O(l)  ∆<sub>r</sub>= –57,9 kJ","isCorrect":false},{"id":"b","letter":"B","text":"H<sub>2</sub>(g) + I<sub>2</sub>(s)  2HI(g)    ∆<sub>r</sub>= +53,0 kJ","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>2</sub>H<sub>4</sub>(g) + H<sub>2</sub>(g)  C<sub>2</sub>H<sub>6</sub>(g)    ∆<sub>r</sub>= –137,0 kJ","isCorrect":false},{"id":"d","letter":"D","text":"2CO(g) + O<sub>2</sub>(g)  2CO<sub>2</sub>(g)    ∆<sub>r</sub>= –566,0 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c5_de2_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Cho biết biến thiên enthalpy của phản ứng sau ở điều kiện chuẩn<br/>CO (g)  +  O<sub>2</sub> (g) CO<sub>2</sub>(g)     = -283,0 kJ<br/>Biết nhiệt tạo thành của CO<sub>2</sub>: (CO<sub>2</sub> (g))  = -393,5 kJ. Nhiệt tạo thành chuẩn của CO là","images":[],"options":[{"id":"a","letter":"A","text":"-141,5 kJ","isCorrect":false},{"id":"b","letter":"B","text":"+110,5 kJ","isCorrect":false},{"id":"c","letter":"C","text":"-221,0 kJ","isCorrect":false},{"id":"d","letter":"D","text":"-110,5 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c5_de2_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Hình ảnh nào miêu tả quá trình đang diễn ra sự thu nhiệt?<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'></td></tr><tr><td class='border border-slate-300 p-1.5'>Hình 1. Cây nến đang cháy</td><td class='border border-slate-300 p-1.5'>Hình 2. Hòa tan đá vào nước</td><td class='border border-slate-300 p-1.5'>Hình 3. Đốt nhiên liệu trong tên lửa.</td><td class='border border-slate-300 p-1.5'>Hình 4.  Hòa tan sodium vào nước.</td></tr></table>","images":[],"options":[{"id":"a","letter":"A","text":"Hình 1","isCorrect":false},{"id":"b","letter":"B","text":"Hình 3","isCorrect":false},{"id":"c","letter":"C","text":"Hình 2","isCorrect":false},{"id":"d","letter":"D","text":"Hình 4","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c5_de2_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Phản ứng chuyển hoá giữa hai dạng đơn chất của phosphorus (P):<br/>P(s, đỏ) P (s, trắng)    = +17,6 kJ<br/>Điều này chứng tỏ phản ứng:","images":[],"options":[{"id":"a","letter":"A","text":"tỏa nhiệt, P trắng bền hơn P đỏ","isCorrect":false},{"id":"b","letter":"B","text":"tỏa nhiệt, P đỏ bền hơn P trắng","isCorrect":false},{"id":"c","letter":"C","text":"thu nhiệt, P trắng bền hơn P đỏ","isCorrect":false},{"id":"d","letter":"D","text":"thu nhiệt, P đỏ bền hơn P trắng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c5_de2_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Phương trình nhiệt hóa học giữa nitrogen và oxygen như sau:<br/>N<sub>2</sub>(g) + O<sub>2</sub>(g)  2NO(g) = +180kJ<br/>Kết luận nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng xảy ra thuận lợi ở điều kiện thường","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng tỏa nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"Nitrogen và oxygen phản ứng mạnh hơn khi ở nhiệt độ thấp","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng hóa học xảy ra có sự hấp thụ nhiệt năng từ môi trường","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c5_de2_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Cho phương trình hoá học tổng quát: aA + bB  mM + nN. Hãy chọn các phương án tính đúng  của phản ứng theo nhiệt tạo thành chuẩn () của các chất A, B, C, D","images":[],"options":[{"id":"a","letter":"A","text":"= m . (M) + n . (N) – a. (A) – b . (B)","isCorrect":false},{"id":"b","letter":"B","text":"= a. (A) + b . (B)   V m . (M) – n . (N)","isCorrect":false},{"id":"c","letter":"C","text":"= a . E<sub>b</sub>(A) + b . E<sub>b</sub> (B) – m . E<sub>b</sub>(M) – n . E<sub>b</sub> (N)","isCorrect":false},{"id":"d","letter":"D","text":"= m . E<sub>b</sub>(M) + n . E<sub>b</sub> (N)  – a . E<sub>b</sub>(A) – b . E<sub>b</sub> (B)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c5_de2_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Phản ứng nào sau đây có thể tự xảy ra ở điều kiện thường?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng giữa H<sub>2</sub> và O<sub>2</sub> trong hỗn hợp khí","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng nhiệt phân Cu(OH)<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng giữa Zn và dung dịch H<sub>2</sub>SO<sub>4</sub>","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng đốt cháy cồn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c5_de2_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Điều kiện nào sau đây được gọi là điều kiện chuẩn?","images":[],"options":[{"id":"a","letter":"A","text":"Áp suất 1 bar (đối với chất khí), nồng độ 1 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 20<sup>o</sup>C (293K)","isCorrect":false},{"id":"b","letter":"B","text":"Áp suất 1,5 bar (đối với chất khí), nồng độ 1,5 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 25<sup>o</sup>C (298K)","isCorrect":false},{"id":"c","letter":"C","text":"Áp suất 1,5 bar (đối với chất khí), nồng độ 1,5 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 20<sup>o</sup>C (293K)","isCorrect":false},{"id":"d","letter":"D","text":"Áp suất 1 bar (đối với chất khí), nồng độ 1 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 25<sup>o</sup>C (298K)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c5_de2_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Phản ứng đốt cháy ethanol: C<sub>2</sub>H<sub>5</sub>OH(l) + 3O<sub>2</sub>(g)  2CO<sub>2</sub>(g) + 3H<sub>2</sub>O(l)<br/>Đốt cháy hoàn toàn 5 g ethanol, nhiệt tỏa ra làm nóng chảy 447 g nước đá ở 0<sup>o</sup>C. Biết 1 g nước đá nóng chảy hấp thụ nhiệt lượng 333,5 J, biến thiên enthalpy của phản ứng đốt cháy ethanol là","images":[],"options":[{"id":"a","letter":"A","text":"-1371 kJ/mol","isCorrect":true},{"id":"b","letter":"B","text":"-954 kJ/mol","isCorrect":false},{"id":"c","letter":"C","text":"-149 kJ/mol","isCorrect":false},{"id":"d","letter":"D","text":"+149 kJ/mol","isCorrect":false}],"correctAnswer":"A","explanation":"Đáp án: A.<br/>Q = 447.333,5 = 149074,5 J  149 (kJ)  H =","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c5_de2_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Cho phản ứng sau: CHCH(g) + H<sub>2</sub>(g) CH<sub>3</sub>-CH<sub>3</sub> (g)<br/>Năng lượng liên kết (kJ/mol) của H – H là 436, của C – C là 347, của C – H là 414 và của CC là 839. Nhiệt () của phản ứng là","images":[],"options":[{"id":"a","letter":"A","text":"–294 kJ","isCorrect":false},{"id":"b","letter":"B","text":"–292kJ","isCorrect":false},{"id":"c","letter":"C","text":"+292kJ","isCorrect":false},{"id":"d","letter":"D","text":"+294kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c5_de2_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Dung dịch glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>) 5%, có khối lượng riêng là 1,02 g/mL, phản ứng oxi hóa 1 mol glucose tạo thành CO<sub>2</sub> (g) và H<sub>2</sub>O (l) tỏa ra nhiệt lượng là 2803,0 kJ.<br/>Một người bệnh được truyền một chai nước chứa 500 mL dung dịch glucose 5%. Năng lượng tối đa từ phản ứng oxi hóa hoàn toàn glucose mà bệnh nhân đó có thể nhận được là","images":[],"options":[{"id":"a","letter":"A","text":"+397,09 kJ","isCorrect":true},{"id":"b","letter":"B","text":"–397,09 kJ","isCorrect":false},{"id":"c","letter":"C","text":"+416,02 kJ","isCorrect":false},{"id":"d","letter":"D","text":"–416,02 kJ","isCorrect":false}],"correctAnswer":"A","explanation":"Đáp án: A.<br/>Phản ứng tỏa nhiệt nên <br/>Số mol glucose: <br/>Q = 2803,0.0,14167 = 397,1 (kJ)","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c5_de2_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho các phát biểu:<br/>(a) Phản ứng tỏa nhiệt là phản ứng giải phóng năng lượng dưới dạng nhiệt.<br/>(b) Tất cả các phản ứng mà chất tham gia có chứa nguyên tố oxygen đều tỏa nhiệt.<br/>(c) Phản ứng thu nhiệt là phản ứng hấp thụ năng lượng dưới dạng nhiệt.<br/>(d) Lượng nhiệt mà phản ứng hấp thụ hay giải phóng không phụ thuộc vào điều kiện thực hiện phản ứng và thể tồn tại của chất trong phản ứng.<br/>(e) Sự cháy của nhiên liệu (xăng, dầu, khí gas, than, gỗ,…) là những ví dụ về phản ứng thu nhiệt vì cần khơi mào.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"3","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"5","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c5_de2_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Với các phản ứng có kèm theo trao đổi năng lượng dưới dạng nhiệt, có hai khả năng đó là phản ứng tỏa nhiệt và phản ứng thu nhiệt","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng thu nhiệt xảy ra thuận lợi hơn so với phản ứng tỏa nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Biến thiên enthalpy của phản ứng tỏa nhiệt trái dấu với phản ứng thu nhiệt","isCorrect":true},{"id":"c","letter":"C","text":"Phản ứng thu nhiệt thường phải cung cấp nhiệt độ liên tục trong quá trình phản ứng","isCorrect":true},{"id":"d","letter":"D","text":"Khi cho vôi sống vào nước thấy nhiệt độ tăng so với ban đầu chứng tỏ đây là phản ứng tỏa nhiệt","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Phản ứng tỏa nhiệt thuận lợi hơn thu nhiệt.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c5_de2_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Cho phương trình nhiệt hoá học sau:<br/>H<sub>2</sub>(g) + I<sub>2</sub>(g) → 2HI(g)  = +11,3 kJ","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng giải phóng nhiệt lượng 11,3 kJ khi 2 mol HI được tạo thành","isCorrect":false},{"id":"b","letter":"B","text":"Tổng nhiệt phá vỡ liên kết của chất phản ứng lớn hơn nhiệt tỏa ra khi tạo thành sản phẩm","isCorrect":true},{"id":"c","letter":"C","text":"Năng lượng chứa trong H<sub>2</sub> và I<sub>2</sub> cao hơn trong HI","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng xảy ra với tốc độ chậm","isCorrect":false}],"explanation":"Đáp án: <br/>a. Sai. ∆H = +11,3 kJ > 0 ⇒ phản ứng thu nhiệt.<br/>b. Đúng.<br/>c. Sai. Phân tử H<sub>2</sub> và I<sub>2</sub> có liên kết bền hơn HI, nghĩa là mức năng lượng thấp hơn.<br/>d. Sai. Không nói về sự trao đổi năng lượng của phản ứng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c5_de2_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Baking soda (NaHCO<sub>3</sub>) có trong thành phần bột nở dùng để làm bánh và cũng có trong thành phần của thuốc đau dạ dày Nabica, xét phản ứng nhiệt phân NaHCO<sub>3</sub> xảy ra như sau:<br/>2NaHCO<sub>3</sub>(s) → Na<sub>2</sub>CO<sub>3</sub>(s) + CO<sub>2</sub>(g) + H<sub>2</sub>O(l)   = +91,6 kJ","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng trên có tổng nhiệt tạo thành của chất đầu lớn hơn tổng nhiệt tạo thành của các chất sản phẩm","isCorrect":false},{"id":"b","letter":"B","text":"Cần tránh để bột nở ở nơi có nhiệt độ cao","isCorrect":true},{"id":"c","letter":"C","text":"Phản ứng trên thu vào một nhiệt lượng bằng 91,6 kJ","isCorrect":true},{"id":"d","letter":"D","text":"Nếu thay đổi trạng thái của H<sub>2</sub>O(l) bằng H<sub>2</sub>O(g) thì giá trị biến thiên enthalpy chuẩn của phản ứng không đổi","isCorrect":false}],"explanation":"Đáp án: <br/>a. Sai. Vì > 0 nên tổng nhiệt tạo thành của sản phẩm lớn hơn tổng nhiệt tạo thành của chất đầu.<br/>b. Đúng. Bột nở chứa NaHCO<sub>3</sub> dễ bị phân hủy bởi nhiệt theo phương trình hóa học trên.<br/>c. Đúng.<br/>d. Sai. Nếu thay đổi trạng thái của H<sub>2</sub>O(l) bằng H<sub>2</sub>O(g) thì giá trị biến thiên enthalpy của phản ứng sẽ thay đổi vì nhiệt tạo thành của H<sub>2</sub>O(l) khác H<sub>2</sub>O(g)","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c5_de2_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Cho phản ứng đốt cháy methane (CH<sub>4</sub>) và acetylene (C<sub>2</sub>H<sub>2</sub>) như sau:<br/>(1) CH<sub>4</sub>(g) + 2O<sub>2</sub>(g)  CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)<br/>(2) C<sub>2</sub>H<sub>2</sub>(g) + O<sub>2</sub>(g)  2CO<sub>2</sub>(g) + H<sub>2</sub>O(l)","images":[],"options":[{"id":"a","letter":"A","text":"Cả hai phản ứng trên đều là phản ứng tỏa nhiệt","isCorrect":true},{"id":"b","letter":"B","text":"Khi đốt cháy cùng một lượng thể tích khí CH<sub>4</sub> và C<sub>2</sub>H<sub>2</sub> thì lượng nhiệt sinh ra do CH<sub>4</sub> nhiều hơn lượng nhiệt sinh ra do C<sub>2</sub>H<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Biến thiên enthalpy của phản ứng (1), (2) tính theo nhiệt tạo thành:","isCorrect":true},{"id":"d","letter":"D","text":"Trong thực tế, để hàn, cắt kim loại người ta sử dụng CH<sub>4</sub> mà không dùng C<sub>2</sub>H<sub>2</sub>","isCorrect":false}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Sai. C<sub>2</sub>H<sub>2</sub> cháy tỏa nhiều nhiệt hơn CH<sub>4</sub>.<br/>c. Đúng.<br/>d. Sai. Người ta dùng C<sub>2</sub>H<sub>2</sub> vì nhiệt lượng tỏa ra nhiều hơn CH<sub>4</sub>","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c5_de2_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Phản ứng giữa sulfur dioxide và oxygen là tỏa nhiệt<br/>2SO<sub>2</sub>(g) + O<sub>2</sub>(g) 2SO<sub>3</sub>(g)      = –197 kJ<br/>Giá trị biến thiên enthalpy của phản ứng SO<sub>3</sub>(g) SO<sub>2</sub>  + O<sub>2</sub> (g) là bao nhiêu kJ?","images":[],"correctAnswer":"98,5","explanation":"Đáp án: 98,5","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c5_de2_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho phương trình nhiệt hóa học của các phản ứng như sau:<br/>CO<sub>2</sub>(g) CO(g) + O<sub>2</sub>(g)<br/>3H<sub>2</sub>(g) + N<sub>2</sub>(g) 2NH<sub>3</sub>(g)<br/>3Fe(s) + 4H<sub>2</sub>O(l)  Fe<sub>3</sub>O<sub>4</sub>(s) + 4H<sub>2</sub>(g)<br/>2H<sub>2</sub>(g) + O<sub>2</sub>(g)  2H<sub>2</sub>O(g)<br/>H<sub>2</sub>(g) + F<sub>2</sub>(g)  2HF(g)<br/>Trong các phản ứng trên, có bao nhiêu phản ứng tỏa nhiệt?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c5_de2_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Quá trình hoà tan calcium chloride trong nước:<br/>CaCl<sub>2</sub>(s)  Ca<sup>2+</sup>(ag) + 2Cl<sup>-</sup> (ag) = ?<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Chất</td><td class='border border-slate-300 p-1.5'>CaCl 2</td><td class='border border-slate-300 p-1.5'>Ca 2+</td><td class='border border-slate-300 p-1.5'>Cl -</td></tr><tr><td class='border border-slate-300 p-1.5'> (kJ/mol)</td><td class='border border-slate-300 p-1.5'>-795,0</td><td class='border border-slate-300 p-1.5'>-542,83</td><td class='border border-slate-300 p-1.5'>-167,16</td></tr></table><br/>Tính biến thiên enthalpy chuẩn của quá trình theo đơn vị kJ. (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"-82","explanation":"Đáp án: -82.<br/>Enthalpy của quá trình:  =  -542,83 + 2.(-167,16) – (-795,0) = -82,15 kJ","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c5_de2_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho các loại phản ứng sau:<br/>(1) Phản ứng tạo gỉ kim loại.<br/>(2) Phản ứng quang hợp.<br/>(3) Phản ứng nhiệt phân.<br/>(4) Phản ứng đốt cháy.<br/>Liệt kê các phản ứng cần cung cấp năng lượng trong suốt quá trình diễn ra phản ứng theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…)","images":[],"correctAnswer":"23","explanation":"Đáp án: 23","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c5_de2_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Phản ứng tổng hợp ammonia : N<sub>2</sub>(g)  + 3H<sub>2</sub>(g)  2NH<sub>3</sub>(g)      = –92 kJ<br/>Biết năng lượng liên kết (kJ/mol) của NN  và H – H lần lượt là 946 và 436<br/>Năng lượng liên kết của N – H trong ammonia là bao nhiêu kJ/mol?","images":[],"correctAnswer":"391","explanation":"Đáp án: 391.<br/> = E<sub>b</sub>(NN ) + 3E<sub>b</sub>(H-H) - 6E<sub>b</sub>(N-H) = 946 + 3.436 - 6E<sub>b</sub>(N-H) = -92  E<sub>b</sub>(N-H) = 391 kJ/mol","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c5_de2_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Một hộ gia đình mua than đá làm nhiên liệu đun nấu và trung bình mỗi ngày dùng hết 1,8 kg than. Giả thiết loại than đá trên chứa 90% carbon và 1,2% sulfur về khối lượng, còn lại là các tạp chất trơ.<br/>Cho các phản ứng:<br/>Nhiệt lượng cung cấp cho hộ gia đình từ quá trình đốt than trong một ngày tương đương bao nhiêu số điện (1 số điện = 1 kWh = 3600 kJ, làm tròn kết quả đến hàng đơn vị)?","images":[],"correctAnswer":"15","explanation":"Đáp án: 15.<br/>Trong 1800 g than đá chứa 1620 gam (135 mol) carbon và 21,6 g (0,675 mol) sulfur.<br/>Nhiệt lượng giải phóng ra khi đốt cháy 1800 gam than đá: <br/>Nhiệt lượng trên tương đương với số điện:  số.<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa10_c5_de3","code":"ĐỀ 503","title":"Đề kiểm tra Chương 5: Năng lượng hóa học (Đề số 3)","topic":"Tính biến thiên enthalpy phản ứng theo năng lượng liên kết Eb","badge":"Chương 5 - Đề 3","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c5_de3_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Phản ứng hóa học trong đó có sự truyền năng lượng từ hệ sang môi trường xung quanh nó được gọi là","images":[],"options":[{"id":"a","letter":"A","text":"phản ứng tỏa nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"phản ứng trung hòa","isCorrect":false},{"id":"c","letter":"C","text":"phản ứng trao đổi","isCorrect":false},{"id":"d","letter":"D","text":"phản ứng thu nhiệt","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c5_de3_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Biến thiên enthalpy chuẩn của một phản ứng hóa học kí hiệu là","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c5_de3_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Phản ứng nào dưới đây là phản ứng thu nhiệt?","images":[],"options":[{"id":"a","letter":"A","text":"Nung NH<sub>4</sub>Cl tạo ra HCl và NH<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Cồn cháy trong không khí","isCorrect":false},{"id":"c","letter":"C","text":"Đá vôi tác dụng với dung dịch HCl","isCorrect":false},{"id":"d","letter":"D","text":"Sự phân hạch hạt nhân","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c5_de3_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Phản ứng nào sau đây là phản ứng thu nhiệt?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c5_de3_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Điều kiện chuẩn là điều kiện ứng với áp suất 1 bar (với chất khí), nồng độ 1 mol L<sup>-1</sup> (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 298 K","isCorrect":false},{"id":"b","letter":"B","text":"Điều kiện chuẩn là điều kiện ứng với nhiệt độ 298 K","isCorrect":false},{"id":"c","letter":"C","text":"Áp suất 760 mmHg là áp suất ở điều kiện chuẩn","isCorrect":false},{"id":"d","letter":"D","text":"Điều kiện chuẩn là điều kiện ứng với áp suất 1 atm, nhiệt độ 0 °","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c5_de3_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây sai?","images":[],"options":[{"id":"a","letter":"A","text":"Hầu hết các phản ứng thu nhiệt cần giai đoạn khơi mào (đun, đốt nóng,…)","isCorrect":false},{"id":"b","letter":"B","text":"Hầu hết các phản ứng tỏa nhiệt cần phải tiếp tục đun hoặc đốt nóng ở giai đoạn tiếp diễn","isCorrect":false},{"id":"c","letter":"C","text":"Hầu hết các phản ứng tỏa nhiệt không cần phải tiếp tục đun hoặc đốt nóng ở giai đoạn tiếp diễn","isCorrect":false},{"id":"d","letter":"D","text":"Tùy phản ứng cụ thể mà các phản ứng tỏa nhiệt có thể cần hoặc không cần giai đoạn khơi mào","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c5_de3_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Enthalpy tạo thành của một chất (Δ<sub>f</sub>H) là nhiệt kèm theo phản ứng tạo thành","images":[],"options":[{"id":"a","letter":"A","text":"1 gam chất đó từ các đơn chất bền nhất","isCorrect":false},{"id":"b","letter":"B","text":"1 lít chất đó từ các đơn chất dạng bền nhất","isCorrect":false},{"id":"c","letter":"C","text":"1 mol chất đó từ các đơn chất bền nhất","isCorrect":false},{"id":"d","letter":"D","text":"1 mol chất đó từ các hợp chất bền nhất","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c5_de3_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Phản ứng nào sau đây cần phải cung cấp năng lượng trong quá trình phản ứng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng tạo gỉ kim loại","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng quang hợp","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng nhiệt phân","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng tạo oxit Na<sub>2</sub>O","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c5_de3_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Cho các giá trị năng lượng liên kết:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Liên kết</td><td class='border border-slate-300 p-1.5'>C – H</td><td class='border border-slate-300 p-1.5'>O – H</td><td class='border border-slate-300 p-1.5'>C = O</td><td class='border border-slate-300 p-1.5'>O = O</td></tr><tr><td class='border border-slate-300 p-1.5'>E b (kJ/mol)</td><td class='border border-slate-300 p-1.5'>41 3</td><td class='border border-slate-300 p-1.5'>46 7</td><td class='border border-slate-300 p-1.5'>7 45</td><td class='border border-slate-300 p-1.5'>498</td></tr></table><br/>Phương trình đốt cháy khí methane: CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g) (*)<br/>Biến thiên enthalpy của phản ứng (*) dựa vào năng lượng liên kết là","images":[],"options":[{"id":"a","letter":"A","text":"–256 kJ","isCorrect":false},{"id":"b","letter":"B","text":"–560 kJ","isCorrect":false},{"id":"c","letter":"C","text":"–816 kJ","isCorrect":false},{"id":"d","letter":"D","text":"–710 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c5_de3_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Phản ứng nào sau đây là phản ứng toả nhiệt?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng nhiệt phân muối KNO<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng phân huỷ khí NH<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng oxi hoá glucose trong cơ thể","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng hoà tan NH<sub>4</sub>Cl trong nước","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c5_de3_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Trong các chất dưới đây, chất nào có ?","images":[],"options":[{"id":"a","letter":"A","text":"N<sub>2</sub>(g)","isCorrect":false},{"id":"b","letter":"B","text":"S(s)","isCorrect":false},{"id":"c","letter":"C","text":"Na(s)","isCorrect":false},{"id":"d","letter":"D","text":"O<sub>3</sub>(g)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c5_de3_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Biến thiên enthalpy của một phản ứng được ghi ở sơ đồ dưới. Kết luận nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng tỏa nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Năng lượng chất tham gia phản ứng nhỏ hơn năng lượng sản phẩm","isCorrect":false},{"id":"c","letter":"C","text":"Biến thiên enthalpy của phản ứng là a kJ/mol","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng thu nhiệt","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c5_de3_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Biểu thức đúng tính của phản ứng theo năng lượng liên kết của các chất là :","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c5_de3_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phương trình hóa học nào dưới đây biểu thị enthalpy tạo thành chuẩn của CO(g)?","images":[],"options":[{"id":"a","letter":"A","text":"2C ((graphite)","isCorrect":false},{"id":"b","letter":"B","text":"C ((graphite) +","isCorrect":false},{"id":"c","letter":"C","text":"C ((graphite)","isCorrect":false},{"id":"d","letter":"D","text":"C ((graphite)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c5_de3_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng thu vào càng nhiều nhiệt, biến thiên enthalpy càng âm","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng tỏa ra càng nhiều nhiệt, biến thiên enthaply càng dương","isCorrect":false},{"id":"c","letter":"C","text":"Năng lượng của hệ chất tham gia trong phản ứng tỏa nhiệt cao hơn năng lượng của hệ sản phẩm","isCorrect":false},{"id":"d","letter":"D","text":"Năng lượng của hệ chất tham gia trong phản ứng thu nhiệt cao hơn năng lượng của hệ sản phẩm","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c5_de3_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Cho phản ứng hóa học sau: 4FeS(s) + 7O<sub>2</sub>(g) → 2Fe<sub>2</sub>O<sub>3</sub>(s) + 4SO<sub>2</sub>(g). Biết nhiệt tạo thành ∆<sub>f</sub>H<sup>0</sup><sub>298</sub> của các chất FeS(s), Fe<sub>2</sub>O<sub>3</sub>(s) và SO<sub>2</sub>(g) lần lượt là –100,0 kJ/mol, –825,5 kJ/mol và –296,8 kJ/mol. Biến thiên enthalpy chuẩn của phản ứng trên là","images":[],"options":[{"id":"a","letter":"A","text":"+3105,6 kJ","isCorrect":false},{"id":"b","letter":"B","text":"–3105,6 kJ","isCorrect":false},{"id":"c","letter":"C","text":"+2438,2 kJ","isCorrect":false},{"id":"d","letter":"D","text":"–2438,2 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c5_de3_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho phản ứng hóa học sau: N<sub>2</sub>(g) + O<sub>2</sub>(g) → 2NO(g). Cho biết năng lượng liên kết trong các phân tử O<sub>2</sub>, N<sub>2</sub> và NO lần lượt là 494 kJ/mol; 945 kJ/mol và 607 kJ/mol. Biến thiên enthalpy chuẩn của phản ứng trên là","images":[],"options":[{"id":"a","letter":"A","text":"+298 kJ","isCorrect":false},{"id":"b","letter":"B","text":"–298 kJ","isCorrect":false},{"id":"c","letter":"C","text":"+225 kJ","isCorrect":false},{"id":"d","letter":"D","text":"–225 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c5_de3_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho sơ đồ hòa tan NH<sub>4</sub>NO<sub>3</sub> sau: NH<sub>4</sub>NO<sub>3</sub>(s) + H<sub>2</sub>O(l) NH<sub>4</sub>NO<sub>3</sub>(aq)<br/>Hòa tan 80 gam NH<sub>4</sub>NO<sub>3</sub> khan vào bình chứa 1 L nước ở 25<sup>o</sup>C. Biết nhiệt dung riêng của H<sub>2</sub>O là 4,2 J/g.K. Sau khi muối tan hết, nước trong bình có nhiệt độ là","images":[],"options":[{"id":"a","letter":"A","text":"31,2<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"b","letter":"B","text":"28,1<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"c","letter":"C","text":"21,9<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"18,8<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"Đáp án:  m  =","isCorrect":false},{"id":"d","letter":"D","text":"V  = 1000 g Q = mcT = 1000.4,2. T = 26.1000  T = 6,2 <sup>o</sup>C Sau khi hòa tan nước trong bình có nhiệt độ giảm so với ban đầu  25 – 6,2 = 18,8<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c5_de3_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mỗi phát biểu sau đây là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Trong phản ứng tỏa nhiệt, dấu của ∆H dương vì năng lượng của hệ chất phản ứng nhỏ hơn năng lượng của hệ chất sản phẩm","isCorrect":false},{"id":"b","letter":"B","text":"Trong phản ứng thu nhiệt, dấu của ∆H âm vì năng lượng của hệ chất phản ứng lớn hơn năng lượng của hệ chất sản phẩm","isCorrect":false},{"id":"c","letter":"C","text":"Giá trị tuyệt đối của biến thiên enthalpy càng lớn thì nhiệt lượng tỏa ra hay thu vào của phản ứng càng nhiều","isCorrect":true},{"id":"d","letter":"D","text":"Các phản ứng xảy ra ở nhiệt độ phòng thường là phản ứng tỏa nhiệt, các phản ứng thu nhiệt thường xảy ra khi đun nóng","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Trong phản ứng tỏa nhiệt, ∆H < 0.<br/>b. Sai. Trong phản ứng thu nhiệt, dấu của ∆H > 0.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c5_de3_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Cho phương trình phản ứng: Zn (s) + CuSO<sub>4</sub> (aq)  ZnSO<sub>4</sub> (aq) + Cu (s);","images":[],"options":[{"id":"a","letter":"A","text":"Enthalpy tạo thành chuẩn của Zn(s) bằng 210 kJ/mol","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng trên là phản ứng tỏa nhiệt","isCorrect":true},{"id":"c","letter":"C","text":"Biến thiên enthalpy của phản ứng tạo thành 3,84 g Cu là 12,6 kJ","isCorrect":false},{"id":"d","letter":"D","text":"Trong quá trình phản ứng, nhiệt độ của hỗn hợp tăng lên","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Enthalpy tạo thành chuẩn của Zn(s) bằng 0.<br/>b. Đúng.<br/>c. Sai. Biến thiên enthalpy của phản ứng tạo thành 3,84g Cu là <br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c5_de3_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Biến thiên enthalpy chuẩn quá trình “ H<sub>2</sub>O(s) → H<sub>2</sub>O(l)” là 6,020kJ","images":[],"options":[{"id":"a","letter":"A","text":"Quá trình tan chảy của nước đá là quá trình tỏa nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Khi cho viên nước đá vào cốc nước lỏng ấm, viên đá lại tan chảy dần vì nó lấy nhiệt từ nước lỏng","isCorrect":true},{"id":"c","letter":"C","text":"Cốc nước lỏng bị lạnh dần trong quá trình viên nước đá tan chảy do sự mất nhiệt làm cho nước lỏng lạnh đi","isCorrect":true},{"id":"d","letter":"D","text":"Biết rằng để làm cho nhiệt độ của 1 mol nước lỏng thay đổi 1°C cần một nhiệt lượng là 75,4J. Giả sử mỗi viên nước đá tương ứng với 1 mol nước, thì cần tối thiểu 6 viên nước đá tan chảy để có thể làm lạnh 500 gam nước lỏng ở 20°C xuống 0°C","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Quá trình tan chảy của nước đá là quá trình thu nhiệt vì có biến thiên enthalpy dương.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Nhiệt lượng mà 500 gam nước lỏng từ ở 20°C xuống 0°C  tỏa ra là:<br/>= 41,8889(kJ)<br/>Mỗi viên đá tan chảy hấp thụ một nhiệt lượng là 6,020 kJ <br/>⇒ Số viên nước đá tối thiểu cần là  viên","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c5_de3_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Ở điều kiện chuẩn, 2 mol nhôm tác dụng vừa đủ với khí chlorine tạo muối aluminium chloride và giải phóng một lượng nhiệt 1390,81 kJ","images":[],"options":[{"id":"a","letter":"A","text":"Phương trình nhiệt của phản ứng trên: 2Al(s) + 3Cl<sub>2</sub>(g) → 2AlCl<sub>3</sub>(s); = 1390,81 kJ","isCorrect":false},{"id":"b","letter":"B","text":"Nhiệt tạo thành của AlCl<sub>3</sub>(s) ở điều kiên chuẩn là 1390,81 kJ/mol","isCorrect":false},{"id":"c","letter":"C","text":"Lượng nhiệt được giải phóng khi 10 gam AlCl<sub>3</sub> được tạo thành là 52,2 kJ","isCorrect":true},{"id":"d","letter":"D","text":"Để tạo ra được 1,0 kJ nhiệt cần 0,043 gam Al phản ứng với khí chlorine","isCorrect":false}],"explanation":"Đáp án: <br/>a. Sai. 2Al(s) + 3Cl<sub>2</sub>(g) → 2AlCl<sub>3</sub>(s); = -1390,81 kJ.<br/>b. Sai.  Nhiệt tạo thành của AlCl<sub>3</sub>(s) ở điều kiên chuẩn là -1390,81 kJ/mol.<br/>c. Đúng.<br/> <br/> Cứ 2 mol Al phản ứng tạo thành 2 mol AlCl<sub>3</sub> thì giải phóng nhiệt lượng là 1390,81 kJ<br/>                                                       0,075 mol ---------------------------- x = <br/>d. Sai.<br/>Cứ 2 mol Al phản ứng thì giải phóng nhiệt lượng là 1390,81 kJ<br/>         x = ← 1 kJ                         <br/>             ⇒ m<sub>Al</sub> = 0,0388 gam","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c5_de3_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Phân tử hemoglobin(Hb) trong máu nhận O<sub>2</sub> ở phổi để chuyển thành HbO<sub>2</sub>. Chất này theo máu tới các bộ phận cơ thể, tại đó HbO<sub>2</sub> lại chuyển thành Hb và O<sub>2</sub>( để cung cấp O<sub>2</sub> cho các hoạt động sinh hóa cần thiết trong cơ thể). Nếu trong không khí có lẫn carbon monoxide(CO), cơ thể nhanh chóng bị ngộ độc. Cho các số liệu thực nghiệm sau:<br/>Hb + O<sub>2</sub> → HbO<sub>2</sub>                      = -33,05kJ       (1)<br/>Hb + CO → HbCO                   = -47,28kJ       (2)<br/>HbO<sub>2</sub> + CO → HbCO + O<sub>2</sub>      = -14,23kJ       (3)<br/>HbCO + O<sub>2</sub> → HbO<sub>2</sub> + CO      = 14,23 kJ       (4)<br/>Liệt kê các phản ứng tỏa nhiệt theo số thứ tự tăng dần (ví dụ: 134, 24,...)","images":[],"correctAnswer":"123","explanation":"Đáp án: 123","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c5_de3_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các trường hợp sau:<br/>(1) Nước bay hơi.<br/>(2) Nước đóng băng.<br/>(3) Cồn cháy trong không khí.<br/>(4) Pha viên sủi vitamin C vào nước.<br/>(5) Phản ứng tạo gỉ sắt.<br/>Có bao nhiêu quá trình thu nhiệt trong các trường hợp trên?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c5_de3_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Khi dẫn hơi nước qua than nóng đỏ thu được khí than, là hỗn hợp của carbonmonoxide và hydrogen:<br/>Tính sự biến đổi enthalpy chuẩn của phản ứng (1) theo đơn vị kJ từ những phương trình phản ứng hóa học và sự biến đổi enthalpy chuẩn:<br/>(Làm tròn kết quả đến hàng đơn vị)","images":[],"correctAnswer":"131","explanation":"Đáp án: 131","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c5_de3_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho phản ứng đốt cháy butane sau:<br/>C<sub>4</sub>H<sub>10</sub>(g)  +  O<sub>2</sub>(g)   CO<sub>2</sub>(g)  +  H<sub>2</sub>O(g)(1)<br/>Biết năng lượng liên kết trong các hợp chất cho trong bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Liên kết</td><td class='border border-slate-300 p-1.5'>Phân tử</td><td class='border border-slate-300 p-1.5'>E b  (kJ/mol)</td><td class='border border-slate-300 p-1.5'>Liên kết</td><td class='border border-slate-300 p-1.5'>Phân tử</td><td class='border border-slate-300 p-1.5'>E b  (kJ/mol)</td></tr><tr><td class='border border-slate-300 p-1.5'>C – C</td><td class='border border-slate-300 p-1.5'>C 4 H 10</td><td class='border border-slate-300 p-1.5'>346</td><td class='border border-slate-300 p-1.5'>C = O</td><td class='border border-slate-300 p-1.5'>CO 2</td><td class='border border-slate-300 p-1.5'>799</td></tr><tr><td class='border border-slate-300 p-1.5'>C – H</td><td class='border border-slate-300 p-1.5'>C 4 H 10</td><td class='border border-slate-300 p-1.5'>418</td><td class='border border-slate-300 p-1.5'>O – H</td><td class='border border-slate-300 p-1.5'>H 2 O</td><td class='border border-slate-300 p-1.5'>467</td></tr><tr><td class='border border-slate-300 p-1.5'>O = O</td><td class='border border-slate-300 p-1.5'>O 2</td><td class='border border-slate-300 p-1.5'>495</td><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'></td></tr></table><br/>Một bình gas chứa 12 kg butane có thể đun sôi bao nhiêu ấm nước (Làm tròn kết quả đến hàng đơn vị)? Giả thiết mỗi ấm nước chứa 2 L nước ở 25<sup>0</sup>C, nhiệt dung của nước là 4,2 J/g.K, có 40% nhiệt đốt cháy butane bị thất thoát ra ngoài môi trường","images":[],"correctAnswer":"918","explanation":"Đáp án: 918.<br/>C<sub>4</sub>H<sub>10</sub>(g)  +  O<sub>2</sub>(g)   4CO<sub>2</sub>(g)  +  5H<sub>2</sub>O(g)<br/>3.E<sub>C-C</sub> + 10.E<sub>C-H</sub> + 6,5.E<sub>O=O</sub> – 4.2.E<sub>C=O</sub> – 5.2.E<sub>O-H</sub><br/>               = 3.346 + 10.418 + 6,5.495 – 8.799 – 10.467 = - 2626,5 (kJ).<br/>Nhiệt cần đun 1 ấm nước: 2.10<sup>3</sup>.4,2.(100 – 25) = 630 000 (J) = 630 (kJ).<br/>Số ấm nước:  (ấm nước)","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c5_de3_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Tiến hành quá trình ozone hoá 100 g oxygen theo phản ứng sau:<br/>3O<sub>2</sub>(g) (oxygen)  2O<sub>3</sub>(g) (ozone)<br/>Hỗn hợp thu được có chứa 24% ozone về khối lượng, tiêu tốn 71,2 kJ. Nhiệt tạo thành  của ozone (kJ/mol) có giá trị là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"142","explanation":"Đáp án: 142.<br/>Số mol của O<sub>3</sub> = ⇒  (kJ)<br/> =  (kJ)<br/>=>  = 142,4 (kJ/mol)","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c5_de3_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Lactic acid hay acid sữa là hợp chất hoá học đóng vai trò quan trọng trong nhiều quá trình sinh hoá, lần đầu tiên được phân tách vào năm 1780 bởi nhà hoá học Thuỵ Điền Carl Wilhelm Scheele. Lactic acid có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>3</sub>, công A thức câu tạo CH<sub>3</sub>-CH(OH)-COOH.<br/>Khi vận động mạnh cơ thề không đủ cung cấp oxygen, thì cơ thề sẽ chuyền hoá glucose thành lactic acid từ các tế bào đề cung cấp năng lượng cho cơ thề (lactic acid tạo thành từ quá trình này sẽ gây mỏi cơ) theo phương trình sau:<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(aq)  2C<sub>3</sub>H<sub>6</sub>O<sub>3</sub>(aq)  = -150 kJ<br/>Biết rằng cơ thề chỉ cung cấp 98% năng lượng nhờ oxygen, năng lượng còn lại nhờ vào sự chuyền hoá glucose thành lactic acid.<br/>Giả sử một người chạy bộ trong một thời gian tiêu tốn 300 kcal. Khối lượng lactic acid tạo ra từ quá trình chuyền hoá đó là bao nhiêu gam (biết 1 cal = 4,184 J)? (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"30","explanation":"Đáp án: 30.<br/>Tính khối lượng lactic acid tạo ra từ quá trình chạy bộ. Năng lượng cùa sự chuyển hoá glucose thành lactic acid trong quá trình chạy bộ chiếm 2%300 kcal = 6 kcal = 6 000 cal  25 104 J = 25,104 kJ.<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>  2C<sub>3</sub>H<sub>6</sub>O<sub>3</sub> ;  =  -150 kJ<br/>0,335 mol           -25,104 kJ<br/>Khối lượng lactic acid được tạo ra trong quá trình chuyển hoá: 0,335.90 = 30,1 g.<br/>------------------------- HẾT -------------------------<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa10_c5_de4","code":"ĐỀ 504","title":"Đề kiểm tra Ôn tập Toàn diện Chương 5 (Đề số 4)","topic":"Đề thi chuẩn cấu trúc Bộ GD&ĐT 2025 bao quát toàn bộ Năng Lượng Hóa Học","badge":"Chương 5 - Đề 4","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c5_de4_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Phản ứng tỏa nhiệt là phản ứng hóa học trong đó","images":[],"options":[{"id":"a","letter":"A","text":"có sự giải phóng nhiệt năng ra môi trường","isCorrect":false},{"id":"b","letter":"B","text":"có sự hấp thụ nhiệt năng từ môi trường","isCorrect":false},{"id":"c","letter":"C","text":"không có sự giải phóng nhiệt năng ra môi trường","isCorrect":false},{"id":"d","letter":"D","text":"có sự giải phóng quang năng ra môi trường","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c5_de4_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Kí hiệu enthalpy tạo thành (nhiệt tạo thành) của một phản ứng ở điều kiện chuẩn là","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c5_de4_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Cho phản ứng đốt cháy các chất: C(s), CH<sub>3</sub>OH(l), CH<sub>4</sub>(g), C<sub>4</sub>H<sub>10</sub>(g) như sau:<br/>(1) C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g)  = –393,5 kJ<br/>(2) CH<sub>3</sub>OH(l) + O<sub>2</sub>(g) → CO<sub>2</sub>(g)  = –726 kJ<br/>(3) CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  = –890,36 kJ<br/>(4) C<sub>2</sub>H<sub>2</sub>(g) + O<sub>2</sub>(g) → 2CO<sub>2</sub>(g) + H<sub>2</sub>O(l)  = –2877,04 kJ<br/>Đốt cháy lần lượt 1 mol các chất trên, phản ứng tỏa ra lượng nhiệt nhiều nhất là","images":[],"options":[{"id":"a","letter":"A","text":"(1)","isCorrect":false},{"id":"b","letter":"B","text":"(2)","isCorrect":false},{"id":"c","letter":"C","text":"(3)","isCorrect":false},{"id":"d","letter":"D","text":"(4)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c5_de4_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Điều kiện nào sau đây là điều kiện chuẩn đối với chất khí?","images":[],"options":[{"id":"a","letter":"A","text":"Áp suất 1 bar và nhiệt độ 25 <sup>o</sup>C hay 298K","isCorrect":false},{"id":"b","letter":"B","text":"Áp suất 1 bar và nhiệt độ 298K","isCorrect":false},{"id":"c","letter":"C","text":"Áp suất 1 bar và nhiệt độ 25 <sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"Áp suất 1 bar và nhiệt độ 25K","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c5_de4_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Cho phương trình nhiệt hóa học sau:<br/>H<sub>2</sub> (g) + I<sub>2</sub> (g)  2HI (g)<br/>Phát biểu nào sau đây về sự trao đổi năng lượng của phản ứng trên là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng giải phóng nhiệt lượng 11,3 kJ khi 2 mol HI được tạo thành","isCorrect":false},{"id":"b","letter":"B","text":"Tổng nhiệt phá vỡ liên kết của chất phản ứng lớn hơn nhiệt tỏa ra khi tạo thành sản phẩm","isCorrect":false},{"id":"c","letter":"C","text":"Năng lượng chứa trong H<sub>2</sub> và I<sub>2</sub> cao hơn trong HI","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng xảy ra với tốc độ chậm","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c5_de4_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Phản ứng chuyển hóa giữa hai dạng đơn chất của phosphorus (P):<br/>P (s, đỏ)  P (s, trắng)<br/>Điều này chứng tỏ phản ứng:","images":[],"options":[{"id":"a","letter":"A","text":"thu nhiệt, P đỏ bền hơn P trắng","isCorrect":false},{"id":"b","letter":"B","text":"thu nhiệt, P trắng bền hơn P đỏ","isCorrect":false},{"id":"c","letter":"C","text":"tỏa nhiệt, P đỏ bền hơn P trắng","isCorrect":false},{"id":"d","letter":"D","text":"tỏa nhiệt, P trắng bền hơn P đỏ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c5_de4_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Các phản ứng phân hủy thường là phản ứng thu nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng càng tỏa ra nhiều nhiệt càng dễ tự xảy ra","isCorrect":false},{"id":"c","letter":"C","text":"Các phản ứng oxi hóa chất béo cung cấp nhiệt cho cơ thể","isCorrect":false},{"id":"d","letter":"D","text":"Các phản ứng khi đun nóng đều dễ xảy ra hơn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c5_de4_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Nung nóng hai ống nghiệm chứa NaHCO<sub>3</sub> và P, xảy ra các phản ứng sau:<br/>2NaHCO<sub>3</sub>(s)  Na<sub>2</sub>CO<sub>3</sub>(s) + CO<sub>2</sub>(g) + H<sub>2</sub>O(g)  (1)<br/>4P(s) + 5O<sub>2</sub>(g)  2P<sub>2</sub>O<sub>5</sub>(s)  (2)<br/>Khi ngừng đun nóng, phản ứng (1) dừng lại còn phản ứng (2) tiếp tục xảy ra, chứng tỏ","images":[],"options":[{"id":"a","letter":"A","text":"phản ứng (1) toả nhiệt, phản ứng (2) thu nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"phản ứng (1) thu nhiệt, phản ứng (2) toả nhiệt","isCorrect":false},{"id":"c","letter":"C","text":"cả 2 phản ứng đều toả nhiệt","isCorrect":false},{"id":"d","letter":"D","text":"cả 2 phản ứng đều thu nhiệt","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c5_de4_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Phương trình nhiệt hoá học nào sau đây ứng với sơ đồ biểu diễn biến thiên enthalpy của phản ứng sau:","images":[],"options":[{"id":"a","letter":"A","text":"CI<sub>2</sub>O (g) + 3F<sub>2</sub>O (g) → 2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g)    = -394,1 kJ","isCorrect":false},{"id":"b","letter":"B","text":"CI<sub>2</sub>O (g) + 3F<sub>2</sub>O(g) → 2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g)    = +394,1 kJ","isCorrect":false},{"id":"c","letter":"C","text":"2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g) → CI<sub>2</sub>O (g) + 3F<sub>2</sub>O (g)    = +394,1 kJ","isCorrect":false},{"id":"d","letter":"D","text":"2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g) → CI<sub>2</sub>O (g) + 3F<sub>2</sub>O (g)    = -394,1 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c5_de4_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Nung KNO<sub>3</sub> lên 550<sup>0</sup>C xảy ra phản ứng:<br/>KNO<sub>3</sub>(s)  KNO<sub>2</sub>(s) +<br/>Phản ứng nhiệt phân KNO<sub>3</sub> là phản ứng","images":[],"options":[{"id":"a","letter":"A","text":"toả nhiệt, có < 0","isCorrect":false},{"id":"b","letter":"B","text":"thu nhiệt, có > 0","isCorrect":false},{"id":"c","letter":"C","text":"toả nhiệt, có > 0","isCorrect":false},{"id":"d","letter":"D","text":"thu nhiệt, có < 0","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c5_de4_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Dựa vào phương trình nhiệt hóa học của phản ứng sau:<br/>CO<sub>2</sub>(g)  CO(g) + O<sub>2</sub>(g) = +280 kJ<br/>Giá trị của phản ứng: 2CO<sub>2</sub>(g)  2CO(g) + O<sub>2</sub>(g) là","images":[],"options":[{"id":"a","letter":"A","text":"+140 kJ","isCorrect":false},{"id":"b","letter":"B","text":"-1120 kJ","isCorrect":false},{"id":"c","letter":"C","text":"+560 kJ","isCorrect":false},{"id":"d","letter":"D","text":"-420 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c5_de4_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Cho phương trình nhiệt hóa học của phản ứng trung hòa sau:<br/>HCl (aq) + NaOH (aq)  NaCl (aq) + H<sub>2</sub>O (l)<br/>Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Cho 1 mol HCl tác dụng với 1 mol NaOH dư tỏa nhiệt lượng là 57,3 kJ","isCorrect":false},{"id":"b","letter":"B","text":"Cho HCl dư tác dụng với 1 mol NaOH thu nhiệt lượng là 57,3 kJ","isCorrect":false},{"id":"c","letter":"C","text":"Cho 1 mol HCl tác dụng với 1 mol NaOH tỏa nhiệt lượng là 57,3 kJ","isCorrect":false},{"id":"d","letter":"D","text":"Cho 2 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c5_de4_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Ở điều kiện chuẩn, công thức tính biến thiên enthalpy của phản ứng theo nhiệt tạo thành là","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c5_de4_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Phosphine (PH<sub>3</sub>) là một chất khí không màu, nhẹ hơn không khí, rất độc và dễ cháy. Khí này thường thoát ra từ xác động vật thối rữa, khi có mặt diphosphine (P<sub>2</sub>H<sub>4</sub>) thường tự bốc cháy trong không khí, đặc biệt ở thời tiết mưa phùn, tạo hiện tượng “ma trơi” ngoài nghĩa địa.<br/>Phản ứng cháy phosphine: 2PH<sub>3</sub>(g) + 4O<sub>2</sub>(g) → P<sub>2</sub>O<sub>5</sub>(s) + 3H<sub>2</sub>O(l)<br/>Biết nhiệt tạo thành chuẩn của các chất cho trong bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Chất</td><td class='border border-slate-300 p-1.5'>PH 3 (g)</td><td class='border border-slate-300 p-1.5'>P 2 O 5 (s)</td><td class='border border-slate-300 p-1.5'>H 2 O(l)</td></tr><tr><td class='border border-slate-300 p-1.5'>(kJ/mol)</td><td class='border border-slate-300 p-1.5'>5,4</td><td class='border border-slate-300 p-1.5'>-365,8</td><td class='border border-slate-300 p-1.5'>-285,8</td></tr></table><br/>Biến thiên enthalpy chuẩn của phản ứng trên là","images":[],"options":[{"id":"a","letter":"A","text":"-657 kJ","isCorrect":false},{"id":"b","letter":"B","text":"+657 kJ","isCorrect":false},{"id":"c","letter":"C","text":"+1234 kJ","isCorrect":false},{"id":"d","letter":"D","text":"-1234 kJ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c5_de4_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Phản ứng tổng hợp ammonia:<br/>N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  2NH<sub>3</sub>(g)  = -92 kJ<br/>Biết năng lượng liên kết (kJ/mol) của và H – H lần lượt là 946 và 436. Năng lượng liên kết của  trong ammonia là","images":[],"options":[{"id":"a","letter":"A","text":"391 kJ/mol","isCorrect":false},{"id":"b","letter":"B","text":"361 kJ/mol","isCorrect":false},{"id":"c","letter":"C","text":"245 kJ/mol","isCorrect":false},{"id":"d","letter":"D","text":"490 kJ/mol","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c5_de4_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Cho các phản ứng sau:<br/>(1) C (s) + CO<sub>2</sub> (g)  2CO<sub>2</sub> (g)<br/>(2) C (s) + H<sub>2</sub>O (g)  CO (g) + H<sub>2</sub> (g)<br/>(3) CO (g) + H<sub>2</sub>O (g)  CO<sub>2</sub> (g) + H<sub>2</sub> (g)<br/>Ở 500K, 1 atm, biến thiên enthalpy của phản ứng (3) có giá trị là","images":[],"options":[{"id":"a","letter":"A","text":"-39,8 kJ","isCorrect":false},{"id":"b","letter":"B","text":"39,8 kJ","isCorrect":false},{"id":"c","letter":"C","text":"-47,00 kJ","isCorrect":false},{"id":"d","letter":"D","text":"106,7 kJ. Đáp án:  (1) C (s) + CO<sub>2</sub> (g)  2CO<sub>2</sub> (g)                           <sub>r</sub>H (1)  (2) C (s) + H<sub>2</sub>O (g)  CO (g) + H<sub>2</sub> (g)                <sub>r</sub>H (2) (3) CO (g) + H<sub>2</sub>O (g)  CO<sub>2</sub> (g) + H<sub>2</sub> (g)           <sub>r</sub>H (3) Lấy phương trình phản ứng (2) trừ phương trình phản ứng (1) được phương trình phản ứng (3) <sub>r</sub>H (3) = <sub>r</sub>H (2) - <sub>r</sub>H (1) = 133,8 – 173,6 = - 39,8 (kJ)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c5_de4_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(a) Trong phòng thí nghiệm, có thể nhận biết một phản ứng thu nhiệt hoặc tỏa nhiệt bằng cách đo nhiệt độ của phản ứng bằng một nhiệt kế.<br/>(b) Nhiệt độ của hệ phản ứng sẽ tăng lên nếu phản ứng thu nhiệt.<br/>(c) Nhiệt độ của hệ phản ứng sẽ tăng lên nếu phản ứng tỏa nhiệt.<br/>(d) Nhiệt độ của hệ phản ứng sẽ giảm đi nếu phản ứng tỏa nhiệt.<br/>(e) Nhiệt độ của hệ phản ứng sẽ giảm đi nếu phản ứng thu nhiệt.<br/>Số phát biểu không đúng là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"5","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c5_de4_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Phản ứng đốt cháy ethanol: C<sub>2</sub>H<sub>5</sub>OH (l) + 3O<sub>2</sub> (g)  2CO<sub>2</sub> (g) + 3H<sub>2</sub>O (l)<br/>Đốt cháy hoàn toàn 5 g ethanol, nhiệt tỏa ra làm nóng chảy 447 g nước đá ở 0<sup>o</sup>C. Biết 1 g nước đá nóng chảy hấp thụ nhiệt lượng 333,5 J, biến thiên enthalpy của phản ứng đốt cháy ethanol là","images":[],"options":[{"id":"a","letter":"A","text":"-1371 kJ/mol","isCorrect":false},{"id":"b","letter":"B","text":"-954 kJ/mol","isCorrect":false},{"id":"c","letter":"C","text":"-149 kJ/mol","isCorrect":false},{"id":"d","letter":"D","text":"+149 kJ/mol. Đáp án:  Q = 447.333,5 = 149074,5 J  149 (kJ)  H =","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c5_de4_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mỗi phát biểu sau đây là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Biến thiên enthalpy chuẩn của một phản ứng hóa học là lượng nhiệt kèm theo phản ứng đó ở áp suất 1 bar và 27<sup>o</sup>C","isCorrect":false},{"id":"b","letter":"B","text":"Nhiệt (tỏa ra hay thu vào) kèm theo một phản ứng được thực hiện ở 1 bar và 298 K là biến thiên enthalpy chuẩn của phản ứng đó","isCorrect":true},{"id":"c","letter":"C","text":"Một số phản ứng khi xảy ra làm môi trường xung quanh nóng lên là phản ứng thu nhiệt","isCorrect":false},{"id":"d","letter":"D","text":"Một số phản ứng khi xảy ra làm môi trường xung quanh lạnh đi là do các phản ứng này thu nhiệt và lấy nhiệt từ môi trường","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Nhiệt độ là 25oC.<br/>b. Đúng.<br/>c. Sai. Phản ứng tỏa nhiệt.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c5_de4_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Cho phản ứng sau: S(s) + O<sub>2</sub>(g)  SO<sub>2</sub>(g)  và  (SO<sub>2</sub>, g) = – 296,8 kJ/mol","images":[],"options":[{"id":"a","letter":"A","text":"(SO<sub>2</sub>, g) = –296,8 kJ/mol là lượng nhiệt tỏa ra khi tạo ra 1 mol SO<sub>2</sub> (g) từ đơn chất S (s) và O<sub>2</sub> (g), đây là các đơn chất bền nhất ở điều kiện chuẩn","isCorrect":true},{"id":"b","letter":"B","text":"Ở điều kiện chuẩn,  (S, s) = 0","isCorrect":true},{"id":"c","letter":"C","text":"Biến thiên enthalpy chuẩn của phản ứng là 296,9 kJ","isCorrect":false},{"id":"d","letter":"D","text":"Hợp chất SO<sub>2</sub>(g) kém bền hơn về mặt năng lượng so với các đơn chất bền S (s) và O<sub>2</sub> (g)","isCorrect":false}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Biến thiên enthalpy của phản ứng là -296,8 kJ.<br/>d. Sai. Vì  (SO<sub>2</sub>, g) < 0, chất này bền hơn các đơn chất tạo nên nó","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c5_de4_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho phản ứng đốt cháy methane (CH<sub>4</sub>) và acetylene (C<sub>2</sub>H<sub>2</sub>) như sau:<br/>(1) CH<sub>4</sub>(g) + 2O<sub>2</sub>(g)  CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)<br/>(2) C<sub>2</sub>H<sub>2</sub>(g) + O<sub>2</sub>(g)  2CO<sub>2</sub>(g) + H<sub>2</sub>O(l)","images":[],"options":[{"id":"a","letter":"A","text":"Cả hai phản ứng trên đều là phản ứng tỏa nhiệt","isCorrect":true},{"id":"b","letter":"B","text":"Khi đốt cháy cùng một lượng thể tích khí CH<sub>4</sub> và C<sub>2</sub>H<sub>2</sub> thì lượng nhiệt sinh ra do CH<sub>4</sub> nhiều hơn lượng nhiệt sinh ra do C<sub>2</sub>H<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Biến thiên enthalpy của phản ứng (1) tính theo năng lượng liên kết có công thức:","isCorrect":false},{"id":"d","letter":"D","text":"Trong thực tế, để hàn, cắt kim loại người ta sử dụng khí C<sub>2</sub>H<sub>2</sub> mà không dùng khí CH<sub>4</sub>","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Sai. C<sub>2</sub>H<sub>2</sub> cháy tỏa nhiều nhiệt hơn CH<sub>4</sub>.<br/>c. Sai. Công thức trên là tính theo nhiệt tạo thành.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c5_de4_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Đường sucrose (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>) là một đường đôi. Trong môi trường acid ở dạ dày và nhiệt độ cơ thể, sucrose bị thủy phân thành đường glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>) và fructose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>), sau đó bị oxi hóa bởi oxygen tạo thành CO<sub>2</sub> và H<sub>2</sub>O. Sơ đồ thay đổi năng lượng hóa học của phản ứng được cho hình dưới đây:","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng trong sơ đồ trên là phản ứng thu nhiệt","isCorrect":false},{"id":"b","letter":"B","text":"Phương trình nhiệt hóa học trong sơ đồ trên là C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s)+ 6O<sub>2</sub>(g) → 6CO<sub>2</sub>(g) + 6H<sub>2</sub>O(l)","isCorrect":false},{"id":"c","letter":"C","text":"Năng lượng các chất tham gia phản ứng nhỏ hơn năng lượng các chất sản phẩm","isCorrect":false},{"id":"d","letter":"D","text":"Khi 1 mol đường sucrose bị đốt cháy hoàn toàn với một lượng vừa đủ oxygen ở điều kiện chuẩn tỏa ra một lượng nhiệt là 5645kJ thì biến thiến enthalpy chuẩn của phản ứng oxi hóa 5 g sucrose là –82,5 kJ","isCorrect":true}],"explanation":"Đáp án:<br/>a. Sai. Phản ứng đó tỏa nhiệt vì có biến thiên enthalpy âm.<br/>b. Sai. C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s)+ 6O<sub>2</sub>(g) → 6CO<sub>2</sub>(g) + 6H<sub>2</sub>O(l); .<br/>c. Sai. Năng lượng các chất tham gia phản ứng lớn hơn năng lượng các chất sản phẩm.<br/>d. Đúng. C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>(s)+ 12O<sub>2</sub>(g) → 12CO<sub>2</sub>(g) + 11H<sub>2</sub>O(l)<br/>Biến thiên enthalpy chuẩn của phản ứng là -5645kJ.<br/>Biến thiên enthalpy của quá trình =","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c5_de4_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Dựa vào phương trình nhiệt hóa học của các phản ứng sau :<br/>(1) CS<sub>2</sub>(l)  + 3O<sub>2</sub>(g) CO<sub>2</sub>(g)   +   2 SO<sub>2</sub>(g)        = –1110,21 kJ<br/>(2) CO<sub>2</sub>(g)  CO(g) +  O<sub>2</sub>(g)        = +280,00 kJ<br/>(3) 2Na(s) +2H<sub>2</sub>O(l) 2NaOH(aq) + H<sub>2</sub>(g) = –367,50 kJ<br/>(4) ZnSO<sub>4</sub>(s)  ZnO(s) +  SO<sub>2</sub>(g)                         = +235,21 kJ<br/>(5) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g) 2SO<sub>3</sub>(g)      = –197kJ<br/>Liệt kê các phản ứng tỏa nhiệt theo số thứ tự tăng dần (ví dụ: 123, 25,...)","images":[],"correctAnswer":"135","explanation":"Đáp án: 135","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c5_de4_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các quá trình sau:<br/>(a) Nước hóa rắn.<br/>(b) Sự tiêu hóa thức ăn.<br/>(c) Quá trình chạy của con người.<br/>(d) Khí CH<sub>4</sub> đốt ở trong lò.<br/>(e) Hòa tan KBr vào nước làm cho nước trở nên lạnh.<br/>(f) Sulfuric acid đặc khi thêm vào nước làm cho nước nóng lên.<br/>Có bao nhiêu quá trình thu nhiệt trong số các quá trình trên?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c5_de4_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho các sau đây: C(graphite, s); CO(g); O<sub>2</sub>(l); Fe(s); SO<sub>2</sub>(g), H<sub>2</sub>O(l). Có bao nhiêu chất trong dãy chất trên có nhiệt tạo thành chuẩn bằng 0?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c5_de4_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho phản ứng sau: CHCH(g) + H<sub>2</sub>(g) CH<sub>3</sub>-CH<sub>3</sub>(g).<br/>Năng lượng liên kết (kJ/mol) của H – H là 436, của C – C là 347, của C – H là 414 và của CC là 839. Biến thiên enthalpy của phản ứng là bao nhiêu kJ?","images":[],"correctAnswer":"-292","explanation":"Đáp án: -292.<br/>∆<sub>r</sub>H = 2E<sub>(C-H)</sub> + E<sub>(C≡C)</sub> + 2E<sub>(H-H)</sub> – 6E<sub>(C-H)</sub> – E<sub>(C-C)</sub> = (2.414) + 839 + (2.436) – (6.414) – 347 = -292 kJ","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c5_de4_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Cho sơ đồ hòa tan NH<sub>4</sub>NO<sub>3</sub> sau:<br/>NH<sub>4</sub>NO<sub>3</sub> (s) + H<sub>2</sub>O (l) NH<sub>4</sub>NO<sub>3</sub> (aq)<br/>Hòa tan 80 gam NH<sub>4</sub>NO<sub>3</sub> khan vào bình chứa 1 L nước ở 25<sup>o</sup>C. Sau khi muối tan hết, nước trong bình có nhiệt độ là bao nhiêu độ C? (Kết quả làm tròn đến hàng phần mười)","images":[],"correctAnswer":"18,8","explanation":"Đáp án: 18,8.<br/>80g NH<sub>4</sub>NO<sub>3</sub>  1 mol  Q = 26 (kJ)<br/>H > 0, quá trình hòa tan thu nhiệt, nhiệt độ giảm đi một lượng là:<br/>T =   Nhiệt độ cuối cùng là 25 – 6,2 = 18,8<sup>0</sup>C","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c5_de4_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Ở điều kiện chuẩn, cần phải đốt cháy hoàn toàn bao nhiêu gam  để cung cấp nhiệt cho phản ứng tạo 1 mol  bằng cách nung  Giả thiết hiệu suất các quá trình đều là 100%. Phương trình nhiệt của phản ứng nung vôi và đốt cháy CH<sub>4</sub> như sau:<br/>(1)<br/>(2)<br/>(Kết quả làm tròn đến hàng phần mười)","images":[],"correctAnswer":"3,2","explanation":"Đáp án: 3,2.<br/>Ta có phản ứng nung vôi: <br/>Tức là để tạo 1 mol CaO cần cung cấp 178,29 kJphản ứng đốt cháy  cần tỏa ra 178,29 kJ<br/>Mà ta có phản ứng đốt cháy  <br/>Đốt cháy 1 mol  tỏa ra 890,36 kJ<br/>Đốt cháy x mol  tỏa ra 178,29 kJ<br/>khối lượng  cần dùng để đốt cháy là: <br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]}];
+export const HOA10_CHUONG5_EXAMS: Chuong5Exam[] = [
+  {
+    "id": "hoa10_c5_de1",
+    "code": "10-C5-01",
+    "title": "Đề Kiểm Tra Chương 5: Năng Lượng Hóa Học (Đề số 1)",
+    "topic": "Phản ứng tỏa nhiệt, thu nhiệt, enthalpy chuẩn & biến thiên enthalpy",
+    "badge": "Chương 5 • Đề 1",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c5_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Quy ước về dấu của nhiệt phản ứng ( or298HD ) nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng thu nhiệt có  or298HD < 0",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng thu nhiệt có  or298HD > 0.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng tỏa nhiệt có  or298HD > 0",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng thu nhiệt có  or298HD = 0.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Phản ứng thu nhiệt có  or298HD > 0..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Điều kiện chuẩn đối với chất khí là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "áp suất 1 bar và nhiệt độ 25 °C hay 298 K",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "áp suất 1 bar và nhiệt độ 298 K hay 25 K.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "áp suất 1 bar và nhiệt độ 25 °C",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "áp suất 1 bar và nhiệt độ 25 K.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> áp suất 1 bar và nhiệt độ 25 <sup>o</sup>C hay 298K.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhiệt tạo thành chuẩn của một chất là nhiệt lượng tạo thành x mol chất đó từ các đơn chất bền vững nhât ở điều kiện chuẩn. Giá trị của x là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 1.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kí hiệu enthalpy tạo thành (nhiệt tạo thành) của phản ứng ở điều kiện chuẩn là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "or298HD",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "of298HD",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0r298SD",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "fHD .",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> of298HD.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhiệt lượng tỏa ra hay thu vào của một phản ứng ở một điều kiện xác định được gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nhiệt lượng tỏa ra",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nhiệt lượng thu vào.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "biến thiên enthalpy",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "biến thiên năng lượng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> nhiệt lượng thu vào..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Năng lượng hóa học của một số phản ứng được ghi ở các sơ đồ dưới, sơ đồ nào biểu thị phản ứng H < 0?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sơ đồ A",
+            "image": "/assets/hoa10/c5/hoa10_c5_de1_image9.png",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sơ đồ B",
+            "image": "/assets/hoa10/c5/hoa10_c5_de1_image10.png",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sơ đồ C",
+            "image": "/assets/hoa10/c5/hoa10_c5_de1_image11.png",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sơ đồ D",
+            "image": "/assets/hoa10/c5/hoa10_c5_de1_image12.png",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng: D.</b>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Enthalpy tạo thành chuẩn của các đơn chất bền bằng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "+1 kJ.mol<sup>-1</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "-1 kJ.mol<sup>-1</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "+2 kJ.mol<sup>-1</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0 kJ.mol<sup>-1</sup>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> -1 kJ.mol<sup>-1</sup>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở điều kiện chuẩn, phản ứng của 2 mol Na (thể rắn) với 1/2 mol O<sub>2</sub> (thể khí) thu được 1 mol Na<sub>2</sub>O (thể rắn) giải phóng 417,98 kJ mol<sup>-1</sup>. Phản ứng trên được biểu diễn như sau:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2Na<sub>(s)</sub> +  12 O<sub>2(g)</sub> → Na<sub>2</sub>O<sub>(s)</sub>  or298HD = 417,98 kJ.mol<sup>-1</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2Na<sub>(s)</sub> +  12 O<sub>2(g)</sub>→ Na<sub>2</sub>O<sub>(s)</sub>  or298HD = –417,98 kJ.mol<sup>-1</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4Na<sub>(s)</sub> + O<sub>2(g)</sub> → 2Na<sub>2</sub>O<sub>(s)</sub>  or298HD = –417,98 kJ.mol<sup>-1</sup>.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4Na<sub>(s)</sub> + O<sub>2(g)</sub> → 2Na<sub>2</sub>O<sub>(s)</sub>  or298HD = 417,98 kJ.mol<sup>-1</sup>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 4Na<sub>(s)</sub> + O<sub>2(g)</sub> → 2Na<sub>2</sub>O<sub>(s)</sub>  or298HD = –417,98 kJ.mol<sup>-1</sup>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nung nóng hai ống nghiệm chứa CaCO<sub>3</sub> và P, xảy ra các phản ứng sau:<br/>4P(s) + 5O<sub>2</sub>(g)  ¾¾®  2P<sub>2</sub>O<sub>5</sub>(s)(1)<br/>CaCO<sub>3(s)</sub> → CaO<sub>(s)</sub> + CO<sub>2(s)</sub> (2)<br/>Khi ngừng đun nóng, phản ứng (2) dừng lại còn phản ứng (1) tiếp tục xảy ra, chứng tỏ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "phản ứng (1) toả nhiệt, phản ứng (2) thu nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "phản ứng (1) thu nhiệt, phản ứng (2) toả nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "cả 2 phản ứng đều toả nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "cả 2 phản ứng đều thu nhiệt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> phản ứng (1) toả nhiệt, phản ứng (2) thu nhiệt..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phương trình nhiệt hóa học sau: 2H<sub>2</sub> (g) + O<sub>2</sub> (g) ⟶ 2H<sub>2</sub>O (g)      298DorH  = − 483,64 kJ<br/>So sánh đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "∑ of298HD  (cđ) > ∑ of298HD  (sp)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "∑ of298HD  (cđ) = ∑ of298HD  (sp).",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "∑ of298HD  (cđ) < ∑ of298HD  (sp)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "∑ of298HD  (cđ) ≤ ∑ of298HD  (sp).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> ∑ of298HD  (cđ) > ∑ of298HD  (sp).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng:  2(g)2(g)3(g)13NHNH22+® . Biết enthalpy tạo thành chuẩn của NH<sub>3</sub> là –45,9 kJ.mol<sup>-1</sup>. Để thu được 2 mol NH<sub>3</sub> ở cùng điều kiện phản ứng thì lượng nhiệt",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tỏa ra là –45,9 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "thu vào là 45,9 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tỏa ra là 91,8 kJ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "thu vào là 91,8 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> tỏa ra là 91,8 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các đêm trại Hè, thường có hoạt động đốt lửa trại kết hợp giao lưu văn nghệ. Càng lại gần đám lửa ta càng thấy nóng hơn vì",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "quá trình củi cháy là tỏa nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "quá trình củi cháy thu nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "đi lại nhiều nên thấy nóng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nhiệt độ cơ thể cao hơn nhiệt độ ngoài trời.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> quá trình củi cháy là tỏa nhiệt.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng: H<sub>2</sub>(g) + Cl<sub>2</sub>(g) → 2HCl(g). Ở điều kiện chuẩn, cứ 1 mol H<sub>2</sub> phản ứng hết sẽ tỏa ra -184,6 kJ. Enthalpy tạo thành chuẩn của HCl(g) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "92,3 kJ.mol<sup>-1</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–92,3 kJ.mol<sup>-1</sup>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "184,6 kJ.mol<sup>-1</sup>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "–184,6 kJ.mol<sup>-1</sup>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> –92,3 kJ.mol<sup>-1</sup>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng đốt cháy methane (CH<sub>4</sub>) như sau:<br/>CH<sub>4</sub>(g) + 2O<sub>2</sub>(g)  ¾¾®  CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  or298HD  = -890,36 kJ<br/>Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng tỏa rất nhiều nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở điều kiện chuẩn, khi đốt cháy hoàn toàn 1 mol CH<sub>4</sub>, sản phẩm là CO<sub>2(g)</sub> và H<sub>2</sub>O<sub>(l)</sub> thì sẽ giải phóng một nhiệt lượng là 890,36 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cũng phản ứng này, nếu nước ở thể hơi thì giá trị  or298HD  không thay đổi.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "or298HD  chính là nhiệt tỏa ra kèm theo phản ứng đốt cháy methane ở điều kiện chuẩn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Cũng phản ứng này, nếu nước ở thể hơi thì giá trị  or298HD  không thay đổi..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng giữa bột nhôm (aluminium) với oxygen có phương trình nhiệt hóa học như sau:<br/>4Al(s) + 3O<sub>2</sub>(g) → 2Al<sub>2</sub>O<sub>3</sub>(s) ∆<sub>r</sub>H<sup>0</sup><sub>298</sub> = -3352 kJ<br/>Nhiệt lượng thoát ra khi đốt cháy 24,3 gam bột nhôm là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "–3016,8 kJ",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–754,2 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "–1508,4 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "–3724,4 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> –3016,8 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phương trình nhiệt hóa học đốt cháy acetylene (C<sub>2</sub>H<sub>2</sub>), methane (CH<sub>4</sub>) và C(graphite, s):<br/>2C<sub>2</sub>H<sub>2</sub>(g) + 5O<sub>2</sub>(g) → 4CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)    D=-or298H2243,6kJ<br/>CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g)        0r298ÄH = - 668 kJ<br/>C(graphite, s) + O<sub>2</sub>(g)  ¾¾®  CO<sub>2</sub>(g)  0r298ÄH  = -393,51 kJ<br/>Từ 3 phương trình trên ta nên chọn nhiên liệu nào để có thể ứng dụng hàn xì kim loại?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Acetylene (C<sub>2</sub>H<sub>2</sub>)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Methane (CH<sub>4</sub>)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C(graphite, s)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cả ba phương trình.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Acetylene (C<sub>2</sub>H<sub>2</sub>).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng: 4HCl (g) + O<sub>2</sub> (g)  ot¾¾®  2Cl<sub>2</sub> (g) + 2H<sub>2</sub>O (g)<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Chất</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">H-Cl</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O=O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cl<sup>-</sup>Cl</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O-H</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Eb (kJ/mol)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">427</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">498</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">243</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">467</td></tr></table></div><br/>Biến thiên enthalpy chuẩn của phản ứng trên tính theo năng lượng liên kết là bao nhiêu? Phản ứng tỏa nhiệt hay thu nhiệt?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "298DorH = −148 kJ, phản ứng tỏa nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "298DorH = −148 kJ, phản ứng thu nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "298DorH = 215 kJ, phản ứng tỏa nhiệt",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "298DorH = 215 kJ, phản ứng thu nhiệt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 298DorH = −148 kJ, phản ứng tỏa nhiệt.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c5_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhiệt tạo thành chuẩn tính theo kJ/mol của C<sub>2</sub>H<sub>5</sub>OH(l), CO<sub>2</sub>(g) và H<sub>2</sub>O(l) lần lượt là –267, –393,5 và –285,8. Cần đốt cháy bao nhiêu gam cồn để đun 100 gam nước từ 25<sup>o</sup>C đến 100<sup>o</sup>C (biết nhiệt dung của nước là 4,2 J/g.K)? Giả thiết, cồn là C<sub>2</sub>H<sub>5</sub>OH nguyên chất và có 40% nhiệt lượng thất thoát ra môi trường.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "4,375",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1,748",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2,182",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,875.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "Đáp án: B.<br/>QH<sub>2</sub>O thu = m.c.Δt = 100.4,2.(100−25) = 31500J = 31,5kJ<br/>Nhiệt lượng hấp thụ là 100% − 40% = 60%<br/>QC<sub>2</sub>H<sub>5</sub>OH toả = 31,5 : 60% = 52,5kJ",
+        "explanationImages": [
+          "/assets/hoa10/c5/hoa10_c5_de1_image41.png",
+          "/assets/hoa10/c5/hoa10_c5_de1_image42.png",
+          "/assets/hoa10/c5/hoa10_c5_de1_image43.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c5_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Khi các phản ứng hóa học xảy ra thường có sự trao đổi nhiệt với môi trường, làm thay đổi nhiệt độ của môi trường.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng tỏa nhiệt là phản ứng giải phóng năng lượng dưới dạng nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng thu nhiệt là phản ứng hấp thụ năng lượng dưới dạng nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi than, củi cháy không khí xung quanh ấm hơn do phản ứng tỏa nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Pha viên C sủi vitamin C vào nước, khi viên C sủi tan thấy cốc nước mát hơn là do phản ứng thu nhiệt.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Phản ứng phân hủy 1 mol H<sub>2</sub>O (g) ở điều kiện chuẩn:<br/>H<sub>2</sub>O<sub>(</sub><sub>g</sub><sub>)</sub>→ H<sub>2</sub><sub>(</sub><sub>g</sub><sub>)</sub>+  12 O<sub>2</sub><sub>(</sub><sub>g</sub><sub>)</sub>(1) cần cung cấp một nhiệt lượng là 241,8 kJ.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng (1) là phản ứng tỏa nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt tạo thành chuẩn của H<sub>2</sub>O (g) là -241,8 kJ mol-1.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy chuẩn của phản ứng 2H<sub>2(g)</sub> + O<sub>2(g)</sub> → 2H<sub>2</sub>O<sub>(g)</sub> là -483,6 kJ.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Biến thiên enthalpy chuẩn của phản ứng (1) là 124,05 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Phản ứng thu nhiệt.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Biến thiên enthalpy chuẩn của phản ứng (1) là -124,05 kJ.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho hai phản ứng cùng xảy ra ở điều kiện chuẩn:<br/>o2(g)2(g)(g)r298(1)o(g)2(g)2(g)r298(2)(1)NO2NOH1(2)NOONOH2+®D+®D",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Enthalpy tạo thành chuẩn của NO là  o1r298(1)1HkJmol.2-D",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Enthalpy tạo thành chuẩn của NO<sub>2</sub> là  o1r298(2)HkJmol.-D",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy chuẩn của phản ứng giữa 1 mol N<sub>2</sub> với 1 mol O<sub>2</sub> tạo thành 2 mol NO là  or298(1)1HkJ.2D",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Biến thiên enthalpy chuẩn của phản ứng giữa 1 mol khí NO với 0,5 mol khí  2O  tạo thành 1 mol khí NO<sub>2</sub> là  or298(2)HkJ.D",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai vì phản ứng (2) không phải tạo thành từ các đơn chất.<br/>c. Sai vì biến thiên enthalpy chuẩn của phản ứng giữa 1 mol  2N  với 1 mol  2O  tạo thành 2 mol NO là  or298(1)HkJ.D<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Sulfur dioxide là một chất có nhiều ứng dụng trong công nghiệp (dùng để sản xuất sulfuric acid, tẩy trắng bột giấy trong công nghiệp giấy, tẩy trắng dung dịch đường trong sản xuất đường tinh luyện..) và giúp ngăn cản sự phát triển của một số vi khuẩn và nấm gây hại cho thực phẩm. Ở áp suất 1 bar và nhiệt độ 25°C, phản ứng giữa sulfur với oxygen xảy ra theo phương trình<br/>“ S (s) + O<sub>2</sub>(g) → SO<sub>2</sub>(g)” và tỏa ra một lượng nhiệt là 296,9kJ.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Biến thiên enthalpy chuẩn của phản ứng là 296,9 kJ mol<sup>-1</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Enthalpy tạo thành chuẩn của sulfur dioxide bằng -296,9 kJ.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sulfur dioxide vừa có thể là chất khử vừa có thể là chất oxi hóa, tùy thuộc vào phản ứng mà nó tham gia.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,5 mol sulfur tác dụng hết với oxygen giải phóng 148,45kJ năng lượng dưới dạng nhiệt.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Biến thiên enthalpy chuẩn của phản ứng là -196,9kJ.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các quá trình sau:<br/>(a) Đốt một ngọn nến.<br/>(b) Nước đóng băng.<br/>(c) Hòa tan một ít bột giặt trong tay với nước thấy tay ấm.<br/>(d) Muối kết tinh từ nước biển ở các ruộng muối.<br/>(e) Đổ mồ hôi sau khi chạy bộ.<br/>Trong các quá trình trên, có bao nhiêu quá trình thu nhiệt?",
+        "images": [],
+        "correctAnswer": "1",
+        "explanation": "Đáp án: 1.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho phương trình nhiệt hóa học của phản ứng: CO<sub>2</sub>(g) → CO(g) +  12 O<sub>2</sub>(g)  298280orHkJD= . Giá trị  298orHD  của phản ứng: 2CO<sub>2</sub>(g) → 2CO(g) + O<sub>2</sub>(g) là bao nhiêu kJ?",
+        "images": [],
+        "correctAnswer": "560",
+        "explanation": "Đáp án: 560.<br/>298orHD = 2x280 = 560 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "560",
+          "560",
+          "560"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Liệt kê các phản ứng có thể tự xảy ra (sau giai đoạn khơi mào ban đầu) theo dãy số thứ tự tăng dần (Ví dụ: 234, 14,...).<br/>(1) 3Fe(s) + 4H<sub>2</sub>O(l)  Fe<sub>3</sub>O<sub>4</sub>(s) + 4H<sub>2</sub>(g)  or298HD = +26,32 kJ<br/>(2) N<sub>2</sub>(g) + O<sub>2</sub>(g)  2NO(g)  or298HD = +179,20 kJ<br/>(3) C<sub>2</sub>H<sub>5</sub>OH(l) + 3O<sub>2</sub>(g)  ¾¾®  2CO<sub>2</sub>(g) + 3H<sub>2</sub>O(l) 0r298ÄH = -1370,70 kJ<br/>(4) C(graphite, s) + O<sub>2</sub>(g)  ¾¾®  CO<sub>2</sub>(g)  0r298ÄH  = -393,51 kJ",
+        "images": [],
+        "correctAnswer": "34",
+        "explanation": "Đáp án: 34.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "34",
+          "34",
+          "34"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Giá trị trung bình của các năng lượng liên kết ở điều kiện chuẩn:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C-H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C-C</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C=C</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Eb (kJ/mol)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">418</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">346</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">612</td></tr></table></div><br/>Biến thiên enthalpy của phản ứng C<sub>3</sub>H<sub>8</sub> (g)  ¾¾®  CH<sub>4</sub> (g) + C<sub>2</sub>H<sub>4</sub> (g) có giá trị là bao nhiêu kJ?",
+        "images": [],
+        "correctAnswer": "80",
+        "explanation": "Đáp án: 80.",
+        "explanationImages": [
+          "/assets/hoa10/c5/hoa10_c5_de1_image48.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "80",
+          "80",
+          "80"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nhiệt tỏa ra khi đốt cháy 1 gam một mẫu than là 23,0 kJ. Giả thiết rằng toàn bộ lượng nhiệt của quá trình đốt than tỏa ra đều dùng để làm nóng nước, không có sự thất thoát nhiệt, hãy tính khối lượng than (gam) cần phải đốt để làm nóng 500 gam nước từ  o20C  tới  o90C.  Biết để làm nóng 1 mol nước thêm  o1C  cần một nhiệt lượng là 75,4 J. (Kết quả làm tròn đến hàng phần mười).",
+        "images": [],
+        "correctAnswer": "6,4",
+        "explanation": "Đáp án: 6,4.<br/>Lượng nhiệt cần dùng để đun nóng 500 gam nước từ  o20C lên  o90C  là<br/>500.75,4.(363293)146611,1(J)18-=<br/>Vậy lượng than đá cần dùng là:  3146611,16,37(g).23.10=",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "6,4",
+          "6.4",
+          "6,4"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các phản ứng sau xảy ra ở điều kiện chuẩn:<br/>CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  or298HD  = –890,36 kJ<br/>CaCO<sub>3</sub>(s) → CaO(s) + CO<sub>2</sub>(s)  or298HD = 178,29 kJ<br/>Ở điều kiện tiêu chuẩn, cần phải đốt cháy hoàn toàn bao nhiêu gam CH<sub>4</sub>(g) để cung cấp nhiệt cho phản ứng tạo 2 mol CaO bằng cách nung CaCO<sub>3</sub>. Giả thiết hiệu suất các quá trình đều là 100% (Làm tròn kết quả đến hàng phần mười).",
+        "images": [],
+        "correctAnswer": "6,4",
+        "explanation": "Đáp án: 6,4.<br/>2 mol CaO tạo thành cần cung cấp một nhiệt lượng là 356,58 kJ<br/>Nhiệt lượng của phản ứng nung vôi bằng lượng nhiệt khi đốt x mol khí CH<sub>4</sub>(g)<br/>Theo đề 1 mol khí CH<sub>4</sub> khi đốt tỏa ra một nhiệt lượng 890,36 kJ<br/>x mol 356,58 kJ<br/>x = 0,4 mol  m = 6,4g.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "6,4",
+          "6.4",
+          "6,4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa10_c5_de2",
+    "code": "10-C5-02",
+    "title": "Đề Kiểm Tra Chương 5: Năng Lượng Hóa Học (Đề số 2)",
+    "topic": "Tính biến thiên enthalpy phản ứng theo nhiệt tạo thành chuẩn",
+    "badge": "Chương 5 • Đề 2",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c5_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các phản ứng phân hủy thường là phản ứng thu nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng càng tỏa ra nhiều nhiệt càng dễ tự xảy ra.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng oxi hóa chất béo cung cấp nhiệt cho cơ thể.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các phản ứng khi đun nóng đều dễ xảy ra hơn.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Các phản ứng khi đun nóng đều dễ xảy ra hơn..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhiệt tạo thành chuẩn (∆<sub>f</sub> 0298H ) của các đơn chất ở dạng bền vững nhất là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "0 kJ/mol",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1 kJ/mol.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 0 kJ/mol.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Quy ước về dấu của nhiệt phản ứng ( or298HD ) nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng thu nhiệt có  or298HD < 0",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng tỏa nhiệt có  or298HD > 0.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng thu nhiệt có  or298HD = 0",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng tỏa nhiệt có  or298HD < 0.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Phản ứng tỏa nhiệt có  or298HD < 0..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phương trình nhiệt hóa học của phản ứng trung hòa sau :<br/>HCl(aq)  + NaOH(aq)   ¾¾®   NaCl(aq)  +  H<sub>2</sub>O(l)      0r500HD  = -57,3 kJ<br/>Phát biểu nào sau đây không đúng ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cho 1 mol HCl tác dụng với 1 mol NaOH tỏa nhiệt lượng là 57,3kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cho 2 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3kJ.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cho 1 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cho HCl dư tác dụng với 1 mol NaOH thu nhiệt lượng là 57,3kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Cho 2 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng nhiệt phân CaCO<sub>3</sub>: CaCO<sub>3</sub>(s)  CaO(s) + CO<sub>2</sub>(g). Ở điều kiện chuẩn, để thu được 1 mol CaO(s) từ CaCO<sub>3</sub>(s) cần phải cung cấp 179,2 kJ nhiệt lượng. Phát biểu nào sau đây đúng khi nói về phản ứng trên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng tỏa nhiệt, ∆<sub>r</sub> 0298H = +179,2 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng thu nhiệt, ∆<sub>r</sub> 0298H = –179,2 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng tỏa nhiệt, ∆<sub>r</sub> 0298H = –179,2 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng thu nhiệt, ∆<sub>r</sub> 0298H = +179,2 kJ.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Phản ứng thu nhiệt, ∆<sub>r</sub> 0298H = +179,2 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương trình nhiệt hoá học nào sau đây ứng với sơ đồ biểu diễn biến thiên enthalpy của phản ứng sau:",
+        "images": [
+          "/assets/hoa10/c5/hoa10_c5_de2_image40.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) → 2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) ∆<sub>r</sub> 0298H  = +1450 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) → 2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) ∆<sub>r</sub> 0298H  = +1450 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) → 2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) ∆<sub>r</sub> 0298H  = -1450 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) → 2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) ∆<sub>r</sub> 0298H  = -1450 kJ.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 2CH<sub>3</sub>OH (l) + 3O<sub>2</sub>(g) → 2CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) ∆<sub>r</sub> 0298H  = -1450 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào sau đây là phản ứng thu nhiệt?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "NaOH(aq) + HCl(aq)  NaCl(aq) + H<sub>2</sub>O(l)  ∆<sub>r</sub> 0298H = –57,9 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "H<sub>2</sub>(g) + I<sub>2</sub>(s)  2HI(g)    ∆<sub>r</sub> 0298H = +53,0 kJ.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>2</sub>H<sub>4</sub>(g) + H<sub>2</sub>(g)  C<sub>2</sub>H<sub>6</sub>(g)    ∆<sub>r</sub> 0298H = –137,0 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2CO(g) + O<sub>2</sub>(g)  2CO<sub>2</sub>(g)    ∆<sub>r</sub> 0298H = –566,0 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> H<sub>2</sub>(g) + I<sub>2</sub>(s)  2HI(g)    ∆<sub>r</sub> 0298H = +53,0 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho biết biến thiên enthalpy của phản ứng sau ở điều kiện chuẩn<br/>CO (g)  +  12  O<sub>2</sub> (g) ¾¾®  CO<sub>2</sub>(g)     0r298HD  = -283,0 kJ<br/>Biết nhiệt tạo thành của CO<sub>2</sub>:  0r298HD (CO<sub>2</sub> (g))  = -393,5 kJ. Nhiệt tạo thành chuẩn của CO là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "-141,5 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "+110,5 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "-221,0 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "-110,5 kJ",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng: D.</b>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hình ảnh nào miêu tả quá trình đang diễn ra sự thu nhiệt?<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Hình 1. Cây nến đang cháy</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Hình 2. Hòa tan đá vào nước</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Hình 3. Đốt nhiên liệu trong tên lửa.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Hình 4. Hòa tan sodium vào nước.</td></tr></table></div>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hình 1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hình 3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hình 2",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hình 4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Hình 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng chuyển hoá giữa hai dạng đơn chất của phosphorus (P):<br/>P(s, đỏ)  ¾¾® P (s, trắng)    0r298HD  = +17,6 kJ<br/>Điều này chứng tỏ phản ứng:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tỏa nhiệt, P trắng bền hơn P đỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tỏa nhiệt, P đỏ bền hơn P trắng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "thu nhiệt, P trắng bền hơn P đỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "thu nhiệt, P đỏ bền hơn P trắng.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> thu nhiệt, P đỏ bền hơn P trắng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương trình nhiệt hóa học giữa nitrogen và oxygen như sau:<br/>N<sub>2</sub>(g) + O<sub>2</sub>(g)  2NO(g)  Dor298H = +180kJ<br/>Kết luận nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng xảy ra thuận lợi ở điều kiện thường.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng tỏa nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nitrogen và oxygen phản ứng mạnh hơn khi ở nhiệt độ thấp.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng hóa học xảy ra có sự hấp thụ nhiệt năng từ môi trường.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Phản ứng hóa học xảy ra có sự hấp thụ nhiệt năng từ môi trường..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phương trình hoá học tổng quát: aA + bB  ¾¾®  mM + nN. Hãy chọn các phương án tính đúng  or298HD  của phản ứng theo nhiệt tạo thành chuẩn ( of298HD ) của các chất A, B, C, D.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "or298HD = m . of298HD  (M) + n . of298HD  (N) – a. of298HD  (A) – b . of298HD  (B).",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "or298HD = a. of298HD  (A) + b . of298HD  (B)   V m . of298HD  (M) – n . of298HD  (N).",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "or298HD  = a . E<sub>b</sub>(A) + b . E<sub>b</sub> (B) – m . E<sub>b</sub>(M) – n . E<sub>b</sub> (N).",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "or298HD  = m . E<sub>b</sub>(M) + n . E<sub>b</sub> (N)  – a . E<sub>b</sub>(A) – b . E<sub>b</sub> (B).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> or298HD = m . of298HD  (M) + n . of298HD  (N) – a. of298HD  (A) – b . of298HD  (B)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào sau đây có thể tự xảy ra ở điều kiện thường?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng giữa H<sub>2</sub> và O<sub>2</sub> trong hỗn hợp khí",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng nhiệt phân Cu(OH)<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng giữa Zn và dung dịch H<sub>2</sub>SO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng đốt cháy cồn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Phản ứng giữa Zn và dung dịch H<sub>2</sub>SO<sub>4</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Điều kiện nào sau đây được gọi là điều kiện chuẩn?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Áp suất 1 bar (đối với chất khí), nồng độ 1 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 20<sup>o</sup>C (293K).",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Áp suất 1,5 bar (đối với chất khí), nồng độ 1,5 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 25<sup>o</sup>C (298K).",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Áp suất 1,5 bar (đối với chất khí), nồng độ 1,5 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 20<sup>o</sup>C (293K).",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Áp suất 1 bar (đối với chất khí), nồng độ 1 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 25<sup>o</sup>C (298K).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Áp suất 1 bar (đối với chất khí), nồng độ 1 mol/L (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 25<sup>o</sup>C (298K)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng đốt cháy ethanol: C<sub>2</sub>H<sub>5</sub>OH(l) + 3O<sub>2</sub>(g)  ¾¾®  2CO<sub>2</sub>(g) + 3H<sub>2</sub>O(l)<br/>Đốt cháy hoàn toàn 5 g ethanol, nhiệt tỏa ra làm nóng chảy 447 g nước đá ở 0<sup>o</sup>C. Biết 1 g nước đá nóng chảy hấp thụ nhiệt lượng 333,5 J, biến thiên enthalpy của phản ứng đốt cháy ethanol là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "-1371 kJ/mol",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "-954 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "-149 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "+149 kJ/mol.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "Đáp án: A.<br/>Q = 447.333,5 = 149074,5 J  149 (kJ)  H =  149.461371()5kJ-=- .",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng sau: CH º CH(g) + H<sub>2</sub>(g)  ¾¾® CH<sub>3</sub>-CH<sub>3</sub> (g)<br/>Năng lượng liên kết (kJ/mol) của H – H là 436, của C – C là 347, của C – H là 414 và của C º C là 839. Nhiệt ( 0r298HD ) của phản ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "–294 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–292kJ",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "+292kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "+294kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> –292kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dung dịch glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>) 5%, có khối lượng riêng là 1,02 g/mL, phản ứng oxi hóa 1 mol glucose tạo thành CO<sub>2</sub> (g) và H<sub>2</sub>O (l) tỏa ra nhiệt lượng là 2803,0 kJ.<br/>Một người bệnh được truyền một chai nước chứa 500 mL dung dịch glucose 5%. Năng lượng tối đa từ phản ứng oxi hóa hoàn toàn glucose mà bệnh nhân đó có thể nhận được là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "+397,09 kJ",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–397,09 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "+416,02 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "–416,02 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "Đáp án: A.<br/>Phản ứng tỏa nhiệt nên  or298H2803,0kJ/molD=-<br/>Số mol glucose:  500.1,02.5%0,14167()180mol=<br/>Q = 2803,0.0,14167 = 397,1 (kJ).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c5_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu:<br/>(a) Phản ứng tỏa nhiệt là phản ứng giải phóng năng lượng dưới dạng nhiệt.<br/>(b) Tất cả các phản ứng mà chất tham gia có chứa nguyên tố oxygen đều tỏa nhiệt.<br/>(c) Phản ứng thu nhiệt là phản ứng hấp thụ năng lượng dưới dạng nhiệt.<br/>(d) Lượng nhiệt mà phản ứng hấp thụ hay giải phóng không phụ thuộc vào điều kiện thực hiện phản ứng và thể tồn tại của chất trong phản ứng.<br/>(e) Sự cháy của nhiên liệu (xăng, dầu, khí gas, than, gỗ,…) là những ví dụ về phản ứng thu nhiệt vì cần khơi mào.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "5",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c5_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Với các phản ứng có kèm theo trao đổi năng lượng dưới dạng nhiệt, có hai khả năng đó là phản ứng tỏa nhiệt và phản ứng thu nhiệt.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng thu nhiệt xảy ra thuận lợi hơn so với phản ứng tỏa nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Biến thiên enthalpy của phản ứng tỏa nhiệt trái dấu với phản ứng thu nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng thu nhiệt thường phải cung cấp nhiệt độ liên tục trong quá trình phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi cho vôi sống vào nước thấy nhiệt độ tăng so với ban đầu chứng tỏ đây là phản ứng tỏa nhiệt.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Phản ứng tỏa nhiệt thuận lợi hơn thu nhiệt.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phương trình nhiệt hoá học sau:<br/>H<sub>2</sub>(g) + I<sub>2</sub>(g) → 2HI(g)  \\Delta_{\\mathrm{r}} \\mathrm{H}_{298}^0=-283,00 \\mathrm{ kJ}  = +11,3 kJ.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng giải phóng nhiệt lượng 11,3 kJ khi 2 mol HI được tạo thành.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tổng nhiệt phá vỡ liên kết của chất phản ứng lớn hơn nhiệt tỏa ra khi tạo thành sản phẩm.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Năng lượng chứa trong H<sub>2</sub> và I<sub>2</sub> cao hơn trong HI.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng xảy ra với tốc độ chậm.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. ∆H = +11,3 kJ > 0 ⇒ phản ứng thu nhiệt.<br/>b. Đúng.<br/>c. Sai. Phân tử H<sub>2</sub> và I<sub>2</sub> có liên kết bền hơn HI, nghĩa là mức năng lượng thấp hơn.<br/>d. Sai. Không nói về sự trao đổi năng lượng của phản ứng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Baking soda (NaHCO<sub>3</sub>) có trong thành phần bột nở dùng để làm bánh và cũng có trong thành phần của thuốc đau dạ dày Nabica, xét phản ứng nhiệt phân NaHCO<sub>3</sub> xảy ra như sau:<br/>2NaHCO<sub>3</sub>(s) → Na<sub>2</sub>CO<sub>3</sub>(s) + CO<sub>2</sub>(g) + H<sub>2</sub>O(l)    \\Delta_{\\mathrm{r}} \\mathrm{H}_{298}^0=-283,00 \\mathrm{ kJ} = +91,6 kJ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng trên có tổng nhiệt tạo thành của chất đầu lớn hơn tổng nhiệt tạo thành của các chất sản phẩm..",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cần tránh để bột nở ở nơi có nhiệt độ cao.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng trên thu vào một nhiệt lượng bằng 91,6 kJ.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu thay đổi trạng thái của H<sub>2</sub>O(l) bằng H<sub>2</sub>O(g) thì giá trị biến thiên enthalpy chuẩn của phản ứng không đổi.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Vì  \\Delta_{\\mathrm{r}} \\mathrm{H}_{298}^0=-283,00 \\mathrm{ kJ} > 0 nên tổng nhiệt tạo thành của sản phẩm lớn hơn tổng nhiệt tạo thành của chất đầu.<br/>b. Đúng. Bột nở chứa NaHCO<sub>3</sub> dễ bị phân hủy bởi nhiệt theo phương trình hóa học trên.<br/>c. Đúng.<br/>d. Sai. Nếu thay đổi trạng thái của H<sub>2</sub>O(l) bằng H<sub>2</sub>O(g) thì giá trị biến thiên enthalpy của phản ứng sẽ thay đổi vì nhiệt tạo thành của H<sub>2</sub>O(l) khác H<sub>2</sub>O(g).",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng đốt cháy methane (CH<sub>4</sub>) và acetylene (C<sub>2</sub>H<sub>2</sub>) như sau:<br/>(1) CH<sub>4</sub>(g) + 2O<sub>2</sub>(g)  ¾¾®  CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)     0r298H890,5kJD=-<br/>(2) C<sub>2</sub>H<sub>2</sub>(g) +  52 O<sub>2</sub>(g)  ¾¾®  2CO<sub>2</sub>(g) + H<sub>2</sub>O(l)     0r298H1300,2kJD=-",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cả hai phản ứng trên đều là phản ứng tỏa nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi đốt cháy cùng một lượng thể tích khí CH<sub>4</sub> và C<sub>2</sub>H<sub>2</sub> thì lượng nhiệt sinh ra do CH<sub>4</sub> nhiều hơn lượng nhiệt sinh ra do C<sub>2</sub>H<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy của phản ứng (1), (2) tính theo nhiệt tạo thành:",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong thực tế, để hàn, cắt kim loại người ta sử dụng CH<sub>4</sub> mà không dùng C<sub>2</sub>H<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. C<sub>2</sub>H<sub>2</sub> cháy tỏa nhiều nhiệt hơn CH<sub>4</sub>.<br/>c. Đúng.<br/>d. Sai. Người ta dùng C<sub>2</sub>H<sub>2</sub> vì nhiệt lượng tỏa ra nhiều hơn CH<sub>4</sub>.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de2_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phản ứng giữa sulfur dioxide và oxygen là tỏa nhiệt<br/>2SO<sub>2</sub>(g) + O<sub>2</sub>(g)  ¾¾® 2SO<sub>3</sub>(g)       0r298HD = –197 kJ<br/>Giá trị biến thiên enthalpy của phản ứng SO<sub>3</sub>(g)  ¾¾® SO<sub>2</sub>  +  12 O<sub>2</sub> (g) là bao nhiêu kJ?",
+        "images": [],
+        "correctAnswer": "98,5",
+        "explanation": "Đáp án: 98,5.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "98,5",
+          "98.5",
+          "98,5"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de2_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho phương trình nhiệt hóa học của các phản ứng như sau:<br/>CO<sub>2</sub>(g)  ¾¾® CO(g) +  12 O<sub>2</sub>(g)                        298280orHkJD=+<br/>3H<sub>2</sub>(g) + N<sub>2</sub>(g)  ot¾¾® 2NH<sub>3</sub>(g)                        29891,8orHkJD=-<br/>3Fe(s) + 4H<sub>2</sub>O(l)  ¾¾®  Fe<sub>3</sub>O<sub>4</sub>(s) + 4H<sub>2</sub>(g)      29826,32orHkJD=+<br/>2H<sub>2</sub>(g) + O<sub>2</sub>(g)  ¾¾®  2H<sub>2</sub>O(g)                        298571,68orHkJD=-<br/>H<sub>2</sub>(g) + F<sub>2</sub>(g)  ¾¾®  2HF(g)                             298546orHkJD=-<br/>Trong các phản ứng trên, có bao nhiêu phản ứng tỏa nhiệt?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Quá trình hoà tan calcium chloride trong nước:<br/>CaCl<sub>2</sub>(s)  ¾¾®  Ca<sup>2+</sup>(ag) + 2Cl<sup>-</sup> (ag) 0r298ÄH  = ?<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Chất</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">CaCl<sub>2</sub></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ca<sup>2+</sup></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cl<sup>-</sup></th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(kJ/mol)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">-795,0</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">-542,83</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">-167,16</td></tr></table></div><br/>Tính biến thiên enthalpy chuẩn của quá trình theo đơn vị kJ. (Kết quả làm tròn đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "-82",
+        "explanation": "Đáp án: -82.<br/>Enthalpy của quá trình:  0r298ÄH  =  -542,83 + 2.(-167,16) – (-795,0) = -82,15 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "-82",
+          "-82",
+          "-82"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các loại phản ứng sau:<br/>(1) Phản ứng tạo gỉ kim loại.<br/>(2) Phản ứng quang hợp.<br/>(3) Phản ứng nhiệt phân.<br/>(4) Phản ứng đốt cháy.<br/>Liệt kê các phản ứng cần cung cấp năng lượng trong suốt quá trình diễn ra phản ứng theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…).",
+        "images": [],
+        "correctAnswer": "23",
+        "explanation": "Đáp án: 23.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "23",
+          "23",
+          "23"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phản ứng tổng hợp ammonia : N<sub>2</sub>(g)  + 3H<sub>2</sub>(g)  ¾¾®  2NH<sub>3</sub>(g)      0r298HD  = –92 kJ<br/>Biết năng lượng liên kết (kJ/mol) của N º N  và H – H lần lượt là 946 và 436<br/>Năng lượng liên kết của N – H trong ammonia là bao nhiêu kJ/mol?",
+        "images": [],
+        "correctAnswer": "391",
+        "explanation": "Đáp án: 391.<br/>0r298HD  = E<sub>b</sub>(N º N ) + 3E<sub>b</sub>(H-H) - 6E<sub>b</sub>(N-H) = 946 + 3.436 - 6E<sub>b</sub>(N-H) = -92  E<sub>b</sub>(N-H) = 391 kJ/mol.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "391",
+          "391",
+          "391"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Một hộ gia đình mua than đá làm nhiên liệu đun nấu và trung bình mỗi ngày dùng hết 1,8 kg than. Giả thiết loại than đá trên chứa 90% carbon và 1,2% sulfur về khối lượng, còn lại là các tạp chất trơ.<br/>Cho các phản ứng:   0to22r298C(s)O(g)CO(g)H393,5kJ/mol+¾¾®D=-<br/>0to22r298S(s)O(g)SO(g)H296,8kJ/mol+¾¾®D=-<br/>Nhiệt lượng cung cấp cho hộ gia đình từ quá trình đốt than trong một ngày tương đương bao nhiêu số điện (1 số điện = 1 kWh = 3600 kJ, làm tròn kết quả đến hàng đơn vị)?",
+        "images": [],
+        "correctAnswer": "15",
+        "explanation": "Đáp án: 15.<br/>Trong 1800 g than đá chứa 1620 gam (135 mol) carbon và 21,6 g (0,675 mol) sulfur.<br/>Nhiệt lượng giải phóng ra khi đốt cháy 1800 gam than đá:  393,5.135296,8.0,67553282,34kJ+=<br/>Nhiệt lượng trên tương đương với số điện:  53282,3414,83600»  số.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "15",
+          "15",
+          "15"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa10_c5_de3",
+    "code": "10-C5-03",
+    "title": "Đề Kiểm Tra Chương 5: Năng Lượng Hóa Học (Đề số 3)",
+    "topic": "Tính biến thiên enthalpy phản ứng theo năng lượng liên kết",
+    "badge": "Chương 5 • Đề 3",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c5_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng hóa học trong đó có sự truyền năng lượng từ hệ sang môi trường xung quanh nó được gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "phản ứng tỏa nhiệt",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "phản ứng trung hòa.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "phản ứng trao đổi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "phản ứng thu nhiệt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> phản ứng tỏa nhiệt.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biến thiên enthalpy chuẩn của một phản ứng hóa học kí hiệu là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "of298HD",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "or298HD",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "og298HD",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "ot298HD .",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> or298HD.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào dưới đây là phản ứng thu nhiệt?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nung NH<sub>4</sub>Cl tạo ra HCl và NH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cồn cháy trong không khí.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đá vôi tác dụng với dung dịch HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sự phân hạch hạt nhân.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Nung NH<sub>4</sub>Cl tạo ra HCl và NH<sub>3</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào sau đây là phản ứng thu nhiệt?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "038222r298CH(g)5O(g)3CO(g)4HO(l)H2220kJ+®+D=- .",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "o2r298NaOH(aq)HCl(aq)NaCl(aq)HO(l)H57,9kJ+¾¾®+D=- .",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "o4222r298CH(g)2O(g)CO(g)2HO(l)H890,36kJ+¾¾®+D=- .",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "o42r298ZnSO(s)ZnO(s)SO(g)H235,21kJ¾¾®+D=+ .",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> o42r298ZnSO(s)ZnO(s)SO(g)H235,21kJ¾¾®+D=+ ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Điều kiện chuẩn là điều kiện ứng với áp suất 1 bar (với chất khí), nồng độ 1 mol L⁻¹ (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 298 K.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Điều kiện chuẩn là điều kiện ứng với nhiệt độ 298 K.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Áp suất 760 mmHg là áp suất ở điều kiện chuẩn.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Điều kiện chuẩn là điều kiện ứng với áp suất 1 atm, nhiệt độ 0 °C.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Điều kiện chuẩn là điều kiện ứng với áp suất 1 bar (với chất khí), nồng độ 1 mol L<sup>-1</sup> (đối với chất tan trong dung dịch) và nhiệt độ thường được chọn là 298 K..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hầu hết các phản ứng thu nhiệt cần giai đoạn khơi mào (đun, đốt nóng,…).",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hầu hết các phản ứng tỏa nhiệt cần phải tiếp tục đun hoặc đốt nóng ở giai đoạn tiếp diễn.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hầu hết các phản ứng tỏa nhiệt không cần phải tiếp tục đun hoặc đốt nóng ở giai đoạn tiếp diễn.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tùy phản ứng cụ thể mà các phản ứng tỏa nhiệt có thể cần hoặc không cần giai đoạn khơi mào.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Hầu hết các phản ứng tỏa nhiệt cần phải tiếp tục đun hoặc đốt nóng ở giai đoạn tiếp diễn..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Enthalpy tạo thành của một chất (Δ<sub>f</sub>H) là nhiệt kèm theo phản ứng tạo thành",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1 gam chất đó từ các đơn chất bền nhất",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1 lít chất đó từ các đơn chất dạng bền nhất.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1 mol chất đó từ các đơn chất bền nhất",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1 mol chất đó từ các hợp chất bền nhất.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 1 mol chất đó từ các đơn chất bền nhất.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào sau đây cần phải cung cấp năng lượng trong quá trình phản ứng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng tạo gỉ kim loại",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng quang hợp.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng nhiệt phân",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng tạo oxit Na<sub>2</sub>O.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Phản ứng nhiệt phân.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các giá trị năng lượng liên kết:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O = O</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Eb(kJ/mol)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">413</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">467</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">745</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">498</td></tr></table></div><br/>Phương trình đốt cháy khí methane: CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(g) (*)<br/>Biến thiên enthalpy của phản ứng (*) dựa vào năng lượng liên kết là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "–256 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–560 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "–816 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "–710 kJ.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> –710 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào sau đây là phản ứng toả nhiệt?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng nhiệt phân muối KNO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng phân huỷ khí NH<sub>3</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng oxi hoá glucose trong cơ thể",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng hoà tan NH<sub>4</sub>Cl trong nước.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Phản ứng oxi hoá glucose trong cơ thể.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các chất dưới đây, chất nào có  D¹of298H0 ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "N<sub>2</sub>(g)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "S(s)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Na(s)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "O<sub>3</sub>(g).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> O<sub>3</sub>(g)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biến thiên enthalpy của một phản ứng được ghi ở sơ đồ dưới. Kết luận nào sau đây là đúng?",
+        "images": [
+          "/assets/hoa10/c5/hoa10_c5_de3_image35.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng tỏa nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Năng lượng chất tham gia phản ứng nhỏ hơn năng lượng sản phẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy của phản ứng là a kJ/mol.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng thu nhiệt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Phản ứng tỏa nhiệt..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biểu thức đúng tính 0.r298HD  của phản ứng theo năng lượng liên kết của các chất là :",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "0r298bbHE(c®)E(sp)D=+åå",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "0r298bbHE(sp)E(c®)D=-åå .",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0r298bbHE(c®)E(sp)D=-åå",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "b0r298bE(c®)HE(sp)D=åå .",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 0r298bbHE(c®)E(sp)D=-åå.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương trình hóa học nào dưới đây biểu thị enthalpy tạo thành chuẩn của CO(g)?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2C ((graphite) 2(g)(g)O2CO+®",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C ((graphite) +  (g)(g)OCO® .",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C ((graphite) 2(g)(g)1OCO2+®",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C ((graphite) 2(g)(g)CO2CO+® .",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C ((graphite) 2(g)(g)1OCO2+®.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng thu vào càng nhiều nhiệt, biến thiên enthalpy càng âm.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng tỏa ra càng nhiều nhiệt, biến thiên enthaply càng dương.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Năng lượng của hệ chất tham gia trong phản ứng tỏa nhiệt cao hơn năng lượng của hệ sản phẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Năng lượng của hệ chất tham gia trong phản ứng thu nhiệt cao hơn năng lượng của hệ sản phẩm.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Năng lượng của hệ chất tham gia trong phản ứng thu nhiệt cao hơn năng lượng của hệ sản phẩm..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng hóa học sau: 4FeS(s) + 7O<sub>2</sub>(g) → 2Fe<sub>2</sub>O<sub>3</sub>(s) + 4SO<sub>2</sub>(g). Biết nhiệt tạo thành ∆<sub>f</sub>H<sup>0</sup><sub>298</sub> của các chất FeS(s), Fe<sub>2</sub>O<sub>3</sub>(s) và SO<sub>2</sub>(g) lần lượt là –100,0 kJ/mol, –825,5 kJ/mol và –296,8 kJ/mol. Biến thiên enthalpy chuẩn của phản ứng trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "+3105,6 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–3105,6 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "+2438,2 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "–2438,2 kJ.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> –2438,2 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng hóa học sau: N<sub>2</sub>(g) + O<sub>2</sub>(g) → 2NO(g). Cho biết năng lượng liên kết trong các phân tử O<sub>2</sub>, N<sub>2</sub> và NO lần lượt là 494 kJ/mol; 945 kJ/mol và 607 kJ/mol. Biến thiên enthalpy chuẩn của phản ứng trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "+298 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "–298 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "+225 kJ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "–225 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> +225 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c5_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho sơ đồ hòa tan NH<sub>4</sub>NO<sub>3</sub> sau: NH<sub>4</sub>NO<sub>3</sub>(s) + H<sub>2</sub>O(l)  ¾¾® NH<sub>4</sub>NO<sub>3</sub>(aq)  26HkJD=+<br/>Hòa tan 80 gam NH<sub>4</sub>NO<sub>3</sub> khan vào bình chứa 1 L nước ở 25<sup>o</sup>C. Biết nhiệt dung riêng của H<sub>2</sub>O là 4,2 J/g.K. Sau khi muối tan hết, nước trong bình có nhiệt độ là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "31,2 °C",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "28,1 °C",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "21,9 °C",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "18,8 °C",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "Nhiệt phản ứng thu vào: Q = 26 kJ = 26 000 J.<br/>Độ giảm nhiệt độ: ΔT = Q / (m.c) = 26000 / (1000 . 4,2) ≈ 6,2 °C.<br/>Nhiệt độ cuối cùng: 25 - 6,2 = 18,8 °C. Phương án đúng là D.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c5_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu sau đây là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong phản ứng tỏa nhiệt, dấu của ∆H dương vì năng lượng của hệ chất phản ứng nhỏ hơn năng lượng của hệ chất sản phẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong phản ứng thu nhiệt, dấu của ∆H âm vì năng lượng của hệ chất phản ứng lớn hơn năng lượng của hệ chất sản phẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Giá trị tuyệt đối của biến thiên enthalpy càng lớn thì nhiệt lượng tỏa ra hay thu vào của phản ứng càng nhiều.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các phản ứng xảy ra ở nhiệt độ phòng thường là phản ứng tỏa nhiệt, các phản ứng thu nhiệt thường xảy ra khi đun nóng.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Trong phản ứng tỏa nhiệt, ∆H < 0.<br/>b. Sai. Trong phản ứng thu nhiệt, dấu của ∆H > 0.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phương trình phản ứng: Zn (s) + CuSO<sub>4</sub> (aq)  ¾¾®  ZnSO<sub>4</sub> (aq) + Cu (s);  H210kJD=-",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Enthalpy tạo thành chuẩn của Zn(s) bằng 210 kJ/mol.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng trên là phản ứng tỏa nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy của phản ứng tạo thành 3,84 g Cu là 12,6 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong quá trình phản ứng, nhiệt độ của hỗn hợp tăng lên.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Enthalpy tạo thành chuẩn của Zn(s) bằng 0.<br/>b. Đúng.<br/>c. Sai. Biến thiên enthalpy của phản ứng tạo thành 3,84g Cu là  210.3,8412,6()64kJ-=-<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Biến thiên enthalpy chuẩn quá trình “ H<sub>2</sub>O(s) → H<sub>2</sub>O(l)” là 6,020kJ.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Quá trình tan chảy của nước đá là quá trình tỏa nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi cho viên nước đá vào cốc nước lỏng ấm, viên đá lại tan chảy dần vì nó lấy nhiệt từ nước lỏng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cốc nước lỏng bị lạnh dần trong quá trình viên nước đá tan chảy do sự mất nhiệt làm cho nước lỏng lạnh đi.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Biết rằng để làm cho nhiệt độ của 1 mol nước lỏng thay đổi 1°C cần một nhiệt lượng là 75,4J. Giả sử mỗi viên nước đá tương ứng với 1 mol nước, thì cần tối thiểu 6 viên nước đá tan chảy để có thể làm lạnh 500 gam nước lỏng ở 20°C xuống 0°C.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Quá trình tan chảy của nước đá là quá trình thu nhiệt vì có biến thiên enthalpy dương.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Nhiệt lượng mà 500 gam nước lỏng từ ở 20°C xuống 0°C  tỏa ra là:<br/>500.75,4.(200)41888,9(J)18-= = 41,8889(kJ)<br/>Mỗi viên đá tan chảy hấp thụ một nhiệt lượng là 6,020 kJ<br/>⇒ Số viên nước đá tối thiểu cần là  41,88896,9676,02=»  viên.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Ở điều kiện chuẩn, 2 mol nhôm tác dụng vừa đủ với khí chlorine tạo muối aluminium chloride và giải phóng một lượng nhiệt 1390,81 kJ.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phương trình nhiệt của phản ứng trên: 2Al(s) + 3Cl<sub>2</sub>(g)  → 2AlCl<sub>3</sub>(s);  or298HD = 1390,81 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt tạo thành của AlCl<sub>3</sub>(s) ở điều kiên chuẩn là 1390,81 kJ/mol.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Lượng nhiệt được giải phóng khi 10 gam AlCl<sub>3</sub> được tạo thành là 52,2 kJ.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để tạo ra được 1,0 kJ nhiệt cần 0,043 gam Al phản ứng với khí chlorine.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. 2Al(s) + 3Cl<sub>2</sub>(g)  → 2AlCl<sub>3</sub>(s);  or298HD = -1390,81 kJ.<br/>b. Sai.  Nhiệt tạo thành của AlCl<sub>3</sub>(s) ở điều kiên chuẩn là -1390,81 kJ/mol.<br/>c. Đúng.<br/>3AlCl10n0,075mol133,5==<br/>Cứ 2 mol Al phản ứng tạo thành 2 mol AlCl<sub>3</sub> thì giải phóng nhiệt lượng là 1390,81 kJ<br/>0,075 mol ---------------------------- x =  0,075.1390,8152,2kJ.2=<br/>d. Sai.<br/>Cứ 2 mol Al phản ứng thì giải phóng nhiệt lượng là 1390,81 kJ<br/>x =   32.11,438.10mol.1390,81-=       ←                                  1 kJ<br/>⇒ m<sub>Al</sub> = 0,0388 gam",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phân tử hemoglobin(Hb) trong máu nhận O<sub>2</sub> ở phổi để chuyển thành HbO<sub>2</sub>. Chất này theo máu tới các bộ phận cơ thể, tại đó HbO<sub>2</sub> lại chuyển thành Hb và O<sub>2</sub>( để cung cấp O<sub>2</sub> cho các hoạt động sinh hóa cần thiết trong cơ thể). Nếu trong không khí có lẫn carbon monoxide(CO), cơ thể nhanh chóng bị ngộ độc. Cho các số liệu thực nghiệm sau:<br/>Hb + O<sub>2</sub> → HbO<sub>2</sub>                       or298HD = -33,05kJ       (1)<br/>Hb + CO → HbCO                    or298HD = -47,28kJ       (2)<br/>HbO<sub>2</sub> + CO → HbCO + O<sub>2</sub>       or298HD = -14,23kJ       (3)<br/>HbCO + O<sub>2</sub> → HbO<sub>2</sub> + CO       or298HD = 14,23 kJ       (4)<br/>Liệt kê các phản ứng tỏa nhiệt theo số thứ tự tăng dần (ví dụ: 134, 24,...).",
+        "images": [],
+        "correctAnswer": "123",
+        "explanation": "Đáp án: 123.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "123",
+          "123",
+          "123"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các trường hợp sau:<br/>(1) Nước bay hơi.<br/>(2) Nước đóng băng.<br/>(3) Cồn cháy trong không khí.<br/>(4) Pha viên sủi vitamin C vào nước.<br/>(5) Phản ứng tạo gỉ sắt.<br/>Có bao nhiêu quá trình thu nhiệt trong các trường hợp trên?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khi dẫn hơi nước qua than nóng đỏ thu được khí than, là hỗn hợp của carbonmonoxide và hydrogen:  22C(s)HO(g)CO(g)H(g)(1)+¾¾®+<br/>Tính sự biến đổi enthalpy chuẩn của phản ứng (1) theo đơn vị kJ từ những phương trình phản ứng hóa học và sự biến đổi enthalpy chuẩn:<br/>22or298or292282C(s)O(g)2CO(g)(2)O(g)2H(g)2HO(g)(3H221,0kJH483,k)6JD=-D+¾¾-®=+¾¾®<br/>(Làm tròn kết quả đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "131",
+        "explanation": "Đáp án: 131.<br/>ooor298r298r298H(2)H(3)H(1)131,3kJ2D-DD==",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "131",
+          "131",
+          "131"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho phản ứng đốt cháy butane sau:<br/>C<sub>4</sub>H<sub>10</sub>(g)  +  O<sub>2</sub>(g)   ¾¾®  CO<sub>2</sub>(g)  +  H<sub>2</sub>O(g)(1)<br/>Biết năng lượng liên kết trong các hợp chất cho trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Phân tử</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Eb (kJ/mol)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Phân tử</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Eb (kJ/mol)</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C – C</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C4H10</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">346</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">CO2</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">799</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C4H10</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">418</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">H<sub>2</sub>O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">467</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">O = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">O<sub>2</sub></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">495</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td></tr></table></div><br/>Một bình gas chứa 12 kg butane có thể đun sôi bao nhiêu ấm nước (Làm tròn kết quả đến hàng đơn vị)? Giả thiết mỗi ấm nước chứa 2 L nước ở 25<sup>0</sup>C, nhiệt dung của nước là 4,2 J/g.K, có 40% nhiệt đốt cháy butane bị thất thoát ra ngoài môi trường.",
+        "images": [],
+        "correctAnswer": "918",
+        "explanation": "Đáp án: 918.<br/>C<sub>4</sub>H<sub>10</sub>(g)  +   132 O<sub>2</sub>(g)   ¾¾®  4CO<sub>2</sub>(g)  +  5H<sub>2</sub>O(g)<br/>or298HD= 3.E<sub>C-C</sub> + 10.E<sub>C-H</sub> + 6,5.E<sub>O=O</sub> – 4.2.E<sub>C=O</sub> – 5.2.E<sub>O-H</sub><br/>= 3.346 + 10.418 + 6,5.495 – 8.799 – 10.467 = - 2626,5 (kJ).<br/>312.10.2626,5Q964163,4(kJ)58==<br/>Nhiệt cần đun 1 ấm nước: 2.10<sup>3</sup>.4,2.(100 – 25) = 630 000 (J) = 630 (kJ).<br/>Số ấm nước:  964163,4.60%918630=  (ấm nước).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "918",
+          "918",
+          "918"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tiến hành quá trình ozone hoá 100 g oxygen theo phản ứng sau:<br/>3O<sub>2</sub>(g) (oxygen)  ¾¾®  2O<sub>3</sub>(g) (ozone)<br/>Hỗn hợp thu được có chứa 24% ozone về khối lượng, tiêu tốn 71,2 kJ. Nhiệt tạo thành  of298HD  của ozone (kJ/mol) có giá trị là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "142",
+        "explanation": "Đáp án: 142.<br/>Số mol của O<sub>3</sub> =  100.24%0,5(mol)48= ⇒  or29871,2.2H284,80,5D==  (kJ)<br/>ooor298f2983f2982H2H(O)3.H(O)D=D-D  =  of29832H(O)3.0284,8D-=  (kJ)<br/>=>  of2983H(O)D  = 142,4 (kJ/mol).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "142",
+          "142",
+          "142"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Lactic acid hay acid sữa là hợp chất hoá học đóng vai trò quan trọng trong nhiều quá trình sinh hoá, lần đầu tiên được phân tách vào năm 1780 bởi nhà hoá học Thuỵ Điền Carl Wilhelm Scheele. Lactic acid có công thức phân tử C<sub>3</sub>H<sub>6</sub>O<sub>3</sub>, công A thức câu tạo CH<sub>3</sub>-CH(OH)-COOH.<br/>Khi vận động mạnh cơ thề không đủ cung cấp oxygen, thì cơ thề sẽ chuyền hoá glucose thành lactic acid từ các tế bào đề cung cấp năng lượng cho cơ thề (lactic acid tạo thành từ quá trình này sẽ gây mỏi cơ) theo phương trình sau:<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(aq)  ¾¾®  2C<sub>3</sub>H<sub>6</sub>O<sub>3</sub>(aq)   0r298ÄH = -150 kJ<br/>Biết rằng cơ thề chỉ cung cấp 98% năng lượng nhờ oxygen, năng lượng còn lại nhờ vào sự chuyền hoá glucose thành lactic acid.<br/>Giả sử một người chạy bộ trong một thời gian tiêu tốn 300 kcal. Khối lượng lactic acid tạo ra từ quá trình chuyền hoá đó là bao nhiêu gam (biết 1 cal = 4,184 J)? (Kết quả làm tròn đến hàng đơn vị).",
+        "images": [
+          "/assets/hoa10/c5/hoa10_c5_de3_image32.jpeg"
+        ],
+        "correctAnswer": "30",
+        "explanation": "Đáp án: 30.<br/>Tính khối lượng lactic acid tạo ra từ quá trình chạy bộ. Năng lượng cùa sự chuyển hoá glucose thành lactic acid trong quá trình chạy bộ chiếm 2% ´ 300 kcal = 6 kcal = 6 000 cal  Û  25 104 J = 25,104 kJ.<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>  ¾¾®  2C<sub>3</sub>H<sub>6</sub>O<sub>3</sub> ;  0r298ÄH  =  -150 kJ<br/>0,335 mol           -25,104 kJ<br/>Khối lượng lactic acid được tạo ra trong quá trình chuyển hoá: 0,335.90 = 30,1 g.<br/>------------------------- HẾT -------------------------<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "30",
+          "30",
+          "30"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa10_c5_de4",
+    "code": "10-C5-04",
+    "title": "Đề Kiểm Tra Tổng Hợp Toàn Diện Chương 5 (Đề số 4)",
+    "topic": "Đề ôn tập toàn diện Năng lượng hóa học chuẩn Bộ GD&ĐT 2025",
+    "badge": "Chương 5 • Đề 4",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c5_de4_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng tỏa nhiệt là phản ứng hóa học trong đó",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "có sự giải phóng nhiệt năng ra môi trường.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "có sự hấp thụ nhiệt năng từ môi trường.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "không có sự giải phóng nhiệt năng ra môi trường.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "có sự giải phóng quang năng ra môi trường.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> có sự giải phóng nhiệt năng ra môi trường..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Kí hiệu enthalpy tạo thành (nhiệt tạo thành) của một phản ứng ở điều kiện chuẩn là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "or298HD",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "of298HD",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "rHD",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "fHD .",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> of298HD.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng đốt cháy các chất: C(s), CH<sub>3</sub>OH(l), CH<sub>4</sub>(g), C<sub>4</sub>H<sub>10</sub>(g) như sau:<br/>(1) C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g)  or298HD  = –393,5 kJ<br/>(2) CH<sub>3</sub>OH(l) +  32 O<sub>2</sub>(g) → CO<sub>2</sub>(g)  or298HD  = –726 kJ<br/>(3) CH<sub>4</sub>(g) + 2O<sub>2</sub>(g) → CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)  or298HD  = –890,36 kJ<br/>(4) C<sub>2</sub>H<sub>2</sub>(g) +  52 O<sub>2</sub>(g) → 2CO<sub>2</sub>(g) + H<sub>2</sub>O(l)  or298HD  = –2877,04 kJ<br/>Đốt cháy lần lượt 1 mol các chất trên, phản ứng tỏa ra lượng nhiệt nhiều nhất là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(2)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(3)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(4).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> (4)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Điều kiện nào sau đây là điều kiện chuẩn đối với chất khí?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Áp suất 1 bar và nhiệt độ 25 °C hay 298 K",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Áp suất 1 bar và nhiệt độ 298 K.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Áp suất 1 bar và nhiệt độ 25 °C",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Áp suất 1 bar và nhiệt độ 25 K.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Áp suất 1 bar và nhiệt độ 25 <sup>o</sup>C hay 298K.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phương trình nhiệt hóa học sau:<br/>H<sub>2</sub> (g) + I<sub>2</sub> (g)  ¾¾®  2HI (g)  H11,3kJD=+<br/>Phát biểu nào sau đây về sự trao đổi năng lượng của phản ứng trên là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng giải phóng nhiệt lượng 11,3 kJ khi 2 mol HI được tạo thành.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tổng nhiệt phá vỡ liên kết của chất phản ứng lớn hơn nhiệt tỏa ra khi tạo thành sản phẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Năng lượng chứa trong H<sub>2</sub> và I<sub>2</sub> cao hơn trong HI.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng xảy ra với tốc độ chậm.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Phản ứng giải phóng nhiệt lượng 11,3 kJ khi 2 mol HI được tạo thành..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng chuyển hóa giữa hai dạng đơn chất của phosphorus (P):<br/>P (s, đỏ)  ¾¾®  P (s, trắng)    or298H17,6kJD=<br/>Điều này chứng tỏ phản ứng:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "thu nhiệt, P đỏ bền hơn P trắng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "thu nhiệt, P trắng bền hơn P đỏ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tỏa nhiệt, P đỏ bền hơn P trắng.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tỏa nhiệt, P trắng bền hơn P đỏ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> tỏa nhiệt, P đỏ bền hơn P trắng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các phản ứng phân hủy thường là phản ứng thu nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng càng tỏa ra nhiều nhiệt càng dễ tự xảy ra.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các phản ứng oxi hóa chất béo cung cấp nhiệt cho cơ thể.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các phản ứng khi đun nóng đều dễ xảy ra hơn.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Các phản ứng khi đun nóng đều dễ xảy ra hơn..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nung nóng hai ống nghiệm chứa NaHCO<sub>3</sub> và P, xảy ra các phản ứng sau:<br/>2NaHCO<sub>3</sub>(s)  ¾¾®  Na<sub>2</sub>CO<sub>3</sub>(s) + CO<sub>2</sub>(g) + H<sub>2</sub>O(g)  (1)<br/>4P(s) + 5O<sub>2</sub>(g)  ¾¾®  2P<sub>2</sub>O<sub>5</sub>(s)  (2)<br/>Khi ngừng đun nóng, phản ứng (1) dừng lại còn phản ứng (2) tiếp tục xảy ra, chứng tỏ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "phản ứng (1) toả nhiệt, phản ứng (2) thu nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "phản ứng (1) thu nhiệt, phản ứng (2) toả nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "cả 2 phản ứng đều toả nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "cả 2 phản ứng đều thu nhiệt.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> phản ứng (1) thu nhiệt, phản ứng (2) toả nhiệt..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương trình nhiệt hoá học nào sau đây ứng với sơ đồ biểu diễn biến thiên enthalpy của phản ứng sau:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CI<sub>2</sub>O (g) + 3F<sub>2</sub>O (g) → 2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g)    D0r298H  = -394,1 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CI<sub>2</sub>O (g) + 3F<sub>2</sub>O(g) →  2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g)    D0r298H  = +394,1 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g) → CI<sub>2</sub>O (g) + 3F<sub>2</sub>O (g)    D0r298H  = +394,1 kJ.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g) → CI<sub>2</sub>O (g) + 3F<sub>2</sub>O (g)    D0r298H  = -394,1 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 2CIF<sub>3</sub> (g) + 2O<sub>2</sub> (g) → CI<sub>2</sub>O (g) + 3F<sub>2</sub>O (g)    D0r298H  = +394,1 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nung KNO<sub>3</sub> lên 550<sup>0</sup>C xảy ra phản ứng:<br/>KNO<sub>3</sub>(s)  ¾¾®  KNO<sub>2</sub>(s) +  Do2r2981O(g)H?2<br/>Phản ứng nhiệt phân KNO<sub>3</sub> là phản ứng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "toả nhiệt, có  or298HD < 0",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "thu nhiệt, có  or298HD > 0.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "toả nhiệt, có  or298HD > 0",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "thu nhiệt, có  or298HD < 0.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> thu nhiệt, có  or298HD > 0..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dựa vào phương trình nhiệt hóa học của phản ứng sau:<br/>CO<sub>2</sub>(g)  CO(g) +  12 O<sub>2</sub>(g)  Dor298H = +280 kJ<br/>Giá trị  Dor298H của phản ứng: 2CO<sub>2</sub>(g)  2CO(g) + O<sub>2</sub>(g) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "+140 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "-1120 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "+560 kJ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "-420 kJ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> +560 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phương trình nhiệt hóa học của phản ứng trung hòa sau:<br/>HCl (aq) + NaOH (aq)  ¾¾®  NaCl (aq) + H<sub>2</sub>O (l) H57,3kJD=-<br/>Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cho 1 mol HCl tác dụng với 1 mol NaOH dư tỏa nhiệt lượng là 57,3 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cho HCl dư tác dụng với 1 mol NaOH thu nhiệt lượng là 57,3 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cho 1 mol HCl tác dụng với 1 mol NaOH tỏa nhiệt lượng là 57,3 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cho 2 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3 kJ.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Cho 2 mol HCl tác dụng với NaOH dư tỏa nhiệt lượng là 57,3 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở điều kiện chuẩn, công thức tính biến thiên enthalpy của phản ứng theo nhiệt tạo thành là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "000r298f298f298HH(sp)H(cd).D=åD-åD",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "000r298f298f298HH(cd)H(sp).D=åD-åD",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "000f298r298r298HH(sp)H(cd).D=åD-åD",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "000f298r298r298HH(cd)H(sp).D=åD-åD",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 000r298f298f298HH(sp)H(cd).D=åD-åD.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phosphine (PH<sub>3</sub>) là một chất khí không màu, nhẹ hơn không khí, rất độc và dễ cháy. Khí này thường thoát ra từ xác động vật thối rữa, khi có mặt diphosphine (P<sub>2</sub>H<sub>4</sub>) thường tự bốc cháy trong không khí, đặc biệt ở thời tiết mưa phùn, tạo hiện tượng “ma trơi” ngoài nghĩa địa.<br/>Phản ứng cháy phosphine: 2PH<sub>3</sub>(g) + 4O<sub>2</sub>(g) → P<sub>2</sub>O<sub>5</sub>(s) + 3H<sub>2</sub>O(l)<br/>Biết nhiệt tạo thành chuẩn của các chất cho trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Chất</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">PH3(g)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">P2O5(s)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">H<sub>2</sub>O(l)</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(kJ/mol)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">5,4</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">-365,8</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">-285,8</td></tr></table></div><br/>Biến thiên enthalpy chuẩn của phản ứng trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "-657 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "+657 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "+1234 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "-1234 kJ.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> -1234 kJ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng tổng hợp ammonia:<br/>N<sub>2</sub>(g) + 3H<sub>2</sub>(g)  ¾¾®  2NH<sub>3</sub>(g)  or298ÄH  = -92 kJ<br/>Biết năng lượng liên kết (kJ/mol) của  NNº và H – H lần lượt là 946 và 436. Năng lượng liên kết của  NH-  trong ammonia là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "391 kJ/mol",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "361 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "245 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "490 kJ/mol.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 391 kJ/mol.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phản ứng sau:<br/>(1) C (s) + CO<sub>2</sub> (g)  ¾¾®  2CO<sub>2</sub> (g) or500H173,6kJD=<br/>(2) C (s) + H<sub>2</sub>O (g)  ¾¾®  CO (g) + H<sub>2</sub> (g) or500H133,8kJD=<br/>(3) CO (g) + H<sub>2</sub>O (g)  ¾¾®  CO<sub>2</sub> (g) + H<sub>2</sub> (g)<br/>Ở 500K, 1 atm, biến thiên enthalpy của phản ứng (3) có giá trị là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "-39,8 kJ",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "39,8 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "-47,00 kJ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "106,7 kJ. Đáp án: (1) C (s) + CO<sub>2</sub> (g)  ¾¾®  2CO<sub>2</sub> (g)                           <sub>r</sub>H (1) (2) C (s) + H<sub>2</sub>O (g)  ¾¾®  CO (g) + H<sub>2</sub> (g)                <sub>r</sub>H (2) (3) CO (g) + H<sub>2</sub>O (g)  ¾¾®  CO<sub>2</sub> (g) + H<sub>2</sub> (g)           <sub>r</sub>H (3) Lấy phương trình phản ứng (2) trừ phương trình phản ứng (1) được phương trình phản ứng (3) <sub>r</sub>H (3) = <sub>r</sub>H (2) - <sub>r</sub>H (1) = 133,8 – 173,6 = - 39,8 (kJ)",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> -39,8 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(a) Trong phòng thí nghiệm, có thể nhận biết một phản ứng thu nhiệt hoặc tỏa nhiệt bằng cách đo nhiệt độ của phản ứng bằng một nhiệt kế.<br/>(b) Nhiệt độ của hệ phản ứng sẽ tăng lên nếu phản ứng thu nhiệt.<br/>(c) Nhiệt độ của hệ phản ứng sẽ tăng lên nếu phản ứng tỏa nhiệt.<br/>(d) Nhiệt độ của hệ phản ứng sẽ giảm đi nếu phản ứng tỏa nhiệt.<br/>(e) Nhiệt độ của hệ phản ứng sẽ giảm đi nếu phản ứng thu nhiệt.<br/>Số phát biểu không đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 2..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c5_de4_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng đốt cháy ethanol: C<sub>2</sub>H<sub>5</sub>OH (l) + 3O<sub>2</sub> (g)  ¾¾®  2CO<sub>2</sub> (g) + 3H<sub>2</sub>O (l)<br/>Đốt cháy hoàn toàn 5 g ethanol, nhiệt tỏa ra làm nóng chảy 447 g nước đá ở 0<sup>o</sup>C. Biết 1 g nước đá nóng chảy hấp thụ nhiệt lượng 333,5 J, biến thiên enthalpy của phản ứng đốt cháy ethanol là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "-1371 kJ/mol",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "-954 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "-149 kJ/mol",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "+149 kJ/mol. Đáp án: Q = 447.333,5 = 149074,5 J  149 (kJ)  H =  149.461371()5kJ-=-",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> -1371 kJ/mol.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c5_de4_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu sau đây là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Biến thiên enthalpy chuẩn của một phản ứng hóa học là lượng nhiệt kèm theo phản ứng đó ở áp suất 1 bar và 27<sup>o</sup>C.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt (tỏa ra hay thu vào) kèm theo một phản ứng được thực hiện ở 1 bar và 298 K là biến thiên enthalpy chuẩn của phản ứng đó.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Một số phản ứng khi xảy ra làm môi trường xung quanh nóng lên là phản ứng thu nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Một số phản ứng khi xảy ra làm môi trường xung quanh lạnh đi là do các phản ứng này thu nhiệt và lấy nhiệt từ môi trường.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Nhiệt độ là 25oC.<br/>b. Đúng.<br/>c. Sai. Phản ứng tỏa nhiệt.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c5_de4_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng sau: S(s) + O<sub>2</sub>(g)  ot¾¾®  SO<sub>2</sub>(g)  và  of298HD  (SO<sub>2</sub>, g) = – 296,8 kJ/mol",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "of298HD (SO<sub>2</sub>, g) = –296,8 kJ/mol là lượng nhiệt tỏa ra khi tạo ra 1 mol SO<sub>2</sub> (g) từ đơn chất S (s) và O<sub>2</sub> (g), đây là các đơn chất bền nhất ở điều kiện chuẩn.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở điều kiện chuẩn,  of298HD  (S, s) = 0.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy chuẩn của phản ứng là 296,9 kJ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hợp chất SO<sub>2</sub>(g) kém bền hơn về mặt năng lượng so với các đơn chất bền S (s) và O<sub>2</sub> (g).",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Biến thiên enthalpy của phản ứng là -296,8 kJ.<br/>d. Sai. Vì  of298HD  (SO<sub>2</sub>, g) < 0, chất này bền hơn các đơn chất tạo nên nó.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c5_de4_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng đốt cháy methane (CH<sub>4</sub>) và acetylene (C<sub>2</sub>H<sub>2</sub>) như sau:<br/>(1) CH<sub>4</sub>(g) + 2O<sub>2</sub>(g)  ¾¾®  CO<sub>2</sub>(g) + 2H<sub>2</sub>O(l)     0r298H890,5kJD=-<br/>(2) C<sub>2</sub>H<sub>2</sub>(g) +  52 O<sub>2</sub>(g)  ¾¾®  2CO<sub>2</sub>(g) + H<sub>2</sub>O(l)     0r298H1300,2kJD=-",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cả hai phản ứng trên đều là phản ứng tỏa nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi đốt cháy cùng một lượng thể tích khí CH<sub>4</sub> và C<sub>2</sub>H<sub>2</sub> thì lượng nhiệt sinh ra do CH<sub>4</sub> nhiều hơn lượng nhiệt sinh ra do C<sub>2</sub>H<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biến thiên enthalpy của phản ứng (1) tính theo năng lượng liên kết có công thức:",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong thực tế, để hàn, cắt kim loại người ta sử dụng khí C<sub>2</sub>H<sub>2</sub> mà không dùng khí CH<sub>4</sub>.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. C<sub>2</sub>H<sub>2</sub> cháy tỏa nhiều nhiệt hơn CH<sub>4</sub>.<br/>c. Sai. Công thức trên là tính theo nhiệt tạo thành.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c5_de4_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Đường sucrose (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>) là một đường đôi. Trong môi trường acid ở dạ dày và nhiệt độ cơ thể, sucrose bị thủy phân thành đường glucose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>) và fructose (C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>), sau đó bị oxi hóa bởi oxygen tạo thành CO<sub>2</sub> và H<sub>2</sub>O. Sơ đồ thay đổi năng lượng hóa học của phản ứng được cho hình dưới đây:",
+        "images": [
+          "/assets/hoa10/c5/hoa10_c5_de4_image77.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng trong sơ đồ trên là phản ứng thu nhiệt.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phương trình nhiệt hóa học trong sơ đồ trên là C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s)+ 6O<sub>2</sub>(g) → 6CO<sub>2</sub>(g) + 6H<sub>2</sub>O(l).",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Năng lượng các chất tham gia phản ứng nhỏ hơn năng lượng các chất sản phẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi 1 mol đường sucrose bị đốt cháy hoàn toàn với một lượng vừa đủ oxygen ở điều kiện chuẩn tỏa ra một lượng nhiệt là 5645kJ thì biến thiến enthalpy chuẩn của phản ứng oxi hóa 5 g sucrose là –82,5 kJ.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Phản ứng đó tỏa nhiệt vì có biến thiên enthalpy âm.<br/>b. Sai. C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(s)+ 6O<sub>2</sub>(g) → 6CO<sub>2</sub>(g) + 6H<sub>2</sub>O(l);  0r298HD .<br/>c. Sai. Năng lượng các chất tham gia phản ứng lớn hơn năng lượng các chất sản phẩm.<br/>d. Đúng. C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>(s)+ 12O<sub>2</sub>(g) → 12CO<sub>2</sub>(g) + 11H<sub>2</sub>O(l)<br/>Biến thiên enthalpy chuẩn của phản ứng là -5645kJ.<br/>Biến thiên enthalpy của quá trình =  5.(5645)82,5kJ.342-=-",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c5_de4_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Dựa vào phương trình nhiệt hóa học của các phản ứng sau :<br/>(1) CS<sub>2</sub>(l)  + 3O<sub>2</sub>(g)  0t¾¾® CO<sub>2</sub>(g)   +   2 SO<sub>2</sub>(g)        0r298HD  = –1110,21 kJ<br/>(2) CO<sub>2</sub>(g)  ¾¾®  CO(g) +  12  O<sub>2</sub>(g)        0r298HD  = +280,00 kJ<br/>(3) 2Na(s) +2H<sub>2</sub>O(l) ¾¾®  2NaOH(aq) + H<sub>2</sub>(g) 0r298HD  = –367,50 kJ<br/>(4) ZnSO<sub>4</sub>(s)  ¾¾®  ZnO(s) +  SO<sub>2</sub>(g)                         0r298HD  = +235,21 kJ<br/>(5) 2SO<sub>2</sub>(g) + O<sub>2</sub>(g)  ¾¾® 2SO<sub>3</sub>(g)       0r298HD = –197kJ<br/>Liệt kê các phản ứng tỏa nhiệt theo số thứ tự tăng dần (ví dụ: 123, 25,...).",
+        "images": [],
+        "correctAnswer": "135",
+        "explanation": "Đáp án: 135.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "135",
+          "135",
+          "135"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de4_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các quá trình sau:<br/>(a) Nước hóa rắn.<br/>(b) Sự tiêu hóa thức ăn.<br/>(c) Quá trình chạy của con người.<br/>(d) Khí CH<sub>4</sub> đốt ở trong lò.<br/>(e) Hòa tan KBr vào nước làm cho nước trở nên lạnh.<br/>(f) Sulfuric acid đặc khi thêm vào nước làm cho nước nóng lên.<br/>Có bao nhiêu quá trình thu nhiệt trong số các quá trình trên?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de4_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các sau đây: C(graphite, s); CO(g); O<sub>2</sub>(l); Fe(s); SO<sub>2</sub>(g), H<sub>2</sub>O(l). Có bao nhiêu chất trong dãy chất trên có nhiệt tạo thành chuẩn bằng 0?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de4_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho phản ứng sau: CH º CH(g) + H<sub>2</sub>(g)  ¾¾® CH<sub>3</sub>-CH<sub>3</sub>(g).<br/>Năng lượng liên kết (kJ/mol) của H – H là 436, của C – C là 347, của C – H là 414 và của C º C là 839. Biến thiên enthalpy của phản ứng là bao nhiêu kJ?",
+        "images": [],
+        "correctAnswer": "-292",
+        "explanation": "Đáp án: -292.<br/>∆<sub>r</sub>H = 2E<sub>(C-H)</sub> + E<sub>(C≡C)</sub> + 2E<sub>(H-H)</sub> – 6E<sub>(C-H)</sub> – E<sub>(C-C)</sub> = (2.414) + 839 + (2.436) – (6.414) – 347 = -292 kJ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "-292",
+          "-292",
+          "-292"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de4_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho sơ đồ hòa tan NH<sub>4</sub>NO<sub>3</sub> sau:<br/>NH<sub>4</sub>NO<sub>3</sub> (s) + H<sub>2</sub>O (l)  ¾¾® NH<sub>4</sub>NO<sub>3</sub> (aq)  H26kJD=+<br/>Hòa tan 80 gam NH<sub>4</sub>NO<sub>3</sub> khan vào bình chứa 1 L nước ở 25<sup>o</sup>C. Sau khi muối tan hết, nước trong bình có nhiệt độ là bao nhiêu độ C? (Kết quả làm tròn đến hàng phần mười).",
+        "images": [],
+        "correctAnswer": "18,8",
+        "explanation": "Đáp án: 18,8.<br/>80g NH<sub>4</sub>NO<sub>3</sub>  1 mol  Q = 26 (kJ)<br/>H > 0, quá trình hòa tan thu nhiệt, nhiệt độ giảm đi một lượng là:<br/>T =  30326.106,24,2.10C=   Nhiệt độ cuối cùng là 25 – 6,2 = 18,8<sup>0</sup>C",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "18,8",
+          "18.8",
+          "18,8"
+        ]
+      },
+      {
+        "id": "hoa10_c5_de4_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Ở điều kiện chuẩn, cần phải đốt cháy hoàn toàn bao nhiêu gam  4CH()g  để cung cấp nhiệt cho phản ứng tạo 1 mol  CaO  bằng cách nung  3CaCO.  Giả thiết hiệu suất các quá trình đều là 100%. Phương trình nhiệt của phản ứng nung vôi và đốt cháy CH<sub>4</sub> như sau:<br/>(1)  032r298CaCO(s)CaO(s)CO(s)H178,29kJ®+D=<br/>(2)  04222r298CH(g)2O(g)CO(g)2HO(l)H890,36kJ+®+D=-<br/>(Kết quả làm tròn đến hàng phần mười).",
+        "images": [],
+        "correctAnswer": "3,2",
+        "explanation": "Đáp án: 3,2.<br/>Ta có phản ứng nung vôi:  032r298CaCO(s)CaO(s)CO(s)H178,29kJ®+D=<br/>Tức là để tạo 1 mol CaO cần cung cấp 178,29 kJ ® phản ứng đốt cháy  4CH  cần tỏa ra 178,29 kJ<br/>Mà ta có phản ứng đốt cháy  4CH:   04222r298CH(g)2O(g)CO(g)2HO(l)H890,36kJ+®+D=-<br/>Đốt cháy 1 mol  4CH  tỏa ra 890,36 kJ<br/>Đốt cháy x mol  4CH  tỏa ra 178,29 kJ<br/>178,29.1x0,2mol890,36®=»  ® khối lượng  4CH  cần dùng để đốt cháy là:  0,2.163,2gam.=<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "3,2",
+          "3.2",
+          "3,2"
+        ]
+      }
+    ]
+  }
+];
 
 export const HOA10_CHUONG5_7_EXAMS: Chuong5Exam[] = HOA10_CHUONG5_EXAMS;
 

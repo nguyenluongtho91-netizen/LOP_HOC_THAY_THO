@@ -78,7 +78,3946 @@ export const HOA10_CHUONG6_MASTER: Record<string, Chuong6Lesson> = {"bai19":{"id
 
 export const HOA10_CHUONG6_LESSONS: Chuong6Lesson[] = Object.values(HOA10_CHUONG6_MASTER);
 
-export const HOA10_CHUONG6_EXAMS: Chuong6Exam[] = [{"id":"hoa10_c6_de1","code":"ĐỀ 601","title":"Đề kiểm tra Chương 6: Tốc độ phản ứng (Đề số 1)","topic":"Khái niệm và công thức tính tốc độ phản ứng trung bình","badge":"Chương 6 - Đề 1","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c6_de1_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Để xác định được mức độ phản ứng nhanh hay chậm người ta sử dụng khái niệm nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Cân bằng hoá học","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng một chiều","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng thuận nghịch","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c6_de1_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Tốc độ phản ứng là","images":[],"options":[{"id":"a","letter":"A","text":"độ biến thiên nồng độ của một chất phản ứng trong một đơn vị thời gian","isCorrect":false},{"id":"b","letter":"B","text":"độ biến thiên nồng độ của một sản phẩm phản ứng trong một đơn vị thời gian","isCorrect":false},{"id":"c","letter":"C","text":"độ biến thiên nồng độ của một chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian","isCorrect":false},{"id":"d","letter":"D","text":"độ biến thiên nồng độ của các chất phản ứng trong một đơn vị thời gian","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c6_de1_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Cho phản ứng: X   Y. Tại thời điểm t<sub>1</sub> nồng độ của chất X bằng C<sub>1</sub>, tại thời điểm t<sub>2</sub> (với t<sub>2</sub>>t<sub>1</sub>) nồng độ của chất X bằng C<sub>2</sub>. Tốc độ trung bình của phản ứng trong khoảng thời gian trên được tính theo biểu thức nào sau đây ?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c6_de1_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Cho phản ứng đơn giản xảy ra trong bình kín: 2NO(g) + O<sub>2</sub>(g) → 2NO<sub>2</sub>(g). Biểu thức tốc độ tức thời của phản ứng là","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c6_de1_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Tốc độ phản ứng không phụ thuộc yếu tố nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Thời gian xảy ra phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Bề mặt tiếp xúc giữa các chất phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"Nồng độ các chất tham gia phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"Chất xúc tác","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c6_de1_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Đối với các phản ứng có chất khí tham gia, khi tăng áp suất, tốc độ phản ứng tăng là do","images":[],"options":[{"id":"a","letter":"A","text":"Nồng độ của các chất khí tăng lên","isCorrect":false},{"id":"b","letter":"B","text":"Nồng độ của các chất khí giảm xuống","isCorrect":false},{"id":"c","letter":"C","text":"Chuyển động của các chất khí tăng lên","isCorrect":false},{"id":"d","letter":"D","text":"Nồng độ của các chất khí không thay đổi","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c6_de1_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Dùng không khí nén thổi vào lò cao để đốt cháy than cốc (trong sản xuất gang), yếu tố nào đã được sử dụng để làm tăng tốc độ phản ứng?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiệt độ, áp suất","isCorrect":false},{"id":"b","letter":"B","text":"Diện tích tiếp xúc","isCorrect":false},{"id":"c","letter":"C","text":"Nồng độ","isCorrect":false},{"id":"d","letter":"D","text":"Chất xúc tác","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c6_de1_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Thực hiện 2 thí nghiệm theo hình vẽ sau:<br/>Nhận định nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"TN<sub>1</sub> có kết tủa xuất hiện trước","isCorrect":false},{"id":"b","letter":"B","text":"TN<sub>2</sub> có kết tủa xuất hiện trước","isCorrect":false},{"id":"c","letter":"C","text":"Kết tủa xuất hiện đồng thời","isCorrect":false},{"id":"d","letter":"D","text":"Không có kết tủa xuất hiện","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c6_de1_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Đồ thị biểu diễn đường cong động học của phản ứng giữa oxygen và hydrogen tạo thành nước, O<sub>2</sub>(g) + 2H<sub>2</sub>(g)  2H<sub>2</sub>O(g). Đường cong nào của oxygen?","images":[],"options":[{"id":"a","letter":"A","text":"Đường cong số (1)","isCorrect":false},{"id":"b","letter":"B","text":"Đường cong số (2)","isCorrect":false},{"id":"c","letter":"C","text":"Đường cong số (3)","isCorrect":false},{"id":"d","letter":"D","text":"Đường cong số (2) hoặc (3) đều đúng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c6_de1_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Thực hiện phản ứng sau trong bình kín. H<sub>2</sub>(g) + Br<sub>2</sub>(g)  2HBr(g)<br/>Lúc đầu nồng độ hơi Br<sub>2</sub> là 0,072 mol/L. Sau 2 phút, nồng độ hơi Br<sub>2</sub> còn lại là 0,048 mol/L. Tốc độ trung bình của phản ứng tính theo Br<sub>2</sub> trong khoảng thời gian trên là","images":[],"options":[{"id":"a","letter":"A","text":"8.10<sup>-4</sup> mol/(L.s)","isCorrect":false},{"id":"b","letter":"B","text":"6.10<sup>-4</sup> mol/(L.s)","isCorrect":false},{"id":"c","letter":"C","text":"4.10<sup>-4</sup> mol/(L.s)","isCorrect":false},{"id":"d","letter":"D","text":"2.10<sup>-4</sup> mol/(L.s)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c6_de1_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Chất xúc tác là chất","images":[],"options":[{"id":"a","letter":"A","text":"làm tăng tốc độ phản ứng và không bị mất đi sau phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"làm tăng tốc độ phản ứng và bị mất đi sau phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"làm giảm tốc độ phản ứng và không bị mất đi sau phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"làm giảm tốc độ phản ứng và bị mất đi sau phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c6_de1_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiên liệu cháy ở trên vùng cao nhanh hơn khi cháy ở vùng thấp","isCorrect":false},{"id":"b","letter":"B","text":"Thực phẩm được bảo quản ở nhiệt độ thấp hơn sẽ giữ được lâu hơn","isCorrect":false},{"id":"c","letter":"C","text":"Dùng men làm chất xúc tác để chuyển hoá cơm nếp thành rượu","isCorrect":false},{"id":"d","letter":"D","text":"Nếu không cho nước dưa chua khi muối dưa thì dưa vẫn sẽ chua nhưng chậm hơn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c6_de1_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Cho bột Fe vào dung dịch HCl loãng. Sau đó đun nóng hỗn hợp này. Phát biểu sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Khí H<sub>2</sub> thoát ra nhanh hơn","isCorrect":false},{"id":"b","letter":"B","text":"Bột Fe tan nhanh hơn","isCorrect":false},{"id":"c","letter":"C","text":"Lượng muối thu được nhiều hơn","isCorrect":false},{"id":"d","letter":"D","text":"Nồng độ HCl giảm nhanh hơn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c6_de1_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Khi tăng nhiệt độ thêm 10 <sup>o</sup>C thì tốc độ của một phản ứng tăng 2 lần. Hệ số nhiệt độ Van’t Hoff của phản ứng đó là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"10","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c6_de1_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Phương trình hoá học của phản ứng: CHCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)  CCl<sub>3</sub>(g) + HCl(g). Khi nồng độ của CHCl<sub>3</sub> giảm 4 lần, nồng độ Cl<sub>2</sub> giữ nguyên thì tốc độ phản ứng sẽ","images":[],"options":[{"id":"a","letter":"A","text":"tăng gấp đôi","isCorrect":false},{"id":"b","letter":"B","text":"giảm một nửa","isCorrect":false},{"id":"c","letter":"C","text":"tăng 4 lần","isCorrect":false},{"id":"d","letter":"D","text":"giảm 4 lần","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c6_de1_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Khi cho cùng một lượng aluminum (nhôm) vào cốc đựng dung dịch axit HCl 0,1M, tốc độ phản ứng sẽ lớn nhất khi dùng nhôm ở dạng nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Dạng viên nhỏ","isCorrect":false},{"id":"b","letter":"B","text":"Dạng bột mịn, khuấy đều","isCorrect":false},{"id":"c","letter":"C","text":"Dạng tấm mỏng","isCorrect":false},{"id":"d","letter":"D","text":"Dạng nhôm dây","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c6_de1_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Yếu tố nào dưới đây được sử dụng để làm tăng tốc độ phản ứng khi rắc men vào tinh bột đã được nấu chín để ủ ancol (rượu)?","images":[],"options":[{"id":"a","letter":"A","text":"Chất xúc tác","isCorrect":false},{"id":"b","letter":"B","text":"áp suất","isCorrect":false},{"id":"c","letter":"C","text":"Nồng độ","isCorrect":false},{"id":"d","letter":"D","text":"Nhiệt độ","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c6_de1_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho ba mẫu đá vôi (100% CaCO<sub>3</sub>) có cùng khối lượng: mẫu 1 dạng khối, mẫu 2 dạng viên nhỏ, mẫu 3 dạng bột mịn vào ba cốc đựng cùng thể tích dung dịch HCl (dư, cùng nồng độ, ở điều kiện thường). Thời gian để đá vôi tan hết trong ba cốc tương ứng là t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub> giây. So sánh nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c6_de1_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mỗi phát biểu sau về tốc độ phản ứng hóa học là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ của phản ứng hóa học chỉ có thể được xác định theo sự thay đổi nồng độ chất phản ứng theo thời gian","isCorrect":false},{"id":"b","letter":"B","text":"Tốc độ của phản ứng hóa học không thể xác định được từ sự thay đổi nồng độ chất sản phẩm tạo thành theo thời gian","isCorrect":false},{"id":"c","letter":"C","text":"Dấu “ – ” trong biểu thức tính tốc độ trung bình theo biến thiên nồng độ chất phản ứng là để đảm bảo cho giá trị của tốc độ phản ứng không âm","isCorrect":true},{"id":"d","letter":"D","text":"Tốc độ trung bình của một phản ứng trong một khoảng thời gian nhất định được biểu thị bằng biến thiên nồng độ một chất phản ứng hoặc sản phẩm tạo thành chia cho khoảng thời gian đó","isCorrect":true}],"explanation":"Đáp án:<br/>a. Sai. Ngoài nồng độ có thể đưa ra khái niệm tốc dộ phản ứng theo sự thay đổi khối lượng, thể tích, số mo theo thời gian.<br/>b. Sai. Tốc độ của phản ứng hóa học có thể xác định được từ sự thay đổi nồng độ chất sản phẩm tạo thành theo thời gian.<br/>c. Đúng. <br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c6_de1_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Cho phản ứng đơn giản xảy ra trong bình kín: 2NO (g) + O<sub>2</sub> (g)  2NO<sub>2</sub> (g)","images":[],"options":[{"id":"a","letter":"A","text":"Theo thời gian, nồng độ NO<sub>2</sub> tăng dần nên tốc độ phản ứng tăng dần","isCorrect":false},{"id":"b","letter":"B","text":"Biểu thức tốc độ phản ứng:","isCorrect":false},{"id":"c","letter":"C","text":"Khi nồng độ O<sub>2</sub> tăng 4 lần và nồng độ NO giảm 2 lần thì tốc độ phản ứng tăng lần","isCorrect":false},{"id":"d","letter":"D","text":"Để tốc độ phản ứng tăng lên 27 lần thì nồng độ NO và O<sub>2</sub> đều phải tăng 3 lần","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Tốc độ phản ứng giảm dần theo thời gian.<br/>b. Sai. .<br/>c. Sai.  (không đổi).<br/>d. Đúng.","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c6_de1_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho 5 gam zinc (kẽm) viên vào cốc đựng 50 ml dung dịch H<sub>2</sub>SO<sub>4</sub> 4M ở nhiệt độ thường (25<sup>o</sup>C). Tốc độ phản ứng thay đổi khi","images":[],"options":[{"id":"a","letter":"A","text":"thay 5 gam zinc viên bằng 5 gam zinc bột","isCorrect":true},{"id":"b","letter":"B","text":"thay dung dịch H<sub>2</sub>SO<sub>4</sub> 4M bằng dung dịch H<sub>2</sub>SO<sub>4</sub> 2M","isCorrect":true},{"id":"c","letter":"C","text":"giảm nhiệt độ phản ứng từ 25<sup>o</sup>C đến 10<sup>o</sup>C","isCorrect":true},{"id":"d","letter":"D","text":"dùng dung dịch H<sub>2</sub>SO<sub>4</sub> gấp đôi so với ban đầu","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Thể tích không ảnh hưởng đến tốc độ phản ứng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c6_de1_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Thực hiện phản ứng sau: CaCO<sub>3</sub> + 2HCl  CaCl<sub>2</sub> + CO<sub>2</sub> ↑ + H<sub>2</sub>O. Theo dõi thể tích CO<sub>2</sub> thoát ra theo thời gian, thu được đồ thị như sau (thể tích khí được đo ở áp suất khí quyển và nhiệt độ phòng)","images":[],"options":[{"id":"a","letter":"A","text":"Ở thời điểm 90 giây, tốc độ phản ứng bằng 0","isCorrect":true},{"id":"b","letter":"B","text":"Tốc độ phản ứng giảm dần theo thời gian","isCorrect":true},{"id":"c","letter":"C","text":"Tốc độ trung bình của phản ứng trong khoảng thời gian từ thời điểm đầu đến 75 giây là 0,33 ml/s","isCorrect":true},{"id":"d","letter":"D","text":"Tốc độ trung bình của phản ứng trong các khoảng thời gian 15 giây là như nhau","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Theo thời gian, nồng độ các chất tham gia giảm dần nên tốc độ phản ứng giảm dần. Tốc độ trung bình của phản ứng trong 15 giây đầu sẽ lớn hơn tốc độ phản ứng trong 15 giây sau","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c6_de1_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Cho các yếu tố sau: (a) Nồng độ chất, (b) Áp suất, (c) Nhiệt độ, (d) Diện tích tiếp xúc, (e) Chất xúc tác. Có bao nhiêu yếu tố ảnh hưởng đến tốc độ phản ứng?","images":[],"correctAnswer":"5","explanation":"Đáp án: 5","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c6_de1_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các phản ứng hóa học sau:<br/>(a) Fe<sub>3</sub>O<sub>4</sub>(s)   +  4CO(g)  3Fe(s) + 4CO<sub>2</sub>(g)<br/>(b) 2NO<sub>2</sub>(g)  N<sub>2</sub>O<sub>4</sub>(g)<br/>(c) H<sub>2</sub>(g) + Cl<sub>2</sub>(g)  2HCl(g)<br/>(d) CaO(s) + SiO<sub>2</sub>(s) CaSiO<sub>3</sub>(s)<br/>Liệt kê cấc phản ứng thay đổi tốc độ khi áp suất thay đổi theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…)","images":[],"correctAnswer":"123","explanation":"Đáp án: 123","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c6_de1_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho phản ứng: 2CO(g)  CO<sub>2</sub>(g) + C(s). Để tốc độ phản ứng tăng lên 16 lần thì nồng độ của carbon monoxide (CO) phải tăng lên bao nhiêu lần?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4.<br/>Ta có: v<sub>2</sub> = 4v<sub>1</sub>  ky<sup>2</sup> = 16kx<sup>2</sup>  y = 4x<br/>Vậy nồng độ của CO tăng lên 2 lần","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c6_de1_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho chất xúc tác MnO<sub>2</sub> vào 100 mL dung dịch H<sub>2</sub>O<sub>2</sub>, sau 60 giây thu được 0,0015 mol khí O<sub>2</sub>. Tốc độ trung bình của phản ứng (tính theo H<sub>2</sub>O<sub>2</sub>) trong 60 giây là a.10<sup>–4</sup> M/s?","images":[],"correctAnswer":"5","explanation":"Đáp án: 5.<br/>H<sub>2</sub>O<sub>2</sub> → H<sub>2</sub>O + ½ O<sub>2</sub><br/>                           0,0015 mol<br/>Số mol H<sub>2</sub>O<sub>2</sub>  = 2 x 0,0015 = 0,003 mol.<br/>Nồng độ mol của H<sub>2</sub>O<sub>2</sub> phản ứng: <br/>Tốc độ trung bình của phản ứng (tính theo H<sub>2</sub>O<sub>2</sub>) trong 60 giây:","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c6_de1_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Phản ứng tạo NO từ NH<sub>3</sub> là một giai đoạn trung gian trong quá trình sản xuất nitric acid:<br/>4NH<sub>3</sub>(g)  +  5O<sub>2</sub>(g)  4NO(g) + 6H<sub>2</sub>O(g)<br/>Có các biện pháp sau: (1) Tăng áp suất, (2) Giảm nồng độ các chất tham gia phản ứng, (3) Tăng nhiệt độ, (4) Sử dụng chất xúc tác Pt.<br/>Có bao nhiêu biện pháp làm tăng tốc độ phản ứng trên?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c6_de1_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Ở vùng đồng bằng (độ cao gần mực nước biển), nước sôi ở 100 <sup>o</sup>C. Trên đỉnh núi Fansipan (cao 3200m so với mực nước biển), nước sôi ở 90 <sup>o</sup>C. Khi luộc chín một miếng thịt trong nước sôi, ở vùng đồng bằng mất 3,2 phút (min), trong khi trên đỉnh núi Pansipan mất 3,8 phút. Nếu luộc miếng thịt trên đỉnh núi cao hơn, tại đó nước sôi ở 80 <sup>o</sup>C thì mất bao nhiêu phút để luộc chín miếng thịt (Làm tròn kết quả đến hàng phần mười)?","images":[],"correctAnswer":"4,5","explanation":"Đáp án: 4,5.<br/>Tốc độ phản ứng tỉ lệ nghịch với thời gian ⇒ Khi giảm từ 100<sup>o</sup>C xuống 90<sup>o</sup>C (10<sup>o</sup>) thì thời gian tăng từ 3,2 phút đến 3,8 phút ⇒ hệ số nhiệt độ: <br/>Nếu luộc miếng thịt ở 80<sup>o</sup>C thì thời gian cần là 3,8.1,1875 = 4,5 (min)<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa10_c6_de2","code":"ĐỀ 602","title":"Đề kiểm tra Chương 6: Tốc độ phản ứng (Đề số 2)","topic":"Định luật tác dụng khối lượng và hằng số tốc độ phản ứng k","badge":"Chương 6 - Đề 2","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c6_de2_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Đại lượng đặc trưng cho độ biến thiên nồng độ của một trong các chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian gọi là","images":[],"options":[{"id":"a","letter":"A","text":"tốc độ phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"cân bằng hoá học","isCorrect":false},{"id":"c","letter":"C","text":"tốc độ tức thời","isCorrect":false},{"id":"d","letter":"D","text":"quá trình hoá học","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c6_de2_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Cho phản ứng xảy ra trong pha khí như sau: H<sub>2</sub> + Cl<sub>2</sub>  2HCl. Biểu thức tốc độ trung bình của phản ứng là","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c6_de2_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Khi đốt than trong lò, đậy nắp lò sẽ giữ than cháy được lâu hơn. Yếu tố ảnh hưởng đến tốc độ phản ứng được vận dụng trong ví dụ trên là","images":[],"options":[{"id":"a","letter":"A","text":"nhiệt độ","isCorrect":false},{"id":"b","letter":"B","text":"nồng độ","isCorrect":false},{"id":"c","letter":"C","text":"chất xúc tác","isCorrect":false},{"id":"d","letter":"D","text":"diện tích bề mặt tiếp xúc","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c6_de2_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Có phương trình phản ứng: . Tốc độ phản ứng tại một thời điểm được tính bằng biểu thức: v = k[X]<sup>2</sup>.[Y]. Hằng số tốc độ k phụ thuộc vào yếu tố nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Nồng độ của chất ban đầu","isCorrect":false},{"id":"b","letter":"B","text":"Nồng độ của chất sản phẩm","isCorrect":false},{"id":"c","letter":"C","text":"Nhiệt độ của phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"Thời gian xảy ra phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c6_de2_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Yếu tố nào sau đây không ảnh hưởng đến tốc độ của phản ứng chỉ có chất rắn?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiệt độ","isCorrect":false},{"id":"b","letter":"B","text":"Áp suất","isCorrect":false},{"id":"c","letter":"C","text":"Diện tích tiếp xúc","isCorrect":false},{"id":"d","letter":"D","text":"Chất xúc tác","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c6_de2_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Yếu tố nào sau đây làm giảm tốc độ phản ứng","images":[],"options":[{"id":"a","letter":"A","text":"Sử dụng enzyme cho phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Thêm chất ức chế vào hỗn hợp chất tham gia","isCorrect":false},{"id":"c","letter":"C","text":"Tăng nồng độ chất tham gia","isCorrect":false},{"id":"d","letter":"D","text":"Nghiền chất tham gia dạng khối thành bột","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c6_de2_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Khi cho một lượng xác định chất phản ứng vào bình để cho phản ứng hoá học xảy ra, tốc độ phản ứng sẽ","images":[],"options":[{"id":"a","letter":"A","text":"không đổi cho đến khi kết thúc","isCorrect":false},{"id":"b","letter":"B","text":"tăng dần cho đến khi kết thúc","isCorrect":false},{"id":"c","letter":"C","text":"chậm dần cho đến khi kết thúc","isCorrect":false},{"id":"d","letter":"D","text":"tuân theo định luật tác dụng khối lượng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c6_de2_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Biểu đồ nào sau đây không biểu diễn sự phụ thuộc nồng độ chất tham gia với thời gian?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c6_de2_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Đối với phản ứng có chất khí tham gia thì nhận định nào dưới đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Khi áp suất tăng thì tốc độ phản ứng giảm","isCorrect":false},{"id":"b","letter":"B","text":"Khi áp suất tăng thì tốc độ phản ứng tăng","isCorrect":false},{"id":"c","letter":"C","text":"Khi áp suất giảm thì tốc độ phản ứng tăng","isCorrect":false},{"id":"d","letter":"D","text":"Áp suất không ảnh hưởng đến tốc độ phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c6_de2_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Cách nào sau đây sẽ làm củ khoai tây chín nhanh nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Luộc trong nước sôi","isCorrect":false},{"id":"b","letter":"B","text":"Hấp cách thuỷ trong nồi cơm","isCorrect":false},{"id":"c","letter":"C","text":"Nướng ở 180°","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"Hấp trên nồi hơi","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c6_de2_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Hiện tượng nào dưới đây thể hiện ảnh hưởng của nhiệt độ đến tốc độ phản ứng?","images":[],"options":[{"id":"a","letter":"A","text":"Thanh củi được chẻ nhỏ hơn thì sẽ cháy nhanh hơn","isCorrect":false},{"id":"b","letter":"B","text":"Quạt gió vào bếp than để thanh cháy nhanh hơn","isCorrect":false},{"id":"c","letter":"C","text":"Thức ăn lâu bị ôi thiu hơn khi để trong tủ lạnh","isCorrect":false},{"id":"d","letter":"D","text":"Các enzyme làm thúc đẩy các phản ứng sinh hóa trong cơ thể","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c6_de2_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Cho một viên đá vôi nặng 1 gam vào dung dịch HCl 2 M, ở nhiệt độ 25 ℃. Biến đổi nào sau đây không làm bọt khí thoát ra mạnh hơn?","images":[],"options":[{"id":"a","letter":"A","text":"Tăng thể tích dung dịch HCl lên gấp đôi","isCorrect":false},{"id":"b","letter":"B","text":"Thay viên đá vôi bằng 1 gam bột đá vôi","isCorrect":false},{"id":"c","letter":"C","text":"Thay dung dịch HCl 2 M bằng dung dịch HCl 4 M","isCorrect":false},{"id":"d","letter":"D","text":"Tăng nhiệt độ lên 50<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c6_de2_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Ở cùng một nồng độ và khối lượng của Al là như nhau, hãy cho biết phản ứng nào dưới đây có tốc độ phản ứng xảy ra chậm nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Al(s) + NaOH(aq) ở 25<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"b","letter":"B","text":"Al(s) + NaOH(aq) ở 30<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"c","letter":"C","text":"Al(s) + NaOH(aq) ở 40<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"Al(s) + NaOH(aq) ở 50<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c6_de2_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Đối với phản ứng: A + 3B  2C, phát biểu nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ tiêu hao chất B bằng 3/2 tốc độ tạo thành chất","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"b","letter":"B","text":"Tốc độ tiêu hao chất B bằng 2/3 tốc độ tạo thành chất","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ tiêu hao chất B bằng 3 tốc độ tạo thành chất","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"Tốc độ tiêu hao chất B bằng 1/3 tốc độ tạo thành chất","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c6_de2_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Cho phản ứng thủy phân tinh bột có xúc tác là HCl. Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"HCl không tác dụng với tinh bột trong quá trình phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Nếu nồng độ HCl tăng, tốc độ phản ứng tăng","isCorrect":false},{"id":"c","letter":"C","text":"Khi không có HCl, phản ứng thủy phân tinh bột vẫn xảy ra nhưng tốc độ chậm","isCorrect":false},{"id":"d","letter":"D","text":"Nồng độ HCl không đổi sau phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c6_de2_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Một phản ứng có hệ số nhiệt độ Van’t Hoff là 2. Hỏi tốc độ của phản ứng đó tăng lên bao nhiêu lần khi nâng nhiệt độ lên từ 20<sup>o</sup>C đến 60<sup>o</sup>C?","images":[],"options":[{"id":"a","letter":"A","text":"2 lần","isCorrect":false},{"id":"b","letter":"B","text":"8 lần","isCorrect":false},{"id":"c","letter":"C","text":"16 lần","isCorrect":false},{"id":"d","letter":"D","text":"32 lần","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c6_de2_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Xét phản ứng phân hủy N<sub>2</sub>O<sub>5</sub> trong dung môi CCl<sub>4</sub> ở 45<sup>o</sup>C:<br/>N<sub>2</sub>O<sub>5</sub> → N<sub>2</sub>O<sub>4</sub> +  O<sub>2</sub><br/>Ban đầu nồng độ của N<sub>2</sub>O<sub>5</sub>là 2,33M, sau 184 giây nồng độ của N<sub>2</sub>O<sub>5</sub> là 2,08M. Tốc độ trung bình của phản ứng tính theo N<sub>2</sub>O<sub>5</sub>là","images":[],"options":[{"id":"a","letter":"A","text":"2,72.10<sup>−3</sup> mol/(L.s)","isCorrect":false},{"id":"b","letter":"B","text":"1,36.10<sup>−3</sup> mol/(L.s)","isCorrect":false},{"id":"c","letter":"C","text":"6,80.10<sup>−3</sup> mol/(L.s)","isCorrect":false},{"id":"d","letter":"D","text":"6,80.10<sup>−4</sup> mol/(L.s)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c6_de2_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Xét phản ứng sau: 2ClO<sub>2</sub>  + 2NaOH  NaClO<sub>3</sub>  + NaClO<sub>2</sub> + H<sub>2</sub>O<br/>Tốc độ phản ứng được viết như sau: . Thực hiện phản ứng với những nồng độ chất đầu khác nhau và đo tốc độ phản ứng tương ứng thu được kết quả trong bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>STT</td><td class='border border-slate-300 p-1.5'>Nồng độ ClO 2 (M)</td><td class='border border-slate-300 p-1.5'>Nồng độ NaOH (M)</td><td class='border border-slate-300 p-1.5'>Tốc độ phản ứng (mol/(L.s))</td></tr><tr><td class='border border-slate-300 p-1.5'>1</td><td class='border border-slate-300 p-1.5'>0,01</td><td class='border border-slate-300 p-1.5'>0,01</td><td class='border border-slate-300 p-1.5'>2.10 -4</td></tr><tr><td class='border border-slate-300 p-1.5'>2</td><td class='border border-slate-300 p-1.5'>0,02</td><td class='border border-slate-300 p-1.5'>0,01</td><td class='border border-slate-300 p-1.5'>8.10 -4</td></tr><tr><td class='border border-slate-300 p-1.5'>3</td><td class='border border-slate-300 p-1.5'>0,01</td><td class='border border-slate-300 p-1.5'>0,02</td><td class='border border-slate-300 p-1.5'>4.10 -4</td></tr></table><br/>Giá trị của x và y trong biểu thức tốc độ phản ứng là","images":[],"options":[{"id":"a","letter":"A","text":"1 và 2","isCorrect":false},{"id":"b","letter":"B","text":"2 và 1","isCorrect":true},{"id":"c","letter":"C","text":"2 và 3","isCorrect":false},{"id":"d","letter":"D","text":"3 và 2","isCorrect":false}],"correctAnswer":"B","explanation":"Đáp án: B.<br/>2.10<sup>-4</sup> = k.0,01<sup>x</sup>.0,01<sup>y</sup>  (1)<br/>8.10<sup>-4</sup> = k.0,02<sup>x</sup>.0,01<sup>y</sup>  (2)<br/>4.10<sup>-4</sup> = k.0,01<sup>x</sup>.0,02<sup>y</sup> (3)<br/>Lấy (2)/(1) ⟹ 4 = 2<sup>x</sup> ⟹ x = 2.<br/>Lấy (3)/(1) ⟹ 2 = 2<sup>y</sup> ⟹ y = 1.<br/>","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c6_de2_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mỗi phát biểu sau về tốc độ phản ứng là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ của phản ứng hóa học là đại lượng mô tả mức độ nhanh hay chậm của chất phản ứng hoặc sản phẩm tạo thành","isCorrect":true},{"id":"b","letter":"B","text":"Tốc độ của phản ứng hóa học là hiệu số nồng độ của một chất trong hỗn hợp phản ứng tại hai thời điểm khác nhau","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ của phản ứng hóa học có thể có giá trị âm hoặc dương","isCorrect":false},{"id":"d","letter":"D","text":"Trong cùng một phản ứng hóa học, tốc độ tạo thành của các chất sản phẩm khác nhau là khác nhau, tùy thuộc vào hệ số cân bằng của chúng trong phương trình hóa học","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Sai. Tốc độ phản ứng của một phản ứng hóa học là đại lượng đặc trưng cho sự thay đổi nồng độ của các chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian.<br/>c. Sai. Tốc độ phản ứng có giá trị dương.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c6_de2_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Trong quy trình sản xuất sulfuric acid, xảy ra phản ứng hoá học:<br/>2SO<sub>2</sub>(g) + O<sub>2</sub>(g)  2SO<sub>3</sub>(g)","images":[],"options":[{"id":"a","letter":"A","text":"Xúc tác V<sub>2</sub>O<sub>5</sub> giúp tăng hiệu suất phản ứng chuyển hoá SO<sub>2</sub> thành SO<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Khi tăng nhiệt độ của phản ứng thì tốc độ phản ứng giảm xuống","isCorrect":false},{"id":"c","letter":"C","text":"Trong quá trình phản ứng thì nồng độ SO<sub>2</sub> tăng dần còn nồng độ SO<sub>3</sub> giảm dần","isCorrect":false},{"id":"d","letter":"D","text":"Khi tăng áp suất khí SO<sub>2</sub> hoặc O<sub>2</sub>thì tốc độ phản ứng đều tăng","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. Xúc tác làm tăng tốc độ phản ứng, không làm dịch chuyển cân bằng, nên hiệu suất phản ứng không đổi. <br/>b. Sai. Tăng nhiệt độ thì tốc độ phản ứng tăng. <br/>c. Sai. Nồng độ SO<sub>2</sub> giảm, SO<sub>3</sub> tăng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c6_de2_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Nghiên cứu ảnh hưởng của diện tích bề mặt đến tốc độ phản ứng:<br/>CaCO<sub>3</sub>(s) + 2HCl(aq)  CaCl<sub>2</sub>(aq) + CO<sub>2</sub>(g) + H<sub>2</sub>O(l)<br/>Chuẩn bị: 2 bình tam giác, dung dịch HCl 0,5 M, đá vôi dạng viên, đá vôi đập nhỏ.<br/>Tiến hành:<br/>- Cho cùng một lượng (khoảng 2 g) đá vôi dạng viên vào bình tam giác (1) và đá vôi đập nhỏ vào bình tam giác (2).<br/>- Rót 20 mL dung dịch HCl 0,5 M vào mỗi bình","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng trong bình tam giác (1) có tốc độ thoát khí nhanh hơn","isCorrect":false},{"id":"b","letter":"B","text":"Đá vôi dạng viên có tổng diện tích bề mặt nhỏ hơn đá vôi dạng đập nhỏ","isCorrect":true},{"id":"c","letter":"C","text":"Nếu lấy cùng một lượng đá vôi thì đá vôi dạng đập viên tan nhanh hơn đá vôi dạng đập nhỏ","isCorrect":false},{"id":"d","letter":"D","text":"Khi tăng diện tích bề mặt tiếp xúc, số va chạm giữa các chất đầu tăng lên, số va chạm hiệu quả cũng tăng theo, dẫn đến tốc độ phản ứng tăng","isCorrect":true}],"explanation":"Đáp án:<br/>a. Sai. Phản ứng trong bình tam giác (2) có tốc độ thoát khí nhanh hơn.<br/>b. Đúng.<br/>c. Sai. Dạng đập nhỏ tan nhanh hơn dạng viên.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c6_de2_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Cho phản ứng đơn giản: aA + bB  cD + dD. Tốc độ tức thời của phản ứng được tính theo biểu thức: v = k.C<sub>A</sub><sup>a</sup>.C<sub>B</sub><sup>b</sup> (trong đó C<sub>A</sub>, C<sub>B</sub> là nồng độ của A và B tại thời điểm đang xét; v là tốc độ phản ứng tại thời điểm đang xét)","images":[],"options":[{"id":"a","letter":"A","text":"Hằng số tốc độ phản ứng k là tốc độ của phản ứng khi nồng độ của tất cả các chất A, B đều bằng nhau và bằng 1M","isCorrect":true},{"id":"b","letter":"B","text":"Hằng số tốc độ phản ứng k phụ thuộc vào nồng độ phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"Giá trị v luôn không đổi trong thời gian phản ứng xảy ra","isCorrect":false},{"id":"d","letter":"D","text":"Ở nhiệt độ không đổi, tốc độ phản ứng tỉ lệ thuận với tích số nồng độ các chất phản ứng hoặc sản phẩm với số mũ thích hợp","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. Phụ thuộc vào nhiệt độ.<br/>c. Sai. Có thể thay đổi.<br/>d. Sai. Tính theo chất phản ứng","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c6_de2_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Khi ninh (hầm) thịt cá, người ta sử dụng những cách sau: (1) dùng nồi áp suất, (2) chặt nhỏ thịt cá, (2) cho thêm muối vào, (4) nấu cùng nước lạnh.<br/>Liệt kê các cách làm cho thịt cá nhanh chín hơn theo dãy số thứ tự tăng dần (Ví dụ: 124, 23,…)","images":[],"correctAnswer":"123","explanation":"Đáp án: 123","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c6_de2_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các phản ứng hoá học sau:<br/>(1) FeCl<sub>3</sub> + 3NaOH  Fe(OH)<sub>3</sub> + 3NaCl.<br/>(2) 3Fe + 2O<sub>2</sub>Fe<sub>3</sub>O<sub>4</sub>.<br/>(3) 4K + O<sub>2</sub> 2K<sub>2</sub>O.<br/>(4) CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH  CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O.<br/>Có bao nhiêu phản ứng xảy ra nhanh ở nhiệt độ thường?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c6_de2_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho phản ứng hóa học đơn giản: H<sub>2</sub>(g) + I<sub>2</sub>(g) → 2HI(g).<br/>Công thức tính tốc độ của phản ứng thuận trên là v = k.[H<sub>2</sub>].[I<sub>2</sub>]. Tốc độ của phản ứng thuận trên sẽ tăng bao nhiêu lần khi tăng áp suất chung của hệ lên 3 lần?","images":[],"correctAnswer":"9","explanation":"Đáp án: 9.<br/>Khi tăng áp suất chung của hệ lên 3 lần, đồng nghĩa với nồng độ chung của hệ tăng lên 3 lần.<br/>","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c6_de2_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Phương trình tổng hợp ammonia (NH<sub>3</sub>): N<sub>2</sub>(g) + 3H<sub>2</sub>(g) → 2NH<sub>3</sub>(g). Nếu tốc độ tạo thành NH<sub>3</sub> là 0,345 M/s thì tốc độ tiêu hao của chất phản ứng H<sub>2</sub> là bao nhiêu M/s (Làm tròn kết quả đến hàng phần trăm)?","images":[],"correctAnswer":"0,52","explanation":"Đáp án: 0,52.<br/>Ta có:    M/s.<br/>Dùng dữ kiện dưới đây trả lời cho câu hỏi 5 và 6.<br/>Khi nhiệt độ phòng là 25<sup>o</sup>C, cho 10g đá vôi (dạng viên) vào cốc đựng 100g dung dịch HCl loãng và nhanh chóng cho lên một cân điện tử. Đọc giá trị khối lượng cốc tại thời điểm ban đầu và sau 1 phút. Lặp lại thí nghiệm khi nhiệt độ phòng là 35<sup>0</sup>C. Kết quả thí nghiệm được ghi lại trong bảng sau:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>STT</td><td class='border border-slate-300 p-1.5'>Nhiệt độ ( 0 C)</td><td class='border border-slate-300 p-1.5'>Khối lượng cốc (g)</td></tr><tr><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'></td><td class='border border-slate-300 p-1.5'>Thời điểm đầu</td><td class='border border-slate-300 p-1.5'>Sau 1 phút</td></tr><tr><td class='border border-slate-300 p-1.5'>1</td><td class='border border-slate-300 p-1.5'>25</td><td class='border border-slate-300 p-1.5'>235,40</td><td class='border border-slate-300 p-1.5'>235,13</td></tr><tr><td class='border border-slate-300 p-1.5'>2</td><td class='border border-slate-300 p-1.5'>35</td><td class='border border-slate-300 p-1.5'>235,78</td><td class='border border-slate-300 p-1.5'>235,21</td></tr></table>","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c6_de2_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Tính hệ số nhiệt độ của phản ứng. (Làm tròn kết quả đến hàng phần mười)","images":[],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c6_de2_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Giả sử ban đầu cốc chứa dung dịch HCl và đá vôi có khối lượng 235,40g. Thực hiện thí nghiệm ở 45<sup>0</sup>C. Hỏi sau 1 phút, khối lượng cốc là bao nhiêu? (Bỏ qua khối lượng nước bay hơi). (Làm tròn kết quả đến hàng đơn vị)","images":[],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa10_c6_de3","code":"ĐỀ 603","title":"Đề kiểm tra Chương 6: Tốc độ phản ứng (Đề số 3)","topic":"Các yếu tố ảnh hưởng: nồng độ, nhiệt độ (hệ số Van't Hoff), áp suất, xúc tác","badge":"Chương 6 - Đề 3","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c6_de3_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Để đánh giá mức độ xảy ra nhanh, chậm của các phản ứng hóa học, người ta đưa ra khái niệm","images":[],"options":[{"id":"a","letter":"A","text":"tốc độ phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"cân bằng hóa học","isCorrect":false},{"id":"c","letter":"C","text":"nồng độ","isCorrect":false},{"id":"d","letter":"D","text":"chất xúc tác","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c6_de3_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Hoàn thành phát biểu về tốc độ phản ứng sau: \"Tốc độ phản ứng được xác định bởi độ biến thiên ...(1)... của ...(2)... trong một đơn vị ...(3)...\". Cụm từ thích hợp điền vào chỗ “…” là","images":[],"options":[{"id":"a","letter":"A","text":"(1) nồng độ, (2) một chất phản ứng hoặc sản phẩm, (3) thể tích","isCorrect":false},{"id":"b","letter":"B","text":"(1) nồng độ, (2) một chất phản ứng hoặc sản phẩm, (3) thời gian","isCorrect":false},{"id":"c","letter":"C","text":"(1) thời gian, (2) một chất sản phẩm, (3) nồng độ","isCorrect":false},{"id":"d","letter":"D","text":"(1) thời gian, (2) các chất phản ứng, (3) thể tích","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c6_de3_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Nhận định nào dưới đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Khi nhiệt độ tăng thì tốc độ phản ứng tăng","isCorrect":false},{"id":"b","letter":"B","text":"Khi nhiệt độ tăng thì tốc độ phản ứng giảm","isCorrect":false},{"id":"c","letter":"C","text":"Khi nhiệt độ giảm thì tốc độ phản ứng tăng","isCorrect":false},{"id":"d","letter":"D","text":"Sự thay đổi nhiệt độ không ảnh hưởng đến tốc độ phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c6_de3_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Trong các phản ứng hóa học sau, phản ứng nào xảy ra nhanh nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Trung hòa acid – base","isCorrect":false},{"id":"b","letter":"B","text":"Sắt bị gỉ","isCorrect":false},{"id":"c","letter":"C","text":"Tinh bột lên men rượu","isCorrect":false},{"id":"d","letter":"D","text":"Thức ăn bị ôi thiu","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c6_de3_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiệt độ chất phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Thể vật lí của chất phản ứng (rắn, lỏng, kích thước lớn, nhỏ....)","isCorrect":false},{"id":"c","letter":"C","text":"Nồng độ chất phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"Tỉ trọng chất phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c6_de3_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Cho phản ứng đơn giản xảy ra trong bình kín: 2NO (g) + O<sub>2</sub> (g)  2NO<sub>2</sub> (g). Ở nhiệt độ không đổi, tốc độ phản ứng thay đổi thế nào khi nồng độ O<sub>2</sub> tăng 3 lần, nồng độ NO không đổi?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ phản ứng tăng lên 3 lần","isCorrect":false},{"id":"b","letter":"B","text":"Tốc độ phản ứng tăng lên 9 lần","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ phản ứng giảm 3 lần","isCorrect":false},{"id":"d","letter":"D","text":"Tốc độ phản ứng giảm 9 lần","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c6_de3_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Khi cho cùng một lượng dung dịch axit sunfuric vào hai cốc đựng cùng một thể tích dung dịch Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub> với nồng độ khác nhau, ở cốc đựng dung dịch Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub> có nồng độ lớn hơn thấy kết tủa xuất hiện trước. Điều đó chứng tỏ ở cùng điều kiện về nhiệt độ, tốc độ phản ứng:","images":[],"options":[{"id":"a","letter":"A","text":"Giảm khi nồng độ của chất phản ứng tăng","isCorrect":false},{"id":"b","letter":"B","text":"Không phụ thuộc vào nồng độ của chất phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"Tỉ lệ thuận với nồng độ của chất phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"Tỉ lệ nghịch với nồng độ của chất phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c6_de3_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":". Lấy một chai nước ngọt có ga rót vào cốc thật nhẹ tay, sau đó từ từ cho đường cát trắng vào trong cốc (hình minh họa dưới đây).<br/>Hiện tượng xảy ra là","images":[],"options":[{"id":"a","letter":"A","text":"nước ngọt sủi bọt li ti","isCorrect":false},{"id":"b","letter":"B","text":"nước ngọt sủi bọt rất nhiều và mạnh","isCorrect":false},{"id":"c","letter":"C","text":"nước ngọt mất bọt khí","isCorrect":false},{"id":"d","letter":"D","text":"xuất hiện kết tủa đen","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c6_de3_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Khi cho cùng một lượng Zn (Zinc) vào cốc đựng dung dịch HCl, tốc độ phản ứng sẽ lớn nhất khi dùng Zn ở dạng","images":[],"options":[{"id":"a","letter":"A","text":"viên nhỏ","isCorrect":false},{"id":"b","letter":"B","text":"bột mịn, khuấy đều","isCorrect":false},{"id":"c","letter":"C","text":"tấm mỏng","isCorrect":false},{"id":"d","letter":"D","text":"thỏi lớn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c6_de3_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây là đúng về xúc tác?","images":[],"options":[{"id":"a","letter":"A","text":"Xúc tác giúp làm tăng năng lượng hoạt hóa của phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Khối lượng xúc tác không thay đổi sau phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"Xúc tác không tương tác với các chất trong quá trình phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"Xúc tác kết hợp với sản phẩm phản ứng tạo thành hợp chất bền","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c6_de3_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Sản phẩm của phản ứng được tạo ra qua các bước theo hình bên dưới:<br/>Vai trò chất X là","images":[],"options":[{"id":"a","letter":"A","text":"chất xúc tác","isCorrect":false},{"id":"b","letter":"B","text":"làm tăng năng lượng hoạt hoá của chất tham gia phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"làm giảm năng lượng hoạt hoá của chất tham gia phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"làm tăng nồng độ của chất tham gia phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c6_de3_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Cho phản ứng hóa học xảy ra trong pha khí sau: N<sub>2</sub> + 3H<sub>2</sub>  2NH<sub>3</sub>.<br/>Phát biểu nào sau đây không đúng?<br/>Khi nhiệt độ phản ứng tăng lên,","images":[],"options":[{"id":"a","letter":"A","text":"tốc độ chuyển động của phân tử chất đầu (N<sub>2</sub>, H<sub>2</sub>) tăng lên","isCorrect":false},{"id":"b","letter":"B","text":"tốc độ va chạm giữa phân tử N<sub>2</sub> và H<sub>2</sub> tăng lên","isCorrect":false},{"id":"c","letter":"C","text":"số va chạm hiệu quả tăng lên","isCorrect":false},{"id":"d","letter":"D","text":"tốc độ chuyển động của phân tử chất sản phẩm (NH<sub>3</sub>) giảm","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c6_de3_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Biện pháp kĩ thuật nào sau đây không được sử dụng để tăng tốc độ phản ứng nung vôi?","images":[],"options":[{"id":"a","letter":"A","text":"Đập nhỏ đá vôi đến kích thước thích hợp","isCorrect":false},{"id":"b","letter":"B","text":"Tăng nhiệt độ lên nhiệt độ thích hợp","isCorrect":false},{"id":"c","letter":"C","text":"Tăng nồng độ khí CO<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"Thổi không khí vào lò nung vôi","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c6_de3_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Khi nhiệt độ tăng lên 10<sup>o</sup> tốc độ của một phản ứng hóa học tăng lên 3 lần. Điều khẳng định nào dưới đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ phản ứng trên tăng 36 lần khi nhiệt độ tăng từ 20<sup>o</sup>C lên 50<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"b","letter":"B","text":"Tốc độ phản ứng trên tăng 54 lần khi nhiệt độ tăng từ 20<sup>o</sup>C lên 50<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ phản ứng trên tăng 27 lần khi nhiệt độ tăng từ 20<sup>o</sup>C lên 50<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"Tốc độ phản ứng trên tăng 81 lần khi nhiệt độ tăng từ 20<sup>o</sup>C lên 50<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c6_de3_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Khi diện tích bề mặt tăng, tốc độ phản ứng tăng với phản ứng có chất nào tham gia?","images":[],"options":[{"id":"a","letter":"A","text":"Chất lỏng","isCorrect":false},{"id":"b","letter":"B","text":"Chất khí","isCorrect":false},{"id":"c","letter":"C","text":"Chất rắn","isCorrect":false},{"id":"d","letter":"D","text":"Chất rắn, lỏng, khí","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c6_de3_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Khi bắt đầu phản ứng, nồng độ một chất là 0,024 mol/L. Sau 10 giây xảy ra phản ứng, nồng độ của chất đó là 0,022 mol/L. Tốc độ của phản ứng là","images":[],"options":[{"id":"a","letter":"A","text":"0,0003 mol/L. s","isCorrect":false},{"id":"b","letter":"B","text":"0,00025 mol/L.s","isCorrect":false},{"id":"c","letter":"C","text":"0,00015 mol/L.s","isCorrect":false},{"id":"d","letter":"D","text":"0,0002 mol/L.s","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c6_de3_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho phản ứng hóa học sau: C(s)  +  O<sub>2</sub>(g) → CO<sub>2</sub>(g). Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng trên?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiệt độ","isCorrect":false},{"id":"b","letter":"B","text":"Áp suất O<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Hàm lượng carbon","isCorrect":false},{"id":"d","letter":"D","text":"Diện tích bề mặt carbon","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c6_de3_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(a) Phản ứng đơn giản là phản ứng xảy ra theo một bước.<br/>(b) Tốc độ của một phản ứng đơn giản tuân theo định luật tác dụng khối lượng.<br/>(c) Hằng số tốc độ phản ứng là tốc độ của phản ứng khi nồng độ của tất cả các chất trong hỗn hợp phản ứng đều bằng nhau và bằng 1.<br/>(d) Tốc độ của mọi phản ứng hóa học đều tuân theo định luật tác dụng khối lượng<br/>(e) Hằng số tốc độ của phản ứng phụ thuộc vào thời gian.<br/>Số phát biểu không đúng là","images":[],"options":[{"id":"a","letter":"A","text":"5","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c6_de3_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Xét phản ứng: H<sub>2</sub> + Cl<sub>2</sub> → 2HCl.<br/>Nghiên cứu sự thay đổi nồng độ một chất trong phản ứng theo thời gian, thu được đồ thị sau:","images":[],"options":[{"id":"a","letter":"A","text":"Đồ thị này mô tả sự thay đổi nồng độ theo thời gian của H<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Tại thời điểm 1 phút nồng độ chất đó là 0,2 mol/L","isCorrect":true},{"id":"c","letter":"C","text":"Đơn vị tốc độ phản ứng trong trường hợp này là mol.(L.min)<sup>–1</sup>","isCorrect":true},{"id":"d","letter":"D","text":"Biểu thức tốc độ trung bình của phản ứng trên là","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Nồng độ HCl.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c6_de3_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Cho phản ứng hóa học sau: H<sub>2</sub>O<sub>2</sub>H<sub>2</sub>O  +  O<sub>2</sub><br/>Biết rằng tốc độ của phản ứng này tuân theo biểu thức của định luật tác dụng khối lượng","images":[],"options":[{"id":"a","letter":"A","text":"Theo thời gian, nồng độ H<sub>2</sub>O<sub>2</sub> giảm dần nên tốc độ phản ứng giảm dần","isCorrect":true},{"id":"b","letter":"B","text":"Biểu thức tốc độ phản ứng:","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ phản ứng tăng lên 2 lần khi nồng độ H<sub>2</sub>O<sub>2</sub> tăng lên 2 lần","isCorrect":true},{"id":"d","letter":"D","text":"Tốc độ phản ứng giảm xuống 3 lần khi nồng độ O<sub>2</sub> tăng lên 9 lần và giữ nguyên nồng độ của H<sub>2</sub>O","isCorrect":false}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Sai. Tốc độ tức thời không tính cho sản phẩm.<br/>c. Đúng.<br/>d. Sai","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c6_de3_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho các hình ảnh minh họa về ứng dụng thay đổi đổi tốc độ phản ứng sau:","images":[],"options":[{"id":"a","letter":"A","text":"Hình a cho biết yếu tố áp suất đã được áp dụng để làm thay đổi tốc độ của phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"Hình b cho biết yếu tố nhiệt độ đã được áp dụng để làm thay đổi tốc độ của phản ứng","isCorrect":true},{"id":"c","letter":"C","text":"Hình c cho biết yếu tố chất xúc tác đã được áp dụng để làm thay đổi tốc độ của phản ứng","isCorrect":true},{"id":"d","letter":"D","text":"Các yếu tố làm thay đổi tốc độ phản ứng là nhiệt độ, nồng độ, thể tích, áp suất và diện tích bề mặt tiếp xúc","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Yếu tố nồng độ.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Không có thể tích","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c6_de3_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Nghiên cứu ảnh hưởng của chất xúc tác đến tốc độ phản ứng:<br/>2H<sub>2</sub>O<sub>2</sub>(aq) → 2H<sub>2</sub>O(l) + O<sub>2</sub>(g)<br/>Hóa chất: dung dịch hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) 30%, bột MnO<sub>2</sub>.<br/>Dụng cụ: Ống nghiệm, tàn đóm đỏ.<br/>Tiến hành:<br/>Bước 1: Rót khoảng 2 mL dung dịch H<sub>2</sub>O<sub>2</sub> vào 2 ống nghiệm (1), (2).<br/>Bước 2: Thêm một ít bột MnO<sub>2</sub> vào ống nghiệm (2) và đưa nhanh tàn đóm đỏ vào miệng 2 ống nghiệm","images":[],"options":[{"id":"a","letter":"A","text":"Tàn đóm ở ồng nghiệm (1) chỉ cháy nhẹ","isCorrect":true},{"id":"b","letter":"B","text":"Tàn đóm ở ống nghiệm (2) bùng cháy mãnh liệt hơn","isCorrect":true},{"id":"c","letter":"C","text":"Sau khi phản ứng kết thúc, chất xúc tác MnO<sub>2</sub> cũng bị tiêu hao hết","isCorrect":false},{"id":"d","letter":"D","text":"Khi có xúc tác, phản ứng sẽ xảy ra qua nhiều giai đoạn, mỗi giai đoạn đều có năng lượng hoạt hoá thấp hơn so với phản ứng không xúc tác, do đó số hạt có đủ năng lượng hoạt hoá sẽ nhiều hơn, dẫn đến tốc độ phản ứng tăng","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Chất xúc tác vẫn được bảo toàn về lượng và chất khi kết thúc phản ứng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c6_de3_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Cho đồ thị thể hiện sự thay đổi tốc độ phản ứng của một phản ứng hóa học.<br/>Đồ thị biểu diễn sự phụ thuộc thể tích khí theo thời gian<br/>Thời điểm phản ứng dừng lại là bao nhiêu giây?","images":[],"correctAnswer":"70","explanation":"Đáp án: 70","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c6_de3_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các quá trình xảy ra như sau:<br/>(a) Nung đá vôi ở nhiệt độ cao để sản xuất vôi sống.<br/>(b) Nghiền nguyên liệu trước khi đưa vào lò nung để sản xuất clanke (trong sản xuất xi măng).<br/>(c) Rắc men vào tinh bột đã được nấu chín (cơm, ngô, khoai, sắn, …) để ủ rượu.<br/>(d) Tạo những lỗ rỗng trong viên than tổ ong.<br/>Có tất cả bao nhiêu yếu tố ảnh hưởng đến tốc độ phản ứng trong các quá trình trên?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3.<br/>(a) Nhiệt độ.<br/>(b) Diện tích tiếp xúc.<br/>(c) Xúc tác.<br/>(d) Diện tích tiếp xúc","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c6_de3_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Dưới đây là một số hiện tượng xảy ra trong đời sống:<br/>(1) Phản ứng cháy của xăng, dầu.<br/>(2) Các thanh thép ở các công trường xây dựng bị oxi hoá bởi các tác nhân trong không khí.<br/>(3) Phản ứng lên men rượu từ trái cây.<br/>(4) Nướng bánh mì.<br/>Liệt kê đáp án thành một dãy số theo thứ tự tốc độ phản ứng giảm dần từ các hiện tượng trên","images":[],"correctAnswer":"1432","explanation":"Đáp án: 1432","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c6_de3_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Trong một thí nghiệm, người ta đo được tốc độ trung bình của phản ứng của zinc (dạng bột) với dung dịch H<sub>2</sub>SO<sub>4</sub> loãng là 0,005 mol/s. Nếu ban đầu cho 0,4 mol zinc (dạng bột) với dung dịch H<sub>2</sub>SO<sub>4</sub> ở trên thì sau bao nhiêu giây còn lại 0,05 mol zinc","images":[],"correctAnswer":"70","explanation":"Đáp án: 70.<br/>Lượng zinc đã tan là: 0,4 – 0,05 = 0,35 mol<br/>Thời gian để hòa tan 0,35 mol zinc là:","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c6_de3_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Cho phản ứng của các chất ở thể khí: I<sub>2</sub> + H<sub>2</sub> → 2HI.<br/>Biết tốc độ phản ứng tỉ lệ thuận với nồng độ các chất tham gia và phản ứng với số mũ là hệ số tỉ lượng của chất đó trong phương trình hóa học. Ở một nhiệt độ xác định, hằng số tốc độ của phản ứng này là 2,5.10<sup>-4</sup>L/(mol.s). Nồng độ đầu của I<sub>2</sub> và H<sub>2</sub> lần lượt là 0,02 M và 0,03 M, tốc độ phản ứng tại thời điểm đã hết một nửa lượng I<sub>2</sub> là a.10<sup>–8</sup> mol/(L.s). Tính a","images":[],"correctAnswer":"5","explanation":"Đáp án: 5.<br/>Tại thời điểm lượng X đã hết một nửa: [I<sub>2</sub>] = 0,01M; [H<sub>2</sub>] = 0,02M<br/>Tốc độ phản ứng:  = 2,5.10<sup>-4</sup>. 0,01 . 0,02 = 5.10<sup>-8</sup> (mol/(L.s))","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c6_de3_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Khi để ở nhiệt độ 30 <sup>o</sup>C, một quả táo bị hư sau 3 ngày. Khi được bảo quản ở 0 <sup>o</sup>C (trong tủ lạnh), quả táo bị hư sau 24 ngày. Nếu bảo quản ở 20 <sup>o</sup>C, quả táo bị hư sau bao nhiêu ngày?","images":[],"correctAnswer":"6","explanation":"Đáp án: 6.<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa10_c6_de4","code":"ĐỀ 604","title":"Đề kiểm tra Ôn tập Toàn diện Chương 6 (Đề số 4)","topic":"Đề thi chuẩn cấu trúc Bộ GD&ĐT 2025 bao quát toàn bộ Tốc Độ Phản Ứng","badge":"Chương 6 - Đề 4","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa10_c6_de4_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Để đánh giá mức độ xảy ra nhanh, chậm của các phản ứng hóa học, người ta đưa ra khái niệm","images":[],"options":[{"id":"a","letter":"A","text":"tốc độ phản ứng","isCorrect":false},{"id":"b","letter":"B","text":"cân bằng hóa học","isCorrect":false},{"id":"c","letter":"C","text":"nồng độ","isCorrect":false},{"id":"d","letter":"D","text":"chất xúc tác","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa10_c6_de4_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Tốc độ phản ứng tăng lên khi:","images":[],"options":[{"id":"a","letter":"A","text":"giảm nhiệt độ","isCorrect":false},{"id":"b","letter":"B","text":"tăng diện tích tiếp xúc giữa các chất phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"tăng thể tích","isCorrect":false},{"id":"d","letter":"D","text":"giảm nồng độ các chất tham gia phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa10_c6_de4_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Cho phản ứng xảy ra trong pha khí sau: H<sub>2</sub> + Cl<sub>2</sub>  2HCl. Biểu thức tốc độ trung bình của phản ứng là:","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa10_c6_de4_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Cho phương trình hóa học của phản ứng: X + 2Y → Z + T. Ở thời điểm ban đầu, nồng độ của chất X là 0,01 mol/l. Sau 20 giây, nồng độ của chất X là 0,008 mol/l. Tốc độ trung bình của phản ứng tính theo chất X trong khoảng thời gian trên là","images":[],"options":[{"id":"a","letter":"A","text":"4,0.10<sup>−4</sup> mol/(L.s)","isCorrect":false},{"id":"b","letter":"B","text":"1,0.10<sup>−4</sup> mol/(L.s)","isCorrect":false},{"id":"c","letter":"C","text":"7,5.10<sup>−4</sup>mol/(L.s)","isCorrect":false},{"id":"d","letter":"D","text":"5,0.10<sup>−4</sup>mol/(L.s)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa10_c6_de4_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Biểu đồ nào sau đây không biểu diễn sự phụ thuộc nồng độ chất tham gia với thời gian?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa10_c6_de4_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Cho phản ứng hóa học sau: C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g). Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng trên?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiệt độ","isCorrect":false},{"id":"b","letter":"B","text":"Áp suất O<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Nồng độ CO<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"Diện tích bề mặt carbon","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa10_c6_de4_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Yếu tố nào dưới đây đã được sử dụng để làm tăng tốc độ của phản ứng rắc men vào tinh bột đã được nấu chín (cơm, ngô, khoai, sắn) để ủ rượu?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiệt độ","isCorrect":false},{"id":"b","letter":"B","text":"Chất xúc tác","isCorrect":false},{"id":"c","letter":"C","text":"Nồng độ","isCorrect":false},{"id":"d","letter":"D","text":"Áp suất","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa10_c6_de4_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Cho phản ứng hóa học sau: Zn(s) + H<sub>2</sub>SO<sub>4</sub> (aq)  ZnSO<sub>4</sub> (aq) + H<sub>2</sub> (g)<br/>Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng?","images":[],"options":[{"id":"a","letter":"A","text":"Diện tích bề mặt zinc","isCorrect":false},{"id":"b","letter":"B","text":"Nồng độ dung dịch sulfuric acid","isCorrect":false},{"id":"c","letter":"C","text":"Thể tích dung dịch sulfuric acid","isCorrect":false},{"id":"d","letter":"D","text":"Nhiêt độ của dung dịch sulfuric acid","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa10_c6_de4_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Nhiên liệu cháy ở trên vùng cao nhanh hơn khi cháy ở vùng thấp","isCorrect":false},{"id":"b","letter":"B","text":"Thực phẩm được bảo quản ở nhiệt độ thấp sẽ giữ được lâu hơn","isCorrect":false},{"id":"c","letter":"C","text":"Dùng men làm chất xúc tác để chuyển hóa cơm nếp thành rượu","isCorrect":false},{"id":"d","letter":"D","text":"Nếu không cho nước dưa chua khi muối dưa thì dưa vẫn sẽ chua nhưng chậm hơn","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa10_c6_de4_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Cho ba mẫu đá vôi (100% CaCO<sub>3</sub>) có cùng khối lượng: mẫu 1 dạng khối, mẫu 2 dạng viên nhỏ, mẫu 3 dạng bột mịn vào ba cốc đựng cùng thể tích dung dịch HCl (dư, cùng nồng độ, ở điều kiện thường). Thời gian để đá vôi tan hết trong ba cốc tương ứng là t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub> giây. So sánh nào sau đây đúng?","images":[],"options":[{"id":"a","letter":"A","text":"t<sub>1</sub> < t<sub>2</sub> < t<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"t<sub>1</sub> = t<sub>2</sub> = t<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"t<sub>3</sub> < t<sub>2</sub> < t<sub>1</sub>","isCorrect":false},{"id":"d","letter":"D","text":"t<sub>2</sub> < t<sub>1</sub> < t<sub>3</sub>","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa10_c6_de4_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Trong phòng thí nghiệm, người ta nhiệt phân muối KClO<sub>3</sub> để điều chế khí oxygen theo phản ứng: KClO<sub>3</sub>KCl + O<sub>2</sub><br/>Biện pháp nào sau đây được sử dụng nhằm tăng tốc độ phản ứng?","images":[],"options":[{"id":"a","letter":"A","text":"Nung riêng KClO<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"Nung KClO<sub>3</sub> có xúc tác MnO<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Thu khí O<sub>2</sub> bằng cách đẩy nước","isCorrect":false},{"id":"d","letter":"D","text":"Thu khí O<sub>2</sub> bằng cách dời chỗ không khí","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa10_c6_de4_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Sản phẩm của phản ứng được tạo ra qua các bước theo hình bên dưới:<br/>Vai trò chất X là","images":[],"options":[{"id":"a","letter":"A","text":"chất xúc tác","isCorrect":false},{"id":"b","letter":"B","text":"làm tăng năng lượng hoạt hoá của chất tham gia phản ứng","isCorrect":false},{"id":"c","letter":"C","text":"làm giảm năng lượng hoạt hoá của chất tham gia phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"làm tăng nồng độ của chất tham gia phản ứng","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa10_c6_de4_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Cho các phản ứng sau:<br/>(1) 2Al (s) + Fe<sub>2</sub>O<sub>3</sub> (s) → Al<sub>2</sub>O<sub>3</sub> (s) + Fe (s).<br/>(2) 2H<sub>2</sub> (g) + O<sub>2</sub> (g) → 2H<sub>2</sub>O (l).<br/>(3) C (s) + O<sub>2</sub> (g) → CO<sub>2</sub> (g).<br/>(4) CaCO<sub>3</sub> (s) + 2HCl (aq) → CaCl<sub>2</sub> (aq) + H<sub>2</sub>O (l) + CO<sub>2</sub> (g).<br/>Khi tăng áp suất của chất phản ứng, tốc độ của những phản ứng nào sau đây sẽ bị thay đổi?","images":[],"options":[{"id":"a","letter":"A","text":"(1), (2), (4)","isCorrect":false},{"id":"b","letter":"B","text":"(1), (3)","isCorrect":false},{"id":"c","letter":"C","text":"(2), (3)","isCorrect":false},{"id":"d","letter":"D","text":"(2), (3), (4)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa10_c6_de4_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Cho phản ứng đơn giản sau: H<sub>2</sub> (g) + Cl<sub>2</sub> (g)  2HCl (g). Tốc độ phản ứng thay đổi thế nào khi nồng độ H<sub>2</sub> giảm 2 lần và giữ nguyên nồng độ Cl<sub>2</sub>?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ phản ứng tăng lên 2 lần","isCorrect":false},{"id":"b","letter":"B","text":"Tốc độ phản ứng tăng lên 4 lần","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ phản ứng giảm 2 lần","isCorrect":false},{"id":"d","letter":"D","text":"Tốc độ phản ứng giảm 4 lần","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa10_c6_de4_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Cách nào sau đây làm củ khoai tây chín nhanh nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Luộc trong nước sôi","isCorrect":false},{"id":"b","letter":"B","text":"Hấp cách thủy trong nồi cơm","isCorrect":false},{"id":"c","letter":"C","text":"Nướng ở 180<sup>o</sup>","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"Hấp trên nồi hơi","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa10_c6_de4_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Nồi áp suất dùng để ninh, hầm thức ăn có thể làm nóng nước tới nhiệt độ 120<sup>o</sup>C so với 100<sup>o</sup>C khi dùng nồi thường. Trong quá trình hầm xương thường diễn ra nhiều phản ứng hóa học, ví dụ quá trình biến đổi các protein, chẳng hạn như thủy phân một phần collagen thành gelatin. Hãy cho biết tốc độ quá trình thủy phân collagen thành gelatin thay đổi như thế nào khi sử dụng nồi áp suất thay cho nồi thường","images":[],"options":[{"id":"a","letter":"A","text":"Không thay đổi","isCorrect":false},{"id":"b","letter":"B","text":"Giảm đi 4 lần","isCorrect":false},{"id":"c","letter":"C","text":"Ít nhất tăng 4 lần","isCorrect":false},{"id":"d","letter":"D","text":"Ít nhất giảm 16 lần","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa10_c6_de4_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Nghiên cứu ảnh hưởng của chất xúc tác đến tốc độ phản ứng:<br/>2H<sub>2</sub>O<sub>2</sub>(aq) → 2H<sub>2</sub>O(l) + O<sub>2</sub>(g)<br/>Hóa chất: dung dịch hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) 30%, bột MnO<sub>2</sub>.<br/>Dụng cụ: Ống nghiệm, tàn đóm đỏ.<br/>Tiến hành:<br/>Bước 1: Rót khoảng 2 mL dung dịch H<sub>2</sub>O<sub>2</sub> vào 2 ống nghiệm (1), (2).<br/>Bước 2: Thêm một ít bột MnO<sub>2</sub> vào ống nghiệm (2) và đưa nhanh tàn đóm đỏ vào miệng 2 ống nghiệm.<br/>Cho các phát biểu sau:<br/>(1) Tàn đóm ở ồng nghiệm (1) chỉ cháy nhẹ.<br/>(2) Tàn đóm ở ống nghiệm (2) bùng cháy mãnh liệt hơn.<br/>(3) Sau khi phản ứng kết thúc, chất xúc tác MnO<sub>2</sub> cũng bị tiêu hao hết.<br/>(4) Khi có xúc tác, phản ứng sẽ xảy ra qua nhiều giai đoạn, mỗi giai đoạn đều có năng lượng hoạt hoá thấp hơn so với phản ứng không xúc tác, do đó số hạt có đủ năng lượng hoạt hoá sẽ nhiều hơn, dẫn đến tốc độ phản ứng tăng.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"(1), (2), (4)","isCorrect":false},{"id":"b","letter":"B","text":"(1), (2)","isCorrect":false},{"id":"c","letter":"C","text":"(1), (2), (3)","isCorrect":false},{"id":"d","letter":"D","text":"(1), (2), (3), (4)","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa10_c6_de4_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây là đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng đơn giản là phản ứng xảy ra theo một bước","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng đơn giản có các hệ số tỉ lượng trong phương trình hóa học bằng nhau và bằng 1","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ của một phản ứng đơn giản không tuân theo định luật tác dụng khối lượng","isCorrect":false},{"id":"d","letter":"D","text":"Hằng số tốc độ của phản ứng phụ thuộc vào thời gian","isCorrect":false}],"correctAnswer":"","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa10_c6_de4_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mỗi phát biểu sau đây về tốc độ phản ứng là đúng hay sai?","images":[],"options":[{"id":"a","letter":"A","text":"Tốc độ của phản ứng hóa học là đại lượng mô tả mức độ nhanh hay chậm của chất phản ứng hoặc sản phẩm tạo thành","isCorrect":true},{"id":"b","letter":"B","text":"Tốc độ của phản ứng hóa học là hiệu số nồng độ của một chất trong hỗn hợp phản ứng tại hai thời điểm khác nhau","isCorrect":false},{"id":"c","letter":"C","text":"Tốc độ của phản ứng hóa học có thể có giá trị âm hoặc dương","isCorrect":false},{"id":"d","letter":"D","text":"Trong cùng một phản ứng hóa học, tốc độ tạo thành của các chất sản phẩm khác nhau là khác nhau, tùy thuộc vào hệ số cân bằng của chúng trong phương trình hóa học","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Sai. Tốc độ phản ứng của một phản ứng hóa học là đại lượng đặc trưng cho sự thay đổi nồng độ của các chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian.<br/>c. Sai. Tốc độ của phản ứng hóa học luôn dương.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa10_c6_de4_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Trong quy trình sản xuất sulfuric acid, xảy ra phản ứng hóa học sau:<br/>2SO<sub>2</sub> + O<sub>2</sub>  2SO<sub>3</sub>","images":[],"options":[{"id":"a","letter":"A","text":"Khi tăng áp suất khí SO<sub>2</sub> hay O<sub>2</sub> thì tốc độ phản ứng đều tăng lên","isCorrect":true},{"id":"b","letter":"B","text":"Tăng diện tích bề mặt xúc tác V<sub>2</sub>O<sub>5</sub> sẽ làm tăng tốc độ phản ứng","isCorrect":true},{"id":"c","letter":"C","text":"Xúc tác sẽ dần chuyển hóa thành chất khác nhưng khối lượng không đổi sau phản ứng","isCorrect":false},{"id":"d","letter":"D","text":"Cần làm nóng bình phản ứng để đẩy nhanh tốc độ phản ứng","isCorrect":true}],"explanation":"Đáp án: <br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Xúc tác không bị thay đổi cả về chất và về lượng sau phản ứng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa10_c6_de4_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Thực hiện phản ứng sau: CaCO<sub>3</sub> + 2HCl  CaCl<sub>2</sub> + CO<sub>2</sub> ↑ + H<sub>2</sub>O. Theo dõi thể tích CO<sub>2</sub> thoát ra theo thời gian, thu được đồ thị như sau (thể tích khí được đo ở áp suất khí quyển và nhiệt độ phòng)","images":[],"options":[{"id":"a","letter":"A","text":"Ở thời điểm 90 giây, tốc độ phản ứng bằng 0","isCorrect":true},{"id":"b","letter":"B","text":"Tốc độ phản ứng giảm dần theo thời gian","isCorrect":true},{"id":"c","letter":"C","text":"Tốc độ trung bình của phản ứng trong khoảng thời gian từ thời điểm đầu đến 75 giây là 0,33 ml/s","isCorrect":true},{"id":"d","letter":"D","text":"Tốc độ trung bình của phản ứng trong các khoảng thời gian 15 giây là như nhau","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng. <br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Theo thời gian, nồng độ các chất tham gia giảm dần nên tốc độ phản ứng giảm dần. Tốc độ trung bình của phản ứng trong 15 giây đầu sẽ lớn hơn tốc độ phản ứng trong 15 giây sau","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa10_c6_de4_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Xét phản ứng hóa học đơn giản giữa hai chất A và B theo phương trình: A + B  C. Từ thông tin đã cho, hoàn thành bảng dưới đây:<br/><table class='border-collapse border border-slate-300 my-2 text-xs w-full'><tr><td class='border border-slate-300 p-1.5'>Th í  nghiệm</td><td class='border border-slate-300 p-1.5'>Nồng độ chất A (M)</td><td class='border border-slate-300 p-1.5'>Nồng độ chất B (M)</td><td class='border border-slate-300 p-1.5'>Tốc độ phản ứng (M/s)</td></tr><tr><td class='border border-slate-300 p-1.5'>( 1 )</td><td class='border border-slate-300 p-1.5'>0,20</td><td class='border border-slate-300 p-1.5'>0,050</td><td class='border border-slate-300 p-1.5'>0,24</td></tr><tr><td class='border border-slate-300 p-1.5'>( 2 )</td><td class='border border-slate-300 p-1.5'>x</td><td class='border border-slate-300 p-1.5'>0,030</td><td class='border border-slate-300 p-1.5'>0,20</td></tr><tr><td class='border border-slate-300 p-1.5'>( 3 )</td><td class='border border-slate-300 p-1.5'>0,40</td><td class='border border-slate-300 p-1.5'>y</td><td class='border border-slate-300 p-1.5'>0,80</td></tr></table><br/>Biểu thức tốc độ phản ứng là  = k.C<sub>A</sub>.C<sub>B</sub> (*). Trong đó: k là hằng số tốc độ phản ứng, C<sub>A</sub> và C<sub>B</sub> là nồng độ mol của chất A, B tại thời điểm đang xét","images":[],"options":[{"id":"a","letter":"A","text":"Hằng số tốc độ phản ứng là tốc độ của phản ứng khi nồng độ các chất phản ứng bằng nhau và bằng 0 M","isCorrect":false},{"id":"b","letter":"B","text":"Giá trị của k trong biểu thức (*) là 24","isCorrect":true},{"id":"c","letter":"C","text":"Giá trị x trong thí nghiệm (2) là 0,28 M (làm tròn kết quả đến hàng phần trăm)","isCorrect":true},{"id":"d","letter":"D","text":"Giá trị y trong thí nghiệm (3) là 0,83 M (làm tròn kết quả đến hàng phần trăm)","isCorrect":true}],"explanation":"Đáp án: <br/>a. Sai. v = k khi nồng độ các chất phản ứng bằng nhau và bằng 0 M.<br/>b. Đúng. Từ thí nghiệm (1):  = 0,24 = k.0,2.0,05 ⇒ k = 24.<br/>c. Đúng.Thí nghiệm (2): = 24.C<sub>A</sub>.0,03 = 0,2 ⇒ x = 0,27777  0,28 M<br/>d. Đúng. Thí nghiệm (3):  = 24.0,4.C<sub>B</sub> = 0,8 ⇒ C<sub>B</sub> = 0,08333  0,83 M","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa10_c6_de4_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Thực hiện phản ứng: 2ICl + H<sub>2</sub>I<sub>2</sub>  + 2HCl. Nồng độ đầu của ICl và H<sub>2</sub> được lấy đúng theo tỉ lệ hợp thức. Nghiên cứu sự thay đổi nồng độ các chất tham gia và chất tạo thành trong phản ứng theo thời gian, thu được đồ thị sau:<br/>Đường cong biểu diễn sự thay đổi nồng độ của HCl là đường cong số mấy?","images":[],"correctAnswer":"1","explanation":"Đáp án: 1","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa10_c6_de4_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Khi ninh (hầm) thịt cá, người ta sử dụng những cách sau.<br/>(1) Dùng nồi áp suất.(3) Chặt nhỏ thịt cá.<br/>(2) Cho thêm muối vào. (4) Nấu cùng nước lạnh.<br/>Có mấy cách làm cho thịt cá nhanh chín hơn?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa10_c6_de4_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Thả một mảnh magnesium có khối lượng 0,1g vào dung dịch HCl loãng. Sau 5 giây thấy mảnh magnesium tan hết. Tốc độ trung bình của phản ứng hòa tan magnesium theo đơn vị g/s là bao nhiêu?","images":[],"correctAnswer":"0,02","explanation":"Đáp án: 0,02.<br/>Tốc độ trung bình của phản ứng hòa tan magnesium là:","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa10_c6_de4_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Dưới đây là một số hiện tượng xảy ra trong đời sống, hãy sắp xếp theo thứ tự tốc độ giảm dần:<br/>(1) Nướng bánh mì.<br/>(2) Đốt gas khi nấu ăn.<br/>(3) Lên men sữa chua tạo sữa chua.<br/>(4) Tấm tôn thiếc bị gỉ sét","images":[],"correctAnswer":"2134","explanation":"Đáp án: 2134","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa10_c6_de4_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Khi oxygen được điều chế trong phòng thí nghiệm bằng cách nhiệt phân potassium chlorate. Để thí nghiệm thành công và rút ngắn thời gian tiến hành có thể dùng một số biện pháp sau:<br/>(1) Dùng chất xúc tác manganes dioxide.<br/>(2) Nung ở nhiệt độ cao.<br/>(3) Dùng phương pháp dời nước để thu khí oxygen<br/>(4) Đập nhỏ potassium chlorate.<br/>(5) Trộn đều bột potassium chlorate và xúc tác.<br/>Có bao nhiêu biện pháp dùng để tăng tốc độ phản ứng?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa10_c6_de4_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Khi để ở nhiệt độ 30 <sup>o</sup>C, một quả táo bị hư sau 3 ngày. Khi được bảo quản ở 0 <sup>o</sup>C (trong tủ lạnh), quả táo bị hư sau 24 ngày. Nếu bảo quản ở 20 <sup>o</sup>C, quả táo bị hư sau bao nhiêu ngày?","images":[],"correctAnswer":"6","explanation":"Đáp án: 6.<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]}];
+export const HOA10_CHUONG6_EXAMS: Chuong6Exam[] = [
+  {
+    "id": "hoa10_c6_de1",
+    "code": "10-C6-01",
+    "title": "Đề Kiểm Tra Chương 6: Tốc Độ Phản Ứng (Đề số 1)",
+    "topic": "Khái niệm tốc độ phản ứng, tốc độ trung bình & định luật tác dụng khối lượng",
+    "badge": "Chương 6 • Đề 1",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c6_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để xác định được mức độ phản ứng nhanh hay chậm người ta sử dụng khái niệm nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ phản ứng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cân bằng hoá học.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng một chiều",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng thuận nghịch.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Tốc độ phản ứng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tốc độ phản ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "độ biến thiên nồng độ của một chất phản ứng trong một đơn vị thời gian.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "độ biến thiên nồng độ của một sản phẩm phản ứng trong một đơn vị thời gian.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "độ biến thiên nồng độ của một chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "độ biến thiên nồng độ của các chất phản ứng trong một đơn vị thời gian.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> độ biến thiên nồng độ của một chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng: X   ¾¾®  Y. Tại thời điểm t<sub>1</sub> nồng độ của chất X bằng C<sub>1</sub>, tại thời điểm t<sub>2</sub> (với t<sub>2</sub>>t<sub>1</sub>) nồng độ của chất X bằng C<sub>2</sub>. Tốc độ trung bình của phản ứng trong khoảng thời gian trên được tính theo biểu thức nào sau đây ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1212CCvtt-=-",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2121CCvtt-=-",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1221CCvtt-=-",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1221CCvtt-=-- .",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 1221CCvtt-=-- ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng đơn giản xảy ra trong bình kín: 2NO(g) + O<sub>2</sub>(g) → 2NO<sub>2</sub>(g). Biểu thức tốc độ tức thời của phản ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "v = k.[NO].[O₂]",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "v = 2k.[NO].[O₂]",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "v = k.[NO]².[O₂]",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "v = k.[NO].[O₂]²",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "Theo định luật tác dụng khối lượng cho phản ứng đơn giản 2NO(g) + O₂(g) → 2NO₂(g), biểu thức tốc độ phản ứng tức thời là: v = k.[NO]².[O₂]. Phương án đúng là C.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tốc độ phản ứng không phụ thuộc yếu tố nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thời gian xảy ra phản ứng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Bề mặt tiếp xúc giữa các chất phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ các chất tham gia phản ứng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chất xúc tác.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Thời gian xảy ra phản ứng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đối với các phản ứng có chất khí tham gia, khi tăng áp suất, tốc độ phản ứng tăng là do",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nồng độ của các chất khí tăng lên",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nồng độ của các chất khí giảm xuống.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chuyển động của các chất khí tăng lên",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nồng độ của các chất khí không thay đổi.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Nồng độ của các chất khí tăng lên.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dùng không khí nén thổi vào lò cao để đốt cháy than cốc (trong sản xuất gang), yếu tố nào đã được sử dụng để làm tăng tốc độ phản ứng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiệt độ, áp suất",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Diện tích tiếp xúc.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chất xúc tác.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Nồng độ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thực hiện 2 thí nghiệm theo hình vẽ sau:<br/>Nhận định nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "TN<sub>1</sub> có kết tủa xuất hiện trước",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "TN<sub>2</sub> có kết tủa xuất hiện trước.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Kết tủa xuất hiện đồng thời",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Không có kết tủa xuất hiện.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> TN<sub>1</sub> có kết tủa xuất hiện trước.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đồ thị biểu diễn đường cong động học của phản ứng giữa oxygen và hydrogen tạo thành nước, O<sub>2</sub>(g) + 2H<sub>2</sub>(g)  ®  2H<sub>2</sub>O(g). Đường cong nào của oxygen?",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de1_image12.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đường cong số (1)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đường cong số (2).",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đường cong số (3)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Đường cong số (2) hoặc (3) đều đúng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Đường cong số (2)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thực hiện phản ứng sau trong bình kín. H<sub>2</sub>(g) + Br<sub>2</sub>(g)  ¾¾®  2HBr(g)<br/>Lúc đầu nồng độ hơi Br<sub>2</sub> là 0,072 mol/L. Sau 2 phút, nồng độ hơi Br<sub>2</sub> còn lại là 0,048 mol/L. Tốc độ trung bình của phản ứng tính theo Br<sub>2</sub> trong khoảng thời gian trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "8.10<sup>-4</sup> mol/(L.s)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "6.10<sup>-4</sup> mol/(L.s)",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4.10<sup>-4</sup> mol/(L.s)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2.10<sup>-4</sup> mol/(L.s).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 6.10<sup>-4</sup> mol/(L.s).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất xúc tác là chất",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "làm tăng tốc độ phản ứng và không bị mất đi sau phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "làm tăng tốc độ phản ứng và bị mất đi sau phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "làm giảm tốc độ phản ứng và không bị mất đi sau phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "làm giảm tốc độ phản ứng và bị mất đi sau phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> làm tăng tốc độ phản ứng và không bị mất đi sau phản ứng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiên liệu cháy ở trên vùng cao nhanh hơn khi cháy ở vùng thấp.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thực phẩm được bảo quản ở nhiệt độ thấp hơn sẽ giữ được lâu hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Dùng men làm chất xúc tác để chuyển hoá cơm nếp thành rượu.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu không cho nước dưa chua khi muối dưa thì dưa vẫn sẽ chua nhưng chậm hơn.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Nếu không cho nước dưa chua khi muối dưa thì dưa vẫn sẽ chua nhưng chậm hơn..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho bột Fe vào dung dịch HCl loãng. Sau đó đun nóng hỗn hợp này. Phát biểu sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khí H<sub>2</sub> thoát ra nhanh hơn",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Bột Fe tan nhanh hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Lượng muối thu được nhiều hơn",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nồng độ HCl giảm nhanh hơn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Lượng muối thu được nhiều hơn.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi tăng nhiệt độ thêm 10 <sup>o</sup>C thì tốc độ của một phản ứng tăng 2 lần. Hệ số nhiệt độ Van’t Hoff của phản ứng đó là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "10.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương trình hoá học của phản ứng: CHCl<sub>3</sub>(g) + Cl<sub>2</sub>(g)  ¾¾®  CCl<sub>3</sub>(g) + HCl(g). Khi nồng độ của CHCl<sub>3</sub> giảm 4 lần, nồng độ Cl<sub>2</sub> giữ nguyên thì tốc độ phản ứng sẽ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tăng gấp đôi",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "giảm một nửa",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tăng 4 lần",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "giảm 4 lần.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> giảm một nửa.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi cho cùng một lượng aluminum (nhôm) vào cốc đựng dung dịch axit HCl 0,1M, tốc độ phản ứng sẽ lớn nhất khi dùng nhôm ở dạng nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Dạng viên nhỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Dạng bột mịn, khuấy đều.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Dạng tấm mỏng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dạng nhôm dây.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Dạng bột mịn, khuấy đều..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Yếu tố nào dưới đây được sử dụng để làm tăng tốc độ phản ứng khi rắc men vào tinh bột đã được nấu chín để ủ ancol (rượu)?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chất xúc tác",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "áp suất",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nhiệt độ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Chất xúc tác.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c6_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho ba mẫu đá vôi (100% CaCO<sub>3</sub>) có cùng khối lượng: mẫu 1 dạng khối, mẫu 2 dạng viên nhỏ, mẫu 3 dạng bột mịn vào ba cốc đựng cùng thể tích dung dịch HCl (dư, cùng nồng độ, ở điều kiện thường). Thời gian để đá vôi tan hết trong ba cốc tương ứng là t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub> giây. So sánh nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "321ttt<<.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "123ttt<<.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "123ttt==.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "213ttt<<.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 213ttt<<..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c6_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu sau về tốc độ phản ứng hóa học là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ của phản ứng hóa học chỉ có thể được xác định theo sự thay đổi nồng độ chất phản ứng theo thời gian.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ của phản ứng hóa học không thể xác định được từ sự thay đổi nồng độ chất sản phẩm tạo thành theo thời gian.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Dấu “ – ” trong biểu thức tính tốc độ trung bình theo biến thiên nồng độ chất phản ứng là để đảm bảo cho giá trị của tốc độ phản ứng không âm.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ trung bình của một phản ứng trong một khoảng thời gian nhất định được biểu thị bằng biến thiên nồng độ một chất phản ứng hoặc sản phẩm tạo thành chia cho khoảng thời gian đó.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Ngoài nồng độ có thể đưa ra khái niệm tốc dộ phản ứng theo sự thay đổi khối lượng, thể tích, số mo theo thời gian.<br/>b. Sai. Tốc độ của phản ứng hóa học có thể xác định được từ sự thay đổi nồng độ chất sản phẩm tạo thành theo thời gian.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng đơn giản xảy ra trong bình kín: 2NO (g) + O<sub>2</sub> (g)  2NO<sub>2</sub> (g).",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Theo thời gian, nồng độ NO<sub>2</sub> tăng dần nên tốc độ phản ứng tăng dần.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Biểu thức tốc độ phản ứng:  2.2.C=NOOkCn .",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi nồng độ O<sub>2</sub> tăng 4 lần và nồng độ NO giảm 2 lần thì tốc độ phản ứng tăng lần.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để tốc độ phản ứng tăng lên 27 lần thì nồng độ NO và O<sub>2</sub> đều phải tăng 3 lần.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Tốc độ phản ứng giảm dần theo thời gian.<br/>b. Sai.  22..C=NOOkCn .<br/>c. Sai.  2221'..4.C2æö==ç÷èøNOOkCvn  (không đổi).<br/>d. Đúng.  223NOOv = k × (3 × C)  × 3 × C= 27v .",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho 5 gam zinc (kẽm) viên vào cốc đựng 50 ml dung dịch H<sub>2</sub>SO<sub>4</sub> 4M ở nhiệt độ thường (25<sup>o</sup>C). Tốc độ phản ứng thay đổi khi",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "thay 5 gam zinc viên bằng 5 gam zinc bột.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "thay dung dịch H<sub>2</sub>SO<sub>4</sub> 4M bằng dung dịch H<sub>2</sub>SO<sub>4</sub> 2M.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "giảm nhiệt độ phản ứng từ 25<sup>o</sup>C đến 10<sup>o</sup>C.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "dùng dung dịch H<sub>2</sub>SO<sub>4</sub> gấp đôi so với ban đầu.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Thể tích không ảnh hưởng đến tốc độ phản ứng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Thực hiện phản ứng sau: CaCO<sub>3</sub> + 2HCl  ¾¾®  CaCl<sub>2</sub> + CO<sub>2</sub> ↑ + H<sub>2</sub>O. Theo dõi thể tích CO<sub>2</sub> thoát ra theo thời gian, thu được đồ thị như sau (thể tích khí được đo ở áp suất khí quyển và nhiệt độ phòng).",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de1_image21.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở thời điểm 90 giây, tốc độ phản ứng bằng 0.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ phản ứng giảm dần theo thời gian.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ trung bình của phản ứng trong khoảng thời gian từ thời điểm đầu đến 75 giây là 0,33 ml/s.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ trung bình của phản ứng trong các khoảng thời gian 15 giây là như nhau.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Theo thời gian, nồng độ các chất tham gia giảm dần nên tốc độ phản ứng giảm dần. Tốc độ trung bình của phản ứng trong 15 giây đầu sẽ lớn hơn tốc độ phản ứng trong 15 giây sau.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các yếu tố sau: (a) Nồng độ chất, (b) Áp suất, (c) Nhiệt độ, (d) Diện tích tiếp xúc, (e) Chất xúc tác. Có bao nhiêu yếu tố ảnh hưởng đến tốc độ phản ứng?",
+        "images": [],
+        "correctAnswer": "5",
+        "explanation": "Đáp án: 5.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "5",
+          "5",
+          "5"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các phản ứng hóa học sau:<br/>(a) Fe<sub>3</sub>O<sub>4</sub>(s)   +  4CO(g)  ¾¾®  3Fe(s) + 4CO<sub>2</sub>(g)<br/>(b) 2NO<sub>2</sub>(g)  ¾¾®  N<sub>2</sub>O<sub>4</sub>(g)<br/>(c) H<sub>2</sub>(g) + Cl<sub>2</sub>(g)  ¾¾®  2HCl(g)<br/>(d) CaO(s) + SiO<sub>2</sub>(s)  ¾¾® CaSiO<sub>3</sub>(s)<br/>Liệt kê cấc phản ứng thay đổi tốc độ khi áp suất thay đổi theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…).",
+        "images": [],
+        "correctAnswer": "123",
+        "explanation": "Đáp án: 123.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "123",
+          "123",
+          "123"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho phản ứng: 2CO(g)  CO<sub>2</sub>(g) + C(s). Để tốc độ phản ứng tăng lên 16 lần thì nồng độ của carbon monoxide (CO) phải tăng lên bao nhiêu lần?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.<br/>Ta có: v<sub>2</sub> = 4v<sub>1</sub>  ky<sup>2</sup> = 16kx<sup>2</sup>  y = 4x<br/>Vậy nồng độ của CO tăng lên 2 lần.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho chất xúc tác MnO<sub>2</sub> vào 100 mL dung dịch H<sub>2</sub>O<sub>2</sub>, sau 60 giây thu được 0,0015 mol khí O<sub>2</sub>. Tốc độ trung bình của phản ứng (tính theo H<sub>2</sub>O<sub>2</sub>) trong 60 giây là a.10<sup>–4</sup> M/s?",
+        "images": [],
+        "correctAnswer": "5",
+        "explanation": "Đáp án: 5.<br/>H<sub>2</sub>O<sub>2</sub> → H<sub>2</sub>O + ½ O<sub>2</sub><br/>0,0015 mol<br/>Số mol H<sub>2</sub>O<sub>2</sub>  = 2 x 0,0015 = 0,003 mol.<br/>Nồng độ mol của H<sub>2</sub>O<sub>2</sub> phản ứng:  0,0030,03(M)0,1=<br/>Tốc độ trung bình của phản ứng (tính theo H<sub>2</sub>O<sub>2</sub>) trong 60 giây:   40,035.10(M/s)60-= .",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "5",
+          "5",
+          "5"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phản ứng tạo NO từ NH<sub>3</sub> là một giai đoạn trung gian trong quá trình sản xuất nitric acid:<br/>4NH<sub>3</sub>(g)  +  5O<sub>2</sub>(g)  ¾¾®  4NO(g) + 6H<sub>2</sub>O(g)<br/>Có các biện pháp sau: (1) Tăng áp suất, (2) Giảm nồng độ các chất tham gia phản ứng, (3) Tăng nhiệt độ, (4) Sử dụng chất xúc tác Pt.<br/>Có bao nhiêu biện pháp làm tăng tốc độ phản ứng trên?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Ở vùng đồng bằng (độ cao gần mực nước biển), nước sôi ở 100 <sup>o</sup>C. Trên đỉnh núi Fansipan (cao 3200m so với mực nước biển), nước sôi ở 90 <sup>o</sup>C. Khi luộc chín một miếng thịt trong nước sôi, ở vùng đồng bằng mất 3,2 phút (min), trong khi trên đỉnh núi Pansipan mất 3,8 phút. Nếu luộc miếng thịt trên đỉnh núi cao hơn, tại đó nước sôi ở 80 <sup>o</sup>C thì mất bao nhiêu phút để luộc chín miếng thịt (Làm tròn kết quả đến hàng phần mười)?",
+        "images": [],
+        "correctAnswer": "4,5",
+        "explanation": "Đáp án: 4,5.<br/>Tốc độ phản ứng tỉ lệ nghịch với thời gian ⇒ Khi giảm từ 100<sup>o</sup>C xuống 90<sup>o</sup>C (10<sup>o</sup>) thì thời gian tăng từ 3,2 phút đến 3,8 phút ⇒ hệ số nhiệt độ:  3,81,18753,2g==<br/>Nếu luộc miếng thịt ở 80<sup>o</sup>C thì thời gian cần là 3,8.1,1875 = 4,5 (min)<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "4,5",
+          "4.5",
+          "4,5"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa10_c6_de2",
+    "code": "10-C6-02",
+    "title": "Đề Kiểm Tra Chương 6: Tốc Độ Phản Ứng (Đề số 2)",
+    "topic": "Các yếu tố ảnh hưởng: Nồng độ, nhiệt độ, áp suất, diện tích tiếp xúc & chất xúc tác",
+    "badge": "Chương 6 • Đề 2",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c6_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đại lượng đặc trưng cho độ biến thiên nồng độ của một trong các chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian gọi là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tốc độ phản ứng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "cân bằng hoá học.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tốc độ tức thời",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "quá trình hoá học.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> tốc độ phản ứng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng xảy ra trong pha khí như sau: H<sub>2</sub> + Cl<sub>2</sub>  ¾¾®  2HCl. Biểu thức tốc độ trung bình của phản ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "22HClHClCCCv.tttDDD===DDD",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "22HClHClCCCv.tttDD-D===DDD",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "22HClHClCCCv.ttt-D-DD===DDD",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "22HClHClCCCv.tt2t-D-DD===DDD",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 22HClHClCCCv.tt2t-D-DD===DDD.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi đốt than trong lò, đậy nắp lò sẽ giữ than cháy được lâu hơn. Yếu tố ảnh hưởng đến tốc độ phản ứng được vận dụng trong ví dụ trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nhiệt độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nồng độ.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chất xúc tác",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "diện tích bề mặt tiếp xúc.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> nồng độ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Có phương trình phản ứng:  +¾¾®2X(g)Y(g)Z(g) . Tốc độ phản ứng tại một thời điểm được tính bằng biểu thức: v = k[X]<sup>2</sup>.[Y]. Hằng số tốc độ k phụ thuộc vào yếu tố nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nồng độ của chất ban đầu",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nồng độ của chất sản phẩm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nhiệt độ của phản ứng",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thời gian xảy ra phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Nhiệt độ của phản ứng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Yếu tố nào sau đây không ảnh hưởng đến tốc độ của phản ứng chỉ có chất rắn?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiệt độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Áp suất",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Diện tích tiếp xúc",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chất xúc tác.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Áp suất.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Yếu tố nào sau đây làm giảm tốc độ phản ứng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sử dụng enzyme cho phản ứng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thêm chất ức chế vào hỗn hợp chất tham gia.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tăng nồng độ chất tham gia",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nghiền chất tham gia dạng khối thành bột.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Thêm chất ức chế vào hỗn hợp chất tham gia..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi cho một lượng xác định chất phản ứng vào bình để cho phản ứng hoá học xảy ra, tốc độ phản ứng sẽ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "không đổi cho đến khi kết thúc",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tăng dần cho đến khi kết thúc.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "chậm dần cho đến khi kết thúc",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tuân theo định luật tác dụng khối lượng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> chậm dần cho đến khi kết thúc.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biểu đồ nào sau đây không biểu diễn sự phụ thuộc nồng độ chất tham gia với thời gian?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đồ thị A",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image7.png",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đồ thị B",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image8.png",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đồ thị C",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image9.png",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Đồ thị D",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image10.png",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> D..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đối với phản ứng có chất khí tham gia thì nhận định nào dưới đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi áp suất tăng thì tốc độ phản ứng giảm",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi áp suất tăng thì tốc độ phản ứng tăng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi áp suất giảm thì tốc độ phản ứng tăng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Áp suất không ảnh hưởng đến tốc độ phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Khi áp suất tăng thì tốc độ phản ứng tăng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cách nào sau đây sẽ làm củ khoai tây chín nhanh nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Luộc trong nước sôi",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hấp cách thuỷ trong nồi cơm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nướng ở 180 °C.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hấp trên nồi hơi.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Nướng ở 180.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hiện tượng nào dưới đây thể hiện ảnh hưởng của nhiệt độ đến tốc độ phản ứng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thanh củi được chẻ nhỏ hơn thì sẽ cháy nhanh hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Quạt gió vào bếp than để thanh cháy nhanh hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Thức ăn lâu bị ôi thiu hơn khi để trong tủ lạnh.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các enzyme làm thúc đẩy các phản ứng sinh hóa trong cơ thể.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Thức ăn lâu bị ôi thiu hơn khi để trong tủ lạnh..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho một viên đá vôi nặng 1 gam vào dung dịch HCl 2 M, ở nhiệt độ 25 ℃. Biến đổi nào sau đây không làm bọt khí thoát ra mạnh hơn?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tăng thể tích dung dịch HCl lên gấp đôi.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thay viên đá vôi bằng 1 gam bột đá vôi.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Thay dung dịch HCl 2 M bằng dung dịch HCl 4 M.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tăng nhiệt độ lên 50<sup>o</sup",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Tăng thể tích dung dịch HCl lên gấp đôi..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở cùng một nồng độ và khối lượng của Al là như nhau, hãy cho biết phản ứng nào dưới đây có tốc độ phản ứng xảy ra chậm nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Al(s) + NaOH(aq) ở 25<sup>o</sup",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Al(s) + NaOH(aq) ở 30<sup>o</sup",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Al(s) + NaOH(aq) ở 40<sup>o</sup",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al(s) + NaOH(aq) ở 50<sup>o</sup",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Al(s) + NaOH(aq) ở 25<sup>o</sup.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đối với phản ứng: A + 3B  ®  2C, phát biểu nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ tiêu hao chất B bằng 3/2 tốc độ tạo thành chất",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ tiêu hao chất B bằng 2/3 tốc độ tạo thành chất",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ tiêu hao chất B bằng 3 tốc độ tạo thành chất",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ tiêu hao chất B bằng 1/3 tốc độ tạo thành chất",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Tốc độ tiêu hao chất B bằng 3/2 tốc độ tạo thành chất.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng thủy phân tinh bột có xúc tác là HCl. Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "HCl không tác dụng với tinh bột trong quá trình phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nếu nồng độ HCl tăng, tốc độ phản ứng tăng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi không có HCl, phản ứng thủy phân tinh bột vẫn xảy ra nhưng tốc độ chậm.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nồng độ HCl không đổi sau phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Nếu nồng độ HCl tăng, tốc độ phản ứng tăng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một phản ứng có hệ số nhiệt độ Van’t Hoff là 2. Hỏi tốc độ của phản ứng đó tăng lên bao nhiêu lần khi nâng nhiệt độ lên từ 20<sup>o</sup>C đến 60<sup>o</sup>C?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2 lần.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "8 lần",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "16 lần",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "32 lần.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 16 lần.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Xét phản ứng phân hủy N<sub>2</sub>O<sub>5</sub> trong dung môi CCl<sub>4</sub> ở 45<sup>o</sup>C:<br/>N<sub>2</sub>O<sub>5</sub>→ N<sub>2</sub>O<sub>4</sub> +  O<sub>2</sub><br/>Ban đầu nồng độ của N<sub>2</sub>O<sub>5</sub>là 2,33M, sau 184 giây nồng độ của N<sub>2</sub>O<sub>5</sub> là 2,08M. Tốc độ trung bình của phản ứng tính theo N<sub>2</sub>O<sub>5</sub>là",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de2_image12.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2,72.10<sup>−3</sup> mol/(L.s)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1,36.10<sup>−3</sup> mol/(L.s).",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "6,80.10<sup>−3</sup> mol/(L.s)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "6,80.10<sup>−4</sup> mol/(L.s).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 1,36.10<sup>−3</sup> mol/(L.s)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c6_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Xét phản ứng sau: 2ClO<sub>2</sub>  + 2NaOH  ¾¾®  NaClO<sub>3</sub>  + NaClO<sub>2</sub> + H<sub>2</sub>O<br/>Tốc độ phản ứng được viết như sau:  2xyClONaOHvk.C.C= . Thực hiện phản ứng với những nồng độ chất đầu khác nhau và đo tốc độ phản ứng tương ứng thu được kết quả trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">STT</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Nồng độ ClO2<br/>(M)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Nồng độ NaOH<br/>(M)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Tốc độ phản ứng<br/>(mol/(L.s))</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,01</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,01</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">2.10-4</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">2</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,02</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,01</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">8.10-4</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,01</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,02</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">4.10-4</td></tr></table></div><br/>Giá trị của x và y trong biểu thức tốc độ phản ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1 và 2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2 và 1",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2 và 3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3 và 2.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "Đáp án: B.<br/>2.10<sup>-4</sup> = k.0,01<sup>x</sup>.0,01<sup>y</sup>  (1)<br/>8.10<sup>-4</sup> = k.0,02<sup>x</sup>.0,01<sup>y</sup>  (2)<br/>4.10<sup>-4</sup> = k.0,01<sup>x</sup>.0,02<sup>y</sup> (3)<br/>Lấy (2)/(1) ⟹ 4 = 2<sup>x</sup> ⟹ x = 2.<br/>Lấy (3)/(1) ⟹ 2 = 2<sup>y</sup> ⟹ y = 1.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c6_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu sau về tốc độ phản ứng là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ của phản ứng hóa học là đại lượng mô tả mức độ nhanh hay chậm của chất phản ứng hoặc sản phẩm tạo thành.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ của phản ứng hóa học là hiệu số nồng độ của một chất trong hỗn hợp phản ứng tại hai thời điểm khác nhau.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ của phản ứng hóa học có thể có giá trị âm hoặc dương.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong cùng một phản ứng hóa học, tốc độ tạo thành của các chất sản phẩm khác nhau là khác nhau, tùy thuộc vào hệ số cân bằng của chúng trong phương trình hóa học.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Tốc độ phản ứng của một phản ứng hóa học là đại lượng đặc trưng cho sự thay đổi nồng độ của các chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian.<br/>c. Sai. Tốc độ phản ứng có giá trị dương.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong quy trình sản xuất sulfuric acid, xảy ra phản ứng hoá học:<br/>2SO<sub>2</sub>(g) + O<sub>2</sub>(g)  25VO¾¾¾®  2SO<sub>3</sub>(g)",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Xúc tác V<sub>2</sub>O<sub>5</sub> giúp tăng hiệu suất phản ứng chuyển hoá SO<sub>2</sub> thành SO<sub>3</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi tăng nhiệt độ của phản ứng thì tốc độ phản ứng giảm xuống.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong quá trình phản ứng thì nồng độ SO<sub>2</sub> tăng dần còn nồng độ SO<sub>3</sub> giảm dần.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi tăng áp suất khí SO<sub>2</sub> hoặc O<sub>2</sub>thì tốc độ phản ứng đều tăng.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Xúc tác làm tăng tốc độ phản ứng, không làm dịch chuyển cân bằng, nên hiệu suất phản ứng không đổi.<br/>b. Sai. Tăng nhiệt độ thì tốc độ phản ứng tăng.<br/>c. Sai. Nồng độ SO<sub>2</sub> giảm, SO<sub>3</sub> tăng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Nghiên cứu ảnh hưởng của diện tích bề mặt đến tốc độ phản ứng:<br/>CaCO<sub>3</sub>(s) + 2HCl(aq)  ¾¾®  CaCl<sub>2</sub>(aq) + CO<sub>2</sub>(g) + H<sub>2</sub>O(l)<br/>Chuẩn bị: 2 bình tam giác, dung dịch HCl 0,5 M, đá vôi dạng viên, đá vôi đập nhỏ.<br/>Tiến hành:<br/>- Cho cùng một lượng (khoảng 2 g) đá vôi dạng viên vào bình tam giác (1) và đá vôi đập nhỏ vào bình tam giác (2).<br/>- Rót 20 mL dung dịch HCl 0,5 M vào mỗi bình.",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de2_image17.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng trong bình tam giác (1) có tốc độ thoát khí nhanh hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đá vôi dạng viên có tổng diện tích bề mặt nhỏ hơn đá vôi dạng đập nhỏ.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nếu lấy cùng một lượng đá vôi thì đá vôi dạng đập viên tan nhanh hơn đá vôi dạng đập nhỏ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi tăng diện tích bề mặt tiếp xúc, số va chạm giữa các chất đầu tăng lên, số va chạm hiệu quả cũng tăng theo, dẫn đến tốc độ phản ứng tăng.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Phản ứng trong bình tam giác (2) có tốc độ thoát khí nhanh hơn.<br/>b. Đúng.<br/>c. Sai. Dạng đập nhỏ tan nhanh hơn dạng viên.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng đơn giản: aA + bB  cD + dD. Tốc độ tức thời của phản ứng được tính theo biểu thức: v = k.C<sub>A</sub><sup>a</sup>.C<sub>B</sub><sup>b</sup> (trong đó C<sub>A</sub>, C<sub>B</sub> là nồng độ của A và B tại thời điểm đang xét; v là tốc độ phản ứng tại thời điểm đang xét).",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hằng số tốc độ phản ứng k là tốc độ của phản ứng khi nồng độ của tất cả các chất A, B đều bằng nhau và bằng 1M.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hằng số tốc độ phản ứng k phụ thuộc vào nồng độ phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Giá trị v luôn không đổi trong thời gian phản ứng xảy ra.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ở nhiệt độ không đổi, tốc độ phản ứng tỉ lệ thuận với tích số nồng độ các chất phản ứng hoặc sản phẩm với số mũ thích hợp.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Phụ thuộc vào nhiệt độ.<br/>c. Sai. Có thể thay đổi.<br/>d. Sai. Tính theo chất phản ứng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho phản ứng hóa học đơn giản: H<sub>2</sub>(g) + I<sub>2</sub>(g) → 2HI(g).<br/>Công thức tính tốc độ của phản ứng thuận trên là v = k.[H<sub>2</sub>].[I<sub>2</sub>]. Tốc độ của phản ứng thuận trên sẽ tăng bao nhiêu lần khi tăng áp suất chung của hệ lên 3 lần?",
+        "images": [],
+        "correctAnswer": "9",
+        "explanation": "Đáp án: 9.<br/>Khi tăng áp suất chung của hệ lên 3 lần, đồng nghĩa với nồng độ chung của hệ tăng lên 3 lần.<br/>2HCl122vk3C3C9v=××××=  .",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "9",
+          "9",
+          "9"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phương trình tổng hợp ammonia (NH<sub>3</sub>): N<sub>2</sub>(g) + 3H<sub>2</sub>(g) → 2NH<sub>3</sub>(g). Nếu tốc độ tạo thành NH<sub>3</sub> là 0,345 M/s thì tốc độ tiêu hao của chất phản ứng H<sub>2</sub> là bao nhiêu M/s (Làm tròn kết quả đến hàng phần trăm)?",
+        "images": [],
+        "correctAnswer": "0,52",
+        "explanation": "Đáp án: 0,52.<br/>Ta có:  23HNH11vvv32==    23HNH33vv.0,3450,517522===  M/s.<br/>Dùng dữ kiện dưới đây trả lời cho câu hỏi 5 và 6.<br/>Khi nhiệt độ phòng là 25<sup>o</sup>C, cho 10g đá vôi (dạng viên) vào cốc đựng 100g dung dịch HCl loãng và nhanh chóng cho lên một cân điện tử. Đọc giá trị khối lượng cốc tại thời điểm ban đầu và sau 1 phút. Lặp lại thí nghiệm khi nhiệt độ phòng là 35<sup>0</sup>C. Kết quả thí nghiệm được ghi lại trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">STT</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Nhiệt độ (0C)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Khối lượng cốc (g)</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Thời điểm đầu</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Sau 1 phút</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">25</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">235,40</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">235,13</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">2</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">35</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">235,78</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">235,21</td></tr></table></div>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "0,52",
+          "0.52",
+          "0,52"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tính hệ số nhiệt độ của phản ứng. (Làm tròn kết quả đến hàng phần mười).",
+        "images": [],
+        "correctAnswer": "2,1",
+        "explanation": "<b>Đáp án: 2,1.</b> Vận dụng định luật bảo toàn khối lượng, bảo toàn electron và công thức hóa học để tính toán giá trị chính xác.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "2,1",
+          "2.1",
+          "2,1"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Giả sử ban đầu cốc chứa dung dịch HCl và đá vôi có khối lượng 235,40g. Thực hiện thí nghiệm ở 45<sup>0</sup>C. Hỏi sau 1 phút, khối lượng cốc là bao nhiêu? (Bỏ qua khối lượng nước bay hơi). (Làm tròn kết quả đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "234",
+        "explanation": "<b>Đáp án: 234.</b> Vận dụng định luật bảo toàn khối lượng, bảo toàn electron và công thức hóa học để tính toán giá trị chính xác.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "234",
+          "234",
+          "234"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "",
+        "images": [],
+        "correctAnswer": "2,1",
+        "explanation": "Câu 5. Đáp án: 2,1.<br/>Tốc độ phản ứng ở 25<sup>0</sup>Clà 0,27 g/min<br/>Tốc độ phản ứng ở 35<sup>0</sup>Clà 0,57 g/min<br/>Hệ số nhiệt độ của phản ứng:  1035250,572,110,27TTvvvvg+====",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "2,1",
+          "2.1",
+          "2,1"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "",
+        "images": [],
+        "correctAnswer": "234",
+        "explanation": "Câu 6. Đáp án: 234.<br/>Tốc độ phản ứng ở 45<sup>0</sup>C là:  1045352,111,2 (g/min)0,57TTvvxxvvg+====Þ=<br/>Khối lượng cốc sau 1 phút là: 235,40 – 1,20 = 234,20 (g).<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "234",
+          "234",
+          "234"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa10_c6_de3",
+    "code": "10-C6-03",
+    "title": "Đề Kiểm Tra Chương 6: Tốc Độ Phản Ứng (Đề số 3)",
+    "topic": "Hệ số nhiệt độ Van't Hoff & bài toán thực tế tốc độ phản ứng",
+    "badge": "Chương 6 • Đề 3",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c6_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để đánh giá mức độ xảy ra nhanh, chậm của các phản ứng hóa học, người ta đưa ra khái niệm",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tốc độ phản ứng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "cân bằng hóa học",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chất xúc tác.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> tốc độ phản ứng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hoàn thành phát biểu về tốc độ phản ứng sau: \"Tốc độ phản ứng được xác định bởi độ biến thiên ...(1)... của ...(2)... trong một đơn vị ...(3)...\". Cụm từ thích hợp điền vào chỗ “…” là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1) nồng độ, (2) một chất phản ứng hoặc sản phẩm, (3) thể tích.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1) nồng độ, (2) một chất phản ứng hoặc sản phẩm, (3) thời gian.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(1) thời gian, (2) một chất sản phẩm, (3) nồng độ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(1) thời gian, (2) các chất phản ứng, (3) thể tích.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> (1) nồng độ, (2) một chất phản ứng hoặc sản phẩm, (3) thời gian..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận định nào dưới đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi nhiệt độ tăng thì tốc độ phản ứng tăng.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi nhiệt độ tăng thì tốc độ phản ứng giảm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi nhiệt độ giảm thì tốc độ phản ứng tăng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sự thay đổi nhiệt độ không ảnh hưởng đến tốc độ phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Khi nhiệt độ tăng thì tốc độ phản ứng tăng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các phản ứng hóa học sau, phản ứng nào xảy ra nhanh nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trung hòa acid – base",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sắt bị gỉ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tinh bột lên men rượu",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thức ăn bị ôi thiu.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Trung hòa acid – base.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiệt độ chất phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thể vật lí của chất phản ứng (rắn, lỏng, kích thước lớn, nhỏ....).",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ chất phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tỉ trọng chất phản ứng.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Tỉ trọng chất phản ứng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng đơn giản xảy ra trong bình kín: 2NO (g) + O<sub>2</sub> (g)  ®  2NO<sub>2</sub> (g). Ở nhiệt độ không đổi, tốc độ phản ứng thay đổi thế nào khi nồng độ O<sub>2</sub> tăng 3 lần, nồng độ NO không đổi?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ phản ứng tăng lên 3 lần",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ phản ứng tăng lên 9 lần.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ phản ứng giảm 3 lần",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ phản ứng giảm 9 lần.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Tốc độ phản ứng tăng lên 3 lần.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi cho cùng một lượng dung dịch axit sunfuric vào hai cốc đựng cùng một thể tích dung dịch Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub> với nồng độ khác nhau, ở cốc đựng dung dịch Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub> có nồng độ lớn hơn thấy kết tủa xuất hiện trước. Điều đó chứng tỏ ở cùng điều kiện về nhiệt độ, tốc độ phản ứng:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Giảm khi nồng độ của chất phản ứng tăng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Không phụ thuộc vào nồng độ của chất phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tỉ lệ thuận với nồng độ của chất phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tỉ lệ nghịch với nồng độ của chất phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Tỉ lệ thuận với nồng độ của chất phản ứng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Lấy một chai nước ngọt có ga rót vào cốc thật nhẹ tay, sau đó từ từ cho đường cát trắng vào trong cốc (hình minh họa dưới đây).<br/>Hiện tượng xảy ra là",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de3_image2.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "nước ngọt sủi bọt li ti",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nước ngọt sủi bọt rất nhiều và mạnh.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nước ngọt mất bọt khí.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "xuất hiện kết tủa đen.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> nước ngọt sủi bọt rất nhiều và mạnh..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi cho cùng một lượng Zn (Zinc) vào cốc đựng dung dịch HCl, tốc độ phản ứng sẽ lớn nhất khi dùng Zn ở dạng",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "viên nhỏ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "bột mịn, khuấy đều",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tấm mỏng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "thỏi lớn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> bột mịn, khuấy đều.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây là đúng về xúc tác?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Xúc tác giúp làm tăng năng lượng hoạt hóa của phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khối lượng xúc tác không thay đổi sau phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Xúc tác không tương tác với các chất trong quá trình phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Xúc tác kết hợp với sản phẩm phản ứng tạo thành hợp chất bền.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Khối lượng xúc tác không thay đổi sau phản ứng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sản phẩm của phản ứng được tạo ra qua các bước theo hình bên dưới:<br/>Vai trò chất X là",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de3_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "chất xúc tác.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "làm tăng năng lượng hoạt hoá của chất tham gia phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "làm giảm năng lượng hoạt hoá của chất tham gia phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "làm tăng nồng độ của chất tham gia phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> làm giảm năng lượng hoạt hoá của chất tham gia phản ứng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng hóa học xảy ra trong pha khí sau: N<sub>2</sub> + 3H<sub>2</sub>  ¾¾®  2NH<sub>3</sub>.<br/>Phát biểu nào sau đây không đúng?<br/>Khi nhiệt độ phản ứng tăng lên,",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tốc độ chuyển động của phân tử chất đầu (N<sub>2</sub>, H<sub>2</sub>) tăng lên.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tốc độ va chạm giữa phân tử N<sub>2</sub> và H<sub>2</sub> tăng lên.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "số va chạm hiệu quả tăng lên.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tốc độ chuyển động của phân tử chất sản phẩm (NH<sub>3</sub>) giảm.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> tốc độ chuyển động của phân tử chất sản phẩm (NH<sub>3</sub>) giảm..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biện pháp kĩ thuật nào sau đây không được sử dụng để tăng tốc độ phản ứng nung vôi?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đập nhỏ đá vôi đến kích thước thích hợp",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tăng nhiệt độ lên nhiệt độ thích hợp.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tăng nồng độ khí CO<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thổi không khí vào lò nung vôi.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Tăng nồng độ khí CO<sub>2</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi nhiệt độ tăng lên 10<sup>o</sup> tốc độ của một phản ứng hóa học tăng lên 3 lần. Điều khẳng định nào dưới đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ phản ứng trên tăng 36 lần khi nhiệt độ tăng từ 20 °C lên 50 °C.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ phản ứng trên tăng 54 lần khi nhiệt độ tăng từ 20 °C lên 50 °C.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ phản ứng trên tăng 27 lần khi nhiệt độ tăng từ 20 °C lên 50 °C.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ phản ứng trên tăng 81 lần khi nhiệt độ tăng từ 20 °C lên 50 °C.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> B. Tốc độ phản ứng trên tăng 54 lần khi nhiệt độ tăng từ 20<sup>o</sup>C lên 50<sup>o</sup.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi diện tích bề mặt tăng, tốc độ phản ứng tăng với phản ứng có chất nào tham gia?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chất lỏng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chất khí",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chất rắn",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chất rắn, lỏng, khí.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Chất rắn.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi bắt đầu phản ứng, nồng độ một chất là 0,024 mol/L. Sau 10 giây xảy ra phản ứng, nồng độ của chất đó là 0,022 mol/L. Tốc độ của phản ứng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "0,0003 mol/L. s",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "0,00025 mol/L.s",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0,00015 mol/L.s",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "0,0002 mol/L.s.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 0,0002 mol/L.s..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng hóa học sau: C(s)  +  O<sub>2</sub>(g) → CO<sub>2</sub>(g). Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng trên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiệt độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Áp suất O<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hàm lượng carbon",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Diện tích bề mặt carbon.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Hàm lượng carbon.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c6_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(a) Phản ứng đơn giản là phản ứng xảy ra theo một bước.<br/>(b) Tốc độ của một phản ứng đơn giản tuân theo định luật tác dụng khối lượng.<br/>(c) Hằng số tốc độ phản ứng là tốc độ của phản ứng khi nồng độ của tất cả các chất trong hỗn hợp phản ứng đều bằng nhau và bằng 1.<br/>(d) Tốc độ của mọi phản ứng hóa học đều tuân theo định luật tác dụng khối lượng<br/>(e) Hằng số tốc độ của phản ứng phụ thuộc vào thời gian.<br/>Số phát biểu không đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "5",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c6_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Xét phản ứng: H<sub>2</sub> + Cl<sub>2</sub> → 2HCl.<br/>Nghiên cứu sự thay đổi nồng độ một chất trong phản ứng theo thời gian, thu được đồ thị sau:",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de3_image5.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đồ thị này mô tả sự thay đổi nồng độ theo thời gian của H<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tại thời điểm 1 phút nồng độ chất đó là 0,2 mol/L.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đơn vị tốc độ phản ứng trong trường hợp này là mol.(L.min)<sup>–1</sup>.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Biểu thức tốc độ trung bình của phản ứng trên là  22DD-D===DDDHClHClCCCvttt .",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Nồng độ HCl.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai.  222-D-DD===DDDHClHClCCCvttt",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng hóa học sau: H<sub>2</sub>O<sub>2</sub>  ¾¾®  H<sub>2</sub>O  +   12 O<sub>2</sub><br/>Biết rằng tốc độ của phản ứng này tuân theo biểu thức của định luật tác dụng khối lượng.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Theo thời gian, nồng độ H<sub>2</sub>O<sub>2</sub> giảm dần nên tốc độ phản ứng giảm dần.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Biểu thức tốc độ phản ứng:  222212....==HOHOOkCkCCn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ phản ứng tăng lên 2 lần khi nồng độ H<sub>2</sub>O<sub>2</sub> tăng lên 2 lần.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ phản ứng giảm xuống 3 lần khi nồng độ O<sub>2</sub> tăng lên 9 lần và giữ nguyên nồng độ của H<sub>2</sub>O.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Tốc độ tức thời không tính cho sản phẩm.<br/>c. Đúng.<br/>d. Sai.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các hình ảnh minh họa về ứng dụng thay đổi đổi tốc độ phản ứng sau:",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de3_image9.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hình a cho biết yếu tố áp suất đã được áp dụng để làm thay đổi tốc độ của phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hình b cho biết yếu tố nhiệt độ đã được áp dụng để làm thay đổi tốc độ của phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hình c cho biết yếu tố chất xúc tác đã được áp dụng để làm thay đổi tốc độ của phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các yếu tố làm thay đổi tốc độ phản ứng là nhiệt độ, nồng độ, thể tích, áp suất và diện tích bề mặt tiếp xúc.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Yếu tố nồng độ.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Không có thể tích.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Nghiên cứu ảnh hưởng của chất xúc tác đến tốc độ phản ứng:<br/>2H<sub>2</sub>O<sub>2</sub>(aq) → 2H<sub>2</sub>O(l) + O<sub>2</sub>(g)<br/>Hóa chất: dung dịch hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) 30%, bột MnO<sub>2</sub>.<br/>Dụng cụ: Ống nghiệm, tàn đóm đỏ.<br/>Tiến hành:<br/>Bước 1: Rót khoảng 2 mL dung dịch H<sub>2</sub>O<sub>2</sub> vào 2 ống nghiệm (1), (2).<br/>Bước 2: Thêm một ít bột MnO<sub>2</sub> vào ống nghiệm (2) và đưa nhanh tàn đóm đỏ vào miệng 2 ống nghiệm.",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de3_image10.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tàn đóm ở ồng nghiệm (1) chỉ cháy nhẹ.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tàn đóm ở ống nghiệm (2) bùng cháy mãnh liệt hơn.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sau khi phản ứng kết thúc, chất xúc tác MnO<sub>2</sub> cũng bị tiêu hao hết.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi có xúc tác, phản ứng sẽ xảy ra qua nhiều giai đoạn, mỗi giai đoạn đều có năng lượng hoạt hoá thấp hơn so với phản ứng không xúc tác, do đó số hạt có đủ năng lượng hoạt hoá sẽ nhiều hơn, dẫn đến tốc độ phản ứng tăng.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Chất xúc tác vẫn được bảo toàn về lượng và chất khi kết thúc phản ứng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho đồ thị thể hiện sự thay đổi tốc độ phản ứng của một phản ứng hóa học.<br/>Đồ thị biểu diễn sự phụ thuộc thể tích khí theo thời gian<br/>Thời điểm phản ứng dừng lại là bao nhiêu giây?",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de3_image11.png"
+        ],
+        "correctAnswer": "70",
+        "explanation": "Đáp án: 70.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "70",
+          "70",
+          "70"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các quá trình xảy ra như sau:<br/>(a) Nung đá vôi ở nhiệt độ cao để sản xuất vôi sống.<br/>(b) Nghiền nguyên liệu trước khi đưa vào lò nung để sản xuất clanke (trong sản xuất xi măng).<br/>(c) Rắc men vào tinh bột đã được nấu chín (cơm, ngô, khoai, sắn, …) để ủ rượu.<br/>(d) Tạo những lỗ rỗng trong viên than tổ ong.<br/>Có tất cả bao nhiêu yếu tố ảnh hưởng đến tốc độ phản ứng trong các quá trình trên?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>(a) Nhiệt độ.<br/>(b) Diện tích tiếp xúc.<br/>(c) Xúc tác.<br/>(d) Diện tích tiếp xúc.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Dưới đây là một số hiện tượng xảy ra trong đời sống:<br/>(1) Phản ứng cháy của xăng, dầu.<br/>(2) Các thanh thép ở các công trường xây dựng bị oxi hoá bởi các tác nhân trong không khí.<br/>(3) Phản ứng lên men rượu từ trái cây.<br/>(4) Nướng bánh mì.<br/>Liệt kê đáp án thành một dãy số theo thứ tự tốc độ phản ứng giảm dần từ các hiện tượng trên.",
+        "images": [],
+        "correctAnswer": "1432",
+        "explanation": "Đáp án: 1432.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "1432",
+          "1432",
+          "1432"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong một thí nghiệm, người ta đo được tốc độ trung bình của phản ứng của zinc (dạng bột) với dung dịch H<sub>2</sub>SO<sub>4</sub> loãng là 0,005 mol/s. Nếu ban đầu cho 0,4 mol zinc (dạng bột) với dung dịch H<sub>2</sub>SO<sub>4</sub> ở trên thì sau bao nhiêu giây còn lại 0,05 mol zinc.",
+        "images": [],
+        "correctAnswer": "70",
+        "explanation": "Đáp án: 70.<br/>Lượng zinc đã tan là: 0,4 – 0,05 = 0,35 mol<br/>Thời gian để hòa tan 0,35 mol zinc là:  0,35700,005s=",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "70",
+          "70",
+          "70"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho phản ứng của các chất ở thể khí: I<sub>2</sub> + H<sub>2</sub> →  2HI.<br/>Biết tốc độ phản ứng tỉ lệ thuận với nồng độ các chất tham gia và phản ứng với số mũ là hệ số tỉ lượng của chất đó trong phương trình hóa học. Ở một nhiệt độ xác định, hằng số tốc độ của phản ứng này là 2,5.10<sup>-4</sup>L/(mol.s). Nồng độ đầu của I<sub>2</sub> và H<sub>2</sub> lần lượt là 0,02 M và 0,03 M, tốc độ phản ứng tại thời điểm đã hết một nửa lượng I<sub>2</sub> là a.10<sup>–8</sup> mol/(L.s). Tính a.",
+        "images": [],
+        "correctAnswer": "5",
+        "explanation": "Đáp án: 5.<br/>22IHk.C.Cn=<br/>Tại thời điểm lượng X đã hết một nửa: [I<sub>2</sub>] = 0,01M; [H<sub>2</sub>] = 0,02M<br/>Tốc độ phản ứng:  n  = 2,5.10<sup>-4</sup>. 0,01 . 0,02 = 5.10<sup>-8</sup> (mol/(L.s))",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "5",
+          "5",
+          "5"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khi để ở nhiệt độ 30 <sup>o</sup>C, một quả táo bị hư sau 3 ngày. Khi được bảo quản ở 0 <sup>o</sup>C (trong tủ lạnh), quả táo bị hư sau 24 ngày. Nếu bảo quản ở 20 <sup>o</sup>C, quả táo bị hư sau bao nhiêu ngày?",
+        "images": [],
+        "correctAnswer": "6",
+        "explanation": "Đáp án: 6.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [
+          "/assets/hoa10/c6/hoa10_c6_de3_image16.png",
+          "/assets/hoa10/c6/hoa10_c6_de3_image17.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "6",
+          "6",
+          "6"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa10_c6_de4",
+    "code": "10-C6-04",
+    "title": "Đề Kiểm Tra Tổng Hợp Toàn Diện Chương 6 (Đề số 4)",
+    "topic": "Đề ôn tập toàn diện Tốc độ phản ứng hóa học chuẩn Bộ 2025",
+    "badge": "Chương 6 • Đề 4",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa10_c6_de4_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để đánh giá mức độ xảy ra nhanh, chậm của các phản ứng hóa học, người ta đưa ra khái niệm",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tốc độ phản ứng",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "cân bằng hóa học",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chất xúc tác.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> tốc độ phản ứng.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tốc độ phản ứng tăng lên khi:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "giảm nhiệt độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tăng diện tích tiếp xúc giữa các chất phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tăng thể tích",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "giảm nồng độ các chất tham gia phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> tăng diện tích tiếp xúc giữa các chất phản ứng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng xảy ra trong pha khí sau: H<sub>2</sub> + Cl<sub>2</sub>  ¾¾®  2HCl. Biểu thức tốc độ trung bình của phản ứng là:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "22HClHClCCCvtttDDD===DDD",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "22HClHClCCCvtttDD-D===DDD .",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "22HClHClCCCvttt-D-DD===DDD",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "22HClHClCCCvtt2t-D-DD===DDD .",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 22HClHClCCCvtt2t-D-DD===DDD ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phương trình hóa học của phản ứng: X + 2Y → Z + T. Ở thời điểm ban đầu, nồng độ của chất X là 0,01 mol/l. Sau 20 giây, nồng độ của chất X là 0,008 mol/l. Tốc độ trung bình của phản ứng tính theo chất X trong khoảng thời gian trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "4,0.10<sup>−4</sup> mol/(L.s)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1,0.10<sup>−4</sup> mol/(L.s).",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "7,5.10<sup>−4</sup>mol/(L.s)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5,0.10<sup>−4</sup>mol/(L.s).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 1,0.10<sup>−4</sup> mol/(L.s)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biểu đồ nào sau đây không biểu diễn sự phụ thuộc nồng độ chất tham gia với thời gian?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đồ thị A",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image7.png",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đồ thị B",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image8.png",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đồ thị C",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image9.png",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Đồ thị D",
+            "image": "/assets/hoa10/c6/hoa10_c6_de2_image10.png",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> D..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng hóa học sau: C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g). Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng trên?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiệt độ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Áp suất O<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ CO<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Diện tích bề mặt carbon.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Nồng độ CO<sub>2</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Yếu tố nào dưới đây đã được sử dụng để làm tăng tốc độ của phản ứng rắc men vào tinh bột đã được nấu chín (cơm, ngô, khoai, sắn) để ủ rượu?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiệt độ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chất xúc tác",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nồng độ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Áp suất.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Chất xúc tác.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng hóa học sau: Zn(s) + H<sub>2</sub>SO<sub>4</sub> (aq)  ¾¾®  ZnSO<sub>4</sub> (aq) + H<sub>2</sub> (g)<br/>Yếu tố nào sau đây không ảnh hưởng đến tốc độ phản ứng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Diện tích bề mặt zinc",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nồng độ dung dịch sulfuric acid.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Thể tích dung dịch sulfuric acid",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nhiêt độ của dung dịch sulfuric acid.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Thể tích dung dịch sulfuric acid.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiên liệu cháy ở trên vùng cao nhanh hơn khi cháy ở vùng thấp.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thực phẩm được bảo quản ở nhiệt độ thấp sẽ giữ được lâu hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Dùng men làm chất xúc tác để chuyển hóa cơm nếp thành rượu.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Nếu không cho nước dưa chua khi muối dưa thì dưa vẫn sẽ chua nhưng chậm hơn",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Nhiên liệu cháy ở trên vùng cao nhanh hơn khi cháy ở vùng thấp..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho ba mẫu đá vôi (100% CaCO<sub>3</sub>) có cùng khối lượng: mẫu 1 dạng khối, mẫu 2 dạng viên nhỏ, mẫu 3 dạng bột mịn vào ba cốc đựng cùng thể tích dung dịch HCl (dư, cùng nồng độ, ở điều kiện thường). Thời gian để đá vôi tan hết trong ba cốc tương ứng là t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub> giây. So sánh nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "t<sub>1</sub> < t<sub>2</sub> < t<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "t<sub>1</sub> = t<sub>2</sub> = t<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "t<sub>3</sub> < t<sub>2</sub> < t<sub>1</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "t<sub>2</sub> < t<sub>1</sub> < t<sub>3</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> t<sub>3</sub> < t<sub>2</sub> < t<sub>1</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong phòng thí nghiệm, người ta nhiệt phân muối KClO<sub>3</sub> để điều chế khí oxygen theo phản ứng: KClO<sub>3</sub>  ¾¾®  KCl + O<sub>2</sub><br/>Biện pháp nào sau đây được sử dụng nhằm tăng tốc độ phản ứng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nung riêng KClO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nung KClO<sub>3</sub> có xúc tác MnO<sub>2</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Thu khí O<sub>2</sub> bằng cách đẩy nước",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thu khí O<sub>2</sub> bằng cách dời chỗ không khí.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Nung KClO<sub>3</sub> có xúc tác MnO<sub>2</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sản phẩm của phản ứng được tạo ra qua các bước theo hình bên dưới:<br/>Vai trò chất X là",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de4_image22.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "chất xúc tác.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "làm tăng năng lượng hoạt hoá của chất tham gia phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "làm giảm năng lượng hoạt hoá của chất tham gia phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "làm tăng nồng độ của chất tham gia phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> làm giảm năng lượng hoạt hoá của chất tham gia phản ứng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phản ứng sau:<br/>(1) 2Al (s) + Fe<sub>2</sub>O<sub>3</sub> (s) → Al<sub>2</sub>O<sub>3</sub> (s) + Fe (s).<br/>(2) 2H<sub>2</sub> (g) + O<sub>2</sub> (g) → 2H<sub>2</sub>O (l).<br/>(3) C (s) + O<sub>2</sub> (g) → CO<sub>2</sub> (g).<br/>(4) CaCO<sub>3</sub> (s) + 2HCl (aq) → CaCl<sub>2</sub> (aq) + H<sub>2</sub>O (l) + CO<sub>2</sub> (g).<br/>Khi tăng áp suất của chất phản ứng, tốc độ của những phản ứng nào sau đây sẽ bị thay đổi?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1), (2), (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1), (3)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(2), (3)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(2), (3), (4).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> (2), (3).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phản ứng đơn giản sau: H<sub>2</sub> (g) + Cl<sub>2</sub> (g)  ®  2HCl (g). Tốc độ phản ứng thay đổi thế nào khi nồng độ H<sub>2</sub> giảm 2 lần và giữ nguyên nồng độ Cl<sub>2</sub>?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ phản ứng tăng lên 2 lần",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ phản ứng tăng lên 4 lần.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ phản ứng giảm 2 lần",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ phản ứng giảm 4 lần.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Tốc độ phản ứng giảm 2 lần.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cách nào sau đây làm củ khoai tây chín nhanh nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Luộc trong nước sôi",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hấp cách thủy trong nồi cơm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nướng ở 180 °C.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hấp trên nồi hơi.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Nướng ở 180<sup>o</sup.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nồi áp suất dùng để ninh, hầm thức ăn có thể làm nóng nước tới nhiệt độ 120<sup>o</sup>C so với 100<sup>o</sup>C khi dùng nồi thường. Trong quá trình hầm xương thường diễn ra nhiều phản ứng hóa học, ví dụ quá trình biến đổi các protein, chẳng hạn như thủy phân một phần collagen thành gelatin. Hãy cho biết tốc độ quá trình thủy phân collagen thành gelatin thay đổi như thế nào khi sử dụng nồi áp suất thay cho nồi thường.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Không thay đổi",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Giảm đi 4 lần.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ít nhất tăng 4 lần",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ít nhất giảm 16 lần.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Ít nhất tăng 4 lần.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nghiên cứu ảnh hưởng của chất xúc tác đến tốc độ phản ứng:<br/>2H<sub>2</sub>O<sub>2</sub>(aq) → 2H<sub>2</sub>O(l) + O<sub>2</sub>(g)<br/>Hóa chất: dung dịch hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>) 30%, bột MnO<sub>2</sub>.<br/>Dụng cụ: Ống nghiệm, tàn đóm đỏ.<br/>Tiến hành:<br/>Bước 1: Rót khoảng 2 mL dung dịch H<sub>2</sub>O<sub>2</sub> vào 2 ống nghiệm (1), (2).<br/>Bước 2: Thêm một ít bột MnO<sub>2</sub> vào ống nghiệm (2) và đưa nhanh tàn đóm đỏ vào miệng 2 ống nghiệm.<br/>Cho các phát biểu sau:<br/>(1) Tàn đóm ở ồng nghiệm (1) chỉ cháy nhẹ.<br/>(2) Tàn đóm ở ống nghiệm (2) bùng cháy mãnh liệt hơn.<br/>(3) Sau khi phản ứng kết thúc, chất xúc tác MnO<sub>2</sub> cũng bị tiêu hao hết.<br/>(4) Khi có xúc tác, phản ứng sẽ xảy ra qua nhiều giai đoạn, mỗi giai đoạn đều có năng lượng hoạt hoá thấp hơn so với phản ứng không xúc tác, do đó số hạt có đủ năng lượng hoạt hoá sẽ nhiều hơn, dẫn đến tốc độ phản ứng tăng.<br/>Số phát biểu đúng là",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de4_image24.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1), (2), (4)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1), (2)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(1), (2), (3)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(1), (2), (3), (4).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> (1), (2), (4).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa10_c6_de4_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng đơn giản là phản ứng xảy ra theo một bước.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng đơn giản có các hệ số tỉ lượng trong phương trình hóa học bằng nhau và bằng 1.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ của một phản ứng đơn giản không tuân theo định luật tác dụng khối lượng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hằng số tốc độ của phản ứng phụ thuộc vào thời gian.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Phản ứng đơn giản là phản ứng xảy ra theo một bước..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa10_c6_de4_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu sau đây về tốc độ phản ứng là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tốc độ của phản ứng hóa học là đại lượng mô tả mức độ nhanh hay chậm của chất phản ứng hoặc sản phẩm tạo thành.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ của phản ứng hóa học là hiệu số nồng độ của một chất trong hỗn hợp phản ứng tại hai thời điểm khác nhau.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ của phản ứng hóa học có thể có giá trị âm hoặc dương.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong cùng một phản ứng hóa học, tốc độ tạo thành của các chất sản phẩm khác nhau là khác nhau, tùy thuộc vào hệ số cân bằng của chúng trong phương trình hóa học.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Tốc độ phản ứng của một phản ứng hóa học là đại lượng đặc trưng cho sự thay đổi nồng độ của các chất phản ứng hoặc sản phẩm phản ứng trong một đơn vị thời gian.<br/>c. Sai. Tốc độ của phản ứng hóa học luôn dương.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa10_c6_de4_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong quy trình sản xuất sulfuric acid, xảy ra phản ứng hóa học sau:<br/>2SO<sub>2</sub> + O<sub>2</sub>  25VO¾¾¾®  2SO<sub>3</sub>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi tăng áp suất khí SO<sub>2</sub> hay O<sub>2</sub> thì tốc độ phản ứng đều tăng lên.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tăng diện tích bề mặt xúc tác V<sub>2</sub>O<sub>5</sub> sẽ làm tăng tốc độ phản ứng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Xúc tác sẽ dần chuyển hóa thành chất khác nhưng khối lượng không đổi sau phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Cần làm nóng bình phản ứng để đẩy nhanh tốc độ phản ứng.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Xúc tác không bị thay đổi cả về chất và về lượng sau phản ứng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa10_c6_de4_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Thực hiện phản ứng sau: CaCO<sub>3</sub> + 2HCl  ¾¾®  CaCl<sub>2</sub> + CO<sub>2</sub> ↑ + H<sub>2</sub>O. Theo dõi thể tích CO<sub>2</sub> thoát ra theo thời gian, thu được đồ thị như sau (thể tích khí được đo ở áp suất khí quyển và nhiệt độ phòng).",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de4_image26.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở thời điểm 90 giây, tốc độ phản ứng bằng 0.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tốc độ phản ứng giảm dần theo thời gian.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tốc độ trung bình của phản ứng trong khoảng thời gian từ thời điểm đầu đến 75 giây là 0,33 ml/s.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tốc độ trung bình của phản ứng trong các khoảng thời gian 15 giây là như nhau.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Theo thời gian, nồng độ các chất tham gia giảm dần nên tốc độ phản ứng giảm dần. Tốc độ trung bình của phản ứng trong 15 giây đầu sẽ lớn hơn tốc độ phản ứng trong 15 giây sau.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa10_c6_de4_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Xét phản ứng hóa học đơn giản giữa hai chất A và B theo phương trình: A + B  ®  C. Từ thông tin đã cho, hoàn thành bảng dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Thí nghiệm</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Nồng độ chất A (M)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Nồng độ chất B (M)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Tốc độ phản ứng (M/s)</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(1)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,20</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,050</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,24</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(2)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">x</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,030</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,20</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(3)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,40</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">y</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,80</td></tr></table></div><br/>Biểu thức tốc độ phản ứng là  n  = k.C<sub>A</sub>.C<sub>B</sub> (*). Trong đó: k là hằng số tốc độ phản ứng, C<sub>A</sub> và C<sub>B</sub> là nồng độ mol của chất A, B tại thời điểm đang xét.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hằng số tốc độ phản ứng là tốc độ của phản ứng khi nồng độ các chất phản ứng bằng nhau và bằng 0 M.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Giá trị của k trong biểu thức (*) là 24.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Giá trị x trong thí nghiệm (2) là 0,28 M (làm tròn kết quả đến hàng phần trăm).",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Giá trị y trong thí nghiệm (3) là 0,83 M (làm tròn kết quả đến hàng phần trăm).",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. v = k khi nồng độ các chất phản ứng bằng nhau và bằng 0 M.<br/>b. Đúng. Từ thí nghiệm (1):  1n  = 0,24 = k.0,2.0,05 ⇒ k = 24.<br/>c. Đúng.Thí nghiệm (2):  2n = 24.C<sub>A</sub>.0,03 = 0,2 ⇒ x = 0,27777  »  0,28 M<br/>d. Đúng. Thí nghiệm (3):   3n = 24.0,4.C<sub>B</sub> = 0,8 ⇒ C<sub>B</sub> = 0,08333  »  0,83 M",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa10_c6_de4_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Thực hiện phản ứng: 2ICl + H<sub>2</sub>  ¾¾®  I<sub>2</sub>  + 2HCl. Nồng độ đầu của ICl và H<sub>2</sub> được lấy đúng theo tỉ lệ hợp thức. Nghiên cứu sự thay đổi nồng độ các chất tham gia và chất tạo thành trong phản ứng theo thời gian, thu được đồ thị sau:<br/>Đường cong biểu diễn sự thay đổi nồng độ của HCl là đường cong số mấy?",
+        "images": [
+          "/assets/hoa10/c6/hoa10_c6_de4_image29.png"
+        ],
+        "correctAnswer": "1",
+        "explanation": "Đáp án: 1.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de4_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khi ninh (hầm) thịt cá, người ta sử dụng những cách sau.<br/>(1) Dùng nồi áp suất.(3) Chặt nhỏ thịt cá.<br/>(2) Cho thêm muối vào. (4) Nấu cùng nước lạnh.<br/>Có mấy cách làm cho thịt cá nhanh chín hơn?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de4_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Thả một mảnh magnesium có khối lượng 0,1g vào dung dịch HCl loãng. Sau 5 giây thấy mảnh magnesium tan hết. Tốc độ trung bình của phản ứng hòa tan magnesium theo đơn vị g/s là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "0,02",
+        "explanation": "Đáp án: 0,02.<br/>Tốc độ trung bình của phản ứng hòa tan magnesium là:  00,10,02 (/)5vgs-=-=",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "0,02",
+          "0.02",
+          "0,02"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de4_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Dưới đây là một số hiện tượng xảy ra trong đời sống, hãy sắp xếp theo thứ tự tốc độ giảm dần:<br/>(1) Nướng bánh mì.<br/>(2) Đốt gas khi nấu ăn.<br/>(3) Lên men sữa chua tạo sữa chua.<br/>(4) Tấm tôn thiếc bị gỉ sét.",
+        "images": [],
+        "correctAnswer": "2134",
+        "explanation": "Đáp án: 2134.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "2134",
+          "2134",
+          "2134"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de4_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khi oxygen được điều chế trong phòng thí nghiệm bằng cách nhiệt phân potassium chlorate. Để thí nghiệm thành công và rút ngắn thời gian tiến hành có thể dùng một số biện pháp sau:<br/>(1) Dùng chất xúc tác manganes dioxide.<br/>(2) Nung ở nhiệt độ cao.<br/>(3) Dùng phương pháp dời nước để thu khí oxygen<br/>(4) Đập nhỏ potassium chlorate.<br/>(5) Trộn đều bột potassium chlorate và xúc tác.<br/>Có bao nhiêu biện pháp dùng để tăng tốc độ phản ứng?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa10_c6_de4_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khi để ở nhiệt độ 30 <sup>o</sup>C, một quả táo bị hư sau 3 ngày. Khi được bảo quản ở 0 <sup>o</sup>C (trong tủ lạnh), quả táo bị hư sau 24 ngày. Nếu bảo quản ở 20 <sup>o</sup>C, quả táo bị hư sau bao nhiêu ngày?",
+        "images": [],
+        "correctAnswer": "6",
+        "explanation": "Đáp án: 6.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [
+          "/assets/hoa10/c6/hoa10_c6_de4_image35.png",
+          "/assets/hoa10/c6/hoa10_c6_de4_image36.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "6",
+          "6",
+          "6"
+        ]
+      }
+    ]
+  }
+];
 
 export const HOA10_CHUONG6_7_EXAMS: Chuong6Exam[] = HOA10_CHUONG6_EXAMS;
 

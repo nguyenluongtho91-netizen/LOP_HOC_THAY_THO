@@ -72,7 +72,3964 @@ export const HOA11_CHUONG3_MASTER: Record<string, Chuong3Lesson> = {"bai10":{"id
 
 export const HOA11_CHUONG3_LESSONS: Chuong3Lesson[] = Object.values(HOA11_CHUONG3_MASTER);
 
-export const HOA11_CHUONG3_EXAMS: Chuong3Exam[] = [{"id": "hoa11_c3_de1", "code": "11-C3-01", "title": "Đề Kiểm Tra Chương 3: Đại Cương Hóa Hữu Cơ (Đề số 1)", "topic": "Hợp chất hữu cơ, phương pháp tách biệt và tinh chế", "badge": "Chương 3 • Đề 1", "duration": 50, "totalQuestions": 28, "totalPoints": 10, "questions": [{"id": "hoa11_c3_de1_p1_q1", "number": 1, "part": 1, "type": "multiple_choice", "text": "Hợp chất hữu cơ là các hợp chất của ……… (trừ các oxide của carbon, muối carbonate, cyanide, carbide, ……). Từ thích hợp điền vào chỗ trống trong định nghĩa trên là:", "images": [], "options": [{"id": "a", "letter": "A", "text": "carbon", "isCorrect": true}, {"id": "b", "letter": "B", "text": "hydrogen", "isCorrect": false}, {"id": "c", "letter": "C", "text": "oxygen", "isCorrect": false}, {"id": "d", "letter": "D", "text": "nitrogen.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> carbon.", "explanationImages": [], "points": 0.25, "displayNumber": 1}, {"id": "hoa11_c3_de1_p1_q2", "number": 2, "part": 1, "type": "multiple_choice", "text": "Sau khi biết công thức thực nghiệm, có thể xác định công thức phân tử của hợp chất hữu cơ dựa trên đặc điểm nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Phân tử khối của chất.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Thành phần phần trăm về khối lượng các nguyên tố có trong phân tử chất.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Khi lượng các sản phẩm thu được khi đốt cháy hoàn toàn một lượng chất xác định.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Các hấp thụ đặc trưng trên phổ IR của chất.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Phân tử khối của chất..", "explanationImages": [], "points": 0.25, "displayNumber": 2}, {"id": "hoa11_c3_de1_p1_q3", "number": 3, "part": 1, "type": "multiple_choice", "text": "Trong các chất sau đây, chất nào dễ cháy nhất?", "images": [], "options": [{"id": "a", "letter": "A", "text": "CO<sub>2</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>2</sub>H<sub>5</sub>OH", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Na<sub>2</sub>CO<sub>3</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "N<sub>2</sub>.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> C<sub>2</sub>H<sub>5</sub>OH.", "explanationImages": [], "points": 0.25, "displayNumber": 3}, {"id": "hoa11_c3_de1_p1_q4", "number": 4, "part": 1, "type": "multiple_choice", "text": "Phương pháp chiết là sự tách chất dựa vào sự khác nhau", "images": [], "options": [{"id": "a", "letter": "A", "text": "về kích thước phân tử", "isCorrect": false}, {"id": "b", "letter": "B", "text": "ở mức độ nặng nhẹ về khối lượng.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "về khả năng bay hơi", "isCorrect": false}, {"id": "d", "letter": "D", "text": "về khả năng tan trong các dung môi khác nhau.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> về khả năng tan trong các dung môi khác nhau..", "explanationImages": [], "points": 0.25, "displayNumber": 4}, {"id": "hoa11_c3_de1_p1_q5", "number": 5, "part": 1, "type": "multiple_choice", "text": "Cho phổ khối lượng của phenol như hình vẽ:<br/>Biết phân tử khối tương ứng với peak có cường độ tương đối lớn nhất hiển thị trên phổ khối lượng. Phân tử khối của phenol là", "images": ["/assets/hoa11/c3/hoa11_c3_de1_image1.png"], "options": [{"id": "a", "letter": "A", "text": "66", "isCorrect": false}, {"id": "b", "letter": "B", "text": "77", "isCorrect": false}, {"id": "c", "letter": "C", "text": "66", "isCorrect": false}, {"id": "d", "letter": "D", "text": "94.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> 94..", "explanationImages": [], "points": 0.25, "displayNumber": 5}, {"id": "hoa11_c3_de1_p1_q6", "number": 6, "part": 1, "type": "multiple_choice", "text": "Thể tích của 1,5 gam chất X bằng thể tích của 0,8 gam khí oxygen (đo ở cùng điều kiện nhiệt độ, áp suất). Phân tử khối của X là", "images": [], "options": [{"id": "a", "letter": "A", "text": "60", "isCorrect": true}, {"id": "b", "letter": "B", "text": "30", "isCorrect": false}, {"id": "c", "letter": "C", "text": "120", "isCorrect": false}, {"id": "d", "letter": "D", "text": "32.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> 60.", "explanationImages": [], "points": 0.25, "displayNumber": 6}, {"id": "hoa11_c3_de1_p1_q7", "number": 7, "part": 1, "type": "multiple_choice", "text": "Cấu tạo hoá học là ...(1)… giữa các nguyên tử trong phân tử. Cụm từ thích hợp điền vào (1) là", "images": [], "options": [{"id": "a", "letter": "A", "text": "thứ tự liên kết.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "phản ứng.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "liên kết.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "tỉ lệ số lượng.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> thứ tự liên kết..", "explanationImages": [], "points": 0.25, "displayNumber": 7}, {"id": "hoa11_c3_de1_p1_q8", "number": 8, "part": 1, "type": "multiple_choice", "text": "Chất X có công thức cấu tạo dạng khung phân tử như sau:<br/>Công thức phân tử của X là", "images": ["/assets/hoa11/c3/hoa11_c3_de1_image2.png"], "options": [{"id": "a", "letter": "A", "text": "C<sub>4</sub>H<sub>10</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>4</sub>H<sub>8</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>4</sub>H<sub>6</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "C<sub>3</sub>H<sub>6</sub>.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> C<sub>4</sub>H<sub>6</sub>.", "explanationImages": [], "points": 0.25, "displayNumber": 8}, {"id": "hoa11_c3_de1_p1_q9", "number": 9, "part": 1, "type": "multiple_choice", "text": "Trong các cặp chất sau đây, cặp chất nào là đồng phân của nhau?", "images": [], "options": [{"id": "a", "letter": "A", "text": "C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>OCH<sub>3</sub>", "isCorrect": true}, {"id": "b", "letter": "B", "text": "CH<sub>3</sub>OCH<sub>3</sub>, CH<sub>3</sub>CHO.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH, C<sub>2</sub>H<sub>5</sub>OH", "isCorrect": false}, {"id": "d", "letter": "D", "text": "C<sub>4</sub>H<sub>10</sub>, C<sub>6</sub>H<sub>6</sub>.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>OCH<sub>3</sub>.", "explanationImages": [], "points": 0.25, "displayNumber": 9}, {"id": "hoa11_c3_de1_p1_q10", "number": 10, "part": 1, "type": "multiple_choice", "text": "Phổ IR của chất X được cho như dưới đây:<br/>X có thể là chất nào sau đây?", "images": ["/assets/hoa11/c3/hoa11_c3_de1_image3.png"], "options": [{"id": "a", "letter": "A", "text": "CH<sub>3</sub>CH<sub>2</sub>-COOH.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>-CHO.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "CH<sub>3</sub>CH<sub>2</sub>-NH-CH<sub>2</sub>CH<sub>3</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "CH<sub>3</sub>-CO-CH<sub>2</sub>CH<sub>3</sub>.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> CH<sub>3</sub>CH<sub>2</sub>-NH-CH<sub>2</sub>CH<sub>3</sub>.", "explanationImages": [], "points": 0.25, "displayNumber": 10}, {"id": "hoa11_c3_de1_p1_q11", "number": 11, "part": 1, "type": "multiple_choice", "text": "Các chất hữu cơ có tính chất hoá học tương tự nhau và thành phần phân tử hơn kém nhau một hay nhiều nhóm CH<sub>2</sub> được gọi là các chất", "images": [], "options": [{"id": "a", "letter": "A", "text": "đồng phân của nhau", "isCorrect": false}, {"id": "b", "letter": "B", "text": "đồng đẳng của nhau.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "đồng vị của nhau", "isCorrect": false}, {"id": "d", "letter": "D", "text": "đồng khối của nhau.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> đồng đẳng của nhau..", "explanationImages": [], "points": 0.25, "displayNumber": 11}, {"id": "hoa11_c3_de1_p1_q12", "number": 12, "part": 1, "type": "multiple_choice", "text": "Methanol, ethanol, propan-1-ol thuộc cùng một dãy đồng đẳng. Phát biểu nào sau đây về các hợp chất này là đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Các hợp chất này có tính chất vật lí tương tự nhau và có tính chất hoá học biến đổi theo quy luật.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Các hợp chất này có tính chất hoá học tương tự nhau và có tính chất vật lí biến đổi theo quy luật.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Các hợp chất này có cùng công thức phân tử nhưng có các tính chất vật lí, tính chất hoá học khác nhau.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Các hợp chất này có các tính chất vật lí và tính chất hoá học tương tự nhau.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Các hợp chất này có tính chất hoá học tương tự nhau và có tính chất vật lí biến đổi theo quy luật..", "explanationImages": [], "points": 0.25, "displayNumber": 12}, {"id": "hoa11_c3_de1_p1_q13", "number": 13, "part": 1, "type": "multiple_choice", "text": "Để tách các chất lỏng ra khỏi hỗn hợp các chất có nhiệt độ sôi khác nhau, nhằm thu được chất lỏng tinh khiết hơn là phương pháp nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Phương pháp chưng cất", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Phương pháp chiết.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Phương pháp kết tinh", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Sắc kí cột.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Phương pháp chưng cất.", "explanationImages": [], "points": 0.25, "displayNumber": 13}, {"id": "hoa11_c3_de1_p1_q14", "number": 14, "part": 1, "type": "multiple_choice", "text": "Acetic acid có công thức phân tử là C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>. Kết luận nào dưới đây là đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Acetic acid có công thức thực nghiệm là CH<sub>2</sub>O và có khối lượng riêng lớn gấp 30 lần so với hydrogen ở cùng điều kiện (nhiệt độ, áp suất).", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Acetic acid có công thức phân tử là CH<sub>2</sub>O và có tỉ khối hơi so với hydrogen ở cùng điều kiện (nhiệt độ, áp suất) là 30.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Acetic acid có công thức thực nghiệm là CH<sub>2</sub>O và có phân tử khối là 60.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Acetic acid có công thức thực nghiệm là (CH<sub>2</sub>O)<sub>2</sub> và có phân tử khối là 60.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> Acetic acid có công thức thực nghiệm là CH<sub>2</sub>O và có phân tử khối là 60..", "explanationImages": [], "points": 0.25, "displayNumber": 14}, {"id": "hoa11_c3_de1_p1_q15", "number": 15, "part": 1, "type": "multiple_choice", "text": "Cho các hợp chất sau: CH<sub>4</sub>, NH<sub>3</sub>, C<sub>2</sub>H<sub>2</sub>, CCl<sub>4</sub>, C<sub>2</sub>H<sub>4</sub>, C<sub>6</sub>H<sub>6</sub>. Số hợp chất thuộc loại hydrocarbon là", "images": [], "options": [{"id": "a", "letter": "A", "text": "1", "isCorrect": false}, {"id": "b", "letter": "B", "text": "2", "isCorrect": false}, {"id": "c", "letter": "C", "text": "3", "isCorrect": false}, {"id": "d", "letter": "D", "text": "4.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> 4..", "explanationImages": [], "points": 0.25, "displayNumber": 15}, {"id": "hoa11_c3_de1_p1_q16", "number": 16, "part": 1, "type": "multiple_choice", "text": "Trong phương pháp sắc kí, hỗn hợp lỏng hoặc khí của các chất cần tách là pha động. Pha động tiếp xúc liên tực với pha tĩnh là một chất rắn có diện tích bề mặt rất lớn, có khả năng hấp phụ …(1)… với các chất trong hỗn hợp cần tách, khiến cho các chất trong hỗn hợp di chuyển với tốc độ …(2)… và tách ra khỏi nhau. Cụm từ thích hợp điền vào chỗ trống (1) và (2) lần lượt là", "images": [], "options": [{"id": "a", "letter": "A", "text": "(1) giống nhau và (2) giống nhau", "isCorrect": false}, {"id": "b", "letter": "B", "text": "(1) khác nhau và (2) khác nhau.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "(1) khác nhau và (2) giống nhau", "isCorrect": false}, {"id": "d", "letter": "D", "text": "(1) giống nhau và (2) khác nhau.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> (1) khác nhau và (2) khác nhau..", "explanationImages": [], "points": 0.25, "displayNumber": 16}, {"id": "hoa11_c3_de1_p1_q17", "number": 17, "part": 1, "type": "multiple_choice", "text": "Phổ MS của chất Y có thấy chất Y có phân tử khối bằng 60. Công thức phân tử nào dưới đây không phù hợp với Y?", "images": [], "options": [{"id": "a", "letter": "A", "text": "C<sub>3</sub>H<sub>8</sub>O", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>3</sub>H<sub>7</sub>F", "isCorrect": true}, {"id": "d", "letter": "D", "text": "C<sub>2</sub>H<sub>8</sub>N<sub>2</sub>.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> C<sub>3</sub>H<sub>7</sub>F.", "explanationImages": [], "points": 0.25, "displayNumber": 17}, {"id": "hoa11_c3_de1_p1_q18", "number": 18, "part": 1, "type": "multiple_choice", "text": "Nhận xét nào sau đây về 2 công thức cấu tạo bên là đúng?", "images": ["/assets/hoa11/c3/hoa11_c3_de1_image4.png"], "options": [{"id": "a", "letter": "A", "text": "Biểu diễn cấu tạo hóa học của 2 chất đồng phân mạch carbon.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Biểu diễn cấu tạo hóa học của 2 chất đồng phân vị trí nhóm chức.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Biểu diễn cấu tạo hóa học của 2 chất thuộc cùng dãy đồng đẳng.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Biểu diễn cấu tạo hóa học của cùng một chất.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> Biểu diễn cấu tạo hóa học của cùng một chất..", "explanationImages": [], "points": 0.25, "displayNumber": 18}, {"id": "hoa11_c3_de1_p2_q1", "number": 1, "part": 2, "type": "true_false", "text": "Các hợp chất hữu cơ đóng vai trò quan trọng đối với sự sống như protein, nucleic acid, hormone, … Cho các đặc điểm chung của các hợp chất hữu cơ như sau:", "images": [], "options": [{"id": "a", "letter": "A", "text": "Thành phần phân tử hợp chất hữu cơ nhất thiết phải chứa nguyên tố carbon và hydrogen.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Liên kết hoá học chủ yếu là liên kết cộng hoá trị.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Các hợp chất hữu cơ thường không tan hoặc ít tan trong nước, tan trong dung môi hữu cơ.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Các hợp chất hữu cơ thường khó bay hơi, bền với nhiệt và khó cháy.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Sai. Hợp chất hữu cơ nhất thiết phải chứa C, thường có H, O, N, …<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Các hợp chất hữu cơ thường dễ bay hơi, kém bền với nhiệt và dễ cháy.", "explanationImages": [], "points": 1.0, "displayNumber": 1}, {"id": "hoa11_c3_de1_p2_q2", "number": 2, "part": 2, "type": "true_false", "text": "Thực hiện thí nghiệm chưng cất ethanol từ dung dịch ethanol – nước:<br/>- Cho 60 mL rượu được nấu thủ công vào bình cầu có nhánh (chú ý chất lỏng trong bình không vượt quá 2/3 thể tích bình), thêm vài viên đá bọt.<br/>- Lắp dụng cụ như hình dưới đây:<br/>- Đun nóng từ từ đến khi hỗn hợp sôi, quan sát nhiệt độ trên nhiệt kế thấy tăng dần, khi nhiệt độ trên nhiệt kế ổn định, đó chính là nhiệt độ sôi của hỗn hợp ethanol và nước. Khi nhiệt độ bắt đầu tăng trở lại thì tắt nguồn nhiệt, ngừng chưng cất.", "images": ["/assets/hoa11/c3/hoa11_c3_de1_image5.png"], "options": [{"id": "a", "letter": "A", "text": "Nhiệt độ sôi của ethanol cao hơn nhiệt độ sôi của hỗn hợp ethanol và nước.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Nhiệt độ sôi của hỗn hợp ethanol và nước cao hơn nhiệt độ sôi của nước.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Độ cồn của sản phẩm sẽ lớn hơn so với độ cồn ban đầu do sản phẩm thu được tinh khiết hơn lẫn ít nước hơn rượu ban đầu.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Ống sinh hàn có tác dụng làm lạnh để các chất (ở trạng thái lỏng trong điều kiện thường) đang hóa hơi, đi ngang qua ống sẽ ngưng tụ.", "isCorrect": true}], "explanation": "Đáp án:<br/>a. Sai. Nhiệt độ sôi của ethanol thấp hơn nhiệt độ sôi của hỗn hợp ethanol và nước.<br/>b. Sai. Hỗn hợp ethanol và nước có nhiệt độ sôi thấp hơn nhiệt độ sôi của nước.<br/>c. Đúng.<br/>d. Đúng.", "explanationImages": [], "points": 1.0, "displayNumber": 2}, {"id": "hoa11_c3_de1_p2_q3", "number": 3, "part": 2, "type": "true_false", "text": "Các chất hữu cơ eugenol, chavibetol và methyl eugenol được thấy trong thành phần của nhiều loại tinh dầu. Eugenol và isoeugenol là nguyên liệu quan trọng dùng sản xuất vanillin (chất tạo hương cho thực phẩm); chavibetol có tác dụng sát khuẩn, kháng oxygen hoá; methyl eugenol là chất có tác dụng dẫn dụ côn trùng. Sử dụng methyl eugenol có thể \"lôi kéo\" một số loại côn trùng có hại tập trung lại một khu vực rồi tiêu diệt để bảo vệ mùa màng. Eugenol, chavibetol và methyl eugenol có công thức như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Eugenol</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Chavibetol</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Methyl eugenol</td></tr></table></div>", "images": [], "options": [{"id": "a", "letter": "A", "text": "Phần trăm khối lượng của nguyên tố carbon trong phân tử methyl eugenol là 72,16%.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Eugenol và chavibetol là đồng phân cấu tạo của nhau.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Eugenol và chavibetol đều có cùng công thức phân tử là C<sub>10</sub>H<sub>12</sub>O<sub>2</sub>.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Eugenol và methyl eugenol là đồng đẳng của nhau.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Sai. C<sub>11</sub>H<sub>14</sub>O<sub>2</sub>  %C = 74,16%.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Không phải là đồng đẳng của nhau.", "explanationImages": [], "points": 1.0, "displayNumber": 3}, {"id": "hoa11_c3_de1_p2_q4", "number": 4, "part": 2, "type": "true_false", "text": "Cho phản ứng sau:<br/>Cho biết số sóng hấp thụ đặc trưng của một số liên kết trên trong phổ hồng ngoại như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O–H (alcohol)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O–H (carboxylic acid)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C=O (ester, carboxylic acid)</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Số sóng (cm–1)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3650 – 3200</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 2500</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1780 – 1650</td></tr></table></div>", "images": ["/assets/hoa11/c3/hoa11_c3_de1_image9.png"], "options": [{"id": "a", "letter": "A", "text": "Có ba hợp chất hữu cơ trong phản ứng trên.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Phổ hồng ngoại có số sóng hấp thụ ở 3450 cm<sup>-1</sup> là phổ của CH<sub>3</sub>CH<sub>2</sub>OH.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Phổ hồng ngoại có số sóng hấp thụ ở 1750 cm<sup>-1</sup> mà không hấp thụ đặc trưng của liên kết O–H là phổ của CH<sub>3</sub>COOH.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Dựa vào phổ hồng ngoại, không thể phân biệt được các chất hữu cơ có trong phản ứng trên.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Đó là CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>.<br/>d. Sai. Có thể phân biệt được dựa vào phổ IR.", "explanationImages": [], "points": 1.0, "displayNumber": 4}, {"id": "hoa11_c3_de1_p3_q1", "number": 1, "part": 3, "type": "short_answer", "text": "Trong dãy chất sau: CH<sub>4</sub>, CaCO<sub>3</sub>, CO<sub>2</sub>, C<sub>2</sub>H<sub>7</sub>N, C<sub>3</sub>H<sub>8</sub>O và NaCN, có bao nhiêu hợp chất hữu cơ?", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.", "explanationImages": [], "points": 0.25, "displayNumber": 1, "acceptedAnswers": ["3", "3", "3"]}, {"id": "hoa11_c3_de1_p3_q2", "number": 2, "part": 3, "type": "short_answer", "text": "Có bao nhiêu hợp chất hữu cơ mạch hở (bền) có công thức phân tử là C<sub>3</sub>H<sub>8</sub>O?", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.<br/>CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub>OHCH<sub>3</sub> – O – CH<sub>2</sub> – CH<sub>3</sub>", "explanationImages": ["/assets/hoa11/c3/hoa11_c3_de1_image11.png"], "points": 0.25, "displayNumber": 2, "acceptedAnswers": ["3", "3", "3"]}, {"id": "hoa11_c3_de1_p3_q3", "number": 3, "part": 3, "type": "short_answer", "text": "Cho các chất H<sub>2</sub>O, LiF, C<sub>2</sub>H<sub>6</sub>và các giá trị nhiệt độ sôi -89 <sup>o</sup>C, 100 <sup>o</sup>C và 1676 <sup>o</sup>C. Hãy cho biết nhiệt độ sôi của C<sub>2</sub>H<sub>6</sub> là bao nhiêu?", "images": [], "correctAnswer": "–89", "explanation": "Đáp án: –89.<br/>LiF là hợp chất giữa kim loại mạnh và phi kim mạnh  Þ  có liên kết ion  Þ  nhiệt độ sôi lớn nhất.<br/>Giữa các phân tử H<sub>2</sub>O có liên kết hydrogen còn các phân tử C<sub>2</sub>H<sub>6</sub> không có nên nhiệt độ sôi của H<sub>2</sub>O cao hơn C<sub>2</sub>H<sub>6</sub>.<br/>Thứ tự tăng dần nhiệt độ sôi: C<sub>2</sub>H<sub>6</sub> (-88,5 <sup>o</sup>C), H<sub>2</sub>O (100 <sup>o</sup>C), LiF (1676 <sup>o</sup>C).", "explanationImages": [], "points": 0.25, "displayNumber": 3, "acceptedAnswers": ["–89", "–89", "–89"]}, {"id": "hoa11_c3_de1_p3_q4", "number": 4, "part": 3, "type": "short_answer", "text": "Chỉ ra số sóng hấp thụ đặc trưng của nhóm – OH trên phổ hồng ngoại của chất sau:", "images": ["/assets/hoa11/c3/hoa11_c3_de1_image10.png"], "correctAnswer": "3337", "explanation": "Đáp án: 3337.", "explanationImages": [], "points": 0.25, "displayNumber": 4, "acceptedAnswers": ["3337", "3337", "3337"]}, {"id": "hoa11_c3_de1_p3_q5", "number": 5, "part": 3, "type": "short_answer", "text": "Retinol là vitamin A, có nguồn gốc động vật, có vai trò hỗ trợ thị giác của mắt. Để xác định công thức phân tử của hợp chất này, người ta đã tiến hành phân tích nguyên tố và đo phổ khối lượng. Kết quả khảo sát được trình bày trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">%C</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">%H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">%O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Giá trị m/z của peak ion phân tử [M+]</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Vitamin A</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">83,92</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">10,49</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">5,59</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">286</td></tr></table></div><br/>Tổng số nguyên tử có trong phân tử Vitamin A là bao nhiêu?", "images": [], "correctAnswer": "51", "explanation": "Đáp án: 51.<br/>- Thiết lập công thức phân tử của vitamin A:<br/>Đặt công thức phân tử tổng quát là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub>, ta có:<br/>83,9210,495,59x:y:z:: 6,993 : 10,49 : 0,349  20 : 30 :1.12116===<br/>Vậy công thức đơn giản nhất của vitamin A là C<sub>20</sub>H<sub>30</sub>O.<br/>Þ CTPT của vitamin A có dạng (C<sub>20</sub>H<sub>30</sub>O)<sub>n</sub><br/>Þ  M<sub>vitamin A</sub> =  (12.20 + 1. 30 + 16).n = 286  Þ  n = 1 Công thức phân tử của vitamin A là C<sub>20</sub>H<sub>30</sub>O.", "explanationImages": [], "points": 0.25, "displayNumber": 5, "acceptedAnswers": ["51", "51", "51"]}, {"id": "hoa11_c3_de1_p3_q6", "number": 6, "part": 3, "type": "short_answer", "text": "Cho các thông tin trong bảng A và B như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột A</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột B</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(a) Giã lá cây chàm, cho vào nước, lọc lấy dung dịch màu để nhuộm sợi, vải.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(1) Phương pháp kết tinh.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(b) Nấu rượu uống.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(2) Phương pháp chưng cất.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(c) Tách màu trong thuốc nhuộm thực phẩm.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(3) Phương pháp sắc kí cột.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(d) Làm đường cát, đường phèn từ nước mía.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(4) Phương pháp chiết lỏng – rắn.</td></tr></table></div><br/>Ghán số thứ tự ứng với các phương pháp ở cột B sao cho phù hợp với các thông tin cho ở cột A theo thứ tự a, b, c, d và sắp xếp theo trình tự dãy 4 số (ví dụ 2314, 1234,…).", "images": [], "correctAnswer": "4231", "explanation": "Đáp án: 4231.<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột A</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột B</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(a) Giã lá cây chàm, cho vào nước, lọc lấy dung dịch màu để nhuộm sợi, vải.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(4) Phương pháp chiết lỏng – rắn.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(b) Nấu rượu uống.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(2) Phương pháp chưng cất.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(c) Tách màu trong thuốc nhuộm thực phẩm.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(3) Phương pháp sắc kí cột.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(d) Làm đường cát, đường phèn từ nước mía.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(1) Phương pháp kết tinh.</td></tr></table></div><br/>------------------------- HẾT -------------------------", "explanationImages": [], "points": 0.25, "displayNumber": 6, "acceptedAnswers": ["4231", "4231", "4231"]}]}, {"id": "hoa11_c3_de2", "code": "11-C3-02", "title": "Đề Kiểm Tra Chương 3: Đại Cương Hóa Hữu Cơ (Đề số 2)", "topic": "Công thức phân tử, công thức cấu tạo & phổ khối lượng MS", "badge": "Chương 3 • Đề 2", "duration": 50, "totalQuestions": 28, "totalPoints": 10, "questions": [{"id": "hoa11_c3_de2_p1_q1", "number": 1, "part": 1, "type": "multiple_choice", "text": "Trong các hợp chất sau, chất nào là hợp chất hữu cơ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "CO<sub>2</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>6</sub>H<sub>6</sub>", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Na<sub>2</sub>CO<sub>3</sub>.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Al<sub>4</sub>C<sub>3</sub>.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> C<sub>6</sub>H<sub>6</sub>.", "explanationImages": [], "points": 0.25, "displayNumber": 1}, {"id": "hoa11_c3_de2_p1_q2", "number": 2, "part": 1, "type": "multiple_choice", "text": "Trong các hợp chất sau, chất nào là dẫn xuất của hydrocarbon?", "images": [], "options": [{"id": "a", "letter": "A", "text": "CH<sub>4</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "CH<sub>3</sub>OH", "isCorrect": true}, {"id": "c", "letter": "C", "text": "C<sub>2</sub>H<sub>4</sub>.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "C<sub>3</sub>H<sub>8</sub>.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> CH<sub>3</sub>OH.", "explanationImages": [], "points": 0.25, "displayNumber": 2}, {"id": "hoa11_c3_de2_p1_q3", "number": 3, "part": 1, "type": "multiple_choice", "text": "Liên kết hóa học trong phân tử hợp chất hữu cơ chủ yếu là", "images": [], "options": [{"id": "a", "letter": "A", "text": "liên kết ion.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "liên kết cộng hóa trị.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "liên kết cho - nhận.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "liên kết hydrogen.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> liên kết cộng hóa trị..", "explanationImages": [], "points": 0.25, "displayNumber": 3}, {"id": "hoa11_c3_de2_p1_q4", "number": 4, "part": 1, "type": "multiple_choice", "text": "Phổ hồng ngoại của hợp chất hữu cơ nào sau đây không có hấp thụ ở vùng 1750 – 1600 cm<sup>-1</sup>?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Alcohol", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Ketone", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Ester", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Aldehyde.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Alcohol.", "explanationImages": [], "points": 0.25, "displayNumber": 4}, {"id": "hoa11_c3_de2_p1_q5", "number": 5, "part": 1, "type": "multiple_choice", "text": "óa học hữu cơ là ngành hóa học chuyên nghiên cứu về các …………………. Cụm từ thích hợp điền vào chỗ trống trong định nghĩa trên là", "images": [], "options": [{"id": "a", "letter": "A", "text": "hợp chất hữu cơ", "isCorrect": true}, {"id": "b", "letter": "B", "text": "hợp chất vô cơ.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "hợp chất thiên nhiên", "isCorrect": false}, {"id": "d", "letter": "D", "text": "hợp chất phức.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> hợp chất hữu cơ.", "explanationImages": [], "points": 0.25, "displayNumber": 5}, {"id": "hoa11_c3_de2_p1_q6", "number": 6, "part": 1, "type": "multiple_choice", "text": "Trường hợp nào dưới đây khoanh đúng nhóm chức carboxylic acid của ethanoic acid?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Khoanh nhóm methyl -CH<sub>3</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Khoanh nguyên tử carbonyl carbon =C=O", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Khoanh đúng toàn bộ nhóm carboxyl -COOH (-C(=O)OH)", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Khoanh nhóm hydroxyl -OH", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Đáp án đúng là C:</b> Nhóm chức carboxylic acid của ethanoic acid (CH<sub>3</sub>COOH) là nhóm -COOH (-C(=O)OH).", "explanationImages": [], "points": 0.25, "displayNumber": 6}, {"id": "hoa11_c3_de2_p1_q7", "number": 7, "part": 1, "type": "multiple_choice", "text": "Phương pháp dùng để tách các chất hữu cơ có hàm lượng nhỏ và khó tách ra khỏi nhau là phương pháp nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Phương pháp chưng cất", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Phương pháp chiết", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Phương pháp kết tinh", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Phương pháp sắc kí cột.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> Phương pháp sắc kí cột..", "explanationImages": [], "points": 0.25, "displayNumber": 7}, {"id": "hoa11_c3_de2_p1_q8", "number": 8, "part": 1, "type": "multiple_choice", "text": "Ngâm củ nghệ với ethanol nóng, sau đó lọc bỏ bã, lấy dung dịch đem cô để làm bay hơi bớt dung môi. Phần dung dịch còn lại sau khi cô được làm lạnh, để yên một thời gian rồi lọc lấy kết tủa curcumin màu vàng. Từ mô tả ở trên, hãy cho biết, người ta đã sử dụng các kĩ thuật tinh chế nào để lấy được curcumin từ củ nghệ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Chiết, chưng cất và kết tinh", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Chiết và kết tinh.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Chưng cất và kết tinh", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Chưng cất, kết tinh và sắc kí.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Chiết và kết tinh..", "explanationImages": [], "points": 0.25, "displayNumber": 8}, {"id": "hoa11_c3_de2_p1_q9", "number": 9, "part": 1, "type": "multiple_choice", "text": "Glucose là hợp chất hữu cơ có nhiều trong các loại quả chín, đặc biệt là quả nho. Công thức phân tử của glucose là C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>. Công thức đơn giản nhất của glucose là", "images": [], "options": [{"id": "a", "letter": "A", "text": "C<sub>1,5</sub>H<sub>3</sub>O<sub>1,5</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "CH<sub>2</sub>O", "isCorrect": true}, {"id": "c", "letter": "C", "text": "C<sub>3</sub>H<sub>4</sub>O<sub>3</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "CHO<sub>2</sub>.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> CH<sub>2</sub>O.", "explanationImages": [], "points": 0.25, "displayNumber": 9}, {"id": "hoa11_c3_de2_p1_q10", "number": 10, "part": 1, "type": "multiple_choice", "text": "Để xác định phân tử khối của hợp chất hữu cơ, người ta sử dụng phổ khối lượng MS, trong đó phân tử khối của chất là giá trị m/z của", "images": [], "options": [{"id": "a", "letter": "A", "text": "peak [M<sup>+</sup>] lớn nhất", "isCorrect": true}, {"id": "b", "letter": "B", "text": "peak [M<sup>+</sup>] nhỏ nhất.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "peak xuất hiện nhiều nhất", "isCorrect": false}, {"id": "d", "letter": "D", "text": "nhóm peak xuất hiện nhiều nhất.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> peak [M<sup>+</sup>] lớn nhất.", "explanationImages": [], "points": 0.25, "displayNumber": 10}, {"id": "hoa11_c3_de2_p1_q11", "number": 11, "part": 1, "type": "multiple_choice", "text": "Hợp chất hữu cơ X có 82,76% khối lượng là carbon, còn lại là hydrogen. Công thức thực nghiệm của X là", "images": [], "options": [{"id": "a", "letter": "A", "text": "CH<sub>5</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>5</sub>H", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>2</sub>H<sub>5</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "C<sub>5</sub>H<sub>2</sub>.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> C<sub>2</sub>H<sub>5</sub>.", "explanationImages": [], "points": 0.25, "displayNumber": 11}, {"id": "hoa11_c3_de2_p1_q12", "number": 12, "part": 1, "type": "multiple_choice", "text": "Để viết được cấu tạo hóa học của một chất cần biết những yếu tố nào sau đây?<br/>(a) Thành phần phân tử của chất.<br/>(b) Hóa trị của các nguyên tố có trong phân tử chất.<br/>(c) Trật tự liên kết của các nguyên tử có trong phân tử chất.<br/>(d) Nhiệt độ sôi của chất.", "images": [], "options": [{"id": "a", "letter": "A", "text": "a, b, c", "isCorrect": true}, {"id": "b", "letter": "B", "text": "a, c, d", "isCorrect": false}, {"id": "c", "letter": "C", "text": "b, c, d", "isCorrect": false}, {"id": "d", "letter": "D", "text": "a, b, d.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> a, b, c.", "explanationImages": [], "points": 0.25, "displayNumber": 12}, {"id": "hoa11_c3_de2_p1_q13", "number": 13, "part": 1, "type": "multiple_choice", "text": "Những hợp chất hữu cơ khác nhau nhưng có cùng công thức phân tử được gọi là các chất", "images": [], "options": [{"id": "a", "letter": "A", "text": "đồng phân của nhau", "isCorrect": true}, {"id": "b", "letter": "B", "text": "đồng đẳng của nhau.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "đồng vị của nhau", "isCorrect": false}, {"id": "d", "letter": "D", "text": "đồng khối của nhau.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> đồng phân của nhau.", "explanationImages": [], "points": 0.25, "displayNumber": 13}, {"id": "hoa11_c3_de2_p1_q14", "number": 14, "part": 1, "type": "multiple_choice", "text": "Cho các cặp chất sau đây:<br/>Số cặp chất là đồng đẳng của nhau là", "images": ["/assets/hoa11/c3/hoa11_c3_de2_image5.png"], "options": [{"id": "a", "letter": "A", "text": "2", "isCorrect": true}, {"id": "b", "letter": "B", "text": "4", "isCorrect": false}, {"id": "c", "letter": "C", "text": "1", "isCorrect": false}, {"id": "d", "letter": "D", "text": "3.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> 2.", "explanationImages": [], "points": 0.25, "displayNumber": 14}, {"id": "hoa11_c3_de2_p1_q15", "number": 15, "part": 1, "type": "multiple_choice", "text": "Cho hỗn hợp các alkane có mạch carbon thẳng sau: pentane (sôi ở 36<sup>o</sup>C), heptane (sôi ở 98<sup>o</sup>C), octane (sôi ở 126<sup>o</sup>C) và nonane (sôi ở 151<sup>o</sup>C). Có thể tách riêng các chất đó bằng cách nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Chiết", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Kết tinh", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Bay hơi", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Chưng cất.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> Chưng cất..", "explanationImages": [], "points": 0.25, "displayNumber": 15}, {"id": "hoa11_c3_de2_p1_q16", "number": 16, "part": 1, "type": "multiple_choice", "text": "Glycerol là hợp chất dùng làm dược phẩm để giảm cân, cải thiện hoạt động tập thể dục, giúp cơ thể bù lượng nước bị mất trong suốt thời gian bị tiêu chảy và nôn mửa cũng như làm giảm áp lực bên trong mắt ở những người bị tăng nhãn áp. Dựa vào phổ IR dưới đây:<br/>Cho biết peak nào có thể xác định được nhóm chức -OH có trong hợp chất (X)?", "images": ["/assets/hoa11/c3/hoa11_c3_de2_image6.png"], "options": [{"id": "a", "letter": "A", "text": "Peak", "isCorrect": false}, {"id": "d", "letter": "D", "text": "B. Peak E", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Peak", "isCorrect": true}, {"id": "a", "letter": "A", "text": "D. Peak", "isCorrect": false}, {"id": "b", "letter": "B", "text": "", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> Peak.", "explanationImages": [], "points": 0.25, "displayNumber": 16}, {"id": "hoa11_c3_de2_p1_q17", "number": 17, "part": 1, "type": "multiple_choice", "text": "Vì sao có thể dựa vào nhóm chức để phân loại các hợp chất hữu cơ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Vì biết được nhóm chức thì biết được thành phần các nguyên tố hóa học có trong phân tử hợp chất hữu cơ.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Vì nhóm chức không bị biến đổi khi phân tử hữu cơ tham gia phản ứng.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Vì nhóm chức tham gia vào các phản ứng trong cơ thể sống.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Vì nhóm chức gây ra các phản ứng hoá học đặc trưng cho phân tử hữu cơ.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> Vì nhóm chức gây ra các phản ứng hoá học đặc trưng cho phân tử hữu cơ..", "explanationImages": [], "points": 0.25, "displayNumber": 17}, {"id": "hoa11_c3_de2_p1_q18", "number": 18, "part": 1, "type": "multiple_choice", "text": "Cho các phát biểu sau:<br/>(a) Hợp chất hữu cơ là hợp chất của carbon (trừ CO, CO<sub>2</sub>, các muối carbonate, cyanide, carbide, …)<br/>(b) Phổ hồng ngoại cho phép xác định cả loại nhóm chức và số lượng nhóm chức đó có trong phân tử hợp chất hữu cơ.<br/>(c) Phổ khối lượng (MS) cho biết tỉ lệ phần trăm khối lượng của các nguyên tố.<br/>(d) Một hydrocarbon và một hợp chất ion có khối lượng phân tử gần bằng nhau thì hydrocarbon tan trong nước ít hơn và có nhiệt độ sôi thấp hơn so với hợp chất ion.<br/>Số phát biểu đúng là", "images": [], "options": [{"id": "a", "letter": "A", "text": "2", "isCorrect": true}, {"id": "b", "letter": "B", "text": "4", "isCorrect": false}, {"id": "c", "letter": "C", "text": "1", "isCorrect": false}, {"id": "d", "letter": "D", "text": "3.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> 2.", "explanationImages": [], "points": 0.25, "displayNumber": 18}, {"id": "hoa11_c3_de2_p2_q1", "number": 1, "part": 2, "type": "true_false", "text": "Catechin là một chất kháng oxi hoá mạnh, ức chế hoạt động của các gốc tự do nên có khả năng phòng chống bệnh ung thư, nhồi máu cơ tim. Trong lá chè tươi, catechin chiếm khoảng 25 – 35% tổng trọng lượng khô. Ngoài ra, catechin còn có trong táo, lê, nho…  Công thức cấu tạo của catechin cho như hình bên.", "images": ["/assets/hoa11/c3/hoa11_c3_de2_image7.png"], "options": [{"id": "a", "letter": "A", "text": "Catechin là hợp chất hữu cơ có nguồn gốc từ tự nhiên.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Catechin là hợp chất hữu cơ đa chức.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Catechin có 9 liên kết π (pi) trong phân tử.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Phần trăm khối lượng của nguyên tố oxygen trong catechin là 33,1%.", "isCorrect": true}], "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Catechin là hợp chất hữu cơ tạp chức.<br/>c. Sai. Có 6 liên kết π trong phân tử.<br/>d. Đúng. Catechin có công thức phân tử C<sub>15</sub>H<sub>14</sub>O<sub>6</sub>  O16.6%m.100%33,1%12.151416.6Þ==++", "explanationImages": [], "points": 1.0, "displayNumber": 1}, {"id": "hoa11_c3_de2_p2_q2", "number": 2, "part": 2, "type": "true_false", "text": "Thực hiện thí nghiệm tách β-carotene từ nước ép cà rốt như sau:<br/>- Chuẩn bị: nước ép cà rốt, hexane; cốc thuỷ tinh 100 mL, bình tam giác 100 mL, phễu chiết 60 mL, giá thí nghiệm.<br/>- Tiến hành:<br/>Bước 1: Cho khoảng 20 mL nước ép cà rốt vào phễu chiết. Thêm tiếp khoảng 20 mL hexane, lắc đều khoảng 2 phút.<br/>Bước 2: Để yên phễu chiết trên giá thí nghiệm khoảng 5 phút để chất lỏng tách thành hai lớp.<br/>Bước 3: Mở khoá phễu chiết cho phần nước ở dưới chảy xuống, còn lại phần dung dịch β-carotene hoà tan trong hexane.", "images": [], "options": [{"id": "a", "letter": "A", "text": "Trước khi chiết lớp hexane trong phễu không có màu; sau khi chiết lớp hexane trong phễu có màu vàng cam.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Thí nghiệm tách β-carotene từ nước cà rốt dựa theo nguyên tắc chiết lỏng – lỏng.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Dùng dung môi là hexane có khả năng hoà tan β-carotene nhưng không tan trong nước và có nhiệt độ sôi thấp để chiết.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Phễu chiết tách thành hai lớp, lớp bên trên là nước, lớp dưới là β-carotene hoà tan trong hexane.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Lớp dưới là nước, lớp trên là β-carotene hòa tan trong hexane.", "explanationImages": [], "points": 1.0, "displayNumber": 2}, {"id": "hoa11_c3_de2_p2_q3", "number": 3, "part": 2, "type": "true_false", "text": "Hợp chất Cinnamaldehyde có nhiều trong vỏ cây quế và có mùi thơm của quế. Tinh dầu quế được chiết xuất từ vỏ cây quế với thành phần chính là Cinnamaldehyde. Có hai cách để chiết xuất được tinh dầu quế từ vỏ quế: Đó là công nghệ chưng cất hơi nước và chiết xuất qua dung môi. Công thức cấu tạo của Cinnamaldehyde như hình bên.", "images": ["/assets/hoa11/c3/hoa11_c3_de2_image8.png"], "options": [{"id": "a", "letter": "A", "text": "Cinnamaldehyde có đồng phân hình học và có công thức phân tử là C<sub>9</sub>H<sub>8</sub>O.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Cinnamaldehyde có số liên kết σ (sigma) trong phân tử là 18.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Vỏ quế để lâu sẽ bị mất mùi thơm, nguyên nhân chính là do Cinnamaldehyde bị oxi hoá bởi oxygen trong không khí.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Để thu được thành phần Cinnamaldehyde lên đến 90% thì phải sử dụng công nghệ chiết xuất qua dung môi.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng. Số liên kết sigma = 9 + 8 + 1 – 1 + 1 = 18.<br/>c. Đúng.<br/>d. Sai. Để đạt thành phần Cinnamaldehyde lên đến 90% thì phải sử dụng công nghệ chưng cất hơi nước, còn với công nghệ chiết xuất qua dung môi chỉ đạt được 62% đến 73% tỉ lệ Cinnamaldehyde.", "explanationImages": [], "points": 1.0, "displayNumber": 3}, {"id": "hoa11_c3_de2_p2_q4", "number": 4, "part": 2, "type": "true_false", "text": "Hợp chất hữu cơ X gồm 3 nguyên tố C, H, O. Kết quả phân tích nguyên tố của hợp chất hữu cơ X có m<sub>C</sub> : m<sub>H</sub>: m<sub>O</sub> = 42 : 7 : 16. Phân tử khối của X gấp 4,0625 lần phân tử khối của phân tử oxygen. Biết X có mạch không phân nhánh và phổ hồng ngoại của X như sau:", "images": ["/assets/hoa11/c3/hoa11_c3_de2_image9.png"], "options": [{"id": "a", "letter": "A", "text": "X thuộc loại hợp chất ester.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Phân tử khối của X là 130.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "X có số nguyên tử hydrogen gấp 7 lần số nguyên tử oxygen.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Có hai công thức cấu tạo của X thỏa mãn.", "isCorrect": false}], "explanation": "Đáp án:<br/>C : H : O =  42716::3,5:7:17:14:212116==<br/>Þ Công thức thực nghiệm (C<sub>7</sub>H<sub>14</sub>O<sub>2</sub>)<sub>n</sub>; M<sub>X</sub> = 4,0625.32 = 130  Þ 130n = 130  Þ n = 1<br/>Þ X có CTPT C<sub>7</sub>H<sub>14</sub>O<sub>2</sub>. Trong phổ MS có peak tù trong khoảng 3300 – 2500 cm<sup>-1</sup> là peak đặc trưng của OH acid, có peak nhọn 1715 là peak đặc trưng của C=O; X có mạch không phân nhánh nên X có một công thức cấu tạo là CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>COOH.<br/>a. Sai.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai.", "explanationImages": [], "points": 1.0, "displayNumber": 4}, {"id": "hoa11_c3_de2_p3_q1", "number": 1, "part": 3, "type": "short_answer", "text": "Cho hợp chất hữu cơ X có công thức cấu tạo sau:<br/>Trong hợp chất hữu cơ X, có bao nhiêu loại nhóm chức khác nhau?", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.", "explanationImages": [], "points": 0.25, "displayNumber": 1, "acceptedAnswers": ["3", "3", "3"]}, {"id": "hoa11_c3_de2_p3_q2", "number": 2, "part": 3, "type": "short_answer", "text": "Cho các chất sau: CH<sub>4</sub>, CH<sub>3</sub>-CH<sub>2</sub>-NH<sub>2</sub>, CH<sub>2</sub>=CH<sub>2</sub>, CH<sub>3</sub>-COOH, CH<sub>2</sub>=C(CH<sub>3</sub>)-CH=CH<sub>2</sub>, C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>, CH º CH, CH<sub>3</sub>CHOH<sub>2</sub>N-CH(CH<sub>3</sub>)-COOH. Có bao nhiêu chất thuộc loại hydrocarbon?", "images": [], "correctAnswer": "4", "explanation": "Đáp án: 4.", "explanationImages": [], "points": 0.25, "displayNumber": 2, "acceptedAnswers": ["4", "4", "4"]}, {"id": "hoa11_c3_de2_p3_q3", "number": 3, "part": 3, "type": "short_answer", "text": "Camphor (có trong cây long não) là một chất rắn kết tinh màu trắng hay trong suốt giống như sáp với mùi thơm đặc trưng, thường dùng trong y học. Phân tử khối của camphor được xác định thông qua phổ khối lượng dưới đây có giá trị bằng bao nhiêu?", "images": ["/assets/hoa11/c3/hoa11_c3_de2_image12.png"], "correctAnswer": "152", "explanation": "Đáp án: 152.", "explanationImages": [], "points": 0.25, "displayNumber": 3, "acceptedAnswers": ["152", "152", "152"]}, {"id": "hoa11_c3_de2_p3_q4", "number": 4, "part": 3, "type": "short_answer", "text": "Có bao nhiêu đồng phân cấu tạo mạch hở ứng với công thức phân tử C<sub>4</sub>H<sub>9</sub>Cl?", "images": [], "correctAnswer": "4", "explanation": "Đáp án: 4.", "explanationImages": [], "points": 0.25, "displayNumber": 4, "acceptedAnswers": ["4", "4", "4"]}, {"id": "hoa11_c3_de2_p3_q5", "number": 5, "part": 3, "type": "short_answer", "text": "Cho các nhận định sau:<br/>(1) Người ta có thể chiết tách các chất hữu cơ hữu ích từ thuốc Bắc bằng cách ngâm thuốc Bắc trong dung dịch ethanol.<br/>(2) Sau khi ép cây mía và làm sạch các chất bẩn rắn cũng như chất bẩn màu, người ta thu được dung dịch nước đường. Cô cạn nước đường ở áp suất thấp sẽ tách được đường.<br/>(3) Sau khi chưng cất cây sả bằng hơi nước, người ta thu được lớp tinh dầu (chứa terpene) nổi trên mặt nước. Dùng phương pháp chiết sẽ tách riêng được lớp tinh dầu.<br/>(4) Để tách ethanol (ethylic alcohol) từ hỗn hợp với nước và bã rượu. Dùng kĩ thuật lọc tách sẽ tách riêng được ethanol ra khỏi hỗn hợp này.<br/>Liệt kê các ý đúng theo số thứ tự tăng dần. (Ví dụ: 2, 13, 234,….)", "images": [], "correctAnswer": "123", "explanation": "Đáp án: 123.", "explanationImages": [], "points": 0.25, "displayNumber": 5, "acceptedAnswers": ["123", "123", "123"]}, {"id": "hoa11_c3_de2_p3_q6", "number": 6, "part": 3, "type": "short_answer", "text": "Nicotine là chất gây nghiện có nhiều trong cây thuốc lá. Thành phần phần trăm về khối lượng của các nguyên tố trong phân tử nicotine như sau: 74,07% C; 8,64% H; 17,29% N. Phổ khối lượng (MS) của nicotine được cho như hình dưới đây:<br/>Tổng số nguyên tử trong một phân tử nicotine là bao nhiêu?", "images": ["/assets/hoa11/c3/hoa11_c3_de2_image13.png"], "correctAnswer": "26", "explanation": "Đáp án: 26.<br/>Gọi công thức tổng quát của nicotine là C<sub>x</sub>H<sub>y</sub>N<sub>z</sub><br/>Þ  CTĐGN nicotine là C<sub>5</sub>H<sub>7</sub>N<br/>CTPT của nicotine có dạng: (C<sub>5</sub>H<sub>7</sub>N)<sub>n</sub><br/>Theo phổ MS ta có M<sub>nicotine</sub> = 162  Þ 81n = 162  Þ  n = 2  Þ  CTPT của caffeine: C<sub>10</sub>H<sub>14</sub>N<sub>2</sub><br/>Þ  10 + 14 + 2 = 26.<br/>------------------------- HẾT -------------------------", "explanationImages": ["/assets/hoa11/c3/hoa11_c3_de2_image21.png"], "points": 0.25, "displayNumber": 6, "acceptedAnswers": ["26", "26", "26"]}]}, {"id": "hoa11_c3_de3", "code": "11-C3-03", "title": "Đề Kiểm Tra Chương 3: Đại Cương Hóa Hữu Cơ (Đề số 3)", "topic": "Thuyết cấu tạo hóa học, đồng phân & danh pháp hữu cơ", "badge": "Chương 3 • Đề 3", "duration": 50, "totalQuestions": 28, "totalPoints": 10, "questions": [{"id": "hoa11_c3_de3_p1_q1", "number": 1, "part": 1, "type": "multiple_choice", "text": "Trong các hợp chất sau, chất nào không phải là hợp chất hữu cơ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "(C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>2</sub>H<sub>2</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "NH<sub>3</sub>.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> NH<sub>3</sub>..", "explanationImages": [], "points": 0.25, "displayNumber": 1}, {"id": "hoa11_c3_de3_p1_q2", "number": 2, "part": 1, "type": "multiple_choice", "text": "Chưng cất là phương pháp tách và tinh chế chất lỏng dựa trên sự khác nhau về nhiệt độ sôi của các chất lỏng trong hỗn hợp ở áp suất nhất định. Quá trình chưng cất gồm 2 giai đoạn nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Hóa hơi và ngưng tụ", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Đông đặc và ngưng tụ.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Đông đặc và ngưng tụ", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Ngưng tụ và đông đặc.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Hóa hơi và ngưng tụ.", "explanationImages": [], "points": 0.25, "displayNumber": 2}, {"id": "hoa11_c3_de3_p1_q3", "number": 3, "part": 1, "type": "multiple_choice", "text": "Phổ hồng ngoại là phương pháp vật lí rất quan trọng và phổ biến để nghiên cứu về", "images": [], "options": [{"id": "a", "letter": "A", "text": "thành phần nguyên tố chất hữu cơ", "isCorrect": false}, {"id": "b", "letter": "B", "text": "thành phần phân tử hợp chất hữu cơ.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "cấu tạo hợp chất hữu cơ", "isCorrect": true}, {"id": "d", "letter": "D", "text": "cấu trúc không gian hợp chất hữu cơ.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> cấu tạo hợp chất hữu cơ.", "explanationImages": [], "points": 0.25, "displayNumber": 3}, {"id": "hoa11_c3_de3_p1_q4", "number": 4, "part": 1, "type": "multiple_choice", "text": "Cho hai chất hữu cơ: acetylene (C<sub>2</sub>H<sub>2</sub>) và benzene (C<sub>6</sub>H<sub>6</sub>). Phát biểu nào sau đây đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Hai chất đó giống nhau về công thức phân tử.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Hai chất đó có cùng công thức đơn giản nhất.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Hai chất có giá trị m/z của peak [M<sup>+</sup>] giống nhau trên phổ MS.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Hai chất đó cho tín hiệu về số sóng như nhau trên phổ IR.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Hai chất đó có cùng công thức đơn giản nhất..", "explanationImages": [], "points": 0.25, "displayNumber": 4}, {"id": "hoa11_c3_de3_p1_q5", "number": 5, "part": 1, "type": "multiple_choice", "text": "Phản ứng hóa học của các hợp chất hữu cơ có đặc điểm là", "images": [], "options": [{"id": "a", "letter": "A", "text": "thường xảy ra rất nhanh và cho một sản phẩm duy nhất.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "thường xảy ra chậm, không hoàn toàn, không theo một hướng nhất định.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "thường xảy ra rất nhanh, không hoàn toàn, không theo một hướng nhất định.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "thường xảy ra rất chậm, nhưng hoàn toàn, không theo một hướng xác định.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> thường xảy ra chậm, không hoàn toàn, không theo một hướng nhất định..", "explanationImages": [], "points": 0.25, "displayNumber": 5}, {"id": "hoa11_c3_de3_p1_q6", "number": 6, "part": 1, "type": "multiple_choice", "text": "Cho các đặc điểm chung của các phân tử hợp chất hữu cơ:<br/>(1) Thành phần nguyên tố chủ yếu là C và H.<br/>(2) Có thể chứa nguyên tố khác như Cl, O, N,...<br/>(3) Liên kết hóa học chủ yếu là liên kết cộng hoá trị.<br/>(4) Dễ bay hơi và khó cháy.<br/>(5) Tan nhiều trong nước và dung môi hữu cơ không phân cực.<br/>Nhóm các ý đúng là", "images": [], "options": [{"id": "a", "letter": "A", "text": "(1), (3)", "isCorrect": false}, {"id": "b", "letter": "B", "text": "(1), (2), (4)", "isCorrect": false}, {"id": "c", "letter": "C", "text": "(2), (3), (5)", "isCorrect": false}, {"id": "d", "letter": "D", "text": "(2), (3).", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> (2), (3)..", "explanationImages": [], "points": 0.25, "displayNumber": 6}, {"id": "hoa11_c3_de3_p1_q7", "number": 7, "part": 1, "type": "multiple_choice", "text": "Cho công thức cấu tạo của một số chất hữu cơ như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(1)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(2)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(3)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(4)</th></tr></table></div><br/>Chất có mạch carbon phân nhánh là", "images": [], "options": [{"id": "a", "letter": "A", "text": "(1)", "isCorrect": false}, {"id": "b", "letter": "B", "text": "(2)", "isCorrect": false}, {"id": "c", "letter": "C", "text": "(3)", "isCorrect": true}, {"id": "d", "letter": "D", "text": "(4).", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> (3).", "explanationImages": [], "points": 0.25, "displayNumber": 7}, {"id": "hoa11_c3_de3_p1_q8", "number": 8, "part": 1, "type": "multiple_choice", "text": "Phát biểu nào sau đây không đúng khi nói về hợp chất hữu cơ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Tính chất của các chất phụ thuộc vào thành phần phân tử và cấu tạo hóa học.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Các chất có cùng khối lượng phân tử là đồng phân của nhau.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Các chất là đồng phân của nhau thì có cùng công thức phân tử.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Trong hợp chất hữu cơ, carbon có hóa trị 4, nó có thể liên kết với nguyên tử nguyên tố khác và liên kết với nhau để tạo thành mạch carbon gồm: nhánh, không nhánh và vòng.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Các chất có cùng khối lượng phân tử là đồng phân của nhau..", "explanationImages": [], "points": 0.25, "displayNumber": 8}, {"id": "hoa11_c3_de3_p1_q9", "number": 9, "part": 1, "type": "multiple_choice", "text": "Phương pháp sắc kí cột có đặc điểm:<br/>(a) Pha tĩnh là bột silicagel hoặc bột aluminium oxygende,…<br/>(b) Pha động là dung môi thích hợp được đổ ở phía dưới pha tĩnh.<br/>(c) Chất có độ chuyển dịch lớn hơn sẽ cùng với dung môi ra khỏi cột trước.<br/>(d) Chất ra khỏi cột trước là chất có khả năng bị hấp phụ trên pha tĩnh tốt hơn.<br/>(e) Pha động cho vào sắc kí ở trạng thái lỏng.<br/>Số đặc điểm đúng là", "images": [], "options": [{"id": "a", "letter": "A", "text": "1", "isCorrect": false}, {"id": "b", "letter": "B", "text": "2", "isCorrect": false}, {"id": "c", "letter": "C", "text": "3", "isCorrect": true}, {"id": "d", "letter": "D", "text": "4.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> 3.", "explanationImages": [], "points": 0.25, "displayNumber": 9}, {"id": "hoa11_c3_de3_p1_q10", "number": 10, "part": 1, "type": "multiple_choice", "text": "Cho phổ hồng ngoại của chất X như hình dưới đây:<br/>Phân tử chất X có chứa nhóm chức nào sau đây?", "images": ["/assets/hoa11/c3/hoa11_c3_de3_image5.png"], "options": [{"id": "a", "letter": "A", "text": "Aldehyde (-CHO)", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Carboxylic acid (-COOH).", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Alcohol (-OH)", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Amine (-NH-).", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Carboxylic acid (-COOH)..", "explanationImages": [], "points": 0.25, "displayNumber": 10}, {"id": "hoa11_c3_de3_p1_q11", "number": 11, "part": 1, "type": "multiple_choice", "text": "Công thức phân tử cho biết thông tin nào sau đây về phân tử hợp chất hữu cơ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Thành phần nguyên tố và số lượng nguyên tử của mỗi nguyên tố.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Thành phần nguyên tố và tỉ lệ số lượng nguyên tử của mỗi nguyên tố.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Số lượng nguyên tử mỗi nguyên tố và trật tự liên kết giữa các nguyên tử.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Tỉ lệ số lượng nguyên tử của mỗi nguyên tố và trật tự liên kết giữa các nguyên tử.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Thành phần nguyên tố và số lượng nguyên tử của mỗi nguyên tố..", "explanationImages": [], "points": 0.25, "displayNumber": 11}, {"id": "hoa11_c3_de3_p1_q12", "number": 12, "part": 1, "type": "multiple_choice", "text": "Để phân tích thổ nhưỡng hoặc phân tích dư lượng thuốc bảo vệ thực vật trong nông sản người ta dùng phương pháp nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Chiết lỏng – lỏng", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Chiết lỏng – rắn.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Phương pháp kết tinh", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Sắc kí cột.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Chiết lỏng – rắn..", "explanationImages": [], "points": 0.25, "displayNumber": 12}, {"id": "hoa11_c3_de3_p1_q13", "number": 13, "part": 1, "type": "multiple_choice", "text": "Cây neem (cây thường xanh Ấn Độ) hay còn gọi là cây nim, sầu đâu (tên khoa học Azadirachta indica) được người Ấn độ dùng hơn 4000 năm nay để làm đẹp và chữa bệnh. Các chiết xuất từ là neem có thể ức chế sự sao chép của virus Dengue, kháng virus nên có tác dụng điều trị bệnh sốt xuất huyết hiệu quả. Người ta hái một ít lá neem tươi, rửa sạch, cho vào nồi đun kĩ, lọc lấy nước để sử dụng. Hãy cho biết cách làm trên thuộc loại phương pháp tách và tinh chế nào?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Phương pháp chưng cất", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Phương pháp chiết", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Phương pháp kết tinh", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Sắc kí cột.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Phương pháp chưng cất.", "explanationImages": [], "points": 0.25, "displayNumber": 13}, {"id": "hoa11_c3_de3_p1_q14", "number": 14, "part": 1, "type": "multiple_choice", "text": "Trong các dãy chất sau đây:<br/>(1) C<sub>2</sub>H<sub>6</sub>, CH<sub>4</sub>, C<sub>4</sub>H<sub>10</sub>.(2) C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH.<br/>(3) HCHO, CH<sub>3</sub>CHO, C<sub>2</sub>H<sub>5</sub>CHO.(4) CH<sub>3</sub>COOH, HCOOCH<sub>3</sub>.<br/>Có mấy dãy gồm các chất là đồng đẳng của nhau?", "images": [], "options": [{"id": "a", "letter": "A", "text": "1", "isCorrect": false}, {"id": "b", "letter": "B", "text": "2", "isCorrect": false}, {"id": "c", "letter": "C", "text": "3", "isCorrect": true}, {"id": "d", "letter": "D", "text": "4.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> 3.", "explanationImages": [], "points": 0.25, "displayNumber": 14}, {"id": "hoa11_c3_de3_p1_q15", "number": 15, "part": 1, "type": "multiple_choice", "text": "Menthol (mùi bạc hà) có công thức là C<sub>10</sub>H<sub>18</sub>O, chỉ chứa một liên kết đôi. Phát biểu nào sau đây không đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Menthol là dẫn xuất của hydrocarbon.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Menthol có cấu tạo mạch hở.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Menthol có cấu tạo mạch vòng.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Menthol có nhiệt độ sôi thấp hơn muối ăn (NaCl).", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Menthol có cấu tạo mạch hở..", "explanationImages": [], "points": 0.25, "displayNumber": 15}, {"id": "hoa11_c3_de3_p1_q16", "number": 16, "part": 1, "type": "multiple_choice", "text": "Hợp chất X có chứa hai hoặc ba nguyên tố C, H, O. Peak ion phân tử trên phổ MS của nó có m/z = 30. X có thể là chất nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "CH<sub>3</sub>OH hoặc C<sub>2</sub>H<sub>6</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "CH<sub>3</sub>CHO hoặc C<sub>2</sub>H<sub>4</sub>.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>2</sub>H<sub>6</sub> hoặc C<sub>2</sub>H<sub>5</sub>OH", "isCorrect": false}, {"id": "d", "letter": "D", "text": "HCHO hoặc C<sub>2</sub>H<sub>6</sub>.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> HCHO hoặc C<sub>2</sub>H<sub>6</sub>..", "explanationImages": [], "points": 0.25, "displayNumber": 16}, {"id": "hoa11_c3_de3_p1_q17", "number": 17, "part": 1, "type": "multiple_choice", "text": "Cặp chất nào dưới đây là đồng phân vị trí nhóm chức?", "images": [], "options": [{"id": "a", "letter": "A", "text": "323CHOCHCH  và  322CHCHCHOH .", "isCorrect": false}, {"id": "b", "letter": "B", "text": "33CHCOCH  và  32CHCHCHO= .", "isCorrect": false}, {"id": "c", "letter": "C", "text": "23CHCCHCHº  và  3223CHCHCHCHCHCH=-= .", "isCorrect": false}, {"id": "d", "letter": "D", "text": "322CHCHCHOH  và  ()33CHCHOHCH .", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> 322CHCHCHOH  và  ()33CHCHOHCH ..", "explanationImages": [], "points": 0.25, "displayNumber": 17}, {"id": "hoa11_c3_de3_p1_q18", "number": 18, "part": 1, "type": "multiple_choice", "text": "Methadone là một loại thuốc dùng trong cai nghiện ma túy, nó thực chất cũng là một loại chất gây nghiện nhưng “nhẹ” hơn các loại ma túy thông thường và dễ kiểm soát hơn. Công thức cấu tạo thu gọn như hình dưới.<br/>Công thức phân tử của methadone là", "images": ["/assets/hoa11/c3/hoa11_c3_de3_image14.jpeg"], "options": [{"id": "a", "letter": "A", "text": "C<sub>17</sub>H<sub>27</sub>NO.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>17</sub>H<sub>22</sub>NO.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>21</sub>H<sub>29</sub>NO.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "C<sub>21</sub>H<sub>27</sub>NO.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> C<sub>21</sub>H<sub>27</sub>NO..", "explanationImages": [], "points": 0.25, "displayNumber": 18}, {"id": "hoa11_c3_de3_p2_q1", "number": 1, "part": 2, "type": "true_false", "text": "Năm 1861, Butlerov (Bút-lê-rốp) đưa ra khái niệm cấu tạo hóa học và thuyết cấu tạo hoá học:", "images": [], "options": [{"id": "a", "letter": "A", "text": "Trong phân tử chất hữu cơ, các nguyên tử liên kết với nhau theo đúng hoá trị không nhất thiết theo một thứ tự nhất định.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Trong phân tử chất hữu cơ, carbon có hoá trị IV.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Tính chất của các chất phụ thuộc vào thành phần phân tử và cấu tạo hoá học.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Trong phân tử hợp chất hữu cơ, các nguyên tử carbon chỉ được liên kết với nhau không liên kết được với các nguyên tố khác.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Sai. Trong phân tử chất hữu cơ, các nguyên tử liên kết với nhau theo đúng hoá trị và theo một thứ tự nhất định.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Các nguyên tử carbon có thể liên kết được với nhau và liên kết với các nguyên tố khác.", "explanationImages": [], "points": 1.0, "displayNumber": 1}, {"id": "hoa11_c3_de3_p2_q2", "number": 2, "part": 2, "type": "true_false", "text": "Cho hai hợp chất hữu cơ là aniline (C<sub>6</sub>H<sub>7</sub>N), 2-aminopyridine (C<sub>5</sub>H<sub>6</sub>N<sub>2</sub>) và hình ảnh phổ khối như hình vẽ sau:<br/>(a) Phổ khối lượng của hợp chất hữu cơ A(b) Phổ khối lượng của hợp chất hữu cơ B", "images": ["/assets/hoa11/c3/hoa11_c3_de3_image15.png", "/assets/hoa11/c3/hoa11_c3_de3_image16.png"], "options": [{"id": "a", "letter": "A", "text": "Phổ khối lượng ở hình (a) tương ứng với phân tử aniline.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Mảnh ion phân tử ở hình (b) có giá trị m/z là 94.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Phổ khối lượng ở hình (b) tương ứng với phân tử 2-aminopyridine.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Mảnh ion phân tử ở hình (a) có giá trị m/z là 93.", "isCorrect": true}], "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.", "explanationImages": [], "points": 1.0, "displayNumber": 2}, {"id": "hoa11_c3_de3_p2_q3", "number": 3, "part": 2, "type": "true_false", "text": "Mỗi phát biểu sau là đúng hay sai?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Có thể tách riêng được acetic acid (ts = 118 °C), ethanol (ts = 78,3 °C) và ethyl acetate (ts = 77,1 °C) ra khỏi hỗn hợp ester hoá bằng phương pháp chưng cất.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Oxi hoá không hoàn toàn hỗn hợp gồm o-xylene và p-xylene bằng dung dịch acid HNO<sub>3</sub> thu được hỗn hợp benzene-1,2-dicarboxylic acid (độ tan 6 g L-1 nước ở 25 °C) và benzene-1,4-dicarboxylic acid (độ tan 0,065 g L-1 nước ở 25 °C). Tách 2 acid này khỏi nhau bằng phương pháp kết tinh.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Xăng, dầu là các phân đoạn chưng cất dầu mỏ gồm các hydrocarbon có nhiệt độ sôi gần nhau, được sử dụng làm nhiên liệu động cơ.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Để tách tinh dầu chanh, bưởi, hồi, quế từ các cây, quả tương ứng, người ta thường sử dụng phương pháp chưng cất lôi cuốn hơi nước.", "isCorrect": true}], "explanation": "Đáp án:<br/>a. Sai. Vì ethanol và ethyl acetate có nhiệt độ sôi gần nhau nên không sử dụng phương pháp chưng cất.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.", "explanationImages": [], "points": 1.0, "displayNumber": 3}, {"id": "hoa11_c3_de3_p2_q4", "number": 4, "part": 2, "type": "true_false", "text": "Hợp chất hữu cơ X có trong thành phần của giấm táo. Khi phân tích nguyên tố X thu được phần trăm các nguyên tố là: 40%C, 6,67%H và còn lại là O. Bằng phổ MS, người ta xác định được phân tử khối của X là 60. Cho biết phổ IR của X thấy có tín hiệu hấp thụ ở 1715 cm<sup>-1</sup> đồng thời thấy một số tín hiệu hấp thụ trong vùng 3400 – 2500 cm<sup>-1</sup>.", "images": [], "options": [{"id": "a", "letter": "A", "text": "Tỉ lệ số nguyên tử giữa nguyên tố carbon và nguyên tố hydrogen tương ứng là 1 : 2.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Công thức phân tử của X là C<sub>3</sub>H<sub>6</sub>O.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Công thức cấu tạo thu gọn của X là CH<sub>3</sub> – COOH.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "X thuộc dùng dãy đồng đẳng với CH<sub>3</sub> – CH<sub>2</sub> – OH.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Đúng.<br/>Gọi công thức tổng quát của X là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub><br/>Ta có: x : y : z =  406,6753,33::3,33:6,67:3,331:2:112116==   Þ  CTĐGN của X là CH<sub>2</sub>O.<br/>b. Sai.<br/>CTPT của X có dạng (CH<sub>2</sub>O)<sub>n</sub>  Þ  M<sub>X</sub> = 30n = 60  Þ  n = 2  Þ  CTPT của X: C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>.<br/>c. Đúng. X chứa liên kết C = O và O – H (trong COOH)  Þ  X là CH<sub>3</sub>COOH.<br/>d. Sai. X chứa -COOH không thể cùng dãy đồng đẳng với ethyl alcohol chứa -OH.", "explanationImages": [], "points": 1.0, "displayNumber": 4}, {"id": "hoa11_c3_de3_p3_q1", "number": 1, "part": 3, "type": "short_answer", "text": "Cho các hợp chất: C<sub>3</sub>H<sub>6</sub> (1), C<sub>7</sub>H<sub>6</sub>O<sub>2</sub>(2), CCl<sub>4</sub> (3), C<sub>8</sub>H<sub>18</sub> (4), C<sub>6</sub>H<sub>5</sub>N (5) và C<sub>4</sub>H<sub>4</sub>S (6). Trong các hợp chất trên, có bao nhiêu hợp chất là dẫn xuất hydrocarbon?", "images": [], "correctAnswer": "4", "explanation": "Đáp án: 4.", "explanationImages": [], "points": 0.25, "displayNumber": 1, "acceptedAnswers": ["4", "4", "4"]}, {"id": "hoa11_c3_de3_p3_q2", "number": 2, "part": 3, "type": "short_answer", "text": "Có bao nhiêu đồng phân cấu tạo mạch hở ứng với công thức phân tử C<sub>5</sub>H<sub>12</sub>?", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.<br/>(1) CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub>,<br/>(2)                          (3)", "explanationImages": ["/assets/hoa11/c3/hoa11_c3_de3_image24.png", "/assets/hoa11/c3/hoa11_c3_de3_image25.png"], "points": 0.25, "displayNumber": 2, "acceptedAnswers": ["3", "3", "3"]}, {"id": "hoa11_c3_de3_p3_q3", "number": 3, "part": 3, "type": "short_answer", "text": "Cho các chất sau: C<sub>2</sub>H<sub>6</sub>O, C<sub>3</sub>H<sub>8</sub>O<sub>3</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, C<sub>5</sub>H<sub>8</sub> và C<sub>2</sub>H<sub>2</sub>. Có bao nhiêu chất trong số các chất trên có công thức phân tử trùng với công thức đơn giản nhất?", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.", "explanationImages": [], "points": 0.25, "displayNumber": 3, "acceptedAnswers": ["3", "3", "3"]}, {"id": "hoa11_c3_de3_p3_q4", "number": 4, "part": 3, "type": "short_answer", "text": "Cho các chất có công thức cấu tạo sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(1)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(2)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(3)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(4)</th></tr></table></div><br/>Có mấy chất trong các chất trên có tín hiệu trên phổ hồng ngoại ở khoảng 1750 - 1680 cm<sup>-1</sup>?", "images": [], "correctAnswer": "2", "explanation": "Đáp án: 2.", "explanationImages": [], "points": 0.25, "displayNumber": 4, "acceptedAnswers": ["2", "2", "2"]}, {"id": "hoa11_c3_de3_p3_q5", "number": 5, "part": 3, "type": "short_answer", "text": "Phương pháp kết tinh dựa trên nguyên tắc chất rắn tách ra từ dung dịch bão hòa của chất đó khi thay đổi điều kiện hòa tan (dung môi, nhiệt độ). Cho các bước tiến hành kết tinh chất rắn:<br/>(1) Lọc nóng để loại bỏ phần chất rắn không tan.<br/>(2) Lọc lấy chất rắn kết tinh.<br/>(3) Hòa tan hỗn hợp chất rắn ở nhiệt độ sôi của dung môi để tạo dung dịch bão hòa.<br/>(4) Để nguội phần dung dịch sau khi lọc.<br/>Hãy sắp xếp các bước tiến hành theo trình tự a), b), c), d) trong hình thí nghiệm trên và tạo thành dãy bốn số. (ví dụ: 3241, 1243,…)", "images": ["/assets/hoa11/c3/hoa11_c3_de3_image21.png"], "correctAnswer": "3142", "explanation": "Đáp án: 3142.", "explanationImages": [], "points": 0.25, "displayNumber": 5, "acceptedAnswers": ["3142", "3142", "3142"]}, {"id": "hoa11_c3_de3_p3_q6", "number": 6, "part": 3, "type": "short_answer", "text": "Safrol là một chất có trong tinh dần xá xị (hay gù hương), được dùng làm hương liệu trong thực phẩm. Phổ MS của safrol có thấy chất này có phân tử khối là 162. Kết quả phân tích nguyên tố cho thấy thành phần phần trăm về khối lượng các nguyên tố carbon, hydrogen và oxygen có trong safrol lần lượt là 74,07%; 6,18% và 19,75%. Tổng số nguyên tử có trong phân tử safrol là bao nhiêu?", "images": [], "correctAnswer": "22", "explanation": "Đáp án: 22.<br/>Gọi công thức tổng quát của Safrol là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub><br/>Ta có tỉ lệ: x : y : z =  %C%H%O::12116  =  74,076,1819,75::12116 = 6,1725: 6,18: 1,234 = 5: 5 : 1<br/>Þ  CTĐGN của Safrol là C<sub>5</sub>H<sub>5</sub>O  Þ  CTPT của Safrol có dạng: (C<sub>5</sub>H<sub>5</sub>O)<sub>n</sub><br/>M<sub>X</sub> = 162  Þ  81n = 162  Þ  n = 2  Þ  CTPT của Safrol là C<sub>10</sub>H<sub>10</sub>O<sub>2</sub>.<br/>------------------------- HẾT -------------------------", "explanationImages": [], "points": 0.25, "displayNumber": 6, "acceptedAnswers": ["22", "22", "22"]}]}, {"id": "hoa11_c3_de4", "code": "11-C3-04", "title": "Đề Kiểm Tra Tổng Hợp Toàn Diện Chương 3 (Đề số 4)", "topic": "Đề ôn tập toàn diện Đại cương Hóa học Hữu cơ chuẩn Bộ 2025", "badge": "Chương 3 • Đề 4", "duration": 50, "totalQuestions": 28, "totalPoints": 10, "questions": [{"id": "hoa11_c3_de4_p1_q1", "number": 1, "part": 1, "type": "multiple_choice", "text": "Liên kết hoá học trong hợp chất hữu cơ thường là", "images": [], "options": [{"id": "a", "letter": "A", "text": "liên kết cộng hoá trị", "isCorrect": true}, {"id": "b", "letter": "B", "text": "liên kết kim loại.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "liên kết hydrogen.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "liên kết ion.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> liên kết cộng hoá trị.", "explanationImages": [], "points": 0.25, "displayNumber": 1}, {"id": "hoa11_c3_de4_p1_q2", "number": 2, "part": 1, "type": "multiple_choice", "text": "Hoá học hữu cơ là ngành hoá học chuyên nghiên cứu", "images": [], "options": [{"id": "a", "letter": "A", "text": "các hợp chất của carbon.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "các hợp chất của carbon (trừ CO, CO<sub>2</sub>).", "isCorrect": false}, {"id": "c", "letter": "C", "text": "các hợp chất của carbon (trừ CO, CO<sub>2</sub>, muối carbonate, cyanide, carbide,…).", "isCorrect": true}, {"id": "d", "letter": "D", "text": "các hợp chất chỉ có trong cơ thể sống.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> các hợp chất của carbon (trừ CO, CO<sub>2</sub>, muối carbonate, cyanide, carbide,…)..", "explanationImages": [], "points": 0.25, "displayNumber": 2}, {"id": "hoa11_c3_de4_p1_q3", "number": 3, "part": 1, "type": "multiple_choice", "text": "Phản ứng hoá học của các hợp chất hữu cơ thường xảy ra", "images": [], "options": [{"id": "a", "letter": "A", "text": "chậm, không hoàn toàn, không theo một hướng nhất định.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "nhanh và cho một sản phẩm duy nhất.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "nhanh, không hoàn toàn, không theo một hưởng nhất định.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "chậm, hoàn toàn, không theo một hưởng nhất định.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> chậm, không hoàn toàn, không theo một hướng nhất định..", "explanationImages": [], "points": 0.25, "displayNumber": 3}, {"id": "hoa11_c3_de4_p1_q4", "number": 4, "part": 1, "type": "multiple_choice", "text": "Công thức phân tử cho ta biết", "images": [], "options": [{"id": "a", "letter": "A", "text": "số lượng nguyên tử mỗi nguyên tố trong hợp chất hữu cơ.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "tỉ lệ số nguyên tử của các nguyên tố trong hợp chất hữu cơ", "isCorrect": false}, {"id": "c", "letter": "C", "text": "số nguyên tố có mặt trong phân tử hợp chất hữu cơ.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "cách thứ liên kết của các nguyên tử trong phân tử hợp chất hữu cơ.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> số lượng nguyên tử mỗi nguyên tố trong hợp chất hữu cơ..", "explanationImages": [], "points": 0.25, "displayNumber": 4}, {"id": "hoa11_c3_de4_p1_q5", "number": 5, "part": 1, "type": "multiple_choice", "text": "Tách chất màu thực phẩm thành những chất màu riêng thì dùng phương pháp nào sau đây?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Phương pháp kết tinh", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Phương pháp chưng cất.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Phương pháp sắc kí", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Phương pháp chiết.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> Phương pháp sắc kí.", "explanationImages": [], "points": 0.25, "displayNumber": 5}, {"id": "hoa11_c3_de4_p1_q6", "number": 6, "part": 1, "type": "multiple_choice", "text": "Chất nào sau đây có công thức phân tử trùng với công thức đơn giản nhất?", "images": [], "options": [{"id": "a", "letter": "A", "text": "CH<sub>3</sub>COOH", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>6</sub>H<sub>6</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>2</sub>H<sub>4</sub>Cl<sub>2</sub>", "isCorrect": false}, {"id": "d", "letter": "D", "text": "C<sub>2</sub>H<sub>5</sub>OH.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> C<sub>2</sub>H<sub>5</sub>OH..", "explanationImages": [], "points": 0.25, "displayNumber": 6}, {"id": "hoa11_c3_de4_p1_q7", "number": 7, "part": 1, "type": "multiple_choice", "text": "Bộ dụng cụ chiết (được mô tả như hình vẽ bên) dùng để", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image12.png"], "options": [{"id": "a", "letter": "A", "text": "tách hai chất rắn tan trong dung dịch", "isCorrect": false}, {"id": "b", "letter": "B", "text": "tách hai chất lỏng tan tốt vào nhau.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "tách hai chất lỏng không tan vào nhau", "isCorrect": true}, {"id": "d", "letter": "D", "text": "tách chất lỏng và chất rắn.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> tách hai chất lỏng không tan vào nhau.", "explanationImages": [], "points": 0.25, "displayNumber": 7}, {"id": "hoa11_c3_de4_p1_q8", "number": 8, "part": 1, "type": "multiple_choice", "text": "Các chất hữu cơ có tính chất hoá học tương tự nhau và thành phần phân tử hơn kém nhau một hay nhiều nhóm CH<sub>2</sub> được gọi là các chất", "images": [], "options": [{"id": "a", "letter": "A", "text": "đồng phân của nhau", "isCorrect": false}, {"id": "b", "letter": "B", "text": "đồng đẳng của nhau.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "đồng vị của nhau", "isCorrect": false}, {"id": "d", "letter": "D", "text": "đồng khối của nhau.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> đồng đẳng của nhau..", "explanationImages": [], "points": 0.25, "displayNumber": 8}, {"id": "hoa11_c3_de4_p1_q9", "number": 9, "part": 1, "type": "multiple_choice", "text": "Phố khối lượng của naphtalene được cho trong hình dưới đây:<br/>Phân tử khối của naphtalene là", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image13.png"], "options": [{"id": "a", "letter": "A", "text": "51.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "64", "isCorrect": false}, {"id": "c", "letter": "C", "text": "102", "isCorrect": false}, {"id": "d", "letter": "D", "text": "128.", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> 128..", "explanationImages": [], "points": 0.25, "displayNumber": 9}, {"id": "hoa11_c3_de4_p1_q10", "number": 10, "part": 1, "type": "multiple_choice", "text": "Phổ hồng ngoại là phương pháp vật lí rất quan trọng và phổ biến để nghiên cứu về", "images": [], "options": [{"id": "a", "letter": "A", "text": "thành phần nguyên tố chất hữu cơ", "isCorrect": false}, {"id": "b", "letter": "B", "text": "thành phần phân tử hợp chất hữu cơ.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "cấu tạo hợp chất hữu cơ", "isCorrect": true}, {"id": "d", "letter": "D", "text": "cấu trúc không gian hợp chất hữu cơ.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> cấu tạo hợp chất hữu cơ.", "explanationImages": [], "points": 0.25, "displayNumber": 10}, {"id": "hoa11_c3_de4_p1_q11", "number": 11, "part": 1, "type": "multiple_choice", "text": "Chất nào sau đây là hydrocarbon?", "images": [], "options": [{"id": "a", "letter": "A", "text": "CH<sub>3</sub>NH<sub>2</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>2</sub>H<sub>5</sub>OH", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>4</sub>H<sub>10</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "CH<sub>3</sub>CHO.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> C<sub>4</sub>H<sub>10</sub>.", "explanationImages": [], "points": 0.25, "displayNumber": 11}, {"id": "hoa11_c3_de4_p1_q12", "number": 12, "part": 1, "type": "multiple_choice", "text": "Propene có công thức đơn giản nhất là CH<sub>2</sub> (xác định từ phân tích nguyên tố) và phân tử khối là 42. Công thức phân tử của propene là", "images": [], "options": [{"id": "a", "letter": "A", "text": "C<sub>2</sub>H<sub>6</sub>", "isCorrect": false}, {"id": "b", "letter": "B", "text": "C<sub>2</sub>H<sub>4</sub>", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>3</sub>H<sub>6</sub>", "isCorrect": true}, {"id": "d", "letter": "D", "text": "CH<sub>2</sub>O.", "isCorrect": false}], "correctAnswer": "C", "explanation": "<b>Phương án đúng là C:</b> C<sub>3</sub>H<sub>6</sub>.", "explanationImages": [], "points": 0.25, "displayNumber": 12}, {"id": "hoa11_c3_de4_p1_q13", "number": 13, "part": 1, "type": "multiple_choice", "text": "Cho các công thức cấu tạo sau:<br/>Những công thức cấu tạo nào sau đây biểu thị cùng một chất?", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image14.png"], "options": [{"id": "a", "letter": "A", "text": "(I), (II), (IV).", "isCorrect": false}, {"id": "b", "letter": "B", "text": "(I), (III), (IV)", "isCorrect": true}, {"id": "c", "letter": "C", "text": "(I), (IV)", "isCorrect": false}, {"id": "d", "letter": "D", "text": "(III), (IV).", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> (I), (III), (IV).", "explanationImages": [], "points": 0.25, "displayNumber": 13}, {"id": "hoa11_c3_de4_p1_q14", "number": 14, "part": 1, "type": "multiple_choice", "text": "Phổ hồng ngoại (IR) của hợp chất hữu cơ (X) có công thức phân tử là CH<sub>4</sub>O được cho như hình bên dưới. Chất này thường được dùng trong công nghiệp để làm chất chống đông, làm dung môi trong nước rửa kính xe, chất tẩy rửa sơn, mực in máy photocopy và làm nhiên liệu cho các bếp lò loại nhỏ, ...<br/>Chỉ ra peak nào có thể dự đoán được chất (X) là một alcohol?", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image15.png"], "options": [{"id": "a", "letter": "A", "text": "Peak", "isCorrect": true}, {"id": "a", "letter": "A", "text": "B. Peak", "isCorrect": true}, {"id": "b", "letter": "B", "text": "C. Peak", "isCorrect": false}, {"id": "d", "letter": "D", "text": "D. Peak E.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Peak.", "explanationImages": [], "points": 0.25, "displayNumber": 14}, {"id": "hoa11_c3_de4_p1_q15", "number": 15, "part": 1, "type": "multiple_choice", "text": "Cặp chất nào dưới đây là đồng phân vị trí nhóm chức?", "images": [], "options": [{"id": "a", "letter": "A", "text": "323CHOCHCH  và  322CHCHCHOH .", "isCorrect": false}, {"id": "b", "letter": "B", "text": "33CHCOCH  và  32CHCHCHO= .", "isCorrect": false}, {"id": "c", "letter": "C", "text": "23CHCCHCHº  và  3223CHCHCHCHCHCH== .", "isCorrect": false}, {"id": "d", "letter": "D", "text": "3222CHCHCNHH  và  ()323CHCHNHCH .", "isCorrect": true}], "correctAnswer": "D", "explanation": "<b>Phương án đúng là D:</b> 3222CHCHCNHH  và  ()323CHCHNHCH ..", "explanationImages": [], "points": 0.25, "displayNumber": 15}, {"id": "hoa11_c3_de4_p1_q16", "number": 16, "part": 1, "type": "multiple_choice", "text": "Ngâm củ nghệ với ethanol nóng, sau đó lọc bỏ bã, lấy dung dịch đem cô để làm bay hơi bớt dung môi. Phần dung dịch còn lại sau khi cô được làm lạnh, để yên một thời gian rồi lọc lấy kết tủa curcumin màu vàng. Từ mô tả ở trên, hãy cho biết, người ta đã sử dụng các kĩ thuật tinh chế nào để lấy được curcumin từ củ nghệ?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Chiết, chưng cất và kết tinh", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Chiết và kết tinh.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Chưng cất và kết tinh", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Chưng cất, kết tinh và sắc kí.", "isCorrect": false}], "correctAnswer": "B", "explanation": "<b>Phương án đúng là B:</b> Chiết và kết tinh..", "explanationImages": [], "points": 0.25, "displayNumber": 16}, {"id": "hoa11_c3_de4_p1_q17", "number": 17, "part": 1, "type": "multiple_choice", "text": "Menthol (C<sub>10</sub>H<sub>20</sub>O) và menthone (C<sub>10</sub>H<sub>18</sub>O) là hai chất có trong thành phần chính của tinh dầu bạc hà. Menthol không có nối đôi, còn menthone có 1 nối đôi. Kết luận nào sau đây đúng?", "images": [], "options": [{"id": "a", "letter": "A", "text": "Menthol và menthone đều có cấu tạo vòng.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Menthol có cấu tạo vòng, menthone có cấu tạo mạch hở.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Menthol và menthone đều có cấu tạo mạch hở.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Menthol có cấu tạo mạch hở, menthone có cấu tạo mạch vòng.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> Menthol và menthone đều có cấu tạo vòng..", "explanationImages": [], "points": 0.25, "displayNumber": 17}, {"id": "hoa11_c3_de4_p1_q18", "number": 18, "part": 1, "type": "multiple_choice", "text": "Phân tích định lượng Atabrine, một loại thuốc chống sốt rét, người ta xác định được chất này chứa 69,1% carbon, 7,5% hydrogen, 10,5% nitrogen, 8,9% chlorine và 4,0% oxygen về khối lượng. Công thức thực nghiệm của Atabrine là", "images": [], "options": [{"id": "a", "letter": "A", "text": "C<sub>23</sub>H<sub>30</sub>ON<sub>3</sub>Cl", "isCorrect": true}, {"id": "b", "letter": "B", "text": "C<sub>18</sub>H<sub>24</sub>O<sub>2</sub>N<sub>2</sub>Cl", "isCorrect": false}, {"id": "c", "letter": "C", "text": "C<sub>23</sub>H<sub>30</sub>O<sub>2</sub>N<sub>2</sub>Cl", "isCorrect": false}, {"id": "d", "letter": "D", "text": "C<sub>18</sub>H<sub>24</sub>O<sub>2</sub>N<sub>3</sub>Cl.", "isCorrect": false}], "correctAnswer": "A", "explanation": "<b>Phương án đúng là A:</b> C<sub>23</sub>H<sub>30</sub>ON<sub>3</sub>Cl.", "explanationImages": [], "points": 0.25, "displayNumber": 18}, {"id": "hoa11_c3_de4_p2_q1", "number": 1, "part": 2, "type": "true_false", "text": "Acetic acid có trong giấm ăn và là chất được sử dụng nhiều trong công nghiệp. Công thức cấu tạo của acetic acid được biểu diễn như sau:", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image24.png"], "options": [{"id": "a", "letter": "A", "text": "Acetic acid thuộc loại carboxylic acid.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Tỉ khối hơi của acid acetic so với hydrogen ở cùng điều kiện (nhiệt độ, áp suất) bằng 60.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Acetic acid có công thức đơn giản nhất là CH<sub>2</sub>O.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Phần trăm khối lượng của oxygen trong phân tử acid acetic là 53,33%.", "isCorrect": true}], "explanation": "Đáp án:<br/>a. Đ.<br/>b. S. dX/H<sub>2</sub> = 60/2 = 30.<br/>c. Đ.<br/>d. Đ.", "explanationImages": [], "points": 1.0, "displayNumber": 1}, {"id": "hoa11_c3_de4_p2_q2", "number": 2, "part": 2, "type": "true_false", "text": "Năm 1861, Butlerov (Bút-lê-rốp) đưa ra khái niệm cấu tạo hóa học và thuyết cấu tạo hoá học:", "images": [], "options": [{"id": "a", "letter": "A", "text": "Trong phân tử chất hữu cơ, các nguyên tử liên kết với nhau theo đúng hoá trị và theo một thứ tự nhất định.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Trong phân tử chất hữu cơ, carbon có hoá trị IV.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Tính chất của các chất phụ thuộc vào thành phần phân tử (bản chất và số lượng các nguyên tử) và cấu tạo hoá học.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Trong phân tử hợp chất hữu cơ, các nguyên tử carbon chỉ liên kết với nguyên tử của nguyên tố khác.", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Các nguyên tử carbon có thể liên kết được với nhau.", "explanationImages": [], "points": 1.0, "displayNumber": 2}, {"id": "hoa11_c3_de4_p2_q3", "number": 3, "part": 2, "type": "true_false", "text": "Bộ dụng cụ chưng cất dung dịch ethanol và nước:<br/>Biết nhiệt độ sôi của ethanol và nước lần lượt là 78,3 <sup>o</sup>C và 100 <sup>o</sup>C.", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image25.png"], "options": [{"id": "a", "letter": "A", "text": "Khi chưng cất dung dịch ethanol và nước, chất chuyển thành hơi sớm hơn là ethanol.", "isCorrect": true}, {"id": "b", "letter": "B", "text": "Tỉ lệ ethanol/H<sub>2</sub>O ở bình hứng thấp hơn trong nồi chưng cất.", "isCorrect": false}, {"id": "c", "letter": "C", "text": "Đá bọt có vai trò điều hòa quá trình sôi, tránh hiện tượng quá sôi.", "isCorrect": true}, {"id": "d", "letter": "D", "text": "Khi lắp ống sinh hàn thì nước phải được đi vào từ đầu phía trên (cao) và đi ra từ đầu phía dưới (thấp).", "isCorrect": false}], "explanation": "Đáp án:<br/>a. Đ.<br/>b. S. Tỉ lệ ethanol/H<sub>2</sub>O ở bình hứng cao hơn trong nồi chưng cất.<br/>c. Đ.<br/>d. S. Khi lắp ống sinh hàn thì nước phải được đi vào từ đầu thấp phía dưới và đi ra từ đầu phía trên. Nếu lắp ngược lại sẽ gây ra hiện tượng thiếu nước cho ống sinh hàn, khiến ống bị nóng và có thể gây vết nứt và làm giảm hiệu quả của sự ngưng tụ.", "explanationImages": [], "points": 1.0, "displayNumber": 3}, {"id": "hoa11_c3_de4_p2_q4", "number": 4, "part": 2, "type": "true_false", "text": "Kết quả phân tích nguyên tố của chất hữu cơ (E) có 66,67% carbon; 11,11% hydrogen, còn lại là oxygen. Biết trong (E) có một nguyên tử oxygen và phổ IR của (E) được mô tả qua hình dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất<br/>Liên kết<br/>Số sóng (cm-1)<br/>Alcohol<br/>O – H<br/>3500 – 3200<br/>Amine<br/>N – H<br/>3300 – 3000<br/>Aldehyde<br/>C – H<br/>2830 – 2695<br/>C = O<br/>1740 – 1685<br/>Ketone<br/>C = O<br/>1715 – 1666<br/>Carboxylic acid<br/>C = O<br/>1760 – 1690<br/>O – H<br/>3300 – 2500<br/>Ester<br/>C = O<br/>1750 – 1715<br/>C – O<br/>1300 – 1000<br/>Bảng tín hiệu phổ hồng ngoại của một số nhóm chức</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Số sóng (cm-1)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Alcohol</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">3500 – 3200</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Amine</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">N – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 3000</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Aldehyde</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">2830 – 2695</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1740 – 1685</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ketone</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1715 – 1666</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Carboxylic acid</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1760 – 1690</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 2500</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ester</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1750 – 1715</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C – O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1300 – 1000</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Số sóng (cm-1)</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Alcohol</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3500 – 3200</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Amine</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">N – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 3000</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Aldehyde</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">2830 – 2695</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1740 – 1685</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Ketone</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1715 – 1666</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Carboxylic acid</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1760 – 1690</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 2500</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Ester</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1750 – 1715</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C – O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1300 – 1000</td></tr></table></div>", "images": [], "options": [{"id": "a", "letter": "A", "text": "Khối lượng mol phân tử X bằng 60 g.mol<sup>-1</sup>.", "isCorrect": false}, {"id": "b", "letter": "B", "text": "Tỉ lệ giữa số nguyên tử carbon và hydrogen tương ứng là 1 : 2.", "isCorrect": true}, {"id": "c", "letter": "C", "text": "Tổng số nguyên tử có trong một phân tử chất X là 10.", "isCorrect": false}, {"id": "d", "letter": "D", "text": "Dựa vào phổ IR có thể dự đoán được X có chứa nhóm chức aldehyde.", "isCorrect": true}], "explanation": "Đáp án:<br/>%C%H%Ox:y:z::4:8:112116==   CTPT: C<sub>4</sub>H<sub>8</sub>O<br/>a. S. M = 72.<br/>b. Đ.<br/>c. S. Tổng số nguyên tử là 13.<br/>d. Đ.", "explanationImages": [], "points": 1.0, "displayNumber": 4}, {"id": "hoa11_c3_de4_p3_q1", "number": 1, "part": 3, "type": "short_answer", "text": "Cho các chất: C<sub>4</sub>H<sub>4</sub>, NaCN, CO<sub>2</sub>, CH<sub>2</sub>=CH<sub>2</sub>, CH<sub>3</sub>COOH, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, CH<sub>3</sub>Br, NaHCO<sub>3</sub>, CaC<sub>2</sub> và H<sub>2</sub>HCH<sub>2</sub>COOH. Có bao nhiêu hợp chất hữu cơ trong dãy các chất trên?", "images": [], "correctAnswer": "6", "explanation": "Đáp án: 6.", "explanationImages": [], "points": 0.25, "displayNumber": 1, "acceptedAnswers": ["6", "6", "6"]}, {"id": "hoa11_c3_de4_p3_q2", "number": 2, "part": 3, "type": "short_answer", "text": "Vitamin A là một chất dinh dưỡng thiết yếu cho con người và có có cấu trúc phân tử biểu diễn như sau:<br/>Phần trăm khối lượng của nguyên tố oxygen có trong phân tử vitamin A là bao nhiêu phần trăm? (Kết quả làm tròn đến hàng phần mười).", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image27.png"], "correctAnswer": "5,6", "explanation": "Đáp án: 5,6.<br/>C<sub>20</sub>H<sub>30</sub>O  %O = 5,6%.", "explanationImages": [], "points": 0.25, "displayNumber": 2, "acceptedAnswers": ["5,6", "5.6", "5,6"]}, {"id": "hoa11_c3_de4_p3_q3", "number": 3, "part": 3, "type": "short_answer", "text": "Cho các cặp chất sau: (a) CH<sub>2</sub>=CH<sub>2</sub> và CH<sub>2</sub>=C=CH<sub>2</sub>; (b) CH º CH và CH<sub>3</sub>CH<sub>2</sub>C º CH; (c) CH<sub>3</sub>CH<sub>2</sub>OH và (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>OH; (d) C<sub>6</sub>H<sub>5</sub>OH và C<sub>6</sub>H<sub>4</sub>(OH)<sub>2</sub>; (e) HCH=O và CH<sub>3</sub>COCH<sub>3</sub>. Có bao nhiêu cặp chất là đồng đẳng của nhau?", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.", "explanationImages": [], "points": 0.25, "displayNumber": 3, "acceptedAnswers": ["3", "3", "3"]}, {"id": "hoa11_c3_de4_p3_q4", "number": 4, "part": 3, "type": "short_answer", "text": "Để nghiên cứu thành phần hoá học của một loại cây thuốc người ta làm như sau: Ngâm mẫu cây trong dung môi thích hợp (thường là ethanol) một thời gian, sau đó gạn lấy chất lỏng. Đun sôi hỗn hợp để thu hồi bớt dung môi, được hỗn hợp sền sệt gọi là cao tổng. Cho cao tổng vào cột sắc kí, sau đó đổ dung môi thích hợp vào trên lớp cao tổng. Dùng các lọ nhỏ hứng lấy các phân đoạn chất lỏng chảy ra khỏi cột sắc kí, sau đó đem xác định chất có trong mỗi phân đoạn. Trong quá trình trên đã áp dụng mấy phương pháp để tách và tinh chế chất?", "images": [], "correctAnswer": "3", "explanation": "Đáp án: 3.<br/>Đó là: ngâm chiết; chưng cất, sắc kí.", "explanationImages": [], "points": 0.25, "displayNumber": 4, "acceptedAnswers": ["3", "3", "3"]}, {"id": "hoa11_c3_de4_p3_q5", "number": 5, "part": 3, "type": "short_answer", "text": "Có bao nhiêu đồng phân cấu tạo mạch hở có cùng công thức phân tử C<sub>4</sub>H<sub>9</sub>Cl?", "images": [], "correctAnswer": "4", "explanation": "Đáp án: 4.", "explanationImages": [], "points": 0.25, "displayNumber": 5, "acceptedAnswers": ["4", "4", "4"]}, {"id": "hoa11_c3_de4_p3_q6", "number": 6, "part": 3, "type": "short_answer", "text": "Diethyl ether là hợp chất dùng làm thuốc gây mê toàn thân theo đường thở. Nó cũng có tác dụng giảm đau và giãn cơ. Kết quả phân tích nguyên tố của hợp chất này có 64,86%C; 13,51%H về khối lượng; còn lại là O. Khối lượng mol phân tử của diethyl ether được xác định trên phổ khối lượng tương ứng với peak có giá trị m/z lớn nhất.<br/>Tổng số nguyên tử có trong phân tử diethyl ether?", "images": ["/assets/hoa11/c3/hoa11_c3_de4_image29.png"], "correctAnswer": "15", "explanation": "Đáp án: 15.<br/>O%m100%64,86%13,51%21,63%=--=<br/>Đặt công thức phân tử của diethyl ether là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub>.<br/>Từ phổ khối lượng suy ra M<sub>diethyl ether</sub> = 74<br/>12x64,86x474100y13,51y107410016z21,63z174100=Þ»=Þ»=Þ»<br/>Công thức phân tử của diethyl ether là C<sub>4</sub>H<sub>10</sub>O.<br/>------------------------- HẾT -------------------------<br/>- Thí sinh không sử dụng tài liệu.<br/>- Giám thị không giải thích gì thêm.", "explanationImages": [], "points": 0.25, "displayNumber": 6, "acceptedAnswers": ["15", "15", "15"]}]}]
+export const HOA11_CHUONG3_EXAMS: Chuong3Exam[] = [
+  {
+    "id": "hoa11_c3_de1",
+    "code": "11-C3-01",
+    "title": "Đề Kiểm Tra Chương 3: Đại Cương Hóa Hữu Cơ (Đề số 1)",
+    "topic": "Hợp chất hữu cơ, phương pháp tách biệt và tinh chế",
+    "badge": "Chương 3 • Đề 1",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c3_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hợp chất hữu cơ là các hợp chất của ……… (trừ các oxide của carbon, muối carbonate, cyanide, carbide, ……). Từ thích hợp điền vào chỗ trống trong định nghĩa trên là:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "carbon",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "hydrogen",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "oxygen",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nitrogen.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> carbon.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sau khi biết công thức thực nghiệm, có thể xác định công thức phân tử của hợp chất hữu cơ dựa trên đặc điểm nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân tử khối của chất.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thành phần phần trăm về khối lượng các nguyên tố có trong phân tử chất.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi lượng các sản phẩm thu được khi đốt cháy hoàn toàn một lượng chất xác định.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các hấp thụ đặc trưng trên phổ IR của chất.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Phân tử khối của chất..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các chất sau đây, chất nào dễ cháy nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Na<sub>2</sub>CO<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> C<sub>2</sub>H<sub>5</sub>OH.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương pháp chiết là sự tách chất dựa vào sự khác nhau",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "về kích thước phân tử",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "ở mức độ nặng nhẹ về khối lượng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "về khả năng bay hơi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "về khả năng tan trong các dung môi khác nhau.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> về khả năng tan trong các dung môi khác nhau..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phổ khối lượng của phenol như hình vẽ:<br/>Biết phân tử khối tương ứng với peak có cường độ tương đối lớn nhất hiển thị trên phổ khối lượng. Phân tử khối của phenol là",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image1.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "66",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "77",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "66",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "94.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 94..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thể tích của 1,5 gam chất X bằng thể tích của 0,8 gam khí oxygen (đo ở cùng điều kiện nhiệt độ, áp suất). Phân tử khối của X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "60",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "30",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "120",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "32.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 60.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cấu tạo hoá học là ...(1)… giữa các nguyên tử trong phân tử. Cụm từ thích hợp điền vào (1) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "thứ tự liên kết.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "liên kết.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tỉ lệ số lượng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> thứ tự liên kết..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất X có công thức cấu tạo dạng khung phân tử như sau:<br/>Công thức phân tử của X là",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image2.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>4</sub>H<sub>10</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>4</sub>H<sub>8</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>4</sub>H<sub>6</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>3</sub>H<sub>6</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C<sub>4</sub>H<sub>6</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các cặp chất sau đây, cặp chất nào là đồng phân của nhau?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>OCH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>OCH<sub>3</sub>, CH<sub>3</sub>CHO.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH, C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>4</sub>H<sub>10</sub>, C<sub>6</sub>H<sub>6</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>OCH<sub>3</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phổ IR của chất X được cho như dưới đây:<br/>X có thể là chất nào sau đây?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>-COOH.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>-CHO.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>-NH-CH<sub>2</sub>CH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>-CO-CH<sub>2</sub>CH<sub>3</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> CH<sub>3</sub>CH<sub>2</sub>-NH-CH<sub>2</sub>CH<sub>3</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các chất hữu cơ có tính chất hoá học tương tự nhau và thành phần phân tử hơn kém nhau một hay nhiều nhóm CH<sub>2</sub> được gọi là các chất",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "đồng phân của nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "đồng đẳng của nhau.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "đồng vị của nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "đồng khối của nhau.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> đồng đẳng của nhau..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Methanol, ethanol, propan-1-ol thuộc cùng một dãy đồng đẳng. Phát biểu nào sau đây về các hợp chất này là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các hợp chất này có tính chất vật lí tương tự nhau và có tính chất hoá học biến đổi theo quy luật.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các hợp chất này có tính chất hoá học tương tự nhau và có tính chất vật lí biến đổi theo quy luật.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các hợp chất này có cùng công thức phân tử nhưng có các tính chất vật lí, tính chất hoá học khác nhau.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các hợp chất này có các tính chất vật lí và tính chất hoá học tương tự nhau.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Các hợp chất này có tính chất hoá học tương tự nhau và có tính chất vật lí biến đổi theo quy luật..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để tách các chất lỏng ra khỏi hỗn hợp các chất có nhiệt độ sôi khác nhau, nhằm thu được chất lỏng tinh khiết hơn là phương pháp nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phương pháp chưng cất",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phương pháp chiết.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phương pháp kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sắc kí cột.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Phương pháp chưng cất.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Acetic acid có công thức phân tử là C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>. Kết luận nào dưới đây là đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Acetic acid có công thức thực nghiệm là CH<sub>2</sub>O và có khối lượng riêng lớn gấp 30 lần so với hydrogen ở cùng điều kiện (nhiệt độ, áp suất).",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Acetic acid có công thức phân tử là CH<sub>2</sub>O và có tỉ khối hơi so với hydrogen ở cùng điều kiện (nhiệt độ, áp suất) là 30.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Acetic acid có công thức thực nghiệm là CH<sub>2</sub>O và có phân tử khối là 60.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Acetic acid có công thức thực nghiệm là (CH<sub>2</sub>O)<sub>2</sub> và có phân tử khối là 60.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Acetic acid có công thức thực nghiệm là CH<sub>2</sub>O và có phân tử khối là 60..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các hợp chất sau: CH<sub>4</sub>, NH<sub>3</sub>, C<sub>2</sub>H<sub>2</sub>, CCl<sub>4</sub>, C<sub>2</sub>H<sub>4</sub>, C<sub>6</sub>H<sub>6</sub>. Số hợp chất thuộc loại hydrocarbon là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 4..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong phương pháp sắc kí, hỗn hợp lỏng hoặc khí của các chất cần tách là pha động. Pha động tiếp xúc liên tực với pha tĩnh là một chất rắn có diện tích bề mặt rất lớn, có khả năng hấp phụ …(1)… với các chất trong hỗn hợp cần tách, khiến cho các chất trong hỗn hợp di chuyển với tốc độ …(2)… và tách ra khỏi nhau. Cụm từ thích hợp điền vào chỗ trống (1) và (2) lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1) giống nhau và (2) giống nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1) khác nhau và (2) khác nhau.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(1) khác nhau và (2) giống nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(1) giống nhau và (2) khác nhau.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> (1) khác nhau và (2) khác nhau..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phổ MS của chất Y có thấy chất Y có phân tử khối bằng 60. Công thức phân tử nào dưới đây không phù hợp với Y?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>3</sub>H<sub>8</sub>O",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>3</sub>H<sub>7</sub>F",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>2</sub>H<sub>8</sub>N<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C<sub>3</sub>H<sub>7</sub>F.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c3_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận xét nào sau đây về 2 công thức cấu tạo bên là đúng?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image4.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Biểu diễn cấu tạo hóa học của 2 chất đồng phân mạch carbon.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Biểu diễn cấu tạo hóa học của 2 chất đồng phân vị trí nhóm chức.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Biểu diễn cấu tạo hóa học của 2 chất thuộc cùng dãy đồng đẳng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Biểu diễn cấu tạo hóa học của cùng một chất.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Biểu diễn cấu tạo hóa học của cùng một chất..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c3_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Các hợp chất hữu cơ đóng vai trò quan trọng đối với sự sống như protein, nucleic acid, hormone, … Cho các đặc điểm chung của các hợp chất hữu cơ như sau:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thành phần phân tử hợp chất hữu cơ nhất thiết phải chứa nguyên tố carbon và hydrogen.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Liên kết hoá học chủ yếu là liên kết cộng hoá trị.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các hợp chất hữu cơ thường không tan hoặc ít tan trong nước, tan trong dung môi hữu cơ.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các hợp chất hữu cơ thường khó bay hơi, bền với nhiệt và khó cháy.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Hợp chất hữu cơ nhất thiết phải chứa C, thường có H, O, N, …<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Các hợp chất hữu cơ thường dễ bay hơi, kém bền với nhiệt và dễ cháy.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Thực hiện thí nghiệm chưng cất ethanol từ dung dịch ethanol – nước:<br/>- Cho 60 mL rượu được nấu thủ công vào bình cầu có nhánh (chú ý chất lỏng trong bình không vượt quá 2/3 thể tích bình), thêm vài viên đá bọt.<br/>- Lắp dụng cụ như hình dưới đây:<br/>- Đun nóng từ từ đến khi hỗn hợp sôi, quan sát nhiệt độ trên nhiệt kế thấy tăng dần, khi nhiệt độ trên nhiệt kế ổn định, đó chính là nhiệt độ sôi của hỗn hợp ethanol và nước. Khi nhiệt độ bắt đầu tăng trở lại thì tắt nguồn nhiệt, ngừng chưng cất.",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image5.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Nhiệt độ sôi của ethanol cao hơn nhiệt độ sôi của hỗn hợp ethanol và nước.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt độ sôi của hỗn hợp ethanol và nước cao hơn nhiệt độ sôi của nước.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Độ cồn của sản phẩm sẽ lớn hơn so với độ cồn ban đầu do sản phẩm thu được tinh khiết hơn lẫn ít nước hơn rượu ban đầu.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ống sinh hàn có tác dụng làm lạnh để các chất (ở trạng thái lỏng trong điều kiện thường) đang hóa hơi, đi ngang qua ống sẽ ngưng tụ.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Nhiệt độ sôi của ethanol thấp hơn nhiệt độ sôi của hỗn hợp ethanol và nước.<br/>b. Sai. Hỗn hợp ethanol và nước có nhiệt độ sôi thấp hơn nhiệt độ sôi của nước.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Các chất hữu cơ eugenol, chavibetol và methyl eugenol được thấy trong thành phần của nhiều loại tinh dầu. Eugenol và isoeugenol là nguyên liệu quan trọng dùng sản xuất vanillin (chất tạo hương cho thực phẩm); chavibetol có tác dụng sát khuẩn, kháng oxygen hoá; methyl eugenol là chất có tác dụng dẫn dụ côn trùng. Sử dụng methyl eugenol có thể \"lôi kéo\" một số loại côn trùng có hại tập trung lại một khu vực rồi tiêu diệt để bảo vệ mùa màng. Eugenol, chavibetol và methyl eugenol có công thức như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Eugenol</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Chavibetol</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Methyl eugenol</td></tr></table></div>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phần trăm khối lượng của nguyên tố carbon trong phân tử methyl eugenol là 72,16%.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Eugenol và chavibetol là đồng phân cấu tạo của nhau.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Eugenol và chavibetol đều có cùng công thức phân tử là C<sub>10</sub>H<sub>12</sub>O<sub>2</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Eugenol và methyl eugenol là đồng đẳng của nhau.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. C<sub>11</sub>H<sub>14</sub>O<sub>2</sub>  %C = 74,16%.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Không phải là đồng đẳng của nhau.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho phản ứng sau:<br/>Cho biết số sóng hấp thụ đặc trưng của một số liên kết trên trong phổ hồng ngoại như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O–H (alcohol)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O–H (carboxylic acid)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C=O (ester, carboxylic acid)</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Số sóng (cm–1)</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3650 – 3200</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 2500</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1780 – 1650</td></tr></table></div>",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image9.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có ba hợp chất hữu cơ trong phản ứng trên.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phổ hồng ngoại có số sóng hấp thụ ở 3450 cm<sup>-1</sup> là phổ của CH<sub>3</sub>CH<sub>2</sub>OH.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phổ hồng ngoại có số sóng hấp thụ ở 1750 cm<sup>-1</sup> mà không hấp thụ đặc trưng của liên kết O–H là phổ của CH<sub>3</sub>COOH.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dựa vào phổ hồng ngoại, không thể phân biệt được các chất hữu cơ có trong phản ứng trên.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Đó là CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub>.<br/>d. Sai. Có thể phân biệt được dựa vào phổ IR.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Trong dãy chất sau: CH<sub>4</sub>, CaCO<sub>3</sub>, CO<sub>2</sub>, C<sub>2</sub>H<sub>7</sub>N, C<sub>3</sub>H<sub>8</sub>O và NaCN, có bao nhiêu hợp chất hữu cơ?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Có bao nhiêu hợp chất hữu cơ mạch hở (bền) có công thức phân tử là C<sub>3</sub>H<sub>8</sub>O?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub>OHCH<sub>3</sub> – O – CH<sub>2</sub> – CH<sub>3</sub>",
+        "explanationImages": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image11.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất H<sub>2</sub>O, LiF, C<sub>2</sub>H<sub>6</sub>và các giá trị nhiệt độ sôi -89 <sup>o</sup>C, 100 <sup>o</sup>C và 1676 <sup>o</sup>C. Hãy cho biết nhiệt độ sôi của C<sub>2</sub>H<sub>6</sub> là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "–89",
+        "explanation": "Đáp án: –89.<br/>LiF là hợp chất giữa kim loại mạnh và phi kim mạnh  Þ  có liên kết ion  Þ  nhiệt độ sôi lớn nhất.<br/>Giữa các phân tử H<sub>2</sub>O có liên kết hydrogen còn các phân tử C<sub>2</sub>H<sub>6</sub> không có nên nhiệt độ sôi của H<sub>2</sub>O cao hơn C<sub>2</sub>H<sub>6</sub>.<br/>Thứ tự tăng dần nhiệt độ sôi: C<sub>2</sub>H<sub>6</sub> (-88,5 <sup>o</sup>C), H<sub>2</sub>O (100 <sup>o</sup>C), LiF (1676 <sup>o</sup>C).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "–89",
+          "–89",
+          "–89"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Chỉ ra số sóng hấp thụ đặc trưng của nhóm – OH trên phổ hồng ngoại của chất sau:",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de1_image10.png"
+        ],
+        "correctAnswer": "3337",
+        "explanation": "Đáp án: 3337.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "3337",
+          "3337",
+          "3337"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Retinol là vitamin A, có nguồn gốc động vật, có vai trò hỗ trợ thị giác của mắt. Để xác định công thức phân tử của hợp chất này, người ta đã tiến hành phân tích nguyên tố và đo phổ khối lượng. Kết quả khảo sát được trình bày trong bảng sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">%C</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">%H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">%O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Giá trị m/z của peak ion phân tử [M+]</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Vitamin A</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">83,92</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">10,49</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">5,59</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">286</td></tr></table></div><br/>Tổng số nguyên tử có trong phân tử Vitamin A là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "51",
+        "explanation": "Đáp án: 51.<br/>- Thiết lập công thức phân tử của vitamin A:<br/>Đặt công thức phân tử tổng quát là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub>, ta có:<br/>83,9210,495,59x:y:z:: 6,993 : 10,49 : 0,349  20 : 30 :1.12116===<br/>Vậy công thức đơn giản nhất của vitamin A là C<sub>20</sub>H<sub>30</sub>O.<br/>Þ CTPT của vitamin A có dạng (C<sub>20</sub>H<sub>30</sub>O)<sub>n</sub><br/>Þ  M<sub>vitamin A</sub> =  (12.20 + 1. 30 + 16).n = 286  Þ  n = 1 Công thức phân tử của vitamin A là C<sub>20</sub>H<sub>30</sub>O.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "51",
+          "51",
+          "51"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các thông tin trong bảng A và B như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột A</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột B</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(a) Giã lá cây chàm, cho vào nước, lọc lấy dung dịch màu để nhuộm sợi, vải.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(1) Phương pháp kết tinh.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(b) Nấu rượu uống.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(2) Phương pháp chưng cất.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(c) Tách màu trong thuốc nhuộm thực phẩm.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(3) Phương pháp sắc kí cột.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(d) Làm đường cát, đường phèn từ nước mía.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(4) Phương pháp chiết lỏng – rắn.</td></tr></table></div><br/>Ghán số thứ tự ứng với các phương pháp ở cột B sao cho phù hợp với các thông tin cho ở cột A theo thứ tự a, b, c, d và sắp xếp theo trình tự dãy 4 số (ví dụ 2314, 1234,…).",
+        "images": [],
+        "correctAnswer": "4231",
+        "explanation": "Đáp án: 4231.<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột A</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Cột B</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(a) Giã lá cây chàm, cho vào nước, lọc lấy dung dịch màu để nhuộm sợi, vải.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(4) Phương pháp chiết lỏng – rắn.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(b) Nấu rượu uống.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(2) Phương pháp chưng cất.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(c) Tách màu trong thuốc nhuộm thực phẩm.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(3) Phương pháp sắc kí cột.</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(d) Làm đường cát, đường phèn từ nước mía.</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">(1) Phương pháp kết tinh.</td></tr></table></div><br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "4231",
+          "4231",
+          "4231"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c3_de2",
+    "code": "11-C3-02",
+    "title": "Đề Kiểm Tra Chương 3: Đại Cương Hóa Hữu Cơ (Đề số 2)",
+    "topic": "Công thức phân tử, công thức cấu tạo & phổ khối lượng MS",
+    "badge": "Chương 3 • Đề 2",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c3_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các hợp chất sau, chất nào là hợp chất hữu cơ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>6</sub>H<sub>6</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Na<sub>2</sub>CO<sub>3</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Al<sub>4</sub>C<sub>3</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> C<sub>6</sub>H<sub>6</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các hợp chất sau, chất nào là dẫn xuất của hydrocarbon?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>OH",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>2</sub>H<sub>4</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>3</sub>H<sub>8</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> CH<sub>3</sub>OH.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Liên kết hóa học trong phân tử hợp chất hữu cơ chủ yếu là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "liên kết ion.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "liên kết cộng hóa trị.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "liên kết cho - nhận.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "liên kết hydrogen.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> liên kết cộng hóa trị..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phổ hồng ngoại của hợp chất hữu cơ nào sau đây không có hấp thụ ở vùng 1750 – 1600 cm<sup>-1</sup>?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Alcohol",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ketone",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ester",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Aldehyde.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Alcohol.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "óa học hữu cơ là ngành hóa học chuyên nghiên cứu về các …………………. Cụm từ thích hợp điền vào chỗ trống trong định nghĩa trên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "hợp chất hữu cơ",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "hợp chất vô cơ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "hợp chất thiên nhiên",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "hợp chất phức.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> hợp chất hữu cơ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trường hợp nào dưới đây khoanh đúng nhóm chức carboxylic acid của ethanoic acid?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khoanh nhóm methyl -CH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khoanh nguyên tử carbonyl carbon =C=O",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khoanh đúng toàn bộ nhóm carboxyl -COOH (-C(=O)OH)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khoanh nhóm hydroxyl -OH",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Đáp án đúng là C:</b> Nhóm chức carboxylic acid của ethanoic acid (CH<sub>3</sub>COOH) là nhóm -COOH (-C(=O)OH).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương pháp dùng để tách các chất hữu cơ có hàm lượng nhỏ và khó tách ra khỏi nhau là phương pháp nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phương pháp chưng cất",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phương pháp chiết",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phương pháp kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phương pháp sắc kí cột.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Phương pháp sắc kí cột..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ngâm củ nghệ với ethanol nóng, sau đó lọc bỏ bã, lấy dung dịch đem cô để làm bay hơi bớt dung môi. Phần dung dịch còn lại sau khi cô được làm lạnh, để yên một thời gian rồi lọc lấy kết tủa curcumin màu vàng. Từ mô tả ở trên, hãy cho biết, người ta đã sử dụng các kĩ thuật tinh chế nào để lấy được curcumin từ củ nghệ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chiết, chưng cất và kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chiết và kết tinh.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chưng cất và kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chưng cất, kết tinh và sắc kí.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Chiết và kết tinh..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Glucose là hợp chất hữu cơ có nhiều trong các loại quả chín, đặc biệt là quả nho. Công thức phân tử của glucose là C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>. Công thức đơn giản nhất của glucose là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>1,5</sub>H<sub>3</sub>O<sub>1,5</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>2</sub>O",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>3</sub>H<sub>4</sub>O<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CHO<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> CH<sub>2</sub>O.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để xác định phân tử khối của hợp chất hữu cơ, người ta sử dụng phổ khối lượng MS, trong đó phân tử khối của chất là giá trị m/z của",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "peak [M<sup>+</sup>] lớn nhất",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "peak [M<sup>+</sup>] nhỏ nhất.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "peak xuất hiện nhiều nhất",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nhóm peak xuất hiện nhiều nhất.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> peak [M<sup>+</sup>] lớn nhất.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hợp chất hữu cơ X có 82,76% khối lượng là carbon, còn lại là hydrogen. Công thức thực nghiệm của X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>5</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>5</sub>H",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>2</sub>H<sub>5</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>5</sub>H<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C<sub>2</sub>H<sub>5</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để viết được cấu tạo hóa học của một chất cần biết những yếu tố nào sau đây?<br/>(a) Thành phần phân tử của chất.<br/>(b) Hóa trị của các nguyên tố có trong phân tử chất.<br/>(c) Trật tự liên kết của các nguyên tử có trong phân tử chất.<br/>(d) Nhiệt độ sôi của chất.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "a, b, c",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "a, c, d",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "b, c, d",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "a, b, d.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> a, b, c.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Những hợp chất hữu cơ khác nhau nhưng có cùng công thức phân tử được gọi là các chất",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "đồng phân của nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "đồng đẳng của nhau.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "đồng vị của nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "đồng khối của nhau.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> đồng phân của nhau.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các cặp chất sau đây:<br/>Số cặp chất là đồng đẳng của nhau là",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image5.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho hỗn hợp các alkane có mạch carbon thẳng sau: pentane (sôi ở 36<sup>o</sup>C), heptane (sôi ở 98<sup>o</sup>C), octane (sôi ở 126<sup>o</sup>C) và nonane (sôi ở 151<sup>o</sup>C). Có thể tách riêng các chất đó bằng cách nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chiết",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Bay hơi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chưng cất.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Chưng cất..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Glycerol là hợp chất dùng làm dược phẩm để giảm cân, cải thiện hoạt động tập thể dục, giúp cơ thể bù lượng nước bị mất trong suốt thời gian bị tiêu chảy và nôn mửa cũng như làm giảm áp lực bên trong mắt ở những người bị tăng nhãn áp. Dựa vào phổ IR dưới đây:<br/>Cho biết peak nào có thể xác định được nhóm chức -OH có trong hợp chất (X)?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image6.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Peak A",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Peak B",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Peak C (vùng ~3350 cm⁻¹ của nhóm liên kết O-H)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Peak D",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Peak.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Vì sao có thể dựa vào nhóm chức để phân loại các hợp chất hữu cơ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Vì biết được nhóm chức thì biết được thành phần các nguyên tố hóa học có trong phân tử hợp chất hữu cơ.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Vì nhóm chức không bị biến đổi khi phân tử hữu cơ tham gia phản ứng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vì nhóm chức tham gia vào các phản ứng trong cơ thể sống.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Vì nhóm chức gây ra các phản ứng hoá học đặc trưng cho phân tử hữu cơ.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Vì nhóm chức gây ra các phản ứng hoá học đặc trưng cho phân tử hữu cơ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c3_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(a) Hợp chất hữu cơ là hợp chất của carbon (trừ CO, CO<sub>2</sub>, các muối carbonate, cyanide, carbide, …)<br/>(b) Phổ hồng ngoại cho phép xác định cả loại nhóm chức và số lượng nhóm chức đó có trong phân tử hợp chất hữu cơ.<br/>(c) Phổ khối lượng (MS) cho biết tỉ lệ phần trăm khối lượng của các nguyên tố.<br/>(d) Một hydrocarbon và một hợp chất ion có khối lượng phân tử gần bằng nhau thì hydrocarbon tan trong nước ít hơn và có nhiệt độ sôi thấp hơn so với hợp chất ion.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c3_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Catechin là một chất kháng oxi hoá mạnh, ức chế hoạt động của các gốc tự do nên có khả năng phòng chống bệnh ung thư, nhồi máu cơ tim. Trong lá chè tươi, catechin chiếm khoảng 25 – 35% tổng trọng lượng khô. Ngoài ra, catechin còn có trong táo, lê, nho…  Công thức cấu tạo của catechin cho như hình bên.",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image7.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Catechin là hợp chất hữu cơ có nguồn gốc từ tự nhiên.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Catechin là hợp chất hữu cơ đa chức.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Catechin có 9 liên kết π (pi) trong phân tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phần trăm khối lượng của nguyên tố oxygen trong catechin là 33,1%.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Catechin là hợp chất hữu cơ tạp chức.<br/>c. Sai. Có 6 liên kết π trong phân tử.<br/>d. Đúng. Catechin có công thức phân tử C<sub>15</sub>H<sub>14</sub>O<sub>6</sub>  O16.6%m.100%33,1%12.151416.6Þ==++",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Thực hiện thí nghiệm tách β-carotene từ nước ép cà rốt như sau:<br/>- Chuẩn bị: nước ép cà rốt, hexane; cốc thuỷ tinh 100 mL, bình tam giác 100 mL, phễu chiết 60 mL, giá thí nghiệm.<br/>- Tiến hành:<br/>Bước 1: Cho khoảng 20 mL nước ép cà rốt vào phễu chiết. Thêm tiếp khoảng 20 mL hexane, lắc đều khoảng 2 phút.<br/>Bước 2: Để yên phễu chiết trên giá thí nghiệm khoảng 5 phút để chất lỏng tách thành hai lớp.<br/>Bước 3: Mở khoá phễu chiết cho phần nước ở dưới chảy xuống, còn lại phần dung dịch β-carotene hoà tan trong hexane.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trước khi chiết lớp hexane trong phễu không có màu; sau khi chiết lớp hexane trong phễu có màu vàng cam.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thí nghiệm tách β-carotene từ nước cà rốt dựa theo nguyên tắc chiết lỏng – lỏng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Dùng dung môi là hexane có khả năng hoà tan β-carotene nhưng không tan trong nước và có nhiệt độ sôi thấp để chiết.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phễu chiết tách thành hai lớp, lớp bên trên là nước, lớp dưới là β-carotene hoà tan trong hexane.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Lớp dưới là nước, lớp trên là β-carotene hòa tan trong hexane.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Hợp chất Cinnamaldehyde có nhiều trong vỏ cây quế và có mùi thơm của quế. Tinh dầu quế được chiết xuất từ vỏ cây quế với thành phần chính là Cinnamaldehyde. Có hai cách để chiết xuất được tinh dầu quế từ vỏ quế: Đó là công nghệ chưng cất hơi nước và chiết xuất qua dung môi. Công thức cấu tạo của Cinnamaldehyde như hình bên.",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image8.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cinnamaldehyde có đồng phân hình học và có công thức phân tử là C<sub>9</sub>H<sub>8</sub>O.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cinnamaldehyde có số liên kết σ (sigma) trong phân tử là 18.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vỏ quế để lâu sẽ bị mất mùi thơm, nguyên nhân chính là do Cinnamaldehyde bị oxi hoá bởi oxygen trong không khí.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để thu được thành phần Cinnamaldehyde lên đến 90% thì phải sử dụng công nghệ chiết xuất qua dung môi.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng. Số liên kết sigma = 9 + 8 + 1 – 1 + 1 = 18.<br/>c. Đúng.<br/>d. Sai. Để đạt thành phần Cinnamaldehyde lên đến 90% thì phải sử dụng công nghệ chưng cất hơi nước, còn với công nghệ chiết xuất qua dung môi chỉ đạt được 62% đến 73% tỉ lệ Cinnamaldehyde.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Hợp chất hữu cơ X gồm 3 nguyên tố C, H, O. Kết quả phân tích nguyên tố của hợp chất hữu cơ X có m<sub>C</sub> : m<sub>H</sub>: m<sub>O</sub> = 42 : 7 : 16. Phân tử khối của X gấp 4,0625 lần phân tử khối của phân tử oxygen. Biết X có mạch không phân nhánh và phổ hồng ngoại của X như sau:",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image9.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "X thuộc loại hợp chất ester.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phân tử khối của X là 130.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X có số nguyên tử hydrogen gấp 7 lần số nguyên tử oxygen.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Có hai công thức cấu tạo của X thỏa mãn.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>C : H : O =  42716::3,5:7:17:14:212116==<br/>Þ Công thức thực nghiệm (C<sub>7</sub>H<sub>14</sub>O<sub>2</sub>)<sub>n</sub>; M<sub>X</sub> = 4,0625.32 = 130  Þ 130n = 130  Þ n = 1<br/>Þ X có CTPT C<sub>7</sub>H<sub>14</sub>O<sub>2</sub>. Trong phổ MS có peak tù trong khoảng 3300 – 2500 cm<sup>-1</sup> là peak đặc trưng của OH acid, có peak nhọn 1715 là peak đặc trưng của C=O; X có mạch không phân nhánh nên X có một công thức cấu tạo là CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>COOH.<br/>a. Sai.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de2_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho hợp chất hữu cơ X có công thức cấu tạo sau:<br/>Trong hợp chất hữu cơ X, có bao nhiêu loại nhóm chức khác nhau?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de2_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: CH<sub>4</sub>, CH<sub>3</sub>-CH<sub>2</sub>-NH<sub>2</sub>, CH<sub>2</sub>=CH<sub>2</sub>, CH<sub>3</sub>-COOH, CH<sub>2</sub>=C(CH<sub>3</sub>)-CH=CH<sub>2</sub>, C<sub>3</sub>H<sub>5</sub>(OH)<sub>3</sub>, CH º CH, CH<sub>3</sub>CHOH<sub>2</sub>N-CH(CH<sub>3</sub>)-COOH. Có bao nhiêu chất thuộc loại hydrocarbon?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Camphor (có trong cây long não) là một chất rắn kết tinh màu trắng hay trong suốt giống như sáp với mùi thơm đặc trưng, thường dùng trong y học. Phân tử khối của camphor được xác định thông qua phổ khối lượng dưới đây có giá trị bằng bao nhiêu?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image12.png"
+        ],
+        "correctAnswer": "152",
+        "explanation": "Đáp án: 152.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "152",
+          "152",
+          "152"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Có bao nhiêu đồng phân cấu tạo mạch hở ứng với công thức phân tử C<sub>4</sub>H<sub>9</sub>Cl?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các nhận định sau:<br/>(1) Người ta có thể chiết tách các chất hữu cơ hữu ích từ thuốc Bắc bằng cách ngâm thuốc Bắc trong dung dịch ethanol.<br/>(2) Sau khi ép cây mía và làm sạch các chất bẩn rắn cũng như chất bẩn màu, người ta thu được dung dịch nước đường. Cô cạn nước đường ở áp suất thấp sẽ tách được đường.<br/>(3) Sau khi chưng cất cây sả bằng hơi nước, người ta thu được lớp tinh dầu (chứa terpene) nổi trên mặt nước. Dùng phương pháp chiết sẽ tách riêng được lớp tinh dầu.<br/>(4) Để tách ethanol (ethylic alcohol) từ hỗn hợp với nước và bã rượu. Dùng kĩ thuật lọc tách sẽ tách riêng được ethanol ra khỏi hỗn hợp này.<br/>Liệt kê các ý đúng theo số thứ tự tăng dần. (Ví dụ: 2, 13, 234,….)",
+        "images": [],
+        "correctAnswer": "123",
+        "explanation": "Đáp án: 123.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "123",
+          "123",
+          "123"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Nicotine là chất gây nghiện có nhiều trong cây thuốc lá. Thành phần phần trăm về khối lượng của các nguyên tố trong phân tử nicotine như sau: 74,07% C; 8,64% H; 17,29% N. Phổ khối lượng (MS) của nicotine được cho như hình dưới đây:<br/>Tổng số nguyên tử trong một phân tử nicotine là bao nhiêu?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image13.png"
+        ],
+        "correctAnswer": "26",
+        "explanation": "Đáp án: 26.<br/>Gọi công thức tổng quát của nicotine là C<sub>x</sub>H<sub>y</sub>N<sub>z</sub><br/>Þ  CTĐGN nicotine là C<sub>5</sub>H<sub>7</sub>N<br/>CTPT của nicotine có dạng: (C<sub>5</sub>H<sub>7</sub>N)<sub>n</sub><br/>Theo phổ MS ta có M<sub>nicotine</sub> = 162  Þ 81n = 162  Þ  n = 2  Þ  CTPT của caffeine: C<sub>10</sub>H<sub>14</sub>N<sub>2</sub><br/>Þ  10 + 14 + 2 = 26.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [
+          "/assets/hoa11/c3/hoa11_c3_de2_image21.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "26",
+          "26",
+          "26"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c3_de3",
+    "code": "11-C3-03",
+    "title": "Đề Kiểm Tra Chương 3: Đại Cương Hóa Hữu Cơ (Đề số 3)",
+    "topic": "Thuyết cấu tạo hóa học, đồng phân & danh pháp hữu cơ",
+    "badge": "Chương 3 • Đề 3",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c3_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các hợp chất sau, chất nào không phải là hợp chất hữu cơ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(C<sub>6</sub>H<sub>10</sub>O<sub>5</sub>)<sub>n</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "NH<sub>3</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> NH<sub>3</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chưng cất là phương pháp tách và tinh chế chất lỏng dựa trên sự khác nhau về nhiệt độ sôi của các chất lỏng trong hỗn hợp ở áp suất nhất định. Quá trình chưng cất gồm 2 giai đoạn nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hóa hơi và ngưng tụ",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Đông đặc và ngưng tụ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đông đặc và ngưng tụ",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ngưng tụ và đông đặc.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Hóa hơi và ngưng tụ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phổ hồng ngoại là phương pháp vật lí rất quan trọng và phổ biến để nghiên cứu về",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "thành phần nguyên tố chất hữu cơ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "thành phần phân tử hợp chất hữu cơ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "cấu tạo hợp chất hữu cơ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "cấu trúc không gian hợp chất hữu cơ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> cấu tạo hợp chất hữu cơ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho hai chất hữu cơ: acetylene (C<sub>2</sub>H<sub>2</sub>) và benzene (C<sub>6</sub>H<sub>6</sub>). Phát biểu nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Hai chất đó giống nhau về công thức phân tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Hai chất đó có cùng công thức đơn giản nhất.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Hai chất có giá trị m/z của peak [M<sup>+</sup>] giống nhau trên phổ MS.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hai chất đó cho tín hiệu về số sóng như nhau trên phổ IR.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Hai chất đó có cùng công thức đơn giản nhất..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng hóa học của các hợp chất hữu cơ có đặc điểm là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "thường xảy ra rất nhanh và cho một sản phẩm duy nhất.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "thường xảy ra chậm, không hoàn toàn, không theo một hướng nhất định.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "thường xảy ra rất nhanh, không hoàn toàn, không theo một hướng nhất định.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "thường xảy ra rất chậm, nhưng hoàn toàn, không theo một hướng xác định.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> thường xảy ra chậm, không hoàn toàn, không theo một hướng nhất định..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các đặc điểm chung của các phân tử hợp chất hữu cơ:<br/>(1) Thành phần nguyên tố chủ yếu là C và H.<br/>(2) Có thể chứa nguyên tố khác như Cl, O, N,...<br/>(3) Liên kết hóa học chủ yếu là liên kết cộng hoá trị.<br/>(4) Dễ bay hơi và khó cháy.<br/>(5) Tan nhiều trong nước và dung môi hữu cơ không phân cực.<br/>Nhóm các ý đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1), (3)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(1), (2), (4)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(2), (3), (5)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(2), (3).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> (2), (3)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho công thức cấu tạo của một số chất hữu cơ như sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(1)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(2)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(3)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(4)</th></tr></table></div><br/>Chất có mạch carbon phân nhánh là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(1)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(2)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(3)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(4).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> (3).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng khi nói về hợp chất hữu cơ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tính chất của các chất phụ thuộc vào thành phần phân tử và cấu tạo hóa học.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các chất có cùng khối lượng phân tử là đồng phân của nhau.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các chất là đồng phân của nhau thì có cùng công thức phân tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong hợp chất hữu cơ, carbon có hóa trị 4, nó có thể liên kết với nguyên tử nguyên tố khác và liên kết với nhau để tạo thành mạch carbon gồm: nhánh, không nhánh và vòng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Các chất có cùng khối lượng phân tử là đồng phân của nhau..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương pháp sắc kí cột có đặc điểm:<br/>(a) Pha tĩnh là bột silicagel hoặc bột aluminium oxygende,…<br/>(b) Pha động là dung môi thích hợp được đổ ở phía dưới pha tĩnh.<br/>(c) Chất có độ chuyển dịch lớn hơn sẽ cùng với dung môi ra khỏi cột trước.<br/>(d) Chất ra khỏi cột trước là chất có khả năng bị hấp phụ trên pha tĩnh tốt hơn.<br/>(e) Pha động cho vào sắc kí ở trạng thái lỏng.<br/>Số đặc điểm đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho phổ hồng ngoại của chất X như hình dưới đây:<br/>Phân tử chất X có chứa nhóm chức nào sau đây?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de3_image5.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Aldehyde (-CHO)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Carboxylic acid (-COOH).",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Alcohol (-OH)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Amine (-NH-).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Carboxylic acid (-COOH)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức phân tử cho biết thông tin nào sau đây về phân tử hợp chất hữu cơ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thành phần nguyên tố và số lượng nguyên tử của mỗi nguyên tố.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thành phần nguyên tố và tỉ lệ số lượng nguyên tử của mỗi nguyên tố.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Số lượng nguyên tử mỗi nguyên tố và trật tự liên kết giữa các nguyên tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tỉ lệ số lượng nguyên tử của mỗi nguyên tố và trật tự liên kết giữa các nguyên tử.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Thành phần nguyên tố và số lượng nguyên tử của mỗi nguyên tố..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để phân tích thổ nhưỡng hoặc phân tích dư lượng thuốc bảo vệ thực vật trong nông sản người ta dùng phương pháp nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chiết lỏng – lỏng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chiết lỏng – rắn.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phương pháp kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sắc kí cột.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Chiết lỏng – rắn..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cây neem (cây thường xanh Ấn Độ) hay còn gọi là cây nim, sầu đâu (tên khoa học Azadirachta indica) được người Ấn độ dùng hơn 4000 năm nay để làm đẹp và chữa bệnh. Các chiết xuất từ là neem có thể ức chế sự sao chép của virus Dengue, kháng virus nên có tác dụng điều trị bệnh sốt xuất huyết hiệu quả. Người ta hái một ít lá neem tươi, rửa sạch, cho vào nồi đun kĩ, lọc lấy nước để sử dụng. Hãy cho biết cách làm trên thuộc loại phương pháp tách và tinh chế nào?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phương pháp chưng cất",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phương pháp chiết",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phương pháp kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sắc kí cột.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Phương pháp chưng cất.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các dãy chất sau đây:<br/>(1) C<sub>2</sub>H<sub>6</sub>, CH<sub>4</sub>, C<sub>4</sub>H<sub>10</sub>.(2) C<sub>2</sub>H<sub>5</sub>OH, CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>OH.<br/>(3) HCHO, CH<sub>3</sub>CHO, C<sub>2</sub>H<sub>5</sub>CHO.(4) CH<sub>3</sub>COOH, HCOOCH<sub>3</sub>.<br/>Có mấy dãy gồm các chất là đồng đẳng của nhau?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Menthol (mùi bạc hà) có công thức là C<sub>10</sub>H<sub>18</sub>O, chỉ chứa một liên kết đôi. Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Menthol là dẫn xuất của hydrocarbon.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Menthol có cấu tạo mạch hở.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Menthol có cấu tạo mạch vòng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Menthol có nhiệt độ sôi thấp hơn muối ăn (NaCl).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Menthol có cấu tạo mạch hở..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hợp chất X có chứa hai hoặc ba nguyên tố C, H, O. Peak ion phân tử trên phổ MS của nó có m/z = 30. X có thể là chất nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>OH hoặc C<sub>2</sub>H<sub>6</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CHO hoặc C<sub>2</sub>H<sub>4</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>2</sub>H<sub>6</sub> hoặc C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "HCHO hoặc C<sub>2</sub>H<sub>6</sub>.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> HCHO hoặc C<sub>2</sub>H<sub>6</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cặp chất nào dưới đây là đồng phân vị trí nhóm chức?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "323CHOCHCH  và  322CHCHCHOH .",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "33CHCOCH  và  32CHCHCHO= .",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "23CHCCHCHº  và  3223CHCHCHCHCHCH=-= .",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "322CHCHCHOH  và  ()33CHCHOHCH .",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 322CHCHCHOH  và  ()33CHCHOHCH ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c3_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Methadone là một loại thuốc dùng trong cai nghiện ma túy, nó thực chất cũng là một loại chất gây nghiện nhưng “nhẹ” hơn các loại ma túy thông thường và dễ kiểm soát hơn. Công thức cấu tạo thu gọn như hình dưới.<br/>Công thức phân tử của methadone là",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de3_image14.jpeg"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>17</sub>H<sub>27</sub>NO.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>17</sub>H<sub>22</sub>NO.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>21</sub>H<sub>29</sub>NO.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>21</sub>H<sub>27</sub>NO.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> C<sub>21</sub>H<sub>27</sub>NO..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c3_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Năm 1861, Butlerov (Bút-lê-rốp) đưa ra khái niệm cấu tạo hóa học và thuyết cấu tạo hoá học:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong phân tử chất hữu cơ, các nguyên tử liên kết với nhau theo đúng hoá trị không nhất thiết theo một thứ tự nhất định.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong phân tử chất hữu cơ, carbon có hoá trị IV.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tính chất của các chất phụ thuộc vào thành phần phân tử và cấu tạo hoá học.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong phân tử hợp chất hữu cơ, các nguyên tử carbon chỉ được liên kết với nhau không liên kết được với các nguyên tố khác.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Trong phân tử chất hữu cơ, các nguyên tử liên kết với nhau theo đúng hoá trị và theo một thứ tự nhất định.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Các nguyên tử carbon có thể liên kết được với nhau và liên kết với các nguyên tố khác.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho hai hợp chất hữu cơ là aniline (C<sub>6</sub>H<sub>7</sub>N), 2-aminopyridine (C<sub>5</sub>H<sub>6</sub>N<sub>2</sub>) và hình ảnh phổ khối như hình vẽ sau:<br/>(a) Phổ khối lượng của hợp chất hữu cơ A(b) Phổ khối lượng của hợp chất hữu cơ B",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de3_image15.png",
+          "/assets/hoa11/c3/hoa11_c3_de3_image16.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phổ khối lượng ở hình (a) tương ứng với phân tử aniline.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Mảnh ion phân tử ở hình (b) có giá trị m/z là 94.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phổ khối lượng ở hình (b) tương ứng với phân tử 2-aminopyridine.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Mảnh ion phân tử ở hình (a) có giá trị m/z là 93.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mỗi phát biểu sau là đúng hay sai?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có thể tách riêng được acetic acid (ts = 118 °C), ethanol (ts = 78,3 °C) và ethyl acetate (ts = 77,1 °C) ra khỏi hỗn hợp ester hoá bằng phương pháp chưng cất.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Oxi hoá không hoàn toàn hỗn hợp gồm o-xylene và p-xylene bằng dung dịch acid HNO<sub>3</sub> thu được hỗn hợp benzene-1,2-dicarboxylic acid (độ tan 6 g L-1 nước ở 25 °C) và benzene-1,4-dicarboxylic acid (độ tan 0,065 g L-1 nước ở 25 °C). Tách 2 acid này khỏi nhau bằng phương pháp kết tinh.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Xăng, dầu là các phân đoạn chưng cất dầu mỏ gồm các hydrocarbon có nhiệt độ sôi gần nhau, được sử dụng làm nhiên liệu động cơ.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để tách tinh dầu chanh, bưởi, hồi, quế từ các cây, quả tương ứng, người ta thường sử dụng phương pháp chưng cất lôi cuốn hơi nước.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Vì ethanol và ethyl acetate có nhiệt độ sôi gần nhau nên không sử dụng phương pháp chưng cất.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Hợp chất hữu cơ X có trong thành phần của giấm táo. Khi phân tích nguyên tố X thu được phần trăm các nguyên tố là: 40%C, 6,67%H và còn lại là O. Bằng phổ MS, người ta xác định được phân tử khối của X là 60. Cho biết phổ IR của X thấy có tín hiệu hấp thụ ở 1715 cm<sup>-1</sup> đồng thời thấy một số tín hiệu hấp thụ trong vùng 3400 – 2500 cm<sup>-1</sup>.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tỉ lệ số nguyên tử giữa nguyên tố carbon và nguyên tố hydrogen tương ứng là 1 : 2.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Công thức phân tử của X là C<sub>3</sub>H<sub>6</sub>O.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Công thức cấu tạo thu gọn của X là CH<sub>3</sub> – COOH.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "X thuộc dùng dãy đồng đẳng với CH<sub>3</sub> – CH<sub>2</sub> – OH.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>Gọi công thức tổng quát của X là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub><br/>Ta có: x : y : z =  406,6753,33::3,33:6,67:3,331:2:112116==   Þ  CTĐGN của X là CH<sub>2</sub>O.<br/>b. Sai.<br/>CTPT của X có dạng (CH<sub>2</sub>O)<sub>n</sub>  Þ  M<sub>X</sub> = 30n = 60  Þ  n = 2  Þ  CTPT của X: C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>.<br/>c. Đúng. X chứa liên kết C = O và O – H (trong COOH)  Þ  X là CH<sub>3</sub>COOH.<br/>d. Sai. X chứa -COOH không thể cùng dãy đồng đẳng với ethyl alcohol chứa -OH.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các hợp chất: C<sub>3</sub>H<sub>6</sub> (1), C<sub>7</sub>H<sub>6</sub>O<sub>2</sub>(2), CCl<sub>4</sub> (3), C<sub>8</sub>H<sub>18</sub> (4), C<sub>6</sub>H<sub>5</sub>N (5) và C<sub>4</sub>H<sub>4</sub>S (6). Trong các hợp chất trên, có bao nhiêu hợp chất là dẫn xuất hydrocarbon?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Có bao nhiêu đồng phân cấu tạo mạch hở ứng với công thức phân tử C<sub>5</sub>H<sub>12</sub>?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>(1) CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub>,<br/>(2)                          (3)",
+        "explanationImages": [
+          "/assets/hoa11/c3/hoa11_c3_de3_image24.png",
+          "/assets/hoa11/c3/hoa11_c3_de3_image25.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: C<sub>2</sub>H<sub>6</sub>O, C<sub>3</sub>H<sub>8</sub>O<sub>3</sub>, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, C<sub>5</sub>H<sub>8</sub> và C<sub>2</sub>H<sub>2</sub>. Có bao nhiêu chất trong số các chất trên có công thức phân tử trùng với công thức đơn giản nhất?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất có công thức cấu tạo sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(1)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(2)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(3)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(4)</th></tr></table></div><br/>Có mấy chất trong các chất trên có tín hiệu trên phổ hồng ngoại ở khoảng 1750 - 1680 cm<sup>-1</sup>?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Phương pháp kết tinh dựa trên nguyên tắc chất rắn tách ra từ dung dịch bão hòa của chất đó khi thay đổi điều kiện hòa tan (dung môi, nhiệt độ). Cho các bước tiến hành kết tinh chất rắn:<br/>(1) Lọc nóng để loại bỏ phần chất rắn không tan.<br/>(2) Lọc lấy chất rắn kết tinh.<br/>(3) Hòa tan hỗn hợp chất rắn ở nhiệt độ sôi của dung môi để tạo dung dịch bão hòa.<br/>(4) Để nguội phần dung dịch sau khi lọc.<br/>Hãy sắp xếp các bước tiến hành theo trình tự a), b), c), d) trong hình thí nghiệm trên và tạo thành dãy bốn số. (ví dụ: 3241, 1243,…)",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de3_image21.png"
+        ],
+        "correctAnswer": "3142",
+        "explanation": "Đáp án: 3142.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "3142",
+          "3142",
+          "3142"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Safrol là một chất có trong tinh dần xá xị (hay gù hương), được dùng làm hương liệu trong thực phẩm. Phổ MS của safrol có thấy chất này có phân tử khối là 162. Kết quả phân tích nguyên tố cho thấy thành phần phần trăm về khối lượng các nguyên tố carbon, hydrogen và oxygen có trong safrol lần lượt là 74,07%; 6,18% và 19,75%. Tổng số nguyên tử có trong phân tử safrol là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "22",
+        "explanation": "Đáp án: 22.<br/>Gọi công thức tổng quát của Safrol là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub><br/>Ta có tỉ lệ: x : y : z =  %C%H%O::12116  =  74,076,1819,75::12116 = 6,1725: 6,18: 1,234 = 5: 5 : 1<br/>Þ  CTĐGN của Safrol là C<sub>5</sub>H<sub>5</sub>O  Þ  CTPT của Safrol có dạng: (C<sub>5</sub>H<sub>5</sub>O)<sub>n</sub><br/>M<sub>X</sub> = 162  Þ  81n = 162  Þ  n = 2  Þ  CTPT của Safrol là C<sub>10</sub>H<sub>10</sub>O<sub>2</sub>.<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "22",
+          "22",
+          "22"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c3_de4",
+    "code": "11-C3-04",
+    "title": "Đề Kiểm Tra Tổng Hợp Toàn Diện Chương 3 (Đề số 4)",
+    "topic": "Đề ôn tập toàn diện Đại cương Hóa học Hữu cơ chuẩn Bộ 2025",
+    "badge": "Chương 3 • Đề 4",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c3_de4_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Liên kết hoá học trong hợp chất hữu cơ thường là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "liên kết cộng hoá trị",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "liên kết kim loại.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "liên kết hydrogen.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "liên kết ion.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> liên kết cộng hoá trị.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hoá học hữu cơ là ngành hoá học chuyên nghiên cứu",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "các hợp chất của carbon.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "các hợp chất của carbon (trừ CO, CO<sub>2</sub>).",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "các hợp chất của carbon (trừ CO, CO<sub>2</sub>, muối carbonate, cyanide, carbide,…).",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "các hợp chất chỉ có trong cơ thể sống.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> các hợp chất của carbon (trừ CO, CO<sub>2</sub>, muối carbonate, cyanide, carbide,…)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng hoá học của các hợp chất hữu cơ thường xảy ra",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "chậm, không hoàn toàn, không theo một hướng nhất định.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "nhanh và cho một sản phẩm duy nhất.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "nhanh, không hoàn toàn, không theo một hưởng nhất định.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "chậm, hoàn toàn, không theo một hưởng nhất định.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> chậm, không hoàn toàn, không theo một hướng nhất định..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức phân tử cho ta biết",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "số lượng nguyên tử mỗi nguyên tố trong hợp chất hữu cơ.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tỉ lệ số nguyên tử của các nguyên tố trong hợp chất hữu cơ",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "số nguyên tố có mặt trong phân tử hợp chất hữu cơ.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "cách thứ liên kết của các nguyên tử trong phân tử hợp chất hữu cơ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> số lượng nguyên tử mỗi nguyên tố trong hợp chất hữu cơ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tách chất màu thực phẩm thành những chất màu riêng thì dùng phương pháp nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phương pháp kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phương pháp chưng cất.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phương pháp sắc kí",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phương pháp chiết.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Phương pháp sắc kí.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây có công thức phân tử trùng với công thức đơn giản nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>COOH",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>6</sub>H<sub>6</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>2</sub>H<sub>4</sub>Cl<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> C<sub>2</sub>H<sub>5</sub>OH..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Bộ dụng cụ chiết (được mô tả như hình vẽ bên) dùng để",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image12.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "tách hai chất rắn tan trong dung dịch",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "tách hai chất lỏng tan tốt vào nhau.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "tách hai chất lỏng không tan vào nhau",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "tách chất lỏng và chất rắn.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> tách hai chất lỏng không tan vào nhau.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các chất hữu cơ có tính chất hoá học tương tự nhau và thành phần phân tử hơn kém nhau một hay nhiều nhóm CH<sub>2</sub> được gọi là các chất",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "đồng phân của nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "đồng đẳng của nhau.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "đồng vị của nhau",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "đồng khối của nhau.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> đồng đẳng của nhau..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phố khối lượng của naphtalene được cho trong hình dưới đây:<br/>Phân tử khối của naphtalene là",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image13.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "51.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "64",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "102",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "128.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 128..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phổ hồng ngoại là phương pháp vật lí rất quan trọng và phổ biến để nghiên cứu về",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "thành phần nguyên tố chất hữu cơ",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "thành phần phân tử hợp chất hữu cơ.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "cấu tạo hợp chất hữu cơ",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "cấu trúc không gian hợp chất hữu cơ.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> cấu tạo hợp chất hữu cơ.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây là hydrocarbon?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>NH<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>5</sub>OH",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>4</sub>H<sub>10</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>CHO.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C<sub>4</sub>H<sub>10</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Propene có công thức đơn giản nhất là CH<sub>2</sub> (xác định từ phân tích nguyên tố) và phân tử khối là 42. Công thức phân tử của propene là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>2</sub>H<sub>6</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>4</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>3</sub>H<sub>6</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>2</sub>O.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C<sub>3</sub>H<sub>6</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các công thức cấu tạo sau:<br/>Những công thức cấu tạo nào sau đây biểu thị cùng một chất?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image14.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "(I), (II), (IV).",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(I), (III), (IV)",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "(I), (IV)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(III), (IV).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> (I), (III), (IV).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phổ hồng ngoại (IR) của hợp chất hữu cơ (X) có công thức phân tử là CH<sub>4</sub>O được cho như hình bên dưới. Chất này thường được dùng trong công nghiệp để làm chất chống đông, làm dung môi trong nước rửa kính xe, chất tẩy rửa sơn, mực in máy photocopy và làm nhiên liệu cho các bếp lò loại nhỏ, ...<br/>Chỉ ra peak nào có thể dự đoán được chất (X) là một alcohol?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image15.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Peak A (peak tù rộng đặc trưng nhóm O-H ở 3200 - 3600 cm⁻¹)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Peak B",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Peak C",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Peak D",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Peak.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cặp chất nào dưới đây là đồng phân vị trí nhóm chức?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "323CHOCHCH  và  322CHCHCHOH .",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "33CHCOCH  và  32CHCHCHO= .",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "23CHCCHCHº  và  3223CHCHCHCHCHCH== .",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3222CHCHCNHH  và  ()323CHCHNHCH .",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 3222CHCHCNHH  và  ()323CHCHNHCH ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ngâm củ nghệ với ethanol nóng, sau đó lọc bỏ bã, lấy dung dịch đem cô để làm bay hơi bớt dung môi. Phần dung dịch còn lại sau khi cô được làm lạnh, để yên một thời gian rồi lọc lấy kết tủa curcumin màu vàng. Từ mô tả ở trên, hãy cho biết, người ta đã sử dụng các kĩ thuật tinh chế nào để lấy được curcumin từ củ nghệ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Chiết, chưng cất và kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Chiết và kết tinh.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Chưng cất và kết tinh",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Chưng cất, kết tinh và sắc kí.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Chiết và kết tinh..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Menthol (C<sub>10</sub>H<sub>20</sub>O) và menthone (C<sub>10</sub>H<sub>18</sub>O) là hai chất có trong thành phần chính của tinh dầu bạc hà. Menthol không có nối đôi, còn menthone có 1 nối đôi. Kết luận nào sau đây đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Menthol và menthone đều có cấu tạo vòng.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Menthol có cấu tạo vòng, menthone có cấu tạo mạch hở.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Menthol và menthone đều có cấu tạo mạch hở.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Menthol có cấu tạo mạch hở, menthone có cấu tạo mạch vòng.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Menthol và menthone đều có cấu tạo vòng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c3_de4_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phân tích định lượng Atabrine, một loại thuốc chống sốt rét, người ta xác định được chất này chứa 69,1% carbon, 7,5% hydrogen, 10,5% nitrogen, 8,9% chlorine và 4,0% oxygen về khối lượng. Công thức thực nghiệm của Atabrine là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>23</sub>H<sub>30</sub>ON<sub>3</sub>Cl",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>18</sub>H<sub>24</sub>O<sub>2</sub>N<sub>2</sub>Cl",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>23</sub>H<sub>30</sub>O<sub>2</sub>N<sub>2</sub>Cl",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>18</sub>H<sub>24</sub>O<sub>2</sub>N<sub>3</sub>Cl.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> C<sub>23</sub>H<sub>30</sub>ON<sub>3</sub>Cl.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c3_de4_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Acetic acid có trong giấm ăn và là chất được sử dụng nhiều trong công nghiệp. Công thức cấu tạo của acetic acid được biểu diễn như sau:",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image24.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Acetic acid thuộc loại carboxylic acid.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tỉ khối hơi của acid acetic so với hydrogen ở cùng điều kiện (nhiệt độ, áp suất) bằng 60.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Acetic acid có công thức đơn giản nhất là CH<sub>2</sub>O.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phần trăm khối lượng của oxygen trong phân tử acid acetic là 53,33%.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. S. dX/H<sub>2</sub> = 60/2 = 30.<br/>c. Đ.<br/>d. Đ.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c3_de4_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Năm 1861, Butlerov (Bút-lê-rốp) đưa ra khái niệm cấu tạo hóa học và thuyết cấu tạo hoá học:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Trong phân tử chất hữu cơ, các nguyên tử liên kết với nhau theo đúng hoá trị và theo một thứ tự nhất định.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Trong phân tử chất hữu cơ, carbon có hoá trị IV.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tính chất của các chất phụ thuộc vào thành phần phân tử (bản chất và số lượng các nguyên tử) và cấu tạo hoá học.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong phân tử hợp chất hữu cơ, các nguyên tử carbon chỉ liên kết với nguyên tử của nguyên tố khác.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. Đ.<br/>c. Đ.<br/>d. S. Các nguyên tử carbon có thể liên kết được với nhau.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c3_de4_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Bộ dụng cụ chưng cất dung dịch ethanol và nước:<br/>Biết nhiệt độ sôi của ethanol và nước lần lượt là 78,3 <sup>o</sup>C và 100 <sup>o</sup>C.",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image25.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi chưng cất dung dịch ethanol và nước, chất chuyển thành hơi sớm hơn là ethanol.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tỉ lệ ethanol/H<sub>2</sub>O ở bình hứng thấp hơn trong nồi chưng cất.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Đá bọt có vai trò điều hòa quá trình sôi, tránh hiện tượng quá sôi.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi lắp ống sinh hàn thì nước phải được đi vào từ đầu phía trên (cao) và đi ra từ đầu phía dưới (thấp).",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đ.<br/>b. S. Tỉ lệ ethanol/H<sub>2</sub>O ở bình hứng cao hơn trong nồi chưng cất.<br/>c. Đ.<br/>d. S. Khi lắp ống sinh hàn thì nước phải được đi vào từ đầu thấp phía dưới và đi ra từ đầu phía trên. Nếu lắp ngược lại sẽ gây ra hiện tượng thiếu nước cho ống sinh hàn, khiến ống bị nóng và có thể gây vết nứt và làm giảm hiệu quả của sự ngưng tụ.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c3_de4_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Kết quả phân tích nguyên tố của chất hữu cơ (E) có 66,67% carbon; 11,11% hydrogen, còn lại là oxygen. Biết trong (E) có một nguyên tử oxygen và phổ IR của (E) được mô tả qua hình dưới đây:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất<br/>Liên kết<br/>Số sóng (cm-1)<br/>Alcohol<br/>O – H<br/>3500 – 3200<br/>Amine<br/>N – H<br/>3300 – 3000<br/>Aldehyde<br/>C – H<br/>2830 – 2695<br/>C = O<br/>1740 – 1685<br/>Ketone<br/>C = O<br/>1715 – 1666<br/>Carboxylic acid<br/>C = O<br/>1760 – 1690<br/>O – H<br/>3300 – 2500<br/>Ester<br/>C = O<br/>1750 – 1715<br/>C – O<br/>1300 – 1000<br/>Bảng tín hiệu phổ hồng ngoại của một số nhóm chức</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Số sóng (cm-1)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Alcohol</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">3500 – 3200</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Amine</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">N – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 3000</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Aldehyde</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">2830 – 2695</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1740 – 1685</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ketone</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1715 – 1666</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Carboxylic acid</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1760 – 1690</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 2500</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ester</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1750 – 1715</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\"></th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">C – O</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">1300 – 1000</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Hợp chất</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Liên kết</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Số sóng (cm-1)</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Alcohol</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3500 – 3200</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Amine</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">N – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 3000</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Aldehyde</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">2830 – 2695</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1740 – 1685</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Ketone</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1715 – 1666</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Carboxylic acid</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1760 – 1690</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">O – H</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">3300 – 2500</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Ester</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C = O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1750 – 1715</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">C – O</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">1300 – 1000</td></tr></table></div>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khối lượng mol phân tử X bằng 60 g.mol<sup>-1</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tỉ lệ giữa số nguyên tử carbon và hydrogen tương ứng là 1 : 2.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tổng số nguyên tử có trong một phân tử chất X là 10.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dựa vào phổ IR có thể dự đoán được X có chứa nhóm chức aldehyde.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>%C%H%Ox:y:z::4:8:112116==   CTPT: C<sub>4</sub>H<sub>8</sub>O<br/>a. S. M = 72.<br/>b. Đ.<br/>c. S. Tổng số nguyên tử là 13.<br/>d. Đ.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c3_de4_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất: C<sub>4</sub>H<sub>4</sub>, NaCN, CO<sub>2</sub>, CH<sub>2</sub>=CH<sub>2</sub>, CH<sub>3</sub>COOH, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, CH<sub>3</sub>Br, NaHCO<sub>3</sub>, CaC<sub>2</sub> và H<sub>2</sub>HCH<sub>2</sub>COOH. Có bao nhiêu hợp chất hữu cơ trong dãy các chất trên?",
+        "images": [],
+        "correctAnswer": "6",
+        "explanation": "Đáp án: 6.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "6",
+          "6",
+          "6"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de4_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Vitamin A là một chất dinh dưỡng thiết yếu cho con người và có có cấu trúc phân tử biểu diễn như sau:<br/>Phần trăm khối lượng của nguyên tố oxygen có trong phân tử vitamin A là bao nhiêu phần trăm? (Kết quả làm tròn đến hàng phần mười).",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image27.png"
+        ],
+        "correctAnswer": "5,6",
+        "explanation": "Đáp án: 5,6.<br/>C<sub>20</sub>H<sub>30</sub>O  %O = 5,6%.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "5,6",
+          "5.6",
+          "5,6"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de4_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các cặp chất sau: (a) CH<sub>2</sub>=CH<sub>2</sub> và CH<sub>2</sub>=C=CH<sub>2</sub>; (b) CH º CH và CH<sub>3</sub>CH<sub>2</sub>C º CH; (c) CH<sub>3</sub>CH<sub>2</sub>OH và (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>OH; (d) C<sub>6</sub>H<sub>5</sub>OH và C<sub>6</sub>H<sub>4</sub>(OH)<sub>2</sub>; (e) HCH=O và CH<sub>3</sub>COCH<sub>3</sub>. Có bao nhiêu cặp chất là đồng đẳng của nhau?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de4_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Để nghiên cứu thành phần hoá học của một loại cây thuốc người ta làm như sau: Ngâm mẫu cây trong dung môi thích hợp (thường là ethanol) một thời gian, sau đó gạn lấy chất lỏng. Đun sôi hỗn hợp để thu hồi bớt dung môi, được hỗn hợp sền sệt gọi là cao tổng. Cho cao tổng vào cột sắc kí, sau đó đổ dung môi thích hợp vào trên lớp cao tổng. Dùng các lọ nhỏ hứng lấy các phân đoạn chất lỏng chảy ra khỏi cột sắc kí, sau đó đem xác định chất có trong mỗi phân đoạn. Trong quá trình trên đã áp dụng mấy phương pháp để tách và tinh chế chất?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.<br/>Đó là: ngâm chiết; chưng cất, sắc kí.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de4_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Có bao nhiêu đồng phân cấu tạo mạch hở có cùng công thức phân tử C<sub>4</sub>H<sub>9</sub>Cl?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c3_de4_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Diethyl ether là hợp chất dùng làm thuốc gây mê toàn thân theo đường thở. Nó cũng có tác dụng giảm đau và giãn cơ. Kết quả phân tích nguyên tố của hợp chất này có 64,86%C; 13,51%H về khối lượng; còn lại là O. Khối lượng mol phân tử của diethyl ether được xác định trên phổ khối lượng tương ứng với peak có giá trị m/z lớn nhất.<br/>Tổng số nguyên tử có trong phân tử diethyl ether?",
+        "images": [
+          "/assets/hoa11/c3/hoa11_c3_de4_image29.png"
+        ],
+        "correctAnswer": "15",
+        "explanation": "Đáp án: 15.<br/>O%m100%64,86%13,51%21,63%=--=<br/>Đặt công thức phân tử của diethyl ether là C<sub>x</sub>H<sub>y</sub>O<sub>z</sub>.<br/>Từ phổ khối lượng suy ra M<sub>diethyl ether</sub> = 74<br/>12x64,86x474100y13,51y107410016z21,63z174100=Þ»=Þ»=Þ»<br/>Công thức phân tử của diethyl ether là C<sub>4</sub>H<sub>10</sub>O.<br/>------------------------- HẾT -------------------------<br/>- Thí sinh không sử dụng tài liệu.<br/>- Giám thị không giải thích gì thêm.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "15",
+          "15",
+          "15"
+        ]
+      }
+    ]
+  }
+];
 export const HOA11_CHUONG3_7_EXAMS: Chuong3Exam[] = HOA11_CHUONG3_EXAMS;
 
 export const HOA11_CHUONG3_HANDBOOK = [{"title":"1. Khái Niệm Hợp Chất Hữu Cơ & Nhóm Chức","icon":"🧪","content":["<b>Hợp chất hữu cơ (HCHC):</b> Là hợp chất của carbon (trừ CO, CO<sub>2</sub>, muối carbonate, cyanide, carbide,...).","Liên kết hóa học chủ yếu trong HCHC là liên kết cộng hóa trị.","Nhiệt độ nóng chảy, nhiệt độ sôi thường thấp; phần lớn không tan trong nước, tan tốt trong dung môi hữu cơ.","<b>Nhóm chức:</b> Là nguyên tử hoặc nhóm nguyên tử gây ra những tính chất hóa học đặc trưng của hợp chất hữu cơ (–OH: alcohol; –CHO: aldehyde; –COOH: carboxylic acid; –COO–: ester; –NH<sub>2</sub>: amine)."]},{"title":"2. Phương Pháp Tách Biệt & Tinh Chế Hợp Chất Hữu Cơ","icon":"⚗️","content":["<b>Chưng cất:</b> Tách các chất lỏng có nhiệt độ sôi khác nhau (VD: Chưng cất cồn ethanol từ hỗn hợp rượu và nước, chưng cất tinh dầu).","<b>Chiết:</b> Dựa vào độ tan khác nhau của các chất trong hai dung môi không trộn lẫn (VD: Chiết lỏng - lỏng dùng phễu chiết; chiết lỏng - rắn ngâm dược liệu).","<b>Kết tinh:</b> Tách chất rắn dựa vào độ tan khác nhau ở các nhiệt độ khác nhau (VD: Làm đường kết tinh, tinh chế muối acid).","<b>Sắc kí cột:</b> Tách các chất dựa trên sự phân bố khác nhau giữa pha tĩnh và pha động."]},{"title":"3. Xác Định Phân Tử Khối Bằng Phổ Khối Lượng (MS)","icon":"📊","content":["Phổ khối lượng (Mass Spectrometry - MS) cho biết khối lượng phân tử của chất.","Giá trị <b>m/z của peak ion phân tử [M<sup>+</sup>]</b> (thường là peak có giá trị m/z lớn nhất trừ một số trường hợp đặc biệt) tương ứng với <b>phân tử khối (M)</b> của hợp chất hữu cơ.","<b>Ví dụ:</b> Peak ion phân tử có m/z = 60 &rArr; Phân tử khối M = 60 (C<sub>3</sub>H<sub>8</sub>O hoặc C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>)."]},{"title":"4. Thuyết Cấu Tạo Hóa Học & Đồng Phân, Đồng Đẳng","icon":"🧬","content":["Trong HCHC, carbon luôn có hóa trị IV. Các nguyên tử carbon có thể liên kết trực tiếp với nhau tạo thành mạch hở (không nhánh, có nhánh) hoặc mạch vòng.","Tính chất của các chất phụ thuộc vào <b>thành phần phân tử</b> và <b>cấu tạo hóa học</b> (trật tự liên kết).","<b>Đồng đẳng:</b> Các chất có cấu tạo và tính chất hóa học tương tự nhau nhưng phân tử hơn kém nhau một hay nhiều nhóm methylene (–CH<sub>2</sub>–).","<b>Đồng phân:</b> Các chất có cùng công thức phân tử nhưng khác nhau về cấu tạo hóa học nên tính chất khác nhau (đồng phân mạch carbon, đồng phân nhóm chức, đồng phân vị trí nhóm chức/liên kết bội)."]}];

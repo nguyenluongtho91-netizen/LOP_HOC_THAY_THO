@@ -72,7 +72,3935 @@ export const HOA11_CHUONG4_MASTER: Record<string, Chuong4Lesson> = {"bai15":{"id
 
 export const HOA11_CHUONG4_LESSONS: Chuong4Lesson[] = Object.values(HOA11_CHUONG4_MASTER);
 
-export const HOA11_CHUONG4_EXAMS: Chuong4Exam[] = [{"id":"hoa11_c4_de1","code":"ĐỀ 401","title":"Đề kiểm tra Chương 4: Hydrocarbon (Đề số 1)","topic":"Alkane: Danh pháp IUPAC, phản ứng thế halogen & phản ứng cháy","badge":"Chương 4 - Đề 1","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c4_de1_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Ở điều kiện thường hydrocarbon nào sau đây ở thể lỏng?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>4</sub>H<sub>10</sub>","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>2</sub>H<sub>6</sub>","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>3</sub>H<sub>8</sub>","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>5</sub>H<sub>12</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c4_de1_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trong các chất dưới đây, chất nào có nhiệt độ sôi thấp nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Butane","isCorrect":false},{"id":"b","letter":"B","text":"Etane","isCorrect":false},{"id":"c","letter":"C","text":"Methane","isCorrect":true},{"id":"d","letter":"D","text":"Propane","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c4_de1_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Alkane là những hyđrocarbon no, mạch hở, có công thức chung là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>n</sub>H<sub>2n</sub><sub>+</sub><sub>2</sub>(n ≥1)","isCorrect":true},{"id":"b","letter":"B","text":"C<sub>n</sub>H<sub>2n</sub>(n ≥2)","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>n</sub>H<sub>2n</sub><sub>-</sub><sub>2</sub>(n ≥2)","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>n</sub>H<sub>2n</sub><sub>-</sub><sub>6</sub>(n ≥ 6)","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c4_de1_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Hydrocarbon X có công thức phân tử là C<sub>5</sub>H<sub>12</sub>, biết khi tác dụng với clo tạo được một dẫn xuất monochloro. Tên gọi của X là","images":[],"options":[{"id":"a","letter":"A","text":"2 – methylpentane","isCorrect":false},{"id":"b","letter":"B","text":"pentane","isCorrect":false},{"id":"c","letter":"C","text":"2, 2 – dimethylpropane","isCorrect":true},{"id":"d","letter":"D","text":"3 – methylbutane","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c4_de1_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Cho nhiệt đốt cháy hoàn toàn 1 mol các chất ethane, propane, butane và pentane lần lượt là 1570 kJ mol<sup>-1</sup> ; 2220 kJ mol<sup>-1</sup> ; 2875 kJ mol<sup>-1</sup> và 3536 kJ mol<sup>-1</sup>. Khi đốt cháy 1 gam chất nào sẽ thu được nhiệt lớn nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Ethane","isCorrect":true},{"id":"b","letter":"B","text":"Propane","isCorrect":false},{"id":"c","letter":"C","text":"Butane","isCorrect":false},{"id":"d","letter":"D","text":"Pentane","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c4_de1_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Phương pháo nào sau đây có thể được thực hiện để góp phần hạn chế ô nhiễm môi trường do các phương tiện giao thông gây ra?","images":[],"options":[{"id":"a","letter":"A","text":"Không sử dụng phương tiện giao thông","isCorrect":false},{"id":"b","letter":"B","text":"Cấm các phương tiện giao thông tại các đô thị","isCorrect":false},{"id":"c","letter":"C","text":"Sử dụng phương tiện chạy bằng điện hoặc nhiên liệu xanh","isCorrect":true},{"id":"d","letter":"D","text":"Sử dụng các phương tiện chạy bằng than đá","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c4_de1_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Alkene là các hydrocarbon không no, mạch hở, có công thức chung là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>n</sub>H<sub>2n+2</sub> (n ≥ 1)","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)","isCorrect":true},{"id":"c","letter":"C","text":"C<sub>n</sub>H<sub>2n</sub> (n ≥ 3)","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>n</sub>H<sub>2n-2</sub> (n ≥ 2)","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c4_de1_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Alkene CH<sub>3</sub>CH=CHCH<sub>3</sub> có tên là","images":[],"options":[{"id":"a","letter":"A","text":"2-methylprop-2-ene","isCorrect":false},{"id":"b","letter":"B","text":"but-2-ene","isCorrect":true},{"id":"c","letter":"C","text":"but-1-ene","isCorrect":false},{"id":"d","letter":"D","text":"but-3-ene","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c4_de1_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Nhận xét nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Alkane không tham gia phản ứng cộng","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng đặc trưng của alkene và alkyne là phản ứng cộng","isCorrect":false},{"id":"c","letter":"C","text":"Benzene và đồng đẳng dễ tham gia phản ứng thế hơn phản ứng cộng","isCorrect":false},{"id":"d","letter":"D","text":"Styrene dễ tham gia phản ứng thế hơn phản ứng cộng","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c4_de1_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Số công thức cấu tạo của alkyne có cùng công thức C<sub>4</sub>H<sub>6</sub> là","images":[],"options":[{"id":"a","letter":"A","text":"4","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":false},{"id":"c","letter":"C","text":"2","isCorrect":true},{"id":"d","letter":"D","text":"5","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c4_de1_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Chất nào sau đây khi tác dụng với HCl chỉ cho một sản phẩm duy nhất?","images":[],"options":[{"id":"a","letter":"A","text":"Ethene","isCorrect":true},{"id":"b","letter":"B","text":"Propene","isCorrect":false},{"id":"c","letter":"C","text":"But-1-ene","isCorrect":false},{"id":"d","letter":"D","text":"Methylpropene","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c4_de1_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Đốt cháy hoàn toàn a mol X thu được 5a mol CO<sub>2</sub>. Biết 1 mol X phản ứng tối đa với 2 mol AgNO<sub>3</sub> trong NH<sub>3</sub>. Công thức cấu tạo của X là","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>2</sub>=CH–CH=CHCH<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>2</sub>=CH–CH<sub>2</sub>–C º CH","isCorrect":false},{"id":"c","letter":"C","text":"HC º C–CH<sub>2</sub>–C º CH","isCorrect":true},{"id":"d","letter":"D","text":"CH<sub>2</sub>=C =CH–CH=CH<sub>2</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c4_de1_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Công thức cấu tạo thu gọn của toluene là","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":false},{"id":"b","letter":"B","text":"","isCorrect":true},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c4_de1_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Arene hay còn gọi là hydrocarbon thơm là những hydrocarbon trong phân tử có chứa một hay nhiều","images":[],"options":[{"id":"a","letter":"A","text":"vòng benzene","isCorrect":true},{"id":"b","letter":"B","text":"liên kết đơn","isCorrect":false},{"id":"c","letter":"C","text":"liên kết đôi","isCorrect":false},{"id":"d","letter":"D","text":"liên kết ba","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c4_de1_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Công thức phân tử nào sau đây có thể là công thức của hợp chất thuộc dãy đồng đẳng của benzene?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>8</sub>H<sub>16</sub>","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>8</sub>H<sub>14</sub>","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>8</sub>H<sub>12</sub>","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>8</sub>H<sub>10</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c4_de1_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Tính chất nào không phải của benzene?","images":[],"options":[{"id":"a","letter":"A","text":"Tác dụng với Br<sub>2</sub> (t<sup>o</sup>, FeBr<sub>3</sub>)","isCorrect":false},{"id":"b","letter":"B","text":"Tác dụng với HNO<sub>3</sub>(đ) /H<sub>2</sub>SO<sub>4</sub>(đ)","isCorrect":false},{"id":"c","letter":"C","text":"Tác dụng với dung dịch KMnO<sub>4</sub>","isCorrect":true},{"id":"d","letter":"D","text":"Tác dụng với Cl<sub>2</sub>, as","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c4_de1_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Nitro hoá benzene bằng hỗn hợp HNO<sub>3</sub> đặc và H<sub>2</sub>SO<sub>4</sub> đặc ở nhiệt độ ≤ 50<sup>0</sup>C, tạo thành chất hữu cơ X. Phát biểu nào sau đây về X không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Tên của X là nitrobenzene","isCorrect":false},{"id":"b","letter":"B","text":"X là chất lỏng, sánh như dầu","isCorrect":false},{"id":"c","letter":"C","text":"X có màu vàng","isCorrect":false},{"id":"d","letter":"D","text":"X tan tốt trong nước","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c4_de1_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Một trong những ứng dụng của toluene là","images":[],"options":[{"id":"a","letter":"A","text":"Làm phụ gia để tăng chỉ số octane của nhiên liệu","isCorrect":true},{"id":"b","letter":"B","text":"Làm chất đầu để sản xuất methylcyclohexane","isCorrect":false},{"id":"c","letter":"C","text":"Làm chất đầu để điều chế phenol","isCorrect":false},{"id":"d","letter":"D","text":"Làm chất đầu để sản xuất polystyrene","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c4_de1_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Xét các phát biểu về cấu tạo của phân tử benzene","images":[],"options":[{"id":"a","letter":"A","text":"Phân tử benzene có 6 nguyên tử carbon tạo thành hình lục giác đều","isCorrect":true},{"id":"b","letter":"B","text":"Tất cả nguyên tử carbon và hydrogen đều nằm trên một mặt phẳng","isCorrect":true},{"id":"c","letter":"C","text":"Các góc liên kết đều bằng 109,5<sup>0</sup>","isCorrect":false},{"id":"d","letter":"D","text":"Các độ dài liên kết carbon – carbon là khác nhau","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Góc liên kết trong phân tử benzene đều bằng 120<sup>o</sup>.<br/>d. Sai. Các độ dài liên kết carbon – carbon đều bằng nhau","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa11_c4_de1_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Các alkane có nhiều ứng dụng trong công nghiệp và đời sống hằng ngày:","images":[],"options":[{"id":"a","letter":"A","text":"Propane C<sub>3</sub>H<sub>8</sub> và butane C<sub>4</sub>H<sub>l0</sub> được sử dụng làm khí đốt","isCorrect":true},{"id":"b","letter":"B","text":"Các alkane C<sub>6</sub>, C<sub>7</sub>, C<sub>8</sub> là nguyên liệu để sản xuất một số hydrocarbon thơm","isCorrect":true},{"id":"c","letter":"C","text":"Các alkane lỏng được sử dụng làm nhiên liệu như xăng hay dầu diesel","isCorrect":true},{"id":"d","letter":"D","text":"Các alkane từ C<sub>l1</sub> đến C<sub>20</sub> được dùng làm nến và sáp","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Alkane (C ≥ 20) ở thể rắn được dùng làm nến và sáp","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c4_de1_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Cho hình vẽ bên mô tả thí nghiệm điều chế và thử tính chất của ethylene:","images":["/assets/hoa11/c4/hoa11_c4_de1_image8.png"],"options":[{"id":"a","letter":"A","text":"Bông tẩm dung dịch NaOH đặc có vai trò hấp thụ khí độc SO<sub>2</sub> được sinh ra","isCorrect":true},{"id":"b","letter":"B","text":"Thay dung dịch Br<sub>2</sub> bằng thuốc thử Tollens thì hiện tượng thí nghiệm vẫn không thay đổi","isCorrect":false},{"id":"c","letter":"C","text":"Khí ethylene sinh ra khi sục vào dung dịch Br<sub>2</sub> làm dung dịch mất màu","isCorrect":true},{"id":"d","letter":"D","text":"Vai trò của đá bọt là để điều hoà quá trình sôi, tránh hiện tượng quá sôi","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c4_de1_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Cho các chất sau: methane, ethylene, acetylene, but-2-yne","images":[],"options":[{"id":"a","letter":"A","text":"Có 2 chất tạo kết tủa với thuốc thử Tollens","isCorrect":false},{"id":"b","letter":"B","text":"Có 3 chất có khả năng làm mất màu dung dịch KMnO<sub>4</sub> ở điều kiện thường","isCorrect":true},{"id":"c","letter":"C","text":"Cả 4 chất đều có khả năng làm mất màu dung dịch Br<sub>2</sub> ở điều kiện thường","isCorrect":false},{"id":"d","letter":"D","text":"Có 3 chất khí ở điều kiện thường","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Có một chất là acetylene,<br/>b. Đúng. Các chất ethylene, acetylene, but-2-yne.<br/>c. Sai. Các chất ethylene, acetylene, but-2-yne.<br/>d. Sai. Cả bốn chất là chất khí","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c4_de1_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Tổng số nguyên tử trong một phân tử của anthracene là bao nhiêu?","images":[],"correctAnswer":"24","explanation":"Đáp án: 24 .<br/>Anthracene: C<sub>14</sub>H<sub>10</sub>  Þ  tổng số nguyên tử: 14 + 10 = 24","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa11_c4_de1_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Số liên kết π trong phân tử anthracene là bao nhiêu?","images":[],"correctAnswer":"7","explanation":"Đáp án: 7","explanationImages":["/assets/hoa11/c4/hoa11_c4_de1_image16.png"],"points":0.5,"displayNumber":24},{"id":"hoa11_c4_de1_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Có bao nhiêu đồng phân alkyne có công thức phân tử C<sub>5</sub>H<sub>8</sub> tác dụng được với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub>tạora kết tủa màu vàng nhạt?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2.<br/>CH≡C-CH<sub>2</sub>-CH<sub>2</sub>-CH<sub>3</sub>; CH≡C-CH(CH<sub>3</sub>)<sub>2</sub>","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c4_de1_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cho các alkene: cis-2-methylbut-2-ene (1); trans-2-methylbut-2-ene (2); pent-1-ene (3); 2-methylbut-1-ene (4). Liệt kê các alkene theo số thứ tự tăng dần thỏa mãn điều kiện khi tác dụng với H<sub>2</sub>, xúc tác Ni/t<sup>o</sup> đều tạo thành 2-methylbutane?","images":[],"correctAnswer":"124","explanation":"Đáp án: 124","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c4_de1_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Hỗn hợp X gồm H<sub>2</sub> và C<sub>3</sub>H<sub>6</sub> có tỉ khối so với khí He bằng 5,500. Cho X qua xúc tác Ni, nung nóng thu được hỗn hợp Y có tỉ khối so với khí He bằng 6,875. Hiệu suất phản ứng hydrogen hóa alkene là bao nhiêu phần trăm?","images":[],"correctAnswer":"40","explanation":"Đáp án: 40.<br/>Giả sử có n<sub>X</sub> = 1⇒ m<sub>X</sub> = 1.5,5.4 = 22g<br/>Sử dụng sơ đồ đường chéo ⇒ n<sub>H<sub>2</sub></sub> = n<sub>C3</sub>H<sub>6</sub> = 0,5 mol.<br/>Bảo toàn khối lượng: m<sub>Y</sub> = m<sub>X</sub> = 22(g) ⇒ n<sub>Y</sub> = 22 : 27,5 = 0,8 mol.<br/>⇒  CH36n   phản ứng = n<sub>khí giảm</sub> = n<sub>X</sub> – n<sub>Y</sub> = 0,2 mol<br/>H% =  0,2.1000,5  = 40%","explanationImages":["/assets/hoa11/c4/hoa11_c4_de1_image17.png"],"points":0.5,"displayNumber":27},{"id":"hoa11_c4_de1_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Một bình gas (khí hóa lỏng) chứa hỗn hợp propane và butane với tỉ lệ mol 1:2. Xác định nhiệt lượng tỏa ra khi đốt cháy hoàn toàn 12 kg khí gas trên ở điều kiện chuẩn.<br/>Cho biết các phản ứng:<br/>C<sub>3</sub>H<sub>8</sub> (g) + 5O<sub>2</sub> (g)  ¾¾®  3CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -2220 kJ<br/>C<sub>4</sub>H<sub>10</sub> (g) +  132 O<sub>2</sub> (g)  ¾¾® 4CO<sub>2</sub> (g) + 5H<sub>2</sub>O (l) &nbsp; Δ<sub>r</sub>H°<sub>298</sub> = -2874 kJ<br/>Trung bình mỗi ngày, một hộ gia đình cần đốt gas để cung cấp 10000 kJ nhiệt (hiệu suất hấp thụ nhiệt là 80%). Sau bao nhiêu ngày hộ gia đình trên sẽ sử dụng hết bình gas 12 kg? (Làm tròn kết quả đến hàng đơn vị)","images":[],"correctAnswer":"48","explanation":"Đáp án: 48<br/>Gọi số mol C<sub>3</sub>H<sub>8</sub> và số mol C<sub>4</sub>H<sub>10</sub> là 2a, ta có: 44a  +  58.2a = 12.1000  a = 75 mol<br/>Nhiệt đốt cháy 12 kg gas là Q = 75.2220 + 150.2874 = 597600 (kJ)<br/>Số ngày sử dụng hết bình gas =  59760047,8084810010000.80=»  (ngày)<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa11_c4_de2","code":"ĐỀ 402","title":"Đề kiểm tra Chương 4: Hydrocarbon (Đề số 2)","topic":"Alkene & Alkyne: Quy tắc Markovnikov, phản ứng trùng hợp, phản ứng tráng bạc của alk-1-yne","badge":"Chương 4 - Đề 2","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c4_de2_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Hiện nay, nhiều nơi ở nông thôn đang sử dụng hầm biogas để xử lí chất thải trong chăn nuôi gia súc, cung cấp nhiên liệu cho việc đun nấu. Chất dễ cháy trong khí biogas là","images":[],"options":[{"id":"a","letter":"A","text":"Cl<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>4</sub>","isCorrect":true},{"id":"c","letter":"C","text":"CO<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"N<sub>2</sub>","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c4_de2_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Dãy nào sau đây chỉ gồm các chất thuộc dãy đồng đẳng của alkane?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>2</sub>H<sub>2</sub>, C<sub>3</sub>H<sub>4</sub>, C<sub>4</sub>H<sub>6</sub>, C<sub>5</sub>H<sub>8</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>4</sub>, C<sub>2</sub>H<sub>2</sub>, C<sub>3</sub>H<sub>4</sub>, C<sub>4</sub>H<sub>10</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>4</sub>, C<sub>2</sub>H<sub>6</sub>, C<sub>4</sub>H<sub>10</sub>, C<sub>5</sub>H<sub>12</sub>","isCorrect":true},{"id":"d","letter":"D","text":"C<sub>2</sub>H<sub>6</sub>, C<sub>3</sub>H<sub>8</sub>, C<sub>5</sub>H<sub>10</sub>, C<sub>6</sub>H<sub>12</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c4_de2_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Chất nào sau đây không phải là hydrocarbon?","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>3</sub> – CH<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>2</sub> = CH<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH ≡ CH","isCorrect":false},{"id":"d","letter":"D","text":"CH<sub>3</sub> – CH<sub>2</sub> – OH","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c4_de2_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Cho các chất sau: methane, ethylene, acetylene, benzene, toluene và naphthalene. Số chất ở thể lỏng trong điều kiện thường là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":true},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c4_de2_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Khi cho but-1-ene tác dụng với dung dịch HBr, theo quy tắc Maccopnhicop sản phẩm nào sau đây là sản phẩm chính ?","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>3</sub>–CH<sub>2</sub>–CHBr–CH<sub>2</sub>Br","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>3</sub>–CH<sub>2</sub>–CHBr–CH<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>2</sub>Br–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>Br","isCorrect":false},{"id":"d","letter":"D","text":"CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>Br","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c4_de2_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Alkyne là các hydrocarbon không no, mạch hở, có công thức chung là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>n</sub>H<sub>2n</sub><sub>+</sub><sub>2</sub> (n ≥ 1)","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>n</sub>H<sub>2n</sub> (n ≥ 3)","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>n</sub>H<sub>2n - 2</sub> (n ≥ 2)","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c4_de2_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Số nguyên tử carbon và hydrogen trong benzene lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"12 và 6","isCorrect":false},{"id":"b","letter":"B","text":"6 và 6","isCorrect":true},{"id":"c","letter":"C","text":"6 và 12","isCorrect":false},{"id":"d","letter":"D","text":"6 và 14","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c4_de2_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Cho 0,1 mol C<sub>2</sub>H<sub>2</sub> phản ứng hoàn toàn với lượng dư dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub>, thu được m gam kết tủa vàng. Giá trị của m là","images":[],"options":[{"id":"a","letter":"A","text":"24,0","isCorrect":true},{"id":"b","letter":"B","text":"13,3","isCorrect":false},{"id":"c","letter":"C","text":"10,8","isCorrect":false},{"id":"d","letter":"D","text":"21,6","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c4_de2_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(1) Propane và butane được sử dụng làm khí đốt.<br/>(2) Ethene và propene được sử dụng để tổng hợp polymer.<br/>(3) Acetylene được sử dụng làm nhiên liệu cho đèn xì oxygen-acetylene.<br/>(4) Benzene và toluene có mùi thơm dễ chịu, rất tốt cho sức khỏe con người.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":true},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c4_de2_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Alkyne dưới đây có tên gọi là","images":["/assets/hoa11/c4/hoa11_c4_de2_image1.png"],"options":[{"id":"a","letter":"A","text":"3-methylpent-2-yne","isCorrect":false},{"id":"b","letter":"B","text":"2-methylhex-4-yne","isCorrect":false},{"id":"c","letter":"C","text":"4-methylhex-2-yne","isCorrect":true},{"id":"d","letter":"D","text":"3-methylhex-4-yne","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c4_de2_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Phương pháp nào sau đây là tốt nhất để phân biệt hai khí CH<sub>4</sub> và C<sub>2</sub>H<sub>4</sub>?","images":[],"options":[{"id":"a","letter":"A","text":"Dựa vào tỉ lệ về thể tích khí O<sub>2</sub> tham gia phản ứng cháy","isCorrect":false},{"id":"b","letter":"B","text":"Sự thay đổi màu của nước bromine","isCorrect":true},{"id":"c","letter":"C","text":"So sánh khối lượng riêng","isCorrect":false},{"id":"d","letter":"D","text":"Phân tích thành phần định lượng của các hợp chất","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c4_de2_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Cracking alkane là quá trình phân cắt liên kết C-C (bẻ gãy mạch carbon) của các alkane mạch dài để tạo thành hỗn hợp các hydrocarbon có mạch carbon","images":[],"options":[{"id":"a","letter":"A","text":"ngắn hơn","isCorrect":true},{"id":"b","letter":"B","text":"dài hơn","isCorrect":false},{"id":"c","letter":"C","text":"không đổi","isCorrect":false},{"id":"d","letter":"D","text":"thay đổi","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c4_de2_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Phần trăm khối lượng cacbon trong phân tử alkane Y bằng 83,33%. Công thức phân tử của Y là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>2</sub>H<sub>6</sub>","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>3</sub>H<sub>8</sub>","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>4</sub>H<sub>10</sub>","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>5</sub>H<sub>12</sub>","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c4_de2_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Một số chất gây ô nhiễm môi trường như benzene, toluene có trong khí thải đốt cháy nhiên liệu xăng, dầu. Để giảm thiểu nguyên nhân gây ô nhiễm này có thể dùng biện pháp nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Cấm tuyệt đối việc sử dụng nguyên liệu xăng","isCorrect":false},{"id":"b","letter":"B","text":"Cấm sử dụng xe cá nhân","isCorrect":false},{"id":"c","letter":"C","text":"thay xăng bằng khí gas","isCorrect":false},{"id":"d","letter":"D","text":"Hạn chế sử dụng nguồn nhiên liệu hóa thạch","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c4_de2_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Cho các chất: acetylene, vinylbenzene, ethylene, benzene, toluene. Số chất làm mất màu tím của dung dịch KMnO<sub>4</sub> ở nhiệt độ thường là","images":[],"options":[{"id":"a","letter":"A","text":"2","isCorrect":false},{"id":"b","letter":"B","text":"3","isCorrect":true},{"id":"c","letter":"C","text":"4","isCorrect":false},{"id":"d","letter":"D","text":"1","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c4_de2_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Phát biểu nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Các alkyne HC≡CH, CH<sub>3</sub>C≡CH, … có công thức chung là C<sub>n</sub>H<sub>2n-2</sub>(n ≥ 2) tạo thành dãy đồng đẳng của acetylene","isCorrect":false},{"id":"b","letter":"B","text":"Liên kết ba của alkyne được tạo nên từ ba liên kết","isCorrect":true},{"id":"c","letter":"C","text":"Các alkyne 2C và 3C chỉ có duy nhất một đồng phân cấu tạo","isCorrect":false},{"id":"d","letter":"D","text":"Alkyne không có đồng phân hình học như alkene","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c4_de2_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Chất lỏng X có khả năng làm nhạt màu dung dịch KMnO<sub>4</sub>, ở điều kiện thường. X là chất nào trong các chất sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Benzene","isCorrect":false},{"id":"b","letter":"B","text":"Toluene","isCorrect":false},{"id":"c","letter":"C","text":"Styrene","isCorrect":true},{"id":"d","letter":"D","text":"Naphtalene","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c4_de2_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Một hydrocarbon X mạch hở trong phân tử có phần trăm khối lượng carbon bằng 85,714%. Trên phổ khối lượng của X có peak ion phân tử ứng với giá trị m/z = 42. Cho các kết luận sau về X:<br/>(a) Ở điều kiện thường, X là chất khí.<br/>(b) X có 2 đồng phân cấu tạo.<br/>(c) X có 7 liên kết  và 1 liên kết .<br/>(d) Cho X phản ứng với H<sub>2</sub> (xúc tác Ni, t<sup>o</sup>) thu được propane.<br/>Số kết luận đúng là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":true},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c4_de2_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Cho alkane X có công thức: CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub>","images":[],"options":[{"id":"a","letter":"A","text":"Tên gọi của X là pentane","isCorrect":true},{"id":"b","letter":"B","text":"Nhiệt độ sôi của X cao hơn so với neopentane","isCorrect":true},{"id":"c","letter":"C","text":"Khi cho X phản ứng với Cl<sub>2</sub> (ánh sáng), thu được tối đa 2 sản phẩm thế monochloro","isCorrect":false},{"id":"d","letter":"D","text":"Thực hiện phản ứng reforming X có thể thu được isobutane","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. X thế Cl<sub>2</sub> thu được tối đa 3 sản phẩm thế monochloro.<br/>d. Sai. Reforming X chỉ thu được các hydrocarbon cùng số C (5C), không thu được isobutane (4C)","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa11_c4_de2_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Cho các hydrocarbon sau:","images":[],"options":[{"id":"a","letter":"A","text":"Số phân tử hydrocarbon không no bằng 5","isCorrect":true},{"id":"b","letter":"B","text":"Số phân tử alkene bằng 3","isCorrect":true},{"id":"c","letter":"C","text":"Số phân tử alkyne bằng 2","isCorrect":true},{"id":"d","letter":"D","text":"Số phân tử thuộc dãy đồng đẳng của benzene bằng 3","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c4_de2_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"2,4,6-trinitrotoluene được dùng để sản xuất thuốc nổ TNT","images":[],"options":[{"id":"a","letter":"A","text":"Công thức của TNT có thể viết gọn là CH<sub>3</sub>C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>","isCorrect":true},{"id":"b","letter":"B","text":"TNT là một hydrocarbon thơm","isCorrect":false},{"id":"c","letter":"C","text":"TNT được tạo thành khi cho toluene tác dụng với nitrogen dioxide (NO<sub>2</sub>)","isCorrect":false},{"id":"d","letter":"D","text":"Từ 1 tấn toluene có thể điều chế được 1530 kg thuốc nổ TNT với hiệu suất phản ứng đạt 62%","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai vì TNT chứa C, H, O, N nên là một dẫn xuất của hydrocarbon.<br/>c. Sai vì TNT được tạo thành khi cho toluene tác dụng với HNO<sub>3</sub> đặc (xúc tác H<sub>2</sub>SO<sub>4</sub> đặc).<br/>d. Đúng.<br/>PTHH:           C<sub>6</sub>H<sub>5</sub>CH<sub>3</sub> + 3HNO<sub>3</sub> → CH<sub>3</sub>C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub> + 3H<sub>2</sub>O<br/>gam         92                                 227<br/>kg         1000.62%                          x<br/>Từ 1 tấn toluene có thể điều chế được số kilôgam 2,4,6-trinitrotoluene, biết hiệu suất của phản ứng là 62% là: x = 1530 kg","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c4_de2_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Cho hình vẽ mô tả dụng cụ, hoá chất, cách tiến hành thí nghiệm điều chế acetylene và thử tính chất của acetylene:<br/>Tiến hành:<br/>- Cho khoảng 5 g đất đèn (thành phần chính là CaC<sub>2</sub>) vào bình cầu có nhánh và cho nước cất vào phễu nhỏ giọt. Lắp dụng cụ như Hình 16.6 (chú ý đuôi của phễu nhỏ giọt không chạm vào chất rắn).<br/>- Mở khoá phễu nhỏ giọt để nước chảy từ từ xuống, khí acetylene sinh ra được sục ngay vào các ống nghiệm chứa dung dịch KMnO<sub>4</sub> và nước Br<sub>2</sub> đã chuẩn bị ở trên đến khi dung dịch mất màu.<br/>- Thay ống dẫn khí thuỷ tinh hình chữ L bằng ống dẫn thuỷ tinh có đầu vuốt nhọn. Dùng que đóm đang cháy để đốt acetylene sinh ra ở đầu ống dẫn khí.<br/>Mỗi phát biểu sau đây về thí nghiệm trên là đúng hay sai?","images":["/assets/hoa11/c4/hoa11_c4_de2_image3.png"],"options":[{"id":"a","letter":"A","text":"Khi đốt acetylene cháy và toả nhiều nhiệt","isCorrect":true},{"id":"b","letter":"B","text":"Khí ethylene làm mất màu nước bromine hoặc dung dịch KMnO<sub>4</sub>","isCorrect":true},{"id":"c","letter":"C","text":"Nếu thay dung dịch Br<sub>2</sub> bằng dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> thì hiện tượng thí nghiệm vẫn không đổi","isCorrect":false},{"id":"d","letter":"D","text":"Vai trò của dung dịch NaOH là để loại bỏ tạp chất trong quá trình tinh chế khí acetylene","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Khi thay bằng dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> thì có xuất hiện kết tủa vàng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c4_de2_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Cho các alkene: CH<sub>3</sub>CH=CHC<sub>2</sub>H<sub>5</sub> (X); CH<sub>3</sub>CH=CHCH<sub>3</sub> (Y); CH<sub>2</sub>=CHC<sub>2</sub>H<sub>5</sub> (Z); CH<sub>3</sub>CH=C(CH<sub>3</sub>)<sub>2</sub> (T). Trong số các alkene trên, có bao nhiêu chất có đồng phân hình học?","images":[],"correctAnswer":"2","explanation":"Đáp án: 2","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa11_c4_de2_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các yếu tố sau:<br/>(1) Phân tử khối.<br/>(2) Tương tác van der Waals giữa các phân tử.<br/>(3) Độ tan trong nước.<br/>(4) Liên kết hydrogen giữa các phân tử.<br/>Liệt kê các yếu tố quyết định đến độ lớn của nhiệt độ sôi của các alkane theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…)","images":[],"correctAnswer":"12","explanation":"Đáp án: 12","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa11_c4_de2_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho các chất sau: (1) 2-methylbutane; (2) 2-methylpentane; (3) 3-methylpentane; (4) 2,2-dimethylbutane và (5) benzene (vòng 6C). Trong số các chất này, có bao nhiêu chất có thể là sản phẩm reforming hexane?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c4_de2_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cục Quản Lí Thực Phẩm và Dược Phẩm Hoa Kì (FDA) đã công nhận ethylene là an toàn trong việc kích thích trái cây mau chín. Tuy nhiên khi vượt quá nồng độ cho phép, ví dụ đối với nồng độ 27 000 ppm, tức gấp khoảng 200 lần mức cần thiết để kích thích quá trình chín, một tia lửa điện có thể đốt cháy ethylene và gây ra vụ nổ chết người.<br/>Trong phòng ủ chín, ethylene được sử dụng ở nồng độ 100 ppm – 150 ppm. Khối lượng ethylene cần thiết sử dụng để phòng ủ chín có thể tích 50 m<sup>3</sup> đạt nồng độ 140 ppm ở 25<sup>o</sup>C và 1 bar là bao nhiêu gam (kết quả làm tròn đến hàng phần mười)? (1ppm = 1/1000000)","images":[],"correctAnswer":"7,9","explanation":"Đáp án: 7,9.<br/>Thể tích ethylene có tron phòng ủ thể tích 50m<sup>3</sup>, tức 50000 lít là:<br/>V<sub>phòng</sub>=  50m<sup>3</sup> = 50.10<sup>3</sup>dm<sup>3</sup> =50.10<sup>3</sup>L do C<sub>2</sub>H<sub>4</sub> có nồng 140pm  24CHV  =  50000.1401000000 = 7 L<br/>Khối lượng ethylene cần thiết:  7.28m7,9(g)24,79==","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c4_de2_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Số đồng phân hydrocarbon thơm ứng với công thức phân tử C<sub>8</sub>H<sub>10</sub> là bao nhiêu?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":["/assets/hoa11/c4/hoa11_c4_de2_image7.png"],"points":0.5,"displayNumber":27},{"id":"hoa11_c4_de2_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Khí thiên nhiên chứa chủ yếu các thành phần chính: methane (CH<sub>4</sub>), ethane (C<sub>2</sub>H<sub>6</sub>) và một số thành phần khác. Biết lượng nhiệt tỏa ra khi đốt cháy methane và ethane lần lượt là 890,36 kJ và 1559,7 kJ. Nếu hộ gia đình anh Tài cần 10000 kJ nhiệt mỗi ngày, sau khoảng bao nhiêu ngày sẽ dùng hết bình gas 13 kg khí thiên nhiên? Biết tỉ lệ thể tích của methane : ethane là 17 : 2 với hiệu suất hấp thụ nhiệt khoảng 60%. (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"43","explanation":"Đáp án: 43.<br/>Ta có 442626CHCH3CHCHn17xn665,8917x.162x.3013.10x39,17moln2xn78,34==ììïï®+=®=Þíí==ïïîî<br/>Theo phản ứng thì 1 mol CH<sub>4</sub> cháy sẽ tạo ra 890,36 kJ và 1 mol C<sub>2</sub>H<sub>6</sub> cháy sẽ tạo ra 1559,7 kJ<br/>Nhiệt lượng khi đốt cháy CH<sub>4</sub> và C<sub>2</sub>H<sub>6</sub> = 665,89.890,36 + 78,34.1559,7 = 715068,72 kJ<br/>Số ngày để sử dụng hết bình ga là 715068,7260.43ngày10000100»<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa11_c4_de3","code":"ĐỀ 403","title":"Đề kiểm tra Chương 4: Hydrocarbon (Đề số 3)","topic":"Arene: Cấu trúc benzene, toluene, styrene & quy tắc thế nhân thơm","badge":"Chương 4 - Đề 3","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c4_de3_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Chọn phát nhận đúng nhất về alkane?","images":[],"options":[{"id":"a","letter":"A","text":"Alkane là hợp chất hữu cơ chỉ chứa nguyên tử carbon và hydrogen trong phân tử","isCorrect":false},{"id":"b","letter":"B","text":"Alkane là hydrocarbon no chỉ có liên đơn C-C trong phân tử","isCorrect":false},{"id":"c","letter":"C","text":"Alkane là hydrocarbon no mạch hở chỉ có liên đơn C-C và C-H trong phân tử","isCorrect":true},{"id":"d","letter":"D","text":"Alkane là hydrocarbon no chỉ có liên đơn C-H trong phân tử","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c4_de3_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Trong công nghiệp, các alkane được điều chế từ nguồn nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Sodium acetate","isCorrect":false},{"id":"b","letter":"B","text":"Dầu mỏ và khí dầu mỏ","isCorrect":true},{"id":"c","letter":"C","text":"Aluminium carbide (Al<sub>4</sub>C<sub>3</sub>)","isCorrect":false},{"id":"d","letter":"D","text":"Khí biogas","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c4_de3_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Alkane dưới đây có tên thay thế là<br/>CH3CCH2CH3CH3CHCH3CH3","images":[],"options":[{"id":"a","letter":"A","text":"2,2,4-trimethylpentane","isCorrect":true},{"id":"b","letter":"B","text":"2,4-trimethylpentane","isCorrect":false},{"id":"c","letter":"C","text":"2,4,4-trimethylpentane","isCorrect":false},{"id":"d","letter":"D","text":"2-dimethyl-4-methylpentane","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c4_de3_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Sử dụng nhiên liệu sinh học như xăng pha thêm ethanol (E5, E10,..), biodiesel. Ethanol vừa là phụ gia tăng chỉ số  vừa là nhiên liệu cháy sạch. Biodiesel là methyl ester của các acid béo trong dầu mỡ động thực vật phi thực phẩm, nhiên liệu này có chỉ số cetane cao, không chứa sulfur và arene. Từ thích hợp điền vào chỗ trống “…” là","images":[],"options":[{"id":"a","letter":"A","text":"octane","isCorrect":true},{"id":"b","letter":"B","text":"hexane","isCorrect":false},{"id":"c","letter":"C","text":"methane","isCorrect":false},{"id":"d","letter":"D","text":"nonane","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c4_de3_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Công thức phân tử chung của alkene là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>n</sub>H<sub>2n</sub>( n ≥ 1)","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>n</sub>H<sub>2n</sub>( n ≥ 4)","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>n</sub>H<sub>2n</sub>( n ≥ 3)","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c4_de3_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Cho các alkene X và Y có công thức như sau:<br/>Tên gọi của X và Y tương ứng là","images":["/assets/hoa11/c4/hoa11_c4_de3_image2.png","/assets/hoa11/c4/hoa11_c4_de3_image3.png"],"options":[{"id":"a","letter":"A","text":"cis-3-methylpent-2-ene và trans-3-methylpent-3-ene","isCorrect":false},{"id":"b","letter":"B","text":"trans-3-methylpent-2-ene và cis-3-methylpent-2-ene","isCorrect":true},{"id":"c","letter":"C","text":"trans-3-methylpent-3-ene và cis-3-methylpent-3-ene","isCorrect":false},{"id":"d","letter":"D","text":"trans-3-methylpent-3-ene và cis-3-methylpent-2-ene","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c4_de3_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Trong phân tử acetylene, liên kết đôi CC giữa hai nguyên tử carbon gồm","images":[],"options":[{"id":"a","letter":"A","text":"1 liên kết pi () và 2 liên kết xích ma ( )","isCorrect":false},{"id":"b","letter":"B","text":"2 liên kết pi () và 1 liên kết xích ma ( )","isCorrect":true},{"id":"c","letter":"C","text":"1 liên kết pi () và 1 liên kết xích ma ( )","isCorrect":false},{"id":"d","letter":"D","text":"2 liên kết pi () và 2 liên kết xích ma ( )","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c4_de3_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Alkyne là những hydrocarbon có đặc điểm","images":[],"options":[{"id":"a","letter":"A","text":"không no, mạch hở, có một liên kết ba C≡","isCorrect":true},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"b","letter":"B","text":"không no, mạch vòng, có một liên kết đôi C=","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"c","letter":"C","text":"không no, mạch hở, có một liên kết đôi C=","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"không no, mạch hở, có hai liên kết ba C≡","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c4_de3_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Phản ứng nào sau đây không phải là phản ứng đặc trưng của hydrocarbon không no?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng cộng","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng trùng hợp","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng oxi hóa – khử","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng thế","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c4_de3_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Sản phẩm chủ yếu trong hỗn hợp thu được khi cho toluene phản ứng với bromine theo tỉ lệ số mol 1 : 1 (có mặt FeBr<sub>3</sub>) là","images":[],"options":[{"id":"a","letter":"A","text":"p-bromotoluene và m-bromotoluene","isCorrect":false},{"id":"b","letter":"B","text":"benzylbromide","isCorrect":false},{"id":"c","letter":"C","text":"o-bromotoluene và p-bromotoluene","isCorrect":true},{"id":"d","letter":"D","text":"o-bromotoluene và m-bromotoluene","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c4_de3_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Khi được chiếu sáng, benzene có thể phản ứng với Cl<sub>2</sub> tạo thành sản phẩm có công thức phân tử nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>6</sub>H<sub>5</sub>Cl","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>6</sub>H<sub>11</sub>Cl","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>6</sub>H<sub>6</sub>Cl<sub>6</sub>","isCorrect":true},{"id":"d","letter":"D","text":"C<sub>6</sub>H<sub>12</sub>Cl<sub>6</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c4_de3_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Để phân biệt but-2-yne (CH<sub>3</sub>C≡CCH<sub>3</sub>) với but-l-yne (CH≡CCH<sub>2</sub>CH<sub>3</sub>) có thể dùng thuốc thử nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Dung dịch HCl","isCorrect":false},{"id":"b","letter":"B","text":"Dung dịch AgNO<sub>3</sub>/NH<sub>3</sub>","isCorrect":true},{"id":"c","letter":"C","text":"Nước bromine","isCorrect":false},{"id":"d","letter":"D","text":"Dung dịch KMnO<sub>4</sub>","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c4_de3_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Chất nào sau đây thuộc dãy đồng đẳng của benzene? (Biết C<sub>6</sub>H<sub>5</sub>-: phenyl)","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>6</sub>H<sub>5</sub>-CH<sub>2</sub>-CH<sub>3</sub>","isCorrect":true},{"id":"b","letter":"B","text":"C<sub>6</sub>H<sub>5</sub>-C≡CH","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>6</sub>H<sub>5</sub>-CH=CH<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"C<sub>6</sub>H<sub>5</sub>-Cl","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c4_de3_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Thực hiện thí nghiệm như hình vẽ bên. Kết thúc thí nghiệm, dung dịch Br<sub>2</sub> bị mất màu.<br/>Chất X là","images":["/assets/hoa11/c4/hoa11_c4_de3_image4.png"],"options":[{"id":"a","letter":"A","text":"CaC<sub>2</sub>","isCorrect":true},{"id":"b","letter":"B","text":"Na","isCorrect":false},{"id":"c","letter":"C","text":"Al<sub>4</sub>C<sub>3</sub>","isCorrect":false},{"id":"d","letter":"D","text":"CaO","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c4_de3_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Trong số các alkene có đồng phân cấu tạo C<sub>5</sub>H<sub>10</sub>, số công thức cấu tạo có đồng phân hình học?","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":true},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c4_de3_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"X là nguyên liệu quan trọng để sản xuất các alkylbenzene sulfonate mạch không phân nhánh (linear alkylbenzenesulfonate, LAS) là thành phần chính của bột giặt; sản xuất styrene - nguyên liệu cho chế tạo nhựa PS (polystyrene) và một số polymer khác. X và một số hydrocarbon thơm khác là nguyên liệu đầu dùng để sản xuất thuốc trừ sâu, chất điều hòa sinh trưởng thực vật, phẩm nhuộm,... Chất X là","images":[],"options":[{"id":"a","letter":"A","text":"toluene","isCorrect":false},{"id":"b","letter":"B","text":"benzene","isCorrect":true},{"id":"c","letter":"C","text":"styrene","isCorrect":false},{"id":"d","letter":"D","text":"acetylene","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c4_de3_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho biểu đồ về nhiệt độ sôi của một số alkane sau:<br/>.<br/>Hãy cho biết nhận định nào sau đây không đúng?","images":["/assets/hoa11/c4/hoa11_c4_de3_image5.png"],"options":[{"id":"a","letter":"A","text":"Có 4 alkane tồn tại thể khí ở điều kiện thường: methane, ethane, propane, butane","isCorrect":false},{"id":"b","letter":"B","text":"Nhiệt độ sô tăng dần theo chiều tăng phân tử khối","isCorrect":false},{"id":"c","letter":"C","text":"Pentane, hexane tồn tại thể lỏng ở điều kiện thường","isCorrect":false},{"id":"d","letter":"D","text":"Methane dễ hóa lỏng nhất trong số các alkane ở thể khí điều kiện thường","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c4_de3_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Nhựa PE tên đầy đủ là polyethylene là một loại nhựa dẻo được sử dụng phổ biến trên thế giới, có màu trắng trong, có tính chất chống dẫn điện, chống dẫn điện, chống thấm nước,… Nếu trùng hợp m tấn ethylene thu được 1 tấn polyethylene (PE) với hiệu suất phản ứng bằng 80%. Giá trị của m là","images":[],"options":[{"id":"a","letter":"A","text":"1,20","isCorrect":false},{"id":"b","letter":"B","text":"1,25","isCorrect":true},{"id":"c","letter":"C","text":"0,80","isCorrect":false},{"id":"d","letter":"D","text":"2,00","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c4_de3_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Phản ứng reforming được ứng dụng trong công nghiệp lọc dầu để làm tăng chỉ số xăng octane của xăng & sản xuất các arene (benzene, toluene, xylene) làm nguyên liệu cho công nghiệp tổng hợp hữu cơ","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng reforming dùng để chuyển alkane mạch không phân nhánh thành các alkane mạch phân nhánh","isCorrect":true},{"id":"b","letter":"B","text":"Phản ứng reforming dùng để huyển alkane mạch không phân nhánh thành các hydrocarbon mạch vòng","isCorrect":true},{"id":"c","letter":"C","text":"Trong phản ứng reforming số nguyên tử carbon của chất tham gia và của sản phẩm bằng nhau","isCorrect":true},{"id":"d","letter":"D","text":"Trong phản ứng reforming nhiệt độ sôi của sản phẩm lớn hơn nhiều so với alkane tham gia phản ứng","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Sản phẩm có nhiệt độ sôi nhỏ hơn so với alkane ban đầu (nhiệt độ sôi thay đổi không đáng kể)","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa11_c4_de3_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Quy tắc Markovnikov áp dụng khi thực hiện phản ứng cộng một tác nhân không đối xứng HX (HBr, HCl, HI, HOH,..) vào liên kết bội, nguyên tử hydrogen sẽ ưu tiên cộng vào nguyên tử carbon có nhiều hydrogen hơn","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng cộng nước vào alkene tạo sản phẩm là alcohol","isCorrect":true},{"id":"b","letter":"B","text":"Khi cộng HBr vào but-1-ene và but-2-ene đều thu được sản phẩm chính là 2-bromobutane","isCorrect":true},{"id":"c","letter":"C","text":"Phản ứng cộng giữa propyne với HBr theo tỉ lệ mol 1 : 1 thu được sản phẩm sau:","isCorrect":true},{"id":"d","letter":"D","text":"Phản ứng giữa propyne với nước (xúc tác HgSO<sub>4</sub>/H<sub>2</sub>SO<sub>4</sub>, t<sup>o</sup>) tạo sản phẩm chính là propanal (CH<sub>3</sub>-CH<sub>2</sub>-CH=O)","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Sản phẩm chính là CH<sub>3</sub>-CO-CH<sub>3</sub>","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c4_de3_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Dẫn dòng khí gồm acetylene và ethylene lần lượt đi vào ống nghiệm (1) đựng dưng dịch AgNO<sub>3</sub>/NH<sub>3</sub> ở điều kiện thường, sau đó dẫn tiếp qua ống nghiệm (2) đựng nước bromine","images":[],"options":[{"id":"a","letter":"A","text":"Ở ống nghiệm (1) có kết tủa màu vàng nhạt","isCorrect":true},{"id":"b","letter":"B","text":"Ở ống nghiệm (2) màu của nước bromine nhạt dần","isCorrect":true},{"id":"c","letter":"C","text":"Ở ống nghiệm (2) chất lỏng chia thành hai lớp","isCorrect":true},{"id":"d","letter":"D","text":"Tại ống nghiệm (1) có xảy ra phản ứng cộng, ống nghiệm (2) có xảy ra phản ứng thế","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng. Do sản phẩm tạo thành (C<sub>2</sub>H<sub>4</sub>Br<sub>2</sub>) không tan trong nước.<br/>d. Sai. Ống nghiệm (1) xảy ra phản ứng thế, ống nghiệm (2) xảy ra phản ứng cộng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c4_de3_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Cho các arene có công thức cấu tạo thu gọn sau:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>(X)</td><td class='border border-slate-300 px-2 py-1 text-xs'>(Y)</td></tr></table>","images":[],"options":[{"id":"a","letter":"A","text":"Tên gọi của X và Y lần lượt là benzene và m-dimethylbenzene","isCorrect":false},{"id":"b","letter":"B","text":"X và Y thuộc cùng một dãy đồng đẳng","isCorrect":true},{"id":"c","letter":"C","text":"Ở điều kiện thường, X và Y đều là chất lỏng, màu trắng, dễ cháy và có mùi đặc trưng","isCorrect":false},{"id":"d","letter":"D","text":"Khi cho Y tác dụng với HNO<sub>3</sub> đặc/H<sub>2</sub>SO<sub>4</sub> đặc (tỉ lệ mol 1 : 1) tạo thành hỗn hợp hai sản phẩm hữu cơ chính","isCorrect":false}],"explanation":"Đáp án:<br/>a. Sai. Tên của Y là p-dimethylbenzene.<br/>b. Đúng.<br/>c. Sai. Không màu.<br/>d. Sai. Tạo một sản phẩm chính","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c4_de3_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Cho isopentane tác dụng với khí chlorine, điều kiện ánh sáng. Số sản phẩm monochloro tối đa thu được là bao nhiêu?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4.<br/>CH3CHCH2CH3CH3","explanationImages":[],"points":0.5,"displayNumber":23},{"id":"hoa11_c4_de3_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Dẫn 10,8 gam but-1-yne qua dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> dư, sau phản ứng thu m gam kết tủa. Xác định giá trị của m","images":[],"correctAnswer":"32,2","explanation":"Đáp án: 32,2.<br/>32333243CHCHCCH+AgNONHCHCHCCAg+NHNOº+¾¾®º¯<br/>n<sub>alkyne</sub> = 0,2 mol; n↓ = 0,2 mol ⇒ M = 0,2 .161 = 32,2 g","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa11_c4_de3_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Xét phản ứng hóa học sau:<br/>CH<sub>3</sub>CH<sub>2</sub>=CH<sub>2</sub>+ H<sub>2</sub>O + KMnO<sub>4</sub> → CH<sub>3</sub>-CH(OH)CH<sub>2</sub>(OH) + MnO<sub>2</sub>↓+KOH<br/>Tổng hệ số tỉ lượng tối giản của các chất trong phản ứng này bằng bao nhiêu?","images":[],"correctAnswer":"16","explanation":"Đáp án: 16.<br/>3CH<sub>3</sub>CH<sub>2</sub>=CH<sub>2</sub>+ 4H<sub>2</sub>O + 2KMnO<sub>4</sub> → 3CH<sub>3</sub>-CH(OH)CH<sub>2</sub>(OH) + 2MnO<sub>2</sub>↓+ 2KOH<br/>Tổng hệ số: 3 + 4 + 2 + 3+ 2 + 2 = 16","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c4_de3_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Cần bao nhiêu lít không khí ở đkc (20% thể tích là oxygen) để đốt cháy hoàn toàn một cây nến có công thức phân tử C<sub>25</sub>H<sub>52</sub>, biết cây nến có khối lượng nặng 35,2 g. (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"471","explanation":"Đáp án: 471.<br/>ot2552222CH38O25CO26HO0,13,8mol+¾¾®+®<br/>O2kkV3,8.24,79V471,01L20%20%===","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c4_de3_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"Khi đun nóng và có xúc tác Ni, 1 mol styrene có thể cộng được với tối đa bao nhiêu mol phân tử H<sub>2</sub>?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa11_c4_de3_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Tính khối lượng cumene (đơn vị tấn) tối đa phát thải từ một triệu xe ô tô chạy động cơ xăng (có bộ chuyển đổi xúc tác) trong một năm. Giả sử bình quân một tháng, mỗi xe ô tô chạy 3 000 km. Biết:<br/><table class='border-collapse border border-slate-300 my-2 w-full text-left'><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Nguồn</td><td class='border border-slate-300 px-2 py-1 text-xs'>Tỉ lệ phát thải</td><td class='border border-slate-300 px-2 py-1 text-xs'>Ghi chú</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Sản xuất</td><td class='border border-slate-300 px-2 py-1 text-xs'>0,08 kg/tấn cumene</td><td class='border border-slate-300 px-2 py-1 text-xs'>Được kiểm soát</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'></td><td class='border border-slate-300 px-2 py-1 text-xs'>0,27 kg/tấn cumene</td><td class='border border-slate-300 px-2 py-1 text-xs'>Không được kiềm soát</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Xe chạy</td><td class='border border-slate-300 px-2 py-1 text-xs'>0,0002 - 0,0009 g/km</td><td class='border border-slate-300 px-2 py-1 text-xs'>Có bộ chuyển đổi xúc tác</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>động cơ xăng</td><td class='border border-slate-300 px-2 py-1 text-xs'>0,002 g/km</td><td class='border border-slate-300 px-2 py-1 text-xs'>Không có bộ chuyển đổi xúc tác</td></tr><tr><td class='border border-slate-300 px-2 py-1 text-xs'>Máy photocopy</td><td class='border border-slate-300 px-2 py-1 text-xs'>140-220 g/h</td><td class='border border-slate-300 px-2 py-1 text-xs'>Hoạt động liên tục</td></tr></table><br/>Đổi đơn vị: 1 m g = 10<sup>–6</sup>g","images":[],"correctAnswer":"32,4","explanation":"Đáp án: 32,4.<br/>Bình quân một tháng, mỗi chiếc chạy 3 000 km, do đó trong một năm, mỗi chiếc chạy quãng đường là 36 000 km, phát thải tối đa: 0,0009.36000 = 32,4 (g) cumene.<br/>Vậy 1 triệu xe ô tô trong một năm phát thải tối đa: 1.32,4 = 32,4 (tấn).<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]},{"id":"hoa11_c4_de4","code":"ĐỀ 404","title":"Đề kiểm tra Ôn tập Toàn diện Chương 4: Hydrocarbon (Đề số 4)","topic":"Đề thi chuẩn cấu trúc Bộ GD&ĐT 2025 bao quát toàn bộ Hydrocarbon no, không no và thơm","badge":"Chương 4 - Đề 4","duration":50,"totalQuestions":28,"totalPoints":10,"questions":[{"id":"hoa11_c4_de4_p1_p1_q1","number":1,"part":1,"type":"multiple_choice","text":"Arene hay còn gọi là hydrocarbon thơm là những hydrocarbon trong phân tử có chứa một hay nhiều","images":[],"options":[{"id":"a","letter":"A","text":"vòng benzene","isCorrect":true},{"id":"b","letter":"B","text":"liên kết đơn","isCorrect":false},{"id":"c","letter":"C","text":"liên kết đôi","isCorrect":false},{"id":"d","letter":"D","text":"liên kết ba","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":1},{"id":"hoa11_c4_de4_p1_p1_q2","number":2,"part":1,"type":"multiple_choice","text":"Biogas là một loại khí sinh học, được sản xuất bằng cách ủ kín các chất thải hữu cơ trong chăn nuôi, sinh hoạt. Biogas được dùng để đun nấu, chạy máy phát điện sinh hoạt gia đình. Thành phần chính của biogas là","images":[],"options":[{"id":"a","letter":"A","text":"N<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CO<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>4</sub>","isCorrect":true},{"id":"d","letter":"D","text":"NH<sub>3</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":2},{"id":"hoa11_c4_de4_p1_p1_q3","number":3,"part":1,"type":"multiple_choice","text":"Hợp chất X có công thức phân tử C<sub>5</sub>H<sub>12</sub>, khi tác dụng với chlorine (có chiếu sáng) tạo được bốn dẫn xuất thế monochloro. X là","images":[],"options":[{"id":"a","letter":"A","text":"pentane","isCorrect":false},{"id":"b","letter":"B","text":"isopentane","isCorrect":true},{"id":"c","letter":"C","text":"neopentane","isCorrect":false},{"id":"d","letter":"D","text":"isobutane","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":3},{"id":"hoa11_c4_de4_p1_p1_q4","number":4,"part":1,"type":"multiple_choice","text":"Alkyne là những hydrocarbon không no, mạch hở, có công thức chung là","images":[],"options":[{"id":"a","letter":"A","text":"C<sub>n</sub>H<sub>2n + 2</sub> (n ≥ 1)","isCorrect":false},{"id":"b","letter":"B","text":"C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)","isCorrect":false},{"id":"c","letter":"C","text":"C<sub>n</sub>H<sub>2n - 2</sub> (n ≥ 2)","isCorrect":true},{"id":"d","letter":"D","text":"C<sub>n</sub>H<sub>2n - 6</sub> (n ≥ 6)","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":4},{"id":"hoa11_c4_de4_p1_p1_q5","number":5,"part":1,"type":"multiple_choice","text":"Tên gọi của chất nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"","isCorrect":true},{"id":"b","letter":"B","text":"","isCorrect":false},{"id":"c","letter":"C","text":"","isCorrect":false},{"id":"d","letter":"D","text":"","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":5},{"id":"hoa11_c4_de4_p1_p1_q6","number":6,"part":1,"type":"multiple_choice","text":"Chất nào sau đây cộng H<sub>2</sub>dư (Ni, t<sup>o</sup>) tạo thành butane?","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>3</sub>-CH=CH<sub>2</sub>","isCorrect":false},{"id":"b","letter":"B","text":"CH<sub>3</sub>-C≡C-CH<sub>2</sub>-CH<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>3</sub>-CH<sub>2</sub>-CH=CH<sub>2</sub>","isCorrect":true},{"id":"d","letter":"D","text":"(CH<sub>3</sub>)<sub>2</sub>C=CH<sub>2</sub>","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":6},{"id":"hoa11_c4_de4_p1_p1_q7","number":7,"part":1,"type":"multiple_choice","text":"Số alkene có cùng công thức C<sub>4</sub>H<sub>8</sub> và số alkyne có cùng công thức C<sub>4</sub>H<sub>6</sub> lần lượt là","images":[],"options":[{"id":"a","letter":"A","text":"4 và 2","isCorrect":true},{"id":"b","letter":"B","text":"4 và 3","isCorrect":false},{"id":"c","letter":"C","text":"3 và 3","isCorrect":false},{"id":"d","letter":"D","text":"3 và 2","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":7},{"id":"hoa11_c4_de4_p1_p1_q8","number":8,"part":1,"type":"multiple_choice","text":"Để tăng chất lượng của xăng, dầu, người ta thực hiện cách nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Thực hiện phản ứng reforming để thay đổi cấu trúc của các alkane không nhánh thành hydrocarbon mạch nhánh hoặc mạch vòng có chỉ số octane cao","isCorrect":true},{"id":"b","letter":"B","text":"Thực hiện phản ứng cracking để thay đổi cấu trúc các alkane mạch dài chuyển thành các alkene và alkane mạch ngắn hơn","isCorrect":false},{"id":"c","letter":"C","text":"Thực hiện phản ứng hydrogen hóa để chuyển các alkene thành alkane","isCorrect":false},{"id":"d","letter":"D","text":"Bổ sung thêm heptane vào xăng, dầu","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":8},{"id":"hoa11_c4_de4_p1_p1_q9","number":9,"part":1,"type":"multiple_choice","text":"Benzene không làm mất màu dung dịch nước bromine nhưng có thể phản ứng với bromine khan khi có mặt xúc tác iron (III) bromine. Phản ứng này thuộc loại phản ứng nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"Phản ứng thế","isCorrect":true},{"id":"b","letter":"B","text":"Phản ứng cộng","isCorrect":false},{"id":"c","letter":"C","text":"Phản ứng tách","isCorrect":false},{"id":"d","letter":"D","text":"Phản ứng đốt cháy","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":9},{"id":"hoa11_c4_de4_p1_p1_q10","number":10,"part":1,"type":"multiple_choice","text":"Các chai lọ, túi, màng mỏng trong suốt, không độc, được sử dụng làm chai đựng nước, thực phẩm, màng bọc thực phẩm được sản xuất từ polymer của chất nào sau đây?","images":[],"options":[{"id":"a","letter":"A","text":"But – 1 - ene","isCorrect":false},{"id":"b","letter":"B","text":"Propene","isCorrect":false},{"id":"c","letter":"C","text":"Vinyl chloride","isCorrect":false},{"id":"d","letter":"D","text":"Ethylene","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":10},{"id":"hoa11_c4_de4_p1_p1_q11","number":11,"part":1,"type":"multiple_choice","text":"Chất nào sau đây không có đồng phân hình học?","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>3</sub>-CH=CH-CH<sub>3</sub>","isCorrect":false},{"id":"b","letter":"B","text":"(CH<sub>3</sub>)<sub>2</sub>C=CH-CH<sub>3</sub>","isCorrect":true},{"id":"c","letter":"C","text":"CH<sub>3</sub>-CH=CH-CH(CH<sub>3</sub>)<sub>2</sub>","isCorrect":false},{"id":"d","letter":"D","text":"(CH<sub>3</sub>)<sub>2</sub>CH-CH=CH-CH(CH<sub>3</sub>)<sub>2</sub>","isCorrect":false}],"correctAnswer":"B","explanation":"","explanationImages":[],"points":0.25,"displayNumber":11},{"id":"hoa11_c4_de4_p1_p1_q12","number":12,"part":1,"type":"multiple_choice","text":"Nhận xét nào sau đây không đúng đối với phản ứng cộng chlorine vào benzene?","images":[],"options":[{"id":"a","letter":"A","text":"Khó hơn phản ứng cộng chlorine vào ethylene","isCorrect":false},{"id":"b","letter":"B","text":"Xảy ra với điều kiện ánh sáng tử ngoại và đun nóng","isCorrect":false},{"id":"c","letter":"C","text":"Sản phẩm thu được là 1,2,3,4,5,6-hexachlorocyclohexane","isCorrect":false},{"id":"d","letter":"D","text":"Tỉ lệ mol của các chất tham gia phản ứng là 1 : 1","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":12},{"id":"hoa11_c4_de4_p1_p1_q13","number":13,"part":1,"type":"multiple_choice","text":"Nhận xét nào sau đây không đúng?","images":[],"options":[{"id":"a","letter":"A","text":"Alkane không tham gia phản ứng cộng","isCorrect":false},{"id":"b","letter":"B","text":"Phản ứng đặc trưng của alkene và alkyne là phản ứng cộng","isCorrect":false},{"id":"c","letter":"C","text":"Benzene và đồng đẳng dễ tham gia phản ứng thế hơn phản ứng cộng","isCorrect":false},{"id":"d","letter":"D","text":"Styrene dễ tham gia phản ứng thế hơn phản ứng cộng","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":13},{"id":"hoa11_c4_de4_p1_p1_q14","number":14,"part":1,"type":"multiple_choice","text":"Biểu đồ dưới đây thể hiện mối tương quan giữa nhiêt độ sôi và số nguyên tử carbon trong phân tử alkene:<br/>Có bao nhiêu alkene trong biểu đồ ở thể khí trong điều kiện thường (25<sup>o</sup>C)","images":["/assets/hoa11/c4/hoa11_c4_de4_image22.png"],"options":[{"id":"a","letter":"A","text":"4","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"5","isCorrect":true}],"correctAnswer":"D","explanation":"","explanationImages":[],"points":0.25,"displayNumber":14},{"id":"hoa11_c4_de4_p1_p1_q15","number":15,"part":1,"type":"multiple_choice","text":"Một hydrocarbon X mạch hở trong phân tử có phần trăm khối lượng carbon bằng 85,714%. Trên phổ khối lượng của X có peak ion phân tử ứng với giá trị m/z = 42. Công thức phù hợp với X là","images":[],"options":[{"id":"a","letter":"A","text":"CH<sub>2</sub>=CHCH<sub>3</sub>","isCorrect":true},{"id":"b","letter":"B","text":"CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub>","isCorrect":false},{"id":"c","letter":"C","text":"CH<sub>3</sub>CH<sub>3</sub>","isCorrect":false},{"id":"d","letter":"D","text":"CH≡CH","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":15},{"id":"hoa11_c4_de4_p1_p1_q16","number":16,"part":1,"type":"multiple_choice","text":"Nếu phân biệt các hydrocarbon thơm: benzene, toluene và styrene chỉ bằng một thuốc thử thì nên chọn thuốc thử nào dưới đây?","images":[],"options":[{"id":"a","letter":"A","text":"Dung dịch KMnO<sub>4</sub>","isCorrect":true},{"id":"b","letter":"B","text":"Dung dịch Br<sub>2</sub>","isCorrect":false},{"id":"c","letter":"C","text":"Dung dịch HCl","isCorrect":false},{"id":"d","letter":"D","text":"Dung dịch NaOH","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":16},{"id":"hoa11_c4_de4_p1_p1_q17","number":17,"part":1,"type":"multiple_choice","text":"Cho các chất sau: acetylene; methyl acetylene, ethyl acetylene và but-2-yne. Số chất tạo thành kết tủa khi tác dụng với dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> là","images":[],"options":[{"id":"a","letter":"A","text":"1","isCorrect":false},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":true},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"C","explanation":"","explanationImages":[],"points":0.25,"displayNumber":17},{"id":"hoa11_c4_de4_p1_p1_q18","number":18,"part":1,"type":"multiple_choice","text":"Cho các phát biểu sau:<br/>(1) Propane và butane được sử dụng làm khí đốt.<br/>(2) Ethene và propene được sử dụng để tổng hợp polymer.<br/>(3) Acetylene được sử dụng làm nhiên liệu cho đèn xì oxygen-acetylene.<br/>(4) Styrene được sử dụng tổng hợp polymer.<br/>(5) Toluene được sử dụng tổng hợp thuốc nổ.<br/>Số phát biểu đúng là","images":[],"options":[{"id":"a","letter":"A","text":"5","isCorrect":true},{"id":"b","letter":"B","text":"2","isCorrect":false},{"id":"c","letter":"C","text":"3","isCorrect":false},{"id":"d","letter":"D","text":"4","isCorrect":false}],"correctAnswer":"A","explanation":"","explanationImages":[],"points":0.25,"displayNumber":18},{"id":"hoa11_c4_de4_p2_p2_q1","number":19,"part":2,"type":"true_false","text":"Mô hình phân tử của benzene được minh họa trong hình dưới đây:<br/>Mô hình quả cầu – thanh nối    Mô hình đặc","images":["/assets/hoa11/c4/hoa11_c4_de4_image23.png","/assets/hoa11/c4/hoa11_c4_de4_image24.png"],"options":[{"id":"a","letter":"A","text":"Phân tử benzene có sáu nguyên tử carbon tạo thành hình lục giác đều","isCorrect":true},{"id":"b","letter":"B","text":"Các nguyên tử carbon và hydrogen nằm trên các mặt phẳng khác nhau","isCorrect":false},{"id":"c","letter":"C","text":"Các góc liên kết đều bằng 120<sup>o</sup>C","isCorrect":true},{"id":"d","letter":"D","text":"Các độ dài liên kết carbon – carbon đều bằng 139 pm","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. 6 nguyên tử C và 6 nguyên tử H cùng nằm trên một mặt phẳng.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":19},{"id":"hoa11_c4_de4_p2_p2_q2","number":20,"part":2,"type":"true_false","text":"Trong phân tử hydrocarbon mạch hở X có phần trăm khối lượng carbon bằng 88,89%. Từ phồ khối lượng xác định được phân tử khối của X bằng 54. Khi cho X phản ứng với nước có xúc tác thích hợp thu được sản phẩm có cấu tạo duy nhất","images":[],"options":[{"id":"a","letter":"A","text":"Phân tử X có mạch carbon không phân nhánh","isCorrect":false},{"id":"b","letter":"B","text":"X không tác dụng được với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub> tạo ra kết tủa","isCorrect":true},{"id":"c","letter":"C","text":"Bằng một phản ứng hóa học, từ X có thể tạo được polymer","isCorrect":false},{"id":"d","letter":"D","text":"X có đồng phân hình học","isCorrect":false}],"explanation":"Đáp án:<br/>%C%H:2:3121=   CTPT C<sub>4</sub>H<sub>6</sub> (M<sub>X</sub> = 54).<br/>X tác dụng với H<sub>2</sub>O chỉ tạo 1 sản phẩm  CTCT của X là CH<sub>3</sub>-CC-CH<sub>3</sub><br/>a. Sai. X có mạch carbon không phân nhánh.<br/>b. Đúng.<br/>c. Sai. X không có phản ứng trùng hợp.<br/>d. Sai. X không có đồng phân hình học","explanationImages":[],"points":1,"displayNumber":20},{"id":"hoa11_c4_de4_p2_p2_q3","number":21,"part":2,"type":"true_false","text":"Các phương tiện giao thông là một trong các nguyên nhân chính gây ra ô nhiễm môi trường ở các đô thị lớn","images":[],"options":[{"id":"a","letter":"A","text":"Do các phương tiện giao thông đốt cháy nhiên liệu sinh ra nhiều khí carbon dioxide, các nitrogen oxide, carbon monoxide và các hạt bụi mịn do xăng, dầu cháy không hoàn toàn","isCorrect":true},{"id":"b","letter":"B","text":"Để hạn chế ô nhiễm môi trường do khí thải của động cơ chúng ta có thể sử dụng các phương tiện cá nhân thay cho các phương tiện công cộng","isCorrect":false},{"id":"c","letter":"C","text":"Để hạn chế ô nhiễm môi trường do khí thải của động cơ chúng ta có thể đưa thêm chất xúc tác vào ống xả động cơ nhằm tiếp tục chuyển hoá alkane trong khí thải động cơ thành carbon dioxide và nước","isCorrect":true},{"id":"d","letter":"D","text":"Để hạn chế ô nhiễm môi trường do khí thải của động cơ chúng ta có thể trồng nhiều cây xanh","isCorrect":true}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Sai. Hạn chế sử dụng phương tiện cá nhân.<br/>c. Đúng.<br/>d. Đúng","explanationImages":[],"points":1,"displayNumber":21},{"id":"hoa11_c4_de4_p2_p2_q4","number":22,"part":2,"type":"true_false","text":"Cho hình vẽ mô tả dụng cụ, hoá chất, cách tiến hành thí nghiệm điều chế ethylene và thử tính chất của ethylene:<br/>Tiến hành:<br/>- Cho vài viên đá bọt, 20 mL cồn 96° vào bình cầu. Rót 40 mL dung dịch H<sub>2</sub>SO<sub>4</sub> đặc vào ống đong, sau đó rót từ từ H<sub>2</sub>SO<sub>4</sub> đặc từ ống đong qua phễu vào bình cầu để tránh sự toả nhiệt quá mạnh.<br/>- Lắp bộ dụng cụ như Hình 16.5.<br/>- Đun nóng đến khi ethylene sinh ra và sục ngay vào các ống nghiệm (1) và (2).<br/>- Thay ống dẫn khí thuỷ tinh hình chữ L bằng ống dẫn thuỷ tinh có đầu vuốt nhọn. Dùng que đóm đang cháy để đốt ethylene ở đầu ống dẫn khí.<br/>Mỗi phát biểu sau đây về thí nghiệm trên là đúng hay sai?","images":["/assets/hoa11/c4/hoa11_c4_de4_image25.png"],"options":[{"id":"a","letter":"A","text":"Đốt ethylene ở đầu ống dẫn khí, khí ethylene cháy và toả nhiều nhiệt","isCorrect":true},{"id":"b","letter":"B","text":"Khí ethylene làm mất màu nước bromine hoặc dung dịch KMnO<sub>4</sub>","isCorrect":true},{"id":"c","letter":"C","text":"Vai trò của đá bọt là để điều hoà quá trình sôi, tránh hiện tượng quá sôi","isCorrect":true},{"id":"d","letter":"D","text":"Vai trò của NaOH là để trung hoà acid H<sub>2</sub>SO<sub>4</sub> thoát ra","isCorrect":false}],"explanation":"Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. NaOH dùng để hấp thụ các sản phẩm phụ (CO<sub>2</sub>, SO<sub>2</sub>,..) trong quá trình điều chế ethylene","explanationImages":[],"points":1,"displayNumber":22},{"id":"hoa11_c4_de4_p3_p3_q1","number":23,"part":3,"type":"short_answer","text":"Có bao nhiêu đồng phân cấu tạo ứng với công thức phân tử C<sub>8</sub>H<sub>1</sub><sub>0</sub>?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":["/assets/hoa11/c4/hoa11_c4_de4_image28.png","/assets/hoa11/c4/hoa11_c4_de4_image29.png"],"points":0.5,"displayNumber":23},{"id":"hoa11_c4_de4_p3_p3_q2","number":24,"part":3,"type":"short_answer","text":"Cho các chất sau: propane, ethylene, acetylene, styrene, toluene và naphthalene. Có bao nhiêu chất làm mất màu dung dịch bromine?","images":[],"correctAnswer":"3","explanation":"Đáp án: 3","explanationImages":[],"points":0.5,"displayNumber":24},{"id":"hoa11_c4_de4_p3_p3_q3","number":25,"part":3,"type":"short_answer","text":"Cho các chất sau: (1) 2-methylbutane; (2) 2-methylpentane; (3) 3-methylpentane; (4) 2,2-dimethylbutane và (5) benzene. Trong số các chất này, có bao nhiêu chất có thể là sản phẩm reforming hexane?","images":[],"correctAnswer":"4","explanation":"Đáp án: 4","explanationImages":[],"points":0.5,"displayNumber":25},{"id":"hoa11_c4_de4_p3_p3_q4","number":26,"part":3,"type":"short_answer","text":"Hình vẽ bên mô tả thí nghiệm điều chế khí C<sub>2</sub>H<sub>2</sub> trong phòng thí nghiệm và đốt cháy khí C<sub>2</sub>H<sub>2</sub> trong không khí.<br/>Cho các thao tác thí nghiệm: (1) cho nước vào ống nghiệm, (2) cho các viên CaC<sub>2</sub> trượt theo thành ống nghiệm, (3) lắp ống dẫn khí vào miệng ống nghiệm, (4) bật lửa đốt khí acetylene.<br/>Liệt kê thứ tự các thao tác để tiến hành thí nghiệm trên","images":["/assets/hoa11/c4/hoa11_c4_de4_image26.png"],"correctAnswer":"3214","explanation":"Đáp án: 3214","explanationImages":[],"points":0.5,"displayNumber":26},{"id":"hoa11_c4_de4_p3_p3_q5","number":27,"part":3,"type":"short_answer","text":"2,4,6-trinitrotoluene được dùng để sản xuất thuốc nổ TNT. Từ 1 tấn toluene có thể điều chế được bao nhiêu kg 2,4,6-trinitrotoluene, biết hiệu suất của phản ứng là 62%? (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"1530","explanation":"Đáp án: 1530.<br/>PTHH:           C<sub>6</sub>H<sub>5</sub>CH<sub>3</sub> + 3HNO<sub>3</sub> → C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub> + 3H<sub>2</sub>O<br/>gam         92                                 227<br/>kg         1000.62%                          x<br/>Từ 1 tấn toluene có thể điều chế được số kilôgam 2,4,6-trinitrotoluene, biết hiệu suất của phản ứng là 62% là: x = 1530 kg","explanationImages":[],"points":0.5,"displayNumber":27},{"id":"hoa11_c4_de4_p3_p3_q6","number":28,"part":3,"type":"short_answer","text":"Một bình gas (khí hóa lỏng) sử dụng trong hộ gia đình X chứa 12 kg hỗn hợp propane và butane với tỉ lệ mol 1 : 2. Khi đốt cháy hoàn toàn, 1 mol propane tỏa ra lượng nhiệt là 2220 kJ và 1 mol butane tỏa ra lượng nhiệt là 2850 kJ. Trung bình, lượng nhiệt tiêu thụ từ đốt khí gas của hộ gia đình X là 11 000 kJ/ngày và hiệu suất sử dụng nhiệt là 80%. Sau bao nhiều ngày hộ gia đình X sử dụng hết bình gas trên? (Kết quả làm tròn đến hàng đơn vị)","images":[],"correctAnswer":"43","explanation":"Đáp án: 43.<br/>Gọi số mol C<sub>3</sub>H<sub>8</sub> và số mol C<sub>4</sub>H<sub>10</sub> là 2a, ta có: 44a  +  58.2a = 12.1000  a = 75 mol<br/>Nhiệt tỏa ta khi đốt cháy 12 kg gas trên là Q = 75.2220 + 150.2850 = 594000 (kJ)<br/>Vì H = 80%  Þ  nhiệt sử dụng thực tế là 594000.80% = 475200 kJ<br/>Số ngày sử dụng hết bình gas =  4752004311000»  (ngày)<br/>------------------------- HẾT -------------------------","explanationImages":[],"points":0.5,"displayNumber":28}]}];
+export const HOA11_CHUONG4_EXAMS: Chuong4Exam[] = [
+  {
+    "id": "hoa11_c4_de1",
+    "code": "11-C4-01",
+    "title": "Đề Kiểm Tra Chương 4: Hydrocarbon (Đề số 1)",
+    "topic": "Alkane: Danh pháp IUPAC, tính chất vật lí, phản ứng thế halogen & phản ứng cháy",
+    "badge": "Chương 4 • Đề 1",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c4_de1_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Ở điều kiện thường hydrocarbon nào sau đây ở thể lỏng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>4</sub>H<sub>10</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>2</sub>H<sub>6</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>3</sub>H<sub>8</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>5</sub>H<sub>12</sub>.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> C<sub>5</sub>H<sub>12</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong các chất dưới đây, chất nào có nhiệt độ sôi thấp nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Butane",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Etane",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Methane",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Propane.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Methane.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkane là những hyđrocarbon no, mạch hở, có công thức chung là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>n</sub>H<sub>2n</sub><sub>+</sub><sub>2</sub>(n ≥1)",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>n</sub>H<sub>2n</sub>(n ≥2)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>n</sub>H<sub>2n</sub><sub>-</sub><sub>2</sub>(n ≥2)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>n</sub>H<sub>2n</sub><sub>-</sub><sub>6</sub>(n ≥ 6).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> C<sub>n</sub>H<sub>2n</sub><sub>+</sub><sub>2</sub>(n ≥1).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hydrocarbon X có công thức phân tử là C<sub>5</sub>H<sub>12</sub>, biết khi tác dụng với clo tạo được một dẫn xuất monochloro. Tên gọi của X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2 – methylpentane",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "pentane.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2, 2 – dimethylpropane",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3 – methylbutane.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 2, 2 – dimethylpropane.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho nhiệt đốt cháy hoàn toàn 1 mol các chất ethane, propane, butane và pentane lần lượt là 1570 kJ mol<sup>-1</sup> ; 2220 kJ mol<sup>-1</sup> ; 2875 kJ mol<sup>-1</sup> và 3536 kJ mol<sup>-1</sup>. Khi đốt cháy 1 gam chất nào sẽ thu được nhiệt lớn nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ethane",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Propane",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Butane",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Pentane.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Ethane.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương pháo nào sau đây có thể được thực hiện để góp phần hạn chế ô nhiễm môi trường do các phương tiện giao thông gây ra?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Không sử dụng phương tiện giao thông.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cấm các phương tiện giao thông tại các đô thị.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sử dụng phương tiện chạy bằng điện hoặc nhiên liệu xanh.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Sử dụng các phương tiện chạy bằng than đá.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Sử dụng phương tiện chạy bằng điện hoặc nhiên liệu xanh..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkene là các hydrocarbon không no, mạch hở, có công thức chung là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>n</sub>H<sub>2n+2</sub> (n ≥ 1)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>n</sub>H<sub>2n</sub> (n ≥ 3)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>n</sub>H<sub>2n-2</sub> (n ≥ 2).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> C<sub>n</sub>H<sub>2n</sub> (n ≥ 2).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkene CH<sub>3</sub>CH=CHCH<sub>3</sub> có tên là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2-methylprop-2-ene",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "but-2-ene.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "but-1-ene",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "but-3-ene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> but-2-ene..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận xét nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Alkane không tham gia phản ứng cộng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng đặc trưng của alkene và alkyne là phản ứng cộng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Benzene và đồng đẳng dễ tham gia phản ứng thế hơn phản ứng cộng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Styrene dễ tham gia phản ứng thế hơn phản ứng cộng.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Styrene dễ tham gia phản ứng thế hơn phản ứng cộng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số công thức cấu tạo của alkyne có cùng công thức C<sub>4</sub>H<sub>6</sub> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây khi tác dụng với HCl chỉ cho một sản phẩm duy nhất?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ethene",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Propene",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "But-1-ene",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Methylpropene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Ethene.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Đốt cháy hoàn toàn a mol X thu được 5a mol CO<sub>2</sub>. Biết 1 mol X phản ứng tối đa với 2 mol AgNO<sub>3</sub> trong NH<sub>3</sub>. Công thức cấu tạo của X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>2</sub>=CH–CH=CHCH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>2</sub>=CH–CH<sub>2</sub>–C º CH.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "HC º C–CH<sub>2</sub>–C º CH",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>2</sub>=C =CH–CH=CH<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> HC º C–CH<sub>2</sub>–C º CH.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức cấu tạo thu gọn của toluene là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": ".",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng: B.</b>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Arene hay còn gọi là hydrocarbon thơm là những hydrocarbon trong phân tử có chứa một hay nhiều",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "vòng benzene",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "liên kết đơn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "liên kết đôi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "liên kết ba.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> vòng benzene.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức phân tử nào sau đây có thể là công thức của hợp chất thuộc dãy đồng đẳng của benzene?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>8</sub>H<sub>16</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>8</sub>H<sub>14</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>8</sub>H<sub>12</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>8</sub>H<sub>10</sub>.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> C<sub>8</sub>H<sub>10</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tính chất nào không phải của benzene?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tác dụng với Br<sub>2</sub> (t<sup>o</sup>, FeBr<sub>3</sub>)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tác dụng với HNO<sub>3</sub>(đ) /H<sub>2</sub>SO<sub>4</sub>(đ).",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Tác dụng với dung dịch KMnO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tác dụng với Cl<sub>2</sub>, as.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Tác dụng với dung dịch KMnO<sub>4</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nitro hoá benzene bằng hỗn hợp HNO<sub>3</sub> đặc và H<sub>2</sub>SO<sub>4</sub> đặc ở nhiệt độ ≤ 50<sup>0</sup>C, tạo thành chất hữu cơ X. Phát biểu nào sau đây về X không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tên của X là nitrobenzene",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "X là chất lỏng, sánh như dầu.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "X có màu vàng",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "X tan tốt trong nước.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> X tan tốt trong nước..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c4_de1_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một trong những ứng dụng của toluene là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Làm phụ gia để tăng chỉ số octane của nhiên liệu.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Làm chất đầu để sản xuất methylcyclohexane.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Làm chất đầu để điều chế phenol.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Làm chất đầu để sản xuất polystyrene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Làm phụ gia để tăng chỉ số octane của nhiên liệu..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c4_de1_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Xét các phát biểu về cấu tạo của phân tử benzene.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân tử benzene có 6 nguyên tử carbon tạo thành hình lục giác đều.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Tất cả nguyên tử carbon và hydrogen đều nằm trên một mặt phẳng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các góc liên kết đều bằng 109,5<sup>0</sup>.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các độ dài liên kết carbon – carbon là khác nhau",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Góc liên kết trong phân tử benzene đều bằng 120<sup>o</sup>.<br/>d. Sai. Các độ dài liên kết carbon – carbon đều bằng nhau.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de1_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Các alkane có nhiều ứng dụng trong công nghiệp và đời sống hằng ngày:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Propane C<sub>3</sub>H<sub>8</sub> và butane C<sub>4</sub>H<sub>l0</sub> được sử dụng làm khí đốt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các alkane C<sub>6</sub>, C<sub>7</sub>, C<sub>8</sub> là nguyên liệu để sản xuất một số hydrocarbon thơm.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các alkane lỏng được sử dụng làm nhiên liệu như xăng hay dầu diesel.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các alkane từ C<sub>l1</sub> đến C<sub>20</sub> được dùng làm nến và sáp.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Alkane (C ≥ 20) ở thể rắn được dùng làm nến và sáp.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de1_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho hình vẽ bên mô tả thí nghiệm điều chế và thử tính chất của ethylene:",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de1_image8.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Bông tẩm dung dịch NaOH đặc có vai trò hấp thụ khí độc SO<sub>2</sub> được sinh ra.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thay dung dịch Br<sub>2</sub> bằng thuốc thử Tollens thì hiện tượng thí nghiệm vẫn không thay đổi.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khí ethylene sinh ra khi sục vào dung dịch Br<sub>2</sub> làm dung dịch mất màu.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Vai trò của đá bọt là để điều hoà quá trình sôi, tránh hiện tượng quá sôi.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de1_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các chất sau: methane, ethylene, acetylene, but-2-yne.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có 2 chất tạo kết tủa với thuốc thử Tollens.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Có 3 chất có khả năng làm mất màu dung dịch KMnO<sub>4</sub> ở điều kiện thường.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Cả 4 chất đều có khả năng làm mất màu dung dịch Br<sub>2</sub> ở điều kiện thường.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Có 3 chất khí ở điều kiện thường.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Có một chất là acetylene,<br/>b. Đúng. Các chất ethylene, acetylene, but-2-yne.<br/>c. Sai. Các chất ethylene, acetylene, but-2-yne.<br/>d. Sai. Cả bốn chất là chất khí.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de1_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tổng số nguyên tử trong một phân tử của anthracene là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "24",
+        "explanation": "Đáp án: 24 .<br/>Anthracene: C<sub>14</sub>H<sub>10</sub>  Þ  tổng số nguyên tử: 14 + 10 = 24",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "24",
+          "24",
+          "24"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de1_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Số liên kết π trong phân tử anthracene là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "7",
+        "explanation": "Đáp án: 7.",
+        "explanationImages": [
+          "/assets/hoa11/c4/hoa11_c4_de1_image16.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "7",
+          "7",
+          "7"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de1_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Có bao nhiêu đồng phân alkyne có công thức phân tử C<sub>5</sub>H<sub>8</sub> tác dụng được với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub>tạora kết tủa màu vàng nhạt?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.<br/>CH≡C-CH<sub>2</sub>-CH<sub>2</sub>-CH<sub>3</sub>; CH≡C-CH(CH<sub>3</sub>)<sub>2</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de1_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các alkene: cis-2-methylbut-2-ene (1); trans-2-methylbut-2-ene (2); pent-1-ene (3); 2-methylbut-1-ene (4). Liệt kê các alkene theo số thứ tự tăng dần thỏa mãn điều kiện khi tác dụng với H<sub>2</sub>, xúc tác Ni/t<sup>o</sup> đều tạo thành 2-methylbutane?",
+        "images": [],
+        "correctAnswer": "124",
+        "explanation": "Đáp án: 124.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "124",
+          "124",
+          "124"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de1_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Hỗn hợp X gồm H<sub>2</sub> và C<sub>3</sub>H<sub>6</sub> có tỉ khối so với khí He bằng 5,500. Cho X qua xúc tác Ni, nung nóng thu được hỗn hợp Y có tỉ khối so với khí He bằng 6,875. Hiệu suất phản ứng hydrogen hóa alkene là bao nhiêu phần trăm?",
+        "images": [],
+        "correctAnswer": "40",
+        "explanation": "Đáp án: 40.<br/>Giả sử có n<sub>X</sub> = 1⇒ m<sub>X</sub> = 1.5,5.4 = 22g<br/>Sử dụng sơ đồ đường chéo ⇒ n<sub>H<sub>2</sub></sub> = n<sub>C3</sub>H<sub>6</sub> = 0,5 mol.<br/>Bảo toàn khối lượng: m<sub>Y</sub> = m<sub>X</sub> = 22(g) ⇒ n<sub>Y</sub> = 22 : 27,5 = 0,8 mol.<br/>⇒  CH36n   phản ứng = n<sub>khí giảm</sub> = n<sub>X</sub> – n<sub>Y</sub> = 0,2 mol<br/>H% =  0,2.1000,5  = 40%.",
+        "explanationImages": [
+          "/assets/hoa11/c4/hoa11_c4_de1_image17.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "40",
+          "40",
+          "40"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de1_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Một bình gas (khí hóa lỏng) chứa hỗn hợp propane và butane với tỉ lệ mol 1:2. Xác định nhiệt lượng tỏa ra khi đốt cháy hoàn toàn 12 kg khí gas trên ở điều kiện chuẩn.<br/>Cho biết các phản ứng:<br/>C<sub>3</sub>H<sub>8</sub> (g) + 5O<sub>2</sub> (g)  ¾¾®  3CO<sub>2</sub> (g) + 4H<sub>2</sub>O (l) or298H2220kJD=-<br/>C<sub>4</sub>H<sub>10</sub> (g) +  132 O<sub>2</sub> (g)  ¾¾® 4CO<sub>2</sub> (g) + 5H<sub>2</sub>O (l) or298H2874kJD=-<br/>Trung bình mỗi ngày, một hộ gia đình cần đốt gas để cung cấp 10000 kJ nhiệt (hiệu suất hấp thụ nhiệt là 80%). Sau bao nhiêu ngày hộ gia đình trên sẽ sử dụng hết bình gas 12 kg? (Làm tròn kết quả đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "48",
+        "explanation": "Đáp án: 48<br/>Gọi số mol C<sub>3</sub>H<sub>8</sub> và số mol C<sub>4</sub>H<sub>10</sub> là 2a, ta có: 44a  +  58.2a = 12.1000  a = 75 mol<br/>Nhiệt đốt cháy 12 kg gas là Q = 75.2220 + 150.2874 = 597600 (kJ)<br/>Số ngày sử dụng hết bình gas =  59760047,8084810010000.80=»  (ngày)<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "48",
+          "48",
+          "48"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c4_de2",
+    "code": "11-C4-02",
+    "title": "Đề Kiểm Tra Chương 4: Hydrocarbon (Đề số 2)",
+    "topic": "Hydrocarbon không no: Alkene, Alkyne, phản ứng cộng & quy tắc Markovnikov",
+    "badge": "Chương 4 • Đề 2",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c4_de2_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hiện nay, nhiều nơi ở nông thôn đang sử dụng hầm biogas để xử lí chất thải trong chăn nuôi gia súc, cung cấp nhiên liệu cho việc đun nấu. Chất dễ cháy trong khí biogas là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cl<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "N<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> CH<sub>4</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Dãy nào sau đây chỉ gồm các chất thuộc dãy đồng đẳng của alkane?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>2</sub>H<sub>2</sub>, C<sub>3</sub>H<sub>4</sub>, C<sub>4</sub>H<sub>6</sub>, C<sub>5</sub>H<sub>8</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>4</sub>, C<sub>2</sub>H<sub>2</sub>, C<sub>3</sub>H<sub>4</sub>, C<sub>4</sub>H<sub>10</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>4</sub>, C<sub>2</sub>H<sub>6</sub>, C<sub>4</sub>H<sub>10</sub>, C<sub>5</sub>H<sub>12</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>2</sub>H<sub>6</sub>, C<sub>3</sub>H<sub>8</sub>, C<sub>5</sub>H<sub>10</sub>, C<sub>6</sub>H<sub>12</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> CH<sub>4</sub>, C<sub>2</sub>H<sub>6</sub>, C<sub>4</sub>H<sub>10</sub>, C<sub>5</sub>H<sub>12</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây không phải là hydrocarbon?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub> – CH<sub>3</sub> (Ethane)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>2</sub> = CH<sub>2</sub> (Ethylene)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH ≡ CH (Acetylene)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub> – CH<sub>2</sub> – OH (Ethanol, dẫn xuất chứa oxygen)",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Đáp án đúng là D:</b> Hydrocarbon chỉ được tạo thành từ 2 nguyên tố C và H. Chất CH<sub>3</sub>-CH<sub>2</sub>-OH có chứa nguyên tố oxygen nên là dẫn xuất của hydrocarbon (alcohol), không phải hydrocarbon.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các chất sau: methane, ethylene, acetylene, benzene, toluene và naphthalene. Số chất ở thể lỏng trong điều kiện thường là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 2..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi cho but-1-ene tác dụng với dung dịch HBr, theo quy tắc Maccopnhicop sản phẩm nào sau đây là sản phẩm chính ?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>–CH<sub>2</sub>–CHBr–CH<sub>2</sub>Br",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>–CH<sub>2</sub>–CHBr–CH<sub>3</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>2</sub>Br–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>Br",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH<sub>3</sub>–CH<sub>2</sub>–CH<sub>2</sub>–CH<sub>2</sub>Br.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> CH<sub>3</sub>–CH<sub>2</sub>–CHBr–CH<sub>2</sub>Br.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkyne là các hydrocarbon không no, mạch hở, có công thức chung là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>n</sub>H<sub>2n</sub><sub>+</sub><sub>2</sub> (n ≥ 1)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>n</sub>H<sub>2n</sub> (n ≥ 3)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>n</sub>H<sub>2n - 2</sub> (n ≥ 2).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> C<sub>n</sub>H<sub>2n - 2</sub> (n ≥ 2)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số nguyên tử carbon và hydrogen trong benzene lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "12 và 6",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "6 và 6",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "6 và 12",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "6 và 14.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 6 và 6.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho 0,1 mol C<sub>2</sub>H<sub>2</sub> phản ứng hoàn toàn với lượng dư dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub>, thu được m gam kết tủa vàng. Giá trị của m là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "24,0",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "13,3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "10,8",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "21,6.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 24,0.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(1) Propane và butane được sử dụng làm khí đốt.<br/>(2) Ethene và propene được sử dụng để tổng hợp polymer.<br/>(3) Acetylene được sử dụng làm nhiên liệu cho đèn xì oxygen-acetylene.<br/>(4) Benzene và toluene có mùi thơm dễ chịu, rất tốt cho sức khỏe con người.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 3..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkyne dưới đây có tên gọi là",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de2_image1.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "3-methylpent-2-yne",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2-methylhex-4-yne",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4-methylhex-2-yne",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3-methylhex-4-yne.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 4-methylhex-2-yne.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phương pháp nào sau đây là tốt nhất để phân biệt hai khí CH<sub>4</sub> và C<sub>2</sub>H<sub>4</sub>?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Dựa vào tỉ lệ về thể tích khí O<sub>2</sub> tham gia phản ứng cháy.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Sự thay đổi màu của nước bromine.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "So sánh khối lượng riêng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phân tích thành phần định lượng của các hợp chất.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Sự thay đổi màu của nước bromine..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cracking alkane là quá trình phân cắt liên kết C-C (bẻ gãy mạch carbon) của các alkane mạch dài để tạo thành hỗn hợp các hydrocarbon có mạch carbon",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "ngắn hơn",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "dài hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "không đổi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "thay đổi.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> ngắn hơn.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phần trăm khối lượng cacbon trong phân tử alkane Y bằng 83,33%. Công thức phân tử của Y là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>2</sub>H<sub>6</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>3</sub>H<sub>8</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>4</sub>H<sub>10</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>5</sub>H<sub>12</sub>.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> C<sub>5</sub>H<sub>12</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một số chất gây ô nhiễm môi trường như benzene, toluene có trong khí thải đốt cháy nhiên liệu xăng, dầu. Để giảm thiểu nguyên nhân gây ô nhiễm này có thể dùng biện pháp nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Cấm tuyệt đối việc sử dụng nguyên liệu xăng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Cấm sử dụng xe cá nhân.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "thay xăng bằng khí gas.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Hạn chế sử dụng nguồn nhiên liệu hóa thạch.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Hạn chế sử dụng nguồn nhiên liệu hóa thạch..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các chất: acetylene, vinylbenzene, ethylene, benzene, toluene. Số chất làm mất màu tím của dung dịch KMnO<sub>4</sub> ở nhiệt độ thường là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "1.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phát biểu nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Các alkyne HC≡CH, CH<sub>3</sub>C≡CH, … có công thức chung là C<sub>n</sub>H<sub>2n-2</sub>(n ≥ 2) tạo thành dãy đồng đẳng của acetylene.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Liên kết ba của alkyne được tạo nên từ ba liên kết .",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các alkyne 2C và 3C chỉ có duy nhất một đồng phân cấu tạo.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Alkyne không có đồng phân hình học như alkene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Liên kết ba của alkyne được tạo nên từ ba liên kết ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất lỏng X có khả năng làm nhạt màu dung dịch KMnO<sub>4</sub>, ở điều kiện thường. X là chất nào trong các chất sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Benzene.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Toluene.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Styrene.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Naphtalene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Styrene..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c4_de2_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một hydrocarbon X mạch hở trong phân tử có phần trăm khối lượng carbon bằng 85,714%. Trên phổ khối lượng của X có peak ion phân tử ứng với giá trị m/z = 42. Cho các kết luận sau về X:<br/>(a) Ở điều kiện thường, X là chất khí.<br/>(b) X có 2 đồng phân cấu tạo.<br/>(c) X có 7 liên kết  và 1 liên kết .<br/>(d) Cho X phản ứng với H<sub>2</sub> (xúc tác Ni, t<sup>o</sup>) thu được propane.<br/>Số kết luận đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 2..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c4_de2_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho alkane X có công thức: CH<sub>3</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>2</sub> – CH<sub>3</sub>.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tên gọi của X là pentane.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt độ sôi của X cao hơn so với neopentane.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Khi cho X phản ứng với Cl<sub>2</sub> (ánh sáng), thu được tối đa 2 sản phẩm thế monochloro.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Thực hiện phản ứng reforming X có thể thu được isobutane.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. X thế Cl<sub>2</sub> thu được tối đa 3 sản phẩm thế monochloro.<br/>d. Sai. Reforming X chỉ thu được các hydrocarbon cùng số C (5C), không thu được isobutane (4C).",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de2_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các hydrocarbon sau:",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Số phân tử hydrocarbon không no bằng 5.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Số phân tử alkene bằng 3.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Số phân tử alkyne bằng 2.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Số phân tử thuộc dãy đồng đẳng của benzene bằng 3.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de2_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "2,4,6-trinitrotoluene được dùng để sản xuất thuốc nổ TNT.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Công thức của TNT có thể viết gọn là CH<sub>3</sub>C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "TNT là một hydrocarbon thơm.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "TNT được tạo thành khi cho toluene tác dụng với nitrogen dioxide (NO<sub>2</sub>).",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Từ 1 tấn toluene có thể điều chế được 1530 kg thuốc nổ TNT với hiệu suất phản ứng đạt 62%.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai vì TNT chứa C, H, O, N nên là một dẫn xuất của hydrocarbon.<br/>c. Sai vì TNT được tạo thành khi cho toluene tác dụng với HNO<sub>3</sub> đặc (xúc tác H<sub>2</sub>SO<sub>4</sub> đặc).<br/>d. Đúng.<br/>PTHH:           C<sub>6</sub>H<sub>5</sub>CH<sub>3</sub> + 3HNO<sub>3</sub> → CH<sub>3</sub>C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub> + 3H<sub>2</sub>O<br/>gam         92                                 227<br/>kg         1000.62%                          x<br/>Từ 1 tấn toluene có thể điều chế được số kilôgam 2,4,6-trinitrotoluene, biết hiệu suất của phản ứng là 62% là: x = 1530 kg.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de2_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho hình vẽ mô tả dụng cụ, hoá chất, cách tiến hành thí nghiệm điều chế acetylene và thử tính chất của acetylene:<br/>Tiến hành:<br/>- Cho khoảng 5 g đất đèn (thành phần chính là CaC<sub>2</sub>) vào bình cầu có nhánh và cho nước cất vào phễu nhỏ giọt. Lắp dụng cụ như Hình 16.6 (chú ý đuôi của phễu nhỏ giọt không chạm vào chất rắn).<br/>- Mở khoá phễu nhỏ giọt để nước chảy từ từ xuống, khí acetylene sinh ra được sục ngay vào các ống nghiệm chứa dung dịch KMnO<sub>4</sub> và nước Br<sub>2</sub> đã chuẩn bị ở trên đến khi dung dịch mất màu.<br/>- Thay ống dẫn khí thuỷ tinh hình chữ L bằng ống dẫn thuỷ tinh có đầu vuốt nhọn. Dùng que đóm đang cháy để đốt acetylene sinh ra ở đầu ống dẫn khí.<br/>Mỗi phát biểu sau đây về thí nghiệm trên là đúng hay sai?",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de2_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khi đốt acetylene cháy và toả nhiều nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khí ethylene làm mất màu nước bromine hoặc dung dịch KMnO<sub>4</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nếu thay dung dịch Br<sub>2</sub> bằng dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> thì hiện tượng thí nghiệm vẫn không đổi.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Vai trò của dung dịch NaOH là để loại bỏ tạp chất trong quá trình tinh chế khí acetylene.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Sai. Khi thay bằng dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> thì có xuất hiện kết tủa vàng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de2_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các alkene: CH<sub>3</sub>CH=CHC<sub>2</sub>H<sub>5</sub> (X); CH<sub>3</sub>CH=CHCH<sub>3</sub> (Y); CH<sub>2</sub>=CHC<sub>2</sub>H<sub>5</sub> (Z); CH<sub>3</sub>CH=C(CH<sub>3</sub>)<sub>2</sub> (T). Trong số các alkene trên, có bao nhiêu chất có đồng phân hình học?",
+        "images": [],
+        "correctAnswer": "2",
+        "explanation": "Đáp án: 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de2_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các yếu tố sau:<br/>(1) Phân tử khối.<br/>(2) Tương tác van der Waals giữa các phân tử.<br/>(3) Độ tan trong nước.<br/>(4) Liên kết hydrogen giữa các phân tử.<br/>Liệt kê các yếu tố quyết định đến độ lớn của nhiệt độ sôi của các alkane theo dãy số thứ tự tăng dần (Ví dụ: 1234, 24,…).",
+        "images": [],
+        "correctAnswer": "12",
+        "explanation": "Đáp án: 12.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "12",
+          "12",
+          "12"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de2_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: (1) 2-methylbutane; (2) 2-methylpentane; (3) 3-methylpentane; (4) 2,2-dimethylbutane và (5) benzene (vòng 6C). Trong số các chất này, có bao nhiêu chất có thể là sản phẩm reforming hexane?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de2_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cục Quản Lí Thực Phẩm và Dược Phẩm Hoa Kì (FDA) đã công nhận ethylene là an toàn trong việc kích thích trái cây mau chín. Tuy nhiên khi vượt quá nồng độ cho phép, ví dụ đối với nồng độ 27 000 ppm, tức gấp khoảng 200 lần mức cần thiết để kích thích quá trình chín, một tia lửa điện có thể đốt cháy ethylene và gây ra vụ nổ chết người.<br/>Trong phòng ủ chín, ethylene được sử dụng ở nồng độ 100 ppm – 150 ppm. Khối lượng ethylene cần thiết sử dụng để phòng ủ chín có thể tích 50 m<sup>3</sup> đạt nồng độ 140 ppm ở 25<sup>o</sup>C và 1 bar là bao nhiêu gam (kết quả làm tròn đến hàng phần mười)? (1ppm = 1/1000000).",
+        "images": [],
+        "correctAnswer": "7,9",
+        "explanation": "Đáp án: 7,9.<br/>Thể tích ethylene có tron phòng ủ thể tích 50m<sup>3</sup>, tức 50000 lít là:<br/>V<sub>phòng</sub>=  50m<sup>3</sup> = 50.10<sup>3</sup>dm<sup>3</sup> =50.10<sup>3</sup>L do C<sub>2</sub>H<sub>4</sub> có nồng 140pm  24CHV  =  50000.1401000000 = 7 L<br/>Khối lượng ethylene cần thiết:  7.28m7,9(g)24,79==",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "7,9",
+          "7.9",
+          "7,9"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de2_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Số đồng phân hydrocarbon thơm ứng với công thức phân tử C<sub>8</sub>H<sub>10</sub> là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [
+          "/assets/hoa11/c4/hoa11_c4_de2_image7.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de2_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khí thiên nhiên chứa chủ yếu các thành phần chính: methane (CH<sub>4</sub>), ethane (C<sub>2</sub>H<sub>6</sub>) và một số thành phần khác. Biết lượng nhiệt tỏa ra khi đốt cháy methane và ethane lần lượt là 890,36 kJ và 1559,7 kJ. Nếu hộ gia đình anh Tài cần 10000 kJ nhiệt mỗi ngày, sau khoảng bao nhiêu ngày sẽ dùng hết bình gas 13 kg khí thiên nhiên? Biết tỉ lệ thể tích của methane : ethane là 17 : 2 với hiệu suất hấp thụ nhiệt khoảng 60%. (Kết quả làm tròn đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "43",
+        "explanation": "Đáp án: 43.<br/>Ta có 442626CHCH3CHCHn17xn665,8917x.162x.3013.10x39,17moln2xn78,34==ììïï®+=®=Þíí==ïïîî<br/>Theo phản ứng thì 1 mol CH<sub>4</sub> cháy sẽ tạo ra 890,36 kJ và 1 mol C<sub>2</sub>H<sub>6</sub> cháy sẽ tạo ra 1559,7 kJ<br/>Nhiệt lượng khi đốt cháy CH<sub>4</sub> và C<sub>2</sub>H<sub>6</sub> = 665,89.890,36 + 78,34.1559,7 = 715068,72 kJ<br/>Số ngày để sử dụng hết bình ga là 715068,7260.43ngày10000100»<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "43",
+          "43",
+          "43"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c4_de3",
+    "code": "11-C4-03",
+    "title": "Đề Kiểm Tra Chương 4: Hydrocarbon (Đề số 3)",
+    "topic": "Arene: Benzene, Toluene, Styrene, phản ứng thế nhân thơm & quy tắc thế",
+    "badge": "Chương 4 • Đề 3",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c4_de3_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chọn phát nhận đúng nhất về alkane?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Alkane là hợp chất hữu cơ chỉ chứa nguyên tử carbon và hydrogen trong phân tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Alkane là hydrocarbon no chỉ có liên đơn C-C trong phân tử.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Alkane là hydrocarbon no mạch hở chỉ có liên đơn C-C và C-H trong phân tử.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Alkane là hydrocarbon no chỉ có liên đơn C-H trong phân tử.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> Alkane là hydrocarbon no mạch hở chỉ có liên đơn C-C và C-H trong phân tử..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong công nghiệp, các alkane được điều chế từ nguồn nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Sodium acetate",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Dầu mỏ và khí dầu mỏ.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Aluminium carbide (Al<sub>4</sub>C<sub>3</sub>)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khí biogas.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Dầu mỏ và khí dầu mỏ..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkane dưới đây có tên thay thế là<br/>CH3CCH2CH3CH3CHCH3CH3",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "2,2,4-trimethylpentane",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2,4-trimethylpentane.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "2,4,4-trimethylpentane",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2-dimethyl-4-methylpentane.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 2,2,4-trimethylpentane.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sử dụng nhiên liệu sinh học như xăng pha thêm ethanol (E5, E10,..), biodiesel. Ethanol vừa là phụ gia tăng chỉ số ................ vừa là nhiên liệu cháy sạch. Biodiesel là methyl ester của các acid béo trong dầu mỡ động thực vật phi thực phẩm, nhiên liệu này có chỉ số cetane cao, không chứa sulfur và arene. Từ thích hợp điền vào chỗ trống “…” là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "octane",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "hexane",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "methane",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "nonane.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> octane.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Công thức phân tử chung của alkene là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>n</sub>H<sub>2n</sub>( n ≥ 1)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>n</sub>H<sub>2n</sub>( n ≥ 4)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>n</sub>H<sub>2n</sub>( n ≥ 3)",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>n</sub>H<sub>2n</sub> (n ≥ 2).",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các alkene X và Y có công thức như sau:<br/>Tên gọi của X và Y tương ứng là",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de3_image2.png",
+          "/assets/hoa11/c4/hoa11_c4_de3_image3.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "cis-3-methylpent-2-ene và trans-3-methylpent-3-ene.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "trans-3-methylpent-2-ene và cis-3-methylpent-2-ene.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "trans-3-methylpent-3-ene và cis-3-methylpent-3-ene.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "trans-3-methylpent-3-ene và cis-3-methylpent-2-ene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> trans-3-methylpent-2-ene và cis-3-methylpent-2-ene..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong phân tử acetylene, liên kết đôi CC giữa hai nguyên tử carbon gồm",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1 liên kết pi () và 2 liên kết xích ma ( )",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2 liên kết pi () và 1 liên kết xích ma ( ).",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "1 liên kết pi () và 1 liên kết xích ma ( )",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2 liên kết pi () và 2 liên kết xích ma ( ).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 2 liên kết pi () và 1 liên kết xích ma ( )..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkyne là những hydrocarbon có đặc điểm",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "không no, mạch hở, có một liên kết ba C≡C",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "không no, mạch vòng, có một liên kết đôi C=C",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "không no, mạch hở, có một liên kết đôi C=C",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "không no, mạch hở, có hai liên kết ba C≡C",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> không no, mạch hở, có một liên kết ba C.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Phản ứng nào sau đây không phải là phản ứng đặc trưng của hydrocarbon không no?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng cộng",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng trùng hợp.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng oxi hóa – khử",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng thế.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Phản ứng thế..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Sản phẩm chủ yếu trong hỗn hợp thu được khi cho toluene phản ứng với bromine theo tỉ lệ số mol 1 : 1 (có mặt FeBr<sub>3</sub>) là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "p-bromotoluene và m-bromotoluene",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "benzylbromide.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "o-bromotoluene và p-bromotoluene",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "o-bromotoluene và m-bromotoluene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> o-bromotoluene và p-bromotoluene.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Khi được chiếu sáng, benzene có thể phản ứng với Cl<sub>2</sub> tạo thành sản phẩm có công thức phân tử nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>6</sub>H<sub>5</sub>Cl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>6</sub>H<sub>11</sub>Cl",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>6</sub>H<sub>6</sub>Cl<sub>6</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>6</sub>H<sub>12</sub>Cl<sub>6</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C<sub>6</sub>H<sub>6</sub>Cl<sub>6</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để phân biệt but-2-yne (CH<sub>3</sub>C≡CCH<sub>3</sub>) với but-l-yne (CH≡CCH<sub>2</sub>CH<sub>3</sub>) có thể dùng thuốc thử nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Dung dịch HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Dung dịch AgNO<sub>3</sub>/NH<sub>3</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Nước bromine",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dung dịch KMnO<sub>4</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> Dung dịch AgNO<sub>3</sub>/NH<sub>3</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây thuộc dãy đồng đẳng của benzene? (Biết C<sub>6</sub>H<sub>5</sub>-: phenyl)",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>6</sub>H<sub>5</sub>-CH<sub>2</sub>-CH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>6</sub>H<sub>5</sub>-C≡CH",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>6</sub>H<sub>5</sub>-CH=CH<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>6</sub>H<sub>5</sub>-Cl.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> C<sub>6</sub>H<sub>5</sub>-CH<sub>2</sub>-CH<sub>3</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Thực hiện thí nghiệm như hình vẽ bên. Kết thúc thí nghiệm, dung dịch Br<sub>2</sub> bị mất màu.<br/>Chất X là",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de3_image4.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CaC<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Na",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Al<sub>4</sub>C<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CaO.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> CaC<sub>2</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Trong số các alkene có đồng phân cấu tạo C<sub>5</sub>H<sub>10</sub>, số công thức cấu tạo có đồng phân hình học?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 1.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "X là nguyên liệu quan trọng để sản xuất các alkylbenzene sulfonate mạch không phân nhánh (linear alkylbenzenesulfonate, LAS) là thành phần chính của bột giặt; sản xuất styrene - nguyên liệu cho chế tạo nhựa PS (polystyrene) và một số polymer khác. X và một số hydrocarbon thơm khác là nguyên liệu đầu dùng để sản xuất thuốc trừ sâu, chất điều hòa sinh trưởng thực vật, phẩm nhuộm,... Chất X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "toluene.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "benzene",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "styrene",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "acetylene.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> benzene.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho biểu đồ về nhiệt độ sôi của một số alkane sau:<br/>.<br/>Hãy cho biết nhận định nào sau đây không đúng?",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de3_image5.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Có 4 alkane tồn tại thể khí ở điều kiện thường: methane, ethane, propane, butane.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Nhiệt độ sô tăng dần theo chiều tăng phân tử khối.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Pentane, hexane tồn tại thể lỏng ở điều kiện thường.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Methane dễ hóa lỏng nhất trong số các alkane ở thể khí điều kiện thường.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Methane dễ hóa lỏng nhất trong số các alkane ở thể khí điều kiện thường..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c4_de3_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhựa PE tên đầy đủ là polyethylene là một loại nhựa dẻo được sử dụng phổ biến trên thế giới, có màu trắng trong, có tính chất chống dẫn điện, chống dẫn điện, chống thấm nước,… Nếu trùng hợp m tấn ethylene thu được 1 tấn polyethylene (PE) với hiệu suất phản ứng bằng 80%. Giá trị của m là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1,20",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "1,25",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "0,80",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "2,00.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> 1,25.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c4_de3_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Phản ứng reforming được ứng dụng trong công nghiệp lọc dầu để làm tăng chỉ số xăng octane của xăng & sản xuất các arene (benzene, toluene, xylene) làm nguyên liệu cho công nghiệp tổng hợp hữu cơ",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng reforming dùng để chuyển alkane mạch không phân nhánh thành các alkane mạch phân nhánh.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng reforming dùng để huyển alkane mạch không phân nhánh thành các hydrocarbon mạch vòng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Trong phản ứng reforming số nguyên tử carbon của chất tham gia và của sản phẩm bằng nhau.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Trong phản ứng reforming nhiệt độ sôi của sản phẩm lớn hơn nhiều so với alkane tham gia phản ứng.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Sản phẩm có nhiệt độ sôi nhỏ hơn so với alkane ban đầu (nhiệt độ sôi thay đổi không đáng kể).",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de3_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Quy tắc Markovnikov áp dụng khi thực hiện phản ứng cộng một tác nhân không đối xứng HX (HBr, HCl, HI, HOH,..) vào liên kết bội, nguyên tử hydrogen sẽ ưu tiên cộng vào nguyên tử carbon có nhiều hydrogen hơn.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng cộng nước vào alkene tạo sản phẩm là alcohol.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khi cộng HBr vào but-1-ene và but-2-ene đều thu được sản phẩm chính là 2-bromobutane.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng cộng giữa propyne với HBr theo tỉ lệ mol 1 : 1 thu được sản phẩm sau:",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng giữa propyne với nước (xúc tác HgSO<sub>4</sub>/H<sub>2</sub>SO<sub>4</sub>, t<sup>o</sup>) tạo sản phẩm chính là propanal (CH<sub>3</sub>-CH<sub>2</sub>-CH=O).",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. Sản phẩm chính là CH<sub>3</sub>-CO-CH<sub>3</sub>.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de3_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Dẫn dòng khí gồm acetylene và ethylene lần lượt đi vào ống nghiệm (1) đựng dưng dịch AgNO<sub>3</sub>/NH<sub>3</sub> ở điều kiện thường, sau đó dẫn tiếp qua ống nghiệm (2) đựng nước bromine.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Ở ống nghiệm (1) có kết tủa màu vàng nhạt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Ở ống nghiệm (2) màu của nước bromine nhạt dần.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở ống nghiệm (2) chất lỏng chia thành hai lớp.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tại ống nghiệm (1) có xảy ra phản ứng cộng, ống nghiệm (2) có xảy ra phản ứng thế.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng. Do sản phẩm tạo thành (C<sub>2</sub>H<sub>4</sub>Br<sub>2</sub>) không tan trong nước.<br/>d. Sai. Ống nghiệm (1) xảy ra phản ứng thế, ống nghiệm (2) xảy ra phản ứng cộng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de3_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho các arene có công thức cấu tạo thu gọn sau:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(X)</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">(Y)</th></tr></table></div>",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Tên gọi của X và Y lần lượt là benzene và m-dimethylbenzene.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "X và Y thuộc cùng một dãy đồng đẳng.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Ở điều kiện thường, X và Y đều là chất lỏng, màu trắng, dễ cháy và có mùi đặc trưng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Khi cho Y tác dụng với HNO<sub>3</sub> đặc/H<sub>2</sub>SO<sub>4</sub> đặc (tỉ lệ mol 1 : 1) tạo thành hỗn hợp hai sản phẩm hữu cơ chính.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Sai. Tên của Y là p-dimethylbenzene.<br/>b. Đúng.<br/>c. Sai. Không màu.<br/>d. Sai. Tạo một sản phẩm chính.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de3_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho isopentane tác dụng với khí chlorine, điều kiện ánh sáng. Số sản phẩm monochloro tối đa thu được là bao nhiêu?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.<br/>CH3CHCH2CH3CH3",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de3_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Dẫn 10,8 gam but-1-yne qua dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> dư, sau phản ứng thu m gam kết tủa. Xác định giá trị của m.",
+        "images": [],
+        "correctAnswer": "32,2",
+        "explanation": "Đáp án: 32,2.<br/>32333243CHCHCCH+AgNONHCHCHCCAg+NHNOº+¾¾®º¯<br/>n<sub>alkyne</sub> = 0,2 mol; n↓ = 0,2 mol ⇒ M = 0,2 .161 = 32,2 g.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "32,2",
+          "32.2",
+          "32,2"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de3_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Xét phản ứng hóa học sau:<br/>CH<sub>3</sub>CH<sub>2</sub>=CH<sub>2</sub>+ H<sub>2</sub>O + KMnO<sub>4</sub>→ CH<sub>3</sub>-CH(OH)CH<sub>2</sub>(OH) + MnO<sub>2</sub>↓+KOH<br/>Tổng hệ số tỉ lượng tối giản của các chất trong phản ứng này bằng bao nhiêu?",
+        "images": [],
+        "correctAnswer": "16",
+        "explanation": "Đáp án: 16.<br/>3CH<sub>3</sub>CH<sub>2</sub>=CH<sub>2</sub>+ 4H<sub>2</sub>O + 2KMnO<sub>4</sub>→ 3CH<sub>3</sub>-CH(OH)CH<sub>2</sub>(OH) + 2MnO<sub>2</sub>↓+ 2KOH<br/>Tổng hệ số: 3 + 4 + 2 + 3+ 2 + 2 = 16.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "16",
+          "16",
+          "16"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de3_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cần bao nhiêu lít không khí ở đkc (20% thể tích là oxygen) để đốt cháy hoàn toàn một cây nến có công thức phân tử C<sub>25</sub>H<sub>52</sub>, biết cây nến có khối lượng nặng 35,2 g. (Kết quả làm tròn đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "471",
+        "explanation": "Đáp án: 471.<br/>ot2552222CH38O25CO26HO0,13,8mol+¾¾®+®<br/>O2kkV3,8.24,79V471,01L20%20%===",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "471",
+          "471",
+          "471"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de3_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Khi đun nóng và có xúc tác Ni, 1 mol styrene có thể cộng được với tối đa bao nhiêu mol phân tử H<sub>2</sub>?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de3_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Tính khối lượng cumene (đơn vị tấn) tối đa phát thải từ một triệu xe ô tô chạy động cơ xăng (có bộ chuyển đổi xúc tác) trong một năm. Giả sử bình quân một tháng, mỗi xe ô tô chạy 3 000 km. Biết:<br/><div class=\"overflow-x-auto my-3\"><table class=\"min-w-full text-xs sm:text-sm border-collapse border border-slate-300 rounded-xl bg-white text-slate-800 shadow-sm\"><tr><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Nguồn</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Tỉ lệ phát thải</th><th class=\"border border-slate-300 px-3 py-1.5 text-center\">Ghi chú</th></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Sản xuất</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,08 kg/tấn cumene</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Được kiểm soát</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\"></td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,27 kg/tấn cumene</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Không được kiềm soát</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Xe chạy</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,0002 - 0,0009 g/km</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Có bộ chuyển đổi xúc tác</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">động cơ xăng</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">0,002 g/km</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Không có bộ chuyển đổi xúc tác</td></tr><tr><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Máy photocopy</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">140-220 g/h</td><td class=\"border border-slate-300 px-3 py-1.5 text-center\">Hoạt động liên tục</td></tr></table></div><br/>Đổi đơn vị: 1 m g = 10<sup>–6</sup>g.",
+        "images": [],
+        "correctAnswer": "32,4",
+        "explanation": "Đáp án: 32,4.<br/>Bình quân một tháng, mỗi chiếc chạy 3 000 km, do đó trong một năm, mỗi chiếc chạy quãng đường là 36 000 km, phát thải tối đa: 0,0009.36000 = 32,4 (g) cumene.<br/>Vậy 1 triệu xe ô tô trong một năm phát thải tối đa: 1.32,4 = 32,4 (tấn).<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "32,4",
+          "32.4",
+          "32,4"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoa11_c4_de4",
+    "code": "11-C4-04",
+    "title": "Đề Kiểm Tra Tổng Hợp Toàn Diện Chương 4 (Đề số 4)",
+    "topic": "Đề ôn tập toàn diện Hydrocarbon chuẩn ma trận Bộ GD&ĐT 2025",
+    "badge": "Chương 4 • Đề 4",
+    "duration": 50,
+    "totalQuestions": 28,
+    "totalPoints": 10,
+    "questions": [
+      {
+        "id": "hoa11_c4_de4_p1_q1",
+        "number": 1,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Arene hay còn gọi là hydrocarbon thơm là những hydrocarbon trong phân tử có chứa một hay nhiều",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "vòng benzene",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "liên kết đơn",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "liên kết đôi",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "liên kết ba.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> vòng benzene.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q2",
+        "number": 2,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biogas là một loại khí sinh học, được sản xuất bằng cách ủ kín các chất thải hữu cơ trong chăn nuôi, sinh hoạt. Biogas được dùng để đun nấu, chạy máy phát điện sinh hoạt gia đình. Thành phần chính của biogas là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "N<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CO<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "NH<sub>3</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> CH<sub>4</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q3",
+        "number": 3,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Hợp chất X có công thức phân tử C<sub>5</sub>H<sub>12</sub>, khi tác dụng với chlorine (có chiếu sáng) tạo được bốn dẫn xuất thế monochloro. X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "pentane.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "isopentane.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "neopentane.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "isobutane.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> isopentane..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q4",
+        "number": 4,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Alkyne là những hydrocarbon không no, mạch hở, có công thức chung là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "C<sub>n</sub>H<sub>2n + 2</sub> (n ≥ 1)",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "C<sub>n</sub>H<sub>2n</sub> (n ≥ 2)",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "C<sub>n</sub>H<sub>2n - 2</sub> (n ≥ 2)",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "C<sub>n</sub>H<sub>2n - 6</sub> (n ≥ 6).",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> C<sub>n</sub>H<sub>2n - 2</sub> (n ≥ 2).",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q5",
+        "number": 5,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Tên gọi của chất nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": ".",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": ".",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng: A.</b>",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q6",
+        "number": 6,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây cộng H<sub>2</sub>dư (Ni, t<sup>o</sup>) tạo thành butane?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>-CH=CH<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>-C≡C-CH<sub>2</sub>-CH<sub>3</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>-CH<sub>2</sub>-CH=CH<sub>2</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(CH<sub>3</sub>)<sub>2</sub>C=CH<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> CH<sub>3</sub>-CH<sub>2</sub>-CH=CH<sub>2</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q7",
+        "number": 7,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Số alkene có cùng công thức C<sub>4</sub>H<sub>8</sub> và số alkyne có cùng công thức C<sub>4</sub>H<sub>6</sub> lần lượt là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "4 và 2",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "4 và 3",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3 và 3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "3 và 2.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 4 và 2.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 7
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q8",
+        "number": 8,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Để tăng chất lượng của xăng, dầu, người ta thực hiện cách nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Thực hiện phản ứng reforming để thay đổi cấu trúc của các alkane không nhánh thành hydrocarbon mạch nhánh hoặc mạch vòng có chỉ số octane cao.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Thực hiện phản ứng cracking để thay đổi cấu trúc các alkane mạch dài chuyển thành các alkene và alkane mạch ngắn hơn.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Thực hiện phản ứng hydrogen hóa để chuyển các alkene thành alkane.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Bổ sung thêm heptane vào xăng, dầu.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Thực hiện phản ứng reforming để thay đổi cấu trúc của các alkane không nhánh thành hydrocarbon mạch nhánh hoặc mạch vòng có chỉ số octane cao..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 8
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q9",
+        "number": 9,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Benzene không làm mất màu dung dịch nước bromine nhưng có thể phản ứng với bromine khan khi có mặt xúc tác iron (III) bromine. Phản ứng này thuộc loại phản ứng nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phản ứng thế",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng cộng",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Phản ứng tách",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Phản ứng đốt cháy.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Phản ứng thế.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 9
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q10",
+        "number": 10,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Các chai lọ, túi, màng mỏng trong suốt, không độc, được sử dụng làm chai đựng nước, thực phẩm, màng bọc thực phẩm được sản xuất từ polymer của chất nào sau đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "But – 1 - ene",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Propene",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vinyl chloride",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Ethylene.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Ethylene..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 10
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q11",
+        "number": 11,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Chất nào sau đây không có đồng phân hình học?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>3</sub>-CH=CH-CH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "(CH<sub>3</sub>)<sub>2</sub>C=CH-CH<sub>3</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>-CH=CH-CH(CH<sub>3</sub>)<sub>2</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "(CH<sub>3</sub>)<sub>2</sub>CH-CH=CH-CH(CH<sub>3</sub>)<sub>2</sub>.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "B",
+        "explanation": "<b>Phương án đúng là B:</b> (CH<sub>3</sub>)<sub>2</sub>C=CH-CH<sub>3</sub>..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 11
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q12",
+        "number": 12,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận xét nào sau đây không đúng đối với phản ứng cộng chlorine vào benzene?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Khó hơn phản ứng cộng chlorine vào ethylene.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Xảy ra với điều kiện ánh sáng tử ngoại và đun nóng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Sản phẩm thu được là 1,2,3,4,5,6-hexachlorocyclohexane.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Tỉ lệ mol của các chất tham gia phản ứng là 1 : 1.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Tỉ lệ mol của các chất tham gia phản ứng là 1 : 1..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 12
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q13",
+        "number": 13,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nhận xét nào sau đây không đúng?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Alkane không tham gia phản ứng cộng.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Phản ứng đặc trưng của alkene và alkyne là phản ứng cộng.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Benzene và đồng đẳng dễ tham gia phản ứng thế hơn phản ứng cộng.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Styrene dễ tham gia phản ứng thế hơn phản ứng cộng.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> Styrene dễ tham gia phản ứng thế hơn phản ứng cộng..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 13
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q14",
+        "number": 14,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Biểu đồ dưới đây thể hiện mối tương quan giữa nhiêt độ sôi và số nguyên tử carbon trong phân tử alkene:<br/>Có bao nhiêu alkene trong biểu đồ ở thể khí trong điều kiện thường (25<sup>o</sup>C)",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de4_image22.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "4",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "5.",
+            "isCorrect": true
+          }
+        ],
+        "correctAnswer": "D",
+        "explanation": "<b>Phương án đúng là D:</b> 5..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 14
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q15",
+        "number": 15,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Một hydrocarbon X mạch hở trong phân tử có phần trăm khối lượng carbon bằng 85,714%. Trên phổ khối lượng của X có peak ion phân tử ứng với giá trị m/z = 42. Công thức phù hợp với X là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "CH<sub>2</sub>=CHCH<sub>3</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub>",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "CH<sub>3</sub>CH<sub>3</sub",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "CH≡CH.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> CH<sub>2</sub>=CHCH<sub>3</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 15
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q16",
+        "number": 16,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Nếu phân biệt các hydrocarbon thơm: benzene, toluene và styrene chỉ bằng một thuốc thử thì nên chọn thuốc thử nào dưới đây?",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Dung dịch KMnO<sub>4</sub>",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Dung dịch Br<sub>2</sub>.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Dung dịch HCl",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Dung dịch NaOH.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> Dung dịch KMnO<sub>4</sub>.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 16
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q17",
+        "number": 17,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các chất sau: acetylene; methyl acetylene, ethyl acetylene và but-2-yne. Số chất tạo thành kết tủa khi tác dụng với dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub> là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "1",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "C",
+        "explanation": "<b>Phương án đúng là C:</b> 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 17
+      },
+      {
+        "id": "hoa11_c4_de4_p1_q18",
+        "number": 18,
+        "part": 1,
+        "type": "multiple_choice",
+        "text": "Cho các phát biểu sau:<br/>(1) Propane và butane được sử dụng làm khí đốt.<br/>(2) Ethene và propene được sử dụng để tổng hợp polymer.<br/>(3) Acetylene được sử dụng làm nhiên liệu cho đèn xì oxygen-acetylene.<br/>(4) Styrene được sử dụng tổng hợp polymer.<br/>(5) Toluene được sử dụng tổng hợp thuốc nổ.<br/>Số phát biểu đúng là",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "5.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "2.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "3.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "4.",
+            "isCorrect": false
+          }
+        ],
+        "correctAnswer": "A",
+        "explanation": "<b>Phương án đúng là A:</b> 5..",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 18
+      },
+      {
+        "id": "hoa11_c4_de4_p2_q1",
+        "number": 1,
+        "part": 2,
+        "type": "true_false",
+        "text": "Mô hình phân tử của benzene được minh họa trong hình dưới đây:<br/>Mô hình quả cầu – thanh nối    Mô hình đặc",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de4_image23.png",
+          "/assets/hoa11/c4/hoa11_c4_de4_image24.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân tử benzene có sáu nguyên tử carbon tạo thành hình lục giác đều.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Các nguyên tử carbon và hydrogen nằm trên các mặt phẳng khác nhau.",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Các góc liên kết đều bằng 120<sup>o</sup>C.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Các độ dài liên kết carbon – carbon đều bằng 139 pm.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. 6 nguyên tử C và 6 nguyên tử H cùng nằm trên một mặt phẳng.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 1
+      },
+      {
+        "id": "hoa11_c4_de4_p2_q2",
+        "number": 2,
+        "part": 2,
+        "type": "true_false",
+        "text": "Trong phân tử hydrocarbon mạch hở X có phần trăm khối lượng carbon bằng 88,89%. Từ phồ khối lượng xác định được phân tử khối của X bằng 54. Khi cho X phản ứng với nước có xúc tác thích hợp thu được sản phẩm có cấu tạo duy nhất.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Phân tử X có mạch carbon không phân nhánh.",
+            "isCorrect": false
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "X không tác dụng được với dung dịch AgNO<sub>3</sub>/NH<sub>3</sub> tạo ra kết tủa.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Bằng một phản ứng hóa học, từ X có thể tạo được polymer.",
+            "isCorrect": false
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "X có đồng phân hình học.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>%C%H:2:3121=   CTPT C<sub>4</sub>H<sub>6</sub> (M<sub>X</sub> = 54).<br/>X tác dụng với H<sub>2</sub>O chỉ tạo 1 sản phẩm  CTCT của X là CH<sub>3</sub>-CC-CH<sub>3</sub><br/>a. Sai. X có mạch carbon không phân nhánh.<br/>b. Đúng.<br/>c. Sai. X không có phản ứng trùng hợp.<br/>d. Sai. X không có đồng phân hình học.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 2
+      },
+      {
+        "id": "hoa11_c4_de4_p2_q3",
+        "number": 3,
+        "part": 2,
+        "type": "true_false",
+        "text": "Các phương tiện giao thông là một trong các nguyên nhân chính gây ra ô nhiễm môi trường ở các đô thị lớn.",
+        "images": [],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Do các phương tiện giao thông đốt cháy nhiên liệu sinh ra nhiều khí carbon dioxide, các nitrogen oxide, carbon monoxide và các hạt bụi mịn do xăng, dầu cháy không hoàn toàn.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Để hạn chế ô nhiễm môi trường do khí thải của động cơ chúng ta có thể sử dụng các phương tiện cá nhân thay cho các phương tiện công cộng .",
+            "isCorrect": false
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Để hạn chế ô nhiễm môi trường do khí thải của động cơ chúng ta có thể đưa thêm chất xúc tác vào ống xả động cơ nhằm tiếp tục chuyển hoá alkane trong khí thải động cơ thành carbon dioxide và nước.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Để hạn chế ô nhiễm môi trường do khí thải của động cơ chúng ta có thể trồng nhiều cây xanh.",
+            "isCorrect": true
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Sai. Hạn chế sử dụng phương tiện cá nhân.<br/>c. Đúng.<br/>d. Đúng.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 3
+      },
+      {
+        "id": "hoa11_c4_de4_p2_q4",
+        "number": 4,
+        "part": 2,
+        "type": "true_false",
+        "text": "Cho hình vẽ mô tả dụng cụ, hoá chất, cách tiến hành thí nghiệm điều chế ethylene và thử tính chất của ethylene:<br/>Tiến hành:<br/>- Cho vài viên đá bọt, 20 mL cồn 96° vào bình cầu. Rót 40 mL dung dịch H<sub>2</sub>SO<sub>4</sub> đặc vào ống đong, sau đó rót từ từ H<sub>2</sub>SO<sub>4</sub> đặc từ ống đong qua phễu vào bình cầu để tránh sự toả nhiệt quá mạnh.<br/>- Lắp bộ dụng cụ như Hình 16.5.<br/>- Đun nóng đến khi ethylene sinh ra và sục ngay vào các ống nghiệm (1) và (2).<br/>- Thay ống dẫn khí thuỷ tinh hình chữ L bằng ống dẫn thuỷ tinh có đầu vuốt nhọn. Dùng que đóm đang cháy để đốt ethylene ở đầu ống dẫn khí.<br/>Mỗi phát biểu sau đây về thí nghiệm trên là đúng hay sai?",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de4_image25.png"
+        ],
+        "options": [
+          {
+            "id": "a",
+            "letter": "A",
+            "text": "Đốt ethylene ở đầu ống dẫn khí, khí ethylene cháy và toả nhiều nhiệt.",
+            "isCorrect": true
+          },
+          {
+            "id": "b",
+            "letter": "B",
+            "text": "Khí ethylene làm mất màu nước bromine hoặc dung dịch KMnO<sub>4</sub>.",
+            "isCorrect": true
+          },
+          {
+            "id": "c",
+            "letter": "C",
+            "text": "Vai trò của đá bọt là để điều hoà quá trình sôi, tránh hiện tượng quá sôi.",
+            "isCorrect": true
+          },
+          {
+            "id": "d",
+            "letter": "D",
+            "text": "Vai trò của NaOH là để trung hoà acid H<sub>2</sub>SO<sub>4</sub> thoát ra.",
+            "isCorrect": false
+          }
+        ],
+        "explanation": "Đáp án:<br/>a. Đúng.<br/>b. Đúng.<br/>c. Đúng.<br/>d. Sai. NaOH dùng để hấp thụ các sản phẩm phụ (CO<sub>2</sub>, SO<sub>2</sub>,..) trong quá trình điều chế ethylene.",
+        "explanationImages": [],
+        "points": 1.0,
+        "displayNumber": 4
+      },
+      {
+        "id": "hoa11_c4_de4_p3_q1",
+        "number": 1,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Có bao nhiêu đồng phân cấu tạo ứng với công thức phân tử C<sub>8</sub>H<sub>1</sub><sub>0</sub>?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [
+          "/assets/hoa11/c4/hoa11_c4_de4_image28.png",
+          "/assets/hoa11/c4/hoa11_c4_de4_image29.png"
+        ],
+        "points": 0.25,
+        "displayNumber": 1,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de4_p3_q2",
+        "number": 2,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: propane, ethylene, acetylene, styrene, toluene và naphthalene. Có bao nhiêu chất làm mất màu dung dịch bromine?",
+        "images": [],
+        "correctAnswer": "3",
+        "explanation": "Đáp án: 3.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 2,
+        "acceptedAnswers": [
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de4_p3_q3",
+        "number": 3,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Cho các chất sau: (1) 2-methylbutane; (2) 2-methylpentane; (3) 3-methylpentane; (4) 2,2-dimethylbutane và (5) benzene. Trong số các chất này, có bao nhiêu chất có thể là sản phẩm reforming hexane?",
+        "images": [],
+        "correctAnswer": "4",
+        "explanation": "Đáp án: 4.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 3,
+        "acceptedAnswers": [
+          "4",
+          "4",
+          "4"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de4_p3_q4",
+        "number": 4,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Hình vẽ bên mô tả thí nghiệm điều chế khí C<sub>2</sub>H<sub>2</sub> trong phòng thí nghiệm và đốt cháy khí C<sub>2</sub>H<sub>2</sub> trong không khí.<br/>Cho các thao tác thí nghiệm: (1) cho nước vào ống nghiệm, (2) cho các viên CaC<sub>2</sub> trượt theo thành ống nghiệm, (3) lắp ống dẫn khí vào miệng ống nghiệm, (4) bật lửa đốt khí acetylene.<br/>Liệt kê thứ tự các thao tác để tiến hành thí nghiệm trên.",
+        "images": [
+          "/assets/hoa11/c4/hoa11_c4_de4_image26.png"
+        ],
+        "correctAnswer": "3214",
+        "explanation": "Đáp án: 3214.",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 4,
+        "acceptedAnswers": [
+          "3214",
+          "3214",
+          "3214"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de4_p3_q5",
+        "number": 5,
+        "part": 3,
+        "type": "short_answer",
+        "text": "2,4,6-trinitrotoluene được dùng để sản xuất thuốc nổ TNT. Từ 1 tấn toluene có thể điều chế được bao nhiêu kg 2,4,6-trinitrotoluene, biết hiệu suất của phản ứng là 62%? (Kết quả làm tròn đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "1530",
+        "explanation": "Đáp án: 1530.<br/>PTHH:           C<sub>6</sub>H<sub>5</sub>CH<sub>3</sub> + 3HNO<sub>3</sub> → C<sub>6</sub>H<sub>2</sub>(NO<sub>2</sub>)<sub>3</sub>CH<sub>3</sub> + 3H<sub>2</sub>O<br/>gam         92                                 227<br/>kg         1000.62%                          x<br/>Từ 1 tấn toluene có thể điều chế được số kilôgam 2,4,6-trinitrotoluene, biết hiệu suất của phản ứng là 62% là: x = 1530 kg",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 5,
+        "acceptedAnswers": [
+          "1530",
+          "1530",
+          "1530"
+        ]
+      },
+      {
+        "id": "hoa11_c4_de4_p3_q6",
+        "number": 6,
+        "part": 3,
+        "type": "short_answer",
+        "text": "Một bình gas (khí hóa lỏng) sử dụng trong hộ gia đình X chứa 12 kg hỗn hợp propane và butane với tỉ lệ mol 1 : 2. Khi đốt cháy hoàn toàn, 1 mol propane tỏa ra lượng nhiệt là 2220 kJ và 1 mol butane tỏa ra lượng nhiệt là 2850 kJ. Trung bình, lượng nhiệt tiêu thụ từ đốt khí gas của hộ gia đình X là 11 000 kJ/ngày và hiệu suất sử dụng nhiệt là 80%. Sau bao nhiều ngày hộ gia đình X sử dụng hết bình gas trên? (Kết quả làm tròn đến hàng đơn vị).",
+        "images": [],
+        "correctAnswer": "43",
+        "explanation": "Đáp án: 43.<br/>Gọi số mol C<sub>3</sub>H<sub>8</sub> và số mol C<sub>4</sub>H<sub>10</sub> là 2a, ta có: 44a  +  58.2a = 12.1000  a = 75 mol<br/>Nhiệt tỏa ta khi đốt cháy 12 kg gas trên là Q = 75.2220 + 150.2850 = 594000 (kJ)<br/>Vì H = 80%  Þ  nhiệt sử dụng thực tế là 594000.80% = 475200 kJ<br/>Số ngày sử dụng hết bình gas =  4752004311000»  (ngày)<br/>------------------------- HẾT -------------------------",
+        "explanationImages": [],
+        "points": 0.25,
+        "displayNumber": 6,
+        "acceptedAnswers": [
+          "43",
+          "43",
+          "43"
+        ]
+      }
+    ]
+  }
+];
 
 export const HOA11_CHUONG4_7_EXAMS: Chuong4Exam[] = HOA11_CHUONG4_EXAMS;
 
