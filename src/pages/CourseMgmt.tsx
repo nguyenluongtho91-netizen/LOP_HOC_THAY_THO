@@ -885,7 +885,7 @@ export default function CourseMgmt() {
                         />
                         <div className="flex-1 min-w-0">
                           <span className="font-black text-slate-900 text-xs truncate block">{st.full_name}</span>
-                          <span className="text-[10px] text-slate-500 font-mono">#{st.student_code} • {st.grade || "Khối"}</span>
+                          <span className="text-[10px] text-slate-500 font-mono">{st.student_code} • {st.grade || "Khối"}</span>
                         </div>
                       </label>
                     );

@@ -818,11 +818,7 @@ export default function StudentPortal() {
                 </div>
               </div>
 
-              {/* Cảnh báo giám sát */}
-              <div className="bg-amber-50 text-amber-700 p-4 rounded-xl flex gap-2.5 text-xs font-medium border border-amber-100">
-                <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                <p className="leading-relaxed">Hệ thống có giám sát chuyển tab. Vui lòng tập trung làm bài thi.</p>
-              </div>
+
 
               {/* Nút đăng nhập */}
               <button
@@ -1091,9 +1087,7 @@ export default function StudentPortal() {
                     <Clock className="w-3.5 h-3.5 text-teal-600" />
                     Thời gian: <strong className="text-slate-800 font-bold">{room.time_limit} phút</strong>
                   </span>
-                  <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[11px] font-bold">
-                    🛡️ Có giám sát chuyển tab
-                  </span>
+
                   {hasSub && (
                     <span className="bg-amber-50 text-amber-800 px-2.5 py-1 rounded-lg border border-amber-200 text-[10px] uppercase font-black animate-pulse">
                       ⚡ Đang làm dở
@@ -1126,7 +1120,7 @@ export default function StudentPortal() {
                     className={`px-5 py-2.5 bg-gradient-to-r ${btnGradient} text-xs sm:text-sm font-black rounded-xl transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 cursor-pointer`}
                   >
                     <Sparkles className="w-4 h-4 text-amber-300" />
-                    <span>{hasSub ? 'Làm tiếp ⚡' : 'Vào phòng thi 🚀'}</span>
+                    <span>{hasSub ? 'Làm tiếp ⚡' : 'Bắt đầu làm bài 🚀'}</span>
                   </button>
                 )}
               </div>
@@ -1354,7 +1348,7 @@ export default function StudentPortal() {
               </div>
               <div className="flex flex-col min-w-0 max-w-[85px] xs:max-w-[120px] sm:max-w-[150px]">
                 <span className="text-xs sm:text-sm font-black text-teal-900 truncate">{student.full_name}</span>
-                <span className="text-[9px] sm:text-[10px] font-bold text-teal-600 font-mono tracking-wider">#{student.student_code}</span>
+                <span className="text-[9px] sm:text-[10px] font-bold text-teal-600 font-mono tracking-wider">{student.student_code}</span>
               </div>
             </div>
 
@@ -1418,7 +1412,7 @@ export default function StudentPortal() {
                   <span>Lớp: {student.grade || 'Khối 12'}</span>
                 </span>
                 <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-teal-950/80 text-teal-300 border border-teal-700/60 shadow-sm">
-                  Mã HS: #{student.student_code}
+                  Mã HS: {student.student_code}
                 </span>
                 {enrolledClasses.length > 0 && enrolledClasses.map((cls, idx) => (
                   <span
@@ -1714,8 +1708,6 @@ export default function StudentPortal() {
                 <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold uppercase tracking-wider mb-2">
                   <BookOpen className="w-3.5 h-3.5 text-teal-600" />
                   <span>DANH SÁCH BÀI TẬP VỀ NHÀ</span>
-                  <span>·</span>
-                  <span className="text-teal-600 font-semibold lowercase">có giám sát chuyển tab</span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2.5">
                   <span>BÀI TẬP VỀ NHÀ CỦA EM</span>
@@ -2015,7 +2007,7 @@ export default function StudentPortal() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-black uppercase tracking-wider mb-1.5">
                   <span>📘 PHẦN 2</span>
                   <span>·</span>
-                  <span>CÓ GIÁM SÁT CHUYỂN TAB</span>
+                  <span>LUYỆN ĐỀ THEO CHƯƠNG</span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 uppercase">
                   <span>LUYỆN ĐỀ THEO CHƯƠNG</span>
@@ -2024,7 +2016,7 @@ export default function StudentPortal() {
                   </span>
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-                  Ôn tập củng cố kiến thức theo từng chuyên đề chương học. Hệ thống bật giám sát chuyển tab để rèn luyện thói quen tập trung.
+                  Ôn tập củng cố kiến thức và rèn luyện kỹ năng làm bài theo từng chuyên đề chương học.
                 </p>
               </div>
 
@@ -2074,13 +2066,13 @@ export default function StudentPortal() {
                 <div className="space-y-2">
                   <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-emerald-500/25 border border-emerald-400/30 text-emerald-200 text-xs font-black uppercase tracking-wider">
                     <Target className="w-4 h-4 text-emerald-300" />
-                    <span>PHẦN 3 · CÓ GIÁM SÁT CHUYỂN TAB</span>
+                    <span>PHẦN 3 · LUYỆN ĐỀ THI</span>
                   </div>
                   <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight flex items-center gap-2.5 uppercase">
                     <span>🎯 LUYỆN ĐỀ THI</span>
                   </h2>
                   <p className="text-emerald-100/90 text-xs sm:text-sm max-w-xl leading-relaxed">
-                    Tổng hợp các bộ đề thi học kỳ, thi thử, kiểm tra định kỳ cho từng khối lớp (Khối 6, 7, 8, 9, 10, 11, 12). Có giám sát chuyển tab để rèn giũa bản lĩnh phòng thi nghiêm túc!
+                    Tổng hợp các bộ đề thi học kỳ, thi thử, kiểm tra định kỳ cho từng khối lớp (Khối 6, 7, 8, 9, 10, 11, 12). Rèn giũa bản lĩnh và kỹ năng làm bài thi nghiêm túc!
                   </p>
                   
                   {practiceClasses.length > 0 && (
@@ -2149,7 +2141,7 @@ export default function StudentPortal() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-xs font-black uppercase tracking-wider mb-1.5">
                   <span>🟣 PHẦN 4</span>
                   <span>·</span>
-                  <span>CÓ GIÁM SÁT CHUYỂN TAB</span>
+                  <span>KHẢO SÁT CHẤT LƯỢNG</span>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 uppercase">
                   <span>KHẢO SÁT CHẤT LƯỢNG</span>
@@ -2158,7 +2150,7 @@ export default function StudentPortal() {
                   </span>
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">
-                  Khảo sát chất lượng định kỳ và đánh giá năng lực học sinh. Có giám sát chuyển tab để đảm bảo tính khách quan.
+                  Khảo sát chất lượng định kỳ và đánh giá năng lực học sinh một cách chính xác.
                 </p>
               </div>
 
@@ -2434,22 +2426,22 @@ export default function StudentPortal() {
         </div>
       )}
     
-      {/* MODAL CẢNH BÁO & XÁC NHẬN QUY CHẾ KHI HỌC SINH BẤM VÀO BÀI THI */}
+      {/* MODAL CẢNH BÁO & XÁC NHẬN QUY CHẾ KHI HỌC SINH BẤM NÚT BẮT ĐẦU LÀM BÀI */}
       {examRuleModalTarget && (
         <div className="fixed inset-0 z-[999999] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200 text-slate-900 relative overflow-hidden text-left">
-            {/* Thanh gradient nhấn mạnh ở đầu */}
-            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600" />
+            {/* Thanh gradient cảnh báo */}
+            <div className="absolute top-0 left-0 right-0 h-2.5 bg-gradient-to-r from-amber-500 via-rose-500 to-rose-600" />
             
             {/* Header Modal */}
             <div className="flex items-start justify-between gap-3 border-b border-slate-100 pb-4">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-amber-50 border-2 border-amber-200 text-amber-600 flex items-center justify-center text-2xl shadow-inner shrink-0">
-                  🛡️
+                <div className="w-12 h-12 rounded-2xl bg-rose-50 border-2 border-rose-200 text-rose-600 flex items-center justify-center text-2xl shadow-inner shrink-0">
+                  ⚠️
                 </div>
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 text-[10px] font-black uppercase tracking-wider mb-1">
-                    <span>QUY CHẾ PHÒNG THI CHÍNH THỨC</span>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-900 text-[10px] font-black uppercase tracking-wider mb-1">
+                    <span>CẢNH BÁO QUY CHẾ THI TRỰC TUYẾN</span>
                   </div>
                   <h3 className="text-base sm:text-lg font-black text-slate-900 leading-snug line-clamp-2">
                     {examRuleModalTarget.title}
@@ -2464,66 +2456,52 @@ export default function StudentPortal() {
               </button>
             </div>
 
-            {/* 3 Điều khoản quy chế vàng */}
-            <div className="space-y-3">
-              <p className="text-xs font-medium text-slate-600 leading-relaxed">
-                Trước khi bắt đầu tính giờ làm bài, Thầy Thọ yêu cầu em nắm vững các quy định bắt buộc sau:
-              </p>
-
-              {/* Điều 1: Thang điểm 10 chuẩn */}
-              <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-3">
-                <div className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
-                  10
+            {/* Khối CẢNH BÁO QUAN TRỌNG: Thoát quá 3 lần bị thu bài */}
+            <div className="space-y-3.5">
+              <div className="p-4 rounded-2xl bg-rose-50 border-2 border-rose-400 flex items-start gap-3.5 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-rose-600 text-white font-black text-lg flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                  🛡️
                 </div>
-                <div>
-                  <h4 className="text-xs font-black text-slate-900 uppercase tracking-wide">
-                    Thang Điểm 10 Chuẩn
+                <div className="space-y-1.5">
+                  <h4 className="text-sm font-black text-rose-950 uppercase tracking-wide">
+                    Quy Định Giám Sát Màn Hình (Tối Đa 3 Lần)
                   </h4>
-                  <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
-                    Toàn bộ bài thi được tính và chuẩn hóa theo đúng <strong className="text-indigo-700 font-extrabold">thang điểm 10</strong> theo quy định kiểm tra đánh giá của Thầy.
+                  <p className="text-xs text-rose-900 leading-relaxed font-semibold">
+                    Hệ thống tự động giám sát và ghi lại mỗi khi em chuyển tab, mở ứng dụng khác hoặc thoát màn hình làm bài.
                   </p>
+                  <div className="p-2.5 bg-white/95 rounded-xl border-2 border-rose-300 text-xs text-rose-700 font-black leading-snug shadow-2xs">
+                    🚨 NẾU THOÁT MÀN HÌNH QUÁ 3 LẦN: HỆ THỐNG SẼ TỰ ĐỘNG THU BÀI VÀ NỘP CHẤM ĐIỂM NGAY LẬP TỨC!
+                  </div>
                 </div>
               </div>
 
-              {/* Điều 2: Giám sát chống gian lận & chuyển tab */}
-              <div className="p-3.5 rounded-2xl bg-rose-50 border-2 border-rose-200 flex items-start gap-3">
-                <div className="w-8 h-8 rounded-xl bg-rose-600 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
-                  ⚠️
+              {/* Thông tin thang điểm 10 chuẩn & Đồng hồ */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
+                  <span className="text-xl">🎯</span>
+                  <div>
+                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Thang điểm</div>
+                    <div className="text-xs font-black text-indigo-700">Thang 10 Chuẩn</div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-xs font-black text-rose-900 uppercase tracking-wide">
-                    Giám Sát Chuyển Tab (Rời Quá 3 Lần Sẽ Thu Bài)
-                  </h4>
-                  <p className="text-xs text-rose-800 mt-0.5 leading-relaxed">
-                    Hệ thống tự động ghi nhận mỗi lần em chuyển tab, mở ứng dụng khác hoặc rời cửa sổ thi. <strong className="text-rose-900 underline font-black">Vi phạm quá 3 lần sẽ bị tự động thu bài ngay lập tức</strong>.
-                  </p>
-                </div>
-              </div>
-
-              {/* Điều 3: Đồng hồ tính giờ */}
-              <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3">
-                <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
-                  ⏱️
-                </div>
-                <div>
-                  <h4 className="text-xs font-black text-emerald-900 uppercase tracking-wide">
-                    Đồng Hồ Tính Giờ Tự Động
-                  </h4>
-                  <p className="text-xs text-emerald-800 mt-0.5 leading-relaxed">
-                    Đồng hồ đếm ngược sẽ bắt đầu chạy ngay khi em nhấn nút xác nhận bên dưới. Hết giờ hệ thống sẽ tự động nộp bài.
-                  </p>
+                <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-2.5">
+                  <span className="text-xl">⏱️</span>
+                  <div>
+                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Thời gian</div>
+                    <div className="text-xs font-black text-slate-800">Bắt đầu tính giờ ngay</div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Nút hành động */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 pt-3 border-t border-slate-100">
+            <div className="flex flex-col sm:flex-row items-center gap-3 pt-2 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() => setExamRuleModalTarget(null)}
                 className="w-full sm:w-auto px-5 py-3 rounded-xl text-slate-600 hover:bg-slate-100 font-bold text-xs cursor-pointer transition-all text-center"
               >
-                Quay lại ôn tập thêm
+                Quay lại ôn tập
               </button>
               <button
                 type="button"
@@ -2549,10 +2527,10 @@ export default function StudentPortal() {
                     navigate('/hoa12-chuong5');
                   }
                 }}
-                className="w-full sm:flex-1 py-3 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
+                className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-700 hover:from-teal-700 hover:to-emerald-800 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl shadow-teal-700/25 flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-95"
               >
                 <Sparkles className="w-4 h-4 text-amber-300" />
-                <span>TÔI ĐÃ HIỂU & BẮT ĐẦU VÀO THI ➔</span>
+                <span>🚀 TÔI ĐÃ HIỂU & BẮT ĐẦU LÀM BÀI</span>
               </button>
             </div>
           </div>
