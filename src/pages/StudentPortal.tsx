@@ -1407,21 +1407,23 @@ export default function StudentPortal() {
 
               {/* Nhãn lớp và mã học sinh */}
               <div className="flex items-center gap-2 flex-wrap pt-0.5">
-                <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800/90 text-slate-200 border border-slate-700 shadow-sm flex items-center gap-1.5 backdrop-blur-md">
-                  <GraduationCap className="w-3.5 h-3.5 text-teal-400" />
-                  <span>Lớp: {student.grade || 'Khối 12'}</span>
-                </span>
                 <span className="text-xs font-mono font-bold px-3 py-1.5 rounded-xl bg-teal-950/80 text-teal-300 border border-teal-700/60 shadow-sm">
                   Mã HS: {student.student_code}
                 </span>
-                {enrolledClasses.length > 0 && enrolledClasses.map((cls, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800/90 text-slate-200 border border-slate-700 shadow-sm flex items-center gap-1"
-                  >
-                    📚 {cls.class_name}
+                {enrolledClasses.length > 0 ? (
+                  enrolledClasses.map((cls, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800/90 text-slate-200 border border-slate-700 shadow-sm flex items-center gap-1"
+                    >
+                      📚 {cls.class_name}
+                    </span>
+                  ))
+                ) : student.grade ? (
+                  <span className="text-xs font-bold px-3 py-1.5 rounded-xl bg-slate-800/90 text-slate-200 border border-slate-700 shadow-sm flex items-center gap-1">
+                    📚 {student.grade}
                   </span>
-                ))}
+                ) : null}
               </div>
             </div>
 
