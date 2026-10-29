@@ -1,3 +1,9 @@
+import { HOA10_FINAL2_EXAMS } from "./hoa10Final2ExamService";
+import { HOA11_FINAL2_EXAMS } from "./hoa11Final2ExamService";
+import { HOA12_FINAL2_EXAMS } from "./hoa12Final2ExamService";
+import { HOA10_MIDTERM2_EXAMS } from "./hoa10Midterm2ExamService";
+import { HOA11_MIDTERM2_EXAMS } from "./hoa11Midterm2ExamService";
+import { HOA12_MIDTERM2_EXAMS } from "./hoa12Midterm2ExamService";
 import { HOA10_FINAL_EXAMS } from './hoa10FinalExamService';
 import { HOA11_FINAL_EXAMS } from './hoa11FinalExamService';
 import { HOA12_FINAL_EXAMS } from './hoa12FinalExamService';
@@ -34,6 +40,16 @@ import { HOA10_MIDTERM_EXAMS } from './hoa10MidtermExamService';
 
 export function getAllStandardExamsList() {
   return [
+    // ĐỀ CUỐI KÌ 2 CÁC KHỐI
+    ...HOA12_FINAL2_EXAMS.map(e => ({ ...e, grade: "12", chapter: "Đề Cuối Kì 2 Hóa 12" })),
+    ...HOA11_FINAL2_EXAMS.map(e => ({ ...e, grade: "11", chapter: "Đề Cuối Kì 2 Hóa 11" })),
+    ...HOA10_FINAL2_EXAMS.map(e => ({ ...e, grade: "10", chapter: "Đề Cuối Kì 2 Hóa 10" })),
+
+    // ĐỀ GIỮA KÌ 2 CÁC KHỐI
+    ...HOA12_MIDTERM2_EXAMS.map(e => ({ ...e, grade: "12", chapter: "Đề Giữa Kì 2 Hóa 12" })),
+    ...HOA11_MIDTERM2_EXAMS.map(e => ({ ...e, grade: "11", chapter: "Đề Giữa Kì 2 Hóa 11" })),
+    ...HOA10_MIDTERM2_EXAMS.map(e => ({ ...e, grade: "10", chapter: "Đề Giữa Kì 2 Hóa 10" })),
+
     // ĐỀ CUỐI KÌ 1 CÁC KHỐI
     ...HOA12_FINAL_EXAMS.map(e => ({ ...e, grade: '12', chapter: 'Đề Cuối Kì 1 Hóa 12' })),
     ...HOA11_FINAL_EXAMS.map(e => ({ ...e, grade: '11', chapter: 'Đề Cuối Kì 1 Hóa 11' })),

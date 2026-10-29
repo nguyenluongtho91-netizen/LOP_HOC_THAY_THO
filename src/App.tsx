@@ -11,6 +11,8 @@ import ExamRoomPage from '@/pages/ExamRoomPage'
 import Hoa12Page from '@/pages/Hoa12Page'
 import MidtermExamsPage from '@/pages/MidtermExamsPage'
 import FinalExamsPage from '@/pages/FinalExamsPage'
+import Midterm2ExamsPage from '@/pages/Midterm2ExamsPage'
+import Final2ExamsPage from '@/pages/Final2ExamsPage'
 const PublicPortalHub = lazy(() => import('@/pages/PublicPortalHub'))
 const Hoa10Page = lazy(() => import('@/pages/Hoa10Page'))
 const Hoa11Page = lazy(() => import('@/pages/Hoa11Page'))
@@ -138,6 +140,18 @@ export default function App() {
         <Route path="/hoa10-cuoiki1"    element={<FinalExamsPage initialGrade="10" />} />
         <Route path="/hoa11-cuoiki1"    element={<FinalExamsPage initialGrade="11" />} />
         <Route path="/hoa12-cuoiki1"    element={<FinalExamsPage initialGrade="12" />} />
+
+        {/* BỘ ĐỀ THI GIỮA HỌC KÌ 2 (HÓA 10, 11, 12) */}
+        <Route path="/de-thi-giua-ki-2" element={<Midterm2ExamsPage />} />
+        <Route path="/hoa10-giuaki2"  element={<Midterm2ExamsPage initialGrade="10" />} />
+        <Route path="/hoa11-giuaki2"  element={<Midterm2ExamsPage initialGrade="11" />} />
+        <Route path="/hoa12-giuaki2"  element={<Midterm2ExamsPage initialGrade="12" />} />
+
+        {/* BỘ ĐỀ THI CUỐI HỌC KÌ 2 (HÓA 10, 11, 12) */}
+        <Route path="/de-thi-cuoi-ki-2" element={<Final2ExamsPage />} />
+        <Route path="/hoa10-cuoiki2"    element={<Final2ExamsPage initialGrade="10" />} />
+        <Route path="/hoa11-cuoiki2"    element={<Final2ExamsPage initialGrade="11" />} />
+        <Route path="/hoa12-cuoiki2"    element={<Final2ExamsPage initialGrade="12" />} />
 
         {/* HỌC LIỆU HÓA HỌC KHỐI 10 */}
         <Route path="/hoa10"    element={<Hoa10Page />} />
