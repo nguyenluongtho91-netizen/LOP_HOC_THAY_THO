@@ -626,7 +626,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Từ 1 tấn tinh bột ngô có thể sản xuất được bao nhiêu lít xăng E5 (chứa 5% ethanol về thể tích), biết tinh bột ngô chứa 75% tinh bột, hiệu suất chung của cả quá trình điều chế ethanol là 70%, khối lượng riêng của ethanol là 0,789 g/mL (làm tròn kết quả đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "7558",
-        "explanation": "Đáp án: 7558.<br/>m<sub>tinh bột</sub> = 1.75% = 0,75 tấn = 750 kg.<br/>2HOenzymeenzyme6105n612625(CHO)nCHO2nCHOH+¾ → ¾ → <br/>162 gam → 92 gam<br/>750 kg 25H70%CHOH750.92m.70%298,148kg162=¾ → ==<br/>25CHOHxangE5m298,148377,88V377,88LV7557,6LD0,7895%===Þ== .",
+        "explanation": "Đáp án: 7558.<br/>m<sub>tinh bột</sub> = 1.75% = 0,75 tấn = 750 kg.<br/>2HOenzymeenzyme6105n612625(CHO)nCHO2nCHOH+¾ → ¾ → <br/>162 gam → 92 gam<br/>750 kg 25H70%CHOHKhối lượng C<sub>2</sub>H<sub>5</sub>OH thu được với H = 70%:<br/>m<sub>ethanol</sub> = \\frac{750 · 92}{162} · 70% ≈ 298,148 kg.<br/>Thể tích ethanol nguyên chất: V<sub>ethanol</sub> = \\frac{298,148}{0,789} ≈ 377,88 L.<br/>Thể tích xăng E5 pha chế được: V<sub>E5</sub> = \\frac{377,88}{5%} = 7557,6 L ≈ 7558 L.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 2
@@ -656,7 +656,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa12/midterm/h12_gk1_de1_image6.png"
         ],
         "correctAnswer": "715",
-        "explanation": "Đáp án: 715.<br/>Sơ đồ: Benzene → …. → Aniline<br/>78 93<br/>1 tấn H60%=¾ → 1.93.0,60,7153878» tấn = 715 kg.",
+        "explanation": "Đáp án: 715.<br/>Sơ đồ: Benzene → …. → Aniline<br/>78 93<br/>Khối lượng aniline thu được từ 1 tấn benzene với hiệu suất 60%:<br/>m<sub>aniline</sub> = \\frac{1 · 93}{78} · 60% ≈ 0,71538 tấn = 715 kg.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -1285,7 +1285,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Một loại gương soi có diện tích bề mặt là 0,8 m<sup>2</sup>. Để tráng được 1080 chiếc gương trên với độ dày lớp bạc được tráng là 0,2 mm thì cần dùng m gam glucose tác dụng với lượng dư dung dịch AgNO<sub>3</sub> trong NH<sub>3</sub>. Biết hiệu suất phản ứng tráng bạc là 75% và khối lượng riêng của bạc là 10,49 g/cm<sup>3</sup>. Giá trị của m bằng bao nhiêu? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "2014",
-        "explanation": "Đáp án: 2014.<br/>m<sub>Ag (1 gương)</sub> = 0,8.10<sup>4</sup>.0,2.10<sup>-4</sup>.10,49 = 1,6784 gam<br/>m<sub>Ag (1080 gương)</sub> = 1,6784.1080 = 1812,672 gam<br/>Sơ đồ phản ứng:<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> 33AgNO/NH → → 2Ag<br/>n<sub>Ag</sub> = 16,784 mol H75%glucose16,784180m.2014,08g275%=¾ → ==<br/>Vậy giá trị của m là 2014.",
+        "explanation": "Đáp án: 2014.<br/>m<sub>Ag (1 gương)</sub> = 0,8.10<sup>4</sup>.0,2.10<sup>-4</sup>.10,49 = 1,6784 gam<br/>m<sub>Ag (1080 gương)</sub> = 1,6784.1080 = 1812,672 gam<br/>Sơ đồ phản ứng:<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> 33AgNO/NH → → 2Ag<br/>n<sub>Ag</sub> = \\frac{1812,672}{108} = 16,784 mol.<br/>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → 2Ag.<br/>Khối lượng glucose cần dùng (H = 75%):<br/>m<sub>glucose</sub> = \\frac{16,784 · 180}{2 · 75%} = 2014,08 gam ≈ 2014 gam.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 3
@@ -1298,7 +1298,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Xà phòng hóa hoàn toàn 300 gam chất béo A với lượng vừa đủ dung dịch chứa 1 mol KOH. Sản phẩm thu được sau phản ứng gồm muối carboxylate và 29,44 gam glycerol. Sau khi thêm các chất phụ gia cần thiết thì thu được xà phòng (các muối carboxylate trong xà phòng chiếm 60% khối lượng xà phòng). Biết mỗi bánh xà phòng có trọng lượng là 90g, số bánh xà phòng sản xuất được là bao nhiêu? (Lấy kết quả đến hàng phần nguyên)",
         "images": [],
         "correctAnswer": "6",
-        "explanation": "Đáp án: 6.<br/>Ta có: n<sub>KOH</sub> = 1 mol và nglycerol = 0,32 mol<br/>Nhận thấy: n<sub>KOH</sub>> nglycerol nên chất béo A gồm các triglyceride có lẫn các acid béo.<br/>⇒ n<sub>acid béo</sub> = 1 – 3.0,32 = 0,04 mol 2HOacidnn0,04molÞ==<br/>Áp dụng định luật bảo toàn khối lượng ta có:<br/>m<sub>A</sub> + m<sub>KOH</sub> = m<sub>muối</sub> + m<sub>glycerol</sub> + m<sub>nước</sub><br/>⇒ m<sub>muối</sub> = 300 + 1.56 – 29,44 – 0,04.18 = 325,84 gam.<br/>Khối lượng xà phòng thu được là: 325,84m543,1gam.0,6==<br/>Số bánh xà phòng thu được là: 543,16,03690»= bánh.",
+        "explanation": "Đáp án: 6.<br/>Ta có: n<sub>KOH</sub> = 1 mol và nglycerol = 0,32 mol<br/>Nhận thấy: n<sub>KOH</sub>> nglycerol nên chất béo A gồm các triglyceride có lẫn các acid béo.<br/>⇒ n<sub>acid béo</sub> = 1 – 3.0,32 = 0,04 mol 2HOacidnn0,04molÞ==<br/>Áp dụng định luật bảo toàn khối lượng ta có:<br/>m<sub>A</sub> + m<sub>KOH</sub> = m<sub>muối</sub> + m<sub>glycerol</sub> + m<sub>nước</sub><br/>⇒ m<sub>muối</sub> = 300 + 1.56 – 29,44 – 0,04.18 = 325,84 gam.<br/>Khối lượng bánh xà phòng (muối chiếm 60%): m<sub>xà phòng</sub> = \\frac{325,84}{60%} = 543,07 gam.<br/>Số bánh xà phòng (mỗi bánh 90 gam): n = \\frac{543,07}{90} ≈ 6,03 bánh ≈ 6 bánh.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -1925,7 +1925,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Cellulose trinitrate được điều chế từ nitric acid và cellulose (hiệu suất phản ứng 90% tính theo nitric acid). Để có 14,85 kg cellulose trinitrate cần V lít dung dịch nitric acid 96% (D = 1,5 g/mL). Giá trị của V là bao nhiêu? (Làm tròn kết quả đến hàng phần mười)",
         "images": [],
         "correctAnswer": "7.3",
-        "explanation": "Đáp án: 7,3.<br/>[C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> + 3nHNO<sub>3</sub> → [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(NO<sub>3</sub>)<sub>3</sub>]<sub>n</sub> + 3nH<sub>2</sub>O<br/>189n gam →297n gam<br/>X kg14,85 kg<br/>Khối lượng HNO<sub>3</sub>: 3HNO1485189n100mx105kg297n90,..,.===<br/>Khối lượng dung dịch HNO<sub>3</sub> 96%: 3ddHNO100m105109375kg96,.,.==<br/>Thể tích dung dịch HNO<sub>3</sub> 96%: 3ddHNO109375V729L15,,().,==",
+        "explanation": "Đáp án: 7,3.<br/>[C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(OH)<sub>3</sub>]<sub>n</sub> + 3nHNO<sub>3</sub> → [C<sub>6</sub>H<sub>7</sub>O<sub>2</sub>(NO<sub>3</sub>)<sub>3</sub>]<sub>n</sub> + 3nH<sub>2</sub>O<br/>189n gam →297n gam<br/>X kg14,85 kg<br/>m<sub>HNO3 nguyên chất</sub> = \\frac{14,85 · 189n}{297n · 90%} = 10,5 kg.<br/>m<sub>dung dịch HNO3 96%</sub> = \\frac{10,5}{96%} = 10,9375 kg.<br/>V<sub>dung dịch HNO3 96%</sub> = \\frac{10,9375}{1,5} ≈ 7,29 L ≈ 7,3 L.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 3
@@ -1940,7 +1940,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa12/midterm/h12_gk1_de3_image6.jpg"
         ],
         "correctAnswer": "71.2",
-        "explanation": "Đáp án: 71,2.<br/>(C<sub>15</sub>H<sub>31</sub>COO)(C<sub>17</sub>H<sub>33</sub>COO)(C<sub>17</sub>H<sub>29</sub>COO)C<sub>3</sub>H<sub>5</sub><br/>2HHXn10,05101n0,025kmolnkmol24120-==Þ==<br/>X1.854120%m.10071,2%10== .",
+        "explanation": "Đáp án: 71,2.<br/>(C<sub>15</sub>H<sub>31</sub>COO)(C<sub>17</sub>H<sub>33</sub>COO)(C<sub>17</sub>H<sub>29</sub>COO)C<sub>3</sub>H<sub>5</sub><br/>n<sub>chất béo</sub> = \\frac{n_{H2}}{3} = \\frac{0,075}{3} = 0,025 kmol.<br/>% khối lượng chất béo X trong mẫu dầu:<br/>%m<sub>X</sub> = \\frac{0,025 · 854}{30} · 100% ≈ 71,2%.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -2556,7 +2556,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Trong dung môi nước, methylamine thể hiện là một base Brønsted theo cân bằng:<br/>32233CHNHHOCHNHOH+-++ 4CK4,2.10-= (ở 25Co )<br/>Bỏ qua sự điện li của nước, giá trị pH của dung dịch 32CHNH 0,1M ở 25Co bằng bao nhiêu? (Làm tròn kết quả đến hàng phần mười.)",
         "images": [],
         "correctAnswer": "11.8",
-        "explanation": "Đáp án: 11,8.<br/>32233CHNHHOCHNHOH+-++ 4CK4,2.10-=<br/>[]: 0,1 - x x x<br/>4Cx.xK4,2.10x0,00627pOH2,2pH142,211,80,1x-==Þ=Þ=Þ=-=- .",
+        "explanation": "Đáp án: 11,8.<br/>32233CHNHHOCHNHOH+-++ 4CK4,2.10-=<br/>[]: 0,1 - x x x<br/>K<sub>b</sub> = \\frac{x^2}{0,1 - x} = 4,2 · 10<sup>-4</sup> ⇒ x = [OH<sup>-</sup>] ≈ 0,00627 M.<br/>pOH = -log(0,00627) ≈ 2,2 ⇒ pH = 14 - pOH = 14 - 2,2 = 11,8.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 3
@@ -2569,7 +2569,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Chỉ số xà phòng hoá là số miligam KOH cần để xà phòng hoá 1 g chất béo. Theo TCVN 6044:2013. CODEX STAN 211-1999, chỉ số xà phòng hoá trung bình của chất béo trong mỡ bò là 195. Khi xà phòng hoàn toàn 600 kg mỡ bò thu được trong quá trình chế biến thực phẩm để nấu xà phòng, lượng NaOH cần lấy ít nhất là bao nhiêu kg? Biết mỡ bò chứa 96% chất béo. (Làm tròn kết quả đến hàng phần mười)",
         "images": [],
         "correctAnswer": "80.2",
-        "explanation": "Đáp án: 80,2.<br/>Số mol KOH để xà phòng hoá hoàn toàn 1 gam chất béo 3195.1056-== số mol NaOH Trong 600 kg mỡ bò có ()600.96%576kg= chất béo .<br/>Xà phòng hoàn toàn 576 kg chất béo trong mỡ bò cần ()33195.10.40.576.1080228,6 g80,2 kg.56--=»",
+        "explanation": "Đáp án: 80,2.<br/>Số mol KOH để xà phòng hoá hoàn toàn 1 gam chất béo 3195.1056-== số mol NaOH Trong 600 kg mỡ bò có ()600.96%576kg= chất béo .<br/>m<sub>NaOH</sub> = \\frac{195 · 10^{-3} · 40}{56} · 576 · 10^3 ≈ 80228,6 gam ≈ 80,2 kg.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -3170,7 +3170,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Isoamyl acetate có mùi thơm đăc trưng của chuối chín nên còn được gọi là dầu chuối. Khi đun nóng hỗn hợp gồm 16,2 g acetic acid và 15,2g isoamyl alcohol (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CH<sub>2</sub>OH với xúc tác H<sub>2</sub>SO<sub>4</sub> đặc, thu được 14,16 g dầu chuối. Hiệu suất của phản ứng điều chế dầu chuối là a %. Xác định giá trị của a. (Không làm tròn các phép tính trung gian, chỉ làm tròn kết quả cuối cùng đến hàng phần mười).",
         "images": [],
         "correctAnswer": "63.1",
-        "explanation": "Đáp án: 63,1.<br/>aceticacidisoamylalcoholester19177n0,27mol;nmol;nmol1101625===<br/>PTHH: CH<sub>3</sub>COOH + (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CH<sub>2</sub>OH o24HSO®Æc,t ⇌ CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub> + H<sub>2</sub>O<br/>H% = =1771625.100%63,1%19110 .",
+        "explanation": "Đáp án: 63,1.<br/>aceticacidisoamylalcoholester19177n0,27mol;nmol;nmol1101625===<br/>PTHH: CH<sub>3</sub>COOH + (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CH<sub>2</sub>OH o24HSO®Æc,t ⇌ CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub> + H<sub>2</sub>O<br/>Hiệu suất phản ứng tính theo alcohol:<br/>H% = \\frac{17,7 / 130}{19 / 88} · 100% = \\frac{0,136}{0,216} · 100% ≈ 63,1%.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 2
@@ -3814,7 +3814,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Trong y học, glucose làm thuốc tăng lực cho người bệnh, dễ hấp thu và cung cấp khá nhiều năng lượng. Phản ứng oxi hóa glucose tạo thành CO<sub>2</sub> và H<sub>2</sub>O cung cấp năng lượng cho cơ thể. Một người bệnh được truyền hai chai chứa 500 mL dung dịch glucose 5%. Tính năng lượng tối đa bệnh nhân nhận được từ hai chai truyền glucose đó (làm tròn kết quả đến hàng đơn vị). Biết nhiệt tạo thành của glucose C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, CO<sub>2</sub> và H<sub>2</sub>O lần lượt là –1271 kJ/mol, –393,5 kJ/mol và –285,8 kJ/mol; dung dịch glucose 5% có khối lượng riêng là 1,019 g/ml.",
         "images": [],
         "correctAnswer": "795",
-        "explanation": "Đáp án: 795.<br/>6126222CHOOCOHO+ → + ; or298H2804,8kJ/molD=-<br/>Số mol glucose: 2.500.1,02.5%17()18060=mol<br/>Năng lượng tối đa bệnh nhân nhận được từ hai chai truyền glucose là 17.2804,860 = 795 (kJ)",
+        "explanation": "Đáp án: 795.<br/>6126222CHOOCOHO+ → + ; or298H2804,8kJ/molD=-<br/>Số mol glucose trong 2 chai: n = \\frac{2 · 500 · 1,02 · 5%}{180} = \\frac{17}{60} mol.<br/>Năng lượng tối đa bệnh nhân nhận được:<br/>Q = \\frac{17}{60} · 2804,8 ≈ 795 kJ.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -4446,7 +4446,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa12/midterm/h12_gk1_de7_image12.png"
         ],
         "correctAnswer": "2.51",
-        "explanation": "Đáp án: 2,51.<br/>25CHOH1000.46%n.2.69%.55%2,155kmol162==<br/>25CHOH3V2,155.46/0,79V2509,8L2,51m5%5%Þ====",
+        "explanation": "Đáp án: 2,51.<br/>n<sub>ethanol</sub> = \\frac{1000 · 46%}{162} · 2 · 69% · 55% ≈ 2,155 kmol.<br/>V<sub>ethanol nguyên chất</sub> = \\frac{2,155 · 46}{0,79} ≈ 125,48 L.<br/>V<sub>cồn 5°</sub> = \\frac{125,48}{5%} ≈ 2509,8 L ≈ 2,51 m³.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -5706,7 +5706,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Theo Tiêu chuẩn Việt Nam TCVN 7624 : 2007, khi chế tạo gương, chiều dày lớp bạc phủ trên bề mặt tấm kính (quy ra tổng lượng bạc trên một đơn vị m<sup>2</sup> kính) phải đạt tối thiểu 0,7 g.m<sup>-2</sup>. Một công ty cần sản xuất 15000 m<sup>2</sup> gương có độ dày lớp bạc phủ ở mức 0,72 g.m<sup>-2</sup>. Để tạo ra bạc, người ta tiến hành theo sơ đồ phản ứng như sau:<br/>Saccharose +02+HO;xtH; t → → Dung dịch A trunghòaacid → → Dung dịch B 032+dd [Ag(NH)]OH;t → → Ag<br/>Biết hiệu suất cả quá trình là 80%. Để sản xuất lượng gương với độ phủ bạc như trên, công ty đó cần sử dụng lượng saccharose ít nhất là bao nhiêu kg? (Kết quả làm tròn đến chữ số phần chục, chỉ làm tròn ở phép tính cuối)",
         "images": [],
         "correctAnswer": "10.7",
-        "explanation": "Đáp án: 10,7.<br/>m<sub>Ag</sub> = 0,72.15000 = 10800 g n<sub>Ag</sub> = 100 mol<br/>Saccharose Glu + Fruc 4Ag<br/>122211CHO1001m.342.10687,5g10,7kg480%===",
+        "explanation": "Đáp án: 10,7.<br/>m<sub>Ag</sub> = 0,72.15000 = 10800 g n<sub>Ag</sub> = 100 mol<br/>Saccharose Glu + Fruc 4Ag<br/>m<sub>saccharose</sub> = \\frac{25 · 342}{80%} = 10687,5 gam ≈ 10,7 kg.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 3
@@ -6368,7 +6368,7 @@ export const HOA12_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Kết quả phân tích thành phần nguyên tố của amine X (no, đơn chức, mạch hở) thu được tỉ lệ khối lượng m<sub>C</sub> ​: m<sub>H</sub> ​= 4 : 1. Số đồng phân cấu tạo là amine bậc một của X là bao nhiêu?",
         "images": [],
         "correctAnswer": "2",
-        "explanation": "Đáp án: 2.<br/>C39Hm12n4n3:CHNm2n31==Þ=+<br/>Có 2 đồng phân bậc I là CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub> và CH<sub>3</sub>CH(NH<sub>2</sub>)CH<sub>3</sub>.",
+        "explanation": "Đáp án: 2.<br/>Tỉ lệ khối lượng: \\frac{m_C}{m_H} = \\frac{12n}{2n + 3} = \\frac{4}{1} ⇒ 12n = 8n + 12 ⇒ n = 3 (C<sub>3</sub>H<sub>9</sub>N).<br/>Có 2 đồng phân bậc I là CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub> và CH<sub>3</sub>CH(NH<sub>2</sub>)CH<sub>3</sub>.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4

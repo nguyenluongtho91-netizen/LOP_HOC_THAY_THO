@@ -163,9 +163,16 @@ export function formatChemicalText(raw: string | undefined | null): string {
     s = s.replace(/\\(?:mathrm|operatorname|mathbf|mathit|text|textbf|textit)\{([^{}]*)\}/g, '$1');
   }
 
-  // 5. Phân số \frac{a}{b} -> HTML fraction hiển thị thanh ngang đẹp mắt
-  s = s.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, (_match, num, den) => {
-    return `<span class="inline-flex flex-col text-center align-middle mx-1 text-[0.9em] leading-tight"><span class="border-b border-current px-1 pb-0.5">${num}</span><span class="px-1 pt-0.5">${den}</span></span>`;
+  // 5. Phân số \frac{a}{b} -> HTML fraction hiển thị thanh ngang chuẩn toán học
+  for (let i = 0; i < 3; i++) {
+    s = s.replace(/\\*frac\{([^{}]+)\}\{([^{}]+)\}/g, (_match, num, den) => {
+      return `<span class="inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight"><span class="border-b border-current px-1 pb-0.5">${num.trim()}</span><span class="px-1 pt-0.5">${den.trim()}</span></span>`;
+    });
+  }
+
+  // Tự động chuyển đổi các phân số số học viết dạng a/b (như 1/2, 3/4, 636/10, 17/60) thành phân số phân tầng
+  s = s.replace(/(?<=[=≈\+·×\s(])(\d{1,5})\s*\/\s*(\d{1,5})(?!\/\d)(?=[,\.;\)\s]|$|mol|kg|gam|g|L|M)/g, (_match, num, den) => {
+    return `<span class="inline-flex flex-col text-center align-middle mx-1 text-[0.95em] leading-tight"><span class="border-b border-current px-1 pb-0.5">${num}</span><span class="px-1 pt-0.5">${den}</span></span>`;
   });
 
   // 6. Chỉ số dưới (subscript) có ngoặc _{...}

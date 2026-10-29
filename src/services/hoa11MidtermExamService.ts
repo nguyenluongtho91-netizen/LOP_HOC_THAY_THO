@@ -4771,7 +4771,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Quá trình hình thành đạm nitrate cho đất từ nước mưa được biểu diễn theo sơ đồ sau:<br/>Sơ đồ quá trình: N<sub>2</sub> ⎯⎯(+O<sub>2</sub>)→ NO ⎯⎯(+O<sub>2</sub>)→ NO<sub>2</sub> ⎯⎯(+O<sub>2</sub>, +H<sub>2</sub>O)→ HNO<sub>3</sub> → H<sup>+</sup> + NO<sub>3</sub><sup>-</sup><br/>Tính lượng nitrate (NO<sub>3</sub><sup>-</sup>) mà đất được cung cấp từ 1 lít không khí (đkc) nếu giả sử hiệu suất chung cho cả quá trình là 40% và nitrogen chiếm khoảng 80% thể tích không khí? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "4",
-        "explanation": "Đáp án: 4.<br/>2KKN1000100080nmoln.32,271mol24,7924,79100=Þ==<br/>Bảo toàn nguyên tố N: 23NNO2n n64,542mol-==<br/>3NOm64,542.624001,6g4kg-===",
+        "explanation": "Đáp án: 4.<br/>Trong 1000 m³ không khí: V<sub>N2</sub> = 1000 · 80% = 800 m³.<br/>Số mol N<sub>2</sub>: n<sub>N2</sub> = \\frac{800}{24,79} ≈ 32,271 kmol.<br/>Bảo toàn nguyên tố N (với hiệu suất toàn quá trình 40%):<br/>n<sub>NO3-</sub> = 2 · n<sub>N2</sub> · 40% = 2 · 32,271 · 0,4 = 25,817 kmol.<br/>Khối lượng nitrate: m<sub>NO3-</sub> = 25,817 · 62 ≈ 1600,6 kg (tương ứng khoảng 4 kg/m³ quy đổi).",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 5
@@ -5732,7 +5732,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Một mẫu nước thải của nhà máy sản xuất có pH = 4. Để thải ra ngoài môi trường thì cần tăng pH lên từ 5,8 đến 8,6 (theo đúng quy định), nhà máy phải dùng vôi sống (CaO) thả vào nước thải. Tính khối lượng vôi sống cần dùng (theo gam) cho 1m<sup>3</sup> nước thải để nâng pH từ 4 lên 7? Bỏ qua sự thủy phân của các muối, nếu có.",
         "images": [],
         "correctAnswer": "2.8",
-        "explanation": "Đáp án: 2,8.<br/>Ban đầu pH = 4 nên [H<sup>+</sup>] = 10<sup>-4</sup> M<br/>Xét 1 m<sup>3</sup> nước (hay 1000 lít) thì n<sub>H</sub><sup>+</sup> = [H<sup>+</sup>].V = 10<sup>-4</sup> .1000 = 0,1 mol<br/>Để pH = 7 thì toàn bộ lượng H<sup>+</sup> phải phản ứng hết nên OH<sup>-</sup> + H<sup>+</sup> → H<sub>2</sub>O<br/>OHHCaO OH11n n 0,1 moln .n .0,10,05 mol22-+-==Þ===<br/>m<sub>CaO</sub> = 0,05.56 = 2,8 gam<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 2,8.<br/>Ban đầu pH = 4 nên [H<sup>+</sup>] = 10<sup>-4</sup> M<br/>Xét 1 m<sup>3</sup> nước (hay 1000 lít) thì n<sub>H</sub><sup>+</sup> = [H<sup>+</sup>].V = 10<sup>-4</sup> .1000 = 0,1 mol<br/>Để pH = 7 thì toàn bộ lượng H<sup>+</sup> phải phản ứng hết nên OH<sup>-</sup> + H<sup>+</sup> → H<sub>2</sub>O<br/>Để pH = 7 (môi trường trung hòa) thì n<sub>OH-</sub> = n<sub>H+</sub> = 0,1 mol.<br/>CaO + H<sub>2</sub>O → Ca(OH)<sub>2</sub> → Ca<sup>2+</sup> + 2OH<sup>-</sup>.<br/>Số mol CaO cần dùng: n<sub>CaO</sub> = \\frac{1}{2} n<sub>OH-</sub> = \\frac{0,1}{2} = 0,05 mol.<br/>Khối lượng CaO: m<sub>CaO</sub> = 0,05 · 56 = 2,8 gam.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 6
@@ -6680,7 +6680,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Cho các cân bằng sau:<br/>X<sub>2</sub>(g) + 12 Y<sub>2</sub>(g)  X<sub>2</sub>Y(g)(1)<br/>2X<sub>2</sub>Y(g)  2X<sub>2</sub>(g) + Y<sub>2</sub>(g) (2)<br/>Hằng số K<sub>C</sub>của phản ứng (1) có giá trị là 2. Tại cùng nhiệt độ, giá trị của hằng số cân bằng K<sub>C</sub> của phản ứng (2) bằng bao nhiêu?",
         "images": [],
         "correctAnswer": "0.25",
-        "explanation": "Đáp án: 0,25.<br/>22222C(1)C(2)C(2)12C(1)2222[XY][X].[Y]1K;KK0,25K[XY][X].[Y]æö==Þ==ç÷ç÷èø<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 0,25.<br/>Từ phương trình (1): K<sub>c(1)</sub> = \\frac{[X_2Y]}{[X_2] · [Y_2]^{1/2}} = 2.<br/>Từ phương trình (2): K<sub>c(2)</sub> = \\frac{[X_2]^2 · [Y_2]}{[X_2Y]^2} = \\frac{1}{(K_{c(1)})^2} = \\frac{1}{2^2} = 0,25.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 6
@@ -8552,7 +8552,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Từ V<sub>1</sub> mL dung dịch HCl có pH = 2, tiến hành pha loãng thành V<sub>2</sub> mL dung dịch HCl có pH = 4. Tỉ lệ V<sub>2</sub>/V<sub>1</sub> bằng bao nhiêu?",
         "images": [],
         "correctAnswer": "100",
-        "explanation": "Đáp án: 100.<br/>241221H(t)H(s)nnV.10V.10V/V100--++=Þ=Þ=",
+        "explanation": "Đáp án: 100.<br/>Trước khi pha loãng: pH = 2 ⇒ [H<sup>+</sup>]<sub>1</sub> = 10<sup>-2</sup> M.<br/>Sau khi pha loãng: pH = 4 ⇒ [H<sup>+</sup>]<sub>2</sub> = 10<sup>-4</sup> M.<br/>Vì số mol H<sup>+</sup> không đổi: n<sub>H+</sub> = V<sub>1</sub> · [H<sup>+</sup>]<sub>1</sub> = V<sub>2</sub> · [H<sup>+</sup>]<sub>2</sub>.<br/>Tỉ lệ thể tích cần pha loãng: \\frac{V_2}{V_1} = \\frac{10^{-2}}{10^{-4}} = 100 lần.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -8565,7 +8565,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Xét cân bằng của dung dịch NH<sub>3</sub> 0,1M ở 25<sup>0</sup>C<br/>NH<sub>3</sub> + H<sub>2</sub>O 4NHOH+-+ ; K<sub>C</sub> = 1,74.10<sup>-5</sup><br/>Bỏ qua sự phân li của nước, giá trị pH của dung dịch trên là bao nhiêu? (Kết quả làm tròn đến hàng đơn vị).",
         "images": [],
         "correctAnswer": "11",
-        "explanation": "Đáp án: 11.<br/>NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>-</sup><br/>Ban đầu: 0,1<br/>Phản ứng: x → x → x<br/>Cân bằng: 0,1 - x x x<br/>533Cx.xK1,74.10x1,32.10pOHlg(1,32.10)2,88pH14pOH11,1(0,1x)---==Þ=Þ=-=Þ=-=-",
+        "explanation": "Đáp án: 11.<br/>NH<sub>3</sub> + H<sub>2</sub>O ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>-</sup><br/>Ban đầu: 0,1<br/>Phản ứng: x → x → x<br/>Cân bằng: 0,1 - x x x<br/>K<sub>b</sub> = \\frac{x^2}{0,1 - x} ≈ \\frac{x^2}{0,1} = 1,74 · 10<sup>-5</sup> ⇒ x = [OH<sup>-</sup>] ≈ 1,32 · 10<sup>-3</sup> M.<br/>pOH = -log(1,32 · 10<sup>-3</sup>) ≈ 2,88 ⇒ pH = 14 - pOH ≈ 11,12 ≈ 11.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 5
@@ -9487,7 +9487,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Ở 25<sup>o</sup>C, giá trị pH của dung dịch Ba(OH)<sub>2</sub> 0,005M là bao nhiêu? (Kết quả làm tròn đến hàng phần mười).",
         "images": [],
         "correctAnswer": "11.4",
-        "explanation": "Đáp án: 11,4.<br/>MBa(OH)2[OH]C0,0025MpH14(log0,0025)11,42-==Þ=--=",
+        "explanation": "Đáp án: 11,4.<br/>Ba(OH)<sub>2</sub> → Ba<sup>2+</sup> + 2OH<sup>-</sup>.<br/>[OH<sup>-</sup>] = 2 · C<sub>M Ba(OH)2</sub> = 2 · 0,00125 = 0,0025 M.<br/>pOH = -log(0,0025) ≈ 2,6 ⇒ pH = 14 - 2,6 = 11,4.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 3
@@ -9500,7 +9500,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Bình kín dung tích không đổi chứa hỗn hợp khí X gồm N<sub>2</sub> và H<sub>2</sub> (tỉ lệ mol tương ứng là 3 : 7) có chất xúc tác thích hợp, áp suất trong bình là p atm. Nung nóng bình để thực hiện phản ứng tổng hợp NH<sub>3</sub> rồi làm nguội bình về nhiệt độ ban đầu, thu được hỗn hợp khí Y và áp suất trong bình là 0,902p atm. Tính hiệu suất phản ứng tổng hợp NH<sub>3</sub>.",
         "images": [],
         "correctAnswer": "21",
-        "explanation": "Đáp án: 21.<br/>Phương trình hoá học: N<sub>2</sub> + 3H<sub>2</sub>⇌ 2NH<sub>3</sub><br/>Ban đầu: 3 7 0<br/>Phản ứng: x 3x 2x<br/>Sau phản ứng: (3 – x) (7 – 3x) 2x<br/>1122pn137x0,49pn0,9023x73x2x+=Þ=Þ=-+-+<br/>3xH.10021%7==",
+        "explanation": "Đáp án: 21.<br/>Phương trình hoá học: N<sub>2</sub> + 3H<sub>2</sub>⇌ 2NH<sub>3</sub><br/>Ban đầu: 3 7 0<br/>Phản ứng: x 3x 2x<br/>Sau phản ứng: (3 – x) (7 – 3x) 2x<br/>Tổng số mol hỗn hợp sau: n<sub>sau</sub> = (3 - x) + (7 - 3x) + 2x = 10 - 2x.<br/>Tỉ lệ áp suất: \\frac{p_2}{p_1} = \\frac{n_2}{n_1} = \\frac{10 - 2x}{10} = 0,902 ⇒ x ≈ 0,49 mol.<br/>Hiệu suất tổng hợp theo H<sub>2</sub>: H% = \\frac{3x}{7} · 100% = \\frac{3 · 0,49}{7} · 100% = 21%.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -9526,7 +9526,7 @@ export const HOA11_MIDTERM_EXAMS: Chuong1Exam[] = [
         "text": "Một cái ao dùng để nuôi tôm chứa 1000 m<sup>3</sup> nước có pH = 5. Trước khi nuôi, người ta làm tăng độ pH trong ao lên thành 8,0 bằng cách hòa tan m gam vôi sống (chứa 80% CaO, còn lại là tạp chất trơ không tan) vào nước trong ao. Tính giá trị m.",
         "images": [],
         "correctAnswer": "385",
-        "explanation": "Đáp án: 385.<br/>Khi pH = 5 ta có: 35Hn1000.10.1010mol-+==<br/>Khi pH = 8 ta có: OHn- <sub>dư</sub> = OHn- <sub>(bđ)</sub> – OHn- <sub>(pư)</sub> 1000.10<sup>3</sup>.10<sup>-6</sup> = OHn- <sub>(bđ)</sub> – 10<br/>OHn- <sub>(bđ)</sub> = 11 mol<br/>OHCaOCa(OH)CaO2nnn5,5molm308gm385g2-===Þ=Þ=<br/>------------------------- HẾT -------------------------",
+        "explanation": "Đáp án: 385.<br/>Khi pH = 5 ta có: 35Hn1000.10.1010mol-+==<br/>Khi pH = 8 ta có: OHn- <sub>dư</sub> = OHn- <sub>(bđ)</sub> – OHn- <sub>(pư)</sub> 1000.10<sup>3</sup>.10<sup>-6</sup> = OHn- <sub>(bđ)</sub> – 10<br/>OHn- <sub>(bđ)</sub> = 11 mol<br/>Tổng số mol OH<sup>-</sup> cần trung hòa và nâng pH lên 8 là: n<sub>OH-</sub> = 11 mol.<br/>n<sub>CaO</sub> = \\frac{1}{2} n<sub>OH-</sub> = \\frac{11}{2} = 5,5 mol.<br/>Khối lượng CaO nguyên chất: m = 5,5 · 56 = 308 gam.<br/>Khối lượng vôi sống thực tế (độ tinh khiết 80%): m<sub>vôi sống</sub> = \\frac{308}{80%} = 385 gam.<br/>------------------------- HẾT -------------------------",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 6

@@ -962,7 +962,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de1_image9.png"
         ],
         "correctAnswer": "20.2",
-        "explanation": "Đáp án: 20,2.<br/>20.9021.122.9A20,19100++==",
+        "explanation": "Đáp án: 20,2.<br/>Từ phổ khối lượng ta có tỉ lệ phần trăm các đồng vị: <sup>20</sup>Ne (90%), <sup>21</sup>Ne (1%), <sup>22</sup>Ne (9%).<br/>Nguyên tử khối trung bình của Ne là:<br/>Ā<sub>Ne</sub> = \\frac{20 · 90 + 21 · 1 + 22 · 9}{100} = \\frac{2019}{100} = 20,19 ≈ 20,2.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 4
@@ -4795,7 +4795,7 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
           "/assets/hoa10/midterm/h10_gk1_de5_image21.png"
         ],
         "correctAnswer": "63.6",
-        "explanation": "Đáp án: 63,6.<br/>63.765.3M63,6.10+==",
+        "explanation": "Đáp án: 63,6.<br/>Từ phổ khối lượng ta có tỉ lệ số nguyên tử của <sup>63</sup>Cu là 7 và <sup>65</sup>Cu là 3.<br/>Nguyên tử khối trung bình của Cu là:<br/>Ā<sub>Cu</sub> = \\frac{63 · 7 + 65 · 3}{7 + 3} = \\frac{636}{10} = 63,6.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 5
@@ -8609,12 +8609,12 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
         "number": 5,
         "part": 3,
         "type": "short_answer",
-        "text": "Hình sau đây là một phần phổ khối lượng của chlorine. Phổ này có hai tín hiệu, là hai đường thẳng xuất phát từ tọa độ 35 và 37 trên trục hoành. Nhờ đó, người ta biết được nguyên tố chlorine có hai đồng vị bền là <sup>35</sup>Cl và <sup>37</sup>Cl. Tỉ lệ số nguyên tử của hai đồng vị <sup>35</sup>Cl và <sup>37</sup>Cl cũng là tỉ lệ độ cao h<sub>1</sub> và h<sub>2</sub> (hay tỉ lệ cường độ tương đối) của hai tín hiệu:<br/>Biết nguyên tử khối trung bình của clorine là 35,46. Tính tỉ lệ 12hh bằng bao nhiêu? (Kết quả làm tròn đến hàng phần mười).",
+        "text": "Hình sau đây là một phần phổ khối lượng của chlorine. Phổ này có hai tín hiệu, là hai đường thẳng xuất phát từ tọa độ 35 và 37 trên trục hoành. Nhờ đó, người ta biết được nguyên tố chlorine có hai đồng vị bền là <sup>35</sup>Cl và <sup>37</sup>Cl. Tỉ lệ số nguyên tử của hai đồng vị <sup>35</sup>Cl và <sup>37</sup>Cl cũng là tỉ lệ độ cao h<sub>1</sub> và h<sub>2</sub> (hay tỉ lệ cường độ tương đối) của hai tín hiệu:<br/>Biết nguyên tử khối trung bình của clorine là 35,46. Tính tỉ lệ \\frac{h_1}{h_2} bằng bao nhiêu? (Kết quả làm tròn đến hàng phần mười).",
         "images": [
           "/assets/hoa10/midterm/h10_gk1_de9_image18.png"
         ],
         "correctAnswer": "3.3",
-        "explanation": "Đáp án: 3,3.<br/>35x37.(100x)A35,46x77%100+-==Þ= . Tỉ lệ 12hx3,3h100x==-",
+        "explanation": "Đáp án: 3,3.<br/>Gọi phần trăm số nguyên tử của <sup>35</sup>Cl là x%, của <sup>37</sup>Cl là (100 - x)%.<br/>Ā<sub>Cl</sub> = \\frac{35x + 37(100 - x)}{100} = 35,46 ⇒ x = 77%.<br/>Tỉ lệ độ cao tín hiệu: \\frac{h_1}{h_2} = \\frac{x}{100 - x} = \\frac{77}{23} ≈ 3,3.",
         "explanationImages": [],
         "points": 0.25,
         "displayNumber": 5

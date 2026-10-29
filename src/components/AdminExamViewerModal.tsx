@@ -514,16 +514,17 @@ export default function AdminExamViewerModal({
                     </span>
                   </div>
 
-                  {/* Question Images */}
+                  {/* Question Images - Centered & Professional Frame */}
                   {q.images && q.images.length > 0 && (
-                    <div className="flex flex-wrap gap-2 my-2">
+                    <div className="flex flex-wrap justify-center items-center gap-4 my-3 p-2.5 bg-slate-50/70 rounded-xl border border-slate-200/80">
                       {q.images.map((img: string, i: number) => (
-                        <img
-                          key={i}
-                          src={img}
-                          alt="Hình câu hỏi"
-                          className="max-h-56 rounded-xl border border-slate-200 shadow-2xs bg-white"
-                        />
+                        <div key={i} className="flex flex-col items-center">
+                          <img
+                            src={img}
+                            alt={`Hình minh họa câu ${q.number || q.displayNumber || (qIndex + 1)}`}
+                            className="max-h-64 sm:max-h-72 w-auto max-w-full rounded-lg border border-slate-200/90 shadow-xs bg-white p-2 object-contain"
+                          />
+                        </div>
                       ))}
                     </div>
                   )}
@@ -689,18 +690,18 @@ export default function AdminExamViewerModal({
 
                   {/* ── EXPLANATION (Revealed in Teacher Mode or After Submission) ── */}
                   {(!isTestMode || isSubmitted) && q.explanation && (
-                    <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/80 text-xs text-amber-950 space-y-1 mt-3">
-                      <div className="font-black text-amber-800 flex items-center gap-1">
-                        💡 Hướng dẫn giải chi tiết:
+                    <div className="p-4 rounded-xl bg-amber-50/80 border border-amber-200/90 text-xs sm:text-sm text-slate-800 space-y-2 mt-3 shadow-2xs">
+                      <div className="font-black text-amber-900 flex items-center gap-1.5 text-xs uppercase tracking-wider">
+                        <span>💡 Hướng dẫn giải chi tiết:</span>
                       </div>
                       <div
-                        className="leading-relaxed"
+                        className="leading-relaxed font-normal text-slate-800 space-y-1"
                         dangerouslySetInnerHTML={{ __html: formatChemicalText(q.explanation) }}
                       />
                       {q.explanationImages && q.explanationImages.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-2">
+                        <div className="flex flex-wrap justify-center items-center gap-3 mt-3 p-2 bg-white rounded-xl border border-amber-200/80">
                           {q.explanationImages.map((img: string, i: number) => (
-                            <img key={i} src={img} alt="Hình giải thích" className="max-h-40 rounded-lg border border-amber-200 bg-white" />
+                            <img key={i} src={img} alt="Hình giải thích" className="max-h-60 rounded-lg border border-amber-200 bg-white p-1.5 shadow-xs object-contain" />
                           ))}
                         </div>
                       )}
