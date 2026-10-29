@@ -1,3 +1,6 @@
+import { HOA10_MIDTERM_EXAMS } from '@/services/hoa10MidtermExamService';
+import { HOA11_MIDTERM_EXAMS } from '@/services/hoa11MidtermExamService';
+import { HOA12_MIDTERM_EXAMS } from '@/services/hoa12MidtermExamService';
 import AdminExamViewerModal from '@/components/AdminExamViewerModal'
 import { getExamByIdForAdmin } from '@/services/allExamsAdminService'
 // @ts-nocheck
@@ -94,6 +97,31 @@ export default function ThptManagementHub() {
 
   // Danh sach toan bo cac de thi theo tung moc chuyen de de Thay quan ly dong / mo
   const milestoneExams = [
+    // 🎯 BỘ ĐỀ THI GIỮA HỌC KÌ 1 CÁC KHỐI (CHUẨN BỘ 2025)
+    {
+      chapterKey: "h12_gk1",
+      fallbackKey: "h12_gk1",
+      grade: "12",
+      chapterTitle: "🎯 Hóa 12 • Bộ 10 Đề Thi Giữa Học Kì 1 (Chuẩn 2025)",
+      link: "/thpt?grade=12&subject=hoa",
+      exams: HOA12_MIDTERM_EXAMS.map(e => ({ id: e.id, code: e.code, title: e.title }))
+    },
+    {
+      chapterKey: "h11_gk1",
+      fallbackKey: "h11_gk1",
+      grade: "11",
+      chapterTitle: "🎯 Hóa 11 • Bộ 10 Đề Thi Giữa Học Kì 1 (Chuẩn 2025)",
+      link: "/thpt?grade=11&subject=hoa",
+      exams: HOA11_MIDTERM_EXAMS.map(e => ({ id: e.id, code: e.code, title: e.title }))
+    },
+    {
+      chapterKey: "h10_gk1",
+      fallbackKey: "h10_gk1",
+      grade: "10",
+      chapterTitle: "🎯 Hóa 10 • Bộ 10 Đề Thi Giữa Học Kì 1 (Chuẩn 2025)",
+      link: "/thpt?grade=10&subject=hoa",
+      exams: HOA10_MIDTERM_EXAMS.map(e => ({ id: e.id, code: e.code, title: e.title }))
+    },
     {
       chapterKey: "h12_c1",
       fallbackKey: "c1",
@@ -357,6 +385,48 @@ export default function ThptManagementHub() {
 
   // Danh mục tất cả các chuyên đề Hóa THPT đang mở
   const allModules: ThptModuleCard[] = [
+    // 🎯 ĐỀ GIỮA KÌ 1 HÓA 12
+    {
+      id: 'h12-gk1',
+      grade: '12',
+      badge: 'Hóa 12 • Trọng tâm Giữa Kì 1',
+      title: '🎯 Bộ 10 Đề Thi Giữa Học Kì 1 (Hóa 12)',
+      desc: 'Bộ 10 đề thi chuẩn cấu trúc 2025 Bộ GD&ĐT: Ester, Lipid, Xà phòng, Carbohydrate, Amine, Amino acid, Peptide & Protein. Có lời giải chi tiết và thi thử trực tuyến.',
+      link: '/thpt?grade=12&subject=hoa',
+      gradient: 'from-amber-950/95 via-rose-950/90 to-purple-950/70',
+      borderClass: 'border-amber-400/50 hover:border-amber-300',
+      accentColor: 'text-amber-300',
+      badgeBg: 'bg-amber-500/20 text-amber-200 border border-amber-400/40',
+      isLocked: Boolean(accessConfig.chapters?.h12_gk1)
+    },
+    // 🎯 ĐỀ GIỮA KÌ 1 HÓA 11
+    {
+      id: 'h11-gk1',
+      grade: '11',
+      badge: 'Hóa 11 • Trọng tâm Giữa Kì 1',
+      title: '🎯 Bộ 10 Đề Thi Giữa Học Kì 1 (Hóa 11)',
+      desc: 'Bộ 10 đề thi chuẩn cấu trúc 2025 Bộ GD&ĐT: Cân bằng hóa học, Cân bằng trong dung dịch nước, Nitrogen, Ammonia, Sulfur & Sulfuric acid (28 câu, thang 10).',
+      link: '/thpt?grade=11&subject=hoa',
+      gradient: 'from-blue-950/95 via-indigo-950/90 to-cyan-950/70',
+      borderClass: 'border-cyan-400/50 hover:border-cyan-300',
+      accentColor: 'text-cyan-300',
+      badgeBg: 'bg-cyan-500/20 text-cyan-200 border border-cyan-400/40',
+      isLocked: Boolean(accessConfig.chapters?.h11_gk1)
+    },
+    // 🎯 ĐỀ GIỮA KÌ 1 HÓA 10
+    {
+      id: 'h10-gk1',
+      grade: '10',
+      badge: 'Hóa 10 • Trọng tâm Giữa Kì 1',
+      title: '🎯 Bộ 10 Đề Thi Giữa Học Kì 1 (Hóa 10)',
+      desc: 'Bộ 10 đề thi chuẩn cấu trúc 2025 Bộ GD&ĐT: Cấu tạo nguyên tử, Bảng tuần hoàn các nguyên tố hóa học & Xu hướng biến đổi tính chất (28 câu, thang 10).',
+      link: '/thpt?grade=10&subject=hoa',
+      gradient: 'from-emerald-950/95 via-teal-950/90 to-slate-900/90',
+      borderClass: 'border-emerald-400/50 hover:border-emerald-300',
+      accentColor: 'text-emerald-300',
+      badgeBg: 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/40',
+      isLocked: Boolean(accessConfig.chapters?.h10_gk1)
+    },
     // ── HÓA 12 ──
     {
       id: 'h12-c1',
