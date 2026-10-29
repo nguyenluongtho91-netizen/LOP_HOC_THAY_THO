@@ -747,13 +747,13 @@ export default function Dashboard() {
               {/* BTVN */}
               <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
                 <div>
-                  <div className="text-xs font-black text-slate-900">Bài Tập Về Nhà</div>
+                  <div className="text-xs font-black text-slate-900">Đề Thi & Bài Tập</div>
                   <div className="text-[10px] text-slate-400 font-medium">Đề giao nộp định kỳ</div>
                 </div>
                 <button
                   type="button"
                   disabled={isUpdatingAccess}
-                  onClick={() => handleToggleCategory('homework', 'Bài Tập Về Nhà')}
+                  onClick={() => handleToggleCategory('homework', 'Đề Thi & Bài Tập')}
                   className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
                     !accessConfig.categories?.homework
                       ? 'bg-emerald-600 text-white shadow-xs'

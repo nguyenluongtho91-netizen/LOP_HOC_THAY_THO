@@ -1351,7 +1351,7 @@ const isFirstRender = useRef(true)
                     : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
-                <span className="uppercase font-black text-center">🔴 1. BÀI TẬP VỀ NHÀ</span>
+                <span className="uppercase font-black text-center">🔴 1. ĐỀ THI & BÀI TẬP</span>
                 <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
               </button>
 
