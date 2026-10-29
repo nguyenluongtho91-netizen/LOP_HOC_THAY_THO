@@ -1566,6 +1566,7 @@ export default function StudentPortal() {
               <Layers className="w-4 h-4 text-teal-600" />
               Khu Vực Phòng Thi & Luyện Đề (Bấm để chọn phòng):
             </h3>
+            {isTeacherUser && (
             <button
               type="button"
               onClick={() => setActiveTab(activeTab === 'all' ? 'homework' : 'all')}
@@ -1573,8 +1574,33 @@ export default function StudentPortal() {
             >
               {activeTab === 'all' ? 'Chỉ hiện phòng đang chọn' : 'Hiển thị tất cả phòng'}
             </button>
+            )}
           </div>
 
+          {/* ĐỐI VỚI HỌC SINH: CHỈ HIỂN THỊ DUY NHẤT BÀI TẬP VỀ NHÀ THEO YÊU CẦU THẦY THỌ */}
+          {!isTeacherUser ? (
+            <div className="bg-gradient-to-r from-rose-500 to-red-600 rounded-3xl p-5 sm:p-6 text-white shadow-lg flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl font-black">
+                  📝
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-black uppercase tracking-wider">
+                    BÀI TẬP VỀ NHÀ CỦA EM
+                  </h3>
+                  <p className="text-xs sm:text-sm text-rose-100 font-medium mt-0.5">
+                    {homeworkPending.length > 0 
+                      ? `Em còn ${homeworkPending.length} bài tập cần hoàn thành. Hãy tập trung làm bài nhé!` 
+                      : 'Tuyệt vời! Em đã hoàn thành tất cả bài tập về nhà.'}
+                  </p>
+                </div>
+              </div>
+              <div className="hidden sm:block text-right">
+                <span className="text-2xl font-black">{homeworkCompleted.length} / {homeworkRooms.length}</span>
+                <span className="text-xs text-rose-100 block">Đã nộp</span>
+              </div>
+            </div>
+          ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {/* THẺ 1: 🔴 BÀI TẬP VỀ NHÀ */}
             <div
@@ -1758,6 +1784,7 @@ export default function StudentPortal() {
               </div>
             </div>
           </div>
+          )}
         </div>
 
         {/* 3. THÔNG BÁO HỌC PHÍ (NẾU CÓ) */}
@@ -1957,7 +1984,7 @@ export default function StudentPortal() {
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {/* ── PHẦN 2: LUYỆN ĐỀ THEO CHƯƠNG (CÓ GIÁM SÁT CHUYỂN TAB) ───────── */}
         {/* ═════════════════════════════════════════════════════════════════════ */}
-        {(activeTab === 'chapter' || activeTab === 'all') && (
+        {isTeacherUser && (activeTab === 'chapter' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-blue-100 shadow-sm">
             {/* 🌟 THẺ ĐẶC BIỆT KHO HỌC LIỆU HÓA 12 (TỐI ƯU SIÊU TỐC, CHỈ DÀNH CHO KHỐI 12) */}
             {isGrade12 && (
@@ -2251,7 +2278,7 @@ export default function StudentPortal() {
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {/* ── PHẦN 3: LUYỆN ĐỀ THI (CÓ GIÁM SÁT CHUYỂN TAB) ───────────────── */}
         {/* ═════════════════════════════════════════════════════════════════════ */}
-        {(activeTab === 'practice' || activeTab === 'all') && (
+        {isTeacherUser && (activeTab === 'practice' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-emerald-100 shadow-sm">
             {/* Banner Luyện Đề Thi Ngọc Lục Bảo Sang Trọng */}
             <div className="bg-gradient-to-br from-emerald-800 via-teal-800 to-teal-900 rounded-2xl p-5 sm:p-6 text-white shadow-md relative overflow-hidden">
@@ -2326,7 +2353,7 @@ export default function StudentPortal() {
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {/* ── PHẦN 4: KHẢO SÁT CHẤT LƯỢNG (CÓ GIÁM SÁT CHUYỂN TAB) ───────── */}
         {/* ═════════════════════════════════════════════════════════════════════ */}
-        {(activeTab === 'survey' || activeTab === 'all') && (
+        {isTeacherUser && (activeTab === 'survey' || activeTab === 'all') && (
           <section className="space-y-6 bg-white p-5 sm:p-7 rounded-3xl border-2 border-purple-100 shadow-sm">
             {/* Header Phần 4 */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-2 border-purple-200 pb-4">
