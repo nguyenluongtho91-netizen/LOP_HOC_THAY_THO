@@ -93,13 +93,14 @@ export default function StudentPortal() {
   // Quản lý Tab hiển thị: 'homework' (1. BÀI TẬP VỀ NHÀ) | 'chapter' (2. LUYỆN ĐỀ THEO CHƯƠNG) | 'practice' (3. LUYỆN ĐỀ THI) | 'survey' (4. KHẢO SÁT CHẤT LƯỢNG) | 'all' (Tất cả)
   const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'survey' | 'all'>('homework')
 
-  // ── 5 THƯ MỤC HỌC TẬP THU GỌN TRỰC TIẾP PHÍA HỌC SINH ──
+  // ── 6 THƯ MỤC HỌC TẬP THU GỌN TRỰC TIẾP PHÍA HỌC SINH ──
   const [openFolders, setOpenFolders] = useState<Record<string, boolean>>({
     folder1: true,  // Mục 1: Đề thi & bài tập nộp cho Thầy (Bắt buộc, tự động mở khi còn bài)
     folder2: false, // Mục 2: Bài tập rèn luyện cơ bản (Mặc định thu gọn)
     folder3: false, // Mục 3: Bài tập rèn luyện nâng cao (Mặc định thu gọn)
-    folder4: false, // Mục 4: Luyện các chuyên đề (Mặc định thu gọn)
-    folder5: false, // Mục 5: Tài liệu tham khảo (Mặc định thu gọn, Thầy cấp quyền)
+    folder4: false, // Mục 4: Đề thi thử THPT & khảo sát (Mặc định thu gọn)
+    folder5: false, // Mục 5: Luyện các chuyên đề (Mặc định thu gọn)
+    folder6: false, // Mục 6: Tài liệu tham khảo (Mặc định thu gọn, Thầy cấp quyền)
   });
 
   const toggleFolder = (key: string) => {
@@ -110,6 +111,7 @@ export default function StudentPortal() {
   const [f1Tab, setF1Tab] = useState<"pending" | "completed">("pending");
   const [f2Tab, setF2Tab] = useState<"pending" | "completed">("pending");
   const [f3Tab, setF3Tab] = useState<"pending" | "completed">("pending");
+  const [f4Tab, setF4Tab] = useState<"pending" | "completed">("pending");
 
   // ── MẶC ĐỊNH THU GỌN BÊN HỌC SINH (BẤM VÀO MỚI HIỆN RA) ──
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -1029,23 +1031,35 @@ export default function StudentPortal() {
     ? surveyCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / surveyCompleted.length
     : null
 
-  // Phân loại Cơ bản vs Nâng cao
+  // Phân loại Cơ bản vs Nâng cao vs Thi thử
   const isAdvancedExam = (r: any) => {
     const title = (r.exams?.title || r.room_name || r.name || r.title || "").toLowerCase();
     return title.includes("nâng cao") || title.includes("nang cao") || title.includes("vận dụng") || title.includes("van dung") || title.includes("vdc") || title.includes("chuyên sâu") || title.includes("hsg") || title.includes("9+") || title.includes("10 điểm");
+  };
+
+  const isMockExam = (r: any) => {
+    const title = (r.exams?.title || r.room_name || r.name || r.title || "").toLowerCase();
+    return getExamCategory(r) === "survey" || title.includes("thi thử") || title.includes("thi thu") || title.includes("thpt") || title.includes("học kỳ") || title.includes("hoc ky") || title.includes("khảo sát") || title.includes("khao sat") || title.includes("kscl");
   };
 
   const nonHomeworkRooms = examsList.filter(r => getExamCategory(r) !== "homework");
   const nonHomeworkPending = pendingExams.filter(r => getExamCategory(r) !== "homework");
   const nonHomeworkCompleted = completedExams.filter(({ room }) => getExamCategory(room) !== "homework");
 
-  const basicRooms = nonHomeworkRooms.filter(r => !isAdvancedExam(r));
-  const basicPending = nonHomeworkPending.filter(r => !isAdvancedExam(r));
-  const basicCompleted = nonHomeworkCompleted.filter(({ room }) => !isAdvancedExam(room));
+  // Mục 4: Đề thi thử (khảo sát, thi thử tốt nghiệp THPT, học kỳ)
+  const mockRooms = nonHomeworkRooms.filter(isMockExam);
+  const mockPending = nonHomeworkPending.filter(isMockExam);
+  const mockCompleted = nonHomeworkCompleted.filter(({ room }) => isMockExam(room));
 
-  const advancedRooms = nonHomeworkRooms.filter(isAdvancedExam);
-  const advancedPending = nonHomeworkPending.filter(isAdvancedExam);
-  const advancedCompleted = nonHomeworkCompleted.filter(({ room }) => isAdvancedExam(room));
+  // Mục 2: Cơ bản (loại trừ thi thử và nâng cao)
+  const basicRooms = nonHomeworkRooms.filter(r => !isAdvancedExam(r) && !isMockExam(r));
+  const basicPending = nonHomeworkPending.filter(r => !isAdvancedExam(r) && !isMockExam(r));
+  const basicCompleted = nonHomeworkCompleted.filter(({ room }) => !isAdvancedExam(room) && !isMockExam(room));
+
+  // Mục 3: Nâng cao (loại trừ thi thử)
+  const advancedRooms = nonHomeworkRooms.filter(r => isAdvancedExam(r) && !isMockExam(r));
+  const advancedPending = nonHomeworkPending.filter(r => isAdvancedExam(r) && !isMockExam(r));
+  const advancedCompleted = nonHomeworkCompleted.filter(({ room }) => isAdvancedExam(room) && !isMockExam(room));
 
   const hasMaterialAccess = Boolean(
     isTeacherUser || 
@@ -1648,7 +1662,7 @@ export default function StudentPortal() {
                 onClick={async () => {
                   const updated = await grantAllStudentsAccess();
                   setAccessConfig({ ...updated });
-                  toast.success('ĐÃ CẤP QUYỀN! Học sinh được vào học & thi tự do.', { icon: '🟢' });
+                  toast.success('ĐÃ CẤP QUYỀN! Học sinh được xem tài liệu & ôn tập.', { icon: '🟢' });
                 }}
                 className={`px-4 py-2.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
                   !accessConfig?.is_locked ? 'bg-emerald-600 text-white ring-2 ring-emerald-400' : 'bg-slate-800 text-emerald-400 border border-emerald-500/50 hover:bg-slate-700'
@@ -2202,10 +2216,88 @@ export default function StudentPortal() {
                 )}
               </div>
 
-              {/* ── MỤC 4: LUYỆN CÁC CHUYÊN ĐỀ (ĐÚNG / SAI, TRẢ LỜI NGẮN, TRẮC NGHIỆM) ── */}
-              <div className="rounded-2xl sm:rounded-3xl border-2 border-indigo-200/90 bg-gradient-to-r from-indigo-50/50 via-white to-blue-50/30 overflow-hidden shadow-sm transition-all">
+              {/* ── MỤC 4: ĐỀ THI THỬ (THI THỬ TỐT NGHIỆP THPT & KHẢO SÁT) ── */}
+              <div className="rounded-2xl sm:rounded-3xl border-2 border-cyan-200/90 bg-gradient-to-r from-cyan-50/50 via-white to-blue-50/30 overflow-hidden shadow-sm transition-all">
                 <div 
                   onClick={() => toggleFolder("folder4")}
+                  className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center text-xl sm:text-2xl shadow-md shadow-cyan-500/25 shrink-0 group-hover:scale-105 transition-transform">
+                      🏆
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                          4. ĐỀ THI THỬ (THI THỬ TỐT NGHIỆP THPT & KHẢO SÁT)
+                        </h3>
+                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-100 text-cyan-900 border border-cyan-300">
+                          {mockCompleted.length} bài đã làm
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                        Rèn luyện bản lĩnh phòng thi với các bộ đề thi thử học kỳ, thi tốt nghiệp THPT và khảo sát
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                      openFolders.folder4
+                        ? "bg-cyan-100 text-cyan-900 border border-cyan-300"
+                        : "bg-cyan-600 hover:bg-cyan-500 text-white font-black"
+                    }`}>
+                      <span>{openFolders.folder4 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder4 ? "rotate-180" : ""}`} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bên trong Thư mục 4: CẢ ĐỀ THI VÀ KẾT QUẢ THI THỬ */}
+                {openFolders.folder4 && (
+                  <div className="p-3.5 sm:p-5 pt-0 border-t border-cyan-200/80 bg-white/80 animate-in fade-in duration-300 space-y-4">
+                    <div className="flex items-center gap-2 pt-3 border-b border-slate-100 pb-2">
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF4Tab("pending"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f4Tab === "pending"
+                            ? "bg-cyan-600 text-white shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>🏆 Đề Thi Thử</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({mockPending.length})</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF4Tab("completed"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f4Tab === "completed"
+                            ? "bg-blue-700 text-white shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>📊 Kết Quả Thi Thử</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({mockCompleted.length})</span>
+                      </button>
+                    </div>
+
+                    <div>
+                      {f4Tab === "pending" ? (
+                        renderPendingGrid(mockPending, "practice")
+                      ) : (
+                        renderCompletedTable(mockCompleted, "practice")
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* ── MỤC 5: LUYỆN CÁC CHUYÊN ĐỀ (ĐÚNG / SAI, TRẢ LỜI NGẮN, TRẮC NGHIỆM) ── */}
+              <div className="rounded-2xl sm:rounded-3xl border-2 border-indigo-200/90 bg-gradient-to-r from-indigo-50/50 via-white to-blue-50/30 overflow-hidden shadow-sm transition-all">
+                <div 
+                  onClick={() => toggleFolder("folder5")}
                   className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
                 >
                   <div className="flex items-center gap-3">
@@ -2215,7 +2307,7 @@ export default function StudentPortal() {
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
-                          4. LUYỆN CÁC CHUYÊN ĐỀ (ĐÚNG / SAI, TRẢ LỜI NGẮN, TRẮC NGHIỆM)
+                          5. LUYỆN CÁC CHUYÊN ĐỀ (ĐÚNG / SAI, TRẢ LỜI NGẮN, TRẮC NGHIỆM)
                         </h3>
                         <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-900 border border-indigo-300">
                           3 Dạng thức Bộ GD&ĐT
@@ -2229,18 +2321,18 @@ export default function StudentPortal() {
 
                   <div className="flex items-center gap-1.5 shrink-0">
                     <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
-                      openFolders.folder4
+                      openFolders.folder5
                         ? "bg-indigo-100 text-indigo-900 border border-indigo-300"
                         : "bg-indigo-600 hover:bg-indigo-500 text-white font-black"
                     }`}>
-                      <span>{openFolders.folder4 ? "Thu gọn" : "Bấm ra"}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder4 ? "rotate-180" : ""}`} />
+                      <span>{openFolders.folder5 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder5 ? "rotate-180" : ""}`} />
                     </div>
                   </div>
                 </div>
 
-                {/* Bên trong Thư mục 4: Các dạng thức chuyên đề */}
-                {openFolders.folder4 && (
+                {/* Bên trong Thư mục 5: Các dạng thức chuyên đề */}
+                {openFolders.folder5 && (
                   <div className="p-3.5 sm:p-5 pt-0 border-t border-indigo-200/80 bg-white/80 animate-in fade-in duration-300 space-y-3.5">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-3">
                       {/* Dạng 1: Trắc nghiệm 4 lựa chọn */}
@@ -2313,10 +2405,10 @@ export default function StudentPortal() {
                 )}
               </div>
 
-              {/* ── MỤC 5: TÀI LIỆU THAM KHẢO & ĐỀ ÔN TẬP (THẦY CẤP QUYỀN MỚI ĐƯỢC) ── */}
+              {/* ── MỤC 6: TÀI LIỆU THAM KHẢO & ĐỀ ÔN TẬP (THẦY CẤP QUYỀN MỚI ĐƯỢC) ── */}
               <div className="rounded-2xl sm:rounded-3xl border-2 border-purple-200/90 bg-gradient-to-r from-purple-50/50 via-white to-fuchsia-50/30 overflow-hidden shadow-sm transition-all">
                 <div 
-                  onClick={() => toggleFolder("folder5")}
+                  onClick={() => toggleFolder("folder6")}
                   className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
                 >
                   <div className="flex items-center gap-3">
@@ -2326,7 +2418,7 @@ export default function StudentPortal() {
                     <div>
                       <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
-                          5. TÀI LIỆU THAM KHẢO & ĐỀ ÔN TẬP
+                          6. TÀI LIỆU THAM KHẢO & ĐỀ ÔN TẬP
                         </h3>
                         {hasMaterialAccess ? (
                           <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
@@ -2346,18 +2438,18 @@ export default function StudentPortal() {
 
                   <div className="flex items-center gap-1.5 shrink-0">
                     <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
-                      openFolders.folder5
+                      openFolders.folder6
                         ? "bg-purple-100 text-purple-900 border border-purple-300"
                         : "bg-purple-600 hover:bg-purple-500 text-white font-black"
                     }`}>
-                      <span>{openFolders.folder5 ? "Thu gọn" : "Bấm ra"}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder5 ? "rotate-180" : ""}`} />
+                      <span>{openFolders.folder6 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder6 ? "rotate-180" : ""}`} />
                     </div>
                   </div>
                 </div>
 
-                {/* Bên trong Thư mục 5: Chỉ mở khi Thầy cấp quyền */}
-                {openFolders.folder5 && (
+                {/* Bên trong Thư mục 6: Chỉ mở khi Thầy cấp quyền */}
+                {openFolders.folder6 && (
                   <div className="p-3.5 sm:p-5 pt-0 border-t border-purple-200/80 bg-white/80 animate-in fade-in duration-300 space-y-4">
                     <div className="pt-3">
                       {hasMaterialAccess ? (
@@ -2412,7 +2504,6 @@ export default function StudentPortal() {
                   </div>
                 )}
               </div>
-
             </div>
           </section>
         )}

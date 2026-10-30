@@ -97,6 +97,24 @@ function ProtectedRoute({ children, adminOnly = false }: ProtectedRouteProps) {
 
 function RootRouteWrapper() {
   const { user } = useAuthStore()
+  
+  // TUYỆT ĐỐI HỌC SINH KHÔNG ĐƯỢC TRUY CẬP VÀO TRANG CHỦ CỦA THẦY:
+  // Nếu phát hiện phiên đăng nhập của học sinh, chuyển hướng ngay về /thi
+  const isTeacher = Boolean(
+    (user && (user.role === "teacher" || user.role === "admin")) ||
+    (typeof window !== "undefined" && (
+      localStorage.getItem("is_teacher_mode") === "true" ||
+      localStorage.getItem("role") === "teacher" ||
+      localStorage.getItem("role") === "admin"
+    ))
+  );
+
+  const isStudent = typeof window !== "undefined" && Boolean(localStorage.getItem("current_student")) && !isTeacher;
+
+  if (isStudent) {
+    return <Navigate to="/thi" replace />;
+  }
+
   if (user) {
     return (
       <ProtectedRoute>
