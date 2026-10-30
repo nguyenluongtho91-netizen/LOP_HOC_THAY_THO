@@ -484,8 +484,8 @@ export default function KhoaHocLayGocHoaPage() {
           </div>
         )}
 
-                {/* DANH SÁCH CÂU HỎI TRẮC NGHIỆM (TRÌNH BÀY GIỐNG 100% ẢNH MẪU CỦA THẦY THỌ) */}
-        <div className="space-y-6 sm:space-y-8 divide-y divide-emerald-100/70">
+                        {/* DANH SÁCH CÂU HỎI TRẮC NGHIỆM - GIAO DIỆN TO, RÕ, ĐẸP, SANG TRỌNG & HIỆN ĐẠI (KHÔNG LỘ ĐÁP ÁN, KHÔNG SỐ Ở NGOÀI) */}
+        <div className="space-y-6 sm:space-y-8">
           {activeExam.questions.map((q, idx) => {
             const selectedOpt = answers[q.id];
             const isAnswered = !!selectedOpt;
@@ -499,126 +499,146 @@ export default function KhoaHocLayGocHoaPage() {
             const correctIndex = q.options.indexOf(q.correctAnswer);
             const correctLetter = correctIndex !== -1 ? letters[correctIndex] : null;
 
-            // Clean question text (loại bỏ tiền tố 'Câu 1:')
+            // Loại bỏ tiền tố 'Câu 1:' nếu có trong text
             const questionBody = q.question.replace(/^Câu \d+:\s*/i, '');
+
+            // Chỉ hiển thị biểu thức ở Đề 1, 4, 5 (nơi biểu thức là đề bài toán/kí hiệu, TUYỆT ĐỐI không lộ đáp án ở Đề 2, 3, 6, 7, 8, 9)
+            const shouldShowExpression = (currentExamNo === 1 || currentExamNo === 4 || currentExamNo === 5) && !!q.mathExpression;
 
             return (
               <div
                 key={q.id}
-                className="pt-6 first:pt-0 transition-all duration-300"
+                className={`p-6 sm:p-8 rounded-3xl bg-white transition-all duration-300 shadow-sm hover:shadow-md ${
+                  isSubmitted
+                    ? isCorrect
+                      ? 'border-2 border-emerald-400 bg-emerald-50/15'
+                      : 'border-2 border-rose-300 bg-rose-50/15'
+                    : isAnswered
+                    ? 'border-2 border-blue-400/80 ring-2 ring-blue-100'
+                    : 'border border-slate-200/90'
+                }`}
               >
-                {/* Hàng tiêu đề câu hỏi: Icon tick/cross khi đã nộp bài + Tiêu đề CÂU X. (Xóa bỏ hoàn toàn số ở ngoài) */}
-                <div className="flex items-start gap-2.5 sm:gap-3">
-                  {/* Chỉ hiện icon tròn khi ĐÃ NỘP BÀI (✓ hoặc ✕), hoàn toàn không có số ở ngoài */}
-                  {isSubmitted && (
-                    <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm text-white shrink-0 mt-0.5 shadow-2xs ${
-                        isCorrect ? 'bg-emerald-500' : 'bg-rose-500'
-                      }`}
-                    >
-                      {isCorrect ? '✓' : '✕'}
-                    </div>
-                  )}
-
-                  {/* Nội dung câu hỏi & Các lựa chọn */}
-                  <div className="flex-1 min-w-0">
-                    <div className="text-slate-800 text-[15px] sm:text-base leading-relaxed">
-                      <strong className="font-extrabold text-slate-900 mr-1.5">
-                        CÂU {idx + 1}.
-                      </strong>
-                      <span className="font-normal text-slate-800">
-                        {questionBody}
-                      </span>
-                    </div>
-
-                    {/* Biểu thức công thức hóa học ở giữa (thanh mảnh, căn giữa như trong ảnh mẫu) */}
-                    {q.mathExpression && (
-                      <div className="my-3 text-center text-lg sm:text-xl font-serif text-slate-700 italic tracking-wider select-none">
-                        <span dangerouslySetInnerHTML={{ __html: formatChemicalFormula(q.mathExpression) }} />
-                      </div>
-                    )}
-
-                    {/* 4 Lựa chọn lưới 2 cột (Nền trắng bo góc, ô đúng viền xanh lá dày + tick ✔ bên phải) */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 my-3 sm:my-4">
-                      {q.options.map((opt, oIdx) => {
-                        const letter = letters[oIdx] || 'A';
-                        const isOptionSelected = selectedOpt === opt;
-                        const isOptionCorrect = isSubmitted && opt === q.correctAnswer;
-                        const isOptionWrongSelected = isSubmitted && isOptionSelected && opt !== q.correctAnswer;
-
-                        let cardStyle = 'bg-white border-slate-200 hover:border-slate-300 text-slate-800';
-                        let badgeStyle = 'bg-slate-100 text-slate-600';
-
-                        if (!isSubmitted && isOptionSelected) {
-                          cardStyle = 'bg-blue-50/20 border-2 border-blue-500 text-blue-950 shadow-2xs';
-                          badgeStyle = 'bg-blue-600 text-white';
-                        } else if (isSubmitted) {
-                          if (isOptionCorrect) {
-                            cardStyle = 'bg-white border-2 border-emerald-500 text-slate-900 font-semibold shadow-2xs';
-                            badgeStyle = 'bg-emerald-500 text-white';
-                          } else if (isOptionWrongSelected) {
-                            cardStyle = 'bg-white border-2 border-rose-400 text-slate-900 font-semibold shadow-2xs';
-                            badgeStyle = 'bg-rose-500 text-white';
-                          } else {
-                            cardStyle = 'bg-white border-slate-200 text-slate-600 opacity-80';
-                            badgeStyle = 'bg-slate-100 text-slate-500';
-                          }
-                        }
-
-                        return (
-                          <button
-                            key={oIdx}
-                            disabled={isSubmitted}
-                            onClick={() => handleSelectOption(q.id, opt)}
-                            className={`px-4 py-3 sm:py-3.5 rounded-2xl border text-left text-sm sm:text-base font-medium transition-all flex items-center gap-3 cursor-pointer ${cardStyle}`}
-                          >
-                            <span className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 ${badgeStyle}`}>
-                              {letter}
-                            </span>
-                            <span className="flex-1 leading-snug">{opt}</span>
-                            {isSubmitted && isOptionCorrect && (
-                              <span className="text-emerald-500 font-bold text-lg pr-1">✔</span>
-                            )}
-                            {isSubmitted && isOptionWrongSelected && (
-                              <span className="text-rose-500 font-bold text-lg pr-1">✖</span>
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {/* Dòng trạng thái Bạn chọn: X | Chính xác / Chưa chính xác (nằm ngay dưới đáp án) */}
+                {/* TIÊU ĐỀ CÂU HỎI TO, RÕ, SANG TRỌNG - BẮT ĐẦU NGAY ĐẦU DÒNG (KHÔNG CÓ BẤT KỲ SỐ NÀO Ở NGOÀI) */}
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <span className="px-3.5 py-1 rounded-xl bg-gradient-to-r from-blue-700 to-indigo-700 text-white font-black text-xs sm:text-sm uppercase tracking-wider shadow-2xs">
+                      CÂU {idx + 1}
+                    </span>
                     {isSubmitted && (
-                      <div className="mt-3.5 flex flex-wrap items-center gap-2">
-                        <span className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold ${selectedOpt ? 'bg-blue-100/90 text-blue-700' : 'bg-slate-100 text-slate-500'}`}>
-                          Bạn chọn: {selectedLetter || '(Chưa chọn)'}
-                        </span>
-                        {selectedOpt && (
-                          <span className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-1.5 ${isCorrect ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
-                            {isCorrect ? '✅ Chính xác!' : '❌ Chưa chính xác!'}
-                          </span>
-                        )}
-                        {!isCorrect && selectedOpt && (
-                          <span className="px-3.5 py-1.5 bg-teal-100 text-teal-800 rounded-lg text-xs sm:text-sm font-bold">
-                            Đáp án đúng: {correctLetter}
-                          </span>
-                        )}
-                      </div>
-                    )}
-
-                    {/* Khối Lời giải & Đáp án chi tiết (nền xanh nhạt, chữ xanh đậm, icon bóng đèn) */}
-                    {isSubmitted && q.explanation && (
-                      <div className="mt-3.5 p-4 sm:p-5 bg-[#eef6ff] border border-blue-200/90 rounded-2xl space-y-1.5 animate-fade-in">
-                        <div className="text-blue-700 font-bold text-sm sm:text-[15px] flex items-center gap-1.5">
-                          <span>💡 Lời giải & Đáp án chi tiết:</span>
-                        </div>
-                        <div className="text-sm sm:text-[15px] text-slate-800 leading-relaxed font-normal">
-                          {q.explanation.startsWith('👉') ? q.explanation : `👉 ${q.explanation}`}
-                        </div>
-                      </div>
+                      <span className={`px-3 py-1 rounded-full text-xs sm:text-sm font-bold flex items-center gap-1.5 shadow-2xs ${
+                        isCorrect ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'
+                      }`}>
+                        {isCorrect ? '✔ ĐÚNG CHÍNH XÁC' : '✖ CHƯA CHÍNH XÁC'}
+                      </span>
                     )}
                   </div>
+
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-900 leading-relaxed tracking-tight pt-1">
+                    {questionBody}
+                  </h3>
                 </div>
+
+                {/* BIỂU THỨC DỮ KIỆN CỦA ĐỀ BÀI (CHỈ HIỆN Ở ĐỀ 1, 4, 5 - CĂN GIỮA, KHÔNG LỘ ĐÁP ÁN) */}
+                {shouldShowExpression && (
+                  <div className="my-4 py-3 px-6 rounded-2xl bg-gradient-to-r from-blue-50/60 via-amber-50/40 to-indigo-50/60 border border-blue-200/80 text-center font-serif text-xl sm:text-2xl text-blue-950 font-semibold tracking-wider select-none shadow-2xs">
+                    <span dangerouslySetInnerHTML={{ __html: formatChemicalFormula(q.mathExpression) }} />
+                  </div>
+                )}
+
+                {/* 4 LỰA CHỌN TRẮC NGHIỆM TO, RÕ, BẤM ÊM, ĐẸP MẮT */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4.5 mt-5">
+                  {q.options.map((opt, oIdx) => {
+                    const letter = letters[oIdx] || 'A';
+                    const isOptionSelected = selectedOpt === opt;
+                    const isOptionCorrect = isSubmitted && opt === q.correctAnswer;
+                    const isOptionWrongSelected = isSubmitted && isOptionSelected && opt !== q.correctAnswer;
+
+                    let btnClasses = 'bg-slate-50/70 hover:bg-white border-2 border-slate-200 hover:border-blue-400 text-slate-800 hover:shadow-sm';
+                    let letterBadgeClasses = 'bg-white border border-slate-300 text-slate-700 shadow-2xs';
+
+                    if (!isSubmitted) {
+                      if (isOptionSelected) {
+                        btnClasses = 'bg-blue-50/80 border-2 border-blue-600 text-blue-950 font-bold shadow-md ring-4 ring-blue-500/20 scale-[1.01]';
+                        letterBadgeClasses = 'bg-blue-600 text-white font-black shadow-xs';
+                      }
+                    } else {
+                      if (isOptionCorrect) {
+                        btnClasses = 'bg-emerald-50 border-2 border-emerald-500 text-emerald-950 font-black shadow-sm ring-2 ring-emerald-300/40';
+                        letterBadgeClasses = 'bg-emerald-500 text-white font-black shadow-xs';
+                      } else if (isOptionWrongSelected) {
+                        btnClasses = 'bg-rose-50 border-2 border-rose-400 text-rose-950 font-black shadow-sm';
+                        letterBadgeClasses = 'bg-rose-500 text-white font-black shadow-xs';
+                      } else {
+                        btnClasses = 'bg-white border border-slate-200 text-slate-500 opacity-75';
+                        letterBadgeClasses = 'bg-slate-100 text-slate-400';
+                      }
+                    }
+
+                    return (
+                      <button
+                        key={oIdx}
+                        disabled={isSubmitted}
+                        onClick={() => handleSelectOption(q.id, opt)}
+                        className={`p-4 sm:p-5 rounded-2xl transition-all flex items-center gap-4 cursor-pointer text-left ${btnClasses}`}
+                      >
+                        <span className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center font-black text-sm sm:text-base shrink-0 ${letterBadgeClasses}`}>
+                          {letter}
+                        </span>
+                        <span className="flex-1 text-base sm:text-lg leading-snug tracking-tight font-medium">
+                          {opt}
+                        </span>
+                        {/* Biểu tượng trạng thái bên phải */}
+                        {!isSubmitted && isOptionSelected && (
+                          <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs shrink-0 shadow-2xs">
+                            ✓
+                          </div>
+                        )}
+                        {isSubmitted && isOptionCorrect && (
+                          <span className="text-emerald-600 font-black text-xl shrink-0 pr-1">✔</span>
+                        )}
+                        {isSubmitted && isOptionWrongSelected && (
+                          <span className="text-rose-500 font-black text-xl shrink-0 pr-1">✖</span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* DÒNG TRẠNG THÁI KẾT QUẢ KHI ĐÃ NỘP BÀI */}
+                {isSubmitted && (
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-2.5">
+                    <span className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-bold ${
+                      selectedOpt ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-600'
+                    }`}>
+                      Em chọn: {selectedLetter ? `${selectedLetter} (${selectedOpt})` : '(Chưa chọn)'}
+                    </span>
+                    {selectedOpt && (
+                      <span className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 ${
+                        isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                      }`}>
+                        {isCorrect ? '✅ Chính xác tuyệt đối!' : '❌ Chưa chính xác!'}
+                      </span>
+                    )}
+                    {!isCorrect && (
+                      <span className="px-4 py-1.5 bg-amber-100 text-amber-900 border border-amber-300 rounded-xl text-xs sm:text-sm font-bold">
+                        Đáp án đúng là: {correctLetter} ({q.correctAnswer})
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {/* KHỐI LỜI GIẢI CHI TIẾT SƯ PHẠM CỦA THẦY THỌ */}
+                {isSubmitted && q.explanation && (
+                  <div className="mt-4 p-5 sm:p-6 bg-gradient-to-br from-blue-50/90 via-indigo-50/40 to-white border-2 border-blue-200/90 rounded-2xl space-y-2 animate-fade-in shadow-xs">
+                    <div className="text-blue-700 font-black text-sm sm:text-base flex items-center gap-2">
+                      <span className="text-lg">💡</span>
+                      <span>Lời giải & Đáp án chi tiết của Thầy Thọ:</span>
+                    </div>
+                    <div className="text-sm sm:text-[15.5px] text-slate-800 leading-relaxed font-normal">
+                      {q.explanation.startsWith('👉') ? q.explanation : `👉 ${q.explanation}`}
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}
