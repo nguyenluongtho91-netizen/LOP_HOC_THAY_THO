@@ -865,16 +865,13 @@ export default function Dashboard() {
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-black text-slate-900 text-base tracking-wide uppercase">
-                  THỜI KHÓA BIỂU GIẢNG DẠY TUẦN NÀY
+                  LỊCH DẠY TRONG TUẦN
                 </h3>
                 <span className="bg-emerald-50 text-emerald-700 border border-emerald-300 text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                   ĐANG DIỄN RA
                 </span>
               </div>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Xem ca dạy, click vào ca học để <strong>đổi lịch dạy</strong> hoặc mở danh sách học sinh & điểm danh
-              </p>
             </div>
           </div>
 
@@ -1029,82 +1026,40 @@ export default function Dashboard() {
                               setDetailClass(cls)
                               setModalSearch('')
                             }}
-                            className="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-teal-400 hover:-translate-y-1 transition-all duration-200 flex flex-col gap-2 cursor-pointer group relative overflow-hidden"
+                            className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-xs hover:shadow-md hover:border-teal-500 transition-all cursor-pointer group relative overflow-hidden flex flex-col gap-1.5"
                           >
                             {/* Dải màu môn học bên trái */}
                             <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${
                               isMath 
-                                ? 'bg-gradient-to-b from-blue-500 to-indigo-600' 
-                                : 'bg-gradient-to-b from-purple-500 to-pink-600'
+                                ? 'bg-blue-600' 
+                                : 'bg-purple-600'
                             }`} />
 
-                            {/* Hàng 1: Môn, Sĩ số, Nút sửa nhanh */}
-                            <div className="flex items-center justify-between gap-1 pl-1">
-                              <span className={`px-2 py-0.5 text-[9px] font-black rounded-md uppercase border ${
-                                isMath 
-                                  ? 'bg-blue-50 text-blue-700 border-blue-200' 
-                                  : 'bg-purple-50 text-purple-700 border-purple-200'
-                              }`}>
-                                {cls.subject || 'Toán'} · K{cls.grade}
+                            {/* Hàng 1: Tên Lớp to rõ + Nút sửa lịch */}
+                            <div className="flex items-center justify-between gap-1 pl-1.5">
+                              <span className="font-black text-slate-900 text-xs sm:text-sm group-hover:text-teal-700 transition-colors truncate">
+                                {cls.name || cls.class_name}
                               </span>
-
-                              <div className="flex items-center gap-1">
-                                <span className="text-[10px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded-md flex items-center gap-1">
-                                  <Users className="w-2.5 h-2.5 text-slate-500" />
-                                  <span>{stCount} HS</span>
-                                </span>
-
-                                {/* Nút bút chì đổi lịch ngay */}
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.stopPropagation()
-                                    openEditSchedule(cls, dayNum)
-                                  }}
-                                  className="w-6 h-6 rounded-lg bg-slate-100 hover:bg-teal-600 hover:text-white text-slate-600 flex items-center justify-center transition-colors cursor-pointer"
-                                  title="Đổi lịch dạy lớp này"
-                                >
-                                  <Edit3 className="w-3 h-3" />
-                                </button>
-                              </div>
-                            </div>
-
-                            {/* Hàng 2: Tên lớp to rõ */}
-                            <div className="font-black text-slate-900 text-xs leading-snug group-hover:text-teal-700 transition-colors pl-1">
-                              {cls.name || cls.class_name}
-                            </div>
-                            
-                            {/* Hàng 3: Khung giờ & Phòng học */}
-                            <div className="flex flex-col gap-1 pt-1.5 border-t border-slate-100 text-[10px] pl-1">
-                              {cls.time && (
-                                <div className="flex items-center gap-1.5 text-teal-800 font-bold bg-teal-50/80 px-2 py-1 rounded-lg border border-teal-200/50">
-                                  <Clock className="w-3 h-3 flex-shrink-0 text-teal-600" />
-                                  <span className="font-mono text-[11px]">{cls.time}</span>
-                                </div>
-                              )}
-                              {cls.room && cls.room !== 'None' && (
-                                <div className="flex items-center gap-1.5 text-slate-600 font-medium px-1 truncate">
-                                  <MapPin className="w-3 h-3 flex-shrink-0 text-slate-400" />
-                                  <span className="truncate">{cls.room}</span>
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Quick action bar on card hover */}
-                            <div className="pt-1 border-t border-slate-100 flex items-center justify-between gap-1 text-[9px] font-bold text-slate-500 opacity-90 group-hover:opacity-100 pl-1">
-                              <span className="text-teal-700 group-hover:underline">Chi tiết & Học sinh →</span>
-                              <span 
+                              <button
+                                type="button"
                                 onClick={(e) => {
                                   e.stopPropagation()
-                                  navigate('/tuition?tab=session-attendance&classId=' + cls.id)
+                                  openEditSchedule(cls, dayNum)
                                 }}
-                                className="text-emerald-700 hover:underline cursor-pointer"
-                                title="Điểm danh lớp này"
+                                className="w-5 h-5 rounded-md bg-slate-100 hover:bg-teal-600 hover:text-white text-slate-400 hover:text-white flex items-center justify-center transition-colors shrink-0 cursor-pointer"
+                                title="Đổi giờ dạy"
                               >
-                                ✓ Điểm danh
-                              </span>
+                                <Edit3 className="w-3 h-3" />
+                              </button>
                             </div>
 
+                            {/* Hàng 2: Giờ Dạy gọn gàng */}
+                            {cls.time && (
+                              <div className="pl-1.5 flex items-center gap-1.5 text-teal-800 font-bold text-xs font-mono bg-teal-50/90 px-2 py-1 rounded-lg border border-teal-200/50">
+                                <Clock className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                                <span>{cls.time}</span>
+                              </div>
+                            )}
                           </div>
                         )
                       })
