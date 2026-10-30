@@ -8,7 +8,7 @@ import {
   Mail, Settings, LogOut, FileText, MonitorPlay, ScanText,
   GraduationCap, Sigma, FilePlus, PlaySquare, Zap, FileType, CreditCard,
   ClipboardList, ClipboardCheck, Tag, MessageCircle, Calculator, PenTool, Target,
-  Menu, X, Sparkles
+  Menu, X, Sparkles, ArrowLeft, Home
 } from 'lucide-react'
 import HierarchicalGradeTree from './HierarchicalGradeTree'
 
@@ -209,8 +209,40 @@ export default function Layout() {
       </aside>
 
       {/* ── NỘI DUNG CHÍNH ── */}
-      <main className="flex-1 min-w-0 bg-gray-50/50 min-h-screen">
-        <div className="p-4 md:p-6 lg:p-8">
+      <main className="flex-1 min-w-0 bg-gray-50/50 min-h-screen flex flex-col">
+        {/* Mobile Header Bar cho điện thoại & App PWA */}
+        <header className="md:hidden sticky top-0 z-30 bg-red-700 text-white px-3 py-2.5 flex items-center justify-between shadow-md">
+          <div className="flex items-center gap-2">
+            {location.pathname !== '/' && (
+              <button
+                type="button"
+                onClick={() => navigate(-1)}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-white/20 hover:bg-white/30 text-white font-bold text-xs transition-all cursor-pointer shadow-xs"
+                title="Quay lại trang trước"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Quay lại</span>
+              </button>
+            )}
+            <Link to="/" className="flex items-center gap-1.5 font-black text-xs sm:text-sm tracking-wide text-white">
+              <GraduationCap className="w-5 h-5 text-red-200" />
+              <span>LỚP THẦY THỌ</span>
+            </Link>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <Link
+              to="/"
+              className="px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs flex items-center gap-1 transition-all"
+              title="Về Trang Chủ"
+            >
+              <Home className="w-3.5 h-3.5 text-amber-300" />
+              <span>Trang chủ</span>
+            </Link>
+          </div>
+        </header>
+
+        <div className="p-3 sm:p-4 md:p-6 lg:p-8 flex-1">
           <Outlet />
         </div>
       </main>
