@@ -40,6 +40,8 @@ export const STUDENT_CUSTOM_RATES: Record<string, number> = {
   '53843fca-d1c8-4df6-ba36-1f9bb6e5f27f': 40000, // Nguyễn Hữu Bảo (Lớp 11): 40.000đ/buổi
   '55c11a09-6778-4065-aaa4-d123a19b6874': 50000, // Dương Thị Diễm Nhi (Lớp 11): 50.000đ/buổi
   '7334a553-0e31-47e2-b0fa-4d35e79eb083': 60000, // Nguyễn Thị Phương Chi (Lớp 12): 60.000đ/buổi
+  '53893c65-e726-4dee-8116-f1b29b0cd55a': 50000, // Lê Viết Nam (Lớp 8A): 50.000đ/buổi
+  'b1ed2f0f-36b1-4076-8ac8-64dabba143a4': 0,     // Lê Viết Nam (Lớp 8B): 0đ (Miễn phí)
 }
 
 
