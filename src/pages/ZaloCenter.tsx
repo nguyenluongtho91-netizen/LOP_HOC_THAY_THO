@@ -57,6 +57,7 @@ export default function ZaloCenter() {
     `Kính gửi Quý phụ huynh học sinh {ten_hoc_sinh},\n\n`
     + `Thầy Thọ xin gửi thông tin học phí của con:\n`
     + `• Học sinh: {ten_hoc_sinh}\n`
+    + `• Môn học: {mon_hoc}\n`
     + `• Lớp: {lop}\n`
     + `• Số tiền học phí: {so_tien} đ\n\n`
     + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
@@ -71,6 +72,7 @@ export default function ZaloCenter() {
   const formatTuitionMessage = (item: any) => {
     return tuitionTemplate
       .replace(/{ten_hoc_sinh}/g, item.studentName)
+      .replace(/{mon_hoc}/g, item.subject || "Toán học")
       .replace(/{lop}/g, item.class)
       .replace(/{thang}/g, item.month)
       .replace(/{so_tien}/g, item.amount.toLocaleString())
@@ -116,6 +118,7 @@ export default function ZaloCenter() {
       const notif = tuitionNotifications.find(n => n.student_id === st.id && (selectedClassId === 'all' || n.class_id === selectedClassId))
       const amount = notif ? Number(notif.amount) : (primaryClass?.tuition_fee || 600000)
       const studentCode = st.student_code || st.code || 'HS'
+      const subject = primaryClass?.subject || ((studentCode && studentCode.toUpperCase().endsWith('H')) || className.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
       const addInfo = formatVietQRAddInfo(st.full_name || st.name || '', className)
       const bankId = 'VCB'
       const bankAccount = '1070493932'
@@ -127,6 +130,7 @@ export default function ZaloCenter() {
         id: st.id,
         studentName: st.full_name || st.name || 'Học sinh',
         studentCode: studentCode,
+        subject: subject,
         class: className,
         classId: classId,
         phone: st.parent_phone || (st as any).zalo || st.phone || 'Chưa có SĐT',
@@ -526,6 +530,7 @@ export default function ZaloCenter() {
               <p className="text-xs font-bold text-slate-700">Các biến thay thế tự động:</p>
               <div className="flex flex-wrap gap-1.5 text-[11px]">
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{ten_hoc_sinh}'}</span>
+                <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{mon_hoc}'}</span>
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{lop}'}</span>
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{thang}'}</span>
                 <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-mono">{'{so_tien}'}</span>

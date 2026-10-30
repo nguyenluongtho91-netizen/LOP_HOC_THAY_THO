@@ -561,9 +561,11 @@ export default function Tuition() {
       ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
       : ''
 
+    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
               + `Thầy Thọ xin gửi thông tin học phí của con:\n`
               + `• Học sinh: ${row.student.full_name}\n`
+              + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + (studentAttended.length > 0 ? `• Số buổi đã học (${studentAttended.length} buổi): ${datesDetailText}\n` : '')
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
@@ -637,9 +639,11 @@ export default function Tuition() {
       ? `• Số buổi đã học: ${studentAttendedCount} buổi\n`
       : ''
 
+    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
               + `Thầy Thọ xin gửi thông tin học phí của con:\n`
               + `• Học sinh: ${row.student.full_name}\n`
+              + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + sessionInfoLine
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
@@ -693,9 +697,11 @@ export default function Tuition() {
       const activeCourseName = row.notification?.course_name || courseName || 'Học phí'
       const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
       const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+      const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
       const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
                 + `Thầy Thọ xin gửi thông tin học phí của con:\n`
                 + `• Học sinh: ${row.student.full_name}\n`
+                + `• Môn học: ${subjectName}\n`
                 + `• Lớp: ${cleanClass}\n`
                 + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                 + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
@@ -2343,9 +2349,11 @@ export default function Tuition() {
               const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code)
               const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
 
+              const subjectName = (cls as any)?.subject || ((currentRow.student.student_code && currentRow.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
               const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\n\n`
                         + `Thầy Thọ xin gửi thông tin học phí của con:\n`
                         + `• Học sinh: ${currentRow.student.full_name}\n`
+                        + `• Môn học: ${subjectName}\n`
                         + `• Lớp: ${cleanClass}\n`
                         + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                         + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
