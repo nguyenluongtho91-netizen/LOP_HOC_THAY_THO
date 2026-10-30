@@ -58,7 +58,7 @@ export default function KhoaHocLayGocHoaPage() {
   // Trạng thái bài làm của đề hiện tại
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
-  const [timeLeft, setTimeLeft] = useState<number>(30 * 60); // 30 phút
+  const [timeLeft, setTimeLeft] = useState<number>(40 * 60); // 30 phút
   const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
   const [violations, setViolations] = useState<number>(0);
 
@@ -82,7 +82,7 @@ export default function KhoaHocLayGocHoaPage() {
     setSearchParams({ de: examNo.toString() });
     setAnswers({});
     setIsSubmitted(false);
-    setTimeLeft(30 * 60);
+    setTimeLeft(40 * 60);
     setIsTimerActive(true);
     setViolations(0);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -91,7 +91,7 @@ export default function KhoaHocLayGocHoaPage() {
   // Bắt đầu bấm giờ
   useEffect(() => {
     setIsTimerActive(true);
-    setTimeLeft(30 * 60);
+    setTimeLeft(40 * 60);
     setAnswers({});
     setIsSubmitted(false);
   }, [currentExamNo]);
@@ -289,7 +289,7 @@ export default function KhoaHocLayGocHoaPage() {
                 <span>Toán & Hóa Thầy Thọ · Tân Mùi 1991</span>
               </span>
               <span className="px-3 py-1 rounded-full bg-white/20 border border-white/30 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md">
-                🎓 9 Chuyên Đề Nền Tảng (180 Câu)
+                🎓 9 Chuyên Đề Toàn Diện (360 Câu Chuẩn 10, 11, 12 & ĐH)
               </span>
             </div>
 
@@ -298,7 +298,7 @@ export default function KhoaHocLayGocHoaPage() {
             </h2>
 
             <p className="text-amber-100/90 text-xs sm:text-sm font-medium leading-relaxed max-w-3xl">
-              Thầy Thọ thiết kế lộ trình 9 đề then chốt: Kí hiệu hóa học, Nguyên tử khối, Phân tử khối, Hóa trị, Lập CTHH, Phân loại Oxide/Acid/Base/Muối, Đặc trị chất lưỡng tính (Al₂O₃, ZnO, Cr₂O₃, Al(OH)₃, Zn(OH)₂, Cr(OH)₃) và Bảng tính tan hay gặp.
+              Thầy Thọ thiết kế bộ 9 đề toàn diện bao quát 100% các nguyên tố và hợp chất hay thi trong các kì thi lớp 10, 11, 12 và THPT Quốc Gia / Đại học: Kí hiệu hóa học, Kim loại - Phi kim - Khí hiếm, Nguyên tử khối, Phân tử khối, Hóa trị, Lập CTHH, Phân loại vô cơ, Đặc trị chất lưỡng tính (Al₂O₃, ZnO, Cr₂O₃, Al(OH)₃, Zn(OH)₂, Cr(OH)₃) và Bảng tính tan.
             </p>
           </div>
         </div>
@@ -394,7 +394,7 @@ export default function KhoaHocLayGocHoaPage() {
                 onClick={() => {
                   setAnswers({});
                   setIsSubmitted(false);
-                  setTimeLeft(30 * 60);
+                  setTimeLeft(40 * 60);
                   setIsTimerActive(true);
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}

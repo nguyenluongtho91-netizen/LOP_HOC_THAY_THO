@@ -1784,11 +1784,11 @@ export default function StudentPortal() {
               
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight flex items-center gap-2 flex-wrap">
                 <span>🧪 LẤY GỐC HÓA HỌC NỀN TẢNG — 9 ĐỀ TOÀN DIỆN</span>
-                <span className="text-xs font-bold bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded-full">180 CÂU CÓ LỜI GIẢI</span>
+                <span className="text-xs font-bold bg-amber-500 text-slate-950 px-2.5 py-0.5 rounded-full">360 CÂU TOÀN DIỆN (40 CÂU / ĐỀ)</span>
               </h3>
               
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
-                Hệ thống 9 chuyên đề trắc nghiệm luyện phản xạ nhanh: <strong>Kí hiệu & Tên</strong>, <strong>Kim loại / Phi kim / Khí hiếm</strong>, <strong>Nguyên tử khối (amu)</strong>, <strong>Phân tử khối</strong>, <strong>Hóa trị</strong>, <strong>Lập CTHH vô cơ</strong>, <strong>Phân loại Oxide/Acid/Base/Muối</strong> (đặc biệt các chất lưỡng tính <code className="text-amber-300">Al₂O₃, ZnO, Cr₂O₃; Al(OH)₃, Zn(OH)₂, Cr(OH)₃</code>) và <strong>Tính tan & Hiện tượng kết tủa</strong>!
+                Hệ thống 9 chuyên đề trắc nghiệm toàn diện bao quát 100% các nguyên tố hay thi trong các kì thi lớp 10, 11, 12 và THPT Quốc Gia / Đại học: <strong>Kí hiệu & Tên</strong>, <strong>Kim loại / Phi kim / Khí hiếm</strong>, <strong>Nguyên tử khối (amu)</strong>, <strong>Phân tử khối</strong>, <strong>Hóa trị</strong>, <strong>Lập CTHH vô cơ</strong>, <strong>Phân loại Oxide/Acid/Base/Muối</strong> (đặc biệt các chất lưỡng tính <code className="text-amber-300">Al₂O₃, ZnO, Cr₂O₃; Al(OH)₃, Zn(OH)₂, Cr(OH)₃</code>) và <strong>Tính tan & Hiện tượng kết tủa</strong>!
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
