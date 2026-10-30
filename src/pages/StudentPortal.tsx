@@ -2020,30 +2020,32 @@ export default function StudentPortal() {
                 {isMandatoryOpen && (
                   <div className="p-3.5 sm:p-5 pt-0 border-t border-amber-200/80 bg-white/80 animate-in fade-in duration-300 space-y-4">
                     <div className="flex items-center gap-2 pt-3 border-b border-slate-100 pb-2">
-                      <button
-                        type="button"
-                        onClick={(e) => { e.stopPropagation(); setF1Tab("pending"); }}
-                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-                          f1Tab === "pending"
-                            ? "bg-amber-500 text-slate-950 shadow-xs"
-                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
-                        }`}
-                      >
-                        <span>📝 Đề Cần Nộp Cho Thầy</span>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-black/10">({homeworkPending.length})</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => { e.stopPropagation(); setF1Tab("completed"); }}
-                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-                          f1Tab === "completed"
-                            ? "bg-blue-600 text-white shadow-xs"
-                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
-                        }`}
-                      >
-                        <span>📊 Bảng Điểm & Lời Giải</span>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({homeworkCompleted.length})</span>
-                      </button>
+                      <div className="flex items-center gap-2 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+                        <button
+                          type="button"
+                          onClick={(e) => { e.stopPropagation(); setF1Tab("pending"); }}
+                          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
+                            f1Tab === "pending"
+                              ? "bg-amber-500 text-slate-950 shadow-sm"
+                              : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
+                          }`}
+                        >
+                          <span>📝 1. ĐỀ THI CẦN NỘP</span>
+                          <span className="text-[11px] px-2 py-0.5 rounded-full bg-black/10 font-bold">({homeworkPending.length})</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => { e.stopPropagation(); setF1Tab("completed"); }}
+                          className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
+                            f1Tab === "completed"
+                              ? "bg-blue-600 text-white shadow-sm"
+                              : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
+                          }`}
+                        >
+                          <span>📊 2. KẾT QUẢ BÀI LÀM</span>
+                          <span className="text-[11px] px-2 py-0.5 rounded-full bg-white/20 font-bold">({homeworkCompleted.length})</span>
+                        </button>
+                      </div>
                     </div>
 
                     <div>
@@ -2167,108 +2169,216 @@ export default function StudentPortal() {
 
                     {/* NỘI DUNG TỪNG PHÂN MỤC TRONG THƯ MỤC GOM CHUNG */}
                     <div className="animate-in fade-in duration-200">
-                      {/* Phân mục 1: Rèn luyện cơ bản */}
+                      {/* Phân mục 1: Rèn luyện cơ bản (Chia làm 2 nội dung: ĐỀ THI và KẾT QUẢ) */}
                       {extraTab === "basic" && (
                         <div className="space-y-4">
-                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
                             <div>
-                              <h4 className="text-xs sm:text-sm font-black text-slate-900">
-                                🎯 BÀI TẬP RÈN LUYỆN CƠ BẢN
+                              <h4 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                                <span>🎯 BÀI TẬP RÈN LUYỆN CƠ BẢN</span>
                               </h4>
-                              <p className="text-[11px] text-slate-500">Củng cố lý thuyết nền tảng và kiến thức cốt lõi</p>
+                              <p className="text-xs text-slate-500 mt-0.5">Củng cố lý thuyết nền tảng, nắm chắc kiến thức trọng tâm</p>
                             </div>
-                            <div className="flex items-center gap-1.5">
+
+                            {/* HAI NỘI DUNG TRONG: 1. ĐỀ THI - 2. KẾT QUẢ */}
+                            <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
                               <button
                                 type="button"
                                 onClick={() => setF2Tab("pending")}
-                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                                  f2Tab === "pending" ? "bg-emerald-600 text-white shadow-xs" : "bg-slate-100 text-slate-600"
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f2Tab === "pending"
+                                    ? "bg-emerald-600 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
                                 }`}
                               >
-                                Đề Luyện Tập ({basicPending.length})
+                                <span>📝 1. ĐỀ THI</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f2Tab === "pending" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {basicPending.length} đề
+                                </span>
                               </button>
+
                               <button
                                 type="button"
                                 onClick={() => setF2Tab("completed")}
-                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                                  f2Tab === "completed" ? "bg-emerald-700 text-white shadow-xs" : "bg-slate-100 text-slate-600"
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f2Tab === "completed"
+                                    ? "bg-emerald-700 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
                                 }`}
                               >
-                                Kết Quả ({basicCompleted.length})
+                                <span>📊 2. KẾT QUẢ</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f2Tab === "completed" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {basicCompleted.length} bài
+                                </span>
                               </button>
                             </div>
                           </div>
-                          {f2Tab === "pending" ? renderPendingGrid(basicPending, "practice") : renderCompletedTable(basicCompleted, "practice")}
+
+                          <div className="pt-1">
+                            {f2Tab === "pending" ? (
+                              <div>
+                                <div className="text-xs font-black uppercase text-emerald-800 tracking-wider mb-3 flex items-center gap-1.5">
+                                  <span>📝 NỘI DUNG 1: DANH SÁCH ĐỀ THI RÈN LUYỆN CƠ BẢN</span>
+                                  <span className="text-[10px] text-slate-400">({basicPending.length} đề)</span>
+                                </div>
+                                {renderPendingGrid(basicPending, "practice")}
+                              </div>
+                            ) : (
+                              <div>
+                                <div className="text-xs font-black uppercase text-emerald-800 tracking-wider mb-3 flex items-center gap-1.5">
+                                  <span>📊 NỘI DUNG 2: BẢNG ĐIỂM & KẾT QUẢ BÀI LÀM CƠ BẢN</span>
+                                  <span className="text-[10px] text-slate-400">({basicCompleted.length} bài đã làm)</span>
+                                </div>
+                                {renderCompletedTable(basicCompleted, "practice")}
+                              </div>
+                            )}
+                          </div>
                         </div>
                       )}
 
-                      {/* Phân mục 2: Rèn luyện nâng cao */}
+                      {/* Phân mục 2: Rèn luyện nâng cao (Chia làm 2 nội dung: ĐỀ THI và KẾT QUẢ) */}
                       {extraTab === "advanced" && (
                         <div className="space-y-4">
-                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
                             <div>
-                              <h4 className="text-xs sm:text-sm font-black text-slate-900">
-                                🔥 BÀI TẬP RÈN LUYỆN NÂNG CAO
+                              <h4 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                                <span>🔥 BÀI TẬP RÈN LUYỆN NÂNG CAO</span>
                               </h4>
-                              <p className="text-[11px] text-slate-500">Rèn luyện tư duy vận dụng cao và bài tập phân loại</p>
+                              <p className="text-xs text-slate-500 mt-0.5">Rèn luyện tư duy vận dụng, vận dụng cao và bài tập phân loại</p>
                             </div>
-                            <div className="flex items-center gap-1.5">
+
+                            {/* HAI NỘI DUNG TRONG: 1. ĐỀ THI - 2. KẾT QUẢ */}
+                            <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
                               <button
                                 type="button"
                                 onClick={() => setF3Tab("pending")}
-                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                                  f3Tab === "pending" ? "bg-rose-600 text-white shadow-xs" : "bg-slate-100 text-slate-600"
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f3Tab === "pending"
+                                    ? "bg-rose-600 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
                                 }`}
                               >
-                                Đề Nâng Cao ({advancedPending.length})
+                                <span>📝 1. ĐỀ THI</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f3Tab === "pending" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {advancedPending.length} đề
+                                </span>
                               </button>
+
                               <button
                                 type="button"
                                 onClick={() => setF3Tab("completed")}
-                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                                  f3Tab === "completed" ? "bg-rose-700 text-white shadow-xs" : "bg-slate-100 text-slate-600"
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f3Tab === "completed"
+                                    ? "bg-rose-700 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
                                 }`}
                               >
-                                Kết Quả ({advancedCompleted.length})
+                                <span>📊 2. KẾT QUẢ</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f3Tab === "completed" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {advancedCompleted.length} bài
+                                </span>
                               </button>
                             </div>
                           </div>
-                          {f3Tab === "pending" ? renderPendingGrid(advancedPending, "practice") : renderCompletedTable(advancedCompleted, "practice")}
+
+                          <div className="pt-1">
+                            {f3Tab === "pending" ? (
+                              <div>
+                                <div className="text-xs font-black uppercase text-rose-800 tracking-wider mb-3 flex items-center gap-1.5">
+                                  <span>📝 NỘI DUNG 1: DANH SÁCH ĐỀ THI NÂNG CAO</span>
+                                  <span className="text-[10px] text-slate-400">({advancedPending.length} đề)</span>
+                                </div>
+                                {renderPendingGrid(advancedPending, "practice")}
+                              </div>
+                            ) : (
+                              <div>
+                                <div className="text-xs font-black uppercase text-rose-800 tracking-wider mb-3 flex items-center gap-1.5">
+                                  <span>📊 NỘI DUNG 2: BẢNG ĐIỂM & KẾT QUẢ BÀI LÀM NÂNG CAO</span>
+                                  <span className="text-[10px] text-slate-400">({advancedCompleted.length} bài đã làm)</span>
+                                </div>
+                                {renderCompletedTable(advancedCompleted, "practice")}
+                              </div>
+                            )}
+                          </div>
                         </div>
                       )}
 
-                      {/* Phân mục 3: Đề thi thử */}
+                      {/* Phân mục 3: Đề thi thử (Chia làm 2 nội dung: ĐỀ THI và KẾT QUẢ) */}
                       {extraTab === "mock" && (
                         <div className="space-y-4">
-                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-100">
                             <div>
-                              <h4 className="text-xs sm:text-sm font-black text-slate-900">
-                                🏆 ĐỀ THI THỬ (KHẢO SÁT CHẤT LƯỢNG & TỐT NGHIỆP)
+                              <h4 className="text-sm sm:text-base font-black text-slate-900 flex items-center gap-2">
+                                <span>🏆 ĐỀ THI THỬ (KHẢO SÁT CHẤT LƯỢNG & TỐT NGHIỆP)</span>
                               </h4>
-                              <p className="text-[11px] text-slate-500">Rèn luyện bản lĩnh phòng thi với các bộ đề thi thử chuẩn cấu trúc</p>
+                              <p className="text-xs text-slate-500 mt-0.5">Rèn luyện bản lĩnh phòng thi với các bộ đề thi thử chuẩn cấu trúc</p>
                             </div>
-                            <div className="flex items-center gap-1.5">
+
+                            {/* HAI NỘI DUNG TRONG: 1. ĐỀ THI - 2. KẾT QUẢ */}
+                            <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
                               <button
                                 type="button"
                                 onClick={() => setF4Tab("pending")}
-                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                                  f4Tab === "pending" ? "bg-cyan-600 text-white shadow-xs" : "bg-slate-100 text-slate-600"
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f4Tab === "pending"
+                                    ? "bg-cyan-600 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
                                 }`}
                               >
-                                Đề Thi Thử ({mockPending.length})
+                                <span>📝 1. ĐỀ THI</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f4Tab === "pending" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {mockPending.length} đề
+                                </span>
                               </button>
+
                               <button
                                 type="button"
                                 onClick={() => setF4Tab("completed")}
-                                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                                  f4Tab === "completed" ? "bg-blue-700 text-white shadow-xs" : "bg-slate-100 text-slate-600"
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f4Tab === "completed"
+                                    ? "bg-blue-700 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
                                 }`}
                               >
-                                Kết Quả Thi ({mockCompleted.length})
+                                <span>📊 2. KẾT QUẢ</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f4Tab === "completed" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {mockCompleted.length} bài
+                                </span>
                               </button>
                             </div>
                           </div>
-                          {f4Tab === "pending" ? renderPendingGrid(mockPending, "practice") : renderCompletedTable(mockCompleted, "practice")}
+
+                          <div className="pt-1">
+                            {f4Tab === "pending" ? (
+                              <div>
+                                <div className="text-xs font-black uppercase text-cyan-800 tracking-wider mb-3 flex items-center gap-1.5">
+                                  <span>📝 NỘI DUNG 1: DANH SÁCH ĐỀ THI THỬ</span>
+                                  <span className="text-[10px] text-slate-400">({mockPending.length} đề thi thử)</span>
+                                </div>
+                                {renderPendingGrid(mockPending, "practice")}
+                              </div>
+                            ) : (
+                              <div>
+                                <div className="text-xs font-black uppercase text-cyan-800 tracking-wider mb-3 flex items-center gap-1.5">
+                                  <span>📊 NỘI DUNG 2: BẢNG ĐIỂM & KẾT QUẢ THI THỬ</span>
+                                  <span className="text-[10px] text-slate-400">({mockCompleted.length} bài thi đã hoàn thành)</span>
+                                </div>
+                                {renderCompletedTable(mockCompleted, "practice")}
+                              </div>
+                            )}
+                          </div>
                         </div>
                       )}
 
