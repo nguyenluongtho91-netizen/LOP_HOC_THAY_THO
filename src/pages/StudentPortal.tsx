@@ -1473,7 +1473,7 @@ export default function StudentPortal() {
               <div className="flex flex-wrap items-center gap-2">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/25 border border-amber-300/45 text-amber-100 text-[11px] sm:text-xs font-black uppercase tracking-wider backdrop-blur-md shadow-xs">
                   <Flame className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-                  <span>Toán & Hóa Thầy Thọ · Tân Mùi 1991</span>
+                  <span>Toán & Hóa Thầy Thọ</span>
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 border border-white/30 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md">
                   <Sparkles className="w-3.5 h-3.5 text-yellow-300 shrink-0" />

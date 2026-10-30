@@ -472,7 +472,7 @@ export default function KhoaHocLayGocHoaPage() {
             <div className="flex flex-wrap items-center gap-2">
               <span className="px-3 py-1 rounded-full bg-amber-400/25 border border-amber-300/40 text-amber-100 text-[11px] sm:text-xs font-black uppercase tracking-wider backdrop-blur-md flex items-center gap-1.5">
                 <Flame className="w-3.5 h-3.5 text-amber-300" />
-                <span>Toán & Hóa Thầy Thọ · Tân Mùi 1991</span>
+                <span>Toán & Hóa Thầy Thọ</span>
               </span>
               <span className="px-3 py-1 rounded-full bg-white/20 border border-white/30 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider backdrop-blur-md">
                 🎓 9 Chuyên Đề Toàn Diện (360 Câu Chuẩn 10, 11, 12 & ĐH)
