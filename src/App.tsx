@@ -3,6 +3,7 @@ import React, { useEffect, Suspense, lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import Layout from '@/components/Layout'
+import InstallPwaModal from '@/components/InstallPwaModal'
 
 // Pages Học sinh & Cốt lõi (Load trực tiếp để tốc độ phản hồi tức thì)
 import Login from '@/pages/Login'
@@ -116,6 +117,7 @@ export default function App() {
 
   return (
     <Suspense fallback={<Spinner />}>
+      <InstallPwaModal />
       <Routes>
         {/* 1. CỔNG CÔNG KHAI DÀNH CHO HỌC SINH VÀ HỌC LIỆU TOÀN DIỆN */}
                 {/* CỔNG QUẢN TRỊ THPT TRỰC TIẾP */}

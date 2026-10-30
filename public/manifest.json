@@ -1,0 +1,47 @@
+{
+  "name": "Lớp Học Thầy Thọ - Hệ Thống Học Tập",
+  "short_name": "Lớp Thầy Thọ",
+  "description": "Cổng thi và hệ thống quản lý học tập Lớp Học Thầy Thọ",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0d9488",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cổng Thi Học Sinh",
+      "short_name": "Cổng Thi",
+      "description": "Học sinh làm bài tập và xem kết quả",
+      "url": "/thi",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Quản Lý Giáo Viên",
+      "short_name": "Giáo Viên",
+      "description": "Quản lý lớp học và điểm thi",
+      "url": "/",
+      "icons": [{ "src": "/pwa-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
