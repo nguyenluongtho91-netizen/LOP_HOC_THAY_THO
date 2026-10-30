@@ -22,7 +22,7 @@ export function normalizeVietnamese(str: string): string {
     .trim()
 }
 
-export type ExamCategory = 'homework' | 'chapter' | 'practice' | 'survey'
+export type ExamCategory = 'homework' | 'basic' | 'advanced' | 'mock' | 'topic' | 'material' | 'chapter' | 'practice' | 'survey'
 
 /**
  * Kiểm tra tên lớp có phải là Lớp Khảo Sát Chất Lượng hay không
@@ -64,11 +64,17 @@ export function isChapterClassName(className?: string | null): boolean {
 export function getExamCategory(room: any): ExamCategory {
   if (!room) return 'homework'
 
-  // Cấu hình rõ ràng từ settings phòng thi
-  if (room.settings?.category === 'survey' || room.settings?.type === 'survey') return 'survey'
-  if (room.settings?.category === 'chapter' || room.settings?.type === 'chapter') return 'chapter'
-  if (room.settings?.category === 'practice' || room.settings?.type === 'practice') return 'practice'
-  if (room.settings?.category === 'homework' || room.settings?.type === 'homework') return 'homework'
+  // Cấu hình rõ ràng từ settings phòng thi (Hỗ trợ 6 mục chuẩn theo yêu cầu Thầy Thọ)
+  const cat = room.settings?.category || room.settings?.type
+  if (cat === 'homework') return 'homework'
+  if (cat === 'basic') return 'basic'
+  if (cat === 'advanced') return 'advanced'
+  if (cat === 'mock') return 'mock'
+  if (cat === 'topic') return 'topic'
+  if (cat === 'material') return 'material'
+  if (cat === 'survey') return 'mock'
+  if (cat === 'chapter') return 'topic'
+  if (cat === 'practice') return 'basic'
 
   const className = room.classes?.class_name || room.classes?.name || ''
   const title = room.exams?.title || room.room_name || room.name || room.title || (room as any).examTitle || ''
@@ -132,14 +138,69 @@ export function getCategoryMeta(category: ExamCategory) {
   switch (category) {
     case 'homework':
       return {
-        label: 'ĐỀ THI & BÀI TẬP',
-        shortLabel: 'ĐỀ THI & BÀI TẬP',
-        icon: '🔴',
-        tagBg: 'bg-rose-50 text-rose-700 border-rose-200',
+        label: '1. ĐỀ THI & BÀI TẬP (BẮT BUỘC)',
+        shortLabel: 'ĐỀ BẮT BUỘC',
+        icon: '📝',
+        tagBg: 'bg-amber-50 text-amber-800 border-amber-300',
+        badgeBg: 'bg-amber-600 text-white',
+        border: 'border-amber-300',
+        accentColor: 'amber',
+        antiCheatNotice: '📝 ĐỀ THI & BÀI TẬP NỘP CHO THẦY'
+      }
+    case 'basic':
+      return {
+        label: '2. RÈN LUYỆN CƠ BẢN',
+        shortLabel: 'CƠ BẢN',
+        icon: '🎯',
+        tagBg: 'bg-emerald-50 text-emerald-800 border-emerald-300',
+        badgeBg: 'bg-emerald-600 text-white',
+        border: 'border-emerald-300',
+        accentColor: 'emerald',
+        antiCheatNotice: '🎯 BÀI TẬP RÈN LUYỆN CƠ BẢN'
+      }
+    case 'advanced':
+      return {
+        label: '3. RÈN LUYỆN NÂNG CAO',
+        shortLabel: 'NÂNG CAO',
+        icon: '🔥',
+        tagBg: 'bg-rose-50 text-rose-800 border-rose-300',
         badgeBg: 'bg-rose-600 text-white',
-        border: 'border-rose-200',
+        border: 'border-rose-300',
         accentColor: 'rose',
-        antiCheatNotice: '🛡️ ĐỀ THI & BÀI TẬP'
+        antiCheatNotice: '🔥 BÀI TẬP RÈN LUYỆN NÂNG CAO'
+      }
+    case 'mock':
+      return {
+        label: '4. ĐỀ THI THỬ & KHẢO SÁT',
+        shortLabel: 'THI THỬ',
+        icon: '🏆',
+        tagBg: 'bg-cyan-50 text-cyan-800 border-cyan-300',
+        badgeBg: 'bg-cyan-600 text-white',
+        border: 'border-cyan-300',
+        accentColor: 'cyan',
+        antiCheatNotice: '🏆 ĐỀ THI THỬ & KHẢO SÁT CHẤT LƯỢNG'
+      }
+    case 'topic':
+      return {
+        label: '5. LUYỆN CÁC CHUYÊN ĐỀ',
+        shortLabel: 'CHUYÊN ĐỀ',
+        icon: '🧪',
+        tagBg: 'bg-indigo-50 text-indigo-800 border-indigo-300',
+        badgeBg: 'bg-indigo-600 text-white',
+        border: 'border-indigo-300',
+        accentColor: 'indigo',
+        antiCheatNotice: '🧪 LUYỆN CHUYÊN ĐỀ 3 DẠNG THỨC BỘ GD&ĐT'
+      }
+    case 'material':
+      return {
+        label: '6. TÀI LIỆU THAM KHẢO',
+        shortLabel: 'TÀI LIỆU',
+        icon: '📚',
+        tagBg: 'bg-purple-50 text-purple-800 border-purple-300',
+        badgeBg: 'bg-purple-600 text-white',
+        border: 'border-purple-300',
+        accentColor: 'purple',
+        antiCheatNotice: '📚 TÀI LIỆU THAM KHẢO & ĐỀ ÔN TẬP'
       }
     case 'chapter':
       return {

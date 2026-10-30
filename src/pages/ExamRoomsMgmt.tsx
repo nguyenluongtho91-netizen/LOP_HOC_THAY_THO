@@ -1329,151 +1329,238 @@ const isFirstRender = useRef(true)
             )}
           </div>
 
-          {/* 🎯 PHÂN LOẠI 4 PHÒNG THI */}
-          <div>
-            <label className="label">3. Phân loại phòng thi (Hệ thống 4 phòng):</label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {/* 🎯 PHÂN LOẠI 6 MỤC HỌC TẬP TRÊN CỔNG HỌC SINH */}
+          <div className="space-y-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <label className="label text-sm font-black text-slate-900 flex items-center gap-1.5">
+                <span>📂</span> 3. Chọn Mục Xuất Hiện Trên Cổng Học Sinh (6 Mục chuẩn):
+              </label>
+              <span className="text-[11px] text-teal-800 font-bold bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                Thầy ra mục nào bài sẽ vào đúng mục đó của học sinh
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+              {/* 1. Đề thi & bài tập nộp cho Thầy */}
               <button
                 type="button"
                 onClick={() => {
                   setForm(prev => ({
                     ...prev,
-                    settings: {
-                      ...prev.settings,
-                      category: 'homework',
-                      antiCheat: true
-                    }
+                    settings: { ...prev.settings, category: "homework", antiCheat: true }
                   }))
                 }}
-                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
-                  (form.settings.category || 'homework') === 'homework'
-                    ? 'bg-rose-50 border-rose-400 text-rose-800 shadow-xs ring-2 ring-rose-200'
-                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-2.5 ${
+                  (form.settings.category || "homework") === "homework"
+                    ? "bg-amber-50/90 border-amber-400 text-amber-950 shadow-sm ring-2 ring-amber-300"
+                    : "bg-white border-slate-200 hover:border-slate-300 text-slate-700"
                 }`}
               >
-                <span className="uppercase font-black text-center">🔴 1. ĐỀ THI & BÀI TẬP</span>
-                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
+                <span className="text-xl shrink-0">📝</span>
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase text-amber-900">1. Đề Thi & Bài Tập (Bắt buộc)</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug">Học sinh bắt buộc phải nộp, có chuông cảnh báo hoàn thành</div>
+                </div>
               </button>
 
+              {/* 2. Rèn luyện cơ bản */}
               <button
                 type="button"
                 onClick={() => {
                   setForm(prev => ({
                     ...prev,
-                    settings: {
-                      ...prev.settings,
-                      category: 'chapter',
-                      antiCheat: true
-                    }
+                    settings: { ...prev.settings, category: "basic", antiCheat: true }
                   }))
                 }}
-                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
-                  form.settings.category === 'chapter'
-                    ? 'bg-blue-50 border-blue-400 text-blue-800 shadow-xs ring-2 ring-blue-200'
-                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-2.5 ${
+                  form.settings.category === "basic" || form.settings.category === "practice"
+                    ? "bg-emerald-50/90 border-emerald-400 text-emerald-950 shadow-sm ring-2 ring-emerald-300"
+                    : "bg-white border-slate-200 hover:border-slate-300 text-slate-700"
                 }`}
               >
-                <span className="uppercase font-black text-center">📘 2. LUYỆN ĐỀ THEO CHƯƠNG</span>
-                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
+                <span className="text-xl shrink-0">🎯</span>
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase text-emerald-900">2. Rèn Luyện Cơ Bản</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug">Vào mục rèn luyện cơ bản (gồm Đề thi & Kết quả)</div>
+                </div>
               </button>
 
+              {/* 3. Rèn luyện nâng cao */}
               <button
                 type="button"
                 onClick={() => {
                   setForm(prev => ({
                     ...prev,
-                    settings: {
-                      ...prev.settings,
-                      category: 'practice',
-                      antiCheat: true
-                    }
+                    settings: { ...prev.settings, category: "advanced", antiCheat: true }
                   }))
                 }}
-                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
-                  form.settings.category === 'practice'
-                    ? 'bg-emerald-50 border-emerald-400 text-emerald-800 shadow-xs ring-2 ring-emerald-200'
-                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-2.5 ${
+                  form.settings.category === "advanced"
+                    ? "bg-rose-50/90 border-rose-400 text-rose-950 shadow-sm ring-2 ring-rose-300"
+                    : "bg-white border-slate-200 hover:border-slate-300 text-slate-700"
                 }`}
               >
-                <span className="uppercase font-black text-center">🎯 3. LUYỆN ĐỀ THI</span>
-                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
+                <span className="text-xl shrink-0">🔥</span>
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase text-rose-900">3. Rèn Luyện Nâng Cao</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug">Vào mục rèn luyện nâng cao (gồm Đề thi & Kết quả)</div>
+                </div>
               </button>
 
+              {/* 4. Đề thi thử */}
               <button
                 type="button"
                 onClick={() => {
                   setForm(prev => ({
                     ...prev,
-                    settings: {
-                      ...prev.settings,
-                      category: 'survey',
-                      antiCheat: true
-                    }
+                    settings: { ...prev.settings, category: "mock", antiCheat: true }
                   }))
                 }}
-                className={`p-2.5 rounded-xl border text-xs font-bold transition-all flex flex-col items-center justify-center gap-1 cursor-pointer ${
-                  form.settings.category === 'survey'
-                    ? 'bg-purple-50 border-purple-400 text-purple-800 shadow-xs ring-2 ring-purple-200'
-                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-2.5 ${
+                  form.settings.category === "mock" || form.settings.category === "survey"
+                    ? "bg-cyan-50/90 border-cyan-400 text-cyan-950 shadow-sm ring-2 ring-cyan-300"
+                    : "bg-white border-slate-200 hover:border-slate-300 text-slate-700"
                 }`}
               >
-                <span className="uppercase font-black text-center">🟣 4. KHẢO SÁT CHẤT LƯỢNG</span>
-                <span className="text-[10px] text-slate-500 font-normal">Có giám sát chuyển tab</span>
+                <span className="text-xl shrink-0">🏆</span>
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase text-cyan-900">4. Đề Thi Thử & Khảo Sát</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug">Vào mục Đề thi thử (gồm Đề thi & Kết quả)</div>
+                </div>
+              </button>
+
+              {/* 5. Luyện các chuyên đề */}
+              <button
+                type="button"
+                onClick={() => {
+                  setForm(prev => ({
+                    ...prev,
+                    settings: { ...prev.settings, category: "topic", antiCheat: true }
+                  }))
+                }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-2.5 ${
+                  form.settings.category === "topic" || form.settings.category === "chapter"
+                    ? "bg-indigo-50/90 border-indigo-400 text-indigo-950 shadow-sm ring-2 ring-indigo-300"
+                    : "bg-white border-slate-200 hover:border-slate-300 text-slate-700"
+                }`}
+              >
+                <span className="text-xl shrink-0">🧪</span>
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase text-indigo-900">5. Luyện Các Chuyên Đề</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug">Vào mục Luyện chuyên đề 3 dạng thức mới Bộ GD&ĐT</div>
+                </div>
+              </button>
+
+              {/* 6. Tài liệu tham khảo */}
+              <button
+                type="button"
+                onClick={() => {
+                  setForm(prev => ({
+                    ...prev,
+                    settings: { ...prev.settings, category: "material", antiCheat: true }
+                  }))
+                }}
+                className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex items-start gap-2.5 ${
+                  form.settings.category === "material"
+                    ? "bg-purple-50/90 border-purple-400 text-purple-950 shadow-sm ring-2 ring-purple-300"
+                    : "bg-white border-slate-200 hover:border-slate-300 text-slate-700"
+                }`}
+              >
+                <span className="text-xl shrink-0">📚</span>
+                <div className="min-w-0">
+                  <div className="text-xs font-black uppercase text-purple-900">6. Tài Liệu Tham Khảo</div>
+                  <div className="text-[10px] text-slate-500 mt-0.5 leading-snug">Vào mục Tài liệu tham khảo & Đề ôn tập (Thầy cấp quyền)</div>
+                </div>
               </button>
             </div>
           </div>
 
-          {/* 🎯 CHỈ ĐỊNH ĐÍCH DANH HỌC SINH */}
+          {/* 🎯 ĐỐI TƯỢNG HỌC SINH LÀM BÀI: CẢ LỚP HOẶC RA RIÊNG CHO TỪNG HỌC SINH */}
           {selectedClassIds.length > 0 && classStudents.length > 0 && (
-            <div className="p-4 bg-teal-50/50 border border-teal-200/80 rounded-2xl space-y-3">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-teal-800 uppercase tracking-wide flex items-center gap-1.5">
-                  <span>🎯</span> Chỉ định học sinh làm bài ({classStudents.length} em):
+            <div className="p-4 bg-teal-50/60 border border-teal-200 rounded-2xl space-y-3">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <label className="text-xs font-black text-teal-900 uppercase tracking-wide flex items-center gap-1.5">
+                  <span>👥</span> 4. Đối tượng học sinh làm bài ({classStudents.length} em trong lớp):
                 </label>
-                <div className="flex items-center gap-2">
+
+                {/* 2 Chế độ: CẢ LỚP vs RIÊNG TỪNG EM */}
+                <div className="flex items-center gap-1 p-1 bg-white rounded-xl border border-teal-200 shadow-2xs">
                   <button
                     type="button"
-                    onClick={() => {
-                      const allIds = classStudents.map(s => s.id)
-                      setForm(prev => ({
-                        ...prev,
-                        settings: { ...prev.settings, assigned_student_ids: allIds }
-                      }))
-                    }}
-                    className="text-[11px] font-bold text-teal-700 hover:text-teal-900 hover:underline cursor-pointer"
+                    onClick={() => setForm(prev => ({ ...prev, settings: { ...prev.settings, assigned_student_ids: [] } }))}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                      (!form.settings.assigned_student_ids || form.settings.assigned_student_ids.length === 0)
+                        ? "bg-teal-600 text-white shadow-xs"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
                   >
-                    Chọn tất cả
+                    <span>🏫 Ra Cho Cả Lớp</span>
                   </button>
-                  <span className="text-slate-300">|</span>
+
                   <button
                     type="button"
                     onClick={() => {
-                      setForm(prev => ({
-                        ...prev,
-                        settings: { ...prev.settings, assigned_student_ids: [] }
-                      }))
+                      if (!form.settings.assigned_student_ids || form.settings.assigned_student_ids.length === 0) {
+                        const firstId = classStudents[0]?.id ? [classStudents[0].id] : [];
+                        setForm(prev => ({ ...prev, settings: { ...prev.settings, assigned_student_ids: firstId } }));
+                      }
                     }}
-                    className="text-[11px] font-bold text-rose-500 hover:text-rose-700 hover:underline cursor-pointer"
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                      (form.settings.assigned_student_ids && form.settings.assigned_student_ids.length > 0)
+                        ? "bg-amber-600 text-white shadow-xs"
+                        : "text-slate-600 hover:text-slate-900"
+                    }`}
                   >
-                    Bỏ chọn hết
+                    <span>🎯 Ra Riêng Từng Học Sinh</span>
+                    {form.settings.assigned_student_ids && form.settings.assigned_student_ids.length > 0 && (
+                      <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-white/20 font-mono">
+                        {form.settings.assigned_student_ids.length}
+                      </span>
+                    )}
                   </button>
                 </div>
               </div>
 
-              <div className="text-[11px] text-slate-500 leading-tight">
+              {/* Mô tả trạng thái lựa chọn */}
+              <div className="text-[11px] text-slate-600">
                 {(!form.settings.assigned_student_ids || form.settings.assigned_student_ids.length === 0) ? (
-                  <span className="text-amber-700 font-medium">
-                    ⚠️ <strong>Mặc định (Cả lớp):</strong> Mọi học sinh trong lớp đều có thể làm bài. Hãy tích chọn riêng nếu Thầy chỉ định cụ thể từng em (ví dụ em yếu môn Toán).
-                  </span>
+                  <div className="p-2.5 rounded-xl bg-teal-100/60 border border-teal-200 text-teal-900 font-medium flex items-center gap-2">
+                    <span>✅</span>
+                    <span><strong>Đang chọn: Ra cho cả lớp.</strong> Mọi học sinh trong các lớp được chọn đều sẽ nhìn thấy đề này.</span>
+                  </div>
                 ) : (
-                  <span className="text-teal-700 font-bold">
-                    ✅ <strong>Đã chỉ định {form.settings.assigned_student_ids.length} học sinh:</strong> Chỉ những em được tích chọn mới nhìn thấy bài thi này trong tài khoản.
-                  </span>
+                  <div className="p-2.5 rounded-xl bg-amber-100/60 border border-amber-200 text-amber-950 font-medium flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <span>🎯</span>
+                      <span><strong>Đang chọn: Ra riêng cho từng học sinh.</strong> Đã chỉ định <strong>{form.settings.assigned_student_ids.length}/{classStudents.length}</strong> học sinh. Chỉ những em được tích chọn mới nhìn thấy bài thi này.</span>
+                    </div>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const allIds = classStudents.map(s => s.id)
+                          setForm(prev => ({ ...prev, settings: { ...prev.settings, assigned_student_ids: allIds } }))
+                        }}
+                        className="text-[11px] font-bold text-teal-700 hover:underline cursor-pointer"
+                      >
+                        Chọn tất cả
+                      </button>
+                      <span className="text-slate-300">|</span>
+                      <button
+                        type="button"
+                        onClick={() => setForm(prev => ({ ...prev, settings: { ...prev.settings, assigned_student_ids: [] } }))}
+                        className="text-[11px] font-bold text-rose-600 hover:underline cursor-pointer"
+                      >
+                        Về cả lớp
+                      </button>
+                    </div>
+                  </div>
                 )}
               </div>
 
-              {classStudents.length > 0 ? (
-                <div className="max-h-48 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-2 p-2.5 bg-white rounded-xl border border-teal-100">
+              {/* Danh sách checkbox chỉ hiển thị khi Thầy chọn ra riêng từng học sinh */}
+              {form.settings.assigned_student_ids && form.settings.assigned_student_ids.length > 0 && (
+                <div className="max-h-52 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 p-2.5 bg-white rounded-xl border border-teal-100 animate-in fade-in duration-200">
                   {classStudents.map(s => {
                     const isChecked = (form.settings.assigned_student_ids || []).includes(s.id)
                     return (
@@ -1481,8 +1568,8 @@ const isFirstRender = useRef(true)
                         key={s.id}
                         className={`flex items-center gap-2 p-2 rounded-lg border text-xs cursor-pointer transition select-none ${
                           isChecked 
-                            ? 'bg-teal-50 border-teal-300 text-teal-900 font-bold shadow-xs' 
-                            : 'bg-white border-slate-100 hover:bg-slate-50 text-slate-700'
+                            ? "bg-amber-50 border-amber-300 text-amber-950 font-bold shadow-2xs" 
+                            : "bg-white border-slate-100 hover:bg-slate-50 text-slate-700"
                         }`}
                       >
                         <input
@@ -1498,7 +1585,7 @@ const isFirstRender = useRef(true)
                               settings: { ...prev.settings, assigned_student_ids: updated }
                             }))
                           }}
-                          className="w-4 h-4 accent-teal-600 rounded cursor-pointer"
+                          className="w-4 h-4 accent-amber-600 rounded cursor-pointer"
                         />
                         <span className="font-mono text-[10px] bg-slate-100 px-1.5 py-0.5 rounded text-slate-600 font-bold">
                           {s.student_code}
@@ -1508,8 +1595,6 @@ const isFirstRender = useRef(true)
                     )
                   })}
                 </div>
-              ) : (
-                <p className="text-xs text-slate-400 italic">Chưa có học sinh nào trong lớp này.</p>
               )}
             </div>
           )}

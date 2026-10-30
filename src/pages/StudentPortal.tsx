@@ -1027,15 +1027,28 @@ export default function StudentPortal() {
     ? surveyCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / surveyCompleted.length
     : null
 
-  // Phân loại Cơ bản vs Nâng cao vs Thi thử
+  // ── PHÂN LOẠI THEO 6 MỤC THẦY RA ĐỀ ─────────────────────────────
+  const isMockExam = (r: any) => {
+    const cat = getExamCategory(r);
+    if (cat === "mock" || cat === "survey") return true;
+    if (cat === "basic" || cat === "advanced" || cat === "homework" || cat === "topic" || cat === "material") return false;
+    const title = (r.exams?.title || r.room_name || r.name || r.title || "").toLowerCase();
+    return title.includes("thi thử") || title.includes("thi thu") || title.includes("thpt") || title.includes("học kỳ") || title.includes("hoc ky") || title.includes("khảo sát") || title.includes("khao sat") || title.includes("kscl");
+  };
+
   const isAdvancedExam = (r: any) => {
+    const cat = getExamCategory(r);
+    if (cat === "advanced") return true;
+    if (cat === "basic" || cat === "mock" || cat === "homework" || cat === "topic" || cat === "material") return false;
     const title = (r.exams?.title || r.room_name || r.name || r.title || "").toLowerCase();
     return title.includes("nâng cao") || title.includes("nang cao") || title.includes("vận dụng") || title.includes("van dung") || title.includes("vdc") || title.includes("chuyên sâu") || title.includes("hsg") || title.includes("9+") || title.includes("10 điểm");
   };
 
-  const isMockExam = (r: any) => {
-    const title = (r.exams?.title || r.room_name || r.name || r.title || "").toLowerCase();
-    return getExamCategory(r) === "survey" || title.includes("thi thử") || title.includes("thi thu") || title.includes("thpt") || title.includes("học kỳ") || title.includes("hoc ky") || title.includes("khảo sát") || title.includes("khao sat") || title.includes("kscl");
+  const isBasicExam = (r: any) => {
+    const cat = getExamCategory(r);
+    if (cat === "basic") return true;
+    if (cat === "homework" || cat === "advanced" || cat === "mock" || cat === "topic" || cat === "material") return false;
+    return !isAdvancedExam(r) && !isMockExam(r);
   };
 
   const nonHomeworkRooms = examsList.filter(r => getExamCategory(r) !== "homework");
@@ -1047,15 +1060,25 @@ export default function StudentPortal() {
   const mockPending = nonHomeworkPending.filter(isMockExam);
   const mockCompleted = nonHomeworkCompleted.filter(({ room }) => isMockExam(room));
 
-  // Mục 2: Cơ bản (loại trừ thi thử và nâng cao)
-  const basicRooms = nonHomeworkRooms.filter(r => !isAdvancedExam(r) && !isMockExam(r));
-  const basicPending = nonHomeworkPending.filter(r => !isAdvancedExam(r) && !isMockExam(r));
-  const basicCompleted = nonHomeworkCompleted.filter(({ room }) => !isAdvancedExam(room) && !isMockExam(room));
+  // Mục 2: Cơ bản
+  const basicRooms = nonHomeworkRooms.filter(isBasicExam);
+  const basicPending = nonHomeworkPending.filter(isBasicExam);
+  const basicCompleted = nonHomeworkCompleted.filter(({ room }) => isBasicExam(room));
 
-  // Mục 3: Nâng cao (loại trừ thi thử)
-  const advancedRooms = nonHomeworkRooms.filter(r => isAdvancedExam(r) && !isMockExam(r));
-  const advancedPending = nonHomeworkPending.filter(r => isAdvancedExam(r) && !isMockExam(r));
-  const advancedCompleted = nonHomeworkCompleted.filter(({ room }) => isAdvancedExam(room) && !isMockExam(room));
+  // Mục 3: Nâng cao
+  const advancedRooms = nonHomeworkRooms.filter(isAdvancedExam);
+  const advancedPending = nonHomeworkPending.filter(isAdvancedExam);
+  const advancedCompleted = nonHomeworkCompleted.filter(({ room }) => isAdvancedExam(room));
+
+  // Mục 5: Luyện các chuyên đề
+  const topicRooms = examsList.filter(r => getExamCategory(r) === "topic" || getExamCategory(r) === "chapter");
+  const topicPending = pendingExams.filter(r => getExamCategory(r) === "topic" || getExamCategory(r) === "chapter");
+  const topicCompleted = completedExams.filter(({ room }) => getExamCategory(room) === "topic" || getExamCategory(room) === "chapter");
+
+  // Mục 6: Tài liệu tham khảo & Đề ôn tập
+  const materialRooms = examsList.filter(r => getExamCategory(r) === "material");
+  const materialPending = pendingExams.filter(r => getExamCategory(r) === "material");
+  const materialCompleted = completedExams.filter(({ room }) => getExamCategory(room) === "material");
 
   const hasMaterialAccess = Boolean(
     isTeacherUser || 
@@ -2458,6 +2481,25 @@ export default function StudentPortal() {
                               </button>
                             </div>
                           </div>
+
+                          {topicPending.length > 0 && (
+                            <div className="pt-2">
+                              <div className="text-xs font-black uppercase text-indigo-800 tracking-wider mb-2 flex items-center gap-1.5">
+                                <span>📝 ĐỀ THI CHUYÊN ĐỀ ĐƯỢC THẦY GIAO</span>
+                                <span className="text-[10px] text-slate-400">({topicPending.length} đề)</span>
+                              </div>
+                              {renderPendingGrid(topicPending, "chapter")}
+                            </div>
+                          )}
+                          {topicCompleted.length > 0 && (
+                            <div className="pt-2">
+                              <div className="text-xs font-black uppercase text-indigo-800 tracking-wider mb-2 flex items-center gap-1.5">
+                                <span>📊 KẾT QUẢ BÀI LÀM CHUYÊN ĐỀ</span>
+                                <span className="text-[10px] text-slate-400">({topicCompleted.length} bài)</span>
+                              </div>
+                              {renderCompletedTable(topicCompleted, "chapter")}
+                            </div>
+                          )}
                         </div>
                       )}
 
