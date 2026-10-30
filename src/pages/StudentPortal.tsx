@@ -3,7 +3,8 @@ import React, { useEffect, useState, useMemo, Suspense, lazy } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { 
   LogOut, 
-  ChevronRight, 
+  ChevronRight,
+  ChevronDown, 
   BookOpen, 
   UserCircle, 
   GraduationCap, 
@@ -91,6 +92,22 @@ export default function StudentPortal() {
 
   // Quản lý Tab hiển thị: 'homework' (1. BÀI TẬP VỀ NHÀ) | 'chapter' (2. LUYỆN ĐỀ THEO CHƯƠNG) | 'practice' (3. LUYỆN ĐỀ THI) | 'survey' (4. KHẢO SÁT CHẤT LƯỢNG) | 'all' (Tất cả)
   const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'survey' | 'all'>('homework')
+
+  // ── MẶC ĐỊNH THU GỌN BÊN HỌC SINH (BẤM VÀO MỚI HIỆN RA) ──
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    homeworkPending: false,
+    homeworkCompleted: false,
+    chapterPending: false,
+    chapterCompleted: false,
+    practicePending: false,
+    practiceCompleted: false,
+    surveyPending: false,
+    surveyCompleted: false,
+  })
+
+  const toggleSection = (key: string) => {
+    setExpandedSections(prev => ({ ...prev, [key]: !prev[key] }))
+  }
   const [accessConfig, setAccessConfig] = useState<GranularAccessConfig>(() => getHoa12AccessConfigSync())
   // Modal Cảnh Báo Quy Chế (Chỉ hiện khi học sinh bấm vào bài thi)
   const [examRuleModalTarget, setExamRuleModalTarget] = useState<{
@@ -1895,22 +1912,112 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* A. Danh sách BTVN Cần Nộp */}
-            <div className="space-y-3">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📝 Đề Thi & Bài Tập Cần Nộp Cho Thầy</span>
-                <span className="text-xs font-bold text-slate-500">({homeworkPending.length} bài chờ)</span>
-              </h3>
-              {renderPendingGrid(homeworkPending, 'homework')}
+            {/* A. Danh sách BTVN Cần Nộp (Mặc định thu gọn, bấm vào là mở ra) */}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-amber-200/90 bg-gradient-to-r from-amber-50/50 via-white to-amber-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('homeworkPending')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl shadow-md shadow-amber-500/25 shrink-0 group-hover:scale-105 transition-transform">
+                    📝
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Đề Thi & Bài Tập Cần Nộp Cho Thầy
+                      </h3>
+                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                        homeworkPending.length > 0 
+                          ? 'bg-amber-100 text-amber-900 border-amber-300 animate-pulse'
+                          : 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                      }`}>
+                        {homeworkPending.length > 0 ? `${homeworkPending.length} bài chờ làm` : '0 bài chờ (Đã hoàn thành)'}
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.homeworkPending 
+                        ? 'Bấm để thu gọn danh sách' 
+                        : 'Bấm vào để mở danh sách đề thi và bài tập cần làm'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-amber-700 bg-amber-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.homeworkPending ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('homeworkPending'); }}
+                    className="p-2 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-amber-800 transition-all cursor-pointer shadow-2xs"
+                    title={expandedSections.homeworkPending ? 'Thu gọn' : 'Mở ra'}
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkPending ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Nội dung danh sách bài tập khi mở ra */}
+              {expandedSections.homeworkPending && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-amber-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderPendingGrid(homeworkPending, 'homework')}
+                  </div>
+                </div>
+              )}
             </div>
 
-            {/* B. Bảng Điểm & Bài Giải BTVN Đã Nộp */}
-            <div className="space-y-3 pt-4 border-t border-slate-100">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📊 Bảng Điểm & Lịch Sử Đã Nộp</span>
-                <span className="text-xs font-bold text-slate-500">({homeworkCompleted.length} bài)</span>
-              </h3>
-              {renderCompletedTable(homeworkCompleted, 'homework')}
+            {/* B. Bảng Điểm & Bài Giải BTVN Đã Nộp (Mặc định thu gọn, bấm vào là mở ra) */}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-blue-200/90 bg-gradient-to-r from-blue-50/50 via-white to-indigo-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('homeworkCompleted')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow-md shadow-blue-600/25 shrink-0 group-hover:scale-105 transition-transform">
+                    📊
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Bảng Điểm & Lịch Sử Đã Nộp
+                      </h3>
+                      <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-900 border border-blue-300">
+                        {homeworkCompleted.length} bài đã nộp
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.homeworkCompleted 
+                        ? 'Bấm để thu gọn bảng điểm' 
+                        : 'Bấm vào để tra cứu điểm số, lời giải chi tiết và nhận xét của Thầy'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-blue-700 bg-blue-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.homeworkCompleted ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('homeworkCompleted'); }}
+                    className="p-2 rounded-xl bg-blue-100/80 hover:bg-blue-200 text-blue-800 transition-all cursor-pointer shadow-2xs"
+                    title={expandedSections.homeworkCompleted ? 'Thu gọn' : 'Mở ra'}
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkCompleted ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Nội dung bảng điểm khi mở ra */}
+              {expandedSections.homeworkCompleted && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-blue-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderCompletedTable(homeworkCompleted, 'homework')}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -2189,22 +2296,108 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* A. Danh sách Đề Chương Cần Luyện */}
-            <div className="space-y-3">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📚 Đề Chương Cần Luyện</span>
-                <span className="text-xs font-bold text-slate-500">({chapterPending.length} đề chờ)</span>
-              </h3>
-              {renderPendingGrid(chapterPending, 'chapter')}
+            {/* A. Danh sách Đề Chương Cần Luyện (Mặc định thu gọn, bấm vào là mở ra) */}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-blue-200/90 bg-gradient-to-r from-blue-50/50 via-white to-blue-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('chapterPending')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow-md shadow-blue-600/25 shrink-0 group-hover:scale-105 transition-transform">
+                    📚
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Đề Chương Cần Luyện
+                      </h3>
+                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                        chapterPending.length > 0 
+                          ? 'bg-blue-100 text-blue-900 border-blue-300 animate-pulse'
+                          : 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                      }`}>
+                        {chapterPending.length} đề chờ
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.chapterPending 
+                        ? 'Bấm để thu gọn danh sách' 
+                        : 'Bấm vào để mở danh sách đề ôn luyện theo từng chương'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-blue-700 bg-blue-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.chapterPending ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('chapterPending'); }}
+                    className="p-2 rounded-xl bg-blue-100/80 hover:bg-blue-200 text-blue-800 transition-all cursor-pointer shadow-2xs"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.chapterPending ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {expandedSections.chapterPending && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-blue-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderPendingGrid(chapterPending, 'chapter')}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* B. Bảng Điểm & Bài Giải Đề Chương Đã Nộp */}
-            <div className="space-y-3 pt-4 border-t border-slate-100">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📈 Bảng Điểm Luyện Đề Chương</span>
-                <span className="text-xs font-bold text-slate-500">({chapterCompleted.length} bài)</span>
-              </h3>
-              {renderCompletedTable(chapterCompleted, 'chapter')}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-indigo-200/90 bg-gradient-to-r from-indigo-50/50 via-white to-purple-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('chapterCompleted')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl shadow-md shadow-indigo-600/25 shrink-0 group-hover:scale-105 transition-transform">
+                    📈
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Bảng Điểm Luyện Đề Chương
+                      </h3>
+                      <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-900 border border-indigo-300">
+                        {chapterCompleted.length} bài đã nộp
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.chapterCompleted 
+                        ? 'Bấm để thu gọn bảng điểm' 
+                        : 'Bấm vào để tra cứu điểm số và bài giải chi tiết'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-indigo-700 bg-indigo-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.chapterCompleted ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('chapterCompleted'); }}
+                    className="p-2 rounded-xl bg-indigo-100/80 hover:bg-indigo-200 text-indigo-800 transition-all cursor-pointer shadow-2xs"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.chapterCompleted ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {expandedSections.chapterCompleted && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-indigo-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderCompletedTable(chapterCompleted, 'chapter')}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -2264,22 +2457,108 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* A. Danh sách Đề Thi Cần Luyện */}
-            <div className="space-y-3">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>🎯 Đề Thi Cần Luyện</span>
-                <span className="text-xs font-bold text-slate-500">({practicePending.length} đề chờ)</span>
-              </h3>
-              {renderPendingGrid(practicePending, 'practice')}
+            {/* A. Danh sách Đề Thi Cần Luyện (Mặc định thu gọn, bấm vào là mở ra) */}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-emerald-200/90 bg-gradient-to-r from-emerald-50/50 via-white to-teal-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('practicePending')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl shadow-md shadow-emerald-600/25 shrink-0 group-hover:scale-105 transition-transform">
+                    🎯
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Đề Thi Cần Luyện
+                      </h3>
+                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                        practicePending.length > 0 
+                          ? 'bg-emerald-100 text-emerald-900 border-emerald-300 animate-pulse'
+                          : 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                      }`}>
+                        {practicePending.length} đề chờ
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.practicePending 
+                        ? 'Bấm để thu gọn danh sách' 
+                        : 'Bấm vào để mở danh sách đề thi học kỳ & khảo sát'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-emerald-700 bg-emerald-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.practicePending ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('practicePending'); }}
+                    className="p-2 rounded-xl bg-emerald-100/80 hover:bg-emerald-200 text-emerald-800 transition-all cursor-pointer shadow-2xs"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.practicePending ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {expandedSections.practicePending && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-emerald-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderPendingGrid(practicePending, 'practice')}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* B. Bảng Điểm & Bài Giải Đề Thi Đã Nộp */}
-            <div className="space-y-3 pt-4 border-t border-slate-100">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>🏆 Bảng Điểm & Kết Quả Luyện Đề Thi</span>
-                <span className="text-xs font-bold text-slate-500">({practiceCompleted.length} bài)</span>
-              </h3>
-              {renderCompletedTable(practiceCompleted, 'practice')}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-teal-200/90 bg-gradient-to-r from-teal-50/50 via-white to-cyan-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('practiceCompleted')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-teal-600 text-white flex items-center justify-center text-xl shadow-md shadow-teal-600/25 shrink-0 group-hover:scale-105 transition-transform">
+                    🏆
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Bảng Điểm & Kết Quả Luyện Đề Thi
+                      </h3>
+                      <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-teal-100 text-teal-900 border border-teal-300">
+                        {practiceCompleted.length} bài đã nộp
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.practiceCompleted 
+                        ? 'Bấm để thu gọn bảng điểm' 
+                        : 'Bấm vào để xem kết quả xếp loại và bài giải chi tiết'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-teal-700 bg-teal-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.practiceCompleted ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('practiceCompleted'); }}
+                    className="p-2 rounded-xl bg-teal-100/80 hover:bg-teal-200 text-teal-800 transition-all cursor-pointer shadow-2xs"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.practiceCompleted ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {expandedSections.practiceCompleted && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-teal-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderCompletedTable(practiceCompleted, 'practice')}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}
@@ -2323,22 +2602,108 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* A. Danh sách Đề Khảo Sát Cần Làm */}
-            <div className="space-y-3">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📝 Đề Khảo Sát Chất Lượng Cần Làm</span>
-                <span className="text-xs font-bold text-slate-500">({surveyPending.length} đề chờ)</span>
-              </h3>
-              {renderPendingGrid(surveyPending, 'survey')}
+            {/* A. Danh sách Đề Khảo Sát Cần Làm (Mặc định thu gọn, bấm vào là mở ra) */}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-purple-200/90 bg-gradient-to-r from-purple-50/50 via-white to-purple-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('surveyPending')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-purple-600 text-white flex items-center justify-center text-xl shadow-md shadow-purple-600/25 shrink-0 group-hover:scale-105 transition-transform">
+                    📝
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Đề Khảo Sát Chất Lượng Cần Làm
+                      </h3>
+                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
+                        surveyPending.length > 0 
+                          ? 'bg-purple-100 text-purple-900 border-purple-300 animate-pulse'
+                          : 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                      }`}>
+                        {surveyPending.length} đề chờ
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.surveyPending 
+                        ? 'Bấm để thu gọn danh sách' 
+                        : 'Bấm vào để mở danh sách bài khảo sát chất lượng'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-purple-700 bg-purple-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.surveyPending ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('surveyPending'); }}
+                    className="p-2 rounded-xl bg-purple-100/80 hover:bg-purple-200 text-purple-800 transition-all cursor-pointer shadow-2xs"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.surveyPending ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {expandedSections.surveyPending && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-purple-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderPendingGrid(surveyPending, 'survey')}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* B. Bảng Điểm & Kết Quả Khảo Sát Đã Nộp */}
-            <div className="space-y-3 pt-4 border-t border-slate-100">
-              <h3 className="text-sm sm:text-base font-black text-slate-800 flex items-center gap-2">
-                <span>📊 Bảng Điểm Khảo Sát Chất Lượng</span>
-                <span className="text-xs font-bold text-slate-500">({surveyCompleted.length} bài)</span>
-              </h3>
-              {renderCompletedTable(surveyCompleted, 'survey')}
+            <div className="rounded-2xl sm:rounded-3xl border-2 border-fuchsia-200/90 bg-gradient-to-r from-fuchsia-50/50 via-white to-pink-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
+              <div 
+                onClick={() => toggleSection('surveyCompleted')}
+                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-fuchsia-600 text-white flex items-center justify-center text-xl shadow-md shadow-fuchsia-600/25 shrink-0 group-hover:scale-105 transition-transform">
+                    📊
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                        Bảng Điểm Khảo Sát Chất Lượng
+                      </h3>
+                      <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-fuchsia-100 text-fuchsia-900 border border-fuchsia-300">
+                        {surveyCompleted.length} bài đã nộp
+                      </span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                      {expandedSections.surveyCompleted 
+                        ? 'Bấm để thu gọn bảng điểm' 
+                        : 'Bấm vào để tra cứu kết quả khảo sát chi tiết'}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className="hidden sm:inline-block text-[11px] font-bold text-fuchsia-700 bg-fuchsia-100/70 px-2.5 py-1 rounded-xl">
+                    {expandedSections.surveyCompleted ? 'Đang mở' : 'Bấm xem'}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => { e.stopPropagation(); toggleSection('surveyCompleted'); }}
+                    className="p-2 rounded-xl bg-fuchsia-100/80 hover:bg-fuchsia-200 text-fuchsia-800 transition-all cursor-pointer shadow-2xs"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.surveyCompleted ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+              </div>
+
+              {expandedSections.surveyCompleted && (
+                <div className="p-3.5 sm:p-5 pt-0 border-t border-fuchsia-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="pt-3.5">
+                    {renderCompletedTable(surveyCompleted, 'survey')}
+                  </div>
+                </div>
+              )}
             </div>
           </section>
         )}

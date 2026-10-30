@@ -13,6 +13,8 @@ export default function InstallPwaModal() {
   const [isIOS, setIsIOS] = useState(false);
   const [isInApp, setIsInApp] = useState(false);
   const [copied, setCopied] = useState(false);
+  // Mặc định THU GỌN nút PWA để không che khuất màn hình của học sinh, bấm vào mới hiện ra
+  const [isMinimized, setIsMinimized] = useState(true);
 
   useEffect(() => {
     // 1. Kiểm tra xem đã mở ở chế độ standalone (App) chưa
@@ -76,20 +78,47 @@ export default function InstallPwaModal() {
 
   return (
     <>
-      {/* NÚT NỔI Ở GÓC MÀN HÌNH (FLOATING BADGE) */}
-      <div className="fixed bottom-5 right-5 z-40 flex items-center gap-2">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="group flex items-center gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white font-bold text-xs sm:text-sm shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 border-2 border-emerald-300/40 backdrop-blur-md"
-          title="Cài đặt App Lớp Học Thầy Thọ về máy"
-        >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-yellow-400"></span>
-          </span>
-          <Download className="w-4 h-4 text-emerald-100 group-hover:-translate-y-0.5 transition-transform" />
-          <span>Cài App Về Máy</span>
-        </button>
+      {/* NÚT NỔI Ở GÓC MÀN HÌNH (FLOATING BADGE - MẶC ĐỊNH THU GỌN TINH TẾ) */}
+      <div className="fixed bottom-5 right-5 z-40 flex items-center gap-2 select-none">
+        {isMinimized ? (
+          <button
+            onClick={() => setIsOpen(true)}
+            className="group relative w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 text-white shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-emerald-300/50 backdrop-blur-md flex items-center justify-center cursor-pointer"
+            title="Bấm để xem hướng dẫn cài đặt App về máy"
+          >
+            <span className="absolute -top-1 -right-1 flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-400 border border-slate-900"></span>
+            </span>
+            <Download className="w-5 h-5 text-emerald-100 group-hover:-translate-y-0.5 transition-transform" />
+            {/* Tooltip chữ khi hover */}
+            <span className="absolute right-13 bg-slate-900/95 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl border border-teal-500/30">
+              Cài App Về Máy
+            </span>
+          </button>
+        ) : (
+          <div className="flex items-center gap-1 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 p-1 rounded-full shadow-xl border-2 border-emerald-300/40 backdrop-blur-md animate-in fade-in zoom-in-95 duration-200">
+            <button
+              onClick={() => setIsOpen(true)}
+              className="flex items-center gap-2 pl-3.5 pr-2 py-1.5 text-white font-extrabold text-xs sm:text-sm hover:scale-[1.02] active:scale-95 transition-all cursor-pointer"
+              title="Cài đặt App Lớp Học Thầy Thọ về máy"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-yellow-400"></span>
+              </span>
+              <Download className="w-4 h-4 text-emerald-100" />
+              <span>Cài App Về Máy</span>
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); setIsMinimized(true); }}
+              className="w-6 h-6 rounded-full bg-black/20 hover:bg-black/40 text-white/90 hover:text-white flex items-center justify-center text-xs transition-colors cursor-pointer mr-0.5"
+              title="Thu gọn nút này"
+            >
+              ✕
+            </button>
+          </div>
+        )}
       </div>
 
       {/* POPUP HƯỚNG DẪN CÀI ĐẶT */}
