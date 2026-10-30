@@ -22,10 +22,10 @@ export default function Layout() {
 
   // Accordion state for 4 Main Hubs in Sidebar
   const [expandedPillars, setExpandedPillars] = useState<Record<string, boolean>>({
-    p1: true,
-    p2: true,
-    p3: true,
-    p4: true,
+    p1: false,
+    p2: false,
+    p3: false,
+    p4: false,
   })
 
   const togglePillar = (id: string) => {
