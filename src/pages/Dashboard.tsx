@@ -4,7 +4,9 @@ import {
   MapPin, Search, Eye, EyeOff, DollarSign, GraduationCap, CheckCircle2, 
   ArrowRight, Sparkles, Layers, Calendar, ClipboardCheck, CreditCard,
   Edit3, Save, Plus, Filter, Check, X, RefreshCw,
-  Lock, Unlock, ShieldAlert, ShieldCheck
+  Lock, Unlock, ShieldAlert, ShieldCheck,
+  PlaySquare, FileText, MonitorPlay, ScanText, Banknote, MessageCircle, Target,
+  Zap, FilePlus, Video, PenTool, Calculator, Tag, FileType, Sigma, Award
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useDataStore } from '@/store/dataStore'
@@ -115,6 +117,17 @@ export default function Dashboard() {
   const [showGradesOverview, setShowGradesOverview] = useState(false)
   const [showWeeklySchedule, setShowWeeklySchedule] = useState(false)
   const [showAccessControl, setShowAccessControl] = useState(false)
+  // ── 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG ──
+  const [activeHubPillar, setActiveHubPillar] = useState<'all' | 'p1' | 'p2' | 'p3' | 'p4'>('all')
+  const [expandedHubs, setExpandedHubs] = useState<Record<string, boolean>>({
+    p1: true,
+    p2: true,
+    p3: true,
+    p4: true,
+  })
+  const toggleHub = (key: string) => {
+    setExpandedHubs(prev => ({ ...prev, [key]: !prev[key] }))
+  }
   const [editingClassId, setEditingClassId] = useState<string>('')
   const [selectedDays, setSelectedDays] = useState<number[]>([1, 4])
   const [sessionTime, setSessionTime] = useState<string>('17:45 - 19:15')
@@ -1221,62 +1234,643 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* ── Quick Action Hub ─────────────────────────────────────────── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div 
-          onClick={() => navigate('/classes')}
-          className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-blue-300 cursor-pointer transition border border-gray-150 group"
-        >
-          <div className="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-            <BookOpen className="w-5 h-5" />
-          </div>
+      {/* ══════════════════════════════════════════════════════════════
+          ── 🏛️ HỆ THỐNG 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG (MASTER HUBS) ──
+          ══════════════════════════════════════════════════════════════ */}
+      <div className="space-y-4 pt-2">
+        {/* Tiêu đề & Bộ lọc 4 Trụ Cột */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl border border-indigo-500/20">
           <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-blue-700 transition-colors">Quản lý 21 lớp học</h4>
-            <p className="text-[11px] text-gray-400 mt-0.5">Xếp lịch, đổi phòng & sĩ số</p>
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🏛️</span>
+              <h3 className="text-sm sm:text-base font-black uppercase tracking-wider text-white">
+                4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG
+              </h3>
+              <span className="text-[10px] bg-indigo-500/30 text-indigo-300 font-extrabold px-2.5 py-0.5 rounded-full border border-indigo-400/30">
+                ĐỘC QUYỀN THẦY THỌ
+              </span>
+            </div>
+            <p className="text-xs text-slate-300 mt-1">
+              Bấm vào từng trụ cột để xem đầy đủ các phân hệ con & công cụ chuyên sâu liên kết xuyên suốt.
+            </p>
+          </div>
+
+          {/* Bộ lọc Tab chuyển đổi nhanh */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 shrink-0 custom-scrollbar">
+            {[
+              { id: 'all', label: '🌟 Tất Cả (4 Trụ Cột)' },
+              { id: 'p1',  label: '👥 1. Học Sinh' },
+              { id: 'p2',  label: '📚 2. Khóa Học' },
+              { id: 'p3',  label: '🎯 3. Thi Cử' },
+              { id: 'p4',  label: '💳 4. Học Phí' },
+            ].map(tab => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveHubPillar(tab.id as any)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer shrink-0 ${
+                  activeHubPillar === tab.id
+                    ? 'bg-white text-slate-950 shadow-md font-black scale-105'
+                    : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
 
-        <div 
-          onClick={() => navigate('/tuition?tab=session-attendance')}
-          className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-teal-300 cursor-pointer transition border border-gray-150 group"
-        >
-          <div className="w-11 h-11 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-            <CalendarCheck className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-teal-700 transition-colors">Điểm danh & Học phí</h4>
-            <p className="text-[11px] text-gray-400 mt-0.5">Tự tính tiền học theo số buổi</p>
-          </div>
+        {/* ── GRID 4 TRỤ CỘT CHÍNH ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+          {/* ════ TRỤ CỘT 1: HỌC SINH & 21 LỚP HỌC ════ */}
+          {(activeHubPillar === 'all' || activeHubPillar === 'p1') && (
+            <div className="rounded-3xl bg-white border-2 border-blue-100 hover:border-blue-300 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
+              {/* Header Trụ Cột 1 */}
+              <div 
+                onClick={() => toggleHub('p1')}
+                className="p-4 sm:p-5 bg-gradient-to-r from-blue-50/80 via-white to-blue-50/40 border-b border-blue-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow-md shadow-blue-600/20 shrink-0">
+                    👥
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-black text-slate-900 text-sm sm:text-base uppercase tracking-tight">
+                        1. Quản Lý Học Sinh & 21 Lớp Học
+                      </h4>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
+                        152 Học sinh · 21 Lớp
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Tổ chức sĩ số, điểm danh chuyên cần, in thẻ QR & nhãn vở học sinh
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); toggleHub('p1'); }}
+                  className="p-1.5 rounded-xl bg-blue-100/60 hover:bg-blue-100 text-blue-700 transition-all cursor-pointer shrink-0"
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedHubs.p1 ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+
+              {/* Sub-items Trụ Cột 1 */}
+              {expandedHubs.p1 && (
+                <div className="p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 bg-slate-50/40">
+                  {/* Mục 1.1 */}
+                  <div 
+                    onClick={() => navigate('/students')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">👤</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                          152 Học sinh
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-blue-600 transition-colors">
+                        Hồ Sơ 152 Học Sinh
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Tra cứu SĐT, trường học, liên hệ phụ huynh & lịch sử điểm thi.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-blue-600 font-bold">
+                      <span>🔗 Liên kết Học phí</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 1.2 */}
+                  <div 
+                    onClick={() => navigate('/classes')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">🏫</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                          21 Lớp K6-K12
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-blue-600 transition-colors">
+                        Quản Lý 21 Lớp Học
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Phân bổ sĩ số, đổi phòng học, xếp ca giảng dạy và thời khóa biểu.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-blue-600 font-bold">
+                      <span>🔗 Xếp lịch tự động</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 1.3 */}
+                  <div 
+                    onClick={() => navigate('/attendance')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-teal-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">📅</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-teal-50 text-teal-700 border border-teal-200">
+                          Theo ca dạy
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-teal-600 transition-colors">
+                        Điểm Danh Chuyên Cần
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Điểm danh từng buổi, theo dõi học bù và tỷ lệ có mặt thực tế.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-teal-600 font-bold">
+                      <span>🔗 Tự tính học phí</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 1.4 */}
+                  <div 
+                    onClick={() => navigate('/student-cards')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">🏷️</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                          Xuất file in
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-blue-600 transition-colors">
+                        In Thẻ QR & Nhãn Vở
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        In thẻ học sinh có mã QR quét điểm danh và nhãn vở phát đầu năm.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-blue-600 font-bold">
+                      <span>🔗 Nhận diện QR</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ════ TRỤ CỘT 2: KHÓA HỌC & HỌC LIỆU BÀI GIẢNG ════ */}
+          {(activeHubPillar === 'all' || activeHubPillar === 'p2') && (
+            <div className="rounded-3xl bg-white border-2 border-purple-100 hover:border-purple-300 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
+              {/* Header Trụ Cột 2 */}
+              <div 
+                onClick={() => toggleHub('p2')}
+                className="p-4 sm:p-5 bg-gradient-to-r from-purple-50/80 via-white to-purple-50/40 border-b border-purple-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-xl shadow-md shadow-purple-600/20 shrink-0">
+                    📚
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-black text-slate-900 text-sm sm:text-base uppercase tracking-tight">
+                        2. Khóa Học & Học Liệu Bài Giảng
+                      </h4>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 border border-purple-200">
+                        21 Chương Hóa · 2 Chuyên Đề
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Giáo trình SGK mới 2026, chuyên đề bứt phá & bộ công cụ số hóa
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); toggleHub('p2'); }}
+                  className="p-1.5 rounded-xl bg-purple-100/60 hover:bg-purple-100 text-purple-700 transition-all cursor-pointer shrink-0"
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedHubs.p2 ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+
+              {/* Sub-items Trụ Cột 2 */}
+              {expandedHubs.p2 && (
+                <div className="p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 bg-slate-50/40">
+                  {/* Mục 2.1 */}
+                  <div 
+                    onClick={() => navigate('/hoa12')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-purple-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">🧪</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">
+                          Hóa 10·11·12
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-purple-600 transition-colors">
+                        Chương Trình Hóa 10 - 11 - 12
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        21 Chương học chuẩn SGK mới, đầy đủ video lý thuyết và dạng bài tập.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-purple-600 font-bold">
+                      <span>🔗 Đề thi theo chương</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 2.2 */}
+                  <div 
+                    onClick={() => navigate('/lay-goc-toan')}
+                    className="p-3.5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-300 hover:border-amber-500 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">⚡</span>
+                        <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-400 text-slate-950">
+                          ĐẶC BIỆT
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-amber-950 group-hover:text-orange-700 transition-colors">
+                        Lấy Gốc Toán & Lấy Gốc Hóa
+                      </div>
+                      <p className="text-[11px] text-amber-900/80 mt-0.5 leading-snug">
+                        Bộ phương pháp độc quyền Thầy Thọ giúp học sinh lấy lại căn bản cấp tốc.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-amber-200/60 flex items-center justify-between text-[10px] text-amber-800 font-bold">
+                      <span>🔗 Chuyên đề độc quyền</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 2.3 */}
+                  <div 
+                    onClick={() => navigate('/ocr')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-purple-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">🔍</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">
+                          Smart OCR
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-purple-600 transition-colors">
+                        Bộ Công Cụ OCR & Soạn Đề
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Quét ảnh chụp đề thành text, chuẩn hóa công thức LaTeX và file Word.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-purple-600 font-bold">
+                      <span>🔗 Trộn đề tự động</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 2.4 */}
+                  <div 
+                    onClick={() => navigate('/whiteboard')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-purple-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">🎨</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-50 text-purple-700 border border-purple-200">
+                          Bảng & Casio
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-purple-600 transition-colors">
+                        Bảng Vẽ Live & Casio Ảo
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Bảng viết phấn kỹ thuật số giảng bài & máy tính Casio FX-580 ảo trên web.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-purple-600 font-bold">
+                      <span>🔗 Giảng dạy trực quan</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ════ TRỤ CỘT 3: THI CỬ & TẠO PHÒNG THI ════ */}
+          {(activeHubPillar === 'all' || activeHubPillar === 'p3') && (
+            <div className="rounded-3xl bg-white border-2 border-rose-100 hover:border-rose-300 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
+              {/* Header Trụ Cột 3 */}
+              <div 
+                onClick={() => toggleHub('p3')}
+                className="p-4 sm:p-5 bg-gradient-to-r from-rose-50/80 via-white to-rose-50/40 border-b border-rose-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-2xl bg-rose-600 text-white flex items-center justify-center text-xl shadow-md shadow-rose-600/20 shrink-0">
+                    🎯
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-black text-slate-900 text-sm sm:text-base uppercase tracking-tight">
+                        3. Trung Tâm Thi Cử & Tạo Phòng Thi
+                      </h4>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-200">
+                        Online · Chấm Tự Động
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Ngân hàng đề thi, tạo đề PDF/LaTeX, phòng thi trực tuyến & chống gian lận
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); toggleHub('p3'); }}
+                  className="p-1.5 rounded-xl bg-rose-100/60 hover:bg-rose-100 text-rose-700 transition-all cursor-pointer shrink-0"
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedHubs.p3 ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+
+              {/* Sub-items Trụ Cột 3 */}
+              {expandedHubs.p3 && (
+                <div className="p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 bg-slate-50/40">
+                  {/* Mục 3.1 */}
+                  <div 
+                    onClick={() => navigate('/create-pdf-exam')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-rose-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">📝</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200">
+                          PDF & TeX
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-rose-600 transition-colors">
+                        Tạo Đề Thi PDF & LaTeX
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Trộn đề trắc nghiệm, tạo mã đề, xuất file PDF in đẹp và mã nguồn TeX.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-rose-600 font-bold">
+                      <span>🔗 Chuẩn cấu trúc BGD</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 3.2 */}
+                  <div 
+                    onClick={() => navigate('/exams')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-rose-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">🗄️</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200">
+                          3 Khối Lớp
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-rose-600 transition-colors">
+                        Ngân Hàng Đề Thi Chuẩn
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Kho đề thi Giữa kì & Cuối kì 1, 2 của cả K10, K11, K12 có ma trận lời giải.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-rose-600 font-bold">
+                      <span>🔗 Đề thi thực chiến</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 3.3 */}
+                  <div 
+                    onClick={() => navigate('/exam-rooms')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-rose-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">💻</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200">
+                          Cổng /thi
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-rose-600 transition-colors">
+                        Phòng Thi Trực Tuyến & BTVN
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Mở phòng thi theo ca, cấp mã phòng cho học sinh thi trực tiếp trên web.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-rose-600 font-bold">
+                      <span>🔗 Chấm tự động</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 3.4 */}
+                  <div 
+                    onClick={() => navigate('/phieu-grader')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-rose-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">📱</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200">
+                          PhieuGrader
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-rose-600 transition-colors">
+                        Chấm Bài Trắc Nghiệm Thông Minh
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Quét phiếu trắc nghiệm bằng camera điện thoại, tự tính điểm và thống kê.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-rose-600 font-bold">
+                      <span>🔗 Báo điểm Zalo</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ════ TRỤ CỘT 4: HỌC PHÍ, VIETQR & ZALO ════ */}
+          {(activeHubPillar === 'all' || activeHubPillar === 'p4') && (
+            <div className="rounded-3xl bg-white border-2 border-emerald-100 hover:border-emerald-300 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col">
+              {/* Header Trụ Cột 4 */}
+              <div 
+                onClick={() => toggleHub('p4')}
+                className="p-4 sm:p-5 bg-gradient-to-r from-emerald-50/80 via-white to-emerald-50/40 border-b border-emerald-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl shadow-md shadow-emerald-600/20 shrink-0">
+                    💳
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h4 className="font-black text-slate-900 text-sm sm:text-base uppercase tracking-tight">
+                        4. Học Phí, VietQR & Chăm Sóc Zalo
+                      </h4>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+                        VietQR Động · Zalo 1-Chạm
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 mt-0.5">
+                      Tự động hóa tính học phí, tạo mã chuyển khoản VietQR & gửi tin Zalo
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); toggleHub('p4'); }}
+                  className="p-1.5 rounded-xl bg-emerald-100/60 hover:bg-emerald-100 text-emerald-700 transition-all cursor-pointer shrink-0"
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedHubs.p4 ? 'rotate-180' : ''}`} />
+                </button>
+              </div>
+
+              {/* Sub-items Trụ Cột 4 */}
+              {expandedHubs.p4 && (
+                <div className="p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 bg-slate-50/40">
+                  {/* Mục 4.1 */}
+                  <div 
+                    onClick={() => navigate('/tuition?tab=session-attendance')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">💰</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          Tự tính toán
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-emerald-600 transition-colors">
+                        Tính Học Phí Theo Điểm Danh
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Tự nhân số buổi học thực tế từ Trụ cột 1, không sợ sót hoặc nhầm tiền.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-emerald-600 font-bold">
+                      <span>🔗 Khớp số buổi thực</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 4.2 */}
+                  <div 
+                    onClick={() => navigate('/tuition')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">📲</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          VietQR Động
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-emerald-600 transition-colors">
+                        Hóa Đơn Điện Tử & Thu Tiền VietQR
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Mã QR ngân hàng tự điền đúng số tiền và nội dung cho từng học sinh.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-emerald-600 font-bold">
+                      <span>🔗 Quét mã 1-chạm</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 4.3 */}
+                  <div 
+                    onClick={() => navigate('/zalo')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">💬</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          Zalo 1-Chạm
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-emerald-600 transition-colors">
+                        Trung Tâm Tin Nhắn Zalo Phụ Huynh
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Gửi thông báo học phí, phiếu điểm, nhận xét định kỳ trực tiếp đến Zalo.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-emerald-600 font-bold">
+                      <span>🔗 Chăm sóc tự động</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục 4.4 */}
+                  <div 
+                    onClick={() => navigate('/debt-planner')}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">📈</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          Sổ nợ chi tiết
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-emerald-600 transition-colors">
+                        Kế Hoạch Tài Chính & Sổ Nợ
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Báo cáo dòng tiền, quản lý danh sách học sinh chưa hoàn tất học phí.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-emerald-600 font-bold">
+                      <span>🔗 Minh bạch dòng tiền</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
         </div>
 
-        <div 
-          onClick={() => navigate('/tuition')}
-          className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-emerald-300 cursor-pointer transition border border-gray-150 group"
-        >
-          <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-            <DollarSign className="w-5 h-5" />
+        {/* ── BĂNG CHUYỀN LIÊN KẾT HỆ THỐNG THÔNG MINH ── */}
+        <div className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600">
+          <div className="flex items-center gap-2">
+            <span className="text-base">🔄</span>
+            <span className="font-black text-slate-800">Quy Trình Vận Hành Khép Kín:</span>
           </div>
-          <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-emerald-700 transition-colors">Thu tiền & VietQR</h4>
-            <p className="text-[11px] text-gray-400 mt-0.5">Báo phí Zalo & hóa đơn điện tử</p>
-          </div>
-        </div>
-
-        <div 
-          onClick={() => navigate('/students')}
-          className="card p-4 flex items-center gap-3.5 hover:shadow-md hover:border-amber-300 cursor-pointer transition border border-gray-150 group"
-        >
-          <div className="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
-            <Users className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="font-black text-gray-800 text-xs group-hover:text-amber-700 transition-colors">Hồ sơ học sinh</h4>
-            <p className="text-[11px] text-gray-400 mt-0.5">Tra cứu thông tin học sinh & phụ huynh</p>
+          <div className="flex flex-wrap items-center gap-2 font-bold text-[11px]">
+            <span className="px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">1. Học Sinh & 21 Lớp</span>
+            <span>➔</span>
+            <span className="px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-200">2. Học Bài Giảng</span>
+            <span>➔</span>
+            <span className="px-2 py-0.5 rounded-md bg-rose-50 text-rose-700 border border-rose-200">3. Thi Cử & Nộp Bài</span>
+            <span>➔</span>
+            <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">4. Điểm Danh & Thu Phí VietQR</span>
           </div>
         </div>
       </div>
-
-      {/* ══════════════════════════════════════════════════════════════
+{/* ══════════════════════════════════════════════════════════════
           ── MODAL 1: CHỈNH SỬA LỊCH DẠY & PHÒNG HỌC (SIÊU TIỆN ÍCH) ──
           ══════════════════════════════════════════════════════════════ */}
       <Modal
