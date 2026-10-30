@@ -148,7 +148,7 @@ async function main() {
     const bankName = 'HO KINH DOANH NGUYEN LUONG THO';
     const addInfo = formatVietQRAddInfo(student.full_name, item.course_name);
     const qrUrl = `https://img.vietqr.io/image/VCB-${bankAccount}-compact2.png?amount=${amountVal}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`;
-    const msg = `Kính gửi Quý phụ huynh học sinh ${student.full_name},\n\nThầy Thọ xin gửi thông tin học phí tháng 10 của con:\n• Học sinh: ${student.full_name}\n• Lớp: ${item.course_name || 'Lớp học'}\n• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n👉 Mã QR chuyển khoản học phí:\n${qrUrl}\n\nThầy xin chân thành cảm ơn Quý phụ huynh!`;
+    const msg = `Kính gửi Quý phụ huynh học sinh ${student.full_name},\n\nThầy Thọ xin gửi thông tin học phí tháng 10 của con:\n• Học sinh: ${student.full_name}\n• Lớp: ${item.course_name || 'Lớp học'}\n• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n👉 Quý phụ huynh quét mã QR bên dưới để chuyển khoản:\n${qrUrl}\n\nThầy xin chân thành cảm ơn Quý phụ huynh!`;
 
     console.log(`[${i + 1}/${notifications.length}] 💬 Đang gửi đến: ${student.full_name} (${cleanPhone})...`);
 
