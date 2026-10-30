@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import {
-  Video,
+  Video, Atom, FlaskConical,
   LayoutDashboard, Users, BookOpen, CalendarCheck, Banknote,
   Mail, Settings, LogOut, FileText, MonitorPlay,
   GraduationCap, Sigma, FilePlus, Zap, FileType,
@@ -279,14 +279,14 @@ export default function Layout() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
       {/* ══════════════════════════════════════════════════════════════
-          ── TOP NAVIGATION BAR CHUẨN SANG TRỌNG & HIỆN ĐẠI (STICKY) ──
+          ── TOP NAVIGATION BAR: PHONG CÁCH TOÁN & HÓA TƯƠI SÁNG HIỆN ĐẠI ──
           ══════════════════════════════════════════════════════════════ */}
-      <header className="sticky top-0 z-30 w-full bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-xs transition-all">
+      <header className="sticky top-0 z-30 w-full bg-white/95 backdrop-blur-md border-b border-cyan-100 shadow-xs transition-all">
         <div className="max-w-[1720px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
           
-          {/* Cụm Trái: Nút Menu + Brand Thầy Thọ */}
+          {/* Cụm Trái: Nút Menu 4 Trụ Cột + Biểu tượng Toán & Hóa */}
           <div className="flex items-center gap-3">
-            {/* Nút bấm mở Menu 4 Trụ Cột dạng Pill Sang Trọng */}
+            {/* Nút bấm mở Menu 4 Trụ Cột: Phong cách Năng động Khoa học Cyan - Blue */}
             <button
               type="button"
               onClick={() => {
@@ -296,99 +296,102 @@ export default function Layout() {
                   setDesktopSidebarOpen(prev => !prev)
                 }
               }}
-              className="flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-indigo-950 text-white font-bold text-xs shadow-sm hover:shadow transition-all duration-200 cursor-pointer group active:scale-95 border border-slate-800"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-black text-xs shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-200 cursor-pointer group active:scale-95 border border-cyan-300/40"
               title="Nhấn để đóng/mở Menu 4 Trụ Cột"
             >
-              <Menu className="w-4 h-4 text-indigo-400 group-hover:rotate-90 transition-transform duration-300" />
+              <Menu className="w-4 h-4 text-cyan-100 group-hover:rotate-90 transition-transform duration-300" />
               <span className="tracking-wide">Menu 4 Trụ Cột</span>
-              <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-white/15 text-indigo-200 border border-white/10">
-                Mở rộng
+              <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-black bg-white/20 text-white border border-white/20">
+                Toán & Hóa
               </span>
             </button>
 
-            {/* Logo Thương Hiệu Lớp Thầy Thọ */}
+            {/* Logo Thương Hiệu Lớp Thầy Thọ - Phong Cách Toán Học & Hóa Học */}
             <Link 
               to="/" 
               className="flex items-center gap-2.5 pl-2 group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-rose-600 via-red-600 to-amber-500 text-white flex items-center justify-center font-black shadow-md shadow-red-500/20 group-hover:scale-105 transition-transform">
-                <GraduationCap className="w-5 h-5 text-white" />
+              <div className="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-emerald-500 text-white flex items-center justify-center font-black shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform">
+                <Atom className="w-5 h-5 text-white animate-spin-slow" />
+                <span className="absolute -bottom-1 -right-1 text-[10px] font-black bg-amber-400 text-slate-950 px-1 rounded-full shadow-xs">∑</span>
               </div>
               <div className="hidden sm:block">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-black text-sm tracking-tight text-slate-900 group-hover:text-red-700 transition-colors uppercase">
-                    LỚP HỌC THẦY THỌ
+                  <span className="font-black text-sm tracking-tight text-slate-900 group-hover:text-cyan-700 transition-colors uppercase">
+                    TOÁN & HÓA THẦY THỌ
                   </span>
-                  <span className="text-[10px] font-extrabold px-1.5 py-0.2 bg-gradient-to-r from-red-500 to-amber-500 text-white rounded">
-                    PRO
+                  <span className="text-[10px] font-extrabold px-1.5 py-0.2 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white rounded shadow-xs">
+                    K6-K12
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-500 font-medium">Hệ thống điều hành giáo dục chuyên nghiệp</p>
+                <p className="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
+                  <span>Hệ sinh thái dạy học Toán học (∑, ∫) & Hóa học (H₂O, C₆H₁₂)</span>
+                </p>
               </div>
             </Link>
           </div>
 
-          {/* Cụm Giữa: Quick Links Nổi Bật (Desktop) */}
-          <div className="hidden xl:flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/60">
+          {/* Cụm Giữa: Quick Links Tươi Sáng (Desktop) */}
+          <div className="hidden xl:flex items-center gap-1 bg-gradient-to-r from-slate-100 via-cyan-50 to-emerald-50 p-1 rounded-xl border border-cyan-100/80">
             <Link
               to="/dashboard"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                 location.pathname === '/dashboard' || location.pathname === '/'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                  ? 'bg-white text-cyan-800 shadow-xs font-black'
+                  : 'text-slate-600 hover:text-cyan-700 hover:bg-white/60'
               }`}
             >
-              Bảng Điều Khiển
+              <span>🔬 Bảng Điều Khiển</span>
             </Link>
             <Link
               to="/students"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                 location.pathname.startsWith('/students')
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                  ? 'bg-white text-blue-800 shadow-xs font-black'
+                  : 'text-slate-600 hover:text-blue-700 hover:bg-white/60'
               }`}
             >
-              152 Học Sinh
+              <span>👥 152 Học Sinh</span>
             </Link>
             <Link
               to="/classes"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                 location.pathname.startsWith('/classes')
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                  ? 'bg-white text-indigo-800 shadow-xs font-black'
+                  : 'text-slate-600 hover:text-indigo-700 hover:bg-white/60'
               }`}
             >
-              21 Lớp K6-K12
+              <span>📐 21 Lớp Toán - Hóa</span>
             </Link>
             <Link
               to="/courses"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                 location.pathname.startsWith('/courses')
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                  ? 'bg-white text-purple-800 shadow-xs font-black'
+                  : 'text-slate-600 hover:text-purple-700 hover:bg-white/60'
               }`}
             >
-              Kho Bài Giảng
+              <span>🧪 Kho Bài Giảng</span>
             </Link>
             <Link
               to="/exams"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                 location.pathname.startsWith('/exams')
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                  ? 'bg-white text-rose-800 shadow-xs font-black'
+                  : 'text-slate-600 hover:text-rose-700 hover:bg-white/60'
               }`}
             >
-              Thi Trực Tuyến
+              <span>🎯 Đề Thi BGD</span>
             </Link>
             <Link
               to="/tuition"
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                 location.pathname.startsWith('/tuition')
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
+                  ? 'bg-white text-emerald-800 shadow-xs font-black'
+                  : 'text-slate-600 hover:text-emerald-700 hover:bg-white/60'
               }`}
             >
-              Học Phí & VietQR
+              <span>💳 VietQR</span>
             </Link>
           </div>
 
@@ -399,23 +402,23 @@ export default function Layout() {
               href="/thi"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200/80 transition-all shadow-xs"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-gradient-to-r from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 text-cyan-800 border border-cyan-200 transition-all shadow-xs"
               title="Mở giao diện phòng thi của học sinh"
             >
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-3.5 h-3.5 text-cyan-600" />
               <span>Cổng Thi Học Sinh</span>
             </a>
 
             {/* Profile Avatar & Dropdown */}
             <div className="flex items-center gap-2 pl-1 border-l border-slate-200">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-violet-600 text-white flex items-center justify-center font-bold text-xs shadow-xs ring-2 ring-indigo-100">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-xs ring-2 ring-cyan-200">
                 {displayChar}
               </div>
               <div className="hidden lg:block text-left">
                 <p className="text-xs font-bold text-slate-900 leading-none truncate max-w-[120px]">{displayName}</p>
-                <span className="text-[9px] font-semibold text-emerald-600 inline-flex items-center gap-0.5">
+                <span className="text-[9px] font-bold text-cyan-700 inline-flex items-center gap-0.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  Giáo viên
+                  Toán & Hóa
                 </span>
               </div>
               <button

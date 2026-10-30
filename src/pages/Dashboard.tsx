@@ -513,39 +513,47 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
 
-      {/* ── Top Hero Banner Sang Trọng & Hiện Đại ──────────────────────────────── */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 text-white p-6 sm:p-8 shadow-xl border border-indigo-500/20">
-        {/* Ánh sáng nền trang trí hiện đại */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/0 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-rose-500/10 blur-3xl pointer-events-none" />
+      {/* ── Top Hero Banner: Toán Học & Hóa Học Tươi Sáng Hiện Đại ──────────────────────────── */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 text-white p-6 sm:p-8 shadow-xl shadow-cyan-900/15 border border-cyan-300/30">
+        
+        {/* Họa tiết biểu tượng Toán học & Hóa học bay nền hiện đại */}
+        <div className="absolute top-2 right-12 text-white/10 font-black text-8xl select-none pointer-events-none">∑</div>
+        <div className="absolute bottom-1 right-48 text-white/10 font-black text-7xl select-none pointer-events-none">∫</div>
+        <div className="absolute top-1/2 right-1/4 text-white/10 font-bold text-5xl select-none pointer-events-none font-mono">H₂O</div>
+        <div className="absolute -bottom-8 left-1/3 text-white/10 font-bold text-6xl select-none pointer-events-none font-mono">C₆H₁₂O₆</div>
+        
+        {/* Glow hạt sáng sinh động */}
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-72 h-72 rounded-full bg-emerald-400/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-72 h-72 rounded-full bg-cyan-300/20 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="flex items-center gap-2.5 flex-wrap">
-              <span className="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 text-xs font-black tracking-wider uppercase flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                HỆ THỐNG THẦY THỌ · QUẢN TRỊ CAO CẤP
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30 text-xs font-black tracking-wider uppercase flex items-center gap-1.5 shadow-xs">
+                <span className="text-base">🧪</span>
+                <span>HỆ THỐNG GIẢNG DẠY TOÁN & HÓA THẦY THỌ</span>
               </span>
-              <span className="text-xs text-slate-400 font-semibold flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                Trực tuyến 24/7
+              <span className="text-xs text-cyan-100 font-bold bg-cyan-500/30 px-2.5 py-0.5 rounded-full border border-cyan-300/30 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-300 animate-ping"></span>
+                <span>Chương trình GDPT mới (K6 - K12)</span>
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">
-              Bảng Điều Khiển Trung Tâm
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white flex items-center gap-2.5">
+              <span>Bảng Điều Khiển Trung Tâm</span>
+              <span className="text-xl sm:text-2xl">📐 ⚗️</span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
-              Xin chào <strong className="text-amber-300 font-bold">{profile?.name || 'Thầy Thọ'}</strong>, toàn bộ 4 Trụ Cột điều hành (152 học sinh, 21 lớp, kho bài giảng và tài chính VietQR) đã sẵn sàng phục vụ giảng dạy hiệu quả nhất!
+            <p className="text-xs sm:text-sm text-cyan-50 max-w-2xl leading-relaxed font-medium">
+              Xin chào <strong className="text-amber-300 font-black">{profile?.name || 'Thầy Thọ'}</strong>, toàn bộ hệ sinh thái <span className="underline decoration-cyan-300 underline-offset-2 font-bold">Toán Học</span> & <span className="underline decoration-emerald-300 underline-offset-2 font-bold">Hóa Học</span> gồm 152 học sinh, 21 lớp, kho bài giảng tương tác và tài chính VietQR đã sẵn sàng phục vụ giảng dạy thăng hoa!
             </p>
           </div>
 
-          {/* Quick Action Buttons */}
+          {/* Quick Action Buttons: Màu sắc tươi sáng, viền kính bóng bẩy */}
           <div className="flex items-center gap-3 shrink-0 flex-wrap">
             <button
               onClick={() => openEditSchedule(classes[0] || { id: '' })}
-              className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl text-xs font-bold shadow-sm hover:shadow transition-all duration-200 flex items-center gap-2 cursor-pointer active:scale-95"
+              className="px-4 py-2.5 bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-2xl text-xs font-bold shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 cursor-pointer active:scale-95 backdrop-blur-sm"
               title="Bấm để chỉnh sửa lịch dạy khi cần"
             >
               <Edit3 className="w-4 h-4 text-amber-300" />
@@ -554,7 +562,7 @@ export default function Dashboard() {
 
             <button
               onClick={() => navigate('/tuition')}
-              className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-2xl text-xs font-black shadow-lg shadow-emerald-700/30 flex items-center gap-2 transition-all duration-200 cursor-pointer active:scale-95 border border-emerald-400/30"
+              className="px-5 py-2.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-white rounded-2xl text-xs font-black shadow-lg shadow-emerald-900/30 flex items-center gap-2 transition-all duration-200 cursor-pointer active:scale-95 border border-emerald-300/40"
             >
               <CalendarCheck className="w-4 h-4 text-emerald-100" />
               <span>Điểm Danh & Học Phí</span>
@@ -562,27 +570,42 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Thống kê nhanh nổi bật 4 Chỉ Số Tinh Hoa */}
-        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/10">
-          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
-            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 1</div>
-            <div className="text-base sm:text-lg font-black text-blue-300 mt-0.5">152 Học Sinh</div>
-            <div className="text-[10px] text-slate-400">21 Lớp K6 - K12</div>
+        {/* 4 Thẻ chỉ số tinh hoa phong cách Toán Học - Hóa Học tươi sáng */}
+        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/20">
+          <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 hover:bg-white/25 transition-all">
+            <div className="flex items-center justify-between text-[11px] font-black text-cyan-100 uppercase">
+              <span>Trụ Cột 1</span>
+              <span>👥</span>
+            </div>
+            <div className="text-base sm:text-lg font-black text-white mt-1">152 Học Sinh</div>
+            <div className="text-[10px] text-cyan-100 font-semibold">21 Lớp Toán & Hóa (K6-K12)</div>
           </div>
-          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
-            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 2</div>
-            <div className="text-base sm:text-lg font-black text-purple-300 mt-0.5">Kho Bài Giảng</div>
-            <div className="text-[10px] text-slate-400">Word, Casio, Whiteboard</div>
+
+          <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 hover:bg-white/25 transition-all">
+            <div className="flex items-center justify-between text-[11px] font-black text-cyan-100 uppercase">
+              <span>Trụ Cột 2</span>
+              <span>🧪</span>
+            </div>
+            <div className="text-base sm:text-lg font-black text-amber-300 mt-1">Kho Bài Giảng</div>
+            <div className="text-[10px] text-cyan-100 font-semibold">Công thức LaTeX, Casio, Đề Word</div>
           </div>
-          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
-            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 3</div>
-            <div className="text-base sm:text-lg font-black text-rose-300 mt-0.5">Thi Trực Tuyến</div>
-            <div className="text-[10px] text-slate-400">Đề PDF, LaTeX, Chấm thi</div>
+
+          <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 hover:bg-white/25 transition-all">
+            <div className="flex items-center justify-between text-[11px] font-black text-cyan-100 uppercase">
+              <span>Trụ Cột 3</span>
+              <span>📐</span>
+            </div>
+            <div className="text-base sm:text-lg font-black text-rose-200 mt-1">Thi Trực Tuyến</div>
+            <div className="text-[10px] text-cyan-100 font-semibold">Đề thi chuẩn BGD, Chấm tự động</div>
           </div>
-          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
-            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 4</div>
-            <div className="text-base sm:text-lg font-black text-emerald-300 mt-0.5">VietQR Tự Động</div>
-            <div className="text-[10px] text-slate-400">Zalo & Quản lý sổ nợ</div>
+
+          <div className="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 hover:bg-white/25 transition-all">
+            <div className="flex items-center justify-between text-[11px] font-black text-cyan-100 uppercase">
+              <span>Trụ Cột 4</span>
+              <span>💳</span>
+            </div>
+            <div className="text-base sm:text-lg font-black text-emerald-200 mt-1">VietQR Tự Động</div>
+            <div className="text-[10px] text-cyan-100 font-semibold">Gửi Zalo thông minh & Sổ thu chi</div>
           </div>
         </div>
       </div>
@@ -591,23 +614,26 @@ export default function Dashboard() {
           ── 🏛️ 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG (SELECTION & TABS) ──────
           ══════════════════════════════════════════════════════════════ */}
       <div className="space-y-4 pt-1">
-        {/* Navigation Tabs chuẩn phong cách cao cấp */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+        {/* Navigation Tabs chuẩn phong cách Toán - Hóa Hiện Đại & Tươi Sáng */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-white border border-cyan-100 shadow-sm">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black text-sm">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center font-black text-sm shadow-xs">
               🏛️
             </div>
             <div>
-              <h2 className="text-sm font-black uppercase tracking-wider text-slate-900">
-                4 TRỤ CỘT ĐIỀU HÀNH CHUYÊN SÂU
+              <h2 className="text-sm font-black uppercase tracking-wider text-slate-900 flex items-center gap-2">
+                <span>4 TRỤ CỘT ĐIỀU HÀNH CHUYÊN SÂU</span>
+                <span className="text-[10px] bg-cyan-50 text-cyan-700 font-extrabold px-2 py-0.5 rounded-full border border-cyan-200">
+                  Toán & Hóa
+                </span>
               </h2>
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-500 font-medium">
                 Bấm vào các thẻ bên dưới để truy cập các công cụ con liên kết đồng bộ
               </p>
             </div>
           </div>
 
-          {/* Bộ lọc Tab chuyển đổi nhanh */}
+          {/* Bộ lọc Tab chuyển đổi nhanh - Phong cách tươi sáng */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 shrink-0 custom-scrollbar">
             {[
               { id: 'all', label: 'Tất Cả 4 Trụ Cột', icon: '🌟' },
@@ -622,8 +648,8 @@ export default function Dashboard() {
                 onClick={() => setActiveHubPillar(tab.id as any)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
                   activeHubPillar === tab.id
-                    ? 'bg-slate-900 text-white shadow-sm font-black'
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                    ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md font-black'
+                    : 'bg-cyan-50/70 hover:bg-cyan-100/80 text-cyan-900 border border-cyan-100'
                 }`}
               >
                 <span>{tab.icon}</span>
