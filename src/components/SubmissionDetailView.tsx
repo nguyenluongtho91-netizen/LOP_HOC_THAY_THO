@@ -421,7 +421,7 @@ const SubmissionDetailView: React.FC<SubmissionDetailViewProps> = ({
               <div className="bg-gradient-to-br from-violet-50 to-violet-100 rounded-xl p-3 border border-violet-200 shadow-sm">
                 <div className="text-[10px] font-bold uppercase text-violet-500 mb-1">✍️ Tự luận</div>
                 <div className="text-xl font-black text-violet-700">{formatScore(sbRaw.essay.points)}đ</div>
-                <div className="text-xs text-violet-600">Đã chấm bằng AI/GV</div>
+                <div className="text-xs text-violet-600">Đã chấm điểm</div>
               </div>
             )}
 

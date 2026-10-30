@@ -258,7 +258,7 @@ export default function ExamResultsPage() {
             onClick={() => setShowEssayGrader(true)}
             className="btn-teal bg-violet-600 hover:bg-violet-700 flex items-center gap-2 w-max"
           >
-            <BrainCircuit className="w-4 h-4" /> Chấm Tự luận AI
+            <BrainCircuit className="w-4 h-4" /> Khảo Thí Tự Luận
           </button>
         </div>
       </div>
@@ -461,7 +461,7 @@ export default function ExamResultsPage() {
         </div>
       )}
 
-      <Modal open={showEssayGrader} onClose={() => setShowEssayGrader(false)} title="Chấm bài tự luận bằng Gemini AI" size="3xl">
+      <Modal open={showEssayGrader} onClose={() => setShowEssayGrader(false)} title="Khảo Thí & Chấm Bài Tự Luận Theo Đáp Án Chuẩn" size="3xl">
         <div className="p-2">
           <EssayGraderPanel
             submissions={submissions.map(s => ({ ...s, student: { name: s.students?.full_name } }))}

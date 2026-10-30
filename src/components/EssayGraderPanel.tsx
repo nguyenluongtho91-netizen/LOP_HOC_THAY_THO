@@ -1,6 +1,6 @@
 // @ts-nocheck
 // components/EssayGraderPanel.tsx
-// Panel cho giáo viên chấm câu tự luận bằng Gemini AI
+// Panel cho giáo viên chấm câu tự luận bằng Bareme Chuẩn
 
 import React, { useState, useEffect } from 'react';
 import {
@@ -120,7 +120,7 @@ const EssayGraderPanel: React.FC<EssayGraderPanelProps> = ({
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center text-xl">🖊️</div>
           <div>
-            <h3 className="font-bold text-white text-base">Chấm bài tự luận — AI Gemini</h3>
+            <h3 className="font-bold text-white text-base">Khảo Thí & Chấm Bài Tự Luận Chuyên Nghiệp</h3>
             <p className="text-violet-200 text-xs">
               {writingQuestions.length} câu tự luận · {submissionsWithEssay.length} bài có nộp
             </p>
@@ -336,7 +336,7 @@ const EssayGraderPanel: React.FC<EssayGraderPanelProps> = ({
                             <span className="w-3.5 h-3.5 border-2 border-violet-400 border-t-transparent rounded-full animate-spin" />
                             Đang chấm...
                           </span>
-                        ) : result ? '🔄 Chấm lại' : '🤖 Chấm AI'}
+                        ) : result ? '🔄 Chấm lại' : '⚡ Chấm nhanh'}
                       </button>
                     </div>
                   </div>
