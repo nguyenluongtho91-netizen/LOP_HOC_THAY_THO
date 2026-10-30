@@ -93,6 +93,24 @@ export default function StudentPortal() {
   // Quản lý Tab hiển thị: 'homework' (1. BÀI TẬP VỀ NHÀ) | 'chapter' (2. LUYỆN ĐỀ THEO CHƯƠNG) | 'practice' (3. LUYỆN ĐỀ THI) | 'survey' (4. KHẢO SÁT CHẤT LƯỢNG) | 'all' (Tất cả)
   const [activeTab, setActiveTab] = useState<'homework' | 'chapter' | 'practice' | 'survey' | 'all'>('homework')
 
+  // ── 5 THƯ MỤC HỌC TẬP THU GỌN TRỰC TIẾP PHÍA HỌC SINH ──
+  const [openFolders, setOpenFolders] = useState<Record<string, boolean>>({
+    folder1: true,  // Mục 1: Đề thi & bài tập nộp cho Thầy (Bắt buộc, tự động mở khi còn bài)
+    folder2: false, // Mục 2: Bài tập rèn luyện cơ bản (Mặc định thu gọn)
+    folder3: false, // Mục 3: Bài tập rèn luyện nâng cao (Mặc định thu gọn)
+    folder4: false, // Mục 4: Luyện các chuyên đề (Mặc định thu gọn)
+    folder5: false, // Mục 5: Tài liệu tham khảo (Mặc định thu gọn, Thầy cấp quyền)
+  });
+
+  const toggleFolder = (key: string) => {
+    setOpenFolders(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  // Quản lý 2 ngăn con (Tab Đề bài và Tab Kết quả) bên trong từng thư mục
+  const [f1Tab, setF1Tab] = useState<"pending" | "completed">("pending");
+  const [f2Tab, setF2Tab] = useState<"pending" | "completed">("pending");
+  const [f3Tab, setF3Tab] = useState<"pending" | "completed">("pending");
+
   // ── MẶC ĐỊNH THU GỌN BÊN HỌC SINH (BẤM VÀO MỚI HIỆN RA) ──
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     homeworkPending: false,
@@ -1011,7 +1029,32 @@ export default function StudentPortal() {
     ? surveyCompleted.reduce((sum, item) => sum + (item.sub?.score || 0), 0) / surveyCompleted.length
     : null
 
-  const practiceClasses = enrolledClasses.filter(c => isPracticeClassName(c.class_name))
+  // Phân loại Cơ bản vs Nâng cao
+  const isAdvancedExam = (r: any) => {
+    const title = (r.exams?.title || r.room_name || r.name || r.title || "").toLowerCase();
+    return title.includes("nâng cao") || title.includes("nang cao") || title.includes("vận dụng") || title.includes("van dung") || title.includes("vdc") || title.includes("chuyên sâu") || title.includes("hsg") || title.includes("9+") || title.includes("10 điểm");
+  };
+
+  const nonHomeworkRooms = examsList.filter(r => getExamCategory(r) !== "homework");
+  const nonHomeworkPending = pendingExams.filter(r => getExamCategory(r) !== "homework");
+  const nonHomeworkCompleted = completedExams.filter(({ room }) => getExamCategory(room) !== "homework");
+
+  const basicRooms = nonHomeworkRooms.filter(r => !isAdvancedExam(r));
+  const basicPending = nonHomeworkPending.filter(r => !isAdvancedExam(r));
+  const basicCompleted = nonHomeworkCompleted.filter(({ room }) => !isAdvancedExam(room));
+
+  const advancedRooms = nonHomeworkRooms.filter(isAdvancedExam);
+  const advancedPending = nonHomeworkPending.filter(isAdvancedExam);
+  const advancedCompleted = nonHomeworkCompleted.filter(({ room }) => isAdvancedExam(room));
+
+  const hasMaterialAccess = Boolean(
+    isTeacherUser || 
+    hasLayGocHoaAccess || 
+    visibleCourses.length > 0 ||
+    student?.student_code?.toUpperCase() === "THAYTHO"
+  );
+
+  const practiceClasses = enrolledClasses.filter(c => isPracticeClassName(c.class_name));
 
   // ── RENDER HELPER: DANH SÁCH ĐỀ THI CẦN LÀM ─────────────────────
   const renderPendingGrid = (rooms: any[], category: ExamCategory) => {
@@ -1912,106 +1955,464 @@ export default function StudentPortal() {
               </div>
             </div>
 
-            {/* A. Danh sách BTVN Cần Nộp (Mặc định thu gọn, bấm vào là mở ra) */}
-            <div className="rounded-2xl sm:rounded-3xl border-2 border-amber-200/90 bg-gradient-to-r from-amber-50/50 via-white to-amber-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
-              <div 
-                onClick={() => toggleSection('homeworkPending')}
-                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl shadow-md shadow-amber-500/25 shrink-0 group-hover:scale-105 transition-transform">
-                    📝
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
-                        Đề Thi & Bài Tập Cần Nộp Cho Thầy
-                      </h3>
-                      <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${
-                        homeworkPending.length > 0 
-                          ? 'bg-amber-100 text-amber-900 border-amber-300 animate-pulse'
-                          : 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                      }`}>
-                        {homeworkPending.length > 0 ? `${homeworkPending.length} bài chờ làm` : '0 bài chờ (Đã hoàn thành)'}
-                      </span>
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            {/* ── 5 THƯ MỤC HỌC TẬP CHÍNH DÀNH CHO HỌC SINH ───────────────────── */}
+            {/* ═══════════════════════════════════════════════════════════════════ */}
+            <div className="space-y-4">
+
+              {/* ── MỤC 1: ĐỀ THI & BÀI TẬP NỘP CHO THẦY (BẮT BUỘC) ── */}
+              <div className="rounded-2xl sm:rounded-3xl border-2 border-amber-300/90 bg-gradient-to-r from-amber-50/70 via-white to-orange-50/40 overflow-hidden shadow-sm transition-all">
+                <div 
+                  onClick={() => toggleFolder("folder1")}
+                  className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-amber-600 to-amber-400 text-white flex items-center justify-center text-xl sm:text-2xl shadow-md shadow-amber-500/25 shrink-0 group-hover:scale-105 transition-transform">
+                      📝
                     </div>
-                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
-                      {expandedSections.homeworkPending 
-                        ? 'Bấm để thu gọn danh sách' 
-                        : 'Bấm vào để mở danh sách đề thi và bài tập cần làm'}
-                    </p>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                          1. ĐỀ THI & BÀI TẬP NỘP CHO THẦY
+                        </h3>
+                        {homeworkPending.length > 0 ? (
+                          <span className="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-rose-500 text-white animate-pulse shadow-xs">
+                            ⚠️ BẮT BUỘC: Còn {homeworkPending.length} bài cần nộp
+                          </span>
+                        ) : (
+                          <span className="text-[11px] font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                            ✅ Đã hoàn thành tất cả
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                        {homeworkPending.length > 0
+                          ? "Yêu cầu hoàn thành nộp bài đúng hạn để Thầy chấm điểm và nhận xét"
+                          : "Em đã nộp đủ bài tập Thầy giao. Bấm mở để xem lại bảng điểm và bài giải chi tiết"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                      openFolders.folder1
+                        ? "bg-amber-100 text-amber-900 border border-amber-300"
+                        : "bg-amber-500 hover:bg-amber-400 text-slate-950 font-black"
+                    }`}>
+                      <span>{openFolders.folder1 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder1 ? "rotate-180" : ""}`} />
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
-                    expandedSections.homeworkPending
-                      ? "bg-amber-100 text-amber-900 border border-amber-300"
-                      : "bg-amber-500 hover:bg-amber-400 text-slate-950"
-                  }`}>
-                    <span>{expandedSections.homeworkPending ? "Thu gọn" : "Bấm ra"}</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkPending ? "rotate-180" : ""}`} />
+                {/* Nội dung bên trong Thư mục 1: Gồm cả Đề bài và Kết quả */}
+                {openFolders.folder1 && (
+                  <div className="p-3.5 sm:p-5 pt-0 border-t border-amber-200/80 bg-white/80 animate-in fade-in duration-300 space-y-4">
+                    <div className="flex items-center gap-2 pt-3 border-b border-slate-100 pb-2">
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF1Tab("pending"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f1Tab === "pending"
+                            ? "bg-amber-500 text-slate-950 shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>📝 Đề Cần Nộp Cho Thầy</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-black/10">({homeworkPending.length})</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF1Tab("completed"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f1Tab === "completed"
+                            ? "bg-blue-600 text-white shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>📊 Bảng Điểm & Lời Giải</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({homeworkCompleted.length})</span>
+                      </button>
+                    </div>
+
+                    <div>
+                      {f1Tab === "pending" ? (
+                        renderPendingGrid(homeworkPending, "homework")
+                      ) : (
+                        renderCompletedTable(homeworkCompleted, "homework")
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
-              {/* Nội dung danh sách bài tập khi mở ra */}
-              {expandedSections.homeworkPending && (
-                <div className="p-3.5 sm:p-5 pt-0 border-t border-amber-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <div className="pt-3.5">
-                    {renderPendingGrid(homeworkPending, 'homework')}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* B. Bảng Điểm & Bài Giải BTVN Đã Nộp (Mặc định thu gọn, bấm vào là mở ra) */}
-            <div className="rounded-2xl sm:rounded-3xl border-2 border-blue-200/90 bg-gradient-to-r from-blue-50/50 via-white to-indigo-50/30 overflow-hidden shadow-xs hover:shadow-md transition-all">
-              <div 
-                onClick={() => toggleSection('homeworkCompleted')}
-                className="p-3.5 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow-md shadow-blue-600/25 shrink-0 group-hover:scale-105 transition-transform">
-                    📊
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
-                        Bảng Điểm & Lịch Sử Đã Nộp
-                      </h3>
-                      <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-900 border border-blue-300">
-                        {homeworkCompleted.length} bài đã nộp
-                      </span>
+              {/* ── MỤC 2: BÀI TẬP RÈN LUYỆN CƠ BẢN ── */}
+              <div className="rounded-2xl sm:rounded-3xl border-2 border-emerald-200/90 bg-gradient-to-r from-emerald-50/50 via-white to-teal-50/30 overflow-hidden shadow-sm transition-all">
+                <div 
+                  onClick={() => toggleFolder("folder2")}
+                  className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white flex items-center justify-center text-xl sm:text-2xl shadow-md shadow-emerald-500/25 shrink-0 group-hover:scale-105 transition-transform">
+                      🎯
                     </div>
-                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
-                      {expandedSections.homeworkCompleted 
-                        ? 'Bấm để thu gọn bảng điểm' 
-                        : 'Bấm vào để tra cứu điểm số, lời giải chi tiết và nhận xét của Thầy'}
-                    </p>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                          2. BÀI TẬP RÈN LUYỆN CƠ BẢN
+                        </h3>
+                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                          {basicCompleted.length} bài đã làm
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                        Củng cố lý thuyết nền tảng, nắm chắc kiến thức trọng tâm
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                      openFolders.folder2
+                        ? "bg-emerald-100 text-emerald-900 border border-emerald-300"
+                        : "bg-emerald-600 hover:bg-emerald-500 text-white font-black"
+                    }`}>
+                      <span>{openFolders.folder2 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder2 ? "rotate-180" : ""}`} />
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
-                    expandedSections.homeworkCompleted
-                      ? "bg-blue-100 text-blue-900 border border-blue-300"
-                      : "bg-blue-600 hover:bg-blue-500 text-white"
-                  }`}>
-                    <span>{expandedSections.homeworkCompleted ? "Thu gọn" : "Bấm ra"}</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkCompleted ? "rotate-180" : ""}`} />
+                {/* Bên trong Thư mục 2: Gồm cả Đề rèn luyện và Kết quả */}
+                {openFolders.folder2 && (
+                  <div className="p-3.5 sm:p-5 pt-0 border-t border-emerald-200/80 bg-white/80 animate-in fade-in duration-300 space-y-4">
+                    <div className="flex items-center gap-2 pt-3 border-b border-slate-100 pb-2">
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF2Tab("pending"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f2Tab === "pending"
+                            ? "bg-emerald-600 text-white shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>🎯 Đề Rèn Luyện Cơ Bản</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({basicPending.length})</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF2Tab("completed"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f2Tab === "completed"
+                            ? "bg-emerald-700 text-white shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>📊 Kết Quả Bài Làm</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({basicCompleted.length})</span>
+                      </button>
+                    </div>
+
+                    <div>
+                      {f2Tab === "pending" ? (
+                        renderPendingGrid(basicPending, "practice")
+                      ) : (
+                        renderCompletedTable(basicCompleted, "practice")
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
-              {/* Nội dung bảng điểm khi mở ra */}
-              {expandedSections.homeworkCompleted && (
-                <div className="p-3.5 sm:p-5 pt-0 border-t border-blue-100 bg-white/70 animate-in fade-in slide-in-from-top-2 duration-300">
-                  <div className="pt-3.5">
-                    {renderCompletedTable(homeworkCompleted, 'homework')}
+              {/* ── MỤC 3: BÀI TẬP RÈN LUYỆN NÂNG CAO ── */}
+              <div className="rounded-2xl sm:rounded-3xl border-2 border-rose-200/90 bg-gradient-to-r from-rose-50/50 via-white to-red-50/30 overflow-hidden shadow-sm transition-all">
+                <div 
+                  onClick={() => toggleFolder("folder3")}
+                  className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-rose-600 to-red-500 text-white flex items-center justify-center text-xl sm:text-2xl shadow-md shadow-rose-500/25 shrink-0 group-hover:scale-105 transition-transform">
+                      🔥
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                          3. BÀI TẬP RÈN LUYỆN NÂNG CAO
+                        </h3>
+                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-300">
+                          {advancedCompleted.length} bài đã làm
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                        Rèn luyện tư duy vận dụng, vận dụng cao và câu hỏi phân loại
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                      openFolders.folder3
+                        ? "bg-rose-100 text-rose-900 border border-rose-300"
+                        : "bg-rose-600 hover:bg-rose-500 text-white font-black"
+                    }`}>
+                      <span>{openFolders.folder3 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder3 ? "rotate-180" : ""}`} />
+                    </div>
                   </div>
                 </div>
-              )}
+
+                {/* Bên trong Thư mục 3: Gồm cả Đề nâng cao và Kết quả */}
+                {openFolders.folder3 && (
+                  <div className="p-3.5 sm:p-5 pt-0 border-t border-rose-200/80 bg-white/80 animate-in fade-in duration-300 space-y-4">
+                    <div className="flex items-center gap-2 pt-3 border-b border-slate-100 pb-2">
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF3Tab("pending"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f3Tab === "pending"
+                            ? "bg-rose-600 text-white shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>🔥 Đề Rèn Luyện Nâng Cao</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({advancedPending.length})</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setF3Tab("completed"); }}
+                        className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                          f3Tab === "completed"
+                            ? "bg-rose-700 text-white shadow-xs"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        <span>📊 Kết Quả Bài Làm</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-white/20">({advancedCompleted.length})</span>
+                      </button>
+                    </div>
+
+                    <div>
+                      {f3Tab === "pending" ? (
+                        renderPendingGrid(advancedPending, "practice")
+                      ) : (
+                        renderCompletedTable(advancedCompleted, "practice")
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* ── MỤC 4: LUYỆN CÁC CHUYÊN ĐỀ (ĐÚNG / SAI, TRẢ LỜI NGẮN, TRẮC NGHIỆM) ── */}
+              <div className="rounded-2xl sm:rounded-3xl border-2 border-indigo-200/90 bg-gradient-to-r from-indigo-50/50 via-white to-blue-50/30 overflow-hidden shadow-sm transition-all">
+                <div 
+                  onClick={() => toggleFolder("folder4")}
+                  className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-indigo-700 to-purple-600 text-white flex items-center justify-center text-xl sm:text-2xl shadow-md shadow-indigo-500/25 shrink-0 group-hover:scale-105 transition-transform">
+                      🧪
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                          4. LUYỆN CÁC CHUYÊN ĐỀ (ĐÚNG / SAI, TRẢ LỜI NGẮN, TRẮC NGHIỆM)
+                        </h3>
+                        <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-900 border border-indigo-300">
+                          3 Dạng thức Bộ GD&ĐT
+                        </span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                        Rèn luyện kỹ năng giải đề theo 3 dạng thức mới của Bộ GD&ĐT
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                      openFolders.folder4
+                        ? "bg-indigo-100 text-indigo-900 border border-indigo-300"
+                        : "bg-indigo-600 hover:bg-indigo-500 text-white font-black"
+                    }`}>
+                      <span>{openFolders.folder4 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder4 ? "rotate-180" : ""}`} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bên trong Thư mục 4: Các dạng thức chuyên đề */}
+                {openFolders.folder4 && (
+                  <div className="p-3.5 sm:p-5 pt-0 border-t border-indigo-200/80 bg-white/80 animate-in fade-in duration-300 space-y-3.5">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-3">
+                      {/* Dạng 1: Trắc nghiệm 4 lựa chọn */}
+                      <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-200 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-md transition-all">
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-xs font-black uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">DẠNG I</span>
+                            <span className="text-xl">🔠</span>
+                          </div>
+                          <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm 4 Phương Án</h4>
+                          <p className="text-[11px] text-slate-600 mt-1 leading-snug">
+                            Dạng thức chọn 1 đáp án đúng trong 4 lựa chọn A, B, C, D chuẩn cấu trúc đề thi.
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => toggleSection("chapterPending")}
+                          className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                        >
+                          <span>Xem Chuyên Đề Dạng I</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+
+                      {/* Dạng 2: Trắc nghiệm Đúng / Sai */}
+                      <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50/50 border border-purple-200 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-md transition-all">
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-xs font-black uppercase tracking-wider text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">DẠNG II</span>
+                            <span className="text-xl">⚖️</span>
+                          </div>
+                          <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm Đúng / Sai</h4>
+                          <p className="text-[11px] text-slate-600 mt-1 leading-snug">
+                            Mỗi câu gồm 4 ý a, b, c, d. Rèn khả năng phán đoán chính xác từng mệnh đề lý thuyết.
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => toggleSection("chapterPending")}
+                          className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                        >
+                          <span>Xem Chuyên Đề Dạng II</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+
+                      {/* Dạng 3: Trắc nghiệm Trả lời ngắn */}
+                      <div className="p-4 rounded-2xl bg-gradient-to-br from-teal-50 to-cyan-50/50 border border-teal-200 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-md transition-all">
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-xs font-black uppercase tracking-wider text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full">DẠNG III</span>
+                            <span className="text-xl">✍️</span>
+                          </div>
+                          <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm Trả Lời Ngắn</h4>
+                          <p className="text-[11px] text-slate-600 mt-1 leading-snug">
+                            Điền kết quả tính toán số học, rèn luyện kỹ năng bấm máy tính Casio chuẩn xác.
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => toggleSection("chapterPending")}
+                          className="w-full py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                        >
+                          <span>Xem Chuyên Đề Dạng III</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* ── MỤC 5: TÀI LIỆU THAM KHẢO & ĐỀ ÔN TẬP (THẦY CẤP QUYỀN MỚI ĐƯỢC) ── */}
+              <div className="rounded-2xl sm:rounded-3xl border-2 border-purple-200/90 bg-gradient-to-r from-purple-50/50 via-white to-fuchsia-50/30 overflow-hidden shadow-sm transition-all">
+                <div 
+                  onClick={() => toggleFolder("folder5")}
+                  className="p-4 sm:p-5 flex items-center justify-between gap-3 cursor-pointer select-none group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-purple-700 to-fuchsia-600 text-white flex items-center justify-center text-xl sm:text-2xl shadow-md shadow-purple-500/25 shrink-0 group-hover:scale-105 transition-transform">
+                      📚
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight">
+                          5. TÀI LIỆU THAM KHẢO & ĐỀ ÔN TẬP
+                        </h3>
+                        {hasMaterialAccess ? (
+                          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                            🟢 Thầy Thọ Cấp Quyền
+                          </span>
+                        ) : (
+                          <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 border border-rose-300">
+                            🔒 Thầy Thọ Cấp Quyền Mới Được
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                        Kho tài liệu lý thuyết, công thức trọng tâm và file đề thi ôn tập
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                      openFolders.folder5
+                        ? "bg-purple-100 text-purple-900 border border-purple-300"
+                        : "bg-purple-600 hover:bg-purple-500 text-white font-black"
+                    }`}>
+                      <span>{openFolders.folder5 ? "Thu gọn" : "Bấm ra"}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openFolders.folder5 ? "rotate-180" : ""}`} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bên trong Thư mục 5: Chỉ mở khi Thầy cấp quyền */}
+                {openFolders.folder5 && (
+                  <div className="p-3.5 sm:p-5 pt-0 border-t border-purple-200/80 bg-white/80 animate-in fade-in duration-300 space-y-4">
+                    <div className="pt-3">
+                      {hasMaterialAccess ? (
+                        <div className="space-y-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div 
+                              onClick={() => navigate("/khoa-hoc-lay-goc-hoa")}
+                              className="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-300 hover:shadow-md cursor-pointer transition-all flex items-center justify-between"
+                            >
+                              <div className="flex items-center gap-3">
+                                <span className="text-2xl">🧪</span>
+                                <div>
+                                  <h4 className="font-black text-xs sm:text-sm text-slate-900">Khóa Học Lấy Gốc Hóa Học Nền Tảng</h4>
+                                  <p className="text-[11px] text-slate-600">9 Chuyên đề toàn diện 360 câu · Lời giải chi tiết</p>
+                                </div>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-amber-700" />
+                            </div>
+
+                            {visibleCourses.map((c: any) => (
+                              <div 
+                                key={c.id}
+                                onClick={() => navigate(`/course-viewer/${c.id}/${student.id}`)}
+                                className="p-4 rounded-2xl bg-white border border-purple-200 hover:border-purple-400 hover:shadow-md cursor-pointer transition-all flex items-center justify-between"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <span className="text-2xl">📘</span>
+                                  <div>
+                                    <h4 className="font-black text-xs sm:text-sm text-slate-900">{c.title}</h4>
+                                    <p className="text-[11px] text-slate-500">{c.description || "Học liệu Thầy Thọ cấp quyền"}</p>
+                                  </div>
+                                </div>
+                                <ChevronRight className="w-4 h-4 text-purple-700" />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="p-6 text-center rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 space-y-2">
+                          <div className="w-12 h-12 mx-auto rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-2xl shadow-inner">
+                            🔒
+                          </div>
+                          <h4 className="font-black text-sm text-slate-800">
+                            Thư Mục Cần Thầy Thọ Cấp Quyền
+                          </h4>
+                          <p className="text-xs text-slate-500 max-w-md mx-auto">
+                            Tài liệu tham khảo và học liệu số này cần được Thầy Thọ cấp quyền truy cập. Em vui lòng liên hệ Thầy Thọ để được mở quyền nhé!
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+
             </div>
           </section>
         )}
