@@ -114,6 +114,7 @@ export default function Dashboard() {
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false)
   const [showGradesOverview, setShowGradesOverview] = useState(false)
   const [showWeeklySchedule, setShowWeeklySchedule] = useState(false)
+  const [showAccessControl, setShowAccessControl] = useState(false)
   const [editingClassId, setEditingClassId] = useState<string>('')
   const [selectedDays, setSelectedDays] = useState<number[]>([1, 4])
   const [sessionTime, setSessionTime] = useState<string>('17:45 - 19:15')
@@ -534,62 +535,87 @@ export default function Dashboard() {
       </div>
 
       {/* ── BẢNG ĐIỀU KHIỂN CẤP QUYỀN PHÂN LẬP TỪNG CHƯƠNG & TỪNG KHỐI (ĐỘC QUYỀN THẦY THỌ) ── */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-white border-2 border-slate-200 shadow-md space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
+      <div className="p-4 sm:p-5 rounded-3xl bg-white border-2 border-slate-200 shadow-sm transition-all">
+        <div
+          onClick={() => setShowAccessControl(!showAccessControl)}
+          className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 cursor-pointer select-none transition-all ${showAccessControl ? "pb-4 border-b border-slate-100" : ""}`}
+        >
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl shadow-md shadow-indigo-600/20">
+            <div className="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl shadow-md shadow-indigo-600/20 shrink-0">
               🎛️
             </div>
             <div>
-              <h3 className="text-sm sm:text-base font-black text-slate-900 uppercase tracking-tight flex items-center gap-2">
+              <h3 className="text-sm sm:text-base font-black text-slate-900 uppercase tracking-tight flex items-center flex-wrap gap-2">
                 <span>TRUNG TÂM CẤP QUYỀN PHÂN LẬP (TỪNG CHƯƠNG · TỪNG KHỐI)</span>
                 <span className="text-[10px] bg-indigo-100 text-indigo-800 font-extrabold px-2 py-0.5 rounded-full uppercase">
                   Độc Quyền Thầy Thọ
                 </span>
               </h3>
               <p className="text-xs text-slate-500 font-medium mt-0.5">
-                Bấm trực tiếp vào từng mục để Mở (màu xanh) hoặc Khóa (màu đỏ) độc lập cho từng chương hoặc từng khối.
+                {showAccessControl
+                  ? 'Bấm trực tiếp vào từng mục để Mở (màu xanh) hoặc Khóa (màu đỏ) độc lập cho từng chương hoặc từng khối.'
+                  : 'Bấm để mở cài đặt phân quyền mở/khóa từng chương Hóa 12 & các khối lớp'}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
             <button
               type="button"
-              disabled={isUpdatingAccess}
-              onClick={handleGrantAll}
-              className="px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
-            >
-              <span>🟢 Mở Tất Cả</span>
-            </button>
-            <button
-              type="button"
-              disabled={isUpdatingAccess}
-              onClick={handleRevokeAll}
-              className="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-300 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-2xs"
-            >
-              <span>🛑 Khóa Tất Cả</span>
-            </button>
-            <button
-              type="button"
-              disabled={isUpdatingAccess}
-              onClick={() => {
-                setIsUpdatingAccess(true);
-                fetchHoa12AccessConfig().then((cfg) => {
-                  setAccessConfig({ ...cfg });
-                  setIsUpdatingAccess(false);
-                  toast.success('Đã đồng bộ trạng thái mới nhất từ Cloud!');
-                });
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowAccessControl(!showAccessControl)
               }}
-              title="Làm mới từ Cloud"
-              className="p-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition-all cursor-pointer"
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold border flex items-center gap-1.5 transition-all cursor-pointer ${showAccessControl ? "bg-indigo-50 text-indigo-700 border-indigo-200 shadow-2xs" : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200"}`}
             >
-              <RefreshCw className={`w-4 h-4 ${isUpdatingAccess ? 'animate-spin' : ''}`} />
+              <span>{showAccessControl ? 'Thu gọn' : 'Bấm để mở'}</span>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showAccessControl ? "rotate-180" : ""}`} />
             </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {showAccessControl && (
+          <div className="space-y-4 pt-3">
+            {/* Thanh thao tác nhanh */}
+            <div className="flex flex-wrap items-center justify-between gap-2.5 p-3 bg-slate-50 rounded-2xl border border-slate-200">
+              <span className="text-xs font-bold text-slate-600">Thao tác nhanh toàn hệ thống:</span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={handleGrantAll}
+                  className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs"
+                >
+                  <span>🟢 Mở Tất Cả</span>
+                </button>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={handleRevokeAll}
+                  className="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs"
+                >
+                  <span>🛑 Khóa Tất Cả</span>
+                </button>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => {
+                    setIsUpdatingAccess(true);
+                    fetchHoa12AccessConfig().then((cfg) => {
+                      setAccessConfig({ ...cfg });
+                      setIsUpdatingAccess(false);
+                      toast.success('Đã đồng bộ trạng thái mới nhất từ Cloud!');
+                    });
+                  }}
+                  title="Làm mới từ Cloud"
+                  className="p-1.5 bg-white hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-xl transition-all cursor-pointer"
+                >
+                  <RefreshCw className={`w-4 h-4 ${isUpdatingAccess ? "animate-spin" : ""}`} />
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* CỘT 1: HÓA HỌC 12 (TỪNG CHƯƠNG) */}
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
             <div className="flex items-center justify-between">
@@ -809,10 +835,11 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+          </div>
+        )}
       </div>
 
-
-      {/* ── 4 KPI Stats Cards ──────────────────────────────────────── */}
+{/* ── 4 KPI Stats Cards ──────────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
           icon={Users}
