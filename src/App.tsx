@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useEffect, Suspense, lazy } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation, Outlet } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import Layout from '@/components/Layout'
 import InstallPwaModal from '@/components/InstallPwaModal'
