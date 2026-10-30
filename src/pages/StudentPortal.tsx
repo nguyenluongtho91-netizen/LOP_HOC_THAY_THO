@@ -1101,12 +1101,22 @@ export default function StudentPortal() {
                   </button>
                 ) : (
                   <button 
-                    onClick={() => setExamRuleModalTarget({
-                      type: 'room',
-                      id: room.id,
-                      title: room.exams?.title || room.title || 'Phòng Thi Trực Tuyến',
-                      hasSub: hasSub
-                    })}
+                    onClick={() => {
+                      const isFree = student?.student_code?.toUpperCase() === 'THAYTHO' || student?.student_code?.toUpperCase() === 'TUDO';
+                      if (accessConfig?.is_locked && !isFree) {
+                        toast.error('Hệ thống đang tạm khóa! Thầy Thọ chưa cấp quyền vào học hay thi từ Trang Chủ.', {
+                          icon: '🔒',
+                          duration: 4500
+                        });
+                        return;
+                      }
+                      toast('⚠️ Cảnh báo quy chế: Khi làm bài nếu thoát toàn màn hình hoặc chuyển tab quá 3 lần, hệ thống sẽ tự động thu bài và chấm điểm!', {
+                        duration: 6000,
+                        icon: '🛡️',
+                        style: { background: '#1e293b', color: '#f8fafc', fontWeight: 700, borderRadius: '16px', border: '1px solid #f59e0b' }
+                      });
+                      navigate(`/exam-room/${room.id}`);
+                    }}
                     className={`w-full sm:w-auto px-5 py-3 sm:py-2.5 bg-gradient-to-r ${btnGradient} text-xs sm:text-sm font-black rounded-xl sm:rounded-2xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-95`}
                   >
                     <Sparkles className="w-4 h-4 text-amber-300 shrink-0" />
@@ -2556,7 +2566,8 @@ export default function StudentPortal() {
       )}
     
       {/* MODAL CẢNH BÁO & XÁC NHẬN QUY CHẾ KHI HỌC SINH BẤM NÚT BẮT ĐẦU LÀM BÀI */}
-      {examRuleModalTarget && (
+      {/* Modal quy chế đã được chuyển thành toast mặc định theo yêu cầu của Thầy Thọ */}
+      {false && (
         <div className="fixed inset-0 z-[999999] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200 text-slate-900 relative overflow-hidden text-left">
             {/* Thanh gradient cảnh báo */}

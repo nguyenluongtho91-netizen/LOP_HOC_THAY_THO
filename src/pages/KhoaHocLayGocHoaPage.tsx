@@ -88,6 +88,22 @@ export default function KhoaHocLayGocHoaPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Thông báo cảnh báo quy chế khi bắt đầu làm bài theo yêu cầu của Thầy Thọ
+  useEffect(() => {
+    toast('🛡️ Quy chế phòng thi: Khi làm bài nếu thoát toàn màn hình hoặc chuyển tab quá 3 lần, hệ thống sẽ tự động thu bài và chấm điểm!', {
+      duration: 6000,
+      icon: '⚠️',
+      style: {
+        background: '#1e293b',
+        color: '#f8fafc',
+        fontWeight: 700,
+        borderRadius: '16px',
+        border: '1px solid #f59e0b',
+        boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)'
+      }
+    });
+  }, []);
+
   // Bắt đầu bấm giờ
   useEffect(() => {
     setIsTimerActive(true);
@@ -218,11 +234,37 @@ export default function KhoaHocLayGocHoaPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50/40 via-sky-50/20 to-slate-50 text-slate-800 flex flex-col relative overflow-x-hidden">
-      {/* HỌA TIẾT KÝ HIỆU HÓA HỌC CHÌM */}
+      {/* HỌA TIẾT PHÔNG NỀN CHÌM: KÝ HIỆU TOÁN & HÓA HỌC (ĐỒNG BỘ 100% CỔNG HỌC SINH) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none opacity-[0.035] text-blue-900">
-        <div className="absolute top-10 right-10 text-9xl font-serif">⬡</div>
-        <div className="absolute top-80 left-10 text-8xl font-serif">🧪</div>
-        <div className="absolute bottom-20 right-20 text-9xl font-serif">⚛️</div>
+        {/* Phía trên bên phải: Vòng benzen */}
+        <div className="absolute -top-10 -right-10 w-96 h-96">
+          <svg viewBox="0 0 200 200" fill="currentColor">
+            <path d="M100 20 L160 55 L160 125 L100 160 L40 125 L40 55 Z" stroke="currentColor" strokeWidth="6" fill="none"/>
+            <circle cx="100" cy="90" r="38" stroke="currentColor" strokeWidth="5" fill="none"/>
+          </svg>
+        </div>
+        {/* Phía trên bên trái: Tích phân & Sigma */}
+        <div className="absolute top-24 -left-6 text-9xl font-serif">
+          ∫
+        </div>
+        <div className="absolute top-80 left-12 text-7xl font-serif">
+          ∑
+        </div>
+        {/* Giữa trang bên phải: Căn bậc hai & Pi */}
+        <div className="absolute top-1/2 -right-8 text-8xl font-serif">
+          √x
+        </div>
+        <div className="absolute top-[60%] right-24 text-7xl font-serif">
+          π
+        </div>
+        {/* Phía dưới bên trái: Quỹ đạo electron nguyên tử */}
+        <div className="absolute bottom-20 left-8 w-48 h-48">
+          <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="3">
+            <ellipse cx="50" cy="50" rx="45" ry="16" transform="rotate(30 50 50)"/>
+            <ellipse cx="50" cy="50" rx="45" ry="16" transform="rotate(-30 50 50)"/>
+            <circle cx="50" cy="50" r="8" fill="currentColor"/>
+          </svg>
+        </div>
       </div>
 
       {/* HEADER ĐẦU TRANG */}
