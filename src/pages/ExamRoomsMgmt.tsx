@@ -947,14 +947,14 @@ const isFirstRender = useRef(true)
               disabled={!!editingRoomId}
             >
               <option value="">-- Chọn khối lớp --</option>
-              <option value="all" className="font-extrabold text-teal-700">🌟 TẤT CẢ CÁC KHỐI (Tự do chọn nhiều lớp 6, 7, 8...)</option>
-              <option value="6">Khối 6</option>
-              <option value="7">Khối 7</option>
-              <option value="8">Khối 8</option>
+              <option value="12">Khối 12</option>
+              <option value="11">Khối 11</option>
+              <option value="10">Khối 10</option>
               <option value="9">Khối 9</option>
-              <option value="10">Khối 10 (🌟 40+ đề chuẩn: Giữa kì, Cuối kì, Chương 1-7)</option>
-              <option value="11">Khối 11 (🌟 40+ đề chuẩn: Giữa kì, Cuối kì, Chương 1-6)</option>
-              <option value="12">Khối 12 (🌟 60+ đề chuẩn: Giữa kì, Cuối kì, Chương 1-8)</option>
+              <option value="8">Khối 8</option>
+              <option value="7">Khối 7</option>
+              <option value="6">Khối 6</option>
+              <option value="all">Tất cả các khối</option>
             </select>
           </div>
 
@@ -1041,64 +1041,7 @@ const isFirstRender = useRef(true)
               )}
             </select>
 
-            {/* ✂️ BỘ CHỌN PHẦN THI LẺ (KIỂM TRA 15P - 25P) */}
-            <div className="mt-3 bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-black text-gray-700 uppercase tracking-wider flex items-center gap-1.5">
-                  <span>✂️ PHẠM VI LÀM BÀI (TÙY CHỌN BÀI NGẮN / 15P):</span>
-                </label>
-                <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-lg border border-teal-200">
-                  {selectedParts.length === 3 ? 'Trọn vẹn 3 Phần (50p)' : selectedParts.length === 1 ? (selectedParts[0] === 1 ? 'Chỉ Phần I (25p)' : selectedParts[0] === 2 ? 'Chỉ Phần II (15p)' : 'Chỉ Phần III (15p)') : 'Ghép 2 Phần (40p)'}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
-                <label className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-bold cursor-pointer transition-all ${selectedParts.includes(1) ? 'bg-teal-500/10 border-teal-500 text-teal-900 shadow-xs' : 'bg-white border-slate-200 text-slate-500'}`}>
-                  <input
-                    type="checkbox"
-                    checked={selectedParts.includes(1)}
-                    onChange={async (e) => {
-                      const newParts = e.target.checked ? [...selectedParts, 1].sort() : selectedParts.filter(p => p !== 1)
-                      if (newParts.length === 0) return toast.error('Vui lòng chọn ít nhất 1 phần thi!')
-                      setSelectedParts(newParts)
-                      await handlePartsChanged(newParts)
-                    }}
-                    className="rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
-                  />
-                  <span>Phần I: 18 câu Trắc nghiệm</span>
-                </label>
-
-                <label className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-bold cursor-pointer transition-all ${selectedParts.includes(2) ? 'bg-teal-500/10 border-teal-500 text-teal-900 shadow-xs' : 'bg-white border-slate-200 text-slate-500'}`}>
-                  <input
-                    type="checkbox"
-                    checked={selectedParts.includes(2)}
-                    onChange={async (e) => {
-                      const newParts = e.target.checked ? [...selectedParts, 2].sort() : selectedParts.filter(p => p !== 2)
-                      if (newParts.length === 0) return toast.error('Vui lòng chọn ít nhất 1 phần thi!')
-                      setSelectedParts(newParts)
-                      await handlePartsChanged(newParts)
-                    }}
-                    className="rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
-                  />
-                  <span>Phần II: 4 câu Đúng/Sai</span>
-                </label>
-
-                <label className={`flex items-center gap-2 p-2 rounded-xl border text-xs font-bold cursor-pointer transition-all ${selectedParts.includes(3) ? 'bg-teal-500/10 border-teal-500 text-teal-900 shadow-xs' : 'bg-white border-slate-200 text-slate-500'}`}>
-                  <input
-                    type="checkbox"
-                    checked={selectedParts.includes(3)}
-                    onChange={async (e) => {
-                      const newParts = e.target.checked ? [...selectedParts, 3].sort() : selectedParts.filter(p => p !== 3)
-                      if (newParts.length === 0) return toast.error('Vui lòng chọn ít nhất 1 phần thi!')
-                      setSelectedParts(newParts)
-                      await handlePartsChanged(newParts)
-                    }}
-                    className="rounded text-teal-600 focus:ring-teal-500 w-4 h-4 cursor-pointer"
-                  />
-                  <span>Phần III: 6 câu Trả lời ngắn</span>
-                </label>
-              </div>
-            </div>
+            
           </div>
 
           {/* 🎯 ĐỐI TƯỢNG GIAO BÀI (HỖ TRỢ CHỌN NHIỀU LỚP) */}
