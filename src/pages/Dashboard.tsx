@@ -513,83 +513,121 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
 
-      {/* ── Top Header ────────────────────────────────────────────── */}
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-black text-gray-800 tracking-tight">
-              Bảng điều khiển trung tâm
+      {/* ── Top Hero Banner Sang Trọng & Hiện Đại ──────────────────────────────── */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 text-white p-6 sm:p-8 shadow-xl border border-indigo-500/20">
+        {/* Ánh sáng nền trang trí hiện đại */}
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/0 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 -mb-20 w-64 h-64 rounded-full bg-rose-500/10 blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2.5 flex-wrap">
+              <span className="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 text-xs font-black tracking-wider uppercase flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                HỆ THỐNG THẦY THỌ · QUẢN TRỊ CAO CẤP
+              </span>
+              <span className="text-xs text-slate-400 font-semibold flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                Trực tuyến 24/7
+              </span>
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">
+              Bảng Điều Khiển Trung Tâm
             </h1>
-            <span className="bg-teal-50 text-teal-700 text-[10px] font-black px-2 py-0.5 rounded-full border border-teal-200 uppercase tracking-wider">
-              Hệ thống Thầy Thọ
-            </span>
+
+            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+              Xin chào <strong className="text-amber-300 font-bold">{profile?.name || 'Thầy Thọ'}</strong>, toàn bộ 4 Trụ Cột điều hành (152 học sinh, 21 lớp, kho bài giảng và tài chính VietQR) đã sẵn sàng phục vụ giảng dạy hiệu quả nhất!
+            </p>
           </div>
-          <p className="text-xs text-gray-500 mt-1 font-medium">
-            Xin chào <strong className="text-gray-700 font-bold">{profile?.name || 'Thầy Thọ'}</strong>, chúc Thầy một ngày giảng dạy hiệu quả và tràn đầy năng lượng!
-          </p>
+
+          {/* Quick Action Buttons */}
+          <div className="flex items-center gap-3 shrink-0 flex-wrap">
+            <button
+              onClick={() => openEditSchedule(classes[0] || { id: '' })}
+              className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl text-xs font-bold shadow-sm hover:shadow transition-all duration-200 flex items-center gap-2 cursor-pointer active:scale-95"
+              title="Bấm để chỉnh sửa lịch dạy khi cần"
+            >
+              <Edit3 className="w-4 h-4 text-amber-300" />
+              <span>Chỉnh Lịch Dạy</span>
+            </button>
+
+            <button
+              onClick={() => navigate('/tuition')}
+              className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white rounded-2xl text-xs font-black shadow-lg shadow-emerald-700/30 flex items-center gap-2 transition-all duration-200 cursor-pointer active:scale-95 border border-emerald-400/30"
+            >
+              <CalendarCheck className="w-4 h-4 text-emerald-100" />
+              <span>Điểm Danh & Học Phí</span>
+            </button>
+          </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => openEditSchedule(classes[0] || { id: '' })}
-            className="px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5 transition-all cursor-pointer"
-            title="Bấm để chỉnh sửa lịch dạy khi cần"
-          >
-            <Edit3 className="w-3.5 h-3.5 text-teal-600" />
-            <span>Đổi Lịch</span>
-          </button>
-
-          <button
-            onClick={() => navigate('/tuition')}
-            className="px-4 py-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl text-xs font-bold shadow-sm flex items-center gap-1.5 transition-all cursor-pointer"
-          >
-            <CalendarCheck className="w-4 h-4 text-teal-600" />
-            <span>Điểm Danh & Học Phí</span>
-          </button>
+        {/* Thống kê nhanh nổi bật 4 Chỉ Số Tinh Hoa */}
+        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/10">
+          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
+            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 1</div>
+            <div className="text-base sm:text-lg font-black text-blue-300 mt-0.5">152 Học Sinh</div>
+            <div className="text-[10px] text-slate-400">21 Lớp K6 - K12</div>
+          </div>
+          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
+            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 2</div>
+            <div className="text-base sm:text-lg font-black text-purple-300 mt-0.5">Kho Bài Giảng</div>
+            <div className="text-[10px] text-slate-400">Word, Casio, Whiteboard</div>
+          </div>
+          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
+            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 3</div>
+            <div className="text-base sm:text-lg font-black text-rose-300 mt-0.5">Thi Trực Tuyến</div>
+            <div className="text-[10px] text-slate-400">Đề PDF, LaTeX, Chấm thi</div>
+          </div>
+          <div className="bg-white/5 rounded-2xl p-3 border border-white/5">
+            <div className="text-[10px] uppercase font-bold text-slate-400">Trụ Cột 4</div>
+            <div className="text-base sm:text-lg font-black text-emerald-300 mt-0.5">VietQR Tự Động</div>
+            <div className="text-[10px] text-slate-400">Zalo & Quản lý sổ nợ</div>
+          </div>
         </div>
       </div>
 
       {/* ══════════════════════════════════════════════════════════════
-          ── 🏛️ HỆ THỐNG 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG (MASTER HUBS) ──
+          ── 🏛️ 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG (SELECTION & TABS) ──────
           ══════════════════════════════════════════════════════════════ */}
-      <div className="space-y-4 pt-2">
-        {/* Tiêu đề & Bộ lọc 4 Trụ Cột */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl border border-indigo-500/20">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xl">🏛️</span>
-              <h3 className="text-sm sm:text-base font-black uppercase tracking-wider text-white">
-                4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG
-              </h3>
-              <span className="text-[10px] bg-indigo-500/30 text-indigo-300 font-extrabold px-2.5 py-0.5 rounded-full border border-indigo-400/30">
-                ĐỘC QUYỀN THẦY THỌ
-              </span>
+      <div className="space-y-4 pt-1">
+        {/* Navigation Tabs chuẩn phong cách cao cấp */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 p-3 sm:p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black text-sm">
+              🏛️
             </div>
-            <p className="text-xs text-slate-300 mt-1">
-              Bấm vào từng trụ cột để xem đầy đủ các phân hệ con & công cụ chuyên sâu liên kết xuyên suốt.
-            </p>
+            <div>
+              <h2 className="text-sm font-black uppercase tracking-wider text-slate-900">
+                4 TRỤ CỘT ĐIỀU HÀNH CHUYÊN SÂU
+              </h2>
+              <p className="text-[11px] text-slate-500">
+                Bấm vào các thẻ bên dưới để truy cập các công cụ con liên kết đồng bộ
+              </p>
+            </div>
           </div>
 
           {/* Bộ lọc Tab chuyển đổi nhanh */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 shrink-0 custom-scrollbar">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 shrink-0 custom-scrollbar">
             {[
-              { id: 'all', label: '🌟 Tất Cả (4 Trụ Cột)' },
-              { id: 'p1',  label: '👥 1. Học Sinh' },
-              { id: 'p2',  label: '📚 2. Khóa Học' },
-              { id: 'p3',  label: '🎯 3. Thi Cử' },
-              { id: 'p4',  label: '💳 4. Học Phí' },
+              { id: 'all', label: 'Tất Cả 4 Trụ Cột', icon: '🌟' },
+              { id: 'p1',  label: '1. Học Sinh',       icon: '👥' },
+              { id: 'p2',  label: '2. Khóa Học',       icon: '📚' },
+              { id: 'p3',  label: '3. Thi Cử',         icon: '🎯' },
+              { id: 'p4',  label: '4. Học Phí',        icon: '💳' },
             ].map(tab => (
               <button
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveHubPillar(tab.id as any)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer shrink-0 ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
                   activeHubPillar === tab.id
-                    ? 'bg-white text-slate-950 shadow-md font-black scale-105'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
+                    ? 'bg-slate-900 text-white shadow-sm font-black'
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
                 }`}
               >
-                {tab.label}
+                <span>{tab.icon}</span>
+                <span>{tab.label}</span>
               </button>
             ))}
           </div>
