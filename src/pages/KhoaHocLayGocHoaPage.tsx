@@ -507,22 +507,18 @@ export default function KhoaHocLayGocHoaPage() {
                 key={q.id}
                 className="pt-6 first:pt-0 transition-all duration-300"
               >
-                {/* Hàng tiêu đề câu hỏi: Icon tròn bên trái + Tiêu đề CÂU X. */}
-                <div className="flex items-start gap-3 sm:gap-3.5">
-                  {/* Icon trạng thái tròn bên trái */}
-                  <div
-                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm text-white shrink-0 mt-0.5 shadow-2xs ${
-                      isSubmitted
-                        ? isCorrect
-                          ? 'bg-emerald-500'
-                          : 'bg-rose-500'
-                        : isAnswered
-                        ? 'bg-blue-600'
-                        : 'bg-slate-200 text-slate-700'
-                    }`}
-                  >
-                    {isSubmitted ? (isCorrect ? '✓' : '✕') : (idx + 1)}
-                  </div>
+                {/* Hàng tiêu đề câu hỏi: Icon tick/cross khi đã nộp bài + Tiêu đề CÂU X. (Xóa bỏ hoàn toàn số ở ngoài) */}
+                <div className="flex items-start gap-2.5 sm:gap-3">
+                  {/* Chỉ hiện icon tròn khi ĐÃ NỘP BÀI (✓ hoặc ✕), hoàn toàn không có số ở ngoài */}
+                  {isSubmitted && (
+                    <div
+                      className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm text-white shrink-0 mt-0.5 shadow-2xs ${
+                        isCorrect ? 'bg-emerald-500' : 'bg-rose-500'
+                      }`}
+                    >
+                      {isCorrect ? '✓' : '✕'}
+                    </div>
+                  )}
 
                   {/* Nội dung câu hỏi & Các lựa chọn */}
                   <div className="flex-1 min-w-0">
