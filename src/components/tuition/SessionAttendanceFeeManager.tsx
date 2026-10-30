@@ -269,8 +269,9 @@ export default function SessionAttendanceFeeManager({
         .sort()
 
       const attendedCount = attendedDates.length
-      const calculatedAmount = attendedCount * unitPrice
       const notif = tuitionNotifications.find(n => n.student_id === st.id && n.class_id === selClass)
+      const isFree = (st.full_name || '').toUpperCase().includes('THU NGÂN') || (notif != null && Number(notif.amount) === 0)
+      const calculatedAmount = isFree ? 0 : (attendedCount * unitPrice)
       const currentAmount = notif ? Number(notif.amount) : 0
       const isPaid = notif?.is_paid || false
       const isSynced = currentAmount === calculatedAmount && notif != null
