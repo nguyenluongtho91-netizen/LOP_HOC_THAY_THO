@@ -40,6 +40,7 @@ export default function ExamRoomsMgmt() {
   const [saving, setSaving] = useState(false)
   const [modalGrade, setModalGrade] = useState<number | 'all' | ''>('')
   const [modalClassGradeTab, setModalClassGradeTab] = useState<string>('all')
+  const [selectedChapterFilter, setSelectedChapterFilter] = useState<string>('all')
   const [editingRoomId, setEditingRoomId] = useState<string | null>(null)
   const [exportingRoomId, setExportingRoomId] = useState<string | null>(null)
   const [selectedStandardExam, setSelectedStandardExam] = useState<any | null>(null)
@@ -319,6 +320,50 @@ export default function ExamRoomsMgmt() {
     if (!modalGrade) return []
     return getStandardExamsForGrade(modalGrade)
   }, [modalGrade])
+
+  // Danh sách các chuyên đề/chương của khối đang chọn
+  const examChaptersList = useMemo(() => {
+    const map = new Map<string, number>();
+    standardExamsForGrade.forEach((ex: any) => {
+      const ch = ex.chapter || "Đề Chuẩn Bộ";
+      map.set(ch, (map.get(ch) || 0) + 1);
+    });
+    return Array.from(map.entries()).map(([name, count]) => ({ name, count }));
+  }, [standardExamsForGrade]);
+
+  // Danh sách đề thi được hiển thị (rút gọn tên đề cực kỳ ngắn gọn, không lặp lại)
+  const displayedExamsInDropdown = useMemo(() => {
+    let list = standardExamsForGrade;
+    if (selectedChapterFilter !== "all" && selectedChapterFilter !== "custom") {
+      list = list.filter((ex: any) => (ex.chapter || "Đề Chuẩn Bộ") === selectedChapterFilter);
+    }
+    return list.map((ex: any) => {
+      const synced = exams.find((e: any) => e.title === ex.title);
+      const val = synced ? synced.id : `std:${ex.id}`;
+
+      let clean = ex.title || "";
+      if (selectedChapterFilter && selectedChapterFilter !== "all") {
+        clean = clean.replace(selectedChapterFilter, "").trim();
+        clean = clean.replace(/^[-–—:\s]+/, "").trim();
+      }
+      clean = clean
+        .replace(/^Đề Thi Cuối Kì \d Hóa \d+\s*[-–—:]\s*/i, "")
+        .replace(/^Đề Kiểm Tra Giữa Kì \d Hóa \d+\s*[-–—:]\s*/i, "")
+        .replace(/^Đề Cuối Kì \d Hóa \d+\s*[-–—:]\s*/i, "")
+        .replace(/^Đề Giữa Kì \d Hóa \d+\s*[-–—:]\s*/i, "");
+      if (!clean) clean = ex.title;
+
+      const qCount = ex.questions?.length || 28;
+      const duration = ex.duration || 50;
+
+      return {
+        id: ex.id,
+        val,
+        title: ex.title,
+        shortTitle: `⭐ ${clean} (${qCount} câu - ${duration}p)`
+      };
+    });
+  }, [standardExamsForGrade, selectedChapterFilter, exams]);
 
 const isFirstRender = useRef(true)
 
@@ -958,90 +1003,130 @@ const isFirstRender = useRef(true)
             </select>
           </div>
 
-          <div>
-            <label className="label font-bold text-gray-800">1. Chọn đề thi từ thư viện *</label>
-            <select 
-              value={form.exam_id} 
-              onChange={async (e) => {
-                const exId = e.target.value
-                if (!exId) {
-                  setForm(prev => ({ ...prev, exam_id: '' }))
-                  return
-                }
+          <div className="space-y-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <label className="label font-bold text-gray-800 mb-0">1. Chọn đề thi từ thư viện *</label>
+              {modalGrade && (
+                <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                  {standardExamsForGrade.length + filteredExams.length} đề khả dụng
+                </span>
+              )}
+            </div>
 
-                if (exId.startsWith('std:')) {
-                  const realStdId = exId.replace('std:', '')
-                  const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
-                  if (stdEx) {
-                    setSelectedStandardExam(stdEx)
-                    toast.loading('Đang chuẩn bị đề thi chuẩn...', { id: 'sync-exam' })
-                    try {
-                      const dbId = await ensureStandardExamInDatabase(stdEx, selectedParts)
-                      toast.success(`Đã chọn: ${stdEx.title}`, { id: 'sync-exam' })
-                      await loadExams()
-                      let autoTime = stdEx.duration || 50
-                      if (selectedParts.length === 1) autoTime = selectedParts[0] === 1 ? 25 : 15
-                      else if (selectedParts.length === 2) autoTime = 40
+            {/* BỘ CHỌN 2 BƯỚC GỌN GÀNG: CHỌN CHUYÊN ĐỀ -> CHỌN ĐỀ CỤ THỂ */}
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {/* Bước 1: Chọn Chuyên Đề / Nhóm Đề */}
+                <div>
+                  <label className="text-[11px] font-bold text-slate-700 block mb-1">
+                    📁 Bước 1: Lọc theo Chuyên đề / Dạng đề
+                  </label>
+                  <select
+                    value={selectedChapterFilter}
+                    onChange={(e) => setSelectedChapterFilter(e.target.value)}
+                    className="input text-xs font-bold bg-white"
+                    disabled={!modalGrade}
+                  >
+                    <option value="all">📁 Tất cả các nhóm đề ({standardExamsForGrade.length} đề)</option>
+                    {examChaptersList.map(ch => (
+                      <option key={ch.name} value={ch.name}>
+                        📁 {ch.name} ({ch.count} đề)
+                      </option>
+                    ))}
+                    {filteredExams.length > 0 && (
+                      <option value="custom">📁 Đề Thầy tự tải lên ({filteredExams.length} đề)</option>
+                    )}
+                  </select>
+                </div>
+
+                {/* Bước 2: Chọn Đề thi cụ thể trong nhóm */}
+                <div>
+                  <label className="text-[11px] font-bold text-slate-700 block mb-1">
+                    📝 Bước 2: Chọn đề thi cụ thể
+                  </label>
+                  <select
+                    value={form.exam_id}
+                    onChange={async (e) => {
+                      const exId = e.target.value
+                      if (!exId) {
+                        setForm(prev => ({ ...prev, exam_id: "" }))
+                        return
+                      }
+
+                      if (exId.startsWith("std:")) {
+                        const realStdId = exId.replace("std:", "")
+                        const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
+                        if (stdEx) {
+                          setSelectedStandardExam(stdEx)
+                          toast.loading("Đang chuẩn bị đề thi...", { id: "sync-exam" })
+                          try {
+                            const dbId = await ensureStandardExamInDatabase(stdEx, selectedParts)
+                            toast.success(`Đã chọn: ${stdEx.title}`, { id: "sync-exam" })
+                            await loadExams()
+                            const autoTime = stdEx.duration || 50
+                            setForm(prev => ({
+                              ...prev,
+                              exam_id: dbId,
+                              time_limit: autoTime,
+                              settings: {
+                                ...prev.settings,
+                                category: prev.settings?.category || "homework",
+                                antiCheat: true,
+                                selected_parts: selectedParts
+                              }
+                            }))
+                          } catch (err: any) {
+                            toast.error("Lỗi khi nạp đề: " + (err?.message || err), { id: "sync-exam" })
+                          }
+                        }
+                        return
+                      } else {
+                        setSelectedStandardExam(null)
+                      }
+
+                      const selectedEx = exams.find(ex => ex.id === exId)
+                      const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : "homework"
                       setForm(prev => ({
-                        ...prev,
-                        exam_id: dbId,
-                        time_limit: autoTime,
+                        ...prev, 
+                        exam_id: exId,
+                        time_limit: selectedEx?.data?.duration || prev.time_limit || 45,
                         settings: {
                           ...prev.settings,
-                          category: 'exam_practice',
-                          antiCheat: true,
-                          selected_parts: selectedParts
+                          category: prev.settings?.category || autoCat,
+                          antiCheat: true
                         }
                       }))
-                    } catch (err: any) {
-                      toast.error('Lỗi khi nạp đề: ' + (err?.message || err), { id: 'sync-exam' })
-                    }
-                  }
-                  return
-                } else {
-                  setSelectedStandardExam(null)
-                }
-
-                const selectedEx = exams.find(ex => ex.id === exId)
-                const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : 'homework'
-                setForm(prev => ({
-                  ...prev, 
-                  exam_id: exId,
-                  time_limit: selectedEx?.data?.duration || prev.time_limit || 45,
-                  settings: {
-                    ...prev.settings,
-                    category: autoCat,
-                    antiCheat: true
-                  }
-                }))
-              }} 
-              className="input font-semibold text-teal-900"
-              disabled={!!editingRoomId || !modalGrade}
-            >
-              <option value="">{modalGrade ? '-- Chọn đề thi --' : '-- Vui lòng chọn khối lớp trước --'}</option>
-              {standardExamsForGrade.length > 0 && (
-                <optgroup label={modalGrade === 'all' ? `🌟 TOÀN BỘ NGÂN HÀNG ĐỀ CHUẨN (${standardExamsForGrade.length} đề Hóa 10, 11, 12)` : `🌟 NGÂN HÀNG ĐỀ CHUẨN BỘ - HÓA ${modalGrade} (${standardExamsForGrade.length} đề)`}>
-                  {standardExamsForGrade.map(ex => {
-                    const synced = exams.find(e => e.title === ex.title)
-                    const val = synced ? synced.id : `std:${ex.id}`
-                    return (
-                      <option key={ex.id} value={val}>
-                        ⭐ {ex.title} ({ex.questions?.length || 28} câu - {ex.duration || 50} phút)
+                    }}
+                    className="input text-xs font-bold text-teal-900 bg-white border-teal-300"
+                    disabled={!modalGrade}
+                  >
+                    <option value="">{modalGrade ? "-- Bấm chọn đề thi --" : "-- Vui lòng chọn khối lớp trước --"}</option>
+                    {selectedChapterFilter !== "custom" && displayedExamsInDropdown.map(ex => (
+                      <option key={ex.id} value={ex.val}>
+                        {ex.shortTitle}
                       </option>
-                    )
-                  })}
-                </optgroup>
-              )}
-              {filteredExams.length > 0 && (
-                <optgroup label={`📁 ĐỀ THẦY TỰ TẢI LÊN (${filteredExams.length} đề)`}>
-                  {filteredExams.map(ex => (
-                    <option key={ex.id} value={ex.id}>{ex.title}</option>
-                  ))}
-                </optgroup>
-              )}
-            </select>
+                    ))}
+                    {(selectedChapterFilter === "all" || selectedChapterFilter === "custom") && filteredExams.length > 0 && (
+                      <optgroup label="📁 ĐỀ THẦY TỰ TẢI LÊN">
+                        {filteredExams.map(ex => (
+                          <option key={ex.id} value={ex.id}>📄 {ex.title}</option>
+                        ))}
+                      </optgroup>
+                    )}
+                  </select>
+                </div>
+              </div>
 
-            
+              {/* Thông tin đề đã chọn */}
+              {form.exam_id && (
+                <div className="text-[11px] font-bold text-teal-900 bg-teal-100/70 p-2.5 rounded-xl border border-teal-200 flex items-center justify-between gap-2">
+                  <span className="truncate">
+                    ✅ Đã chọn đề: <strong>{exams.find(e => e.id === form.exam_id)?.title || standardExamsForGrade.find(e => `std:${e.id}` === form.exam_id || e.id === form.exam_id)?.title || "Đề thi chuẩn"}</strong>
+                  </span>
+                  <span className="text-slate-600 font-mono shrink-0">Thời gian: {form.time_limit} phút</span>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* 🎯 ĐỐI TƯỢNG GIAO BÀI (HỖ TRỢ CHỌN NHIỀU LỚP) */}

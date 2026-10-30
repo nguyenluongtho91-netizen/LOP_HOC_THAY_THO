@@ -108,6 +108,8 @@ export default function StudentPortal() {
   const [f2Tab, setF2Tab] = useState<"pending" | "completed">("pending");
   const [f3Tab, setF3Tab] = useState<"pending" | "completed">("pending");
   const [f4Tab, setF4Tab] = useState<"pending" | "completed">("pending");
+  const [f5Tab, setF5Tab] = useState<"pending" | "completed">("pending");
+  const [topicSubFilter, setTopicSubFilter] = useState<"all" | "d1" | "d2" | "d3" | "chapters">("all");
 
   // ── MẶC ĐỊNH THU GỌN BÊN HỌC SINH (BẤM VÀO MỚI HIỆN RA) ──
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
@@ -2405,97 +2407,401 @@ export default function StudentPortal() {
                         </div>
                       )}
 
-                      {/* Phân mục 4: Luyện các chuyên đề (3 Dạng thức Bộ GD&ĐT) */}
+                      {/* Phân mục 4: Luyện các chuyên đề (3 Dạng thức Bộ GD&ĐT & Đề theo chương) */}
                       {extraTab === "topic" && (
-                        <div className="space-y-3">
-                          <div>
-                            <h4 className="text-xs sm:text-sm font-black text-slate-900">
-                              🧪 LUYỆN CÁC CHUYÊN ĐỀ THEO DẠNG THỨC MỚI BỘ GD&ĐT
-                            </h4>
-                            <p className="text-[11px] text-slate-500">Bao gồm 3 dạng thức mới: Trắc nghiệm 4 lựa chọn, Đúng/Sai, Trả lời ngắn</p>
-                          </div>
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            {/* Dạng 1 */}
-                            <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border border-blue-200 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-md transition-all">
-                              <div>
-                                <div className="flex items-center justify-between mb-1">
-                                  <span className="text-xs font-black uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">DẠNG I</span>
-                                  <span className="text-xl">🎯</span>
-                                </div>
-                                <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm 4 Phương Án</h4>
-                                <p className="text-[11px] text-slate-600 mt-1 leading-snug">
-                                  Dạng thức chọn 1 đáp án đúng trong 4 lựa chọn A, B, C, D chuẩn cấu trúc đề thi.
-                                </p>
-                              </div>
-                              <button
-                                type="button"
-                                onClick={() => toggleSection("chapterPending")}
-                                className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-                              >
-                                <span>Xem Chuyên Đề Dạng I</span>
-                                <ChevronRight className="w-3.5 h-3.5" />
-                              </button>
+                        <div className="space-y-4">
+                          {/* Header Phân mục Chuyên đề: 2 NỘI DUNG TRONG (1. ĐỀ THI - 2. KẾT QUẢ) */}
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-indigo-50/70 via-purple-50/50 to-white p-4 rounded-3xl border border-indigo-200/80 shadow-2xs">
+                            <div>
+                              <h4 className="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-2">
+                                <span className="p-1.5 rounded-xl bg-indigo-600 text-white text-xs">🧪</span>
+                                <span>5. LUYỆN CÁC CHUYÊN ĐỀ THEO DẠNG THỨC MỚI</span>
+                              </h4>
+                              <p className="text-xs text-slate-500 mt-0.5">Rèn luyện chuyên sâu 3 dạng thức mới Bộ GD&ĐT và toàn bộ các chuyên đề theo chương</p>
                             </div>
 
-                            {/* Dạng 2 */}
-                            <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50/50 border border-purple-200 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-md transition-all">
-                              <div>
-                                <div className="flex items-center justify-between mb-1">
-                                  <span className="text-xs font-black uppercase tracking-wider text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">DẠNG II</span>
-                                  <span className="text-xl">⚖️</span>
-                                </div>
-                                <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm Đúng / Sai</h4>
-                                <p className="text-[11px] text-slate-600 mt-1 leading-snug">
-                                  Mỗi câu gồm 4 ý a, b, c, d. Rèn khả năng phán đoán chính xác từng mệnh đề lý thuyết.
-                                </p>
-                              </div>
+                            {/* HAI NỘI DUNG TRONG: 1. ĐỀ THI - 2. KẾT QUẢ */}
+                            <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200 shrink-0">
                               <button
                                 type="button"
-                                onClick={() => toggleSection("chapterPending")}
-                                className="w-full py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                onClick={() => setF5Tab("pending")}
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f5Tab === "pending"
+                                    ? "bg-indigo-600 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
+                                }`}
                               >
-                                <span>Xem Chuyên Đề Dạng II</span>
-                                <ChevronRight className="w-3.5 h-3.5" />
+                                <span>📝 1. ĐỀ THI</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f5Tab === "pending" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {topicPending.length > 0 ? `${topicPending.length} đề chờ` : "Đề rèn luyện"}
+                                </span>
                               </button>
-                            </div>
 
-                            {/* Dạng 3 */}
-                            <div className="p-4 rounded-2xl bg-gradient-to-br from-teal-50 to-cyan-50/50 border border-teal-200 flex flex-col justify-between gap-3 shadow-2xs hover:shadow-md transition-all">
-                              <div>
-                                <div className="flex items-center justify-between mb-1">
-                                  <span className="text-xs font-black uppercase tracking-wider text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full">DẠNG III</span>
-                                  <span className="text-xl">✍️</span>
-                                </div>
-                                <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm Trả Lời Ngắn</h4>
-                                <p className="text-[11px] text-slate-600 mt-1 leading-snug">
-                                  Điền kết quả tính toán số học, rèn luyện kỹ năng giải nhanh chính xác.
-                                </p>
-                              </div>
                               <button
                                 type="button"
-                                onClick={() => toggleSection("chapterPending")}
-                                className="w-full py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                onClick={() => setF5Tab("completed")}
+                                className={`flex-1 sm:flex-initial px-4 py-2 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all cursor-pointer ${
+                                  f5Tab === "completed"
+                                    ? "bg-indigo-700 text-white shadow-sm"
+                                    : "text-slate-600 hover:text-slate-900 hover:bg-white/50"
+                                }`}
                               >
-                                <span>Xem Chuyên Đề Dạng III</span>
-                                <ChevronRight className="w-3.5 h-3.5" />
+                                <span>📊 2. KẾT QUẢ</span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-bold ${
+                                  f5Tab === "completed" ? "bg-white/20 text-white" : "bg-slate-200 text-slate-700"
+                                }`}>
+                                  {topicCompleted.length} bài
+                                </span>
                               </button>
                             </div>
                           </div>
 
-                          {topicPending.length > 0 && (
-                            <div className="pt-2">
-                              <div className="text-xs font-black uppercase text-indigo-800 tracking-wider mb-2 flex items-center gap-1.5">
-                                <span>📝 ĐỀ THI CHUYÊN ĐỀ ĐƯỢC THẦY GIAO</span>
-                                <span className="text-[10px] text-slate-400">({topicPending.length} đề)</span>
+                          {/* NỘI DUNG 1: ĐỀ THI (LÚC NÀO CŨNG ĐẾN ĐỀ NGAY ĐỂ LÀM BÀI) */}
+                          {f5Tab === "pending" ? (
+                            <div className="space-y-4">
+                              {/* Nếu có đề Thầy giao riêng cho Chuyên đề thì đưa lên đầu */}
+                              {topicPending.length > 0 && (
+                                <div className="p-4 rounded-3xl bg-indigo-50/60 border-2 border-indigo-200 space-y-3">
+                                  <div className="flex items-center justify-between">
+                                    <div className="text-xs font-black uppercase text-indigo-900 tracking-wider flex items-center gap-2">
+                                      <span className="w-2 h-2 rounded-full bg-indigo-600 animate-ping" />
+                                      <span>📝 ĐỀ THI CHUYÊN ĐỀ ĐƯỢC THẦY GIAO MỚI NHẤT</span>
+                                    </div>
+                                    <span className="text-xs font-bold text-indigo-700 bg-white px-2.5 py-0.5 rounded-full border border-indigo-200">
+                                      {topicPending.length} đề đang mở
+                                    </span>
+                                  </div>
+                                  {renderPendingGrid(topicPending, "chapter")}
+                                </div>
+                              )}
+
+                              {/* Thanh chuyển chế độ lọc: Tất cả / 3 Dạng thức mới / Theo chương */}
+                              <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-slate-100 rounded-2xl border border-slate-200 text-xs font-bold">
+                                <button
+                                  type="button"
+                                  onClick={() => setTopicSubFilter("all")}
+                                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${topicSubFilter === "all" ? "bg-white text-indigo-800 shadow-xs font-black border border-indigo-200" : "text-slate-600 hover:text-slate-900"}`}
+                                >
+                                  🌟 Tất Cả Đề Chuyên Đề
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setTopicSubFilter("d1")}
+                                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${topicSubFilter === "d1" ? "bg-blue-600 text-white shadow-xs font-black" : "text-slate-600 hover:text-slate-900"}`}
+                                >
+                                  🎯 Dạng I (4 Phương Án)
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setTopicSubFilter("d2")}
+                                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${topicSubFilter === "d2" ? "bg-purple-600 text-white shadow-xs font-black" : "text-slate-600 hover:text-slate-900"}`}
+                                >
+                                  ⚖️ Dạng II (Đúng / Sai)
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setTopicSubFilter("d3")}
+                                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${topicSubFilter === "d3" ? "bg-teal-600 text-white shadow-xs font-black" : "text-slate-600 hover:text-slate-900"}`}
+                                >
+                                  ✍️ Dạng III (Trả Lời Ngắn)
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setTopicSubFilter("chapters")}
+                                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${topicSubFilter === "chapters" ? "bg-indigo-700 text-white shadow-xs font-black" : "text-slate-600 hover:text-slate-900"}`}
+                                >
+                                  📚 Đề Theo Chương (Hóa 12)
+                                </button>
                               </div>
-                              {renderPendingGrid(topicPending, "chapter")}
+
+                              {/* KHỐI 3 DẠNG THỨC MỚI BỘ GD&ĐT: VÀO LÀ RA ĐỀ THI LÀM BÀI NGAY */}
+                              {(topicSubFilter === "all" || topicSubFilter === "d1" || topicSubFilter === "d2" || topicSubFilter === "d3") && (
+                                <div className="space-y-2">
+                                  <div className="flex items-center justify-between">
+                                    <h5 className="text-xs font-black uppercase text-slate-800 tracking-wider flex items-center gap-1.5">
+                                      <span>⚡ 3 BỘ ĐỀ RÈN LUYỆN THEO ĐÚNG CẤU TRÚC BỘ GD&ĐT</span>
+                                    </h5>
+                                    <span className="text-[11px] font-bold text-slate-400">Bấm vào đề để làm ngay</span>
+                                  </div>
+
+                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    {/* Dạng 1 */}
+                                    {(topicSubFilter === "all" || topicSubFilter === "d1") && (
+                                      <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50/50 border-2 border-blue-200 flex flex-col justify-between gap-3 shadow-xs hover:shadow-md transition-all">
+                                        <div>
+                                          <div className="flex items-center justify-between mb-1">
+                                            <span className="text-xs font-black uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">DẠNG I</span>
+                                            <span className="text-xl">🎯</span>
+                                          </div>
+                                          <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm 4 Phương Án</h4>
+                                          <p className="text-[11px] text-slate-600 mt-1 leading-snug">
+                                            Gồm 18 câu hỏi chuẩn cấu trúc đề thi tốt nghiệp, rèn tốc độ phản xạ và kiến thức cốt lõi.
+                                          </p>
+                                        </div>
+                                        <div className="pt-2 border-t border-blue-100 space-y-1.5">
+                                          <div className="text-[11px] font-bold text-blue-900 flex items-center justify-between">
+                                            <span>⏱️ Thời gian: 25 phút</span>
+                                            <span>18 câu</span>
+                                          </div>
+                                          <button
+                                            type="button"
+                                            onClick={() => navigate('/hoa12-chuong1')}
+                                            className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                                          >
+                                            <span>🚀 BẮT ĐẦU LÀM ĐỀ DẠNG I</span>
+                                            <ArrowRight className="w-3.5 h-3.5" />
+                                          </button>
+                                        </div>
+                                      </div>
+                                    )}
+
+                                    {/* Dạng 2 */}
+                                    {(topicSubFilter === "all" || topicSubFilter === "d2") && (
+                                      <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50/50 border-2 border-purple-200 flex flex-col justify-between gap-3 shadow-xs hover:shadow-md transition-all">
+                                        <div>
+                                          <div className="flex items-center justify-between mb-1">
+                                            <span className="text-xs font-black uppercase tracking-wider text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">DẠNG II</span>
+                                            <span className="text-xl">⚖️</span>
+                                          </div>
+                                          <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm Đúng / Sai</h4>
+                                          <p className="text-[11px] text-slate-600 mt-1 leading-snug">
+                                            Mỗi câu gồm 4 ý a, b, c, d. Rèn khả năng phân tích lý thuyết bẫy, chống mất điểm oan.
+                                          </p>
+                                        </div>
+                                        <div className="pt-2 border-t border-purple-100 space-y-1.5">
+                                          <div className="text-[11px] font-bold text-purple-900 flex items-center justify-between">
+                                            <span>⏱️ Thời gian: 20 phút</span>
+                                            <span>4 câu (16 ý)</span>
+                                          </div>
+                                          <button
+                                            type="button"
+                                            onClick={() => navigate('/hoa12-chuong2')}
+                                            className="w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-black text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                                          >
+                                            <span>🚀 BẮT ĐẦU LÀM ĐỀ DẠNG II</span>
+                                            <ArrowRight className="w-3.5 h-3.5" />
+                                          </button>
+                                        </div>
+                                      </div>
+                                    )}
+
+                                    {/* Dạng 3 */}
+                                    {(topicSubFilter === "all" || topicSubFilter === "d3") && (
+                                      <div className="p-4 rounded-2xl bg-gradient-to-br from-teal-50 to-cyan-50/50 border-2 border-teal-200 flex flex-col justify-between gap-3 shadow-xs hover:shadow-md transition-all">
+                                        <div>
+                                          <div className="flex items-center justify-between mb-1">
+                                            <span className="text-xs font-black uppercase tracking-wider text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full">DẠNG III</span>
+                                            <span className="text-xl">✍️</span>
+                                          </div>
+                                          <h4 className="font-black text-sm text-slate-900 mt-1">Trắc Nghiệm Trả Lời Ngắn</h4>
+                                          <p className="text-[11px] text-slate-600 mt-1 leading-snug">
+                                            Điền đáp số tính toán chính xác, rèn bài toán hóa học ứng dụng thực tế phân loại điểm 9-10.
+                                          </p>
+                                        </div>
+                                        <div className="pt-2 border-t border-teal-100 space-y-1.5">
+                                          <div className="text-[11px] font-bold text-teal-900 flex items-center justify-between">
+                                            <span>⏱️ Thời gian: 20 phút</span>
+                                            <span>6 câu tính toán</span>
+                                          </div>
+                                          <button
+                                            type="button"
+                                            onClick={() => navigate('/hoa12-chuong5')}
+                                            className="w-full py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-black text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95"
+                                          >
+                                            <span>🚀 BẮT ĐẦU LÀM ĐỀ DẠNG III</span>
+                                            <ArrowRight className="w-3.5 h-3.5" />
+                                          </button>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              )}
+
+                              {/* KHỐI CÁC ĐỀ THI CHUYÊN ĐỀ THEO CHƯƠNG (HÓA 12 MỚI) - BẤM VÀO LÀ VÀO THI NGAY */}
+                              {(topicSubFilter === "all" || topicSubFilter === "chapters") && (
+                                <div className="space-y-3 pt-2">
+                                  <div className="flex items-center justify-between">
+                                    <h5 className="text-xs font-black uppercase text-slate-800 tracking-wider flex items-center gap-1.5">
+                                      <span>📚 CÁC ĐỀ THI CHUYÊN ĐỀ THEO TỪNG CHƯƠNG HỌC (HÓA 12)</span>
+                                    </h5>
+                                    <span className="text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-200">
+                                      8 Chuyên đề chuẩn
+                                    </span>
+                                  </div>
+
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                                    {/* Chương 1 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-indigo-100 hover:border-indigo-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">C1</span>
+                                          <span className="text-[11px] font-bold text-slate-500">7 Đề Thi Chuẩn</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Ester – Lipid – Xà Phòng</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Phản ứng xà phòng hóa, chất béo, chỉ số este</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong1')}
+                                        className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C1</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+
+                                    {/* Chương 2 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-emerald-100 hover:border-emerald-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">C2</span>
+                                          <span className="text-[11px] font-bold text-slate-500">4 Đề Thi Chuẩn</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Carbohydrate</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Glucose, Fructose, Saccharose, Tinh bột, Cellulose</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong2')}
+                                        className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C2</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+
+                                    {/* Chương 3 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-sky-100 hover:border-sky-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-sky-600 bg-sky-50 px-2 py-0.5 rounded-md">C3</span>
+                                          <span className="text-[11px] font-bold text-slate-500">5 Đề Thi Chuẩn</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Hợp Chất Chứa Nitrogen</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Amine, Amino acid, Peptide và Protein</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong3')}
+                                        className="w-full py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C3</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+
+                                    {/* Chương 4 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-amber-100 hover:border-amber-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md">C4</span>
+                                          <span className="text-[11px] font-bold text-slate-500">4 Đề Thi Chuẩn</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Polymer & Vật Liệu Polymer</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Chất dẻo, tơ sợi, cao su, keo dán tổng hợp</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong4')}
+                                        className="w-full py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C4</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+
+                                    {/* Chương 5 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-teal-100 hover:border-teal-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-teal-600 bg-teal-50 px-2 py-0.5 rounded-md">C5</span>
+                                          <span className="text-[11px] font-bold text-slate-500">4 Đề Chuẩn 2025</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Pin Điện Hóa & Điện Phân</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Thế điện cực chuẩn, pin Galvani, điện phân</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong5')}
+                                        className="w-full py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C5</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+
+                                    {/* Chương 6 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-rose-100 hover:border-rose-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md">C6</span>
+                                          <span className="text-[11px] font-bold text-slate-500">6 Đề Thi Chuẩn</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Đại Cương Về Kim Loại</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Tính chất vật lý, hóa học, ăn mòn kim loại</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong6')}
+                                        className="w-full py-2 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C6</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+
+                                    {/* Chương 7 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-cyan-100 hover:border-cyan-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-cyan-600 bg-cyan-50 px-2 py-0.5 rounded-md">C7</span>
+                                          <span className="text-[11px] font-bold text-slate-500">6 Đề Thi Chuẩn</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Nhóm IA, IIA & Nhôm</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Kim loại kiềm, kiềm thổ, hợp chất của nhôm</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong7')}
+                                        className="w-full py-2 bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C7</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+
+                                    {/* Chương 8 */}
+                                    <div className="p-3.5 bg-white rounded-2xl border-2 border-violet-100 hover:border-violet-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between gap-2.5">
+                                      <div>
+                                        <div className="flex items-center justify-between text-xs mb-1">
+                                          <span className="font-mono font-black text-violet-600 bg-violet-50 px-2 py-0.5 rounded-md">C8</span>
+                                          <span className="text-[11px] font-bold text-slate-500">5 Đề Thi Chuẩn</span>
+                                        </div>
+                                        <h6 className="font-black text-xs sm:text-sm text-slate-900">Kim Loại Chuyển Tiếp & Phức Chất</h6>
+                                        <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">Sắt, đồng, crom và cấu tạo phức chất</p>
+                                      </div>
+                                      <button
+                                        type="button"
+                                        onClick={() => navigate('/hoa12-chuong8')}
+                                        className="w-full py-2 bg-violet-600 hover:bg-violet-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                                      >
+                                        <span>📝 Vào Làm Đề C8</span>
+                                        <ChevronRight className="w-3.5 h-3.5" />
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                             </div>
-                          )}
-                          {topicCompleted.length > 0 && (
-                            <div className="pt-2">
-                              <div className="text-xs font-black uppercase text-indigo-800 tracking-wider mb-2 flex items-center gap-1.5">
-                                <span>📊 KẾT QUẢ BÀI LÀM CHUYÊN ĐỀ</span>
-                                <span className="text-[10px] text-slate-400">({topicCompleted.length} bài)</span>
+                          ) : (
+                            /* NỘI DUNG 2: BẢNG KẾT QUẢ BÀI LÀM CHUYÊN ĐỀ */
+                            <div className="space-y-3">
+                              <div className="text-xs font-black uppercase text-indigo-800 tracking-wider flex items-center gap-1.5">
+                                <span>📊 BẢNG ĐIỂM & KẾT QUẢ BÀI LÀM CÁC CHUYÊN ĐỀ</span>
+                                <span className="text-[10px] text-slate-400">({topicCompleted.length} bài đã nộp)</span>
                               </div>
                               {renderCompletedTable(topicCompleted, "chapter")}
                             </div>
