@@ -1943,18 +1943,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-amber-700 bg-amber-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.homeworkPending ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('homeworkPending'); }}
-                    className="p-2 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-amber-800 transition-all cursor-pointer shadow-2xs"
-                    title={expandedSections.homeworkPending ? 'Thu gọn' : 'Mở ra'}
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkPending ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.homeworkPending
+                      ? "bg-amber-100 text-amber-900 border border-amber-300"
+                      : "bg-amber-500 hover:bg-amber-400 text-slate-950"
+                  }`}>
+                    <span>{expandedSections.homeworkPending ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkPending ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
@@ -1995,18 +1992,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-blue-700 bg-blue-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.homeworkCompleted ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('homeworkCompleted'); }}
-                    className="p-2 rounded-xl bg-blue-100/80 hover:bg-blue-200 text-blue-800 transition-all cursor-pointer shadow-2xs"
-                    title={expandedSections.homeworkCompleted ? 'Thu gọn' : 'Mở ra'}
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkCompleted ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.homeworkCompleted
+                      ? "bg-blue-100 text-blue-900 border border-blue-300"
+                      : "bg-blue-600 hover:bg-blue-500 text-white"
+                  }`}>
+                    <span>{expandedSections.homeworkCompleted ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.homeworkCompleted ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
@@ -2327,17 +2321,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-blue-700 bg-blue-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.chapterPending ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('chapterPending'); }}
-                    className="p-2 rounded-xl bg-blue-100/80 hover:bg-blue-200 text-blue-800 transition-all cursor-pointer shadow-2xs"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.chapterPending ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.chapterPending
+                      ? "bg-blue-100 text-blue-900 border border-blue-300"
+                      : "bg-blue-600 hover:bg-blue-500 text-white"
+                  }`}>
+                    <span>{expandedSections.chapterPending ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.chapterPending ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
@@ -2377,17 +2369,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-indigo-700 bg-indigo-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.chapterCompleted ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('chapterCompleted'); }}
-                    className="p-2 rounded-xl bg-indigo-100/80 hover:bg-indigo-200 text-indigo-800 transition-all cursor-pointer shadow-2xs"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.chapterCompleted ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.chapterCompleted
+                      ? "bg-indigo-100 text-indigo-900 border border-indigo-300"
+                      : "bg-indigo-600 hover:bg-indigo-500 text-white"
+                  }`}>
+                    <span>{expandedSections.chapterCompleted ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.chapterCompleted ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
@@ -2488,17 +2478,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-emerald-700 bg-emerald-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.practicePending ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('practicePending'); }}
-                    className="p-2 rounded-xl bg-emerald-100/80 hover:bg-emerald-200 text-emerald-800 transition-all cursor-pointer shadow-2xs"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.practicePending ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.practicePending
+                      ? "bg-emerald-100 text-emerald-900 border border-emerald-300"
+                      : "bg-emerald-600 hover:bg-emerald-500 text-white"
+                  }`}>
+                    <span>{expandedSections.practicePending ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.practicePending ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
@@ -2538,17 +2526,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-teal-700 bg-teal-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.practiceCompleted ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('practiceCompleted'); }}
-                    className="p-2 rounded-xl bg-teal-100/80 hover:bg-teal-200 text-teal-800 transition-all cursor-pointer shadow-2xs"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.practiceCompleted ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.practiceCompleted
+                      ? "bg-teal-100 text-teal-900 border border-teal-300"
+                      : "bg-teal-600 hover:bg-teal-500 text-white"
+                  }`}>
+                    <span>{expandedSections.practiceCompleted ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.practiceCompleted ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
@@ -2633,17 +2619,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-purple-700 bg-purple-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.surveyPending ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('surveyPending'); }}
-                    className="p-2 rounded-xl bg-purple-100/80 hover:bg-purple-200 text-purple-800 transition-all cursor-pointer shadow-2xs"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.surveyPending ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.surveyPending
+                      ? "bg-purple-100 text-purple-900 border border-purple-300"
+                      : "bg-purple-600 hover:bg-purple-500 text-white"
+                  }`}>
+                    <span>{expandedSections.surveyPending ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.surveyPending ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
@@ -2683,17 +2667,15 @@ export default function StudentPortal() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-block text-[11px] font-bold text-fuchsia-700 bg-fuchsia-100/70 px-2.5 py-1 rounded-xl">
-                    {expandedSections.surveyCompleted ? 'Đang mở' : 'Bấm xem'}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); toggleSection('surveyCompleted'); }}
-                    className="p-2 rounded-xl bg-fuchsia-100/80 hover:bg-fuchsia-200 text-fuchsia-800 transition-all cursor-pointer shadow-2xs"
-                  >
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.surveyCompleted ? 'rotate-180' : ''}`} />
-                  </button>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-black text-xs transition-all shadow-xs ${
+                    expandedSections.surveyCompleted
+                      ? "bg-fuchsia-100 text-fuchsia-900 border border-fuchsia-300"
+                      : "bg-fuchsia-600 hover:bg-fuchsia-500 text-white"
+                  }`}>
+                    <span>{expandedSections.surveyCompleted ? "Thu gọn" : "Bấm ra"}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedSections.surveyCompleted ? "rotate-180" : ""}`} />
+                  </div>
                 </div>
               </div>
 
