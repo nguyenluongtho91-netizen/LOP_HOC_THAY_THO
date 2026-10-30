@@ -52,7 +52,7 @@ export default function ZaloCenter() {
 
   // State bộ lọc học phí
   const [selectedClassId, setSelectedClassId] = useState('all')
-  const [selectedMonth, setSelectedMonth]     = useState('tháng 10')
+  const [selectedMonth, setSelectedMonth]     = useState('Tháng 10/2026')
   const [tuitionTemplate, setTuitionTemplate] = useState(
     `Kính gửi Quý phụ huynh học sinh {ten_hoc_sinh},\n\n`
     + `Thầy Thọ xin gửi thông tin học phí {thang} của con:\n`
@@ -92,12 +92,14 @@ export default function ZaloCenter() {
 
   // Load dữ liệu thực từ Supabase khi mở trang
   useEffect(() => {
-    void Promise.all([loadClasses(), loadStudents(), loadEnrollments()])
+    void Promise.all([loadClasses(), loadStudents(), loadEnrollments(), loadTuitionNotifications()])
   }, [loadClasses, loadStudents, loadEnrollments])
 
   useEffect(() => {
     if (selectedClassId && selectedClassId !== 'all') {
       void loadTuitionNotifications(selectedClassId)
+    } else {
+      void loadTuitionNotifications()
     }
   }, [selectedClassId, loadTuitionNotifications])
 
@@ -606,9 +608,9 @@ export default function ZaloCenter() {
                   onChange={(e) => setSelectedMonth(e.target.value)}
                   className="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-700 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
                 >
-                  <option value="Tháng 8/2026">Tháng 8/2026</option>
-                  <option value="Tháng 9/2026">Tháng 9/2026</option>
                   <option value="Tháng 10/2026">Tháng 10/2026</option>
+                  <option value="Tháng 11/2026">Tháng 11/2026</option>
+                  <option value="Tháng 9/2026">Tháng 9/2026</option>
                 </select>
               </div>
             </div>
