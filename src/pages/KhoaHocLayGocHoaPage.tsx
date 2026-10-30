@@ -48,12 +48,120 @@ export default function KhoaHocLayGocHoaPage() {
   // Học sinh / người dùng hiện tại
   const [student, setStudent] = useState<any>(() => {
     try {
-      const s = localStorage.getItem('current_student');
+      const s = localStorage.getItem('active_student') || localStorage.getItem('current_student');
       return s ? JSON.parse(s) : null;
     } catch {
       return null;
     }
   });
+
+  // Kiểm tra quyền Thầy giáo / Quản trị viên
+  const isTeacher = useMemo(() => {
+    if (student) {
+      const code = String(student.student_code || '').toUpperCase().trim();
+      const role = String(student.role || '').toUpperCase();
+      const name = String(student.full_name || '').toLowerCase();
+      return code === 'THAYTHO' || role === 'ADMIN' || role === 'TEACHER' || name.includes('thọ');
+    }
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('is_teacher_mode') === 'true' || 
+             localStorage.getItem('role') === 'teacher' || 
+             localStorage.getItem('role') === 'admin';
+    }
+    return false;
+  }, [student]);
+
+  // Trạng thái kiểm tra quyền truy cập khóa học
+  const [isCheckingAccess, setIsCheckingAccess] = useState<boolean>(true);
+  const [hasAccess, setHasAccess] = useState<boolean>(false);
+
+  useEffect(() => {
+    const verifyAccess = async () => {
+      // 1. Nếu là Thầy giáo -> Toàn quyền truy cập 100%
+      if (isTeacher) {
+        setHasAccess(true);
+        setIsCheckingAccess(false);
+        return;
+      }
+
+      // 2. Nếu chưa đăng nhập tài khoản học sinh
+      if (!student) {
+        setIsCheckingAccess(false);
+        setHasAccess(false);
+        return;
+      }
+
+      try {
+        // Query khóa học từ Supabase để kiểm tra danh sách cấp quyền assigned_class_ids
+        const { data: courseData, error } = await supabase
+          .from('courses')
+          .select('id, title, assigned_class_ids, is_published')
+          .eq('id', 'f925edc9-0a65-48a9-8f74-1793c75beff9')
+          .single();
+
+        let course = courseData;
+        if (error || !course) {
+          const { data: coursesByTitle } = await supabase
+            .from('courses')
+            .select('id, title, assigned_class_ids, is_published')
+            .ilike('title', '%lấy gốc hóa%');
+          course = coursesByTitle?.[0];
+        }
+
+        if (!course || course.is_published === false) {
+          setHasAccess(false);
+          setIsCheckingAccess(false);
+          return;
+        }
+
+        const assigned: string[] = Array.isArray(course.assigned_class_ids) ? course.assigned_class_ids : [];
+
+        // Nếu Thầy đã bấm mở cho Toàn trường
+        if (assigned.includes('ALL')) {
+          setHasAccess(true);
+          setIsCheckingAccess(false);
+          return;
+        }
+
+        const sId = student.id;
+        const sCode = String(student.student_code || '').toUpperCase().trim();
+        const gradeNum = (student.grade || '').match(/\d+/)?.[0];
+
+        // Cấp quyền đích danh học sinh
+        if (assigned.includes(sId) || assigned.includes(sCode)) {
+          setHasAccess(true);
+          setIsCheckingAccess(false);
+          return;
+        }
+
+        // Cấp quyền theo khối
+        if (gradeNum && assigned.includes(`GRADE_${gradeNum}`)) {
+          setHasAccess(true);
+          setIsCheckingAccess(false);
+          return;
+        }
+
+        // Cấp quyền theo lớp học
+        const studentClasses: string[] = Array.isArray(student.class_ids) ? student.class_ids : [];
+        if (student.class_id) studentClasses.push(student.class_id);
+        if (studentClasses.some(cid => assigned.includes(cid))) {
+          setHasAccess(true);
+          setIsCheckingAccess(false);
+          return;
+        }
+
+        // Mặc định chưa cấp quyền
+        setHasAccess(false);
+      } catch (err) {
+        console.warn('Lỗi kiểm tra quyền khóa học:', err);
+        setHasAccess(false);
+      } finally {
+        setIsCheckingAccess(false);
+      }
+    };
+
+    verifyAccess();
+  }, [student, isTeacher]);
 
   // Trạng thái bài làm của đề hiện tại
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -231,6 +339,42 @@ export default function KhoaHocLayGocHoaPage() {
 
   // Số lượng câu đã trả lời
   const answeredCount = Object.keys(answers).length;
+
+  // MÀN HÌNH KHÓA NẾU HỌC SINH CHƯA ĐƯỢC THẦY THỌ CẤP QUYỀN
+  if (!isCheckingAccess && !hasAccess && !isTeacher) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-amber-50/40 via-sky-50/20 to-slate-50 flex items-center justify-center p-4">
+        <div className="max-w-lg w-full bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-2xl text-center space-y-4 animate-fade-in">
+          <div className="w-20 h-20 rounded-3xl bg-amber-100 text-amber-600 flex items-center justify-center text-4xl mx-auto shadow-inner">
+            🔒
+          </div>
+          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight uppercase">
+            Khóa Học Chưa Được Cấp Quyền
+          </h2>
+          <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium">
+            Chào em <strong className="text-blue-900 font-bold">{student?.full_name || 'Học sinh'}</strong> {student?.student_code ? `(Mã: ${student.student_code})` : ''}!<br />
+            Khóa học <strong>Lấy Gốc Hóa Học Nền Tảng (9 Đề Toàn Diện)</strong> hiện chưa được Thầy Thọ cấp quyền truy cập cho tài khoản của em.
+          </p>
+          <div className="p-4 rounded-2xl bg-amber-50/80 border border-amber-200/90 text-xs sm:text-sm text-amber-900 font-semibold space-y-1 text-left">
+            <p className="flex items-center gap-1.5 font-bold text-amber-950">
+              <span>💡 Cách mở khóa:</span>
+            </p>
+            <p className="font-normal text-amber-800">
+              Vui lòng liên hệ trực tiếp <strong>Thầy Thọ</strong> để được kích hoạt khóa học vào tài khoản. Khi Thầy cấp quyền, khóa học sẽ xuất hiện ngay trong trang Cổng Thi của em!
+            </p>
+          </div>
+          <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+            <button
+              onClick={() => navigate('/thi')}
+              className="flex-1 py-3 px-4 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-bold text-sm rounded-2xl shadow-md transition cursor-pointer"
+            >
+              Về Trang Cổng Thi Của Em
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50/40 via-sky-50/20 to-slate-50 text-slate-800 flex flex-col relative overflow-x-hidden">

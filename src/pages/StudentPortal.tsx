@@ -142,6 +142,17 @@ export default function StudentPortal() {
   }, [student, enrolledClasses]);
 
   // Lọc danh sách khóa học thực sự hiển thị cho học sinh (Mặc định ẩn hết, chỉ khi Thầy mở/gán quyền cho HS thì mới thấy)
+    // Kiểm tra quyền truy cập Khóa học Lấy Gốc Hóa Học (CHỈ HIỂN THỊ KHI ĐƯỢC THẦY THỌ CẤP QUYỀN)
+  const hasLayGocHoaAccess = useMemo(() => {
+    if (isTeacherUser) return true;
+    if (!student) return false;
+
+    return (enrolledCourses || []).some((c: any) => 
+      c.id === 'f925edc9-0a65-48a9-8f74-1793c75beff9' ||
+      (c.title && c.title.toLowerCase().includes('lấy gốc hóa'))
+    );
+  }, [isTeacherUser, student, enrolledCourses]);
+
   const visibleCourses = useMemo(() => {
     return (enrolledCourses || []).filter((c: any) => {
       if (isTeacherUser) return true;
@@ -355,7 +366,7 @@ export default function StudentPortal() {
           if (sGradeNum && assigned.includes(`GRADE_${sGradeNum}`)) return true;
           if (myClassIds.some((cid: string) => assigned.includes(cid))) return true;
           if (assigned.includes(studentId)) return true;
-          if (c.title?.toLowerCase().includes("lấy gốc") && sGradeNum && ["6","7","8","9"].includes(sGradeNum)) return true;
+          if (c.title?.toLowerCase().includes("lấy gốc toán") && sGradeNum && ["6","7","8","9"].includes(sGradeNum)) return true;
           return false;
         });
 
@@ -1411,14 +1422,16 @@ export default function StudentPortal() {
               </button>
             )}
 
-            <button
-              onClick={() => navigate('/khoa-hoc-lay-goc-hoa')}
-              className="h-8 sm:h-9 px-2.5 sm:px-3 bg-gradient-to-r from-blue-700 via-indigo-700 to-amber-600 hover:opacity-95 text-white rounded-xl flex items-center justify-center gap-1.5 transition-all flex-shrink-0 shadow-xs cursor-pointer border border-amber-400/40"
-              title="Khóa Học Lấy Gốc Hóa Học Nền Tảng (9 Đề Toàn Diện)"
-            >
-              <FlaskConical className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
-              <span className="hidden sm:inline text-xs font-black">9 Đề Gốc Hóa</span>
-            </button>
+            {hasLayGocHoaAccess && (
+              <button
+                onClick={() => navigate('/khoa-hoc-lay-goc-hoa')}
+                className="h-8 sm:h-9 px-2.5 sm:px-3 bg-gradient-to-r from-blue-700 via-indigo-700 to-amber-600 hover:opacity-95 text-white rounded-xl flex items-center justify-center gap-1.5 transition-all flex-shrink-0 shadow-xs cursor-pointer border border-amber-400/40"
+                title="Khóa Học Lấy Gốc Hóa Học Nền Tảng (9 Đề Toàn Diện)"
+              >
+                <FlaskConical className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300" />
+                <span className="hidden sm:inline text-xs font-black">9 Đề Gốc Hóa</span>
+              </button>
+            )}
 
             <button
               onClick={() => setIsChangePasswordOpen(true)}
@@ -1780,6 +1793,7 @@ export default function StudentPortal() {
         )}
 
         {/* BANNER ĐẶC BIỆT: KHÓA HỌC LẤY GỐC HÓA HỌC NỀN TẢNG (9 ĐỀ TOÀN DIỆN) */}
+        {hasLayGocHoaAccess && (
         <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-950 via-indigo-900 to-amber-900 text-white p-5 sm:p-7 shadow-xl border-2 border-amber-400/50 hover:border-amber-400 transition-all">
           <div className="absolute -right-8 -bottom-8 opacity-10 text-white pointer-events-none select-none">
             <FlaskConical className="w-56 h-56" />
@@ -1834,6 +1848,7 @@ export default function StudentPortal() {
             </div>
           </div>
         </div>
+        )}
 
         {/* ═════════════════════════════════════════════════════════════════════ */}
         {/* ── PHẦN 1: BÀI TẬP VỀ NHÀ (CÓ GIÁM SÁT CHUYỂN TAB) ─────────────── */}
