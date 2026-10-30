@@ -75,278 +75,6 @@ function StatCard({ icon: Icon, label, value, sub, color = 'teal', hideable, isH
         </button>
       )}
 
-      {/* ══════════════════════════════════════════════════════════════
-          ── MODAL 3: TRUNG TÂM CẤP QUYỀN PHÂN LẬP (TỪNG CHƯƠNG · TỪNG KHỐI) ──
-          ══════════════════════════════════════════════════════════════ */}
-      <Modal
-        open={accessControlModalOpen}
-        onClose={() => setAccessControlModalOpen(false)}
-        title="Trung Tâm Cấp Quyền Phân Lập (Từng Chương · Từng Khối)"
-      >
-        <div className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-2.5 p-3 bg-slate-50 rounded-2xl border border-slate-200">
-            <div>
-              <span className="text-xs font-black text-slate-800">Thao tác nhanh phân quyền toàn hệ thống:</span>
-              <p className="text-[11px] text-slate-500 mt-0.5">Mở (màu xanh) hoặc Khóa (màu đỏ) độc lập cho từng chương Hóa 12 & khối lớp.</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                disabled={isUpdatingAccess}
-                onClick={handleGrantAll}
-                className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs"
-              >
-                <span>🟢 Mở Tất Cả</span>
-              </button>
-              <button
-                type="button"
-                disabled={isUpdatingAccess}
-                onClick={handleRevokeAll}
-                className="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs"
-              >
-                <span>🛑 Khóa Tất Cả</span>
-              </button>
-              <button
-                type="button"
-                disabled={isUpdatingAccess}
-                onClick={() => {
-                  setIsUpdatingAccess(true);
-                  fetchHoa12AccessConfig().then((cfg) => {
-                    setAccessConfig({ ...cfg });
-                    setIsUpdatingAccess(false);
-                    toast.success('Đã đồng bộ trạng thái mới nhất từ Cloud!');
-                  });
-                }}
-                title="Làm mới từ Cloud"
-                className="p-1.5 bg-white hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-xl transition-all cursor-pointer"
-              >
-                <RefreshCw className={`w-4 h-4 ${isUpdatingAccess ? "animate-spin" : ""}`} />
-              </button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* CỘT 1: HÓA HỌC 12 (TỪNG CHƯƠNG) */}
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span>🧪</span>
-                <span>Hóa Học 12 (Từng Chương)</span>
-              </span>
-              <span className="text-[10px] text-slate-400 font-bold">3 Chương chuẩn</span>
-            </div>
-
-            <div className="space-y-2">
-              {/* CHƯƠNG 1 */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div className="min-w-0 pr-2">
-                  <div className="text-xs font-black text-slate-900 truncate">Chương 1: Ester – Lipid</div>
-                  <div className="text-[10px] text-slate-400 font-medium">7 Đề cấu trúc mới</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleChapter('c1', 'Chương 1 (Ester - Lipid)')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.chapters?.c1
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.chapters?.c1 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-
-                            {/* CHƯƠNG 2 */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div className="min-w-0 pr-2">
-                  <div className="text-xs font-black text-slate-900 truncate">Chương 2: Carbohydrate</div>
-                  <div className="text-[10px] text-slate-400 font-medium">4 Đề cấu trúc mới (28 câu)</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleChapter('c2', 'Chương 2 (Carbohydrate)')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.chapters?.c2
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.chapters?.c2 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-
-              {/* CHƯƠNG 5 */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div className="min-w-0 pr-2">
-                  <div className="text-xs font-black text-slate-900 truncate">Chương 5: Pin & Điện Phân</div>
-                  <div className="text-[10px] text-slate-400 font-medium">4 Đề kiểm tra nâng cao</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleChapter('c5', 'Chương 5 (Pin & Điện Phân)')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.chapters?.c5
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.chapters?.c5 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* CỘT 2: PHÂN LẬP THEO KHỐI LỚP */}
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span>📚</span>
-                <span>Phân Lập Khối Lớp</span>
-              </span>
-              <span className="text-[10px] text-slate-400 font-bold">K10 · K11 · K12</span>
-            </div>
-
-            <div className="space-y-2">
-              {/* KHỐI 12 */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div>
-                  <div className="text-xs font-black text-slate-900">Khối 12 (Toàn bộ đề thi K12)</div>
-                  <div className="text-[10px] text-slate-400 font-medium">BTVN & Phòng thi K12</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleGrade('grade_12', 'Khối 12')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.grades?.grade_12
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.grades?.grade_12 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-
-              {/* KHỐI 11 */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div>
-                  <div className="text-xs font-black text-slate-900">Khối 11</div>
-                  <div className="text-[10px] text-slate-400 font-medium">Học sinh Lớp 11</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleGrade('grade_11', 'Khối 11')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.grades?.grade_11
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.grades?.grade_11 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-
-              {/* KHỐI 10 */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div>
-                  <div className="text-xs font-black text-slate-900">Khối 10</div>
-                  <div className="text-[10px] text-slate-400 font-medium">Học sinh Lớp 10</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleGrade('grade_10', 'Khối 10')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.grades?.grade_10
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.grades?.grade_10 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* CỘT 3: CÁC KHU VỰC PHÒNG THI */}
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-                <span>🎯</span>
-                <span>Khu Vực Phòng Thi</span>
-              </span>
-              <span className="text-[10px] text-slate-400 font-bold">BTVN · Đề Thi · Khảo Sát</span>
-            </div>
-
-            <div className="space-y-2">
-              {/* BTVN */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div>
-                  <div className="text-xs font-black text-slate-900">Đề Thi & Bài Tập</div>
-                  <div className="text-[10px] text-slate-400 font-medium">Đề giao nộp định kỳ</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleCategory('homework', 'Đề Thi & Bài Tập')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.categories?.homework
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.categories?.homework ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-
-              {/* LUYỆN ĐỀ THI */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div>
-                  <div className="text-xs font-black text-slate-900">Luyện Đề Thi</div>
-                  <div className="text-[10px] text-slate-400 font-medium">Đề ôn tập thi thử</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleCategory('practice', 'Luyện Đề Thi')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.categories?.practice
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.categories?.practice ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-
-              {/* KHẢO SÁT CHẤT LƯỢNG */}
-              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
-                <div>
-                  <div className="text-xs font-black text-slate-900">Khảo Sát Chất Lượng</div>
-                  <div className="text-[10px] text-slate-400 font-medium">Bài thi kiểm tra chung</div>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingAccess}
-                  onClick={() => handleToggleCategory('survey', 'Khảo Sát Chất Lượng')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
-                    !accessConfig.categories?.survey
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'bg-rose-100 text-rose-700 border border-rose-300'
-                  }`}
-                >
-                  {!accessConfig.categories?.survey ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-      </Modal>
 
     </div>
   )
@@ -2162,6 +1890,280 @@ export default function Dashboard() {
           onClose={() => setScorecardStudent(null)}
         />
       )}
+
+
+      {/* ══════════════════════════════════════════════════════════════
+          ── MODAL 3: TRUNG TÂM CẤP QUYỀN PHÂN LẬP (TỪNG CHƯƠNG · TỪNG KHỐI) ──
+          ══════════════════════════════════════════════════════════════ */}
+      <Modal
+        open={accessControlModalOpen}
+        onClose={() => setAccessControlModalOpen(false)}
+        title="Trung Tâm Cấp Quyền Phân Lập (Từng Chương · Từng Khối)"
+      >
+        <div className="space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2.5 p-3 bg-slate-50 rounded-2xl border border-slate-200">
+            <div>
+              <span className="text-xs font-black text-slate-800">Thao tác nhanh phân quyền toàn hệ thống:</span>
+              <p className="text-[11px] text-slate-500 mt-0.5">Mở (màu xanh) hoặc Khóa (màu đỏ) độc lập cho từng chương Hóa 12 & khối lớp.</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                disabled={isUpdatingAccess}
+                onClick={handleGrantAll}
+                className="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs"
+              >
+                <span>🟢 Mở Tất Cả</span>
+              </button>
+              <button
+                type="button"
+                disabled={isUpdatingAccess}
+                onClick={handleRevokeAll}
+                className="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1 shadow-xs"
+              >
+                <span>🛑 Khóa Tất Cả</span>
+              </button>
+              <button
+                type="button"
+                disabled={isUpdatingAccess}
+                onClick={() => {
+                  setIsUpdatingAccess(true);
+                  fetchHoa12AccessConfig().then((cfg) => {
+                    setAccessConfig({ ...cfg });
+                    setIsUpdatingAccess(false);
+                    toast.success('Đã đồng bộ trạng thái mới nhất từ Cloud!');
+                  });
+                }}
+                title="Làm mới từ Cloud"
+                className="p-1.5 bg-white hover:bg-slate-200 text-slate-700 border border-slate-200 rounded-xl transition-all cursor-pointer"
+              >
+                <RefreshCw className={`w-4 h-4 ${isUpdatingAccess ? "animate-spin" : ""}`} />
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* CỘT 1: HÓA HỌC 12 (TỪNG CHƯƠNG) */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                <span>🧪</span>
+                <span>Hóa Học 12 (Từng Chương)</span>
+              </span>
+              <span className="text-[10px] text-slate-400 font-bold">3 Chương chuẩn</span>
+            </div>
+
+            <div className="space-y-2">
+              {/* CHƯƠNG 1 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div className="min-w-0 pr-2">
+                  <div className="text-xs font-black text-slate-900 truncate">Chương 1: Ester – Lipid</div>
+                  <div className="text-[10px] text-slate-400 font-medium">7 Đề cấu trúc mới</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleChapter('c1', 'Chương 1 (Ester - Lipid)')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.chapters?.c1
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.chapters?.c1 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+                            {/* CHƯƠNG 2 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div className="min-w-0 pr-2">
+                  <div className="text-xs font-black text-slate-900 truncate">Chương 2: Carbohydrate</div>
+                  <div className="text-[10px] text-slate-400 font-medium">4 Đề cấu trúc mới (28 câu)</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleChapter('c2', 'Chương 2 (Carbohydrate)')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.chapters?.c2
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.chapters?.c2 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* CHƯƠNG 5 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div className="min-w-0 pr-2">
+                  <div className="text-xs font-black text-slate-900 truncate">Chương 5: Pin & Điện Phân</div>
+                  <div className="text-[10px] text-slate-400 font-medium">4 Đề kiểm tra nâng cao</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleChapter('c5', 'Chương 5 (Pin & Điện Phân)')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.chapters?.c5
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.chapters?.c5 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* CỘT 2: PHÂN LẬP THEO KHỐI LỚP */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                <span>📚</span>
+                <span>Phân Lập Khối Lớp</span>
+              </span>
+              <span className="text-[10px] text-slate-400 font-bold">K10 · K11 · K12</span>
+            </div>
+
+            <div className="space-y-2">
+              {/* KHỐI 12 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khối 12 (Toàn bộ đề thi K12)</div>
+                  <div className="text-[10px] text-slate-400 font-medium">BTVN & Phòng thi K12</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleGrade('grade_12', 'Khối 12')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.grades?.grade_12
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.grades?.grade_12 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* KHỐI 11 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khối 11</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Học sinh Lớp 11</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleGrade('grade_11', 'Khối 11')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.grades?.grade_11
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.grades?.grade_11 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* KHỐI 10 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khối 10</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Học sinh Lớp 10</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleGrade('grade_10', 'Khối 10')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.grades?.grade_10
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.grades?.grade_10 ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* CỘT 3: CÁC KHU VỰC PHÒNG THI */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+                <span>🎯</span>
+                <span>Khu Vực Phòng Thi</span>
+              </span>
+              <span className="text-[10px] text-slate-400 font-bold">BTVN · Đề Thi · Khảo Sát</span>
+            </div>
+
+            <div className="space-y-2">
+              {/* BTVN */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Đề Thi & Bài Tập</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Đề giao nộp định kỳ</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleCategory('homework', 'Đề Thi & Bài Tập')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.categories?.homework
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.categories?.homework ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* LUYỆN ĐỀ THI */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Luyện Đề Thi</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Đề ôn tập thi thử</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleCategory('practice', 'Luyện Đề Thi')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.categories?.practice
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.categories?.practice ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+
+              {/* KHẢO SÁT CHẤT LƯỢNG */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-xl border border-slate-200 shadow-2xs">
+                <div>
+                  <div className="text-xs font-black text-slate-900">Khảo Sát Chất Lượng</div>
+                  <div className="text-[10px] text-slate-400 font-medium">Bài thi kiểm tra chung</div>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingAccess}
+                  onClick={() => handleToggleCategory('survey', 'Khảo Sát Chất Lượng')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-black transition-all cursor-pointer shrink-0 ${
+                    !accessConfig.categories?.survey
+                      ? 'bg-emerald-600 text-white shadow-xs'
+                      : 'bg-rose-100 text-rose-700 border border-rose-300'
+                  }`}
+                >
+                  {!accessConfig.categories?.survey ? '🟢 Đang Mở' : '🔒 Đang Khóa'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </Modal>
 
     </div>
   )
