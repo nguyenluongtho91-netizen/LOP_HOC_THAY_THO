@@ -113,6 +113,7 @@ export default function Dashboard() {
   // ── SCHEDULE EDITOR MODAL STATE ──
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false)
   const [showGradesOverview, setShowGradesOverview] = useState(false)
+  const [showWeeklySchedule, setShowWeeklySchedule] = useState(false)
   const [editingClassId, setEditingClassId] = useState<string>('')
   const [selectedDays, setSelectedDays] = useState<number[]>([1, 4])
   const [sessionTime, setSessionTime] = useState<string>('17:45 - 19:15')
@@ -854,30 +855,55 @@ export default function Dashboard() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════
-          ── WEEKLY SCHEDULE SECTION (THỜI KHÓA BIỂU SIÊU HIỆN ĐẠI) ──
+          ── WEEKLY SCHEDULE SECTION (THỜI KHÓA BIỂU GẤP GỌN THÔNG MINH) ──
           ══════════════════════════════════════════════════════════════ */}
-      <div className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xl shadow-slate-100/60 space-y-5">
+      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-slate-200/90 shadow-xs transition-all">
         
-        {/* HEADER BAR THỜI KHÓA BIỂU */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100">
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white flex items-center justify-center shadow-md shadow-teal-500/20">
-              <Calendar className="w-6 h-6" />
+        {/* HEADER BAR THỜI KHÓA BIỂU (BẤM VÀO ĐỂ GẤP GỌN / MỞ RA) */}
+        <div 
+          onClick={() => setShowWeeklySchedule(!showWeeklySchedule)}
+          className={`flex items-center justify-between gap-3 cursor-pointer select-none group ${
+            showWeeklySchedule ? 'pb-3.5 border-b border-slate-100' : ''
+          }`}
+        >
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white flex items-center justify-center shadow-md shadow-teal-500/20 shrink-0 group-hover:scale-105 transition-transform">
+              <Calendar className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h3 className="font-black text-slate-900 text-base tracking-wide uppercase">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-black text-slate-900 text-xs sm:text-base tracking-wide uppercase group-hover:text-teal-700 transition-colors">
                   LỊCH DẠY TRONG TUẦN
                 </h3>
-                <span className="bg-emerald-50 text-emerald-700 border border-emerald-300 text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                  ĐANG DIỄN RA
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-colors ${
+                  showWeeklySchedule 
+                    ? 'bg-teal-50 text-teal-700 border-teal-200' 
+                    : 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                }`}>
+                  {showWeeklySchedule ? 'Đang mở ▲' : 'Bấm để xem lịch ▼'}
                 </span>
               </div>
+              <p className="text-[11px] text-slate-400 mt-0.5">
+                {showWeeklySchedule ? 'Bấm vào thanh tiêu đề để gấp gọn lại' : 'Bấm vào để mở bảng thời khóa biểu 7 ngày'}
+              </p>
             </div>
           </div>
 
-          {/* FILTER VÀ ĐIỀU HƯỚNG TUẦN */}
+          <div className="flex items-center gap-2">
+            <div className="p-1 sm:p-1.5 rounded-lg bg-slate-100 text-slate-500 group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors">
+              {showWeeklySchedule ? (
+                <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5" />
+              ) : (
+                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* NỘI DUNG LỊCH DẠY CHỈ HIỆN KHI THẦY BẤM MỞ */}
+        {showWeeklySchedule && (
+          <div className="space-y-4 pt-3.5 animate-fade-in">
+            {/* FILTER VÀ ĐIỀU HƯỚNG TUẦN */}
           <div className="flex flex-wrap items-center gap-2.5">
             {/* Filter buttons */}
             <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold">
@@ -951,7 +977,6 @@ export default function Dashboard() {
               <span className="hidden sm:inline">Sửa lịch</span>
             </button>
           </div>
-        </div>
 
         {/* BẢNG LƯỚI 7 CỘT THỨ HIỆN ĐẠI */}
         <div className="overflow-x-auto -mx-2 px-2 scrollbar-thin">
@@ -1073,6 +1098,8 @@ export default function Dashboard() {
             })}
           </div>
         </div>
+          </div>
+        )}
       </div>
 
       {/* ── 7 Grades Overview Matrix (K6 - K12) ─────────────────────────── */}
