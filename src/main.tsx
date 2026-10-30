@@ -45,6 +45,13 @@ class GlobalErrorBoundary extends React.Component<
           names.forEach((name) => caches.delete(name))
         })
       }
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          for (const reg of registrations) {
+            reg.unregister()
+          }
+        })
+      }
     } catch (e) {}
     const destination = targetPath || window.location.pathname
     window.location.href = destination + '?t=' + Date.now()
