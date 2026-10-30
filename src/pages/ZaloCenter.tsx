@@ -52,20 +52,17 @@ export default function ZaloCenter() {
 
   // State bộ lọc học phí
   const [selectedClassId, setSelectedClassId] = useState('all')
-  const [selectedMonth, setSelectedMonth]     = useState('Tháng 8/2026')
+  const [selectedMonth, setSelectedMonth]     = useState('Tháng 10/2026')
   const [tuitionTemplate, setTuitionTemplate] = useState(
-    `Chào Quý phụ huynh.\n`
-    + `Thầy gửi thông tin học phí tháng {thang}:\n\n`
+    `Kính gửi Quý phụ huynh học sinh {ten_hoc_sinh},\n\n`
+    + `Thầy Thọ xin gửi thông tin học phí của con:\n`
     + `• Học sinh: {ten_hoc_sinh}\n`
     + `• Lớp: {lop}\n`
-    + `• Số tiền cần nộp: {so_tien} VNĐ\n\n`
-    + `• Hình thức nộp: Chuyển khoản\n`
-    + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
-    + `   - STK: 1070493932\n`
-    + `   - Chủ TK (HKD): HO KINH DOANH NGUYEN LUONG THO\n`
-    + `   - Cú pháp CK: HP {ma_hoc_sinh} KH\n\n`
-    + `👉 Mã QR chuyển khoản nhanh (bên dưới):\n`
-    + `{link_qr}`
+    + `• Số tiền học phí: {so_tien} đ\n\n`
+    + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+    + `👉 Quý phụ huynh mở ứng dụng ngân hàng quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n`
+    + `{link_qr}\n\n`
+    + `Thầy xin chân thành cảm ơn Quý phụ huynh! 🙏`
   )
   const [isSendingBulk, setIsSendingBulk] = useState(false)
   const [sentItemIds, setSentItemIds]     = useState<string[]>([])

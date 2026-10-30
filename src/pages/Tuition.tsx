@@ -561,19 +561,15 @@ export default function Tuition() {
       ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
       : ''
 
-    const msg = `Chào Quý phụ huynh.\n`
-              + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
+    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
+              + `Thầy Thọ xin gửi thông tin học phí của con:\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Lớp: ${cleanClass}\n`
               + (studentAttended.length > 0 ? `• Số buổi đã học (${studentAttended.length} buổi): ${datesDetailText}\n` : '')
-              + `• Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n`
-              + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
-              + `• Hình thức nộp: Chuyển khoản\n`
-              + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
-              + `   - STK: ${bankAccount}\n`
-              + `   - Chủ TK (HKD): ${bankName}\n`
-              + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
-              + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):`
+              + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
+              + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+              + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
+              + `Thầy xin chân thành cảm ơn Quý phụ huynh! 🙏`
 
     setSendingStudentId(row.student.id)
     const toastId = toast.loading(`🚀 Đang tự động gửi Zalo cho ${row.student.full_name}...`)
@@ -641,20 +637,15 @@ export default function Tuition() {
       ? `• Số buổi đã học: ${studentAttendedCount} buổi\n`
       : ''
 
-    // MẪU CHUẨN THẦY ĐÃ DUYỆT: Không có link thô, dùng V.C.B, không lặp chữ Lớp
-    const msg = `Chào Quý phụ huynh.\n`
-              + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
+    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
+              + `Thầy Thọ xin gửi thông tin học phí của con:\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Lớp: ${cleanClass}\n`
               + sessionInfoLine
-              + `• Số tiền cần nộp: ${amountVal.toLocaleString('vi-VN')} VNĐ\n`
-              + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
-              + `• Hình thức nộp: Chuyển khoản\n`
-              + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
-              + `   - STK: ${bankAccount}\n`
-              + `   - Chủ TK (HKD): ${bankName}\n`
-              + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
-              + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):`
+              + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
+              + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+              + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
+              + `Thầy xin chân thành cảm ơn Quý phụ huynh! 🙏`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
@@ -702,18 +693,14 @@ export default function Tuition() {
       const activeCourseName = row.notification?.course_name || courseName || 'Học phí'
       const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
       const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
-      const msg = `Chào Quý phụ huynh.\n`
-                + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
+      const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
+                + `Thầy Thọ xin gửi thông tin học phí của con:\n`
                 + `• Học sinh: ${row.student.full_name}\n`
                 + `• Lớp: ${cleanClass}\n`
-                + `• Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n`
-                + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
-                + `• Hình thức nộp: Chuyển khoản\n`
-                + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
-                + `   - STK: ${bankAccount}\n`
-                + `   - Chủ TK (HKD): ${bankName}\n`
-                + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
-                + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):`
+                + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
+                + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+                + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
+                + `Thầy xin chân thành cảm ơn Quý phụ huynh! 🙏`
 
       logs.push(`⏳ [${i + 1}/${unpaidList.length}] Đang gửi cho ${row.student.full_name} (${cleanPhone || 'Không có SĐT'})...`)
       setAutoProgress({
@@ -2356,18 +2343,14 @@ export default function Tuition() {
               const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code)
               const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
 
-              const msg = `Chào Quý phụ huynh.\n`
-                        + `Thầy gửi thông tin học phí tháng ${activeCourseName}:\n\n`
+              const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\n\n`
+                        + `Thầy Thọ xin gửi thông tin học phí của con:\n`
                         + `• Học sinh: ${currentRow.student.full_name}\n`
                         + `• Lớp: ${cleanClass}\n`
-                        + `• Số tiền cần nộp: ${amt.toLocaleString('vi-VN')} VNĐ\n`
-                        + `• Thời gian thu học phí: Từ 01 – 10 hàng tháng\n\n`
-                        + `• Hình thức nộp: Chuyển khoản\n`
-                        + `   - Ngân hàng: V.C.B (Ngoại thương)\n`
-                        + `   - STK: ${bankAccount}\n`
-                        + `   - Chủ TK (HKD): ${bankName}\n`
-                        + `   - Nội dung chuyển khoản: ${addInfo}\n\n`
-                        + `👉 Mã QR chuyển khoản nhanh (đã điền sẵn số tiền và tên học sinh bên dưới):`
+                        + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
+                        + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+                        + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
+                        + `Thầy xin chân thành cảm ơn Quý phụ huynh! 🙏`
 
               const copyTextOnly = async () => {
                 try {
