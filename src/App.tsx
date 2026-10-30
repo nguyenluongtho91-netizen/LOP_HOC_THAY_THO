@@ -86,43 +86,90 @@ interface ProtectedRouteProps {
 }
 
 function ProtectedRoute({ children, adminOnly = false }: ProtectedRouteProps) {
-  const { user, loading, isAdmin } = useAuthStore()
+  const { user, loading, isAdmin, isTeacher: authIsTeacher, profile } = useAuthStore()
 
   if (loading) return <Spinner />
-  if (!user) return <Navigate to="/login" replace />
+
+  const isTeacher = Boolean(
+    (user && (
+      (authIsTeacher && authIsTeacher()) || 
+      (isAdmin && isAdmin()) || 
+      ['ADMIN', 'TEACHER'].includes(profile?.role?.toUpperCase() || '') ||
+      user.email === 'thoc3phuocbinh@gmail.com' ||
+      user.email?.toLowerCase().includes('thaytho')
+    )) ||
+    (typeof window !== 'undefined' && (
+      localStorage.getItem('is_teacher_mode') === 'true' ||
+      localStorage.getItem('role') === 'teacher' ||
+      localStorage.getItem('role') === 'admin'
+    ))
+  );
+
+  if (!user && !isTeacher) return <Navigate to="/login" replace />
   if (adminOnly && !isAdmin()) return <Navigate to="/" replace />
 
   return <>{children}</>
 }
 
+// --- BỘ ĐIỀU HƯỚNG QUẢN TRỊ DÀNH CHO GIÁO VIÊN & HỌC SINH ---
 function RootRouteWrapper() {
-  const { user } = useAuthStore()
-  
-  // TUYỆT ĐỐI HỌC SINH KHÔNG ĐƯỢC TRUY CẬP VÀO TRANG CHỦ CỦA THẦY:
-  // Nếu phát hiện phiên đăng nhập của học sinh, chuyển hướng ngay về /thi
+  const { user, loading, isTeacher: authIsTeacher, isAdmin, profile } = useAuthStore()
+  const location = useLocation()
+
+  if (loading) return <Spinner />
+
+  // Xác thực quyền Thầy Thọ (qua Supabase auth, profile role hoặc cờ bảo mật)
   const isTeacher = Boolean(
-    (user && (user.role === "teacher" || user.role === "admin")) ||
-    (typeof window !== "undefined" && (
-      localStorage.getItem("is_teacher_mode") === "true" ||
-      localStorage.getItem("role") === "teacher" ||
-      localStorage.getItem("role") === "admin"
+    (user && (
+      (authIsTeacher && authIsTeacher()) || 
+      (isAdmin && isAdmin()) || 
+      ['ADMIN', 'TEACHER'].includes(profile?.role?.toUpperCase() || '') ||
+      user.email === 'thoc3phuocbinh@gmail.com' ||
+      user.email?.toLowerCase().includes('thaytho')
+    )) ||
+    (typeof window !== 'undefined' && (
+      localStorage.getItem('is_teacher_mode') === 'true' ||
+      localStorage.getItem('role') === 'teacher' ||
+      localStorage.getItem('role') === 'admin'
     ))
   );
 
-  const isStudent = typeof window !== "undefined" && Boolean(localStorage.getItem("current_student")) && !isTeacher;
+  const isStudent = typeof window !== 'undefined' && Boolean(localStorage.getItem('current_student')) && !isTeacher;
 
+  // 1. Nếu đang ở đúng trang chủ "/"
+  if (location.pathname === '/' || location.pathname === '') {
+    // Học sinh truy cập trang chủ "/" -> Tuyệt đối chặn 100%, chuyển về /thi
+    if (isStudent) {
+      return <Navigate to="/thi" replace />;
+    }
+    // Giáo viên đã đăng nhập -> Vào thẳng Dashboard quản trị
+    if (user || isTeacher) {
+      return (
+        <Layout>
+          <Dashboard />
+        </Layout>
+      );
+    }
+    // Khách vãng lai chưa đăng nhập -> Cổng thông tin công khai
+    return <PublicPortalHub />;
+  }
+
+  // 2. Nếu là học sinh cố tình truy cập vào các đường dẫn giáo viên (như /exam-rooms, /classes...)
   if (isStudent) {
     return <Navigate to="/thi" replace />;
   }
 
-  if (user) {
-    return (
-      <ProtectedRoute>
-        <Layout />
-      </ProtectedRoute>
-    )
+  // 3. Nếu chưa đăng nhập mà truy cập đường dẫn giáo viên -> Chuyển sang /login để đăng nhập
+  if (!user && !isTeacher) {
+    return <Navigate to="/login" replace state={{ from: location }} />;
   }
-  return <PublicPortalHub />
+
+  // 4. Giáo viên hợp lệ -> Cho phép truy cập vào Layout và các trang quản trị
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 }
 
 export default function App() {

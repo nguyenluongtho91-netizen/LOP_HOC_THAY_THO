@@ -19,6 +19,10 @@ export default function Login() {
     const cleanEmail = email.includes('@') ? email.trim() : `${email.trim()}@gmail.com`
     try {
       await login(cleanEmail, password)
+      // Đặt cờ quyền giáo viên và xóa cờ học sinh nếu có
+      localStorage.setItem('is_teacher_mode', 'true')
+      localStorage.setItem('role', 'teacher')
+      localStorage.removeItem('current_student')
       toast.success('Đăng nhập thành công! 🎉')
       void navigate('/')
     } catch {

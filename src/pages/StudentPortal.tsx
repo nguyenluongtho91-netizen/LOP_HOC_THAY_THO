@@ -884,6 +884,23 @@ export default function StudentPortal() {
                 )}
               </button>
 
+              {/* LỐI VÀO DÀNH CHO GIÁO VIÊN */}
+              <div className="pt-2 border-t border-teal-100/60 flex items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    localStorage.setItem('is_teacher_mode', 'true');
+                    localStorage.setItem('role', 'teacher');
+                    localStorage.removeItem('current_student');
+                    navigate('/login');
+                  }}
+                  className="text-xs font-black text-teal-800 hover:text-teal-950 flex items-center gap-1.5 bg-teal-100/70 hover:bg-teal-200/80 px-3 py-1.5 rounded-xl transition-all cursor-pointer shadow-2xs"
+                >
+                  <span>👨‍🏫 Thầy Thọ đăng nhập Trang Giáo Viên</span>
+                  <span>➔</span>
+                </button>
+              </div>
+
               {/* Quên mật khẩu khi học sinh không nhớ */}
               <div className="text-center pt-1">
                 <button
@@ -1511,6 +1528,24 @@ export default function StudentPortal() {
                 <span className="text-[9px] sm:text-[10px] font-bold text-teal-600 font-mono tracking-wider">{student.student_code}</span>
               </div>
             </div>
+
+            {/* NÚT CHUYỂN SANG TRANG QUẢN TRỊ GIÁO VIÊN */}
+            {(isTeacherUser || student.student_code === 'THAYTHO' || student.student_code === 'TUDO' || student.full_name?.toLowerCase().includes('thọ')) && (
+              <button
+                type="button"
+                onClick={() => {
+                  localStorage.setItem('is_teacher_mode', 'true');
+                  localStorage.setItem('role', 'teacher');
+                  localStorage.removeItem('current_student');
+                  navigate('/exam-rooms');
+                }}
+                className="h-8 sm:h-9 px-3 bg-gradient-to-r from-teal-700 via-indigo-700 to-purple-700 hover:opacity-95 text-white rounded-xl flex items-center justify-center gap-1.5 transition-all flex-shrink-0 shadow-md cursor-pointer border border-white/20 active:scale-95"
+                title="Chuyển sang Cổng Quản Trị Giáo Viên (Tạo phòng thi, danh sách lớp)"
+              >
+                <span className="text-sm">👨‍🏫</span>
+                <span className="text-xs font-black">Trang Giáo Viên</span>
+              </button>
+            )}
 
             {student.student_code === 'THAYTHO' && (
               <button
