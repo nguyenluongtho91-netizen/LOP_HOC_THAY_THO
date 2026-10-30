@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback, useMemo } from 'react'
 import { 
-  Users, BookOpen, CalendarCheck, ChevronLeft, ChevronRight, Clock, 
+  Users, BookOpen, CalendarCheck, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Clock, 
   MapPin, Search, Eye, EyeOff, DollarSign, GraduationCap, CheckCircle2, 
   ArrowRight, Sparkles, Layers, Calendar, ClipboardCheck, CreditCard,
   Edit3, Save, Plus, Filter, Check, X, RefreshCw,
@@ -112,6 +112,7 @@ export default function Dashboard() {
 
   // ── SCHEDULE EDITOR MODAL STATE ──
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false)
+  const [showGradesOverview, setShowGradesOverview] = useState(false)
   const [editingClassId, setEditingClassId] = useState<string>('')
   const [selectedDays, setSelectedDays] = useState<number[]>([1, 4])
   const [sessionTime, setSessionTime] = useState<string>('17:45 - 19:15')
@@ -1075,60 +1076,95 @@ export default function Dashboard() {
       </div>
 
       {/* ── 7 Grades Overview Matrix (K6 - K12) ─────────────────────────── */}
-      <div className="card p-5 border border-gray-100/90 shadow-sm">
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-2 pb-3 border-b border-gray-100">
+      <div className="card p-3.5 sm:p-4 border border-gray-150 shadow-xs transition-all">
+        <div 
+          onClick={() => setShowGradesOverview(!showGradesOverview)}
+          className="flex items-center justify-between flex-wrap gap-2 cursor-pointer group select-none"
+        >
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold">
+            <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold group-hover:scale-105 transition-transform shrink-0">
               <Layers className="w-4 h-4 text-indigo-600" />
             </div>
             <div>
-              <h3 className="font-extrabold text-gray-800 text-sm">Danh mục 7 Khối lớp chuẩn hóa (21 Lớp học)</h3>
-              <p className="text-[11px] text-gray-400">Mỗi khối lớp gồm đúng 3 lớp học với chương trình sư phạm đồng bộ</p>
-            </div>
-          </div>
-          <button 
-            onClick={() => navigate('/classes')}
-            className="text-xs font-bold text-teal-600 hover:text-teal-800 flex items-center gap-1 transition cursor-pointer"
-          >
-            Quản lý tất cả lớp <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-3">
-          {gradeOverview.map(g => (
-            <div 
-              key={g.grade}
-              onClick={() => navigate('/classes')}
-              className="bg-gray-50/50 hover:bg-white p-3 rounded-xl border border-gray-200/80 hover:border-teal-400 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="w-8 h-8 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shadow-sm">
-                    K{g.grade}
-                  </span>
-                  <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200">
-                    {g.classCount} lớp
-                  </span>
-                </div>
-                <h4 className="font-black text-xs text-gray-800 mb-1">Khối {g.grade}</h4>
-                <div className="space-y-0.5 text-[11px] text-gray-500">
-                  {g.classes.slice(0, 3).map(c => (
-                    <div key={c.id} className="truncate hover:text-teal-700">
-                      • {c.name || c.class_name}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-3 pt-2 border-t border-gray-200/60 flex items-center justify-between text-[10px]">
-                <span className="text-gray-400">Tổng sĩ số:</span>
-                <span className="font-extrabold text-teal-700 bg-teal-50/80 px-1.5 py-0.5 rounded">
-                  {g.studentCount} HS
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-extrabold text-gray-800 text-xs sm:text-sm group-hover:text-teal-700 transition-colors">
+                  Danh mục 7 Khối lớp chuẩn hóa (21 Lớp học)
+                </h3>
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-colors ${
+                  showGradesOverview 
+                    ? 'bg-teal-50 text-teal-700 border-teal-200' 
+                    : 'bg-slate-100 text-slate-600 border-slate-200'
+                }`}>
+                  {showGradesOverview ? 'Đang mở ▲' : 'Bấm để xem ▼'}
                 </span>
               </div>
+              <p className="text-[11px] text-gray-400 mt-0.5">
+                {showGradesOverview 
+                  ? 'Mỗi khối lớp gồm đúng 3 lớp học với chương trình sư phạm đồng bộ' 
+                  : 'Bấm vào để mở danh sách chi tiết các lớp từ Khối 6 đến Khối 12'}
+              </p>
             </div>
-          ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button 
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                navigate('/classes')
+              }}
+              className="text-xs font-bold text-teal-600 hover:text-teal-800 hidden sm:flex items-center gap-1 transition cursor-pointer"
+            >
+              Quản lý tất cả lớp <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <div className="p-1 rounded-lg bg-slate-100 text-slate-500 group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors">
+              {showGradesOverview ? (
+                <ChevronUp className="w-4 h-4" />
+              ) : (
+                <ChevronDown className="w-4 h-4" />
+              )}
+            </div>
+          </div>
         </div>
+
+        {/* Chỉ hiện ra 7 khối lớp khi Thầy bấm mở */}
+        {showGradesOverview && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-3 mt-3.5 pt-3.5 border-t border-gray-100 animate-fade-in">
+            {gradeOverview.map(g => (
+              <div 
+                key={g.grade}
+                onClick={() => navigate('/classes')}
+                className="bg-gray-50/50 hover:bg-white p-3 rounded-xl border border-gray-200/80 hover:border-teal-400 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="w-8 h-8 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shadow-sm">
+                      K{g.grade}
+                    </span>
+                    <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200">
+                      {g.classCount} lớp
+                    </span>
+                  </div>
+                  <h4 className="font-black text-xs text-gray-800 mb-1">Khối {g.grade}</h4>
+                  <div className="space-y-0.5 text-[11px] text-gray-500">
+                    {g.classes.slice(0, 3).map(c => (
+                      <div key={c.id} className="truncate hover:text-teal-700">
+                        • {c.name || c.class_name}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-3 pt-2 border-t border-gray-200/60 flex items-center justify-between text-[10px]">
+                  <span className="text-gray-400">Tổng sĩ số:</span>
+                  <span className="font-extrabold text-teal-700 bg-teal-50/80 px-1.5 py-0.5 rounded">
+                    {g.studentCount} HS
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ── Quick Action Hub ─────────────────────────────────────────── */}
