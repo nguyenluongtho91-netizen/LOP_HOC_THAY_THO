@@ -235,12 +235,21 @@ export const useDataStore = create<DataState>((set, _get) => ({
 
   // ── Attendance ────────────────────────────────────────────────────────────
   loadAttendance: async (classId, dateFrom, dateTo) => {
-    let q = supabase.from('attendance').select('*')
-    if (classId)  q = q.eq('class_id', classId)
-    if (dateFrom) q = q.gte('date', dateFrom)
-    if (dateTo)   q = q.lte('date', dateTo)
-    const { data } = await q.order('date', { ascending: false })
-    const normalized = (data ?? []).map((r: any) => ({
+    let all: any[] = []
+    let from = 0
+    const step = 1000
+    while (true) {
+      let q = supabase.from('attendance').select('*')
+      if (classId)  q = q.eq('class_id', classId)
+      if (dateFrom) q = q.gte('date', dateFrom)
+      if (dateTo)   q = q.lte('date', dateTo)
+      const { data, error } = await q.order('date', { ascending: false }).range(from, from + step - 1)
+      if (error || !data || data.length === 0) break
+      all.push(...data)
+      if (data.length < step) break
+      from += step
+    }
+    const normalized = all.map((r: any) => ({
       ...r,
       present: r.status === 'PRESENT' || r.status === 'present' || r.present === true
     }))
