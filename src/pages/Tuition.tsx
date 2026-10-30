@@ -1241,7 +1241,7 @@ export default function Tuition() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { label: selClass ? 'Tổng học sinh lớp' : 'Tổng số học sinh', value: `${stats.totalStudents} HS`, color: 'bg-teal-50 text-teal-700 border border-teal-100' },
-          { label: 'Đã báo học phí', value: `${stats.notifiedCount} HS`, color: 'bg-blue-50 text-blue-700 border border-blue-100' },
+          { label: 'Đã lập phiếu báo phí', value: `${stats.notifiedCount} HS`, color: 'bg-blue-50 text-blue-700 border border-blue-100' },
           { label: 'Tổng đã thu', value: fmtVNDShort(stats.totalPaidAmount), color: 'bg-green-50 text-green-700 border border-green-100' },
           { label: 'Tổng chưa thu', value: fmtVNDShort(stats.totalUnpaidAmount), color: 'bg-red-50 text-red-700 border border-red-100' },
         ].map(s => (
