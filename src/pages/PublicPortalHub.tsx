@@ -55,7 +55,7 @@ export default function PublicPortalHub() {
 
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-teal-500 selection:text-white">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-slate-950 text-slate-100 font-sans selection:bg-teal-500 selection:text-white">
       {/* Top Notification Bar */}
       <div className="bg-gradient-to-r from-teal-900 via-indigo-950 to-purple-950 text-teal-200 text-xs py-2 px-4 text-center border-b border-teal-800/40 font-medium flex items-center justify-center gap-2">
         <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0 animate-pulse" />
@@ -63,27 +63,27 @@ export default function PublicPortalHub() {
       </div>
 
       {/* Main Navigation Header */}
-      <header className="border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-teal-500/20 border border-teal-400/30">
-              <GraduationCap className="w-6 h-6" />
+      <header className="border-b border-slate-800/80 bg-slate-900/95 backdrop-blur-md sticky top-0 z-40 w-full">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 h-16 sm:h-18 flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 cursor-pointer shrink-0" onClick={() => navigate('/')}>
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-teal-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-teal-500/20 border border-teal-400/30 shrink-0">
+              <GraduationCap className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <div>
-              <h1 className="font-black text-base sm:text-lg text-white tracking-wide">
+            <div className="min-w-0">
+              <h1 className="font-black text-sm sm:text-lg text-white tracking-wide whitespace-nowrap">
                 LỚP HỌC THẦY THỌ
               </h1>
-              <p className="text-[11px] text-teal-400 font-bold tracking-wider uppercase">
+              <p className="text-[10px] sm:text-[11px] text-teal-400 font-bold tracking-wider uppercase whitespace-nowrap hidden sm:block">
                 Hệ Thống Học Tập & Thi Trực Tuyến
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <button
               type="button"
               onClick={() => navigate('/thpt')}
-              className="px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 hover:bg-amber-500 text-amber-300 hover:text-slate-950 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+              className="hidden md:flex px-3.5 py-2 rounded-xl bg-amber-500/20 border border-amber-500/40 hover:bg-amber-500 text-amber-300 hover:text-slate-950 text-xs font-black transition-all items-center gap-1.5 cursor-pointer shadow-sm"
               title="Trang Quản Trị: Mở / Khóa Đề thi & Xem đáp án"
             >
               <Shield className="w-3.5 h-3.5" />
@@ -92,9 +92,9 @@ export default function PublicPortalHub() {
             <button
               type="button"
               onClick={() => navigate('/thi')}
-              className="px-3.5 py-2 rounded-xl bg-teal-600/20 border border-teal-500/40 hover:bg-teal-600 text-teal-300 hover:text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              className="px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-teal-600/20 border border-teal-500/40 hover:bg-teal-600 text-teal-300 hover:text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             >
-              <Trophy className="w-3.5 h-3.5 text-amber-400" />
+              <Trophy className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               <span>Cổng Thi Học Sinh</span>
             </button>
 
@@ -102,7 +102,7 @@ export default function PublicPortalHub() {
               <button
                 type="button"
                 onClick={() => navigate('/')}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-teal-600 to-indigo-600 hover:from-teal-500 hover:to-indigo-500 text-white text-xs font-black shadow-lg shadow-teal-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-gradient-to-r from-teal-600 to-indigo-600 hover:from-teal-500 hover:to-indigo-500 text-white text-xs font-black shadow-lg shadow-teal-500/20 transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
               >
                 <span>Bảng Quản Trị</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -111,10 +111,11 @@ export default function PublicPortalHub() {
               <button
                 type="button"
                 onClick={() => navigate('/login')}
-                className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border border-slate-700"
+                className="px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border border-slate-700 whitespace-nowrap"
               >
-                <LogIn className="w-3.5 h-3.5" />
-                <span>Đăng Nhập Thầy Cô</span>
+                <LogIn className="w-3.5 h-3.5 shrink-0" />
+                <span className="hidden sm:inline">Đăng Nhập Thầy Cô</span>
+                <span className="sm:hidden">Đăng Nhập</span>
               </button>
             )}
           </div>
@@ -142,12 +143,12 @@ export default function PublicPortalHub() {
             Học sinh được trải nghiệm trọn bộ lý thuyết cô đọng, bài tập trắc nghiệm 3 phần (4 lựa chọn, Đúng/Sai, Trả lời ngắn) và phòng thi bấm giờ mô phỏng đề thi THPT Quốc Gia với đáp án và lời giải chi tiết.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 pt-2 max-w-xl mx-auto sm:max-w-none">
             {(!isH12C1Locked || isEffectiveTeacher) && (
               <button
                 type="button"
                 onClick={() => navigate('/hoa12-chuong1')}
-                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-teal-600 via-indigo-600 to-purple-600 hover:from-teal-500 text-white font-black text-sm shadow-xl shadow-indigo-600/25 transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-2xl bg-gradient-to-r from-teal-600 via-indigo-600 to-purple-600 hover:from-teal-500 text-white font-black text-sm shadow-xl shadow-indigo-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
               >
                 <span>Vào Học Hóa 12 Ngay</span>
                 <ArrowRight className="w-4 h-4" />
@@ -156,17 +157,17 @@ export default function PublicPortalHub() {
             <button
               type="button"
               onClick={() => navigate('/thi')}
-              className="px-6 py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-extrabold text-sm transition-all flex items-center gap-2 cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-2xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-extrabold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Trophy className="w-4 h-4 text-amber-400" />
+              <Trophy className="w-4 h-4 text-amber-400 shrink-0" />
               <span>Phòng Thi Học Sinh (Theo Mã)</span>
             </button>
             <button
               type="button"
               onClick={() => navigate('/thpt')}
-              className="px-6 py-3.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-extrabold text-sm transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-amber-500/10"
+              className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-2xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-extrabold text-sm transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-amber-500/10"
             >
-              <Shield className="w-4 h-4 text-amber-400" />
+              <Shield className="w-4 h-4 text-amber-400 shrink-0" />
               <span>Trang Quản Trị & Đóng/Mở Đề</span>
             </button>
           </div>

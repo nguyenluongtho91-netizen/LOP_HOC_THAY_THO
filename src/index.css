@@ -5,6 +5,10 @@
 
 @layer base {
   * { box-sizing: border-box; }
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
   body {
     @apply font-sans text-gray-800 antialiased;
     background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead5 100%);
