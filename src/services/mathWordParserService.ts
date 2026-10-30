@@ -1318,9 +1318,12 @@ function parseAllQuestions(paragraphs: ParagraphData[], images: ImageData[], tab
   const part1Questions = parsePart1WithUnderline(paragraphs, sectionInfo.part1Start, sectionInfo.part2Start, images, tableAnswers?.part1);
   const part2Questions = parsePart2(paragraphs, sectionInfo.part2Start, sectionInfo.part3Start, images, tableAnswers?.part2);
   const part3Questions = parsePart3(paragraphs, sectionInfo.part3Start, sectionInfo.part3End, images, tableAnswers?.part3);
+  const part4Questions = sectionInfo.part4Start !== -1
+    ? parsePart4(paragraphs, sectionInfo.part4Start, sectionInfo.part4End, images)
+    : (examData.questions.length === 0 ? parsePart4(paragraphs, 0, paragraphs.length, images) : []);
 
   console.log(
-    `📊 Parsed: PHẦN 1=${part1Questions.length}, PHẦN 2=${part2Questions.length}, PHẦN 3=${part3Questions.length}`
+    `📊 Parsed: PHẦN 1=${part1Questions.length}, PHẦN 2=${part2Questions.length}, PHẦN 3=${part3Questions.length}, PHẦN 4=${part4Questions.length}`
   );
 
   let globalIndex = 0;
@@ -1391,25 +1394,31 @@ function parseAllQuestions(paragraphs: ParagraphData[], images: ImageData[], tab
     });
   }
 
-    // FALLBACK / PHẦN 4: Nếu không có câu trắc nghiệm nào hoặc có bài tập tự luận/ví dụ
-  if (examData.questions.length === 0) {
-    const part4Questions = parsePart4(paragraphs, 0, paragraphs.length, images);
-    if (part4Questions.length > 0) {
-      const section4Questions: Question[] = [];
-      for (const pq of part4Questions) {
-        const q = convertToQuestion(pq, globalIndex++);
-        section4Questions.push(q);
-        examData.questions.push(q);
-      }
-
-      examData.sections.push({
-        name: 'PHẦN 4. Tự luận & Bài tập ví dụ',
-        description: 'Học sinh trình bày lời giải chi tiết hoặc nộp vở bài làm',
-        points: '',
-        questions: section4Questions,
-        sectionType: 'writing'
-      });
+  // PHẦN 4: Tự luận
+  if (part4Questions.length > 0) {
+    const section4Questions: Question[] = [];
+    for (const pq of part4Questions) {
+      pq.type = 'writing';
+      pq.part = 4;
+      const q = convertToQuestion(pq, globalIndex++);
+      q.type = 'writing';
+      q.part = 'PHẦN 4';
+      q.section = {
+        letter: '4',
+        name: 'Tự luận',
+        points: ''
+      };
+      section4Questions.push(q);
+      examData.questions.push(q);
     }
+
+    examData.sections.push({
+      name: 'PHẦN 4. Tự luận',
+      description: 'Học sinh trình bày lời giải chi tiết hoặc nộp vở bài làm',
+      points: '',
+      questions: section4Questions,
+      sectionType: 'writing'
+    });
   }
 
   return examData;
@@ -1424,6 +1433,8 @@ interface SectionInfo {
   part2Start: number;
   part3Start: number;
   part3End: number;
+  part4Start: number;
+  part4End: number;
 }
 
 function detectSections(_fullText: string, paragraphs: ParagraphData[]): SectionInfo {
@@ -1431,7 +1442,9 @@ function detectSections(_fullText: string, paragraphs: ParagraphData[]): Section
     part1Start: -1,
     part2Start: -1,
     part3Start: -1,
-    part3End: paragraphs.length
+    part3End: paragraphs.length,
+    part4Start: -1,
+    part4End: paragraphs.length
   };
 
   const part1Patterns = [
@@ -1463,6 +1476,17 @@ function detectSections(_fullText: string, paragraphs: ParagraphData[]): Section
     /III\.\s*TRA\s*LOI/i,
     /TRẢ\s*LỜI\s*NGẮN/i,
     /TRA\s*LOI\s*NGAN/i
+  ];
+
+  const part4Patterns = [
+    /PHẦN\s*4/i,
+    /PHAN\s*4/i,
+    /PHẦN\s+IV[.:\s]/i,
+    /Phần\s*4/i,
+    /IV\.\s*TỰ\s*LUẬN/i,
+    /IV\.\s*TU\s*LUAN/i,
+    /TỰ\s*LUẬN/i,
+    /TU\s*LUAN/i
   ];
 
   const solutionPatterns = [
@@ -1523,12 +1547,22 @@ function detectSections(_fullText: string, paragraphs: ParagraphData[]): Section
         }
       }
     }
+
+    if (info.part4Start === -1 && (info.part3Start !== -1 ? i > info.part3Start : (info.part2Start !== -1 ? i > info.part2Start : (info.part1Start !== -1 ? i > info.part1Start : true)))) {
+      for (const pattern of part4Patterns) {
+        if (pattern.test(text)) {
+          info.part4Start = i;
+          break;
+        }
+      }
+    }
   }
 
   if (info.part1Start === -1) info.part1Start = 0;
-  if (info.part2Start === -1) info.part2Start = info.part3Start !== -1 ? info.part3Start : maxScanIdx;
-  if (info.part3Start === -1) info.part3Start = maxScanIdx;
-  info.part3End = maxScanIdx;
+  if (info.part2Start === -1) info.part2Start = info.part3Start !== -1 ? info.part3Start : (info.part4Start !== -1 ? info.part4Start : maxScanIdx);
+  if (info.part3Start === -1) info.part3Start = info.part4Start !== -1 ? info.part4Start : maxScanIdx;
+  info.part3End = info.part4Start !== -1 ? info.part4Start : maxScanIdx;
+  info.part4End = maxScanIdx;
 
   return info;
 }
