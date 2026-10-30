@@ -1087,7 +1087,7 @@ export default function Tuition() {
               <Banknote className="w-4 h-4 text-blue-400" />
             </div>
             <p className="font-black text-sm text-white">Báo Học Phí</p>
-            <p className="text-[11px] text-slate-300 mt-0.5">{stats.notifiedCount} HS đã báo • {stats.unpaidCount} chưa nộp</p>
+            <p className="text-[11px] text-slate-300 mt-0.5">{stats.notifiedCount} HS chờ gửi tin • {stats.unpaidCount} chưa nộp</p>
           </button>
 
           <button
@@ -1241,7 +1241,7 @@ export default function Tuition() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { label: selClass ? 'Tổng học sinh lớp' : 'Tổng số học sinh', value: `${stats.totalStudents} HS`, color: 'bg-teal-50 text-teal-700 border border-teal-100' },
-          { label: 'Đã lập phiếu báo phí', value: `${stats.notifiedCount} HS`, color: 'bg-blue-50 text-blue-700 border border-blue-100' },
+          { label: 'Chờ gửi tin nhắn', value: `${stats.notifiedCount} HS`, color: 'bg-amber-50 text-amber-700 border border-amber-200' },
           { label: 'Tổng đã thu', value: fmtVNDShort(stats.totalPaidAmount), color: 'bg-green-50 text-green-700 border border-green-100' },
           { label: 'Tổng chưa thu', value: fmtVNDShort(stats.totalUnpaidAmount), color: 'bg-red-50 text-red-700 border border-red-100' },
         ].map(s => (
