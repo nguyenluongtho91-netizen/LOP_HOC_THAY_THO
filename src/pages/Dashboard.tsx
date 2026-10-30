@@ -121,11 +121,12 @@ export default function Dashboard() {
   const [accessControlModalOpen, setAccessControlModalOpen] = useState(false)
   // ── 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG ──
   const [activeHubPillar, setActiveHubPillar] = useState<'all' | 'p1' | 'p2' | 'p3' | 'p4'>('all')
+  // Mặc định THU GỌN HẲN 4 Trụ Cột để màn hình cực kỳ gọn gàng, lúc nào Thầy cần xem mục nào thì bấm vào là mở ra
   const [expandedHubs, setExpandedHubs] = useState<Record<string, boolean>>({
-    p1: true,
-    p2: true,
-    p3: true,
-    p4: true,
+    p1: false,
+    p2: false,
+    p3: false,
+    p4: false,
   })
   const toggleHub = (key: string) => {
     setExpandedHubs(prev => ({ ...prev, [key]: !prev[key] }))
