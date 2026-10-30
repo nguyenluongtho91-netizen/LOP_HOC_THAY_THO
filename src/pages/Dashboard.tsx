@@ -592,346 +592,6 @@ export default function Dashboard() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════
-          ── WEEKLY SCHEDULE SECTION (THỜI KHÓA BIỂU GẤP GỌN THÔNG MINH) ──
-          ══════════════════════════════════════════════════════════════ */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-slate-200/90 shadow-xs transition-all">
-        
-        {/* HEADER BAR THỜI KHÓA BIỂU (BẤM VÀO ĐỂ GẤP GỌN / MỞ RA) */}
-        <div 
-          onClick={() => setShowWeeklySchedule(!showWeeklySchedule)}
-          className={`flex items-center justify-between gap-3 cursor-pointer select-none group ${
-            showWeeklySchedule ? 'pb-3.5 border-b border-slate-100' : ''
-          }`}
-        >
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 text-white flex items-center justify-center shadow-md shadow-teal-500/20 shrink-0 group-hover:scale-105 transition-transform">
-              <Calendar className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-black text-slate-900 text-xs sm:text-base tracking-wide uppercase group-hover:text-teal-700 transition-colors">
-                  LỊCH DẠY TRONG TUẦN
-                </h3>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-colors ${
-                  showWeeklySchedule 
-                    ? 'bg-teal-50 text-teal-700 border-teal-200' 
-                    : 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                }`}>
-                  {showWeeklySchedule ? 'Đang mở ▲' : 'Bấm để xem lịch ▼'}
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 mt-0.5">
-                {showWeeklySchedule ? 'Bấm vào thanh tiêu đề để gấp gọn lại' : 'Bấm vào để mở bảng thời khóa biểu 7 ngày'}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="p-1 sm:p-1.5 rounded-lg bg-slate-100 text-slate-500 group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors">
-              {showWeeklySchedule ? (
-                <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5" />
-              ) : (
-                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* NỘI DUNG LỊCH DẠY CHỈ HIỆN KHI THẦY BẤM MỞ */}
-        {showWeeklySchedule && (
-          <div className="space-y-4 pt-3.5 animate-fade-in">
-            {/* FILTER VÀ ĐIỀU HƯỚNG TUẦN */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            {/* Filter buttons */}
-            <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-bold">
-              <button
-                onClick={() => setSubjectFilter('all')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  subjectFilter === 'all'
-                    ? 'bg-white text-slate-900 shadow-xs font-black'
-                    : 'text-slate-500 hover:text-slate-800'
-                }`}
-              >
-                Tất cả ({totalClassesCount})
-              </button>
-              <button
-                onClick={() => setSubjectFilter('toan')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  subjectFilter === 'toan'
-                    ? 'bg-blue-600 text-white shadow-xs font-black'
-                    : 'text-slate-500 hover:text-blue-700'
-                }`}
-              >
-                📐 Toán ({mathClassesCount})
-              </button>
-              <button
-                onClick={() => setSubjectFilter('hoa')}
-                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  subjectFilter === 'hoa'
-                    ? 'bg-purple-600 text-white shadow-xs font-black'
-                    : 'text-slate-500 hover:text-purple-700'
-                }`}
-              >
-                🧪 Hóa ({chemClassesCount})
-              </button>
-            </div>
-
-            {/* Navigation buttons */}
-            <div className="flex items-center gap-1.5 bg-slate-50 p-1 rounded-xl border border-slate-200">
-              <button 
-                onClick={prevWeek} 
-                className="p-1.5 rounded-lg hover:bg-white text-slate-600 hover:text-slate-900 transition cursor-pointer"
-                title="Tuần trước"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={goToday} 
-                className="text-xs font-black px-3 py-1.5 rounded-lg bg-teal-600 text-white hover:bg-teal-700 transition shadow-sm cursor-pointer"
-              >
-                Tuần hiện tại
-              </button>
-              <button 
-                onClick={nextWeek} 
-                className="p-1.5 rounded-lg hover:bg-white text-slate-600 hover:text-slate-900 transition cursor-pointer"
-                title="Tuần sau"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-
-            <span className="text-xs font-black text-slate-700 bg-slate-100 px-3 py-2 rounded-xl border border-slate-200 font-mono">
-              {formatWeekRange(weekDays)}
-            </span>
-
-            {/* Nút sửa lịch dạy tinh gọn - lúc nào cần thì bấm */}
-            <button
-              onClick={() => openEditSchedule(classes[0] || { id: '' })}
-              className="p-1.5 sm:px-2.5 sm:py-1.5 bg-white hover:bg-teal-50 text-slate-600 hover:text-teal-700 rounded-xl text-xs font-bold border border-slate-200 shadow-xs flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
-              title="Bấm để chỉnh sửa lịch dạy khi cần"
-            >
-              <Edit3 className="w-3.5 h-3.5 text-teal-600" />
-              <span className="hidden sm:inline">Sửa lịch</span>
-            </button>
-          </div>
-
-        {/* BẢNG LƯỚI 7 CỘT THỨ HIỆN ĐẠI */}
-        <div className="overflow-x-auto -mx-2 px-2 scrollbar-thin">
-          <div className="grid grid-cols-7 gap-3 min-w-[980px] py-1">
-            {weekDays.map((dayDate) => {
-              const dayNum = dayDate.getDay()
-              const isDayToday = isToday(dayDate)
-              const dayClasses = getClassesForDay(dayNum)
-              const dayNames = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
-
-              return (
-                <div 
-                  key={dayDate.toISOString()} 
-                  className={`flex flex-col gap-2.5 p-2.5 rounded-2xl transition-all duration-300 ${
-                    isDayToday 
-                      ? 'bg-gradient-to-b from-teal-50/90 via-white to-emerald-50/40 border-2 border-teal-500 shadow-xl shadow-teal-500/10 ring-4 ring-teal-500/10' 
-                      : 'bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:border-slate-300 shadow-xs'
-                  }`}
-                >
-                  {/* Cột Header ngày */}
-                  <div className={`flex flex-col items-center py-2.5 px-1.5 rounded-xl transition-all ${
-                    isDayToday 
-                      ? 'bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-600 text-white shadow-md' 
-                      : 'bg-white border border-slate-200/90 shadow-xs'
-                  }`}>
-                    <span className={`text-[11px] font-black uppercase tracking-wider ${
-                      isDayToday ? 'text-teal-100' : 'text-slate-500'
-                    }`}>
-                      {dayNames[dayNum]}
-                    </span>
-                    <span className={`text-lg font-black mt-0.5 ${
-                      isDayToday ? 'text-white' : 'text-slate-800'
-                    }`}>
-                      {String(dayDate.getDate()).padStart(2, '0')}
-                    </span>
-                    
-                    {isDayToday ? (
-                      <span className="text-[9px] font-black bg-white text-teal-800 px-2 py-0.5 rounded-full uppercase tracking-tight shadow-sm mt-1 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                        Hôm nay · {dayClasses.length} ca
-                      </span>
-                    ) : (
-                      <span className="text-[10px] font-bold text-slate-400 mt-0.5">
-                        {dayClasses.length > 0 ? `${dayClasses.length} ca dạy` : 'Nghỉ'}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Danh sách các ca học trong ngày */}
-                  <div className="flex flex-col gap-2 flex-1 min-h-[200px]">
-                    {dayClasses.length === 0 ? (
-                      <div className="flex-1 flex flex-col items-center justify-center py-8 border-2 border-dashed border-slate-200 rounded-xl bg-white/60 text-center px-2 space-y-2">
-                        <Clock className="w-5 h-5 text-slate-300 mx-auto" />
-                        <span className="text-[11px] text-slate-400 font-medium italic">Không có ca dạy</span>
-                        <button
-                          onClick={() => {
-                            // Find a class without schedule or first class
-                            const cls = classes.find(c => !c.schedule || c.schedule === 'None') || classes[0]
-                            if (cls) openEditSchedule(cls, dayNum)
-                          }}
-                          className="text-[10px] font-bold text-teal-700 hover:text-teal-900 bg-teal-50 hover:bg-teal-100 px-2 py-1 rounded-lg border border-teal-200 transition-colors cursor-pointer"
-                        >
-                          + Xếp ca ngày này
-                        </button>
-                      </div>
-                    ) : (
-                      dayClasses.map(cls => {
-                        const isMath = cls.subject?.toLowerCase().includes('toán')
-                        const stCount = classStudentCounts[cls.id] || 0
-                        
-                        return (
-                          <div 
-                            key={`${cls.id}-${cls.time}`} 
-                            onClick={() => {
-                              setDetailClass(cls)
-                              setModalSearch('')
-                            }}
-                            className="bg-white p-2.5 rounded-xl border border-slate-200 shadow-xs hover:shadow-md hover:border-teal-500 transition-all cursor-pointer group relative overflow-hidden flex flex-col gap-1.5"
-                          >
-                            {/* Dải màu môn học bên trái */}
-                            <div className={`absolute left-0 top-0 bottom-0 w-1.5 ${
-                              isMath 
-                                ? 'bg-blue-600' 
-                                : 'bg-purple-600'
-                            }`} />
-
-                            {/* Hàng 1: Tên Lớp to rõ + Nút sửa lịch */}
-                            <div className="flex items-center justify-between gap-1 pl-1.5">
-                              <span className="font-black text-slate-900 text-xs sm:text-sm group-hover:text-teal-700 transition-colors truncate">
-                                {cls.name || cls.class_name}
-                              </span>
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                  openEditSchedule(cls, dayNum)
-                                }}
-                                className="w-5 h-5 rounded-md bg-slate-100 hover:bg-teal-600 hover:text-white text-slate-400 hover:text-white flex items-center justify-center transition-colors shrink-0 cursor-pointer"
-                                title="Đổi giờ dạy"
-                              >
-                                <Edit3 className="w-3 h-3" />
-                              </button>
-                            </div>
-
-                            {/* Hàng 2: Giờ Dạy gọn gàng */}
-                            {cls.time && (
-                              <div className="pl-1.5 flex items-center gap-1.5 text-teal-800 font-bold text-xs font-mono bg-teal-50/90 px-2 py-1 rounded-lg border border-teal-200/50">
-                                <Clock className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-                                <span>{cls.time}</span>
-                              </div>
-                            )}
-                          </div>
-                        )
-                      })
-                    )}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-          </div>
-        )}
-      </div>
-
-      {/* ── 7 Grades Overview Matrix (K6 - K12) ─────────────────────────── */}
-      <div className="card p-3.5 sm:p-4 border border-gray-150 shadow-xs transition-all">
-        <div 
-          onClick={() => setShowGradesOverview(!showGradesOverview)}
-          className="flex items-center justify-between flex-wrap gap-2 cursor-pointer group select-none"
-        >
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold group-hover:scale-105 transition-transform shrink-0">
-              <Layers className="w-4 h-4 text-indigo-600" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-extrabold text-gray-800 text-xs sm:text-sm group-hover:text-teal-700 transition-colors">
-                  Danh mục 7 Khối lớp chuẩn hóa (21 Lớp học)
-                </h3>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border transition-colors ${
-                  showGradesOverview 
-                    ? 'bg-teal-50 text-teal-700 border-teal-200' 
-                    : 'bg-slate-100 text-slate-600 border-slate-200'
-                }`}>
-                  {showGradesOverview ? 'Đang mở ▲' : 'Bấm để xem ▼'}
-                </span>
-              </div>
-              <p className="text-[11px] text-gray-400 mt-0.5">
-                {showGradesOverview 
-                  ? 'Mỗi khối lớp gồm đúng 3 lớp học với chương trình sư phạm đồng bộ' 
-                  : 'Bấm vào để mở danh sách chi tiết các lớp từ Khối 6 đến Khối 12'}
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button 
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation()
-                navigate('/classes')
-              }}
-              className="text-xs font-bold text-teal-600 hover:text-teal-800 hidden sm:flex items-center gap-1 transition cursor-pointer"
-            >
-              Quản lý tất cả lớp <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-            <div className="p-1 rounded-lg bg-slate-100 text-slate-500 group-hover:bg-teal-50 group-hover:text-teal-700 transition-colors">
-              {showGradesOverview ? (
-                <ChevronUp className="w-4 h-4" />
-              ) : (
-                <ChevronDown className="w-4 h-4" />
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Chỉ hiện ra 7 khối lớp khi Thầy bấm mở */}
-        {showGradesOverview && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-3 mt-3.5 pt-3.5 border-t border-gray-100 animate-fade-in">
-            {gradeOverview.map(g => (
-              <div 
-                key={g.grade}
-                onClick={() => navigate('/classes')}
-                className="bg-gray-50/50 hover:bg-white p-3 rounded-xl border border-gray-200/80 hover:border-teal-400 hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="w-8 h-8 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shadow-sm">
-                      K{g.grade}
-                    </span>
-                    <span className="text-[10px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded-full border border-teal-200">
-                      {g.classCount} lớp
-                    </span>
-                  </div>
-                  <h4 className="font-black text-xs text-gray-800 mb-1">Khối {g.grade}</h4>
-                  <div className="space-y-0.5 text-[11px] text-gray-500">
-                    {g.classes.slice(0, 3).map(c => (
-                      <div key={c.id} className="truncate hover:text-teal-700">
-                        • {c.name || c.class_name}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-3 pt-2 border-t border-gray-200/60 flex items-center justify-between text-[10px]">
-                  <span className="text-gray-400">Tổng sĩ số:</span>
-                  <span className="font-extrabold text-teal-700 bg-teal-50/80 px-1.5 py-0.5 rounded">
-                    {g.studentCount} HS
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* ══════════════════════════════════════════════════════════════
           ── 🏛️ HỆ THỐNG 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG (MASTER HUBS) ──
           ══════════════════════════════════════════════════════════════ */}
       <div className="space-y-4 pt-2">
@@ -1039,6 +699,31 @@ export default function Dashboard() {
                     </div>
                     <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-blue-600 font-bold">
                       <span>🔗 Liên kết Học phí</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+
+                  {/* Mục Lịch Giảng Dạy Tuần */}
+                  <div 
+                    onClick={() => openEditSchedule(classes[0] || { id: '' })}
+                    className="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md cursor-pointer transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-base">📅</span>
+                        <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
+                          9 Ca / Tuần
+                        </span>
+                      </div>
+                      <div className="font-black text-xs text-slate-900 group-hover:text-blue-600 transition-colors">
+                        Thời Khóa Biểu & Lịch Dạy
+                      </div>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                        Lịch dạy 9 ca từ Thứ 2 đến CN, xếp ca, đổi phòng & thời gian học.
+                      </p>
+                    </div>
+                    <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-blue-600 font-bold">
+                      <span>🔗 Xem & Đổi lịch</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
