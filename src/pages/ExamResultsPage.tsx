@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
-import { ChevronLeft, BrainCircuit, Eye, AlertTriangle, FileSpreadsheet } from 'lucide-react'
+import { ChevronLeft, BrainCircuit, Eye, AlertTriangle, FileSpreadsheet, Edit2 } from 'lucide-react'
 import { exportExamRoomToExcel } from '@/services/examExportService'
 import Modal from '@/components/Modal'
 import EssayGraderPanel from '@/components/EssayGraderPanel'
@@ -24,6 +24,11 @@ export default function ExamResultsPage() {
   const [showEssayGrader, setShowEssayGrader] = useState(false)
   const [activeTab, setActiveTab] = useState<'submitted' | 'not_submitted'>('submitted')
   const [scorecardStudent, setScorecardStudent] = useState<any>(null)
+
+  // ✅ Thầy điều chỉnh trực tiếp điểm của học sinh
+  const [editingScoreSub, setEditingScoreSub] = useState<any>(null)
+  const [newScoreVal, setNewScoreVal] = useState<string>('')
+  const [savingScore, setSavingScore] = useState(false)
 
   useEffect(() => {
     loadAllData()
@@ -81,6 +86,40 @@ export default function ExamResultsPage() {
       setLoading(false)
     }
   }
+
+  // ✅ Lưu điểm điều chỉnh trực tiếp
+  const handleDirectScoreSave = async () => {
+    const num = parseFloat(newScoreVal);
+    if (isNaN(num) || num < 0 || num > 10) {
+      toast.error('Vui lòng nhập điểm từ 0 đến 10');
+      return;
+    }
+    setSavingScore(true);
+    try {
+      const rounded = parseFloat(num.toFixed(2));
+      const currentSb = { ...(editingScoreSub.score_breakdown || {}) };
+      currentSb.totalScore = rounded;
+      currentSb.percentage = Math.round((rounded / 10) * 100);
+
+      const { error } = await supabase
+        .from('exam_submissions')
+        .update({
+          score: rounded,
+          score_breakdown: currentSb
+        })
+        .eq('id', editingScoreSub.id);
+
+      if (error) throw error;
+
+      setSubmissions(prev => prev.map(s => s.id === editingScoreSub.id ? { ...s, score: rounded, score_breakdown: currentSb } : s));
+      toast.success(`Đã cập nhật điểm thành công: ${rounded}đ`);
+      setEditingScoreSub(null);
+    } catch (err: any) {
+      toast.error('Lỗi khi cập nhật điểm: ' + (err?.message || err));
+    } finally {
+      setSavingScore(false);
+    }
+  };
 
   const handleEssayScoreUpdate = async (submissionId: string, qNum: number, score: number, feedback: string) => {
     try {
@@ -342,7 +381,18 @@ export default function ExamResultsPage() {
                         )}
                       </td>
                       <td className="px-6 py-4 text-center font-bold text-teal-600 text-lg">
-                        {sub.score != null ? sub.score.toFixed(2) : '—'}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditingScoreSub(sub);
+                            setNewScoreVal(sub.score != null ? String(sub.score) : '');
+                          }}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl hover:bg-teal-100/60 transition-all cursor-pointer group"
+                          title="Bấm để điều chỉnh điểm của học sinh này"
+                        >
+                          <span className="text-teal-700 font-black">{sub.score != null ? sub.score.toFixed(2) : '—'}</span>
+                          <span className="text-[11px] text-teal-400 opacity-60 group-hover:opacity-100 group-hover:text-teal-700 transition-all">✏️</span>
+                        </button>
                       </td>
                       <td className="px-6 py-4 text-center text-gray-600">
                         {sub.status === 'submitted'
@@ -350,13 +400,26 @@ export default function ExamResultsPage() {
                           : '—'}
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <button
-                          onClick={() => setSelectedSub(formattedSub)}
-                          className="p-2 text-teal-600 hover:bg-teal-100 rounded-lg transition-all"
-                          title="Xem chi tiết câu trả lời"
-                        >
-                          <Eye className="w-5 h-5" />
-                        </button>
+                        <div className="flex items-center justify-end gap-1">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setEditingScoreSub(sub);
+                              setNewScoreVal(sub.score != null ? String(sub.score) : '');
+                            }}
+                            className="p-2 text-amber-600 hover:bg-amber-50 rounded-lg transition-all"
+                            title="Điều chỉnh điểm học sinh"
+                          >
+                            <Edit2 className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => setSelectedSub(formattedSub)}
+                            className="p-2 text-teal-600 hover:bg-teal-100 rounded-lg transition-all"
+                            title="Xem chi tiết câu trả lời"
+                          >
+                            <Eye className="w-5 h-5" />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   )
@@ -429,6 +492,85 @@ export default function ExamResultsPage() {
           />
         );
       })()}
+
+      {/* MODAL ĐIỀU CHỈNH ĐIỂM HỌC SINH */}
+      <Modal 
+        open={!!editingScoreSub} 
+        onClose={() => setEditingScoreSub(null)} 
+        title={`Điều chỉnh điểm: ${editingScoreSub?.students?.full_name || 'Học sinh'}`} 
+        size="md"
+      >
+        <div className="space-y-4 p-2">
+          <div className="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 text-xs text-slate-700 space-y-1">
+            <p><strong>Học sinh:</strong> {editingScoreSub?.students?.full_name} ({editingScoreSub?.students?.student_code})</p>
+            <p><strong>Điểm hiện tại:</strong> <span className="font-bold text-teal-700 text-sm">{editingScoreSub?.score != null ? editingScoreSub.score.toFixed(2) : '—'} điểm</span></p>
+          </div>
+
+          <div>
+            <label className="text-xs font-black text-slate-800 block mb-1.5">
+              Nhập Điểm Mới (Thang điểm 10) *
+            </label>
+            <input
+              type="number"
+              step="0.1"
+              min="0"
+              max="10"
+              value={newScoreVal}
+              onChange={(e) => setNewScoreVal(e.target.value)}
+              placeholder="VD: 8.5"
+              className="input text-base font-black text-teal-900 bg-white border-teal-300 w-full"
+              autoFocus
+            />
+          </div>
+
+          {/* Nút bấm cộng nhanh */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[11px] font-bold text-slate-500">Cộng nhanh:</span>
+            {[0.25, 0.5, 1.0].map(bonus => (
+              <button
+                key={bonus}
+                type="button"
+                onClick={() => {
+                  const curr = parseFloat(newScoreVal) || editingScoreSub?.score || 0;
+                  const next = Math.min(10, parseFloat((curr + bonus).toFixed(2)));
+                  setNewScoreVal(String(next));
+                }}
+                className="px-2.5 py-1 bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 rounded-lg text-xs font-bold transition-all cursor-pointer"
+              >
+                +{bonus}đ
+              </button>
+            ))}
+            <button
+              type="button"
+              onClick={() => {
+                const curr = parseFloat(newScoreVal) || editingScoreSub?.score || 0;
+                setNewScoreVal(String(Math.round(curr)));
+              }}
+              className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded-lg text-xs font-bold transition-all cursor-pointer"
+            >
+              Làm tròn điểm
+            </button>
+          </div>
+
+          <div className="flex justify-end gap-2.5 pt-4 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={() => setEditingScoreSub(null)}
+              className="px-5 py-2.5 rounded-xl border border-slate-200 font-bold text-slate-600 hover:bg-slate-50 text-xs cursor-pointer"
+            >
+              Hủy
+            </button>
+            <button
+              type="button"
+              onClick={handleDirectScoreSave}
+              disabled={savingScore || newScoreVal === ''}
+              className="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 font-black text-white text-xs shadow-md transition-all cursor-pointer disabled:opacity-50"
+            >
+              {savingScore ? 'Đang lưu...' : '💾 Lưu điểm mới'}
+            </button>
+          </div>
+        </div>
+      </Modal>
 
       <StudentScorecardModal
         student={scorecardStudent}
