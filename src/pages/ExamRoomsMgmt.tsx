@@ -1122,100 +1122,162 @@ const isFirstRender = useRef(true)
               </div>
             </div>
 
-            {/* CHẾ ĐỘ 1: CHỌN ĐỀ TỪ THƯ VIỆN (BỘ CHỌN 2 BƯỚC GỌN GÀNG) */}
+            {/* CHẾ ĐỘ 1: CHỌN ĐỀ TỪ THƯ VIỆN (SẮP XẾP LOGIC & RÕ RÀNG 2 CÁCH GIAO ĐỀ) */}
             {examSourceMode === 'library' ? (
-              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {/* Bước 1: Chọn Chuyên Đề / Nhóm Đề */}
-                  <div>
-                    <label className="text-[11px] font-bold text-slate-700 block mb-1">
-                      📁 Bước 1: Lọc theo Chuyên đề / Dạng đề
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl space-y-4">
+                {/* BƯỚC 1: CHỌN CHUYÊN ĐỀ / NHÓM ĐỀ */}
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label className="text-xs font-black text-slate-800 flex items-center gap-1.5">
+                      <span className="w-5 h-5 rounded-full bg-teal-600 text-white flex items-center justify-center text-[10px] font-black">1</span>
+                      <span>Bước 1: Chọn Chuyên Đề / Nhóm Đề Thi *</span>
                     </label>
-                    <select
-                      value={selectedChapterFilter}
-                      onChange={(e) => setSelectedChapterFilter(e.target.value)}
-                      className="input text-xs font-bold bg-white"
-                      disabled={!modalGrade}
-                    >
-                      <option value="all">📁 Tất cả các nhóm đề ({standardExamsForGrade.length} đề)</option>
-                      {examChaptersList.map(ch => (
-                        <option key={ch.name} value={ch.name}>
-                          📁 {ch.name} ({ch.count} đề)
-                        </option>
-                      ))}
-                      {filteredExams.length > 0 && (
-                        <option value="custom">📁 Đề Thầy tự tải lên ({filteredExams.length} đề)</option>
-                      )}
-                    </select>
+                    <span className="text-[11px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded-lg border border-slate-200">
+                      Tổng {standardExamsForGrade.length} đề thi
+                    </span>
+                  </div>
+                  <select
+                    value={selectedChapterFilter}
+                    onChange={(e) => {
+                      const newFilter = e.target.value;
+                      setSelectedChapterFilter(newFilter);
+                      if (batchSelectMode === 'all') {
+                        setForm(prev => ({ ...prev, exam_id: '__ALL_BATCH__' }));
+                      } else {
+                        setForm(prev => ({ ...prev, exam_id: '' }));
+                      }
+                    }}
+                    className="input text-xs font-bold bg-white w-full border-slate-300 focus:border-teal-500"
+                    disabled={!modalGrade}
+                  >
+                    <option value="all">📁 Tất cả các nhóm đề ({standardExamsForGrade.length} đề)</option>
+                    {examChaptersList.map(ch => (
+                      <option key={ch.name} value={ch.name}>
+                        📁 {ch.name} ({ch.count} đề)
+                      </option>
+                    ))}
+                    {filteredExams.length > 0 && (
+                      <option value="custom">📁 Đề Thầy tự tải lên ({filteredExams.length} đề)</option>
+                    )}
+                  </select>
+                </div>
+
+                {/* BƯỚC 2: CHỌN HÌNH THỨC GIAO ĐỀ (CÓ 2 CÁCH: CHỌN CẢ BỘ HOẶC CHỌN 1 ĐỀ LẺ) */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="text-xs font-black text-slate-800 flex items-center gap-1.5">
+                      <span className="w-5 h-5 rounded-full bg-teal-600 text-white flex items-center justify-center text-[10px] font-black">2</span>
+                      <span>Bước 2: Chọn Cách Giao Đề *</span>
+                    </label>
+                    <span className="text-[11px] font-black text-teal-800 bg-teal-100/80 px-2 py-0.5 rounded-lg">
+                      Nhóm đang chọn: {displayedExamsInDropdown.length} đề
+                    </span>
                   </div>
 
-                  {/* Bước 2: Chọn Đề thi cụ thể trong nhóm (Hỗ trợ 2 cách: Chọn cả nhóm đề hoặc Chọn 1 đề lẻ) */}
-                  <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="text-[11px] font-bold text-slate-700">
-                        📝 Bước 2: Chọn đề thi
-                      </label>
-                      {displayedExamsInDropdown.length > 1 && (
-                        <div className="flex items-center gap-1">
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setBatchSelectMode('all')
-                              setForm(prev => ({ ...prev, exam_id: '__ALL_BATCH__' }))
-                            }}
-                            className={`px-2 py-0.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
-                              batchSelectMode === 'all'
-                                ? 'bg-amber-600 text-white shadow-xs'
-                                : 'bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100'
-                            }`}
-                            title="Chọn cả bộ đề trong nhóm này để giao loạt"
-                          >
-                            🌟 Chọn cả ${displayedExamsInDropdown.length} đề
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setBatchSelectMode('single')
-                              setForm(prev => ({ ...prev, exam_id: '' }))
-                            }}
-                            className={`px-2 py-0.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
-                              batchSelectMode === 'single'
-                                ? 'bg-teal-600 text-white shadow-xs'
-                                : 'bg-slate-200/80 text-slate-700 hover:bg-slate-300'
-                            }`}
-                            title="Chọn 1 đề lẻ cụ thể"
-                          >
-                            Chọn 1 đề
-                          </button>
+                  {/* 2 LỰA CHỌN RÕ RÀNG TRỰC QUAN */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {/* CÁCH 1: GIAO TRỌN BỘ CẢ N ĐỀ */}
+                    <div
+                      onClick={() => {
+                        setBatchSelectMode('all');
+                        setForm(prev => ({ ...prev, exam_id: '__ALL_BATCH__' }));
+                      }}
+                      className={`p-3.5 rounded-xl border-2 transition-all cursor-pointer relative ${
+                        batchSelectMode === 'all'
+                          ? 'bg-amber-50/95 border-amber-500 shadow-sm ring-1 ring-amber-400'
+                          : 'bg-white border-slate-200 hover:border-amber-300 hover:bg-amber-50/30'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-1.5">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl">🌟</span>
+                          <div>
+                            <div className="text-xs font-black text-amber-950">
+                              Cách 1: Giao Trọn Bộ
+                            </div>
+                            <div className="text-[11px] font-extrabold text-amber-800">
+                              Mở cả {displayedExamsInDropdown.length} đề cùng lúc
+                            </div>
+                          </div>
                         </div>
-                      )}
+                        {batchSelectMode === 'all' && (
+                          <span className="text-[10px] font-black text-white bg-amber-600 px-2 py-0.5 rounded-full shrink-0">
+                            ✓ Đang chọn
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[10px] text-amber-900/80 mt-2 leading-relaxed">
+                        Hệ thống tự động mở đồng loạt {displayedExamsInDropdown.length} phòng thi cho học sinh làm dần.
+                      </p>
                     </div>
+
+                    {/* CÁCH 2: CHỌN 1 ĐỀ CỤ THỂ */}
+                    <div
+                      onClick={() => {
+                        setBatchSelectMode('single');
+                        setForm(prev => ({ ...prev, exam_id: '' }));
+                      }}
+                      className={`p-3.5 rounded-xl border-2 transition-all cursor-pointer relative ${
+                        batchSelectMode === 'single'
+                          ? 'bg-teal-50/95 border-teal-500 shadow-sm ring-1 ring-teal-400'
+                          : 'bg-white border-slate-200 hover:border-teal-300 hover:bg-teal-50/30'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-1.5">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xl">📝</span>
+                          <div>
+                            <div className="text-xs font-black text-teal-950">
+                              Cách 2: Chọn 1 Đề Cụ Thể
+                            </div>
+                            <div className="text-[11px] font-extrabold text-teal-800">
+                              Chọn 1 đề lẻ trong {displayedExamsInDropdown.length} đề
+                            </div>
+                          </div>
+                        </div>
+                        {batchSelectMode === 'single' && (
+                          <span className="text-[10px] font-black text-white bg-teal-600 px-2 py-0.5 rounded-full shrink-0">
+                            ✓ Đang chọn
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[10px] text-teal-900/80 mt-2 leading-relaxed">
+                        Chọn chính xác 1 đề (Đề 1, Đề 2...) để giao kiểm tra hoặc giao bài riêng.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* NẾU CHỌN CÁCH 2: HIỆN DROPDOWN BƯỚC 2.1 ĐỂ CHỌN ĐÚNG 1 ĐỀ */}
+                {batchSelectMode === 'single' && (
+                  <div className="p-3.5 bg-white rounded-xl border border-teal-200 shadow-xs space-y-2.5 animate-in fade-in duration-200">
+                    <label className="text-xs font-bold text-slate-800 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <span className="w-4 h-4 rounded-full bg-teal-100 text-teal-800 flex items-center justify-center text-[9px] font-black">2.1</span>
+                        <span>Bấm chọn 1 đề thi cụ thể trong nhóm:</span>
+                      </span>
+                      {form.exam_id && (
+                        <span className="text-[10px] text-teal-700 font-bold font-mono">⏱️ Thời gian: {form.time_limit} phút</span>
+                      )}
+                    </label>
                     <select
-                      value={batchSelectMode === 'all' ? '__ALL_BATCH__' : form.exam_id}
+                      value={form.exam_id}
                       onChange={async (e) => {
                         const exId = e.target.value
                         if (!exId) {
-                          setBatchSelectMode('single')
-                          setForm(prev => ({ ...prev, exam_id: "" }))
+                          setForm(prev => ({ ...prev, exam_id: '' }))
                           return
                         }
 
-                        if (exId === '__ALL_BATCH__') {
-                          setBatchSelectMode('all')
-                          setForm(prev => ({ ...prev, exam_id: '__ALL_BATCH__' }))
-                          return
-                        }
-
-                        setBatchSelectMode('single')
-                        if (exId.startsWith("std:")) {
-                          const realStdId = exId.replace("std:", "")
+                        if (exId.startsWith('std:')) {
+                          const realStdId = exId.replace('std:', '')
                           const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
                           if (stdEx) {
                             setSelectedStandardExam(stdEx)
-                            toast.loading("Đang chuẩn bị đề thi...", { id: "sync-exam" })
+                            toast.loading('Đang chuẩn bị đề thi...', { id: 'sync-exam' })
                             try {
                               const dbId = await ensureStandardExamInDatabase(stdEx, selectedParts)
-                              toast.success(`Đã chọn: ${stdEx.title}`, { id: "sync-exam" })
+                              toast.success(`Đã chọn: ${stdEx.title}`, { id: 'sync-exam' })
                               await loadExams()
                               const autoTime = stdEx.duration || 50
                               setForm(prev => ({
@@ -1224,13 +1286,13 @@ const isFirstRender = useRef(true)
                                 time_limit: autoTime,
                                 settings: {
                                   ...prev.settings,
-                                  category: prev.settings?.category || "homework",
+                                  category: prev.settings?.category || 'homework',
                                   antiCheat: true,
                                   selected_parts: selectedParts
                                 }
                               }))
                             } catch (err: any) {
-                              toast.error("Lỗi khi nạp đề: " + (err?.message || err), { id: "sync-exam" })
+                              toast.error('Lỗi khi nạp đề: ' + (err?.message || err), { id: 'sync-exam' })
                             }
                           }
                           return
@@ -1239,7 +1301,7 @@ const isFirstRender = useRef(true)
                         }
 
                         const selectedEx = exams.find(ex => ex.id === exId)
-                        const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : "homework"
+                        const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : 'homework'
                         setForm(prev => ({
                           ...prev, 
                           exam_id: exId,
@@ -1251,21 +1313,16 @@ const isFirstRender = useRef(true)
                           }
                         }))
                       }}
-                      className="input text-xs font-bold text-teal-900 bg-white border-teal-300"
+                      className="input text-xs font-bold text-teal-950 bg-white border-teal-300 w-full"
                       disabled={!modalGrade}
                     >
-                      <option value="">{modalGrade ? "-- Bấm chọn đề thi --" : "-- Vui lòng chọn khối lớp trước --"}</option>
-                      {displayedExamsInDropdown.length > 1 && (
-                        <option value="__ALL_BATCH__" className="font-black text-amber-800 bg-amber-50">
-                          🌟 CÁCH 1: CHỌN CẢ ${displayedExamsInDropdown.length} ĐỀ TRONG NHÓM NÀY (GIAO LOẠT)
-                        </option>
-                      )}
-                      {selectedChapterFilter !== "custom" && displayedExamsInDropdown.map(ex => (
+                      <option value="">{modalGrade ? '-- Bấm chọn 1 đề thi trong danh sách --' : '-- Vui lòng chọn khối lớp trước --'}</option>
+                      {selectedChapterFilter !== 'custom' && displayedExamsInDropdown.map(ex => (
                         <option key={ex.id} value={ex.val}>
                           {ex.shortTitle}
                         </option>
                       ))}
-                      {(selectedChapterFilter === "all" || selectedChapterFilter === "custom") && filteredExams.length > 0 && (
+                      {(selectedChapterFilter === 'all' || selectedChapterFilter === 'custom') && filteredExams.length > 0 && (
                         <optgroup label="📁 ĐỀ THẦY TỰ TẢI LÊN">
                           {filteredExams.map(ex => (
                             <option key={ex.id} value={ex.id}>📄 {ex.title}</option>
@@ -1273,30 +1330,37 @@ const isFirstRender = useRef(true)
                         </optgroup>
                       )}
                     </select>
-                  </div>
-                </div>
 
-                {/* Thông tin đề đã chọn: Hiển thị rõ chế độ Cả Nhóm hoặc 1 Đề */}
-                {batchSelectMode === 'all' && displayedExamsInDropdown.length > 0 ? (
-                  <div className="text-[11px] font-bold text-amber-900 bg-amber-100/90 p-2.5 rounded-xl border border-amber-300 flex items-center justify-between gap-2 animate-in fade-in">
-                    <div className="flex items-center gap-1.5 truncate">
-                      <span className="text-base">🌟</span>
-                      <span className="truncate">
-                        Đang chọn: <strong>Trọn bộ ${displayedExamsInDropdown.length} đề</strong> trong nhóm <em>${selectedChapterFilter === 'all' ? 'Toàn bộ ngân hàng' : selectedChapterFilter}</em>
+                    {form.exam_id && (
+                      <div className="text-[11px] font-bold text-teal-950 bg-teal-50/80 p-2.5 rounded-lg border border-teal-200 flex items-center justify-between gap-2">
+                        <span className="truncate">
+                          ✅ Đang chọn: <strong>{exams.find(e => e.id === form.exam_id)?.title || standardExamsForGrade.find(e => `std:${e.id}` === form.exam_id || e.id === form.exam_id)?.title || 'Đề thi chuẩn'}</strong>
+                        </span>
+                        <span className="text-teal-800 font-mono shrink-0">⏱️ {form.time_limit} phút</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* NẾU CHỌN CÁCH 1: HIỆN THÔNG BÁO XÁC NHẬN GIAO TRỌN BỘ CẢ N ĐỀ */}
+                {batchSelectMode === 'all' && (
+                  <div className="text-xs font-bold text-amber-950 bg-amber-50/90 p-3.5 rounded-xl border border-amber-300 space-y-1.5 animate-in fade-in duration-200">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xl">🌟</span>
+                        <span>
+                          Đang chọn: <strong>Trọn bộ {displayedExamsInDropdown.length} đề thi</strong> của nhóm <em>"{selectedChapterFilter === 'all' ? 'Tất cả các nhóm đề' : selectedChapterFilter}"</em>
+                        </span>
+                      </div>
+                      <span className="text-amber-900 text-[10px] bg-amber-200/80 px-2.5 py-0.5 rounded-full border border-amber-300 shrink-0 font-bold">
+                        Mở {displayedExamsInDropdown.length} đề cùng lúc
                       </span>
                     </div>
-                    <span className="text-amber-800 text-[10px] bg-white/80 px-2 py-0.5 rounded-full border border-amber-300 shrink-0 font-mono">
-                      Mở ${displayedExamsInDropdown.length} đề cùng lúc
-                    </span>
+                    <p className="text-[11px] text-amber-800 font-medium pl-7">
+                      👉 Khi Thầy bấm nút <strong>"Mở Trọn Bộ Cả {displayedExamsInDropdown.length} Đề Thi"</strong> ở bên dưới, hệ thống sẽ tự động tạo đủ {displayedExamsInDropdown.length} phòng thi tương ứng cho lớp học sinh.
+                    </p>
                   </div>
-                ) : form.exam_id && form.exam_id !== '__ALL_BATCH__' ? (
-                  <div className="text-[11px] font-bold text-teal-900 bg-teal-100/70 p-2.5 rounded-xl border border-teal-200 flex items-center justify-between gap-2">
-                    <span className="truncate">
-                      ✅ Đã chọn 1 đề: <strong>{exams.find(e => e.id === form.exam_id)?.title || standardExamsForGrade.find(e => `std:${e.id}` === form.exam_id || e.id === form.exam_id)?.title || "Đề thi chuẩn"}</strong>
-                    </span>
-                    <span className="text-slate-600 font-mono shrink-0">Thời gian: {form.time_limit} phút</span>
-                  </div>
-                ) : null}
+                )}
               </div>
             ) : (
               /* CHẾ ĐỘ 2: DÁN LINK BÀI TẬP / TÀI LIỆU */
