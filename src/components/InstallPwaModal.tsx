@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Download, Smartphone, Monitor, Share2, PlusSquare, X, CheckCircle2, Sparkles } from 'lucide-react';
+import { Download, Smartphone, Monitor, Share2, PlusSquare, X, CheckCircle2, Sparkles, MoreHorizontal, ExternalLink, Copy, Check } from 'lucide-react';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -11,9 +11,11 @@ export default function InstallPwaModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
+  const [isInApp, setIsInApp] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // Kiểm tra xem đã mở ở chế độ standalone (App) chưa
+    // 1. Kiểm tra xem đã mở ở chế độ standalone (App) chưa
     const isStandalone = 
       window.matchMedia('(display-mode: standalone)').matches ||
       (window.navigator as unknown as { standalone?: boolean }).standalone === true;
@@ -23,12 +25,16 @@ export default function InstallPwaModal() {
       return;
     }
 
-    // Nhận diện thiết bị iOS (iPhone/iPad)
+    // 2. Nhận diện thiết bị iOS (iPhone/iPad)
     const userAgent = window.navigator.userAgent.toLowerCase();
     const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
     setIsIOS(isIosDevice);
 
-    // Lắng nghe sự kiện trước khi cài đặt PWA trên Android/Chrome/Edge
+    // 3. Nhận diện mở bên trong ứng dụng Zalo, Facebook, Messenger
+    const isInAppBrowser = /zalo|fbav|fban|instagram|messenger|line/i.test(userAgent);
+    setIsInApp(isInAppBrowser);
+
+    // 4. Lắng nghe sự kiện trước khi cài đặt PWA trên Android/Chrome/Edge
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
@@ -60,7 +66,12 @@ export default function InstallPwaModal() {
     }
   };
 
-  // Đang trong App rồi thì không cần hiển thị nút cài đặt nữa
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
   if (isInstalled) return null;
 
   return (
@@ -81,10 +92,10 @@ export default function InstallPwaModal() {
         </button>
       </div>
 
-      {/* POPUP HƯỚNG DẪN CÀI ĐẶT NHANH */}
+      {/* POPUP HƯỚNG DẪN CÀI ĐẶT */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fade-in">
-          <div className="bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-teal-500/30 rounded-3xl max-w-md w-full p-6 text-white shadow-2xl relative overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm animate-fade-in">
+          <div className="bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-teal-500/30 rounded-3xl max-w-md w-full p-5 sm:p-6 text-white shadow-2xl relative overflow-hidden">
             {/* Ánh sáng nền */}
             <div className="absolute -top-24 -right-24 w-48 h-48 bg-teal-500/20 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
@@ -98,70 +109,108 @@ export default function InstallPwaModal() {
             </button>
 
             {/* Header Modal */}
-            <div className="flex items-center gap-3.5 mb-5">
-              <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-teal-600 to-emerald-400 flex items-center justify-center shadow-lg p-2.5 border border-white/20">
+            <div className="flex items-center gap-3.5 mb-4">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-teal-600 to-emerald-400 flex items-center justify-center shadow-lg p-2 border border-white/20">
                 <img src="/logo.svg" alt="Logo Lớp Thầy Thọ" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="flex items-center gap-1.5 text-xs font-bold text-teal-400 uppercase tracking-wider">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold text-teal-400 uppercase tracking-wider">
                   <Sparkles className="w-3.5 h-3.5" />
                   <span>Ứng Dụng Học Tập</span>
                 </div>
-                <h3 className="text-lg font-black text-white">Lớp Học Thầy Thọ</h3>
+                <h3 className="text-base sm:text-lg font-black text-white">Lớp Học Thầy Thọ</h3>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed">
-              Cài đặt ứng dụng trực tiếp vào điện thoại hoặc máy tính để mở 1 chạm, làm bài mượt mà, không cần nhập lại địa chỉ web.
-            </p>
+            {/* TRƯỜNG HỢP 1: ĐANG MỞ TRONG TRÌNH DUYỆT NHÚNG ZALO / FACEBOOK TRÊN IPHONE */}
+            {isInApp && isIOS ? (
+              <div className="space-y-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-4 mb-4 text-xs text-slate-200">
+                <div className="font-bold text-amber-300 flex items-center gap-1.5 text-sm">
+                  <span>⚠️ Đang mở trong Zalo (Cần mở bằng Safari):</span>
+                </div>
+                <p className="text-amber-100/90 text-[11px] leading-relaxed">
+                  Apple không cho phép cài đặt App trực tiếp từ bên trong Zalo. Thầy/Trò chỉ cần thực hiện 2 thao tác sau:
+                </p>
+                <div className="space-y-2.5 pt-1">
+                  <div className="flex items-start gap-2.5">
+                    <span className="w-5 h-5 rounded-full bg-amber-500/30 text-amber-300 font-bold flex items-center justify-center shrink-0 text-[11px]">1</span>
+                    <span>
+                      Nhìn lên <strong className="text-white">góc trên bên phải màn hình Zalo</strong>, bấm vào dấu <strong className="text-amber-300 font-mono text-sm">•••</strong> (3 chấm).
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <span className="w-5 h-5 rounded-full bg-amber-500/30 text-amber-300 font-bold flex items-center justify-center shrink-0 text-[11px]">2</span>
+                    <span>
+                      Chọn dòng <strong className="text-white">"Mở bằng trình duyệt"</strong> (hoặc <strong className="text-white">"Mở bằng Safari"</strong>).
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <span className="w-5 h-5 rounded-full bg-emerald-500/30 text-emerald-300 font-bold flex items-center justify-center shrink-0 text-[11px]">3</span>
+                    <span>
+                      Khi đã sang Safari, bấm nút <strong className="text-white">Chia sẻ</strong> (biểu tượng ô vuông mũi tên ⎋ ở thanh dưới cùng) ➔ Chọn <strong className="text-emerald-300 font-bold">"Thêm vào MH chính"</strong>.
+                    </span>
+                  </div>
+                </div>
 
-            {/* NẾU LÀ ANDROID HOẶC MÁY TÍNH CÓ SẴN PROMPT CỦA TRÌNH DUYỆT */}
-            {deferredPrompt ? (
+                <div className="pt-2">
+                  <button
+                    onClick={handleCopyLink}
+                    className="w-full py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs flex items-center justify-center gap-2 border border-white/20 transition-all"
+                  >
+                    {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    <span>{copied ? 'Đã sao chép link! Mở Safari dán vào' : 'Sao chép link web để tự dán vào Safari'}</span>
+                  </button>
+                </div>
+              </div>
+            ) : deferredPrompt ? (
+              /* TRƯỜNG HỢP 2: ANDROID HOẶC CHROME SẴN SÀNG CÀI ĐẶT 1 CHẠM */
               <div className="space-y-3 mb-4">
+                <p className="text-xs text-slate-300">
+                  Cài đặt ứng dụng trực tiếp vào máy để làm bài mượt mà, không cần gõ lại địa chỉ web.
+                </p>
                 <button
                   onClick={handleInstallClick}
-                  className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-teal-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-teal-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Download className="w-5 h-5" />
                   <span>CÀI ĐẶT NGAY BÂY GIỜ</span>
                 </button>
                 <div className="text-[11px] text-center text-slate-400">
-                  ⚡ Miễn phí 100% · Không tốn dung lượng · Dùng offline
+                  ⚡ Miễn phí 100% · Không tốn dung lượng · Mở toàn màn hình
                 </div>
               </div>
             ) : isIOS ? (
-              /* NẾU LÀ IPHONE / IPAD (HƯỚNG DẪN SAFARI) */
+              /* TRƯỜNG HỢP 3: IPHONE ĐÃ Ở TRONG SAFARI */
               <div className="space-y-3 bg-white/5 border border-white/10 rounded-2xl p-4 mb-4 text-xs text-slate-200">
                 <div className="font-bold text-amber-300 flex items-center gap-1.5 text-sm">
                   <Smartphone className="w-4 h-4" />
-                  <span>Cách cài đặt trên iPhone / iPad:</span>
+                  <span>Cài đặt trên iPhone / iPad (Safari):</span>
                 </div>
                 <div className="space-y-2.5 pl-1">
                   <div className="flex items-start gap-2.5">
                     <span className="w-5 h-5 rounded-full bg-teal-500/20 text-teal-300 font-bold flex items-center justify-center shrink-0 text-[11px]">1</span>
-                    <span>Mở trang web bằng trình duyệt <strong className="text-white font-semibold">Safari</strong>.</span>
+                    <span className="flex items-center gap-1.5 flex-wrap">
+                      Nhìn xuống thanh dưới cùng Safari, bấm nút <strong className="text-white font-semibold">Chia sẻ</strong> 
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-blue-500/20 border border-blue-400/30 text-blue-300 font-mono text-[10px]">
+                        <Share2 className="w-3 h-3 inline mr-1" /> Biểu tượng ô vuông mũi tên lên
+                      </span>
+                    </span>
                   </div>
                   <div className="flex items-start gap-2.5">
                     <span className="w-5 h-5 rounded-full bg-teal-500/20 text-teal-300 font-bold flex items-center justify-center shrink-0 text-[11px]">2</span>
                     <span className="flex items-center gap-1.5 flex-wrap">
-                      Bấm nút <strong className="text-white font-semibold">Chia sẻ</strong> 
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-blue-500/20 border border-blue-400/30 text-blue-300 font-mono text-[10px]">
-                        <Share2 className="w-3 h-3 inline mr-1" /> Biểu tượng mũi tên
-                      </span>
-                      ở thanh dưới màn hình.
+                      Cuộn xuống chọn dòng <strong className="text-white font-semibold">"Thêm vào MH chính"</strong> 
+                      <PlusSquare className="w-3.5 h-3.5 text-emerald-400 inline" />
                     </span>
                   </div>
                   <div className="flex items-start gap-2.5">
                     <span className="w-5 h-5 rounded-full bg-teal-500/20 text-teal-300 font-bold flex items-center justify-center shrink-0 text-[11px]">3</span>
-                    <span className="flex items-center gap-1.5 flex-wrap">
-                      Cuộn xuống chọn <strong className="text-white font-semibold">"Thêm vào MH chính"</strong> 
-                      <PlusSquare className="w-3.5 h-3.5 text-emerald-400 inline" /> rồi bấm <strong className="text-white font-semibold">"Thêm"</strong>.
-                    </span>
+                    <span>Bấm nút <strong className="text-emerald-400 font-bold">"Thêm"</strong> ở góc trên bên phải là hoàn tất!</span>
                   </div>
                 </div>
               </div>
             ) : (
-              /* NẾU LÀ ANDROID / MÁY TÍNH CHƯA KÍCH HOẠT PROMPT */
+              /* TRƯỜNG HỢP 4: ANDROID / MÁY TÍNH */
               <div className="space-y-3 bg-white/5 border border-white/10 rounded-2xl p-4 mb-4 text-xs text-slate-200">
                 <div className="font-bold text-teal-300 flex items-center gap-1.5 text-sm">
                   <Monitor className="w-4 h-4" />
@@ -170,19 +219,19 @@ export default function InstallPwaModal() {
                 <div className="space-y-2 pl-1">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>Trên <strong>Chrome</strong>: Bấm vào dấu <strong>3 chấm (⋮)</strong> góc trên phải ➔ Chọn <strong>"Cài đặt ứng dụng"</strong> hoặc <strong>"Thêm vào màn hình chính"</strong>.</span>
+                    <span>Trên <strong>Chrome Android</strong>: Bấm dấu <strong>3 chấm (⋮)</strong> góc trên phải ➔ Chọn <strong>"Cài đặt ứng dụng"</strong> (hoặc "Thêm vào màn hình chính").</span>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>Trên <strong>Máy tính</strong>: Bấm biểu tượng <strong>Cài đặt</strong> (hình màn hình có mũi tên) ở cuối thanh nhập link trình duyệt.</span>
+                    <span>Trên <strong>Máy tính</strong>: Bấm biểu tượng <strong>Cài đặt</strong> (màn hình có mũi tên) ở cuối thanh nhập địa chỉ web.</span>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* Footer hành động */}
+            {/* Footer */}
             <div className="flex items-center justify-between pt-2 border-t border-white/10 text-xs">
-              <span className="text-slate-400">Cổng học trực tuyến</span>
+              <span className="text-slate-400">Cổng học tập trực tuyến</span>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-teal-400 hover:text-teal-300 font-bold px-3 py-1.5 rounded-lg hover:bg-white/5 transition-all"
