@@ -514,10 +514,11 @@ export default function Dashboard() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => openEditSchedule(classes[0] || { id: '' })}
-            className="px-4 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white rounded-xl text-xs font-black shadow-md shadow-teal-500/20 flex items-center gap-2 transition-all hover:scale-[1.02] cursor-pointer"
+            className="px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5 transition-all cursor-pointer"
+            title="Bấm để chỉnh sửa lịch dạy khi cần"
           >
-            <Sparkles className="w-4 h-4 text-amber-300" />
-            <span>ĐỔI LỊCH DẠY NHANH</span>
+            <Edit3 className="w-3.5 h-3.5 text-teal-600" />
+            <span>Đổi Lịch</span>
           </button>
 
           <button
@@ -939,13 +940,14 @@ export default function Dashboard() {
               {formatWeekRange(weekDays)}
             </span>
 
-            {/* Nút sửa lịch dạy nổi bật */}
+            {/* Nút sửa lịch dạy tinh gọn - lúc nào cần thì bấm */}
             <button
               onClick={() => openEditSchedule(classes[0] || { id: '' })}
-              className="px-3.5 py-2 bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white rounded-xl text-xs font-black shadow-sm flex items-center gap-1.5 transition-all cursor-pointer"
+              className="p-1.5 sm:px-2.5 sm:py-1.5 bg-white hover:bg-teal-50 text-slate-600 hover:text-teal-700 rounded-xl text-xs font-bold border border-slate-200 shadow-xs flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
+              title="Bấm để chỉnh sửa lịch dạy khi cần"
             >
-              <Edit3 className="w-3.5 h-3.5 text-amber-300" />
-              <span>Chỉnh Sửa Lịch</span>
+              <Edit3 className="w-3.5 h-3.5 text-teal-600" />
+              <span className="hidden sm:inline">Sửa lịch</span>
             </button>
           </div>
         </div>
