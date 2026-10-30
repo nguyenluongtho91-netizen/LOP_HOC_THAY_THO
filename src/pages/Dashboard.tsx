@@ -549,48 +549,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* ── 4 KPI Stats Cards ──────────────────────────────────────── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard
-          icon={Users}
-          label="Tổng học sinh trung tâm"
-          value={activeStudents.length}
-          sub="Đang theo học các lớp"
-          color="teal"
-          hideable
-          isHidden={!showStudentCount}
-          onToggleHide={() => setShowStudentCount(prev => !prev)}
-          badge="Đang hoạt động"
-        />
-
-        <StatCard
-          icon={BookOpen}
-          label="Quy mô lớp học"
-          value={activeClasses.length}
-          sub="7 khối lớp chuẩn (K6 - K12)"
-          color="blue"
-          badge="3 lớp / khối"
-        />
-
-        <StatCard
-          icon={CreditCard}
-          label="Lượt phân lớp đào tạo"
-          value={activeEnrollments.length}
-          sub="Sĩ số phân bổ đồng đều"
-          color="green"
-          badge="Đồng bộ 100%"
-        />
-
-        <StatCard
-          icon={CalendarCheck}
-          label="Ca dạy tuần này"
-          value={classes.filter(c => c.schedule && c.schedule !== 'None').length}
-          sub="Phân bổ từ Thứ 2 đến CN"
-          color="purple"
-          badge="Thời khóa biểu"
-        />
-      </div>
-
       {/* ══════════════════════════════════════════════════════════════
           ── 🏛️ HỆ THỐNG 4 TRỤ CỘT ĐIỀU HÀNH HỆ THỐNG (MASTER HUBS) ──
           ══════════════════════════════════════════════════════════════ */}
