@@ -281,12 +281,12 @@ export default function Layout() {
       {/* ══════════════════════════════════════════════════════════════
           ── TOP NAVIGATION BAR: PHONG CÁCH TOÁN & HÓA TƯƠI SÁNG HIỆN ĐẠI ──
           ══════════════════════════════════════════════════════════════ */}
-      <header className="sticky top-0 z-30 w-full bg-white/95 backdrop-blur-md border-b border-cyan-100 shadow-xs transition-all">
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <header className="sticky top-0 z-30 w-full bg-white/95 backdrop-blur-md border-b border-cyan-100/80 shadow-xs transition-all">
+        <div className="max-w-[1720px] mx-auto px-2.5 sm:px-4 md:px-6 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-4">
           
-          {/* Cụm Trái: Nút Menu 4 Trụ Cột + Biểu tượng Toán & Hóa */}
-          <div className="flex items-center gap-3">
-            {/* Nút bấm mở Menu 4 Trụ Cột: Phong cách Năng động Khoa học Cyan - Blue */}
+          {/* Cụm Trái: Nút Menu 4 Trụ Cột + Logo Toán & Hóa */}
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            {/* Nút bấm mở Menu 4 Trụ Cột: Touch-friendly trên điện thoại, sang trọng trên máy tính */}
             <button
               type="button"
               onClick={() => {
@@ -296,12 +296,12 @@ export default function Layout() {
                   setDesktopSidebarOpen(prev => !prev)
                 }
               }}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-black text-xs shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-cyan-500/30 transition-all duration-200 cursor-pointer group active:scale-95 border border-cyan-300/40"
+              className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-black text-xs shadow-md shadow-blue-500/20 transition-all duration-200 cursor-pointer active:scale-95 border border-cyan-300/40"
               title="Nhấn để đóng/mở Menu 4 Trụ Cột"
             >
-              <Menu className="w-4 h-4 text-cyan-100 group-hover:rotate-90 transition-transform duration-300" />
-              <span className="tracking-wide">Menu 4 Trụ Cột</span>
-              <span className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-black bg-white/20 text-white border border-white/20">
+              <Menu className="w-4 h-4 text-cyan-100 shrink-0" />
+              <span className="hidden xs:inline tracking-wide text-[11px] sm:text-xs">Menu 4 Trụ Cột</span>
+              <span className="hidden md:inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-black bg-white/20 text-white border border-white/20">
                 Toán & Hóa
               </span>
             </button>
@@ -309,29 +309,29 @@ export default function Layout() {
             {/* Logo Thương Hiệu Lớp Thầy Thọ - Phong Cách Toán Học & Hóa Học */}
             <Link 
               to="/" 
-              className="flex items-center gap-2.5 pl-2 group"
+              className="flex items-center gap-1.5 sm:gap-2.5 pl-0.5 sm:pl-1 group shrink-0"
             >
-              <div className="relative w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-emerald-500 text-white flex items-center justify-center font-black shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform">
-                <Atom className="w-5 h-5 text-white animate-spin-slow" />
-                <span className="absolute -bottom-1 -right-1 text-[10px] font-black bg-amber-400 text-slate-950 px-1 rounded-full shadow-xs">∑</span>
+              <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-emerald-500 text-white flex items-center justify-center font-black shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform shrink-0">
+                <Atom className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                <span className="absolute -bottom-1 -right-1 text-[9px] sm:text-[10px] font-black bg-amber-400 text-slate-950 px-1 rounded-full shadow-xs">∑</span>
               </div>
-              <div className="hidden sm:block">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-black text-sm tracking-tight text-slate-900 group-hover:text-cyan-700 transition-colors uppercase">
+              <div>
+                <div className="flex items-center gap-1 sm:gap-1.5">
+                  <span className="font-black text-xs sm:text-sm tracking-tight text-slate-900 group-hover:text-cyan-700 transition-colors uppercase">
                     TOÁN & HÓA THẦY THỌ
                   </span>
-                  <span className="text-[10px] font-extrabold px-1.5 py-0.2 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white rounded shadow-xs">
+                  <span className="text-[9px] sm:text-[10px] font-extrabold px-1 sm:px-1.5 py-0.2 bg-gradient-to-r from-cyan-500 to-emerald-500 text-white rounded shadow-xs">
                     K6-K12
                   </span>
                 </div>
-                <p className="text-[10px] text-slate-500 font-semibold flex items-center gap-1">
-                  <span>Hệ sinh thái dạy học Toán học (∑, ∫) & Hóa học (H₂O, C₆H₁₂)</span>
+                <p className="hidden md:block text-[10px] text-slate-500 font-semibold">
+                  Hệ sinh thái dạy học Toán học (∑, ∫) & Hóa học (H₂O, C₆H₁₂)
                 </p>
               </div>
             </Link>
           </div>
 
-          {/* Cụm Giữa: Quick Links Tươi Sáng (Desktop) */}
+          {/* Cụm Giữa: Quick Links Tươi Sáng (Hiện trên Desktop/Màn hình lớn) */}
           <div className="hidden xl:flex items-center gap-1 bg-gradient-to-r from-slate-100 via-cyan-50 to-emerald-50 p-1 rounded-xl border border-cyan-100/80">
             <Link
               to="/dashboard"
@@ -361,7 +361,7 @@ export default function Layout() {
                   : 'text-slate-600 hover:text-indigo-700 hover:bg-white/60'
               }`}
             >
-              <span>📐 21 Lớp Toán - Hóa</span>
+              <span>📐 21 Lớp</span>
             </Link>
             <Link
               to="/courses"
@@ -371,7 +371,7 @@ export default function Layout() {
                   : 'text-slate-600 hover:text-purple-700 hover:bg-white/60'
               }`}
             >
-              <span>🧪 Kho Bài Giảng</span>
+              <span>🧪 Bài Giảng</span>
             </Link>
             <Link
               to="/exams"
@@ -396,22 +396,23 @@ export default function Layout() {
           </div>
 
           {/* Cụm Phải: Portal Học Sinh + Profile Thầy Thọ */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             {/* Nút xem Portal Học sinh */}
             <a
               href="/thi"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-gradient-to-r from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 text-cyan-800 border border-cyan-200 transition-all shadow-xs"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-black bg-gradient-to-r from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 text-cyan-800 border border-cyan-200 transition-all shadow-xs"
               title="Mở giao diện phòng thi của học sinh"
             >
-              <ExternalLink className="w-3.5 h-3.5 text-cyan-600" />
-              <span>Cổng Thi Học Sinh</span>
+              <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-cyan-600" />
+              <span className="hidden sm:inline">Cổng Thi Học Sinh</span>
+              <span className="sm:hidden">Phòng Thi</span>
             </a>
 
             {/* Profile Avatar & Dropdown */}
-            <div className="flex items-center gap-2 pl-1 border-l border-slate-200">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-xs ring-2 ring-cyan-200">
+            <div className="flex items-center gap-1.5 sm:gap-2 pl-1 border-l border-slate-200">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-xs ring-2 ring-cyan-200 shrink-0">
                 {displayChar}
               </div>
               <div className="hidden lg:block text-left">
@@ -424,10 +425,10 @@ export default function Layout() {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="p-1.5 rounded-lg hover:bg-rose-50 text-slate-400 hover:text-rose-600 transition-colors ml-1 cursor-pointer"
+                className="p-1 sm:p-1.5 rounded-lg hover:bg-rose-50 text-slate-400 hover:text-rose-600 transition-colors cursor-pointer"
                 title="Đăng xuất"
               >
-                <LogOut className="w-4 h-4" />
+                <LogOut className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
             </div>
           </div>

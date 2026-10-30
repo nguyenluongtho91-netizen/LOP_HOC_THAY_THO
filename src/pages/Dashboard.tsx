@@ -512,10 +512,10 @@ export default function Dashboard() {
   const chemClassesCount = activeClasses.filter(c => c.subject?.toLowerCase().includes('hóa')).length
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
 
       {/* ── Top Hero Banner: Toán Học & Hóa Học Tươi Sáng Hiện Đại ──────────────────────────── */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 text-white p-6 sm:p-8 shadow-xl shadow-cyan-900/15 border border-cyan-300/30">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 text-white p-4 sm:p-6 md:p-8 shadow-xl shadow-cyan-900/15 border border-cyan-300/30">
         
         {/* Họa tiết biểu tượng Toán học & Hóa học bay nền hiện đại */}
         <div className="absolute top-2 right-12 text-white/10 font-black text-8xl select-none pointer-events-none">∑</div>
@@ -669,10 +669,10 @@ export default function Dashboard() {
               {/* Header Trụ Cột 1 */}
               <div 
                 onClick={() => toggleHub('p1')}
-                className="p-4 sm:p-5 bg-gradient-to-r from-blue-50/80 via-white to-blue-50/40 border-b border-blue-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+                className="p-3.5 sm:p-5 bg-gradient-to-r from-blue-50/80 via-white to-blue-50/40 border-b border-blue-100 flex items-center justify-between gap-3 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow-md shadow-blue-600/20 shrink-0">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl shadow-md shadow-blue-600/20 shrink-0">
                     👥
                   </div>
                   <div>
@@ -836,10 +836,10 @@ export default function Dashboard() {
               {/* Header Trụ Cột 2 */}
               <div 
                 onClick={() => toggleHub('p2')}
-                className="p-4 sm:p-5 bg-gradient-to-r from-purple-50/80 via-white to-purple-50/40 border-b border-purple-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+                className="p-3.5 sm:p-5 bg-gradient-to-r from-purple-50/80 via-white to-purple-50/40 border-b border-purple-100 flex items-center justify-between gap-3 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-xl shadow-md shadow-purple-600/20 shrink-0">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-purple-600 text-white flex items-center justify-center text-xl shadow-md shadow-purple-600/20 shrink-0">
                     📚
                   </div>
                   <div>
@@ -1003,10 +1003,10 @@ export default function Dashboard() {
               {/* Header Trụ Cột 3 */}
               <div 
                 onClick={() => toggleHub('p3')}
-                className="p-4 sm:p-5 bg-gradient-to-r from-rose-50/80 via-white to-rose-50/40 border-b border-rose-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+                className="p-3.5 sm:p-5 bg-gradient-to-r from-rose-50/80 via-white to-rose-50/40 border-b border-rose-100 flex items-center justify-between gap-3 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-rose-600 text-white flex items-center justify-center text-xl shadow-md shadow-rose-600/20 shrink-0">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-rose-600 text-white flex items-center justify-center text-xl shadow-md shadow-rose-600/20 shrink-0">
                     🎯
                   </div>
                   <div>
@@ -1145,10 +1145,10 @@ export default function Dashboard() {
               {/* Header Trụ Cột 4 */}
               <div 
                 onClick={() => toggleHub('p4')}
-                className="p-4 sm:p-5 bg-gradient-to-r from-emerald-50/80 via-white to-emerald-50/40 border-b border-emerald-100 flex items-center justify-between gap-3 cursor-pointer select-none"
+                className="p-3.5 sm:p-5 bg-gradient-to-r from-emerald-50/80 via-white to-emerald-50/40 border-b border-emerald-100 flex items-center justify-between gap-3 cursor-pointer select-none"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl shadow-md shadow-emerald-600/20 shrink-0">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-xl shadow-md shadow-emerald-600/20 shrink-0">
                     💳
                   </div>
                   <div>
