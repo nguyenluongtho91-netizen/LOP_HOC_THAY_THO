@@ -144,8 +144,8 @@ export default function SessionAttendanceFeeManager({
 
     // 2. Fallback: class name logic (Lớp 7.2 = 60.000, còn lại 80.000)
     const cName = (currentClass as any)?.class_name || currentClass?.name || ''
-    const is72 = cName.includes('7.2') || cName.includes('72')
-    const fallbackPrice = is72 ? 60000 : 80000
+    const is72 = cName.includes('7.2') || cName.includes('72') || cName.includes('7A')
+    const fallbackPrice = currentClass?.tuition_fee || (is72 ? 60000 : 80000)
 
     setUnitPrice(fallbackPrice)
     setPriceInput(String(fallbackPrice))
@@ -496,7 +496,7 @@ export default function SessionAttendanceFeeManager({
     return classes
       .filter(c => c.status === 'active')
       .map(c => {
-        const cPrice = unitPricesMap[c.id] || ((c.name || '').includes('7.2') ? 60000 : 80000)
+        const cPrice = unitPricesMap[c.id] || c.tuition_fee || (((c.name || '').includes('7.2') || (c.name || '').includes('7A')) ? 60000 : 80000)
         const cEnrolls = enrollments.filter(e => e.class_id === c.id && e.status === 'active')
         const cAtts = attendance.filter(a => a.class_id === c.id && (!selectedMonth || a.date.startsWith(selectedMonth)))
         
@@ -594,7 +594,7 @@ export default function SessionAttendanceFeeManager({
             >
               <option value="">📊 — TẤT CẢ 21 LỚP HỌC (XEM TỔNG QUAN) —</option>
               {classes.filter(c => c.status === 'active').map(c => {
-                const is72 = (c.name || '').includes('7.2')
+                const is72 = c.tuition_fee === 60000 || (c.name || '').includes('7.2') || (c.name || '').includes('7A')
                 return (
                   <option key={c.id} value={c.id}>
                     {c.name} ({c.grade ? `Khối ${c.grade}` : 'Môn Toán'}) • {is72 ? '60k' : '80k'}/buổi
