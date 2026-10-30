@@ -61,9 +61,10 @@ function parseTFAnswerStrict(
   return map;
 }
 
-function mapQuestionType(type: string): 'multiple_choice' | 'true_false' | 'short_answer' {
-  if (type === 'true_false') return 'true_false';
-  if (type === 'short_answer' || type === 'writing') return 'short_answer';
+function mapQuestionType(type: string): 'multiple_choice' | 'true_false' | 'short_answer' | 'writing' {
+  if (type === 'true_false' || type === 'truefalse') return 'true_false';
+  if (type === 'short_answer' || type === 'shortans') return 'short_answer';
+  if (type === 'writing' || type === 'essay') return 'writing';
   return 'multiple_choice';
 }
 
@@ -78,7 +79,7 @@ export function detectSections(questions: Question[]): SectionPointsConfig[] {
     if (isNaN(num) || num < 100) {
       if (mappedType === 'true_false') part = 2;
       else if (mappedType === 'short_answer') part = 3;
-      else if (q.type === 'writing') part = 4;
+      else if (mappedType === 'writing') part = 4;
       else part = 1;
     }
     const key = `part${part}`;
@@ -310,8 +311,6 @@ export function calculateScore(
 
     // === TRẢ LỜI NGẮN ===
     else if (mappedType === 'short_answer') {
-      if (q.type === 'writing') return;
-
       breakdown.shortAnswer.total++;
       saCount++;
       saPoints += pointsPerQuestion;
@@ -322,6 +321,14 @@ export function calculateScore(
           breakdown.shortAnswer.points += pointsPerQuestion;
         }
       }
+    }
+
+    // === TỰ LUẬN (GIÁO VIÊN CHẤM VÀ CHO ĐIỂM) ===
+    else if (mappedType === 'writing') {
+      if (!breakdown.essay) {
+        breakdown.essay = { total: 0, points: 0, details: {} };
+      }
+      breakdown.essay.total++;
     }
   });
 
