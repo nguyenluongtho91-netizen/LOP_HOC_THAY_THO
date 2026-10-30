@@ -2518,6 +2518,21 @@ export default function StudentPortal() {
                                 </div>
                               )}
 
+                              {/* KIỂM TRA QUYỀN KHÓA CHUYÊN ĐỀ PHÍA HỌC SINH */}
+                              {(!isTeacherUser && (accessConfig?.is_locked || isCategoryLocked('practice', false, accessConfig) || isGradeLocked('grade_12', false, accessConfig))) ? (
+                                topicPending.length === 0 ? (
+                                  <div className="p-8 text-center bg-white rounded-3xl border-2 border-dashed border-amber-300 shadow-sm space-y-3">
+                                    <div className="w-16 h-16 mx-auto rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-3xl">
+                                      🔒
+                                    </div>
+                                    <h4 className="text-base font-black text-amber-900 uppercase">CHUYÊN ĐỀ ĐANG ĐƯỢC THẦY TẠM KHÓA</h4>
+                                    <p className="text-xs text-slate-500 max-w-md mx-auto">
+                                      Nội dung luyện thi chuyên đề hiện đang được Thầy tạm đóng với học sinh. Khi Thầy mở quyền hoặc giao phòng thi, các đề sẽ tự động hiển thị để em vào làm bài.
+                                    </p>
+                                  </div>
+                                ) : null
+                              ) : (
+                                <>
                               {/* Thanh chuyển chế độ lọc: Tất cả / 3 Dạng thức mới / Theo chương */}
                               <div className="flex flex-wrap items-center gap-1.5 p-1.5 bg-slate-100 rounded-2xl border border-slate-200 text-xs font-bold">
                                 <button
@@ -2835,6 +2850,8 @@ export default function StudentPortal() {
                                     </div>
                                   </div>
                                 </div>
+                              )}
+                                </>
                               )}
                             </div>
                           ) : (
