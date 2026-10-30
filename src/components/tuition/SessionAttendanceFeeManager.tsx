@@ -30,6 +30,19 @@ interface SessionAttendanceFeeManagerProps {
 
 const LOCAL_UNIT_PRICES_KEY = '__CLASS_UNIT_PRICES__'
 
+export const STUDENT_CUSTOM_RATES: Record<string, number> = {
+  '0cd3090a-a5d5-4ced-b192-d22beb21762a': 0,     // Lê Thị Thu Ngân (Lớp 6A): 0đ (Miễn phí)
+  'd5d931b7-0891-4124-8d3c-2f5f818d92cd': 0,     // Lê Thị Bình Nhi (Lớp 12): 0đ (Miễn phí)
+  'ac066b5d-606a-4cfa-a3bd-96f569b85005': 0,     // Nguyễn Ngọc Trang (Lớp 7A): 0đ (Miễn phí)
+  '072b8d66-03a2-4e13-81c9-0893360f3eca': 40000, // Nguyễn Minh Chí (Lớp 7A): 40.000đ/buổi
+  'e2f1a1ee-e8ff-4a3f-8606-1013fdb22bef': 40000, // Nguyễn Hà Phương (Lớp 7A): 40.000đ/buổi
+  'd80d2f54-dcb6-430d-b43b-b7061da54d72': 40000, // Nguyễn Huy Hoàng (Lớp 11): 40.000đ/buổi
+  '53843fca-d1c8-4df6-ba36-1f9bb6e5f27f': 40000, // Nguyễn Hữu Bảo (Lớp 11): 40.000đ/buổi
+  '55c11a09-6778-4065-aaa4-d123a19b6874': 50000, // Dương Thị Diễm Nhi (Lớp 11): 50.000đ/buổi
+  '7334a553-0e31-47e2-b0fa-4d35e79eb083': 60000, // Nguyễn Thị Phương Chi (Lớp 12): 60.000đ/buổi
+}
+
+
 export default function SessionAttendanceFeeManager({
   classes,
   selClass,
@@ -270,8 +283,9 @@ export default function SessionAttendanceFeeManager({
 
       const attendedCount = attendedDates.length
       const notif = tuitionNotifications.find(n => n.student_id === st.id && n.class_id === selClass)
-      const isFree = (st.full_name || '').toUpperCase().includes('THU NGÂN') || (notif != null && Number(notif.amount) === 0)
-      const calculatedAmount = isFree ? 0 : (attendedCount * unitPrice)
+      const customRate = STUDENT_CUSTOM_RATES[st.id]
+      const studentRate = customRate !== undefined ? customRate : unitPrice
+      const calculatedAmount = attendedCount * studentRate
       const currentAmount = notif ? Number(notif.amount) : 0
       const isPaid = notif?.is_paid || false
       const isSynced = currentAmount === calculatedAmount && notif != null
@@ -280,6 +294,7 @@ export default function SessionAttendanceFeeManager({
         student: st,
         attendedDates,
         attendedCount,
+        studentRate,
         calculatedAmount,
         currentAmount,
         isPaid,
@@ -504,7 +519,12 @@ export default function SessionAttendanceFeeManager({
         // Distinct session dates
         const distinctDates = Array.from(new Set(cAtts.map(a => a.date))).sort()
         const totalPresents = cAtts.filter(a => a.present || a.status === 'PRESENT' || a.status === 'present').length
-        const totalRev = totalPresents * cPrice
+        let totalRev = 0
+        cEnrolls.forEach(e => {
+          const sPresents = cAtts.filter(a => a.student_id === e.student_id && (a.present || a.status === 'PRESENT' || a.status === 'present')).length
+          const sRate = STUDENT_CUSTOM_RATES[e.student_id] !== undefined ? STUDENT_CUSTOM_RATES[e.student_id] : cPrice
+          totalRev += sPresents * sRate
+        })
 
         return {
           cls: c,
