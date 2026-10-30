@@ -14,6 +14,7 @@ interface SubmissionDetailViewProps {
   room?: Room;
   submissionId?: string;
   onClose: () => void;
+  onScoreUpdated?: (updatedSub: any) => void;
 }
 
 // ✅ Helper: robust lookup với cả number và string key (fix JSONB key type)
@@ -113,7 +114,8 @@ const SubmissionDetailView: React.FC<SubmissionDetailViewProps> = ({
   exam: propExam,
   room: propRoom,
   submissionId,
-  onClose
+  onClose,
+  onScoreUpdated
 }) => {
   const [mounted, setMounted] = useState(false);
   const [localSubmission, setLocalSubmission] = useState<any>(null);
@@ -121,6 +123,71 @@ const SubmissionDetailView: React.FC<SubmissionDetailViewProps> = ({
   const [localRoom, setLocalRoom] = useState<any>(null);
   const [loading, setLoading] = useState(!!submissionId && !propSubmission);
   const [prioritizeWrong, setPrioritizeWrong] = useState(true);
+  // ✅ Thầy chấm điểm tự luận trực tiếp (Tích đúng/sai hoặc cho điểm -> Máy tự động cộng tổng điểm)
+  const handleSaveEssayScore = async (qNum: number, score: number, feedback: string) => {
+    try {
+      const currentSub = localSubmission || propSubmission;
+      if (!currentSub || !currentSub.id) return;
+
+      const currentSb = { ...(currentSub.score_breakdown || currentSub.scoreBreakdown || {}) };
+      if (!currentSb.essay) {
+        currentSb.essay = { total: 0, points: 0, details: {} };
+      } else {
+        currentSb.essay = {
+          ...currentSb.essay,
+          details: { ...(currentSb.essay.details || {}) }
+        };
+      }
+
+      currentSb.essay.details[String(qNum)] = {
+        score: Number(score) || 0,
+        feedback: feedback || ''
+      };
+
+      let totalEssay = 0;
+      Object.values(currentSb.essay.details).forEach((d: any) => {
+        totalEssay += Number(d?.score || 0);
+      });
+      currentSb.essay.points = parseFloat(totalEssay.toFixed(2));
+
+      const mcPoints = Number(currentSb.multipleChoice?.points || 0);
+      const tfPoints = Number(currentSb.trueFalse?.points || 0);
+      const saPoints = Number(currentSb.shortAnswer?.points || 0);
+
+      const newTotal = parseFloat((mcPoints + tfPoints + saPoints + totalEssay).toFixed(2));
+      const maxScore = 10;
+      const newPercent = Math.min(100, Math.max(0, Math.round((newTotal / maxScore) * 100)));
+
+      currentSb.totalScore = newTotal;
+      currentSb.percentage = newPercent;
+
+      const { error } = await supabase
+        .from('exam_submissions')
+        .update({
+          score: newTotal,
+          score_breakdown: currentSb
+        })
+        .eq('id', currentSub.id);
+
+      if (error) throw error;
+
+      const updated = {
+        ...currentSub,
+        score: newTotal,
+        totalScore: newTotal,
+        score_breakdown: currentSb,
+        scoreBreakdown: currentSb,
+        percentage: newPercent
+      };
+
+      setLocalSubmission(updated);
+      if (onScoreUpdated) onScoreUpdated(updated);
+      toast.success(`Đã lưu điểm câu tự luận! Tổng điểm mới: ${newTotal}đ`);
+    } catch (err: any) {
+      toast.error('Lỗi khi lưu điểm: ' + (err?.message || err));
+    }
+  };
+
 
   useEffect(() => {
     setMounted(true);
@@ -468,6 +535,7 @@ const SubmissionDetailView: React.FC<SubmissionDetailViewProps> = ({
                             userAnswer={userAnswer}
                             displayIndex={displayIndex}
                             scoreDetail={sbRaw.essay?.details?.[question.number] || sbRaw.essay?.details?.[String(question.number)]}
+                            onSaveScore={handleSaveEssayScore}
                           />
                         )}
                       </div>
@@ -754,12 +822,40 @@ const ShortAnswerDetail = ({ question, userAnswer, displayIndex, maxPoints = 0 }
   );
 };
 
-// ─── TỰ LUẬN ─────────────────────────────────────────────────────────────────
-const EssayDetail = ({ question, userAnswer, displayIndex, scoreDetail }) => {
+// ─── TỰ LUẬN: HỌC SINH NỘP BÀI & THẦY TÍCH ĐÚNG / SAI HOẶC CHO ĐIỂM TRỰC TIẾP ───
+const EssayDetail = ({ question, userAnswer, displayIndex, scoreDetail, onSaveScore }) => {
   const parsed = parseEssayAnswer(userAnswer);
   const hasText = !!parsed.text?.trim();
   const hasImages = Array.isArray(parsed.images) && parsed.images.length > 0;
   const hasContent = hasText || hasImages;
+
+  const maxPoints = question.points || 2; // Mặc định điểm câu tự luận là 2đ hoặc theo đề
+
+  const [scoreVal, setScoreVal] = useState(scoreDetail ? String(scoreDetail.score) : '');
+  const [feedbackVal, setFeedbackVal] = useState(scoreDetail?.feedback || '');
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (scoreDetail) {
+      setScoreVal(String(scoreDetail.score));
+      setFeedbackVal(scoreDetail.feedback || '');
+    }
+  }, [scoreDetail]);
+
+  const handleQuickScore = (pts) => {
+    setScoreVal(String(pts));
+  };
+
+  const handleSave = async () => {
+    const num = parseFloat(scoreVal);
+    if (isNaN(num) || num < 0) {
+      toast.error('Vui lòng nhập số điểm hợp lệ');
+      return;
+    }
+    setSaving(true);
+    await onSaveScore(question.number || displayIndex, num, feedbackVal);
+    setSaving(false);
+  };
 
   return (
     <div className="rounded-2xl border-2 border-violet-200 bg-white overflow-hidden shadow-sm">
@@ -769,45 +865,130 @@ const EssayDetail = ({ question, userAnswer, displayIndex, scoreDetail }) => {
           <div className="w-7 h-7 rounded-full bg-violet-500 flex items-center justify-center font-black text-white text-xs">
             {displayIndex}
           </div>
-          <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${hasContent ? 'bg-violet-100 text-violet-700' : 'bg-gray-100 text-gray-500'}`}>
-            {hasContent ? (scoreDetail ? '✅ Đã chấm' : '📝 Đã làm · Chờ GV chấm') : '— Bỏ trống'}
+          <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+            scoreDetail ? 'bg-emerald-100 text-emerald-800' : hasContent ? 'bg-amber-100 text-amber-800' : 'bg-gray-100 text-gray-500'
+          }`}>
+            {scoreDetail ? `✅ Đã chấm: ${scoreDetail.score}đ` : hasContent ? '📝 Đã nộp bài · Chờ Thầy chấm' : '— Bỏ trống'}
           </span>
         </div>
-        {scoreDetail && (
-          <span className="text-sm font-black text-violet-700">
-            {scoreDetail.score.toFixed(2)}đ
-          </span>
-        )}
+        <span className="text-xs font-black text-violet-700">
+          Điểm tối đa: {maxPoints}đ
+        </span>
       </div>
 
       {/* Content */}
-      <div className="px-4 py-3">
-        <MathText html={formatQuestionTitle(question.text, question.number || displayIndex)} block className="text-sm text-gray-800 mb-3 leading-relaxed" />
+      <div className="px-4 py-3 space-y-3">
+        <MathText html={formatQuestionTitle(question.text, question.number || displayIndex)} block className="text-sm text-gray-800 mb-2 leading-relaxed" />
+        
+        {/* Lời giải gợi ý của đề (nếu có) */}
+        {(question.solution || question.explanation) && (
+          <div className="p-3 bg-blue-50/70 border border-blue-200 rounded-xl text-xs text-blue-900 leading-relaxed">
+            <span className="font-bold flex items-center gap-1 mb-1 text-blue-800">💡 Hướng dẫn chấm / Đáp án gợi ý:</span>
+            <MathText html={question.solution || question.explanation} block />
+          </div>
+        )}
+
         {hasContent ? (
           <div className="space-y-3">
             {hasText && (
               <div className="p-3 bg-violet-50/50 rounded-xl border border-violet-100/50">
-                <p className="text-[10px] font-bold text-violet-600 uppercase mb-1">Bài làm:</p>
+                <p className="text-[10px] font-bold text-violet-600 uppercase mb-1">Bài làm của học sinh:</p>
                 <p className="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">
                   {parsed.text}
                 </p>
               </div>
             )}
             {hasImages && (
-              <div className="grid grid-cols-2 gap-2">
-                {parsed.images.map((img: any, i: number) => (
-                  <img key={i} src={`data:${img.type};base64,${img.data}`} className="rounded-xl border-2 border-violet-100 shadow-sm max-h-52 object-contain bg-slate-800" alt={`Ảnh ${i + 1}`} />
-                ))}
+              <div>
+                <p className="text-[10px] font-bold text-violet-600 uppercase mb-1.5">Ảnh bài làm chụp từ vở/giấy:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {parsed.images.map((img, i) => (
+                    <a key={i} href={`data:${img.type};base64,${img.data}`} target="_blank" rel="noopener noreferrer" className="block relative group">
+                      <img 
+                        src={`data:${img.type};base64,${img.data}`} 
+                        className="rounded-xl border-2 border-violet-100 shadow-sm max-h-60 w-full object-contain bg-slate-900 p-1" 
+                        alt={`Ảnh bài làm ${i + 1}`} 
+                      />
+                      <span className="absolute bottom-2 right-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded-md font-bold group-hover:bg-black">
+                        🔍 Bấm xem ảnh gốc
+                      </span>
+                    </a>
+                  ))}
+                </div>
               </div>
             )}
-            
-            {/* AI Grading result */}
-            {scoreDetail && (
-              <div className="p-3 bg-green-50 rounded-xl border border-green-200 mt-2">
-                <p className="text-[10px] font-bold text-green-700 uppercase mb-1">Nhận xét của giáo viên/AI:</p>
-                <p className="text-xs text-green-800 italic whitespace-pre-line leading-relaxed">
-                  {scoreDetail.feedback || 'Đã chấm điểm.'}
-                </p>
+
+            {/* BẢNG CHẤM ĐIỂM DÀNH CHO GIÁO VIÊN */}
+            {onSaveScore && (
+              <div className="p-3.5 bg-slate-50 border-2 border-dashed border-violet-300 rounded-xl space-y-2.5 mt-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <span className="text-xs font-black text-violet-950 flex items-center gap-1.5">
+                    <span>👨‍🏫 Bảng Chấm Điểm Tự Luận:</span>
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => handleQuickScore(maxPoints)}
+                      className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg transition-all cursor-pointer shadow-2xs"
+                    >
+                      ✓ Đúng ({maxPoints}đ)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleQuickScore(0)}
+                      className="px-2.5 py-1 bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-lg transition-all cursor-pointer shadow-2xs"
+                    >
+                      ✕ Sai (0đ)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleQuickScore(parseFloat((maxPoints / 2).toFixed(2)))}
+                      className="px-2 py-1 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold rounded-lg transition-all cursor-pointer shadow-2xs"
+                    >
+                      ½ Điểm ({parseFloat((maxPoints / 2).toFixed(2))}đ)
+                    </button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div>
+                    <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                      Nhập điểm câu này (Tối đa {maxPoints}đ):
+                    </label>
+                    <input
+                      type="number"
+                      step="0.25"
+                      min="0"
+                      max={maxPoints}
+                      value={scoreVal}
+                      onChange={(e) => setScoreVal(e.target.value)}
+                      placeholder={`0 - ${maxPoints}`}
+                      className="input text-xs font-black bg-white border-violet-300 text-violet-950 w-full"
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className="text-[10px] font-bold text-slate-600 block mb-1">
+                      Nhận xét / Lời phê của Thầy (Tùy chọn):
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={feedbackVal}
+                        onChange={(e) => setFeedbackVal(e.target.value)}
+                        placeholder="VD: Trình bày tốt, tính đúng kết quả..."
+                        className="input text-xs font-medium bg-white border-violet-300 text-slate-800 w-full"
+                      />
+                      <button
+                        type="button"
+                        onClick={handleSave}
+                        disabled={saving || scoreVal === ''}
+                        className="px-4 py-2 bg-violet-700 hover:bg-violet-800 text-white text-xs font-black rounded-xl whitespace-nowrap transition-all shadow-md cursor-pointer disabled:opacity-50"
+                      >
+                        {saving ? 'Đang lưu...' : '💾 Lưu điểm'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>

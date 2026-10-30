@@ -422,6 +422,10 @@ export default function ExamResultsPage() {
             exam={{ ...studentExam, title: exam.title }}
             room={room}
             onClose={() => setSelectedSub(null)}
+            onScoreUpdated={(updated) => {
+              setSubmissions(prev => prev.map(s => s.id === updated.id ? updated : s));
+              setSelectedSub(updated);
+            }}
           />
         );
       })()}
