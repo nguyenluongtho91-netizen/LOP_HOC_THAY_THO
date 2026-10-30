@@ -587,9 +587,9 @@ export default function ExamRoomPage() {
       ...room, 
       examTitle: exam.title, 
       settings: { 
+        ...room?.settings,
         showCorrectAnswers: true, 
         showExplanations: true, 
-        ...room.settings 
       } 
     };
     return (

@@ -50,8 +50,8 @@ const ResultView: React.FC<ResultViewProps> = ({
   const answers = submission.answers;
 
   // ✅ Cho phép xem đáp án và lời giải chi tiết theo yêu cầu của Thầy Thọ
-  const canShowCorrectAnswers = room.settings?.showCorrectAnswers !== false;
-  const canShowExplanations = room.settings?.showExplanations !== false;
+  const canShowCorrectAnswers = true; // Luôn hiển thị đáp án đúng sau khi nộp
+  const canShowExplanations = true; // Luôn hiển thị lời giải chi tiết sau khi nộp
 
   // ✅ State lọc 2 chế độ: 'all' (xem lại cả đề) hoặc 'wrong' (xem lại câu sai)
   const [filterMode, setFilterMode] = useState<'all' | 'wrong'>('all');
@@ -522,6 +522,49 @@ const ResultView: React.FC<ResultViewProps> = ({
 };
 
 // ===== Review: Multiple choice =====
+// ===== Unified Explanation & Solution Box =====
+const ExplanationBox: React.FC<{ question: Question }> = ({ question }) => {
+  const text = question.solution || question.explanation || (question as any).loigiai || '';
+  const rawImages = (question as any).explanationImages || (question as any).solutionImages || [];
+  const images = Array.isArray(rawImages) ? rawImages : [];
+
+  if (!text && images.length === 0) return null;
+
+  return (
+    <div className="mt-3.5 p-4 bg-blue-50/90 border border-blue-200 rounded-2xl shadow-xs">
+      <div className="text-blue-900 font-black text-sm flex items-center gap-2 mb-2">
+        <span className="text-base">💡</span>
+        <span>Lời giải & Đáp án chi tiết:</span>
+      </div>
+      {text && (
+        <div className="text-sm text-slate-800 leading-relaxed font-normal">
+          <MathText html={text} block />
+        </div>
+      )}
+      {images.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2.5">
+          {images.map((img: any, idx: number) => {
+            const src = typeof img === 'string' 
+              ? img 
+              : img.base64 
+              ? `data:${img.contentType || 'image/png'};base64,${img.base64}` 
+              : img.url || '';
+            if (!src) return null;
+            return (
+              <img 
+                key={idx} 
+                src={src} 
+                alt={`Hình giải thích ${idx + 1}`} 
+                className="max-h-60 rounded-xl border border-blue-200 shadow-xs block bg-white p-1" 
+              />
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const MultipleChoiceReview: React.FC<{
   question: Question;
   userAnswer?: string;
@@ -555,7 +598,7 @@ const MultipleChoiceReview: React.FC<{
           {question.images?.length > 0 && (
             <div className="my-2 flex flex-wrap gap-2">
               {question.images.map((img: any, idx: number) => (
-                <img key={idx} src={img.base64 ? `data:${img.contentType || 'image/png'};base64,${img.base64}` : ''} alt={`Hình ${idx + 1}`} className="max-h-32 rounded border block" />
+                <img key={idx} src={typeof img === 'string' ? img : img.base64 ? `data:${img.contentType || 'image/png'};base64,${img.base64}` : (img.url || '')} alt={`Hình ${idx + 1}`} className="max-h-32 rounded border block" />
               ))}
             </div>
           )}
@@ -609,16 +652,7 @@ const MultipleChoiceReview: React.FC<{
             )}
           </div>
 
-          {showExplanations && (question.solution || question.explanation || (question as any).loigiai) && (
-            <div className="mt-3 p-3.5 bg-blue-50/90 border border-blue-200 rounded-xl">
-              <span className="text-blue-800 font-bold text-sm flex items-center gap-1.5 mb-1">
-                💡 Lời giải & Đáp án chi tiết:
-              </span>
-              <div className="text-sm text-gray-800 leading-relaxed font-normal">
-                <MathText html={question.solution || question.explanation || (question as any).loigiai} block />
-              </div>
-            </div>
-          )}
+          <ExplanationBox question={question} />
         </div>
       </div>
     </div>
@@ -723,7 +757,7 @@ const TrueFalseReview: React.FC<{
           {question.images?.length > 0 && (
             <div className="my-2 flex flex-wrap gap-2">
               {question.images.map((img: any, idx: number) => (
-                <img key={idx} src={img.base64 ? `data:${img.contentType || 'image/png'};base64,${img.base64}` : ''} alt={`Hình ${idx + 1}`} className="max-h-32 rounded border block" />
+                <img key={idx} src={typeof img === 'string' ? img : img.base64 ? `data:${img.contentType || 'image/png'};base64,${img.base64}` : (img.url || '')} alt={`Hình ${idx + 1}`} className="max-h-32 rounded border block" />
               ))}
             </div>
           )}
@@ -790,16 +824,7 @@ const TrueFalseReview: React.FC<{
             </div>
           )}
 
-          {showExplanations && (question.solution || question.explanation || (question as any).loigiai) && (
-            <div className="mt-3 p-3.5 bg-blue-50/90 border border-blue-200 rounded-xl">
-              <span className="text-blue-800 font-bold text-sm flex items-center gap-1.5 mb-1">
-                💡 Lời giải & Đáp án chi tiết:
-              </span>
-              <div className="text-sm text-gray-800 leading-relaxed font-normal">
-                <MathText html={question.solution || question.explanation || (question as any).loigiai} block />
-              </div>
-            </div>
-          )}
+          <ExplanationBox question={question} />
         </div>
       </div>
     </div>
@@ -849,7 +874,7 @@ const ShortAnswerReview: React.FC<{
           {question.images?.length > 0 && (
             <div className="my-2 flex flex-wrap gap-2">
               {question.images.map((img: any, idx: number) => (
-                <img key={idx} src={img.base64 ? `data:${img.contentType || 'image/png'};base64,${img.base64}` : ''} alt={`Hình ${idx + 1}`} className="max-h-32 rounded border block" />
+                <img key={idx} src={typeof img === 'string' ? img : img.base64 ? `data:${img.contentType || 'image/png'};base64,${img.base64}` : (img.url || '')} alt={`Hình ${idx + 1}`} className="max-h-32 rounded border block" />
               ))}
             </div>
           )}
@@ -877,16 +902,7 @@ const ShortAnswerReview: React.FC<{
             )}
           </div>
 
-          {showExplanations && (question.solution || question.explanation || (question as any).loigiai) && (
-            <div className="mt-3 p-3.5 bg-blue-50/90 border border-blue-200 rounded-xl">
-              <span className="text-blue-800 font-bold text-sm flex items-center gap-1.5 mb-1">
-                💡 Lời giải & Đáp án chi tiết:
-              </span>
-              <div className="text-sm text-gray-800 leading-relaxed font-normal">
-                <MathText html={question.solution || question.explanation || (question as any).loigiai} block />
-              </div>
-            </div>
-          )}
+          <ExplanationBox question={question} />
         </div>
       </div>
     </div>

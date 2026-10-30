@@ -271,7 +271,7 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
   const questionSolutions   = (exam as any).questionSolutions as { [qNum: number]: QuestionSolutionRange } | undefined;
   
   // Chỉ hiện tùy chọn Lời giải nếu có Link (Supabase/Drive) VÀ giáo viên cho phép (showExplanations)
-  const canShowExplanations = room.settings?.showExplanations ?? true;
+  const canShowExplanations = true; // Luôn hiển thị lời giải khi học sinh nộp bài
   const hasSolution         = !!(solutionPdfUrl || solutionFileId) && canShowExplanations;
 
   // ────────────────────────────────────────────────────────────────────────────
