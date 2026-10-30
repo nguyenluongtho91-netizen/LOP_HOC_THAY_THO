@@ -563,7 +563,7 @@ export default function Tuition() {
 
     const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-              + `Em Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+              + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
@@ -571,7 +571,7 @@ export default function Tuition() {
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
               + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
               + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
-              + `Em xin chân thành cảm ơn Quý phụ huynh!`
+              + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
     setSendingStudentId(row.student.id)
     const toastId = toast.loading(`🚀 Đang tự động gửi Zalo cho ${row.student.full_name}...`)
@@ -641,7 +641,7 @@ export default function Tuition() {
 
     const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-              + `Em Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+              + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
@@ -649,7 +649,7 @@ export default function Tuition() {
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
               + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
               + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
-              + `Em xin chân thành cảm ơn Quý phụ huynh!`
+              + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
@@ -699,14 +699,14 @@ export default function Tuition() {
       const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
       const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
       const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-                + `Em Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+                + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
                 + `• Học sinh: ${row.student.full_name}\n`
                 + `• Môn học: ${subjectName}\n`
                 + `• Lớp: ${cleanClass}\n`
                 + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                 + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
                 + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
-                + `Em xin chân thành cảm ơn Quý phụ huynh!`
+                + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
       logs.push(`⏳ [${i + 1}/${unpaidList.length}] Đang gửi cho ${row.student.full_name} (${cleanPhone || 'Không có SĐT'})...`)
       setAutoProgress({
@@ -2351,14 +2351,14 @@ export default function Tuition() {
 
               const subjectName = (cls as any)?.subject || ((currentRow.student.student_code && currentRow.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
               const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\n\n`
-                        + `Em Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+                        + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
                         + `• Học sinh: ${currentRow.student.full_name}\n`
                         + `• Môn học: ${subjectName}\n`
                         + `• Lớp: ${cleanClass}\n`
                         + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                         + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
                         + `👉 Quý phụ huynh quét mã QR bên dưới để thanh toán nhanh (hệ thống tự động điền đúng thông tin của con):\n${qrUrl}\n\n`
-                        + `Em xin chân thành cảm ơn Quý phụ huynh!`
+                        + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
               const copyTextOnly = async () => {
                 try {
