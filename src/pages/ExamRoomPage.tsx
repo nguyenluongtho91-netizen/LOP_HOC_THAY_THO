@@ -156,6 +156,219 @@ function PasscodePrompt({ requiredPasscode, onSuccess, onExit }: { requiredPassc
   );
 }
 
+
+// ─── GIAO DIỆN LÀM BÀI QUA LIÊN KẾT (LINK GOOGLE DRIVE/DOCS/FORM/PDF/WEB) ─────
+function ExternalLinkExamRoom({
+  room,
+  exam,
+  student,
+  linkUrl,
+  existingSubmissionId,
+  onSubmitted,
+  onExit
+}: {
+  room: any;
+  exam: any;
+  student: any;
+  linkUrl: string;
+  existingSubmissionId?: string;
+  onSubmitted: (res: any) => void;
+  onExit: () => void;
+}) {
+  const [submitting, setSubmitting] = useState(false);
+  const [studentNote, setStudentNote] = useState('');
+  const [hasOpenedLink, setHasOpenedLink] = useState(false);
+  const [timeLeft, setTimeLeft] = useState((room.time_limit || 45) * 60);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTimer = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
+
+  const handleSubmit = async () => {
+    if (!hasOpenedLink) {
+      if (!confirm('Em chưa bấm mở liên kết làm bài tập. Em có chắc chắn muốn nộp bài luôn không?')) {
+        return;
+      }
+    }
+    setSubmitting(true);
+    try {
+      const payload = {
+        status: 'submitted',
+        score: 10,
+        submitted_at: new Date().toISOString(),
+        answers: { note: studentNote, completed_via_link: true, link_url: linkUrl },
+        duration: Math.max(1, ((room.time_limit || 45) * 60 - timeLeft))
+      };
+
+      if (existingSubmissionId) {
+        await supabase.from('exam_submissions').update(payload).eq('id', existingSubmissionId);
+      } else {
+        await supabase.from('exam_submissions').insert([{
+          room_id: room.id,
+          student_id: student.id,
+          ...payload
+        }]);
+      }
+
+      toast.success('🎉 Chúc mừng em đã hoàn thành và nộp bài tập thành công!');
+      onSubmitted({
+        totalScore: 10,
+        score: 10,
+        submitted_at: payload.submitted_at,
+        examTitle: exam.title
+      });
+    } catch (err: any) {
+      toast.error('Lỗi khi nộp bài: ' + (err?.message || err));
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  let embedUrl = linkUrl;
+  if (linkUrl.includes('drive.google.com/file/d/')) {
+    embedUrl = linkUrl.replace(/\/view.*$/, '/preview');
+  } else if (linkUrl.includes('docs.google.com/document/d/')) {
+    embedUrl = linkUrl.replace(/\/edit.*$/, '/preview');
+  } else if (linkUrl.includes('docs.google.com/forms/d/')) {
+    embedUrl = linkUrl.replace(/\/edit.*$/, '/viewform?embedded=true');
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans">
+      <header className="h-16 px-4 bg-slate-800/90 border-b border-slate-700 flex items-center justify-between sticky top-0 z-30 backdrop-blur-md">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onExit}
+            className="px-3 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-xs font-bold text-slate-200 transition-all flex items-center gap-1.5 cursor-pointer"
+          >
+            <span>← Thoát</span>
+          </button>
+          <div>
+            <h1 className="text-sm sm:text-base font-black text-white truncate max-w-xs sm:max-w-md">
+              {exam.title || 'Bài Tập Qua Liên Kết'}
+            </h1>
+            <div className="text-[11px] text-slate-400 flex items-center gap-2">
+              <span>Học sinh: <strong className="text-teal-400">{student.name}</strong></span>
+              <span>•</span>
+              <span>Lớp: <strong className="text-teal-400">{student.className || room.classes?.class_name || 'Hóa Học'}</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <div className="px-3 py-1 bg-slate-950/80 rounded-xl border border-slate-700 flex items-center gap-2">
+            <span className="text-xs text-slate-400">⏱️ Thời gian:</span>
+            <span className="font-mono text-sm sm:text-base font-black text-teal-400">
+              {formatTimer(timeLeft)}
+            </span>
+          </div>
+
+          <button
+            onClick={handleSubmit}
+            disabled={submitting}
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer disabled:opacity-50"
+          >
+            {submitting ? 'Đang nộp...' : '✅ Nộp Bài'}
+          </button>
+        </div>
+      </header>
+
+      <main className="flex-1 p-3 sm:p-5 max-w-6xl w-full mx-auto flex flex-col gap-4">
+        <div className="p-4 sm:p-5 rounded-3xl bg-gradient-to-r from-indigo-900/60 via-purple-900/50 to-slate-800 border-2 border-indigo-500/40 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-[11px] font-black uppercase tracking-wider border border-indigo-500/30">
+              <span>🔗 BÀI TẬP QUA LIÊN KẾT TRỰC TUYẾN</span>
+            </div>
+            <h2 className="text-base sm:text-lg font-black text-white">
+              {exam.title}
+            </h2>
+            <p className="text-xs text-slate-300 max-w-2xl">
+              Thầy Thọ đã giao bài tập này cho em qua liên kết dưới đây. Em hãy bấm nút để mở bài tập làm bài, sau khi hoàn thành quay lại đây bấm <strong>Nộp Bài</strong> nhé!
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <a
+              href={linkUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setHasOpenedLink(true)}
+              className="px-5 py-3 rounded-2xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-black text-xs sm:text-sm shadow-lg hover:shadow-indigo-500/25 transition-all flex items-center gap-2 active:scale-95 cursor-pointer"
+            >
+              <span>🚀 BẤM MỞ BÀI TẬP ĐỂ LÀM</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="flex-1 min-h-[480px] bg-slate-800/80 rounded-3xl border border-slate-700 overflow-hidden flex flex-col shadow-inner">
+          <div className="h-10 px-4 bg-slate-800 border-b border-slate-700 flex items-center justify-between text-xs text-slate-400">
+            <span className="flex items-center gap-1.5 font-bold">
+              <span>📄 Xem trực tiếp bài tập:</span>
+              <span className="font-mono text-slate-500 truncate max-w-md">{linkUrl}</span>
+            </span>
+            <a
+              href={linkUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setHasOpenedLink(true)}
+              className="text-teal-400 hover:text-teal-300 font-bold flex items-center gap-1"
+            >
+              <span>Mở toàn màn hình</span>
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div className="flex-1 w-full relative">
+            <iframe
+              src={embedUrl}
+              title="Khung bài tập liên kết"
+              className="w-full h-full min-h-[500px] border-none bg-white rounded-b-3xl"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+
+        <div className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="w-full sm:flex-1">
+            <input
+              type="text"
+              value={studentNote}
+              onChange={(e) => setStudentNote(e.target.value)}
+              placeholder="Ghi chú bài làm của em hoặc link bài nộp (nếu có)..."
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-teal-500"
+            />
+          </div>
+
+          <button
+            onClick={handleSubmit}
+            disabled={submitting}
+            className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs sm:text-sm shadow-md transition-all active:scale-95 cursor-pointer disabled:opacity-50 shrink-0"
+          >
+            {submitting ? 'Đang nộp bài...' : '📤 Xác Nhận Đã Hoàn Thành & Nộp Bài'}
+          </button>
+        </div>
+      </main>
+    </div>
+  );
+}
+
 export default function ExamRoomPage() {
   const { roomId } = useParams()
   const navigate = useNavigate()
@@ -449,6 +662,23 @@ export default function ExamRoomPage() {
     !questionsArr.every((q: any) => 
       /^(câu\s+\d+|câu\s+tự\s+luận\s+\d+):?$/i.test((q.text || '').trim())
     );
+  // ✅ 3.5. NẾU LÀ ĐỀ THI / BÀI TẬP QUA LIÊN KẾT (LINK TÀI LIỆU) -> MỞ ExternalLinkExamRoom
+  const assignmentLink = room?.settings?.assignment_link || currentExamData?.link_url;
+  const isLinkExam = !!assignmentLink || !!currentExamData?.is_external_link;
+  if (isLinkExam) {
+    return (
+      <ExternalLinkExamRoom
+        room={enrichedRoom}
+        exam={{ ...currentExamData, id: exam.id, title: exam.title }}
+        student={enrichedStudent}
+        linkUrl={assignmentLink || ''}
+        existingSubmissionId={submissionId}
+        onSubmitted={setSubmittedResult}
+        onExit={handleExit}
+      />
+    );
+  }
+
   const isPdfExam = !hasRealQuestions && (!!currentExamData?.pdfUrl || !!currentExamData?.pdfDriveUrl || !!currentExamData?.pdfBase64);
   if (isPdfExam) {
     return (

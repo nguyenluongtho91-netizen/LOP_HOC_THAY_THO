@@ -1169,6 +1169,12 @@ export default function StudentPortal() {
                     <span className={`text-[11px] font-black px-2.5 py-1 rounded-xl border ${meta.tagBg}`}>
                       {meta.shortLabel}
                     </span>
+                    {(room.settings?.assignment_link || room.settings?.exam_source_type === 'link') && (
+                      <span className="text-[10px] font-black px-2 py-0.5 rounded-lg bg-indigo-100 text-indigo-800 border border-indigo-200 flex items-center gap-1">
+                        <span>🔗</span>
+                        <span>Bài tập qua link</span>
+                      </span>
+                    )}
                   </div>
                   {statusBadge}
                 </div>

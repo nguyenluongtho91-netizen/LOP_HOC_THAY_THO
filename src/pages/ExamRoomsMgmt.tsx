@@ -45,6 +45,9 @@ export default function ExamRoomsMgmt() {
   const [exportingRoomId, setExportingRoomId] = useState<string | null>(null)
   const [selectedStandardExam, setSelectedStandardExam] = useState<any | null>(null)
   const [selectedParts, setSelectedParts] = useState<number[]>([1, 2, 3])
+  const [examSourceMode, setExamSourceMode] = useState<'library' | 'link'>('library')
+  const [customLinkUrl, setCustomLinkUrl] = useState<string>('')
+  const [customLinkTitle, setCustomLinkTitle] = useState<string>('')
 
   const handlePartsChanged = async (parts: number[]) => {
     let autoTime = 50
@@ -164,7 +167,12 @@ export default function ExamRoomsMgmt() {
 
   const handleSave = async () => {
     if (!modalGrade) return toast.error('Vui lòng chọn khối lớp (hoặc Tất cả các khối)')
-    if (!form.exam_id) return toast.error('Vui lòng chọn đề thi')
+    if (examSourceMode === 'library' && !form.exam_id) {
+      return toast.error('Vui lòng chọn đề thi từ thư viện')
+    }
+    if (examSourceMode === 'link' && !customLinkUrl.trim()) {
+      return toast.error('Vui lòng dán liên kết (link) bài tập hoặc tài liệu')
+    }
 
     const scope = form.settings?.targetScope || 'classes'
     const selectedClassIds = form.settings?.assigned_class_ids || (form.class_id ? [form.class_id] : [])
@@ -175,6 +183,29 @@ export default function ExamRoomsMgmt() {
 
     setSaving(true)
     try {
+      let finalExamId = form.exam_id
+      if (examSourceMode === 'link') {
+        const finalTitle = customLinkTitle.trim() || `Bài tập liên kết: ${customLinkUrl.trim().replace(/^https?:\/\//i, '').slice(0, 35)}...`
+        const { data: { user } } = await supabase.auth.getUser()
+        const { data: newExam, error: examErr } = await supabase.from('exams').insert([{
+          title: finalTitle,
+          data: {
+            is_external_link: true,
+            link_url: customLinkUrl.trim(),
+            title: finalTitle,
+            duration: form.time_limit || 45,
+            questions: []
+          },
+          created_by: user?.id
+        }]).select('id').single()
+
+        if (examErr || !newExam) {
+          throw new Error('Lỗi tạo đề thi liên kết: ' + (examErr?.message || 'Không thể ghi CSDL'))
+        }
+        finalExamId = newExam.id
+        await loadExams()
+      }
+
       const finalAssignedClassIds = scope === 'classes' ? selectedClassIds : []
       const primaryClassId = scope === 'classes' ? (finalAssignedClassIds[0] || null) : null
 
@@ -195,8 +226,14 @@ export default function ExamRoomsMgmt() {
       } else {
         const payload = {
           ...form,
+          exam_id: finalExamId,
           class_id: primaryClassId,
-          settings: updatedSettings
+          settings: {
+            ...updatedSettings,
+            exam_source_type: examSourceMode,
+            assignment_link: examSourceMode === 'link' ? customLinkUrl.trim() : form.settings?.assignment_link,
+            link_title: examSourceMode === 'link' ? (customLinkTitle.trim() || customLinkUrl.trim()) : form.settings?.link_title,
+          }
         }
         await createRoom(payload)
         toast.success('Mở phòng thi thành công!')
@@ -204,6 +241,9 @@ export default function ExamRoomsMgmt() {
       setModalOpen(false)
       setEditingRoomId(null)
       setModalGrade('')
+      setCustomLinkUrl('')
+      setCustomLinkTitle('')
+      setExamSourceMode('library')
       setForm({ 
         exam_id: '', class_id: '', time_limit: 45, status: 'active', 
         settings: {
@@ -231,6 +271,15 @@ export default function ExamRoomsMgmt() {
 
   const handleOpenEdit = (room: any) => {
     setEditingRoomId(room.id)
+    if (room.settings?.assignment_link || room.settings?.exam_source_type === 'link') {
+      setExamSourceMode('link')
+      setCustomLinkUrl(room.settings.assignment_link || '')
+      setCustomLinkTitle(room.settings.link_title || room.exams?.title || '')
+    } else {
+      setExamSourceMode('library')
+      setCustomLinkUrl('')
+      setCustomLinkTitle('')
+    }
     const rGrade = getRoomGrade(room)
     setModalGrade(rGrade || (room.settings?.targetScope === 'all_center' ? 'all' : ''))
     
@@ -1003,130 +1052,230 @@ const isFirstRender = useRef(true)
             </select>
           </div>
 
-          <div className="space-y-2">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-              <label className="label font-bold text-gray-800 mb-0">1. Chọn đề thi từ thư viện *</label>
-              {modalGrade && (
-                <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
-                  {standardExamsForGrade.length + filteredExams.length} đề khả dụng
-                </span>
-              )}
+          <div className="space-y-3">
+            {/* THANH CHUYỂN ĐỔI: CHỌN TỪ THƯ VIỆN HOẶC DÁN LINK BÀI TẬP */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <label className="label font-bold text-gray-800 mb-0">1. Nguồn Đề Thi & Bài Tập *</label>
+              <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+                <button
+                  type="button"
+                  onClick={() => setExamSourceMode('library')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                    examSourceMode === 'library'
+                      ? 'bg-teal-600 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <span>📚 Chọn Từ Thư Viện</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setExamSourceMode('link')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                    examSourceMode === 'link'
+                      ? 'bg-indigo-600 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <span>🔗 Dán Link Bài Tập</span>
+                </button>
+              </div>
             </div>
 
-            {/* BỘ CHỌN 2 BƯỚC GỌN GÀNG: CHỌN CHUYÊN ĐỀ -> CHỌN ĐỀ CỤ THỂ */}
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {/* Bước 1: Chọn Chuyên Đề / Nhóm Đề */}
-                <div>
-                  <label className="text-[11px] font-bold text-slate-700 block mb-1">
-                    📁 Bước 1: Lọc theo Chuyên đề / Dạng đề
-                  </label>
-                  <select
-                    value={selectedChapterFilter}
-                    onChange={(e) => setSelectedChapterFilter(e.target.value)}
-                    className="input text-xs font-bold bg-white"
-                    disabled={!modalGrade}
-                  >
-                    <option value="all">📁 Tất cả các nhóm đề ({standardExamsForGrade.length} đề)</option>
-                    {examChaptersList.map(ch => (
-                      <option key={ch.name} value={ch.name}>
-                        📁 {ch.name} ({ch.count} đề)
-                      </option>
-                    ))}
-                    {filteredExams.length > 0 && (
-                      <option value="custom">📁 Đề Thầy tự tải lên ({filteredExams.length} đề)</option>
-                    )}
-                  </select>
+            {/* CHẾ ĐỘ 1: CHỌN ĐỀ TỪ THƯ VIỆN (BỘ CHỌN 2 BƯỚC GỌN GÀNG) */}
+            {examSourceMode === 'library' ? (
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl space-y-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {/* Bước 1: Chọn Chuyên Đề / Nhóm Đề */}
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-700 block mb-1">
+                      📁 Bước 1: Lọc theo Chuyên đề / Dạng đề
+                    </label>
+                    <select
+                      value={selectedChapterFilter}
+                      onChange={(e) => setSelectedChapterFilter(e.target.value)}
+                      className="input text-xs font-bold bg-white"
+                      disabled={!modalGrade}
+                    >
+                      <option value="all">📁 Tất cả các nhóm đề ({standardExamsForGrade.length} đề)</option>
+                      {examChaptersList.map(ch => (
+                        <option key={ch.name} value={ch.name}>
+                          📁 {ch.name} ({ch.count} đề)
+                        </option>
+                      ))}
+                      {filteredExams.length > 0 && (
+                        <option value="custom">📁 Đề Thầy tự tải lên ({filteredExams.length} đề)</option>
+                      )}
+                    </select>
+                  </div>
+
+                  {/* Bước 2: Chọn Đề thi cụ thể trong nhóm */}
+                  <div>
+                    <label className="text-[11px] font-bold text-slate-700 block mb-1">
+                      📝 Bước 2: Chọn đề thi cụ thể
+                    </label>
+                    <select
+                      value={form.exam_id}
+                      onChange={async (e) => {
+                        const exId = e.target.value
+                        if (!exId) {
+                          setForm(prev => ({ ...prev, exam_id: "" }))
+                          return
+                        }
+
+                        if (exId.startsWith("std:")) {
+                          const realStdId = exId.replace("std:", "")
+                          const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
+                          if (stdEx) {
+                            setSelectedStandardExam(stdEx)
+                            toast.loading("Đang chuẩn bị đề thi...", { id: "sync-exam" })
+                            try {
+                              const dbId = await ensureStandardExamInDatabase(stdEx, selectedParts)
+                              toast.success(`Đã chọn: ${stdEx.title}`, { id: "sync-exam" })
+                              await loadExams()
+                              const autoTime = stdEx.duration || 50
+                              setForm(prev => ({
+                                ...prev,
+                                exam_id: dbId,
+                                time_limit: autoTime,
+                                settings: {
+                                  ...prev.settings,
+                                  category: prev.settings?.category || "homework",
+                                  antiCheat: true,
+                                  selected_parts: selectedParts
+                                }
+                              }))
+                            } catch (err: any) {
+                              toast.error("Lỗi khi nạp đề: " + (err?.message || err), { id: "sync-exam" })
+                            }
+                          }
+                          return
+                        } else {
+                          setSelectedStandardExam(null)
+                        }
+
+                        const selectedEx = exams.find(ex => ex.id === exId)
+                        const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : "homework"
+                        setForm(prev => ({
+                          ...prev, 
+                          exam_id: exId,
+                          time_limit: selectedEx?.data?.duration || prev.time_limit || 45,
+                          settings: {
+                            ...prev.settings,
+                            category: prev.settings?.category || autoCat,
+                            antiCheat: true
+                          }
+                        }))
+                      }}
+                      className="input text-xs font-bold text-teal-900 bg-white border-teal-300"
+                      disabled={!modalGrade}
+                    >
+                      <option value="">{modalGrade ? "-- Bấm chọn đề thi --" : "-- Vui lòng chọn khối lớp trước --"}</option>
+                      {selectedChapterFilter !== "custom" && displayedExamsInDropdown.map(ex => (
+                        <option key={ex.id} value={ex.val}>
+                          {ex.shortTitle}
+                        </option>
+                      ))}
+                      {(selectedChapterFilter === "all" || selectedChapterFilter === "custom") && filteredExams.length > 0 && (
+                        <optgroup label="📁 ĐỀ THẦY TỰ TẢI LÊN">
+                          {filteredExams.map(ex => (
+                            <option key={ex.id} value={ex.id}>📄 {ex.title}</option>
+                          ))}
+                        </optgroup>
+                      )}
+                    </select>
+                  </div>
                 </div>
 
-                {/* Bước 2: Chọn Đề thi cụ thể trong nhóm */}
+                {/* Thông tin đề đã chọn */}
+                {form.exam_id && (
+                  <div className="text-[11px] font-bold text-teal-900 bg-teal-100/70 p-2.5 rounded-xl border border-teal-200 flex items-center justify-between gap-2">
+                    <span className="truncate">
+                      ✅ Đã chọn đề: <strong>{exams.find(e => e.id === form.exam_id)?.title || standardExamsForGrade.find(e => `std:${e.id}` === form.exam_id || e.id === form.exam_id)?.title || "Đề thi chuẩn"}</strong>
+                    </span>
+                    <span className="text-slate-600 font-mono shrink-0">Thời gian: {form.time_limit} phút</span>
+                  </div>
+                )}
+              </div>
+            ) : (
+              /* CHẾ ĐỘ 2: DÁN LINK BÀI TẬP / TÀI LIỆU */
+              <div className="p-4 bg-indigo-50/70 border-2 border-indigo-200 rounded-2xl space-y-3 animate-in fade-in duration-200">
                 <div>
-                  <label className="text-[11px] font-bold text-slate-700 block mb-1">
-                    📝 Bước 2: Chọn đề thi cụ thể
-                  </label>
-                  <select
-                    value={form.exam_id}
-                    onChange={async (e) => {
-                      const exId = e.target.value
-                      if (!exId) {
-                        setForm(prev => ({ ...prev, exam_id: "" }))
-                        return
-                      }
-
-                      if (exId.startsWith("std:")) {
-                        const realStdId = exId.replace("std:", "")
-                        const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
-                        if (stdEx) {
-                          setSelectedStandardExam(stdEx)
-                          toast.loading("Đang chuẩn bị đề thi...", { id: "sync-exam" })
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-xs font-black text-indigo-900 flex items-center gap-1.5">
+                      <span>🔗 Dán Liên Kết (Link) Bài Tập / Tài Liệu *</span>
+                    </label>
+                    <span className="text-[10px] font-bold text-indigo-600 bg-indigo-100/80 px-2 py-0.5 rounded-full">
+                      Google Drive, Docs, Form, Azota, PDF...
+                    </span>
+                  </div>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      value={customLinkUrl}
+                      onChange={(e) => {
+                        const val = e.target.value
+                        setCustomLinkUrl(val)
+                        if (!customLinkTitle && val) {
                           try {
-                            const dbId = await ensureStandardExamInDatabase(stdEx, selectedParts)
-                            toast.success(`Đã chọn: ${stdEx.title}`, { id: "sync-exam" })
-                            await loadExams()
-                            const autoTime = stdEx.duration || 50
-                            setForm(prev => ({
-                              ...prev,
-                              exam_id: dbId,
-                              time_limit: autoTime,
-                              settings: {
-                                ...prev.settings,
-                                category: prev.settings?.category || "homework",
-                                antiCheat: true,
-                                selected_parts: selectedParts
-                              }
-                            }))
-                          } catch (err: any) {
-                            toast.error("Lỗi khi nạp đề: " + (err?.message || err), { id: "sync-exam" })
+                            const u = new URL(val)
+                            setCustomLinkTitle(`Bài tập qua liên kết: ${u.hostname}`)
+                          } catch {
+                            setCustomLinkTitle('Phiếu bài tập rèn luyện')
                           }
                         }
-                        return
-                      } else {
-                        setSelectedStandardExam(null)
-                      }
-
-                      const selectedEx = exams.find(ex => ex.id === exId)
-                      const autoCat = selectedEx ? getExamCategory({ exams: selectedEx, settings: {} }) : "homework"
-                      setForm(prev => ({
-                        ...prev, 
-                        exam_id: exId,
-                        time_limit: selectedEx?.data?.duration || prev.time_limit || 45,
-                        settings: {
-                          ...prev.settings,
-                          category: prev.settings?.category || autoCat,
-                          antiCheat: true
-                        }
-                      }))
-                    }}
-                    className="input text-xs font-bold text-teal-900 bg-white border-teal-300"
-                    disabled={!modalGrade}
-                  >
-                    <option value="">{modalGrade ? "-- Bấm chọn đề thi --" : "-- Vui lòng chọn khối lớp trước --"}</option>
-                    {selectedChapterFilter !== "custom" && displayedExamsInDropdown.map(ex => (
-                      <option key={ex.id} value={ex.val}>
-                        {ex.shortTitle}
-                      </option>
-                    ))}
-                    {(selectedChapterFilter === "all" || selectedChapterFilter === "custom") && filteredExams.length > 0 && (
-                      <optgroup label="📁 ĐỀ THẦY TỰ TẢI LÊN">
-                        {filteredExams.map(ex => (
-                          <option key={ex.id} value={ex.id}>📄 {ex.title}</option>
-                        ))}
-                      </optgroup>
+                      }}
+                      placeholder="Dán link tại đây: https://docs.google.com/... hoặc link PDF, web bài tập..."
+                      className="input text-xs font-bold bg-white text-indigo-950 border-indigo-300 w-full pr-16"
+                    />
+                    {customLinkUrl && (
+                      <button
+                        type="button"
+                        onClick={() => setCustomLinkUrl('')}
+                        className="absolute right-2.5 top-1/2 -translate-y-1/2 px-2 py-0.5 bg-slate-200 hover:bg-slate-300 rounded-lg text-slate-700 text-[10px] font-bold cursor-pointer"
+                      >
+                        Xóa link
+                      </button>
                     )}
-                  </select>
+                  </div>
+                  <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1">
+                    <span>💡</span>
+                    <span>Thầy có thể dán link Google Form, file PDF Drive chia sẻ công khai, bài tập Azota hoặc link tài liệu bất kỳ.</span>
+                  </p>
                 </div>
-              </div>
 
-              {/* Thông tin đề đã chọn */}
-              {form.exam_id && (
-                <div className="text-[11px] font-bold text-teal-900 bg-teal-100/70 p-2.5 rounded-xl border border-teal-200 flex items-center justify-between gap-2">
-                  <span className="truncate">
-                    ✅ Đã chọn đề: <strong>{exams.find(e => e.id === form.exam_id)?.title || standardExamsForGrade.find(e => `std:${e.id}` === form.exam_id || e.id === form.exam_id)?.title || "Đề thi chuẩn"}</strong>
-                  </span>
-                  <span className="text-slate-600 font-mono shrink-0">Thời gian: {form.time_limit} phút</span>
+                <div>
+                  <label className="text-xs font-black text-indigo-900 block mb-1">
+                    📝 Tiêu Đề Bài Tập / Tên Phòng Thi *
+                  </label>
+                  <input
+                    type="text"
+                    value={customLinkTitle}
+                    onChange={(e) => setCustomLinkTitle(e.target.value)}
+                    placeholder="Ví dụ: Phiếu Bài Tập Chuyên Đề Ester - Buổi 2"
+                    className="input text-xs font-bold bg-white text-slate-900 border-indigo-300 w-full"
+                  />
                 </div>
-              )}
-            </div>
+
+                {customLinkUrl && (
+                  <div className="p-2.5 rounded-xl bg-white border border-indigo-200 flex items-center justify-between gap-2 text-xs font-bold text-indigo-900">
+                    <div className="truncate flex items-center gap-1.5">
+                      <span>✅ Đã nhận diện link:</span>
+                      <span className="font-mono text-slate-600 truncate max-w-xs">{customLinkUrl}</span>
+                    </div>
+                    <a
+                      href={customLinkUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-2.5 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-[11px] rounded-lg shrink-0 flex items-center gap-1"
+                    >
+                      <span>Mở thử link</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           {/* 🎯 ĐỐI TƯỢNG GIAO BÀI (HỖ TRỢ CHỌN NHIỀU LỚP) */}
