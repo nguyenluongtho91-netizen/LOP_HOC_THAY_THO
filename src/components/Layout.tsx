@@ -19,6 +19,8 @@ export default function Layout() {
   const location  = useLocation()
   const navigate  = useNavigate()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  // Desktop sidebar collapsed state (Mặc định THU GỌN HẲN để giao diện toàn màn hình cực rộng)
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(false)
 
   // Accordion state for 4 Main Hubs in Sidebar
   const [expandedPillars, setExpandedPillars] = useState<Record<string, boolean>>({
@@ -265,40 +267,52 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      {/* ── SIDEBAR CHÍNH (DESKTOP) ── */}
-      <aside className="w-72 bg-red-700 text-white flex flex-col shadow-xl z-20 hidden md:flex shrink-0 h-screen sticky top-0">
-        {/* Header Logo */}
-        <div className="h-16 flex items-center gap-3 px-5 border-b border-red-600/40 bg-red-800/30 shrink-0">
-          <GraduationCap className="w-8 h-8 text-red-100" />
-          <div>
-            <h1 className="font-bold text-sm leading-tight uppercase tracking-wider">LỚP HỌC THẦY THỌ</h1>
-            <p className="text-[9px] text-red-200 uppercase tracking-widest mt-0.5">4 Trụ Cột Điều Hành</p>
-          </div>
-        </div>
-
-        {/* Nội dung Sidebar desktop */}
-        {renderSidebarContent()}
-
-        {/* User Footer */}
-        <div className="p-3 border-t border-red-600/40 bg-red-800/30 shrink-0">
-          <div className="flex items-center gap-2.5 px-2 mb-2.5">
-            <div className="w-9 h-9 rounded-full bg-red-600 border-2 border-red-400 flex items-center justify-center font-bold text-sm">
-              {displayChar}
+            {/* ── SIDEBAR CHÍNH (DESKTOP) ── */}
+      {desktopSidebarOpen && (
+        <aside className="w-72 bg-red-700 text-white flex flex-col shadow-2xl z-40 hidden md:flex shrink-0 h-screen sticky top-0 transition-all duration-300 animate-in slide-in-from-left">
+          {/* Header Logo & Close button */}
+          <div className="h-16 flex items-center justify-between px-4 border-b border-red-600/40 bg-red-800/30 shrink-0">
+            <div className="flex items-center gap-2.5">
+              <GraduationCap className="w-7 h-7 text-red-100" />
+              <div>
+                <h1 className="font-bold text-xs uppercase tracking-wider">LỚP HỌC THẦY THỌ</h1>
+                <p className="text-[8px] text-red-200 uppercase">4 Trụ Cột Điều Hành</p>
+              </div>
             </div>
-            <div className="flex-1 overflow-hidden">
-              <p className="text-xs font-bold truncate text-white">{displayName}</p>
-              <p className="text-[9px] text-red-200 uppercase tracking-widest">{user?.role || 'TEACHER'}</p>
-            </div>
+            <button
+              type="button"
+              onClick={() => setDesktopSidebarOpen(false)}
+              className="p-1.5 rounded-xl bg-red-800/60 hover:bg-red-600 text-white transition-all cursor-pointer shadow-xs"
+              title="Thu gọn menu vào cạnh trái"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
-          <button
-            onClick={handleSignOut}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-red-100 bg-red-800/50 hover:bg-red-500 hover:text-white transition-all cursor-pointer"
-          >
-            <LogOut className="w-3.5 h-3.5" />
-            Đăng xuất
-          </button>
-        </div>
-      </aside>
+
+          {/* Nội dung Sidebar desktop */}
+          {renderSidebarContent()}
+
+          {/* User Footer */}
+          <div className="p-3 border-t border-red-600/40 bg-red-800/30 shrink-0">
+            <div className="flex items-center gap-2.5 px-2 mb-2.5">
+              <div className="w-9 h-9 rounded-full bg-red-600 border-2 border-red-400 flex items-center justify-center font-bold text-sm">
+                {displayChar}
+              </div>
+              <div className="flex-1 overflow-hidden">
+                <p className="text-xs font-bold truncate text-white">{displayName}</p>
+                <p className="text-[9px] text-red-200 uppercase tracking-widest">{user?.role || 'TEACHER'}</p>
+              </div>
+            </div>
+            <button
+              onClick={handleSignOut}
+              className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-red-100 bg-red-800/50 hover:bg-red-500 hover:text-white transition-all cursor-pointer"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              Đăng xuất
+            </button>
+          </div>
+        </aside>
+      )}
 
       {/* ── SIDEBAR MOBILE DRAWER ── */}
       {mobileMenuOpen && (
@@ -375,6 +389,24 @@ export default function Layout() {
             </Link>
           </div>
         </header>
+
+                {/* Nút bấm Mở Menu cho Desktop khi thanh đỏ đang thu gọn */}
+        {!desktopSidebarOpen && (
+          <div className="hidden md:flex items-center gap-3 px-6 pt-4 pb-0">
+            <button
+              type="button"
+              onClick={() => setDesktopSidebarOpen(true)}
+              className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-red-700 hover:bg-red-800 text-white font-bold text-xs shadow-md shadow-red-700/20 hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+              title="Bấm để mở thanh menu 4 Trụ Cột bên trái"
+            >
+              <Menu className="w-4 h-4 text-white group-hover:rotate-90 transition-transform duration-300" />
+              <span>Mở Menu Hệ Thống (4 Trụ Cột)</span>
+              <span className="text-[9px] bg-red-900/60 text-red-100 px-1.5 py-0.5 rounded-md border border-red-500/30">
+                Bấm ra
+              </span>
+            </button>
+          </div>
+        )}
 
         <div className="p-3 sm:p-4 md:p-6 lg:p-8 flex-1">
           <Outlet />
