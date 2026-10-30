@@ -48,6 +48,7 @@ export default function ExamRoomsMgmt() {
   const [examSourceMode, setExamSourceMode] = useState<'library' | 'link'>('library')
   const [customLinkUrl, setCustomLinkUrl] = useState<string>('')
   const [customLinkTitle, setCustomLinkTitle] = useState<string>('')
+  const [batchSelectMode, setBatchSelectMode] = useState<'single' | 'all'>('single')
 
   const handlePartsChanged = async (parts: number[]) => {
     let autoTime = 50
@@ -167,7 +168,7 @@ export default function ExamRoomsMgmt() {
 
   const handleSave = async () => {
     if (!modalGrade) return toast.error('Vui lòng chọn khối lớp (hoặc Tất cả các khối)')
-    if (examSourceMode === 'library' && !form.exam_id) {
+    if (examSourceMode === 'library' && batchSelectMode === 'single' && !form.exam_id) {
       return toast.error('Vui lòng chọn đề thi từ thư viện')
     }
     if (examSourceMode === 'link' && !customLinkUrl.trim()) {
@@ -224,19 +225,57 @@ export default function ExamRoomsMgmt() {
         })
         toast.success('Cập nhật phòng thi thành công!')
       } else {
-        const payload = {
-          ...form,
-          exam_id: finalExamId,
-          class_id: primaryClassId,
-          settings: {
-            ...updatedSettings,
-            exam_source_type: examSourceMode,
-            assignment_link: examSourceMode === 'link' ? customLinkUrl.trim() : form.settings?.assignment_link,
-            link_title: examSourceMode === 'link' ? (customLinkTitle.trim() || customLinkUrl.trim()) : form.settings?.link_title,
+        if (examSourceMode === 'library' && batchSelectMode === 'all' && displayedExamsInDropdown.length > 0) {
+          const targetList = displayedExamsInDropdown;
+          let count = 0;
+          for (let i = 0; i < targetList.length; i++) {
+            const item = targetList[i];
+            let exId = item.val;
+            let duration = 50;
+
+            if (item.val.startsWith('std:')) {
+              const realStdId = item.val.replace('std:', '');
+              const stdEx = standardExamsForGrade.find((x: any) => x.id === realStdId);
+              if (stdEx) {
+                exId = await ensureStandardExamInDatabase(stdEx, selectedParts);
+                duration = stdEx.duration || 50;
+              }
+            } else {
+              const fEx = exams.find(e => e.id === item.val);
+              if (fEx) duration = fEx.data?.duration || 45;
+            }
+
+            const batchPayload = {
+              ...form,
+              exam_id: exId,
+              time_limit: duration,
+              class_id: primaryClassId,
+              settings: {
+                ...updatedSettings,
+                exam_source_type: 'library',
+                selected_parts: selectedParts
+              }
+            };
+            await createRoom(batchPayload);
+            count++;
+            toast.loading(`Đang mở phòng đề ${i + 1}/${targetList.length}...`, { id: 'batch-create' });
           }
+          toast.success(`🎉 Đã mở thành công trọn bộ ${count} đề thi cho học sinh!`, { id: 'batch-create' });
+        } else {
+          const payload = {
+            ...form,
+            exam_id: finalExamId,
+            class_id: primaryClassId,
+            settings: {
+              ...updatedSettings,
+              exam_source_type: examSourceMode,
+              assignment_link: examSourceMode === 'link' ? customLinkUrl.trim() : form.settings?.assignment_link,
+              link_title: examSourceMode === 'link' ? (customLinkTitle.trim() || customLinkUrl.trim()) : form.settings?.link_title,
+            }
+          }
+          await createRoom(payload)
+          toast.success('Mở phòng thi thành công!')
         }
-        await createRoom(payload)
-        toast.success('Mở phòng thi thành công!')
       }
       setModalOpen(false)
       setEditingRoomId(null)
@@ -244,6 +283,7 @@ export default function ExamRoomsMgmt() {
       setCustomLinkUrl('')
       setCustomLinkTitle('')
       setExamSourceMode('library')
+      setBatchSelectMode('single')
       setForm({ 
         exam_id: '', class_id: '', time_limit: 45, status: 'active', 
         settings: {
@@ -1109,20 +1149,64 @@ const isFirstRender = useRef(true)
                     </select>
                   </div>
 
-                  {/* Bước 2: Chọn Đề thi cụ thể trong nhóm */}
+                  {/* Bước 2: Chọn Đề thi cụ thể trong nhóm (Hỗ trợ 2 cách: Chọn cả nhóm đề hoặc Chọn 1 đề lẻ) */}
                   <div>
-                    <label className="text-[11px] font-bold text-slate-700 block mb-1">
-                      📝 Bước 2: Chọn đề thi cụ thể
-                    </label>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="text-[11px] font-bold text-slate-700">
+                        📝 Bước 2: Chọn đề thi
+                      </label>
+                      {displayedExamsInDropdown.length > 1 && (
+                        <div className="flex items-center gap-1">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setBatchSelectMode('all')
+                              setForm(prev => ({ ...prev, exam_id: '__ALL_BATCH__' }))
+                            }}
+                            className={`px-2 py-0.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
+                              batchSelectMode === 'all'
+                                ? 'bg-amber-600 text-white shadow-xs'
+                                : 'bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100'
+                            }`}
+                            title="Chọn cả bộ đề trong nhóm này để giao loạt"
+                          >
+                            🌟 Chọn cả ${displayedExamsInDropdown.length} đề
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setBatchSelectMode('single')
+                              setForm(prev => ({ ...prev, exam_id: '' }))
+                            }}
+                            className={`px-2 py-0.5 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
+                              batchSelectMode === 'single'
+                                ? 'bg-teal-600 text-white shadow-xs'
+                                : 'bg-slate-200/80 text-slate-700 hover:bg-slate-300'
+                            }`}
+                            title="Chọn 1 đề lẻ cụ thể"
+                          >
+                            Chọn 1 đề
+                          </button>
+                        </div>
+                      )}
+                    </div>
                     <select
-                      value={form.exam_id}
+                      value={batchSelectMode === 'all' ? '__ALL_BATCH__' : form.exam_id}
                       onChange={async (e) => {
                         const exId = e.target.value
                         if (!exId) {
+                          setBatchSelectMode('single')
                           setForm(prev => ({ ...prev, exam_id: "" }))
                           return
                         }
 
+                        if (exId === '__ALL_BATCH__') {
+                          setBatchSelectMode('all')
+                          setForm(prev => ({ ...prev, exam_id: '__ALL_BATCH__' }))
+                          return
+                        }
+
+                        setBatchSelectMode('single')
                         if (exId.startsWith("std:")) {
                           const realStdId = exId.replace("std:", "")
                           const stdEx = standardExamsForGrade.find(x => x.id === realStdId)
@@ -1171,6 +1255,11 @@ const isFirstRender = useRef(true)
                       disabled={!modalGrade}
                     >
                       <option value="">{modalGrade ? "-- Bấm chọn đề thi --" : "-- Vui lòng chọn khối lớp trước --"}</option>
+                      {displayedExamsInDropdown.length > 1 && (
+                        <option value="__ALL_BATCH__" className="font-black text-amber-800 bg-amber-50">
+                          🌟 CÁCH 1: CHỌN CẢ ${displayedExamsInDropdown.length} ĐỀ TRONG NHÓM NÀY (GIAO LOẠT)
+                        </option>
+                      )}
                       {selectedChapterFilter !== "custom" && displayedExamsInDropdown.map(ex => (
                         <option key={ex.id} value={ex.val}>
                           {ex.shortTitle}
@@ -1187,15 +1276,27 @@ const isFirstRender = useRef(true)
                   </div>
                 </div>
 
-                {/* Thông tin đề đã chọn */}
-                {form.exam_id && (
+                {/* Thông tin đề đã chọn: Hiển thị rõ chế độ Cả Nhóm hoặc 1 Đề */}
+                {batchSelectMode === 'all' && displayedExamsInDropdown.length > 0 ? (
+                  <div className="text-[11px] font-bold text-amber-900 bg-amber-100/90 p-2.5 rounded-xl border border-amber-300 flex items-center justify-between gap-2 animate-in fade-in">
+                    <div className="flex items-center gap-1.5 truncate">
+                      <span className="text-base">🌟</span>
+                      <span className="truncate">
+                        Đang chọn: <strong>Trọn bộ ${displayedExamsInDropdown.length} đề</strong> trong nhóm <em>${selectedChapterFilter === 'all' ? 'Toàn bộ ngân hàng' : selectedChapterFilter}</em>
+                      </span>
+                    </div>
+                    <span className="text-amber-800 text-[10px] bg-white/80 px-2 py-0.5 rounded-full border border-amber-300 shrink-0 font-mono">
+                      Mở ${displayedExamsInDropdown.length} đề cùng lúc
+                    </span>
+                  </div>
+                ) : form.exam_id && form.exam_id !== '__ALL_BATCH__' ? (
                   <div className="text-[11px] font-bold text-teal-900 bg-teal-100/70 p-2.5 rounded-xl border border-teal-200 flex items-center justify-between gap-2">
                     <span className="truncate">
-                      ✅ Đã chọn đề: <strong>{exams.find(e => e.id === form.exam_id)?.title || standardExamsForGrade.find(e => `std:${e.id}` === form.exam_id || e.id === form.exam_id)?.title || "Đề thi chuẩn"}</strong>
+                      ✅ Đã chọn 1 đề: <strong>{exams.find(e => e.id === form.exam_id)?.title || standardExamsForGrade.find(e => `std:${e.id}` === form.exam_id || e.id === form.exam_id)?.title || "Đề thi chuẩn"}</strong>
                     </span>
                     <span className="text-slate-600 font-mono shrink-0">Thời gian: {form.time_limit} phút</span>
                   </div>
-                )}
+                ) : null}
               </div>
             ) : (
               /* CHẾ ĐỘ 2: DÁN LINK BÀI TẬP / TÀI LIỆU */
@@ -1918,7 +2019,7 @@ const isFirstRender = useRef(true)
           <div className="flex justify-end gap-3 mt-8 pt-5 border-t border-gray-100">
             <button onClick={() => setModalOpen(false)} className="btn-outline px-8 py-2.5">Đóng</button>
             <button onClick={handleSave} disabled={saving} className="btn-teal px-10 py-2.5 font-bold shadow-lg shadow-teal-500/30">
-              {saving ? (editingRoomId ? 'Đang cập nhật...' : 'Đang khởi tạo...') : (editingRoomId ? 'Lưu cài đặt' : 'Mở phòng thi')}
+              {saving ? (editingRoomId ? 'Đang cập nhật...' : 'Đang khởi tạo...') : (batchSelectMode === 'all' && displayedExamsInDropdown.length > 0) ? `🚀 Mở Trọn Bộ Cả ${displayedExamsInDropdown.length} Đề Thi` : (editingRoomId ? 'Lưu cài đặt' : 'Mở phòng thi')}
             </button>
           </div>
         </div>
