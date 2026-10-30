@@ -484,115 +484,145 @@ export default function KhoaHocLayGocHoaPage() {
           </div>
         )}
 
-        {/* DANH SÁCH 20 CÂU HỎI TRẮC NGHIỆM */}
-        <div className="space-y-4">
+                {/* DANH SÁCH CÂU HỎI TRẮC NGHIỆM (TRÌNH BÀY GIỐNG 100% ẢNH MẪU CỦA THẦY THỌ) */}
+        <div className="space-y-6 sm:space-y-8 divide-y divide-emerald-100/70">
           {activeExam.questions.map((q, idx) => {
             const selectedOpt = answers[q.id];
             const isAnswered = !!selectedOpt;
             const isCorrect = isSubmitted && selectedOpt === q.correctAnswer;
             const isWrong = isSubmitted && isAnswered && selectedOpt !== q.correctAnswer;
 
+            const letters = ['A', 'B', 'C', 'D'];
+            const selectedIndex = q.options.indexOf(selectedOpt);
+            const selectedLetter = selectedIndex !== -1 ? letters[selectedIndex] : null;
+
+            const correctIndex = q.options.indexOf(q.correctAnswer);
+            const correctLetter = correctIndex !== -1 ? letters[correctIndex] : null;
+
+            // Clean question text (loại bỏ tiền tố 'Câu 1:')
+            const questionBody = q.question.replace(/^Câu \d+:\s*/i, '');
+
             return (
               <div
                 key={q.id}
-                className={`p-4 sm:p-6 rounded-3xl border transition-all duration-300 bg-white ${
-                  isSubmitted
-                    ? isCorrect
-                      ? 'border-emerald-300 shadow-sm bg-emerald-50/20'
-                      : 'border-rose-300 shadow-sm bg-rose-50/20'
-                    : isAnswered
-                    ? 'border-blue-300 shadow-sm'
-                    : 'border-slate-200 hover:border-slate-300'
-                }`}
+                className="pt-6 first:pt-0 transition-all duration-300"
               >
-                {/* Tiêu đề câu hỏi */}
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-xs font-black px-2.5 py-1 rounded-xl ${
+                {/* Hàng tiêu đề câu hỏi: Icon tròn bên trái + Tiêu đề CÂU X. */}
+                <div className="flex items-start gap-3 sm:gap-3.5">
+                  {/* Icon trạng thái tròn bên trái */}
+                  <div
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm text-white shrink-0 mt-0.5 shadow-2xs ${
                       isSubmitted
                         ? isCorrect
-                          ? 'bg-emerald-600 text-white'
-                          : 'bg-rose-600 text-white'
+                          ? 'bg-emerald-500'
+                          : 'bg-rose-500'
                         : isAnswered
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-slate-100 text-slate-700'
-                    }`}>
-                      Câu {idx + 1}
-                    </span>
+                        ? 'bg-blue-600'
+                        : 'bg-slate-200 text-slate-700'
+                    }`}
+                  >
+                    {isSubmitted ? (isCorrect ? '✓' : '✕') : (idx + 1)}
+                  </div>
 
-                    {isSubmitted && (
-                      <span className={`text-xs font-black flex items-center gap-1 ${
-                        isCorrect ? 'text-emerald-700' : 'text-rose-600'
-                      }`}>
-                        {isCorrect ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
-                        <span>{isCorrect ? 'Chính xác (+0.5đ)' : 'Chưa đúng (0đ)'}</span>
+                  {/* Nội dung câu hỏi & Các lựa chọn */}
+                  <div className="flex-1 min-w-0">
+                    <div className="text-slate-800 text-[15px] sm:text-base leading-relaxed">
+                      <strong className="font-extrabold text-slate-900 mr-1.5">
+                        CÂU {idx + 1}.
+                      </strong>
+                      <span className="font-normal text-slate-800">
+                        {questionBody}
                       </span>
+                    </div>
+
+                    {/* Biểu thức công thức hóa học ở giữa (thanh mảnh, căn giữa như trong ảnh mẫu) */}
+                    {q.mathExpression && (
+                      <div className="my-3 text-center text-lg sm:text-xl font-serif text-slate-700 italic tracking-wider select-none">
+                        <span dangerouslySetInnerHTML={{ __html: formatChemicalFormula(q.mathExpression) }} />
+                      </div>
+                    )}
+
+                    {/* 4 Lựa chọn lưới 2 cột (Nền trắng bo góc, ô đúng viền xanh lá dày + tick ✔ bên phải) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 my-3 sm:my-4">
+                      {q.options.map((opt, oIdx) => {
+                        const letter = letters[oIdx] || 'A';
+                        const isOptionSelected = selectedOpt === opt;
+                        const isOptionCorrect = isSubmitted && opt === q.correctAnswer;
+                        const isOptionWrongSelected = isSubmitted && isOptionSelected && opt !== q.correctAnswer;
+
+                        let cardStyle = 'bg-white border-slate-200 hover:border-slate-300 text-slate-800';
+                        let badgeStyle = 'bg-slate-100 text-slate-600';
+
+                        if (!isSubmitted && isOptionSelected) {
+                          cardStyle = 'bg-blue-50/20 border-2 border-blue-500 text-blue-950 shadow-2xs';
+                          badgeStyle = 'bg-blue-600 text-white';
+                        } else if (isSubmitted) {
+                          if (isOptionCorrect) {
+                            cardStyle = 'bg-white border-2 border-emerald-500 text-slate-900 font-semibold shadow-2xs';
+                            badgeStyle = 'bg-emerald-500 text-white';
+                          } else if (isOptionWrongSelected) {
+                            cardStyle = 'bg-white border-2 border-rose-400 text-slate-900 font-semibold shadow-2xs';
+                            badgeStyle = 'bg-rose-500 text-white';
+                          } else {
+                            cardStyle = 'bg-white border-slate-200 text-slate-600 opacity-80';
+                            badgeStyle = 'bg-slate-100 text-slate-500';
+                          }
+                        }
+
+                        return (
+                          <button
+                            key={oIdx}
+                            disabled={isSubmitted}
+                            onClick={() => handleSelectOption(q.id, opt)}
+                            className={`px-4 py-3 sm:py-3.5 rounded-2xl border text-left text-sm sm:text-base font-medium transition-all flex items-center gap-3 cursor-pointer ${cardStyle}`}
+                          >
+                            <span className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm shrink-0 ${badgeStyle}`}>
+                              {letter}
+                            </span>
+                            <span className="flex-1 leading-snug">{opt}</span>
+                            {isSubmitted && isOptionCorrect && (
+                              <span className="text-emerald-500 font-bold text-lg pr-1">✔</span>
+                            )}
+                            {isSubmitted && isOptionWrongSelected && (
+                              <span className="text-rose-500 font-bold text-lg pr-1">✖</span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Dòng trạng thái Bạn chọn: X | Chính xác / Chưa chính xác (nằm ngay dưới đáp án) */}
+                    {isSubmitted && (
+                      <div className="mt-3.5 flex flex-wrap items-center gap-2">
+                        <span className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-semibold ${selectedOpt ? 'bg-blue-100/90 text-blue-700' : 'bg-slate-100 text-slate-500'}`}>
+                          Bạn chọn: {selectedLetter || '(Chưa chọn)'}
+                        </span>
+                        {selectedOpt && (
+                          <span className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-1.5 ${isCorrect ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
+                            {isCorrect ? '✅ Chính xác!' : '❌ Chưa chính xác!'}
+                          </span>
+                        )}
+                        {!isCorrect && selectedOpt && (
+                          <span className="px-3.5 py-1.5 bg-teal-100 text-teal-800 rounded-lg text-xs sm:text-sm font-bold">
+                            Đáp án đúng: {correctLetter}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Khối Lời giải & Đáp án chi tiết (nền xanh nhạt, chữ xanh đậm, icon bóng đèn) */}
+                    {isSubmitted && q.explanation && (
+                      <div className="mt-3.5 p-4 sm:p-5 bg-[#eef6ff] border border-blue-200/90 rounded-2xl space-y-1.5 animate-fade-in">
+                        <div className="text-blue-700 font-bold text-sm sm:text-[15px] flex items-center gap-1.5">
+                          <span>💡 Lời giải & Đáp án chi tiết:</span>
+                        </div>
+                        <div className="text-sm sm:text-[15px] text-slate-800 leading-relaxed font-normal">
+                          {q.explanation.startsWith('👉') ? q.explanation : `👉 ${q.explanation}`}
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
-
-                <div className="text-sm sm:text-base font-bold text-slate-900 leading-relaxed mb-3">
-                  {q.question}
-                </div>
-
-                {/* Biểu thức công thức hóa học nếu có */}
-                {q.mathExpression && (
-                  <div className="my-3 py-3 px-5 rounded-2xl bg-gradient-to-r from-blue-50/90 via-amber-50/70 to-indigo-50/90 border-2 border-blue-200/90 shadow-xs flex items-center justify-center">
-                    <span 
-                      className="font-black text-2xl sm:text-3xl font-mono text-blue-950 tracking-wider"
-                      dangerouslySetInnerHTML={{ __html: formatChemicalFormula(q.mathExpression) }}
-                    />
-                  </div>
-                )}
-
-                {/* 4 Lựa chọn A, B, C, D */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                  {q.options.map((opt, oIdx) => {
-                    const letters = ['A', 'B', 'C', 'D'];
-                    const letter = letters[oIdx] || 'A';
-                    const isOptionSelected = selectedOpt === opt;
-                    const isOptionCorrect = isSubmitted && opt === q.correctAnswer;
-                    const isOptionWrongSelected = isSubmitted && isOptionSelected && opt !== q.correctAnswer;
-
-                    return (
-                      <button
-                        key={oIdx}
-                        disabled={isSubmitted}
-                        onClick={() => handleSelectOption(q.id, opt)}
-                        className={`p-3.5 rounded-2xl border text-left text-xs sm:text-sm font-semibold transition-all flex items-center gap-3 cursor-pointer ${
-                          isOptionCorrect
-                            ? 'bg-emerald-500 text-white border-emerald-600 font-black shadow-xs ring-2 ring-emerald-300'
-                            : isOptionWrongSelected
-                            ? 'bg-rose-500 text-white border-rose-600 font-black shadow-xs'
-                            : isOptionSelected
-                            ? 'bg-gradient-to-r from-blue-700 to-indigo-700 text-white border-blue-800 shadow-xs ring-2 ring-amber-300'
-                            : 'bg-slate-50/80 hover:bg-slate-100 text-slate-800 border-slate-200'
-                        }`}
-                      >
-                        <span className={`w-7 h-7 rounded-xl flex items-center justify-center font-black text-xs shrink-0 ${
-                          isOptionCorrect || isOptionWrongSelected || isOptionSelected
-                            ? 'bg-white/20 text-white'
-                            : 'bg-white text-slate-700 border border-slate-200 shadow-2xs'
-                        }`}>
-                          {letter}
-                        </span>
-                        <span className="flex-1 leading-snug">{opt}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* LỜI GIẢI THÍCH CHI TIẾT SƯ PHẠM (HIỆN KHI ĐÃ NỘP BÀI) */}
-                {isSubmitted && q.explanation && (
-                  <div className="mt-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed space-y-1 animate-fade-in">
-                    <div className="font-black text-slate-900 flex items-center gap-1.5 text-xs text-teal-800">
-                      <span>💡 Lời giải chi tiết của Thầy Thọ:</span>
-                    </div>
-                    <p className="font-medium text-slate-600">
-                      {q.explanation}
-                    </p>
-                  </div>
-                )}
               </div>
             );
           })}

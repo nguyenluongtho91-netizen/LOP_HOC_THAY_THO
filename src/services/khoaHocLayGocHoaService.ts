@@ -879,280 +879,280 @@ export const KHOA_HOC_HOA_EXAMS: KhoaHocHoaExam[] = [
       {
         id: 1,
         question: 'Câu 1: Nguyên tử khối (amu) chuẩn của nguyên tố Hydrogen / Hiđro (H) là bao nhiêu?',
-        mathExpression: '\\mathbf{H = 1}',
+        mathExpression: 'M_{H} = ?',
         options: ['3 amu', '6 amu', '1 amu', '2 amu'],
         correctAnswer: '1 amu',
         explanation: '👉 Nguyên tử khối chuẩn của H (Hydrogen / Hiđro) là 1 amu. Nguyên tố nhẹ nhất trong bảng tuần hoàn.'
       },      {
         id: 2,
         question: 'Câu 2: Nguyên tử khối (amu) chuẩn của nguyên tố Helium / Heli (He) là bao nhiêu?',
-        mathExpression: '\\mathbf{He = 4}',
+        mathExpression: 'M_{He} = ?',
         options: ['4 amu', '8 amu', '6 amu', '9 amu'],
         correctAnswer: '4 amu',
         explanation: '👉 Nguyên tử khối chuẩn của He (Helium / Heli) là 4 amu. Khí hiếm nhẹ thứ 2, ứng dụng bơm bóng thám không, khinh khí cầu.'
       },      {
         id: 3,
         question: 'Câu 3: Nguyên tử khối (amu) chuẩn của nguyên tố Lithium / Liti (Li) là bao nhiêu?',
-        mathExpression: '\\mathbf{Li = 7}',
+        mathExpression: 'M_{Li} = ?',
         options: ['9 amu', '3 amu', '14 amu', '7 amu'],
         correctAnswer: '7 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Li (Lithium / Liti) là 7 amu. Kim loại kiềm nhẹ nhất, nhóm IA, chế tạo pin Li-ion.'
       },      {
         id: 4,
         question: 'Câu 4: Nguyên tử khối (amu) chuẩn của nguyên tố Beryllium / Beri (Be) là bao nhiêu?',
-        mathExpression: '\\mathbf{Be = 9}',
+        mathExpression: 'M_{Be} = ?',
         options: ['18 amu', '5 amu', '9 amu', '11 amu'],
         correctAnswer: '9 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Be (Beryllium / Beri) là 9 amu. Kim loại kiềm thổ nhóm IIA, không phản ứng với nước ở nhiệt độ thường.'
       },      {
         id: 5,
         question: 'Câu 5: Nguyên tử khối (amu) chuẩn của nguyên tố Boron / Bo (B) là bao nhiêu?',
-        mathExpression: '\\mathbf{B = 11}',
+        mathExpression: 'M_{B} = ?',
         options: ['7 amu', '11 amu', '13 amu', '22 amu'],
         correctAnswer: '11 amu',
         explanation: '👉 Nguyên tử khối chuẩn của B (Boron / Bo) là 11 amu. Phi kim nhóm IIIA, hợp chất quen thuộc: H3BO3, Na2B4O7 (hàn the).'
       },      {
         id: 6,
         question: 'Câu 6: Nguyên tử khối (amu) chuẩn của nguyên tố Carbon / Cacbon (C) là bao nhiêu?',
-        mathExpression: '\\mathbf{C = 12}',
+        mathExpression: 'M_{C} = ?',
         options: ['12 amu', '14 amu', '24 amu', '8 amu'],
         correctAnswer: '12 amu',
         explanation: '👉 Nguyên tử khối chuẩn của C (Carbon / Cacbon) là 12 amu. Cốt lõi của Hóa hữu cơ; dạng thù hình: kim cương, than chì, fullerene.'
       },      {
         id: 7,
         question: 'Câu 7: Nguyên tử khối (amu) chuẩn của nguyên tố Nitrogen / Nitơ (N) là bao nhiêu?',
-        mathExpression: '\\mathbf{N = 14}',
+        mathExpression: 'M_{N} = ?',
         options: ['16 amu', '28 amu', '10 amu', '14 amu'],
         correctAnswer: '14 amu',
         explanation: '👉 Nguyên tử khối chuẩn của N (Nitrogen / Nitơ) là 14 amu. Khí không màu, chiếm ~78% thể tích không khí.'
       },      {
         id: 8,
         question: 'Câu 8: Nguyên tử khối (amu) chuẩn của nguyên tố Oxygen / Oxi (O) là bao nhiêu?',
-        mathExpression: '\\mathbf{O = 16}',
+        mathExpression: 'M_{O} = ?',
         options: ['16 amu', '32 amu', '12 amu', '18 amu'],
         correctAnswer: '16 amu',
         explanation: '👉 Nguyên tử khối chuẩn của O (Oxygen / Oxi) là 16 amu. Nguyên tố phổ biến nhất vỏ Trái Đất, duy trì sự sống và sự cháy.'
       },      {
         id: 9,
         question: 'Câu 9: Nguyên tử khối (amu) chuẩn của nguyên tố Fluorine / Flo (F) là bao nhiêu?',
-        mathExpression: '\\mathbf{F = 19}',
+        mathExpression: 'M_{F} = ?',
         options: ['21 amu', '19 amu', '15 amu', '38 amu'],
         correctAnswer: '19 amu',
         explanation: '👉 Nguyên tử khối chuẩn của F (Fluorine / Flo) là 19 amu. Phi kim có độ âm điện lớn nhất (3.98), tính oxi hóa mạnh nhất.'
       },      {
         id: 10,
         question: 'Câu 10: Nguyên tử khối (amu) chuẩn của nguyên tố Neon (Ne) là bao nhiêu?',
-        mathExpression: '\\mathbf{Ne = 20}',
+        mathExpression: 'M_{Ne} = ?',
         options: ['40 amu', '22 amu', '20 amu', '16 amu'],
         correctAnswer: '20 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Ne (Neon) là 20 amu. Khí hiếm chu kì 2, phát ánh sáng đỏ cam rực rỡ trong đèn quảng cáo.'
       },      {
         id: 11,
         question: 'Câu 11: Nguyên tử khối (amu) chuẩn của nguyên tố Sodium / Natri (Na) là bao nhiêu?',
-        mathExpression: '\\mathbf{Na = 23}',
+        mathExpression: 'M_{Na} = ?',
         options: ['46 amu', '19 amu', '25 amu', '23 amu'],
         correctAnswer: '23 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Na (Sodium / Natri) là 23 amu. Kim loại kiềm nhóm IA, cháy cho ngọn lửa màu vàng rực đặc trưng.'
       },      {
         id: 12,
         question: 'Câu 12: Nguyên tử khối (amu) chuẩn của nguyên tố Magnesium / Magie (Mg) là bao nhiêu?',
-        mathExpression: '\\mathbf{Mg = 24}',
+        mathExpression: 'M_{Mg} = ?',
         options: ['24 amu', '20 amu', '48 amu', '26 amu'],
         correctAnswer: '24 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Mg (Magnesium / Magie) là 24 amu. Kim loại nhóm IIA, cháy trong không khí phát ánh sáng trắng chói lòa.'
       },      {
         id: 13,
         question: 'Câu 13: Nguyên tử khối (amu) chuẩn của nguyên tố Aluminium / Nhôm (Al) là bao nhiêu?',
-        mathExpression: '\\mathbf{Al = 27}',
+        mathExpression: 'M_{Al} = ?',
         options: ['29 amu', '23 amu', '27 amu', '54 amu'],
         correctAnswer: '27 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Al (Aluminium / Nhôm) là 27 amu. Kim loại phổ biến nhất vỏ Trái Đất; oxide Al2O3 và hydroxide Al(OH)3 lưỡng tính.'
       },      {
         id: 14,
         question: 'Câu 14: Nguyên tử khối (amu) chuẩn của nguyên tố Silicon / Silic (Si) là bao nhiêu?',
-        mathExpression: '\\mathbf{Si = 28}',
+        mathExpression: 'M_{Si} = ?',
         options: ['28 amu', '56 amu', '30 amu', '24 amu'],
         correctAnswer: '28 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Si (Silicon / Silic) là 28 amu. Phi kim bán dẫn then chốt trong ngành công nghiệp chip và vi mạch bán dẫn.'
       },      {
         id: 15,
         question: 'Câu 15: Nguyên tử khối (amu) chuẩn của nguyên tố Phosphorus / Photpho (P) là bao nhiêu?',
-        mathExpression: '\\mathbf{P = 31}',
+        mathExpression: 'M_{P} = ?',
         options: ['33 amu', '27 amu', '62 amu', '31 amu'],
         correctAnswer: '31 amu',
         explanation: '👉 Nguyên tử khối chuẩn của P (Phosphorus / Photpho) là 31 amu. Dạng photpho trắng độc, tự bốc cháy; photpho đỏ bền hơn.'
       },      {
         id: 16,
         question: 'Câu 16: Nguyên tử khối (amu) chuẩn của nguyên tố Sulfur / Lưu huỳnh (S) là bao nhiêu?',
-        mathExpression: '\\mathbf{S = 32}',
+        mathExpression: 'M_{S} = ?',
         options: ['64 amu', '28 amu', '32 amu', '34 amu'],
         correctAnswer: '32 amu',
         explanation: '👉 Nguyên tử khối chuẩn của S (Sulfur / Lưu huỳnh) là 32 amu. Chất rắn màu vàng, dùng sản xuất H2SO4 và lưu hóa cao su.'
       },      {
         id: 17,
         question: 'Câu 17: Nguyên tử khối (amu) chuẩn của nguyên tố Chlorine / Clo (Cl) là bao nhiêu?',
-        mathExpression: '\\mathbf{Cl = 35.5}',
+        mathExpression: 'M_{Cl} = ?',
         options: ['37 amu', '35.5 amu', '35 amu', '36 amu'],
         correctAnswer: '35.5 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Cl (Chlorine / Clo) là 35.5 amu. Khí màu vàng lục, mùi hắc độc, dùng khử trùng nước sinh hoạt.'
       },      {
         id: 18,
         question: 'Câu 18: Nguyên tử khối (amu) chuẩn của nguyên tố Argon (Ar) là bao nhiêu?',
-        mathExpression: '\\mathbf{Ar = 40}',
+        mathExpression: 'M_{Ar} = ?',
         options: ['40 amu', '42 amu', '80 amu', '36 amu'],
         correctAnswer: '40 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Ar (Argon) là 40 amu. Khí hiếm chiếm gần 1% thể tích khí quyển, làm môi trường trơ khi luyện kim, hàn.'
       },      {
         id: 19,
         question: 'Câu 19: Nguyên tử khối (amu) chuẩn của nguyên tố Potassium / Kali (K) là bao nhiêu?',
-        mathExpression: '\\mathbf{K = 39}',
+        mathExpression: 'M_{K} = ?',
         options: ['41 amu', '78 amu', '35 amu', '39 amu'],
         correctAnswer: '39 amu',
         explanation: '👉 Nguyên tử khối chuẩn của K (Potassium / Kali) là 39 amu. Kim loại kiềm nhóm IA, khi cháy cho ngọn lửa màu tím hoa cà.'
       },      {
         id: 20,
         question: 'Câu 20: Nguyên tử khối (amu) chuẩn của nguyên tố Calcium / Canxi (Ca) là bao nhiêu?',
-        mathExpression: '\\mathbf{Ca = 40}',
+        mathExpression: 'M_{Ca} = ?',
         options: ['40 amu', '80 amu', '36 amu', '42 amu'],
         correctAnswer: '40 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Ca (Calcium / Canxi) là 40 amu. Kim loại kiềm thổ nhóm IIA, thành phần chính trong xương, răng, đá vôi (CaCO3).'
       },      {
         id: 21,
         question: 'Câu 21: Nguyên tử khối (amu) chuẩn của nguyên tố Chromium / Crom (Cr) là bao nhiêu?',
-        mathExpression: '\\mathbf{Cr = 52}',
+        mathExpression: 'M_{Cr} = ?',
         options: ['54 amu', '52 amu', '48 amu', '104 amu'],
         correctAnswer: '52 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Cr (Chromium / Crom) là 52 amu. Kim loại cứng nhất bảng tuần hoàn (độ cứng 8.5/10, rạch được thủy tinh).'
       },      {
         id: 22,
         question: 'Câu 22: Nguyên tử khối (amu) chuẩn của nguyên tố Manganese / Mangan (Mn) là bao nhiêu?',
-        mathExpression: '\\mathbf{Mn = 55}',
+        mathExpression: 'M_{Mn} = ?',
         options: ['110 amu', '57 amu', '55 amu', '51 amu'],
         correctAnswer: '55 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Mn (Manganese / Mangan) là 55 amu. Hợp chất quan trọng: KMnO4 (thuốc tím), MnO2 (xúc tác).'
       },      {
         id: 23,
         question: 'Câu 23: Nguyên tử khối (amu) chuẩn của nguyên tố Iron / Sắt (Fe) là bao nhiêu?',
-        mathExpression: '\\mathbf{Fe = 56}',
+        mathExpression: 'M_{Fe} = ?',
         options: ['112 amu', '52 amu', '58 amu', '56 amu'],
         correctAnswer: '56 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Fe (Iron / Sắt) là 56 amu. Kim loại có tính nhiễm từ, sản lượng sử dụng lớn nhất trong luyện kim.'
       },      {
         id: 24,
         question: 'Câu 24: Nguyên tử khối (amu) chuẩn của nguyên tố Cobalt / Coban (Co) là bao nhiêu?',
-        mathExpression: '\\mathbf{Co = 59}',
+        mathExpression: 'M_{Co} = ?',
         options: ['59 amu', '55 amu', '118 amu', '61 amu'],
         correctAnswer: '59 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Co (Cobalt / Coban) là 59 amu. Kim loại chuyển tiếp, thành phần trong vitamin B12.'
       },      {
         id: 25,
         question: 'Câu 25: Nguyên tử khối (amu) chuẩn của nguyên tố Nickel / Niken (Ni) là bao nhiêu?',
-        mathExpression: '\\mathbf{Ni = 59}',
+        mathExpression: 'M_{Ni} = ?',
         options: ['61 amu', '55 amu', '59 amu', '118 amu'],
         correctAnswer: '59 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Ni (Nickel / Niken) là 59 amu. Kim loại dẻo, chống ăn mòn tốt, dùng mạ kim loại và luyện inox.'
       },      {
         id: 26,
         question: 'Câu 26: Nguyên tử khối (amu) chuẩn của nguyên tố Copper / Đồng (Cu) là bao nhiêu?',
-        mathExpression: '\\mathbf{Cu = 64}',
+        mathExpression: 'M_{Cu} = ?',
         options: ['64 amu', '56 amu', '66 amu', '60 amu'],
         correctAnswer: '64 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Cu (Copper / Đồng) là 64 amu. Kim loại màu đỏ ánh kim, dẫn điện và nhiệt tốt thứ 2 sau Bạc.'
       },      {
         id: 27,
         question: 'Câu 27: Nguyên tử khối (amu) chuẩn của nguyên tố Zinc / Kẽm (Zn) là bao nhiêu?',
-        mathExpression: '\\mathbf{Zn = 65}',
+        mathExpression: 'M_{Zn} = ?',
         options: ['67 amu', '61 amu', '57 amu', '65 amu'],
         correctAnswer: '65 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Zn (Zinc / Kẽm) là 65 amu. Kim loại chuyển tiếp; oxide ZnO và hydroxide Zn(OH)2 lưỡng tính.'
       },      {
         id: 28,
         question: 'Câu 28: Nguyên tử khối (amu) chuẩn của nguyên tố Bromine / Brom (Br) là bao nhiêu?',
-        mathExpression: '\\mathbf{Br = 80}',
+        mathExpression: 'M_{Br} = ?',
         options: ['72 amu', '76 amu', '80 amu', '82 amu'],
         correctAnswer: '80 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Br (Bromine / Brom) là 80 amu. Phi kim duy nhất ở thể lỏng ở điều kiện thường, màu nâu đỏ bốc khói độc.'
       },      {
         id: 29,
         question: 'Câu 29: Nguyên tử khối (amu) chuẩn của nguyên tố Krypton (Kr) là bao nhiêu?',
-        mathExpression: '\\mathbf{Kr = 84}',
+        mathExpression: 'M_{Kr} = ?',
         options: ['80 amu', '84 amu', '86 amu', '76 amu'],
         correctAnswer: '84 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Kr (Krypton) là 84 amu. Khí hiếm chu kì 4, dùng trong đèn laser và chiếu sáng sân bay.'
       },      {
         id: 30,
         question: 'Câu 30: Nguyên tử khối (amu) chuẩn của nguyên tố Rubidium / Rubidi (Rb) là bao nhiêu?',
-        mathExpression: '\\mathbf{Rb = 85.5}',
+        mathExpression: 'M_{Rb} = ?',
         options: ['85.5 amu', '85 amu', '86 amu', '87 amu'],
         correctAnswer: '85.5 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Rb (Rubidium / Rubidi) là 85.5 amu. Kim loại kiềm nhóm IA, phản ứng bốc cháy mãnh liệt khi tiếp xúc với nước.'
       },      {
         id: 31,
         question: 'Câu 31: Nguyên tử khối (amu) chuẩn của nguyên tố Strontium / Stronti (Sr) là bao nhiêu?',
-        mathExpression: '\\mathbf{Sr = 88}',
+        mathExpression: 'M_{Sr} = ?',
         options: ['90 amu', '80 amu', '84 amu', '88 amu'],
         correctAnswer: '88 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Sr (Strontium / Stronti) là 88 amu. Kim loại kiềm thổ nhóm IIA, muối stronti cháy cho ngọn lửa màu đỏ tươi (pháo hoa).'
       },      {
         id: 32,
         question: 'Câu 32: Nguyên tử khối (amu) chuẩn của nguyên tố Silver / Bạc (Ag) là bao nhiêu?',
-        mathExpression: '\\mathbf{Ag = 108}',
+        mathExpression: 'M_{Ag} = ?',
         options: ['108 amu', '100 amu', '104 amu', '110 amu'],
         correctAnswer: '108 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Ag (Silver / Bạc) là 108 amu. Kim loại có độ dẫn điện và dẫn nhiệt tốt nhất trong tất cả các kim loại.'
       },      {
         id: 33,
         question: 'Câu 33: Nguyên tử khối (amu) chuẩn của nguyên tố Tin / Thiếc (Sn) là bao nhiêu?',
-        mathExpression: '\\mathbf{Sn = 119}',
+        mathExpression: 'M_{Sn} = ?',
         options: ['121 amu', '119 amu', '115 amu', '111 amu'],
         correctAnswer: '119 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Sn (Tin / Thiếc) là 119 amu. Kim loại dẻo nhóm IVA, dùng mạ bảo vệ đồ hộp sắt tây, làm hợp kim hàn thiếc.'
       },      {
         id: 34,
         question: 'Câu 34: Nguyên tử khối (amu) chuẩn của nguyên tố Iodine / Iot (I) là bao nhiêu?',
-        mathExpression: '\\mathbf{I = 127}',
+        mathExpression: 'M_{I} = ?',
         options: ['119 amu', '129 amu', '127 amu', '123 amu'],
         correctAnswer: '127 amu',
         explanation: '👉 Nguyên tử khối chuẩn của I (Iodine / Iot) là 127 amu. Chất rắn màu tím đen, có hiện tượng thăng hoa; thử hồ tinh bột hóa xanh tím.'
       },      {
         id: 35,
         question: 'Câu 35: Nguyên tử khối (amu) chuẩn của nguyên tố Xenon (Xe) là bao nhiêu?',
-        mathExpression: '\\mathbf{Xe = 131}',
+        mathExpression: 'M_{Xe} = ?',
         options: ['123 amu', '127 amu', '133 amu', '131 amu'],
         correctAnswer: '131 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Xe (Xenon) là 131 amu. Khí hiếm chu kì 5, dùng trong đèn flash chụp ảnh công suất lớn và máy X-quang.'
       },      {
         id: 36,
         question: 'Câu 36: Nguyên tử khối (amu) chuẩn của nguyên tố Caesium / Xesi (Cs) là bao nhiêu?',
-        mathExpression: '\\mathbf{Cs = 133}',
+        mathExpression: 'M_{Cs} = ?',
         options: ['133 amu', '129 amu', '125 amu', '135 amu'],
         correctAnswer: '133 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Cs (Caesium / Xesi) là 133 amu. Kim loại mềm nhất trong tất cả kim loại, dễ bay hơi, dùng chế tạo tế bào quang điện.'
       },      {
         id: 37,
         question: 'Câu 37: Nguyên tử khối (amu) chuẩn của nguyên tố Barium / Bari (Ba) là bao nhiêu?',
-        mathExpression: '\\mathbf{Ba = 137}',
+        mathExpression: 'M_{Ba} = ?',
         options: ['139 amu', '133 amu', '137 amu', '129 amu'],
         correctAnswer: '137 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Ba (Barium / Bari) là 137 amu. Kim loại kiềm thổ nhóm IIA, muối BaSO4 kết tủa trắng không tan trong acid mạnh.'
       },      {
         id: 38,
         question: 'Câu 38: Nguyên tử khối (amu) chuẩn của nguyên tố Tungsten / Vonfram (W) là bao nhiêu?',
-        mathExpression: '\\mathbf{W = 184}',
+        mathExpression: 'M_{W} = ?',
         options: ['184 amu', '176 amu', '186 amu', '180 amu'],
         correctAnswer: '184 amu',
         explanation: '👉 Nguyên tử khối chuẩn của W (Tungsten / Vonfram) là 184 amu. Kim loại có nhiệt độ nóng chảy cao nhất (~3422 °C), làm dây tóc bóng đèn.'
       },      {
         id: 39,
         question: 'Câu 39: Nguyên tử khối (amu) chuẩn của nguyên tố Platinum / Bạch kim (Pt) là bao nhiêu?',
-        mathExpression: '\\mathbf{Pt = 195}',
+        mathExpression: 'M_{Pt} = ?',
         options: ['197 amu', '191 amu', '187 amu', '195 amu'],
         correctAnswer: '195 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Pt (Platinum / Bạch kim) là 195 amu. Kim loại quý trơ về mặt hóa học, làm đồ trang sức cao cấp và xúc tác tổng hợp.'
       },      {
         id: 40,
         question: 'Câu 40: Nguyên tử khối (amu) chuẩn của nguyên tố Gold / Vàng (Au) là bao nhiêu?',
-        mathExpression: '\\mathbf{Au = 197}',
+        mathExpression: 'M_{Au} = ?',
         options: ['189 amu', '193 amu', '197 amu', '199 amu'],
         correctAnswer: '197 amu',
         explanation: '👉 Nguyên tử khối chuẩn của Au (Gold / Vàng) là 197 amu. Kim loại dẻo nhất (1 gam có thể dát mỏng thành 1 m²), dẫn điện tốt, trơ.'
@@ -1169,280 +1169,280 @@ export const KHOA_HOC_HOA_EXAMS: KhoaHocHoaExam[] = [
       {
         id: 1,
         question: 'Câu 1: Phân tử khối của hợp chất Nước / Water (H2O) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{H2O}',
+        mathExpression: 'M_{H2O} = ?',
         options: ['20 amu', '18 amu', '34 amu', '46 amu'],
         correctAnswer: '18 amu',
         explanation: '👉 Cách tính PTK (H2O): 1*2 + 16 = 18 = 18 amu.'
       },      {
         id: 2,
         question: 'Câu 2: Phân tử khối của hợp chất Khí cacbonic / Carbon dioxide (CO2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{CO2}',
+        mathExpression: 'M_{CO2} = ?',
         options: ['28 amu', '60 amu', '44 amu', '46 amu'],
         correctAnswer: '44 amu',
         explanation: '👉 Cách tính PTK (CO2): 12 + 16*2 = 44 = 44 amu.'
       },      {
         id: 3,
         question: 'Câu 3: Phân tử khối của hợp chất Amoniac / Ammonia (NH3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{NH3}',
+        mathExpression: 'M_{NH3} = ?',
         options: ['33 amu', '19 amu', '45 amu', '17 amu'],
         correctAnswer: '17 amu',
         explanation: '👉 Cách tính PTK (NH3): 14 + 1*3 = 17 = 17 amu.'
       },      {
         id: 4,
         question: 'Câu 4: Phân tử khối của hợp chất Khí sunfurơ / Sulfur dioxide (SO2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{SO2}',
+        mathExpression: 'M_{SO2} = ?',
         options: ['64 amu', '48 amu', '66 amu', '80 amu'],
         correctAnswer: '64 amu',
         explanation: '👉 Cách tính PTK (SO2): 32 + 16*2 = 64 = 64 amu.'
       },      {
         id: 5,
         question: 'Câu 5: Phân tử khối của hợp chất Lưu huỳnh trioxit / Sulfur trioxide (SO3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{SO3}',
+        mathExpression: 'M_{SO3} = ?',
         options: ['96 amu', '82 amu', '80 amu', '64 amu'],
         correctAnswer: '80 amu',
         explanation: '👉 Cách tính PTK (SO3): 32 + 16*3 = 80 = 80 amu.'
       },      {
         id: 6,
         question: 'Câu 6: Phân tử khối của hợp chất Axit clohiđric / Hydrochloric acid (HCl) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{HCl}',
+        mathExpression: 'M_{HCl} = ?',
         options: ['36.5 amu', '35 amu', '36 amu', '37 amu'],
         correctAnswer: '36.5 amu',
         explanation: '👉 Cách tính PTK (HCl): 1 + 35.5 = 36.5 = 36.5 amu.'
       },      {
         id: 7,
         question: 'Câu 7: Phân tử khối của hợp chất Axit nitric / Nitric acid (HNO3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{HNO3}',
+        mathExpression: 'M_{HNO3} = ?',
         options: ['47 amu', '65 amu', '79 amu', '63 amu'],
         correctAnswer: '63 amu',
         explanation: '👉 Cách tính PTK (HNO3): 1 + 14 + 16*3 = 63 = 63 amu.'
       },      {
         id: 8,
         question: 'Câu 8: Phân tử khối của hợp chất Axit sunfuric / Sulfuric acid (H2SO4) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{H2SO4}',
+        mathExpression: 'M_{H2SO4} = ?',
         options: ['82 amu', '100 amu', '98 amu', '114 amu'],
         correctAnswer: '98 amu',
         explanation: '👉 Cách tính PTK (H2SO4): 1*2 + 32 + 16*4 = 98 = 98 amu.'
       },      {
         id: 9,
         question: 'Câu 9: Phân tử khối của hợp chất Axit photphoric / Phosphoric acid (H3PO4) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{H3PO4}',
+        mathExpression: 'M_{H3PO4} = ?',
         options: ['114 amu', '98 amu', '100 amu', '82 amu'],
         correctAnswer: '98 amu',
         explanation: '👉 Cách tính PTK (H3PO4): 1*3 + 31 + 16*4 = 98 = 98 amu.'
       },      {
         id: 10,
         question: 'Câu 10: Phân tử khối của hợp chất Natri hiđroxit / Xút ăn da (NaOH) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{NaOH}',
+        mathExpression: 'M_{NaOH} = ?',
         options: ['40 amu', '24 amu', '56 amu', '42 amu'],
         correctAnswer: '40 amu',
         explanation: '👉 Cách tính PTK (NaOH): 23 + 16 + 1 = 40 = 40 amu.'
       },      {
         id: 11,
         question: 'Câu 11: Phân tử khối của hợp chất Kali hiđroxit / Potash (KOH) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{KOH}',
+        mathExpression: 'M_{KOH} = ?',
         options: ['72 amu', '40 amu', '58 amu', '56 amu'],
         correctAnswer: '56 amu',
         explanation: '👉 Cách tính PTK (KOH): 39 + 16 + 1 = 56 = 56 amu.'
       },      {
         id: 12,
         question: 'Câu 12: Phân tử khối của hợp chất Canxi hiđroxit / Nước vôi trong (Ca(OH)2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Ca(OH)2}',
+        mathExpression: 'M_{Ca(OH)2} = ?',
         options: ['74 amu', '76 amu', '58 amu', '90 amu'],
         correctAnswer: '74 amu',
         explanation: '👉 Cách tính PTK (Ca(OH)2): 40 + (16+1)*2 = 74 = 74 amu.'
       },      {
         id: 13,
         question: 'Câu 13: Phân tử khối của hợp chất Bari hiđroxit (Ba(OH)2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Ba(OH)2}',
+        mathExpression: 'M_{Ba(OH)2} = ?',
         options: ['173 amu', '171 amu', '187 amu', '155 amu'],
         correctAnswer: '171 amu',
         explanation: '👉 Cách tính PTK (Ba(OH)2): 137 + (16+1)*2 = 171 = 171 amu.'
       },      {
         id: 14,
         question: 'Câu 14: Phân tử khối của hợp chất Magie hiđroxit (Mg(OH)2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Mg(OH)2}',
+        mathExpression: 'M_{Mg(OH)2} = ?',
         options: ['42 amu', '74 amu', '58 amu', '60 amu'],
         correctAnswer: '58 amu',
         explanation: '👉 Cách tính PTK (Mg(OH)2): 24 + (16+1)*2 = 58 = 58 amu.'
       },      {
         id: 15,
         question: 'Câu 15: Phân tử khối của hợp chất Nhôm hiđroxit (kết tủa keo trắng, lưỡng tính) (Al(OH)3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Al(OH)3}',
+        mathExpression: 'M_{Al(OH)3} = ?',
         options: ['94 amu', '80 amu', '62 amu', '78 amu'],
         correctAnswer: '78 amu',
         explanation: '👉 Cách tính PTK (Al(OH)3): 27 + (16+1)*3 = 78 = 78 amu.'
       },      {
         id: 16,
         question: 'Câu 16: Phân tử khối của hợp chất Kẽm hiđroxit (kết tủa trắng, lưỡng tính) (Zn(OH)2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Zn(OH)2}',
+        mathExpression: 'M_{Zn(OH)2} = ?',
         options: ['99 amu', '83 amu', '101 amu', '115 amu'],
         correctAnswer: '99 amu',
         explanation: '👉 Cách tính PTK (Zn(OH)2): 65 + (16+1)*2 = 99 = 99 amu.'
       },      {
         id: 17,
         question: 'Câu 17: Phân tử khối của hợp chất Crom(III) hiđroxit (kết tủa xám xanh, lưỡng tính) (Cr(OH)3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Cr(OH)3}',
+        mathExpression: 'M_{Cr(OH)3} = ?',
         options: ['119 amu', '105 amu', '103 amu', '87 amu'],
         correctAnswer: '103 amu',
         explanation: '👉 Cách tính PTK (Cr(OH)3): 52 + (16+1)*3 = 103 = 103 amu.'
       },      {
         id: 18,
         question: 'Câu 18: Phân tử khối của hợp chất Đồng(II) hiđroxit (kết tủa màu xanh lam) (Cu(OH)2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Cu(OH)2}',
+        mathExpression: 'M_{Cu(OH)2} = ?',
         options: ['98 amu', '114 amu', '82 amu', '100 amu'],
         correctAnswer: '98 amu',
         explanation: '👉 Cách tính PTK (Cu(OH)2): 64 + (16+1)*2 = 98 = 98 amu.'
       },      {
         id: 19,
         question: 'Câu 19: Phân tử khối của hợp chất Sắt(II) hiđroxit (kết tủa trắng xanh) (Fe(OH)2) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Fe(OH)2}',
+        mathExpression: 'M_{Fe(OH)2} = ?',
         options: ['74 amu', '92 amu', '106 amu', '90 amu'],
         correctAnswer: '90 amu',
         explanation: '👉 Cách tính PTK (Fe(OH)2): 56 + (16+1)*2 = 90 = 90 amu.'
       },      {
         id: 20,
         question: 'Câu 20: Phân tử khối của hợp chất Sắt(III) hiđroxit (kết tủa màu nâu đỏ) (Fe(OH)3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Fe(OH)3}',
+        mathExpression: 'M_{Fe(OH)3} = ?',
         options: ['91 amu', '109 amu', '107 amu', '123 amu'],
         correctAnswer: '107 amu',
         explanation: '👉 Cách tính PTK (Fe(OH)3): 56 + (16+1)*3 = 107 = 107 amu.'
       },      {
         id: 21,
         question: 'Câu 21: Phân tử khối của hợp chất Nhôm oxit / Alumina (oxit lưỡng tính) (Al2O3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Al2O3}',
+        mathExpression: 'M_{Al2O3} = ?',
         options: ['118 amu', '102 amu', '104 amu', '86 amu'],
         correctAnswer: '102 amu',
         explanation: '👉 Cách tính PTK (Al2O3): 27*2 + 16*3 = 102 = 102 amu.'
       },      {
         id: 22,
         question: 'Câu 22: Phân tử khối của hợp chất Kẽm oxit (oxit lưỡng tính) (ZnO) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{ZnO}',
+        mathExpression: 'M_{ZnO} = ?',
         options: ['81 amu', '65 amu', '97 amu', '83 amu'],
         correctAnswer: '81 amu',
         explanation: '👉 Cách tính PTK (ZnO): 65 + 16 = 81 = 81 amu.'
       },      {
         id: 23,
         question: 'Câu 23: Phân tử khối của hợp chất Crom(III) oxit (oxit lưỡng tính, màu xanh thẫm) (Cr2O3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Cr2O3}',
+        mathExpression: 'M_{Cr2O3} = ?',
         options: ['168 amu', '136 amu', '154 amu', '152 amu'],
         correctAnswer: '152 amu',
         explanation: '👉 Cách tính PTK (Cr2O3): 52*2 + 16*3 = 152 = 152 amu.'
       },      {
         id: 24,
         question: 'Câu 24: Phân tử khối của hợp chất Sắt(II) oxit (FeO) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{FeO}',
+        mathExpression: 'M_{FeO} = ?',
         options: ['72 amu', '74 amu', '56 amu', '88 amu'],
         correctAnswer: '72 amu',
         explanation: '👉 Cách tính PTK (FeO): 56 + 16 = 72 = 72 amu.'
       },      {
         id: 25,
         question: 'Câu 25: Phân tử khối của hợp chất Sắt(III) oxit / Quặng hemantit (Fe2O3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Fe2O3}',
+        mathExpression: 'M_{Fe2O3} = ?',
         options: ['162 amu', '160 amu', '176 amu', '144 amu'],
         correctAnswer: '160 amu',
         explanation: '👉 Cách tính PTK (Fe2O3): 56*2 + 16*3 = 160 = 160 amu.'
       },      {
         id: 26,
         question: 'Câu 26: Phân tử khối của hợp chất Oxit sắt từ / Quặng manhetit (Fe3O4) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Fe3O4}',
+        mathExpression: 'M_{Fe3O4} = ?',
         options: ['216 amu', '248 amu', '232 amu', '234 amu'],
         correctAnswer: '232 amu',
         explanation: '👉 Cách tính PTK (Fe3O4): 56*3 + 16*4 = 232 = 232 amu.'
       },      {
         id: 27,
         question: 'Câu 27: Phân tử khối của hợp chất Đồng(II) oxit (chất rắn màu đen) (CuO) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{CuO}',
+        mathExpression: 'M_{CuO} = ?',
         options: ['96 amu', '82 amu', '64 amu', '80 amu'],
         correctAnswer: '80 amu',
         explanation: '👉 Cách tính PTK (CuO): 64 + 16 = 80 = 80 amu.'
       },      {
         id: 28,
         question: 'Câu 28: Phân tử khối của hợp chất Đồng(I) oxit (chất rắn màu đỏ gạch) (Cu2O) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Cu2O}',
+        mathExpression: 'M_{Cu2O} = ?',
         options: ['144 amu', '128 amu', '146 amu', '160 amu'],
         correctAnswer: '144 amu',
         explanation: '👉 Cách tính PTK (Cu2O): 64*2 + 16 = 144 = 144 amu.'
       },      {
         id: 29,
         question: 'Câu 29: Phân tử khối của hợp chất Magie oxit (MgO) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{MgO}',
+        mathExpression: 'M_{MgO} = ?',
         options: ['56 amu', '42 amu', '40 amu', '24 amu'],
         correctAnswer: '40 amu',
         explanation: '👉 Cách tính PTK (MgO): 24 + 16 = 40 = 40 amu.'
       },      {
         id: 30,
         question: 'Câu 30: Phân tử khối của hợp chất Canxi oxit / Vôi sống (CaO) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{CaO}',
+        mathExpression: 'M_{CaO} = ?',
         options: ['56 amu', '72 amu', '40 amu', '58 amu'],
         correctAnswer: '56 amu',
         explanation: '👉 Cách tính PTK (CaO): 40 + 16 = 56 = 56 amu.'
       },      {
         id: 31,
         question: 'Câu 31: Phân tử khối của hợp chất Bari oxit (BaO) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{BaO}',
+        mathExpression: 'M_{BaO} = ?',
         options: ['137 amu', '155 amu', '169 amu', '153 amu'],
         correctAnswer: '153 amu',
         explanation: '👉 Cách tính PTK (BaO): 137 + 16 = 153 = 153 amu.'
       },      {
         id: 32,
         question: 'Câu 32: Phân tử khối của hợp chất Natri clorua / Muối ăn (NaCl) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{NaCl}',
+        mathExpression: 'M_{NaCl} = ?',
         options: ['59 amu', '60 amu', '58.5 amu', '58 amu'],
         correctAnswer: '58.5 amu',
         explanation: '👉 Cách tính PTK (NaCl): 23 + 35.5 = 58.5 = 58.5 amu.'
       },      {
         id: 33,
         question: 'Câu 33: Phân tử khối của hợp chất Natri cacbonat / Soda (Na2CO3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Na2CO3}',
+        mathExpression: 'M_{Na2CO3} = ?',
         options: ['122 amu', '106 amu', '108 amu', '90 amu'],
         correctAnswer: '106 amu',
         explanation: '👉 Cách tính PTK (Na2CO3): 23*2 + 12 + 16*3 = 106 = 106 amu.'
       },      {
         id: 34,
         question: 'Câu 34: Phân tử khối của hợp chất Natri hiđrocacbonat / Baking soda (NaHCO3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{NaHCO3}',
+        mathExpression: 'M_{NaHCO3} = ?',
         options: ['84 amu', '68 amu', '100 amu', '86 amu'],
         correctAnswer: '84 amu',
         explanation: '👉 Cách tính PTK (NaHCO3): 23 + 1 + 12 + 16*3 = 84 = 84 amu.'
       },      {
         id: 35,
         question: 'Câu 35: Phân tử khối của hợp chất Canxi cacbonat / Đá vôi (CaCO3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{CaCO3}',
+        mathExpression: 'M_{CaCO3} = ?',
         options: ['116 amu', '84 amu', '102 amu', '100 amu'],
         correctAnswer: '100 amu',
         explanation: '👉 Cách tính PTK (CaCO3): 40 + 12 + 16*3 = 100 = 100 amu.'
       },      {
         id: 36,
         question: 'Câu 36: Phân tử khối của hợp chất Bari sunfat (kết tủa trắng không tan) (BaSO4) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{BaSO4}',
+        mathExpression: 'M_{BaSO4} = ?',
         options: ['233 amu', '235 amu', '217 amu', '249 amu'],
         correctAnswer: '233 amu',
         explanation: '👉 Cách tính PTK (BaSO4): 137 + 32 + 16*4 = 233 = 233 amu.'
       },      {
         id: 37,
         question: 'Câu 37: Phân tử khối của hợp chất Sắt(II) sunfat (FeSO4) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{FeSO4}',
+        mathExpression: 'M_{FeSO4} = ?',
         options: ['154 amu', '152 amu', '168 amu', '136 amu'],
         correctAnswer: '152 amu',
         explanation: '👉 Cách tính PTK (FeSO4): 56 + 32 + 16*4 = 152 = 152 amu.'
       },      {
         id: 38,
         question: 'Câu 38: Phân tử khối của hợp chất Sắt(III) sunfat (Fe2(SO4)3) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{Fe2(SO4)3}',
+        mathExpression: 'M_{Fe2(SO4)3} = ?',
         options: ['384 amu', '416 amu', '400 amu', '402 amu'],
         correctAnswer: '400 amu',
         explanation: '👉 Cách tính PTK (Fe2(SO4)3): 56*2 + (32+16*4)*3 = 400 = 400 amu.'
       },      {
         id: 39,
         question: 'Câu 39: Phân tử khối của hợp chất Đồng(II) sunfat (CuSO4) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{CuSO4}',
+        mathExpression: 'M_{CuSO4} = ?',
         options: ['176 amu', '162 amu', '144 amu', '160 amu'],
         correctAnswer: '160 amu',
         explanation: '👉 Cách tính PTK (CuSO4): 64 + 32 + 16*4 = 160 = 160 amu.'
       },      {
         id: 40,
         question: 'Câu 40: Phân tử khối của hợp chất Kali pemanganat / Thuốc tím (KMnO4) là bao nhiêu amu?',
-        mathExpression: '\\mathrm{KMnO4}',
+        mathExpression: 'M_{KMnO4} = ?',
         options: ['158 amu', '142 amu', '160 amu', '174 amu'],
         correctAnswer: '158 amu',
         explanation: '👉 Cách tính PTK (KMnO4): 39 + 55 + 16*4 = 158 = 158 amu.'
