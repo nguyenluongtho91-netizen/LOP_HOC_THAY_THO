@@ -859,8 +859,8 @@ export const Hoa10Chuong1View: React.FC<Hoa10Chuong1ViewProps> = ({
                 </span>
                 <button
                   onClick={() => {
-                    setNewPasscodeForm(currentPasscode);
-                    setTempLockEnabled(isLockEnabled);
+                    setNewPasscodeForm(accessConfig.passcode || 'THAYTHO2026');
+                    setTempLockEnabled(accessConfig.is_locked);
                     setIsTeacherModalOpen(true);
                   }}
                   className="px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer"

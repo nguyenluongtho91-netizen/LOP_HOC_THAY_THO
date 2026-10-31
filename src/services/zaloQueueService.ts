@@ -128,7 +128,7 @@ export async function enqueueBatchZaloMessages(
   const now = Date.now()
   const newItems: ZaloQueueItem[] = items.map((it, idx) => ({
     ...it,
-    id: zjob___,
+    id: 'zjob_' + Date.now() + '_' + idx + '_' + Math.random().toString(36).slice(2, 7),
     status: 'pending',
     created_at: new Date().toISOString()
   }))

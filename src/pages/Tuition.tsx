@@ -13,7 +13,7 @@ import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
 import ElectronicInvoiceModal from '@/components/tuition/ElectronicInvoiceModal'
 import { buildElectronicInvoice, saveElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
-import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo, fmt } from '@/lib/helpers'
 import Modal from '@/components/Modal'
 import VietQRModal from '@/components/VietQRModal'
 import { sendZaloPersonalMessage, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
@@ -601,7 +601,7 @@ export default function Tuition() {
     
     // Ưu tiên số tiền và tên khóa Thầy đang nhập trên giao diện
     const amountVal = courseAmount ? Number(courseAmount) : (Number(row.notification?.amount) || 600000)
-    const activeCourseName = (courseName && courseName.trim()) || row.notification?.course_name || 'Tháng ' + (selectedMonth || '9/2026')
+    const activeCourseName = (courseName && courseName.trim()) || row.notification?.course_name || 'Tháng ' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
 
     // Tự động lưu/cập nhật thông báo học phí mới vào database
     if (selClass) {
@@ -2338,7 +2338,7 @@ export default function Tuition() {
               const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
               const phoneForLink = cleanPhone ? (cleanPhone.startsWith('84') ? '0' + cleanPhone.slice(2) : cleanPhone) : ''
               const amt = courseAmount ? Number(courseAmount) : (Number(currentRow.notification?.amount) || 600000)
-              const activeCourseName = (courseName && courseName.trim()) || currentRow.notification?.course_name || 'Tháng ' + (selectedMonth || '9/2026')
+              const activeCourseName = (courseName && courseName.trim()) || currentRow.notification?.course_name || 'Tháng ' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
 
               const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
               const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
