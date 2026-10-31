@@ -182,28 +182,25 @@ export function removeVietnameseTones(str: string | null | undefined): string {
  */
 export function formatVietQRAddInfo(fullName: string, className = '', studentCode = ''): string {
   const cleanName = removeVietnameseTones(fullName).toUpperCase().trim()
-  const cleanCode = (studentCode || '').toUpperCase().trim()
 
-  // Rút gọn tên lớp: "LỚP 7. THẢO NGUYÊN VÀ THANH THẢO" -> "L7"
+  // Rút gọn tên lớp theo số khối: "Lớp 7A", "7. THẢO NGUYÊN" -> "L7"
   let classTag = ''
   if (className) {
-    const m = className.match(/(?:lớp|lop)?\s*(\d+[A-Za-z0-9.]*)/i)
+    const m = className.match(/(?:lớp|lop)?\s*(\d+)/i)
     if (m && m[1]) {
-      const numOnly = m[1].replace(/[^0-9]/g, '')
-      classTag = numOnly ? `L${numOnly}` : `L${m[1]}`
+      classTag = `L${m[1]}`
     } else {
-      classTag = removeVietnameseTones(className).replace(/\s+/g, '').slice(0, 4).toUpperCase()
+      const anyNum = className.match(/\d+/)
+      classTag = anyNum ? `L${anyNum[0]}` : ''
     }
   }
 
-  const parts = cleanName.split(/\s+/).filter(Boolean)
-  const shortName = parts.length > 2 ? `${parts[0]} ${parts[parts.length - 1]}` : cleanName
-
-  let text = cleanCode ? `HP ${cleanCode} ${shortName}` : `HP ${shortName}`
+  // Ghi rõ đầy đủ họ và tên học sinh kèm tên lớp (ví dụ: NGÔ ĐỨC THẮNG L7)
+  let text = cleanName
   if (classTag) {
     text += ` ${classTag}`
   }
 
   // Vietcombank cho phép tối đa 50 ký tự trong addInfo
-  return text.substring(0, 35).trim()
+  return text.substring(0, 45).trim()
 }
