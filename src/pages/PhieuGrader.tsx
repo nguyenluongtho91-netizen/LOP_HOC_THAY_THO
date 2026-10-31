@@ -63,7 +63,7 @@ interface StudentResult {
 // ─── HÀM GỌI GEMINI VISION CHO TỰ LUẬN ──────────────────────────────────────
 async function directGeminiVision(apiKey: string, parts: any[]) {
   if (!apiKey) throw new Error("Vui lòng nhập API Key của Gemini!");
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
   const payload = {
     contents: [{ parts }],
     generationConfig: { 
@@ -157,7 +157,7 @@ export default function PhieuGrader() {
   const [tab, setTab] = useState(0);
 
   // Gemini API Key
-  const [apiKey, setApiKey] = useState(() => localStorage.getItem('gemini_api_key') || '');
+  const [apiKey, setApiKey] = useState(() => localStorage.getItem('gemini_api_key') || (import.meta as any).env?.VITE_GEMINI_API_KEY || '');
   useEffect(() => { localStorage.setItem('gemini_api_key', apiKey); }, [apiKey]);
 
   // Supabase Data Store

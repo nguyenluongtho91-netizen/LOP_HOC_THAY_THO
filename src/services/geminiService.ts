@@ -9,7 +9,8 @@ import { getAllTikzSnippets } from "../tikzSnippets";
  * Đảm bảo đồng bộ 100% với tên biến 'ocr_gemini_key' trong phần Cài đặt.
  */
 const getSafeApiKey = () => {
-  const key = (typeof localStorage !== 'undefined' ? localStorage.getItem('ocr_gemini_key') : null) 
+  const key = (typeof localStorage !== 'undefined' ? (localStorage.getItem('ocr_gemini_key') || localStorage.getItem('gemini_api_key')) : null) 
+              || (import.meta as any).env?.VITE_GEMINI_API_KEY
               || process.env.GEMINI_API_KEY;
   if (!key || key.trim() === '') {
     throw new Error("Thầy chưa nhập Gemini API Key! Vui lòng bấm vào biểu tượng Cài đặt (⚙️) và dán Key vào.");
@@ -122,8 +123,8 @@ async function callGemini(
     parts.push({ inlineData: { mimeType: inlineData.mime_type, data: inlineData.data } });
   }
 
-  const primaryModel = modelName || "gemini-2.5-flash";
-  const fallbackList = [primaryModel, "gemini-2.0-flash", "gemini-1.5-flash"];
+  const primaryModel = modelName || "gemini-flash-latest";
+  const fallbackList = [primaryModel, "gemini-3.8-flash", "gemini-2.5-flash"];
 
   return callWithRetry(async (selectedModel) => {
     try {
@@ -213,7 +214,7 @@ export class GeminiService {
         console.error("Gemini stream error:", error);
         throw error;
       }
-    }, 3, 1500, ['gemini-2.5-flash', 'gemini-2.0-flash']);
+    }, 3, 1500, ['gemini-flash-latest', 'gemini-3.8-flash']);
   }
 }
 
@@ -277,7 +278,7 @@ Yêu cầu bắt buộc:
 ĐỀ THI GỐC (JSON):
 ${JSON.stringify(questions, null, 2)}`;
 
-  const modelsToTry = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
+  const modelsToTry = ["gemini-flash-latest", "gemini-3.8-flash", "gemini-2.5-flash"];
 
   return callWithRetry(async (selectedModel) => {
     try {

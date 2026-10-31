@@ -195,7 +195,7 @@ export default function BatchExamScanModal({
     }
 
     const base64Data = item.imagePreview.replace(/^data:image\/\w+;base64,/, '');
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
     
     const prompt = `Bạn là trợ lý AI chuyên nghiệp chấm thi môn ${subject === 'toan' ? 'Toán' : 'Hóa học'} của Thầy Thọ.
 Đề thi: "${topicTitle}" (Đề số ${examNo}).
