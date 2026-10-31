@@ -433,7 +433,7 @@ export async function checkZaloServiceHealth(): Promise<ZaloServiceHealth> {
  * Tải ảnh VietQR và sao chép trực tiếp dưới dạng ảnh PNG vào Clipboard
  * Giúp Thầy sang Zalo chỉ cần bấm Cmd+V / Ctrl+V là dán và gửi luôn ẢNH MÃ QR (không gửi link)
  */
-export async function copyQrImageToClipboard(qrUrl: string): Promise<boolean> {
+export async function copyQrImageToClipboard(qrUrl: string, textFallback?: string): Promise<boolean> {
   if (!qrUrl) return false;
   try {
     let pngBlob: Blob | null = null;
@@ -470,14 +470,26 @@ export async function copyQrImageToClipboard(qrUrl: string): Promise<boolean> {
     }
 
     if (pngBlob && navigator?.clipboard?.write) {
-      await navigator.clipboard.write([
-        new ClipboardItem({ 'image/png': pngBlob })
-      ]);
-      return true;
+      const items: Record<string, Blob> = { 'image/png': pngBlob };
+      if (textFallback) {
+        items['text/plain'] = new Blob([textFallback], { type: 'text/plain' });
+      }
+      try {
+        await navigator.clipboard.write([new ClipboardItem(items)]);
+        return true;
+      } catch (err) {
+        // Fallback to pure image
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': pngBlob })]);
+        return true;
+      }
     }
     return false;
   } catch (err) {
     console.warn('copyQrImageToClipboard error:', err);
+    if (textFallback && navigator?.clipboard?.writeText) {
+      await navigator.clipboard.writeText(textFallback);
+      return true;
+    }
     return false;
   }
 }

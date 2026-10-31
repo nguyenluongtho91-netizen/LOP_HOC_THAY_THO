@@ -687,20 +687,17 @@ export default function Tuition() {
     setSendingStudentId(row.student.id)
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
     setZaloModal({ row: synthRow, msg, qrUrl, phone: cleanPhone })
-    setCopiedZalo('text')
+    setCopiedZalo('img')
 
-    // Tự động copy nội dung tin nhắn học phí
+    // Tự động copy ẢNH MÃ QR vào clipboard để khi sang Zalo ấn Cmd+V là dán luôn ảnh mã QR
     try {
-      await navigator.clipboard.writeText(msg)
-      toast.success(`📋 Đã copy tin nhắn học phí của ${row.student.full_name}!`)
-    } catch {}
-
-    // Tự động tải ảnh mã QR về máy để sẵn sàng kéo thả hoặc đính kèm
-    try {
-      const a = document.createElement('a')
-      a.href = qrUrl
-      a.download = `QR_${row.student.student_code || row.student.full_name}_${amountVal}.png`
-      a.click()
+      const ok = await copyQrImageToClipboard(qrUrl, msg)
+      if (ok) {
+        toast.success(`🎉 Đã nạp ẢNH MÃ QR của ${row.student.full_name}! Vào Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR gửi ngay!`)
+      } else {
+        await navigator.clipboard.writeText(msg)
+        toast.success(`📋 Đã copy tin nhắn học phí của ${row.student.full_name}!`)
+      }
     } catch {}
 
     // Mở khung chat Zalo phụ huynh
@@ -978,19 +975,25 @@ export default function Tuition() {
 
   const copyZaloContent = async (type: 'text' | 'img') => {
     if (!zaloModal) return
+    const textToCopy = includeQrLink
+      ? `${zaloModal.msg}\n\n👉 Ảnh mã QR chuyển khoản: ${zaloModal.qrUrl}`
+      : zaloModal.msg
+
     if (type === 'text') {
-      try {
-        const textToCopy = includeQrLink
-          ? `${zaloModal.msg}\n\n👉 Ảnh mã QR chuyển khoản: ${zaloModal.qrUrl}`
-          : zaloModal.msg
+      const toastId = toast.loading('Đang copy ảnh mã QR...')
+      const ok = await copyQrImageToClipboard(zaloModal.qrUrl, textToCopy)
+      toast.dismiss(toastId)
+      setCopiedZalo('text')
+      if (ok) {
+        toast.success('🎉 Đã copy ẢNH MÃ QR! Sang Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR')
+      } else {
         await navigator.clipboard.writeText(textToCopy)
-        setCopiedZalo('text')
         toast.success('📋 Đã copy tin nhắn học phí!')
-        setTimeout(() => setCopiedZalo(null), 2500)
-      } catch { toast.error('Không copy được') }
+      }
+      setTimeout(() => setCopiedZalo(null), 2500)
     } else {
       const toastId = toast.loading('Đang sao chép ảnh mã QR...')
-      const ok = await copyQrImageToClipboard(zaloModal.qrUrl)
+      const ok = await copyQrImageToClipboard(zaloModal.qrUrl, textToCopy)
       toast.dismiss(toastId)
       if (ok) {
         setCopiedZalo('img')
@@ -1081,13 +1084,28 @@ export default function Tuition() {
 
   const handleCopyStudentMessage = async (row: TuitionNotificationRow) => {
     try {
+      const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+      const amountVal = eff.amount
+      const cls = classes.find(c => c.id === selClass)
+      const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
+      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, row.notification?.course_name || courseName || selectedMonth)
+      const rowQrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
       const msg = buildTuitionMessage(row)
-      await navigator.clipboard.writeText(msg)
+
+      const toastId = toast.loading('Đang copy ảnh mã QR...')
+      const ok = await copyQrImageToClipboard(rowQrUrl, msg)
+      toast.dismiss(toastId)
+
       setCopiedRowMsgId(row.student.id)
-      toast.success(`📋 Đã copy TIN NHẮN học phí của ${row.student.full_name}! Vào Zalo ấn Cmd+V (Ctrl+V) để dán`)
+      if (ok) {
+        toast.success(`🎉 Đã copy ẢNH MÃ QR của ${row.student.full_name}! Vào Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR gửi ngay!`)
+      } else {
+        await navigator.clipboard.writeText(msg)
+        toast.success(`📋 Đã copy tin nhắn học phí của ${row.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
+      }
       setTimeout(() => setCopiedRowMsgId(null), 3500)
     } catch {
-      toast.error('Không thể sao chép tin nhắn vào clipboard')
+      toast.error('Không thể sao chép mã QR vào clipboard')
     }
   }
 
@@ -2114,7 +2132,7 @@ export default function Tuition() {
                               )}
                             </button>
 
-                            {/* Nút 1-click Copy Tin Nhắn */}
+                            {/* Nút 1-click Copy Mã QR + Tin Nhắn */}
                             <button
                               type="button"
                               onClick={() => handleCopyStudentMessage(row)}
@@ -2122,17 +2140,17 @@ export default function Tuition() {
                                 ${copiedRowMsgId === row.student.id
                                   ? 'bg-emerald-600 text-white shadow-emerald-500/20'
                                   : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 hover:border-indigo-300 hover:scale-105 active:scale-95'}`}
-                              title="Bấm để copy NỘI DUNG TIN NHẮN học phí của học sinh này (Vào Zalo ấn Cmd+V để dán)"
+                              title="Bấm để copy ẢNH MÃ QR của học sinh này (Vào Zalo ấn Cmd+V để dán ảnh mã QR)"
                             >
                               {copiedRowMsgId === row.student.id ? (
                                 <>
                                   <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
-                                  <span>Đã copy tin</span>
+                                  <span>Đã copy QR</span>
                                 </>
                               ) : (
                                 <>
-                                  <Copy className="w-3.5 h-3.5 text-indigo-600" />
-                                  <span>Copy Tin Nhắn</span>
+                                  <QrCode className="w-3.5 h-3.5 text-indigo-600" />
+                                  <span>Copy Tin + Mã QR</span>
                                 </>
                               )}
                             </button>

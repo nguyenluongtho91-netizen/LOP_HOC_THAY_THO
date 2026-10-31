@@ -1227,9 +1227,16 @@ export default function SessionAttendanceFeeManager({
                                                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
                                       try {
-                                        await navigator.clipboard.writeText(msg)
+                                        const toastId = toast.loading('Đang copy ảnh mã QR...')
+                                        const ok = await copyQrImageToClipboard(qrUrl, msg)
+                                        toast.dismiss(toastId)
                                         setCopiedSessionMsgId(item.student.id)
-                                        toast.success(`📋 Đã copy TIN NHẮN học phí của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
+                                        if (ok) {
+                                          toast.success(`🎉 Đã copy ẢNH MÃ QR của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh mã QR gửi ngay!`)
+                                        } else {
+                                          await navigator.clipboard.writeText(msg)
+                                          toast.success(`📋 Đã copy tin nhắn học phí của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
+                                        }
                                         setTimeout(() => setCopiedSessionMsgId(null), 3500)
                                       } catch {
                                         toast.error('Lỗi khi sao chép')
