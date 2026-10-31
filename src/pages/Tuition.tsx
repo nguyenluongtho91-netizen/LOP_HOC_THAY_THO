@@ -1551,14 +1551,14 @@ export default function Tuition() {
                                     <div className="mt-1 flex flex-col gap-1 w-full max-w-[260px]">
                                       <button
                                         type='button'
-                                        onClick={() => setActiveTab('session-attendance')}
+                                        onClick={(e) => { const el = (e.currentTarget.nextSibling as HTMLElement); if(el) el.style.display = el.style.display === 'none' ? 'flex' : 'none'; }}
                                         className='inline-flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-md bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 cursor-pointer transition-colors'
-                                        title={`Bấm để xem ma trận điểm danh`}
+                                        title="Bấm để xem/ẩn chi tiết ngày học"
                                       >
                                         <CalendarCheck className='w-3 h-3 text-teal-600' />
-                                        <span>Đã học {attendedRecords.length} buổi</span>
+                                        <span>Đã học {attendedRecords.length} buổi ▾</span>
                                       </button>
-                                      <div className="flex flex-col gap-0.5 bg-slate-50 p-1.5 rounded-lg border border-slate-200">
+                                      <div style={{display:'none'}} className="flex flex-col gap-0.5 bg-slate-50 p-1.5 rounded-lg border border-slate-200">
                                         {attendedRecords.map((r, idx) => (
                                           <div key={r.id || r.date} className="flex items-center justify-between text-[10px]">
                                             <span className="font-bold text-teal-700">Buổi {idx + 1}:</span>
