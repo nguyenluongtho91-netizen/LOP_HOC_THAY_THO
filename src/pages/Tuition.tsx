@@ -5,7 +5,7 @@ import { useEffect, useState, useMemo } from 'react'
 import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3 } from 'lucide-react'
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
-import SessionAttendanceFeeManager from '@/components/tuition/SessionAttendanceFeeManager'
+import SessionAttendanceFeeManager, { STUDENT_CUSTOM_RATES } from '@/components/tuition/SessionAttendanceFeeManager'
 import { CalendarCheck, CalendarDays } from 'lucide-react'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import InvoiceManager from '@/components/tuition/InvoiceManager'
@@ -114,20 +114,79 @@ export default function Tuition() {
     return 600000
   }
 
+  const [unitPricesMap, setUnitPricesMap] = useState<Record<string, number>>({})
+
+  useEffect(() => {
+    const loadUnitPrices = async () => {
+      let localMap: Record<string, number> = {}
+      try {
+        const raw = localStorage.getItem('__CLASS_UNIT_PRICES__')
+        if (raw) localMap = JSON.parse(raw)
+      } catch {}
+
+      try {
+        const { data } = await supabase
+          .from('exams')
+          .select('data')
+          .eq('title', '__CLASS_UNIT_PRICES__')
+          .maybeSingle()
+
+        if (data?.data?.items) {
+          localMap = { ...localMap, ...data.data.items }
+          localStorage.setItem('__CLASS_UNIT_PRICES__', JSON.stringify(localMap))
+        }
+      } catch {}
+
+      setUnitPricesMap(localMap)
+    }
+
+    void loadUnitPrices()
+  }, [])
+
   const getStudentEffectiveFee = (studentId: string, classId: string, notif?: any) => {
+    // 1. Kiểm tra số buổi thực tế đã học của học sinh trong lớp này
+    const attendedRecords = attendance.filter(
+      a => a.class_id === classId && a.student_id === studentId && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+    )
+    if (attendedRecords.length > 0) {
+      // Ưu tiên đơn giá riêng của học sinh (nếu có trong STUDENT_CUSTOM_RATES)
+      let rate = 80000
+      if (STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[studentId] !== undefined) {
+        rate = STUDENT_CUSTOM_RATES[studentId]
+      } else if (unitPricesMap[classId]) {
+        rate = unitPricesMap[classId]
+      } else {
+        const cls = classes.find(c => c.id === classId)
+        const cName = (cls as any)?.class_name || cls?.name || ''
+        const is72 = cName.includes('7.2') || cName.includes('72') || cName.includes('7A')
+        rate = (cls as any)?.tuition_fee || (is72 ? 60000 : 80000)
+      }
+      const calcAmount = attendedRecords.length * rate
+      return {
+        amount: calcAmount,
+        note: `${attendedRecords.length} buổi × ${rate.toLocaleString('vi-VN')}đ`,
+        isCustom: STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[studentId] !== undefined,
+        sessionCount: attendedRecords.length,
+        sessionRate: rate
+      }
+    }
+
+    // 2. Học sinh có cấu hình học phí riêng
     const key = studentId + '_' + classId
     const custom = customFees[key] || customFees[studentId]
     if (custom && custom.amount != null) {
       return { amount: Number(custom.amount), note: custom.note || '', isCustom: true }
     }
-    if (notif && notif.amount != null) {
-      const cls = classes.find(c => c.id === classId)
-      const std = getStandardClassFee(cls)
-      if (Number(notif.amount) !== std) {
-        return { amount: Number(notif.amount), note: notif.note || '', isCustom: true }
-      }
-      return { amount: Number(notif.amount), note: '', isCustom: false }
+    if (STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[studentId] === 0) {
+      return { amount: 0, note: 'Miễn phí', isCustom: true }
     }
+
+    // 3. Nếu đã có thông báo học phí được lưu trong DB
+    if (notif && notif.amount != null) {
+      return { amount: Number(notif.amount), note: notif.note || '', isCustom: false }
+    }
+
+    // 4. Mặc định theo lớp
     const cls = classes.find(c => c.id === classId)
     return { amount: getStandardClassFee(cls), note: '', isCustom: false }
   }
@@ -429,13 +488,23 @@ export default function Tuition() {
         return
       }
 
-      const notifs = targetRows.map(row => ({
-        student_id: row.student.id,
-        class_id: selClass,
-        course_name: courseName.trim(),
-        amount: amt,
-        is_paid: row.notification?.is_paid ?? false
-      }))
+      const notifs = targetRows.map(row => {
+        const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+        const attendedRecords = attendance.filter(
+          a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+        )
+        const courseNameFinal = attendedRecords.length > 0
+          ? `${courseName.trim()} (${attendedRecords.length} buổi)`
+          : courseName.trim()
+
+        return {
+          student_id: row.student.id,
+          class_id: selClass,
+          course_name: courseNameFinal,
+          amount: eff.amount,
+          is_paid: row.notification?.is_paid ?? false
+        }
+      })
 
       await batchUpsertTuitionNotifications(notifs)
       toast.success(`📢 Đã phát hành báo học phí khóa "${courseName.trim()}" cho ${notifs.length} học sinh thành công!`)
@@ -453,21 +522,21 @@ export default function Tuition() {
       toast.error('Vui lòng chọn lớp học!')
       return
     }
-    const amt = parseFloat(courseAmount)
-    if (isNaN(amt) || amt <= 0) {
-      toast.error('Vui lòng nhập số tiền học phí hợp lệ!')
-      return
-    }
-    if (!courseName.trim()) {
-      toast.error('Vui lòng nhập tên khóa học!')
-      return
-    }
+    const notif = tuitionNotifications.find(n => n.student_id === studentId && n.class_id === selClass)
+    const eff = getStudentEffectiveFee(studentId, selClass, notif)
+    const attendedRecords = attendance.filter(
+      a => a.class_id === selClass && a.student_id === studentId && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+    )
+    const courseNameFinal = attendedRecords.length > 0
+      ? `${courseName.trim()} (${attendedRecords.length} buổi)`
+      : courseName.trim()
+
     try {
       await upsertTuitionNotification({
         student_id: studentId,
         class_id: selClass,
-        course_name: courseName.trim(),
-        amount: amt,
+        course_name: courseNameFinal,
+        amount: eff.amount,
         is_paid: false
       })
       toast.success('✅ Đã tạo thông báo học phí thành công!')
@@ -522,8 +591,20 @@ export default function Tuition() {
       return
     }
 
-    const amountVal = courseAmount ? Number(courseAmount) : (Number(row.notification?.amount) || 600000)
-    const activeCourseName = (courseName && courseName.trim()) || row.notification?.course_name || 'Học phí'
+    const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+    const amountVal = eff.amount
+
+    // Lấy chi tiết các buổi học thực tế của học sinh để báo phụ huynh
+    const studentAttended = attendance
+      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+      .sort((a, b) => a.date.localeCompare(b.date))
+    const datesDetailText = studentAttended.length > 0
+      ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
+      : ''
+
+    const activeCourseName = studentAttended.length > 0
+      ? `${(courseName && courseName.trim()) || 'Học phí'} (${studentAttended.length} buổi)`
+      : ((courseName && courseName.trim()) || row.notification?.course_name || 'Học phí')
 
     if (selClass) {
       try {
@@ -553,13 +634,7 @@ export default function Tuition() {
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
 
-    // Lấy chi tiết các buổi học thực tế của học sinh để báo phụ huynh
-    const studentAttended = attendance
-      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
-      .sort((a, b) => a.date.localeCompare(b.date))
-    const datesDetailText = studentAttended.length > 0
-      ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
-      : ''
+
 
     const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
@@ -599,9 +674,20 @@ export default function Tuition() {
     const student = students.find((s: any) => s.id === row.student.id)
     const phone = (student as any)?.zalo || (student as any)?.parent_phone || ''
     
-    // Ưu tiên số tiền và tên khóa Thầy đang nhập trên giao diện
-    const amountVal = courseAmount ? Number(courseAmount) : (Number(row.notification?.amount) || 600000)
-    const activeCourseName = (courseName && courseName.trim()) || row.notification?.course_name || 'Tháng ' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
+    // Ưu tiên số tiền theo số buổi học thực tế hoặc học phí riêng
+    const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+    const amountVal = eff.amount
+
+    const studentAttended = attendance
+      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+      .sort((a, b) => a.date.localeCompare(b.date))
+    const datesDetailText = studentAttended.length > 0
+      ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
+      : ''
+
+    const activeCourseName = studentAttended.length > 0
+      ? `${(courseName && courseName.trim()) || 'Học phí'} (${studentAttended.length} buổi)`
+      : ((courseName && courseName.trim()) || row.notification?.course_name || 'Tháng ' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
     // Tự động lưu/cập nhật thông báo học phí mới vào database
     if (selClass) {
@@ -691,10 +777,18 @@ export default function Tuition() {
       const rawPhone = (student as any)?.zalo || (student as any)?.parent_phone || ''
       const digits = rawPhone.replace(/\D/g, '')
       const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
-      const amt = Number(row.notification?.amount || courseAmount)
+      const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+      const amt = eff.amount
+
+      const studentAttended = attendance
+        .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+        .sort((a, b) => a.date.localeCompare(b.date))
+      const sessionCount = studentAttended.length
 
       const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-      const activeCourseName = row.notification?.course_name || courseName || 'Học phí'
+      const activeCourseName = sessionCount > 0
+        ? `${(courseName && courseName.trim()) || 'Học phí'} (${sessionCount} buổi)`
+        : (row.notification?.course_name || courseName || 'Học phí')
       const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
       const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
       const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
@@ -1793,14 +1887,24 @@ export default function Tuition() {
 
 
       {/* QR VietQR Modal */}
-      {qrModal && qrModal.notification && (
+      {qrModal && (
         <VietQRModal
           open={!!qrModal}
           onClose={() => setQrModal(null)}
           studentName={qrModal.student.full_name}
           studentCode={qrModal.student.student_code}
-          amount={Number(qrModal.notification.amount)}
-          month={qrModal.notification.course_name}
+          amount={getStudentEffectiveFee(qrModal.student.id, selClass, qrModal.notification).amount}
+          month={(() => {
+            const attendedCount = attendance.filter(
+              a => a.class_id === selClass && a.student_id === qrModal.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+            ).length
+            if (attendedCount > 0) return `${attendedCount} buổi học`
+            return qrModal.notification?.course_name || (courseName && courseName.trim()) || 'Học phí'
+          })()}
+          className={(() => {
+            const cls = classes.find(c => c.id === selClass)
+            return cls ? ((cls as any).class_name || cls.name) : ''
+          })()}
           onConfirmManual={() => openManualPay(qrModal)}
         />
       )}
@@ -2337,8 +2441,17 @@ export default function Tuition() {
               const digits = rawPhone.replace(/\D/g, '')
               const cleanPhone = digits.startsWith('84') ? '0' + digits.substring(2) : (digits.startsWith('0') ? digits : '0' + digits)
               const phoneForLink = cleanPhone ? (cleanPhone.startsWith('84') ? '0' + cleanPhone.slice(2) : cleanPhone) : ''
-              const amt = courseAmount ? Number(courseAmount) : (Number(currentRow.notification?.amount) || 600000)
-              const activeCourseName = (courseName && courseName.trim()) || currentRow.notification?.course_name || 'Tháng ' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
+              const eff = getStudentEffectiveFee(currentRow.student.id, selClass, currentRow.notification)
+              const amt = eff.amount
+
+              const studentAttended = attendance
+                .filter(a => a.class_id === selClass && a.student_id === currentRow.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+                .sort((a, b) => a.date.localeCompare(b.date))
+              const sessionCount = studentAttended.length
+
+              const activeCourseName = sessionCount > 0
+                ? `${(courseName && courseName.trim()) || 'Học phí'} (${sessionCount} buổi)`
+                : (currentRow.notification?.course_name || (courseName && courseName.trim()) || 'Tháng ' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear())
 
               const bankId      = import.meta.env.VITE_BANK_ID      || 'VCB'
               const bankAccount = import.meta.env.VITE_BANK_ACCOUNT || '1070493932'
