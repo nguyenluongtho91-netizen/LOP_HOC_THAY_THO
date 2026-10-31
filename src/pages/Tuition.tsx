@@ -62,6 +62,7 @@ export default function Tuition() {
   const [copiedZalo, setCopiedZalo] = useState<'text'|'img'|null>(null)
   const [includeQrLink, setIncludeQrLink] = useState(false)
   const [copiedBatch, setCopiedBatch] = useState<'text'|'img'|null>(null)
+  const [copiedRowQrId, setCopiedRowQrId] = useState<string | null>(null)
 
   const [confirmModal, setConfirmModal] = useState<{studentName:string;amount:number;studentId:string;phone:string;email:string}|null>(null)
   const [sendingConfirm, setSendingConfirm] = useState(false)
@@ -1684,7 +1685,7 @@ export default function Tuition() {
                 <thead>
                   <tr className="bg-teal-50/50">
                     {[
-                      'Học sinh', 'Khóa học', 'Mức học phí', 'Trạng thái', 'Thu học phí', 'Gửi thông báo', ''
+                      'Học sinh', 'Khóa học', 'Mức học phí', 'Trạng thái', 'Thu học phí', 'Mã QR', 'Gửi thông báo', ''
                     ].map(h => (
                       <th
                         key={h}
@@ -1698,7 +1699,7 @@ export default function Tuition() {
                 <tbody>
                   {tuitionData.length === 0 && (
                     <tr>
-                      <td colSpan={7} className="text-center py-12 text-gray-400 text-sm font-semibold italic">
+                      <td colSpan={8} className="text-center py-12 text-gray-400 text-sm font-semibold italic">
                         Không có học sinh nào hoạt động trong lớp này.
                       </td>
                     </tr>
@@ -1878,6 +1879,69 @@ export default function Tuition() {
                             <Plus className="w-3.5 h-3.5" /> Báo học phí
                           </button>
                         )}
+                      </td>
+
+                      {/* Cột Copy Mã QR */}
+                      <td className="px-5 py-4 whitespace-nowrap">
+                        {(() => {
+                          const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+                          const amt = eff.amount
+                          const cls = classes.find(c => c.id === selClass)
+                          const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
+                          const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
+                          const rowQrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
+                          const isCopied = copiedRowQrId === row.student.id
+
+                          return (
+                            <div className="flex items-center gap-2">
+                              <img
+                                src={rowQrUrl}
+                                alt="QR"
+                                className="w-10 h-10 rounded-xl border border-slate-200 bg-white p-0.5 object-contain shadow-xs cursor-pointer hover:scale-110 active:scale-95 transition-transform"
+                                onClick={() => {
+                                  setQrModal(row)
+                                }}
+                                title="Bấm để xem phóng to mã QR"
+                              />
+                              <button
+                                type="button"
+                                onClick={async () => {
+                                  const toastId = toast.loading('Đang copy ảnh mã QR...')
+                                  const ok = await copyQrImageToClipboard(rowQrUrl)
+                                  toast.dismiss(toastId)
+                                  if (ok) {
+                                    setCopiedRowQrId(row.student.id)
+                                    toast.success(`🎉 Đã copy ẢNH MÃ QR của ${row.student.full_name}! Sang Zalo ấn Cmd+V (Ctrl+V) để dán`)
+                                    setTimeout(() => setCopiedRowQrId(null), 3500)
+                                  } else {
+                                    const a = document.createElement('a')
+                                    a.href = rowQrUrl
+                                    a.download = `QR_${row.student.student_code || row.student.full_name}_${amt}.png`
+                                    a.click()
+                                    toast.success('Đã tải ảnh mã QR xuống máy!')
+                                  }
+                                }}
+                                className={`px-2.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer select-none
+                                  ${isCopied
+                                    ? 'bg-emerald-600 text-white shadow-emerald-500/20'
+                                    : 'bg-gradient-to-r from-teal-50 to-blue-50 hover:from-teal-100 hover:to-blue-100 text-teal-800 border border-teal-200 hover:border-teal-300 hover:scale-105 active:scale-95'}`}
+                                title="Copy ẢNH mã QR để vào Zalo ấn Cmd+V dán ngay ảnh"
+                              >
+                                {isCopied ? (
+                                  <>
+                                    <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
+                                    <span>Đã copy</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <QrCode className="w-3.5 h-3.5 text-teal-600" />
+                                    <span>Copy QR</span>
+                                  </>
+                                )}
+                              </button>
+                            </div>
+                          )
+                        })()}
                       </td>
 
                       {/* Nhắc học phí */}
