@@ -323,12 +323,7 @@ export default function StudentPortal() {
         // NẾU LÀ THẦY THỌ / QUẢN TRỊ -> ĐẶC QUYỀN LÀM ĐƯỢC 100% TẤT CẢ PHÒNG THI
         if (isTeacherUser) return true;
 
-        // KIỂM TRA KHÓA HỆ THỐNG / ĐỀ THI: NẾU THẦY KHÓA THÌ ẨN HẲN KHỎI HỌC SINH
-        if (accessConfig?.is_locked) return false;
-        if (isExamLocked(room.id, false, accessConfig)) return false;
-        if (room.exam_id && isExamLocked(room.exam_id, false, accessConfig)) return false;
-        const cat = getExamCategory(room);
-        if (isCategoryLocked(cat, false, accessConfig)) return false;
+        // Phòng thi được quản lý trực tiếp theo trạng thái (🟢 Thi / 🔴 Khóa) và lớp/khối được phân công
 
         // 1. Kiểm tra nếu phòng thi có chỉ định danh sách học sinh cụ thể
         const assignedIds = room.settings?.assigned_student_ids
@@ -1231,14 +1226,7 @@ export default function StudentPortal() {
                 ) : (
                   <button 
                     onClick={() => {
-                      const isFree = student?.student_code?.toUpperCase() === 'THAYTHO' || student?.student_code?.toUpperCase() === 'TUDO';
-                      if (accessConfig?.is_locked && !isFree) {
-                        toast.error('Hệ thống đang tạm khóa! Thầy Thọ chưa cấp quyền vào học hay thi từ Trang Chủ.', {
-                          icon: '🔒',
-                          duration: 4500
-                        });
-                        return;
-                      }
+                      // Cho phép học sinh vào làm bài phòng thi hợp lệ
                       toast('⚠️ Cảnh báo quy chế: Khi làm bài nếu thoát toàn màn hình hoặc chuyển tab quá 3 lần, hệ thống sẽ tự động thu bài và chấm điểm!', {
                         duration: 6000,
                         icon: '🛡️',
@@ -3932,14 +3920,16 @@ export default function StudentPortal() {
                 type="button"
                 onClick={() => {
                   const target = examRuleModalTarget;
-                  const isFree = student?.student_code?.toUpperCase() === 'THAYTHO' || student?.student_code?.toUpperCase() === 'TUDO';
-                  if (accessConfig?.is_locked && !isFree) {
-                    toast.error('Hệ thống đang tạm khóa! Thầy Thọ chưa cấp quyền vào học hay thi từ Trang Chủ.', {
-                      icon: '🔒',
-                      duration: 4500
-                    });
-                    setExamRuleModalTarget(null);
-                    return;
+                  if (target.type !== 'room') {
+                    const isFree = student?.student_code?.toUpperCase() === 'THAYTHO' || student?.student_code?.toUpperCase() === 'TUDO';
+                    if (accessConfig?.is_locked && !isFree) {
+                      toast.error('Hệ thống đang tạm khóa! Thầy Thọ chưa cấp quyền vào học hay thi từ Trang Chủ.', {
+                        icon: '🔒',
+                        duration: 4500
+                      });
+                      setExamRuleModalTarget(null);
+                      return;
+                    }
                   }
                   setExamRuleModalTarget(null);
                   if (target.type === 'room' && target.id) {

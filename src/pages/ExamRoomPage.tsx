@@ -420,9 +420,9 @@ export default function ExamRoomPage() {
                           localStorage.getItem('role') === 'teacher' ||
                           localStorage.getItem('role') === 'admin';
         
-        const isGradeBlocked = isGradeLocked(currentStudent?.grade || roomData?.classes?.class_name || '', isTeacher, accessConfig);
-        if ((accessConfig.is_locked || isGradeBlocked) && !isTeacher) {
-          setTimeStatus('master_locked');
+        // Phòng thi do Thầy quản lý theo trạng thái (🟢 Thi / 🔴 Khóa)
+        if (roomData.status === 'closed' && !isTeacher) {
+          setTimeStatus('closed');
           setLoading(false);
           return;
         }
@@ -437,7 +437,9 @@ export default function ExamRoomPage() {
           const closesAt = roomData.closes_at || roomData.settings?.closes_at;
           const now = new Date();
 
-          if (opensAt && now < new Date(opensAt)) {
+          if (roomData.status === 'closed') {
+            setTimeStatus('closed');
+          } else if (opensAt && now < new Date(opensAt)) {
             setGateOpensAt(opensAt);
             setTimeStatus('waiting');
           } else if (closesAt && now > new Date(closesAt)) {
