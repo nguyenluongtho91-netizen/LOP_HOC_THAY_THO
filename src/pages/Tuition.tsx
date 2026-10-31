@@ -666,7 +666,7 @@ export default function Tuition() {
     const cls = classes.find(c => c.id === selClass)
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
+    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, activeCourseName || courseName || selectedMonth)
     const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
 
 
@@ -749,7 +749,7 @@ export default function Tuition() {
     const cls = classes.find(c => c.id === selClass)
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
+    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, activeCourseName || courseName || selectedMonth)
     const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
     
     const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
@@ -898,7 +898,7 @@ export default function Tuition() {
       const activeCourseName = sessionCount > 0
         ? `${(courseName && courseName.trim()) || 'Học phí'} (${sessionCount} buổi)`
         : (row.notification?.course_name || courseName || 'Học phí')
-      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
+      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, courseName || selectedMonth)
       const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
       const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
       const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
@@ -1943,7 +1943,7 @@ export default function Tuition() {
                           const amt = eff.amount
                           const cls = classes.find(c => c.id === selClass)
                           const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
-                          const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
+                          const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, row.notification?.course_name || courseName || selectedMonth)
                           const rowQrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
                           const isCopied = copiedRowQrId === row.student.id
 
@@ -2819,7 +2819,7 @@ export default function Tuition() {
               const cls = classes.find(c => c.id === selClass)
               const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
               const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-              const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code)
+              const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code, currentRow.notification?.course_name || courseName || selectedMonth)
               const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
 
               const subjectName = (cls as any)?.subject || ((currentRow.student.student_code && currentRow.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')

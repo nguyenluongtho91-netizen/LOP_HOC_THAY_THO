@@ -180,7 +180,7 @@ export function removeVietnameseTones(str: string | null | undefined): string {
  * Sinh cú pháp chuyển khoản VietQR chuẩn Napas 247: "HP [MÃ_HS] [TÊN HỌC SINH] [LỚP]"
  * Đảm bảo hiển thị tên học sinh khi quét mã QR, đồng thời chứa mã học sinh để ngân hàng tự động gạch nợ.
  */
-export function formatVietQRAddInfo(fullName: string, className = '', studentCode = ''): string {
+export function formatVietQRAddInfo(fullName: string, className = '', studentCode = '', monthOrCourse = ''): string {
   const cleanName = removeVietnameseTones(fullName).toUpperCase().trim()
 
   // Rút gọn tên lớp theo số khối: "Lớp 7A", "7. THẢO NGUYÊN" -> "L7"
@@ -195,12 +195,24 @@ export function formatVietQRAddInfo(fullName: string, className = '', studentCod
     }
   }
 
-  // Ghi rõ đầy đủ họ và tên học sinh kèm tên lớp (ví dụ: NGÔ ĐỨC THẮNG L7)
-  let text = cleanName
+  // Lấy số tháng: từ monthOrCourse (ví dụ: "Tháng 10/2026", "2026-10") hoặc tháng hiện tại
+  let monthNum = ''
+  if (monthOrCourse) {
+    const mMatch = monthOrCourse.match(/(?:tháng|thang|t|-)\s*(\d{1,2})/i)
+    if (mMatch && mMatch[1]) {
+      monthNum = parseInt(mMatch[1], 10).toString()
+    }
+  }
+  if (!monthNum) {
+    monthNum = (new Date().getMonth() + 1).toString()
+  }
+
+  // Cú pháp chuẩn theo yêu cầu Thầy Thọ: "HP THANG 10 NGO DUC THANG L7"
+  let text = `HP THANG ${monthNum} ${cleanName}`
   if (classTag) {
     text += ` ${classTag}`
   }
 
-  // Vietcombank cho phép tối đa 50 ký tự trong addInfo
-  return text.substring(0, 45).trim()
+  // Giới hạn độ dài an toàn theo chuẩn ngân hàng Vietcombank (tối đa 50 ký tự)
+  return text.substring(0, 48).trim()
 }

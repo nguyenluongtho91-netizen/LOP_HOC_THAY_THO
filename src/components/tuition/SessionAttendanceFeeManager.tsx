@@ -1160,7 +1160,7 @@ export default function SessionAttendanceFeeManager({
                             {(() => {
                               const cls = classes.find(c => c.id === selClass)
                               const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
-                              const addInfo = formatVietQRAddInfo(item.student.full_name, clsName, item.student.student_code)
+                              const addInfo = formatVietQRAddInfo(item.student.full_name, clsName, item.student.student_code, selectedMonth)
                               const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${item.calculatedAmount}&des=${encodeURIComponent(addInfo)}`
                               const isCopied = copiedSessionQrId === item.student.id
 
@@ -1632,7 +1632,7 @@ export default function SessionAttendanceFeeManager({
                           {(() => {
                             const cls = classes.find(c => c.id === selClass)
                             const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
-                            const addInfo = formatVietQRAddInfo(item.student.full_name, clsName, item.student.student_code)
+                            const addInfo = formatVietQRAddInfo(item.student.full_name, clsName, item.student.student_code, selectedMonth)
                             const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${item.calculatedAmount}&des=${encodeURIComponent(addInfo)}`
                             const isCopied = copiedSessionQrId === item.student.id
 
