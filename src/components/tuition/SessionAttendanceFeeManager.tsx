@@ -153,6 +153,15 @@ export default function SessionAttendanceFeeManager({
   useEffect(() => {
     if (!selClass) return
 
+    const cName = ((currentClass as any)?.class_name || currentClass?.name || '').toUpperCase()
+    const is7A = selClass === '75ec18e9-cc89-4b3e-87b0-a4a39cb90d40' || cName.includes('7A') || cName.includes('7.2')
+
+    if (is7A) {
+      setUnitPrice(60000)
+      setPriceInput('60000')
+      return
+    }
+
     // 1. Priority: unitPricesMap
     if (unitPricesMap[selClass]) {
       setUnitPrice(unitPricesMap[selClass])
@@ -160,10 +169,8 @@ export default function SessionAttendanceFeeManager({
       return
     }
 
-    // 2. Fallback: class name logic (Lớp 7.2 = 60.000, còn lại 80.000)
-    const cName = (currentClass as any)?.class_name || currentClass?.name || ''
-    const is72 = cName.includes('7.2') || cName.includes('72') || cName.includes('7A')
-    const fallbackPrice = currentClass?.tuition_fee || (is72 ? 60000 : 80000)
+    // 2. Fallback: class name logic
+    const fallbackPrice = currentClass?.tuition_fee || 80000
 
     setUnitPrice(fallbackPrice)
     setPriceInput(String(fallbackPrice))
@@ -517,7 +524,8 @@ export default function SessionAttendanceFeeManager({
     return classes
       .filter(c => c.status === 'active')
       .map(c => {
-        const cPrice = unitPricesMap[c.id] || c.tuition_fee || (((c.name || '').includes('7.2') || (c.name || '').includes('7A')) ? 60000 : 80000)
+        const is7A = c.id === '75ec18e9-cc89-4b3e-87b0-a4a39cb90d40' || (c.name || '').toUpperCase().includes('7A') || (c.name || '').includes('7.2')
+        const cPrice = is7A ? 60000 : (unitPricesMap[c.id] || c.tuition_fee || 80000)
         const cEnrolls = enrollments.filter(e => e.class_id === c.id && e.status === 'active')
         const cAtts = attendance.filter(a => a.class_id === c.id && (!selectedMonth || a.date.startsWith(selectedMonth)))
         

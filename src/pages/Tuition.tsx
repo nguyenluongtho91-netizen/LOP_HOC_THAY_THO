@@ -168,22 +168,26 @@ export default function Tuition() {
            (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
     )
     if (attendedRecords.length > 0) {
+      const cls = classes.find(c => c.id === classId)
+      const cName = ((cls as any)?.class_name || cls?.name || '').toUpperCase()
+      const is7A = classId === '75ec18e9-cc89-4b3e-87b0-a4a39cb90d40' || cName.includes('7A') || cName.includes('7.2')
+
       // Ưu tiên đơn giá riêng của học sinh (nếu có trong STUDENT_CUSTOM_RATES)
       let rate = 80000
       if (STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[studentId] !== undefined) {
         rate = STUDENT_CUSTOM_RATES[studentId]
+      } else if (is7A) {
+        // Lớp 7A cố định 60.000đ/buổi theo quy chuẩn của Thầy Thọ (14 buổi = 840.000đ)
+        rate = 60000
       } else if (unitPricesMap[classId]) {
         rate = unitPricesMap[classId]
       } else {
-        const cls = classes.find(c => c.id === classId)
-        const cName = (cls as any)?.class_name || cls?.name || ''
-        const is72 = cName.includes('7.2') || cName.includes('72') || cName.includes('7A')
-        rate = (cls as any)?.tuition_fee || (is72 ? 60000 : 80000)
+        rate = (cls as any)?.tuition_fee || 80000
       }
       const calcAmount = attendedRecords.length * rate
       return {
         amount: calcAmount,
-        note: `${attendedRecords.length} buổi × ${rate.toLocaleString('vi-VN')}đ`,
+        note: rate === 0 ? 'Miễn học phí (0 đồng)' : `${attendedRecords.length} buổi × ${rate.toLocaleString('vi-VN')}đ`,
         isCustom: STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[studentId] !== undefined,
         sessionCount: attendedRecords.length,
         sessionRate: rate
