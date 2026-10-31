@@ -435,60 +435,42 @@ export async function checkZaloServiceHealth(): Promise<ZaloServiceHealth> {
  */
 export async function copyQrImageToClipboard(qrUrl: string): Promise<boolean> {
   if (!qrUrl) return false;
-  return new Promise((resolve) => {
-    try {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => {
-        try {
-          const canvas = document.createElement('canvas');
-          const width = img.naturalWidth || 600;
-          const height = img.naturalHeight || 750;
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          if (!ctx) {
-            resolve(false);
-            return;
-          }
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, width, height);
-          ctx.drawImage(img, 0, 0, width, height);
+  try {
+    const res = await fetch(qrUrl);
+    const blob = await res.blob();
+    let pngBlob = blob;
 
-          canvas.toBlob(async (blob) => {
-            if (!blob) {
-              resolve(false);
-              return;
-            }
-            try {
-              if (navigator?.clipboard?.write) {
-                await navigator.clipboard.write([
-                  new ClipboardItem({ 'image/png': blob })
-                ]);
-                resolve(true);
-              } else {
-                resolve(false);
-              }
-            } catch (err) {
-              console.warn('Clipboard write error:', err);
-              resolve(false);
-            }
-          }, 'image/png');
-        } catch (e) {
-          console.warn('Canvas toBlob error:', e);
-          resolve(false);
-        }
-      };
-      img.onerror = () => {
-        console.warn('Image load error for:', qrUrl);
-        resolve(false);
-      };
-      img.src = qrUrl;
-    } catch (err) {
-      console.warn('copyQrImageToClipboard error:', err);
-      resolve(false);
+    if (blob.type !== 'image/png') {
+      pngBlob = await new Promise<Blob>((resolve, reject) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth || 600;
+          canvas.height = img.naturalHeight || 750;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return reject('No canvas context');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          canvas.toBlob((b) => b ? resolve(b) : reject('Blob conversion failed'), 'image/png');
+        };
+        img.onerror = () => reject('Image load failed');
+        img.src = URL.createObjectURL(blob);
+      });
     }
-  });
+
+    if (navigator?.clipboard?.write) {
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': pngBlob })
+      ]);
+      return true;
+    }
+    return false;
+  } catch (err) {
+    console.warn('copyQrImageToClipboard error:', err);
+    return false;
+  }
 }
 
 export async function sendZaloPersonalMessage(

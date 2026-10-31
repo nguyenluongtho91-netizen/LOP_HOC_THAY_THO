@@ -650,15 +650,16 @@ export default function Tuition() {
 
 
     const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+    const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-              + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+              + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
-              + (studentAttended.length > 0 ? `• Số buổi đã học (${studentAttended.length} buổi): ${datesDetailText}\n` : '')
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
               + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-              + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
+              + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
     setSendingStudentId(row.student.id)
@@ -731,23 +732,17 @@ export default function Tuition() {
         + '&accountName=' + encodeURIComponent(bankName)
       : ''
     
-    const studentAttendedCount = attendance.filter(
-      a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'late')
-    ).length
-    const sessionInfoLine = studentAttendedCount > 0
-      ? `• Số buổi đã học: ${studentAttendedCount} buổi\n`
-      : ''
-
     const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+    const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-              + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+              + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
               + `• Học sinh: ${row.student.full_name}\n`
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
-              + sessionInfoLine
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
               + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-              + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
+              + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
@@ -803,16 +798,18 @@ export default function Tuition() {
         ? `${(courseName && courseName.trim()) || 'Học phí'} (${sessionCount} buổi)`
         : (row.notification?.course_name || courseName || 'Học phí')
       const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
-      const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+      const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
       const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+      const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+      const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
       const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-                + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+                + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
                 + `• Học sinh: ${row.student.full_name}\n`
                 + `• Môn học: ${subjectName}\n`
                 + `• Lớp: ${cleanClass}\n`
                 + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                 + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-                + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
+                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
       logs.push(`⏳ [${i + 1}/${unpaidList.length}] Đang gửi cho ${row.student.full_name} (${cleanPhone || 'Không có SĐT'})...`)
@@ -884,21 +881,21 @@ export default function Tuition() {
       try {
         await navigator.clipboard.writeText(zaloModal.msg)
         setCopiedZalo('text')
+        toast.success('Đã copy tin nhắn học phí!')
         setTimeout(() => setCopiedZalo(null), 2500)
       } catch { toast.error('Không copy được') }
     } else {
-      try {
-        const res  = await fetch(zaloModal.qrUrl)
-        const blob = await res.blob()
-        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
+      const ok = await copyQrImageToClipboard(zaloModal.qrUrl)
+      if (ok) {
         setCopiedZalo('img')
-        setTimeout(() => setCopiedZalo(null), 2500)
-      } catch {
+        toast.success('✅ Đã copy ẢNH MÃ QR! Vào Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR')
+        setTimeout(() => setCopiedZalo(null), 3000)
+      } else {
         const a = document.createElement('a')
         a.href     = zaloModal.qrUrl
         a.download = 'QR_' + zaloModal.row.student.student_code + '.png'
         a.click()
-        toast.success('Đã tải QR xuống, gửi vào Zalo nhé!')
+        toast.success('Đã tải ảnh mã QR xuống máy!')
       }
     }
   }
@@ -2508,17 +2505,19 @@ export default function Tuition() {
               const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
               const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
               const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code)
-              const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact.png?amount=${amt}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+              const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
 
               const subjectName = (cls as any)?.subject || ((currentRow.student.student_code && currentRow.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+              const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+              const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
               const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\n\n`
-                        + `Thầy Thọ xin gửi thông tin học phí tháng ${activeCourseName || '10'} của con:\n`
+                        + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
                         + `• Học sinh: ${currentRow.student.full_name}\n`
                         + `• Môn học: ${subjectName}\n`
                         + `• Lớp: ${cleanClass}\n`
                         + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                         + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-                        + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
+                        + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                         + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
               const copyTextOnly = async () => {
