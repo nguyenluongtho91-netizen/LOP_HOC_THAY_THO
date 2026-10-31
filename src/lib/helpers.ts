@@ -195,24 +195,12 @@ export function formatVietQRAddInfo(fullName: string, className = '', studentCod
     }
   }
 
-  // Lấy số tháng: từ monthOrCourse (ví dụ: "Tháng 10/2026", "2026-10") hoặc tháng hiện tại
-  let monthNum = ''
-  if (monthOrCourse) {
-    const mMatch = monthOrCourse.match(/(?:tháng|thang|t|-)\s*(\d{1,2})/i)
-    if (mMatch && mMatch[1]) {
-      monthNum = parseInt(mMatch[1], 10).toString()
-    }
-  }
-  if (!monthNum) {
-    monthNum = (new Date().getMonth() + 1).toString()
-  }
-
-  // Cú pháp chuẩn theo yêu cầu Thầy Thọ: "HP THANG 10 NGO DUC THANG L7"
-  let text = `HP THANG ${monthNum} ${cleanName}`
+  // Gọn gàng, rõ ràng đầy đủ họ và tên kèm lớp (ví dụ: NGO DUC THANG L7)
+  let text = cleanName
   if (classTag) {
     text += ` ${classTag}`
   }
 
   // Giới hạn độ dài an toàn theo chuẩn ngân hàng Vietcombank (tối đa 50 ký tự)
-  return text.substring(0, 48).trim()
+  return text.substring(0, 45).trim()
 }
