@@ -60,6 +60,7 @@ export default function Tuition() {
   const [zaloModal, setZaloModal]   = useState<{row:TuitionNotificationRow;msg:string;qrUrl:string;phone:string}|null>(null)
   const [batchZaloModal, setBatchZaloModal] = useState<{ list: TuitionNotificationRow[]; currentIndex: number } | null>(null)
   const [copiedZalo, setCopiedZalo] = useState<'text'|'img'|null>(null)
+  const [includeQrLink, setIncludeQrLink] = useState(false)
   const [copiedBatch, setCopiedBatch] = useState<'text'|'img'|null>(null)
 
   const [confirmModal, setConfirmModal] = useState<{studentName:string;amount:number;studentId:string;phone:string;email:string}|null>(null)
@@ -640,12 +641,7 @@ export default function Tuition() {
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
     const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
-    const qrUrl = bankId && bankAccount
-      ? 'https://img.vietqr.io/image/' + bankId + '-' + bankAccount + '-compact.png'
-        + '?amount=' + amountVal
-        + '&addInfo=' + encodeURIComponent(addInfo)
-        + '&accountName=' + encodeURIComponent(bankName)
-      : ''
+    const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
 
 
 
@@ -663,24 +659,27 @@ export default function Tuition() {
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
     setSendingStudentId(row.student.id)
-    const toastId = toast.loading(`🚀 Đang tự động gửi Zalo cho ${row.student.full_name}...`)
+    const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
+    setZaloModal({ row: synthRow, msg, qrUrl, phone: cleanPhone })
+    setCopiedZalo('text')
 
+    // Tự động copy nội dung tin nhắn học phí
     try {
-      const res = await sendZaloPersonalMessage(cleanPhone, msg, qrUrl, row.student.full_name)
-      toast.dismiss(toastId)
-      if (res.success) {
-        toast.success(`🎉 ${res.message}`)
-      } else if ((res as any).openedZalo) {
-        toast(`💬 ${res.message}`, { icon: '📋', duration: 6000 })
-      } else {
-        toast.error(res.message)
-      }
-    } catch (err: any) {
-      toast.dismiss(toastId)
-      toast.error(`Lỗi: ${err.message}`)
-    } finally {
-      setSendingStudentId(null)
-    }
+      await navigator.clipboard.writeText(msg)
+      toast.success(`📋 Đã copy tin nhắn học phí của ${row.student.full_name}!`)
+    } catch {}
+
+    // Tự động tải ảnh mã QR về máy để sẵn sàng kéo thả hoặc đính kèm
+    try {
+      const a = document.createElement('a')
+      a.href = qrUrl
+      a.download = `QR_${row.student.student_code || row.student.full_name}_${amountVal}.png`
+      a.click()
+    } catch {}
+
+    // Mở khung chat Zalo phụ huynh
+    window.open(`https://zalo.me/${cleanPhone}`, '_blank')
+    setSendingStudentId(null)
   }
 
   // ── Send Zalo: open custom preview modal ──
@@ -725,12 +724,7 @@ export default function Tuition() {
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
     const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code)
-    const qrUrl = bankId && bankAccount
-      ? 'https://img.vietqr.io/image/' + bankId + '-' + bankAccount + '-compact.png'
-        + '?amount=' + amountVal
-        + '&addInfo=' + encodeURIComponent(addInfo)
-        + '&accountName=' + encodeURIComponent(bankName)
-      : ''
+    const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
     
     const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
     const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
@@ -879,23 +873,28 @@ export default function Tuition() {
     if (!zaloModal) return
     if (type === 'text') {
       try {
-        await navigator.clipboard.writeText(zaloModal.msg)
+        const textToCopy = includeQrLink
+          ? `${zaloModal.msg}\n\n👉 Ảnh mã QR chuyển khoản: ${zaloModal.qrUrl}`
+          : zaloModal.msg
+        await navigator.clipboard.writeText(textToCopy)
         setCopiedZalo('text')
-        toast.success('Đã copy tin nhắn học phí!')
+        toast.success('📋 Đã copy tin nhắn học phí!')
         setTimeout(() => setCopiedZalo(null), 2500)
       } catch { toast.error('Không copy được') }
     } else {
+      const toastId = toast.loading('Đang sao chép ảnh mã QR...')
       const ok = await copyQrImageToClipboard(zaloModal.qrUrl)
+      toast.dismiss(toastId)
       if (ok) {
         setCopiedZalo('img')
-        toast.success('✅ Đã copy ẢNH MÃ QR! Vào Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR')
-        setTimeout(() => setCopiedZalo(null), 3000)
+        toast.success('🎉 Đã copy ẢNH MÃ QR! Thầy sang Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR')
+        setTimeout(() => setCopiedZalo(null), 3500)
       } else {
         const a = document.createElement('a')
         a.href     = zaloModal.qrUrl
-        a.download = 'QR_' + zaloModal.row.student.student_code + '.png'
+        a.download = 'QR_' + (zaloModal.row.student.student_code || zaloModal.row.student.full_name) + '.png'
         a.click()
-        toast.success('Đã tải ảnh mã QR xuống máy!')
+        toast.success('Đã tải ảnh mã QR xuống máy (Thầy có thể kéo thả vào Zalo)!')
       }
     }
   }
@@ -2080,81 +2079,120 @@ export default function Tuition() {
 
       {/* Zalo Share Modal */}
       {zaloModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden border border-teal-150">
-            <div className="bg-gradient-to-r from-blue-500 to-blue-400 px-5 py-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <MessageCircle className="w-5 h-5 text-white" />
-                <span className="text-white font-extrabold">Thông báo học phí qua Zalo</span>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden border border-blue-150 flex flex-col max-h-[92vh]">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 px-6 py-4 flex items-center justify-between text-white shrink-0">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 bg-white/20 rounded-xl">
+                  <MessageCircle className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-extrabold text-base leading-tight">Gửi Thông Báo Học Phí & Mã QR</h3>
+                  <p className="text-xs text-blue-100 font-medium">Học sinh: {zaloModal.row.student.full_name} • {zaloModal.phone}</p>
+                </div>
               </div>
-              <button onClick={() => setZaloModal(null)} className="text-white/70 hover:text-white text-xl leading-none font-bold">✕</button>
+              <button onClick={() => setZaloModal(null)} className="text-white/80 hover:text-white text-2xl leading-none font-bold cursor-pointer">✕</button>
             </div>
 
-            <div className="p-4 space-y-3">
-              <button
-                onClick={async () => {
-                  toast.loading('Đang tự động gửi tin nhắn và mã QR vào Zalo PC...');
-                  const res = await sendZaloPersonalMessage(zaloModal.phone, zaloModal.msg, zaloModal.qrUrl);
-                  toast.dismiss();
-                  if (res.success) {
-                    toast.success('🎉 Đã gửi tự động vào Zalo PC thành công!');
-                    setZaloModal(null);
-                  } else {
-                    toast.error(res.message);
-                  }
-                }}
-                className="w-full py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-500/25 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
-                ⚡ BẤM GỬI TỰ ĐỘNG NGAY QUA ZALO PC
-              </button>
-
-              <div className="relative flex py-1 items-center">
-                <div className="flex-grow border-t border-gray-200"></div>
-                <span className="shrink-0 mx-2 text-[10px] text-gray-400 font-bold uppercase">Hoặc gửi thủ công</span>
-                <div className="flex-grow border-t border-gray-200"></div>
-              </div>
-
-              {/* Step 1: Copy Text message */}
-              <div className="bg-gray-50 rounded-xl p-3 border border-gray-200">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-bold text-gray-400">① Tin nhắn học phí</span>
-                  <button onClick={() => copyZaloContent('text')}
-                    className={`text-xs px-3 py-1.5 rounded-lg font-bold transition-all
-                      ${copiedZalo === 'text' ? 'bg-green-600 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
-                    {copiedZalo === 'text' ? '✓ Đã copy' : 'Copy tin nhắn'}
-                  </button>
-                </div>
-                <pre className="text-xs text-gray-700 whitespace-pre-wrap leading-relaxed font-sans font-medium">{zaloModal.msg}</pre>
-              </div>
-
-              {/* Step 2: Copy QR */}
+            <div className="p-5 space-y-4 overflow-y-auto">
+              {/* KHỐI ẢNH MÃ QR TO & RÕ NÉT */}
               {zaloModal.qrUrl && (
-                <div className="bg-blue-50 rounded-xl p-3 border border-blue-100">
+                <div className="bg-gradient-to-b from-blue-50 to-indigo-50/50 rounded-2xl p-4 border border-blue-200 text-center">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-blue-700">② Ảnh QR chuyển khoản</span>
-                    <button onClick={() => copyZaloContent('img')}
-                      className={`text-xs px-3 py-1.5 rounded-lg font-bold transition-all
-                        ${copiedZalo === 'img' ? 'bg-green-500 text-white' : 'bg-blue-500 text-white hover:bg-blue-600'}`}>
-                      {copiedZalo === 'img' ? '✓ Đã copy' : 'Copy QR'}
-                    </button>
+                    <span className="text-xs font-black text-blue-800 uppercase tracking-wide">
+                      🖼️ Mã QR Chuyển Khoản Học Phí
+                    </span>
+                    <span className="text-xs font-black text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full">
+                      {(zaloModal.row.notification?.amount || 640000).toLocaleString('vi-VN')} đ
+                    </span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <img src={zaloModal.qrUrl} alt="QR" className="w-20 h-20 rounded-xl border border-blue-200 shrink-0" />
-                    <p className="text-xs text-blue-900/70 leading-relaxed font-medium">
-                      Bấm <strong>Copy QR</strong> → vào Zalo → <strong>Ctrl+V</strong> để gửi ảnh.<br/>
-                      Hoặc đính kèm ảnh QR đã tải xuống.
+
+                  <div className="flex flex-col sm:flex-row items-center gap-4 justify-center py-2">
+                    <img
+                      src={zaloModal.qrUrl}
+                      alt="VietQR"
+                      className="w-48 h-48 rounded-xl border-2 border-blue-300 shadow-md bg-white object-contain"
+                    />
+                    <div className="flex flex-col gap-2.5 w-full sm:w-auto">
+                      <button
+                        onClick={() => copyZaloContent('img')}
+                        className={`px-5 py-3 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer hover:scale-[1.02] active:scale-[0.98]
+                          ${copiedZalo === 'img' ? 'bg-emerald-600 text-white' : 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-blue-500/25'}`}
+                      >
+                        {copiedZalo === 'img' ? '✓ ĐÃ COPY ẢNH QR!' : '🖼️ COPY ẢNH MÃ QR'}
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          const a = document.createElement('a');
+                          a.href = zaloModal.qrUrl;
+                          a.download = `QR_${zaloModal.row.student.student_code || zaloModal.row.student.full_name}_${zaloModal.row.notification?.amount || 640000}.png`;
+                          a.click();
+                          toast.success('Đã tải ảnh mã QR xuống máy!');
+                        }}
+                        className="px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        ⬇️ Tải Ảnh QR Về Máy
+                      </button>
+                    </div>
+                  </div>
+                  <div className="bg-blue-100/70 rounded-xl p-2.5 mt-2 text-left">
+                    <p className="text-xs text-blue-950 font-bold">
+                      💡 Cách gửi mã QR cho phụ huynh trên Zalo:
+                    </p>
+                    <p className="text-[11px] text-blue-900 leading-relaxed font-medium">
+                      Bấm nút <strong>"COPY ẢNH MÃ QR"</strong> ở trên → Sang Zalo ấn <strong>Cmd+V (Ctrl+V)</strong> là ảnh mã QR hiện lên để gửi ngay cho phụ huynh! (Hoặc kéo thả file ảnh vừa tải vào khung chat).
                     </p>
                   </div>
                 </div>
               )}
 
-              {/* Step 3: Open Zalo chat */}
+              {/* KHỐI TIN NHẮN HỌC PHÍ */}
+              <div className="bg-gray-50 rounded-2xl p-4 border border-gray-200">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-xs font-black text-gray-600 uppercase tracking-wide">
+                    📋 Nội Dung Tin Nhắn Báo Phí
+                  </span>
+                  <button
+                    onClick={() => copyZaloContent('text')}
+                    className={`text-xs px-4 py-2 rounded-xl font-black transition-all flex items-center gap-1.5 cursor-pointer shadow-sm
+                      ${copiedZalo === 'text' ? 'bg-emerald-600 text-white' : 'bg-indigo-600 hover:bg-indigo-700 text-white'}`}
+                  >
+                    {copiedZalo === 'text' ? '✓ ĐÃ COPY TIN NHẮN!' : '📋 COPY TIN NHẮN'}
+                  </button>
+                </div>
+                <pre className="text-xs text-gray-800 whitespace-pre-wrap leading-relaxed font-sans font-medium bg-white p-3.5 rounded-xl border border-gray-100 max-h-40 overflow-y-auto">
+                  {includeQrLink ? `${zaloModal.msg}\n\n👉 Ảnh mã QR chuyển khoản: ${zaloModal.qrUrl}` : zaloModal.msg}
+                </pre>
+
+                <label className="flex items-center gap-2 mt-2.5 cursor-pointer select-none text-xs text-gray-600 font-semibold">
+                  <input
+                    type="checkbox"
+                    checked={includeQrLink}
+                    onChange={(e) => {
+                      setIncludeQrLink(e.target.checked);
+                      if (e.target.checked) {
+                        navigator.clipboard.writeText(`${zaloModal.msg}\n\n👉 Ảnh mã QR chuyển khoản: ${zaloModal.qrUrl}`);
+                        toast.success('Đã cập nhật & copy tin nhắn kèm link ảnh QR!');
+                      } else {
+                        navigator.clipboard.writeText(zaloModal.msg);
+                        toast.success('Đã copy tin nhắn (không kèm link)!');
+                      }
+                    }}
+                    className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 border-gray-300 cursor-pointer"
+                  />
+                  <span>Kèm link ảnh QR trong tin nhắn (Dán 1 lần là hiện cả tin nhắn và mã QR trong Zalo)</span>
+                </label>
+              </div>
+
+              {/* NÚT MỞ ZALO PHỤ HUYNH */}
               <button
                 onClick={() => window.open(zaloModal.phone ? 'https://zalo.me/' + zaloModal.phone : 'https://chat.zalo.me', '_blank')}
-                className="w-full py-2.5 bg-blue-500 text-white rounded-xl font-bold text-sm hover:bg-blue-600 transition-all flex items-center justify-center gap-2 shadow-md shadow-blue-500/10">
-                <MessageCircle className="w-4 h-4" />
-                {zaloModal.phone ? '③ Mở Zalo phụ huynh' : '③ Mở Zalo Web'}
+                className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-md shadow-blue-500/20 cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4 text-white" />
+                {zaloModal.phone ? `🚀 Mở Khung Chat Zalo Với Phụ Huynh (${zaloModal.phone})` : '🚀 Mở Zalo Web'}
               </button>
             </div>
           </div>

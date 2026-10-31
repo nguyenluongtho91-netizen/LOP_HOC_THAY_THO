@@ -436,11 +436,20 @@ export async function checkZaloServiceHealth(): Promise<ZaloServiceHealth> {
 export async function copyQrImageToClipboard(qrUrl: string): Promise<boolean> {
   if (!qrUrl) return false;
   try {
-    const res = await fetch(qrUrl);
-    const blob = await res.blob();
-    let pngBlob = blob;
+    let pngBlob: Blob | null = null;
+    try {
+      const res = await fetch(qrUrl, { mode: 'cors' });
+      if (res.ok) {
+        const blob = await res.blob();
+        if (blob.type === 'image/png') {
+          pngBlob = blob;
+        }
+      }
+    } catch (e) {
+      console.warn('Direct fetch failed, falling back to canvas Image:', e);
+    }
 
-    if (blob.type !== 'image/png') {
+    if (!pngBlob) {
       pngBlob = await new Promise<Blob>((resolve, reject) => {
         const img = new Image();
         img.crossOrigin = 'anonymous';
@@ -449,18 +458,18 @@ export async function copyQrImageToClipboard(qrUrl: string): Promise<boolean> {
           canvas.width = img.naturalWidth || 600;
           canvas.height = img.naturalHeight || 750;
           const ctx = canvas.getContext('2d');
-          if (!ctx) return reject('No canvas context');
+          if (!ctx) return reject(new Error('No canvas context'));
           ctx.fillStyle = '#ffffff';
           ctx.fillRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(img, 0, 0);
-          canvas.toBlob((b) => b ? resolve(b) : reject('Blob conversion failed'), 'image/png');
+          canvas.toBlob((b) => b ? resolve(b) : reject(new Error('Canvas blob failed')), 'image/png');
         };
-        img.onerror = () => reject('Image load failed');
-        img.src = URL.createObjectURL(blob);
+        img.onerror = () => reject(new Error('Image load failed'));
+        img.src = qrUrl;
       });
     }
 
-    if (navigator?.clipboard?.write) {
+    if (pngBlob && navigator?.clipboard?.write) {
       await navigator.clipboard.write([
         new ClipboardItem({ 'image/png': pngBlob })
       ]);
