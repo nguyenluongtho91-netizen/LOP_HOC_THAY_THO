@@ -610,3 +610,195 @@ export async function checkZaloPersonalLoginState(): Promise<{ status: string; s
   }
 }
 
+
+
+export interface TuitionCardParams {
+  studentName: string
+  className: string
+  subjectName?: string
+  monthHeader: string
+  amount: number
+  qrUrl: string
+  transferContent: string
+  deadlineText?: string
+}
+
+export async function generateTuitionCardBlob(params: TuitionCardParams): Promise<Blob> {
+  const {
+    studentName,
+    className,
+    subjectName = 'Toán học',
+    monthHeader,
+    amount,
+    qrUrl,
+    transferContent,
+    deadlineText = 'Trước ngày 05/11'
+  } = params
+
+  let imgSource: ImageBitmap | HTMLImageElement
+  try {
+    const res = await fetch(qrUrl, { mode: 'cors' })
+    const qrRawBlob = await res.blob()
+    imgSource = await createImageBitmap(qrRawBlob)
+  } catch {
+    imgSource = await new Promise<HTMLImageElement>((resolve, reject) => {
+      const img = new Image()
+      img.crossOrigin = 'anonymous'
+      img.onload = () => resolve(img)
+      img.onerror = () => reject(new Error('Load QR image failed'))
+      img.src = qrUrl
+    })
+  }
+
+  const width = 600
+  const height = 860
+  const scale = 2
+  const canvas = document.createElement('canvas')
+  canvas.width = width * scale
+  canvas.height = height * scale
+  const ctx = canvas.getContext('2d')
+  if (!ctx) throw new Error('Cannot get 2d context')
+  ctx.scale(scale, scale)
+
+  // Outer Background
+  ctx.fillStyle = '#f1f5f9'
+  ctx.fillRect(0, 0, width, height)
+
+  // Main Card
+  const cardX = 20
+  const cardY = 20
+  const cardW = width - 40
+  const cardH = height - 40
+  const r = 24
+
+  ctx.save()
+  ctx.beginPath()
+  if (typeof (ctx as any).roundRect === 'function') {
+    (ctx as any).roundRect(cardX, cardY, cardW, cardH, r)
+  } else {
+    ctx.rect(cardX, cardY, cardW, cardH)
+  }
+  ctx.fillStyle = '#ffffff'
+  ctx.fill()
+  ctx.strokeStyle = '#cbd5e1'
+  ctx.lineWidth = 1.5
+  ctx.stroke()
+  ctx.clip()
+
+  // Header banner (gradient)
+  const grad = ctx.createLinearGradient(cardX, cardY, cardX + cardW, cardY + 95)
+  grad.addColorStop(0, '#047857') // emerald-700
+  grad.addColorStop(1, '#0f766e') // teal-700
+  ctx.fillStyle = grad
+  ctx.fillRect(cardX, cardY, cardW, 95)
+
+  // Header Text
+  ctx.fillStyle = '#ffffff'
+  ctx.font = 'bold 22px system-ui, -apple-system, sans-serif'
+  ctx.textAlign = 'center'
+  ctx.fillText('LỚP HỌC THẦY THỌ', width / 2, cardY + 40)
+
+  ctx.fillStyle = '#a7f3d0'
+  ctx.font = 'bold 14px system-ui, -apple-system, sans-serif'
+  ctx.fillText(`THÔNG BÁO HỌC PHÍ • ${monthHeader.toUpperCase()}`, width / 2, cardY + 68)
+
+  // Student Info Box
+  const infoY = cardY + 115
+  const infoH = 125
+  ctx.fillStyle = '#f0fdf4'
+  ctx.beginPath()
+  if (typeof (ctx as any).roundRect === 'function') {
+    (ctx as any).roundRect(cardX + 20, infoY, cardW - 40, infoH, 16)
+  } else {
+    ctx.rect(cardX + 20, infoY, cardW - 40, infoH)
+  }
+  ctx.fill()
+  ctx.strokeStyle = '#86efac'
+  ctx.lineWidth = 1.5
+  ctx.stroke()
+
+  ctx.textAlign = 'left'
+  // Student Name
+  ctx.fillStyle = '#0f172a'
+  ctx.font = 'bold 18px system-ui, -apple-system, sans-serif'
+  ctx.fillText(`Học sinh: ${studentName}`, cardX + 38, infoY + 32)
+
+  // Class & Subject
+  ctx.fillStyle = '#475569'
+  ctx.font = '14px system-ui, -apple-system, sans-serif'
+  ctx.fillText(`Lớp: ${className}   •   Môn: ${subjectName}`, cardX + 38, infoY + 58)
+
+  // Amount
+  ctx.fillStyle = '#047857'
+  ctx.font = 'bold 20px system-ui, -apple-system, sans-serif'
+  ctx.fillText(`Số tiền học phí: ${amount.toLocaleString('vi-VN')} đ`, cardX + 38, infoY + 88)
+
+  // Deadline
+  ctx.fillStyle = '#e11d48'
+  ctx.font = 'bold 13px system-ui, -apple-system, sans-serif'
+  ctx.fillText(`⏰ Hạn nộp: ${deadlineText}`, cardX + 38, infoY + 112)
+
+  // QR Code Image
+  const qrSize = 340
+  const qrX = (width - qrSize) / 2
+  const qrY = infoY + infoH + 15
+  ctx.drawImage(imgSource, qrX, qrY, qrSize, qrSize)
+
+  // Bank Info Footer Box
+  const footerY = qrY + qrSize + 15
+  const footerH = 95
+  ctx.fillStyle = '#f8fafc'
+  ctx.beginPath()
+  if (typeof (ctx as any).roundRect === 'function') {
+    (ctx as any).roundRect(cardX + 20, footerY, cardW - 40, footerH, 14)
+  } else {
+    ctx.rect(cardX + 20, footerY, cardW - 40, footerH)
+  }
+  ctx.fill()
+  ctx.strokeStyle = '#e2e8f0'
+  ctx.lineWidth = 1
+  ctx.stroke()
+
+  ctx.textAlign = 'center'
+  ctx.fillStyle = '#1e293b'
+  ctx.font = 'bold 14px system-ui, -apple-system, sans-serif'
+  ctx.fillText('Ngân hàng Vietcombank  •  STK: 1070493932', width / 2, footerY + 28)
+
+  ctx.fillStyle = '#475569'
+  ctx.font = '13px system-ui, -apple-system, sans-serif'
+  ctx.fillText('Chủ TK: HO KINH DOANH NGUYEN LUONG THO', width / 2, footerY + 52)
+
+  ctx.fillStyle = '#047857'
+  ctx.font = 'bold 15px system-ui, -apple-system, sans-serif'
+  ctx.fillText(`Nội dung CK: ${transferContent}`, width / 2, footerY + 78)
+
+  // Bottom caption
+  ctx.fillStyle = '#64748b'
+  ctx.font = 'italic 12px system-ui, -apple-system, sans-serif'
+  ctx.fillText('Quý phụ huynh mở app ngân hàng quét mã để thanh toán tự động', width / 2, height - 32)
+
+  ctx.restore()
+
+  return new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((b) => {
+      if (b) resolve(b)
+      else reject(new Error('Canvas toBlob failed'))
+    }, 'image/png', 0.95)
+  })
+}
+
+export async function copyTuitionCardImageToClipboard(params: TuitionCardParams): Promise<boolean> {
+  try {
+    const cardBlob = await generateTuitionCardBlob(params)
+    if (navigator?.clipboard?.write) {
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': cardBlob })
+      ])
+      return true
+    }
+    return false
+  } catch (err) {
+    console.error('copyTuitionCardImageToClipboard error:', err)
+    return false
+  }
+}

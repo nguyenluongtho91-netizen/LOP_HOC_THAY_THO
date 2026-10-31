@@ -19,7 +19,7 @@ const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
     return '—'
   }
 }
-import { copyQrImageToClipboard } from '@/services/zaloService'
+import { copyQrImageToClipboard, copyTuitionCardImageToClipboard } from '@/services/zaloService'
 import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 import { supabase } from '@/lib/supabase'
@@ -1247,8 +1247,21 @@ export default function SessionAttendanceFeeManager({
                                                 + `${qrUrl}\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
-                                      await navigator.clipboard.writeText(msg)
-                                      toast.success(`📋 Đã nạp TIN NHẮN KÈM MÃ QR của ${item.student.full_name}! Sang Zalo ấn Cmd+V là hiện đầy đủ chữ và mã QR`)
+                                      const ok = await copyTuitionCardImageToClipboard({
+                                        studentName: item.student.full_name,
+                                        className: cleanClass,
+                                        subjectName,
+                                        monthHeader,
+                                        amount: item.calculatedAmount,
+                                        qrUrl,
+                                        transferContent: addInfo
+                                      })
+                                      if (ok) {
+                                        toast.success(`🎉 Đã nạp ẢNH BÁO PHÍ KÈM MÃ QR của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh gửi ngay!`)
+                                      } else {
+                                        await navigator.clipboard.writeText(msg)
+                                        toast.success(`📋 Đã copy tin nhắn của ${item.student.full_name}!`)
+                                      }
                                       if (cleanPhone && cleanPhone.length === 10) {
                                         window.open(`https://zalo.me/${cleanPhone}`, '_blank')
                                       } else {
@@ -1283,9 +1296,24 @@ export default function SessionAttendanceFeeManager({
                                                 + `${qrUrl}\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
                                       try {
-                                        await navigator.clipboard.writeText(msg)
+                                        const toastId = toast.loading('Đang tạo ảnh báo phí...')
+                                        const ok = await copyTuitionCardImageToClipboard({
+                                          studentName: item.student.full_name,
+                                          className: cleanClass,
+                                          subjectName,
+                                          monthHeader,
+                                          amount: item.calculatedAmount,
+                                          qrUrl,
+                                          transferContent: addInfo
+                                        })
+                                        toast.dismiss(toastId)
                                         setCopiedSessionMsgId(item.student.id)
-                                        toast.success(`📋 Đã copy TIN NHẮN KÈM MÃ QR của ${item.student.full_name}! Sang Zalo ấn Cmd+V là hiện đầy đủ chữ và mã QR`)
+                                        if (ok) {
+                                          toast.success(`🎉 Đã copy ẢNH BÁO PHÍ KÈM MÃ QR của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh gửi ngay!`)
+                                        } else {
+                                          await navigator.clipboard.writeText(msg)
+                                          toast.success(`📋 Đã copy tin nhắn của ${item.student.full_name}!`)
+                                        }
                                         setTimeout(() => setCopiedSessionMsgId(null), 3500)
                                       } catch {
                                         toast.error('Lỗi khi sao chép')
@@ -1305,7 +1333,7 @@ export default function SessionAttendanceFeeManager({
                                     ) : (
                                       <>
                                         <QrCode className="w-3.5 h-3.5 text-indigo-600" />
-                                        <span>Copy Tin + Mã QR</span>
+                                        <span>Copy Ảnh Báo Phí</span>
                                       </>
                                     )}
                                   </button>
