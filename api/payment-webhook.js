@@ -121,6 +121,29 @@ Thầy cảm ơn phụ huynh!`;
     }
   }
 
+  // Ghi vào Cloud Outbox __ZALO_OUTBOX__ để Robot Zalo PC tự động gửi cho phụ huynh
+  try {
+    const { data: storeRow } = await supabase.from('exams').select('id, data').eq('title', '__ZALO_OUTBOX__').maybeSingle();
+    const items = Array.isArray(storeRow?.data?.items) ? storeRow.data.items : [];
+    items.unshift({
+      id: 'job_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7),
+      phone: phone.replace(/\D/g, ''),
+      student_id: student.id,
+      student_name: student.full_name,
+      message: msg,
+      status: 'pending',
+      created_at: new Date().toISOString()
+    });
+    if (storeRow?.id) {
+      await supabase.from('exams').update({ data: { ...storeRow.data, items } }).eq('id', storeRow.id);
+    } else {
+      await supabase.from('exams').insert([{ title: '__ZALO_OUTBOX__', data: { items } }]);
+    }
+    sent = true;
+  } catch (err) {
+    console.warn('Lỗi ghi __ZALO_OUTBOX__:', err);
+  }
+
   // Thử gửi qua Zalo OA (nếu có Access Token)
   const oaToken = process.env.ZALO_ACCESS_TOKEN;
   if (!sent && oaToken) {

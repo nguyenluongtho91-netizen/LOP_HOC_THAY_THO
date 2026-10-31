@@ -67,6 +67,9 @@ export default function Tuition() {
   const [sendingConfirm, setSendingConfirm] = useState(false)
   const [autoSendModal, setAutoSendModal] = useState(false)
   const [bankModalOpen, setBankModalOpen] = useState(false)
+  const [sepayApiToken, setSepayApiToken] = useState(() => localStorage.getItem('SEPAY_API_TOKEN') || '')
+  const [syncingSepay, setSyncingSepay] = useState(false)
+  const [testingWebhook, setTestingWebhook] = useState(false)
   const [copiedWebhook, setCopiedWebhook] = useState(false)
   const [autoSending, setAutoSending] = useState(false)
   const [autoProgress, setAutoProgress] = useState<{ current: number; total: number; currentStudent: string; logs: string[] }>({ current: 0, total: 0, currentStudent: '', logs: [] })
@@ -746,6 +749,87 @@ export default function Tuition() {
   }
 
 
+  // ── SEPAY INTEGRATION & AUTO MARK PAID ──
+  const syncSepayTransactions = async () => {
+    const token = sepayApiToken.trim() || localStorage.getItem('SEPAY_API_TOKEN') || ''
+    if (!token) {
+      toast.error('Vui lòng nhập SePay API Token trước!')
+      setBankModalOpen(true)
+      return
+    }
+    setSyncingSepay(true)
+    const toastId = toast.loading('Đang kết nối SePay để đồng bộ giao dịch Vietcombank...')
+    try {
+      const res = await fetch('/api/sepay-sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ api_token: token })
+      })
+      const data = await res.json()
+      toast.dismiss(toastId)
+      if (data.ok) {
+        if (data.matched_count > 0) {
+          toast.success(`🎉 ${data.message}`)
+          if (selClass) {
+            void loadTuitionNotifications(selClass)
+            void loadPayments(selClass)
+          }
+        } else {
+          toast(data.message, { icon: 'ℹ️' })
+        }
+      } else {
+        toast.error(data.error || 'Lỗi khi đồng bộ SePay')
+      }
+    } catch (err: any) {
+      toast.dismiss(toastId)
+      toast.error(`Lỗi kết nối: ${err.message}`)
+    } finally {
+      setSyncingSepay(false)
+    }
+  }
+
+  const testSepayWebhook = async () => {
+    setTestingWebhook(true)
+    const toastId = toast.loading('Đang giả lập SePay báo chuyển khoản 640.000đ...')
+    try {
+      const targetRow = tuitionData.find(r => r.status === 'unpaid') || tuitionData[0]
+      const studentName = targetRow?.student?.full_name || 'DUONG THI HAI NHU'
+      const studentCode = targetRow?.student?.student_code || 'HS001'
+      const cleanName = studentName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'D').toUpperCase()
+
+      const testPayload = {
+        gateway: 'Vietcombank',
+        accountNumber: '1070493932',
+        transferAmount: 640000,
+        content: `HP ${studentCode} ${cleanName} LOP 12`,
+        referenceCode: `TEST_SEPAY_${Date.now()}`,
+        transactionDate: new Date().toISOString()
+      }
+
+      const res = await fetch('/api/payment-webhook', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(testPayload)
+      })
+      const data = await res.json()
+      toast.dismiss(toastId)
+      if (data.ok) {
+        toast.success(`🎉 Test thành công! Hệ thống SePay đã tự động gạch nợ cho em ${data.student_name || studentName}!`)
+        if (selClass) {
+          void loadTuitionNotifications(selClass)
+          void loadPayments(selClass)
+        }
+      } else {
+        toast.error(`Lỗi: ${data.error || 'Không thể test webhook'}`)
+      }
+    } catch (err: any) {
+      toast.dismiss(toastId)
+      toast.error(`Lỗi test: ${err.message}`)
+    } finally {
+      setTestingWebhook(false)
+    }
+  }
+
   // Tự động tải dữ liệu điểm danh buổi học khi chọn lớp
   useEffect(() => {
     if (selClass) {
@@ -1122,13 +1206,28 @@ export default function Tuition() {
           <Banknote className="w-7 h-7 text-teal-600" /> Học phí khóa học
         </h1>
 
-        <button
-          onClick={() => setBankModalOpen(true)}
-          className="px-4 py-2 rounded-2xl border border-teal-200 bg-teal-50 hover:bg-teal-100 text-teal-900 text-xs font-black flex items-center gap-2 transition-all shadow-xs cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
-        >
-          <Building2 className="w-4 h-4 text-teal-700" />
-          🏦 Kết Nối Ngân Hàng (Tự Động Gạch Nợ & Nhắn Zalo)
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={syncSepayTransactions}
+            disabled={syncingSepay}
+            className="px-3.5 py-2 rounded-2xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-900 text-xs font-black flex items-center gap-1.5 transition-all shadow-xs cursor-pointer hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
+            title="Đồng bộ biến động tài khoản Vietcombank qua SePay"
+          >
+            {syncingSepay ? (
+              <><Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-600" /> Đang đồng bộ...</>
+            ) : (
+              <><RefreshCw className="w-3.5 h-3.5 text-emerald-600" /> 🔄 Đồng Bộ SePay</>
+            )}
+          </button>
+
+          <button
+            onClick={() => setBankModalOpen(true)}
+            className="px-4 py-2 rounded-2xl border border-teal-200 bg-teal-50 hover:bg-teal-100 text-teal-900 text-xs font-black flex items-center gap-2 transition-all shadow-xs cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <Building2 className="w-4 h-4 text-teal-700" />
+            🏦 Cài Đặt SePay (Tự Động Gạch Nợ)
+          </button>
+        </div>
       </div>
 
             {/* ============================================================ */}
@@ -2212,8 +2311,8 @@ export default function Tuition() {
                   <Building2 className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="font-black text-lg">Liên Kết Ngân Hàng Tự Động</h3>
-                  <p className="text-xs text-teal-100">Tự động gạch nợ học phí & gửi tin nhắn xác nhận cho phụ huynh</p>
+                  <h3 className="font-black text-lg">Cài Đặt SePay & Tự Động Gạch Nợ</h3>
+                  <p className="text-xs text-teal-100 font-medium">Vietcombank 1070493932 • Tự động nhận biến động số dư</p>
                 </div>
               </div>
               <button
@@ -2225,26 +2324,29 @@ export default function Tuition() {
             </div>
 
             <div className="p-6 space-y-4 overflow-y-auto flex-1 text-sm">
-              {/* How it works */}
-              <div className="bg-emerald-50/80 p-4 rounded-2xl border border-emerald-200 text-emerald-950 space-y-2">
-                <p className="font-extrabold text-xs uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
-                  <Check className="w-4 h-4 text-emerald-600 stroke-[3px]" /> Quy trình hoạt động tự động 100%:
-                </p>
-                <div className="text-xs text-gray-700 space-y-1.5 pl-1 leading-relaxed">
-                  <p>1. <strong>Phụ huynh quét mã QR</strong> bằng App ngân hàng: Màn hình điện thoại tự động hiện đúng số tiền (ví dụ: 640.000đ) và tên học sinh.</p>
-                  <p>2. <strong>Tài khoản Vietcombank nhận tiền</strong>: Dịch vụ SePay / Casso ngay lập tức nhận biến động số dư và báo về web.</p>
-                  <p>3. <strong>Hệ thống tự động đổi trạng thái</strong> học sinh thành <span className="bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">ĐÃ ĐÓNG</span> trên web.</p>
-                  <p>4. <strong>Hệ thống tự động gửi tin nhắn cho phụ huynh</strong>: <br/>
-                    <em className="text-emerald-900 font-semibold">"Dạ em chào anh/chị, Thầy Thọ đã nhận được học phí của cháu rồi mẹ nhé! Thầy cảm ơn gia đình nhiều ạ."</em>
-                  </p>
+              {/* Status Banner */}
+              <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-4 rounded-2xl border border-emerald-200 text-emerald-950 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-3 h-3 rounded-full bg-emerald-500 animate-ping" />
+                  <div>
+                    <p className="font-black text-xs text-emerald-900 uppercase tracking-wide">Cổng Webhook SePay Đang Hoạt Động</p>
+                    <p className="text-[11px] text-emerald-700 font-medium">Sẵn sàng nhận giao dịch chuyển khoản Vietcombank 24/7</p>
+                  </div>
                 </div>
+                <button
+                  onClick={testSepayWebhook}
+                  disabled={testingWebhook}
+                  className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-black shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95 disabled:opacity-50 shrink-0"
+                >
+                  {testingWebhook ? 'Đang test...' : '🧪 Bấm Test Thử'}
+                </button>
               </div>
 
               {/* Webhook URL Box */}
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
                 <label className="text-xs font-black text-gray-700 uppercase tracking-wide flex items-center justify-between">
-                  <span>Đường dẫn Webhook của Hệ thống:</span>
-                  <span className="text-[10px] text-teal-700 font-bold bg-teal-100 px-2 py-0.5 rounded-full">Sẵn sàng nhận dữ liệu</span>
+                  <span>1. Đường dẫn Webhook URL (Dán vào SePay):</span>
+                  <span className="text-[10px] text-teal-700 font-bold bg-teal-100 px-2 py-0.5 rounded-full">Chuẩn POST JSON</span>
                 </label>
                 <div className="flex items-center gap-2">
                   <input
@@ -2258,6 +2360,7 @@ export default function Tuition() {
                       navigator.clipboard.writeText('https://lop-hoc-thay-tho.vercel.app/api/payment-webhook');
                       setCopiedWebhook(true);
                       setTimeout(() => setCopiedWebhook(null), 2500);
+                      toast.success('Đã copy URL Webhook!');
                     }}
                     className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer shadow-xs
                       ${copiedWebhook ? 'bg-emerald-600 text-white' : 'bg-teal-600 hover:bg-teal-700 text-white'}`}
@@ -2266,9 +2369,41 @@ export default function Tuition() {
                     {copiedWebhook ? '✓ Đã Copy' : 'Copy URL'}
                   </button>
                 </div>
-                <p className="text-[11px] text-gray-500">
-                  * Dán đường dẫn này vào mục <strong>Webhooks</strong> trên SePay (sepay.vn) hoặc Casso (casso.vn).
-                </p>
+              </div>
+
+              {/* SePay API Token Box */}
+              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                <label className="text-xs font-black text-gray-700 uppercase tracking-wide flex items-center justify-between">
+                  <span>2. SePay API Token (Để bấm nút Đồng bộ 2 chiều):</span>
+                  <a href="https://my.sepay.vn" target="_blank" rel="noreferrer" className="text-[10px] text-blue-600 hover:underline font-bold">
+                    Lấy Token tại my.sepay.vn ↗
+                  </a>
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="password"
+                    placeholder="Dán API Token từ SePay vào đây..."
+                    value={sepayApiToken}
+                    onChange={(e) => setSepayApiToken(e.target.value)}
+                    className="input bg-white font-mono text-xs text-gray-700 border-slate-200"
+                  />
+                  <button
+                    onClick={() => {
+                      localStorage.setItem('SEPAY_API_TOKEN', sepayApiToken.trim());
+                      toast.success('Đã lưu SePay API Token thành công!');
+                    }}
+                    className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold shrink-0 transition-colors cursor-pointer"
+                  >
+                    Lưu Token
+                  </button>
+                  <button
+                    onClick={syncSepayTransactions}
+                    disabled={syncingSepay}
+                    className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shrink-0 transition-colors cursor-pointer disabled:opacity-50"
+                  >
+                    {syncingSepay ? 'Đang gọi...' : 'Đồng Bộ'}
+                  </button>
+                </div>
               </div>
 
               {/* 3 Steps Setup Guide */}
@@ -2278,22 +2413,22 @@ export default function Tuition() {
                   <div className="p-3 bg-white border border-gray-200 rounded-xl flex items-start gap-3">
                     <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-800 font-black flex items-center justify-center shrink-0">1</span>
                     <div>
-                      <p className="font-bold text-gray-800">Tạo tài khoản tại sepay.vn</p>
-                      <p className="text-gray-500">Truy cập <a href="https://sepay.vn" target="_blank" rel="noreferrer" className="text-teal-600 underline font-bold">sepay.vn</a> và đăng ký tài khoản miễn phí.</p>
+                      <p className="font-bold text-gray-800">Đăng nhập tài khoản tại sepay.vn</p>
+                      <p className="text-gray-500">Truy cập <a href="https://my.sepay.vn" target="_blank" rel="noreferrer" className="text-teal-600 underline font-bold">my.sepay.vn</a>.</p>
                     </div>
                   </div>
                   <div className="p-3 bg-white border border-gray-200 rounded-xl flex items-start gap-3">
                     <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-800 font-black flex items-center justify-center shrink-0">2</span>
                     <div>
                       <p className="font-bold text-gray-800">Kết nối tài khoản Vietcombank của Thầy</p>
-                      <p className="text-gray-500">Thêm STK: <strong className="font-mono text-gray-700">1070493932</strong> (HO KINH DOANH NGUYEN LUONG THO).</p>
+                      <p className="text-gray-500">STK: <strong className="font-mono text-gray-700">1070493932</strong> (HO KINH DOANH NGUYEN LUONG THO).</p>
                     </div>
                   </div>
                   <div className="p-3 bg-white border border-gray-200 rounded-xl flex items-start gap-3">
                     <span className="w-6 h-6 rounded-full bg-teal-100 text-teal-800 font-black flex items-center justify-center shrink-0">3</span>
                     <div>
-                      <p className="font-bold text-gray-800">Dán Webhook URL</p>
-                      <p className="text-gray-500">Vào mục <strong>Cấu hình Webhooks</strong> trên SePay và dán đường link webhook ở trên vào là hoàn tất!</p>
+                      <p className="font-bold text-gray-800">Cấu hình Webhook</p>
+                      <p className="text-gray-500">Vào mục <strong>Cấu hình Webhooks</strong> trên SePay → Thêm Webhook URL ở trên và chọn kiểu <strong>POST JSON</strong> là hoàn tất!</p>
                     </div>
                   </div>
                 </div>
@@ -2303,7 +2438,7 @@ export default function Tuition() {
                 onClick={() => setBankModalOpen(false)}
                 className="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-extrabold rounded-xl shadow-md transition-all cursor-pointer text-xs"
               >
-                Đã Hiểu & Đóng
+                Đã Xong & Đóng
               </button>
             </div>
           </div>
