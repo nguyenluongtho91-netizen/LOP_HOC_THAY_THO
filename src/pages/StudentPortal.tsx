@@ -320,8 +320,17 @@ export default function StudentPortal() {
                               latestStudent?.student_code?.toUpperCase() === 'TUDO';
 
       const eligibleRooms = (rooms || []).filter((room: any) => {
-        // NẾU LÀ THẦY THỌ / QUẢN TRỊ -> ĐẶC QUYỀN LÀM ĐƯỢC 100% TẤT CẢ PHÒNG THI
-        if (isTeacherUser) return true;
+        // NẾU LÀ THẦY THỌ / QUẢN TRỊ / TÀI KHOẢN TỰ DO / THỬ NGHIỆM -> ĐẶC QUYỀN THẤY TOÀN BỘ PHÒNG THI
+        const isFree = isFreeCandidate ||
+                       isTeacherUser ||
+                       latestStudent?.student_code?.toUpperCase() === 'THAYTHO' ||
+                       latestStudent?.student_code?.toUpperCase() === 'TUDO' ||
+                       latestStudent?.student_code === '0000' ||
+                       latestStudent?.grade === 'Thí Sinh Tự Do' ||
+                       String(latestStudent?.role || '').toUpperCase() === 'ADMIN' ||
+                       String(latestStudent?.role || '').toUpperCase() === 'TEACHER' ||
+                       String(latestStudent?.full_name || '').toLowerCase().includes('thọ');
+        if (isFree) return true;
 
         // Phòng thi được quản lý trực tiếp theo trạng thái (🟢 Thi / 🔴 Khóa) và lớp/khối được phân công
 
@@ -339,7 +348,9 @@ export default function StudentPortal() {
         const isMyClass = assignedClassIds.some((cid: string) => myClassIds.includes(cid))
 
         // 3. Giao cho toàn khối (Khối 12, 11, 10...)
-        const sGrade = String(latestStudent?.grade || '').toLowerCase().trim()
+        // Lấy thông tin khối từ cả cột grade của học sinh lẫn tên/khối của tất cả các lớp đang học
+        const myClassNamesAndGrades = (myClasses || []).map((c: any) => [c.class_name, c.name, c.grade].filter(Boolean).join(' ')).join(' ').toLowerCase();
+        const sGrade = (String(latestStudent?.grade || '') + ' ' + myClassNamesAndGrades).toLowerCase().trim()
         const targetGrade = String(room.settings?.targetGrade || '').toLowerCase().trim()
         const isGradeMatch = targetGrade && (
           sGrade === targetGrade ||
