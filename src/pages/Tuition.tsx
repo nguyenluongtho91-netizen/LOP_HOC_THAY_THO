@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
 import { useEffect, useState, useMemo } from 'react'
-import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3, RefreshCw } from 'lucide-react'
+import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3, RefreshCw, HeartHandshake } from 'lucide-react'
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
 import SessionAttendanceFeeManager, { STUDENT_CUSTOM_RATES } from '@/components/tuition/SessionAttendanceFeeManager'
@@ -1027,6 +1027,58 @@ export default function Tuition() {
          + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
   }
 
+  const buildThankYouMessage = (row: TuitionNotificationRow) => {
+    const cls = classes.find(c => c.id === selClass)
+    const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
+    const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
+    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+    const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
+    const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+    const amountVal = eff.amount
+
+    return `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
+         + `Thầy Thọ xin thông báo: Thầy đã nhận đủ học phí ${monthHeader} của em (${amountVal.toLocaleString('vi-VN')} đ).\n\n`
+         + `Thầy cảm ơn Quý phụ huynh rất nhiều ạ!`
+  }
+
+  const sendThankYouZalo1Click = async (row: TuitionNotificationRow) => {
+    const student = students.find((s: any) => s.id === row.student.id) || row.student
+    const rawPhone = (student as any)?.zalo || (student as any)?.parent_phone || ''
+    const cleanPhone = rawPhone.replace(/\D/g, '').replace(/^84/, '0')
+
+    if (!cleanPhone || cleanPhone.length !== 10) {
+      setPhoneEditModal({
+        student,
+        row,
+        phoneInput: cleanPhone || ''
+      })
+      return
+    }
+
+    const msg = buildThankYouMessage(row)
+    try {
+      await navigator.clipboard.writeText(msg)
+      setCopiedRowMsgId(row.student.id)
+      toast.success(`💌 Đã copy lời cảm ơn gửi PH em ${row.student.full_name}! Vào Zalo ấn Cmd+V để gửi.`)
+      setTimeout(() => setCopiedRowMsgId(null), 3500)
+    } catch {}
+
+    window.open(`https://zalo.me/${cleanPhone}`, '_blank')
+  }
+
+  const handleCopyThankYouMessage = async (row: TuitionNotificationRow) => {
+    try {
+      const msg = buildThankYouMessage(row)
+      await navigator.clipboard.writeText(msg)
+      setCopiedRowMsgId(row.student.id)
+      toast.success(`💌 Đã copy LỜI CẢM ƠN của ${row.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
+      setTimeout(() => setCopiedRowMsgId(null), 3500)
+    } catch {
+      toast.error('Không thể sao chép lời cảm ơn vào clipboard')
+    }
+  }
+
   const handleCopyStudentMessage = async (row: TuitionNotificationRow) => {
     try {
       const msg = buildTuitionMessage(row)
@@ -1087,8 +1139,12 @@ export default function Tuition() {
 
   // ── One-Click Quick Mark Paid (Tick button next to student icon) ──
   const quickCollectTuition = async (row: TuitionNotificationRow) => {
-    if (!row.notification) return
-    const confirmCollect = window.confirm(`Xác nhận đã thu học phí khóa "${row.notification.course_name}" của học sinh ${row.student.full_name}?`)
+    const student = students.find((s: any) => s.id === row.student.id) || row.student
+    const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+    const amountVal = eff.amount
+
+    const cleanCourse = (courseName && courseName.trim()) || row.notification?.course_name || 'Học phí'
+    const confirmCollect = window.confirm(`Xác nhận đã thu học phí ${fmtVNDShort(amountVal)} của học sinh ${row.student.full_name}?`)
     if (!confirmCollect) return
     
     try {
@@ -1097,18 +1153,29 @@ export default function Tuition() {
         await addPayment({
           student_id: row.student.id,
           class_id:   selClass,
-          amount:     Number(row.notification.amount),
+          amount:     amountVal,
           method:     'transfer',
-          note:       `Thu học phí khóa ${row.notification.course_name} (Thu nhanh)`,
+          note:       `Thu học phí khóa ${cleanCourse} (Thu nhanh)`,
         })
       } catch {}
 
-      // 2. Mark notification as PAID
-      await updateTuitionNotification(row.notification.id, { is_paid: true })
+      // 2. Mark notification as PAID (or upsert if null)
+      if (row.notification?.id) {
+        await updateTuitionNotification(row.notification.id, { is_paid: true })
+      } else {
+        await upsertTuitionNotification({
+          student_id: row.student.id,
+          class_id:   selClass,
+          course_name: cleanCourse,
+          amount:     amountVal,
+          is_paid:    true,
+        })
+      }
 
       // 3. Reload data
       await loadTuitionNotifications(selClass)
       await loadPayments(selClass)
+      toast.success(`✅ Đã thu học phí từ ${row.student.full_name}`)
 
       // 4. Kích hoạt chuỗi đồng bộ: Sinh hóa đơn điện tử & lưu tự động
       const clsObj = classes.find(c => c.id === (row.student.class_id || selClass))
@@ -1122,23 +1189,21 @@ export default function Tuition() {
         className: clsName,
         parentName: (row.student as any)?.parent_name || 'Quý phụ huynh',
         phone: phoneClean,
-        amount: Number(row.notification.amount),
-        courseName: row.notification.course_name || clsName,
+        amount: amountVal,
+        courseName: cleanCourse,
         paymentMethod: 'Chuyển khoản Vietcombank',
-        note: `Thu học phí khóa ${row.notification.course_name}`,
+        note: `Thu học phí khóa ${cleanCourse}`,
         date: new Date(),
       })
       void saveElectronicInvoice(inv)
 
-      // Mở hộp thoại xác nhận chuỗi hoàn tất
-      setChainModal({
-        studentName: row.student.full_name,
-        studentCode: row.student.student_code,
-        amount: Number(row.notification.amount),
-        className: clsName,
-        phone: phoneClean,
-        invoice: inv
-      })
+      // 5. Hỏi Thầy có muốn gửi tin nhắn cảm ơn phụ huynh qua Zalo luôn không
+      const sendZaloNow = window.confirm(`🎉 Đã thu học phí thành công!\n\nThầy có muốn mở Zalo gửi lời cảm ơn phụ huynh em ${row.student.full_name} ngay không?`)
+      if (sendZaloNow) {
+        setTimeout(() => {
+          sendThankYouZalo1Click(row)
+        }, 150)
+      }
     } catch (error: any) {
       toast.error('Lỗi khi thu học phí: ' + error.message)
     }
@@ -1999,62 +2064,97 @@ export default function Tuition() {
                         })()}
                       </td>
 
-                      {/* Nhắc học phí */}
+                      {/* Nhắc / Cảm ơn học phí */}
                       <td className="px-5 py-4">
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={() => sendZaloDirect1Click(row)}
-                            disabled={sendingStudentId === row.student.id}
-                            className="px-3 py-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-black transition-all flex items-center gap-1.5 shadow-md shadow-blue-500/20 cursor-pointer hover:scale-105 active:scale-95 disabled:opacity-60"
-                            title="Bấm 1 nút là tự động gửi Zalo ngay lập tức"
-                          >
-                            {sendingStudentId === row.student.id ? (
-                              <><Loader2 className="w-3.5 h-3.5 animate-spin text-amber-300" /> Đang gửi...</>
-                            ) : (
-                              <><Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" /> Gửi Zalo ngay</>
-                            )}
-                          </button>
+                        {row.status === 'paid' ? (
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => sendThankYouZalo1Click(row)}
+                              className="px-3 py-1.5 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-black transition-all flex items-center gap-1.5 shadow-md shadow-emerald-500/20 cursor-pointer hover:scale-105 active:scale-95"
+                              title="Bấm 1 nút: Tự copy lời cảm ơn đã nhận tiền & Mở Zalo phụ huynh"
+                            >
+                              <HeartHandshake className="w-3.5 h-3.5 text-emerald-200" />
+                              <span>Gửi Cảm Ơn</span>
+                            </button>
 
-                          {/* Nút 1-click Copy Tin Nhắn */}
-                          <button
-                            type="button"
-                            onClick={() => handleCopyStudentMessage(row)}
-                            className={`px-2.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer select-none whitespace-nowrap
-                              ${copiedRowMsgId === row.student.id
-                                ? 'bg-emerald-600 text-white shadow-emerald-500/20'
-                                : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 hover:border-indigo-300 hover:scale-105 active:scale-95'}`}
-                            title="Bấm để copy NỘI DUNG TIN NHẮN học phí của học sinh này (Vào Zalo ấn Cmd+V để dán)"
-                          >
-                            {copiedRowMsgId === row.student.id ? (
-                              <>
-                                <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
-                                <span>Đã copy tin</span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-3.5 h-3.5 text-indigo-600" />
-                                <span>Copy Tin Nhắn</span>
-                              </>
-                            )}
-                          </button>
+                            <button
+                              type="button"
+                              onClick={() => handleCopyThankYouMessage(row)}
+                              className={`px-2.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer select-none whitespace-nowrap
+                                ${copiedRowMsgId === row.student.id
+                                  ? 'bg-emerald-600 text-white shadow-emerald-500/20'
+                                  : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 hover:border-emerald-300 hover:scale-105 active:scale-95'}`}
+                              title="Bấm để copy LỜI CẢM ƠN học sinh này (Vào Zalo ấn Cmd+V để dán)"
+                            >
+                              {copiedRowMsgId === row.student.id ? (
+                                <>
+                                  <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
+                                  <span>Đã copy tin</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3.5 h-3.5 text-emerald-600" />
+                                  <span>Copy Tin Cảm Ơn</span>
+                                </>
+                              )}
+                            </button>
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => sendZaloDirect1Click(row)}
+                              disabled={sendingStudentId === row.student.id}
+                              className="px-3 py-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-black transition-all flex items-center gap-1.5 shadow-md shadow-blue-500/20 cursor-pointer hover:scale-105 active:scale-95 disabled:opacity-60"
+                              title="Bấm 1 nút là tự động gửi Zalo ngay lập tức"
+                            >
+                              {sendingStudentId === row.student.id ? (
+                                <><Loader2 className="w-3.5 h-3.5 animate-spin text-amber-300" /> Đang gửi...</>
+                              ) : (
+                                <><Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" /> Gửi Zalo ngay</>
+                              )}
+                            </button>
 
-                          <button
-                            onClick={() => sendZalo(row)}
-                            className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
-                            title="Xem trước mẫu tin nhắn / Mở Zalo phụ huynh"
-                          >
-                            <MessageCircle className="w-4 h-4" />
-                          </button>
-                          
-                          <button
-                            onClick={() => sendGmailReminder(row)}
-                            disabled={sending}
-                            className="p-1.5 text-rose-500 hover:bg-rose-50 rounded-lg transition-colors"
-                            title="Nhắc học phí qua Gmail"
-                          >
-                            <Mail className="w-4 h-4" />
-                          </button>
-                        </div>
+                            {/* Nút 1-click Copy Tin Nhắn */}
+                            <button
+                              type="button"
+                              onClick={() => handleCopyStudentMessage(row)}
+                              className={`px-2.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer select-none whitespace-nowrap
+                                ${copiedRowMsgId === row.student.id
+                                  ? 'bg-emerald-600 text-white shadow-emerald-500/20'
+                                  : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 hover:border-indigo-300 hover:scale-105 active:scale-95'}`}
+                              title="Bấm để copy NỘI DUNG TIN NHẮN học phí của học sinh này (Vào Zalo ấn Cmd+V để dán)"
+                            >
+                              {copiedRowMsgId === row.student.id ? (
+                                <>
+                                  <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
+                                  <span>Đã copy tin</span>
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="w-3.5 h-3.5 text-indigo-600" />
+                                  <span>Copy Tin Nhắn</span>
+                                </>
+                              )}
+                            </button>
+
+                            <button
+                              onClick={() => sendZalo(row)}
+                              className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                              title="Xem trước mẫu tin nhắn / Mở Zalo phụ huynh"
+                            >
+                              <MessageCircle className="w-4 h-4" />
+                            </button>
+                            
+                            <button
+                              onClick={() => sendGmailReminder(row)}
+                              disabled={sending}
+                              className="p-1.5 text-rose-500 hover:bg-rose-50 rounded-lg transition-colors"
+                              title="Nhắc học phí qua Gmail"
+                            >
+                              <Mail className="w-4 h-4" />
+                            </button>
+                          </div>
+                        )}
                       </td>
 
                       {/* Xóa báo học phí */}
