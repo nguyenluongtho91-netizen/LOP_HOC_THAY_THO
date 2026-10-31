@@ -17,7 +17,7 @@ import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort, formatVietQRAddInfo, fmt } from '@/lib/helpers'
 import Modal from '@/components/Modal'
 import VietQRModal from '@/components/VietQRModal'
-import { sendZaloPersonalMessage, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
+import { sendZaloPersonalMessage, copyQrImageToClipboard, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
 import { Sparkles } from 'lucide-react'
 import toast from 'react-hot-toast'
 import type { PaymentMethod } from '@/types'
@@ -658,7 +658,7 @@ export default function Tuition() {
               + (studentAttended.length > 0 ? `• Số buổi đã học (${studentAttended.length} buổi): ${datesDetailText}\n` : '')
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
               + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-              + `👉 Quý phụ huynh quét mã QR bên dưới để chuyển khoản:\n${qrUrl}\n\n`
+              + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
     setSendingStudentId(row.student.id)
@@ -747,7 +747,7 @@ export default function Tuition() {
               + sessionInfoLine
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
               + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-              + `👉 Quý phụ huynh quét mã QR bên dưới để chuyển khoản:\n${qrUrl}\n\n`
+              + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
@@ -812,7 +812,7 @@ export default function Tuition() {
                 + `• Lớp: ${cleanClass}\n`
                 + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                 + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-                + `👉 Quý phụ huynh quét mã QR bên dưới để chuyển khoản:\n${qrUrl}\n\n`
+                + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
       logs.push(`⏳ [${i + 1}/${unpaidList.length}] Đang gửi cho ${row.student.full_name} (${cleanPhone || 'Không có SĐT'})...`)
@@ -2518,7 +2518,7 @@ export default function Tuition() {
                         + `• Lớp: ${cleanClass}\n`
                         + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
                         + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
-                        + `👉 Quý phụ huynh quét mã QR bên dưới để chuyển khoản:\n${qrUrl}\n\n`
+                        + `👉 Quý phụ huynh quét mã QR chuyển khoản đính kèm bên dưới.\n\n`
                         + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
               const copyTextOnly = async () => {
@@ -2533,14 +2533,12 @@ export default function Tuition() {
               }
 
               const copyQrImageOnly = async () => {
-                try {
-                  const res = await fetch(qrUrl)
-                  const blob = await res.blob()
-                  await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })])
+                const ok = await copyQrImageToClipboard(qrUrl)
+                if (ok) {
                   setCopiedBatch('img')
-                  toast.success(`✅ Đã copy ảnh QR của ${currentRow.student.full_name}! Vào Zalo ấn Ctrl+V để dán ảnh`)
+                  toast.success(`✅ Đã copy ảnh QR của ${currentRow.student.full_name}! Vào Zalo ấn Cmd+V (Ctrl+V) để dán ảnh`)
                   setTimeout(() => setCopiedBatch(null), 3000)
-                } catch {
+                } else {
                   const a = document.createElement('a')
                   a.href = qrUrl
                   a.download = `QR_${currentRow.student.student_code}_${amt}.png`
@@ -2550,7 +2548,13 @@ export default function Tuition() {
               }
 
               const openAndCopy = async () => {
-                await copyTextOnly()
+                const imgOk = await copyQrImageToClipboard(qrUrl)
+                if (imgOk) {
+                  setCopiedBatch('img')
+                  toast.success(`✅ Đã nạp ẢNH MÃ QR của ${currentRow.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh mã QR`)
+                } else {
+                  await copyTextOnly()
+                }
                 const targetUrl = phoneForLink
                   ? `https://zalo.me/${phoneForLink}`
                   : 'https://chat.zalo.me'

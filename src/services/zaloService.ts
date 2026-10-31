@@ -429,6 +429,68 @@ export async function checkZaloServiceHealth(): Promise<ZaloServiceHealth> {
 /**
  * Gửi tin nhắn qua Zalo Personal Gateway (/send)
  */
+/**
+ * Tải ảnh VietQR và sao chép trực tiếp dưới dạng ảnh PNG vào Clipboard
+ * Giúp Thầy sang Zalo chỉ cần bấm Cmd+V / Ctrl+V là dán và gửi luôn ẢNH MÃ QR (không gửi link)
+ */
+export async function copyQrImageToClipboard(qrUrl: string): Promise<boolean> {
+  if (!qrUrl) return false;
+  return new Promise((resolve) => {
+    try {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          const width = img.naturalWidth || 600;
+          const height = img.naturalHeight || 750;
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            resolve(false);
+            return;
+          }
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob(async (blob) => {
+            if (!blob) {
+              resolve(false);
+              return;
+            }
+            try {
+              if (navigator?.clipboard?.write) {
+                await navigator.clipboard.write([
+                  new ClipboardItem({ 'image/png': blob })
+                ]);
+                resolve(true);
+              } else {
+                resolve(false);
+              }
+            } catch (err) {
+              console.warn('Clipboard write error:', err);
+              resolve(false);
+            }
+          }, 'image/png');
+        } catch (e) {
+          console.warn('Canvas toBlob error:', e);
+          resolve(false);
+        }
+      };
+      img.onerror = () => {
+        console.warn('Image load error for:', qrUrl);
+        resolve(false);
+      };
+      img.src = qrUrl;
+    } catch (err) {
+      console.warn('copyQrImageToClipboard error:', err);
+      resolve(false);
+    }
+  });
+}
+
 export async function sendZaloPersonalMessage(
   phone: string,
   message: string,
@@ -444,12 +506,24 @@ export async function sendZaloPersonalMessage(
     };
   }
 
-  // 1. Luôn copy sẵn tin nhắn vào Clipboard cho Thầy
-  try {
-    if (navigator?.clipboard?.writeText) {
-      await navigator.clipboard.writeText(message);
+  // 1. Ưu tiên sao chép trực tiếp ẢNH MÃ QR vào Clipboard để gửi luôn ảnh mã QR (không gửi link)
+  let imageCopied = false;
+  if (qrUrl) {
+    try {
+      imageCopied = await copyQrImageToClipboard(qrUrl);
+    } catch (e) {
+      console.warn('Lỗi copy ảnh QR:', e);
     }
-  } catch (err) {}
+  }
+
+  // Nếu không copy được ảnh QR thì copy tin nhắn văn bản
+  if (!imageCopied) {
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(message);
+      }
+    } catch (err) {}
+  }
 
   // 2. Thử gửi tự động qua Robot Zalo PC (nếu Robot đang Online)
   try {
@@ -480,7 +554,7 @@ export async function sendZaloPersonalMessage(
     return {
       success: false,
       openedZalo: true,
-      message: `Đã mở Zalo của ${studentName || cleanPhone} & copy sẵn tin nhắn. Thầy bấm Ctrl+V để gửi!`
+      message: imageCopied ? `Đã mở Zalo & nạp sẵn ẢNH MÃ QR của ${studentName || cleanPhone}. Thầy bấm Cmd+V (Ctrl+V) để dán mã QR gửi ngay!` : `Đã mở Zalo của ${studentName || cleanPhone}. Thầy bấm Cmd+V để dán gửi!`
     };
   } catch (err) {
     return {
