@@ -1238,30 +1238,15 @@ export default function SessionAttendanceFeeManager({
                                                 + `• Học sinh: ${item.student.full_name}\n`
                                                 + `• Môn học: ${subjectName}\n`
                                                 + `• Lớp: ${cleanClass}\n`
-                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n`
-                                                + `• Ngân hàng: Vietcombank\n`
-                                                + `• Số tài khoản: 1070493932 (HO KINH DOANH NGUYEN LUONG THO)\n`
-                                                + `• Cú pháp CK: ${addInfo}\n\n`
+                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
                                                 + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
-                                                + `👉 Quý phụ huynh bấm link dưới để quét ảnh mã QR chuyển khoản:\n`
-                                                + `${qrUrl}\n\n`
+                                                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
-                                      const ok = await copyTuitionCardImageToClipboard({
-                                        studentName: item.student.full_name,
-                                        className: cleanClass,
-                                        subjectName,
-                                        monthHeader,
-                                        amount: item.calculatedAmount,
-                                        qrUrl,
-                                        transferContent: addInfo
-                                      })
-                                      if (ok) {
-                                        toast.success(`🎉 Đã nạp ẢNH BÁO PHÍ KÈM MÃ QR của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh gửi ngay!`)
-                                      } else {
+                                      try {
                                         await navigator.clipboard.writeText(msg)
-                                        toast.success(`📋 Đã copy tin nhắn của ${item.student.full_name}!`)
-                                      }
+                                        toast.success(`📋 Đã nạp tin nhắn học phí của ${item.student.full_name}! Sang Zalo ấn Cmd+V để dán`)
+                                      } catch {}
                                       if (cleanPhone && cleanPhone.length === 10) {
                                         window.open(`https://zalo.me/${cleanPhone}`, '_blank')
                                       } else {
@@ -1287,33 +1272,14 @@ export default function SessionAttendanceFeeManager({
                                                 + `• Học sinh: ${item.student.full_name}\n`
                                                 + `• Môn học: ${subjectName}\n`
                                                 + `• Lớp: ${cleanClass}\n`
-                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n`
-                                                + `• Ngân hàng: Vietcombank\n`
-                                                + `• Số tài khoản: 1070493932 (HO KINH DOANH NGUYEN LUONG THO)\n`
-                                                + `• Cú pháp CK: ${addInfo}\n\n`
+                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
                                                 + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
-                                                + `👉 Quý phụ huynh bấm link dưới để quét ảnh mã QR chuyển khoản:\n`
-                                                + `${qrUrl}\n\n`
+                                                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
                                       try {
-                                        const toastId = toast.loading('Đang tạo ảnh báo phí...')
-                                        const ok = await copyTuitionCardImageToClipboard({
-                                          studentName: item.student.full_name,
-                                          className: cleanClass,
-                                          subjectName,
-                                          monthHeader,
-                                          amount: item.calculatedAmount,
-                                          qrUrl,
-                                          transferContent: addInfo
-                                        })
-                                        toast.dismiss(toastId)
+                                        await navigator.clipboard.writeText(msg)
                                         setCopiedSessionMsgId(item.student.id)
-                                        if (ok) {
-                                          toast.success(`🎉 Đã copy ẢNH BÁO PHÍ KÈM MÃ QR của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh gửi ngay!`)
-                                        } else {
-                                          await navigator.clipboard.writeText(msg)
-                                          toast.success(`📋 Đã copy tin nhắn của ${item.student.full_name}!`)
-                                        }
+                                        toast.success(`📋 Đã copy TIN NHẮN học phí của ${item.student.full_name}! Sang Zalo ấn Cmd+V để dán`)
                                         setTimeout(() => setCopiedSessionMsgId(null), 3500)
                                       } catch {
                                         toast.error('Lỗi khi sao chép')
@@ -1333,7 +1299,7 @@ export default function SessionAttendanceFeeManager({
                                     ) : (
                                       <>
                                         <QrCode className="w-3.5 h-3.5 text-indigo-600" />
-                                        <span>Copy Ảnh Báo Phí</span>
+                                        <span>Copy Tin Nhắn</span>
                                       </>
                                     )}
                                   </button>

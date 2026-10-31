@@ -687,28 +687,21 @@ export default function Tuition() {
     setSendingStudentId(row.student.id)
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
     setZaloModal({ row: synthRow, msg, qrUrl, phone: cleanPhone })
-    setCopiedZalo('img')
+    setCopiedZalo('text')
 
-    // Tự động tạo và nạp ẢNH BÁO PHÍ KÈM MÃ QR (không dùng link) vào Clipboard
+    // Tự động copy nội dung tin nhắn học phí
     try {
-      const ok = await copyTuitionCardImageToClipboard({
-        studentName: row.student.full_name,
-        className: cleanClass,
-        subjectName,
-        monthHeader,
-        amount: amountVal,
-        qrUrl,
-        transferContent: addInfo
-      })
-      if (ok) {
-        toast.success(`🎉 Đã nạp ẢNH BÁO PHÍ KÈM MÃ QR của ${row.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh gửi ngay!`)
-      } else {
-        await navigator.clipboard.writeText(msg)
-        toast.success(`📋 Đã copy tin nhắn của ${row.student.full_name}!`)
-      }
-    } catch (e) {
-      console.error(e)
-    }
+      await navigator.clipboard.writeText(msg)
+      toast.success(`📋 Đã copy tin nhắn học phí của ${row.student.full_name}! Sang Zalo ấn Cmd+V để dán tin nhắn`)
+    } catch {}
+
+    // Tự động tải ảnh mã QR về máy để sẵn sàng kéo thả hoặc đính kèm
+    try {
+      const a = document.createElement('a')
+      a.href = qrUrl
+      a.download = `QR_${row.student.student_code || row.student.full_name}_${amountVal}.png`
+      a.click()
+    } catch {}
 
     // Mở khung chat Zalo phụ huynh
     window.open(`https://zalo.me/${cleanPhone}`, '_blank')
@@ -1028,21 +1021,15 @@ export default function Tuition() {
     const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
     const amountVal = eff.amount
-    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, row.notification?.course_name || courseName || selectedMonth)
-    const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
 
     return `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
          + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
          + `• Học sinh: ${row.student.full_name}\n`
          + `• Môn học: ${subjectName}\n`
          + `• Lớp: ${cleanClass}\n`
-         + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n`
-         + `• Ngân hàng: Vietcombank\n`
-         + `• Số tài khoản: 1070493932 (HO KINH DOANH NGUYEN LUONG THO)\n`
-         + `• Cú pháp CK: ${addInfo}\n\n`
+         + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
          + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
-         + `👉 Quý phụ huynh bấm link dưới để quét ảnh mã QR chuyển khoản:\n`
-         + `${qrUrl}\n\n`
+         + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
          + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
   }
 
@@ -1100,39 +1087,13 @@ export default function Tuition() {
 
   const handleCopyStudentMessage = async (row: TuitionNotificationRow) => {
     try {
-      const cls = classes.find(c => c.id === selClass)
-      const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
-      const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-      const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
-      const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-      const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-      const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
-      const amountVal = eff.amount
-      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, row.notification?.course_name || courseName || selectedMonth)
-      const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
-
-      const toastId = toast.loading('Đang tạo ảnh báo phí...')
-      const ok = await copyTuitionCardImageToClipboard({
-        studentName: row.student.full_name,
-        className: cleanClass,
-        subjectName,
-        monthHeader,
-        amount: amountVal,
-        qrUrl,
-        transferContent: addInfo
-      })
-      toast.dismiss(toastId)
+      const msg = buildTuitionMessage(row)
+      await navigator.clipboard.writeText(msg)
       setCopiedRowMsgId(row.student.id)
-      if (ok) {
-        toast.success(`🎉 Đã copy ẢNH BÁO PHÍ KÈM MÃ QR của ${row.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh gửi ngay!`)
-      } else {
-        const msg = buildTuitionMessage(row)
-        await navigator.clipboard.writeText(msg)
-        toast.success(`📋 Đã copy tin nhắn của ${row.student.full_name}!`)
-      }
+      toast.success(`📋 Đã copy TIN NHẮN học phí của ${row.student.full_name}! Sang Zalo ấn Cmd+V để dán tin nhắn`)
       setTimeout(() => setCopiedRowMsgId(null), 3500)
     } catch {
-      toast.error('Không thể sao chép ảnh vào clipboard')
+      toast.error('Không thể sao chép tin nhắn vào clipboard')
     }
   }
 
@@ -2177,7 +2138,7 @@ export default function Tuition() {
                               ) : (
                                 <>
                                   <QrCode className="w-3.5 h-3.5 text-indigo-600" />
-                                  <span>Copy Ảnh Báo Phí</span>
+                                  <span>Copy Tin Nhắn</span>
                                 </>
                               )}
                             </button>
