@@ -45,22 +45,25 @@ function normalizePayload(body) {
 function parseTransferContent(description) {
   const text = (description || '').toUpperCase();
 
-  // 1. Format: "HP HS001 ...", "HP K9001 ...", "HP HS015 MINH ANH 10"
-  const hpCodeMatch = text.match(/HP\s+([A-Z0-9]+)/);
+  // 1. Format: "HP 7008 ...", "HP7008 ...", "HP HS001 ...", "HP K9001 ..."
+  const hpCodeMatch = text.match(/HP\s*([A-Z0-9]+)/);
   if (hpCodeMatch) {
     const raw = hpCodeMatch[1];
-    // Check if format has month e.g. T052026 or T5/2026
     const monthMatch = text.match(/T(\d{2})(\d{4})/) || text.match(/T(\d{1,2})\/(\d{4})/);
     let month = null;
     if (monthMatch) {
       const m = monthMatch[1].padStart(2, '0');
       const y = monthMatch[2];
-      month = `${y}-${m}`;
+      month = y + '-' + m;
     }
     return { studentCode: raw, month };
   }
 
-  // 2. Format tìm mã học sinh dạng HS001, K9001...
+  // 2. Format tìm mã học sinh 4 chữ số (ví dụ: 7008, 7011, 7001, 7008H...)
+  const numCode = text.match(/\b(\d{4}[A-Z]?)\b/);
+  if (numCode) return { studentCode: numCode[1], month: null };
+
+  // 3. Format tìm mã học sinh dạng HS001, K9001...
   const code = text.match(/\b([A-Z]{1,3}\d{2,})\b/);
   if (code) return { studentCode: code[1], month: null };
 
@@ -318,13 +321,30 @@ export default async function handler(req, res) {
           .maybeSingle();
         if (storeRow?.data?.items && Array.isArray(storeRow.data.items)) {
           let changed = false;
+          let found = false;
           const updatedItems = storeRow.data.items.map(item => {
-            if (item.student_id === student.id && !item.is_paid) {
-              changed = true;
-              return { ...item, is_paid: true, updated_at: new Date().toISOString() };
+            if (item.student_id === student.id) {
+              found = true;
+              if (!item.is_paid) {
+                changed = true;
+                return { ...item, is_paid: true, updated_at: new Date().toISOString() };
+              }
             }
             return item;
           });
+          if (!found) {
+            updatedItems.push({
+              id: 'notif_auto_' + student.id + '_' + Date.now(),
+              student_id: student.id,
+              class_id: classId,
+              amount: payload.amount,
+              is_paid: true,
+              course_name: month ? ('Tháng ' + month.split('-')[1] + '/' + month.split('-')[0]) : 'Tháng 10/2026',
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            });
+            changed = true;
+          }
           if (changed && storeRow?.id) {
             const { error: updErr } = await supabase
               .from('exams')

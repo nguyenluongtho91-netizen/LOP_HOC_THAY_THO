@@ -402,9 +402,14 @@ export default function Tuition() {
       
       const notif = tuitionNotifications.find(n => n.class_id === selClass && n.student_id === e.student_id)
       
+      // Kiểm tra thêm xem học sinh đã có thanh toán ghi nhận trong store payments chưa
+      const hasPayment = payments.some(p => p.student_id === e.student_id && (p.class_id === selClass || !p.class_id))
+      
       let status: 'unnotified' | 'unpaid' | 'paid' = 'unnotified'
       if (notif) {
-        status = notif.is_paid ? 'paid' : 'unpaid'
+        status = (notif.is_paid || hasPayment) ? 'paid' : 'unpaid'
+      } else if (hasPayment) {
+        status = 'paid'
       }
 
       return [{
@@ -427,7 +432,7 @@ export default function Tuition() {
       const nameB = b.student.full_name || ''
       return nameA.localeCompare(nameB, 'vi')
     })
-  }, [selClass, enrollments, students, tuitionNotifications])
+  }, [selClass, enrollments, students, tuitionNotifications, payments])
 
   // Statistics (School-wide or Class-wide)
   const stats = useMemo(() => {
