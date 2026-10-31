@@ -14,7 +14,19 @@ import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
 import ElectronicInvoiceModal from '@/components/tuition/ElectronicInvoiceModal'
 import { buildElectronicInvoice, saveElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
-import { fmtVNDShort, formatVietQRAddInfo, fmt } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
+
+const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
+  if (!date) return '—'
+  try {
+    const s = String(date).split('T')[0]
+    const parts = s.split('-')
+    if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`
+    return s
+  } catch {
+    return '—'
+  }
+}
 import Modal from '@/components/Modal'
 import VietQRModal from '@/components/VietQRModal'
 import { sendZaloPersonalMessage, copyQrImageToClipboard, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
@@ -663,7 +675,7 @@ export default function Tuition() {
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
               + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -744,7 +756,7 @@ export default function Tuition() {
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
               + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -892,7 +904,7 @@ export default function Tuition() {
                 + `• Môn học: ${subjectName}\n`
                 + `• Lớp: ${cleanClass}\n`
                 + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -1005,7 +1017,7 @@ export default function Tuition() {
          + `• Môn học: ${subjectName}\n`
          + `• Lớp: ${cleanClass}\n`
          + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-         + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+         + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
          + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
          + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
   }
@@ -2814,7 +2826,7 @@ export default function Tuition() {
                         + `• Môn học: ${subjectName}\n`
                         + `• Lớp: ${cleanClass}\n`
                         + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                        + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+                        + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
                         + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                         + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 

@@ -97,6 +97,16 @@ class GlobalErrorBoundary extends React.Component<
   }
 }
 
+// Global safe helper
+if (typeof window !== 'undefined') {
+  (window as any).fmt = (d: any) => {
+    if (!d) return '—'
+    const s = String(d).split('T')[0]
+    const parts = s.split('-')
+    return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : s
+  }
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <GlobalErrorBoundary>
