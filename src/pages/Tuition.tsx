@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import { useSearchParams } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
@@ -6,7 +7,7 @@ import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, L
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
 import SessionAttendanceFeeManager, { STUDENT_CUSTOM_RATES } from '@/components/tuition/SessionAttendanceFeeManager'
-import { CalendarCheck, CalendarDays } from 'lucide-react'
+import { Calendar, CalendarCheck, CalendarDays } from 'lucide-react'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import InvoiceManager from '@/components/tuition/InvoiceManager'
 import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
@@ -36,7 +37,8 @@ export default function Tuition() {
   } = useDataStore()
 
   const [selClass, setSelClass] = useState(() => (new URLSearchParams(window.location.search).get('classId') || new URLSearchParams(window.location.search).get('class') || ''))
-  const [courseName, setCourseName] = useState('Khóa hè')
+  const [selectedMonth, setSelectedMonth] = useState<string>(() => format(new Date(), 'yyyy-MM'))
+  const [courseName, setCourseName] = useState(() => `Tháng ${format(new Date(), 'MM/yyyy')}`)
   const [courseAmount, setCourseAmount] = useState('600000')
 
   // Modals state
@@ -89,6 +91,15 @@ export default function Tuition() {
     const className = cls ? ((cls as any).class_name || cls.name) : (row.student.class_name || '')
     const phone = ((row.student as any)?.zalo || (row.student as any)?.parent_phone || '').replace(/\D/g, '')
 
+    const attendedCount = attendance.filter(
+      a => a.class_id === selClass && a.student_id === row.student.id &&
+           (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) &&
+           (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+    ).length
+    const effectiveCourseName = attendedCount > 0
+      ? `${(courseName && courseName.trim()) || 'Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026')} (${attendedCount} buổi)`
+      : (row.notification?.course_name || className || courseName)
+
     const invoice = buildElectronicInvoice({
       id: row.notification?.id ? ('HD26-' + row.notification.id.slice(0, 6).toUpperCase()) : undefined,
       studentName: row.student.full_name,
@@ -97,7 +108,7 @@ export default function Tuition() {
       parentName: (row.student as any)?.parent_name || 'Quý phụ huynh',
       phone,
       amount: feeInfo.amount,
-      courseName: row.notification?.course_name || className || courseName,
+      courseName: effectiveCourseName,
       paymentMethod: row.status === 'paid' ? 'Chuyển khoản Vietcombank' : 'Chưa thanh toán (Biên lai báo phí)',
       note: feeInfo.note || row.notification?.note || 'Học phí môn Toán Thầy Thọ',
       date: row.notification?.updated_at || new Date(),
@@ -144,9 +155,11 @@ export default function Tuition() {
   }, [])
 
   const getStudentEffectiveFee = (studentId: string, classId: string, notif?: any) => {
-    // 1. Kiểm tra số buổi thực tế đã học của học sinh trong lớp này
+    // 1. Kiểm tra số buổi thực tế đã học của học sinh trong lớp này THEO THÁNG ĐƯỢC CHỌN (tháng nào tính tháng đó)
     const attendedRecords = attendance.filter(
-      a => a.class_id === classId && a.student_id === studentId && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+      a => a.class_id === classId && a.student_id === studentId &&
+           (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) &&
+           (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
     )
     if (attendedRecords.length > 0) {
       // Ưu tiên đơn giá riêng của học sinh (nếu có trong STUDENT_CUSTOM_RATES)
@@ -491,7 +504,7 @@ export default function Tuition() {
       const notifs = targetRows.map(row => {
         const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
         const attendedRecords = attendance.filter(
-          a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+          a => a.class_id === selClass && a.student_id === row.student.id && (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
         )
         const courseNameFinal = attendedRecords.length > 0
           ? `${courseName.trim()} (${attendedRecords.length} buổi)`
@@ -525,7 +538,7 @@ export default function Tuition() {
     const notif = tuitionNotifications.find(n => n.student_id === studentId && n.class_id === selClass)
     const eff = getStudentEffectiveFee(studentId, selClass, notif)
     const attendedRecords = attendance.filter(
-      a => a.class_id === selClass && a.student_id === studentId && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+      a => a.class_id === selClass && a.student_id === studentId && (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
     )
     const courseNameFinal = attendedRecords.length > 0
       ? `${courseName.trim()} (${attendedRecords.length} buổi)`
@@ -596,7 +609,7 @@ export default function Tuition() {
 
     // Lấy chi tiết các buổi học thực tế của học sinh để báo phụ huynh
     const studentAttended = attendance
-      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
       .sort((a, b) => a.date.localeCompare(b.date))
     const datesDetailText = studentAttended.length > 0
       ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
@@ -679,7 +692,7 @@ export default function Tuition() {
     const amountVal = eff.amount
 
     const studentAttended = attendance
-      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+      .filter(a => a.class_id === selClass && a.student_id === row.student.id && (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
       .sort((a, b) => a.date.localeCompare(b.date))
     const datesDetailText = studentAttended.length > 0
       ? studentAttended.map((a, i) => `Buổi ${i + 1}: Ngày ${fmt(a.date)}`).join(', ')
@@ -781,7 +794,7 @@ export default function Tuition() {
       const amt = eff.amount
 
       const studentAttended = attendance
-        .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+        .filter(a => a.class_id === selClass && a.student_id === row.student.id && (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
         .sort((a, b) => a.date.localeCompare(b.date))
       const sessionCount = studentAttended.length
 
@@ -1423,29 +1436,54 @@ export default function Tuition() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
               <div>
-                <label className="label text-teal-700 font-semibold text-xs uppercase tracking-wide">Tên khóa học *</label>
+                <label className="label text-teal-700 font-semibold text-xs uppercase tracking-wide flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-teal-600" /> Tháng thu học phí *
+                </label>
+                <input
+                  type="month"
+                  value={selectedMonth}
+                  onChange={e => {
+                    const newMonth = e.target.value
+                    setSelectedMonth(newMonth)
+                    if (newMonth) {
+                      const [y, m] = newMonth.split('-')
+                      setCourseName(`Tháng ${m}/${y}`)
+                    }
+                  }}
+                  className="input border-teal-200 focus:border-teal-500 bg-white font-bold text-teal-900 shadow-sm"
+                />
+                <span className="text-[10px] text-teal-700 font-bold block mt-1">
+                  ✓ Tháng nào thu tháng đó (chính xác số buổi trong tháng {selectedMonth.split('-')[1]}/{selectedMonth.split('-')[0]}).
+                </span>
+              </div>
+
+              <div>
+                <label className="label text-teal-700 font-semibold text-xs uppercase tracking-wide">Tên đợt thu học phí *</label>
                 <input
                   type="text"
                   value={courseName}
                   onChange={e => setCourseName(e.target.value)}
-                  placeholder="VD: Khóa hè 2026, Khóa hè"
+                  placeholder="VD: Tháng 10/2026"
                   className="input border-teal-200 focus:border-teal-500 bg-white font-bold"
                 />
+                <span className="text-[10px] text-gray-400 font-medium block mt-1">
+                  * Kèm số buổi thực tế (VD: Tháng 10/2026 (8 buổi)).
+                </span>
               </div>
               
               <div>
-                <label className="label text-teal-700 font-semibold text-xs uppercase tracking-wide">Mức học phí tùy chọn (đ) *</label>
+                <label className="label text-teal-700 font-semibold text-xs uppercase tracking-wide">Mức học phí mặc định (đ) *</label>
                 <input
                   type="number"
                   value={courseAmount}
                   onChange={e => setCourseAmount(e.target.value)}
                   placeholder="Mức phí..."
-                  className="input border-teal-200 focus:border-teal-550 focus:border-teal-500 bg-white font-mono font-bold"
+                  className="input border-teal-200 focus:border-teal-500 bg-white font-mono font-bold"
                 />
                 <span className="text-[10px] text-gray-400 font-medium block mt-1">
-                  * Khối 6 mặc định: 1.000.000đ | Các khối khác: 600.000đ (có thể chỉnh sửa tùy ý).
+                  * Dùng dự phòng cho HS chưa có lịch điểm danh.
                 </span>
               </div>
             </div>
@@ -1613,7 +1651,16 @@ export default function Tuition() {
 
                       {/* Khóa học */}
                       <td className="px-5 py-4 font-semibold text-gray-700">
-                        {row.notification ? row.notification.course_name : '—'}
+                        {(() => {
+                          const attendedRecords = attendance.filter(
+                            a => a.class_id === selClass && a.student_id === row.student.id &&
+                                 (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+                          )
+                          if (attendedRecords.length > 0) {
+                            return `${(courseName && courseName.trim()) || 'Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026')} (${attendedRecords.length} buổi)`
+                          }
+                          return row.notification?.course_name || (courseName && courseName.trim()) || '—'
+                        })()}
                       </td>
 
                       {/* Mức học phí */}
@@ -1638,7 +1685,7 @@ export default function Tuition() {
                               )}
                               {(() => {
                                 const attendedRecords = attendance
-                                  .filter(a => a.class_id === selClass && a.student_id === row.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+                                  .filter(a => a.class_id === selClass && a.student_id === row.student.id && (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
                                   .sort((a, b) => a.date.localeCompare(b.date))
                                 if (attendedRecords.length > 0) {
                                   return (
@@ -1896,9 +1943,10 @@ export default function Tuition() {
           amount={getStudentEffectiveFee(qrModal.student.id, selClass, qrModal.notification).amount}
           month={(() => {
             const attendedCount = attendance.filter(
-              a => a.class_id === selClass && a.student_id === qrModal.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+              a => a.class_id === selClass && a.student_id === qrModal.student.id &&
+                   (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
             ).length
-            if (attendedCount > 0) return `${attendedCount} buổi học`
+            if (attendedCount > 0) return `${(courseName && courseName.trim()) || 'Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026')} (${attendedCount} buổi)`
             return qrModal.notification?.course_name || (courseName && courseName.trim()) || 'Học phí'
           })()}
           className={(() => {
@@ -2445,7 +2493,7 @@ export default function Tuition() {
               const amt = eff.amount
 
               const studentAttended = attendance
-                .filter(a => a.class_id === selClass && a.student_id === currentRow.student.id && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
+                .filter(a => a.class_id === selClass && a.student_id === currentRow.student.id && (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE'))
                 .sort((a, b) => a.date.localeCompare(b.date))
               const sessionCount = studentAttended.length
 
