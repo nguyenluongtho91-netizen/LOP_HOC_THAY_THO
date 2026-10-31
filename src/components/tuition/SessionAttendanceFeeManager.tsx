@@ -4,7 +4,7 @@ import {
   CalendarCheck, CalendarDays, CheckSquare, XSquare, Save, RefreshCw,
   Clock, Sparkles, DollarSign, Users, Check, Trash2, Edit3, ArrowRight,
   ExternalLink, AlertCircle, CheckCircle2, ChevronRight, ChevronLeft, FileText, Send,
-  Table as TableIcon, Layers, Calendar, ChevronDown, CheckCircle, QrCode, Copy
+  Table as TableIcon, Layers, Calendar, ChevronDown, CheckCircle, QrCode, Copy, HeartHandshake
 } from 'lucide-react'
 import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
 
@@ -1155,7 +1155,7 @@ export default function SessionAttendanceFeeManager({
                             )}
                           </td>
 
-                          {/* Cột Copy Mã QR */}
+                          {/* Cột Nhắc phí / Cảm ơn & Mã QR */}
                           <td className="py-2.5 px-3 text-center">
                             {(() => {
                               const cls = classes.find(c => c.id === selClass)
@@ -1163,6 +1163,57 @@ export default function SessionAttendanceFeeManager({
                               const addInfo = formatVietQRAddInfo(item.student.full_name, clsName, item.student.student_code, selectedMonth)
                               const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${item.calculatedAmount}&des=${encodeURIComponent(addInfo)}`
                               const isCopied = copiedSessionQrId === item.student.id
+
+                              if (item.isPaid) {
+                                return (
+                                  <div className="flex items-center justify-center gap-1.5">
+                                    <button
+                                      type="button"
+                                      onClick={async () => {
+                                        const rawPhone = (item.student as any)?.zalo || (item.student as any)?.parent_phone || ''
+                                        const cleanPhone = rawPhone.replace(/\D/g, '').replace(/^84/, '0')
+                                        const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+                                        const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
+                                        const thankMsg = `Kính gửi Quý phụ huynh học sinh ${item.student.full_name},\n\n`
+                                                       + `Thầy Thọ xin thông báo: Thầy đã nhận đủ học phí ${monthHeader} của em (${item.calculatedAmount.toLocaleString('vi-VN')} đ).\n\n`
+                                                       + `Thầy cảm ơn Quý phụ huynh rất nhiều ạ!`
+                                        try {
+                                          await navigator.clipboard.writeText(thankMsg)
+                                          toast.success(`💌 Đã copy lời cảm ơn gửi PH em ${item.student.full_name}! Vào Zalo ấn Cmd+V để gửi.`)
+                                        } catch {}
+                                        if (cleanPhone && cleanPhone.length === 10) {
+                                          window.open(`https://zalo.me/${cleanPhone}`, '_blank')
+                                        } else {
+                                          window.open('https://chat.zalo.me', '_blank')
+                                        }
+                                      }}
+                                      className="px-2.5 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs font-black transition-all flex items-center gap-1 shadow-md shadow-emerald-500/20 cursor-pointer hover:scale-105 active:scale-95"
+                                      title="Bấm 1 nút: Copy lời cảm ơn & Mở Zalo phụ huynh"
+                                    >
+                                      <HeartHandshake className="w-3.5 h-3.5 text-emerald-200" />
+                                      <span>Gửi Cảm Ơn</span>
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      onClick={async () => {
+                                        const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+                                        const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
+                                        const thankMsg = `Kính gửi Quý phụ huynh học sinh ${item.student.full_name},\n\n`
+                                                       + `Thầy Thọ xin thông báo: Thầy đã nhận đủ học phí ${monthHeader} của em (${item.calculatedAmount.toLocaleString('vi-VN')} đ).\n\n`
+                                                       + `Thầy cảm ơn Quý phụ huynh rất nhiều ạ!`
+                                        await navigator.clipboard.writeText(thankMsg)
+                                        toast.success(`💌 Đã copy LỜI CẢM ƠN của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
+                                      }}
+                                      className="px-2 py-1 rounded-lg font-bold text-[11px] bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 transition-all flex items-center gap-1 cursor-pointer"
+                                      title="Copy lời cảm ơn vào bộ nhớ"
+                                    >
+                                      <Copy className="w-3 h-3 text-emerald-600" />
+                                      <span>Copy Cảm Ơn</span>
+                                    </button>
+                                  </div>
+                                )
+                              }
 
                               return (
                                 <div className="flex items-center justify-center gap-1.5">
@@ -1176,38 +1227,40 @@ export default function SessionAttendanceFeeManager({
                                   <button
                                     type="button"
                                     onClick={async () => {
-                                      const toastId = toast.loading('Đang copy ảnh mã QR...')
-                                      const ok = await copyQrImageToClipboard(qrUrl)
-                                      toast.dismiss(toastId)
+                                      const rawPhone = (item.student as any)?.zalo || (item.student as any)?.parent_phone || ''
+                                      const cleanPhone = rawPhone.replace(/\D/g, '').replace(/^84/, '0')
+                                      const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
+                                      const subjectName = (cls as any)?.subject || ((item.student.student_code && item.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+                                      const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+                                      const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
+                                      const msg = `Kính gửi Quý phụ huynh học sinh ${item.student.full_name},\n\n`
+                                                + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
+                                                + `• Học sinh: ${item.student.full_name}\n`
+                                                + `• Môn học: ${subjectName}\n`
+                                                + `• Lớp: ${cleanClass}\n`
+                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
+                                                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+                                                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
+                                                + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+
+                                      const ok = await copyQrImageToClipboard(qrUrl, msg)
                                       if (ok) {
-                                        setCopiedSessionQrId(item.student.id)
-                                        toast.success(`🎉 Đã copy ẢNH MÃ QR của ${item.student.full_name}! Sang Zalo ấn Cmd+V để dán`)
-                                        setTimeout(() => setCopiedSessionQrId(null), 3500)
+                                        toast.success(`🎉 Đã nạp ẢNH MÃ QR của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán ảnh mã QR`)
                                       } else {
-                                        const a = document.createElement('a')
-                                        a.href = qrUrl
-                                        a.download = `QR_${item.student.student_code || item.student.full_name}_${item.calculatedAmount}.png`
-                                        a.click()
-                                        toast.success('Đã tải ảnh mã QR xuống máy!')
+                                        await navigator.clipboard.writeText(msg)
+                                        toast.success(`📋 Đã copy tin nhắn học phí của ${item.student.full_name}!`)
+                                      }
+                                      if (cleanPhone && cleanPhone.length === 10) {
+                                        window.open(`https://zalo.me/${cleanPhone}`, '_blank')
+                                      } else {
+                                        window.open('https://chat.zalo.me', '_blank')
                                       }
                                     }}
-                                    className={`px-2 py-1 rounded-lg font-bold text-[11px] flex items-center gap-1 transition-all shadow-xs cursor-pointer select-none
-                                      ${isCopied
-                                        ? 'bg-emerald-600 text-white'
-                                        : 'bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 hover:scale-105 active:scale-95'}`}
-                                    title="Copy ẢNH mã QR để vào Zalo ấn Cmd+V dán ngay ảnh"
+                                    className="px-2.5 py-1.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs font-black transition-all flex items-center gap-1 shadow-md shadow-blue-500/20 cursor-pointer hover:scale-105 active:scale-95"
+                                    title="Bấm 1 nút: Nạp ảnh mã QR & Mở Zalo phụ huynh"
                                   >
-                                    {isCopied ? (
-                                      <>
-                                        <Check className="w-3 h-3 text-white stroke-[3px]" />
-                                        <span>Đã copy QR</span>
-                                      </>
-                                    ) : (
-                                      <>
-                                        <QrCode className="w-3 h-3 text-teal-600" />
-                                        <span>Copy QR</span>
-                                      </>
-                                    )}
+                                    <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+                                    <span>Gửi Zalo ngay</span>
                                   </button>
 
                                   <button
@@ -1242,21 +1295,21 @@ export default function SessionAttendanceFeeManager({
                                         toast.error('Lỗi khi sao chép')
                                       }
                                     }}
-                                    className={`px-2 py-1 rounded-lg font-bold text-[11px] flex items-center gap-1 transition-all shadow-xs cursor-pointer select-none
+                                    className={`px-2.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer select-none whitespace-nowrap
                                       ${copiedSessionMsgId === item.student.id
                                         ? 'bg-emerald-600 text-white'
                                         : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 hover:scale-105 active:scale-95'}`}
-                                    title="Copy NỘI DUNG TIN NHẮN học phí của em này để sang Zalo ấn Cmd+V dán ngay"
+                                    title="Bấm để copy ẢNH MÃ QR của học sinh này (Vào Zalo ấn Cmd+V để dán ảnh mã QR)"
                                   >
                                     {copiedSessionMsgId === item.student.id ? (
                                       <>
-                                        <Check className="w-3 h-3 text-white stroke-[3px]" />
-                                        <span>Đã copy tin</span>
+                                        <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
+                                        <span>Đã copy QR</span>
                                       </>
                                     ) : (
                                       <>
-                                        <Copy className="w-3 h-3 text-indigo-600" />
-                                        <span>Copy Tin</span>
+                                        <QrCode className="w-3.5 h-3.5 text-indigo-600" />
+                                        <span>Copy Tin + Mã QR</span>
                                       </>
                                     )}
                                   </button>
