@@ -689,15 +689,10 @@ export default function Tuition() {
     setZaloModal({ row: synthRow, msg, qrUrl, phone: cleanPhone })
     setCopiedZalo('img')
 
-    // Tự động copy ẢNH MÃ QR vào clipboard để khi sang Zalo ấn Cmd+V là dán luôn ảnh mã QR
+    // Tự động copy tin nhắn học phí kèm mã QR vào clipboard
     try {
-      const ok = await copyQrImageToClipboard(qrUrl, msg)
-      if (ok) {
-        toast.success(`🎉 Đã nạp ẢNH MÃ QR của ${row.student.full_name}! Vào Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR gửi ngay!`)
-      } else {
-        await navigator.clipboard.writeText(msg)
-        toast.success(`📋 Đã copy tin nhắn học phí của ${row.student.full_name}!`)
-      }
+      await navigator.clipboard.writeText(msg)
+      toast.success(`📋 Đã nạp TIN NHẮN KÈM MÃ QR của ${row.student.full_name}! Sang Zalo ấn Cmd+V là hiện đầy đủ chữ và mã QR`)
     } catch {}
 
     // Mở khung chat Zalo phụ huynh
@@ -1018,15 +1013,21 @@ export default function Tuition() {
     const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
     const amountVal = eff.amount
+    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, row.notification?.course_name || courseName || selectedMonth)
+    const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
 
     return `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
          + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
          + `• Học sinh: ${row.student.full_name}\n`
          + `• Môn học: ${subjectName}\n`
          + `• Lớp: ${cleanClass}\n`
-         + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
+         + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n`
+         + `• Ngân hàng: Vietcombank\n`
+         + `• Số tài khoản: 1070493932 (HO KINH DOANH NGUYEN LUONG THO)\n`
+         + `• Cú pháp CK: ${addInfo}\n\n`
          + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
-         + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
+         + `👉 Quý phụ huynh bấm link dưới để quét ảnh mã QR chuyển khoản:\n`
+         + `${qrUrl}\n\n`
          + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
   }
 
@@ -1084,28 +1085,13 @@ export default function Tuition() {
 
   const handleCopyStudentMessage = async (row: TuitionNotificationRow) => {
     try {
-      const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
-      const amountVal = eff.amount
-      const cls = classes.find(c => c.id === selClass)
-      const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
-      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, row.notification?.course_name || courseName || selectedMonth)
-      const rowQrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
       const msg = buildTuitionMessage(row)
-
-      const toastId = toast.loading('Đang copy ảnh mã QR...')
-      const ok = await copyQrImageToClipboard(rowQrUrl, msg)
-      toast.dismiss(toastId)
-
+      await navigator.clipboard.writeText(msg)
       setCopiedRowMsgId(row.student.id)
-      if (ok) {
-        toast.success(`🎉 Đã copy ẢNH MÃ QR của ${row.student.full_name}! Vào Zalo ấn Cmd+V (Ctrl+V) để dán ảnh mã QR gửi ngay!`)
-      } else {
-        await navigator.clipboard.writeText(msg)
-        toast.success(`📋 Đã copy tin nhắn học phí của ${row.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
-      }
+      toast.success(`📋 Đã copy TIN NHẮN KÈM MÃ QR của ${row.student.full_name}! Sang Zalo ấn Cmd+V là hiện đầy đủ chữ và mã QR`)
       setTimeout(() => setCopiedRowMsgId(null), 3500)
     } catch {
-      toast.error('Không thể sao chép mã QR vào clipboard')
+      toast.error('Không thể sao chép tin nhắn vào clipboard')
     }
   }
 
@@ -2150,7 +2136,7 @@ export default function Tuition() {
                               ) : (
                                 <>
                                   <QrCode className="w-3.5 h-3.5 text-indigo-600" />
-                                  <span>Copy Tin + Mã QR</span>
+                                  <span>Copy Tin Nhắn + QR</span>
                                 </>
                               )}
                             </button>
