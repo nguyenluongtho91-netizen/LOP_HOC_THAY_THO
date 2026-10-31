@@ -70,6 +70,7 @@ export default function SessionAttendanceFeeManager({
   const [priceInput, setPriceInput] = useState<string>('80000')
   const [savingPrice, setSavingPrice] = useState(false)
   const [copiedSessionQrId, setCopiedSessionQrId] = useState<string | null>(null)
+  const [copiedSessionMsgId, setCopiedSessionMsgId] = useState<string | null>(null)
 
   // Selected date for recording attendance
   const [sessionDate, setSessionDate] = useState<string>(format(new Date(), 'yyyy-MM-dd'))
@@ -1042,7 +1043,7 @@ export default function SessionAttendanceFeeManager({
                         <th className="py-3 px-3 text-center border-l border-slate-200 min-w-[170px]">Số buổi & Ngày học</th>
                         <th className="py-3 px-3 text-right w-28">Thành tiền</th>
                         <th className="py-3 px-3 text-center w-28">Học phí</th>
-                        <th className="py-3 px-3 text-center w-36">Mã QR</th>
+                        <th className="py-3 px-3 text-center min-w-[210px]">Mã QR & Tin nhắn</th>
                         <th className="py-3 px-3 text-center w-24">Thao tác</th>
                       </tr>
                     </thead>
@@ -1179,12 +1180,56 @@ export default function SessionAttendanceFeeManager({
                                     {isCopied ? (
                                       <>
                                         <Check className="w-3 h-3 text-white stroke-[3px]" />
-                                        <span>Đã copy</span>
+                                        <span>Đã copy QR</span>
                                       </>
                                     ) : (
                                       <>
                                         <QrCode className="w-3 h-3 text-teal-600" />
                                         <span>Copy QR</span>
+                                      </>
+                                    )}
+                                  </button>
+
+                                  <button
+                                    type="button"
+                                    onClick={async () => {
+                                      const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
+                                      const subjectName = (cls as any)?.subject || ((item.student.student_code && item.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+                                      const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+                                      const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
+                                      const msg = `Kính gửi Quý phụ huynh học sinh ${item.student.full_name},\n\n`
+                                                + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
+                                                + `• Học sinh: ${item.student.full_name}\n`
+                                                + `• Môn học: ${subjectName}\n`
+                                                + `• Lớp: ${cleanClass}\n`
+                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
+                                                + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+                                                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
+                                                + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+                                      try {
+                                        await navigator.clipboard.writeText(msg)
+                                        setCopiedSessionMsgId(item.student.id)
+                                        toast.success(`📋 Đã copy TIN NHẮN học phí của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
+                                        setTimeout(() => setCopiedSessionMsgId(null), 3500)
+                                      } catch {
+                                        toast.error('Lỗi khi sao chép')
+                                      }
+                                    }}
+                                    className={`px-2 py-1 rounded-lg font-bold text-[11px] flex items-center gap-1 transition-all shadow-xs cursor-pointer select-none
+                                      ${copiedSessionMsgId === item.student.id
+                                        ? 'bg-emerald-600 text-white'
+                                        : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 hover:scale-105 active:scale-95'}`}
+                                    title="Copy NỘI DUNG TIN NHẮN học phí của em này để sang Zalo ấn Cmd+V dán ngay"
+                                  >
+                                    {copiedSessionMsgId === item.student.id ? (
+                                      <>
+                                        <Check className="w-3 h-3 text-white stroke-[3px]" />
+                                        <span>Đã copy tin</span>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Copy className="w-3 h-3 text-indigo-600" />
+                                        <span>Copy Tin</span>
                                       </>
                                     )}
                                   </button>

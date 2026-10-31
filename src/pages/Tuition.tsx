@@ -63,6 +63,7 @@ export default function Tuition() {
   const [includeQrLink, setIncludeQrLink] = useState(false)
   const [copiedBatch, setCopiedBatch] = useState<'text'|'img'|null>(null)
   const [copiedRowQrId, setCopiedRowQrId] = useState<string | null>(null)
+  const [copiedRowMsgId, setCopiedRowMsgId] = useState<string | null>(null)
 
   const [confirmModal, setConfirmModal] = useState<{studentName:string;amount:number;studentId:string;phone:string;email:string}|null>(null)
   const [sendingConfirm, setSendingConfirm] = useState(false)
@@ -981,6 +982,39 @@ export default function Tuition() {
         a.click()
         toast.success('Đã tải ảnh mã QR xuống máy (Thầy có thể kéo thả vào Zalo)!')
       }
+    }
+  }
+
+  const buildTuitionMessage = (row: TuitionNotificationRow) => {
+    const cls = classes.find(c => c.id === selClass)
+    const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
+    const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
+    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+    const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
+    const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
+    const amountVal = eff.amount
+
+    return `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
+         + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
+         + `• Học sinh: ${row.student.full_name}\n`
+         + `• Môn học: ${subjectName}\n`
+         + `• Lớp: ${cleanClass}\n`
+         + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
+         + `⏰ Kính mong Quý phụ huynh hoàn thành học phí từ ngày 31/10 đến ngày 05/11.\n\n`
+         + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
+         + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+  }
+
+  const handleCopyStudentMessage = async (row: TuitionNotificationRow) => {
+    try {
+      const msg = buildTuitionMessage(row)
+      await navigator.clipboard.writeText(msg)
+      setCopiedRowMsgId(row.student.id)
+      toast.success(`📋 Đã copy TIN NHẮN học phí của ${row.student.full_name}! Vào Zalo ấn Cmd+V (Ctrl+V) để dán`)
+      setTimeout(() => setCopiedRowMsgId(null), 3500)
+    } catch {
+      toast.error('Không thể sao chép tin nhắn vào clipboard')
     }
   }
 
@@ -1960,10 +1994,33 @@ export default function Tuition() {
                             )}
                           </button>
 
+                          {/* Nút 1-click Copy Tin Nhắn */}
+                          <button
+                            type="button"
+                            onClick={() => handleCopyStudentMessage(row)}
+                            className={`px-2.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-xs cursor-pointer select-none whitespace-nowrap
+                              ${copiedRowMsgId === row.student.id
+                                ? 'bg-emerald-600 text-white shadow-emerald-500/20'
+                                : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 hover:border-indigo-300 hover:scale-105 active:scale-95'}`}
+                            title="Bấm để copy NỘI DUNG TIN NHẮN học phí của học sinh này (Vào Zalo ấn Cmd+V để dán)"
+                          >
+                            {copiedRowMsgId === row.student.id ? (
+                              <>
+                                <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
+                                <span>Đã copy tin</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="w-3.5 h-3.5 text-indigo-600" />
+                                <span>Copy Tin Nhắn</span>
+                              </>
+                            )}
+                          </button>
+
                           <button
                             onClick={() => sendZalo(row)}
-                            className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                            title="Xem mẫu tin nhắn / Copy gửi thủ công"
+                            className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
+                            title="Xem trước mẫu tin nhắn / Mở Zalo phụ huynh"
                           >
                             <MessageCircle className="w-4 h-4" />
                           </button>
