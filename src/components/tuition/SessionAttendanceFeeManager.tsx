@@ -1239,7 +1239,7 @@ export default function SessionAttendanceFeeManager({
                                                 + `• Môn học: ${subjectName}\n`
                                                 + `• Lớp: ${cleanClass}\n`
                                                 + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+                                                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy.\n\n`
                                                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -1273,7 +1273,7 @@ export default function SessionAttendanceFeeManager({
                                                 + `• Môn học: ${subjectName}\n`
                                                 + `• Lớp: ${cleanClass}\n`
                                                 + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+                                                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy.\n\n`
                                                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
                                       try {

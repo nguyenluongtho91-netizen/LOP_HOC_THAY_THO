@@ -671,7 +671,7 @@ export default function Tuition() {
 
 
 
-    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
     const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
     const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
@@ -680,7 +680,7 @@ export default function Tuition() {
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy.\n\n`
               + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -752,7 +752,7 @@ export default function Tuition() {
     const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, activeCourseName || courseName || selectedMonth)
     const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
     
-    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
     const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
     const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
@@ -761,7 +761,7 @@ export default function Tuition() {
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy.\n\n`
               + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -900,7 +900,7 @@ export default function Tuition() {
         : (row.notification?.course_name || courseName || 'Học phí')
       const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, courseName || selectedMonth)
       const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
-      const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+      const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
       const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
       const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
       const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
@@ -909,7 +909,7 @@ export default function Tuition() {
                 + `• Môn học: ${subjectName}\n`
                 + `• Lớp: ${cleanClass}\n`
                 + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy.\n\n`
                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -1016,7 +1016,7 @@ export default function Tuition() {
     const cls = classes.find(c => c.id === selClass)
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
     const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
     const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
@@ -1028,7 +1028,7 @@ export default function Tuition() {
          + `• Môn học: ${subjectName}\n`
          + `• Lớp: ${cleanClass}\n`
          + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-         + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+         + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy.\n\n`
          + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
          + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
   }
@@ -1037,7 +1037,7 @@ export default function Tuition() {
     const cls = classes.find(c => c.id === selClass)
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-    const subjectName = (cls as any)?.subject || ((row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+    const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
     const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
     const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
@@ -2928,7 +2928,7 @@ export default function Tuition() {
               const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code, currentRow.notification?.course_name || courseName || selectedMonth)
               const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
 
-              const subjectName = (cls as any)?.subject || ((currentRow.student.student_code && currentRow.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
+              const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (currentRow.student.student_code && currentRow.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
               const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
               const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
               const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\n\n`
@@ -2937,7 +2937,7 @@ export default function Tuition() {
                         + `• Môn học: ${subjectName}\n`
                         + `• Lớp: ${cleanClass}\n`
                         + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                        + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy nhé ạ.\n\n`
+                        + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 05/11 giúp Thầy.\n\n`
                         + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                         + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
