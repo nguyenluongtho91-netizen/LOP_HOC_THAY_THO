@@ -1763,7 +1763,21 @@ export default function Tuition() {
             <div className="px-6 py-4 border-b border-teal-50 flex flex-wrap items-center justify-between gap-3 bg-white">
               <div>
                 <h3 className="font-extrabold text-gray-800 text-lg">Danh sách Báo học phí của Lớp</h3>
-                <p className="text-xs text-gray-400 font-semibold mt-0.5">Quản lý đóng học phí theo khóa hè</p>
+                <p className="text-xs text-gray-400 font-semibold mt-0.5">Quản lý đóng học phí</p>
+              </div>
+              {/* Search Box on Mobile/Desktop to avoid confusion */}
+              <div className="relative w-full sm:w-72">
+                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input
+                  type="text"
+                  placeholder="🔍 Tìm nhanh tên học sinh (vd: Nhật Hòa)..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-8 py-2 text-xs font-bold rounded-xl border border-slate-200 focus:outline-none focus:border-teal-500 bg-slate-50 focus:bg-white shadow-xs transition-all"
+                />
+                {searchQuery && (
+                  <button onClick={() => setSearchQuery('')} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-bold px-1">✕</button>
+                )}
               </div>
               
               {stats.unpaidCount > 0 && (
@@ -1815,7 +1829,7 @@ export default function Tuition() {
                     ].map(h => (
                       <th
                         key={h}
-                        className="px-5 py-3.5 text-left text-teal-800 font-extrabold text-xs uppercase tracking-wider whitespace-nowrap"
+                        className={`px-5 py-3.5 text-left text-teal-800 font-extrabold text-xs uppercase tracking-wider whitespace-nowrap ${h === "Học sinh" ? "sticky left-0 bg-teal-50 z-20 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)]" : ""}`}
                       >
                         {h}
                       </th>
@@ -1830,13 +1844,19 @@ export default function Tuition() {
                       </td>
                     </tr>
                   )}
-                  {tuitionData.map(row => (
+                  {tuitionData.filter(r => {
+                    if (!searchQuery.trim()) return true;
+                    const q = searchQuery.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd');
+                    const n = (r.student.full_name || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd');
+                    const c = (r.student.student_code || '').toLowerCase();
+                    return n.includes(q) || c.includes(q);
+                  }).map(row => (
                     <tr
                       key={row.student.id}
                       className="border-b border-teal-50/40 hover:bg-slate-50 transition-colors"
                     >
-                      {/* Học sinh */}
-                      <td className="px-5 py-4">
+                      {/* Học sinh (Sticky trên điện thoại để không bị mất tên khi cuộn ngang) */}
+                      <td className="px-5 py-4 sticky left-0 bg-white z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.08)]">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-teal-100/50 text-teal-700 rounded-2xl flex items-center justify-center font-extrabold shadow-inner shrink-0">
                             {row.student.full_name?.charAt(0).toUpperCase()}
@@ -2019,7 +2039,11 @@ export default function Tuition() {
                           const isCopied = copiedRowQrId === row.student.id
 
                           return (
-                            <div className="flex items-center gap-2">
+                            <div className="flex flex-col gap-1 min-w-[150px]">
+                              <span className="font-black text-xs text-slate-800 truncate max-w-[180px] flex items-center gap-1">
+                                👤 {row.student.full_name}
+                              </span>
+                              <div className="flex items-center gap-2">
                               <img
                                 src={rowQrUrl}
                                 alt="QR"
@@ -2065,6 +2089,7 @@ export default function Tuition() {
                                   </>
                                 )}
                               </button>
+                              </div>
                             </div>
                           )
                         })()}
