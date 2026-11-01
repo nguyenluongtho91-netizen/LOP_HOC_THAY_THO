@@ -1,20 +1,29 @@
 import { format } from 'date-fns'
 import { useSearchParams } from 'react-router-dom'
+import { useEffect, useState, useMemo } from 'react'
+import toast from 'react-hot-toast'
+import {
+  Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2,
+  MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2,
+  TrendingUp, SlidersHorizontal, Edit3, RefreshCw, HeartHandshake, Sparkles,
+  Calendar, CalendarCheck, CalendarDays, Search
+} from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
-import { useEffect, useState, useMemo } from 'react'
-import { Banknote, Plus, FileText, BookOpen, CheckCircle, XCircle, Mail, Send, Loader2, MessageCircle, AlertCircle, Trash2, Check, QrCode, Copy, ExternalLink, Building2, TrendingUp, SlidersHorizontal, Edit3, RefreshCw, HeartHandshake } from 'lucide-react'
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
 import SessionAttendanceFeeManager, { STUDENT_CUSTOM_RATES } from '@/components/tuition/SessionAttendanceFeeManager'
-import { Calendar, CalendarCheck, CalendarDays } from 'lucide-react'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import InvoiceManager from '@/components/tuition/InvoiceManager'
 import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
 import ElectronicInvoiceModal from '@/components/tuition/ElectronicInvoiceModal'
+import Modal from '@/components/Modal'
+import VietQRModal from '@/components/VietQRModal'
 import { buildElectronicInvoice, saveElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
+import { sendZaloPersonalMessage, copyQrImageToClipboard, copyTuitionCardImageToClipboard, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
+import type { PaymentMethod } from '@/types'
 
 const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
   if (!date) return '—'
@@ -27,12 +36,6 @@ const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
     return '—'
   }
 }
-import Modal from '@/components/Modal'
-import VietQRModal from '@/components/VietQRModal'
-import { sendZaloPersonalMessage, copyQrImageToClipboard, copyTuitionCardImageToClipboard, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
-import { Sparkles } from 'lucide-react'
-import toast from 'react-hot-toast'
-import type { PaymentMethod } from '@/types'
 
 interface TuitionNotificationRow {
   student: any
@@ -100,6 +103,7 @@ export default function Tuition() {
   const [copiedBatch, setCopiedBatch] = useState<'text'|'img'|null>(null)
   const [copiedRowQrId, setCopiedRowQrId] = useState<string | null>(null)
   const [copiedRowMsgId, setCopiedRowMsgId] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const [confirmModal, setConfirmModal] = useState<{studentName:string;amount:number;studentId:string;phone:string;email:string}|null>(null)
   const [sendingConfirm, setSendingConfirm] = useState(false)
@@ -1869,9 +1873,10 @@ export default function Tuition() {
                     </tr>
                   )}
                   {tuitionData.filter(r => {
+                    if (!r || !r.student) return false;
                     if (!searchQuery.trim()) return true;
-                    const q = searchQuery.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd');
-                    const n = (r.student.full_name || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd');
+                    const q = searchQuery.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd');
+                    const n = (r.student.full_name || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd');
                     const c = (r.student.student_code || '').toLowerCase();
                     return n.includes(q) || c.includes(q);
                   }).map(row => (
