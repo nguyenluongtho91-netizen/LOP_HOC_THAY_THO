@@ -1181,7 +1181,7 @@ export default function SessionAttendanceFeeManager({
                                         const cleanPhone = rawPhone.replace(/\D/g, '').replace(/^84/, '0')
                                         const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
                                         const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-                                        const thankMsg = `Thầy Thọ đã nhận đủ học phí ${monthHeader} của em ${item.student.full_name} (${item.calculatedAmount.toLocaleString('vi-VN')} đ). Thầy cảm ơn Quý phụ huynh!`
+                                        const thankMsg = `Dạ Thầy đã nhận học phí ${monthHeader} của em ${item.student.full_name} (${item.calculatedAmount.toLocaleString('vi-VN')} đ). Thầy cảm ơn Quý phụ huynh nhiều ạ!`
                                         try {
                                           await navigator.clipboard.writeText(thankMsg)
                                           toast.success(`💌 Đã copy lời cảm ơn gửi PH em ${item.student.full_name}! Vào Zalo ấn Cmd+V để gửi.`)
@@ -1204,7 +1204,7 @@ export default function SessionAttendanceFeeManager({
                                       onClick={async () => {
                                         const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
                                         const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-                                        const thankMsg = `Thầy Thọ đã nhận đủ học phí ${monthHeader} của em ${item.student.full_name} (${item.calculatedAmount.toLocaleString('vi-VN')} đ). Thầy cảm ơn Quý phụ huynh!`
+                                        const thankMsg = `Dạ Thầy đã nhận học phí ${monthHeader} của em ${item.student.full_name} (${item.calculatedAmount.toLocaleString('vi-VN')} đ). Thầy cảm ơn Quý phụ huynh nhiều ạ!`
                                         await navigator.clipboard.writeText(thankMsg)
                                         toast.success(`💌 Đã copy LỜI CẢM ƠN của ${item.student.full_name}! Vào Zalo ấn Cmd+V để dán`)
                                       }}
