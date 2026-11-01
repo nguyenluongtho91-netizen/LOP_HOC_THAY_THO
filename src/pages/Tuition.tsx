@@ -1,11 +1,3 @@
-const safeOpenZalo = (url: string) => {
-  const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (isMobile) {
-    window.location.href = url;
-  } else {
-    window.open(url, "_blank");
-  }
-};
 import { format } from 'date-fns'
 import { useSearchParams } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
@@ -47,6 +39,15 @@ interface TuitionNotificationRow {
   notification: any | null
   status: 'unnotified' | 'unpaid' | 'paid'
 }
+
+const safeOpenZalo = (url: string) => {
+  const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    window.location.href = url;
+  } else {
+    window.open(url, "_blank");
+  }
+};
 
 export default function Tuition() {
   const {
