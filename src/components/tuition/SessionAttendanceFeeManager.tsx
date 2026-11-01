@@ -94,7 +94,14 @@ export default function SessionAttendanceFeeManager({
   const [syncingAll, setSyncingAll] = useState(false)
 
   // Filter month (YYYY-MM)
-  const [selectedMonth, setSelectedMonth] = useState<string>(format(new Date(), 'yyyy-MM'))
+  const [selectedMonth, setSelectedMonth] = useState<string>(() => {
+    const d = new Date();
+    if (d.getDate() <= 15) {
+      const prev = new Date(d.getFullYear(), d.getMonth() - 1, 1);
+      return format(prev, "yyyy-MM");
+    }
+    return format(d, "yyyy-MM");
+  })
 
   // Tách Tháng & Năm phục vụ giao diện chọn 100% Tiếng Việt
   const [curYear, curMonth] = useMemo(() => {

@@ -49,8 +49,23 @@ export default function Tuition() {
   } = useDataStore()
 
   const [selClass, setSelClass] = useState(() => (new URLSearchParams(window.location.search).get('classId') || new URLSearchParams(window.location.search).get('class') || ''))
-  const [selectedMonth, setSelectedMonth] = useState<string>(() => format(new Date(), 'yyyy-MM'))
-  const [courseName, setCourseName] = useState(() => `Tháng ${format(new Date(), 'MM/yyyy')}`)
+  // Đầu tháng (ngày 1-15) mặc định thu học phí cho Tháng 10 vừa học xong
+  const [selectedMonth, setSelectedMonth] = useState<string>(() => {
+    const d = new Date();
+    if (d.getDate() <= 15) {
+      const prev = new Date(d.getFullYear(), d.getMonth() - 1, 1);
+      return format(prev, "yyyy-MM");
+    }
+    return format(d, "yyyy-MM");
+  })
+  const [courseName, setCourseName] = useState(() => {
+    const d = new Date();
+    if (d.getDate() <= 15) {
+      const prev = new Date(d.getFullYear(), d.getMonth() - 1, 1);
+      return `Tháng ${format(prev, "MM/yyyy")}`;
+    }
+    return `Tháng ${format(d, "MM/yyyy")}`;
+  })
   const [courseAmount, setCourseAmount] = useState('600000')
 
   // Modals state
