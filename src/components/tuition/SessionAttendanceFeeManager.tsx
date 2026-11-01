@@ -1144,7 +1144,11 @@ export default function SessionAttendanceFeeManager({
 
                           {/* Trạng thái đồng bộ */}
                           <td className="py-2.5 px-3 text-center">
-                            {item.isPaid ? (
+                            {item.studentRate === 0 || item.calculatedAmount <= 0 ? (
+                              <span className="bg-purple-100 text-purple-800 text-[10px] font-black px-2.5 py-0.5 rounded-full border border-purple-200">
+                                ✨ Miễn học phí
+                              </span>
+                            ) : item.isPaid ? (
                               <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2 py-0.5 rounded-full">
                                 ✓ Đã đóng
                               </span>
@@ -1165,6 +1169,13 @@ export default function SessionAttendanceFeeManager({
                           {/* Cột Nhắc phí / Cảm ơn & Mã QR */}
                           <td className="py-2.5 px-3 text-center">
                             {(() => {
+                              if (item.studentRate === 0 || item.calculatedAmount <= 0) {
+                                return (
+                                  <span className="text-[11px] text-slate-400 italic font-semibold">
+                                    Không cấp mã QR (Miễn phí)
+                                  </span>
+                                )
+                              }
                               const cls = classes.find(c => c.id === selClass)
                               const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
                               const addInfo = formatVietQRAddInfo(item.student.full_name, clsName, item.student.student_code, selectedMonth)

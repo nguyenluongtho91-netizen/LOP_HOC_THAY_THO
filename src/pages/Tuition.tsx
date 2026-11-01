@@ -40,7 +40,7 @@ const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
 interface TuitionNotificationRow {
   student: any
   notification: any | null
-  status: 'unnotified' | 'unpaid' | 'paid'
+  status: 'unnotified' | 'unpaid' | 'paid' | 'exempt'
 }
 
 const safeOpenZalo = (url: string) => {
@@ -492,8 +492,13 @@ export default function Tuition() {
       // Kiểm tra thêm xem học sinh đã có thanh toán ghi nhận trong store payments chưa
       const hasPayment = payments.some(p => p.student_id === e.student_id && (p.class_id === selClass || !p.class_id))
       
-      let status: 'unnotified' | 'unpaid' | 'paid' = 'unnotified'
-      if (notif) {
+      const eff = getStudentEffectiveFee(e.student_id, selClass, notif)
+      const isExempt = eff.amount <= 0 || (eff.note && eff.note.toLowerCase().includes("miễn")) || (STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[e.student_id] === 0)
+
+      let status: 'unnotified' | 'unpaid' | 'paid' | 'exempt' = 'unnotified'
+      if (isExempt) {
+        status = 'exempt'
+      } else if (notif) {
         status = (notif.is_paid || hasPayment) ? 'paid' : 'unpaid'
       } else if (hasPayment) {
         status = 'paid'
@@ -511,6 +516,8 @@ export default function Tuition() {
     return rows.sort((a, b) => {
       if (a.status === 'paid' && b.status !== 'paid') return -1
       if (a.status !== 'paid' && b.status === 'paid') return 1
+      if (a.status === 'exempt' && b.status !== 'exempt') return 1
+      if (a.status !== 'exempt' && b.status === 'exempt') return -1
       
       if (a.status === 'unpaid' && b.status === 'unnotified') return -1
       if (a.status === 'unnotified' && b.status === 'unpaid') return 1
@@ -2063,7 +2070,11 @@ export default function Tuition() {
 
                       {/* Trạng thái */}
                       <td className="px-5 py-4">
-                        {row.status === 'paid' ? (
+                        {row.status === 'exempt' ? (
+                          <span className="inline-flex items-center gap-1 bg-purple-50 text-purple-700 border border-purple-200 text-xs font-bold px-2.5 py-1 rounded-full">
+                            ✨ Miễn học phí
+                          </span>
+                        ) : row.status === 'paid' ? (
                           <span className="badge-paid inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-2.5 py-1 rounded-full">
                             <CheckCircle className="w-3 h-3" /> Đã đóng
                           </span>
@@ -2080,7 +2091,11 @@ export default function Tuition() {
 
                       {/* Thu học phí: Tick button next to student icon */}
                       <td className="px-5 py-4">
-                        {row.status === 'unpaid' ? (
+                        {row.status === 'exempt' ? (
+                          <span className="text-xs text-purple-700 font-bold bg-purple-50 px-2.5 py-1 rounded-lg border border-purple-200">
+                            ✓ Miễn nộp
+                          </span>
+                        ) : row.status === 'unpaid' ? (
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => quickCollectTuition(row)}
@@ -2132,6 +2147,13 @@ export default function Tuition() {
                         {(() => {
                           const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
                           const amt = eff.amount
+                          if (row.status === 'exempt' || amt <= 0) {
+                            return (
+                              <span className="text-xs text-slate-400 font-semibold italic">
+                                Không cấp mã QR
+                              </span>
+                            )
+                          }
                           const cls = classes.find(c => c.id === selClass)
                           const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
                           const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, row.notification?.course_name || courseName || selectedMonth)
@@ -2197,7 +2219,11 @@ export default function Tuition() {
 
                       {/* Nhắc / Cảm ơn học phí */}
                       <td className="px-5 py-4">
-                        {row.status === 'paid' ? (
+                        {row.status === 'exempt' ? (
+                          <span className="text-xs text-slate-400 font-medium italic">
+                            —
+                          </span>
+                        ) : row.status === 'paid' ? (
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => sendThankYouZalo1Click(row)}
