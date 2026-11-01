@@ -102,16 +102,30 @@ export default async function handler(req, res) {
             note: noteTarget,
           });
 
-          await supabase.from('tuition_notifications')
-            .update({ is_paid: true, updated_at: new Date().toISOString() })
-            .eq('student_id', student.id)
-            .eq('is_paid', false);
+          // Gạch nợ cho tất cả các lớp của học sinh (ví dụ Sỹ Mạnh học cả 8A và 8B)
+          const cleanTargetName = removeTones(student.full_name);
+          const matchedStudentIds = [student.id];
+          for (const st of (allStudents || [])) {
+            if (st.id === student.id) continue;
+            const cName = removeTones(st.full_name);
+            const samePhone = st.parent_phone && student.parent_phone && st.parent_phone.replace(/\D/g, '') === student.parent_phone.replace(/\D/g, '');
+            if (cName === cleanTargetName || (samePhone && cleanDesc.includes(cName))) {
+              matchedStudentIds.push(st.id);
+            }
+          }
+
+          for (const sid of matchedStudentIds) {
+            await supabase.from('tuition_notifications')
+              .update({ is_paid: true, updated_at: new Date().toISOString() })
+              .eq('student_id', sid)
+              .eq('is_paid', false);
+          }
 
           try {
             const { data: storeRow } = await supabase.from('exams').select('id, data').eq('title', '__TUITION_NOTIFICATIONS_STORE__').maybeSingle();
             if (storeRow?.data?.items) {
               const updatedItems = storeRow.data.items.map(item => {
-                if (item.student_id === student.id && !item.is_paid) {
+                if (matchedStudentIds.includes(item.student_id) && !item.is_paid) {
                   return { ...item, is_paid: true, updated_at: new Date().toISOString() };
                 }
                 return item;

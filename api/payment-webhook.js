@@ -300,17 +300,35 @@ export default async function handler(req, res) {
     }
 
     // 4. TỰ ĐỘNG GẠCH NỢ: Cập nhật tuition_notifications thành ĐÃ ĐÓNG (is_paid = true)
+    // Hỗ trợ gạch nợ tất cả các lớp của học sinh (ví dụ Sỹ Mạnh học cả 8A và 8B)
+    const matchedStudents = student ? [student] : [];
+    if (student && allStudents && allStudents.length > 0) {
+      const cleanDesc = (payload.description || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').toUpperCase();
+      const cleanTargetName = (student.full_name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').toUpperCase().trim();
+      for (const st of allStudents) {
+        if (st.id === student.id) continue;
+        const cName = (st.full_name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[đĐ]/g, 'd').toUpperCase().trim();
+        const samePhone = st.parent_phone && student.parent_phone && st.parent_phone.replace(/\D/g, '') === student.parent_phone.replace(/\D/g, '');
+        if (cName === cleanTargetName || (samePhone && cleanDesc.includes(cName))) {
+          matchedStudents.push(st);
+        }
+      }
+    }
+    const matchedStudentIds = matchedStudents.map(s => s.id);
+
     let updatedNotifCount = 0;
-    if (student) {
-      try {
-        const { data: notifData } = await supabase
-          .from('tuition_notifications')
-          .update({ is_paid: true, updated_at: new Date().toISOString() })
-          .eq('student_id', student.id)
-          .eq('is_paid', false)
-          .select('id');
-        updatedNotifCount = notifData?.length || 0;
-      } catch {}
+    if (matchedStudentIds.length > 0) {
+      for (const sid of matchedStudentIds) {
+        try {
+          const { data: notifData } = await supabase
+            .from('tuition_notifications')
+            .update({ is_paid: true, updated_at: new Date().toISOString() })
+            .eq('student_id', sid)
+            .eq('is_paid', false)
+            .select('id');
+          updatedNotifCount += notifData?.length || 0;
+        } catch {}
+      }
 
       // Cập nhật thêm trong cloud store exams (__TUITION_NOTIFICATIONS_STORE__)
       try {
@@ -323,7 +341,7 @@ export default async function handler(req, res) {
           let changed = false;
           let found = false;
           const updatedItems = storeRow.data.items.map(item => {
-            if (item.student_id === student.id) {
+            if (matchedStudentIds.includes(item.student_id)) {
               found = true;
               if (!item.is_paid) {
                 changed = true;
