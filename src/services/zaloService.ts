@@ -553,7 +553,12 @@ export async function sendZaloPersonalMessage(
 
   // 3. Nếu Robot PC chưa gửi được: Mở trực tiếp khung chat Zalo của phụ huynh
   try {
-    window.open('https://zalo.me/' + cleanPhone, '_blank');
+    const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = 'https://zalo.me/' + cleanPhone;
+    } else {
+      window.open('https://zalo.me/' + cleanPhone, '_blank');
+    }
     return {
       success: false,
       openedZalo: true,

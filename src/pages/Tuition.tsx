@@ -1,3 +1,11 @@
+const safeOpenZalo = (url: string) => {
+  const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    window.location.href = url;
+  } else {
+    window.open(url, "_blank");
+  }
+};
 import { format } from 'date-fns'
 import { useSearchParams } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
@@ -719,7 +727,7 @@ export default function Tuition() {
     } catch {}
 
     // Mở khung chat Zalo phụ huynh
-    window.open(`https://zalo.me/${cleanPhone}`, '_blank')
+    safeOpenZalo(`https://zalo.me/${cleanPhone}`)
     setSendingStudentId(null)
   }
 
@@ -1085,7 +1093,7 @@ export default function Tuition() {
       setTimeout(() => setCopiedRowMsgId(null), 3500)
     } catch {}
 
-    window.open(`https://zalo.me/${cleanPhone}`, '_blank')
+    safeOpenZalo(`https://zalo.me/${cleanPhone}`)
   }
 
   const handleCopyThankYouMessage = async (row: TuitionNotificationRow) => {
@@ -1324,8 +1332,8 @@ export default function Tuition() {
       await navigator.clipboard.writeText(msg)
       toast.success('✅ Đã copy! Dán vào Zalo và gửi.')
     } catch { toast.error('Không copy được') }
-    if (confirmModal.phone) window.open('https://zalo.me/' + confirmModal.phone, '_blank')
-    else window.open('https://chat.zalo.me', '_blank')
+    if (confirmModal.phone) safeOpenZalo('https://zalo.me/' + confirmModal.phone)
+    else safeOpenZalo('https://chat.zalo.me')
     setConfirmModal(null)
   }
 
@@ -2575,7 +2583,7 @@ export default function Tuition() {
 
               {/* NÚT MỞ ZALO PHỤ HUYNH */}
               <button
-                onClick={() => window.open(zaloModal.phone ? 'https://zalo.me/' + zaloModal.phone : 'https://chat.zalo.me', '_blank')}
+                onClick={() => safeOpenZalo(zaloModal.phone ? 'https://zalo.me/' + zaloModal.phone : 'https://chat.zalo.me')}
                 className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white rounded-xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-md shadow-blue-500/20 cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-white" />
@@ -3018,7 +3026,7 @@ export default function Tuition() {
                 const targetUrl = phoneForLink
                   ? `https://zalo.me/${phoneForLink}`
                   : 'https://chat.zalo.me'
-                window.open(targetUrl, '_blank')
+                safeOpenZalo(targetUrl)
               }
 
               const markPaidAndNext = async () => {
@@ -3381,10 +3389,10 @@ export default function Tuition() {
                       if (data.ok) {
                         toast.success(`Đã tự động gửi Zalo cho phụ huynh ${chainModal.studentName}!`)
                       } else {
-                        window.open(`https://zalo.me/${rawPhone}`, '_blank')
+                        safeOpenZalo(`https://zalo.me/${rawPhone}`)
                       }
                     } catch {
-                      window.open(`https://zalo.me/${rawPhone}`, '_blank')
+                      safeOpenZalo(`https://zalo.me/${rawPhone}`)
                     }
                     setChainModal(null)
                   }}
