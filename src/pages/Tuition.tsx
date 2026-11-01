@@ -130,6 +130,65 @@ export default function Tuition() {
     if (qTab) setActiveTab(qTab as any)
     if (qClassId) setSelClass(qClassId)
   }, [qTab, qClassId])
+
+  const handleSelectClass = (clsId: string) => {
+    setSelClass(clsId)
+    try {
+      const url = new URL(window.location.href)
+      if (clsId) {
+        url.searchParams.set("classId", clsId)
+        window.history.pushState({ classId: clsId }, "", url.pathname + "?" + url.searchParams.toString())
+      } else {
+        url.searchParams.delete("classId")
+        url.searchParams.delete("class")
+        window.history.pushState({ classId: "" }, "", url.pathname + (url.searchParams.toString() ? "?" + url.searchParams.toString() : ""))
+      }
+    } catch {}
+  }
+
+  // Lắng nghe nút Back của trình duyệt (Chrome/Safari) để quay lại danh sách lớp chứ không thoát ra Trang chủ
+  useEffect(() => {
+    const onPop = () => {
+      const p = new URLSearchParams(window.location.search).get("classId") || new URLSearchParams(window.location.search).get("class") || ""
+      setSelClass(p)
+    }
+    window.addEventListener("popstate", onPop)
+    return () => window.removeEventListener("popstate", onPop)
+  }, [])
+
+  // Đăng ký custom handler cho nút "Quay lại" UniversalBackButton
+  useEffect(() => {
+    (window as any).__onCustomBack = () => {
+      if (payModal) { setPayModal(null); return true; }
+      if (qrModal) { setQrModal(null); return true; }
+      if (zaloModal) { setZaloModal(null); return true; }
+      if (batchZaloModal) { setBatchZaloModal(null); return true; }
+      if (chainModal) { setChainModal(null); return true; }
+      if (confirmModal) { setConfirmModal(null); return true; }
+      if (activeInvoice) { setActiveInvoice(null); return true; }
+      if (autoSendModal) { setAutoSendModal(false); return true; }
+      if (bankModalOpen) { setBankModalOpen(false); return true; }
+
+      // Nếu đang ở trong một lớp cụ thể -> bấm Quay lại sẽ quay về danh sách lớp
+      if (selClass) {
+        handleSelectClass("")
+        return true;
+      }
+
+      // Nếu đang ở tab phụ -> quay về tab chính
+      if (activeTab !== "tuition" && activeTab !== "session-attendance") {
+        setActiveTab("session-attendance")
+        return true;
+      }
+
+      // Trả về false để UniversalBackButton thực hiện navigate(-1) về Trang chủ
+      return false;
+    };
+
+    return () => {
+      delete (window as any).__onCustomBack;
+    };
+  }, [selClass, activeTab, payModal, qrModal, zaloModal, batchZaloModal, chainModal, confirmModal, activeInvoice, autoSendModal, bankModalOpen]);
   const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
   const handleOpenInvoice = (row: TuitionNotificationRow) => {
     const feeInfo = getStudentEffectiveFee(row.student.id, selClass, row.notification)
@@ -1620,7 +1679,7 @@ export default function Tuition() {
           {/* Quick "Toàn trường" option button */}
           <div className="pb-2 border-b border-slate-100">
             <button
-              onClick={() => setSelClass('')}
+              onClick={() => handleSelectClass('')}
               className={`px-5 py-2.5 rounded-xl font-extrabold text-sm transition-all duration-200 border cursor-pointer hover:scale-[1.02] active:scale-[0.98]
                 ${!selClass 
                   ? 'bg-teal-600 text-white border-teal-600 shadow-md shadow-teal-600/15 ring-2 ring-teal-600/20' 
@@ -1647,7 +1706,7 @@ export default function Tuition() {
                   return (
                     <button
                       key={c.id}
-                      onClick={() => setSelClass(isSelected ? '' : c.id)}
+                      onClick={() => handleSelectClass(isSelected ? '' : c.id)}
                       className={`px-4 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 border cursor-pointer hover:scale-[1.02] active:scale-[0.98]
                         ${isSelected 
                           ? 'bg-teal-650 bg-teal-600 text-white border-teal-600 shadow-md shadow-teal-600/15' 
@@ -1786,6 +1845,20 @@ export default function Tuition() {
 
           {/* Student Tuition Notice List */}
           <div className="card overflow-hidden border border-slate-100 shadow-sm rounded-3xl">
+            {selClass && (
+              <div className="px-6 pt-4 pb-1 bg-slate-50/70 border-b border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleSelectClass("")}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs cursor-pointer border border-slate-200 transition-all active:scale-95 shadow-xs"
+                >
+                  ⬅️ Quay lại danh sách lớp
+                </button>
+                <span className="text-xs font-bold text-teal-800 bg-teal-50 px-3 py-1 rounded-lg border border-teal-200">
+                  Đang xem: {classes.find(c => c.id === selClass)?.name || (classes.find(c => c.id === selClass) as any)?.class_name || "Lớp đã chọn"}
+                </span>
+              </div>
+            )}
             <div className="px-6 py-4 border-b border-teal-50 flex flex-wrap items-center justify-between gap-3 bg-white">
               <div>
                 <h3 className="font-extrabold text-gray-800 text-lg">Danh sách Báo học phí của Lớp</h3>
@@ -2244,7 +2317,7 @@ export default function Tuition() {
         <SessionAttendanceFeeManager
           classes={classes}
           selClass={selClass}
-          onSelectClass={setSelClass}
+          onSelectClass={handleSelectClass}
           students={students}
           enrollments={enrollments}
           attendance={attendance}
@@ -2287,7 +2360,7 @@ export default function Tuition() {
           onSaveCustomFee={handleSaveCustomFee}
           onResetCustomFee={handleResetCustomFee}
           selectedClassId={selClass}
-          onSelectClassId={setSelClass}
+          onSelectClassId={handleSelectClass}
           onNavigateTab={(tab) => setActiveTab(tab as any)}
         />
       )}

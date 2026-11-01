@@ -28,6 +28,16 @@ export default function UniversalBackButton() {
   }
 
   const handleBack = () => {
+    // 1. Kiểm tra handler quay lại tùy chỉnh của trang hiện tại (nếu có)
+    if (typeof (window as any).__onCustomBack === "function") {
+      try {
+        const handled = (window as any).__onCustomBack();
+        if (handled) return;
+      } catch (err) {
+        console.warn("Custom back error:", err);
+      }
+    }
+
     if (window.history.length > 1) {
       navigate(-1);
     } else {
