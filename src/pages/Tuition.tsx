@@ -1071,9 +1071,7 @@ export default function Tuition() {
     const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
     const amountVal = eff.amount
 
-    return `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-         + `Thầy Thọ xin thông báo: Thầy đã nhận đủ học phí ${monthHeader} của em (${amountVal.toLocaleString('vi-VN')} đ).\n\n`
-         + `Thầy cảm ơn Quý phụ huynh rất nhiều ạ!`
+    return `Thầy Thọ đã nhận đủ học phí ${monthHeader} của em ${row.student.full_name} (${amountVal.toLocaleString('vi-VN')} đ). Thầy cảm ơn Quý phụ huynh!`
   }
 
   const sendThankYouZalo1Click = async (row: TuitionNotificationRow) => {
