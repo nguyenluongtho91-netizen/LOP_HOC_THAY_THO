@@ -240,6 +240,11 @@ export default function AdminExamViewerModal({
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
                 MÃ ĐỀ: {exam.code}
               </span>
+              {exam.badge && (
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-rose-500/25 text-rose-300 border border-rose-400/40 flex items-center gap-1 shadow-xs">
+                  ⭐ {exam.badge}
+                </span>
+              )}
               <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-white/10 text-slate-300">
                 {exam.grade ? `Hóa ${exam.grade}` : 'THPT'} • {exam.chapter || exam.topic || 'Đề Thi Chuẩn Bộ GD&ĐT 2025'}
               </span>
@@ -419,6 +424,18 @@ export default function AdminExamViewerModal({
             >
               Phần III: Trả lời ngắn ({part3Questions.length} câu)
             </button>
+            {part4Questions.length > 0 && (
+              <button
+                onClick={() => setActivePartTab(4)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                  activePartTab === 4
+                    ? 'bg-amber-600 text-white shadow-xs'
+                    : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-200'
+                }`}
+              >
+                Phần IV: Tự luận ({part4Questions.length} câu)
+              </button>
+            )}
           </div>
 
           <div className="text-xs font-bold text-slate-500">
@@ -498,6 +515,23 @@ export default function AdminExamViewerModal({
               );
             })}
           </div>
+
+          {/* Part 4 Jump List */}
+          {part4Questions.length > 0 && (
+            <div className="flex items-center gap-1 shrink-0 pl-2 border-l border-slate-300">
+              <span className="text-[10px] font-black uppercase text-amber-700 bg-amber-100/80 px-1.5 py-0.5 rounded mr-0.5">P.IV:</span>
+              {part4Questions.map((q) => (
+                <button
+                  key={q.id}
+                  onClick={() => scrollToQuestion(q.id)}
+                  title={`Phần IV - Câu ${q.number}`}
+                  className="w-6 h-6 rounded-md text-[11px] font-black flex items-center justify-center transition-all cursor-pointer bg-white hover:bg-amber-100 text-slate-700 border border-slate-300"
+                >
+                  {q.number}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Question List Body */}

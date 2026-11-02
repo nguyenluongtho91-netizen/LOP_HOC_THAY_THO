@@ -48,9 +48,9 @@ export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
 {
   "id": "hoa10_gk1_pdp_605",
   "code": "H10-GK1-PDP-605",
-  "title": "Đề Kiểm Tra Giữa Kì 1 Hóa 10 - THPT Phan Đình Phùng (Mã đề 605)",
-  "topic": "Đề thi chính thức Giữa Kì 1 Hóa 10 THPT Phan Đình Phùng năm học 2026 - 2027 kèm Barème biểu điểm chi tiết",
-  "badge": "THPT Phan Đình Phùng",
+  "title": "TRƯỜNG THPT PHAN ĐÌNH PHÙNG — Đề Kiểm Tra Giữa Kì 1 Hóa 10 (Mã đề 605)",
+  "topic": "Đề thi chính thức Giữa Kì 1 Hóa 10 - Trường THPT Phan Đình Phùng năm học 2026 - 2027 (Kèm Barème đáp án chi tiết)",
+  "badge": "THPT PHAN ĐÌNH PHÙNG",
   "grade": "10",
   "chapter": "Đề Giữa Học Kì 1",
   "duration": 45,

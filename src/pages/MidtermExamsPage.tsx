@@ -113,7 +113,7 @@ export default function MidtermExamsPage({ initialGrade }: MidtermExamsPageProps
               }`}
             >
               <Atom className="w-4 h-4" />
-              <span>Hóa Học Lớp 10 (10 Đề)</span>
+              <span>Hóa Học Lớp 10 (11 Đề • THPT Phan Đình Phùng)</span>
             </button>
 
             <button
@@ -183,12 +183,19 @@ export default function MidtermExamsPage({ initialGrade }: MidtermExamsPageProps
                 className="bg-slate-900/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500/60 rounded-3xl p-5 shadow-lg transition-all flex flex-col justify-between space-y-4 group"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-black bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
-                      MÃ: {exam.code}
-                    </span>
+                  <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-black bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+                        MÃ: {exam.code}
+                      </span>
+                      {exam.badge && (
+                        <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-black bg-rose-500/25 text-rose-300 border border-rose-400/40 flex items-center gap-1 shadow-xs">
+                          ⭐ {exam.badge}
+                        </span>
+                      )}
+                    </div>
                     <span className="px-2.5 py-0.5 rounded-lg text-[11px] font-bold bg-white/10 text-slate-300">
-                      50 phút • {qCount} câu hỏi • Thang 10đ
+                      {exam.duration || 45} phút • {qCount} câu hỏi • Thang 10đ
                     </span>
                   </div>
 
@@ -210,6 +217,11 @@ export default function MidtermExamsPage({ initialGrade }: MidtermExamsPageProps
                     <span className="px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700/60">
                       Phần III: Trả lời ngắn
                     </span>
+                    {exam.questions?.some((q: any) => q.part === 4 || q.type === 'essay') && (
+                      <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 border border-amber-400/30 font-bold">
+                        Phần IV: Tự luận
+                      </span>
+                    )}
                   </div>
                 </div>
 

@@ -146,7 +146,7 @@ export default function ThptManagementHub() {
       chapterKey: "h10_gk1",
       fallbackKey: "h10_gk1",
       grade: "10",
-      chapterTitle: "🎯 Hóa 10 • Bộ 10 Đề Thi Giữa Học Kì 1 (Chuẩn 2025)",
+      chapterTitle: "🎯 Hóa 10 • Bộ Đề Thi Giữa Học Kì 1 (THPT Phan Đình Phùng & Chuẩn Bộ)",
       link: "/thpt?grade=10&subject=hoa",
       exams: HOA10_MIDTERM_EXAMS.map(e => ({ id: e.id, code: e.code, title: e.title }))
     },
@@ -487,9 +487,9 @@ export default function ThptManagementHub() {
     {
       id: 'h10-gk1',
       grade: '10',
-      badge: 'Hóa 10 • Trọng tâm Giữa Kì 1',
-      title: '🎯 Bộ 10 Đề Thi Giữa Học Kì 1 (Hóa 10)',
-      desc: 'Bộ 10 đề thi chuẩn cấu trúc 2025 Bộ GD&ĐT: Cấu tạo nguyên tử, Bảng tuần hoàn các nguyên tố hóa học & Xu hướng biến đổi tính chất (28 câu, thang 10).',
+      badge: 'Hóa 10 • THPT Phan Đình Phùng & Chuẩn Bộ',
+      title: '🎯 Đề Thi Giữa Học Kì 1 Hóa 10 (THPT Phan Đình Phùng)',
+      desc: 'Đề thi chính thức Giữa Kì 1 TRƯỜNG THPT PHAN ĐÌNH PHÙNG (Mã 605) kèm biểu điểm barème chi tiết, kết hợp 10 đề thi chuẩn cấu trúc Bộ GD&ĐT.',
       link: '/thpt?grade=10&subject=hoa',
       gradient: 'from-emerald-950/95 via-teal-950/90 to-slate-900/90',
       borderClass: 'border-emerald-400/50 hover:border-emerald-300',
