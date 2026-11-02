@@ -4,7 +4,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import {
   GraduationCap, BookOpen, Users, Calculator, Atom, Plus,
   CalendarCheck, ClipboardList, MonitorPlay, Search, Filter,
-  ArrowRight, Sparkles, CheckCircle2, ChevronRight, Zap
+  ArrowRight, Sparkles, CheckCircle2, ChevronRight, Zap, School
 } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort } from '@/lib/helpers'
@@ -157,6 +157,103 @@ export default function ThcsManagementHub({ defaultSubject }: { defaultSubject?:
               {gr === 'all' ? 'Tất cả khối' : `Lớp ${gr}`}
             </button>
           ))}
+        </div>
+      </div>
+
+      {/* ── BỘ PHÂN MỤC THEO TRƯỜNG THCS (Thạch Linh • Nguyễn Du • Nam Hà • Thạch Đài) ── */}
+      <div className="bg-gradient-to-r from-teal-950 via-slate-900 to-cyan-950 rounded-3xl p-5 border border-teal-800/50 shadow-lg text-white space-y-3">
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-2">
+            <School className="w-5 h-5 text-teal-400" />
+            <h3 className="text-base font-black text-white">
+              Phân Mục Theo Trường Cấp 2 (THCS)
+            </h3>
+          </div>
+          <span className="text-xs text-teal-200/80">
+            Xem nhanh lớp học, học sinh & đề thi của từng trường
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+          {/* Mục 1: THCS Thạch Linh */}
+          <div
+            onClick={() => setSearchQuery('Thạch Linh')}
+            className={`p-3.5 rounded-2xl border transition-all flex flex-col justify-between gap-2 group cursor-pointer ${
+              searchQuery === 'Thạch Linh'
+                ? 'bg-emerald-600/30 border-emerald-400 shadow-md'
+                : 'bg-white/5 hover:bg-white/10 border-emerald-500/30 hover:border-emerald-400'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-white text-sm font-black shadow-xs">
+                🏛️
+              </div>
+              <h4 className="font-black text-xs sm:text-sm text-white group-hover:text-emerald-300 transition-colors">
+                THCS Thạch Linh
+              </h4>
+            </div>
+            <span className="text-[10px] text-emerald-300/80">Lọc nhanh theo trường</span>
+          </div>
+
+          {/* Mục 2: THCS Nguyễn Du */}
+          <div
+            onClick={() => setSearchQuery('Nguyễn Du')}
+            className={`p-3.5 rounded-2xl border transition-all flex flex-col justify-between gap-2 group cursor-pointer ${
+              searchQuery === 'Nguyễn Du'
+                ? 'bg-cyan-600/30 border-cyan-400 shadow-md'
+                : 'bg-white/5 hover:bg-white/10 border-cyan-500/30 hover:border-cyan-400'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white text-sm font-black shadow-xs">
+                🏛️
+              </div>
+              <h4 className="font-black text-xs sm:text-sm text-white group-hover:text-cyan-300 transition-colors">
+                THCS Nguyễn Du
+              </h4>
+            </div>
+            <span className="text-[10px] text-cyan-300/80">Lọc nhanh theo trường</span>
+          </div>
+
+          {/* Mục 3: THCS Nam Hà */}
+          <div
+            onClick={() => setSearchQuery('Nam Hà')}
+            className={`p-3.5 rounded-2xl border transition-all flex flex-col justify-between gap-2 group cursor-pointer ${
+              searchQuery === 'Nam Hà'
+                ? 'bg-amber-600/30 border-amber-400 shadow-md'
+                : 'bg-white/5 hover:bg-white/10 border-amber-500/30 hover:border-amber-400'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white text-sm font-black shadow-xs">
+                🏛️
+              </div>
+              <h4 className="font-black text-xs sm:text-sm text-white group-hover:text-amber-300 transition-colors">
+                THCS Nam Hà
+              </h4>
+            </div>
+            <span className="text-[10px] text-amber-300/80">Lọc nhanh theo trường</span>
+          </div>
+
+          {/* Mục 4: THCS Thạch Đài */}
+          <div
+            onClick={() => setSearchQuery('Thạch Đài')}
+            className={`p-3.5 rounded-2xl border transition-all flex flex-col justify-between gap-2 group cursor-pointer ${
+              searchQuery === 'Thạch Đài'
+                ? 'bg-purple-600/30 border-purple-400 shadow-md'
+                : 'bg-white/5 hover:bg-white/10 border-purple-500/30 hover:border-purple-400'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-500 to-violet-600 flex items-center justify-center text-white text-sm font-black shadow-xs">
+                🏛️
+              </div>
+              <h4 className="font-black text-xs sm:text-sm text-white group-hover:text-purple-300 transition-colors">
+                THCS Thạch Đài
+              </h4>
+            </div>
+            <span className="text-[10px] text-purple-300/80">Lọc nhanh theo trường</span>
+          </div>
         </div>
       </div>
 

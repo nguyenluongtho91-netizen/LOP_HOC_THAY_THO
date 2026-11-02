@@ -14,7 +14,7 @@ import {
   GraduationCap, BookOpen, Users, Atom, Plus,
   CalendarCheck, ClipboardList, MonitorPlay, Search, Filter,
   ArrowRight, Sparkles, CheckCircle2, ChevronRight, Zap, Shield, KeyRound,
-  FlaskConical, Layers, Scale, Dna, TestTube2, Eye
+  FlaskConical, Layers, Scale, Dna, TestTube2, Eye, School
 } from 'lucide-react'
 import { useDataStore } from '@/store/dataStore'
 import { fmtVNDShort } from '@/lib/helpers'
@@ -725,6 +725,92 @@ export default function ThptManagementHub() {
               {gr === 'all' ? '✨ Tất cả khối lớp (10 - 11 - 12)' : `🧪 Hóa Lớp ${gr}`}
             </button>
           ))}
+        </div>
+      </div>
+
+      {/* ── BỘ PHÂN MỤC THEO TRƯỜNG THPT (Phan Đình Phùng • Lý Tự Trọng • Lê Quý Đôn) ── */}
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-5 border border-indigo-900/60 shadow-lg text-white space-y-3">
+        <div className="flex items-center justify-between gap-3 flex-wrap">
+          <div className="flex items-center gap-2">
+            <School className="w-5 h-5 text-amber-400" />
+            <h3 className="text-base font-black text-white">
+              Phân Mục Theo Trường Cấp 3 (THPT)
+            </h3>
+          </div>
+          <span className="text-xs text-slate-300">
+            Xem nhanh đề thi & học liệu chuyên biệt của từng trường
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+          {/* Mục 1: THPT Phan Đình Phùng */}
+          <Link
+            to="/hoa10-giuaki1"
+            className="p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-rose-500/30 hover:border-rose-400 transition-all flex items-center justify-between group cursor-pointer"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-500 to-pink-600 flex items-center justify-center text-white text-lg font-black shadow-md">
+                🏛️
+              </div>
+              <div>
+                <h4 className="font-black text-sm text-white group-hover:text-rose-300 transition-colors">
+                  THPT Phan Đình Phùng
+                </h4>
+                <p className="text-[11px] text-slate-400">
+                  Đã có Đề Giữa Kì 1 (Mã 605)
+                </p>
+              </div>
+            </div>
+            <span className="px-2 py-1 rounded-lg bg-rose-500/20 text-rose-300 border border-rose-400/30 text-[10px] font-black">
+              1 Đề Thi
+            </span>
+          </Link>
+
+          {/* Mục 2: THPT Lý Tự Trọng */}
+          <Link
+            to="/hoa10-giuaki1"
+            className="p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-cyan-500/30 hover:border-cyan-400 transition-all flex items-center justify-between group cursor-pointer"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white text-lg font-black shadow-md">
+                🏛️
+              </div>
+              <div>
+                <h4 className="font-black text-sm text-white group-hover:text-cyan-300 transition-colors">
+                  THPT Lý Tự Trọng
+                </h4>
+                <p className="text-[11px] text-slate-400">
+                  Mục đề thi & chuyên đề
+                </p>
+              </div>
+            </div>
+            <span className="px-2 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 text-[10px] font-black">
+              Sẵn sàng
+            </span>
+          </Link>
+
+          {/* Mục 3: THPT Lê Quý Đôn */}
+          <Link
+            to="/hoa10-giuaki1"
+            className="p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-amber-500/30 hover:border-amber-400 transition-all flex items-center justify-between group cursor-pointer"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-white text-lg font-black shadow-md">
+                🏛️
+              </div>
+              <div>
+                <h4 className="font-black text-sm text-white group-hover:text-amber-300 transition-colors">
+                  THPT Lê Quý Đôn
+                </h4>
+                <p className="text-[11px] text-slate-400">
+                  Mục đề thi & chuyên đề
+                </p>
+              </div>
+            </div>
+            <span className="px-2 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-400/30 text-[10px] font-black">
+              Sẵn sàng
+            </span>
+          </Link>
         </div>
       </div>
 
