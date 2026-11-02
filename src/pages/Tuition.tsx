@@ -12,7 +12,7 @@ import { supabase } from '@/lib/supabase'
 import { isZaloRobotOnline } from '@/services/zaloQueueService'
 import EditCustomFeeModal from '@/components/tuition/EditCustomFeeModal'
 import CustomFeeManager, { type CustomFeeRecord } from '@/components/tuition/CustomFeeManager'
-import SessionAttendanceFeeManager, { STUDENT_CUSTOM_RATES } from '@/components/tuition/SessionAttendanceFeeManager'
+import SessionAttendanceFeeManager, { STUDENT_CUSTOM_RATES, DEFAULT_SPECIAL_FEES } from '@/components/tuition/SessionAttendanceFeeManager'
 import RevenueDashboard from '@/components/tuition/RevenueDashboard'
 import InvoiceManager from '@/components/tuition/InvoiceManager'
 import TaxBooksDashboard from '@/components/tuition/TaxBooksDashboard'
@@ -21,7 +21,7 @@ import Modal from '@/components/Modal'
 import VietQRModal from '@/components/VietQRModal'
 import { buildElectronicInvoice, saveElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
-import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl, formatParentTuitionMessage } from '@/lib/helpers'
 import { sendZaloPersonalMessage, copyQrImageToClipboard, copyTuitionCardImageToClipboard, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
 import type { PaymentMethod } from '@/types'
 
@@ -189,7 +189,14 @@ export default function Tuition() {
       delete (window as any).__onCustomBack;
     };
   }, [selClass, activeTab, payModal, qrModal, zaloModal, batchZaloModal, chainModal, confirmModal, activeInvoice, autoSendModal, bankModalOpen]);
-  const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>({})
+
+  const [customFees, setCustomFees] = useState<Record<string, CustomFeeRecord>>(() => {
+    try {
+      const local = localStorage.getItem('__CUSTOM_STUDENT_FEES__')
+      if (local) return { ...DEFAULT_SPECIAL_FEES, ...JSON.parse(local) }
+    } catch {}
+    return { ...DEFAULT_SPECIAL_FEES }
+  })
   const handleOpenInvoice = (row: TuitionNotificationRow) => {
     const feeInfo = getStudentEffectiveFee(row.student.id, selClass, row.notification)
     const cls = classes.find(c => c.id === (row.student.class_id || selClass))
@@ -260,11 +267,37 @@ export default function Tuition() {
   }, [])
 
   const getStudentEffectiveFee = (studentId: string, classId: string, notif?: any) => {
-    // 1. Kiểm tra số buổi thực tế đã học của học sinh trong lớp này THEO THÁNG ĐƯỢC CHỌN (tháng nào tính tháng đó)
+    // 1. Học sinh có cấu hình học phí riêng hoặc gộp tháng/gộp môn (customFees có độ ưu tiên cao nhất)
+    const key = studentId + '_' + classId
+    const custom = customFees[key] || customFees[studentId]
+    if (custom && custom.amount != null) {
+      return { 
+        amount: Number(custom.amount), 
+        note: custom.note || '', 
+        isCustom: true 
+      }
+    }
+
+    // 2. Nếu đã có thông báo học phí được lưu trong DB/Store (tuitionNotifications)
+    const foundNotif = notif || tuitionNotifications.find(n => n.student_id === studentId && n.class_id === classId)
+    if (foundNotif && foundNotif.amount != null) {
+      return { 
+        amount: Number(foundNotif.amount), 
+        note: foundNotif.note || '', 
+        isCustom: true 
+      }
+    }
+
+    // 3. Học sinh được miễn học phí theo danh sách riêng (STUDENT_CUSTOM_RATES === 0)
+    if (STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[studentId] === 0) {
+      return { amount: 0, note: 'Miễn học phí (0 đồng)', isCustom: true }
+    }
+
+    // 4. Kiểm tra số buổi thực tế đã học của học sinh trong lớp này THEO THÁNG ĐƯỢC CHỌN (tháng nào tính tháng đó)
     const attendedRecords = attendance.filter(
       a => a.class_id === classId && a.student_id === studentId &&
            (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) &&
-           (!selectedMonth || (a.date && a.date.startsWith(selectedMonth))) && (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
+           (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
     )
     if (attendedRecords.length > 0) {
       const cls = classes.find(c => c.id === classId)
@@ -293,22 +326,7 @@ export default function Tuition() {
       }
     }
 
-    // 2. Học sinh có cấu hình học phí riêng
-    const key = studentId + '_' + classId
-    const custom = customFees[key] || customFees[studentId]
-    if (custom && custom.amount != null) {
-      return { amount: Number(custom.amount), note: custom.note || '', isCustom: true }
-    }
-    if (STUDENT_CUSTOM_RATES && STUDENT_CUSTOM_RATES[studentId] === 0) {
-      return { amount: 0, note: 'Miễn phí', isCustom: true }
-    }
-
-    // 3. Nếu đã có thông báo học phí được lưu trong DB
-    if (notif && notif.amount != null) {
-      return { amount: Number(notif.amount), note: notif.note || '', isCustom: false }
-    }
-
-    // 4. Mặc định theo lớp
+    // 5. Mặc định theo lớp
     const cls = classes.find(c => c.id === classId)
     return { amount: getStandardClassFee(cls), note: '', isCustom: false }
   }
@@ -316,7 +334,7 @@ export default function Tuition() {
   const loadCustomFees = async () => {
     try {
       const local = localStorage.getItem('__CUSTOM_STUDENT_FEES__')
-      if (local) setCustomFees(JSON.parse(local))
+      if (local) setCustomFees(prev => ({ ...DEFAULT_SPECIAL_FEES, ...prev, ...JSON.parse(local) }))
       const { data } = await supabase.from('exams').select('data').eq('title', '__CUSTOM_STUDENT_FEES__').maybeSingle()
       if (data?.data?.items) {
         const map: Record<string, CustomFeeRecord> = {}
@@ -332,7 +350,7 @@ export default function Tuition() {
           })
         }
         setCustomFees(prev => {
-          const merged = { ...prev, ...map }
+          const merged = { ...DEFAULT_SPECIAL_FEES, ...prev, ...map }
           try { localStorage.setItem('__CUSTOM_STUDENT_FEES__', JSON.stringify(merged)) } catch {}
           return merged
         })
@@ -774,20 +792,14 @@ export default function Tuition() {
     const qrUrl = generateVietQRUrl(amountVal, addInfo)
     const shortTransfer = formatShortTransferContent(row.student.full_name, cleanClass)
 
-    const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
-              + `Kính gửi Phụ huynh em: ${row.student.full_name} (${cleanClass})\n`
-              + (row.note ? `Chi tiết: ${row.note}\n` : '')
-              + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-              + `Thông tin chuyển khoản:\n`
-              + `- Ngân hàng: Vietcombank (VCB)\n`
-              + `- Số tài khoản: 1070493932\n`
-              + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
-              + `- Số tiền: ${amountVal.toLocaleString('vi-VN')} đ\n`
-              + `- Nội dung CK: ${shortTransfer}\n\n`
-              + `🔗 Link quét mã QR:\n`
-              + `${qrUrl}\n\n`
-              + `Thầy cảm ơn Quý Phụ huynh!`
+    const msg = formatParentTuitionMessage({
+      studentName: row.student.full_name,
+      className: cleanClass,
+      amount: amountVal,
+      note: row.note || eff.note,
+      qrUrl,
+      shortTransferContent: shortTransfer
+    })
 
     setSendingStudentId(row.student.id)
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
@@ -858,20 +870,14 @@ export default function Tuition() {
     const qrUrl = generateVietQRUrl(amountVal, addInfo)
     const shortTransfer = formatShortTransferContent(row.student.full_name, cleanClass)
     
-    const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
-              + `Kính gửi Phụ huynh em: ${row.student.full_name} (${cleanClass})\n`
-              + (row.note ? `Chi tiết: ${row.note}\n` : '')
-              + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-              + `Thông tin chuyển khoản:\n`
-              + `- Ngân hàng: Vietcombank (VCB)\n`
-              + `- Số tài khoản: 1070493932\n`
-              + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
-              + `- Số tiền: ${amountVal.toLocaleString('vi-VN')} đ\n`
-              + `- Nội dung CK: ${shortTransfer}\n\n`
-              + `🔗 Link quét mã QR:\n`
-              + `${qrUrl}\n\n`
-              + `Thầy cảm ơn Quý Phụ huynh!`
+    const msg = formatParentTuitionMessage({
+      studentName: row.student.full_name,
+      className: cleanClass,
+      amount: amountVal,
+      note: row.note || eff.note,
+      qrUrl,
+      shortTransferContent: shortTransfer
+    })
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
@@ -1006,20 +1012,17 @@ export default function Tuition() {
       const activeCourseName = sessionCount > 0
         ? `${(courseName && courseName.trim()) || 'Học phí'} (${sessionCount} buổi)`
         : (row.notification?.course_name || courseName || 'Học phí')
-      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, courseName || selectedMonth)
-      const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
-      const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
-      const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-      const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-      const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-                + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
-                + `• Học sinh: ${row.student.full_name}\n`
-                + `• Môn học: ${subjectName}\n`
-                + `• Lớp: ${cleanClass}\n`
-                + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
-                + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+      const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, activeCourseName || courseName || selectedMonth)
+      const qrUrl = generateVietQRUrl(amt, addInfo)
+      const noteText = eff.note || row.note || ''
+      const msg = formatParentTuitionMessage({
+        studentName: row.student.full_name,
+        className: cleanClass,
+        amount: amt,
+        note: noteText,
+        qrUrl,
+        shortTransferContent: shortTransfer
+      })
 
       logs.push(`⏳ [${i + 1}/${unpaidList.length}] Đang gửi cho ${row.student.full_name} (${cleanPhone || 'Không có SĐT'})...`)
       setAutoProgress({
@@ -1124,21 +1127,22 @@ export default function Tuition() {
     const cls = classes.find(c => c.id === selClass)
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-    const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
-    const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-    const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
     const eff = getStudentEffectiveFee(row.student.id, selClass, row.notification)
     const amountVal = eff.amount
+    const noteText = eff.note || row.note || ''
+    const shortTransfer = formatShortTransferContent(row.student.full_name, cleanClass)
+    const activeCourseName = (courseName && courseName.trim()) || row.notification?.course_name || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
+    const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, activeCourseName)
+    const qrUrl = generateVietQRUrl(amountVal, addInfo)
 
-    return `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-         + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
-         + `• Học sinh: ${row.student.full_name}\n`
-         + `• Môn học: ${subjectName}\n`
-         + `• Lớp: ${cleanClass}\n`
-         + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-         + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-         + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
-         + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+    return formatParentTuitionMessage({
+      studentName: row.student.full_name,
+      className: cleanClass,
+      amount: amountVal,
+      note: noteText,
+      qrUrl,
+      shortTransferContent: shortTransfer
+    })
   }
 
   const buildThankYouMessage = (row: TuitionNotificationRow) => {
@@ -3089,22 +3093,19 @@ export default function Tuition() {
               const bankName    = import.meta.env.VITE_BANK_NAME    || import.meta.env.VITE_BANK_ACCOUNT_NAME || 'HO KINH DOANH NGUYEN LUONG THO'
               const cls = classes.find(c => c.id === selClass)
               const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
-              const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-              const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code, currentRow.notification?.course_name || courseName || selectedMonth)
-              const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amt}&des=${encodeURIComponent(addInfo)}`
+              const addInfo = formatVietQRAddInfo(currentRow.student.full_name, clsName, currentRow.student.student_code, activeCourseName || courseName || selectedMonth)
+              const qrUrl = generateVietQRUrl(amt, addInfo)
+              const shortTransfer = formatShortTransferContent(currentRow.student.full_name, cleanClass)
+              const noteText = eff.note || currentRow.note || ''
 
-              const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (currentRow.student.student_code && currentRow.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
-              const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-              const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-              const msg = `Kính gửi Quý phụ huynh học sinh ${currentRow.student.full_name},\n\n`
-                        + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
-                        + `• Học sinh: ${currentRow.student.full_name}\n`
-                        + `• Môn học: ${subjectName}\n`
-                        + `• Lớp: ${cleanClass}\n`
-                        + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                        + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-                        + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
-                        + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+              const msg = formatParentTuitionMessage({
+                studentName: currentRow.student.full_name,
+                className: cleanClass,
+                amount: amt,
+                note: noteText,
+                qrUrl,
+                shortTransferContent: shortTransfer
+              })
 
               const copyTextOnly = async () => {
                 try {

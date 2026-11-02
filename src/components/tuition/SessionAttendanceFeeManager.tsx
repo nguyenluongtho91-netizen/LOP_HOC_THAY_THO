@@ -6,7 +6,7 @@ import {
   ExternalLink, AlertCircle, CheckCircle2, ChevronRight, ChevronLeft, FileText, Send,
   Table as TableIcon, Layers, Calendar, ChevronDown, CheckCircle, QrCode, Copy, HeartHandshake
 } from 'lucide-react'
-import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl, formatParentTuitionMessage } from '@/lib/helpers'
 
 const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
   if (!date) return '—'
@@ -60,6 +60,136 @@ export const STUDENT_CUSTOM_RATES: Record<string, number> = {
   '79454ae4-db56-467b-a333-ee8489e75c61': 40000, // Nguyễn Thị Hà Ly / Hương Ly (Lớp 8B): 40.000đ/buổi (320k/tháng)
 }
 
+export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string }> = {
+  // Nguyễn Sỹ Mạnh: Lớp 8A gộp Toán + Hóa = 2.000.000đ; Lớp 8B = 0đ
+  '16a3cabf-da5e-4b9d-8b3f-d3d155eda6ee_59eb0175-e6ba-45ea-93cd-c2bf6f07644a': {
+    amount: 2000000,
+    note: 'Gộp Môn Toán (1.280k) + Môn Hóa (720k)'
+  },
+  '16a3cabf-da5e-4b9d-8b3f-d3d155eda6ee': {
+    amount: 2000000,
+    note: 'Gộp Môn Toán (1.280k) + Môn Hóa (720k)'
+  },
+  '649e6598-7cbb-4c0b-8101-67b81a540739_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
+    amount: 0,
+    note: 'Đã gộp vào Lớp 8A (2.000.000 đ)'
+  },
+  '649e6598-7cbb-4c0b-8101-67b81a540739': {
+    amount: 0,
+    note: 'Đã gộp vào Lớp 8A (2.000.000 đ)'
+  },
+
+  // Nguyễn Duy Tuấn Huy: Lớp 8A gộp Toán + Hóa = 1.120.000đ; Lớp 8B = 0đ
+  'a21072d4-1ddc-40ab-8bb6-081534ab3ca6_59eb0175-e6ba-45ea-93cd-c2bf6f07644a': {
+    amount: 1120000,
+    note: 'Gộp Môn Toán (720k) + Môn Hóa (400k)'
+  },
+  'a21072d4-1ddc-40ab-8bb6-081534ab3ca6': {
+    amount: 1120000,
+    note: 'Gộp Môn Toán (720k) + Môn Hóa (400k)'
+  },
+  '4c85bab8-8d95-4761-9bf7-637bc419a9f4_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
+    amount: 0,
+    note: 'Đã gộp vào Lớp 8A (1.120.000 đ)'
+  },
+  '4c85bab8-8d95-4761-9bf7-637bc419a9f4': {
+    amount: 0,
+    note: 'Đã gộp vào Lớp 8A (1.120.000 đ)'
+  },
+
+  // Nguyễn Thị Hạ Giang: Lớp 10 gộp T8 + T9 + T10 = 1.680.000đ
+  'f195c849-bd2c-4321-bcef-3534be7ab183_a584e78a-355f-4398-970b-1d8359a2b241': {
+    amount: 1680000,
+    note: 'Gộp Tháng 8 (400k) + Tháng 9 (560k) + Tháng 10 (720k)'
+  },
+  'f195c849-bd2c-4321-bcef-3534be7ab183': {
+    amount: 1680000,
+    note: 'Gộp Tháng 8 (400k) + Tháng 9 (560k) + Tháng 10 (720k)'
+  },
+
+  // Đậu Văn Trung: Lớp 9A gộp 3 tháng = 1.840.000đ
+  '1398846d-6b15-45b9-9b4b-910c9caac9b5_165b5023-5c8f-4792-be55-21b88466b2e2': {
+    amount: 1840000,
+    note: 'Gộp 3 tháng: Tháng 8 (560k) + Tháng 9 (640k) + Tháng 10 (640k)'
+  },
+  '1398846d-6b15-45b9-9b4b-910c9caac9b5': {
+    amount: 1840000,
+    note: 'Gộp 3 tháng: Tháng 8 (560k) + Tháng 9 (640k) + Tháng 10 (640k)'
+  },
+
+  // Bùi Thị Thủy Tiên: Lớp 9A gộp 3 tháng = 1.840.000đ
+  '5b00c0e6-85cc-43ee-b169-ff4fa3ed3ea5_165b5023-5c8f-4792-be55-21b88466b2e2': {
+    amount: 1840000,
+    note: 'Gộp 3 tháng: Tháng 8 (560k) + Tháng 9 (640k) + Tháng 10 (640k)'
+  },
+  '5b00c0e6-85cc-43ee-b169-ff4fa3ed3ea5': {
+    amount: 1840000,
+    note: 'Gộp 3 tháng: Tháng 8 (560k) + Tháng 9 (640k) + Tháng 10 (640k)'
+  },
+
+  // Nguyễn Hà Linh: Lớp 9A gộp Toán + Hóa = 1.040.000đ; Lớp Hóa 9 = 0đ
+  'ec953303-7427-4085-8394-f386f66e6021_165b5023-5c8f-4792-be55-21b88466b2e2': {
+    amount: 1040000,
+    note: 'Gộp Môn Toán (640k) + Môn Hóa (400k)'
+  },
+  'ec953303-7427-4085-8394-f386f66e6021': {
+    amount: 1040000,
+    note: 'Gộp Môn Toán (640k) + Môn Hóa (400k)'
+  },
+  'ec953303-7427-4085-8394-f386f66e6021_c45ff60b-d498-4a43-9260-38b4a31d1cc0': {
+    amount: 0,
+    note: 'Đã gộp vào Lớp 9A (1.040.000 đ)'
+  },
+
+  // Nguyễn Thảo Nguyên: Lớp 7B gộp Tháng 9 + Tháng 10 = 1.280.000đ
+  '353d699e-90c9-4a47-9722-6ccd49292999_c37d47a2-d679-4429-8627-001b6099f65e': {
+    amount: 1280000,
+    note: 'Gộp Tháng 9 (560.000 đ) + Tháng 10 (720.000 đ)'
+  },
+  '353d699e-90c9-4a47-9722-6ccd49292999': {
+    amount: 1280000,
+    note: 'Gộp Tháng 9 (560.000 đ) + Tháng 10 (720.000 đ)'
+  },
+
+  // Phạm An Nhiên: Lớp 9A gộp Tháng 9 + Tháng 10 = 1.280.000đ
+  'b96d9640-b7e5-41c9-95bd-cc80faae7f34_165b5023-5c8f-4792-be55-21b88466b2e2': {
+    amount: 1280000,
+    note: 'Gộp Tháng 9 (640.000 đ) + Tháng 10 (640.000 đ)'
+  },
+  'b96d9640-b7e5-41c9-95bd-cc80faae7f34': {
+    amount: 1280000,
+    note: 'Gộp Tháng 9 (640.000 đ) + Tháng 10 (640.000 đ)'
+  },
+
+  // Dương Thị Hiền Thương: Lớp 9A (8 buổi x 60k = 480.000đ)
+  '78c48a31-f5c1-46e2-acd6-e8a1ab5655e6_165b5023-5c8f-4792-be55-21b88466b2e2': {
+    amount: 480000,
+    note: '8 buổi × 60.000 đ = 480.000 đ'
+  },
+  '78c48a31-f5c1-46e2-acd6-e8a1ab5655e6': {
+    amount: 480000,
+    note: '8 buổi × 60.000 đ = 480.000 đ'
+  },
+
+  // Nguyễn Thị Hương Ly / Hà Ly: Lớp 8B = 320.000đ
+  '797a874e-b4c7-4e86-98c8-ee0a47ba5dee_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
+    amount: 320000,
+    note: 'Học phí Lớp 8B: 320.000 đ'
+  },
+  '797a874e-b4c7-4e86-98c8-ee0a47ba5dee': {
+    amount: 320000,
+    note: 'Học phí Lớp 8B: 320.000 đ'
+  },
+  '79454ae4-db56-467b-a333-ee8489e75c61_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
+    amount: 320000,
+    note: 'Học phí Lớp 8B: 320.000 đ'
+  },
+  '79454ae4-db56-467b-a333-ee8489e75c61': {
+    amount: 320000,
+    note: 'Học phí Lớp 8B: 320.000 đ'
+  }
+}
+
 
 export default function SessionAttendanceFeeManager({
   classes,
@@ -85,13 +215,19 @@ export default function SessionAttendanceFeeManager({
   const [priceInput, setPriceInput] = useState<string>('80000')
   const [copiedSessionQrId, setCopiedSessionQrId] = useState<string | null>(null)
   const [copiedSessionMsgId, setCopiedSessionMsgId] = useState<string | null>(null)
-  const [customFees, setCustomFees] = useState<Record<string, { amount: number; note: string }>>({})
+  const [customFees, setCustomFees] = useState<Record<string, { amount: number; note: string }>>(() => {
+    try {
+      const local = localStorage.getItem('__CUSTOM_STUDENT_FEES__')
+      if (local) return { ...DEFAULT_SPECIAL_FEES, ...JSON.parse(local) }
+    } catch {}
+    return { ...DEFAULT_SPECIAL_FEES }
+  })
 
   useEffect(() => {
     const loadCustom = async () => {
       try {
         const local = localStorage.getItem('__CUSTOM_STUDENT_FEES__')
-        if (local) setCustomFees(JSON.parse(local))
+        if (local) setCustomFees(prev => ({ ...DEFAULT_SPECIAL_FEES, ...prev, ...JSON.parse(local) }))
         const { data } = await supabase.from('exams').select('data').eq('title', '__CUSTOM_STUDENT_FEES__').maybeSingle()
         if (data?.data?.items) {
           const map: Record<string, { amount: number; note: string }> = {}
@@ -106,7 +242,7 @@ export default function SessionAttendanceFeeManager({
               }
             })
           }
-          setCustomFees(prev => ({ ...prev, ...map }))
+          setCustomFees(prev => ({ ...DEFAULT_SPECIAL_FEES, ...prev, ...map }))
         }
       } catch {}
     }
@@ -341,6 +477,7 @@ export default function SessionAttendanceFeeManager({
         .map(a => a.date)
         .sort()
 
+      const attendedCount = attendedDates.length
       const key = st.id + '_' + selClass
       const custom = customFees[key] || customFees[st.id]
       const notif = tuitionNotifications.find(n => n.student_id === st.id && n.class_id === selClass)
@@ -1289,20 +1426,14 @@ export default function SessionAttendanceFeeManager({
                                     onClick={async () => {
                                       const rawPhone = (item.student as any)?.zalo || (item.student as any)?.parent_phone || ''
                                       const cleanPhone = rawPhone.replace(/\D/g, '').replace(/^84/, '0')
-                                      const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
-                                                + `Kính gửi Phụ huynh em: ${item.student.full_name} (${cleanClass})\n`
-                                                + (item.customNote ? `Chi tiết: ${item.customNote}\n` : '')
-                                                + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-                                                + `Thông tin chuyển khoản:\n`
-                                                + `- Ngân hàng: Vietcombank (VCB)\n`
-                                                + `- Số tài khoản: 1070493932\n`
-                                                + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
-                                                + `- Số tiền: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n`
-                                                + `- Nội dung CK: ${shortTransfer}\n\n`
-                                                + `🔗 Link quét mã QR:\n`
-                                                + `${qrUrl}\n\n`
-                                                + `Thầy cảm ơn Quý Phụ huynh!`
+                                      const msg = formatParentTuitionMessage({
+                                        studentName: item.student.full_name,
+                                        className: cleanClass,
+                                        amount: item.calculatedAmount,
+                                        note: item.customNote,
+                                        qrUrl,
+                                        shortTransferContent: shortTransfer
+                                      })
 
                                       try {
                                         await navigator.clipboard.writeText(msg)
@@ -1324,20 +1455,14 @@ export default function SessionAttendanceFeeManager({
                                   <button
                                     type="button"
                                     onClick={async () => {
-                                      const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
-                                                + `Kính gửi Phụ huynh em: ${item.student.full_name} (${cleanClass})\n`
-                                                + (item.customNote ? `Chi tiết: ${item.customNote}\n` : '')
-                                                + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-                                                + `Thông tin chuyển khoản:\n`
-                                                + `- Ngân hàng: Vietcombank (VCB)\n`
-                                                + `- Số tài khoản: 1070493932\n`
-                                                + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
-                                                + `- Số tiền: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n`
-                                                + `- Nội dung CK: ${shortTransfer}\n\n`
-                                                + `🔗 Link quét mã QR:\n`
-                                                + `${qrUrl}\n\n`
-                                                + `Thầy cảm ơn Quý Phụ huynh!`
+                                      const msg = formatParentTuitionMessage({
+                                        studentName: item.student.full_name,
+                                        className: cleanClass,
+                                        amount: item.calculatedAmount,
+                                        note: item.customNote,
+                                        qrUrl,
+                                        shortTransferContent: shortTransfer
+                                      })
                                       try {
                                         await navigator.clipboard.writeText(msg)
                                         setCopiedSessionMsgId(item.student.id)
@@ -1356,7 +1481,7 @@ export default function SessionAttendanceFeeManager({
                                     {copiedSessionMsgId === item.student.id ? (
                                       <>
                                         <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
-                                        <span>Đã copy QR</span>
+                                        <span>Đã copy tin nhắn</span>
                                       </>
                                     ) : (
                                       <>

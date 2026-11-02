@@ -228,3 +228,37 @@ export function generateVietQRUrl(amount: number, addInfo: string): string {
   return `https://img.vietqr.io/image/vietcombank-1070493932-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent('HO KINH DOANH NGUYEN LUONG THO')}`
 }
 
+export interface ParentTuitionMessageParams {
+  studentName: string
+  className?: string
+  amount: number
+  note?: string
+  qrUrl?: string
+  shortTransferContent?: string
+}
+
+/**
+ * Mẫu tin nhắn gửi học phí chuẩn cho Phụ huynh theo yêu cầu của Thầy Thọ
+ */
+export function formatParentTuitionMessage(params: ParentTuitionMessageParams): string {
+  const { studentName, className = '', amount, note, qrUrl, shortTransferContent } = params
+  const cleanClass = className.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || className
+  const shortTransfer = shortTransferContent || formatShortTransferContent(studentName, cleanClass)
+  const addInfo = formatVietQRAddInfo(studentName, cleanClass, '', '')
+  const finalQrUrl = qrUrl || generateVietQRUrl(amount, addInfo)
+
+  return `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
+       + `Kính gửi Phụ huynh em: ${studentName}${cleanClass ? ` (${cleanClass})` : ''}\n`
+       + (note && note.trim() ? `Chi tiết: ${note.trim()}\n` : '')
+       + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${amount.toLocaleString('vi-VN')} đ\n\n`
+       + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+       + `Thông tin chuyển khoản:\n`
+       + `- Ngân hàng: Vietcombank (VCB)\n`
+       + `- Số tài khoản: 1070493932\n`
+       + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
+       + `- Số tiền: ${amount.toLocaleString('vi-VN')} đ\n`
+       + `- Nội dung CK: ${shortTransfer}\n\n`
+       + `🔗 Link quét mã QR:\n`
+       + `${finalQrUrl}\n\n`
+       + `Thầy cảm ơn Quý Phụ huynh!`
+}

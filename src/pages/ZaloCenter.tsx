@@ -54,28 +54,36 @@ export default function ZaloCenter() {
   const [selectedClassId, setSelectedClassId] = useState('all')
   const [selectedMonth, setSelectedMonth]     = useState('Tháng 10/2026')
   const [tuitionTemplate, setTuitionTemplate] = useState(
-    `Kính gửi Quý phụ huynh học sinh {ten_hoc_sinh},\n\n`
-    + `Thầy Thọ xin gửi thông tin học phí {thang} của con:\n`
-    + `• Học sinh: {ten_hoc_sinh}\n`
-    + `• Môn học: {mon_hoc}\n`
-    + `• Lớp: {lop}\n`
-    + `• Số tiền học phí: {so_tien} đ\n\n`
-    + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-    + `👉 Quý phụ huynh quét mã QR bên dưới để chuyển khoản:\n`
+    `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
+    + `Kính gửi Phụ huynh em: {ten_hoc_sinh} ({lop})\n`
+    + `{chi_tiet}`
+    + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: {so_tien} đ\n\n`
+    + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+    + `Thông tin chuyển khoản:\n`
+    + `- Ngân hàng: Vietcombank (VCB)\n`
+    + `- Số tài khoản: 1070493932\n`
+    + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
+    + `- Số tiền: {so_tien} đ\n`
+    + `- Nội dung CK: {noi_dung_ck}\n\n`
+    + `🔗 Link quét mã QR:\n`
     + `{link_qr}\n\n`
-    + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+    + `Thầy cảm ơn Quý Phụ huynh!`
   )
   const [isSendingBulk, setIsSendingBulk] = useState(false)
   const [sentItemIds, setSentItemIds]     = useState<string[]>([])
 
   // Helper format tin nhắn học phí kèm link QR VietQR
   const formatTuitionMessage = (item: any) => {
+    const detailLine = item.note ? `Chi tiết: ${item.note}\n` : ''
+    const shortCk = item.shortTransfer || `${(item.studentName || '').split(' ').slice(-2).join(' ')} L${(item.class || '').match(/\d+/)?.[0] || ''}`.trim()
     return tuitionTemplate
       .replace(/{ten_hoc_sinh}/g, item.studentName)
+      .replace(/{chi_tiet}/g, detailLine)
       .replace(/{mon_hoc}/g, item.subject || "Toán học")
-      .replace(/{lop}/g, item.class)
+      .replace(/{lop}/g, (item.class || '').replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || item.class)
       .replace(/{thang}/g, item.month)
-      .replace(/{so_tien}/g, item.amount.toLocaleString())
+      .replace(/{so_tien}/g, Number(item.amount || 0).toLocaleString('vi-VN'))
+      .replace(/{noi_dung_ck}/g, shortCk)
       .replace(/{ma_hoc_sinh}/g, item.studentCode || 'HS')
       .replace(/{link_qr}/g, item.qrUrl || '')
   }
