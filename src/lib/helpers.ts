@@ -427,5 +427,15 @@ export function getSpecialStudentFee(
     }
   }
 
+  // 12. Nguyễn Bảo Hân (Mã 8002H): Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (320k) = 640.000đ
+  if (code === '8002H' || normName.includes('bao han') || sid === '1c00ed0b-b3d7-4496-a762-7ed6ac4079d0') {
+    return { 
+      amount: 640000, 
+      note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (320.000 đ)', 
+      month: 'Tháng 9 & Tháng 10',
+      isCustom: true 
+    }
+  }
+
   return null
 }
