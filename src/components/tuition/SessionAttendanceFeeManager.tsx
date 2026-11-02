@@ -174,14 +174,24 @@ export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string
     note: 'Đã nghỉ Lớp 9B (chỉ học Toán Lớp 9A)'
   },
 
-  // Nguyễn Bảo Hân: Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (320k) = 640.000đ
+  // Nguyễn Bảo Hân: Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (400k) = 720.000đ
   '1c00ed0b-b3d7-4496-a762-7ed6ac4079d0_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
-    amount: 640000,
-    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (320.000 đ)'
+    amount: 720000,
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
   },
   '1c00ed0b-b3d7-4496-a762-7ed6ac4079d0': {
-    amount: 640000,
-    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (320.000 đ)'
+    amount: 720000,
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
+  },
+
+  // Nguyễn Văn Thắng: Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (400k) = 720.000đ
+  'ef9f2173-c952-4bc9-ad6b-8f23387dc3b7_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
+    amount: 720000,
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
+  },
+  'ef9f2173-c952-4bc9-ad6b-8f23387dc3b7': {
+    amount: 720000,
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
   },
 
   // Nguyễn Thảo Nguyên: Lớp 7B gộp Tháng 9 + Tháng 10 = 1.280.000đ

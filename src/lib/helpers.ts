@@ -427,11 +427,21 @@ export function getSpecialStudentFee(
     }
   }
 
-  // 12. Nguyễn Bảo Hân (Mã 8002H): Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (320k) = 640.000đ
+  // 12. Nguyễn Bảo Hân (Mã 8002H): Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (400k) = 720.000đ
   if (code === '8002H' || normName.includes('bao han') || sid === '1c00ed0b-b3d7-4496-a762-7ed6ac4079d0') {
     return { 
-      amount: 640000, 
-      note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (320.000 đ)', 
+      amount: 720000, 
+      note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)', 
+      month: 'Tháng 9 & Tháng 10',
+      isCustom: true 
+    }
+  }
+
+  // 13. Nguyễn Văn Thắng (Mã 8010H): Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (400k) = 720.000đ (giống Bảo Hân)
+  if (code === '8010H' || normName.includes('van thang') || sid === 'ef9f2173-c952-4bc9-ad6b-8f23387dc3b7') {
+    return { 
+      amount: 720000, 
+      note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)', 
       month: 'Tháng 9 & Tháng 10',
       isCustom: true 
     }
