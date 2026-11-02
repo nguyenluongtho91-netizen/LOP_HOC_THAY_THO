@@ -284,9 +284,9 @@ export function formatParentTuitionMessage(params: ParentTuitionMessageParams): 
        + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
        + `- Số tiền: ${amount.toLocaleString('vi-VN')} đ\n`
        + `- Nội dung CK: ${shortTransfer}\n\n`
-       + `📲 Chuyển khoản trực tiếp qua App ngân hàng:\n`
+       + `👉 Chuyển nhanh:\n`
        + `${payUrl}\n\n`
-       + `🔗 Hoặc quét mã QR tại đây:\n`
+       + `🔗 Quét mã QR:\n`
        + `${finalQrUrl}\n\n`
        + `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
 }
