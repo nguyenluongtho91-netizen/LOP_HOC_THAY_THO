@@ -75,12 +75,17 @@ export default async function handler(req, res) {
         const cleanName = removeTones(st.full_name);
         const parts = cleanName.split(/\s+/).filter(Boolean);
         const shortName = parts.length > 2 ? `${parts[0]} ${parts[parts.length - 1]}` : cleanName;
+        const lastTwoName = parts.length >= 2 ? `${parts[parts.length - 2]} ${parts[parts.length - 1]}` : cleanName;
 
         if (cleanName.length >= 4 && cleanDesc.includes(cleanName)) {
           student = st;
           break;
         }
         if (shortName.length >= 6 && cleanDesc.includes(shortName)) {
+          student = st;
+          break;
+        }
+        if (lastTwoName.length >= 5 && cleanDesc.includes(lastTwoName)) {
           student = st;
           break;
         }
