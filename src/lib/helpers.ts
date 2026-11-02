@@ -232,6 +232,7 @@ export interface ParentTuitionMessageParams {
   studentName: string
   className?: string
   amount: number
+  month?: string
   note?: string
   qrUrl?: string
   shortTransferContent?: string
@@ -241,17 +242,19 @@ export interface ParentTuitionMessageParams {
  * Mẫu tin nhắn gửi học phí chuẩn cho Phụ huynh theo yêu cầu của Thầy Thọ
  */
 export function formatParentTuitionMessage(params: ParentTuitionMessageParams): string {
-  const { studentName, className = '', amount, note, qrUrl, shortTransferContent } = params
+  const { studentName, className = '', amount, month, note, qrUrl, shortTransferContent } = params
   const cleanClass = className.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || className
+  const classLabel = cleanClass ? (cleanClass.toLowerCase().startsWith('lớp') ? cleanClass : `Lớp ${cleanClass}`) : ''
   const shortTransfer = shortTransferContent || formatShortTransferContent(studentName, cleanClass)
   const addInfo = formatVietQRAddInfo(studentName, cleanClass, '', '')
   const finalQrUrl = qrUrl || generateVietQRUrl(amount, addInfo)
+  const monthText = month || 'Tháng 10'
 
-  return `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
-       + `Kính gửi Phụ huynh em: ${studentName}${cleanClass ? ` (${cleanClass})` : ''}\n`
-       + (note && note.trim() ? `Chi tiết: ${note.trim()}\n` : '')
-       + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${amount.toLocaleString('vi-VN')} đ\n\n`
-       + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+  return `Kính gửi Quý Phụ huynh em: ${studentName}${classLabel ? ` (${classLabel})` : ''}\n\n`
+       + `Thầy xin gửi thông tin học phí ${monthText} của con:\n`
+       + `• Số tiền học phí: ${amount.toLocaleString('vi-VN')} đ\n`
+       + (note && note.trim() ? `• Chi tiết: ${note.trim()}\n` : '')
+       + `\nQuý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện vào sổ sách ạ.\n\n`
        + `Thông tin chuyển khoản:\n`
        + `- Ngân hàng: Vietcombank (VCB)\n`
        + `- Số tài khoản: 1070493932\n`
@@ -260,7 +263,7 @@ export function formatParentTuitionMessage(params: ParentTuitionMessageParams): 
        + `- Nội dung CK: ${shortTransfer}\n\n`
        + `🔗 Link quét mã QR:\n`
        + `${finalQrUrl}\n\n`
-       + `Thầy cảm ơn Quý Phụ huynh!`
+       + `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
 }
 
 /**

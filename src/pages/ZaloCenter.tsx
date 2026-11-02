@@ -54,11 +54,11 @@ export default function ZaloCenter() {
   const [selectedClassId, setSelectedClassId] = useState('all')
   const [selectedMonth, setSelectedMonth]     = useState('Tháng 10/2026')
   const [tuitionTemplate, setTuitionTemplate] = useState(
-    `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
-    + `Kính gửi Phụ huynh em: {ten_hoc_sinh} ({lop})\n`
+    `Kính gửi Quý Phụ huynh em: {ten_hoc_sinh} ({lop})\n\n`
+    + `Thầy xin gửi thông tin học phí {thang} của con:\n`
+    + `• Số tiền học phí: {so_tien} đ\n`
     + `{chi_tiet}`
-    + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: {so_tien} đ\n\n`
-    + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+    + `\nQuý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện vào sổ sách ạ.\n\n`
     + `Thông tin chuyển khoản:\n`
     + `- Ngân hàng: Vietcombank (VCB)\n`
     + `- Số tài khoản: 1070493932\n`
@@ -67,7 +67,7 @@ export default function ZaloCenter() {
     + `- Nội dung CK: {noi_dung_ck}\n\n`
     + `🔗 Link quét mã QR:\n`
     + `{link_qr}\n\n`
-    + `Thầy cảm ơn Quý Phụ huynh!`
+    + `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
   )
   const [isSendingBulk, setIsSendingBulk] = useState(false)
   const [sentItemIds, setSentItemIds]     = useState<string[]>([])
