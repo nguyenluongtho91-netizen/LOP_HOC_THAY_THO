@@ -151,7 +151,7 @@ async function main() {
     const clsClean = (item.course_name || 'Lớp học').replace(/^[Ll][ớỚoO][pP]\s*/, '').trim();
     const classLabel = clsClean ? (clsClean.toLowerCase().startsWith('lớp') ? clsClean : `Lớp ${clsClean}`) : '';
     const msg = `Kính gửi Quý Phụ huynh em: ${student.full_name}${classLabel ? ` (${classLabel})` : ''}\n\n`
-              + `Thầy xin gửi thông tin học phí Tháng 10 của con:\n`
+              + `Thầy xin gửi thông tin học phí Tháng 10 của em:\n`
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
               + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện vào sổ sách ạ.\n\n`
               + `Thông tin chuyển khoản:\n`

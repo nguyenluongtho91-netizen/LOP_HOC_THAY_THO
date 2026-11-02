@@ -251,7 +251,7 @@ export function formatParentTuitionMessage(params: ParentTuitionMessageParams): 
   const monthText = month || 'Tháng 10'
 
   return `Kính gửi Quý Phụ huynh em: ${studentName}${classLabel ? ` (${classLabel})` : ''}\n\n`
-       + `Thầy xin gửi thông tin học phí ${monthText} của con:\n`
+       + `Thầy xin gửi thông tin học phí ${monthText} của em:\n`
        + `• Số tiền học phí: ${amount.toLocaleString('vi-VN')} đ\n`
        + (note && note.trim() ? `• Chi tiết: ${note.trim()}\n` : '')
        + `\nQuý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện vào sổ sách ạ.\n\n`

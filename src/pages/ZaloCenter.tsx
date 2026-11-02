@@ -55,7 +55,7 @@ export default function ZaloCenter() {
   const [selectedMonth, setSelectedMonth]     = useState('Tháng 10/2026')
   const [tuitionTemplate, setTuitionTemplate] = useState(
     `Kính gửi Quý Phụ huynh em: {ten_hoc_sinh} ({lop})\n\n`
-    + `Thầy xin gửi thông tin học phí {thang} của con:\n`
+    + `Thầy xin gửi thông tin học phí {thang} của em:\n`
     + `• Số tiền học phí: {so_tien} đ\n`
     + `{chi_tiet}`
     + `\nQuý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện vào sổ sách ạ.\n\n`
