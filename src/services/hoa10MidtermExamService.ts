@@ -45,6 +45,673 @@ export interface Chuong1Exam {
 }
 
 export const HOA10_MIDTERM_EXAMS: Chuong1Exam[] = [
+{
+  "id": "hoa10_gk1_pdp_605",
+  "code": "H10-GK1-PDP-605",
+  "title": "Đề Kiểm Tra Giữa Kì 1 Hóa 10 - THPT Phan Đình Phùng (Mã đề 605)",
+  "topic": "Đề thi chính thức Giữa Kì 1 Hóa 10 THPT Phan Đình Phùng năm học 2026 - 2027 kèm Barème biểu điểm chi tiết",
+  "badge": "THPT Phan Đình Phùng",
+  "grade": "10",
+  "chapter": "Đề Giữa Học Kì 1",
+  "duration": 45,
+  "totalQuestions": 21,
+  "totalPoints": 10.0,
+  "questions": [
+    {
+      "id": "h10_gk1_pdp_p1_q1",
+      "number": 1,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Biết Fe có số hiệu nguyên tử là 26. Cấu hình electron nào là của ion Fe<sup>2+</sup>?",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>5</sup>",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>5</sup>4s<sup>1</sup>",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>4</sup>4s<sup>2</sup>",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>6</sup>",
+          "isCorrect": true
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Cấu hình e của Fe (Z = 26): 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>6</sup>4s<sup>2</sup> hay [Ar]3d<sup>6</sup>4s<sup>2</sup>.<br/>Khi tạo ion Fe<sup>2+</sup>, nguyên tử Fe nhường 2 electron ở phân lớp ngoài cùng 4s: Fe → Fe<sup>2+</sup> + 2e.<br/>Do đó cấu hình electron của ion Fe<sup>2+</sup> là: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>6</sup>.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 1
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q2",
+      "number": 2,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Trong nguyên tử, loại hạt cơ bản mang điện tích âm là",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "neutron.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "proton.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "proton, electron.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "electron.",
+          "isCorrect": true
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Hạt mang điện tích âm trong nguyên tử là electron (e, mang điện tích -1 hay -1,6.10<sup>-19</sup> C). Hạt proton mang điện tích dương và hạt neutron không mang điện.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 2
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q3",
+      "number": 3,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Cho cấu hình electron nguyên tử của các nguyên tố sau:<br/>(X) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>;<br/>(Y) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup>;<br/>(Z) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup>;<br/>(T) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>8</sup>4s<sup>2</sup>.<br/>Có bao nhiêu nguyên tố s?",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "3.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "4.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "2.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "1.",
+          "isCorrect": false
+        }
+      ],
+      "correctAnswer": "C",
+      "explanation": "Nguyên tố s là những nguyên tố mà nguyên tử có electron cuối cùng được điền vào phân lớp s.<br/>- (X): 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup> → electron cuối cùng điền vào 3s → nguyên tố s.<br/>- (Y): 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup> → electron cuối cùng điền vào 4s → nguyên tố s.<br/>- (Z): electron cuối cùng điền vào 3p → nguyên tố p.<br/>- (T): electron cuối cùng điền vào 3d → nguyên tố d.<br/>Vậy có 2 nguyên tố s là (X) và (Y).",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 3
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q4",
+      "number": 4,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Trong nguyên tử <sup>27</sup><sub>13</sub>Al tổng số hạt mang điện nhiều hơn số hạt không mang điện là",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "14 hạt",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "1 hạt",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "13 hạt",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "12 hạt",
+          "isCorrect": true
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Trong nguyên tử <sup>27</sup><sub>13</sub>Al:<br/>- Số proton p = 13; số electron e = p = 13.<br/>- Số neutron n = A - Z = 27 - 13 = 14.<br/>- Số hạt mang điện là: p + e = 2p = 26.<br/>- Số hạt không mang điện là: n = 14.<br/>Hiệu số hạt mang điện và không mang điện: (p + e) - n = 26 - 14 = 12 hạt.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 4
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q5",
+      "number": 5,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Hãy chọn cụm từ thích hợp điền vào chỗ trống trong câu sau: <i>\"Trên vỏ nguyên tử, các electron chuyển động xung quanh hạt nhân .........\"</i>",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "với tốc độ rất lớn không theo một quỹ đạo xác định nào.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "với vận tốc rất lớn trên quỹ đạo hình elip hay hình tròn.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "một cách tự do nhưng chậm rãi.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "với vận tốc rất lớn trên những quỹ đạo xác định.",
+          "isCorrect": false
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Theo mô hình hiện đại về cấu tạo nguyên tử: Các electron chuyển động rất nhanh xung quanh hạt nhân không theo những quỹ đạo xác định, tạo thành đám mây electron.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 5
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q6",
+      "number": 6,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Nguyên tố R thuộc chu kì 2, nhóm VIIA của bảng hệ thống tuần hoàn các nguyên tố hóa học. Công thức oxide cao nhất của R là",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "R<sub>2</sub>O.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "R<sub>2</sub>O<sub>3</sub>.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "R<sub>2</sub>O<sub>5</sub>.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "R<sub>2</sub>O<sub>7</sub>.",
+          "isCorrect": true
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Quy tắc xác định hóa trị cao nhất với oxygen: Nguyên tố thuộc nhóm VIIA có hóa trị cao nhất trong oxide với oxygen là VII. Do đó công thức oxide cao nhất có dạng tổng quát là R<sub>2</sub>O<sub>7</sub>.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 6
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q7",
+      "number": 7,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Phổ khối lượng của nguyên tố X được cho ở hình dưới. Nguyên tử khối trung bình của nguyên tố này là bao nhiêu?",
+      "image": "/assets/hoa10/midterm/pho_khoi_luong_cau7.png",
+      "images": [
+        "/assets/hoa10/midterm/pho_khoi_luong_cau7.png"
+      ],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "10,8.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "11.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "10.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "10,2.",
+          "isCorrect": true
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Từ phổ khối lượng ta thấy:<br/>- Đồng vị có m/z = 10 chiếm 80,1%.<br/>- Đồng vị có m/z = 11 chiếm 19,9%.<br/>Nguyên tử khối trung bình của X là:<br/>Ā = (10 × 80,1 + 11 × 19,9) / 100 = (801 + 218,9) / 100 = 10,199 ≈ 10,2.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 7
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q8",
+      "number": 8,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Nguyên tử của nguyên tố R có tổng số hạt p, n, e bằng 34, hiệu số hạt neutron và electron bằng 1. Vậy số electron lớp ngoài cùng của nguyên tố R là",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "3",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "2",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "4",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "1",
+          "isCorrect": true
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Ta có hệ phương trình:<br/>2p + n = 34 (1)<br/>n - e = n - p = 1 (2)<br/>Từ (1) và (2) suy ra: 3p + 1 = 34 → 3p = 33 → p = e = 11; n = 12.<br/>R là Na (Z = 11). Cấu hình electron của R: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>1</sup>.<br/>Lớp ngoài cùng (lớp n = 3) có 1 electron.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 8
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q9",
+      "number": 9,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Phát biểu nào sau đây <b>không đúng</b>?",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Trong nguyên tử, các electron được sắp xếp thành từng lớp, mỗi lớp lại được chia thành các phân lớp.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Lớp n = 1 gần hạt nhân nhất, có mức năng lượng thấp nhất.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Các phân lớp được kí hiệu bằng các chữ cái viết thường s, p, d, f.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Các electron trong cùng một phân lớp có mức năng lượng gần bằng nhau.",
+          "isCorrect": true
+        }
+      ],
+      "correctAnswer": "D",
+      "explanation": "Phát biểu D không đúng vì: Các electron trong cùng một <b>phân lớp</b> có mức năng lượng <b>bằng nhau</b>. Các electron trong cùng một <b>lớp</b> mới có mức năng lượng <b>gần bằng nhau</b>.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 9
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q10",
+      "number": 10,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Trong bảng tuần hoàn, các nguyên tố hóa học được sắp xếp theo chiều tăng dần của",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "bán kính nguyên tử.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "số hiệu nguyên tử.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "khối lượng nguyên tử.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "tính kim loại",
+          "isCorrect": false
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Nguyên tắc sắp xếp các nguyên tố trong bảng tuần hoàn: Các nguyên tố được sắp xếp theo chiều tăng dần của điện tích hạt nhân nguyên tử (tương ứng với số hiệu nguyên tử Z).",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 10
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q11",
+      "number": 11,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Vỏ nguyên tử của nitrogen có 7 electron. Số hạt mang điện có trong một nguyên tử nitrogen là",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "7.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "14.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "8.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "10.",
+          "isCorrect": false
+        }
+      ],
+      "correctAnswer": "B",
+      "explanation": "Trong nguyên tử trung hòa về điện: số proton = số electron = 7.<br/>Các hạt mang điện gồm cả proton (+) và electron (-).<br/>Tổng số hạt mang điện trong nguyên tử nitrogen là: p + e = 7 + 7 = 14 hạt.",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 11
+    },
+    {
+      "id": "h10_gk1_pdp_p1_q12",
+      "number": 12,
+      "part": 1,
+      "type": "multiple_choice",
+      "text": "Cho các cấu hình electron của một số nguyên tử nguyên tố như sau:<br/>(1) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup><br/>(2) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup><br/>(3) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>3d<sup>6</sup>4s<sup>2</sup><br/>(4) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>5</sup><br/>(5) 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup><br/>Số lượng các nguyên tố phi kim trong số các nguyên tố ở trên là bao nhiêu?",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "2.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "3.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "4.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "5.",
+          "isCorrect": false
+        }
+      ],
+      "correctAnswer": "A",
+      "explanation": "Xác định tính chất nguyên tố dựa vào electron lớp ngoài cùng:<br/>- (1) Ne: 8e lớp ngoài cùng → khí hiếm.<br/>- (2) Mg: 2e lớp ngoài cùng (3s<sup>2</sup>) → kim loại.<br/>- (3) Fe: nguyên tố d có 2e lớp ngoài cùng (4s<sup>2</sup>) → kim loại chuyển tiếp.<br/>- (4) Cl: 7e lớp ngoài cùng (3s<sup>2</sup>3p<sup>5</sup>) → phi kim.<br/>- (5) S: 6e lớp ngoài cùng (3s<sup>2</sup>3p<sup>4</sup>) → phi kim.<br/>Vậy có 2 nguyên tố phi kim là (4) và (5).",
+      "explanationImages": [],
+      "points": 0.25,
+      "displayNumber": 12
+    },
+    {
+      "id": "h10_gk1_pdp_p2_q1",
+      "number": 13,
+      "part": 2,
+      "type": "true_false",
+      "text": "Nguyên tố X được sử dụng rộng rãi trong đời sống như đồ gia dụng, dây dẫn điện và nguyên tố Y có trong thành phần một loại phân bón, diêm, pháo hoa. Nguyên tử của nguyên tố X và Y đều có electron ở mức năng lượng cao nhất là 3p. Nguyên tử của nguyên tố Y có năm electron ở lớp ngoài cùng. Nguyên tử X và Y có số electron hơn kém nhau là 2. Hãy cho biết những phát biểu sau là đúng hay sai?",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Điện tích hạt nhân của X và Y lần lượt là +17 và +15.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Ở trạng thái cơ bản, số AO chứa electron độc thân của X và Y lần lượt là 1 và 3.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Nguyên tố X và nguyên tố Y đều là phi kim.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Số electron p trong mỗi nguyên tử X và Y lần lượt là 7 và 9.",
+          "isCorrect": true
+        }
+      ],
+      "explanation": "<b>Giải thích chi tiết:</b><br/>- Y có electron ở mức năng lượng cao nhất là 3p và có 5 electron ở lớp ngoài cùng → Cấu hình e của Y là: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>3</sup> (Z<sub>Y</sub> = 15, Photpho P, dùng làm phân lân, diêm, pháo hoa).<br/>- X có electron ở mức năng lượng cao nhất là 3p, số e hơn kém Y là 2 → Z<sub>X</sub> có thể là 13 hoặc 17. Vì X dùng làm đồ gia dụng, dây dẫn điện nên X là kim loại Nhôm (Al, Z<sub>X</sub> = 13): 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>1</sup>.<br/><b>Đánh giá từng phát biểu:</b><br/>a) <b>Sai</b>. Điện tích hạt nhân của X là +13 và của Y là +15 (không phải +17).<br/>b) <b>Đúng</b>. X có phân lớp 3p<sup>1</sup> (1 electron độc thân → 1 AO độc thân); Y có phân lớp 3p<sup>3</sup> (3 electron độc thân trên 3 orbital p → 3 AO độc thân).<br/>c) <b>Sai</b>. X (Al) là kim loại, chỉ có Y (P) là phi kim.<br/>d) <b>Đúng</b>. Số electron p: của X là 2p<sup>6</sup> + 3p<sup>1</sup> = 7; của Y là 2p<sup>6</sup> + 3p<sup>3</sup> = 9.",
+      "explanationImages": [],
+      "points": 1.0,
+      "displayNumber": 13
+    },
+    {
+      "id": "h10_gk1_pdp_p2_q2",
+      "number": 14,
+      "part": 2,
+      "type": "true_false",
+      "text": "Nguyên tố Y là một khoáng chất thiết yếu đối với sự phát triển của xương và răng, trong cơ thể Y tham gia vào quá trình co cơ, đông máu, điều hòa chức năng thận, thần kinh, tái tạo mô, tế bào và đảm bảo quá trình hoạt động của tim. Nguyên tử của nguyên tố Y có tổng số các hạt cơ bản là 46, trong đó số hạt mang điện dương ít hơn số hạt không mang điện là 1. Biết điện tích của 1 electron bằng -1,6.10<sup>-19</sup> (C). Hãy cho biết những phát biểu sau là đúng hay sai?",
+      "images": [],
+      "options": [
+        {
+          "id": "a",
+          "letter": "A",
+          "text": "Nguyên tử Y có điện tích hạt nhân là +2,4.10<sup>-18</sup> C.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "letter": "B",
+          "text": "Nguyên tử Y có 30 hạt mang điện và 1 electron độc thân.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "letter": "C",
+          "text": "Số khối của Y bằng 31.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "letter": "D",
+          "text": "Y là nguyên tố phi kim, thuộc nhóm IIIA.",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "<b>Giải thích chi tiết:</b><br/>Gọi p, n, e là số hạt trong nguyên tử Y (p = e).<br/>- Tổng số hạt: 2p + n = 46 (1)<br/>- Số hạt mang điện dương (p) ít hơn số hạt không mang điện (n) là 1: n - p = 1 (2)<br/>Từ (1) và (2) suy ra: 3p + 1 = 46 → p = 15; n = 16.<br/>Y là Photpho (P, Z = 15). Cấu hình e: [Ne]3s<sup>2</sup>3p<sup>3</sup>.<br/><b>Đánh giá từng phát biểu:</b><br/>a) <b>Đúng</b>. Điện tích hạt nhân q = +p × 1,6.10<sup>-19</sup> = +15 × 1,6.10<sup>-19</sup> = +2,4.10<sup>-18</sup> C.<br/>b) <b>Sai</b>. Y có 2p = 30 hạt mang điện, nhưng cấu hình 3p<sup>3</sup> có 3 electron độc thân (không phải 1).<br/>c) <b>Đúng</b>. Số khối A = p + n = 15 + 16 = 31.<br/>d) <b>Sai</b>. Y có 5 electron lớp ngoài cùng (3s<sup>2</sup>3p<sup>3</sup>) nên thuộc nhóm VA (không phải IIIA).",
+      "explanationImages": [],
+      "points": 1.0,
+      "displayNumber": 14
+    },
+    {
+      "id": "h10_gk1_pdp_p3_q1",
+      "number": 15,
+      "part": 3,
+      "type": "short_answer",
+      "text": "Cation M<sup>2+</sup> có cấu hình electron phân lớp ngoài cùng là 2p<sup>6</sup>. Số hiệu nguyên tử của M là bao nhiêu?",
+      "images": [],
+      "correctAnswer": "12",
+      "acceptedAnswers": [
+        "12",
+        "Z=12"
+      ],
+      "explanation": "Cấu hình e của ion M<sup>2+</sup> kết thúc ở 2p<sup>6</sup>: 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup> (có 10 electron).<br/>Quá trình tạo ion: M → M<sup>2+</sup> + 2e → Số electron của nguyên tử M = 10 + 2 = 12.<br/>Do nguyên tử trung hòa về điện nên số hiệu nguyên tử Z = số e = 12 (M là Magnesium - Mg).",
+      "explanationImages": [],
+      "points": 0.5,
+      "displayNumber": 15
+    },
+    {
+      "id": "h10_gk1_pdp_p3_q2",
+      "number": 16,
+      "part": 3,
+      "type": "short_answer",
+      "text": "Cho các nguyên tử sau: <sup>1</sup><sub>1</sub>H, <sup>16</sup><sub>8</sub>O, <sup>32</sup><sub>16</sub>S. Trong ion HSO<sub>4</sub><sup>-</sup> được tạo từ các nguyên tử trên, có tổng số bao nhiêu hạt proton, neutron và electron?",
+      "images": [],
+      "correctAnswer": "147",
+      "acceptedAnswers": [
+        "147"
+      ],
+      "explanation": "Trong ion HSO<sub>4</sub><sup>-</sup>:<br/>- Số proton: p = p<sub>H</sub> + p<sub>S</sub> + 4×p<sub>O</sub> = 1 + 16 + 4×8 = 49 hạt.<br/>- Số neutron: n = n<sub>H</sub> + n<sub>S</sub> + 4×n<sub>O</sub> = (1-1) + (32-16) + 4×(16-8) = 0 + 16 + 32 = 48 hạt.<br/>- Số electron: ion mang điện tích -1 nên nhận thêm 1 electron: e = p + 1 = 49 + 1 = 50 hạt.<br/>Tổng số hạt proton, neutron và electron = p + n + e = 49 + 48 + 50 = 147 hạt.",
+      "explanationImages": [],
+      "points": 0.5,
+      "displayNumber": 16
+    },
+    {
+      "id": "h10_gk1_pdp_p3_q3",
+      "number": 17,
+      "part": 3,
+      "type": "short_answer",
+      "text": "Có bao nhiêu nguyên tố hoá học trong số các nguyên tử sau:<br/>(1) <sup>13</sup><sub>6</sub>X, (2) <sup>16</sup><sub>8</sub>Y, (3) <sup>12</sup><sub>6</sub>T, (4) <sup>14</sup><sub>7</sub>L, (5) <sup>12</sup><sub>6</sub>M, (6) <sup>17</sup><sub>7</sub>D, (7) <sup>14</sup><sub>7</sub>A, (8) <sup>34</sup><sub>16</sub>Q, (9) <sup>28</sup><sub>14</sub>J, (10) <sup>13</sup><sub>6</sub>E?",
+      "images": [],
+      "correctAnswer": "5",
+      "acceptedAnswers": [
+        "5"
+      ],
+      "explanation": "Nguyên tố hóa học là tập hợp các nguyên tử có cùng điện tích hạt nhân (cùng số hiệu nguyên tử Z, chỉ số ở góc dưới bên trái):<br/>- Z = 6: gồm các nguyên tử (1) <sup>13</sup><sub>6</sub>X, (3) <sup>12</sup><sub>6</sub>T, (5) <sup>12</sup><sub>6</sub>M, (10) <sup>13</sup><sub>6</sub>E.<br/>- Z = 8: gồm nguyên tử (2) <sup>16</sup><sub>8</sub>Y.<br/>- Z = 7: gồm các nguyên tử (4) <sup>14</sup><sub>7</sub>L, (6) <sup>17</sup><sub>7</sub>D, (7) <sup>14</sup><sub>7</sub>A.<br/>- Z = 16: gồm nguyên tử (8) <sup>34</sup><sub>16</sub>Q.<br/>- Z = 14: gồm nguyên tử (9) <sup>28</sup><sub>14</sub>J.<br/>Các giá trị Z phân biệt là {6, 8, 7, 16, 14} → Có tất cả 5 nguyên tố hóa học.",
+      "explanationImages": [],
+      "points": 0.5,
+      "displayNumber": 17
+    },
+    {
+      "id": "h10_gk1_pdp_p3_q4",
+      "number": 18,
+      "part": 3,
+      "type": "short_answer",
+      "text": "Một nguyên tử của nguyên tố X có tổng số hạt proton, neutron và electron là 52 có số khối là 35. X thuộc ô số bao nhiêu trong bảng tuần hoàn các nguyên tố hóa học?",
+      "images": [],
+      "correctAnswer": "17",
+      "acceptedAnswers": [
+        "17",
+        "ô 17",
+        "o 17"
+      ],
+      "explanation": "Gọi p, n, e là số hạt của nguyên tử X (p = e):<br/>- Tổng số hạt: 2p + n = 52 (1)<br/>- Số khối: A = p + n = 35 (2)<br/>Lấy (1) trừ (2) được: p = 52 - 35 = 17.<br/>Số hiệu nguyên tử Z = p = 17 (X là Clo - Chlorine).<br/>Do số thứ tự ô nguyên tố = số hiệu nguyên tử Z nên X thuộc ô số 17 trong BTH.",
+      "explanationImages": [],
+      "points": 0.5,
+      "displayNumber": 18
+    },
+    {
+      "id": "h10_gk1_pdp_p4_q1",
+      "number": 19,
+      "part": 4,
+      "type": "essay",
+      "text": "Nguyên tố Potassium (K) có vai trò quan trọng trong cả cơ thể con người và thực vật. Lớp vỏ nguyên tử của nguyên tố này có 19 electron.<br/>a) Viết ký hiệu nguyên tử của Potassium biết rằng trong nguyên tử này số hạt mang điện tích dương nhỏ hơn số hạt không mang điện là 1.<br/>b) Xác định vị trí K trong BTH?",
+      "images": [],
+      "correctAnswer": "Xem barème đáp án và biểu điểm chi tiết",
+      "explanation": "<b>HƯỚNG DẪN CHẤM VÀ BIỂU ĐIỂM:</b><br/><b>a) Viết kí hiệu nguyên tử Potassium: (0,5 điểm)</b><br/>- Nguyên tử K có 19 electron nên số proton p = e = 19. <i>(0,1 điểm)</i><br/>- Số hạt mang điện dương (p) nhỏ hơn số hạt không mang điện (n) là 1:<br/>&nbsp;&nbsp;n - p = 1 ⇒ n = p + 1 = 19 + 1 = 20 hạt. <i>(0,2 điểm)</i><br/>- Số khối A = p + n = 19 + 20 = 39. <i>(0,1 điểm)</i><br/>- Kí hiệu nguyên tử: <sup>39</sup><sub>19</sub>K. <i>(0,1 điểm)</i><br/><br/><b>b) Xác định vị trí K trong BTH: (0,5 điểm)</b><br/>- Cấu hình electron của K (Z = 19): 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>6</sup>4s<sup>1</sup> hay [Ar]4s<sup>1</sup>. <i>(0,25 điểm)</i><br/>- Vị trí trong bảng tuần hoàn: <i>(0,25 điểm)</i><br/>&nbsp;&nbsp;+ Ô số 19 (vì số hiệu nguyên tử Z = 19).<br/>&nbsp;&nbsp;+ Chu kì 4 (vì có 4 lớp electron).<br/>&nbsp;&nbsp;+ Nhóm IA (vì là nguyên tố s, có 1 electron hóa trị ở lớp ngoài cùng).",
+      "explanationImages": [],
+      "points": 1.0,
+      "displayNumber": 19
+    },
+    {
+      "id": "h10_gk1_pdp_p4_q2",
+      "number": 20,
+      "part": 4,
+      "type": "essay",
+      "text": "Trong tự nhiên, nguyên tố Carbon có 2 đồng vị bền là <sup>12</sup>C (98,9%) và <sup>13</sup>C. Nguyên tố Oxygen có 3 đồng vị bền là <sup>16</sup>O; <sup>17</sup>O; <sup>18</sup>O.<br/>a) Có bao nhiêu loại phân tử CO được tạo ra từ các đồng vị của hai nguyên tố trên?<br/>b) Xác định thành phần % khối lượng đồng vị <sup>13</sup>C có trong 1 chai nước nhỏ mắt Tobramycin (dung tích 6 ml, khối lượng riêng d = 1,2 g/ml) chứa hoạt chất C<sub>18</sub>H<sub>37</sub>O<sub>9</sub>N<sub>5</sub> có nồng độ 0,3%?",
+      "images": [],
+      "correctAnswer": "Xem barème đáp án và biểu điểm chi tiết",
+      "explanation": "<b>HƯỚNG DẪN CHẤM VÀ BIỂU ĐIỂM:</b><br/><b>a) Số loại phân tử CO tạo thành: (0,5 điểm)</b><br/>- Phân tử CO được hình thành từ 1 nguyên tử C và 1 nguyên tử O.<br/>- Carbon có 2 đồng vị (<sup>12</sup>C, <sup>13</sup>C); Oxygen có 3 đồng vị (<sup>16</sup>O, <sup>17</sup>O, <sup>18</sup>O).<br/>- Số loại phân tử CO = 2 × 3 = 6 loại phân tử. <i>(0,25 điểm)</i><br/>- Liệt kê: <sup>12</sup>C<sup>16</sup>O, <sup>12</sup>C<sup>17</sup>O, <sup>12</sup>C<sup>18</sup>O, <sup>13</sup>C<sup>16</sup>O, <sup>13</sup>C<sup>17</sup>O, <sup>13</sup>C<sup>18</sup>O. <i>(0,25 điểm)</i><br/><br/><b>b) Tính % khối lượng đồng vị <sup>13</sup>C: (0,5 điểm)</b><br/>- Khối lượng dung dịch thuốc nhỏ mắt:<br/>&nbsp;&nbsp;m<sub>dd</sub> = V × d = 6 × 1,2 = 7,2 (gam). <i>(0,1 điểm)</i><br/>- Khối lượng hoạt chất C<sub>18</sub>H<sub>37</sub>O<sub>9</sub>N<sub>5</sub>:<br/>&nbsp;&nbsp;m<sub>chất</sub> = 7,2 × 0,3% = 0,0216 (gam). <i>(0,1 điểm)</i><br/>- Nguyên tử khối trung bình của Carbon:<br/>&nbsp;&nbsp;Ā<sub>C</sub> = (12 × 98,9 + 13 × 1,1) / 100 = 12,011.<br/>&nbsp;&nbsp;Khối lượng mol của C<sub>18</sub>H<sub>37</sub>O<sub>9</sub>N<sub>5</sub>:<br/>&nbsp;&nbsp;M = 18 × 12,011 + 37 × 1 + 9 × 16 + 5 × 14 = 467,198 (g/mol). <i>(0,1 điểm)</i><br/>- Khối lượng đồng vị <sup>13</sup>C trong chai thuốc nhỏ mắt:<br/>&nbsp;&nbsp;m<sub>13C</sub> = (0,0216 / 467,198) × 18 × 13 × 1,1% ≈ 1,188 × 10<sup>-4</sup> (gam). <i>(0,1 điểm)</i><br/>- Thành phần % khối lượng <sup>13</sup>C trong chai thuốc nhỏ mắt:<br/>&nbsp;&nbsp;%m<sub>13C/chai</sub> = (1,188 × 10<sup>-4</sup> / 7,2) × 100% ≈ <b>0,00165%</b> (hay 1,65.10<sup>-3</sup>%).<br/>&nbsp;&nbsp;<i>(Nếu tính % khối lượng <sup>13</sup>C trong hoạt chất C<sub>18</sub>H<sub>37</sub>O<sub>9</sub>N<sub>5</sub>: %m = (18 × 13 × 1,1% / 467,198) × 100% ≈ <b>0,551%</b> vẫn được điểm tối đa).</i> <i>(0,1 điểm)</i>",
+      "explanationImages": [],
+      "points": 1.0,
+      "displayNumber": 20
+    },
+    {
+      "id": "h10_gk1_pdp_p4_q3",
+      "number": 21,
+      "part": 4,
+      "type": "essay",
+      "text": "Hai nguyên tố A và B ở hai nhóm A liên tiếp trong bảng tuần hoàn, B thuộc nhóm VA, ở trạng thái đơn chất A, B không phản ứng với nhau. Tổng số proton trong hạt nhân nguyên tử của A và B là 23.<br/>a. Viết cấu hình electron nguyên tử của A, B.<br/>b. Xác định vị trí A, B trong BTH?",
+      "images": [],
+      "correctAnswer": "Xem barème đáp án và biểu điểm chi tiết",
+      "explanation": "<b>HƯỚNG DẪN CHẤM VÀ BIỂU ĐIỂM:</b><br/><b>* Biện luận xác định nguyên tố A, B: (0,5 điểm)</b><br/>- Vì B thuộc nhóm VA nên B có thể là N (Z = 7) hoặc P (Z = 15). (Do Z<sub>A</sub> + Z<sub>B</sub> = 23 nên Z<sub>B</sub> < 23). <i>(0,1 điểm)</i><br/>- A và B ở 2 nhóm A liên tiếp, nên A thuộc nhóm IVA hoặc nhóm VIA.<br/>- <b>TH1:</b> Nếu B là P (Z<sub>B</sub> = 15) ⇒ Z<sub>A</sub> = 23 - 15 = 8 (O - Oxi, thuộc nhóm VIA).<br/>&nbsp;&nbsp;Ở trạng thái đơn chất, P và O<sub>2</sub> phản ứng mãnh liệt với nhau (P cháy trong O<sub>2</sub> tạo P<sub>2</sub>O<sub>5</sub>) ⇒ Trái với giả thiết \"ở trạng thái đơn chất A, B không phản ứng với nhau\" ⇒ <b>Loại</b>. <i>(0,2 điểm)</i><br/>- <b>TH2:</b> Nếu B là N (Z<sub>B</sub> = 7) ⇒ Z<sub>A</sub> = 23 - 7 = 16 (S - Lưu huỳnh, thuộc nhóm VIA).<br/>&nbsp;&nbsp;Ở trạng thái đơn chất, N<sub>2</sub> có liên kết ba N≡N rất bền, rất trơ về mặt hóa học và không phản ứng với S ⇒ Thỏa mãn giả thiết. <i>(0,2 điểm)</i><br/>&nbsp;&nbsp;Vậy A là Sulfur (S, Z = 16), B là Nitrogen (N, Z = 7).<br/><br/><b>a) Viết cấu hình electron nguyên tử: (0,25 điểm)</b><br/>- Cấu hình e của A (S, Z = 16): 1s<sup>2</sup>2s<sup>2</sup>2p<sup>6</sup>3s<sup>2</sup>3p<sup>4</sup> (hay [Ne]3s<sup>2</sup>3p<sup>4</sup>). <i>(0,125 điểm)</i><br/>- Cấu hình e của B (N, Z = 7): 1s<sup>2</sup>2s<sup>2</sup>2p<sup>3</sup> (hay [He]2s<sup>2</sup>2p<sup>3</sup>). <i>(0,125 điểm)</i><br/><br/><b>b) Vị trí của A và B trong bảng tuần hoàn: (0,25 điểm)</b><br/>- Nguyên tố A (S): Ô số 16 (Z = 16), Chu kì 3 (3 lớp e), Nhóm VIA (nguyên tố p, 6e lớp ngoài cùng). <i>(0,125 điểm)</i><br/>- Nguyên tố B (N): Ô số 7 (Z = 7), Chu kì 2 (2 lớp e), Nhóm VA (nguyên tố p, 5e lớp ngoài cùng). <i>(0,125 điểm)</i>",
+      "explanationImages": [],
+      "points": 1.0,
+      "displayNumber": 21
+    }
+  ]
+},
   {
     "id": "hoa10_gk1_de01",
     "code": "H10-GK1-01",
