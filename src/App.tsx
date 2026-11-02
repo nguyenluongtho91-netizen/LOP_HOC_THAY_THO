@@ -64,6 +64,7 @@ const StudentCards = lazy(() => import('@/pages/StudentCards'))
 const StudentProgressPage = lazy(() => import('@/pages/StudentProgressPage'))
 const ZaloCenter = lazy(() => import('@/pages/ZaloCenter'))
 const PublicInvoicePage = lazy(() => import('@/pages/PublicInvoicePage'))
+const PublicPaymentPage = lazy(() => import('@/pages/PublicPaymentPage'))
 const DebtPlannerPage = lazy(() => import('@/pages/DebtPlannerPage'))
 
 // --- PHỤ TRỢ: LOADER ---
@@ -267,6 +268,9 @@ export default function App() {
         <Route path="/hoa-don"            element={<PublicInvoicePage />} />
         <Route path="/invoice/:invoiceId" element={<PublicInvoicePage />} />
         <Route path="/invoice"            element={<PublicInvoicePage />} />
+        {/* CỔNG CHUYỂN KHOẢN HỌC PHÍ 1-CHẠM DÀNH CHO PHỤ HUYNH */}
+        <Route path="/pay"          element={<PublicPaymentPage />} />
+        <Route path="/chuyen-khoan" element={<PublicPaymentPage />} />
         {/* CỔNG NỘP BÀI TẬP VỀ NHÀ DÀNH CHO HỌC SINH (CHUẨN AZOTA) */}
         <Route path="/nop-bai/:assignmentId" element={<StudentSubmitHomeworkPage />} />
         <Route path="/nop-bai"               element={<StudentSubmitHomeworkPage />} />
