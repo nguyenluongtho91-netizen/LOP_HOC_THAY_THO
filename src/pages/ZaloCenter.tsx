@@ -65,7 +65,7 @@ export default function ZaloCenter() {
     + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
     + `- Số tiền: {so_tien} đ\n`
     + `- Nội dung CK: {noi_dung_ck}\n\n`
-    + `👉 Bấm vào đây để chuyển khoản ngay:\n`
+    + `📲 Chuyển khoản trực tiếp qua App ngân hàng:\n`
     + `{link_pay}\n\n`
     + `🔗 Hoặc quét mã QR tại đây:\n`
     + `{link_qr}\n\n`
