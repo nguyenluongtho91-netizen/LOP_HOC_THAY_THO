@@ -326,6 +326,19 @@ export function getSpecialStudentFee(
     }
   }
 
+  // 2b. Khôi Nguyên (Mã 8012 / 8009H): Lớp 8A gộp Toán (720k) + Hóa (400k) = 1.120.000đ; Lớp 8B = 0đ (giống Tuấn Huy)
+  if (code === '8012' || code === '8009H' || ((normName === 'khoi nguyen' || normName.includes('khoi nguyen')) && (isClass8A || isClass8B || cid === '59eb0175-e6ba-45ea-93cd-c2bf6f07644a' || cid === '54d47dd9-0af9-4df3-96b3-4078bb05bf2c')) || sid === '9aa44625-6d9c-4c5b-8435-2df460629dc1' || sid === '6cb0b3f2-80dd-43f6-9762-0cbbba2b0a6d') {
+    if (isClass8B || code === '8009H' || sid === '6cb0b3f2-80dd-43f6-9762-0cbbba2b0a6d') {
+      return { amount: 0, note: 'Đã gộp vào Lớp 8A (1.120.000 đ)', isCustom: true }
+    }
+    return { 
+      amount: 1120000, 
+      note: 'Gộp Môn Toán (720k) + Môn Hóa (400k)', 
+      month: 'Tháng 10',
+      isCustom: true 
+    }
+  }
+
   // 3. Nguyễn Thị Hạ Giang / Nguyễn Đậu Hà Giang (Mã 1028): Lớp 10 gộp T8 (400k) + T9 (560k) + T10 (720k) = 1.680.000đ
   if (code === '1028' || normName.includes('ha giang') || sid === 'f195c849-bd2c-4321-bcef-3534be7ab183') {
     return { 
