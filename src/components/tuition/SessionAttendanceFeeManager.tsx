@@ -62,14 +62,14 @@ export const STUDENT_CUSTOM_RATES: Record<string, number> = {
 }
 
 export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string }> = {
-  // Nguyễn Sỹ Mạnh: Lớp 8A gộp Toán + Hóa = 2.000.000đ; Lớp 8B = 0đ
+  // Nguyễn Sỹ Mạnh: Lớp 8A gộp Tháng 9 + Tháng 10 cả 2 môn Toán + Hóa = 2.000.000đ; Lớp 8B = 0đ
   '16a3cabf-da5e-4b9d-8b3f-d3d155eda6ee_59eb0175-e6ba-45ea-93cd-c2bf6f07644a': {
     amount: 2000000,
-    note: 'Gộp Môn Toán (1.280k) + Môn Hóa (720k)'
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10) cả 2 môn Toán + Hóa'
   },
   '16a3cabf-da5e-4b9d-8b3f-d3d155eda6ee': {
     amount: 2000000,
-    note: 'Gộp Môn Toán (1.280k) + Môn Hóa (720k)'
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10) cả 2 môn Toán + Hóa'
   },
   '649e6598-7cbb-4c0b-8101-67b81a540739_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
     amount: 0,

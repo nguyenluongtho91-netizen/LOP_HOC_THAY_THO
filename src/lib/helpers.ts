@@ -248,7 +248,17 @@ export function formatParentTuitionMessage(params: ParentTuitionMessageParams): 
   const shortTransfer = shortTransferContent || formatShortTransferContent(studentName, cleanClass)
   const addInfo = formatVietQRAddInfo(studentName, cleanClass, '', '')
   const finalQrUrl = qrUrl || generateVietQRUrl(amount, addInfo)
-  const monthText = month || 'Tháng 10'
+  
+  let monthText = month
+  if (!monthText || monthText === 'Tháng 10' || monthText === 'Tháng 10/2026') {
+    if (note && (note.includes('Tháng 8') || note.includes('T8')) && (note.includes('Tháng 9') || note.includes('T9')) && (note.includes('Tháng 10') || note.includes('T10'))) {
+      monthText = 'Tháng 8, 9 & 10'
+    } else if (note && (note.includes('Tháng 9') || note.includes('T9')) && (note.includes('Tháng 10') || note.includes('T10'))) {
+      monthText = 'Tháng 9 & Tháng 10'
+    } else if (!monthText) {
+      monthText = 'Tháng 10'
+    }
+  }
 
   return `Kính gửi Quý Phụ huynh em: ${studentName}${classLabel ? ` (${classLabel})` : ''}\n\n`
        + `Thầy xin gửi thông tin học phí ${monthText} của em:\n`
@@ -276,7 +286,7 @@ export function getSpecialStudentFee(
   studentCode?: string,
   studentName?: string,
   className?: string
-): { amount: number; note: string; isCustom: true } | null {
+): { amount: number; note: string; month?: string; isCustom: true } | null {
   const normName = removeVietnameseTones(studentName || '').toLowerCase().trim()
   const code = (studentCode || '').toUpperCase().trim()
   const sid = (studentId || '').trim()
@@ -290,12 +300,17 @@ export function getSpecialStudentFee(
   const isClass7B = cid === 'c37d47a2-d679-4429-8627-001b6099f65e' || cName.includes('7B')
   const isClass10 = cid === 'a584e78a-355f-4398-970b-1d8359a2b241' || cName.includes('10')
 
-  // 1. Nguyễn Sỹ Mạnh (Mã 8008 / 8007H): Lớp 8A gộp Toán (1.280k) + Hóa (720k) = 2.000.000đ; Lớp 8B = 0đ
+  // 1. Nguyễn Sỹ Mạnh (Mã 8008 / 8007H): Lớp 8A gộp Tháng 9 + Tháng 10 cả 2 môn Toán + Hóa = 2.000.000đ; Lớp 8B = 0đ
   if (code === '8008' || code === '8007H' || normName.includes('sy manh') || sid === '16a3cabf-da5e-4b9d-8b3f-d3d155eda6ee' || sid === '649e6598-7cbb-4c0b-8101-67b81a540739') {
     if (isClass8B || code === '8007H' || sid === '649e6598-7cbb-4c0b-8101-67b81a540739') {
       return { amount: 0, note: 'Đã gộp vào Lớp 8A (2.000.000 đ)', isCustom: true }
     }
-    return { amount: 2000000, note: 'Gộp Môn Toán (1.280k) + Môn Hóa (720k)', isCustom: true }
+    return { 
+      amount: 2000000, 
+      note: 'Gộp 2 tháng (Tháng 9 & Tháng 10) cả 2 môn Toán + Hóa', 
+      month: 'Tháng 9 & Tháng 10',
+      isCustom: true 
+    }
   }
 
   // 2. Nguyễn Duy Tuấn Huy (Mã 8006 / 8006H): Lớp 8A gộp Toán (720k) + Hóa (400k) = 1.120.000đ; Lớp 8B = 0đ
@@ -303,22 +318,42 @@ export function getSpecialStudentFee(
     if (isClass8B || code === '8006H' || sid === '4c85bab8-8d95-4761-9bf7-637bc419a9f4') {
       return { amount: 0, note: 'Đã gộp vào Lớp 8A (1.120.000 đ)', isCustom: true }
     }
-    return { amount: 1120000, note: 'Gộp Môn Toán (720k) + Môn Hóa (400k)', isCustom: true }
+    return { 
+      amount: 1120000, 
+      note: 'Gộp Môn Toán (720k) + Môn Hóa (400k)', 
+      month: 'Tháng 10',
+      isCustom: true 
+    }
   }
 
   // 3. Nguyễn Thị Hạ Giang / Nguyễn Đậu Hà Giang (Mã 1028): Lớp 10 gộp T8 (400k) + T9 (560k) + T10 (720k) = 1.680.000đ
   if (code === '1028' || normName.includes('ha giang') || sid === 'f195c849-bd2c-4321-bcef-3534be7ab183') {
-    return { amount: 1680000, note: 'Gộp Tháng 8 (400k) + Tháng 9 (560k) + Tháng 10 (720k)', isCustom: true }
+    return { 
+      amount: 1680000, 
+      note: 'Gộp 3 tháng (Tháng 8, 9 & 10): T8 (400k) + T9 (560k) + T10 (720k)', 
+      month: 'Tháng 8, 9 & 10',
+      isCustom: true 
+    }
   }
 
   // 4. Đậu Văn Trung / Hoàng Văn Trung (Mã 9008): Lớp 9A gộp 3 tháng = 1.840.000đ
   if (code === '9008' || normName.includes('van trung') || sid === '5b00c0e6-85cc-43ee-b169-ff4fa3ed3ea5') {
-    return { amount: 1840000, note: 'Gộp 3 tháng: Tháng 8 (560k) + Tháng 9 (640k) + Tháng 10 (640k)', isCustom: true }
+    return { 
+      amount: 1840000, 
+      note: 'Gộp 3 tháng (Tháng 8, 9 & 10): T8 (560k) + T9 (640k) + T10 (640k)', 
+      month: 'Tháng 8, 9 & 10',
+      isCustom: true 
+    }
   }
 
   // 5. Bùi Thị Thủy Tiên / Trần Thị Thủy Tiên (Mã 9003): Lớp 9A gộp 3 tháng = 1.840.000đ
   if (code === '9003' || normName.includes('thuy tien') || sid === '1398846d-6b15-45b9-9b4b-910c9caac9b5') {
-    return { amount: 1840000, note: 'Gộp 3 tháng: Tháng 8 (560k) + Tháng 9 (640k) + Tháng 10 (640k)', isCustom: true }
+    return { 
+      amount: 1840000, 
+      note: 'Gộp 3 tháng (Tháng 8, 9 & 10): T8 (560k) + T9 (640k) + T10 (640k)', 
+      month: 'Tháng 8, 9 & 10',
+      isCustom: true 
+    }
   }
 
   // 6. Nguyễn Hà Linh (Mã 9019): Lớp 9A gộp Toán (640k) + Hóa (400k) = 1.040.000đ; Lớp 9B (Hóa 9) = 0đ
@@ -326,19 +361,34 @@ export function getSpecialStudentFee(
     if (isClass9B || cid === 'c45ff60b-d498-4a43-9260-38b4a31d1cc0') {
       return { amount: 0, note: 'Đã gộp vào Lớp 9A (1.040.000 đ)', isCustom: true }
     }
-    return { amount: 1040000, note: 'Gộp Môn Toán (640k) + Môn Hóa (400k)', isCustom: true }
+    return { 
+      amount: 1040000, 
+      note: 'Gộp Môn Toán (640k) + Môn Hóa (400k)', 
+      month: 'Tháng 10',
+      isCustom: true 
+    }
   }
 
   // 7. Trương Thảo Nguyên (Mã 7018): Lớp 7B gộp T9 (560k) + T10 (720k) = 1.280.000đ
   if (code === '7018' || normName.includes('thao nguyen') || sid === '353d699e-90c9-4a47-9722-6ccd49292999' || sid === '742b4148-0134-4c44-a79c-a465ecfcbe87') {
     if (code === '7018' || isClass7B || sid === '353d699e-90c9-4a47-9722-6ccd49292999' || sid === '742b4148-0134-4c44-a79c-a465ecfcbe87') {
-      return { amount: 1280000, note: 'Gộp Tháng 9 (560.000 đ) + Tháng 10 (720.000 đ)', isCustom: true }
+      return { 
+        amount: 1280000, 
+        note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (560.000 đ) + T10 (720.000 đ)', 
+        month: 'Tháng 9 & Tháng 10',
+        isCustom: true 
+      }
     }
   }
 
   // 8. Phạm An Nhiên / Trương Quốc An Nhiên (Mã 9011): Lớp 9A gộp T9 (640k) + T10 (640k) = 1.280.000đ
   if (code === '9011' || normName.includes('an nhien') || sid === 'b96d9640-b7e5-41c9-95bd-cc80faae7f34') {
-    return { amount: 1280000, note: 'Gộp Tháng 9 (640.000 đ) + Tháng 10 (640.000 đ)', isCustom: true }
+    return { 
+      amount: 1280000, 
+      note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (640.000 đ) + T10 (640.000 đ)', 
+      month: 'Tháng 9 & Tháng 10',
+      isCustom: true 
+    }
   }
 
   // 9. Dương Thị Hiền Thương (Mã 9007): Lớp 9A (8 buổi × 60.000 đ = 480.000 đ)
