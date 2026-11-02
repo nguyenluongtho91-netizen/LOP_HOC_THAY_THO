@@ -60,7 +60,7 @@ export default function ZaloCenter() {
     + `• Môn học: {mon_hoc}\n`
     + `• Lớp: {lop}\n`
     + `• Số tiền học phí: {so_tien} đ\n\n`
-    + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
+    + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
     + `👉 Quý phụ huynh quét mã QR bên dưới để chuyển khoản:\n`
     + `{link_qr}\n\n`
     + `Thầy xin chân thành cảm ơn Quý phụ huynh!`

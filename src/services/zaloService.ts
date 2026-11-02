@@ -637,7 +637,7 @@ export async function generateTuitionCardBlob(params: TuitionCardParams): Promis
     amount,
     qrUrl,
     transferContent,
-    deadlineText = 'Trước ngày 07/11'
+    deadlineText = 'Trước ngày 07/10'
   } = params
 
   let imgSource: ImageBitmap | HTMLImageElement

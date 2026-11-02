@@ -1254,7 +1254,7 @@ export default function SessionAttendanceFeeManager({
                                                 + `• Môn học: ${subjectName}\n`
                                                 + `• Lớp: ${cleanClass}\n`
                                                 + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
+                                                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
                                                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -1288,7 +1288,7 @@ export default function SessionAttendanceFeeManager({
                                                 + `• Môn học: ${subjectName}\n`
                                                 + `• Lớp: ${cleanClass}\n`
                                                 + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
+                                                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
                                                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                                                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
                                       try {
