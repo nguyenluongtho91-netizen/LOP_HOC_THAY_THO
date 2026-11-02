@@ -21,7 +21,7 @@ import Modal from '@/components/Modal'
 import VietQRModal from '@/components/VietQRModal'
 import { buildElectronicInvoice, saveElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
-import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl } from '@/lib/helpers'
 import { sendZaloPersonalMessage, copyQrImageToClipboard, copyTuitionCardImageToClipboard, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
 import type { PaymentMethod } from '@/types'
 
@@ -771,22 +771,23 @@ export default function Tuition() {
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp học'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
     const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, activeCourseName || courseName || selectedMonth)
-    const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
+    const qrUrl = generateVietQRUrl(amountVal, addInfo)
+    const shortTransfer = formatShortTransferContent(row.student.full_name, cleanClass)
 
-
-
-    const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
-    const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-    const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-              + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
-              + `• Học sinh: ${row.student.full_name}\n`
-              + `• Môn học: ${subjectName}\n`
-              + `• Lớp: ${cleanClass}\n`
-              + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-              + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
-              + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+    const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
+              + `Kính gửi Phụ huynh em: ${row.student.full_name} (${cleanClass})\n`
+              + (row.note ? `Chi tiết: ${row.note}\n` : '')
+              + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
+              + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+              + `Thông tin chuyển khoản:\n`
+              + `- Ngân hàng: Vietcombank (VCB)\n`
+              + `- Số tài khoản: 1070493932\n`
+              + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
+              + `- Số tiền: ${amountVal.toLocaleString('vi-VN')} đ\n`
+              + `- Nội dung CK: ${shortTransfer}\n\n`
+              + `🔗 Link quét mã QR:\n`
+              + `${qrUrl}\n\n`
+              + `Thầy cảm ơn Quý Phụ huynh!`
 
     setSendingStudentId(row.student.id)
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }
@@ -854,20 +855,23 @@ export default function Tuition() {
     const clsName = (cls as any)?.class_name || cls?.name || 'Lớp 10'
     const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
     const addInfo = formatVietQRAddInfo(row.student.full_name, clsName, row.student.student_code, activeCourseName || courseName || selectedMonth)
-    const qrUrl = `https://qr.sepay.vn/img?bank=Vietcombank&acc=1070493932&template=compact&amount=${amountVal}&des=${encodeURIComponent(addInfo)}`
+    const qrUrl = generateVietQRUrl(amountVal, addInfo)
+    const shortTransfer = formatShortTransferContent(row.student.full_name, cleanClass)
     
-    const subjectName = (cleanClass.includes('12') || (cls as any)?.subject === 'Hóa' || (row.student.student_code && row.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : ((cls as any)?.subject || 'Toán học'))
-    const cleanMonthTitle = (courseName || '').replace(/[\(\[].*?[\)\]]/g, '').trim() || ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-    const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-    const msg = `Kính gửi Quý phụ huynh học sinh ${row.student.full_name},\n\n`
-              + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
-              + `• Học sinh: ${row.student.full_name}\n`
-              + `• Môn học: ${subjectName}\n`
-              + `• Lớp: ${cleanClass}\n`
-              + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-              + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
-              + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+    const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
+              + `Kính gửi Phụ huynh em: ${row.student.full_name} (${cleanClass})\n`
+              + (row.note ? `Chi tiết: ${row.note}\n` : '')
+              + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
+              + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+              + `Thông tin chuyển khoản:\n`
+              + `- Ngân hàng: Vietcombank (VCB)\n`
+              + `- Số tài khoản: 1070493932\n`
+              + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
+              + `- Số tiền: ${amountVal.toLocaleString('vi-VN')} đ\n`
+              + `- Nội dung CK: ${shortTransfer}\n\n`
+              + `🔗 Link quét mã QR:\n`
+              + `${qrUrl}\n\n`
+              + `Thầy cảm ơn Quý Phụ huynh!`
 
     const cleanPhone = phone.replace(/\D/g, '').replace(/^84/, '0')
     const synthRow = { ...row, notification: { course_name: activeCourseName, amount: amountVal } as any }

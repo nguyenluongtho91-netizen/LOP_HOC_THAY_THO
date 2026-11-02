@@ -195,7 +195,7 @@ export function formatVietQRAddInfo(fullName: string, className = '', studentCod
     }
   }
 
-  // Gọn gàng, rõ ràng đầy đủ họ và tên kèm lớp (ví dụ: NGO DUC THANG L7)
+// Gọn gàng, rõ ràng đầy đủ họ và tên kèm lớp (ví dụ: NGO DUC THANG L7)
   let text = cleanName
   if (classTag) {
     text += ` ${classTag}`
@@ -204,3 +204,27 @@ export function formatVietQRAddInfo(fullName: string, className = '', studentCod
   // Giới hạn độ dài an toàn theo chuẩn ngân hàng Vietcombank (tối đa 50 ký tự)
   return text.substring(0, 45).trim()
 }
+
+/**
+ * Sinh nội dung chuyển khoản gõ tay ngắn gọn nhất: [TÊN] [LỚP] (Ví dụ: HA GIANG L10, SY MANH L8, TUAN HUY L8)
+ * Không chứa mã số học sinh, không chứa chữ "HOC PHI".
+ */
+export function formatShortTransferContent(fullName: string, className = ''): string {
+  const clean = removeVietnameseTones(fullName).toUpperCase().trim()
+  const parts = clean.split(/\s+/).filter(Boolean)
+  const shortName = parts.length >= 2 ? `${parts[parts.length - 2]} ${parts[parts.length - 1]}` : (parts[0] || 'HS')
+  let classTag = ''
+  if (className) {
+    const m = className.match(/(?:lớp|lop)?\s*(\d+)/i)
+    if (m && m[1]) classTag = `L${m[1]}`
+  }
+  return `${shortName} ${classTag}`.trim()
+}
+
+/**
+ * Tạo link ảnh mã VietQR chuẩn ngân hàng Vietcombank
+ */
+export function generateVietQRUrl(amount: number, addInfo: string): string {
+  return `https://img.vietqr.io/image/vietcombank-1070493932-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent('HO KINH DOANH NGUYEN LUONG THO')}`
+}
+

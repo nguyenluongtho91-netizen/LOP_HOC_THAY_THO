@@ -6,7 +6,7 @@ import {
   ExternalLink, AlertCircle, CheckCircle2, ChevronRight, ChevronLeft, FileText, Send,
   Table as TableIcon, Layers, Calendar, ChevronDown, CheckCircle, QrCode, Copy, HeartHandshake
 } from 'lucide-react'
-import { fmtVNDShort, formatVietQRAddInfo } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl } from '@/lib/helpers'
 
 const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
   if (!date) return '—'
@@ -83,9 +83,35 @@ export default function SessionAttendanceFeeManager({
   const [unitPrice, setUnitPrice] = useState<number>(80000)
   const [isEditingPrice, setIsEditingPrice] = useState(false)
   const [priceInput, setPriceInput] = useState<string>('80000')
-  const [savingPrice, setSavingPrice] = useState(false)
   const [copiedSessionQrId, setCopiedSessionQrId] = useState<string | null>(null)
   const [copiedSessionMsgId, setCopiedSessionMsgId] = useState<string | null>(null)
+  const [customFees, setCustomFees] = useState<Record<string, { amount: number; note: string }>>({})
+
+  useEffect(() => {
+    const loadCustom = async () => {
+      try {
+        const local = localStorage.getItem('__CUSTOM_STUDENT_FEES__')
+        if (local) setCustomFees(JSON.parse(local))
+        const { data } = await supabase.from('exams').select('data').eq('title', '__CUSTOM_STUDENT_FEES__').maybeSingle()
+        if (data?.data?.items) {
+          const map: Record<string, { amount: number; note: string }> = {}
+          if (Array.isArray(data.data.items)) {
+            data.data.items.forEach((it: any) => { if (it.key) map[it.key] = it })
+          } else if (typeof data.data.items === 'object') {
+            Object.entries(data.data.items).forEach(([k, v]: [string, any]) => {
+              if (typeof v === 'object' && v !== null) {
+                map[k] = { amount: v.amount ?? v.tuition_fee, note: v.note || '' }
+              } else if (typeof v === 'number') {
+                map[k] = { amount: v, note: '' }
+              }
+            })
+          }
+          setCustomFees(prev => ({ ...prev, ...map }))
+        }
+      } catch {}
+    }
+    void loadCustom()
+  }, [])
 
   // Selected date for recording attendance
   const [sessionDate, setSessionDate] = useState<string>(format(new Date(), 'yyyy-MM-dd'))
@@ -315,11 +341,26 @@ export default function SessionAttendanceFeeManager({
         .map(a => a.date)
         .sort()
 
-      const attendedCount = attendedDates.length
+      const key = st.id + '_' + selClass
+      const custom = customFees[key] || customFees[st.id]
       const notif = tuitionNotifications.find(n => n.student_id === st.id && n.class_id === selClass)
       const customRate = STUDENT_CUSTOM_RATES[st.id]
       const studentRate = customRate !== undefined ? customRate : unitPrice
-      const calculatedAmount = attendedCount * studentRate
+
+      let calculatedAmount = attendedCount * studentRate
+      let isCustom = false
+      let customNote = ''
+
+      if (custom && custom.amount != null) {
+        calculatedAmount = Number(custom.amount)
+        isCustom = true
+        customNote = custom.note || ''
+      } else if (notif && notif.amount != null) {
+        calculatedAmount = Number(notif.amount)
+        isCustom = notif.amount !== (attendedCount * studentRate)
+        customNote = notif.note || ''
+      }
+
       const currentAmount = notif ? Number(notif.amount) : 0
       const isPaid = notif?.is_paid || false
       const isSynced = currentAmount === calculatedAmount && notif != null
@@ -333,10 +374,12 @@ export default function SessionAttendanceFeeManager({
         currentAmount,
         isPaid,
         isSynced,
-        notif
+        notif,
+        isCustom,
+        customNote
       }
     })
-  }, [enrolledStudents, classAttendanceRecords, selectedMonth, unitPrice, tuitionNotifications, selClass])
+  }, [enrolledStudents, classAttendanceRecords, selectedMonth, unitPrice, tuitionNotifications, selClass, customFees])
 
   // KPI Stats for selected class
   const totalSessionsCount = sessionsHistory.length
@@ -1246,19 +1289,20 @@ export default function SessionAttendanceFeeManager({
                                     onClick={async () => {
                                       const rawPhone = (item.student as any)?.zalo || (item.student as any)?.parent_phone || ''
                                       const cleanPhone = rawPhone.replace(/\D/g, '').replace(/^84/, '0')
-                                      const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-                                      const subjectName = (cls as any)?.subject || ((item.student.student_code && item.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
-                                      const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-                                      const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-                                      const msg = `Kính gửi Quý phụ huynh học sinh ${item.student.full_name},\n\n`
-                                                + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
-                                                + `• Học sinh: ${item.student.full_name}\n`
-                                                + `• Môn học: ${subjectName}\n`
-                                                + `• Lớp: ${cleanClass}\n`
-                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-                                                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
-                                                + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+                                      const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
+                                                + `Kính gửi Phụ huynh em: ${item.student.full_name} (${cleanClass})\n`
+                                                + (item.customNote ? `Chi tiết: ${item.customNote}\n` : '')
+                                                + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
+                                                + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+                                                + `Thông tin chuyển khoản:\n`
+                                                + `- Ngân hàng: Vietcombank (VCB)\n`
+                                                + `- Số tài khoản: 1070493932\n`
+                                                + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
+                                                + `- Số tiền: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n`
+                                                + `- Nội dung CK: ${shortTransfer}\n\n`
+                                                + `🔗 Link quét mã QR:\n`
+                                                + `${qrUrl}\n\n`
+                                                + `Thầy cảm ơn Quý Phụ huynh!`
 
                                       try {
                                         await navigator.clipboard.writeText(msg)
@@ -1280,19 +1324,20 @@ export default function SessionAttendanceFeeManager({
                                   <button
                                     type="button"
                                     onClick={async () => {
-                                      const cleanClass = clsName.replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || clsName
-                                      const subjectName = (cls as any)?.subject || ((item.student.student_code && item.student.student_code.toUpperCase().endsWith('H')) || cleanClass.toLowerCase().includes('hóa') ? 'Hóa học' : 'Toán học')
-                                      const cleanMonthTitle = ('Tháng ' + (selectedMonth ? selectedMonth.split('-')[1] + '/' + selectedMonth.split('-')[0] : '10/2026'))
-                                      const monthHeader = cleanMonthTitle.toLowerCase().startsWith('tháng') ? cleanMonthTitle : `Tháng ${cleanMonthTitle}`
-                                      const msg = `Kính gửi Quý phụ huynh học sinh ${item.student.full_name},\n\n`
-                                                + `Thầy Thọ xin gửi thông tin học phí ${monthHeader} của em:\n`
-                                                + `• Học sinh: ${item.student.full_name}\n`
-                                                + `• Môn học: ${subjectName}\n`
-                                                + `• Lớp: ${cleanClass}\n`
-                                                + `• Số tiền học phí: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
-                                                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
-                                                + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
-                                                + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
+                                      const msg = `THÔNG BÁO HỌC PHÍ - LỚP THẦY THỌ\n\n`
+                                                + `Kính gửi Phụ huynh em: ${item.student.full_name} (${cleanClass})\n`
+                                                + (item.customNote ? `Chi tiết: ${item.customNote}\n` : '')
+                                                + `👉 TỔNG HỌC PHÍ CẦN HOÀN THÀNH: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n\n`
+                                                + `Quý phụ huynh vui lòng hoàn thành học phí trước 07/10 để Thầy thuận tiện quản lý sổ sách.\n\n`
+                                                + `Thông tin chuyển khoản:\n`
+                                                + `- Ngân hàng: Vietcombank (VCB)\n`
+                                                + `- Số tài khoản: 1070493932\n`
+                                                + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
+                                                + `- Số tiền: ${item.calculatedAmount.toLocaleString('vi-VN')} đ\n`
+                                                + `- Nội dung CK: ${shortTransfer}\n\n`
+                                                + `🔗 Link quét mã QR:\n`
+                                                + `${qrUrl}\n\n`
+                                                + `Thầy cảm ơn Quý Phụ huynh!`
                                       try {
                                         await navigator.clipboard.writeText(msg)
                                         setCopiedSessionMsgId(item.student.id)
