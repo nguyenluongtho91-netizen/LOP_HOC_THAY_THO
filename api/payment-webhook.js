@@ -207,54 +207,60 @@ export default async function handler(req, res) {
     const { studentCode, month } = parseTransferContent(payload.description);
     let student = null, classId = null;
 
-    // 1. Tìm học sinh theo mã (student_code)
+    // 1. Tải danh sách tất cả học sinh đang hoạt động để nhận diện học sinh và gộp nhiều lớp
+    let allStudents = [];
+    try {
+      const { data: stList } = await supabase.from('students')
+        .select('id, full_name, email, parent_phone, zalo, student_code')
+        .eq('status', 'active');
+      if (stList) allStudents = stList;
+    } catch {}
+
+    // 2. Tìm học sinh theo mã (student_code)
     let debugInfo = { studentCode };
     if (studentCode) {
-      const { data, error: qErr } = await supabase.from('students')
-        .select('id, full_name, email, parent_phone, zalo, student_code')
-        .ilike('student_code', studentCode)
-        .maybeSingle();
-      debugInfo.qErr = qErr;
-      debugInfo.data = data;
-      if (data) {
-        student = data;
-        classId = await findActiveClassId(data.id);
+      student = allStudents.find(s => s.student_code && s.student_code.toUpperCase() === studentCode.toUpperCase()) || null;
+      if (!student) {
+        const { data, error: qErr } = await supabase.from('students')
+          .select('id, full_name, email, parent_phone, zalo, student_code')
+          .ilike('student_code', studentCode)
+          .maybeSingle();
+        debugInfo.qErr = qErr;
+        debugInfo.data = data;
+        if (data) student = data;
+      }
+      if (student) {
+        classId = await findActiveClassId(student.id);
       }
     }
 
-    // 2. Nếu chưa tìm thấy theo mã, tìm kiếm theo tên học sinh không dấu trong nội dung chuyển tiền
-    if (!student) {
-      const { data: allStudents } = await supabase.from('students')
-        .select('id, full_name, email, parent_phone, zalo, student_code')
-        .eq('status', 'active');
-      
-      if (allStudents && allStudents.length > 0) {
-        const cleanDesc = (payload.description || '')
+    // 3. Nếu chưa tìm thấy theo mã, tìm kiếm theo tên học sinh không dấu trong nội dung chuyển tiền
+    if (!student && allStudents.length > 0) {
+      const cleanDesc = (payload.description || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[đĐ]/g, 'd')
+        .toUpperCase();
+
+      for (const st of allStudents) {
+        const cleanName = (st.full_name || '')
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')
           .replace(/[đĐ]/g, 'd')
-          .toUpperCase();
+          .toUpperCase()
+          .trim();
+        
+        const parts = cleanName.split(/\s+/).filter(Boolean);
+        const shortName = parts.length > 2 ? `${parts[0]} ${parts[parts.length - 1]}` : cleanName;
 
-        for (const st of allStudents) {
-          const cleanName = (st.full_name || '')
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/[đĐ]/g, 'd')
-            .toUpperCase()
-            .trim();
-          
-          const parts = cleanName.split(/\s+/).filter(Boolean);
-          const shortName = parts.length > 2 ? `${parts[0]} ${parts[parts.length - 1]}` : cleanName;
-
-          if (cleanName.length >= 4 && cleanDesc.includes(cleanName)) {
-            student = st;
-            classId = await findActiveClassId(st.id);
-            break;
-          } else if (shortName.length >= 6 && cleanDesc.includes(shortName)) {
-            student = st;
-            classId = await findActiveClassId(st.id);
-            break;
-          }
+        if (cleanName.length >= 4 && cleanDesc.includes(cleanName)) {
+          student = st;
+          classId = await findActiveClassId(st.id);
+          break;
+        } else if (shortName.length >= 6 && cleanDesc.includes(shortName)) {
+          student = st;
+          classId = await findActiveClassId(st.id);
+          break;
         }
       }
     }
