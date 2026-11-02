@@ -214,6 +214,20 @@ export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string
     note: 'Gộp Tháng 7, 8 & 9 (1.520.000 đ) + Tháng 10 (720.000 đ)'
   },
 
+  // Trần Minh Hải: Chỉ tính học phí Lớp 9A = 640.000đ; Lớp 9B = 0đ
+  '4807207e-a4b4-47bd-a94e-fcc667379fd5_165b5023-5c8f-4792-be55-21b88466b2e2': {
+    amount: 640000,
+    note: '8 buổi × 80.000 đ = 640.000 đ'
+  },
+  '4807207e-a4b4-47bd-a94e-fcc667379fd5': {
+    amount: 640000,
+    note: '8 buổi × 80.000 đ = 640.000 đ'
+  },
+  '4807207e-a4b4-47bd-a94e-fcc667379fd5_c45ff60b-d498-4a43-9260-38b4a31d1cc0': {
+    amount: 0,
+    note: 'Học phí tính theo Lớp 9A (640.000 đ)'
+  },
+
   // Nguyễn Thảo Nguyên: Lớp 7B gộp Tháng 9 + Tháng 10 = 1.280.000đ
   '353d699e-90c9-4a47-9722-6ccd49292999_c37d47a2-d679-4429-8627-001b6099f65e': {
     amount: 1280000,

@@ -469,5 +469,18 @@ export function getSpecialStudentFee(
     }
   }
 
+  // 16. Trần Minh Hải (Mã 9015): Lớp 9A = 640.000 đ (8 buổi × 80.000 đ); Lớp 9B = 0đ
+  if (code === '9015' || normName.includes('minh hai') || sid === '4807207e-a4b4-47bd-a94e-fcc667379fd5') {
+    if (isClass9B || cid === 'c45ff60b-d498-4a43-9260-38b4a31d1cc0') {
+      return { amount: 0, note: 'Học phí tính theo Lớp 9A (640.000 đ)', isCustom: true }
+    }
+    return { 
+      amount: 640000, 
+      note: '8 buổi × 80.000 đ = 640.000 đ', 
+      month: 'Tháng 10',
+      isCustom: true 
+    }
+  }
+
   return null
 }
