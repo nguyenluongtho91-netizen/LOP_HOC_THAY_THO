@@ -447,5 +447,15 @@ export function getSpecialStudentFee(
     }
   }
 
+  // 14. Phạm Tới (Mã 8001H): Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (400k) = 720.000đ (giống Bảo Hân)
+  if (code === '8001H' || normName.includes('pham toi') || (normName.includes('toi') && isClass8B) || sid === '166d73d7-5e14-4638-ade4-8e34361c00b4') {
+    return { 
+      amount: 720000, 
+      note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)', 
+      month: 'Tháng 9 & Tháng 10',
+      isCustom: true 
+    }
+  }
+
   return null
 }

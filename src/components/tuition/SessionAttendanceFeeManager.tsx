@@ -194,6 +194,16 @@ export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string
     note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
   },
 
+  // Phạm Tới: Lớp 8B gộp Tháng 9 (320k) + Tháng 10 (400k) = 720.000đ (giống Bảo Hân)
+  '166d73d7-5e14-4638-ade4-8e34361c00b4_54d47dd9-0af9-4df3-96b3-4078bb05bf2c': {
+    amount: 720000,
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
+  },
+  '166d73d7-5e14-4638-ade4-8e34361c00b4': {
+    amount: 720000,
+    note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
+  },
+
   // Nguyễn Thảo Nguyên: Lớp 7B gộp Tháng 9 + Tháng 10 = 1.280.000đ
   '353d699e-90c9-4a47-9722-6ccd49292999_c37d47a2-d679-4429-8627-001b6099f65e': {
     amount: 1280000,
