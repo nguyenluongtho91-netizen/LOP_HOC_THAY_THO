@@ -171,7 +171,7 @@ export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string
   },
   '1cf57d6b-38bc-4855-87ae-c2b186e42304_c45ff60b-d498-4a43-9260-38b4a31d1cc0': {
     amount: 0,
-    note: 'Chỉ học Toán Lớp 9A (không học Hóa 9B)'
+    note: 'Đã nghỉ Lớp 9B (chỉ học Toán Lớp 9A)'
   },
 
   // Nguyễn Thảo Nguyên: Lớp 7B gộp Tháng 9 + Tháng 10 = 1.280.000đ
