@@ -133,7 +133,7 @@ export default function ZaloCenter() {
       const bankId = 'VCB'
       const bankAccount = '1070493932'
       const bankName = 'HO KINH DOANH NGUYEN LUONG THO'
-      const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`
+      const qrUrl = `https://img.vietqr.io/image/${bankId}-${bankAccount}-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}`
       const isSent = sentItemIds.includes(st.id)
 
       return {

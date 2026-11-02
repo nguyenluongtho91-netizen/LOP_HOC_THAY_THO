@@ -222,10 +222,10 @@ export function formatShortTransferContent(fullName: string, className = ''): st
 }
 
 /**
- * Tạo link ảnh mã VietQR chuẩn ngân hàng Vietcombank
+ * Tạo link ảnh mã VietQR chuẩn ngân hàng Vietcombank (tối giản gọn gàng nhất)
  */
 export function generateVietQRUrl(amount: number, addInfo: string): string {
-  return `https://img.vietqr.io/image/vietcombank-1070493932-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent('HO KINH DOANH NGUYEN LUONG THO')}`
+  return `https://img.vietqr.io/image/VCB-1070493932-compact2.png?amount=${amount}&addInfo=${encodeURIComponent(addInfo)}`
 }
 
 export interface ParentTuitionMessageParams {

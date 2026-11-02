@@ -147,7 +147,7 @@ async function main() {
     const bankAccount = '1070493932';
     const bankName = 'HO KINH DOANH NGUYEN LUONG THO';
     const addInfo = formatVietQRAddInfo(student.full_name, item.course_name);
-    const qrUrl = `https://img.vietqr.io/image/VCB-${bankAccount}-compact2.png?amount=${amountVal}&addInfo=${encodeURIComponent(addInfo)}&accountName=${encodeURIComponent(bankName)}`;
+    const qrUrl = `https://img.vietqr.io/image/VCB-${bankAccount}-compact2.png?amount=${amountVal}&addInfo=${encodeURIComponent(addInfo)}`;
     const clsClean = (item.course_name || 'Lớp học').replace(/^[Ll][ớỚoO][pP]\s*/, '').trim();
     const classLabel = clsClean ? (clsClean.toLowerCase().startsWith('lớp') ? clsClean : `Lớp ${clsClean}`) : '';
     const msg = `Kính gửi Quý Phụ huynh em: ${student.full_name}${classLabel ? ` (${classLabel})` : ''}\n\n`
