@@ -65,9 +65,7 @@ export default function ZaloCenter() {
     + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
     + `- Số tiền: {so_tien} đ\n`
     + `- Nội dung CK: {noi_dung_ck}\n\n`
-    + `👉 Chuyển nhanh:\n`
-    + `{link_pay}\n\n`
-    + `🔗 Quét mã QR:\n`
+    + `🔗 Link quét mã QR:\n`
     + `{link_qr}\n\n`
     + `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
   )
@@ -79,14 +77,6 @@ export default function ZaloCenter() {
     const detailLine = item.note ? `• Chi tiết: ${item.note}\n` : ''
     const cleanClass = (item.class || '').replace(/^[Ll][ớỚoO][pP]\s*/, '').trim() || item.class
     const shortCk = item.shortTransfer || `${(item.studentName || '').split(' ').slice(-2).join(' ')} L${(item.class || '').match(/\d+/)?.[0] || ''}`.trim()
-    const payParams = new URLSearchParams()
-    payParams.set('amount', String(item.amount || 0))
-    payParams.set('des', shortCk)
-    payParams.set('name', item.studentName || '')
-    if (cleanClass) payParams.set('class', cleanClass)
-    if (item.month) payParams.set('month', item.month)
-    if (item.note) payParams.set('note', item.note)
-    const payUrl = `https://lop-hoc-thay-tho.vercel.app/pay?${payParams.toString()}`
 
     return tuitionTemplate
       .replace(/{ten_hoc_sinh}/g, item.studentName)
@@ -97,7 +87,6 @@ export default function ZaloCenter() {
       .replace(/{so_tien}/g, Number(item.amount || 0).toLocaleString('vi-VN'))
       .replace(/{noi_dung_ck}/g, shortCk)
       .replace(/{ma_hoc_sinh}/g, item.studentCode || 'HS')
-      .replace(/{link_pay}/g, payUrl)
       .replace(/{link_qr}/g, item.qrUrl || '')
   }
 

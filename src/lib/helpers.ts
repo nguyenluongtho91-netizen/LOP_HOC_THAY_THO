@@ -260,19 +260,6 @@ export function formatParentTuitionMessage(params: ParentTuitionMessageParams): 
     }
   }
 
-  const origin = typeof window !== 'undefined' && window.location?.origin?.includes('http')
-    ? window.location.origin
-    : 'https://lop-hoc-thay-tho.vercel.app'
-  
-  const payParams = new URLSearchParams()
-  payParams.set('amount', String(amount))
-  payParams.set('des', shortTransfer)
-  payParams.set('name', studentName)
-  if (cleanClass) payParams.set('class', cleanClass)
-  if (monthText) payParams.set('month', monthText)
-  if (note && note.trim()) payParams.set('note', note.trim())
-  const payUrl = `${origin}/pay?${payParams.toString()}`
-
   return `Kính gửi Quý Phụ huynh em: ${studentName}${classLabel ? ` (${classLabel})` : ''}\n\n`
        + `Thầy xin gửi thông tin học phí ${monthText} của em:\n`
        + `• Số tiền học phí: ${amount.toLocaleString('vi-VN')} đ\n`
@@ -284,9 +271,7 @@ export function formatParentTuitionMessage(params: ParentTuitionMessageParams): 
        + `- Chủ tài khoản: HO KINH DOANH NGUYEN LUONG THO\n`
        + `- Số tiền: ${amount.toLocaleString('vi-VN')} đ\n`
        + `- Nội dung CK: ${shortTransfer}\n\n`
-       + `👉 Chuyển nhanh:\n`
-       + `${payUrl}\n\n`
-       + `🔗 Quét mã QR:\n`
+       + `🔗 Link quét mã QR:\n`
        + `${finalQrUrl}\n\n`
        + `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
 }
