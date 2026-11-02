@@ -180,15 +180,15 @@ export default function InvoiceManager({
     const publicUrl = `${origin}/hoa-don/${inv.lookupCode}`
 
     const msg = `LỚP HỌC TOÁN THẦY THỌ - HÓA ĐƠN ĐIỆN TỬ\n` +
-      `Kính gửi Quý phụ huynh học sinh ${inv.studentName},\n` +
-      `Thầy Thọ xin gửi Hóa đơn điện tử thu học phí đã hoàn tất:\n` +
+      `Kính gửi Quý Phụ huynh em: ${inv.studentName}\n\n` +
+      `Thầy xin gửi Hóa đơn điện tử thu học phí đã hoàn tất:\n` +
       `• Số hóa đơn: ${inv.invoiceNumber}\n` +
       `• Môn học: ${inv.items[0]?.name || 'Học phí môn Toán'}\n` +
       `• Số tiền: ${fmtVNDShort(inv.totalAmount)} (${inv.totalAmountWords})\n` +
       `• Hình thức: ${inv.paymentMethod}\n` +
       `• Đơn vị phát hành: HỘ KINH DOANH NGUYỄN LƯƠNG THỌ\n` +
       `Quý phụ huynh bấm vào link dưới đây để xem và lưu trữ hóa đơn điện tử gốc:\n${publicUrl}\n\n` +
-      `Trân trọng cảm ơn Quý phụ huynh!`
+      `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
 
     try {
       const res = await fetch('http://localhost:3001/send-direct', {

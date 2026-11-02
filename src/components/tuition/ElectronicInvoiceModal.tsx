@@ -42,15 +42,15 @@ export default function ElectronicInvoiceModal({
   // Sao chép nội dung tin nhắn gửi Zalo
   const handleCopyMessage = async () => {
     const msg = `LỚP HỌC TOÁN THẦY THỌ - HÓA ĐƠN ĐIỆN TỬ\n` +
-      `Kính gửi Quý phụ huynh học sinh ${invoice.studentName},\n` +
-      `Thầy Thọ xin gửi Hóa đơn điện tử thu học phí:\n` +
+      `Kính gửi Quý Phụ huynh em: ${invoice.studentName}\n\n` +
+      `Thầy xin gửi Hóa đơn điện tử thu học phí:\n` +
       `• Số hóa đơn: ${invoice.invoiceNumber}\n` +
       `• Môn học: ${invoice.items[0]?.name || 'Học phí môn Toán'}\n` +
       `• Số tiền: ${fmtVNDShort(invoice.totalAmount)} (${invoice.totalAmountWords})\n` +
       `• Hình thức: ${invoice.paymentMethod}\n` +
       `• Đơn vị phát hành: HỘ KINH DOANH NGUYỄN LƯƠNG THỌ\n` +
       `Quý phụ huynh bấm vào link dưới đây để xem hóa đơn gốc:\n${publicUrl}\n\n` +
-      `Trân trọng cảm ơn Quý phụ huynh!`
+      `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
     try {
       await navigator.clipboard.writeText(msg)
       setCopiedMsg(true)
@@ -81,15 +81,15 @@ export default function ElectronicInvoiceModal({
 
     setSendingZalo(true)
     const msg = `LỚP HỌC TOÁN THẦY THỌ - HÓA ĐƠN ĐIỆN TỬ\n` +
-      `Kính gửi Quý phụ huynh học sinh ${invoice.studentName},\n` +
-      `Thầy Thọ xin gửi Hóa đơn điện tử xác nhận đã hoàn tất thu học phí:\n` +
+      `Kính gửi Quý Phụ huynh em: ${invoice.studentName}\n\n` +
+      `Thầy xin gửi Hóa đơn điện tử xác nhận đã hoàn tất thu học phí:\n` +
       `• Số hóa đơn: ${invoice.invoiceNumber}\n` +
       `• Môn học: ${invoice.items[0]?.name || 'Học phí môn Toán'}\n` +
       `• Số tiền: ${fmtVNDShort(invoice.totalAmount)} (${invoice.totalAmountWords})\n` +
       `• Hình thức: ${invoice.paymentMethod}\n` +
       `• Đơn vị phát hành: HỘ KINH DOANH NGUYỄN LƯƠNG THỌ\n` +
       `Quý phụ huynh có thể tra cứu và lưu trữ hóa đơn điện tử chính thức tại:\n${publicUrl}\n\n` +
-      `Trân trọng cảm ơn Quý phụ huynh đã đồng hành cùng Lớp học Toán Thầy Thọ!`
+      `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
 
     try {
       const res = await fetch('http://localhost:3001/send-direct', {

@@ -3496,13 +3496,13 @@ export default function Tuition() {
                     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://lop-hoc-thay-tho.vercel.app'
                     const publicUrl = `${origin}/hoa-don/${chainModal.invoice.lookupCode}`
                     const msg = `LỚP HỌC TOÁN THẦY THỌ - HÓA ĐƠN ĐIỆN TỬ\n` +
-                      `Kính gửi Quý phụ huynh học sinh ${chainModal.studentName},\n` +
-                      `Thầy Thọ xin gửi Hóa đơn điện tử xác nhận đã thu học phí ${fmtVNDShort(chainModal.amount)}:\n` +
+                      `Kính gửi Quý Phụ huynh em: ${chainModal.studentName}\n\n` +
+                      `Thầy xin gửi Hóa đơn điện tử xác nhận đã thu học phí ${fmtVNDShort(chainModal.amount)}:\n` +
                       `• Số hóa đơn: ${chainModal.invoice.invoiceNumber}\n` +
                       `• Môn học: ${chainModal.invoice.items[0]?.name || 'Học phí môn Toán'}\n` +
                       `• Đơn vị: HỘ KINH DOANH NGUYỄN LƯƠNG THỌ\n` +
                       `Quý phụ huynh bấm vào đường link sau để xem và lưu trữ hóa đơn gốc:\n${publicUrl}\n\n` +
-                      `Trân trọng cảm ơn Quý phụ huynh!`
+                      `Thầy cảm ơn Quý Phụ huynh nhiều ạ!`
 
                     try {
                       const res = await fetch('http://localhost:3001/send-direct', {

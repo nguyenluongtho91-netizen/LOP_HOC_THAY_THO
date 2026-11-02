@@ -1,5 +1,5 @@
 // Service Worker cho Lớp Học Thầy Thọ PWA
-const CACHE_NAME = 'thay-tho-cache-v3';
+const CACHE_NAME = 'thay-tho-cache-v4';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
