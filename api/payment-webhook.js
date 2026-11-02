@@ -254,15 +254,27 @@ export default async function handler(req, res) {
         const shortName = parts.length > 2 ? `${parts[0]} ${parts[parts.length - 1]}` : cleanName;
         const lastTwoName = parts.length >= 2 ? `${parts[parts.length - 2]} ${parts[parts.length - 1]}` : cleanName;
 
+        let isMatch = false;
         if (cleanName.length >= 4 && cleanDesc.includes(cleanName)) {
-          student = st;
-          classId = await findActiveClassId(st.id);
-          break;
+          isMatch = true;
         } else if (shortName.length >= 6 && cleanDesc.includes(shortName)) {
-          student = st;
-          classId = await findActiveClassId(st.id);
-          break;
+          isMatch = true;
         } else if (lastTwoName.length >= 5 && cleanDesc.includes(lastTwoName)) {
+          // Kiểm tra nếu có phân biệt lớp/khối (ví dụ L7, L8, L9, L10)
+          const gradeNum = (st.grade || '').match(/\d+/)?.[0];
+          if (gradeNum) {
+            const hasGradeTag = cleanDesc.includes(`L${gradeNum}`) || cleanDesc.includes(`LOP ${gradeNum}`) || cleanDesc.includes(`K${gradeNum}`);
+            if (hasGradeTag) {
+              isMatch = true;
+            } else if (!cleanDesc.match(/L\d+/)) {
+              isMatch = true;
+            }
+          } else {
+            isMatch = true;
+          }
+        }
+
+        if (isMatch) {
           student = st;
           classId = await findActiveClassId(st.id);
           break;
