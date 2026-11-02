@@ -251,7 +251,9 @@ export function formatParentTuitionMessage(params: ParentTuitionMessageParams): 
   
   let monthText = month
   if (!monthText || monthText === 'Tháng 10' || monthText === 'Tháng 10/2026') {
-    if (note && (note.includes('Tháng 8') || note.includes('T8')) && (note.includes('Tháng 9') || note.includes('T9')) && (note.includes('Tháng 10') || note.includes('T10'))) {
+    if (note && (note.includes('Tháng 7') || note.includes('T7'))) {
+      monthText = 'Tháng 7, 8, 9 & 10'
+    } else if (note && (note.includes('Tháng 8') || note.includes('T8')) && (note.includes('Tháng 9') || note.includes('T9')) && (note.includes('Tháng 10') || note.includes('T10'))) {
       monthText = 'Tháng 8, 9 & 10'
     } else if (note && (note.includes('Tháng 9') || note.includes('T9')) && (note.includes('Tháng 10') || note.includes('T10'))) {
       monthText = 'Tháng 9 & Tháng 10'
@@ -453,6 +455,16 @@ export function getSpecialStudentFee(
       amount: 720000, 
       note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)', 
       month: 'Tháng 9 & Tháng 10',
+      isCustom: true 
+    }
+  }
+
+  // 15. Phan Thị Trâm Anh (Mã 1019): Lớp 10 gộp Tháng 7, 8, 9 (1.520.000 đ) + Tháng 10 (720.000 đ) = 2.240.000đ
+  if (code === '1019' || normName.includes('tram anh') || sid === '23fd4e14-f70e-491b-88b7-3bcb957e7a47') {
+    return { 
+      amount: 2240000, 
+      note: 'Gộp Tháng 7, 8 & 9 (1.520.000 đ) + Tháng 10 (720.000 đ)', 
+      month: 'Tháng 7, 8, 9 & 10',
       isCustom: true 
     }
   }

@@ -204,6 +204,16 @@ export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string
     note: 'Gộp 2 tháng (Tháng 9 & Tháng 10): T9 (320.000 đ) + T10 (400.000 đ)'
   },
 
+  // Phan Thị Trâm Anh: Lớp 10 gộp Tháng 7, 8, 9 (1.520.000 đ) + Tháng 10 (720.000 đ) = 2.240.000đ
+  '23fd4e14-f70e-491b-88b7-3bcb957e7a47_a584e78a-355f-4398-970b-1d8359a2b241': {
+    amount: 2240000,
+    note: 'Gộp Tháng 7, 8 & 9 (1.520.000 đ) + Tháng 10 (720.000 đ)'
+  },
+  '23fd4e14-f70e-491b-88b7-3bcb957e7a47': {
+    amount: 2240000,
+    note: 'Gộp Tháng 7, 8 & 9 (1.520.000 đ) + Tháng 10 (720.000 đ)'
+  },
+
   // Nguyễn Thảo Nguyên: Lớp 7B gộp Tháng 9 + Tháng 10 = 1.280.000đ
   '353d699e-90c9-4a47-9722-6ccd49292999_c37d47a2-d679-4429-8627-001b6099f65e': {
     amount: 1280000,
