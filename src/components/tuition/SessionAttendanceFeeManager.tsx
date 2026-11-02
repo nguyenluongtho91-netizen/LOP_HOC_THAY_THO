@@ -160,6 +160,20 @@ export const DEFAULT_SPECIAL_FEES: Record<string, { amount: number; note: string
     note: 'Đã gộp vào Lớp 9A (1.040.000 đ)'
   },
 
+  // Hà Bình Nguyên: Chỉ học Toán 9A = 640.000đ; Lớp 9B = 0đ
+  '1cf57d6b-38bc-4855-87ae-c2b186e42304_165b5023-5c8f-4792-be55-21b88466b2e2': {
+    amount: 640000,
+    note: '8 buổi × 80.000 đ = 640.000 đ'
+  },
+  '1cf57d6b-38bc-4855-87ae-c2b186e42304': {
+    amount: 640000,
+    note: '8 buổi × 80.000 đ = 640.000 đ'
+  },
+  '1cf57d6b-38bc-4855-87ae-c2b186e42304_c45ff60b-d498-4a43-9260-38b4a31d1cc0': {
+    amount: 0,
+    note: 'Chỉ học Toán Lớp 9A (không học Hóa 9B)'
+  },
+
   // Nguyễn Thảo Nguyên: Lớp 7B gộp Tháng 9 + Tháng 10 = 1.280.000đ
   '353d699e-90c9-4a47-9722-6ccd49292999_c37d47a2-d679-4429-8627-001b6099f65e': {
     amount: 1280000,
