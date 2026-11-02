@@ -416,10 +416,10 @@ export function getSpecialStudentFee(
     return { amount: 320000, note: 'Học phí Lớp 8B: 320.000 đ', isCustom: true }
   }
 
-  // 11. Hà Bình Nguyên (Mã 9010): Chỉ học Toán 9A = 640.000 đ; Lớp 9B = 0đ (không học Hóa)
+  // 11. Hà Bình Nguyên (Mã 9010): Chỉ học Toán 9A = 640.000 đ
   if (code === '9010' || normName.includes('binh nguyen') || sid === '1cf57d6b-38bc-4855-87ae-c2b186e42304') {
     if (isClass9B || cid === 'c45ff60b-d498-4a43-9260-38b4a31d1cc0') {
-      return { amount: 0, note: 'Đã nghỉ Lớp 9B (chỉ học Toán Lớp 9A)', isCustom: true }
+      return null
     }
     return { 
       amount: 640000, 
