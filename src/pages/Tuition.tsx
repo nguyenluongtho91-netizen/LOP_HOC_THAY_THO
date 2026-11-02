@@ -318,9 +318,19 @@ export default function Tuition() {
       const local = localStorage.getItem('__CUSTOM_STUDENT_FEES__')
       if (local) setCustomFees(JSON.parse(local))
       const { data } = await supabase.from('exams').select('data').eq('title', '__CUSTOM_STUDENT_FEES__').maybeSingle()
-      if (data?.data?.items && Array.isArray(data.data.items)) {
+      if (data?.data?.items) {
         const map: Record<string, CustomFeeRecord> = {}
-        data.data.items.forEach((it: any) => { if (it.key) map[it.key] = it })
+        if (Array.isArray(data.data.items)) {
+          data.data.items.forEach((it: any) => { if (it.key) map[it.key] = it })
+        } else if (typeof data.data.items === 'object') {
+          Object.entries(data.data.items).forEach(([k, v]: [string, any]) => {
+            if (typeof v === 'object' && v !== null) {
+              map[k] = { key: k, amount: v.amount ?? v.tuition_fee, note: v.note || '', updatedAt: v.updatedAt }
+            } else if (typeof v === 'number') {
+              map[k] = { key: k, amount: v, note: '', updatedAt: new Date().toISOString() }
+            }
+          })
+        }
         setCustomFees(prev => {
           const merged = { ...prev, ...map }
           try { localStorage.setItem('__CUSTOM_STUDENT_FEES__', JSON.stringify(merged)) } catch {}
