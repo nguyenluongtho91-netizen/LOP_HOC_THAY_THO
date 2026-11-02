@@ -774,7 +774,7 @@ export default function Tuition() {
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 07/11 giúp Thầy.\n\n`
+              + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
               + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -855,7 +855,7 @@ export default function Tuition() {
               + `• Môn học: ${subjectName}\n`
               + `• Lớp: ${cleanClass}\n`
               + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-              + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 07/11 giúp Thầy.\n\n`
+              + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
               + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
               + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -1003,7 +1003,7 @@ export default function Tuition() {
                 + `• Môn học: ${subjectName}\n`
                 + `• Lớp: ${cleanClass}\n`
                 + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 07/11 giúp Thầy.\n\n`
+                + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
                 + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                 + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
@@ -1122,7 +1122,7 @@ export default function Tuition() {
          + `• Môn học: ${subjectName}\n`
          + `• Lớp: ${cleanClass}\n`
          + `• Số tiền học phí: ${amountVal.toLocaleString('vi-VN')} đ\n\n`
-         + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 07/11 giúp Thầy.\n\n`
+         + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
          + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
          + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
   }
@@ -3088,7 +3088,7 @@ export default function Tuition() {
                         + `• Môn học: ${subjectName}\n`
                         + `• Lớp: ${cleanClass}\n`
                         + `• Số tiền học phí: ${amt.toLocaleString('vi-VN')} đ\n\n`
-                        + `⏰ Quý phụ huynh vui lòng gửi học phí trước ngày 07/11 giúp Thầy.\n\n`
+                        + `⏰ Quý phụ huynh vui lòng hoàn thành học phí trước 07/11 để Thầy thuận tiện quản lý sổ sách.\n\n`
                         + `👉 Quý phụ huynh quét ảnh mã QR chuyển khoản đính kèm bên dưới.\n\n`
                         + `Thầy xin chân thành cảm ơn Quý phụ huynh!`
 
