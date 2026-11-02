@@ -21,7 +21,7 @@ import Modal from '@/components/Modal'
 import VietQRModal from '@/components/VietQRModal'
 import { buildElectronicInvoice, saveElectronicInvoice, ElectronicInvoiceData } from '@/lib/invoiceService'
 import { useDataStore } from '@/store/dataStore'
-import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl, formatParentTuitionMessage } from '@/lib/helpers'
+import { fmtVNDShort, formatVietQRAddInfo, formatShortTransferContent, generateVietQRUrl, formatParentTuitionMessage, getSpecialStudentFee } from '@/lib/helpers'
 import { sendZaloPersonalMessage, copyQrImageToClipboard, copyTuitionCardImageToClipboard, sendZaloOAMessage, isZaloOAConfigured, checkZaloServiceHealth } from '@/services/zaloService'
 import type { PaymentMethod } from '@/types'
 
@@ -267,9 +267,18 @@ export default function Tuition() {
   }, [])
 
   const getStudentEffectiveFee = (studentId: string, classId: string, notif?: any) => {
-    // 1. Học sinh có cấu hình học phí riêng hoặc gộp tháng/gộp môn (customFees có độ ưu tiên cao nhất)
+    // 0. Cấu hình đặc biệt theo chỉ đạo của Thầy Thọ (Độ ưu tiên tuyệt đối cao nhất)
+    const stu = students.find(s => s.id === studentId)
+    const cls = classes.find(c => c.id === classId)
+    const cName = ((cls as any)?.class_name || cls?.name || '')
+    const special = getSpecialStudentFee(studentId, classId, stu?.student_code, stu?.full_name, cName)
+    if (special) {
+      return special
+    }
+
+    // 1. Học sinh có cấu hình học phí riêng hoặc gộp tháng/gộp môn (customFees / DEFAULT_SPECIAL_FEES)
     const key = studentId + '_' + classId
-    const custom = customFees[key] || customFees[studentId]
+    const custom = customFees[key] || customFees[studentId] || DEFAULT_SPECIAL_FEES[key] || DEFAULT_SPECIAL_FEES[studentId]
     if (custom && custom.amount != null) {
       return { 
         amount: Number(custom.amount), 
@@ -300,9 +309,8 @@ export default function Tuition() {
            (a.present || a.status === 'present' || a.status === 'PRESENT' || a.status === 'late' || a.status === 'LATE')
     )
     if (attendedRecords.length > 0) {
-      const cls = classes.find(c => c.id === classId)
-      const cName = ((cls as any)?.class_name || cls?.name || '').toUpperCase()
-      const is7A = classId === '75ec18e9-cc89-4b3e-87b0-a4a39cb90d40' || cName.includes('7A') || cName.includes('7.2')
+      const clsUpperName = cName.toUpperCase()
+      const is7A = classId === '75ec18e9-cc89-4b3e-87b0-a4a39cb90d40' || clsUpperName.includes('7A') || clsUpperName.includes('7.2')
 
       // Ưu tiên đơn giá riêng của học sinh (nếu có trong STUDENT_CUSTOM_RATES)
       let rate = 80000
@@ -327,7 +335,6 @@ export default function Tuition() {
     }
 
     // 5. Mặc định theo lớp
-    const cls = classes.find(c => c.id === classId)
     return { amount: getStandardClassFee(cls), note: '', isCustom: false }
   }
 

@@ -20,6 +20,7 @@ const fmt = (date: any, pattern = 'dd/MM/yyyy'): string => {
   }
 }
 import { copyQrImageToClipboard, copyTuitionCardImageToClipboard } from '@/services/zaloService'
+import { getSpecialStudentFee } from '@/lib/helpers'
 import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 import { supabase } from '@/lib/supabase'
@@ -479,7 +480,8 @@ export default function SessionAttendanceFeeManager({
 
       const attendedCount = attendedDates.length
       const key = st.id + '_' + selClass
-      const custom = customFees[key] || customFees[st.id]
+      const special = getSpecialStudentFee(st.id, selClass, st.student_code, st.full_name, currentClass?.name)
+      const custom = special || customFees[key] || customFees[st.id] || DEFAULT_SPECIAL_FEES[key] || DEFAULT_SPECIAL_FEES[st.id]
       const notif = tuitionNotifications.find(n => n.student_id === st.id && n.class_id === selClass)
       const customRate = STUDENT_CUSTOM_RATES[st.id]
       const studentRate = customRate !== undefined ? customRate : unitPrice
