@@ -7,6 +7,7 @@ import { HOA12_MIDTERM2_EXAMS } from "./hoa12Midterm2ExamService";
 import { HOA10_FINAL_EXAMS } from './hoa10FinalExamService';
 import { HOA11_FINAL_EXAMS } from './hoa11FinalExamService';
 import { HOA12_FINAL_EXAMS } from './hoa12FinalExamService';
+import { getLayGocHoaStandardExamsForGrade } from './layGocHoaExamService';
 // @ts-nocheck
 // src/services/allExamsAdminService.ts
 // Dịch vụ tải nhanh dữ liệu toàn bộ đề thi để Quản trị viên / Giáo viên xem và duyệt đề tự do
@@ -86,6 +87,12 @@ export function getAllStandardExamsList() {
     ...HOA10_CHUONG5_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 5: Năng Lượng Hóa Học' })),
     ...HOA10_CHUONG6_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 6: Tốc Độ Phản Ứng' })),
     ...HOA10_CHUONG7_EXAMS.map(e => ({ ...e, grade: '10', chapter: 'Chương 7: Nhóm Halogen' })),
+
+    // ĐỀ HÓA HỌC THCS (LẤY GỐC HÓA HỌC KHỐI 6, 7, 8, 9 - CHUẨN SGK KHTN GDPT 2018)
+    ...getLayGocHoaStandardExamsForGrade("6"),
+    ...getLayGocHoaStandardExamsForGrade("7"),
+    ...getLayGocHoaStandardExamsForGrade("8"),
+    ...getLayGocHoaStandardExamsForGrade("9"),
   ];
 }
 

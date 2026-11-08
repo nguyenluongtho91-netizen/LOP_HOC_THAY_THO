@@ -25,7 +25,7 @@ export interface EssayGradeResult {
 const GEMINI_KEY_STORAGE = 'gemini_essay_api_key';
 
 export function getGeminiApiKey(): string {
-  return localStorage.getItem(GEMINI_KEY_STORAGE) || '';
+  return localStorage.getItem(GEMINI_KEY_STORAGE) || (import.meta as any).env?.VITE_GEMINI_API_KEY || '';
 }
 
 export function setGeminiApiKey(key: string): void {

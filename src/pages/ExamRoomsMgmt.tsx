@@ -39,6 +39,7 @@ export default function ExamRoomsMgmt() {
   const [modalOpen, setModalOpen] = useState(false)
   const [saving, setSaving] = useState(false)
   const [modalGrade, setModalGrade] = useState<number | 'all' | ''>('')
+  const [modalSubjectFilter, setModalSubjectFilter] = useState<'all' | 'hoa' | 'toan'>('all')
   const [modalClassGradeTab, setModalClassGradeTab] = useState<string>('all')
   const [selectedChapterFilter, setSelectedChapterFilter] = useState<string>('all')
   const [editingRoomId, setEditingRoomId] = useState<string | null>(null)
@@ -280,6 +281,7 @@ export default function ExamRoomsMgmt() {
       setModalOpen(false)
       setEditingRoomId(null)
       setModalGrade('')
+      setModalSubjectFilter('all')
       setCustomLinkUrl('')
       setCustomLinkTitle('')
       setExamSourceMode('library')
@@ -388,13 +390,13 @@ export default function ExamRoomsMgmt() {
     }
 
     const examTitle = (room.exams?.title || '').toLowerCase()
-    if (examTitle.includes('lớp 12') || examTitle.includes('khối 12') || examTitle.includes('toán 12') || examTitle.includes('khối mười hai') || /\b(khối\s+)?12\b/.test(examTitle)) return 12
-    if (examTitle.includes('lớp 11') || examTitle.includes('khối 11') || examTitle.includes('toán 11') || examTitle.includes('khối mười một') || /\b(khối\s+)?11\b/.test(examTitle)) return 11
-    if (examTitle.includes('lớp 10') || examTitle.includes('khối 10') || examTitle.includes('toán 10') || examTitle.includes('khối mười') || /\b(khối\s+)?10\b/.test(examTitle)) return 10
-    if (examTitle.includes('lớp 6') || examTitle.includes('khối 6') || examTitle.includes('toán 6') || examTitle.includes('khối sáu') || /\b(khối\s+)?6\b/.test(examTitle)) return 6
-    if (examTitle.includes('lớp 7') || examTitle.includes('khối 7') || examTitle.includes('toán 7') || examTitle.includes('khối bảy') || /\b(khối\s+)?7\b/.test(examTitle)) return 7
-    if (examTitle.includes('lớp 8') || examTitle.includes('khối 8') || examTitle.includes('toán 8') || examTitle.includes('khối tám') || /\b(khối\s+)?8\b/.test(examTitle)) return 8
-    if (examTitle.includes('lớp 9') || examTitle.includes('khối 9') || examTitle.includes('toán 9') || examTitle.includes('khối chín') || /\b(khối\s+)?9\b/.test(examTitle)) return 9
+    if (examTitle.includes('lớp 12') || examTitle.includes('khối 12') || examTitle.includes('toán 12') || examTitle.includes('hóa 12') || examTitle.includes('khối mười hai') || /\b(khối\s+)?12\b/.test(examTitle)) return 12
+    if (examTitle.includes('lớp 11') || examTitle.includes('khối 11') || examTitle.includes('toán 11') || examTitle.includes('hóa 11') || examTitle.includes('khối mười một') || /\b(khối\s+)?11\b/.test(examTitle)) return 11
+    if (examTitle.includes('lớp 10') || examTitle.includes('khối 10') || examTitle.includes('toán 10') || examTitle.includes('hóa 10') || examTitle.includes('khối mười') || /\b(khối\s+)?10\b/.test(examTitle)) return 10
+    if (examTitle.includes('lớp 6') || examTitle.includes('khối 6') || examTitle.includes('toán 6') || examTitle.includes('hóa 6') || examTitle.includes('khtn 6') || examTitle.includes('khối sáu') || /\b(khối\s+)?6\b/.test(examTitle)) return 6
+    if (examTitle.includes('lớp 7') || examTitle.includes('khối 7') || examTitle.includes('toán 7') || examTitle.includes('hóa 7') || examTitle.includes('khtn 7') || examTitle.includes('khối bảy') || /\b(khối\s+)?7\b/.test(examTitle)) return 7
+    if (examTitle.includes('lớp 8') || examTitle.includes('khối 8') || examTitle.includes('toán 8') || examTitle.includes('hóa 8') || examTitle.includes('khtn 8') || examTitle.includes('khối tám') || /\b(khối\s+)?8\b/.test(examTitle)) return 8
+    if (examTitle.includes('lớp 9') || examTitle.includes('khối 9') || examTitle.includes('toán 9') || examTitle.includes('hóa 9') || examTitle.includes('khtn 9') || examTitle.includes('khối chín') || /\b(khối\s+)?9\b/.test(examTitle)) return 9
 
     return null
   }
@@ -407,8 +409,20 @@ export default function ExamRoomsMgmt() {
 
     const standardExamsForGrade = useMemo(() => {
     if (!modalGrade) return []
-    return getStandardExamsForGrade(modalGrade)
-  }, [modalGrade])
+    let list = getStandardExamsForGrade(modalGrade)
+    if (modalSubjectFilter === 'hoa') {
+      list = list.filter((e: any) => {
+        const t = ((e.title || '') + ' ' + (e.chapter || '')).toLowerCase()
+        return t.includes('hóa') || t.includes('khtn') || t.includes('nguyên tử') || t.includes('phân tử') || t.includes('hóa trị') || e.subject === 'Hóa học'
+      })
+    } else if (modalSubjectFilter === 'toan') {
+      list = list.filter((e: any) => {
+        const t = ((e.title || '') + ' ' + (e.chapter || '')).toLowerCase()
+        return t.includes('toán') || t.includes('toan') || e.subject === 'Toán học'
+      })
+    }
+    return list
+  }, [modalGrade, modalSubjectFilter])
 
   // Danh sách các chuyên đề/chương của khối đang chọn
   const examChaptersList = useMemo(() => {
@@ -518,16 +532,49 @@ const isFirstRender = useRef(true)
     }
   }, [loading, rooms])
 
-  const getExamGrade = (title: string) => {
-    const t = title.toLowerCase()
-    if (t.includes('lớp 12') || t.includes('khối 12') || t.includes('toán 12') || t.includes('khối mười hai') || /\b(khối\s+)?12\b/.test(t)) return 12
-    if (t.includes('lớp 11') || t.includes('khối 11') || t.includes('toán 11') || t.includes('khối mười một') || /\b(khối\s+)?11\b/.test(t)) return 11
-    if (t.includes('lớp 10') || t.includes('khối 10') || t.includes('toán 10') || t.includes('khối mười') || /\b(khối\s+)?10\b/.test(t)) return 10
-    if (t.includes('lớp 6') || t.includes('khối 6') || t.includes('toán 6') || t.includes('khối sáu') || /\b(khối\s+)?6\b/.test(t)) return 6
-    if (t.includes('lớp 7') || t.includes('khối 7') || t.includes('toán 7') || t.includes('khối bảy') || /\b(khối\s+)?7\b/.test(t)) return 7
-    if (t.includes('lớp 8') || t.includes('khối 8') || t.includes('toán 8') || t.includes('khối tám') || /\b(khối\s+)?8\b/.test(t)) return 8
-    if (t.includes('lớp 9') || t.includes('khối 9') || t.includes('toán 9') || t.includes('khối chín') || /\b(khối\s+)?9\b/.test(t)) return 9
+  const getExamGrade = (title: string, examData?: any) => {
+    if (examData?.grade) {
+      const g = Number(examData.grade)
+      if (!isNaN(g) && g >= 6 && g <= 12) return g
+    }
+    const t = (title || '').toLowerCase()
+    if (t.includes('lớp 12') || t.includes('khối 12') || t.includes('toán 12') || t.includes('hóa 12') || t.includes('khối mười hai') || /\b(khối\s+)?12\b/.test(t)) return 12
+    if (t.includes('lớp 11') || t.includes('khối 11') || t.includes('toán 11') || t.includes('hóa 11') || t.includes('khối mười một') || /\b(khối\s+)?11\b/.test(t)) return 11
+    if (t.includes('lớp 10') || t.includes('khối 10') || t.includes('toán 10') || t.includes('hóa 10') || t.includes('khối mười') || /\b(khối\s+)?10\b/.test(t)) return 10
+    if (t.includes('lớp 6') || t.includes('khối 6') || t.includes('toán 6') || t.includes('hóa 6') || t.includes('khtn 6') || t.includes('khối sáu') || /\b(khối\s+)?6\b/.test(t)) return 6
+    if (t.includes('lớp 7') || t.includes('khối 7') || t.includes('toán 7') || t.includes('hóa 7') || t.includes('khtn 7') || t.includes('khối bảy') || /\b(khối\s+)?7\b/.test(t)) return 7
+    if (t.includes('lớp 8') || t.includes('khối 8') || t.includes('toán 8') || t.includes('hóa 8') || t.includes('khtn 8') || t.includes('khối tám') || /\b(khối\s+)?8\b/.test(t)) return 8
+    if (t.includes('lớp 9') || t.includes('khối 9') || t.includes('toán 9') || t.includes('hóa 9') || t.includes('khtn 9') || t.includes('khối chín') || /\b(khối\s+)?9\b/.test(t)) return 9
     return null
+  }
+
+  const isExamMatchingGrade = (ex: any, targetGrade: number | string) => {
+    if (!targetGrade || targetGrade === 'all') return true
+    const gNum = Number(targetGrade)
+    const gradeFromTitle = getExamGrade(ex.title, ex.data)
+    if (gradeFromTitle === gNum) return true
+
+    const t = (ex.title || '').toLowerCase()
+    if (t.includes('lấy gốc hóa') || t.includes('lay goc hoa') || t.includes('nguyên tử khối')) {
+      if (t.includes('phần 1a') || t.includes('phần 1b') || t.includes('nguyên tử khối')) {
+        return gNum >= 6 && gNum <= 12
+      }
+      if (t.includes('phần 2') || t.includes('phần 3') || t.includes('phân tử') || t.includes('hóa trị')) {
+        return gNum === 7 || gNum === 8
+      }
+      if (t.includes('phần 4') || t.includes('phần 5') || t.includes('phần 6') || t.includes('mol') || t.includes('pthh')) {
+        return gNum === 8 || gNum === 9
+      }
+      if (t.includes('phần 7') || t.includes('vô cơ')) {
+        return gNum === 9
+      }
+    }
+
+    if (t.includes('lấy gốc toán') || t.includes('lay goc toan')) {
+      return gNum >= 6 && gNum <= 9
+    }
+
+    return false
   }
 
   const getClassGrade = (cls: any) => {
@@ -552,9 +599,24 @@ const isFirstRender = useRef(true)
     return null
   }
 
-  const filteredExams = modalGrade && modalGrade !== 'all'
-    ? exams.filter(ex => getExamGrade(ex.title) === modalGrade)
-    : exams
+  const filteredExams = useMemo(() => {
+    let list = exams
+    if (modalGrade && modalGrade !== 'all') {
+      list = list.filter(ex => isExamMatchingGrade(ex, modalGrade))
+    }
+    if (modalSubjectFilter === 'hoa') {
+      list = list.filter(ex => {
+        const t = (ex.title || '').toLowerCase()
+        return t.includes('hóa') || t.includes('khtn') || t.includes('nguyên tử') || t.includes('phân tử') || t.includes('hóa trị')
+      })
+    } else if (modalSubjectFilter === 'toan') {
+      list = list.filter(ex => {
+        const t = (ex.title || '').toLowerCase()
+        return t.includes('toán') || t.includes('hình học') || t.includes('đại số') || t.includes('phương trình') || t.includes('số hữu tỉ')
+      })
+    }
+    return list
+  }, [exams, modalGrade, modalSubjectFilter])
 
   const filteredClasses = modalGrade && modalGrade !== 'all'
     ? classes.filter(c => c.status === 'active' && getClassGrade(c) === modalGrade)
@@ -1092,6 +1154,60 @@ const isFirstRender = useRef(true)
             </select>
           </div>
 
+          <div>
+            <label className="label font-bold text-gray-800 flex items-center justify-between mb-1.5">
+              <span>2. Chọn Môn Học Cần Giao</span>
+              <span className="text-[11px] font-bold text-teal-700">Lọc đề theo môn</span>
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setModalSubjectFilter('all')
+                  setSelectedChapterFilter('all')
+                  setForm(f => ({ ...f, exam_id: '' }))
+                }}
+                className={`py-2 px-3 rounded-xl text-xs font-black border transition-all cursor-pointer text-center ${
+                  modalSubjectFilter === 'all'
+                    ? 'bg-slate-800 text-white border-slate-800 shadow-xs'
+                    : 'bg-white text-slate-600 border-slate-200 hover:border-slate-300'
+                }`}
+              >
+                🌟 Tất cả môn
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setModalSubjectFilter('hoa')
+                  setSelectedChapterFilter('all')
+                  setForm(f => ({ ...f, exam_id: '' }))
+                }}
+                className={`py-2 px-3 rounded-xl text-xs font-black border transition-all cursor-pointer text-center ${
+                  modalSubjectFilter === 'hoa'
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs ring-2 ring-emerald-300'
+                    : 'bg-emerald-50 text-emerald-800 border-emerald-200 hover:border-emerald-400'
+                }`}
+              >
+                🧪 Môn Hóa (KHTN)
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setModalSubjectFilter('toan')
+                  setSelectedChapterFilter('all')
+                  setForm(f => ({ ...f, exam_id: '' }))
+                }}
+                className={`py-2 px-3 rounded-xl text-xs font-black border transition-all cursor-pointer text-center ${
+                  modalSubjectFilter === 'toan'
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-xs ring-2 ring-blue-300'
+                    : 'bg-blue-50 text-blue-800 border-blue-200 hover:border-blue-400'
+                }`}
+              >
+                📐 Môn Toán
+              </button>
+            </div>
+          </div>
+
           <div className="space-y-3">
             {/* THANH CHUYỂN ĐỔI: CHỌN TỪ THƯ VIỆN HOẶC DÁN LINK BÀI TẬP */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -1324,9 +1440,14 @@ const isFirstRender = useRef(true)
                       ))}
                       {(selectedChapterFilter === 'all' || selectedChapterFilter === 'custom') && filteredExams.length > 0 && (
                         <optgroup label="📁 ĐỀ THẦY TỰ TẢI LÊN">
-                          {filteredExams.map(ex => (
-                            <option key={ex.id} value={ex.id}>📄 {ex.title}</option>
-                          ))}
+                          {filteredExams.map(ex => {
+                            const t = (ex.title || '').toLowerCase();
+                            const isHoa = t.includes('hóa') || t.includes('nguyên tử') || t.includes('phân tử') || t.includes('khtn');
+                            const icon = isHoa ? '🧪' : '📐';
+                            return (
+                              <option key={ex.id} value={ex.id}>{icon} {ex.title}</option>
+                            );
+                          })}
                         </optgroup>
                       )}
                     </select>

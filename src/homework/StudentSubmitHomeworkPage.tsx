@@ -10,7 +10,7 @@ import {
   Eye, EyeOff, User, Lock, LogOut, Check, ArrowRight,
   HelpCircle, ChevronRight, Image as ImageIcon, Search,
   Users, RefreshCw, ZoomIn, ZoomOut, CheckCheck, UploadCloud,
-  FileCheck2, Award, MessageSquare, ChevronLeft, ArrowLeft
+  FileCheck2, Award, MessageSquare, ChevronLeft, ArrowLeft, Download, XCircle, CheckCircle
 } from 'lucide-react';
 import { HomeworkAssignment, HomeworkSubmission, HomeworkAttachment } from './types';
 import { getAssignmentById, getSubmissions, saveSubmission, formatDateTimeVN } from './homeworkService';
@@ -69,6 +69,26 @@ export default function StudentSubmitHomeworkPage() {
   const [timeLeftSeconds, setTimeLeftSeconds] = useState<number | null>(null);
   const [tabSwitchCount, setTabSwitchCount] = useState<number>(0);
   const [showAntiCheatModal, setShowAntiCheatModal] = useState<boolean>(false);
+  const [showSolutionsReview, setShowSolutionsReview] = useState<boolean>(true);
+
+  const canViewScore = useMemo(() => {
+    if (!assignment) return false;
+    if (assignment.view_score_rule === 'immediate') return true;
+    if (previousSubmission?.score !== null && previousSubmission?.score !== undefined) return true;
+    if (assignment.view_score_rule === 'after_deadline' && assignment.deadline) {
+      return new Date(assignment.deadline).getTime() < Date.now();
+    }
+    return false;
+  }, [assignment, previousSubmission]);
+
+  const canViewSolution = useMemo(() => {
+    if (!assignment) return false;
+    if (assignment.view_solution_rule === 'immediate') return true;
+    if (assignment.view_solution_rule === 'after_deadline' && assignment.deadline) {
+      return new Date(assignment.deadline).getTime() < Date.now();
+    }
+    return false;
+  }, [assignment]);
 
   // Khởi tạo timer khi học sinh được chọn
   useEffect(() => {
@@ -455,7 +475,13 @@ export default function StudentSubmitHomeworkPage() {
         });
       }
 
-      autoScore = Math.round(autoScore * 100) / 100;
+      const totalQ = assignment.parsed_questions?.length || 0;
+      const isAllPart1 = assignment.parsed_questions?.every(q => !q.part || q.part === 1 || q.type === 'multiple_choice');
+      if (isAllPart1 && totalQ > 0) {
+        autoScore = Math.round((part1Correct / totalQ) * 10 * 100) / 100;
+      } else {
+        autoScore = Math.round(autoScore * 100) / 100;
+      }
       const hasWriting = assignment.parsed_questions?.some(q => q.part === 4 || q.type === 'writing');
 
       const submission: HomeworkSubmission = {
@@ -795,26 +821,258 @@ export default function StudentSubmitHomeworkPage() {
               </p>
             </div>
 
-            {/* NẾU THẦY THỌ ĐÃ CHẤM BÀI -> HIỂN THỊ ĐIỂM VÀ LỜI PHÊ */}
-            {previousSubmission?.status === 'graded' && (
-              <div className="p-6 rounded-3xl bg-gradient-to-br from-amber-50 to-orange-50/70 border border-amber-200 space-y-4 max-w-lg mx-auto shadow-sm">
+            {/* KẾT QUẢ CHẤM ĐIỂM TRẮC NGHIỆM / TỰ ĐỘNG */}
+            {canViewScore && previousSubmission && (
+              <div className="p-6 rounded-3xl bg-gradient-to-br from-amber-50 via-orange-50/50 to-yellow-50 border border-amber-200 space-y-4 max-w-lg mx-auto shadow-sm">
                 <div className="flex items-center justify-center gap-2 text-amber-800 font-black text-sm uppercase">
-                  <Award className="w-5 h-5 text-amber-600" /> KẾT QUẢ CHẤM BÀI TỪ THẦY THỌ
+                  <Award className="w-5 h-5 text-amber-600" /> KẾT QUẢ BÀI LÀM
                 </div>
 
-                <div className="w-24 h-24 rounded-full bg-white shadow-lg border-4 border-amber-400 flex flex-col items-center justify-center mx-auto">
+                <div className="w-28 h-28 rounded-full bg-white shadow-lg border-4 border-amber-400 flex flex-col items-center justify-center mx-auto">
                   <span className="text-3xl font-black text-amber-600 leading-none">
-                    {previousSubmission.score !== null ? previousSubmission.score : '—'}
+                    {previousSubmission.score !== null && previousSubmission.score !== undefined
+                      ? previousSubmission.score
+                      : previousSubmission.online_answers?.score_details?.auto_score ?? '—'}
                   </span>
-                  <span className="text-[10px] font-bold text-slate-400 mt-0.5">/ 10.0</span>
+                  <span className="text-[11px] font-bold text-slate-400 mt-1">/ 10.0</span>
                 </div>
+
+                {previousSubmission.online_answers?.score_details?.part1_correct !== undefined && (
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black">
+                    <CheckCircle className="w-4 h-4" />
+                    Đúng {previousSubmission.online_answers.score_details.part1_correct} / {previousSubmission.online_answers.score_details.part1_total || assignment?.parsed_questions?.length || 36} câu trắc nghiệm
+                  </div>
+                )}
 
                 {previousSubmission.teacher_comment && (
-                  <div className="p-3.5 rounded-2xl bg-white/80 border border-amber-200/60 text-xs text-slate-700 leading-relaxed text-left">
+                  <div className="p-3.5 rounded-2xl bg-white/90 border border-amber-200 text-xs text-slate-700 leading-relaxed text-left">
                     <strong className="text-amber-900 block mb-1 flex items-center gap-1.5">
                       <MessageSquare className="w-3.5 h-3.5 text-amber-600" /> Lời phê của Thầy Thọ:
                     </strong>
                     {previousSubmission.teacher_comment}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* CÁC FILE ĐÍNH KÈM / TẢI VỀ */}
+            {assignment?.attachments && assignment.attachments.length > 0 && (
+              <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200 max-w-xl mx-auto space-y-2 text-left">
+                <span className="text-xs font-bold text-blue-900 block flex items-center gap-1.5">
+                  <FileText className="w-4 h-4 text-blue-600" /> Tài liệu đính kèm từ Thầy Thọ:
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {assignment.attachments.map(att => (
+                    <a
+                      key={att.id}
+                      href={att.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download
+                      className="px-3 py-1.5 rounded-xl bg-white border border-blue-200 hover:border-blue-400 text-blue-700 text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
+                    >
+                      <Download className="w-3.5 h-3.5 text-blue-500" />
+                      <span>{att.name}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* HƯỚNG DẪN GIẢI CHI TIẾT TỪNG CÂU SAU KHI LÀM (CHUẨN AZOTA) */}
+            {canViewSolution && assignment?.parsed_questions && assignment.parsed_questions.length > 0 && (
+              <div className="mt-8 text-left space-y-5 pt-6 border-t border-slate-200">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-blue-900 to-indigo-900 p-4 sm:p-5 rounded-2xl text-white shadow-md">
+                  <div>
+                    <h4 className="text-base sm:text-lg font-black flex items-center gap-2">
+                      <BookOpen className="w-5 h-5 text-amber-300" />
+                      ĐÁP ÁN & LỜI GIẢI CHI TIẾT TỪ THẦY THỌ
+                    </h4>
+                    <p className="text-xs text-blue-200 mt-1">
+                      Em hãy xem kĩ đáp án đúng và hướng dẫn giải từng câu để hiểu sâu bản chất nhé!
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowSolutionsReview(prev => !prev)}
+                    className="px-4 py-2 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold transition self-start sm:self-center"
+                  >
+                    {showSolutionsReview ? 'Ẩn lời giải' : 'Hiện lời giải chi tiết'}
+                  </button>
+                </div>
+
+                {showSolutionsReview && (
+                  <div className="space-y-4">
+                    {/* Bảng nút nhảy nhanh đến câu */}
+                    <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 flex flex-wrap gap-1.5 items-center">
+                      <span className="text-[11px] font-bold text-slate-500 mr-2">Nhảy nhanh:</span>
+                      {assignment.parsed_questions.map((q, idx) => {
+                        const qNum = Number(q.number || idx + 1);
+                        const studentAns = previousSubmission?.online_answers?.part1?.[qNum] || onlinePart1[qNum];
+                        let correctAns = q.correctAnswer;
+                        if (!correctAns && q.options) {
+                          const corrOpt = q.options.find(o => o.isCorrect);
+                          if (corrOpt) correctAns = corrOpt.letter;
+                        }
+                        const isCorrect = studentAns && correctAns && studentAns.toUpperCase() === correctAns.toUpperCase();
+
+                        return (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => {
+                              const el = document.getElementById(`sol_q_${qNum}`);
+                              el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            }}
+                            className={`w-7 h-7 rounded-lg text-xs font-black transition flex items-center justify-center ${
+                              isCorrect
+                                ? 'bg-emerald-600 text-white shadow-xs'
+                                : studentAns
+                                ? 'bg-rose-500 text-white'
+                                : 'bg-slate-200 text-slate-600 hover:bg-slate-300'
+                            }`}
+                          >
+                            {qNum}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Chi tiết từng câu hỏi & lời giải */}
+                    {assignment.parsed_questions.map((q, idx) => {
+                      const qNum = Number(q.number || idx + 1);
+                      const studentAns = previousSubmission?.online_answers?.part1?.[qNum] || onlinePart1[qNum];
+                      let correctAns = q.correctAnswer;
+                      if (!correctAns && q.options) {
+                        const corrOpt = q.options.find(o => o.isCorrect);
+                        if (corrOpt) correctAns = corrOpt.letter;
+                      }
+                      const isCorrect = studentAns && correctAns && studentAns.toUpperCase() === correctAns.toUpperCase();
+
+                      return (
+                        <div
+                          key={idx}
+                          id={`sol_q_${qNum}`}
+                          className={`p-5 rounded-2xl border transition space-y-3.5 bg-white shadow-xs ${
+                            isCorrect ? 'border-emerald-200 bg-emerald-50/20' : 'border-slate-200'
+                          }`}
+                        >
+                          {/* Header câu hỏi */}
+                          <div className="flex items-center justify-between">
+                            <span className="px-3 py-1 rounded-xl bg-slate-100 text-slate-800 text-xs font-black">
+                              Câu {qNum}
+                            </span>
+                            <div>
+                              {studentAns ? (
+                                isCorrect ? (
+                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-200">
+                                    <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> Đúng (+0.28đ)
+                                  </span>
+                                ) : (
+                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-xs font-black border border-rose-200">
+                                    <XCircle className="w-3.5 h-3.5 text-rose-600" /> Sai (0đ)
+                                  </span>
+                                )
+                              ) : (
+                                <span className="px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-500 text-[11px] font-medium">
+                                  Chưa chọn
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Đề bài câu hỏi */}
+                          <div className="text-xs sm:text-sm text-slate-900 leading-relaxed font-serif">
+                            <MathText html={q.text} block />
+                          </div>
+
+                          {/* Hình vẽ nếu có */}
+                          {((q.images && q.images.length > 0) || q.image) && (
+                            <div className="my-2.5 flex flex-wrap gap-2 justify-center">
+                              {q.image && (
+                                <img
+                                  src={q.image}
+                                  alt={`Hình minh họa câu ${qNum}`}
+                                  className="max-h-60 object-contain rounded-xl border border-slate-200 shadow-xs bg-white p-1"
+                                />
+                              )}
+                              {q.images?.map((img: any, i: number) => (
+                                <img
+                                  key={i}
+                                  src={img.url || img.data}
+                                  alt={`Hình minh họa câu ${qNum}`}
+                                  className="max-h-60 object-contain rounded-xl border border-slate-200 shadow-xs bg-white p-1"
+                                />
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Các phương án A, B, C, D */}
+                          {q.options && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                              {q.options.map((opt, oIdx) => {
+                                const isThisCorrect = correctAns ? opt.letter.toUpperCase() === correctAns.toUpperCase() : !!opt.isCorrect;
+                                const isThisStudentChoice = studentAns && opt.letter.toUpperCase() === studentAns.toUpperCase();
+
+                                return (
+                                  <div
+                                    key={oIdx}
+                                    className={`p-3 rounded-xl border text-xs font-medium flex items-center justify-between gap-3 ${
+                                      isThisCorrect
+                                        ? 'bg-emerald-50 border-emerald-400 text-emerald-950 font-bold'
+                                        : isThisStudentChoice
+                                        ? 'bg-rose-50 border-rose-300 text-rose-950 font-bold'
+                                        : 'bg-slate-50/70 border-slate-200 text-slate-600'
+                                    }`}
+                                  >
+                                    <div className="flex items-center gap-2.5 flex-1">
+                                      <div
+                                        className={`w-6 h-6 rounded-lg flex items-center justify-center font-black text-xs flex-shrink-0 ${
+                                          isThisCorrect
+                                            ? 'bg-emerald-600 text-white'
+                                            : isThisStudentChoice
+                                            ? 'bg-rose-600 text-white'
+                                            : 'bg-white border border-slate-300 text-slate-700'
+                                        }`}
+                                      >
+                                        {opt.letter}
+                                      </div>
+                                      <span className="leading-snug flex-1"><MathText html={opt.text} /></span>
+                                    </div>
+
+                                    {/* Nhãn đáp án */}
+                                    <div className="flex-shrink-0">
+                                      {isThisCorrect && (
+                                        <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white text-[10px] font-black">
+                                          ✓ Đáp án đúng
+                                        </span>
+                                      )}
+                                      {!isThisCorrect && isThisStudentChoice && (
+                                        <span className="px-2 py-0.5 rounded-md bg-rose-600 text-white text-[10px] font-black">
+                                          ✗ Em chọn
+                                        </span>
+                                      )}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+
+                          {/* Lời giải chi tiết */}
+                          {q.solution && (
+                            <div className="p-4 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50/40 border border-amber-200 text-xs text-slate-800 space-y-1.5 mt-2">
+                              <span className="font-black text-amber-900 block flex items-center gap-1.5">
+                                <Sparkles className="w-4 h-4 text-amber-600" /> Hướng dẫn giải chi tiết:
+                              </span>
+                              <div className="leading-relaxed font-serif text-slate-800">
+                                <MathText html={q.solution} block />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -975,6 +1233,27 @@ export default function StudentSubmitHomeworkPage() {
                         <div className="text-xs sm:text-sm text-slate-800 leading-relaxed font-serif">
                           <MathText html={q.text} block />
                         </div>
+
+                        {/* Ảnh đính kèm câu hỏi nếu có */}
+                        {((q.images && q.images.length > 0) || q.image) && (
+                          <div className="my-3 flex flex-wrap gap-2 justify-center">
+                            {q.image && (
+                              <img
+                                src={q.image}
+                                alt={`Hình minh họa câu ${qNum}`}
+                                className="max-h-64 object-contain rounded-xl border border-slate-200 shadow-xs bg-white p-1"
+                              />
+                            )}
+                            {q.images?.map((img: any, i: number) => (
+                              <img
+                                key={i}
+                                src={img.url || img.data}
+                                alt={`Hình minh họa câu ${qNum}`}
+                                className="max-h-64 object-contain rounded-xl border border-slate-200 shadow-xs bg-white p-1"
+                              />
+                            ))}
+                          </div>
+                        )}
 
                         {/* PHẦN 1: 4 NÚT CHỌN A, B, C, D */}
                         {(q.part === 1 || q.type === 'multiple_choice') && q.options && (

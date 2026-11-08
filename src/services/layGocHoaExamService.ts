@@ -3636,24 +3636,96 @@ export function convertLayGocHoaQuestionsToExamFormat(layGocQuestions: LayGocHoa
   return layGocQuestions.map((q, idx) => {
     const letters = ['A', 'B', 'C', 'D'];
     let correctLetter = 'A';
-    const options = (q.options || []).map((optText, oIdx) => {
+    const isShortAnswer = q.questionType === 'short_answer';
+    const options = isShortAnswer ? [] : (q.options || []).map((optText, oIdx) => {
       const letter = letters[oIdx] || 'A';
-      if (optText === q.correctAnswer) {
+      const isCorrect = optText === q.correctAnswer;
+      if (isCorrect) {
         correctLetter = letter;
       }
       return {
         id: letter,
-        text: optText
+        letter: letter,
+        text: optText,
+        isCorrect: isCorrect
       };
     });
 
     return {
       id: `lgh_${q.id || idx + 1}`,
+      number: idx + 1,
+      displayNumber: idx + 1,
+      part: isShortAnswer ? 3 : 1,
+      type: isShortAnswer ? 'short_answer' : 'multiple_choice',
+      text: q.question,
       question: q.question,
       options,
-      correctAnswer: correctLetter,
+      correctAnswer: isShortAnswer ? (q.correctAnswer || '').trim() : correctLetter,
       explanation: q.explanation || '',
-      mathExpression: q.mathExpression
+      mathExpression: q.mathExpression,
+      points: 0.5
     };
   });
+}
+
+// ==============================================================================
+// HÀM XUẤT ĐỀ CHUẨN BỘ CHO HỆ THỐNG PHÒNG THI & GIAO BÀI TẬP
+// Hỗ trợ đầy đủ các khối THCS & THPT: Khối 6, 7, 8, 9, 10, 11, 12
+// ==============================================================================
+export function getLayGocHoaStandardExamsForGrade(grade: string | number): any[] {
+  const gStr = String(grade);
+  let topicIds: string[] = [];
+
+  if (gStr === '6') {
+    topicIds = ['khtn_nguyen_to', 'khtn_nguyen_to_short'];
+  } else if (gStr === '7') {
+    // Khối 7 trọng tâm: Nguyên tử khối & KHHH, Phân tử khối, Hóa trị & Lập CTHH (40 đề)
+    topicIds = ['khtn_nguyen_to', 'khtn_nguyen_to_short', 'tinh_phan_tu_khoi', 'hoa_tri_cthh'];
+  } else if (gStr === '8') {
+    topicIds = ['khtn_nguyen_to', 'khtn_nguyen_to_short', 'tinh_phan_tu_khoi', 'hoa_tri_cthh', 'can_bang_pthh', 'cong_thuc_mol', 'tinh_theo_pthh'];
+  } else if (gStr === '9') {
+    topicIds = ['khtn_nguyen_to', 'khtn_nguyen_to_short', 'can_bang_pthh', 'cong_thuc_mol', 'tinh_theo_pthh', 'vo_co_lop9'];
+  } else if (gStr === '10') {
+    topicIds = ['cau_tao_nguyen_tu_lop10', 'oxi_hoa_khu_lop10'];
+  } else if (gStr === '11') {
+    topicIds = ['su_dien_li_lop11', 'huu_co_hidrocacbon', 'huu_co_ancol_axit'];
+  } else if (gStr === '12') {
+    topicIds = ['huu_co_este_lipit', 'huu_co_cacbohidrat', 'huu_co_amin_aminoaxit'];
+  } else if (gStr === 'all') {
+    topicIds = LAY_GOC_HOA_TOPICS.map(t => t.id);
+  }
+
+  const topicMap = new Map<string, LayGocHoaTopic>();
+  LAY_GOC_HOA_TOPICS.forEach(t => topicMap.set(t.id, t));
+
+  const standardExams: any[] = [];
+
+  topicIds.forEach(topicId => {
+    const topic = topicMap.get(topicId);
+    if (!topic) return;
+
+    for (let examNo = 1; examNo <= topic.totalExams; examNo++) {
+      const padNo = examNo < 10 ? `0${examNo}` : `${examNo}`;
+      const examTitle = `[HÓA ${gStr}] ${topic.shortTitle} — Đề ${padNo} (20 câu)`;
+      const questions = convertLayGocHoaQuestionsToExamFormat(getLayGocHoaExamQuestions(topicId, examNo));
+
+      standardExams.push({
+        id: `std_lgh_${topicId}_${examNo}`,
+        code: `H${gStr}-LGH-${padNo}`,
+        title: examTitle,
+        shortTitle: `${topic.shortTitle} — Đề ${padNo}`,
+        topic: topic.title,
+        badge: `HÓA ${gStr}`,
+        grade: gStr,
+        subject: 'Hóa học',
+        chapter: topic.shortTitle,
+        duration: 30,
+        totalQuestions: questions.length,
+        totalPoints: 10.0,
+        questions: questions
+      });
+    }
+  });
+
+  return standardExams;
 }
