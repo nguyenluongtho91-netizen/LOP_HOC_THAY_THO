@@ -341,6 +341,20 @@ const PDFExamRoom: React.FC<PDFExamRoomProps> = ({
   // Tab detection (Respect room.settings.antiCheat and practice exams)
   useEffect(() => {
     if ((room as any).settings?.antiCheat === false) return;
+
+    // ✅ BỎ QUA GIÁM SÁT CHO GIÁO VIÊN / THÍ SINH TỰ DO (THẦY THỌ)
+    try {
+      const cs = JSON.parse(localStorage.getItem('current_student') || '{}');
+      const code = String(cs?.student_code || '').toUpperCase().trim();
+      const isFreeCandidate = code === 'THAYTHO' || code === 'TUDO' || cs?.grade === 'Thí Sinh Tự Do';
+      const isTeacherUser = isFreeCandidate ||
+        localStorage.getItem('is_teacher_mode') === 'true' ||
+        localStorage.getItem('hoa12_teacher_authenticated') === 'true' ||
+        localStorage.getItem('role') === 'teacher' ||
+        localStorage.getItem('role') === 'admin';
+      if (isTeacherUser) return; // Giáo viên không bị giám sát chuyển tab
+    } catch {}
+
     const svc = getTabDetectionService();
     svc.start({
       maxSwitches: 3,

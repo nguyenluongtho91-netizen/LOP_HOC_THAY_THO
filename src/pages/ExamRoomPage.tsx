@@ -396,7 +396,9 @@ export default function ExamRoomPage() {
   useEffect(() => {
     const sessionStr = localStorage.getItem('current_student')
     if (!sessionStr) {
-      toast.error('Vui lòng đăng nhập qua cổng thi')
+      // ✅ Lưu link phòng thi để tự động chuyển hướng sau khi HS đăng nhập
+      localStorage.setItem('redirect_after_login', `/exam-room/${roomId}`)
+      toast.error('Vui lòng đăng nhập qua cổng thi để vào phòng thi')
       navigate('/thi')
       return
     }

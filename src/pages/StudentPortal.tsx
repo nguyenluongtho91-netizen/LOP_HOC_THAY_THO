@@ -497,6 +497,14 @@ export default function StudentPortal() {
       }
       toast.success(`Xin chào, ${studentData.full_name}! 👋`)
       await fetchStudentData(studentData.id)
+
+      // ✅ Tự động chuyển hướng đến phòng thi nếu HS mở link phòng thi trước khi đăng nhập
+      const redirectUrl = localStorage.getItem('redirect_after_login')
+      if (redirectUrl) {
+        localStorage.removeItem('redirect_after_login')
+        navigate(redirectUrl)
+        return
+      }
     } catch (err) {
       toast.error('Lỗi kết nối máy chủ!')
     } finally {
