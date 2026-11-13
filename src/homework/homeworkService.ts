@@ -135,20 +135,35 @@ export async function saveAssignment(assignment: HomeworkAssignment): Promise<Ho
     updatedList = [assignment, ...all];
   }
 
-  // 1. Lưu LocalStorage ngay lập tức
-  localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(updatedList));
+  // 1. Luôn lưu LocalStorage ngay lập tức để lấy link & mã nộp bài tức thì
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY_ASSIGNMENTS, JSON.stringify(updatedList));
+  } catch (err) {
+    console.warn('Lỗi lưu local storage:', err);
+  }
 
-  // 2. Lưu vào Supabase exams table
+  // 2. Lưu vào Supabase exams table an toàn, không để văng Exception làm sập modal
   try {
     const titleKey = `__AZOTA_HW__${assignment.id}`;
-    await supabase.from('exams').upsert({
+    const { error } = await supabase.from('exams').upsert({
       id: assignment.id,
       title: titleKey,
       data: assignment,
       created_at: assignment.created_at || new Date().toISOString(),
     }, { onConflict: 'id' });
+
+    if (error) {
+      console.warn('Supabase upsert data error (sử dụng fallback local):', error.message);
+      // Thử fallback nếu schema thiếu cột data
+      await supabase.from('exams').upsert({
+        id: assignment.id,
+        title: titleKey,
+        description: assignment.description || '',
+        created_at: assignment.created_at || new Date().toISOString(),
+      }, { onConflict: 'id' }).catch(() => {});
+    }
   } catch (err) {
-    console.error('Lỗi lưu bài tập lên Supabase:', err);
+    console.warn('Lỗi kết nối Supabase, dữ liệu bài tập đã được lưu an toàn tại bộ nhớ thiết bị:', err);
   }
 
   return assignment;

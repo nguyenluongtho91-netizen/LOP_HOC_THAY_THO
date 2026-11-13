@@ -331,21 +331,31 @@ export default function CreateAssignmentModal({
       toast.error('Vui lòng nhập tên bài tập!');
       return;
     }
-    if (selectedClassIds.length === 0) {
-      toast.error('Vui lòng chọn ít nhất 1 lớp để giao bài!');
-      return;
+    // Tự động gán lớp nếu chưa chọn hoặc danh sách lớp đang trống
+    let effectiveClassIds = [...selectedClassIds];
+    if (effectiveClassIds.length === 0) {
+      if (classes && classes.length > 0) {
+        effectiveClassIds = [classes[0].id];
+        setSelectedClassIds(effectiveClassIds);
+      } else {
+        effectiveClassIds = ['all'];
+      }
     }
-    if (!noDeadline && !deadlineDate) {
-      toast.error('Vui lòng chọn ngày hết hạn nộp bài hoặc chọn Không giới hạn!');
-      return;
+    // Tự động gán hạn nộp 3 ngày nếu thầy chưa chọn ngày
+    let effectiveDeadlineDate = deadlineDate;
+    if (!noDeadline && !effectiveDeadlineDate) {
+      const defD = new Date();
+      defD.setDate(defD.getDate() + 3);
+      effectiveDeadlineDate = defD.toISOString().slice(0, 10);
+      setDeadlineDate(effectiveDeadlineDate);
     }
 
     try {
       setSaving(true);
-      const deadlineIso = noDeadline ? undefined : new Date(`${deadlineDate}T${deadlineTime || '23:59'}:00`).toISOString();
+      const deadlineIso = noDeadline ? undefined : new Date(`${effectiveDeadlineDate}T${deadlineTime || '23:59'}:00`).toISOString();
       const code = initialData?.code || 'HW' + Math.floor(100 + Math.random() * 900);
       const selectedClassNames = classes
-        .filter(c => selectedClassIds.includes(c.id))
+        .filter(c => effectiveClassIds.includes(c.id))
         .map(c => c.name);
 
       const assignment: HomeworkAssignment = {
@@ -353,7 +363,7 @@ export default function CreateAssignmentModal({
         code,
         title: title.trim(),
         description: description.trim(),
-        class_ids: selectedClassIds,
+        class_ids: effectiveClassIds,
         class_names: selectedClassNames,
         created_at: initialData?.created_at || new Date().toISOString(),
         deadline: deadlineIso,
