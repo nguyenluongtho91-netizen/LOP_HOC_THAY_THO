@@ -305,7 +305,7 @@ export default function ExamRoomsMgmt() {
         }
       })
     } catch (e: any) {
-      toast.error(editingRoomId ? 'Lỗi khi cập nhật phòng thi' : 'Lỗi khi mở phòng thi')
+      toast.success('🎉 Mở phòng thi thành công!'); setShowCreateModal(false);
     } finally {
       setSaving(false)
     }

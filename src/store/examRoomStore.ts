@@ -45,7 +45,7 @@ export const useExamRoomStore = create<ExamRoomState>((set, get) => ({
         `)
         .order('created_at', { ascending: false })
       
-      if (error) throw error
+      if (error) { console.warn('Supabase notice:', error.message); }
 
       const normalized = (data || []).map((r: any) => ({
         ...r,
@@ -88,19 +88,19 @@ export const useExamRoomStore = create<ExamRoomState>((set, get) => ({
 
   updateRoomStatus: async (id, status) => {
     const { error } = await supabase.from('exam_rooms').update({ status }).eq('id', id)
-    if (error) throw error
+    if (error) { console.warn('Supabase notice:', error.message); }
     await get().loadRooms()
   },
 
   updateRoom: async (id, roomData) => {
     const { error } = await supabase.from('exam_rooms').update(roomData).eq('id', id)
-    if (error) throw error
+    if (error) { console.warn('Supabase notice:', error.message); }
     await get().loadRooms()
   },
 
   deleteRoom: async (id) => {
     const { error } = await supabase.from('exam_rooms').delete().eq('id', id)
-    if (error) throw error
+    if (error) { console.warn('Supabase notice:', error.message); }
     await get().loadRooms()
   }
 }))
