@@ -1113,7 +1113,7 @@ const isFirstRender = useRef(true)
         </div>
       )}
 
-      <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editingRoomId ? "Cấu hình phòng thi" : "Thiết lập phòng thi mới"} size="md">
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} title={editingRoomId ? "Cấu hình phòng thi" : "Thiết lập phòng thi mới"} size="3xl">
         <div className="space-y-5">
           <div className="bg-teal-50 p-4 rounded-2xl border border-teal-100 mb-2">
             <p className="text-xs text-teal-700 font-bold uppercase tracking-wider mb-1">💡 Mẹo nhỏ:</p>
